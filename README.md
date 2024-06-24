@@ -30,7 +30,7 @@ python pubtator3_api.py -q "@DISEASE_COVID_19 AND @GENE_PON1" [-o OUTPUT_FILEPAT
 2. Generate Cytoscape networks
 
 ```
-# Index by the entity names referred in the original articles
+# Index by the entity names referred to in the original articles
 python pubtator2cytoscape.py -i examples/pmids_output.pubtator -o pmids_output.xgmml -w 1 --index_by name
 
 # Index by MeSH terms and discard non-MeSH terms
