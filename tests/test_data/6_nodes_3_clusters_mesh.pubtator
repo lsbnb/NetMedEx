@@ -1,0 +1,51 @@
+34205807|t|Clinical Performance of Paraoxonase-1-Related Variables and Novel Markers of Inflammation in Coronavirus Disease-19. A Machine Learning Approach.
+34205807|a|SARS-CoV-2 infection produces a response of the innate immune system causing oxidative stress and a strong inflammatory reaction termed 'cytokine storm' that is one of the leading causes of death. Paraoxonase-1 (PON1) protects against oxidative stress by hydrolyzing lipoperoxides. Alterations in PON1 activity have been associated with pro-inflammatory mediators such as the chemokine (C-C motif) ligand 2 (CCL2), and the glycoprotein galectin-3. We aimed to investigate the alterations in the circulating levels of PON1, CCL2, and galectin-3 in 126 patients with COVID-19 and their interactions with clinical variables and analytical parameters. A machine learning approach was used to identify predictive markers of the disease. For comparisons, we recruited 45 COVID-19 negative patients and 50 healthy individuals. Our approach identified a synergy between oxidative stress, inflammation, and fibrogenesis in positive patients that is not observed in negative patients. PON1 activity was the parameter with the greatest power to discriminate between patients who were either positive or negative for COVID-19, while their levels of CCL2 and galectin-3 were similar. We suggest that the measurement of serum PON1 activity may be a useful marker for the diagnosis of COVID-19.
+34205807	24	37	Paraoxonase-1	Gene	5444
+34205807	343	356	Paraoxonase-1	Gene	5444
+34205807	358	362	PON1	Gene	5444
+34205807	77	89	Inflammation	Disease	MESH:D007249
+34205807	253	265	inflammatory	Disease	MESH:D007249
+34205807	93	115	Coronavirus Disease-19	Disease	MESH:D000086382
+34205807	146	166	SARS-CoV-2 infection	Disease	MESH:D000086382
+34205807	283	297	cytokine storm	Disease	MESH:D000080424
+34205807	413	426	lipoperoxides	Chemical	MESH:D008054
+34205807	522	552	chemokine (C-C motif) ligand 2	Gene	6347
+34205807	554	558	CCL2	Gene	6347
+34205807	472	498	Jiedu Quyu Ziyin decoction	Chemical	-
+34205807	Association	MESH:D000086382	6347
+34205807	Association	MESH:D007249	6347
+34205807	Association	MESH:D000086382	5444
+34205807	Association	MESH:D008054	5444
+34205807	Association	MESH:D007249	5444
+34205807	Association	5444	6347
+
+34895069|t|In silico investigation of the interactions of certain drugs proposed for the treatment of Covid-19 with the paraoxonase-1.
+34895069|a|Coronavirus disease 2019 (Covid-19) has caused one of the biggest pandemics of modern times, infected over 240 million people and killed over 4.9 million people, and continues to do so. Although many drugs are widely recommended in the treatment of this disease, the interactions of these drugs with an anti-atherosclerotic enzyme, paraoxonase-1 (PON1), are not well known. In our study, we investigated the interactions of 18 different drugs, which are claimed to be effective against covid-19, with the PON1 enzyme and its genetics variants L55M and Q192R with molecular docking, molecular dynamics simulation and free energy calculation method MM/PBSA. We found that ruxolitinib, dexamethasone, colchicine; dexamethasone, sitagliptin, baricitinib and galidesivir, ruxolitinib, hydroxychloroquine were the most effective compounds in binding PON1-w, PON1L55M and PON1Q192R respectively. Mainly, sitagliptin, galidesivir and hydroxychloroquine have attracted attention by showing very high affinity (<-300 kJ/mol) according to the MM/PBSA method. We concluded that the drug interactions should be considered and more attention should be paid in the use of these drugs.Communicated by Ramaswamy H. Sarma.
+34895069	91	99	Covid-19	Disease	MESH:D000086382
+34895069	124	148	Coronavirus disease 2019	Disease	MESH:D000086382
+34895069	610	618	covid-19	Disease	MESH:D000086382
+34895069	150	158	Covid-19	Disease	MESH:D000086382
+34895069	109	122	paraoxonase-1	Gene	5444
+34895069	471	475	PON1	Gene	5444
+34895069	278	284	people	Species	9606
+34895069	432	447	atherosclerotic	Disease	MESH:D050197
+34895069	667	671	L55M	ProteinMutation	tmVar:p|SUB|L|55|M;HGVS:p.L55M;VariantGroup:1;CorrespondingGene:5444;RS#:854560;CorrespondingSpecies:9606;CA#:123413
+34895069	794	805	ruxolitinib	Chemical	MESH:C540383
+34895069	891	902	ruxolitinib	Chemical	MESH:C540383
+34895069	Association	MESH:D000086382	RS#:854560;HGVS:p.L55M;CorrespondingGene:5444
+34895069	Association	MESH:D050197	5444
+34895069	Association	MESH:D000086382	5444
+34895069	Association	MESH:D000086382	5444
+34895069	Association	MESH:C540383	5444
+
+35883435|t|Usefulness of the Measurement of Serum Paraoxonase-1 Arylesterase Activity in the Diagnoses of COVID-19.
+35883435|a|The development of inexpensive, fast, and reliable screening tests for COVID-19 is, as yet, an unmet need. The present study was aimed at evaluating the usefulness of serum arylesterase activity of paraoxonase-1 (PON1) measurement as a screening test in patients with different severity levels of COVID-19 infection. We included 615 COVID-19-positive patients who were classified as asymptomatic, mildly symptomatic, severely symptomatic, or fatally symptomatic. Results were compared with 50 healthy volunteers, 330 patients with cancer, and 343 with morbid obesity. Results showed PON1 activity greatly decreased in COVID-19 compared to healthy volunteers; a receiver operating characteristics plot showed a high diagnostic accuracy. The degree of COVID-19 severity did not influence PON1 levels. Our results indicated that PON1 determination was efficient for disease diagnosis, but not for prognosis. Furthermore, patients with obesity or cancer presented alterations similar to those of COVID-19 patients. As such, elevated levels of PON1 indicate the absence of COVID-19, but low levels may be present in various other chronic diseases. The assay is fast and inexpensive. We suggest that PON1 measurement could be used as an initial, high cut-off point screening method, while lower values should be confirmed with the more expensive nucleic acid amplification test.
+35883435	95	103	COVID-19	Disease	MESH:D000086382
+35883435	176	184	COVID-19	Disease	MESH:D000086382
+35883435	303	316	paraoxonase-1	Gene	5444
+35883435	318	322	PON1	Gene	5444
+35883435	622	630	patients	Species	9606
+35883435	636	642	cancer	Disease	MESH:D009369
+35883435	657	671	morbid obesity	Disease	MESH:D009767
+35883435	1037	1044	obesity	Disease	MESH:D009765
+35883435	Association	MESH:D000086382	5444
