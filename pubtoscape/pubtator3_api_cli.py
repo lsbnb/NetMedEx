@@ -1,13 +1,16 @@
 # https://www.ncbi.nlm.nih.gov/research/pubtator3/api
 import argparse
 import json
+import logging
 import sys
 import time
 from pathlib import Path
 from typing import Literal
-import logging
+
 import requests
 from tqdm.auto import tqdm
+
+from pubtoscape.utils import config_logger
 
 # API GET limit: 100
 PMID_REQUEST_SIZE = 100
@@ -332,50 +335,24 @@ def drop_if_not_num(id_list):
     return checked_list
 
 
-def create_savepath(output, type, **kwargs):
-    if args.output is None:
+def create_savepath(output_path, type, **kwargs):
+    if output_path is None:
         if type == "query":
             savepath = Path(f"./query_{kwargs['name']}.pubtator")
         elif type == "pmids":
             pmids = kwargs["pmid_list"]
             savepath = Path(f"./pmids_{pmids[0]}_total_{len(pmids)}.pubtator")
     else:
-        savepath = Path(args.output)
+        savepath = Path(output_path)
         savepath.parent.mkdir(parents=True, exist_ok=True)
 
     return savepath
 
 
-def config_logger(is_debug):
-    if is_debug:
-        logging.basicConfig(format="%(asctime)s [%(levelname)s] %(message)s",
-                            datefmt="%Y-%m-%d %H:%M:%S",
-                            level=logging.DEBUG)
-    else:
-        logging.basicConfig(format="%(message)s",
-                            level=logging.INFO)
+def main():
+    global debug
 
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-q", "--query", default=None,
-                        help="Query string")
-    parser.add_argument("-o", "--output", default=None,
-                        help="Output path")
-    parser.add_argument("-p", "--pmids", default=None, type=str,
-                        help="PMIDs for the articles (comma-separated)")
-    parser.add_argument("-f", "--pmid_file", default=None,
-                        help="Filepath to load PMIDs")
-    parser.add_argument("--max_articles", type=int, default=1000,
-                        help="Maximal articles to request from the searching result (default: 1000)")
-    parser.add_argument("--full_text", action="store_true",
-                        help="Get full-text annotations")
-    parser.add_argument("--standardized_name", action="store_true",
-                        help="Obtain standardized names rather than the original text in articles")
-    parser.add_argument("--debug", action="store_true",
-                        help="Print debug information")
-    args = parser.parse_args()
-
+    args = parse_args(sys.argv[1:])
     debug = args.debug
 
     config_logger(debug)
@@ -403,3 +380,34 @@ if __name__ == "__main__":
                        max_articles=args.max_articles,
                        full_text=args.full_text,
                        standardized=args.standardized_name)
+
+
+def parse_args(args):
+    parser = setup_argparsers()
+    return parser.parse_args(args)
+
+
+def setup_argparsers():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-q", "--query", default=None,
+                        help="Query string")
+    parser.add_argument("-o", "--output", default=None,
+                        help="Output path")
+    parser.add_argument("-p", "--pmids", default=None, type=str,
+                        help="PMIDs for the articles (comma-separated)")
+    parser.add_argument("-f", "--pmid_file", default=None,
+                        help="Filepath to load PMIDs")
+    parser.add_argument("--max_articles", type=int, default=1000,
+                        help="Maximal articles to request from the searching result (default: 1000)")
+    parser.add_argument("--full_text", action="store_true",
+                        help="Get full-text annotations")
+    parser.add_argument("--standardized_name", action="store_true",
+                        help="Obtain standardized names rather than the original text in articles")
+    parser.add_argument("--debug", action="store_true",
+                        help="Print debug information")
+
+    return parser
+
+
+if __name__ == "__main__":
+    main()

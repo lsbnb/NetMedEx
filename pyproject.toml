@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pubtoscape*"]
+
+[project]
+name = "pubtoscape"
+version = "0.1.0"
+authors = [
+  { name = "Zheng-Xiang Ye", email="r12b48005@ntu.edu.tw"},
+]
+description = "TODO"
+readme = "README.md"
+requires-python=">=3.9"
+dependencies = [
+    "requests",
+    "tqdm",
+    "networkx[default]",
+    "lxml",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.scripts]
+pubtator3 = "pubtoscape.pubtator3_api_cli:main"
+tocytoscape = "pubtoscape.pubtator3_to_cytoscape_cli:main"

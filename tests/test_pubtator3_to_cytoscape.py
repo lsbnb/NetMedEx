@@ -1,12 +1,10 @@
-import sys
-
 import networkx as nx
 import pytest
 
-sys.path.append("../pubtator")
-
-from pubtator2cytoscape import (add_edge_to_graph, add_node_to_graph,
-                                parse_pubtator, remove_isolated_nodes)
+from pubtoscape.pubtator3_to_cytoscape_cli import (add_edge_to_graph,
+                                                   add_node_to_graph,
+                                                   parse_pubtator,
+                                                   remove_isolated_nodes)
 
 
 @pytest.fixture(scope="module")

@@ -1,14 +1,14 @@
 import json
-import pytest
-import sys
-
-sys.path.append("../pubtator")
-
 from pathlib import Path
 
-from pubtator3_api import (get_biocjson_annotations, parse_cite_response,
-                           send_publication_query, send_search_query,
-                           convert_to_pubtator, batch_publication_query)
+import pytest
+
+from pubtoscape.pubtator3_api_cli import (batch_publication_query,
+                                      convert_to_pubtator,
+                                      get_biocjson_annotations,
+                                      parse_cite_response,
+                                      send_publication_query,
+                                      send_search_query)
 
 TESTDATA_DIR = Path(__file__).parent / "test_data"
 
