@@ -310,6 +310,9 @@ def add_node_by_mesh(line, node_dict, node_dict_each):
         mesh_list = [mesh]
     elif type == "Gene":
         mesh_list = mesh.split(";")
+        mesh_list = [f"gene_{mesh}" for mesh in mesh_list]
+    elif type == "Species":
+        mesh_list = [f"species_{mesh}"]
     else:
         mesh_list = [mesh]
 
