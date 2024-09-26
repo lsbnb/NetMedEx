@@ -6,15 +6,43 @@ Pub3ToCytoscape is a tool developed in Python to extract BioConcept entities (e.
 
 ## Installation 
 
+1. Clone this repository.
+```
+git clone https://github.com/lsbnb/Pub3ToCytoscape.git
+cd Pub3ToCytoscape
+```
+
+2. Create a new environment and install PubTator3ToCytoscape.
 ```
 conda create -n pubtoscape python=3.11
 conda activate pubtoscape
+
+# Install CLI only
 pip install .
+
+# Include web app
+pip install .[dash]
 ```
 
 ## Example Usage
 
-1. Get a PubTator file generated from related articles by using [PubTator3 API](https://www.ncbi.nlm.nih.gov/research/pubtator3/api)  
+### Web App
+
+Run the following command, then open the address in your browser:
+```
+python pubtoscape_app/app.py
+```
+
+The parameters in the sidebar are described in [Available Commands](#available-commands)
+
+*Note:*
+  1. Some specific combinations, such as exporting community networks as XGMML files, are not yet supported.
+  2. Dynamic graph visualization (e.g., adjusting edge weight cutoff, minimal node degree, layout, etc.) sometimes encounter errors due to potential state management issues. Please refresh the page and try again with the same set of parameters.
+
+
+### CLI
+
+1. Get a PubTator file generated from fetching related articles by using [PubTator3 API](https://www.ncbi.nlm.nih.gov/research/pubtator3/api)  
 
 ```
 # Query with keywords
@@ -33,19 +61,25 @@ pubtator3 -q "@DISEASE_COVID_19 AND @GENE_PON1" [-o OUTPUT_FILEPATH]
 2. Generate Cytoscape networks
   
 ```
-# Index by the entity names referred to in the original articles
-tocytoscape -i examples/pmids_output.pubtator -o pmids_output.xgmml -w 1 --index_by name
+# Use default parameters and set edge weight cutoff to 1
+tocytoscape -i examples/pmids_output.pubtator -o pmids_output.html -w 1
 
-# Index by MeSH terms and discard non-MeSH terms
-tocytoscape -i examples/pmids_output.pubtator -o pmids_output.xgmml -w 1 --index_by mesh
+# Keep MeSH terms and discard non-MeSH terms
+tocytoscape -i examples/pmids_output.pubtator -o pmids_output.html -w 1 --node_type mesh
 
-# Index by relations between entities (see PubTator3 for the detection of "relation")
-tocytoscape -i examples/pmids_output.pubtator -o pmids_output.xgmml -w 1 --index_by relation
+# Keep confident relations between entities (see PubTator3 for the detection of "relation")
+tocytoscape -i examples/pmids_output.pubtator -o pmids_output.html -w 1 --node_type relation
+
+# Save the result in XGMML format for further processing in Cytoscape
+tocytoscape -i examples/pmids_output.pubtator -o pmids_output.html -w 1 -f xgmml
+
+# Use normalized pointwise mutual information (NPMI) to weight edges
+tocytoscape -i examples/pmids_output.pubtator -o pmids_output.html -w 5 --weighting_method npmi
 ```
 
 3. Depends on your output format:  
-  (1) Open the output .html file in your browser to view the network.  
-  (2) Import the output xgmml file into Cytoscape to view the network.
+    HTML: Open it in your browser to view the network.  
+    XGMML: Import the file into Cytoscape to view the network.
 
 For further usage, please refer to `notebooks`.
 
@@ -53,7 +87,7 @@ For further usage, please refer to `notebooks`.
 
 ### pubtator3
 ```
-usage: pubtator3 [-h] [-q QUERY] [-o OUTPUT] [-p PMIDS] [-f PMID_FILE] [--max_articles MAX_ARTICLES] [--full_text] [--standardized_name] [--debug]
+usage: pubtator3 [-h] [-q QUERY] [-o OUTPUT] [-p PMIDS] [-f PMID_FILE] [--max_articles MAX_ARTICLES] [--full_text] [--use_mesh] [--debug]
 
 options:
   -h, --help            show this help message and exit
@@ -67,14 +101,15 @@ options:
                         Filepath to load PMIDs
   --max_articles MAX_ARTICLES
                         Maximal articles to request from the searching result (default: 1000)
-  --full_text           Get full-text annotations
-  --standardized_name   Obtain standardized names rather than the original text in articles
+  --full_text           Collect full-text annotations if available
+  --use_mesh            Use MeSH vocabulary instead of the most commonly used original text in articles
   --debug               Print debug information
 ```
 
 ### tocytoscape
 ```
-usage: tocytoscape [-h] [-i INPUT] [-o OUTPUT] [-w CUT_WEIGHT] [-f {xgmml,html}] [--index_by {mesh,name,relation}] [--pmid_weight PMID_WEIGHT] [--debug]
+usage: tocytoscape [-h] [-i INPUT] [-o OUTPUT] [-w CUT_WEIGHT] [-f {xgmml,html,json}] [--node_type {all,mesh,relation}] [--weighting_method {freq,npmi}]
+                   [--pmid_weight PMID_WEIGHT] [--debug] [--community]
 
 options:
   -h, --help            show this help message and exit
@@ -84,11 +119,14 @@ options:
                         Output path (default: [INPUT FILEPATH].xgmml)
   -w CUT_WEIGHT, --cut_weight CUT_WEIGHT
                         Discard the edges with weight smaller than the specified value (default: 5)
-  -f {xgmml,html}, --format {xgmml,html}
+  -f {xgmml,html,json}, --format {xgmml,html,json}
                         Output format (default: html)
-  --index_by {mesh,name,relation}
-                        Extract nodes and edges by (default: name)
+  --node_type {all,mesh,relation}
+                        Keep specific types of nodes (default: all)
+  --weighting_method {freq,npmi}
+                        Weighting method for network edge (default: freq)
   --pmid_weight PMID_WEIGHT
-                        csv file for the weight of the edge from a PMID (default: 1)
+                        CSV file for the weight of the edge from a PMID (default: 1)
   --debug               Print debug information
+  --community           Divide nodes into distinct communities by the Louvain method
 ```

@@ -174,7 +174,7 @@ def _create_edge_xml(edge, G):
     }
 
     _graphics_attr = {
-        "width": str(edge_attr["scaled_weight"]),
+        "width": str(edge_attr["scaled_edge_weight"]),
         "fill": "#848484"
     }
 
@@ -195,12 +195,12 @@ def _create_edge_xml(edge, G):
             E.att(name_value("selected", "0", with_type="boolean")),
             E.att(name_value("interaction", "interacts with")),
             E.att(
-                name_value("weight",
-                           str(edge_attr["weight"]),
+                name_value("edge weight",
+                           str(edge_attr["edge_weight"]),
                            with_type="double")),
             E.att(
-                name_value("scaled weight",
-                           str(edge_attr["scaled_weight"]),
+                name_value("scaled edge weight",
+                           str(edge_attr["scaled_edge_weight"]),
                            with_type="integer")),
             E.att(name_value("pubmed id", edge_attr["pmids"])),
             E.graphics(

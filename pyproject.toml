@@ -3,8 +3,7 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-where = ["."]
-include = ["pubtoscape*"]
+include = ["pubtoscape"]
 
 [project]
 name = "pubtoscape"
@@ -16,15 +15,24 @@ description = "TODO"
 readme = "README.md"
 requires-python=">=3.9"
 dependencies = [
-    "requests",
-    "tqdm",
-    "networkx[default]",
-    "lxml",
+  "requests",
+  "tqdm",
+  "networkx[default]",
+  "lxml",
+  "python-dotenv",
 ]
 classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+
+[project.optional-dependencies]
+dash = [
+  "dash[diskcache]==2.17",
+  "dash-cytoscape",
+  "dash-bootstrap_components",
+  "dash-svg",
 ]
 
 [project.scripts]
