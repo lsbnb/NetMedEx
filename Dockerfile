@@ -1,7 +1,8 @@
 FROM python:3.11.9-slim-bookworm
 WORKDIR /app
 COPY . .
-RUN pip install .[dash]
+RUN pip install .
 
 EXPOSE 8050
-CMD [ "python3", "pubtoscape_app/app.py" ]
+ENV HOST=0.0.0.0
+CMD [ "netmedex", "run" ]

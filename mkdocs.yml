@@ -1,0 +1,94 @@
+site_name: NetMedEx
+# site_url:
+site_description: NetMedEx
+
+# repo_url: 
+# repo_name: 
+
+theme:
+  name: material
+  highlightjs: true
+  features:
+    - navigation.instant
+    - navigation.top
+    # - announce.dismiss
+    # - content.action.edit
+    # - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - content.code.select
+    # - content.footnote.tooltips
+    # - content.tabs.link
+    # - content.tooltips
+    # - header.autohide
+    - navigation.expand
+    - navigation.footer
+    - navigation.indexes
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    # - navigation.prune
+    # - navigation.sections
+    # - navigation.tabs
+    # - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+    # - toc.integrate
+  # palette:
+  #   primary: blue grey
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/link
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch-off
+        name: Switch to system preference
+  font:
+    text: Roboto
+    code: Roboto Mono
+  logo: assets/NetMedEx.png
+
+markdown_extensions:
+  - pymdownx.tilde
+  - pymdownx.betterem
+  - attr_list
+  - md_in_html
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+
+plugins:
+  - search
+  - glightbox
+  - inline-svg
+  - git-revision-date-localized:
+      type: timeago 
+
+nav:
+  - About: index.md
+  - Installation: installation.md
+  - Web App Guides: web_app_guides.md
+  - CLI Guides: cli_guides.md
+  # - Use Cases:
+  #   - use_cases/index.md
+  #   - Text Query: use_cases/text_query.md
+  - Reference: reference.md

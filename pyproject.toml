@@ -3,38 +3,76 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-include = ["pubtoscape"]
+include = ["netmedex*", "webapp*"]
+
+[tool.setuptools.package-data]
+webapp = ["assets/*.js", "assets/*.svg", "assets/*.css", "assets/*.ico", "assets/*.png"]
 
 [project]
-name = "pubtoscape"
-version = "0.1.0"
+name = "netmedex"
+version = "0.1.0-beta"
 authors = [
   { name = "Zheng-Xiang Ye", email="r12b48005@ntu.edu.tw"},
 ]
-description = "TODO"
+description = "A tool to extract BioConcept entities (e.g., genes, diseases, chemicals, and species) from Pubtator3 and generate a co-mention network for interactive use."
 readme = "README.md"
-requires-python=">=3.9"
+requires-python=">=3.11"
 dependencies = [
   "requests",
   "tqdm",
-  "networkx[default]",
+  "networkx[default]~=3.3",
   "lxml",
   "python-dotenv",
+  "dash[diskcache]~=2.17",
+  "dash-cytoscape",
+  "dash-bootstrap_components",
 ]
 classifiers = [
+  "Development Status :: 4 - Beta",
   "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
   "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent",
 ]
 
 [project.optional-dependencies]
-dash = [
-  "dash[diskcache]==2.17",
-  "dash-cytoscape",
-  "dash-bootstrap_components",
-  "dash-svg",
+dev = [
+  "pytest~=8.3.2",
+  "pytest-xdist",
+  "pytest-cov",
+  "requests-mock",
+  "pytest-mock",
+  "ruff==0.8.0",
+  "pre-commit",
 ]
 
 [project.scripts]
-pubtator3 = "pubtoscape.pubtator3_api_cli:main"
-tocytoscape = "pubtoscape.pubtator3_to_cytoscape_cli:main"
+netmedex = "netmedex.cli:main"
+
+[tool.ruff]
+line-length = 99 
+target-version = "py311"
+# exclude = [""]
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+    # "ARG001", # unused arguments in functions
+]
+ignore = [
+    "E402",  # module level import not at top of file
+    "E501",  # line too long, handled by black
+    "B008",  # do not perform function calls in argument defaults
+    "W191",  # indentation contains tabs
+    "B904",  # Allow raising exceptions without from e, for HTTPException
+]
+
+[tool.ruff.format]
+quote-style = "double"

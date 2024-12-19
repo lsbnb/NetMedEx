@@ -1,10 +1,13 @@
-dev*/
+**/dev
+**/dev_notebooks
 cache/
 .pytest_cache/
 .vscode/
 examples/
 notebooks/
-
+**/.env
+pytest.ini
+docs/
 
 # Common
 README.md
