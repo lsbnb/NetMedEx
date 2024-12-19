@@ -1,6 +1,6 @@
 ## Web Application (via Docker)
 
-If you have [Docker](https://www.docker.com/) installed on your machine, you can run the following command to launch the web application using Docker, then open `localhost:8050` in your browser:
+If you have <a href="https://www.docker.com/" target="_blank">Docker</a> installed on your machine, you can run the following command to launch the web application using Docker, then open `localhost:8050` in your browser:
 
 ```bash
 docker run -p 8050:8050 --rm lsbnb/netmedex

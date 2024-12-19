@@ -4,7 +4,7 @@ To generate a network, run `netmedex search` first to retrieve relevant articles
 
 #### Search PubMed Articles
 
-Use the CLI to search articles containing specific biological concepts via the [PubTator3 API](https://www.ncbi.nlm.nih.gov/research/pubtator3/api):
+Use the CLI to search articles containing specific biological concepts via the <a href="https://www.ncbi.nlm.nih.gov/research/pubtator3/api" target="_blank">PubTator3 API</a>:
 
 ```bash
 # Query with keywords and sort articles by relevance (default: recency)
