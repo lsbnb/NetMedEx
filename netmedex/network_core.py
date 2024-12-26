@@ -110,7 +110,7 @@ class NetworkBuilder:
 
         self.remove_isolated_nodes(G)
 
-        self.assert_graph_properties(G)
+        self.check_graph_properties(G)
 
         self.set_network_layout(G)
 
@@ -236,9 +236,10 @@ class NetworkBuilder:
         G.graph["pmid_title"] = parsed_pubtator.pmid_title_map
 
     @staticmethod
-    def assert_graph_properties(G: nx.Graph):
+    def check_graph_properties(G: nx.Graph):
         num_selfloops = nx.number_of_selfloops(G)
-        assert num_selfloops == 0, f"Find {num_selfloops}"
+        if num_selfloops != 0:
+            logger.warning(f"[Error] Find {num_selfloops} selfloops")
 
     @staticmethod
     def set_network_layout(G: nx.Graph):
@@ -278,7 +279,9 @@ class NetworkBuilder:
         to_remove = []
         for u, v, attrs in G.edges(data=True):
             if (c_0 := G.nodes[u]["parent"]) != (c_1 := G.nodes[v]["parent"]):
-                assert c_0 is not None and c_1 is not None
+                if c_0 is None or c_1 is None:
+                    logger.warning(f"[Error] Node {u} or {v} is not in any community")
+                    continue
                 to_remove.append((u, v))
                 community_edge = tuple(sorted([c_0, c_1]))
                 inter_edge_weight[community_edge] += attrs["scaled_edge_weight"]

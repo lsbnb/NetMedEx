@@ -8,9 +8,7 @@ def generate_query_component(hidden=False):
     return html.Div(
         [
             html.H5("Query"),
-            dbc.Input(
-                placeholder="Enter a query (ex: dimethylnitrosamine)", type="text", id="data-input"
-            ),
+            dbc.Input(placeholder="ex: COVID-19 AND PON1", type="text", id="data-input"),
         ],
         hidden=hidden,
     )
@@ -20,9 +18,7 @@ def generate_pmid_component(hidden=False):
     return html.Div(
         [
             html.H5("PMID"),
-            dbc.Input(
-                placeholder="Enter PMIDs (ex: 33422831,33849366)", type="text", id="data-input"
-            ),
+            dbc.Input(placeholder="ex: 33422831,33849366", type="text", id="data-input"),
         ],
         hidden=hidden,
     )

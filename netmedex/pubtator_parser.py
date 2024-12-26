@@ -105,21 +105,8 @@ class PubTatorLine:
             self.normalize_name()
 
         if anno_type in ("DNAMutation", "ProteinMutation", "SNP"):
-            match_data = {}
-            for key, pattern in MUTATION_PATTERNS.items():
-                try:
-                    match_data[key] = f"{re.search(pattern, mesh).group(1)};"
-                except AttributeError:
-                    match_data[key] = ""
-            if anno_type == "DNAMutation":
-                mesh = (
-                    f'{match_data["gene"]}{match_data["species"]}{match_data["variantgroup"]}'
-                    f'{match_data["tmvar"].split("|")[0]}'
-                ).strip(";")
-            elif anno_type == "ProteinMutation":
-                mesh = f'{match_data["rs"]}{match_data["hgvs"]}{match_data["gene"]}'.strip(";")
-            elif anno_type == "SNP":
-                mesh = f'{match_data["rs"]}{match_data["hgvs"]}{match_data["gene"]}'.strip(";")
+            # Add mutation mesh for solving relation mesh terms
+            mesh_map[mesh] = mesh
             result = [{"key": mesh, "mesh": mesh}]
         elif anno_type == "Gene":
             mesh_list = mesh.split(";")
@@ -153,15 +140,15 @@ class PubTatorParser:
         self.num_pmids: int = 0
         self.mesh_map: dict[str, str] = {}
         self.pmid_title_map: dict[str, str] = {}
-        self.node_dict_each: dict[str, PubTatorNodeData] = {}
         self.node_dict: dict[str, PubTatorNodeData] = {}
         self.edge_dict: defaultdict[str, list[PubTatorEdgeData]] = defaultdict(list)
         self.non_isolated_nodes: set[str] = set()
+        self._mutation_mesh: dict[str, dict[str, str]] = {}
 
     def parse(self):
         pmid = -1
         last_pmid = -1
-        node_dict_each = {}
+        node_dict_each: dict[str, PubTatorNodeData] = {}
 
         self._parse_header(self.pubtator_file)
         with open(self.pubtator_file) as f:
@@ -171,6 +158,9 @@ class PubTatorParser:
                     self.num_pmids += 1
                     continue
                 if self.node_type == "relation":
+                    if pmid != last_pmid:
+                        last_pmid = pmid
+                        self._mutation_mesh = {}
                     parsed_line = PubTatorLine(line)
                     self._parse_line_relation(parsed_line)
                 else:
@@ -197,7 +187,7 @@ class PubTatorParser:
         if line.type == "annotation":
             self._add_node(line, {})
         elif line.type == "relation":
-            self._create_edges_for_relations(line)
+            self._create_edges_for_relations(line.data)
 
     def _add_node(
         self,
@@ -240,16 +230,57 @@ class PubTatorParser:
                 self.node_dict[node_id].name[data.name] += 1
                 self.node_dict[node_id].pmids.add(data.pmid)
 
-    def _create_edges_for_relations(self, line: PubTatorLine):
-        data = line.data
-        # TODO: better way to deal with DNAMutation notation inconsistency
-        mesh_1 = data.mesh1.split("|")[0]
-        mesh_1 = self.mesh_map.get(mesh_1, mesh_1)
-        mesh_2 = data.mesh2.split("|")[0]
-        mesh_2 = self.mesh_map.get(mesh_2, mesh_2)
+    def _create_edges_for_relations(self, data: PubTatorRelation):
+        mesh_1 = self.mesh_map.get(data.mesh1, data.mesh1)
+        mesh_2 = self.mesh_map.get(data.mesh2, data.mesh2)
+
+        # Match Variant mesh terms
+        if not self.node_dict.get(mesh_1, False):
+            mesh_1 = self._match_mutation(data.mesh1)
+            if not mesh_1:
+                logger.warning(f"[Error] PMID: {data.pmid} | Unable to parse {data.mesh1}")
+        if not self.node_dict.get(mesh_2, False):
+            mesh_2 = self._match_mutation(data.mesh2)
+            if not mesh_2:
+                logger.warning(f"[Error] PMID: {data.pmid} | Unable to parse {data.mesh2}")
+
         self.edge_dict[(mesh_1, mesh_2)].append(
             PubTatorEdgeData(id=generate_uuid(), pmid=data.pmid, relation=data.relation)
         )
+
+    def _match_mutation(self, mutation_mesh: str):
+        if not self._mutation_mesh:
+            self._build_mutation_mesh()
+        match_data = self._parse_mutation_pattern(mutation_mesh)
+        matched_mesh = ""
+        for mesh, mutation_pattern_dict in self._mutation_mesh.items():
+            is_matched = True
+            for key, value in match_data.items():
+                if not value:
+                    continue
+                if mutation_pattern_dict[key] != value:
+                    is_matched = False
+                    break
+            if is_matched:
+                matched_mesh = mesh
+
+        return matched_mesh
+
+    def _build_mutation_mesh(self):
+        for mesh in self.mesh_map:
+            if len(mesh.split(";")) == 1:
+                continue
+            self._mutation_mesh[mesh] = self._parse_mutation_pattern(mesh)
+
+    @staticmethod
+    def _parse_mutation_pattern(mesh: str):
+        match_data = {}
+        for item, pattern in MUTATION_PATTERNS.items():
+            try:
+                match_data[item] = re.search(pattern, mesh).group(1)
+            except AttributeError:
+                match_data[item] = ""
+        return match_data
 
     def _node_id_registered(self, line: PubTatorLine, node_id: str):
         is_registered = False
@@ -344,7 +375,8 @@ class PubTatorParser:
                     popped_edge_data = self.edge_dict.pop((u, v))
                 except KeyError:
                     # The same gene but given different ids in the same article
-                    assert neighbor in removed_node_ids
+                    if neighbor not in removed_node_ids:
+                        logger.warning(f"[Error] Same gene but given different IDs: {(u, v)}")
                 if neighbor in removed_node_ids:
                     continue
                 merged_edges[(node_key, neighbor)].extend(popped_edge_data)

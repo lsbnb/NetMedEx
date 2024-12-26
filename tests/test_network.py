@@ -26,6 +26,7 @@ def paths():
         "simple": "./tests/test_data/6_nodes_3_clusters_mesh.pubtator",
         "mesh_collision": "./tests/test_data/mesh_collision.pubtator",
         "merge_genes": "./tests/test_data/merge_genes.pubtator",
+        "variant_matching": "./tests/test_data/variant_relation_extraction.pubtator",
     }
 
 
@@ -51,7 +52,8 @@ def test_index_by_text(paths, network_args):
     G = network_builder.run()
 
     assert G.nodes.get(
-        "RS#:854560;HGVS:p.L55M;CorrespondingGene:5444", False
+        "tmVar:p|SUB|L|55|M;HGVS:p.L55M;VariantGroup:1;CorrespondingGene:5444;RS#:854560;CorrespondingSpecies:9606;CA#:123413",
+        False,
     ), "l55m should be in the graph"
     assert len(G.nodes) == 14, f"result: {len(G.nodes)} nodes\nexpected: 14 nodes"
     assert len(G.edges) == 47, f"result: {len(G.edges)} nodes\nexpected: 47 edges"
@@ -64,7 +66,8 @@ def test_index_by_relation(paths, network_args):
     G = network_builder.run()
 
     assert G.nodes.get(
-        "RS#:854560;HGVS:p.L55M;CorrespondingGene:5444", False
+        "tmVar:p|SUB|L|55|M;HGVS:p.L55M;VariantGroup:1;CorrespondingGene:5444;RS#:854560;CorrespondingSpecies:9606;CA#:123413",
+        False,
     ), "Not mapped by MeSH"
     assert len(G.nodes) == 8, f"result: {len(G.nodes)} nodes\nexpected: 8 nodes"
     assert len(G.edges) == 9, f"result: {len(G.edges)} nodes\nexpected: 9 edges"
@@ -77,7 +80,8 @@ def test_index_by_mesh(paths, network_args):
     G = network_builder.run()
 
     assert G.nodes.get(
-        "RS#:854560;HGVS:p.L55M;CorrespondingGene:5444", False
+        "tmVar:p|SUB|L|55|M;HGVS:p.L55M;VariantGroup:1;CorrespondingGene:5444;RS#:854560;CorrespondingSpecies:9606;CA#:123413",
+        False,
     ), "Not mapped by MeSH"
     assert len(G.nodes) == 13, f"result: {len(G.nodes)} nodes\nexpected: 13 nodes"
     assert len(G.edges) == 41, f"result: {len(G.edges)} nodes\nexpected: 41 edges"
@@ -99,6 +103,16 @@ def test_merge_genes(paths, network_args):
 
     assert len(G.nodes) == 7, f"result: {len(G.nodes)} nodes\nexpected: 7 nodes"
     assert len(G.edges) == 11, f"result: {len(G.nodes)} nodes\nexpected: 11 edges"
+
+
+def test_variant_matching(paths, network_args):
+    network_args["pubtator_filepath"] = paths["variant_matching"]
+    network_args["node_type"] = "relation"
+    network_builder = NetworkBuilder(**network_args)
+    G = network_builder.run()
+
+    assert len(G.nodes) == 22, f"result: {len(G.nodes)} nodes\nexpected: 22 nodes"
+    assert len(G.edges) == 24, f"result: {len(G.edges)} nodes\nexpected: 24 edges"
 
 
 @pytest.mark.parametrize(
