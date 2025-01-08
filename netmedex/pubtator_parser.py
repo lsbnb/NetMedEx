@@ -165,7 +165,8 @@ class PubTatorParser:
                     self._parse_line_relation(parsed_line)
                 else:
                     if pmid != last_pmid:
-                        self._create_complete_graph(node_dict_each, pmid)
+                        if last_pmid != -1:
+                            self._create_complete_graph(node_dict_each, last_pmid)
                         last_pmid = pmid
                         node_dict_each = {}
                     parsed_line = PubTatorLine(line)

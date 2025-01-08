@@ -165,3 +165,14 @@ def test_save_network(tempdir, paths, network_args):
     network_args["pubtator_filepath"] = paths["simple"]
     network_args["savepath"] = str(tempdir / "output.html")
     NetworkBuilder(**network_args).run()
+
+
+def test_edge_pmid_list(paths, network_args):
+    network_args["pubtator_filepath"] = paths["simple"]
+    network_builder = NetworkBuilder(**network_args)
+    G = network_builder.run()
+
+    pmid_set = set(G.get_edge_data("MESH:D000086382", "gene_5444")["pmids"])
+    expected = {"34205807", "34895069", "35883435"}
+
+    assert pmid_set == expected
