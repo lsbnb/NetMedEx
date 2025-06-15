@@ -29,6 +29,17 @@ edge_info = html.Div(
 )
 
 
+node_info = html.Div(
+    [
+        html.H5("Node Info", className="text-center"),
+        html.Div(id="node-info"),
+    ],
+    id="node-info-container",
+    className="flex-grow-1",
+    style=visibility.hidden,
+)
+
+
 legend = html.Div(
     [
         create_legend_box("icon_species.svg", "Species"),
@@ -43,4 +54,4 @@ legend = html.Div(
     id="legend-container",
 )
 
-graph_info = html.Div([edge_info, legend], id="bottom-container", className="d-flex")
+graph_info = html.Div([edge_info, node_info, legend], id="bottom-container", className="d-flex")

@@ -2,6 +2,9 @@
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools]
+license-files = []
+
 [tool.setuptools.packages.find]
 include = ["netmedex*", "webapp*"]
 
@@ -16,13 +19,16 @@ webapp = [
 
 [project]
 name = "netmedex"
-version = "0.1.1"
+version = "0.2.0"
 authors = [{ name = "Zheng-Xiang Ye", email = "r12b48005@ntu.edu.tw" }]
 description = "A tool to extract BioConcept entities (e.g., genes, diseases, chemicals, and species) from Pubtator3 and generate a co-mention network for interactive use."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
   "requests",
+  "aiohttp",
+  "aiometer",
+  "tenacity",
   "tqdm",
   "networkx[default]~=3.3",
   "lxml",
@@ -80,3 +86,8 @@ ignore = [
 
 [tool.ruff.format]
 quote-style = "double"
+
+
+[tool.pyright]
+include = ["./netmedex"]
+typeCheckingMode = "standard"

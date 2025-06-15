@@ -179,3 +179,13 @@ def callbacks(app):
         State("pmid-title-dict", "data"),
         prevent_initial_call=True,
     )
+
+    clientside_callback(
+        ClientsideFunction(namespace="clientside", function_name="show_node_info"),
+        Output("node-info-container", "style"),
+        Output("node-info", "children"),
+        Input("cy", "selectedNodeData"),
+        State("cy", "tapNodeData"),
+        State("pmid-title-dict", "data"),
+        prevent_initial_call=True,
+    )

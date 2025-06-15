@@ -160,7 +160,11 @@ def _create_edge_xml(edge, G):
         QName(XML_NAMESPACE["cy"], "directed"): "1",
     }
 
-    _graphics_attr = {"width": str(edge_attr["scaled_edge_weight"]), "fill": "#848484"}
+    _graphics_attr = {"width": str(edge_attr["edge_width"]), "fill": "#848484"}
+    if edge_attr["type"] == "community":
+        pmids = ",".join(list(edge_attr["pmids"]))
+    else:
+        pmids = ",".join(list(edge_attr["relations"].keys()))
 
     edge = E.edge(
         _edge_attr,
@@ -179,14 +183,17 @@ def _create_edge_xml(edge, G):
         ),
         E.att(name_value("selected", "0", with_type="boolean")),
         E.att(name_value("interaction", "interacts with")),
-        E.att(name_value("edge weight", str(edge_attr["edge_weight"]), with_type="double")),
+        E.att(name_value("num relations", str(edge_attr["num_relations"]), with_type="double")),
         E.att(
             name_value(
-                "scaled edge weight", str(edge_attr["scaled_edge_weight"]), with_type="double"
+                "weighted num relations",
+                str(edge_attr["weighted_num_relations"]),
+                with_type="double",
             )
         ),
-        E.att(name_value("edge width", str(edge_attr["edge_width"]), with_type="integer")),
-        E.att(name_value("pubmed id", ",".join(edge_attr["pmids"]))),
+        E.att(name_value("edge weight", str(edge_attr["edge_weight"]), with_type="double")),
+        E.att(name_value("edge width", str(edge_attr["edge_width"]), with_type="double")),
+        E.att(name_value("pubmed id", pmids)),
         E.graphics(
             _graphics_attr,
             # E.att(name_value("EDGE_TOOLTIP", "")),

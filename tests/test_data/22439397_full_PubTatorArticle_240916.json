@@ -1,0 +1,6186 @@
+{
+    "pmid": 22429397,
+    "date": "2012-03-19",
+    "journal": "Breast Cancer Res",
+    "title": "Inhibition of phosphatidylcholine-specific phospholipase C results in loss of mesenchymal traits in metastatic breast cancer cells",
+    "abstract": "Introduction Acquisition of mesenchymal characteristics confers to breast cancer (BC) cells the capability of invading tissues different from primary tumor site, allowing cell migration and metastasis. Regulators of the mesenchymal-epithelial transition (MET) may represent targets for anticancer agents. Accruing evidence supports functional implications of choline phospholipid metabolism in oncogene-activated cell signaling and differentiation. We investigated the effects of D609, a xanthate inhibiting phosphatidylcholine-specific phospholipase C (PC-PLC) and sphingomyelin synthase (SMS), as a candidate regulator of cell differentiation and MET in the highly metastatic BC cell line MDA-MB-231. Methods PC-PLC expression and activity were investigated using confocal laser scanning microscopy (CLSM), immunoblotting and enzymatic assay on human MDA-MB-231 compared with MCF-7 and SKBr3 BC cells and a nontumoral immortalized counterpart (MCF-10A). The effects of D609 on PC-PLC and SMS activity, loss of mesenchymal markers and changes in migration and invasion potential were monitored in MDA-MB-231 cells by enzymatic assays, CLSM, immunoblotting and transwell chamber invasion combined with scanning electron microscopy examinations. Cell proliferation, formation and composition of lipid bodies and cell morphology were investigated in D609-treated BC cells by cell count, CLSM, flow-cytometry of BODIPY-stained cells, nuclear magnetic resonance and thin-layer chromatography. Results PC-PLC (but not phospholipase D) showed 2- to 6-fold activation in BC compared with nontumoral cells, the highest activity (up to 0.4 pmol/mug protein/min) being detected in the poorly-differentiated MDA-MB-231 cells. Exposure of the latter cells to D609 (50 mug/mL, 24-72 h) resulted into 60-80% PC-PLC inhibition, while SMS was transiently inhibited by a maximum of 21%. These features were associated with progressive decreases of mesenchymal traits such as vimentin and N-cadherin expression, reduced galectin-3 and milk fat globule EGF-factor 8 levels, beta-casein formation and decreased in vitro cell migration and invasion. Moreover, proliferation arrest, changes in cell morphology and formation of cytosolic lipid bodies typical of cell differentiation were induced by D609 in all investigated BC cells. Conclusions These results support a critical involvement of PC-PLC in controlling molecular pathways responsible for maintaining a mesenchymal-like phenotype in metastatic BC cells and suggests PC-PLC deactivation as a means to promote BC cell differentiation and possibly enhance the effectiveness of antitumor treatments.",
+    "annotations": [
+        {
+            "pmid": 22429397,
+            "start": 111,
+            "end": 124,
+            "name": "breast cancer",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 198,
+            "end": 211,
+            "name": "breast cancer",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 213,
+            "end": 215,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 281,
+            "end": 286,
+            "name": "tumor",
+            "identifier_name": "Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D009369"
+        },
+        {
+            "pmid": 22429397,
+            "start": 321,
+            "end": 331,
+            "name": "metastasis",
+            "identifier_name": "Neoplasm Metastasis",
+            "type": "Disease",
+            "mesh": "MESH:D009362"
+        },
+        {
+            "pmid": 22429397,
+            "start": 386,
+            "end": 389,
+            "name": "MET",
+            "identifier_name": "SLTM",
+            "type": "Gene",
+            "mesh": "79811"
+        },
+        {
+            "pmid": 22429397,
+            "start": 490,
+            "end": 510,
+            "name": "choline phospholipid",
+            "identifier_name": "essential 303 forte",
+            "type": "Chemical",
+            "mesh": "MESH:C011246"
+        },
+        {
+            "pmid": 22429397,
+            "start": 611,
+            "end": 615,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 619,
+            "end": 627,
+            "name": "xanthate",
+            "identifier_name": "ethylxanthate",
+            "type": "Chemical",
+            "mesh": "MESH:C004918"
+        },
+        {
+            "pmid": 22429397,
+            "start": 697,
+            "end": 719,
+            "name": "sphingomyelin synthase",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 721,
+            "end": 724,
+            "name": "SMS",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 780,
+            "end": 783,
+            "name": "MET",
+            "identifier_name": "SLTM",
+            "type": "Gene",
+            "mesh": "79811"
+        },
+        {
+            "pmid": 22429397,
+            "start": 809,
+            "end": 811,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 822,
+            "end": 832,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 978,
+            "end": 983,
+            "name": "human",
+            "identifier_name": "human",
+            "type": "Species",
+            "mesh": "9606"
+        },
+        {
+            "pmid": 22429397,
+            "start": 984,
+            "end": 994,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 1009,
+            "end": 1014,
+            "name": "MCF-7",
+            "identifier_name": "0031",
+            "type": "CellLine",
+            "mesh": "CVCL:0031"
+        },
+        {
+            "pmid": 22429397,
+            "start": 1019,
+            "end": 1027,
+            "name": "SKBr3 BC",
+            "identifier_name": "0033",
+            "type": "CellLine",
+            "mesh": "CVCL:0033"
+        },
+        {
+            "pmid": 22429397,
+            "start": 1077,
+            "end": 1084,
+            "name": "MCF-10A",
+            "identifier_name": "0598",
+            "type": "CellLine",
+            "mesh": "CVCL:0598"
+        },
+        {
+            "pmid": 22429397,
+            "start": 1102,
+            "end": 1106,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 1121,
+            "end": 1124,
+            "name": "SMS",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 1229,
+            "end": 1239,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 1425,
+            "end": 1430,
+            "name": "lipid",
+            "identifier_name": "Lipids",
+            "type": "Chemical",
+            "mesh": "MESH:D008055"
+        },
+        {
+            "pmid": 22429397,
+            "start": 1479,
+            "end": 1483,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 1492,
+            "end": 1494,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 1540,
+            "end": 1546,
+            "name": "BODIPY",
+            "identifier_name": "4 4-difluoro-4-bora-3a 4a-diaza-s-indacene",
+            "type": "Chemical",
+            "mesh": "MESH:C095489"
+        },
+        {
+            "pmid": 22429397,
+            "start": 1644,
+            "end": 1659,
+            "name": "phospholipase D",
+            "identifier_name": "GPLD1",
+            "type": "Gene",
+            "mesh": "2822"
+        },
+        {
+            "pmid": 22429397,
+            "start": 1695,
+            "end": 1697,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 1828,
+            "end": 1838,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 1878,
+            "end": 1882,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 1950,
+            "end": 1953,
+            "name": "SMS",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 2089,
+            "end": 2097,
+            "name": "vimentin",
+            "identifier_name": "VIM",
+            "type": "Gene",
+            "mesh": "7431"
+        },
+        {
+            "pmid": 22429397,
+            "start": 2102,
+            "end": 2112,
+            "name": "N-cadherin",
+            "identifier_name": "CDH2",
+            "type": "Gene",
+            "mesh": "1000"
+        },
+        {
+            "pmid": 22429397,
+            "start": 2133,
+            "end": 2143,
+            "name": "galectin-3",
+            "identifier_name": "LGALS3",
+            "type": "Gene",
+            "mesh": "3958"
+        },
+        {
+            "pmid": 22429397,
+            "start": 2186,
+            "end": 2197,
+            "name": "beta-casein",
+            "identifier_name": "CSN2",
+            "type": "Gene",
+            "mesh": "1447"
+        },
+        {
+            "pmid": 22429397,
+            "start": 2346,
+            "end": 2351,
+            "name": "lipid",
+            "identifier_name": "Lipids",
+            "type": "Chemical",
+            "mesh": "MESH:D008055"
+        },
+        {
+            "pmid": 22429397,
+            "start": 2407,
+            "end": 2411,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 2432,
+            "end": 2434,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 2614,
+            "end": 2616,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 2678,
+            "end": 2680,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 2826,
+            "end": 2839,
+            "name": "breast cancer",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 2841,
+            "end": 2843,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 2933,
+            "end": 2939,
+            "name": "tumors",
+            "identifier_name": "Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D009369"
+        },
+        {
+            "pmid": 22429397,
+            "start": 3192,
+            "end": 3195,
+            "name": "MET",
+            "identifier_name": "SLTM",
+            "type": "Gene",
+            "mesh": "79811"
+        },
+        {
+            "pmid": 22429397,
+            "start": 3243,
+            "end": 3248,
+            "name": "tumor",
+            "identifier_name": "Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D009369"
+        },
+        {
+            "pmid": 22429397,
+            "start": 3265,
+            "end": 3275,
+            "name": "metastasis",
+            "identifier_name": "Neoplasm Metastasis",
+            "type": "Disease",
+            "mesh": "MESH:D009362"
+        },
+        {
+            "pmid": 22429397,
+            "start": 3327,
+            "end": 3333,
+            "name": "cancer",
+            "identifier_name": "Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D009369"
+        },
+        {
+            "pmid": 22429397,
+            "start": 3374,
+            "end": 3394,
+            "name": "choline phospholipid",
+            "identifier_name": "essential 303 forte",
+            "type": "Chemical",
+            "mesh": "MESH:C011246"
+        },
+        {
+            "pmid": 22429397,
+            "start": 3425,
+            "end": 3427,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 3438,
+            "end": 3445,
+            "name": "cancers",
+            "identifier_name": "Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D009369"
+        },
+        {
+            "pmid": 22429397,
+            "start": 3510,
+            "end": 3529,
+            "name": "phosphatidylcholine",
+            "identifier_name": "Phosphatidylcholines",
+            "type": "Chemical",
+            "mesh": "MESH:D010713"
+        },
+        {
+            "pmid": 22429397,
+            "start": 3531,
+            "end": 3537,
+            "name": "PtdCho",
+            "identifier_name": "PtdCho",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 3580,
+            "end": 3585,
+            "name": "tumor",
+            "identifier_name": "Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D009369"
+        },
+        {
+            "pmid": 22429397,
+            "start": 3713,
+            "end": 3715,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 3723,
+            "end": 3748,
+            "name": "epithelial ovarian cancer",
+            "identifier_name": "Carcinoma Ovarian Epithelial",
+            "type": "Disease",
+            "mesh": "MESH:D000077216"
+        },
+        {
+            "pmid": 22429397,
+            "start": 3750,
+            "end": 3753,
+            "name": "EOC",
+            "identifier_name": "Carcinoma Ovarian Epithelial",
+            "type": "Disease",
+            "mesh": "MESH:D000077216"
+        },
+        {
+            "pmid": 22429397,
+            "start": 3897,
+            "end": 3899,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 4015,
+            "end": 4018,
+            "name": "EOC",
+            "identifier_name": "Carcinoma Ovarian Epithelial",
+            "type": "Disease",
+            "mesh": "MESH:D000077216"
+        },
+        {
+            "pmid": 22429397,
+            "start": 4097,
+            "end": 4103,
+            "name": "PtdCho",
+            "identifier_name": "PtdCho",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 4120,
+            "end": 4134,
+            "name": "phosphocholine",
+            "identifier_name": "Phosphorylcholine",
+            "type": "Chemical",
+            "mesh": "MESH:D010767"
+        },
+        {
+            "pmid": 22429397,
+            "start": 4139,
+            "end": 4153,
+            "name": "diacylglycerol",
+            "identifier_name": "Diglycerides",
+            "type": "Chemical",
+            "mesh": "MESH:D004075"
+        },
+        {
+            "pmid": 22429397,
+            "start": 4155,
+            "end": 4158,
+            "name": "DAG",
+            "identifier_name": "Diglycerides",
+            "type": "Chemical",
+            "mesh": "MESH:D004075"
+        },
+        {
+            "pmid": 22429397,
+            "start": 4638,
+            "end": 4644,
+            "name": "cancer",
+            "identifier_name": "Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D009369"
+        },
+        {
+            "pmid": 22429397,
+            "start": 4781,
+            "end": 4784,
+            "name": "EOC",
+            "identifier_name": "Carcinoma Ovarian Epithelial",
+            "type": "Disease",
+            "mesh": "MESH:D000077216"
+        },
+        {
+            "pmid": 22429397,
+            "start": 4792,
+            "end": 4797,
+            "name": "human",
+            "identifier_name": "human",
+            "type": "Species",
+            "mesh": "9606"
+        },
+        {
+            "pmid": 22429397,
+            "start": 4798,
+            "end": 4832,
+            "name": "epidermal growth factor receptor 2",
+            "identifier_name": "ERBB2",
+            "type": "Gene",
+            "mesh": "2064"
+        },
+        {
+            "pmid": 22429397,
+            "start": 4834,
+            "end": 4838,
+            "name": "HER2",
+            "identifier_name": "ERBB2",
+            "type": "Gene",
+            "mesh": "2064"
+        },
+        {
+            "pmid": 22429397,
+            "start": 4855,
+            "end": 4857,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 4920,
+            "end": 4925,
+            "name": "human",
+            "identifier_name": "human",
+            "type": "Species",
+            "mesh": "9606"
+        },
+        {
+            "pmid": 22429397,
+            "start": 4981,
+            "end": 5018,
+            "name": "tricyclodecan-9-yl-potassium xanthate",
+            "identifier_name": "tricyclodecan-9-yl-potassium xanthate",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 5020,
+            "end": 5024,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 5074,
+            "end": 5077,
+            "name": "EOC",
+            "identifier_name": "Carcinoma Ovarian Epithelial",
+            "type": "Disease",
+            "mesh": "MESH:D000077216"
+        },
+        {
+            "pmid": 22429397,
+            "start": 5287,
+            "end": 5291,
+            "name": "HER2",
+            "identifier_name": "ERBB2",
+            "type": "Gene",
+            "mesh": "2064"
+        },
+        {
+            "pmid": 22429397,
+            "start": 5307,
+            "end": 5309,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 5333,
+            "end": 5337,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 5473,
+            "end": 5505,
+            "name": "epidermal growth factor receptor",
+            "identifier_name": "EGFR",
+            "type": "Gene",
+            "mesh": "1956"
+        },
+        {
+            "pmid": 22429397,
+            "start": 5721,
+            "end": 5727,
+            "name": "cancer",
+            "identifier_name": "Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D009369"
+        },
+        {
+            "pmid": 22429397,
+            "start": 5808,
+            "end": 5812,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 5942,
+            "end": 5952,
+            "name": "MDA-MB-435",
+            "identifier_name": "0417",
+            "type": "CellLine",
+            "mesh": "CVCL:0417"
+        },
+        {
+            "pmid": 22429397,
+            "start": 6001,
+            "end": 6009,
+            "name": "ceramide",
+            "identifier_name": "Ceramides",
+            "type": "Chemical",
+            "mesh": "MESH:D002518"
+        },
+        {
+            "pmid": 22429397,
+            "start": 6039,
+            "end": 6043,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 6066,
+            "end": 6088,
+            "name": "sphingomyelin synthase",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 6090,
+            "end": 6093,
+            "name": "SMS",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 6121,
+            "end": 6129,
+            "name": "ceramide",
+            "identifier_name": "Ceramides",
+            "type": "Chemical",
+            "mesh": "MESH:D002518"
+        },
+        {
+            "pmid": 22429397,
+            "start": 6282,
+            "end": 6284,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 6295,
+            "end": 6305,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 6347,
+            "end": 6355,
+            "name": "MCF-10A.",
+            "identifier_name": "0598",
+            "type": "CellLine",
+            "mesh": "CVCL:0598"
+        },
+        {
+            "pmid": 22429397,
+            "start": 6444,
+            "end": 6446,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 6459,
+            "end": 6464,
+            "name": "SKBr3",
+            "identifier_name": "0033",
+            "type": "CellLine",
+            "mesh": "CVCL:0033"
+        },
+        {
+            "pmid": 22429397,
+            "start": 6469,
+            "end": 6474,
+            "name": "MCF-7",
+            "identifier_name": "0031",
+            "type": "CellLine",
+            "mesh": "CVCL:0031"
+        },
+        {
+            "pmid": 22429397,
+            "start": 6501,
+            "end": 6504,
+            "name": "SMS",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 6531,
+            "end": 6541,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 6585,
+            "end": 6589,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 6621,
+            "end": 6624,
+            "name": "MET",
+            "identifier_name": "SLTM",
+            "type": "Gene",
+            "mesh": "79811"
+        },
+        {
+            "pmid": 22429397,
+            "start": 6629,
+            "end": 6631,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 6687,
+            "end": 6695,
+            "name": "vimentin",
+            "identifier_name": "VIM",
+            "type": "Gene",
+            "mesh": "7431"
+        },
+        {
+            "pmid": 22429397,
+            "start": 6700,
+            "end": 6710,
+            "name": "N-cadherin",
+            "identifier_name": "CDH2",
+            "type": "Gene",
+            "mesh": "1000"
+        },
+        {
+            "pmid": 22429397,
+            "start": 6763,
+            "end": 6768,
+            "name": "tumor",
+            "identifier_name": "Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D009369"
+        },
+        {
+            "pmid": 22429397,
+            "start": 6790,
+            "end": 6800,
+            "name": "galectin-3",
+            "identifier_name": "LGALS3",
+            "type": "Gene",
+            "mesh": "3958"
+        },
+        {
+            "pmid": 22429397,
+            "start": 6849,
+            "end": 6855,
+            "name": "MFG-E8",
+            "identifier_name": "MFGE8",
+            "type": "Gene",
+            "mesh": "4240"
+        },
+        {
+            "pmid": 22429397,
+            "start": 6876,
+            "end": 6887,
+            "name": "beta-casein",
+            "identifier_name": "CSN2",
+            "type": "Gene",
+            "mesh": "1447"
+        },
+        {
+            "pmid": 22429397,
+            "start": 6907,
+            "end": 6911,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 6920,
+            "end": 6930,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 7228,
+            "end": 7232,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 7260,
+            "end": 7262,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 7302,
+            "end": 7307,
+            "name": "human",
+            "identifier_name": "human",
+            "type": "Species",
+            "mesh": "9606"
+        },
+        {
+            "pmid": 22429397,
+            "start": 7308,
+            "end": 7310,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 7322,
+            "end": 7332,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 7351,
+            "end": 7353,
+            "name": "ER",
+            "identifier_name": "EREG",
+            "type": "Gene",
+            "mesh": "2069"
+        },
+        {
+            "pmid": 22429397,
+            "start": 7356,
+            "end": 7359,
+            "name": "PgR",
+            "identifier_name": "PGR",
+            "type": "Gene",
+            "mesh": "5241"
+        },
+        {
+            "pmid": 22429397,
+            "start": 7366,
+            "end": 7370,
+            "name": "HER2",
+            "identifier_name": "ERBB2",
+            "type": "Gene",
+            "mesh": "2064"
+        },
+        {
+            "pmid": 22429397,
+            "start": 7374,
+            "end": 7379,
+            "name": "SKBr3",
+            "identifier_name": "0033",
+            "type": "CellLine",
+            "mesh": "CVCL:0033"
+        },
+        {
+            "pmid": 22429397,
+            "start": 7381,
+            "end": 7383,
+            "name": "ER",
+            "identifier_name": "EREG",
+            "type": "Gene",
+            "mesh": "2069"
+        },
+        {
+            "pmid": 22429397,
+            "start": 7386,
+            "end": 7389,
+            "name": "PgR",
+            "identifier_name": "PGR",
+            "type": "Gene",
+            "mesh": "5241"
+        },
+        {
+            "pmid": 22429397,
+            "start": 7396,
+            "end": 7400,
+            "name": "HER2",
+            "identifier_name": "ERBB2",
+            "type": "Gene",
+            "mesh": "2064"
+        },
+        {
+            "pmid": 22429397,
+            "start": 7408,
+            "end": 7413,
+            "name": "MCF-7",
+            "identifier_name": "0031",
+            "type": "CellLine",
+            "mesh": "CVCL:0031"
+        },
+        {
+            "pmid": 22429397,
+            "start": 7415,
+            "end": 7417,
+            "name": "ER",
+            "identifier_name": "EREG",
+            "type": "Gene",
+            "mesh": "2069"
+        },
+        {
+            "pmid": 22429397,
+            "start": 7420,
+            "end": 7423,
+            "name": "PgR",
+            "identifier_name": "PGR",
+            "type": "Gene",
+            "mesh": "5241"
+        },
+        {
+            "pmid": 22429397,
+            "start": 7430,
+            "end": 7434,
+            "name": "HER2",
+            "identifier_name": "ERBB2",
+            "type": "Gene",
+            "mesh": "2064"
+        },
+        {
+            "pmid": 22429397,
+            "start": 7474,
+            "end": 7479,
+            "name": "human",
+            "identifier_name": "human",
+            "type": "Species",
+            "mesh": "9606"
+        },
+        {
+            "pmid": 22429397,
+            "start": 7509,
+            "end": 7516,
+            "name": "MCF-10A",
+            "identifier_name": "0598",
+            "type": "CellLine",
+            "mesh": "CVCL:0598"
+        },
+        {
+            "pmid": 22429397,
+            "start": 7675,
+            "end": 7679,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 7802,
+            "end": 7817,
+            "name": "Bacillus cereus",
+            "identifier_name": "Bacillus cereus",
+            "type": "Species",
+            "mesh": "1396"
+        },
+        {
+            "pmid": 22429397,
+            "start": 8035,
+            "end": 8051,
+            "name": "Alexa Fluor -633",
+            "identifier_name": "Alexa Fluor -633",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 8063,
+            "end": 8073,
+            "name": "phalloidin",
+            "identifier_name": "Phalloidine",
+            "type": "Chemical",
+            "mesh": "MESH:D010590"
+        },
+        {
+            "pmid": 22429397,
+            "start": 8075,
+            "end": 8140,
+            "name": "4,4-difluoro-1,3,5,7,8-pentamethyl-4-bora-3a, 4a-diaza-s-indacene",
+            "identifier_name": "4 4-difluoro-1 3 5 7 8-pentamethyl-4-bora-3a 4a-diaza-s-indacene",
+            "type": "Chemical",
+            "mesh": "MESH:C527198"
+        },
+        {
+            "pmid": 22429397,
+            "start": 8142,
+            "end": 8153,
+            "name": "Bodipy 493/",
+            "identifier_name": "Bodipy 493/",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 8159,
+            "end": 8168,
+            "name": "Bodipy-TR",
+            "identifier_name": "Bodipy-TR",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 8175,
+            "end": 8183,
+            "name": "ceramide",
+            "identifier_name": "Ceramides",
+            "type": "Chemical",
+            "mesh": "MESH:D002518"
+        },
+        {
+            "pmid": 22429397,
+            "start": 8207,
+            "end": 8225,
+            "name": "Alexa Fluor -594 F",
+            "identifier_name": "Alexa Fluor -594 F",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 8226,
+            "end": 8230,
+            "name": "ab)2",
+            "identifier_name": "ab)2",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 8275,
+            "end": 8280,
+            "name": "mouse",
+            "identifier_name": "mouse",
+            "type": "Species",
+            "mesh": "10090"
+        },
+        {
+            "pmid": 22429397,
+            "start": 8390,
+            "end": 8395,
+            "name": "mouse",
+            "identifier_name": "mouse",
+            "type": "Species",
+            "mesh": "10090"
+        },
+        {
+            "pmid": 22429397,
+            "start": 8401,
+            "end": 8411,
+            "name": "beta-actin",
+            "identifier_name": "Actb",
+            "type": "Gene",
+            "mesh": "11461"
+        },
+        {
+            "pmid": 22429397,
+            "start": 8421,
+            "end": 8429,
+            "name": "vimentin",
+            "identifier_name": "Vim",
+            "type": "Gene",
+            "mesh": "22352"
+        },
+        {
+            "pmid": 22429397,
+            "start": 8477,
+            "end": 8481,
+            "name": "HER2",
+            "identifier_name": "Erbb2",
+            "type": "Gene",
+            "mesh": "13866"
+        },
+        {
+            "pmid": 22429397,
+            "start": 8488,
+            "end": 8498,
+            "name": "E-cadherin",
+            "identifier_name": "Cdh1",
+            "type": "Gene",
+            "mesh": "12550"
+        },
+        {
+            "pmid": 22429397,
+            "start": 8509,
+            "end": 8519,
+            "name": "N-cadherin",
+            "identifier_name": "Cdh2",
+            "type": "Gene",
+            "mesh": "12558"
+        },
+        {
+            "pmid": 22429397,
+            "start": 8524,
+            "end": 8529,
+            "name": "mouse",
+            "identifier_name": "mouse",
+            "type": "Species",
+            "mesh": "10090"
+        },
+        {
+            "pmid": 22429397,
+            "start": 8546,
+            "end": 8552,
+            "name": "MFG-E8",
+            "identifier_name": "Mfge8",
+            "type": "Gene",
+            "mesh": "17304"
+        },
+        {
+            "pmid": 22429397,
+            "start": 8628,
+            "end": 8638,
+            "name": "galectin-3",
+            "identifier_name": "Lgals3",
+            "type": "Gene",
+            "mesh": "16854"
+        },
+        {
+            "pmid": 22429397,
+            "start": 8648,
+            "end": 8659,
+            "name": "beta-casein",
+            "identifier_name": "Csn2",
+            "type": "Gene",
+            "mesh": "12991"
+        },
+        {
+            "pmid": 22429397,
+            "start": 8696,
+            "end": 8718,
+            "name": "horseradish peroxidase",
+            "identifier_name": "horseradish peroxidase",
+            "type": "Species",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 8740,
+            "end": 8745,
+            "name": "mouse",
+            "identifier_name": "mouse",
+            "type": "Species",
+            "mesh": "10090"
+        },
+        {
+            "pmid": 22429397,
+            "start": 9133,
+            "end": 9137,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 9171,
+            "end": 9187,
+            "name": "paraformaldehyde",
+            "identifier_name": "paraform",
+            "type": "Chemical",
+            "mesh": "MESH:C003043"
+        },
+        {
+            "pmid": 22429397,
+            "start": 9226,
+            "end": 9238,
+            "name": "Triton X-100",
+            "identifier_name": "Octoxynol",
+            "type": "Chemical",
+            "mesh": "MESH:D017830"
+        },
+        {
+            "pmid": 22429397,
+            "start": 9309,
+            "end": 9323,
+            "name": "Bodipy 493/503",
+            "identifier_name": "4 4-difluoro-1 3 5 7 8-pentamethyl-4-bora-3a 4a-diaza-s-indacene",
+            "type": "Chemical",
+            "mesh": "MESH:C527198"
+        },
+        {
+            "pmid": 22429397,
+            "start": 9337,
+            "end": 9353,
+            "name": "Alexa Fluor -633",
+            "identifier_name": "Alexa Fluor -633",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 9365,
+            "end": 9375,
+            "name": "phalloidin",
+            "identifier_name": "Phalloidine",
+            "type": "Chemical",
+            "mesh": "MESH:D010590"
+        },
+        {
+            "pmid": 22429397,
+            "start": 9398,
+            "end": 9414,
+            "name": "Alexa Fluor -594",
+            "identifier_name": "Alexa Fluor -594",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 9558,
+            "end": 9587,
+            "name": "4' 6-diamidino-2-phenylindole",
+            "identifier_name": "DAPI",
+            "type": "Chemical",
+            "mesh": "MESH:C007293"
+        },
+        {
+            "pmid": 22429397,
+            "start": 9589,
+            "end": 9593,
+            "name": "DAPI",
+            "identifier_name": "DAPI",
+            "type": "Chemical",
+            "mesh": "MESH:C007293"
+        },
+        {
+            "pmid": 22429397,
+            "start": 10029,
+            "end": 10086,
+            "name": "phosphate-buffered saline ethylenediaminetetraacetic acid",
+            "identifier_name": "phosphate-buffered saline ethylenediaminetetraacetic acid",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 10088,
+            "end": 10096,
+            "name": "PBS-EDTA",
+            "identifier_name": "PBS-EDTA",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 10298,
+            "end": 10316,
+            "name": "phosphatidylserine",
+            "identifier_name": "Phosphatidylserines",
+            "type": "Chemical",
+            "mesh": "MESH:D010718"
+        },
+        {
+            "pmid": 22429397,
+            "start": 10342,
+            "end": 10352,
+            "name": "Annexin V-",
+            "identifier_name": "ANXA5",
+            "type": "Gene",
+            "mesh": "308"
+        },
+        {
+            "pmid": 22429397,
+            "start": 10352,
+            "end": 10358,
+            "name": "biotin",
+            "identifier_name": "Biotin",
+            "type": "Chemical",
+            "mesh": "MESH:D001710"
+        },
+        {
+            "pmid": 22429397,
+            "start": 10413,
+            "end": 10429,
+            "name": "Alexa Fluor -488",
+            "identifier_name": "alexa fluor 488",
+            "type": "Chemical",
+            "mesh": "MESH:C000711379"
+        },
+        {
+            "pmid": 22429397,
+            "start": 10500,
+            "end": 10504,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 10567,
+            "end": 10576,
+            "name": "Annexin V",
+            "identifier_name": "ANXA5",
+            "type": "Gene",
+            "mesh": "308"
+        },
+        {
+            "pmid": 22429397,
+            "start": 10831,
+            "end": 10835,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 10873,
+            "end": 10888,
+            "name": "phospholipase D",
+            "identifier_name": "GPLD1",
+            "type": "Gene",
+            "mesh": "2822"
+        },
+        {
+            "pmid": 22429397,
+            "start": 10894,
+            "end": 10916,
+            "name": "sphingomyelin synthase",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 10944,
+            "end": 10959,
+            "name": "phospholipase D",
+            "identifier_name": "GPLD1",
+            "type": "Gene",
+            "mesh": "2822"
+        },
+        {
+            "pmid": 22429397,
+            "start": 10961,
+            "end": 10964,
+            "name": "PLD",
+            "identifier_name": "GPLD1",
+            "type": "Gene",
+            "mesh": "2822"
+        },
+        {
+            "pmid": 22429397,
+            "start": 11173,
+            "end": 11176,
+            "name": "SMS",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 11296,
+            "end": 11306,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 11308,
+            "end": 11313,
+            "name": "SKBr3",
+            "identifier_name": "0033",
+            "type": "CellLine",
+            "mesh": "CVCL:0033"
+        },
+        {
+            "pmid": 22429397,
+            "start": 11319,
+            "end": 11324,
+            "name": "MCF-7",
+            "identifier_name": "0031",
+            "type": "CellLine",
+            "mesh": "CVCL:0031"
+        },
+        {
+            "pmid": 22429397,
+            "start": 11405,
+            "end": 11410,
+            "name": "SKBr3",
+            "identifier_name": "0033",
+            "type": "CellLine",
+            "mesh": "CVCL:0033"
+        },
+        {
+            "pmid": 22429397,
+            "start": 11433,
+            "end": 11443,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 11448,
+            "end": 11453,
+            "name": "MCF-7",
+            "identifier_name": "0031",
+            "type": "CellLine",
+            "mesh": "CVCL:0031"
+        },
+        {
+            "pmid": 22429397,
+            "start": 11519,
+            "end": 11523,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 11605,
+            "end": 11613,
+            "name": "PBS-EDTA",
+            "identifier_name": "PBS-EDTA",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 11695,
+            "end": 11706,
+            "name": "Trypan blue",
+            "identifier_name": "Trypan Blue",
+            "type": "Chemical",
+            "mesh": "MESH:D014343"
+        },
+        {
+            "pmid": 22429397,
+            "start": 11815,
+            "end": 11818,
+            "name": "PBS",
+            "identifier_name": "Lead",
+            "type": "Chemical",
+            "mesh": "MESH:D007854"
+        },
+        {
+            "pmid": 22429397,
+            "start": 11860,
+            "end": 11863,
+            "name": "PBS",
+            "identifier_name": "Lead",
+            "type": "Chemical",
+            "mesh": "MESH:D007854"
+        },
+        {
+            "pmid": 22429397,
+            "start": 11864,
+            "end": 11867,
+            "name": "D2O",
+            "identifier_name": "Deuterium Oxide",
+            "type": "Chemical",
+            "mesh": "MESH:D017666"
+        },
+        {
+            "pmid": 22429397,
+            "start": 11959,
+            "end": 11961,
+            "name": "1H",
+            "identifier_name": "1H",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 12099,
+            "end": 12101,
+            "name": "1H",
+            "identifier_name": "1H",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 12184,
+            "end": 12189,
+            "name": "Lipid",
+            "identifier_name": "Lipids",
+            "type": "Chemical",
+            "mesh": "MESH:D008055"
+        },
+        {
+            "pmid": 22429397,
+            "start": 12263,
+            "end": 12268,
+            "name": "lipid",
+            "identifier_name": "Lipids",
+            "type": "Chemical",
+            "mesh": "MESH:D008055"
+        },
+        {
+            "pmid": 22429397,
+            "start": 12379,
+            "end": 12390,
+            "name": "cholesterol",
+            "identifier_name": "Cholesterol",
+            "type": "Chemical",
+            "mesh": "MESH:D002784"
+        },
+        {
+            "pmid": 22429397,
+            "start": 12392,
+            "end": 12410,
+            "name": "cholesteryl esters",
+            "identifier_name": "Cholesterol Esters",
+            "type": "Chemical",
+            "mesh": "MESH:D002788"
+        },
+        {
+            "pmid": 22429397,
+            "start": 12416,
+            "end": 12432,
+            "name": "triacylglycerols",
+            "identifier_name": "Triglycerides",
+            "type": "Chemical",
+            "mesh": "MESH:D014280"
+        },
+        {
+            "pmid": 22429397,
+            "start": 12487,
+            "end": 12492,
+            "name": "lipid",
+            "identifier_name": "Lipids",
+            "type": "Chemical",
+            "mesh": "MESH:D008055"
+        },
+        {
+            "pmid": 22429397,
+            "start": 12507,
+            "end": 12521,
+            "name": "copper acetate",
+            "identifier_name": "cupric acetate",
+            "type": "Chemical",
+            "mesh": "MESH:C015092"
+        },
+        {
+            "pmid": 22429397,
+            "start": 12537,
+            "end": 12552,
+            "name": "phosphoric acid",
+            "identifier_name": "phosphoric acid",
+            "type": "Chemical",
+            "mesh": "MESH:C030242"
+        },
+        {
+            "pmid": 22429397,
+            "start": 12643,
+            "end": 12648,
+            "name": "lipid",
+            "identifier_name": "Lipids",
+            "type": "Chemical",
+            "mesh": "MESH:D008055"
+        },
+        {
+            "pmid": 22429397,
+            "start": 12855,
+            "end": 12859,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 12904,
+            "end": 12914,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 13159,
+            "end": 13169,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 13237,
+            "end": 13241,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 13366,
+            "end": 13376,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 13418,
+            "end": 13422,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 13664,
+            "end": 13698,
+            "name": "Dulbecco's modified Eagle's medium",
+            "identifier_name": "Dulbecco's modified Eagle's medium",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 13700,
+            "end": 13704,
+            "name": "DMEM",
+            "identifier_name": "DMEM",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 13920,
+            "end": 13924,
+            "name": "DMEM",
+            "identifier_name": "DMEM",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 14035,
+            "end": 14039,
+            "name": "DMEM",
+            "identifier_name": "DMEM",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 14319,
+            "end": 14322,
+            "name": "PBS",
+            "identifier_name": "Lead",
+            "type": "Chemical",
+            "mesh": "MESH:D007854"
+        },
+        {
+            "pmid": 22429397,
+            "start": 14346,
+            "end": 14360,
+            "name": "crystal violet",
+            "identifier_name": "Gentian Violet",
+            "type": "Chemical",
+            "mesh": "MESH:D005840"
+        },
+        {
+            "pmid": 22429397,
+            "start": 15592,
+            "end": 15602,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 15670,
+            "end": 15680,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 15737,
+            "end": 15739,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 15986,
+            "end": 15996,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 16272,
+            "end": 16277,
+            "name": "SKBr3",
+            "identifier_name": "0033",
+            "type": "CellLine",
+            "mesh": "CVCL:0033"
+        },
+        {
+            "pmid": 22429397,
+            "start": 16282,
+            "end": 16287,
+            "name": "MCF-7",
+            "identifier_name": "0031",
+            "type": "CellLine",
+            "mesh": "CVCL:0031"
+        },
+        {
+            "pmid": 22429397,
+            "start": 16379,
+            "end": 16389,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 16458,
+            "end": 16465,
+            "name": "MCF-10A",
+            "identifier_name": "0598",
+            "type": "CellLine",
+            "mesh": "CVCL:0598"
+        },
+        {
+            "pmid": 22429397,
+            "start": 16626,
+            "end": 16631,
+            "name": "human",
+            "identifier_name": "human",
+            "type": "Species",
+            "mesh": "9606"
+        },
+        {
+            "pmid": 22429397,
+            "start": 16632,
+            "end": 16645,
+            "name": "breast cancer",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 16761,
+            "end": 16766,
+            "name": "human",
+            "identifier_name": "human",
+            "type": "Species",
+            "mesh": "9606"
+        },
+        {
+            "pmid": 22429397,
+            "start": 16767,
+            "end": 16780,
+            "name": "breast cancer",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 16788,
+            "end": 16793,
+            "name": "MCF-7",
+            "identifier_name": "0031",
+            "type": "CellLine",
+            "mesh": "CVCL:0031"
+        },
+        {
+            "pmid": 22429397,
+            "start": 16795,
+            "end": 16800,
+            "name": "SKBr3",
+            "identifier_name": "0033",
+            "type": "CellLine",
+            "mesh": "CVCL:0033"
+        },
+        {
+            "pmid": 22429397,
+            "start": 16806,
+            "end": 16816,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 16873,
+            "end": 16880,
+            "name": "MCF-10A",
+            "identifier_name": "0598",
+            "type": "CellLine",
+            "mesh": "CVCL:0598"
+        },
+        {
+            "pmid": 22429397,
+            "start": 16981,
+            "end": 16985,
+            "name": "DAPI",
+            "identifier_name": "DAPI",
+            "type": "Chemical",
+            "mesh": "MESH:C007293"
+        },
+        {
+            "pmid": 22429397,
+            "start": 17122,
+            "end": 17126,
+            "name": "HER2",
+            "identifier_name": "ERBB2",
+            "type": "Gene",
+            "mesh": "2064"
+        },
+        {
+            "pmid": 22429397,
+            "start": 17279,
+            "end": 17285,
+            "name": "cancer",
+            "identifier_name": "Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D009369"
+        },
+        {
+            "pmid": 22429397,
+            "start": 17466,
+            "end": 17470,
+            "name": "DAPI",
+            "identifier_name": "DAPI",
+            "type": "Chemical",
+            "mesh": "MESH:C007293"
+        },
+        {
+            "pmid": 22429397,
+            "start": 17472,
+            "end": 17501,
+            "name": "4',6-diamidino-2-phenylindole",
+            "identifier_name": "DAPI",
+            "type": "Chemical",
+            "mesh": "MESH:C007293"
+        },
+        {
+            "pmid": 22429397,
+            "start": 17503,
+            "end": 17507,
+            "name": "HER2",
+            "identifier_name": "ERBB2",
+            "type": "Gene",
+            "mesh": "2064"
+        },
+        {
+            "pmid": 22429397,
+            "start": 17509,
+            "end": 17514,
+            "name": "human",
+            "identifier_name": "human",
+            "type": "Species",
+            "mesh": "9606"
+        },
+        {
+            "pmid": 22429397,
+            "start": 17515,
+            "end": 17549,
+            "name": "epidermal growth factor receptor 2",
+            "identifier_name": "ERBB2",
+            "type": "Gene",
+            "mesh": "2064"
+        },
+        {
+            "pmid": 22429397,
+            "start": 17909,
+            "end": 17919,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 18082,
+            "end": 18084,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 18152,
+            "end": 18159,
+            "name": "MCF-10A",
+            "identifier_name": "0598",
+            "type": "CellLine",
+            "mesh": "CVCL:0598"
+        },
+        {
+            "pmid": 22429397,
+            "start": 18235,
+            "end": 18240,
+            "name": "SKBr3",
+            "identifier_name": "0033",
+            "type": "CellLine",
+            "mesh": "CVCL:0033"
+        },
+        {
+            "pmid": 22429397,
+            "start": 18258,
+            "end": 18263,
+            "name": "MCF-7",
+            "identifier_name": "0031",
+            "type": "CellLine",
+            "mesh": "CVCL:0031"
+        },
+        {
+            "pmid": 22429397,
+            "start": 18285,
+            "end": 18295,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 18467,
+            "end": 18477,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 18589,
+            "end": 18591,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 18614,
+            "end": 18619,
+            "name": "SKBr3",
+            "identifier_name": "0033",
+            "type": "CellLine",
+            "mesh": "CVCL:0033"
+        },
+        {
+            "pmid": 22429397,
+            "start": 18639,
+            "end": 18644,
+            "name": "MCF-7",
+            "identifier_name": "0031",
+            "type": "CellLine",
+            "mesh": "CVCL:0031"
+        },
+        {
+            "pmid": 22429397,
+            "start": 18664,
+            "end": 18667,
+            "name": "PLD",
+            "identifier_name": "GPLD1",
+            "type": "Gene",
+            "mesh": "2822"
+        },
+        {
+            "pmid": 22429397,
+            "start": 18715,
+            "end": 18717,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 18869,
+            "end": 18879,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 18916,
+            "end": 18926,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 18944,
+            "end": 18948,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 19009,
+            "end": 19019,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 19205,
+            "end": 19209,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 19321,
+            "end": 19324,
+            "name": "SMS",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 19371,
+            "end": 19381,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 19399,
+            "end": 19403,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 19495,
+            "end": 19505,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 19540,
+            "end": 19544,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 19733,
+            "end": 19743,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 19900,
+            "end": 19904,
+            "name": "D609",
+            "identifier_name": "GR91",
+            "type": "CellLine",
+            "mesh": "CVCL:GR91"
+        },
+        {
+            "pmid": 22429397,
+            "start": 20005,
+            "end": 20014,
+            "name": "Annexin V",
+            "identifier_name": "ANXA5",
+            "type": "Gene",
+            "mesh": "308"
+        },
+        {
+            "pmid": 22429397,
+            "start": 20033,
+            "end": 20037,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 20089,
+            "end": 20092,
+            "name": "SMS",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 20114,
+            "end": 20124,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 20177,
+            "end": 20181,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 20207,
+            "end": 20212,
+            "name": "Lipid",
+            "identifier_name": "Lipids",
+            "type": "Chemical",
+            "mesh": "MESH:D008055"
+        },
+        {
+            "pmid": 22429397,
+            "start": 20238,
+            "end": 20250,
+            "name": "BTR-ceramide",
+            "identifier_name": "BTR-ceramide",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 20277,
+            "end": 20280,
+            "name": "SMS",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 20290,
+            "end": 20307,
+            "name": "BTR-sphingomyelin",
+            "identifier_name": "BTR-sphingomyelin",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 20309,
+            "end": 20315,
+            "name": "BTR-SM",
+            "identifier_name": "BTR-SM",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 20513,
+            "end": 20516,
+            "name": "SMS",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 20547,
+            "end": 20557,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 20579,
+            "end": 20583,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 20609,
+            "end": 20618,
+            "name": "Bodipy-TR",
+            "identifier_name": "Bodipy-TR",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 20620,
+            "end": 20624,
+            "name": "PCho",
+            "identifier_name": "1 3 4 5 6-pentachlorocyclohexene-1-oxide",
+            "type": "Chemical",
+            "mesh": "MESH:C043572"
+        },
+        {
+            "pmid": 22429397,
+            "start": 20626,
+            "end": 20640,
+            "name": "phosphocholine",
+            "identifier_name": "Phosphorylcholine",
+            "type": "Chemical",
+            "mesh": "MESH:D010767"
+        },
+        {
+            "pmid": 22429397,
+            "start": 20720,
+            "end": 20723,
+            "name": "SMS",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 20725,
+            "end": 20747,
+            "name": "sphingomyelin synthase",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 20774,
+            "end": 20784,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 20807,
+            "end": 20811,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 20950,
+            "end": 20954,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 20963,
+            "end": 20968,
+            "name": "SKBr3",
+            "identifier_name": "0033",
+            "type": "CellLine",
+            "mesh": "CVCL:0033"
+        },
+        {
+            "pmid": 22429397,
+            "start": 20973,
+            "end": 20978,
+            "name": "MCF-7",
+            "identifier_name": "0031",
+            "type": "CellLine",
+            "mesh": "CVCL:0031"
+        },
+        {
+            "pmid": 22429397,
+            "start": 21026,
+            "end": 21030,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 21053,
+            "end": 21059,
+            "name": "cancer",
+            "identifier_name": "Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D009369"
+        },
+        {
+            "pmid": 22429397,
+            "start": 21095,
+            "end": 21107,
+            "name": "cytotoxicity",
+            "identifier_name": "Drug-Related Side Effects and Adverse Reactions",
+            "type": "Disease",
+            "mesh": "MESH:D064420"
+        },
+        {
+            "pmid": 22429397,
+            "start": 21191,
+            "end": 21193,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 21348,
+            "end": 21350,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 21386,
+            "end": 21390,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 21522,
+            "end": 21531,
+            "name": "Annexin V",
+            "identifier_name": "ANXA5",
+            "type": "Gene",
+            "mesh": "308"
+        },
+        {
+            "pmid": 22429397,
+            "start": 21574,
+            "end": 21578,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 21653,
+            "end": 21655,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 21761,
+            "end": 21771,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 21809,
+            "end": 21813,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 22175,
+            "end": 22179,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 22235,
+            "end": 22238,
+            "name": "SMS",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 22347,
+            "end": 22350,
+            "name": "SMS",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 22558,
+            "end": 22562,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 22566,
+            "end": 22576,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 22604,
+            "end": 22610,
+            "name": "PC-PLC",
+            "identifier_name": "B2B5",
+            "type": "CellLine",
+            "mesh": "CVCL:B2B5"
+        },
+        {
+            "pmid": 22429397,
+            "start": 22637,
+            "end": 22642,
+            "name": "lipid",
+            "identifier_name": "Lipids",
+            "type": "Chemical",
+            "mesh": "MESH:D008055"
+        },
+        {
+            "pmid": 22429397,
+            "start": 22684,
+            "end": 22688,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 22697,
+            "end": 22707,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 22804,
+            "end": 22809,
+            "name": "lipid",
+            "identifier_name": "Lipids",
+            "type": "Chemical",
+            "mesh": "MESH:D008055"
+        },
+        {
+            "pmid": 22429397,
+            "start": 22852,
+            "end": 22863,
+            "name": "beta-casein",
+            "identifier_name": "CSN2",
+            "type": "Gene",
+            "mesh": "1447"
+        },
+        {
+            "pmid": 22429397,
+            "start": 22902,
+            "end": 22907,
+            "name": "lipid",
+            "identifier_name": "Lipids",
+            "type": "Chemical",
+            "mesh": "MESH:D008055"
+        },
+        {
+            "pmid": 22429397,
+            "start": 22933,
+            "end": 22943,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 23013,
+            "end": 23027,
+            "name": "Bodipy 493/503",
+            "identifier_name": "4 4-difluoro-1 3 5 7 8-pentamethyl-4-bora-3a 4a-diaza-s-indacene",
+            "type": "Chemical",
+            "mesh": "MESH:C527198"
+        },
+        {
+            "pmid": 22429397,
+            "start": 23110,
+            "end": 23115,
+            "name": "lipid",
+            "identifier_name": "Lipids",
+            "type": "Chemical",
+            "mesh": "MESH:D008055"
+        },
+        {
+            "pmid": 22429397,
+            "start": 23174,
+            "end": 23178,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 23192,
+            "end": 23197,
+            "name": "lipid",
+            "identifier_name": "Lipids",
+            "type": "Chemical",
+            "mesh": "MESH:D008055"
+        },
+        {
+            "pmid": 22429397,
+            "start": 23344,
+            "end": 23348,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 23662,
+            "end": 23668,
+            "name": "Bodipy",
+            "identifier_name": "4 4-difluoro-4-bora-3a 4a-diaza-s-indacene",
+            "type": "Chemical",
+            "mesh": "MESH:C095489"
+        },
+        {
+            "pmid": 22429397,
+            "start": 23766,
+            "end": 23770,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 23779,
+            "end": 23789,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 23936,
+            "end": 23941,
+            "name": "lipid",
+            "identifier_name": "Lipids",
+            "type": "Chemical",
+            "mesh": "MESH:D008055"
+        },
+        {
+            "pmid": 22429397,
+            "start": 23966,
+            "end": 23970,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 23979,
+            "end": 23984,
+            "name": "SKBr3",
+            "identifier_name": "0033",
+            "type": "CellLine",
+            "mesh": "CVCL:0033"
+        },
+        {
+            "pmid": 22429397,
+            "start": 23989,
+            "end": 23994,
+            "name": "MCF-7",
+            "identifier_name": "0031",
+            "type": "CellLine",
+            "mesh": "CVCL:0031"
+        },
+        {
+            "pmid": 22429397,
+            "start": 24071,
+            "end": 24082,
+            "name": "beta-casein",
+            "identifier_name": "CSN2",
+            "type": "Gene",
+            "mesh": "1447"
+        },
+        {
+            "pmid": 22429397,
+            "start": 24110,
+            "end": 24120,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 24154,
+            "end": 24158,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 24197,
+            "end": 24202,
+            "name": "lipid",
+            "identifier_name": "Lipids",
+            "type": "Chemical",
+            "mesh": "MESH:D008055"
+        },
+        {
+            "pmid": 22429397,
+            "start": 24228,
+            "end": 24239,
+            "name": "beta-casein",
+            "identifier_name": "CSN2",
+            "type": "Gene",
+            "mesh": "1447"
+        },
+        {
+            "pmid": 22429397,
+            "start": 24243,
+            "end": 24253,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 24271,
+            "end": 24275,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 24370,
+            "end": 24380,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 24432,
+            "end": 24436,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 24490,
+            "end": 24504,
+            "name": "Bodipy 493/503",
+            "identifier_name": "4 4-difluoro-1 3 5 7 8-pentamethyl-4-bora-3a 4a-diaza-s-indacene",
+            "type": "Chemical",
+            "mesh": "MESH:C527198"
+        },
+        {
+            "pmid": 22429397,
+            "start": 24576,
+            "end": 24590,
+            "name": "phalloidin-633",
+            "identifier_name": "phalloidin-633",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 24636,
+            "end": 24640,
+            "name": "DAPI",
+            "identifier_name": "DAPI",
+            "type": "Chemical",
+            "mesh": "MESH:C007293"
+        },
+        {
+            "pmid": 22429397,
+            "start": 24705,
+            "end": 24719,
+            "name": "Bodipy 493/503",
+            "identifier_name": "4 4-difluoro-1 3 5 7 8-pentamethyl-4-bora-3a 4a-diaza-s-indacene",
+            "type": "Chemical",
+            "mesh": "MESH:C527198"
+        },
+        {
+            "pmid": 22429397,
+            "start": 24773,
+            "end": 24777,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 24786,
+            "end": 24796,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 24878,
+            "end": 24889,
+            "name": "beta-casein",
+            "identifier_name": "CSN2",
+            "type": "Gene",
+            "mesh": "1447"
+        },
+        {
+            "pmid": 22429397,
+            "start": 24929,
+            "end": 24939,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 24968,
+            "end": 24972,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 25079,
+            "end": 25081,
+            "name": "1H",
+            "identifier_name": "1H",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 25106,
+            "end": 25116,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 25192,
+            "end": 25196,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 25282,
+            "end": 25288,
+            "name": "lipids",
+            "identifier_name": "Lipids",
+            "type": "Chemical",
+            "mesh": "MESH:D008055"
+        },
+        {
+            "pmid": 22429397,
+            "start": 25292,
+            "end": 25296,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 25386,
+            "end": 25418,
+            "name": "phosphate-buffered saline buffer",
+            "identifier_name": "phosphate-buffered saline buffer",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 25468,
+            "end": 25473,
+            "name": "lipid",
+            "identifier_name": "Lipids",
+            "type": "Chemical",
+            "mesh": "MESH:D008055"
+        },
+        {
+            "pmid": 22429397,
+            "start": 25486,
+            "end": 25490,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 25499,
+            "end": 25509,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 25572,
+            "end": 25588,
+            "name": "triacylglycerols",
+            "identifier_name": "Triglycerides",
+            "type": "Chemical",
+            "mesh": "MESH:D014280"
+        },
+        {
+            "pmid": 22429397,
+            "start": 25590,
+            "end": 25593,
+            "name": "TAG",
+            "identifier_name": "TAG",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 25655,
+            "end": 25673,
+            "name": "cholesteryl esters",
+            "identifier_name": "Cholesterol Esters",
+            "type": "Chemical",
+            "mesh": "MESH:D002788"
+        },
+        {
+            "pmid": 22429397,
+            "start": 25675,
+            "end": 25677,
+            "name": "CE",
+            "identifier_name": "Cerium",
+            "type": "Chemical",
+            "mesh": "MESH:D002563"
+        },
+        {
+            "pmid": 22429397,
+            "start": 25731,
+            "end": 25742,
+            "name": "cholesterol",
+            "identifier_name": "Cholesterol",
+            "type": "Chemical",
+            "mesh": "MESH:D002784"
+        },
+        {
+            "pmid": 22429397,
+            "start": 25744,
+            "end": 25748,
+            "name": "CHOL",
+            "identifier_name": "CHOL",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 25802,
+            "end": 25815,
+            "name": "Phospholipids",
+            "identifier_name": "Phospholipids",
+            "type": "Chemical",
+            "mesh": "MESH:D010743"
+        },
+        {
+            "pmid": 22429397,
+            "start": 25867,
+            "end": 25871,
+            "name": "DAPI",
+            "identifier_name": "DAPI",
+            "type": "Chemical",
+            "mesh": "MESH:C007293"
+        },
+        {
+            "pmid": 22429397,
+            "start": 25873,
+            "end": 25902,
+            "name": "4',6-diamidino-2-phenylindole",
+            "identifier_name": "DAPI",
+            "type": "Chemical",
+            "mesh": "MESH:C007293"
+        },
+        {
+            "pmid": 22429397,
+            "start": 25982,
+            "end": 25987,
+            "name": "lipid",
+            "identifier_name": "Lipids",
+            "type": "Chemical",
+            "mesh": "MESH:D008055"
+        },
+        {
+            "pmid": 22429397,
+            "start": 26012,
+            "end": 26014,
+            "name": "1H",
+            "identifier_name": "1H",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 26037,
+            "end": 26047,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 26082,
+            "end": 26086,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 26253,
+            "end": 26258,
+            "name": "lipid",
+            "identifier_name": "Lipids",
+            "type": "Chemical",
+            "mesh": "MESH:D008055"
+        },
+        {
+            "pmid": 22429397,
+            "start": 26259,
+            "end": 26269,
+            "name": "fatty acyl",
+            "identifier_name": "fatty acyl",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 26448,
+            "end": 26453,
+            "name": "lipid",
+            "identifier_name": "Lipids",
+            "type": "Chemical",
+            "mesh": "MESH:D008055"
+        },
+        {
+            "pmid": 22429397,
+            "start": 26502,
+            "end": 26518,
+            "name": "triacylglycerols",
+            "identifier_name": "Triglycerides",
+            "type": "Chemical",
+            "mesh": "MESH:D014280"
+        },
+        {
+            "pmid": 22429397,
+            "start": 26553,
+            "end": 26571,
+            "name": "cholesteryl esters",
+            "identifier_name": "Cholesterol Esters",
+            "type": "Chemical",
+            "mesh": "MESH:D002788"
+        },
+        {
+            "pmid": 22429397,
+            "start": 26610,
+            "end": 26614,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 26624,
+            "end": 26635,
+            "name": "cholesterol",
+            "identifier_name": "Cholesterol",
+            "type": "Chemical",
+            "mesh": "MESH:D002784"
+        },
+        {
+            "pmid": 22429397,
+            "start": 26652,
+            "end": 26664,
+            "name": "phospholipid",
+            "identifier_name": "Phospholipids",
+            "type": "Chemical",
+            "mesh": "MESH:D010743"
+        },
+        {
+            "pmid": 22429397,
+            "start": 26757,
+            "end": 26761,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 26802,
+            "end": 26812,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 26862,
+            "end": 26867,
+            "name": "lipid",
+            "identifier_name": "Lipids",
+            "type": "Chemical",
+            "mesh": "MESH:D008055"
+        },
+        {
+            "pmid": 22429397,
+            "start": 26890,
+            "end": 26901,
+            "name": "beta-casein",
+            "identifier_name": "CSN2",
+            "type": "Gene",
+            "mesh": "1447"
+        },
+        {
+            "pmid": 22429397,
+            "start": 27010,
+            "end": 27023,
+            "name": "tumorigenesis",
+            "identifier_name": "Carcinogenesis",
+            "type": "Disease",
+            "mesh": "MESH:D063646"
+        },
+        {
+            "pmid": 22429397,
+            "start": 27027,
+            "end": 27031,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 27040,
+            "end": 27050,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 27129,
+            "end": 27137,
+            "name": "vimentin",
+            "identifier_name": "VIM",
+            "type": "Gene",
+            "mesh": "7431"
+        },
+        {
+            "pmid": 22429397,
+            "start": 27227,
+            "end": 27229,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 27260,
+            "end": 27268,
+            "name": "vimentin",
+            "identifier_name": "VIM",
+            "type": "Gene",
+            "mesh": "7431"
+        },
+        {
+            "pmid": 22429397,
+            "start": 27292,
+            "end": 27302,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 27338,
+            "end": 27345,
+            "name": "MCF-10A",
+            "identifier_name": "0598",
+            "type": "CellLine",
+            "mesh": "CVCL:0598"
+        },
+        {
+            "pmid": 22429397,
+            "start": 27379,
+            "end": 27387,
+            "name": "vimentin",
+            "identifier_name": "VIM",
+            "type": "Gene",
+            "mesh": "7431"
+        },
+        {
+            "pmid": 22429397,
+            "start": 27404,
+            "end": 27414,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 27460,
+            "end": 27464,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 27496,
+            "end": 27504,
+            "name": "vimentin",
+            "identifier_name": "VIM",
+            "type": "Gene",
+            "mesh": "7431"
+        },
+        {
+            "pmid": 22429397,
+            "start": 27621,
+            "end": 27626,
+            "name": "lipid",
+            "identifier_name": "Lipids",
+            "type": "Chemical",
+            "mesh": "MESH:D008055"
+        },
+        {
+            "pmid": 22429397,
+            "start": 27651,
+            "end": 27657,
+            "name": "Bodipy",
+            "identifier_name": "4 4-difluoro-4-bora-3a 4a-diaza-s-indacene",
+            "type": "Chemical",
+            "mesh": "MESH:C095489"
+        },
+        {
+            "pmid": 22429397,
+            "start": 27698,
+            "end": 27702,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 27724,
+            "end": 27732,
+            "name": "vimentin",
+            "identifier_name": "VIM",
+            "type": "Gene",
+            "mesh": "7431"
+        },
+        {
+            "pmid": 22429397,
+            "start": 27770,
+            "end": 27780,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 27792,
+            "end": 27800,
+            "name": "Vimentin",
+            "identifier_name": "VIM",
+            "type": "Gene",
+            "mesh": "7431"
+        },
+        {
+            "pmid": 22429397,
+            "start": 27840,
+            "end": 27850,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 27855,
+            "end": 27862,
+            "name": "MCF-10A",
+            "identifier_name": "0598",
+            "type": "CellLine",
+            "mesh": "CVCL:0598"
+        },
+        {
+            "pmid": 22429397,
+            "start": 27930,
+            "end": 27938,
+            "name": "vimentin",
+            "identifier_name": "VIM",
+            "type": "Gene",
+            "mesh": "7431"
+        },
+        {
+            "pmid": 22429397,
+            "start": 28043,
+            "end": 28047,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 28075,
+            "end": 28085,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 28093,
+            "end": 28098,
+            "name": "Lipid",
+            "identifier_name": "Lipids",
+            "type": "Chemical",
+            "mesh": "MESH:D008055"
+        },
+        {
+            "pmid": 22429397,
+            "start": 28193,
+            "end": 28197,
+            "name": "DAPI",
+            "identifier_name": "DAPI",
+            "type": "Chemical",
+            "mesh": "MESH:C007293"
+        },
+        {
+            "pmid": 22429397,
+            "start": 28259,
+            "end": 28269,
+            "name": "N-cadherin",
+            "identifier_name": "CDH2",
+            "type": "Gene",
+            "mesh": "1000"
+        },
+        {
+            "pmid": 22429397,
+            "start": 28271,
+            "end": 28281,
+            "name": "E-cadherin",
+            "identifier_name": "CDH1",
+            "type": "Gene",
+            "mesh": "999"
+        },
+        {
+            "pmid": 22429397,
+            "start": 28291,
+            "end": 28297,
+            "name": "MFG-E8",
+            "identifier_name": "MFGE8",
+            "type": "Gene",
+            "mesh": "4240"
+        },
+        {
+            "pmid": 22429397,
+            "start": 28303,
+            "end": 28313,
+            "name": "galectin-3",
+            "identifier_name": "LGALS3",
+            "type": "Gene",
+            "mesh": "3958"
+        },
+        {
+            "pmid": 22429397,
+            "start": 28353,
+            "end": 28363,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 28385,
+            "end": 28389,
+            "name": "D609",
+            "identifier_name": "GR91",
+            "type": "CellLine",
+            "mesh": "CVCL:GR91"
+        },
+        {
+            "pmid": 22429397,
+            "start": 28520,
+            "end": 28524,
+            "name": "DAPI",
+            "identifier_name": "DAPI",
+            "type": "Chemical",
+            "mesh": "MESH:C007293"
+        },
+        {
+            "pmid": 22429397,
+            "start": 28526,
+            "end": 28555,
+            "name": "4',6-diamidino-2-phenylindole",
+            "identifier_name": "DAPI",
+            "type": "Chemical",
+            "mesh": "MESH:C007293"
+        },
+        {
+            "pmid": 22429397,
+            "start": 28665,
+            "end": 28669,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 28678,
+            "end": 28688,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 28741,
+            "end": 28751,
+            "name": "N-cadherin",
+            "identifier_name": "CDH2",
+            "type": "Gene",
+            "mesh": "1000"
+        },
+        {
+            "pmid": 22429397,
+            "start": 28853,
+            "end": 28863,
+            "name": "E-cadherin",
+            "identifier_name": "CDH1",
+            "type": "Gene",
+            "mesh": "999"
+        },
+        {
+            "pmid": 22429397,
+            "start": 28939,
+            "end": 28943,
+            "name": "D609",
+            "identifier_name": "GR91",
+            "type": "CellLine",
+            "mesh": "CVCL:GR91"
+        },
+        {
+            "pmid": 22429397,
+            "start": 28970,
+            "end": 28980,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 28990,
+            "end": 28994,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 29022,
+            "end": 29032,
+            "name": "galectin-3",
+            "identifier_name": "LGALS3",
+            "type": "Gene",
+            "mesh": "3958"
+        },
+        {
+            "pmid": 22429397,
+            "start": 29070,
+            "end": 29076,
+            "name": "cancer",
+            "identifier_name": "Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D009369"
+        },
+        {
+            "pmid": 22429397,
+            "start": 29157,
+            "end": 29167,
+            "name": "galectin-3",
+            "identifier_name": "LGALS3",
+            "type": "Gene",
+            "mesh": "3958"
+        },
+        {
+            "pmid": 22429397,
+            "start": 29220,
+            "end": 29224,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 29371,
+            "end": 29377,
+            "name": "MFG-E8",
+            "identifier_name": "MFGE8",
+            "type": "Gene",
+            "mesh": "4240"
+        },
+        {
+            "pmid": 22429397,
+            "start": 29440,
+            "end": 29442,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 29460,
+            "end": 29464,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 29473,
+            "end": 29483,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 29614,
+            "end": 29620,
+            "name": "MFG-E8",
+            "identifier_name": "MFGE8",
+            "type": "Gene",
+            "mesh": "4240"
+        },
+        {
+            "pmid": 22429397,
+            "start": 29625,
+            "end": 29635,
+            "name": "galectin-3",
+            "identifier_name": "LGALS3",
+            "type": "Gene",
+            "mesh": "3958"
+        },
+        {
+            "pmid": 22429397,
+            "start": 29694,
+            "end": 29704,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 29722,
+            "end": 29726,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 29785,
+            "end": 29825,
+            "name": "glyceraldehyde-3-phosphate dehydrogenase",
+            "identifier_name": "GAPDH",
+            "type": "Gene",
+            "mesh": "2597"
+        },
+        {
+            "pmid": 22429397,
+            "start": 29827,
+            "end": 29832,
+            "name": "GAPDH",
+            "identifier_name": "GAPDH",
+            "type": "Gene",
+            "mesh": "2597"
+        },
+        {
+            "pmid": 22429397,
+            "start": 29972,
+            "end": 29976,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 30021,
+            "end": 30031,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 30105,
+            "end": 30118,
+            "name": "tumorigenesis",
+            "identifier_name": "Carcinogenesis",
+            "type": "Disease",
+            "mesh": "MESH:D063646"
+        },
+        {
+            "pmid": 22429397,
+            "start": 30168,
+            "end": 30172,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 30181,
+            "end": 30191,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 30300,
+            "end": 30314,
+            "name": "crystal violet",
+            "identifier_name": "Gentian Violet",
+            "type": "Chemical",
+            "mesh": "MESH:D005840"
+        },
+        {
+            "pmid": 22429397,
+            "start": 30617,
+            "end": 30627,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 30682,
+            "end": 30696,
+            "name": "crystal violet",
+            "identifier_name": "Gentian Violet",
+            "type": "Chemical",
+            "mesh": "MESH:D005840"
+        },
+        {
+            "pmid": 22429397,
+            "start": 30928,
+            "end": 30932,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 31042,
+            "end": 31046,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 31195,
+            "end": 31205,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 31241,
+            "end": 31245,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 31649,
+            "end": 31653,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 31717,
+            "end": 31721,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 32163,
+            "end": 32167,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 32314,
+            "end": 32318,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 32640,
+            "end": 32644,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 32776,
+            "end": 32780,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 32912,
+            "end": 32922,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 33124,
+            "end": 33128,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 33462,
+            "end": 33466,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 33566,
+            "end": 33570,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 33653,
+            "end": 33657,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 34025,
+            "end": 34028,
+            "name": "PLD",
+            "identifier_name": "GPLD1",
+            "type": "Gene",
+            "mesh": "2822"
+        },
+        {
+            "pmid": 22429397,
+            "start": 34070,
+            "end": 34072,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 34084,
+            "end": 34094,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 34217,
+            "end": 34224,
+            "name": "luminal",
+            "identifier_name": "luminal",
+            "type": "Disease",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 34230,
+            "end": 34235,
+            "name": "MCF-7",
+            "identifier_name": "0031",
+            "type": "CellLine",
+            "mesh": "CVCL:0031"
+        },
+        {
+            "pmid": 22429397,
+            "start": 34247,
+            "end": 34251,
+            "name": "HER2",
+            "identifier_name": "ERBB2",
+            "type": "Gene",
+            "mesh": "2064"
+        },
+        {
+            "pmid": 22429397,
+            "start": 34261,
+            "end": 34266,
+            "name": "SKBr3",
+            "identifier_name": "0033",
+            "type": "CellLine",
+            "mesh": "CVCL:0033"
+        },
+        {
+            "pmid": 22429397,
+            "start": 34333,
+            "end": 34343,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 34380,
+            "end": 34384,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 34451,
+            "end": 34453,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 34669,
+            "end": 34675,
+            "name": "PtdCho",
+            "identifier_name": "PtdCho",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 34680,
+            "end": 34693,
+            "name": "sphingomyelin",
+            "identifier_name": "Sphingomyelins",
+            "type": "Chemical",
+            "mesh": "MESH:D013109"
+        },
+        {
+            "pmid": 22429397,
+            "start": 34801,
+            "end": 34805,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 34844,
+            "end": 34847,
+            "name": "SMS",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 34986,
+            "end": 34990,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 35054,
+            "end": 35074,
+            "name": "MDA-MB-435 carcinoma",
+            "identifier_name": "0417",
+            "type": "CellLine",
+            "mesh": "CVCL:0417"
+        },
+        {
+            "pmid": 22429397,
+            "start": 35149,
+            "end": 35152,
+            "name": "SMS",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 35196,
+            "end": 35205,
+            "name": "ceramides",
+            "identifier_name": "Ceramides",
+            "type": "Chemical",
+            "mesh": "MESH:D002518"
+        },
+        {
+            "pmid": 22429397,
+            "start": 35274,
+            "end": 35276,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 35348,
+            "end": 35352,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 35445,
+            "end": 35464,
+            "name": "phosphatidylcholine",
+            "identifier_name": "Phosphatidylcholines",
+            "type": "Chemical",
+            "mesh": "MESH:D010713"
+        },
+        {
+            "pmid": 22429397,
+            "start": 35466,
+            "end": 35472,
+            "name": "PtdCho",
+            "identifier_name": "PtdCho",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 35478,
+            "end": 35491,
+            "name": "sphingomyelin",
+            "identifier_name": "Sphingomyelins",
+            "type": "Chemical",
+            "mesh": "MESH:D013109"
+        },
+        {
+            "pmid": 22429397,
+            "start": 35493,
+            "end": 35495,
+            "name": "SM",
+            "identifier_name": "Samarium",
+            "type": "Chemical",
+            "mesh": "MESH:D012493"
+        },
+        {
+            "pmid": 22429397,
+            "start": 35590,
+            "end": 35594,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 35624,
+            "end": 35646,
+            "name": "sphingomyelin synthase",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 35648,
+            "end": 35651,
+            "name": "SMS",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 35745,
+            "end": 35748,
+            "name": "CCT",
+            "identifier_name": "CCT",
+            "type": "Gene",
+            "mesh": "907"
+        },
+        {
+            "pmid": 22429397,
+            "start": 35788,
+            "end": 35795,
+            "name": "CDP-Cho",
+            "identifier_name": "CDP-Cho",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 35797,
+            "end": 35825,
+            "name": "cytidine 5'-diphosphocholine",
+            "identifier_name": "Cytidine Diphosphate Choline",
+            "type": "Chemical",
+            "mesh": "MESH:D003566"
+        },
+        {
+            "pmid": 22429397,
+            "start": 35827,
+            "end": 35830,
+            "name": "Cho",
+            "identifier_name": "CAV protocol",
+            "type": "Chemical",
+            "mesh": "MESH:C034482"
+        },
+        {
+            "pmid": 22429397,
+            "start": 35837,
+            "end": 35844,
+            "name": "choline",
+            "identifier_name": "Choline",
+            "type": "Chemical",
+            "mesh": "MESH:D002794"
+        },
+        {
+            "pmid": 22429397,
+            "start": 35868,
+            "end": 35871,
+            "name": "DAG",
+            "identifier_name": "Diglycerides",
+            "type": "Chemical",
+            "mesh": "MESH:D004075"
+        },
+        {
+            "pmid": 22429397,
+            "start": 35873,
+            "end": 35887,
+            "name": "diacylglycerol",
+            "identifier_name": "Diglycerides",
+            "type": "Chemical",
+            "mesh": "MESH:D004075"
+        },
+        {
+            "pmid": 22429397,
+            "start": 35889,
+            "end": 35893,
+            "name": "PCho",
+            "identifier_name": "1 3 4 5 6-pentachlorocyclohexene-1-oxide",
+            "type": "Chemical",
+            "mesh": "MESH:C043572"
+        },
+        {
+            "pmid": 22429397,
+            "start": 35895,
+            "end": 35909,
+            "name": "phosphocholine",
+            "identifier_name": "Phosphorylcholine",
+            "type": "Chemical",
+            "mesh": "MESH:D010767"
+        },
+        {
+            "pmid": 22429397,
+            "start": 35977,
+            "end": 35981,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 36067,
+            "end": 36071,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 36097,
+            "end": 36100,
+            "name": "PLD",
+            "identifier_name": "GPLD1",
+            "type": "Gene",
+            "mesh": "2822"
+        },
+        {
+            "pmid": 22429397,
+            "start": 36102,
+            "end": 36147,
+            "name": "phosphatidylinositol-specific phospholipase C",
+            "identifier_name": "PLCB1",
+            "type": "Gene",
+            "mesh": "23236"
+        },
+        {
+            "pmid": 22429397,
+            "start": 36149,
+            "end": 36155,
+            "name": "PI-PLC",
+            "identifier_name": "PLCB1",
+            "type": "Gene",
+            "mesh": "23236"
+        },
+        {
+            "pmid": 22429397,
+            "start": 36158,
+            "end": 36174,
+            "name": "phospholipase A2",
+            "identifier_name": "PLA2G1B",
+            "type": "Gene",
+            "mesh": "5319"
+        },
+        {
+            "pmid": 22429397,
+            "start": 36246,
+            "end": 36249,
+            "name": "PLD",
+            "identifier_name": "GPLD1",
+            "type": "Gene",
+            "mesh": "2822"
+        },
+        {
+            "pmid": 22429397,
+            "start": 36259,
+            "end": 36265,
+            "name": "PtdCho",
+            "identifier_name": "PtdCho",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 36309,
+            "end": 36334,
+            "name": "osteoblastic osteosarcoma",
+            "identifier_name": "Osteosarcoma",
+            "type": "Disease",
+            "mesh": "MESH:D012516"
+        },
+        {
+            "pmid": 22429397,
+            "start": 36352,
+            "end": 36356,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 36658,
+            "end": 36662,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 36685,
+            "end": 36695,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 36792,
+            "end": 36795,
+            "name": "MET",
+            "identifier_name": "SLTM",
+            "type": "Gene",
+            "mesh": "79811"
+        },
+        {
+            "pmid": 22429397,
+            "start": 36867,
+            "end": 36875,
+            "name": "vimentin",
+            "identifier_name": "VIM",
+            "type": "Gene",
+            "mesh": "7431"
+        },
+        {
+            "pmid": 22429397,
+            "start": 36880,
+            "end": 36890,
+            "name": "N-cadherin",
+            "identifier_name": "CDH2",
+            "type": "Gene",
+            "mesh": "1000"
+        },
+        {
+            "pmid": 22429397,
+            "start": 37060,
+            "end": 37071,
+            "name": "beta-casein",
+            "identifier_name": "CSN2",
+            "type": "Gene",
+            "mesh": "1447"
+        },
+        {
+            "pmid": 22429397,
+            "start": 37122,
+            "end": 37128,
+            "name": "cancer",
+            "identifier_name": "Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D009369"
+        },
+        {
+            "pmid": 22429397,
+            "start": 37150,
+            "end": 37156,
+            "name": "MFG-E8",
+            "identifier_name": "MFGE8",
+            "type": "Gene",
+            "mesh": "4240"
+        },
+        {
+            "pmid": 22429397,
+            "start": 37161,
+            "end": 37171,
+            "name": "galectin-3",
+            "identifier_name": "LGALS3",
+            "type": "Gene",
+            "mesh": "3958"
+        },
+        {
+            "pmid": 22429397,
+            "start": 37326,
+            "end": 37328,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 37387,
+            "end": 37391,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 37400,
+            "end": 37403,
+            "name": "MET",
+            "identifier_name": "SLTM",
+            "type": "Gene",
+            "mesh": "79811"
+        },
+        {
+            "pmid": 22429397,
+            "start": 37422,
+            "end": 37432,
+            "name": "E-cadherin",
+            "identifier_name": "CDH1",
+            "type": "Gene",
+            "mesh": "999"
+        },
+        {
+            "pmid": 22429397,
+            "start": 37569,
+            "end": 37573,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 37721,
+            "end": 37723,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 37849,
+            "end": 37852,
+            "name": "MET",
+            "identifier_name": "SLTM",
+            "type": "Gene",
+            "mesh": "79811"
+        },
+        {
+            "pmid": 22429397,
+            "start": 37938,
+            "end": 37941,
+            "name": "MET",
+            "identifier_name": "SLTM",
+            "type": "Gene",
+            "mesh": "79811"
+        },
+        {
+            "pmid": 22429397,
+            "start": 37963,
+            "end": 37976,
+            "name": "breast cancer",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 38019,
+            "end": 38021,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 38228,
+            "end": 38238,
+            "name": "metastasis",
+            "identifier_name": "Neoplasm Metastasis",
+            "type": "Disease",
+            "mesh": "MESH:D009362"
+        },
+        {
+            "pmid": 22429397,
+            "start": 38349,
+            "end": 38351,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 38421,
+            "end": 38429,
+            "name": "vimentin",
+            "identifier_name": "VIM",
+            "type": "Gene",
+            "mesh": "7431"
+        },
+        {
+            "pmid": 22429397,
+            "start": 38434,
+            "end": 38444,
+            "name": "N-cadherin",
+            "identifier_name": "CDH2",
+            "type": "Gene",
+            "mesh": "1000"
+        },
+        {
+            "pmid": 22429397,
+            "start": 38462,
+            "end": 38472,
+            "name": "E-cadherin",
+            "identifier_name": "CDH1",
+            "type": "Gene",
+            "mesh": "999"
+        },
+        {
+            "pmid": 22429397,
+            "start": 38630,
+            "end": 38640,
+            "name": "metastasis",
+            "identifier_name": "Neoplasm Metastasis",
+            "type": "Disease",
+            "mesh": "MESH:D009362"
+        },
+        {
+            "pmid": 22429397,
+            "start": 38716,
+            "end": 38726,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 38765,
+            "end": 38769,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 38830,
+            "end": 38838,
+            "name": "vimentin",
+            "identifier_name": "VIM",
+            "type": "Gene",
+            "mesh": "7431"
+        },
+        {
+            "pmid": 22429397,
+            "start": 38843,
+            "end": 38853,
+            "name": "N-cadherin",
+            "identifier_name": "CDH2",
+            "type": "Gene",
+            "mesh": "1000"
+        },
+        {
+            "pmid": 22429397,
+            "start": 38898,
+            "end": 38908,
+            "name": "E-cadherin",
+            "identifier_name": "CDH1",
+            "type": "Gene",
+            "mesh": "999"
+        },
+        {
+            "pmid": 22429397,
+            "start": 38942,
+            "end": 38945,
+            "name": "MET",
+            "identifier_name": "SLTM",
+            "type": "Gene",
+            "mesh": "79811"
+        },
+        {
+            "pmid": 22429397,
+            "start": 39012,
+            "end": 39014,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 39084,
+            "end": 39089,
+            "name": "lipid",
+            "identifier_name": "Lipids",
+            "type": "Chemical",
+            "mesh": "MESH:D008055"
+        },
+        {
+            "pmid": 22429397,
+            "start": 39102,
+            "end": 39113,
+            "name": "beta-casein",
+            "identifier_name": "CSN2",
+            "type": "Gene",
+            "mesh": "1447"
+        },
+        {
+            "pmid": 22429397,
+            "start": 39158,
+            "end": 39162,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 39192,
+            "end": 39198,
+            "name": "MFG-E8",
+            "identifier_name": "MFGE8",
+            "type": "Gene",
+            "mesh": "4240"
+        },
+        {
+            "pmid": 22429397,
+            "start": 39226,
+            "end": 39236,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 39343,
+            "end": 39353,
+            "name": "metastasis",
+            "identifier_name": "Neoplasm Metastasis",
+            "type": "Disease",
+            "mesh": "MESH:D009362"
+        },
+        {
+            "pmid": 22429397,
+            "start": 39365,
+            "end": 39370,
+            "name": "tumor",
+            "identifier_name": "Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D009369"
+        },
+        {
+            "pmid": 22429397,
+            "start": 39400,
+            "end": 39402,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 39426,
+            "end": 39432,
+            "name": "MFG-E8",
+            "identifier_name": "MFGE8",
+            "type": "Gene",
+            "mesh": "4240"
+        },
+        {
+            "pmid": 22429397,
+            "start": 39447,
+            "end": 39451,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 39460,
+            "end": 39470,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 39565,
+            "end": 39574,
+            "name": "cisplatin",
+            "identifier_name": "Cisplatin",
+            "type": "Chemical",
+            "mesh": "MESH:D002945"
+        },
+        {
+            "pmid": 22429397,
+            "start": 39604,
+            "end": 39606,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 39623,
+            "end": 39626,
+            "name": "p63",
+            "identifier_name": "TP63",
+            "type": "Gene",
+            "mesh": "8626"
+        },
+        {
+            "pmid": 22429397,
+            "start": 39631,
+            "end": 39637,
+            "name": "MFG-E8",
+            "identifier_name": "MFGE8",
+            "type": "Gene",
+            "mesh": "4240"
+        },
+        {
+            "pmid": 22429397,
+            "start": 39798,
+            "end": 39800,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 39823,
+            "end": 39835,
+            "name": "cytotoxicity",
+            "identifier_name": "Drug-Related Side Effects and Adverse Reactions",
+            "type": "Disease",
+            "mesh": "MESH:D064420"
+        },
+        {
+            "pmid": 22429397,
+            "start": 39871,
+            "end": 39881,
+            "name": "galectin-3",
+            "identifier_name": "LGALS3",
+            "type": "Gene",
+            "mesh": "3958"
+        },
+        {
+            "pmid": 22429397,
+            "start": 39885,
+            "end": 39889,
+            "name": "D609",
+            "identifier_name": "tricyclodecane-9-yl-xanthogenate",
+            "type": "Chemical",
+            "mesh": "MESH:C046498"
+        },
+        {
+            "pmid": 22429397,
+            "start": 39898,
+            "end": 39908,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 39959,
+            "end": 39969,
+            "name": "galectin-3",
+            "identifier_name": "LGALS3",
+            "type": "Gene",
+            "mesh": "3958"
+        },
+        {
+            "pmid": 22429397,
+            "start": 40056,
+            "end": 40069,
+            "name": "BC metastasis",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 40073,
+            "end": 40078,
+            "name": "taxol",
+            "identifier_name": "Paclitaxel",
+            "type": "Chemical",
+            "mesh": "MESH:D017239"
+        },
+        {
+            "pmid": 22429397,
+            "start": 40207,
+            "end": 40220,
+            "name": "breast cancer",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 40282,
+            "end": 40285,
+            "name": "MET",
+            "identifier_name": "SLTM",
+            "type": "Gene",
+            "mesh": "79811"
+        },
+        {
+            "pmid": 22429397,
+            "start": 40492,
+            "end": 40495,
+            "name": "AKT",
+            "identifier_name": "AKT1",
+            "type": "Gene",
+            "mesh": "207"
+        },
+        {
+            "pmid": 22429397,
+            "start": 40496,
+            "end": 40525,
+            "name": "mammalian target of rapamycin",
+            "identifier_name": "MTOR",
+            "type": "Gene",
+            "mesh": "2475"
+        },
+        {
+            "pmid": 22429397,
+            "start": 40527,
+            "end": 40531,
+            "name": "PI3K",
+            "identifier_name": "PIK3CG",
+            "type": "Gene",
+            "mesh": "5294"
+        },
+        {
+            "pmid": 22429397,
+            "start": 40532,
+            "end": 40535,
+            "name": "AKT",
+            "identifier_name": "AKT1",
+            "type": "Gene",
+            "mesh": "207"
+        },
+        {
+            "pmid": 22429397,
+            "start": 40536,
+            "end": 40540,
+            "name": "mTOR",
+            "identifier_name": "MTOR",
+            "type": "Gene",
+            "mesh": "2475"
+        },
+        {
+            "pmid": 22429397,
+            "start": 40663,
+            "end": 40673,
+            "name": "metastasis",
+            "identifier_name": "Neoplasm Metastasis",
+            "type": "Disease",
+            "mesh": "MESH:D009362"
+        },
+        {
+            "pmid": 22429397,
+            "start": 40732,
+            "end": 40742,
+            "name": "MDA-MB-231",
+            "identifier_name": "0062",
+            "type": "CellLine",
+            "mesh": "CVCL:0062"
+        },
+        {
+            "pmid": 22429397,
+            "start": 40871,
+            "end": 40873,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 40985,
+            "end": 40988,
+            "name": "MET",
+            "identifier_name": "SLTM",
+            "type": "Gene",
+            "mesh": "79811"
+        },
+        {
+            "pmid": 22429397,
+            "start": 41196,
+            "end": 41199,
+            "name": "DAG",
+            "identifier_name": "Diglycerides",
+            "type": "Chemical",
+            "mesh": "MESH:D004075"
+        },
+        {
+            "pmid": 22429397,
+            "start": 41213,
+            "end": 41219,
+            "name": "PtdCho",
+            "identifier_name": "PtdCho",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 41267,
+            "end": 41283,
+            "name": "protein kinase C",
+            "identifier_name": "PRRT2",
+            "type": "Gene",
+            "mesh": "112476"
+        },
+        {
+            "pmid": 22429397,
+            "start": 41285,
+            "end": 41288,
+            "name": "PKC",
+            "identifier_name": "PRRT2",
+            "type": "Gene",
+            "mesh": "112476"
+        },
+        {
+            "pmid": 22429397,
+            "start": 41371,
+            "end": 41373,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 41437,
+            "end": 41440,
+            "name": "DAG",
+            "identifier_name": "Diglycerides",
+            "type": "Chemical",
+            "mesh": "MESH:D004075"
+        },
+        {
+            "pmid": 22429397,
+            "start": 41540,
+            "end": 41543,
+            "name": "PKC",
+            "identifier_name": "PRRT2",
+            "type": "Gene",
+            "mesh": "112476"
+        },
+        {
+            "pmid": 22429397,
+            "start": 41654,
+            "end": 41657,
+            "name": "DAG",
+            "identifier_name": "Diglycerides",
+            "type": "Chemical",
+            "mesh": "MESH:D004075"
+        },
+        {
+            "pmid": 22429397,
+            "start": 41680,
+            "end": 41686,
+            "name": "cancer",
+            "identifier_name": "Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D009369"
+        },
+        {
+            "pmid": 22429397,
+            "start": 41791,
+            "end": 41804,
+            "name": "breast cancer",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 41876,
+            "end": 41883,
+            "name": "CDP-Cho",
+            "identifier_name": "CDP-Cho",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 41885,
+            "end": 41913,
+            "name": "cytidine 5'-diphosphocholine",
+            "identifier_name": "Cytidine Diphosphate Choline",
+            "type": "Chemical",
+            "mesh": "MESH:D003566"
+        },
+        {
+            "pmid": 22429397,
+            "start": 41915,
+            "end": 41918,
+            "name": "Cho",
+            "identifier_name": "CAV protocol",
+            "type": "Chemical",
+            "mesh": "MESH:C034482"
+        },
+        {
+            "pmid": 22429397,
+            "start": 41925,
+            "end": 41932,
+            "name": "choline",
+            "identifier_name": "Choline",
+            "type": "Chemical",
+            "mesh": "MESH:D002794"
+        },
+        {
+            "pmid": 22429397,
+            "start": 41934,
+            "end": 41937,
+            "name": "DAG",
+            "identifier_name": "Diglycerides",
+            "type": "Chemical",
+            "mesh": "MESH:D004075"
+        },
+        {
+            "pmid": 22429397,
+            "start": 41939,
+            "end": 41953,
+            "name": "diacylglycerol",
+            "identifier_name": "Diglycerides",
+            "type": "Chemical",
+            "mesh": "MESH:D004075"
+        },
+        {
+            "pmid": 22429397,
+            "start": 41955,
+            "end": 41958,
+            "name": "IP3",
+            "identifier_name": "Inositol 1 4 5-Trisphosphate",
+            "type": "Chemical",
+            "mesh": "MESH:D015544"
+        },
+        {
+            "pmid": 22429397,
+            "start": 41960,
+            "end": 41990,
+            "name": "inositol (1,4,5)-trisphosphate",
+            "identifier_name": "Inositol 1 4 5-Trisphosphate",
+            "type": "Chemical",
+            "mesh": "MESH:D015544"
+        },
+        {
+            "pmid": 22429397,
+            "start": 41992,
+            "end": 41994,
+            "name": "PA",
+            "identifier_name": "Protactinium",
+            "type": "Chemical",
+            "mesh": "MESH:D011478"
+        },
+        {
+            "pmid": 22429397,
+            "start": 41996,
+            "end": 42009,
+            "name": "phosphatidate",
+            "identifier_name": "phosphatidate",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42011,
+            "end": 42015,
+            "name": "PCho",
+            "identifier_name": "1 3 4 5 6-pentachlorocyclohexene-1-oxide",
+            "type": "Chemical",
+            "mesh": "MESH:C043572"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42017,
+            "end": 42031,
+            "name": "phosphocholine",
+            "identifier_name": "Phosphorylcholine",
+            "type": "Chemical",
+            "mesh": "MESH:D010767"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42033,
+            "end": 42037,
+            "name": "PIP2",
+            "identifier_name": "Phosphatidylinositol 4 5-Diphosphate",
+            "type": "Chemical",
+            "mesh": "MESH:D019269"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42039,
+            "end": 42078,
+            "name": "phosphatidylinositol (4,5)-bisphosphate",
+            "identifier_name": "Phosphatidylinositol 4 5-Diphosphate",
+            "type": "Chemical",
+            "mesh": "MESH:D019269"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42080,
+            "end": 42084,
+            "name": "PIP3",
+            "identifier_name": "PIP3",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42086,
+            "end": 42128,
+            "name": "phosphatidylinositol (3,4,5)-trisphosphate",
+            "identifier_name": "phosphatidylinositol 3 4 5-triphosphate",
+            "type": "Chemical",
+            "mesh": "MESH:C060974"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42130,
+            "end": 42136,
+            "name": "PtdCho",
+            "identifier_name": "PtdCho",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42138,
+            "end": 42157,
+            "name": "phosphatidylcholine",
+            "identifier_name": "Phosphatidylcholines",
+            "type": "Chemical",
+            "mesh": "MESH:D010713"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42174,
+            "end": 42183,
+            "name": "rapamycin",
+            "identifier_name": "Sirolimus",
+            "type": "Chemical",
+            "mesh": "MESH:D020123"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42226,
+            "end": 42229,
+            "name": "AKT",
+            "identifier_name": "AKT1",
+            "type": "Gene",
+            "mesh": "207"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42230,
+            "end": 42233,
+            "name": "PKB",
+            "identifier_name": "PTK2B",
+            "type": "Gene",
+            "mesh": "2185"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42235,
+            "end": 42238,
+            "name": "AKT",
+            "identifier_name": "AKT1",
+            "type": "Gene",
+            "mesh": "207"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42239,
+            "end": 42255,
+            "name": "protein kinase B",
+            "identifier_name": "PTK2B",
+            "type": "Gene",
+            "mesh": "2185"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42257,
+            "end": 42260,
+            "name": "CCT",
+            "identifier_name": "CCT",
+            "type": "Gene",
+            "mesh": "907"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42300,
+            "end": 42307,
+            "name": "CDP-Cho",
+            "identifier_name": "CDP-Cho",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42309,
+            "end": 42337,
+            "name": "cytidine 5'-diphosphocholine",
+            "identifier_name": "Cytidine Diphosphate Choline",
+            "type": "Chemical",
+            "mesh": "MESH:D003566"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42361,
+            "end": 42365,
+            "name": "DAGK",
+            "identifier_name": "DGKA",
+            "type": "Gene",
+            "mesh": "1606"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42430,
+            "end": 42434,
+            "name": "mTOR",
+            "identifier_name": "MTOR",
+            "type": "Gene",
+            "mesh": "2475"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42436,
+            "end": 42465,
+            "name": "mammalian target of rapamycin",
+            "identifier_name": "MTOR",
+            "type": "Gene",
+            "mesh": "2475"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42467,
+            "end": 42470,
+            "name": "PAP",
+            "identifier_name": "REG3A",
+            "type": "Gene",
+            "mesh": "5068"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42558,
+            "end": 42561,
+            "name": "PCT",
+            "identifier_name": "CALCA",
+            "type": "Gene",
+            "mesh": "796"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42606,
+            "end": 42611,
+            "name": "P-ERK",
+            "identifier_name": "EIF2AK3",
+            "type": "Gene",
+            "mesh": "9451"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42667,
+            "end": 42671,
+            "name": "PI3K",
+            "identifier_name": "PIK3CG",
+            "type": "Gene",
+            "mesh": "5294"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42700,
+            "end": 42706,
+            "name": "PI-PLC",
+            "identifier_name": "PLCB1",
+            "type": "Gene",
+            "mesh": "23236"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42751,
+            "end": 42754,
+            "name": "PKC",
+            "identifier_name": "PRRT2",
+            "type": "Gene",
+            "mesh": "112476"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42756,
+            "end": 42772,
+            "name": "protein kinase C",
+            "identifier_name": "PRRT2",
+            "type": "Gene",
+            "mesh": "112476"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42774,
+            "end": 42777,
+            "name": "PLD",
+            "identifier_name": "GPLD1",
+            "type": "Gene",
+            "mesh": "2822"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42779,
+            "end": 42794,
+            "name": "phospholipase D",
+            "identifier_name": "GPLD1",
+            "type": "Gene",
+            "mesh": "2822"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42796,
+            "end": 42800,
+            "name": "PTEN",
+            "identifier_name": "PTEN",
+            "type": "Gene",
+            "mesh": "5728"
+        },
+        {
+            "pmid": 22429397,
+            "start": 42802,
+            "end": 42832,
+            "name": "phosphatase and tensin homolog",
+            "identifier_name": "PTEN",
+            "type": "Gene",
+            "mesh": "5728"
+        },
+        {
+            "pmid": 22429397,
+            "start": 43197,
+            "end": 43201,
+            "name": "PI3K",
+            "identifier_name": "PIK3CG",
+            "type": "Gene",
+            "mesh": "5294"
+        },
+        {
+            "pmid": 22429397,
+            "start": 43202,
+            "end": 43205,
+            "name": "AKT",
+            "identifier_name": "AKT1",
+            "type": "Gene",
+            "mesh": "207"
+        },
+        {
+            "pmid": 22429397,
+            "start": 43206,
+            "end": 43210,
+            "name": "mTOR",
+            "identifier_name": "MTOR",
+            "type": "Gene",
+            "mesh": "2475"
+        },
+        {
+            "pmid": 22429397,
+            "start": 43237,
+            "end": 43240,
+            "name": "DAG",
+            "identifier_name": "Diglycerides",
+            "type": "Chemical",
+            "mesh": "MESH:D004075"
+        },
+        {
+            "pmid": 22429397,
+            "start": 43289,
+            "end": 43299,
+            "name": "DAG kinase",
+            "identifier_name": "DGKA",
+            "type": "Gene",
+            "mesh": "1606"
+        },
+        {
+            "pmid": 22429397,
+            "start": 43301,
+            "end": 43305,
+            "name": "DAGK",
+            "identifier_name": "DGKA",
+            "type": "Gene",
+            "mesh": "1606"
+        },
+        {
+            "pmid": 22429397,
+            "start": 43312,
+            "end": 43325,
+            "name": "phosphatidate",
+            "identifier_name": "phosphatidate",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 43402,
+            "end": 43411,
+            "name": "rapamycin",
+            "identifier_name": "Sirolimus",
+            "type": "Chemical",
+            "mesh": "MESH:D020123"
+        },
+        {
+            "pmid": 22429397,
+            "start": 43478,
+            "end": 43491,
+            "name": "phosphatidate",
+            "identifier_name": "phosphatidate",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 43679,
+            "end": 43688,
+            "name": "rapamycin",
+            "identifier_name": "Sirolimus",
+            "type": "Chemical",
+            "mesh": "MESH:D020123"
+        },
+        {
+            "pmid": 22429397,
+            "start": 43719,
+            "end": 43723,
+            "name": "mTOR",
+            "identifier_name": "MTOR",
+            "type": "Gene",
+            "mesh": "2475"
+        },
+        {
+            "pmid": 22429397,
+            "start": 44048,
+            "end": 44051,
+            "name": "MET",
+            "identifier_name": "SLTM",
+            "type": "Gene",
+            "mesh": "79811"
+        },
+        {
+            "pmid": 22429397,
+            "start": 44089,
+            "end": 44091,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 44176,
+            "end": 44182,
+            "name": "cancer",
+            "identifier_name": "Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D009369"
+        },
+        {
+            "pmid": 22429397,
+            "start": 44392,
+            "end": 44395,
+            "name": "BCs",
+            "identifier_name": "BCs",
+            "type": "Disease",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 44423,
+            "end": 44426,
+            "name": "BCs",
+            "identifier_name": "BCs",
+            "type": "Disease",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 44512,
+            "end": 44514,
+            "name": "BC",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 44516,
+            "end": 44529,
+            "name": "breast cancer",
+            "identifier_name": "Breast Neoplasms",
+            "type": "Disease",
+            "mesh": "MESH:D001943"
+        },
+        {
+            "pmid": 22429397,
+            "start": 44609,
+            "end": 44612,
+            "name": "DAG",
+            "identifier_name": "Diglycerides",
+            "type": "Chemical",
+            "mesh": "MESH:D004075"
+        },
+        {
+            "pmid": 22429397,
+            "start": 44614,
+            "end": 44628,
+            "name": "diacylglycerol",
+            "identifier_name": "Diglycerides",
+            "type": "Chemical",
+            "mesh": "MESH:D004075"
+        },
+        {
+            "pmid": 22429397,
+            "start": 44630,
+            "end": 44634,
+            "name": "DMEM",
+            "identifier_name": "DMEM",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 44636,
+            "end": 44670,
+            "name": "Dulbecco's modified Eagle's medium",
+            "identifier_name": "Dulbecco's modified Eagle's medium",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 44712,
+            "end": 44715,
+            "name": "EOC",
+            "identifier_name": "Carcinoma Ovarian Epithelial",
+            "type": "Disease",
+            "mesh": "MESH:D000077216"
+        },
+        {
+            "pmid": 22429397,
+            "start": 44717,
+            "end": 44742,
+            "name": "epithelial ovarian cancer",
+            "identifier_name": "Carcinoma Ovarian Epithelial",
+            "type": "Disease",
+            "mesh": "MESH:D000077216"
+        },
+        {
+            "pmid": 22429397,
+            "start": 44744,
+            "end": 44746,
+            "name": "ER",
+            "identifier_name": "EREG",
+            "type": "Gene",
+            "mesh": "2069"
+        },
+        {
+            "pmid": 22429397,
+            "start": 44748,
+            "end": 44765,
+            "name": "estrogen receptor",
+            "identifier_name": "ESR1",
+            "type": "Gene",
+            "mesh": "2099"
+        },
+        {
+            "pmid": 22429397,
+            "start": 44767,
+            "end": 44769,
+            "name": "1H",
+            "identifier_name": "1H",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 44810,
+            "end": 44814,
+            "name": "HER2",
+            "identifier_name": "ERBB2",
+            "type": "Gene",
+            "mesh": "2064"
+        },
+        {
+            "pmid": 22429397,
+            "start": 44816,
+            "end": 44821,
+            "name": "human",
+            "identifier_name": "human",
+            "type": "Species",
+            "mesh": "9606"
+        },
+        {
+            "pmid": 22429397,
+            "start": 44822,
+            "end": 44856,
+            "name": "epidermal growth factor receptor 2",
+            "identifier_name": "ERBB2",
+            "type": "Gene",
+            "mesh": "2064"
+        },
+        {
+            "pmid": 22429397,
+            "start": 44898,
+            "end": 44901,
+            "name": "MET",
+            "identifier_name": "SLTM",
+            "type": "Gene",
+            "mesh": "79811"
+        },
+        {
+            "pmid": 22429397,
+            "start": 44938,
+            "end": 44944,
+            "name": "MFG-E8",
+            "identifier_name": "MFGE8",
+            "type": "Gene",
+            "mesh": "4240"
+        },
+        {
+            "pmid": 22429397,
+            "start": 44990,
+            "end": 44994,
+            "name": "mTOR",
+            "identifier_name": "MTOR",
+            "type": "Gene",
+            "mesh": "2475"
+        },
+        {
+            "pmid": 22429397,
+            "start": 44996,
+            "end": 45025,
+            "name": "mammalian target of rapamycin",
+            "identifier_name": "MTOR",
+            "type": "Gene",
+            "mesh": "2475"
+        },
+        {
+            "pmid": 22429397,
+            "start": 45060,
+            "end": 45063,
+            "name": "PBS",
+            "identifier_name": "Lead",
+            "type": "Chemical",
+            "mesh": "MESH:D007854"
+        },
+        {
+            "pmid": 22429397,
+            "start": 45065,
+            "end": 45090,
+            "name": "phosphate-buffered saline",
+            "identifier_name": "phosphate-buffered saline",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 45092,
+            "end": 45100,
+            "name": "PBS-EDTA",
+            "identifier_name": "PBS-EDTA",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 45102,
+            "end": 45127,
+            "name": "phosphate-buffered saline",
+            "identifier_name": "phosphate-buffered saline",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 45128,
+            "end": 45159,
+            "name": "ethylenediaminetetraacetic acid",
+            "identifier_name": "Edetic Acid",
+            "type": "Chemical",
+            "mesh": "MESH:D004492"
+        },
+        {
+            "pmid": 22429397,
+            "start": 45215,
+            "end": 45218,
+            "name": "PgR",
+            "identifier_name": "PGR",
+            "type": "Gene",
+            "mesh": "5241"
+        },
+        {
+            "pmid": 22429397,
+            "start": 45220,
+            "end": 45241,
+            "name": "progesterone receptor",
+            "identifier_name": "PGR",
+            "type": "Gene",
+            "mesh": "5241"
+        },
+        {
+            "pmid": 22429397,
+            "start": 45243,
+            "end": 45247,
+            "name": "PI3K",
+            "identifier_name": "PIK3CG",
+            "type": "Gene",
+            "mesh": "5294"
+        },
+        {
+            "pmid": 22429397,
+            "start": 45275,
+            "end": 45281,
+            "name": "PI-PLC",
+            "identifier_name": "PLCB1",
+            "type": "Gene",
+            "mesh": "23236"
+        },
+        {
+            "pmid": 22429397,
+            "start": 45331,
+            "end": 45334,
+            "name": "PKC",
+            "identifier_name": "PRRT2",
+            "type": "Gene",
+            "mesh": "112476"
+        },
+        {
+            "pmid": 22429397,
+            "start": 45336,
+            "end": 45352,
+            "name": "protein kinase C",
+            "identifier_name": "PRRT2",
+            "type": "Gene",
+            "mesh": "112476"
+        },
+        {
+            "pmid": 22429397,
+            "start": 45354,
+            "end": 45357,
+            "name": "PLD",
+            "identifier_name": "GPLD1",
+            "type": "Gene",
+            "mesh": "2822"
+        },
+        {
+            "pmid": 22429397,
+            "start": 45359,
+            "end": 45374,
+            "name": "phospholipase D",
+            "identifier_name": "GPLD1",
+            "type": "Gene",
+            "mesh": "2822"
+        },
+        {
+            "pmid": 22429397,
+            "start": 45400,
+            "end": 45406,
+            "name": "PtdCho",
+            "identifier_name": "PtdCho",
+            "type": "Chemical",
+            "mesh": "-"
+        },
+        {
+            "pmid": 22429397,
+            "start": 45408,
+            "end": 45427,
+            "name": "phosphatidylcholine",
+            "identifier_name": "Phosphatidylcholines",
+            "type": "Chemical",
+            "mesh": "MESH:D010713"
+        },
+        {
+            "pmid": 22429397,
+            "start": 45429,
+            "end": 45432,
+            "name": "SMS",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 45434,
+            "end": 45456,
+            "name": "sphingomyelin synthase",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 45857,
+            "end": 45860,
+            "name": "SMS",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 49931,
+            "end": 49935,
+            "name": "HER2",
+            "identifier_name": "ERBB2",
+            "type": "Gene",
+            "mesh": "2064"
+        },
+        {
+            "pmid": 22429397,
+            "start": 50543,
+            "end": 50565,
+            "name": "Sphingomyelin synthase",
+            "identifier_name": "SMS",
+            "type": "Gene",
+            "mesh": "6611"
+        },
+        {
+            "pmid": 22429397,
+            "start": 51426,
+            "end": 51434,
+            "name": "Vimentin",
+            "identifier_name": "VIM",
+            "type": "Gene",
+            "mesh": "7431"
+        },
+        {
+            "pmid": 22429397,
+            "start": 51550,
+            "end": 51560,
+            "name": "galectin-3",
+            "identifier_name": "LGALS3",
+            "type": "Gene",
+            "mesh": "3958"
+        },
+        {
+            "pmid": 22429397,
+            "start": 51619,
+            "end": 51629,
+            "name": "Galectin-3",
+            "identifier_name": "LGALS3",
+            "type": "Gene",
+            "mesh": "3958"
+        },
+        {
+            "pmid": 22429397,
+            "start": 51702,
+            "end": 51708,
+            "name": "MFG-E8",
+            "identifier_name": "MFGE8",
+            "type": "Gene",
+            "mesh": "4240"
+        },
+        {
+            "pmid": 22429397,
+            "start": 51858,
+            "end": 51864,
+            "name": "MFG-E8",
+            "identifier_name": "MFGE8",
+            "type": "Gene",
+            "mesh": "4240"
+        },
+        {
+            "pmid": 22429397,
+            "start": 51870,
+            "end": 51873,
+            "name": "p63",
+            "identifier_name": "TP63",
+            "type": "Gene",
+            "mesh": "8626"
+        },
+        {
+            "pmid": 22429397,
+            "start": 52154,
+            "end": 52169,
+            "name": "phospholipase D",
+            "identifier_name": "GPLD1",
+            "type": "Gene",
+            "mesh": "2822"
+        },
+        {
+            "pmid": 22429397,
+            "start": 52425,
+            "end": 52428,
+            "name": "AKT",
+            "identifier_name": "AKT1",
+            "type": "Gene",
+            "mesh": "207"
+        },
+        {
+            "pmid": 22429397,
+            "start": 52630,
+            "end": 52640,
+            "name": "galectin-3",
+            "identifier_name": "LGALS3",
+            "type": "Gene",
+            "mesh": "3958"
+        },
+        {
+            "pmid": 22429397,
+            "start": 52810,
+            "end": 52814,
+            "name": "mTOR",
+            "identifier_name": "MTOR",
+            "type": "Gene",
+            "mesh": "2475"
+        },
+        {
+            "pmid": 22429397,
+            "start": 52920,
+            "end": 52936,
+            "name": "protein kinase C",
+            "identifier_name": "PRRT2",
+            "type": "Gene",
+            "mesh": "112476"
+        },
+        {
+            "pmid": 22429397,
+            "start": 52994,
+            "end": 53011,
+            "name": "estrogen receptor",
+            "identifier_name": "ESR1",
+            "type": "Gene",
+            "mesh": "2099"
+        }
+    ],
+    "relations": [
+        {
+            "pmid": 22429397,
+            "relation_type": "Negative_Correlation",
+            "mesh1": "MESH:C046498",
+            "name1": "tricyclodecane-9-yl-xanthogenate",
+            "mesh2": "1000",
+            "name2": "CDH2"
+        },
+        {
+            "pmid": 22429397,
+            "relation_type": "Negative_Correlation",
+            "mesh1": "MESH:C046498",
+            "name1": "tricyclodecane-9-yl-xanthogenate",
+            "mesh2": "6611",
+            "name2": "SMS"
+        },
+        {
+            "pmid": 22429397,
+            "relation_type": "Association",
+            "mesh1": "1447",
+            "name1": "CSN2",
+            "mesh2": "6611",
+            "name2": "SMS"
+        },
+        {
+            "pmid": 22429397,
+            "relation_type": "Association",
+            "mesh1": "3958",
+            "name1": "LGALS3",
+            "mesh2": "6611",
+            "name2": "SMS"
+        },
+        {
+            "pmid": 22429397,
+            "relation_type": "Negative_Correlation",
+            "mesh1": "MESH:C046498",
+            "name1": "tricyclodecane-9-yl-xanthogenate",
+            "mesh2": "3958",
+            "name2": "LGALS3"
+        },
+        {
+            "pmid": 22429397,
+            "relation_type": "Association",
+            "mesh1": "6611",
+            "name1": "SMS",
+            "mesh2": "7431",
+            "name2": "VIM"
+        },
+        {
+            "pmid": 22429397,
+            "relation_type": "Negative_Correlation",
+            "mesh1": "MESH:C004918",
+            "name1": "ethylxanthate",
+            "mesh2": "6611",
+            "name2": "SMS"
+        },
+        {
+            "pmid": 22429397,
+            "relation_type": "Negative_Correlation",
+            "mesh1": "MESH:C046498",
+            "name1": "tricyclodecane-9-yl-xanthogenate",
+            "mesh2": "1447",
+            "name2": "CSN2"
+        },
+        {
+            "pmid": 22429397,
+            "relation_type": "Negative_Correlation",
+            "mesh1": "MESH:C046498",
+            "name1": "tricyclodecane-9-yl-xanthogenate",
+            "mesh2": "7431",
+            "name2": "VIM"
+        },
+        {
+            "pmid": 22429397,
+            "relation_type": "Association",
+            "mesh1": "1000",
+            "name1": "CDH2",
+            "mesh2": "6611",
+            "name2": "SMS"
+        }
+    ],
+    "identifiers": {
+        "MESH:D001943": "Breast Neoplasms",
+        "MESH:D009369": "Neoplasms",
+        "MESH:D009362": "Neoplasm Metastasis",
+        "79811": "SLTM",
+        "MESH:C011246": "essential 303 forte",
+        "MESH:C046498": "tricyclodecane-9-yl-xanthogenate",
+        "MESH:C004918": "ethylxanthate",
+        "6611": "SMS",
+        "CVCL:0062": "0062",
+        "9606": "human",
+        "CVCL:0031": "0031",
+        "CVCL:0033": "0033",
+        "CVCL:0598": "0598",
+        "MESH:D008055": "Lipids",
+        "MESH:C095489": "4 4-difluoro-4-bora-3a 4a-diaza-s-indacene",
+        "2822": "GPLD1",
+        "7431": "VIM",
+        "1000": "CDH2",
+        "3958": "LGALS3",
+        "1447": "CSN2",
+        "MESH:D010713": "Phosphatidylcholines",
+        "-": "PtdCho",
+        "MESH:D000077216": "Carcinoma Ovarian Epithelial",
+        "MESH:D010767": "Phosphorylcholine",
+        "MESH:D004075": "Diglycerides",
+        "2064": "ERBB2",
+        "1956": "EGFR",
+        "CVCL:0417": "0417",
+        "MESH:D002518": "Ceramides",
+        "4240": "MFGE8",
+        "2069": "EREG",
+        "5241": "PGR",
+        "1396": "Bacillus cereus",
+        "MESH:D010590": "Phalloidine",
+        "MESH:C527198": "4 4-difluoro-1 3 5 7 8-pentamethyl-4-bora-3a 4a-diaza-s-indacene",
+        "10090": "mouse",
+        "11461": "Actb",
+        "22352": "Vim",
+        "13866": "Erbb2",
+        "12550": "Cdh1",
+        "12558": "Cdh2",
+        "17304": "Mfge8",
+        "16854": "Lgals3",
+        "12991": "Csn2",
+        "MESH:C003043": "paraform",
+        "MESH:D017830": "Octoxynol",
+        "MESH:C007293": "DAPI",
+        "MESH:D010718": "Phosphatidylserines",
+        "308": "ANXA5",
+        "MESH:D001710": "Biotin",
+        "MESH:C000711379": "alexa fluor 488",
+        "MESH:D014343": "Trypan Blue",
+        "MESH:D007854": "Lead",
+        "MESH:D017666": "Deuterium Oxide",
+        "MESH:D002784": "Cholesterol",
+        "MESH:D002788": "Cholesterol Esters",
+        "MESH:D014280": "Triglycerides",
+        "MESH:C015092": "cupric acetate",
+        "MESH:C030242": "phosphoric acid",
+        "MESH:D005840": "Gentian Violet",
+        "CVCL:GR91": "GR91",
+        "MESH:C043572": "1 3 4 5 6-pentachlorocyclohexene-1-oxide",
+        "MESH:D064420": "Drug-Related Side Effects and Adverse Reactions",
+        "CVCL:B2B5": "B2B5",
+        "MESH:D002563": "Cerium",
+        "MESH:D010743": "Phospholipids",
+        "MESH:D063646": "Carcinogenesis",
+        "999": "CDH1",
+        "2597": "GAPDH",
+        "MESH:D013109": "Sphingomyelins",
+        "MESH:D012493": "Samarium",
+        "907": "CCT",
+        "MESH:D003566": "Cytidine Diphosphate Choline",
+        "MESH:C034482": "CAV protocol",
+        "MESH:D002794": "Choline",
+        "23236": "PLCB1",
+        "5319": "PLA2G1B",
+        "MESH:D012516": "Osteosarcoma",
+        "MESH:D002945": "Cisplatin",
+        "8626": "TP63",
+        "MESH:D017239": "Paclitaxel",
+        "207": "AKT1",
+        "2475": "MTOR",
+        "5294": "PIK3CG",
+        "112476": "PRRT2",
+        "MESH:D015544": "Inositol 1 4 5-Trisphosphate",
+        "MESH:D011478": "Protactinium",
+        "MESH:D019269": "Phosphatidylinositol 4 5-Diphosphate",
+        "MESH:C060974": "phosphatidylinositol 3 4 5-triphosphate",
+        "MESH:D020123": "Sirolimus",
+        "2185": "PTK2B",
+        "1606": "DGKA",
+        "5068": "REG3A",
+        "796": "CALCA",
+        "9451": "EIF2AK3",
+        "5728": "PTEN",
+        "2099": "ESR1",
+        "MESH:D004492": "Edetic Acid"
+    },
+    "metadata": null
+}

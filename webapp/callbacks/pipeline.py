@@ -1,14 +1,14 @@
 import base64
-import pickle
 import threading
 from queue import Queue
 
 from dash import Input, Output, State, no_update
 
+from netmedex.cli_utils import load_pmids
 from netmedex.exceptions import EmptyInput, NoArticles, UnsuccessfulRequest
-from netmedex.network_core import NetworkBuilder
-from netmedex.pubtator_core import PubTatorAPI
-from netmedex.pubtator_utils import load_pmids
+from netmedex.graph import PubTatorGraphBuilder, save_graph
+from netmedex.pubtator import PubTatorAPI
+from netmedex.pubtator_parser import PubTatorIO
 from netmedex.utils_threading import run_thread_with_error_notification
 from webapp.utils import generate_session_id, get_data_savepath, visibility
 
@@ -88,24 +88,24 @@ def callbacks(app):
                 decoded_content = base64.b64decode(content_string).decode("utf-8")
                 decoded_content = decoded_content.replace("\n", ",")
                 pmid_list = load_pmids(decoded_content, load_from="string")
-                input_type = "pmids"
 
             queue = Queue()
             threading.excepthook = custom_hook
-            pubtator_api = PubTatorAPI(
-                query=query,
-                pmid_list=pmid_list,
-                savepath=savepath["pubtator"],
-                search_type=input_type,
-                sort=sort_by,
-                max_articles=max_articles,
-                full_text=full_text,
-                use_mesh=use_mesh,
-                debug=False,
-                queue=queue,
-            )
+
+            def run_pubtator_and_save():
+                result = PubTatorAPI(
+                    query=query,
+                    pmid_list=pmid_list,
+                    sort=sort_by,
+                    max_articles=max_articles,
+                    full_text=full_text,
+                    queue=queue,
+                ).run()
+                with open(savepath["pubtator"], "w") as f:
+                    f.write(result.to_pubtator_str(annotation_use_identifier_name=use_mesh))
+
             job = threading.Thread(
-                target=run_thread_with_error_notification(pubtator_api.run, queue),
+                target=run_thread_with_error_notification(run_pubtator_and_save, queue),
             )
             set_progress((0, 1, "", "(Step 1/2) Finding articles..."))
 
@@ -119,6 +119,8 @@ def callbacks(app):
                     status_msg = "(Step 1/2) Finding articles..."
                 elif status == "get":
                     status_msg = "(Step 2/2) Retrieving articles..."
+                else:
+                    status_msg = ""
                 progress_bar_msg = f"{n}/{total}"
                 set_progress((int(n), int(total), progress_bar_msg, status_msg))
 
@@ -143,24 +145,22 @@ def callbacks(app):
                 f.write(decoded_content)
 
         set_progress((0, 1, "0/1", "Generating network..."))
-        G = NetworkBuilder(
-            pubtator_filepath=savepath["pubtator"],
-            savepath=savepath["html"],
-            node_type=node_type,
-            output_filetype="html",
+        graph_builder = PubTatorGraphBuilder(node_type=node_type)
+        collection = PubTatorIO.parse(savepath["pubtator"])
+        graph_builder.add_collection(collection)
+        G = graph_builder.build(
+            pmid_weights=None,
             weighting_method=weighting_method,
             edge_weight_cutoff=0,
-            pmid_weight_filepath=None,
             community=False,
             max_edges=0,
-            debug=False,
-        ).run()
+        )
 
         # Keeping track of the graph's metadata
         G.graph["is_community"] = True if community else False
         G.graph["max_edges"] = max_edges
 
-        with open(savepath["graph"], "wb") as f:
-            pickle.dump(G, f)
+        save_graph(G, savepath["html"], "html")
+        save_graph(G, savepath["graph"], "pickle")
 
         return (visibility.visible, weight, True, G.graph["pmid_title"], savepath)

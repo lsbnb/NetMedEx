@@ -8,8 +8,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-TEMPDIR = TemporaryDirectory()
-SAVEDIR = Path(TEMPDIR.name) if os.getenv("SAVEDIR") is None else Path(os.getenv("SAVEDIR"))
+TEMPDIR = TemporaryDirectory(dir=Path(__file__).parents[1], prefix="webapp-")
+SAVEDIR = Path(TEMPDIR.name) if os.getenv("SAVEDIR") is None else Path(os.getenv("SAVEDIR", ""))
 MAX_ARTICLES = 1000
 DATA_FILENAME = {
     "graph": "G.pkl",

@@ -49,7 +49,7 @@ def main():
             Output("post-js-scripts", "children"),
             Input("post-js-scripts", "id"),
         )
-        app.run(host=os.getenv("HOST", "127.0.0.1"), port=os.getenv("PORT", 8050))
+        app.run(host=os.getenv("HOST", "127.0.0.1"), port=os.getenv("PORT", "8050"))
     finally:
         clean_up_files()
 

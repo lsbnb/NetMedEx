@@ -6,8 +6,8 @@ from unittest import mock
 import pytest
 
 from netmedex.cli import main
-from netmedex.network_core import NetworkBuilder
-from netmedex.pubtator_core import PubTatorAPI
+from netmedex.graph import PubTatorGraphBuilder
+from netmedex.pubtator_parser import PubTatorIO
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -53,15 +53,24 @@ def network_cli_args(paths):
     "query,error_msg",
     [
         ("", "Your search cannot be empty."),
-        ("qtihasiogha", "No articles found by PubTator3 API."),
-        ("covid19", "Possibly too many articles. Please try more specific queries."),
+        ("qtihasioghasaoi", "No articles found by PubTator3 API."),
+        # ("chuan mu tong", "Possibly too many articles. Please try more specific queries."),  # Disable this because requesting by `cite` isn't used anymore
     ],
 )
 def test_api_pubtator3_api_error(query, error_msg, tempdir, monkeypatch: pytest.MonkeyPatch):
-    args = ["netmedex", "search", "-q", query, "-o", str(tempdir / "test.pubtator")]
+    args = [
+        "netmedex",
+        "search",
+        "-q",
+        query,
+        "-o",
+        str(tempdir / "test.pubtator"),
+        "--max_articles",
+        "10",
+    ]
     monkeypatch.setattr("sys.argv", args)
     with (
-        mock.patch("netmedex.pubtator_core.FALLBACK_SEARCH", False),
+        mock.patch("netmedex.pubtator.FALLBACK_SEARCH", False),
         mock.patch("netmedex.cli.logger") as mock_logger,
     ):
         main()
@@ -73,7 +82,7 @@ def test_api_pubtator3_api_fallback_search(tempdir, monkeypatch: pytest.MonkeyPa
         "netmedex",
         "search",
         "-q",
-        "covid19",
+        "COVID-19 AND PON1",
         "-o",
         str(tempdir / "test.pubtator"),
         "--max_articles",
@@ -104,12 +113,9 @@ def test_api_pubtator3_api_fallback_search(tempdir, monkeypatch: pytest.MonkeyPa
                 "query": "foo",
                 "pmid_list": None,
                 "savepath": "bar",
-                "search_type": "query",
                 "sort": "date",
                 "max_articles": 100,
                 "full_text": True,
-                "use_mesh": False,
-                "debug": False,
                 "queue": None,
             },
         ),
@@ -131,12 +137,9 @@ def test_api_pubtator3_api_fallback_search(tempdir, monkeypatch: pytest.MonkeyPa
                 "query": "foo",
                 "pmid_list": None,
                 "savepath": "bar",
-                "search_type": "query",
                 "sort": "score",
                 "max_articles": 100,
                 "full_text": False,
-                "use_mesh": True,
-                "debug": False,
                 "queue": None,
             },
         ),
@@ -145,13 +148,10 @@ def test_api_pubtator3_api_fallback_search(tempdir, monkeypatch: pytest.MonkeyPa
             {
                 "query": "foo",
                 "pmid_list": None,
-                "savepath": "query_foo.pubtator",
-                "search_type": "query",
+                "savepath": "./query_foo.pubtator",
                 "sort": "date",
                 "max_articles": 1000,
                 "full_text": False,
-                "use_mesh": False,
-                "debug": False,
                 "queue": None,
             },
         ),
@@ -161,12 +161,9 @@ def test_api_pubtator3_api_fallback_search(tempdir, monkeypatch: pytest.MonkeyPa
                 "query": None,
                 "pmid_list": ["123", "456"],
                 "savepath": "bar",
-                "search_type": "pmids",
                 "sort": "date",
                 "max_articles": 1000,
                 "full_text": False,
-                "use_mesh": False,
-                "debug": False,
                 "queue": None,
             },
         ),
@@ -175,13 +172,10 @@ def test_api_pubtator3_api_fallback_search(tempdir, monkeypatch: pytest.MonkeyPa
             {
                 "query": None,
                 "pmid_list": ["123", "456"],
-                "savepath": "pmids_123_total_2.pubtator",
-                "search_type": "pmids",
+                "savepath": "./pmids_123_total_2.pubtator",
                 "sort": "date",
                 "max_articles": 1000,
                 "full_text": True,
-                "use_mesh": False,
-                "debug": False,
                 "queue": None,
             },
         ),
@@ -190,20 +184,17 @@ def test_api_pubtator3_api_fallback_search(tempdir, monkeypatch: pytest.MonkeyPa
                 "netmedex",
                 "search",
                 "-f",
-                "./tests/test_data/pmid_list.txt",
+                str(Path(__file__).parent / "test_data/pmid_list.txt"),
                 "--max_articles",
                 "10000",
             ],
             {
                 "query": None,
                 "pmid_list": ["34205807", "34895069", "35883435"],
-                "savepath": "pmids_34205807_total_3.pubtator",
-                "search_type": "pmids",
+                "savepath": "./pmids_34205807_total_3.pubtator",
                 "sort": "date",
                 "max_articles": 10000,
                 "full_text": False,
-                "use_mesh": False,
-                "debug": False,
                 "queue": None,
             },
         ),
@@ -211,20 +202,21 @@ def test_api_pubtator3_api_fallback_search(tempdir, monkeypatch: pytest.MonkeyPa
 )
 def test_pubtator_api_main(args, expected, monkeypatch: pytest.MonkeyPatch):
     monkeypatch.setattr("sys.argv", args)
-    with mock.patch("netmedex.pubtator_core.PubTatorAPI") as mock_pipeline:
+    with (
+        mock.patch("netmedex.pubtator.PubTatorAPI") as mock_pipeline,
+        mock.patch("netmedex.cli.open", mock.mock_open()) as mocked_open,
+    ):
         main()
         mock_pipeline.assert_called_once_with(
             query=expected["query"],
             pmid_list=expected["pmid_list"],
-            savepath=expected["savepath"],
-            search_type=expected["search_type"],
             sort=expected["sort"],
+            request_format="biocjson",
             max_articles=expected["max_articles"],
-            use_mesh=expected["use_mesh"],
             full_text=expected["full_text"],
-            debug=expected["debug"],
             queue=expected["queue"],
         )
+        mocked_open.assert_called_once_with(expected["savepath"], "w")
 
 
 @pytest.mark.parametrize(
@@ -256,56 +248,6 @@ def test_pubtator3_api_exit(args, monkeypatch: pytest.MonkeyPatch):
             mock_logger.info.assert_called_once()
 
 
-def test_write_output_none():
-    open_mock = mock.mock_open()
-    args = {
-        "query": None,
-        "pmid_list": ["123", "456"],
-        "savepath": None,
-        "search_type": "pmids",
-        "sort": "date",
-        "max_articles": 1000,
-        "full_text": True,
-        "use_mesh": False,
-        "debug": False,
-        "queue": None,
-    }
-    with mock.patch("builtins.open", create=True):
-        pubtator3_api = PubTatorAPI(**args)
-        pubtator3_api._write_results("foo")
-        open_mock.assert_not_called()
-
-
-@pytest.mark.parametrize(
-    "output,savepath,use_mesh,expected",
-    [("foo", "bar.pubtator", False, "foo"), ("foo", "bar.pubtator", True, "foo")],
-)
-def test_write_output(output, savepath, use_mesh, expected):
-    open_mock = mock.mock_open()
-    args = {
-        "query": None,
-        "pmid_list": ["123", "456"],
-        "savepath": savepath,
-        "search_type": "pmids",
-        "sort": "date",
-        "max_articles": 1000,
-        "full_text": True,
-        "use_mesh": use_mesh,
-        "debug": False,
-        "queue": None,
-    }
-    with (
-        mock.patch("builtins.open", open_mock, create=True),
-        mock.patch("netmedex.pubtator_core.logger") as mock_logger,
-    ):
-        pubtator3_api = PubTatorAPI(**args)
-        pubtator3_api._write_results(output)
-        if use_mesh:
-            open_mock.return_value.writelines.assert_any_call(["##USE-MESH-VOCABULARY", "\n"])
-        open_mock.return_value.writelines.assert_any_call(output)
-        mock_logger.info.assert_called_with(f"Save to {savepath}")
-
-
 @pytest.mark.parametrize(
     "args",
     [
@@ -319,5 +261,14 @@ def test_write_output(output, savepath, use_mesh, expected):
     ],
 )
 def test_network_cli(args, paths, tempdir, network_cli_args):
-    network_builder = NetworkBuilder(**network_cli_args[args])
-    network_builder.run()
+    input_args = network_cli_args[args]
+    network_builder = PubTatorGraphBuilder(node_type=input_args["node_type"])
+    collection = PubTatorIO.parse(input_args["pubtator_filepath"])
+    network_builder.add_collection(collection)
+    network_builder.build(
+        pmid_weights=input_args["pmid_weight_filepath"],
+        weighting_method=input_args["weighting_method"],
+        edge_weight_cutoff=input_args["edge_weight_cutoff"],
+        community=input_args["community"],
+        max_edges=input_args["max_edges"],
+    )

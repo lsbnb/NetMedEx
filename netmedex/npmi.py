@@ -1,5 +1,8 @@
 import math
 
+MIN_EDGE_WIDTH = 0
+MAX_EDGE_WIDTH = 20
+
 
 def normalized_pointwise_mutual_information(
     n_x: float,
@@ -7,7 +10,7 @@ def normalized_pointwise_mutual_information(
     n_xy: float,
     N: int,
     n_threshold: int,
-    below_threshold_default: float,
+    below_threshold_default: float = MIN_EDGE_WIDTH / MAX_EDGE_WIDTH,
 ):
     if n_xy == 0:
         npmi = -1

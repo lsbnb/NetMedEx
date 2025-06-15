@@ -16,90 +16,99 @@ def main():
 
 
 def pubtator_entry(args):
+    from netmedex.cli_utils import load_pmids
     from netmedex.exceptions import EmptyInput, NoArticles, UnsuccessfulRequest
-    from netmedex.pubtator_core import PubTatorAPI
-    from netmedex.pubtator_utils import create_savepath, load_pmids
+    from netmedex.pubtator import PubTatorAPI
 
+    # Logging
     debug = args.debug
-    logfile_name = "search" if debug else None
+    logfile_name = "pubtator-api" if debug else None
     config_logger(debug, logfile_name)
 
+    # Input
     num_inputs = sum(arg is not None for arg in [args.pmids, args.pmid_file, args.query])
     if num_inputs != 1:
         logger.info("Please specify only one of the following: --query, --pmids, --pmid_file")
         sys.exit()
 
+    # Config
     query = None
     pmid_list = None
     if args.query is not None:
-        search_type = "query"
         query = args.query
-    elif args.pmids is not None:
-        search_type = "pmids"
-        pmid_list = load_pmids(args.pmids, load_from="string")
-        logger.info(f"Find {len(pmid_list)} PMIDs")
-    elif args.pmid_file is not None:
-        search_type = "pmids"
-        logger.info(f"Load PMIDs from: {args.pmid_file}")
-        pmid_list = load_pmids(args.pmid_file, load_from="file")
-        logger.info(f"Find {len(pmid_list)} PMIDs")
+        suffix = query.replace(" ", "_").replace('"', "")
+        savepath = args.output if args.output is not None else f"./query_{suffix}.pubtator"
+    else:
+        if args.pmids is not None:
+            pmid_list = load_pmids(args.pmids, load_from="string")
+        elif args.pmid_file is not None:
+            logger.info(f"Load PMIDs from: {args.pmid_file}")
+            pmid_list = load_pmids(args.pmid_file, load_from="file")
+        logger.info(f"Found {len(pmid_list)} PMIDs")
+        suffix = f"{pmid_list[0]}_total_{len(pmid_list)}" if pmid_list else ""
+        savepath = args.output if args.output is not None else f"./pmids_{suffix}.pubtator"
 
-    if search_type == "query":
-        suffix = query.replace(" ", "_")
-    if search_type == "pmids":
-        if pmid_list:
-            suffix = f"{pmid_list[0]}_total_{len(pmid_list)}"
-        else:
-            suffix = ""
-    savepath = create_savepath(args.output, type=search_type, suffix=suffix)
+    # Always use "biocjson" format
+    request_format = "biocjson"
 
-    pubtator_api = PubTatorAPI(
+    # Request articles
+    api = PubTatorAPI(
         query=query,
         pmid_list=pmid_list,
-        savepath=str(savepath),
-        search_type=search_type,
         sort=args.sort,
+        request_format=request_format,
         max_articles=args.max_articles,
         full_text=args.full_text,
-        use_mesh=args.use_mesh,
-        debug=args.debug,
         queue=None,
     )
 
     try:
-        pubtator_api.run()
+        collection = api.run()
+        with open(savepath, "w") as f:
+            f.write(collection.to_pubtator_str(annotation_use_identifier_name=args.use_mesh))
+        logger.info(f"Save PubTator file to {savepath}")
     except (NoArticles, EmptyInput, UnsuccessfulRequest) as e:
         logger.error(str(e))
 
 
 def network_entry(args):
-    from netmedex.network_core import NetworkBuilder
+    from netmedex.graph import PubTatorGraphBuilder, save_graph
+    from netmedex.pubtator_parser import PubTatorIO
 
+    # Logging
     debug = args.debug
-    logfile_name = "network" if debug else None
+    logfile_name = "graph" if debug else None
     config_logger(debug, logfile_name)
 
+    # Input
     pubtator_filepath = Path(args.input)
+    if not pubtator_filepath.exists():
+        logger.error(f"PubTator file not found: {pubtator_filepath}")
+        sys.exit()
+
+    # Output
     if args.output is None:
         savepath = pubtator_filepath.with_suffix(f".{args.format}")
     else:
         savepath = Path(args.output)
         savepath.parent.mkdir(parents=True, exist_ok=True)
 
-    network_builder = NetworkBuilder(
-        pubtator_filepath=str(pubtator_filepath),
-        savepath=str(savepath),
-        node_type=args.node_type,
-        output_filetype=args.format,
+    # Parse input PubTator file
+    collection = PubTatorIO.parse(pubtator_filepath)
+
+    # Graph
+    graph_builder = PubTatorGraphBuilder(node_type=args.node_type)
+    graph_builder.add_collection(collection)
+    G = graph_builder.build(
+        pmid_weights=args.pmid_weight,
         weighting_method=args.weighting_method,
         edge_weight_cutoff=args.cut_weight,
-        pmid_weight_filepath=args.pmid_weight,
-        max_edges=args.max_edges,
         community=args.community,
-        debug=args.debug,
+        max_edges=args.max_edges,
     )
 
-    network_builder.run()
+    # Save graph
+    save_graph(G, savepath, output_filetype=args.format)
 
 
 def webapp_entry(args):
@@ -218,7 +227,7 @@ def get_network_parser():
     parser.add_argument(
         "-f",
         "--format",
-        choices=["xgmml", "html", "json"],
+        choices=["xgmml", "html", "json", "pickle"],
         default="html",
         help="Output format (default: html)",
     )

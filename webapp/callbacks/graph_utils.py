@@ -2,7 +2,7 @@ from typing import Literal
 
 import networkx as nx
 
-from netmedex.network_core import NetworkBuilder
+from netmedex.graph import PubTatorGraphBuilder, load_graph
 
 
 def filter_node(G: nx.Graph, node_degree_threshold: int):
@@ -12,38 +12,24 @@ def filter_node(G: nx.Graph, node_degree_threshold: int):
 
 
 def rebuild_graph(
-    node_degree,
-    cut_weight,
+    node_degree: int,
+    cut_weight: int | float,
     format: Literal["xgmml", "html"],
-    G=None,
-    with_layout=False,
-    graph_path=None,
+    graph_path: str,
+    G: nx.Graph | None = None,
+    with_layout: bool = False,
 ):
-    if G is None:
-        G = NetworkBuilder.load_graph(graph_path)
+    graph = load_graph(graph_path) if G is None else G
 
-    network_builder = NetworkBuilder(
-        pubtator_filepath="",
-        savepath=None,
-        node_type="",
-        output_filetype="",
-        weighting_method="",
-        edge_weight_cutoff=cut_weight,
-        pmid_weight_filepath=None,
-        community=G.graph.get("is_community", False),
-        max_edges=G.graph.get("max_edges", 0),
-        debug=False,
-    )
-
-    network_builder.remove_edges_by_weight(G)
-    network_builder.remove_edges_by_rank(G)
-    network_builder.remove_isolated_nodes(G)
-    filter_node(G, node_degree)
+    PubTatorGraphBuilder._remove_edges_by_weight(graph, edge_weight_cutoff=cut_weight)
+    PubTatorGraphBuilder._remove_edges_by_rank(graph, graph.graph.get("max_edges", 0))
+    PubTatorGraphBuilder._remove_isolated_nodes(graph)
+    filter_node(graph, node_degree)
 
     if with_layout:
-        network_builder.set_network_layout(G)
+        PubTatorGraphBuilder._set_network_layout(graph)
 
-    if G.graph.get("is_community", False) and format == "html":
-        network_builder.set_network_communities(G)
+    if graph.graph.get("is_community", False) and format == "html":
+        PubTatorGraphBuilder._set_network_communities(graph)
 
-    return G
+    return graph

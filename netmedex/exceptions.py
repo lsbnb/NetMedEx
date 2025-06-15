@@ -17,3 +17,10 @@ class UnsuccessfulRequest(Exception):
 
     def __init__(self, msg="Unsuccessful request to PubTator3 API."):
         super().__init__(msg)
+
+
+class RetryableError(Exception):
+    """A retryable error occured when requesting PubTator3 API."""
+
+    def __init__(self, msg="A retryable error occured when requesting PubTator3 API."):
+        super().__init__(msg)

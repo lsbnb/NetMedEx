@@ -1,415 +1,142 @@
-import logging
-import re
-from collections import defaultdict
-from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
-from typing import Literal
+from io import TextIOBase
+from pathlib import Path
 
-from netmedex.stemmers import s_stemmer
-from netmedex.utils import generate_uuid
+from netmedex.pubtator_data import (
+    PubTatorAnnotation,
+    PubTatorArticle,
+    PubTatorCollection,
+    PubTatorLine,
+    PubTatorRelation,
+)
 
+# Custom metadata header
 HEADER_SYMBOL = "##"
-MUTATION_PATTERNS = {
-    "tmvar": re.compile(r"(tmVar:[^;]+)"),
-    "hgvs": re.compile(r"(HGVS:[^;]+)"),
-    "rs": re.compile(r"(RS#:[^;]+)"),
-    "variantgroup": re.compile(r"(VariantGroup:[^;]+)"),
-    "gene": re.compile(r"(CorrespondingGene:[^;]+)"),
-    "species": re.compile(r"(CorrespondingSpecies:[^;]+)"),
-    "ca": re.compile(r"(CA#:[^;]+)"),
-}
-
-logger = logging.getLogger(__name__)
 
 
-@dataclass
-class PubTatorNodeData:
-    id: str
-    mesh: str
-    type: str
-    name: str | defaultdict[str, int]
-    pmids: set[str]
+class PubTatorIO:
+    """Parse a PubTator file.
 
-
-@dataclass
-class PubTatorEdgeData:
-    id: str
-    pmid: str
-    relation: str | None = None
-
-
-@dataclass
-class PubTatorAnnotation:
-    pmid: str
-    start: str
-    end: str
-    name: str
-    type: str
-    mesh: str
-
-
-@dataclass
-class PubTatorRelation:
-    pmid: str
-    relation: str
-    mesh1: str
-    mesh2: str
-
-
-class PubTatorLine:
-    use_mesh = False
-
-    def __init__(self, line: str):
-        self.values: list[str] = [value.strip() for value in line.split("\t")]
-        self.type: str = self.assign_line_type(self.values)
-        self._data: PubTatorAnnotation | PubTatorRelation | None = None
+    Extra headers added by NetMedEx is also parsed.
+    """
 
     @staticmethod
-    def assign_line_type(values: Sequence):
-        if len(values) == 4:
-            return "relation"
-        elif len(values) == 6:
-            return "annotation"
-        else:
-            return "unknown"
+    def parse(filepath: str | Path) -> PubTatorCollection:
+        articles: list[PubTatorArticle] = []
+        with open(filepath) as stream:
+            result = PubTatorIO._parse_header(stream)
+            if (non_header_line := result.non_header_line) is not None:
+                for article in PubTatorIterator(stream, non_header_line):
+                    if article is None:
+                        break
+                    articles.append(article)
 
-    @property
-    def data(self):
-        if self._data is None:
-            self._data = self.parse_line()
-        return self._data
-
-    def parse_line(self):
-        if self.type == "annotation":
-            data = PubTatorAnnotation(*self.values)
-        elif self.type == "relation":
-            data = PubTatorRelation(*self.values)
-        else:
-            data = None
-        return data
-
-    def normalize_name(self):
-        self.data.name = s_stemmer(self.data.name.lower())
-
-    def parse_mesh(self, mesh_map: Mapping[str, str]):
-        def convert_mesh(mesh: str, type_: str):
-            converted = f"{type_}_{mesh}"
-            if mesh not in mesh_map:
-                mesh_map[mesh] = converted
-            return converted
-
-        anno_type = self.data.type
-        mesh = self.data.mesh
-
-        if not self.use_mesh:
-            self.normalize_name()
-
-        if anno_type in ("DNAMutation", "ProteinMutation", "SNP"):
-            # Add mutation mesh for solving relation mesh terms
-            mesh_map[mesh] = mesh
-            result = [{"key": mesh, "mesh": mesh}]
-        elif anno_type == "Gene":
-            mesh_list = mesh.split(";")
-            result = [{"key": convert_mesh(mesh, "gene"), "mesh": mesh} for mesh in mesh_list]
-        elif anno_type == "Species":
-            result = [{"key": convert_mesh(mesh, "species"), "mesh": mesh}]
-        else:
-            result = [{"key": mesh, "mesh": mesh}]
-
-        return result
-
-
-@dataclass
-class PubTatorResult:
-    node_dict: dict[str, PubTatorNodeData]
-    edge_dict: dict[str, list[PubTatorEdgeData]]
-    non_isolated_nodes: set[str]
-    num_pmids: int
-    pmid_title_map: dict[str, str]
-
-
-class PubTatorParser:
-    def __init__(
-        self,
-        pubtator_filepath: str,
-        node_type: Literal["all", "mesh", "relation"],
-    ):
-        self.pubtator_file = pubtator_filepath
-        self.node_type = node_type
-        self._mesh_only: bool = True if node_type in ("mesh", "relation") else False
-        self.num_pmids: int = 0
-        self.mesh_map: dict[str, str] = {}
-        self.pmid_title_map: dict[str, str] = {}
-        self.node_dict: dict[str, PubTatorNodeData] = {}
-        self.edge_dict: defaultdict[str, list[PubTatorEdgeData]] = defaultdict(list)
-        self.non_isolated_nodes: set[str] = set()
-        self._mutation_mesh: dict[str, dict[str, str]] = {}
-
-    def parse(self):
-        pmid = -1
-        last_pmid = -1
-        node_dict_each: dict[str, PubTatorNodeData] = {}
-
-        self._parse_header(self.pubtator_file)
-        with open(self.pubtator_file) as f:
-            for line in f.readlines():
-                if self._is_title(line):
-                    pmid = self._parse_title(line)
-                    self.num_pmids += 1
-                    continue
-                if self.node_type == "relation":
-                    if pmid != last_pmid:
-                        last_pmid = pmid
-                        self._mutation_mesh = {}
-                    parsed_line = PubTatorLine(line)
-                    self._parse_line_relation(parsed_line)
-                else:
-                    if pmid != last_pmid:
-                        if last_pmid != -1:
-                            self._create_complete_graph(node_dict_each, last_pmid)
-                        last_pmid = pmid
-                        node_dict_each = {}
-                    parsed_line = PubTatorLine(line)
-                    if parsed_line.type == "annotation":
-                        self._add_node(parsed_line, node_dict_each)
-            self._create_complete_graph(node_dict_each, pmid)
-        self._determine_mesh_term_labels()
-        self._get_non_isolated_nodes()
-
-        return PubTatorResult(
-            node_dict=self.node_dict,
-            edge_dict=dict(self.edge_dict),
-            non_isolated_nodes=self.non_isolated_nodes,
-            num_pmids=self.num_pmids,
-            pmid_title_map=self.pmid_title_map,
-        )
-
-    def _parse_line_relation(self, line: PubTatorLine):
-        if line.type == "annotation":
-            self._add_node(line, {})
-        elif line.type == "relation":
-            self._create_edges_for_relations(line.data)
-
-    def _add_node(
-        self,
-        line: PubTatorLine,
-        node_dict_each: dict[str, PubTatorNodeData],
-    ):
-        data = line.data
-        if data.mesh in ("-", ""):
-            if self._mesh_only:
-                return
-            # By Text
-            line.normalize_name()
-
-            name = data.name
-            if not self._node_id_registered(line, name):
-                self.node_dict[name] = PubTatorNodeData(
-                    id=generate_uuid(), mesh=data.mesh, type=data.type, name=name, pmids=set()
-                )
-            node_dict_each.setdefault(name, self.node_dict[data.name])
-            self.node_dict[name].pmids.add(data.pmid)
-        else:
-            # By MeSH
-            # TODO: better way to deal with unseen MeSH types (e.g. Chromosome)
-            if data.type == "Chromosome":
-                return
-
-            mesh_list = line.parse_mesh(self.mesh_map)
-
-            for mesh in mesh_list:
-                node_id = mesh["key"]
-                if not self._node_id_registered(line, node_id):
-                    self.node_dict[node_id] = PubTatorNodeData(
-                        id=generate_uuid(),
-                        mesh=mesh["mesh"],
-                        type=data.type,
-                        name=defaultdict(int),
-                        pmids=set(),
-                    )
-                node_dict_each.setdefault(node_id, self.node_dict[node_id])
-                self.node_dict[node_id].name[data.name] += 1
-                self.node_dict[node_id].pmids.add(data.pmid)
-
-    def _create_edges_for_relations(self, data: PubTatorRelation):
-        mesh_1 = self.mesh_map.get(data.mesh1, data.mesh1)
-        mesh_2 = self.mesh_map.get(data.mesh2, data.mesh2)
-
-        # Match Variant mesh terms
-        if not self.node_dict.get(mesh_1, False):
-            mesh_1 = self._match_mutation(data.mesh1)
-            if not mesh_1:
-                logger.warning(f"[Error] PMID: {data.pmid} | Unable to parse {data.mesh1}")
-        if not self.node_dict.get(mesh_2, False):
-            mesh_2 = self._match_mutation(data.mesh2)
-            if not mesh_2:
-                logger.warning(f"[Error] PMID: {data.pmid} | Unable to parse {data.mesh2}")
-
-        self.edge_dict[(mesh_1, mesh_2)].append(
-            PubTatorEdgeData(id=generate_uuid(), pmid=data.pmid, relation=data.relation)
-        )
-
-    def _match_mutation(self, mutation_mesh: str):
-        if not self._mutation_mesh:
-            self._build_mutation_mesh()
-        match_data = self._parse_mutation_pattern(mutation_mesh)
-        matched_mesh = ""
-        for mesh, mutation_pattern_dict in self._mutation_mesh.items():
-            is_matched = True
-            for key, value in match_data.items():
-                if not value:
-                    continue
-                if mutation_pattern_dict[key] != value:
-                    is_matched = False
-                    break
-            if is_matched:
-                matched_mesh = mesh
-
-        return matched_mesh
-
-    def _build_mutation_mesh(self):
-        for mesh in self.mesh_map:
-            if len(mesh.split(";")) == 1:
-                continue
-            self._mutation_mesh[mesh] = self._parse_mutation_pattern(mesh)
+        return PubTatorCollection(result.headers, articles)
 
     @staticmethod
-    def _parse_mutation_pattern(mesh: str):
-        match_data = {}
-        for item, pattern in MUTATION_PATTERNS.items():
+    def _parse_header(stream: TextIOBase) -> "PubTatorHeaderResult":
+        headers = []
+        for line in stream:
+            if not line.startswith(HEADER_SYMBOL):
+                return PubTatorHeaderResult(headers=headers, non_header_line=line)
+            headers.append(line.replace(HEADER_SYMBOL, "", 1).strip())
+        else:
+            return PubTatorHeaderResult(headers=headers, non_header_line=None)
+
+
+class PubTatorIterator:
+    """Iterate a Pubtator file or string line by line (excluded header)"""
+
+    def __init__(self, handle: str | Path | TextIOBase, first_line: str | None = None):
+        if isinstance(handle, str):
+            # Treat it as a string
+            self.stream = iter(handle.splitlines())
+        elif isinstance(handle, Path):
+            self.stream = open(handle)
+        elif isinstance(handle, TextIOBase):
+            self.stream = handle
+
+        if first_line is None:
             try:
-                match_data[item] = re.search(pattern, mesh).group(1)
-            except AttributeError:
-                match_data[item] = ""
-        return match_data
+                first_line = next(self.stream)
+            except StopIteration:
+                first_line = None
+        self._line = first_line
 
-    def _node_id_registered(self, line: PubTatorLine, node_id: str):
-        is_registered = False
-        data = line.data
-        if node_id in self.node_dict:
-            is_registered = True
-            if data.type != self.node_dict[node_id].type:
-                info = {
-                    "id": node_id,
-                    "type": data.type,
-                    "name": data.name,
-                }
-                logger.debug(f"Found collision of MeSH:\n{self.node_dict[node_id]}\n{info}")
-                logger.debug("Discard the latter\n")
+    def __next__(self):
+        line = self._line
+        pmid = None
+        title = None
+        abstract = None
+        annotations: list[PubTatorAnnotation] = []
+        relations: list[PubTatorRelation] = []
 
-        return is_registered
+        if line is None:
+            raise StopIteration
 
-    def _create_complete_graph(
-        self,
-        node_dict_each: dict[str, PubTatorNodeData],
-        pmid: str,
-    ):
-        for i, name_1 in enumerate(node_dict_each.keys()):
-            for j, name_2 in enumerate(node_dict_each.keys()):
-                if i >= j:
+        while (title := self._get_title(line)) is None:
+            line = next(self.stream)
+
+        pmid = line.split("|", 1)[0]
+        has_tried_getting_abstract = False
+
+        for line in self.stream:
+            # See if the next line is the next article
+            if self._get_title(line) is not None:
+                break
+
+            # Sometimes an article won't have a abstract, so use `has_tried_getting_abstract`
+            if not has_tried_getting_abstract:
+                if (abstract := self._get_abstract(line)) is not None:
+                    has_tried_getting_abstract = True
                     continue
-                if self.edge_dict.get((name_2, name_1), []):
-                    key = (name_2, name_1)
-                else:
-                    key = (name_1, name_2)
-                self.edge_dict[key].append(PubTatorEdgeData(id=generate_uuid(), pmid=pmid))
 
-    def _determine_mesh_term_labels(self):
-        def determine_node_label(candidate_name: str):
-            nonlocal node_data
-            return (node_data.name[candidate_name], -len(candidate_name))
+            line_instance = PubTatorLine.parse(line)
+            if isinstance(line_instance, PubTatorAnnotation):
+                has_tried_getting_abstract = True
+                annotations.append(line_instance)
+            elif isinstance(line_instance, PubTatorRelation):
+                has_tried_getting_abstract = True
+                relations.append(line_instance)
 
-        for node_id, node_data in self.node_dict.items():
-            if isinstance(node_data.name, defaultdict):
-                # Use the name that appears the most times
-                self.node_dict[node_id].name = max(node_data.name, key=determine_node_label)
+        # The first line of the next article
+        self._line = line
 
-        self._merge_same_name_genes()
-
-    def _merge_same_name_genes(self):
-        gene_name_dict = defaultdict(list)
-        for node_id, node_data in self.node_dict.items():
-            if node_data.type != "Gene" or node_data.mesh in ("-", ""):
-                continue
-            gene_name_dict[node_data.name].append(
-                {
-                    "node_id": node_id,
-                    "mesh": node_data.mesh,
-                    "pmids": node_data.pmids,
-                }
-            )
-
-        for node_data_list in gene_name_dict.values():
-            mesh_list = []
-            edges_to_merge = []
-            removed_node_ids = []
-            pmid_collection = set()
-            for node_data in node_data_list:
-                node_id = node_data["node_id"]
-                # Nodes
-                popped_node_data = self.node_dict.pop(node_id)
-                removed_node_ids.append(node_id)
-                mesh_list.append(node_data["mesh"])
-                for pmid in node_data["pmids"]:
-                    pmid_collection.add(pmid)
-
-                # Edges
-                for u, v in self.edge_dict.keys():
-                    if u == node_id:
-                        edges_to_merge.append((u, v, "u"))
-                    elif v == node_id:
-                        edges_to_merge.append((u, v, "v"))
-
-            # Nodes
-            concated_mesh = ";".join(mesh_list)
-            # popped_node_data is the last node_data of nodes having the same name
-            popped_node_data.mesh = concated_mesh
-            popped_node_data.pmids = pmid_collection
-            node_key = f"gene_{concated_mesh}"
-            self.node_dict[node_key] = popped_node_data
-
-            # Edges
-            merged_edges = defaultdict(list)
-            for u, v, pos in edges_to_merge:
-                neighbor = v if pos == "u" else u
-                try:
-                    popped_edge_data = self.edge_dict.pop((u, v))
-                except KeyError:
-                    # The same gene but given different ids in the same article
-                    if neighbor not in removed_node_ids:
-                        logger.warning(f"[Error] Same gene but given different IDs: {(u, v)}")
-                if neighbor in removed_node_ids:
-                    continue
-                merged_edges[(node_key, neighbor)].extend(popped_edge_data)
-            self.edge_dict.update(merged_edges)
-
-    def _get_non_isolated_nodes(self):
-        if self.node_type in ("all", "mesh"):
-            self.non_isolated_nodes = set(self.node_dict.keys())
-        elif self.node_type == "relation":
-            for node_1, node_2 in self.edge_dict:
-                self.non_isolated_nodes.add(node_1)
-                self.non_isolated_nodes.add(node_2)
-
-    def _parse_title(self, line: str):
-        pmid, title = line.split("|t|")
-        self.pmid_title_map.setdefault(pmid, title)
-        return pmid
+        return PubTatorArticle(
+            pmid=pmid,
+            date=None,
+            journal=None,
+            title=title,
+            abstract=abstract,
+            annotations=annotations,
+            relations=relations,
+            identifiers=None,
+            metadata=None,
+        )
 
     @staticmethod
-    def _is_title(line: str):
-        return line.find("|t|") != -1
+    def _get_title(line: str) -> str | None:
+        # Title looks like: 962740|t|Dermal ulceration of mullet
+        result = line.split("|", 2)
+        if len(result) < 3 or result[1] != "t":
+            return None
+        else:
+            return result[2].rstrip("\n")
 
     @staticmethod
-    def _parse_header(filepath: str):
-        PubTatorLine.use_mesh = False
-        with open(filepath) as f:
-            for line in f.readlines():
-                if not line.startswith(HEADER_SYMBOL):
-                    break
-                PubTatorParser._assign_flags(line.replace(HEADER_SYMBOL, "", 1).strip())
+    def _get_abstract(line: str) -> str | None:
+        # Abstract looks like: 962740|a|Phycomycotic granulomas are described
+        result = line.split("|", 2)
+        if len(result) < 3 or result[1] != "a":
+            return None
+        else:
+            return result[2].rstrip("\n")
 
-    @staticmethod
-    def _assign_flags(line: str):
-        if line == "USE-MESH-VOCABULARY":
-            PubTatorLine.use_mesh = True
+    def __iter__(self):
+        return self
+
+
+@dataclass
+class PubTatorHeaderResult:
+    headers: list[str]
+    non_header_line: str | None

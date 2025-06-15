@@ -1,5 +1,5 @@
 import json
-from pathlib import Path
+from dataclasses import asdict
 
 import pytest
 
@@ -7,49 +7,29 @@ from netmedex.biocjson_parser import biocjson_to_pubtator
 
 
 @pytest.fixture(scope="module")
-def paths(request):
-    test_dir = Path(request.config.rootdir) / "tests/test_data"
+def paths(data_dir):
     paths = {
-        "abstract_json": test_dir / "pubtator3.22439397_abstract_240916.json",
-        "full_json": test_dir / "pubtator3.22429397_full_240916.json",
-        "abstract_pubtator": test_dir / "22429397_abstract_240916.pubtator",
-        "full_pubtator": test_dir / "22429397_full_240916.pubtator",
-        "full_to_abstract_pubtator": test_dir / "22429397_full_to_abstract_240916.pubtator",
+        "abstract_json": data_dir / "22439397_abstract_240916.json",
+        "full_json": data_dir / "22429397_full_240916.json",
+        "abstract_parsed": data_dir / "22439397_abstract_PubTatorArticle_240916.json",
+        "full_parsed": data_dir / "22439397_full_PubTatorArticle_240916.json",
     }
     return paths
 
 
-def test_abstract_to_abstract_conversion(paths):
-    with open(paths["abstract_json"]) as f:
-        data = json.load(f)
+def test_abstract_parsing(paths):
+    data = json.load(open(paths["abstract_json"]))
+    expected = json.load(open(paths["abstract_parsed"]))
 
-    result = biocjson_to_pubtator(data, retain_ori_text=True, only_abstract=True)
-
-    with open(paths["abstract_pubtator"]) as f:
-        expected = f.read()
+    result = asdict(biocjson_to_pubtator(data, full_text=False)[0])
 
     assert result == expected
 
 
 def test_full_to_abstract_conversion(paths):
-    with open(paths["full_json"]) as f:
-        data = json.load(f)
+    data = json.load(open(paths["full_json"]))
+    expected = json.load(open(paths["full_parsed"]))
 
-    result = biocjson_to_pubtator(data, retain_ori_text=True, only_abstract=True)
-
-    with open(paths["full_to_abstract_pubtator"]) as f:
-        expected = f.read()
-
-    assert result == expected
-
-
-def test_full_conversion(paths):
-    with open(paths["full_json"]) as f:
-        data = json.load(f)
-
-    result = biocjson_to_pubtator(data, retain_ori_text=True, only_abstract=False)
-
-    with open(paths["full_pubtator"]) as f:
-        expected = f.read()
+    result = asdict(biocjson_to_pubtator(data, full_text=True)[0])
 
     assert result == expected
