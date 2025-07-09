@@ -41,10 +41,11 @@ def pubtator_entry(args):
     else:
         if args.pmids is not None:
             pmid_list = load_pmids(args.pmids, load_from="string")
+            logger.info(f"Found {len(pmid_list)} PMIDs")
         elif args.pmid_file is not None:
             logger.info(f"Load PMIDs from: {args.pmid_file}")
             pmid_list = load_pmids(args.pmid_file, load_from="file")
-        logger.info(f"Found {len(pmid_list)} PMIDs")
+            logger.info(f"Found {len(pmid_list)} PMIDs")
         suffix = f"{pmid_list[0]}_total_{len(pmid_list)}" if pmid_list else ""
         savepath = args.output if args.output is not None else f"./pmids_{suffix}.pubtator"
 

@@ -27,3 +27,21 @@ def icon_download():
         height=20,
         style={"margin-right": "5px"},
     )
+
+
+def icon_search():
+    return html.Img(
+        src=dash.get_asset_url("icon_search.svg"),
+        width=20,
+        height=20,
+        style={"margin-right": "5px"},
+    )
+
+
+def icon_graph():
+    return html.Img(
+        src=dash.get_asset_url("icon_graph.svg"),
+        width=20,
+        height=20,
+        style={"margin-right": "5px"},
+    )

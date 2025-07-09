@@ -19,7 +19,7 @@ webapp = [
 
 [project]
 name = "netmedex"
-version = "0.2.0"
+version = "0.3.0"
 authors = [{ name = "Zheng-Xiang Ye", email = "r12b48005@ntu.edu.tw" }]
 description = "A tool to extract BioConcept entities (e.g., genes, diseases, chemicals, and species) from Pubtator3 and generate a co-mention network for interactive use."
 readme = "README.md"
@@ -34,8 +34,8 @@ dependencies = [
   "lxml",
   "python-dotenv",
   "dash[diskcache]~=2.17",
-  "dash-cytoscape",
-  "dash-bootstrap_components",
+  "dash-cytoscape~=1.0.2",
+  "dash-bootstrap_components~=1.7.1",
 ]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
@@ -55,6 +55,7 @@ dev = [
   "pytest-mock",
   "ruff==0.8.0",
   "pre-commit",
+  "mkdocs",
 ]
 
 [project.scripts]

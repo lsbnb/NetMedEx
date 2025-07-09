@@ -2,7 +2,6 @@ import dash
 from dash import dcc, html
 
 from webapp.components.graph_info import graph_info
-from webapp.components.graph_tools import graph_tools
 from webapp.utils import visibility
 
 graph = html.Div(
@@ -15,7 +14,6 @@ graph = html.Div(
         ),
         html.Div(
             [
-                graph_tools,
                 graph_info,
                 html.Div(id="cy-graph", className="flex-grow-1"),
                 dcc.Store(id="is-new-graph", data=False),

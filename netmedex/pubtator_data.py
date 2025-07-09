@@ -1,7 +1,8 @@
 import logging
 import re
 from collections.abc import Sequence
-from dataclasses import dataclass, field
+from copy import deepcopy
+from dataclasses import asdict, dataclass, field
 from typing import Any
 
 from netmedex.headers import USE_MESH_VOCABULARY
@@ -41,7 +42,7 @@ class PubTatorAnnotation:
     name: str
     identifier_name: str | None
     type: str
-    mesh: str
+    mesh: str  # TODO: better name for this should be 'identifier' rather than 'mesh' since not all IDs are MeSH terms
 
     def get_standardized_name(self) -> str:
         return s_stemmer(self.name.strip().lower())
@@ -115,6 +116,7 @@ class PubTatorArticle:
     pmid: str
     date: str | None
     journal: str | None
+    doi: str | None
     title: str
     abstract: str | None
     annotations: list[PubTatorAnnotation]
@@ -176,7 +178,7 @@ class PubTatorCollection:
         self,
         annotation_use_identifier_name: bool = True,
         relation_use_identifier: bool = True,
-    ):
+    ) -> str:
         headers = []
         if annotation_use_identifier_name:
             headers.append(USE_MESH_VOCABULARY)
@@ -190,6 +192,31 @@ class PubTatorCollection:
         )
 
         return pubtator_str
+
+    def to_json(self):
+        return asdict(self)
+
+    @classmethod
+    def from_json(cls, collection_json: dict[str, Any]) -> "PubTatorCollection":
+        collection_copy = deepcopy(collection_json)
+
+        # Post initialization handles this
+        del collection_copy["num_articles"]
+
+        parsed_articles = []
+        for article_dict in collection_copy["articles"]:
+            annotations = [PubTatorAnnotation(**a) for a in article_dict.get("annotations", [])]
+            relations = [PubTatorRelation(**r) for r in article_dict.get("relations", [])]
+            article = PubTatorArticle(
+                **{k: v for k, v in article_dict.items() if k not in ("annotations", "relations")},
+                annotations=annotations,
+                relations=relations,
+            )
+            parsed_articles.append(article)
+
+        collection_copy["articles"] = parsed_articles
+
+        return cls(**collection_copy)
 
 
 class PubTatorRelationParser:
@@ -255,3 +282,7 @@ class PubTatorRelationParser:
                 break
 
         return matched_node_id
+
+
+def load_from_collection_json(collection_json: dict[str, Any]) -> PubTatorCollection:
+    return PubTatorCollection.from_json(collection_json)

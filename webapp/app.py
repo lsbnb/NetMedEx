@@ -11,7 +11,7 @@ from dash.long_callback import DiskcacheLongCallbackManager
 
 from netmedex.utils import config_logger
 from webapp.callbacks import collect_callbacks
-from webapp.utils import clean_up_files
+from webapp.utils import cleanup_tempdir
 
 config_logger(is_debug=(os.getenv("LOGGING_DEBUG") == "true"))
 
@@ -51,7 +51,7 @@ def main():
         )
         app.run(host=os.getenv("HOST", "127.0.0.1"), port=os.getenv("PORT", "8050"))
     finally:
-        clean_up_files()
+        cleanup_tempdir()
 
 
 if __name__ == "__main__":

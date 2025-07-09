@@ -106,6 +106,7 @@ class PubTatorIterator:
             pmid=pmid,
             date=None,
             journal=None,
+            doi=None,
             title=title,
             abstract=abstract,
             annotations=annotations,

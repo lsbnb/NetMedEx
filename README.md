@@ -7,11 +7,12 @@ NetMedEx is a Python-based tool designed to extract BioConcept entities (e.g., g
 
 ## Getting Started
 
-NetMedEx offers three ways for users to interact with the tool:
+NetMedEx offers four ways for users to interact with the tool:
 
 1. [Web Application (via Docker)](#web-application-via-docker)
 2. [Web Application (Local)](#web-application-local)
 3. [Command-Line Interface (CLI)](#command-line-interface-cli)
+4. [Python API](#package-api)
 
 For additional details, refer to the [Documentation](https://yehzx.github.io/NetMedEx/).
 
@@ -31,7 +32,7 @@ Install NetMedEx from PyPI to use the web application locally or access the CLI:
 pip install netmedex
 ```
 
-*We recommend using Python version >= 3.11 for NetMedEx.*
+_We recommend using Python version >= 3.11 for NetMedEx._
 
 ## Web Application (Local)
 
@@ -65,7 +66,7 @@ netmedex search -f examples/pmids.txt [-o OUTPUT_FILEPATH]
 netmedex search -q '"@DISEASE_COVID_19" AND "@GENE_PON1"' [-o OUTPUT_FILEPATH] --max_articles 100
 ```
 
-*Note: Use double quotes for keywords containing spaces and logical operators (e.g., AND/OR) to combine keywords.*
+_Note: Use double quotes for keywords containing spaces and logical operators (e.g., AND/OR) to combine keywords._
 
 Available commands are detailed in [Search Command](#search-command).
 
@@ -123,7 +124,7 @@ usage: netmedex search [-h] [-q QUERY] [-o OUTPUT] [-p PMIDS] [-f PMID_FILE] [-s
                        [--use_mesh] [--debug]
 
 options:
-  -h, --help            Show this help message and exit
+  -h, --help            show this help message and exit
   -q QUERY, --query QUERY
                         Query string
   -o OUTPUT, --output OUTPUT
@@ -133,11 +134,11 @@ options:
   -f PMID_FILE, --pmid_file PMID_FILE
                         Filepath to load PMIDs (one per line)
   -s {score,date}, --sort {score,date}
-                        Sort articles in descending order (default: date)
+                        Sort articles in descending order by (default: date)
   --max_articles MAX_ARTICLES
-                        Maximum articles to request (default: 1000)
+                        Maximal articles to request from the searching result (default: 1000)
   --full_text           Collect full-text annotations if available
-  --use_mesh            Use MeSH vocabulary instead of common text
+  --use_mesh            Use MeSH vocabulary instead of the most commonly used original text in articles
   --debug               Print debug information
 ```
 
@@ -148,24 +149,29 @@ usage: netmedex network [-h] [-i INPUT] [-o OUTPUT] [-w CUT_WEIGHT] [-f {xgmml,h
                         [--weighting_method {freq,npmi}] [--pmid_weight PMID_WEIGHT] [--debug] [--community] [--max_edges MAX_EDGES]
 
 options:
-  -h, --help            Show this help message and exit
+  -h, --help            show this help message and exit
   -i INPUT, --input INPUT
                         Path to the pubtator file
   -o OUTPUT, --output OUTPUT
                         Output path (default: [INPUT_DIR].[FORMAT_EXT])
   -w CUT_WEIGHT, --cut_weight CUT_WEIGHT
-                        Discard edges with weight smaller than the specified value (default: 2)
-  -f {xgmml,html,json}, --format {xgmml,html,json}
+                        Discard the edges with weight smaller than the specified value (default: 2)
+  -f {xgmml,html,json,pickle}, --format {xgmml,html,json,pickle}
                         Output format (default: html)
   --node_type {all,mesh,relation}
                         Keep specific types of nodes (default: all)
   --weighting_method {freq,npmi}
-                        Weighting method for network edges (default: freq)
+                        Weighting method for network edge (default: freq)
   --pmid_weight PMID_WEIGHT
-                        CSV file for the edge weight from a PMID (default: 1)
+                        CSV file for the weight of the edge from a PMID (default: 1)
   --debug               Print debug information
-  --community           Divide nodes into communities using the Louvain method
+  --community           Divide nodes into distinct communities by the Louvain method
   --max_edges MAX_EDGES
                         Maximum number of edges to display (default: 0, no limit)
 ```
 
+## Package API
+
+In addition to the web interface and CLI, NetMedEx can be used programmatically as a Python library. This allows for more flexible integration into custom pipelines and analysis workflows.
+
+Example usage is available in `notebooks/netmedex_usage.ipynb`.

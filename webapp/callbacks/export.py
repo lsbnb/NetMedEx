@@ -13,6 +13,9 @@ def callbacks(app):
         prevent_initial_call=True,
     )
     def download_pubtator(n_clicks, savepath):
+        if savepath is None:
+            return
+
         return dcc.send_file(savepath["pubtator"], filename="output.pubtator")
 
     @app.callback(
@@ -25,6 +28,9 @@ def callbacks(app):
         prevent_initial_call=True,
     )
     def export_html(n_clicks, layout, node_degree, weight, savepath):
+        if savepath is None:
+            return
+
         G = rebuild_graph(
             node_degree, weight, format="html", with_layout=True, graph_path=savepath["graph"]
         )
@@ -41,6 +47,9 @@ def callbacks(app):
         prevent_initial_call=True,
     )
     def export_xgmml(n_clicks, layout, node_degree, weight, savepath):
+        if savepath is None:
+            return
+
         G = rebuild_graph(
             node_degree, weight, format="xgmml", with_layout=True, graph_path=savepath["graph"]
         )

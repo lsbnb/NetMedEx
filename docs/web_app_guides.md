@@ -1,40 +1,40 @@
 ## Web Application
 
-This is the typical interface when you open the app in your browser.
+This is the typical interface when you open the app in your browser (`NetMedEx v0.3.0`).
 
-![NetMedEx Interface](./img/netmedex_interface.jpeg)
+![NetMedEx Interface](./img/netmedex_interface.png)
 
-*Note: The interface may differ slightly between versions.*
-
+_Note: The interface may vary slightly between versions._
 
 The interface consists of a sidebar (background: <span style="display:inline-block; width:10px; height:10px; background-color:#518c9c;"></span>) and a region for network display (background: <span style="display:inline-block; width:10px; height:10px; background-color:#eeeeee;"></span>).
 
 ## Usage
 
-### Search Articles and Generate Networks (Default) 
-1. Select `PubTator3 API` in Source.  
-2. Select your [Search Type](reference.md#search-type).  
-3. Enter the corresponding inputs in the box below.  
-4. Adjust parameters in the sidebar and the config (<img src="img/icon_config.svg" alt="config_icon" width="10px"/>) as needed (see [Reference](reference.md)).  
-5. Press `Submit`.  
+### Search Articles and Generate Networks (Default)
 
->Step 3 note: If your search type is `Text Search`, use double quotes for keywords containing spaces and logical operators (e.g., AND/OR) to combine keywords. For example, "COVID 19" AND "PON1".
+1. Select `PubTator3 API` in Source.
+2. Select your [Search Type](reference.md#search-type).
+3. Enter the corresponding inputs in the box below.
+4. Adjust parameters in the sidebar and in the config panel (<img src="img/icon_config.svg" alt="config_icon" width="10px"/>) as needed (see [Reference](reference.md)).
+5. Press `Submit`.
 
-Once the program finishes generating the network, it will be displayed on the right-hand side:
+> **Note for Step 3:** If your search type is `Text Search`, use double quotes for keywords containing spaces and logical operators (e.g., AND/OR) to combine keywords. For example, "COVID 19" AND "PON1".
+
+Once the program finishes generating the network, the sidebar will switch to the **Graph** panel and the resulting network will be displayed on the right:
 
 ![NetMedEx Network](img/netmedex_network.png)
 
-*Note: The default layout may display nodes overlapping with others. You can manually drag the nodes to arrange them as desired.*
+_Note: In the default layout, some nodes may overlap. You can manually drag them to rearrange the network as desired._
 
-In the top-right corner, there are buttons to download the network and adjust settings:
+In the sidebar, you will find buttons to download the network or adjust settings:
 
-* `PubTator`: Download the PubTator file for reuse (see [Generate Networks from PubTator Files](#generate-networks-from-pubtator-files)).  
-* `HTML`: Export the network in HTML format.
-* `XGMML`: Export the network in a Cytoscape-compatible format (see [Network Output Format](reference.md#network-output-format)).
-* &#8943; : Graph settings for adjusting graph layout, edge weight cutoff, minimum node degree, etc (see [Network Visualization Tools](reference.md#network-visualization-tools-web-app-only)). 
+- `PubTator`: Download the corresponding PubTator file for reuse (see [Generate Networks from PubTator Files](#generate-networks-from-pubtator-files)).
+- `HTML`: Export the network in HTML format.
+- `XGMML`: Export the network in a Cytoscape-compatible format (see [Network Output Format](reference.md#network-output-format)).
 
->Tip: Adjusting `edge weight cutoff` is particularly useful if you think the current network is overcrowded or too sparse.
+Graph settings include graph layout, edge weight cutoff, minimum node degree, etc (see [Network Visualization Tools](reference.md#network-visualization-tools-web-app-only)).
 
+> Tip: Adjusting `edge weight cutoff` is particularly useful if you think the current network is overcrowded or too sparse.
 
 #### Interactive Network
 
@@ -50,7 +50,7 @@ If the `Community` parameter is enabled, the edges between nodes in different co
 
 The downloaded PubTator files can be reused to generate networks without performing article searches. To generate networks from PubTator files:
 
-1. Select `PubTator File` in Source.  
-2. Upload the PubTator file.  
-2. Adjust the parameters as needed (see [Reference](reference.md)).  
-3. Press `Submit`.  
+1. Switch to the `Search` panel and select `PubTator File` in Source.
+2. Upload the PubTator file.
+3. Adjust the parameters as needed (see [Reference](reference.md)).
+4. Press `Submit`.

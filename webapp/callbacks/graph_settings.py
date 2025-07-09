@@ -1,30 +1,12 @@
 from dash import Input, Output, State
 
-from webapp.utils import visibility
+from webapp.utils import display, visibility
 
 
 def callbacks(app):
     @app.callback(
-        Output("graph-settings-collapse", "style", allow_duplicate=True),
-        Output("graph-cut-weight", "tooltip"),
-        Input("graph-settings-btn", "n_clicks"),
-        State("graph-settings-collapse", "style"),
-        prevent_initial_call=True,
-    )
-    def open_graph_settings(n_clicks, style):
-        visibility = style["visibility"]
-        toggle = {"hidden": "visible", "visible": "hidden"}
-        weight_toggle = {"hidden": True, "visible": False}
-        return (
-            {"visibility": toggle[visibility]},
-            {"placement": "bottom", "always_visible": weight_toggle[visibility]},
-        )
-
-    @app.callback(
-        Output("graph-settings-collapse", "style", allow_duplicate=True),
-        Output("graph-cut-weight", "value"),
-        Output("graph-cut-weight", "tooltip", allow_duplicate=True),
         Output("download-pubtator-btn", "style"),
+        Output("graph-cut-weight", "value"),
         Input("cy-graph-container", "style"),
         State("memory-graph-cut-weight", "data"),
         State("api-toggle-items", "value"),
@@ -35,9 +17,27 @@ def callbacks(app):
             pubtator_btn_visibility = visibility.visible
         else:
             pubtator_btn_visibility = visibility.hidden
-        return (
-            visibility.hidden,
-            cut_weight,
-            {"placement": "bottom", "always_visible": False},
-            pubtator_btn_visibility,
-        )
+        return pubtator_btn_visibility, cut_weight
+
+    @app.callback(
+        Output("sidebar-panel-toggle", "value"),
+        Input("cy-graph-container", "style"),
+        State("sidebar-panel-toggle", "value"),
+        prevent_initial_call=True,
+    )
+    def switch_to_graph_panel(container_style, current_value):
+        if container_style.get("visibility") == "visible":
+            return "graph"
+        return current_value
+
+    @app.callback(
+        Output("search-panel", "style"),
+        Output("graph-settings-panel", "style"),
+        Output("sidebar-container", "className"),
+        Input("sidebar-panel-toggle", "value"),
+    )
+    def toggle_panels(toggle_value):
+        if toggle_value == "graph":
+            return display.none, display.block, "sidebar graph-mode"
+        return display.block, display.none, "sidebar"
+

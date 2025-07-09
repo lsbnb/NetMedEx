@@ -8,13 +8,13 @@ docker run -p 8050:8050 --rm lsbnb/netmedex
 
 ## Installation
 
-Install NetMedEx from PyPI to use the web application locally or access the CLI:
+Install NetMedEx from PyPI to use the web application locally or access the CLI or Python API:
 
 ```bash
 pip install netmedex
 ```
 
-*We recommend using Python version >= 3.11 for NetMedEx.*
+_We recommend using Python version >= 3.11 for NetMedEx._
 
 ## Web Application (Local)
 

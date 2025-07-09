@@ -1,4 +1,5 @@
 import logging
+import re
 from collections import defaultdict
 from datetime import datetime
 from typing import Any
@@ -7,8 +8,34 @@ from netmedex.pubtator_data import PubTatorAnnotation, PubTatorArticle, PubTator
 
 logger = logging.getLogger(__name__)
 
+DOI_PATTERN = re.compile(r"doi:\s?(10\.\d{4,}/[\S]+)\.", re.IGNORECASE)
+
 
 def biocjson_to_pubtator(
+    res_json: dict[str, Any],
+    full_text: bool = False,
+) -> list[PubTatorArticle]:
+    """Parse the response from the PubTator3 API in BioC-JSON format.
+
+    Args:
+        res_json (dict[str, Any]):
+            The response from the PubTator3 API in BioC-JSON format.
+        full_text (bool):
+            Whether to request full-text annotations (available only in `biocjson`). Defaults to False.
+
+    Returns:
+        list[PubTatorArticle]:
+            A list of PubTatorArticle objects.
+    """
+    try:
+        return _biocjson_to_pubtator(res_json, full_text=full_text)
+    except Exception as e:
+        logger.error(f"Failed to parse BioC-JSON response. Reason: {e}")
+
+    return []
+
+
+def _biocjson_to_pubtator(
     res_json,
     full_text: bool = False,
 ) -> list[PubTatorArticle]:
@@ -51,17 +78,35 @@ def biocjson_to_pubtator(
         # There may be multiple abstract passages
         abstract = " ".join(abstract_passage["text"])
 
+        # doi
+        doi = None
+        try:
+            # Abstract only biocjson file
+            if (
+                match := DOI_PATTERN.search(each_res_json["passages"][0]["infons"]["journal"])
+            ) is not None:
+                doi = match.group(1)
+        except Exception:
+            # Full-text biocjson file
+            try:
+                doi = each_res_json["passages"][0]["infons"]["article-id_doi"]
+            except Exception:
+                pass
+
         output.append(
             PubTatorArticle(
                 pmid=pmid,
                 date=date,
                 journal=journal,
+                doi=doi,
                 title=title,
                 abstract=abstract,
                 annotations=annotation_list,
                 relations=relation_list,
                 identifiers={
-                    annotation.mesh: annotation.identifier_name for annotation in annotation_list
+                    annotation.mesh: annotation.identifier_name
+                    for annotation in annotation_list
+                    if annotation.mesh != "-"
                 },
             )
         )
@@ -100,24 +145,27 @@ def get_biocjson_annotations(res_json, paragraph_indices=None):
 
     for annotation_entries in passages:
         for annotation_entry in annotation_entries:
-            annotation = {}
             try:
-                id = annotation_entry["infons"]["identifier"]
-            except Exception:
-                id = "-"
-            annotation["id"] = "-" if id == "None" or not id else id
-            annotation["type"] = annotation_entry["infons"]["type"]
-            annotation["locations"] = annotation_entry["locations"][0]
-            annotation["name"] = annotation_entry["text"]
-            annotation["identifier_name"] = get_identifier_name(
-                annotation_entry, annotation["type"]
-            )
-            if annotation["type"] == "Variant":
-                annotation["type"] = annotation_entry["infons"]["subtype"]
+                annotation = {}
+                try:
+                    id = annotation_entry["infons"]["identifier"]
+                except Exception:
+                    id = "-"
+                annotation["id"] = "-" if id == "None" or not id else id
+                annotation["type"] = annotation_entry["infons"]["type"]
+                annotation["locations"] = annotation_entry["locations"][0]
+                annotation["name"] = annotation_entry["text"]
+                annotation["identifier_name"] = get_identifier_name(
+                    annotation_entry, annotation["type"]
+                )
+                if annotation["type"] == "Variant":
+                    annotation["type"] = annotation_entry["infons"]["subtype"]
 
-            if annotation["name"] is None:
-                continue
-            annotation_list.append(annotation)
+                if annotation["name"] is None:
+                    continue
+                annotation_list.append(annotation)
+            except Exception:
+                logger.warning(f"Failed to parse annotation: {annotation_entry}")
 
     return annotation_list
 
@@ -151,13 +199,16 @@ def get_identifier_name(annotation_entry, annotation_type):
 def get_biocjson_relations(res_json):
     relation_list = []
     for relation_entry in res_json["relations"]:
-        each_relation = {}
-        each_relation["role1"] = relation_entry["infons"]["role1"]["identifier"]
-        each_relation["name1"] = relation_entry["infons"]["role1"]["name"]
-        each_relation["role2"] = relation_entry["infons"]["role2"]["identifier"]
-        each_relation["name2"] = relation_entry["infons"]["role2"]["name"]
-        each_relation["type"] = relation_entry["infons"]["type"]
-        relation_list.append(each_relation)
+        try:
+            each_relation = {}
+            each_relation["role1"] = relation_entry["infons"]["role1"]["identifier"]
+            each_relation["name1"] = relation_entry["infons"]["role1"]["name"]
+            each_relation["role2"] = relation_entry["infons"]["role2"]["identifier"]
+            each_relation["name2"] = relation_entry["infons"]["role2"]["name"]
+            each_relation["type"] = relation_entry["infons"]["type"]
+            relation_list.append(each_relation)
+        except Exception:
+            logger.warning(f"Failed to parse relation: {relation_entry['infons']}")
 
     return relation_list
 

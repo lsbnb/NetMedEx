@@ -2,8 +2,18 @@ import dash_bootstrap_components as dbc
 from dash import dcc, html
 
 from webapp.components.advanced_settings import advanced_settings
-from webapp.components.utils import generate_param_title
-from webapp.utils import display
+from webapp.components.graph_tools import (
+    edge_weight_cutoff,
+    graph_layout,
+    minimal_degree,
+)
+from webapp.components.utils import (
+    generate_param_title,
+    icon_download,
+    icon_graph,
+    icon_search,
+)
+from webapp.utils import display, visibility
 
 api_or_file = html.Div(
     [
@@ -220,8 +230,51 @@ progress = html.Div(
     id="progress-wrapper",
 )
 
+export_buttons = html.Div(
+    [
+        html.H5("Export", className="text-center"),
+        dbc.Button([icon_download(), "HTML"], id="export-btn-html", className="export-btn"),
+        dcc.Download(id="export-html"),
+        dbc.Button([icon_download(), "XGMML"], id="export-btn-xgmml", className="export-btn"),
+        dcc.Download(id="export-xgmml"),
+        dbc.Button(
+            [icon_download(), "PubTator"],
+            id="download-pubtator-btn",
+            className="export-btn",
+            color="success",
+            style=visibility.hidden,
+        ),
+        dcc.Download(id="download-pubtator"),
+    ],
+    className="param export-container",
+)
+
+search_panel = html.Div(
+    [advanced_settings, api_or_file, api_params, pubtator_file, network_params, progress],
+    id="search-panel",
+)
+
+graph_settings_panel = html.Div(
+    [export_buttons, graph_layout, edge_weight_cutoff, minimal_degree],
+    id="graph-settings-panel",
+    style=display.none,
+)
+
+sidebar_toggle = dbc.RadioItems(
+    id="sidebar-panel-toggle",
+    options=[
+        {"label": [icon_search(), "Search"], "value": "search"},
+        {"label": [icon_graph(), "Graph"], "value": "graph"},
+    ],
+    value="search",
+    inline=True,
+    className="mb-3 sidebar-toggle",
+    labelClassName="toggle-label",
+    labelCheckedClassName="toggle-selected",
+)
 
 sidebar = html.Div(
-    [advanced_settings, api_or_file, api_params, pubtator_file, network_params, progress],
+    [sidebar_toggle, search_panel, graph_settings_panel],
     className="sidebar",
+    id="sidebar-container",
 )

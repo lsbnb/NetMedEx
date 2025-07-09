@@ -90,7 +90,7 @@ class PubTatorAPI:
         queue: Queue | None = None,
     ):
         self.query = query
-        self.pmid_list = pmid_list
+        self.pmid_list = [pmid for pmid in pmid_list if pmid] if pmid_list is not None else None
         self.max_articles = max_articles
         self.full_text = full_text
         self.return_pmid_only = return_pmid_only
@@ -246,7 +246,10 @@ class PubTatorAPI:
         return pmid_list[:n_articles_to_request]
 
     async def batch_publication_search(self, pmid_list: Sequence[str]):
-        logger.info("Step 2/2: Requesting article annotations...")
+        if self.query is None:
+            logger.info("Step 1/1: Requesting article annotations...")
+        else:
+            logger.info("Step 2/2: Requesting article annotations...")
 
         async with ClientSession() as session:
 
