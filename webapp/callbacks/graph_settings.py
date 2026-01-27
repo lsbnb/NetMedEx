@@ -5,19 +5,14 @@ from webapp.utils import display, visibility
 
 def callbacks(app):
     @app.callback(
-        Output("download-pubtator-btn", "style"),
         Output("graph-cut-weight", "value"),
         Input("cy-graph-container", "style"),
         State("memory-graph-cut-weight", "data"),
         State("api-toggle-items", "value"),
-        prevent_initial_call=True,
+        # prevent_initial_call=True,
     )
     def update_graph_params(container_style, cut_weight, api_or_file):
-        if api_or_file == "api" and container_style.get("visibility") == "visible":
-            pubtator_btn_visibility = visibility.visible
-        else:
-            pubtator_btn_visibility = visibility.hidden
-        return pubtator_btn_visibility, cut_weight
+        return cut_weight
 
     @app.callback(
         Output("sidebar-panel-toggle", "value"),

@@ -44,6 +44,24 @@ max_edges = html.Div(
 )
 
 
+api_key_input = html.Div(
+    [
+        generate_param_title(
+            "OpenAI API Key",
+            "Enter your OpenAI API Key (starts with sk-...)",
+        ),
+        dbc.Input(
+             id="openai-api-key-input",
+             type="password",
+             placeholder="sk-...",
+             debounce=True,
+        ),
+        html.Div(id="api-key-status", className="text-success small")
+    ],
+    className="param",
+)
+
+
 advanced_settings = html.Div(
     [
         dbc.Button(
@@ -55,6 +73,7 @@ advanced_settings = html.Div(
         html.Div(
             [
                 html.H5("Advanced Settings", className="text-center"),
+                api_key_input,
                 max_articles,
                 max_edges,
             ],

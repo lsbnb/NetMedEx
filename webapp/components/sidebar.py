@@ -2,6 +2,7 @@ import dash_bootstrap_components as dbc
 from dash import dcc, html
 
 from webapp.components.advanced_settings import advanced_settings
+from webapp.components.advanced_settings import advanced_settings
 from webapp.components.graph_tools import (
     edge_weight_cutoff,
     graph_layout,
@@ -87,6 +88,20 @@ api_params = html.Div(
                     ],
                     value="query",
                     style={"width": "200px"},
+                ),
+            ],
+            className="param",
+        ),
+        html.Div(
+            [
+                generate_param_title(
+                    "AI Search",
+                    "Use LLM to translate natural language queries into optimized PubTator boolean queries.",
+                ),
+                dbc.Switch(
+                    id="ai-search-toggle",
+                    label="Enable AI Search",
+                    value=False,
                 ),
             ],
             className="param",
@@ -242,7 +257,6 @@ export_buttons = html.Div(
             id="download-pubtator-btn",
             className="export-btn",
             color="success",
-            style=visibility.hidden,
         ),
         dcc.Download(id="download-pubtator"),
     ],

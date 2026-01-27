@@ -10,6 +10,7 @@ from netmedex.graph import PubTatorGraphBuilder, save_graph
 from netmedex.pubtator import PubTatorAPI
 from netmedex.pubtator_parser import PubTatorIO
 from netmedex.utils_threading import run_thread_with_error_notification
+from webapp.llm import llm_client
 from webapp.utils import generate_session_id, get_data_savepath, visibility
 
 
@@ -35,6 +36,7 @@ def callbacks(app):
             State("cy-params", "value"),
             State("weighting-method", "value"),
             State("node-type", "value"),
+            State("ai-search-toggle", "value"),
         ],
         running=[(Input("submit-button", "disabled"), True, False)],
         progress=[
@@ -61,6 +63,7 @@ def callbacks(app):
         cy_params,
         weighting_method,
         node_type,
+        ai_search_toggle,
     ):
         _exception_msg = None
         _exception_type = None
@@ -81,6 +84,13 @@ def callbacks(app):
         if source == "api":
             if input_type == "query":
                 query = data_input
+                if ai_search_toggle:
+                    set_progress((0, 1, "", "(Step 0/2) AI Translating query..."))
+                    translated_query = llm_client.translate_query_to_boolean(query)
+                    if translated_query != query:
+                        query = translated_query
+                        # Ideally notify user, but we'll just log it via progress for now or implicit via results
+                        set_progress((0, 1, "", f"AI Translated: {query}"))
             elif input_type == "pmids":
                 pmid_list = load_pmids(data_input, load_from="string")
             elif input_type == "pmid_file":
