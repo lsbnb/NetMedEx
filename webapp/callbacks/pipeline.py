@@ -37,6 +37,8 @@ def callbacks(app):
             State("weighting-method", "value"),
             State("node-type", "value"),
             State("ai-search-toggle", "value"),
+            State("edge-method", "value"),
+            State("semantic-threshold", "value"),
         ],
         running=[(Input("submit-button", "disabled"), True, False)],
         progress=[
@@ -64,6 +66,8 @@ def callbacks(app):
         weighting_method,
         node_type,
         ai_search_toggle,
+        edge_method,
+        semantic_threshold,
     ):
         _exception_msg = None
         _exception_type = None
@@ -155,7 +159,24 @@ def callbacks(app):
                 f.write(decoded_content)
 
         set_progress((0, 1, "0/1", "Generating network..."))
-        graph_builder = PubTatorGraphBuilder(node_type=node_type)
+        
+        # Initialize LLM client if using semantic edge method
+        llm_for_graph = None
+        if edge_method == "semantic":
+            if not llm_client.client:
+                set_progress(
+                    (1, 1, "", "Error: Semantic analysis requires LLM configuration. Please set your API key in Advanced Settings.")
+                )
+                return (no_update, weight, False, no_update, no_update)
+            llm_for_graph = llm_client
+            set_progress((0, 1, "0/1", "Generating network with semantic analysis (this may take longer)..."))
+        
+        graph_builder = PubTatorGraphBuilder(
+            node_type=node_type,
+            edge_method=edge_method,
+            llm_client=llm_for_graph,
+            semantic_threshold=semantic_threshold,
+        )
         collection = PubTatorIO.parse(savepath["pubtator"])
         graph_builder.add_collection(collection)
         G = graph_builder.build(

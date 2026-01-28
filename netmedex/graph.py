@@ -31,6 +31,11 @@ from netmedex.pubtator_graph_data import (
     PubTatorNode,
     PubTatorNodeCollection,
 )
+try:
+    from netmedex.semantic_re import SemanticRelationshipExtractor
+except ImportError:
+    # Semantic RE may not be available if dependencies are missing
+    SemanticRelationshipExtractor = None
 from netmedex.utils import generate_uuid
 
 MIN_EDGE_WIDTH = 0
@@ -98,12 +103,27 @@ class PubTatorGraphBuilder:
     def __init__(
         self,
         node_type: Literal["all", "mesh", "relation"],
+        edge_method: Literal["co-occurrence", "semantic", "relation"] = "co-occurrence",
+        llm_client=None,
+        semantic_threshold: float = 0.5,
     ) -> None:
         self.node_type = node_type
+        self.edge_method = edge_method
         self._mesh_only = node_type in ("mesh", "relation")
         self.num_articles = 0
         self.graph = nx.Graph()
         self._updated = False
+        
+        # Initialize semantic extractor if using semantic edge method
+        self.semantic_extractor = None
+        if edge_method == "semantic":
+            if llm_client is None:
+                raise ValueError("LLM client is required for semantic edge method")
+            self.semantic_extractor = SemanticRelationshipExtractor(
+                llm_client, confidence_threshold=semantic_threshold
+            )
+            logger.info(f"Semantic relationship extractor initialized (threshold: {semantic_threshold})")
+        
         self._init_graph_attributes()
 
     def add_collection(
@@ -129,14 +149,28 @@ class PubTatorGraphBuilder:
             node_collection.add_node(annotation)
 
         edges = []
-        if self.node_type != "relation":
-            edges += self._create_complete_graph_edges(
-                list(node_collection.nodes.keys()), article.pmid
+        
+        # Edge creation based on selected method
+        if self.edge_method == "co-occurrence":
+            # Original co-occurrence method: create edges between all co-mentioned entities
+            if self.node_type != "relation":
+                edges += self._create_complete_graph_edges(
+                    list(node_collection.nodes.keys()), article.pmid
+                )
+        
+        elif self.edge_method == "semantic":
+            # Semantic analysis method: use LLM to identify meaningful relationships
+            edges += self._create_semantic_edges(article, node_collection.nodes)
+        
+        elif self.edge_method == "relation":
+            # Relation-only method: only use BioREx annotated relations (handled below)
+            pass
+        
+        # Always add BioREx relation edges when available (except in co-occurrence mode)
+        if self.edge_method != "co-occurrence":
+            edges += self._create_relation_edges(
+                list(node_collection.mesh_nodes.keys()), article.relations
             )
-
-        edges += self._create_relation_edges(
-            list(node_collection.mesh_nodes.keys()), article.relations
-        )
 
         self._add_attributes(article)
         self._add_nodes(node_collection.nodes)
@@ -383,6 +417,40 @@ class PubTatorGraphBuilder:
                 )
 
         return edges
+
+    def _create_semantic_edges(
+        self, article: PubTatorArticle, nodes: dict[str, PubTatorNode]
+    ) -> list[PubTatorEdge]:
+        """Create edges using LLM semantic analysis
+        
+        Args:
+            article: PubTator article with title and abstract
+            nodes: Dictionary mapping node IDs to PubTatorNode objects
+            
+        Returns:
+            List of PubTatorEdge objects for semantically-identified relationships
+        """
+        if not self.semantic_extractor:
+            logger.error("Semantic extractor not initialized")
+            return []
+        
+        try:
+            semantic_edges = self.semantic_extractor.analyze_article_relationships(
+                article, nodes
+            )
+            
+            # Convert SemanticEdge to PubTatorEdge
+            pubtator_edges = self.semantic_extractor.convert_to_pubtator_edges(
+                semantic_edges
+            )
+            
+            return pubtator_edges
+            
+        except Exception as e:
+            logger.error(
+                f"Error during semantic edge creation for PMID {article.pmid}: {e}"
+            )
+            return []
 
     def _add_nodes(self, nodes: Mapping[str, PubTatorNode]):
         for node_id, data in nodes.items():

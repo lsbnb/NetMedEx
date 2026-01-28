@@ -176,6 +176,58 @@ network_params = html.Div(
         html.Div(
             [
                 generate_param_title(
+                    "Edge Construction Method",
+                    (
+                        "Co-occurrence: Fast edge creation based on entity co-mentions (high recall)\n"
+                        "Semantic Analysis: LLM-based relationship extraction (balanced precision/recall, requires API) ⚡\n"
+                        "BioREx Relations Only: Use only expert-curated relationships (high precision, low coverage)"
+                    ),
+                ),
+                dcc.Dropdown(
+                    id="edge-method",
+                    options=[
+                        {"label": "Co-occurrence (Fast)", "value": "co-occurrence"},
+                        {"label": "Semantic Analysis (LLM) ⚡", "value": "semantic"},
+                        {"label": "BioREx Relations Only", "value": "relation"},
+                    ],
+                    value="co-occurrence",
+                    style={"width": "250px"},
+                ),
+            ],
+            className="param",
+        ),
+        html.Div(
+            [
+                html.Div(
+                    [
+                        html.Small(
+                            "⚠️ Semantic analysis requires LLM configuration and may incur API costs.",
+                            className="text-warning",
+                        ),
+                    ],
+                    className="mb-2",
+                ),
+                generate_param_title(
+                    "Semantic Confidence Threshold",
+                    "Minimum confidence score (0-1) for LLM-identified relationships. Higher values = more precision, fewer edges.",
+                ),
+                dcc.Slider(
+                    0,
+                    1.0,
+                    0.1,
+                    value=0.5,
+                    marks={0: "0.0", 0.5: "0.5", 1.0: "1.0"},
+                    id="semantic-threshold",
+                    tooltip={"placement": "bottom", "always_visible": True},
+                ),
+            ],
+            className="param",
+            id="semantic-options",
+            style=display.none,
+        ),
+        html.Div(
+            [
+                generate_param_title(
                     "Weighting Method",
                     (
                         "Frequency: Calculate edge weights using co-occurence counts\n"
