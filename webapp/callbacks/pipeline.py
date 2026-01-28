@@ -162,6 +162,8 @@ def callbacks(app):
         
         # Initialize LLM client if using semantic edge method
         llm_for_graph = None
+        progress_callback = None
+        
         if edge_method == "semantic":
             if not llm_client.client:
                 set_progress(
@@ -169,16 +171,52 @@ def callbacks(app):
                 )
                 return (no_update, weight, False, no_update, no_update)
             llm_for_graph = llm_client
-            set_progress((0, 1, "0/1", "Generating network with semantic analysis (this may take longer)..."))
+            
+            # Track article processing for progress updates
+            articles_processed = [0]  # Use list to allow modification in nested function
+            
+            # Parse collection early to get total count
+            collection = PubTatorIO.parse(savepath["pubtator"])
+            total_articles = len(collection.articles)
+            
+            # Define progress callback for semantic analysis
+            def semantic_progress(message: str):
+                """Callback to update progress during semantic analysis"""
+                articles_processed[0] += 0.5  # Increment by 0.5 for each sub-step
+                current = int(articles_processed[0])
+                progress_pct = current / total_articles if total_articles > 0 else 0
+                set_progress((
+                    progress_pct, 
+                    1, 
+                    f"{current}/{total_articles}", 
+                    f"🤖 Semantic Analysis: {message}"
+                ))
+            
+            progress_callback = semantic_progress
+            set_progress((0, total_articles, f"0/{total_articles}", 
+                         f"Starting semantic analysis for {total_articles} articles (this may take 2-3 seconds per article)..."))
+        else:
+            # For non-semantic methods, parse later
+            collection = None
         
         graph_builder = PubTatorGraphBuilder(
             node_type=node_type,
             edge_method=edge_method,
             llm_client=llm_for_graph,
             semantic_threshold=semantic_threshold,
+            progress_callback=progress_callback,
         )
-        collection = PubTatorIO.parse(savepath["pubtator"])
+        
+        # Parse collection if not already done
+        if collection is None:
+            collection = PubTatorIO.parse(savepath["pubtator"])
+        
         graph_builder.add_collection(collection)
+        
+        # Show building progress
+        if edge_method == "semantic":
+            set_progress((1, 1, "", "Building graph structure..."))
+        
         G = graph_builder.build(
             pmid_weights=None,
             weighting_method=weighting_method,

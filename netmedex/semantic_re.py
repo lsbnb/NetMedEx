@@ -32,16 +32,18 @@ class SemanticEdge:
 class SemanticRelationshipExtractor:
     """Extract relationships using LLM semantic analysis"""
 
-    def __init__(self, llm_client, confidence_threshold: float = 0.5):
+    def __init__(self, llm_client, confidence_threshold: float = 0.5, progress_callback=None):
         """
         Initialize the semantic relationship extractor.
 
         Args:
             llm_client: LLM client instance (e.g., from webapp.llm)
             confidence_threshold: Minimum confidence score to accept edges (0-1)
+            progress_callback: Optional callback function(current, total, message) for progress updates
         """
         self.llm_client = llm_client
         self.confidence_threshold = confidence_threshold
+        self.progress_callback = progress_callback
         self.cache: dict[str, list[SemanticEdge]] = {}  # Cache results by PMID
 
     def analyze_article_relationships(
@@ -76,9 +78,16 @@ class SemanticRelationshipExtractor:
         # Build LLM prompt
         prompt = self._build_llm_prompt(article.title, article.abstract, entity_list)
 
-        # Call LLM
+        # Call LLM with progress update
         try:
+            if self.progress_callback:
+                self.progress_callback(f"Analyzing PMID {article.pmid} ({len(entity_list)} entities)...")
+            
             response = self._call_llm(prompt)
+            
+            if self.progress_callback:
+                self.progress_callback(f"Parsing relationships for PMID {article.pmid}...")
+            
             relationships = self._parse_llm_response(response, article.pmid)
         except Exception as e:
             logger.error(f"Error during semantic analysis for PMID {article.pmid}: {e}")

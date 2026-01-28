@@ -106,6 +106,7 @@ class PubTatorGraphBuilder:
         edge_method: Literal["co-occurrence", "semantic", "relation"] = "co-occurrence",
         llm_client=None,
         semantic_threshold: float = 0.5,
+        progress_callback=None,
     ) -> None:
         self.node_type = node_type
         self.edge_method = edge_method
@@ -113,6 +114,7 @@ class PubTatorGraphBuilder:
         self.num_articles = 0
         self.graph = nx.Graph()
         self._updated = False
+        self.progress_callback = progress_callback
         
         # Initialize semantic extractor if using semantic edge method
         self.semantic_extractor = None
@@ -120,7 +122,7 @@ class PubTatorGraphBuilder:
             if llm_client is None:
                 raise ValueError("LLM client is required for semantic edge method")
             self.semantic_extractor = SemanticRelationshipExtractor(
-                llm_client, confidence_threshold=semantic_threshold
+                llm_client, confidence_threshold=semantic_threshold, progress_callback=progress_callback
             )
             logger.info(f"Semantic relationship extractor initialized (threshold: {semantic_threshold})")
         
