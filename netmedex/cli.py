@@ -98,7 +98,43 @@ def network_entry(args):
     collection = PubTatorIO.parse(pubtator_filepath)
 
     # Graph
-    graph_builder = PubTatorGraphBuilder(node_type=args.node_type)
+    llm_client = None
+    if args.edge_method == "semantic":
+        # Initialize LLM client for semantic analysis
+        try:
+            import os
+            from dotenv import load_dotenv
+            from openai import OpenAI
+            
+            load_dotenv()
+            api_key = os.getenv("OPENAI_API_KEY")
+            if not api_key:
+                logger.error(
+                    "Semantic edge method requires OPENAI_API_KEY environment variable. "
+                    "Please set it in your environment or .env file."
+                )
+                sys.exit(1)
+            
+            # Create a simple LLM client wrapper
+            class SimpleLLMClient:
+                def __init__(self, api_key):
+                    self.client = OpenAI(api_key=api_key)
+                    self.model = os.getenv("OPENAI_MODEL", "gpt-3.5-turbo")
+            
+            llm_client = SimpleLLMClient(api_key)
+            logger.info(f"LLM client initialized for semantic analysis (model: {llm_client.model})")
+            
+        except ImportError as e:
+            logger.error(f"Failed to import required libraries for semantic analysis: {e}")
+            logger.error("Please install: pip install openai python-dotenv")
+            sys.exit(1)
+    
+    graph_builder = PubTatorGraphBuilder(
+        node_type=args.node_type,
+        edge_method=args.edge_method,
+        llm_client=llm_client,
+        semantic_threshold=args.semantic_threshold,
+    )
     graph_builder.add_collection(collection)
     G = graph_builder.build(
         pmid_weights=args.pmid_weight,
@@ -264,6 +300,22 @@ def get_network_parser():
         type=int,
         default=0,
         help="Maximum number of edges to display (default: 0, no limit)",
+    )
+    parser.add_argument(
+        "--edge_method",
+        choices=["co-occurrence", "semantic", "relation"],
+        default="co-occurrence",
+        help="Method for edge construction: "
+             "co-occurrence (all co-mentions, fast), "
+             "semantic (LLM-analyzed relationships, balanced), "
+             "relation (BioREx annotations only, precise) (default: co-occurrence)",
+    )
+    parser.add_argument(
+        "--semantic_threshold",
+        type=float,
+        default=0.5,
+        help="Minimum confidence score for semantic edges, range 0-1 (default: 0.5). "
+             "Only used when --edge_method=semantic",
     )
 
     return parser
