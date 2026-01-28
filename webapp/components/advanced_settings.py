@@ -44,19 +44,67 @@ max_edges = html.Div(
 )
 
 
-api_key_input = html.Div(
+llm_config = html.Div(
     [
         generate_param_title(
-            "OpenAI API Key",
-            "Enter your OpenAI API Key (starts with sk-...)",
+            "LLM Provider",
+            "Choose your LLM provider for AI-powered features",
         ),
-        dbc.Input(
-             id="openai-api-key-input",
-             type="password",
-             placeholder="sk-...",
-             debounce=True,
+        dbc.RadioItems(
+            id="llm-provider-selector",
+            options=[
+                {"label": "OpenAI", "value": "openai"},
+                {"label": "Local LLM (e.g., Ollama)", "value": "local"},
+            ],
+            value="openai",  # Default to OpenAI
+            inline=True,
+            className="mb-3",
         ),
-        html.Div(id="api-key-status", className="text-success small")
+        # OpenAI Configuration (shown by default)
+        html.Div(
+            [
+                generate_param_title(
+                    "OpenAI API Key",
+                    "Enter your OpenAI API Key (starts with sk-...)",
+                ),
+                dbc.Input(
+                    id="openai-api-key-input",
+                    type="password",
+                    placeholder="sk-...",
+                    debounce=True,
+                ),
+            ],
+            id="openai-config",
+            style={"display": "block"},
+        ),
+        # Local LLM Configuration (hidden by default)
+        html.Div(
+            [
+                generate_param_title(
+                    "Base URL",
+                    "Local LLM endpoint (OpenAI-compatible API)",
+                ),
+                dbc.Input(
+                    id="llm-base-url-input",
+                    placeholder="http://localhost:11434/v1",
+                    value="http://localhost:11434/v1",
+                    debounce=True,
+                ),
+                generate_param_title(
+                    "Model Name",
+                    "Model to use (e.g., gpt-oss:20b, llama2)",
+                ),
+                dbc.Input(
+                    id="llm-model-input",
+                    placeholder="gpt-oss:20b",
+                    debounce=True,
+                ),
+            ],
+            id="local-llm-config",
+            style={"display": "none"},
+        ),
+        # Unified status message
+        html.Div(id="llm-config-status", className="text-success small mt-2"),
     ],
     className="param",
 )
@@ -73,7 +121,7 @@ advanced_settings = html.Div(
         html.Div(
             [
                 html.H5("Advanced Settings", className="text-center"),
-                api_key_input,
+                llm_config,
                 max_articles,
                 max_edges,
             ],
