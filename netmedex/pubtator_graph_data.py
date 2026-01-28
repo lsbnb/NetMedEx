@@ -34,6 +34,9 @@ class PubTatorEdge:
     node2_id: str
     pmid: str
     relation: str
+    # Optional semantic analysis metadata
+    confidence: float | None = None  # LLM confidence score (0-1)
+    evidence: str | None = None  # Supporting text from abstract
 
 
 class NodeCollection(ABC):

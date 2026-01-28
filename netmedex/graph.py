@@ -477,15 +477,40 @@ class PubTatorGraphBuilder:
     def _add_edges(self, edges: Sequence[PubTatorEdge]):
         for edge in edges:
             if self.graph.has_edge(edge.node1_id, edge.node2_id):
-                relation_dict: dict[str, set[str]] = self.graph.edges[
-                    edge.node1_id, edge.node2_id
-                ]["relations"]
+                # Edge exists - update relations and metadata
+                edge_data = self.graph.edges[edge.node1_id, edge.node2_id]
+                relation_dict: dict[str, set[str]] = edge_data["relations"]
 
                 if relation_dict.get(edge.pmid) is None:
                     relation_dict[edge.pmid] = {edge.relation}
                 else:
                     relation_dict[edge.pmid].add(edge.relation)
+                
+                # Update semantic metadata if present
+                if edge.confidence is not None:
+                    if edge_data.get("confidences") is None:
+                        edge_data["confidences"] = {}
+                    if edge.pmid not in edge_data["confidences"]:
+                        edge_data["confidences"][edge.pmid] = {}
+                    edge_data["confidences"][edge.pmid][edge.relation] = edge.confidence
+                
+                if edge.evidence is not None:
+                    if edge_data.get("evidences") is None:
+                        edge_data["evidences"] = {}
+                    if edge.pmid not in edge_data["evidences"]:
+                        edge_data["evidences"][edge.pmid] = {}
+                    edge_data["evidences"][edge.pmid][edge.relation] = edge.evidence
             else:
+                # Create new edge with metadata
+                confidences = None
+                evidences = None
+                
+                if edge.confidence is not None:
+                    confidences = {edge.pmid: {edge.relation: edge.confidence}}
+                
+                if edge.evidence is not None:
+                    evidences = {edge.pmid: {edge.relation: edge.evidence}}
+                
                 edge_data = GraphEdge(
                     _id=generate_uuid(),
                     type="node",
@@ -495,6 +520,8 @@ class PubTatorGraphBuilder:
                     npmi=None,
                     edge_weight=None,
                     edge_width=None,
+                    confidences=confidences,
+                    evidences=evidences,
                 )
                 self.graph.add_edge(edge.node1_id, edge.node2_id, **asdict(edge_data))
 

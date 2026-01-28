@@ -50,6 +50,9 @@ class GraphEdge:
     npmi: float | None = None
     edge_weight: float | None = None
     edge_width: float | None = None
+    # Semantic analysis metadata (optional, only for LLM-extracted edges)
+    confidences: dict[str, dict[str, float]] | None = None  # {pmid: {relation: confidence}}
+    evidences: dict[str, dict[str, str]] | None = None  # {pmid: {relation: evidence}}
 
 
 @dataclass
