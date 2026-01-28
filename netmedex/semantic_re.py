@@ -262,12 +262,14 @@ class SemanticRelationshipExtractor:
     ) -> list[PubTatorEdge]:
         """
         Convert SemanticEdge objects to PubTatorEdge format.
+        
+        Now preserves confidence and evidence metadata.
 
         Args:
             semantic_edges: List of SemanticEdge objects
 
         Returns:
-            List of PubTatorEdge objects
+            List of PubTatorEdge objects with semantic metadata
         """
         pubtator_edges = []
         for se in semantic_edges:
@@ -276,6 +278,8 @@ class SemanticRelationshipExtractor:
                 node2_id=se.node2_id,
                 pmid=se.pmid,
                 relation=se.relation_type,
+                confidence=se.confidence,  # Preserve confidence score
+                evidence=se.evidence,  # Preserve supporting evidence
             )
             pubtator_edges.append(edge)
 
