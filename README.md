@@ -44,24 +44,25 @@ netmedex run
 
 The sidebar parameters are detailed in the [Available Commands](#available-commands) section and [Documentation](https://yehzx.github.io/NetMedEx/).
 
-### 🤖 AI-Powered Features (Optional)
+### 🤖 AI-Powered Features (v0.5)
 
-NetMedEx now supports AI-powered features using OpenAI's language models:
+NetMedEx now supports advanced AI-powered literature analysis using Retrieval-Augmented Generation (RAG):
 
 **Features:**
-- **Natural Language Queries**: Convert plain English queries into optimized PubTator3 search syntax
-- **Subnetwork Analysis**: Select nodes/edges in the graph to get AI-generated summaries of related research
-- **Interactive Chat**: Ask follow-up questions about your analysis results
+- **Natural Language Queries**: Convert plain English queries into optimized PubTator3 search syntax.
+- **RAG-based Chat**: Select edges in the graph to index associated PubMed abstracts and have a contextual conversation with an LLM about the findings.
+- **Semantic Evidence**: View detailed relationship types, confidence scores, and specific evidence sentences extracted from the literature.
+- **Markdown Support**: Chat responses feature rich formatting for better readability of scientific content.
 
 **Setup:**
-1. Get an API key from [OpenAI](https://platform.openai.com/api-keys)
+1. Get an API key from [OpenAI](https://platform.openai.com/api-keys) or use a local LLM endpoint.
 2. Configure your API key using **one of these methods**:
    - Set environment variable: `export OPENAI_API_KEY='sk-...'`
    - Create a `.env` file (see `.env.example` for template)
    - Enter via "Advanced Settings" in the web interface
 3. Start using AI features in the web application!
 
-_Note: AI features require an active OpenAI API key and will consume API credits. They are entirely optional and NetMedEx works fully without them._
+_Note: AI features require an active OpenAI API key or local LLM setup. They are entirely optional and NetMedEx works fully without them._
 
 
 ## Command-Line Interface (CLI)

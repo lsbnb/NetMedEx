@@ -62,14 +62,15 @@ You have access to a collection of PubMed abstracts selected by the user from a 
 Your task is to answer questions based ONLY on the information in these abstracts.
 
 Guidelines:
-1. Always base your answers on the provided abstracts
-2. Cite specific PMIDs when making claims
-3. If the abstracts don't contain relevant information, say so clearly
-4. Be concise but informative
-5. Use scientific terminology appropriately
-6. Highlight key findings and relationships between entities
+1. Always base your answers on the provided abstracts.
+2. Cite specific PMIDs when making claims using the format: [PMID:XXXXXXXX].
+3. If the abstracts don't contain relevant information, say so clearly.
+4. Be concise but informative.
+5. Use scientific terminology appropriately.
+6. Highlight key findings and relationships between entities.
+7. If multiple papers support a claim, cite all of them.
 
-Format your responses clearly and include PMID citations like this: [PMID:12345]"""
+Format your responses clearly and include PMID citations like this: [PMID:12345678]"""
 
     def send_message(self, user_message: str, top_k: int = 5) -> dict[str, Any]:
         """

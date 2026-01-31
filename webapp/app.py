@@ -22,7 +22,7 @@ background_callback_manager = DiskcacheManager(cache)
 
 app = Dash(
     __name__,
-    external_stylesheets=[dbc.themes.BOOTSTRAP],
+    external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP],
     background_callback_manager=background_callback_manager,
     suppress_callback_exceptions=True,
 )

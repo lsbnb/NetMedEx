@@ -36,7 +36,9 @@ def create_message_component(role: str, content: str, sources: list[str] | None 
         html.Div(
             [
                 html.Span(icon, className="message-icon me-2"),
-                html.Span(content, className="message-text"),
+                dcc.Markdown(
+                    content, className="message-text d-inline-block", dangerously_allow_html=True
+                ),
             ],
             className=f"{message_class}-content",
         )
@@ -122,20 +124,34 @@ selection_info = html.Div(
         html.Div(
             [
                 html.H6("📊 Selection Summary", className="mb-3"),
-                dbc.Row([
-                    dbc.Col([
-                        html.Div([
-                            html.Span("Edges: ", className="text-muted small"),
-                            html.Span("0", id="chat-edge-count", className="fw-bold"),
-                        ]),
-                    ], width=6),
-                    dbc.Col([
-                        html.Div([
-                            html.Span("Abstracts: ", className="text-muted small"),
-                            html.Span("0", id="chat-abstract-count", className="fw-bold"),
-                        ]),
-                    ], width=6),
-                ]),
+                dbc.Row(
+                    [
+                        dbc.Col(
+                            [
+                                html.Div(
+                                    [
+                                        html.Span("Edges: ", className="text-muted small"),
+                                        html.Span("0", id="chat-edge-count", className="fw-bold"),
+                                    ]
+                                ),
+                            ],
+                            width=6,
+                        ),
+                        dbc.Col(
+                            [
+                                html.Div(
+                                    [
+                                        html.Span("Abstracts: ", className="text-muted small"),
+                                        html.Span(
+                                            "0", id="chat-abstract-count", className="fw-bold"
+                                        ),
+                                    ]
+                                ),
+                            ],
+                            width=6,
+                        ),
+                    ]
+                ),
             ],
             id="chat-selection-summary",
             className="mb-3",
@@ -174,6 +190,6 @@ chat_panel = html.Div(
         dcc.Store(id="chat-history-store", data=[]),
         dcc.Store(id="selected-edges-data", data=None),
     ],
-    id="chat-panel",
+    id="chat-panel-container",
     style=display.none,
 )

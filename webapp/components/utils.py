@@ -48,3 +48,11 @@ def icon_graph():
         style={"margin-right": "5px"},
     )
 
+
+def icon_chat():
+    return html.Img(
+        src=dash.get_asset_url("icon_chat.svg"),
+        width=20,
+        height=20,
+        style={"margin-right": "5px"},
+    )

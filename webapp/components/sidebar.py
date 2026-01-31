@@ -4,6 +4,7 @@ import dash_bootstrap_components as dbc
 from dash import dcc, html
 
 from webapp.components.advanced_settings import advanced_settings
+from webapp.components.chat import chat_panel
 from webapp.components.graph_tools import (
     edge_weight_cutoff,
     graph_layout,
@@ -11,11 +12,10 @@ from webapp.components.graph_tools import (
 )
 from webapp.components.utils import (
     generate_param_title,
+    generate_param_title,
     icon_download,
-    icon_graph,
-    icon_search,
 )
-from webapp.utils import display, visibility
+from webapp.utils import display
 
 api_or_file = html.Div(
     [
@@ -99,21 +99,28 @@ api_params = html.Div(
                     "AI Search",
                     "Use LLM to translate natural language queries into optimized PubTator boolean queries.",
                 ),
-                dbc.Alert([
-                    html.Div([
-                        dbc.Switch(
-                            id="ai-search-toggle",
-                            label="🤖 Enable AI-Powered Search",
-                            value=False,
-                            className="mb-2"
-                        ),
-                        html.Small(
-                            "Let AI translate your natural language into optimized search queries",
-                            className="d-block text-muted",
-                            style={"fontSize": "0.85rem"}
-                        ),
-                    ])
-                ], color="info", className="mb-0", style={"padding": "0.75rem"}),
+                dbc.Alert(
+                    [
+                        html.Div(
+                            [
+                                dbc.Switch(
+                                    id="ai-search-toggle",
+                                    label="🤖 Enable AI-Powered Search",
+                                    value=False,
+                                    className="mb-2",
+                                ),
+                                html.Small(
+                                    "Let AI translate your natural language into optimized search queries",
+                                    className="d-block text-muted",
+                                    style={"fontSize": "0.85rem"},
+                                ),
+                            ]
+                        )
+                    ],
+                    color="info",
+                    className="mb-0",
+                    style={"padding": "0.75rem"},
+                ),
             ],
             className="param",
         ),
@@ -264,42 +271,54 @@ network_params = html.Div(
 
 progress = html.Div(
     [
-        dbc.Card([
-            dbc.CardBody([
-                # Progress header
-                html.H5("Progress", className="mb-3"),
-                
-                # Progress bar with percentage display
-                dbc.Progress([
-                    dbc.Progress(
-                        value=0,
-                        id="progress",
-                        bar=True,
-                        animated=True,
-                        striped=True,
-                        style={"minHeight": "25px"}
-                    )
-                ], className="mb-3", style={"height": "25px"}),
-                
-                # Status message with icon
-                html.Div([
-                    html.Span("", id="progress-status", className="text-muted"),
-                ], className="d-flex align-items-center"),
-            ])
-        ], className="shadow-sm mb-3", id="progress-card"),
-        
+        dbc.Card(
+            [
+                dbc.CardBody(
+                    [
+                        # Progress header
+                        html.H5("Progress", className="mb-3"),
+                        # Progress bar with percentage display
+                        dbc.Progress(
+                            [
+                                dbc.Progress(
+                                    value=0,
+                                    id="progress",
+                                    bar=True,
+                                    animated=True,
+                                    striped=True,
+                                    style={"minHeight": "25px"},
+                                )
+                            ],
+                            className="mb-3",
+                            style={"height": "25px"},
+                        ),
+                        # Status message with icon
+                        html.Div(
+                            [
+                                html.Span("", id="progress-status", className="text-muted"),
+                            ],
+                            className="d-flex align-items-center",
+                        ),
+                    ]
+                )
+            ],
+            className="shadow-sm mb-3",
+            id="progress-card",
+        ),
         # Submit button
-        html.Div([
-            dbc.Button(
-                "Submit",
-                id="submit-button",
-                color="primary",
-                size="lg",
-                className="w-100 mb-2",
-                style={"borderRadius": "8px"}
-            ),
-            html.Div(id="output")
-        ]),
+        html.Div(
+            [
+                dbc.Button(
+                    "Submit",
+                    id="submit-button",
+                    color="primary",
+                    size="lg",
+                    className="w-100 mb-2",
+                    style={"borderRadius": "8px"},
+                ),
+                html.Div(id="output"),
+            ]
+        ),
     ],
     id="progress-wrapper",
 )
@@ -323,47 +342,67 @@ export_buttons = html.Div(
 )
 
 search_panel = html.Div(
-    [advanced_settings, api_or_file, api_params, pubtator_file, network_params, progress],
+    [api_or_file, api_params, pubtator_file, network_params, progress],
     id="search-panel",
 )
 
 graph_settings_panel = html.Div(
     [
         # Network Statistics Summary Card
-        dbc.Card([
-            dbc.CardBody([
-                html.H5("Network Statistics", className="mb-3 text-center"),
-                html.Div([
-                    # Articles count
-                    html.Div([
-                        html.Div("📄", style={"fontSize": "1.5rem"}),
-                        html.Div([
-                            html.H4("0", id="stat-articles", className="mb-0"),
-                            html.Small("Articles", className="text-muted"),
-                        ]),
-                    ], className="d-flex align-items-center gap-2 mb-2"),
-                    
-                    # Nodes count
-                    html.Div([
-                        html.Div("🔵", style={"fontSize": "1.5rem"}),
-                        html.Div([
-                            html.H4("0", id="stat-nodes", className="mb-0"),
-                            html.Small("Nodes", className="text-muted"),
-                        ]),
-                    ], className="d-flex align-items-center gap-2 mb-2"),
-                    
-                    # Edges count
-                    html.Div([
-                        html.Div("🔗", style={"fontSize": "1.5rem"}),
-                        html.Div([
-                            html.H4("0", id="stat-edges", className="mb-0"),
-                            html.Small("Edges", className="text-muted"),
-                        ]),
-                    ], className="d-flex align-items-center gap-2"),
-                ]),
-            ])
-        ], className="shadow-sm mb-3", style={"backgroundColor": "rgba(255, 255, 255, 0.1)"}),
-        
+        dbc.Card(
+            [
+                dbc.CardBody(
+                    [
+                        html.H5("Network Statistics", className="mb-3 text-center"),
+                        html.Div(
+                            [
+                                # Articles count
+                                html.Div(
+                                    [
+                                        html.Div("📄", style={"fontSize": "1.5rem"}),
+                                        html.Div(
+                                            [
+                                                html.H4("0", id="stat-articles", className="mb-0"),
+                                                html.Small("Articles", className="text-muted"),
+                                            ]
+                                        ),
+                                    ],
+                                    className="d-flex align-items-center gap-2 mb-2",
+                                ),
+                                # Nodes count
+                                html.Div(
+                                    [
+                                        html.Div("🔵", style={"fontSize": "1.5rem"}),
+                                        html.Div(
+                                            [
+                                                html.H4("0", id="stat-nodes", className="mb-0"),
+                                                html.Small("Nodes", className="text-muted"),
+                                            ]
+                                        ),
+                                    ],
+                                    className="d-flex align-items-center gap-2 mb-2",
+                                ),
+                                # Edges count
+                                html.Div(
+                                    [
+                                        html.Div("🔗", style={"fontSize": "1.5rem"}),
+                                        html.Div(
+                                            [
+                                                html.H4("0", id="stat-edges", className="mb-0"),
+                                                html.Small("Edges", className="text-muted"),
+                                            ]
+                                        ),
+                                    ],
+                                    className="d-flex align-items-center gap-2",
+                                ),
+                            ]
+                        ),
+                    ]
+                )
+            ],
+            className="shadow-sm mb-3",
+            style={"backgroundColor": "rgba(255, 255, 255, 0.1)"},
+        ),
         export_buttons,
         html.Div(
             [
@@ -391,21 +430,25 @@ graph_settings_panel = html.Div(
     style=display.none,
 )
 
-sidebar_toggle = dbc.RadioItems(
-    id="sidebar-panel-toggle",
-    options=[
-        {"label": [icon_search(), "Search"], "value": "search"},
-        {"label": [icon_graph(), "Graph"], "value": "graph"},
+sidebar_toggle = dbc.Tabs(
+    [
+        dbc.Tab(label="Search", tab_id="search", label_style={"cursor": "pointer"}),
+        dbc.Tab(label="Graph", tab_id="graph", label_style={"cursor": "pointer"}),
+        dbc.Tab(label="Chat", tab_id="chat", label_style={"cursor": "pointer"}),
     ],
-    value="search",
-    inline=True,
-    className="mb-3 sidebar-toggle",
-    labelClassName="toggle-label",
-    labelCheckedClassName="toggle-selected",
+    id="sidebar-panel-toggle",
+    active_tab="search",
+    className="mb-3",
 )
 
 sidebar = html.Div(
-    [sidebar_toggle, search_panel, graph_settings_panel],
+    [
+        advanced_settings,
+        sidebar_toggle,
+        search_panel,
+        graph_settings_panel,
+        chat_panel,
+    ],
     className="sidebar",
     id="sidebar-container",
 )

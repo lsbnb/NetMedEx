@@ -11,6 +11,8 @@ import logging
 from dataclasses import dataclass
 from typing import Any
 
+from chromadb.utils import embedding_functions
+
 logger = logging.getLogger(__name__)
 
 
@@ -47,20 +49,33 @@ class AbstractRAG:
             from chromadb.config import Settings
 
             # Initialize ChromaDB with ephemeral storage (in-memory for now)
+            # Use a fresh client for each RAG instance to avoid cross-session pollution
             self.client = chromadb.Client(
                 Settings(
                     anonymized_telemetry=False,
                     allow_reset=True,
                 )
             )
-            logger.info("ChromaDB client  initialized")
+
+            # Setup embedding function if API key is available
+            self.embedding_fn = None
+            if self.llm_client.api_key and self.llm_client.api_key != "local-dummy-key":
+                self.embedding_fn = embedding_functions.OpenAIEmbeddingFunction(
+                    api_key=self.llm_client.api_key,
+                    model_name="text-embedding-3-small",  # Optimal for speed/cost
+                )
+                logger.info("OpenAI Embedding Function initialized")
+            elif self.llm_client.base_url:
+                # For local LLMs, we might need a different approach or fall back to default
+                # ChromaDB's default uses Sentence Transformers locally
+                logger.info("Local LLM detected, using ChromaDB default embeddings")
+
+            logger.info("ChromaDB client initialized")
         except ImportError:
             logger.error("ChromaDB not installed. Please install: pip install chromadb")
             raise
 
-    def index_abstracts(
-        self, abstracts: list[AbstractDocument], progress_callback=None
-    ) -> int:
+    def index_abstracts(self, abstracts: list[AbstractDocument], progress_callback=None) -> int:
         """
         Index abstracts into the vector database.
 
@@ -81,9 +96,10 @@ class AbstractRAG:
                 self.client.reset()
 
             # Create new collection
-            self.collection = self.client.create_collection(
+            self.collection = self.client.get_or_create_collection(
                 name=self.collection_name,
                 metadata={"description": "PubMed abstracts for RAG"},
+                embedding_function=self.embedding_fn,
             )
 
             # Prepare documents for indexing
@@ -151,7 +167,9 @@ class AbstractRAG:
             # Extract PMIDs and scores
             pmid_scores = []
             if results["ids"] and results["distances"]:
-                for doc_id, distance in zip(results["ids"][0], results["distances"][0]):
+                for doc_id, distance in zip(
+                    results["ids"][0], results["distances"][0], strict=True
+                ):
                     pmid = doc_id.replace("pmid_", "")
                     # Convert distance to similarity score (lower distance = higher similarity)
                     # ChromaDB uses L2 distance, so we invert it

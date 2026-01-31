@@ -325,3 +325,37 @@ window.dash_clientside.clientside = {
     ]
   }
 }
+
+/**
+ * Chat component enhancements
+ */
+function setupChatAutoScroll() {
+  const chatContainer = document.getElementById('chat-messages');
+  if (!chatContainer) return;
+
+  // Scroll to bottom initially
+  chatContainer.scrollTop = chatContainer.scrollHeight;
+
+  // Create an observer to scroll when new messages are added
+  const observer = new MutationObserver(() => {
+    chatContainer.scrollTo({
+      top: chatContainer.scrollHeight,
+      behavior: 'smooth'
+    });
+  });
+
+  observer.observe(chatContainer, { childList: true });
+}
+
+// Re-run setup when the chat panel might have been rendered/updated
+document.addEventListener('DOMContentLoaded', () => {
+  setupChatAutoScroll();
+
+  // Also watch for the container being added/shown
+  const bodyObserver = new MutationObserver((mutationsList) => {
+    if (document.getElementById('chat-messages')) {
+      setupChatAutoScroll();
+    }
+  });
+  bodyObserver.observe(document.body, { childList: true, subtree: true });
+});

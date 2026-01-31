@@ -1,11 +1,10 @@
-from __future__ import annotations
-
+import dash
 from dash import Input, Output, State
 
 
 def callbacks(app):
     @app.callback(
-        Output("advanced-settings-collapse", "style", allow_duplicate=True),
+        Output("advanced-settings-collapse", "style"),
         Output("max-edges", "tooltip"),
         Output("max-articles", "tooltip"),
         Input("advanced-settings-btn", "n_clicks"),
@@ -13,11 +12,22 @@ def callbacks(app):
         prevent_initial_call=True,
     )
     def open_advanced_options(n_clicks, style):
-        visibility = style["visibility"]
-        toggle = {"hidden": "visible", "visible": "hidden"}
-        weight_toggle = {"hidden": True, "visible": False}
+        if n_clicks is None:
+            return dash.no_update
+
+        # Get current visibility from style
+        current_visibility = style.get("visibility", "hidden")
+
+        # Toggle visibility
+        if current_visibility == "hidden":
+            new_visibility = "visible"
+            tooltip_visible = True
+        else:
+            new_visibility = "hidden"
+            tooltip_visible = False
+
         return (
-            {"visibility": toggle[visibility]},
-            {"placement": "bottom", "always_visible": weight_toggle[visibility]},
-            {"placement": "bottom", "always_visible": weight_toggle[visibility]},
+            {"visibility": new_visibility},
+            {"placement": "bottom", "always_visible": tooltip_visible},
+            {"placement": "bottom", "always_visible": tooltip_visible},
         )
