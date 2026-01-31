@@ -37,6 +37,7 @@ dependencies = [
   "dash[diskcache]~=2.17",
   "dash-cytoscape~=1.0.2",
   "dash-bootstrap_components~=1.7.1",
+  "chromadb>=0.4.0",
 ]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
