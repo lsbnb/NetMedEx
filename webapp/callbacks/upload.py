@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import base64
 
 from dash import Input, Output, State, html, no_update

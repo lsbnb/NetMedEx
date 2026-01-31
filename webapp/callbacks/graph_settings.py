@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dash import Input, Output, State
 
 from webapp.utils import display, visibility
@@ -34,5 +36,6 @@ def callbacks(app):
     def toggle_panels(toggle_value):
         if toggle_value == "graph":
             return display.none, display.block, "sidebar graph-mode"
+        # search (default)
         return display.block, display.none, "sidebar"
 

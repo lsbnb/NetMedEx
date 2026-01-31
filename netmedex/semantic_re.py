@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 """
 Semantic Relationship Extraction using LLM
 
@@ -47,7 +49,7 @@ class SemanticRelationshipExtractor:
         self.cache: dict[str, list[SemanticEdge]] = {}  # Cache results by PMID
 
     def analyze_article_relationships(
-        self, article: PubTatorArticle, nodes: dict[str, PubTatorNode]
+        self, article: PubTatorArticle, nodes: dict[str, PubTatorNode], article_num: int = 0
     ) -> list[SemanticEdge]:
         """
         Analyze abstract to identify semantic relationships between entities.
@@ -55,6 +57,7 @@ class SemanticRelationshipExtractor:
         Args:
             article: PubTator article with abstract text
             nodes: Dictionary of nodes (entity_id -> PubTatorNode)
+            article_num: Current article number for progress tracking
 
         Returns:
             List of SemanticEdge objects representing identified relationships
@@ -81,16 +84,18 @@ class SemanticRelationshipExtractor:
         # Call LLM with progress update
         try:
             if self.progress_callback:
-                self.progress_callback(f"Analyzing PMID {article.pmid} ({len(entity_list)} entities)...")
+                self.progress_callback(article_num, 1, f"Analyzing PMID {article.pmid} ({len(entity_list)} entities)...", None)
             
             response = self._call_llm(prompt)
             
             if self.progress_callback:
-                self.progress_callback(f"Parsing relationships for PMID {article.pmid}...")
+                self.progress_callback(article_num, 1, f"Parsing relationships for PMID {article.pmid}...", None)
             
             relationships = self._parse_llm_response(response, article.pmid)
         except Exception as e:
             logger.error(f"Error during semantic analysis for PMID {article.pmid}: {e}")
+            if self.progress_callback:
+                self.progress_callback(article_num, 1, "", str(e))
             return []
 
         # Filter by confidence and convert to SemanticEdge
@@ -207,6 +212,7 @@ class SemanticRelationshipExtractor:
             ],
             temperature=0.1,  # Low temperature for consistency
             max_tokens=1500,  # Allow for multiple relationships
+            timeout=180.0,  # 3 minutes for large models like 20B parameters
         )
 
         return response.choices[0].message.content.strip()

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -6,8 +8,7 @@ import os
 
 import dash_bootstrap_components as dbc
 import diskcache
-from dash import ClientsideFunction, Dash, Input, Output, dcc, html
-from dash.long_callback import DiskcacheLongCallbackManager
+from dash import ClientsideFunction, Dash, DiskcacheManager, Input, Output, dcc, html
 
 from netmedex.utils import config_logger
 from webapp.callbacks import collect_callbacks
@@ -17,12 +18,12 @@ config_logger(is_debug=(os.getenv("LOGGING_DEBUG") == "true"))
 
 
 cache = diskcache.Cache("./cache")
-long_callback_manager = DiskcacheLongCallbackManager(cache)
+background_callback_manager = DiskcacheManager(cache)
 
 app = Dash(
     __name__,
     external_stylesheets=[dbc.themes.BOOTSTRAP],
-    long_callback_manager=long_callback_manager,
+    background_callback_manager=background_callback_manager,
     suppress_callback_exceptions=True,
 )
 app.title = "NetMedEx"

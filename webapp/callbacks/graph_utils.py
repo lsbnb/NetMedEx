@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Literal
 
 import networkx as nx
@@ -18,6 +20,7 @@ def rebuild_graph(
     graph_path: str,
     G: nx.Graph | None = None,
     with_layout: bool = False,
+    community: bool = False,
 ):
     graph = load_graph(graph_path) if G is None else G
 
@@ -29,7 +32,8 @@ def rebuild_graph(
     if with_layout:
         PubTatorGraphBuilder._set_network_layout(graph)
 
-    if graph.graph.get("is_community", False) and format == "html":
+    # Use the community parameter instead of graph metadata
+    if community and format == "html":
         PubTatorGraphBuilder._set_network_communities(graph)
 
     return graph

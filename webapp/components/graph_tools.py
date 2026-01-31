@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import dash_bootstrap_components as dbc
 from dash import dcc, html
 
@@ -51,18 +53,23 @@ edge_weight_cutoff = html.Div(
     [
         generate_param_title(
             "Edge Weight Cutoff",
-            "Set the minimum edge weight to filter the graph",
+            (
+                "Filter edges by minimum weight threshold:\n"
+                "• Frequency mode: Remove edges with co-occurrence count ≤ cutoff (e.g., 0 = keep all, 2 = keep edges appearing ≥3 times)\n"
+                "• NPMI mode: Remove edges with NPMI score ≤ cutoff (range -1 to 1, where 0 = neutral, >0 = positive correlation)\n"
+                "Tip: Start with 0 (no filtering) for exploration, increase to simplify complex networks"
+            ),
         ),
         dcc.Slider(
-            0,
-            20,
-            1,
-            value=3,
-            marks=None,
             id="graph-cut-weight",
+            min=0,
+            max=20,
+            step=1,
+            value=0,
+            marks={i: str(i) for i in range(0, 21, 5)},
             tooltip={"placement": "bottom", "always_visible": False},
         ),
-        dcc.Store(id="memory-graph-cut-weight", data=3),
+        dcc.Store(id="memory-graph-cut-weight", data=0),
     ],
     className="param",
 )

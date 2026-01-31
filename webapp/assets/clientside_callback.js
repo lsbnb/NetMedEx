@@ -137,7 +137,10 @@ window.dash_clientside.clientside = {
         return [{ "display": display, "zIndex": get_z_index(display) }, elements]
       }
 
-      const [node_1, node_2] = tap_edge.label.split(" (interacts with) ")
+      const node_1 = tap_edge.source_name || "Unknown"
+      const node_2 = tap_edge.target_name || "Unknown"
+      const relation = tap_edge.relation_display || "interacts with"
+
       let edge_type
       if (tap_edge.edge_type === "node") {
         edge_type = "Node"
@@ -146,6 +149,84 @@ window.dash_clientside.clientside = {
       }
       elements.push({ props: { children: `${edge_type} 1: ${node_1}` }, type: "P", namespace: "dash_html_components" })
       elements.push({ props: { children: `${edge_type} 2: ${node_2}` }, type: "P", namespace: "dash_html_components" })
+      elements.push({ props: { children: `Relation: ${relation}` }, type: "P", namespace: "dash_html_components" })
+
+      // Display semantic relationship information if available
+      if (tap_edge.relations && Object.keys(tap_edge.relations).length > 0) {
+        elements.push({
+          props: {
+            children: "Semantic Relationships:",
+            style: { fontWeight: "bold", marginTop: "10px" }
+          },
+          type: "P",
+          namespace: "dash_html_components"
+        })
+
+        // Iterate through PMIDs and their relations
+        Object.entries(tap_edge.relations).forEach(([pmid, relation_types]) => {
+          const relationArray = Array.from(relation_types)
+          relationArray.forEach(relationType => {
+            // Get confidence and evidence for this relation
+            const confidence = tap_edge.confidences?.[pmid]?.[relationType] || "N/A"
+            const evidence = tap_edge.evidences?.[pmid]?.[relationType] || "No evidence available"
+
+            // Create a card for each relationship
+            elements.push({
+              type: "Div",
+              namespace: "dash_html_components",
+              props: {
+                style: {
+                  backgroundColor: "#f8f9fa",
+                  padding: "10px",
+                  marginTop: "8px",
+                  borderRadius: "4px",
+                  borderLeft: "3px solid #007bff"
+                },
+                children: [
+                  {
+                    props: {
+                      children: `Relation: ${relationType}`,
+                      style: { fontWeight: "bold", color: "#007bff" }
+                    },
+                    type: "P",
+                    namespace: "dash_html_components"
+                  },
+                  {
+                    props: {
+                      children: `Confidence: ${typeof confidence === 'number' ? confidence.toFixed(2) : confidence}`,
+                      style: { fontSize: "0.9em", marginTop: "4px" }
+                    },
+                    type: "P",
+                    namespace: "dash_html_components"
+                  },
+                  {
+                    props: {
+                      children: `Evidence: "${evidence}"`,
+                      style: {
+                        fontSize: "0.85em",
+                        fontStyle: "italic",
+                        marginTop: "4px",
+                        color: "#495057"
+                      }
+                    },
+                    type: "P",
+                    namespace: "dash_html_components"
+                  },
+                  {
+                    props: {
+                      children: `PMID: ${pmid}`,
+                      style: { fontSize: "0.8em", marginTop: "4px", color: "#6c757d" }
+                    },
+                    type: "P",
+                    namespace: "dash_html_components"
+                  }
+                ]
+              }
+            })
+          })
+        })
+      }
+
       const edge_table = create_pmid_table(tap_edge.pmids, pmid_title)
       display = "block"
       elements.push(edge_table)

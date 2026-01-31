@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import importlib
 import logging
 import math
@@ -136,13 +138,15 @@ class PubTatorGraphBuilder:
         for article in collection.articles:
             self.add_article(article, use_mesh_vocabulary=use_mesh_vocabulary)
 
-    def add_article(
-        self,
-        article: PubTatorArticle,
-        use_mesh_vocabulary: bool = True,
-    ):
-        self._updated = True
+    def add_article(self, article: PubTatorArticle, use_mesh_vocabulary: bool = False) -> None:
+        """Add an article to the graph
+
+        Args:
+            article: PubTator article with annotations
+            use_mesh_vocabulary: If True, use MeSH vocabulary for node names
+        """
         self.num_articles += 1
+        self._updated = True
 
         node_collection = PubTatorNodeCollection(
             mesh_only=self._mesh_only, use_mesh_vocabulary=use_mesh_vocabulary
@@ -154,22 +158,18 @@ class PubTatorGraphBuilder:
         
         # Edge creation based on selected method
         if self.edge_method == "co-occurrence":
-            # Original co-occurrence method: create edges between all co-mentioned entities
-            if self.node_type != "relation":
-                edges += self._create_complete_graph_edges(
-                    list(node_collection.nodes.keys()), article.pmid
-                )
+            # Co-occurrence method: create edges for all co-occurring entities
+            edges += self._create_complete_graph_edges(
+                list(node_collection.nodes.keys()), article.pmid
+            )
         
         elif self.edge_method == "semantic":
             # Semantic analysis method: use LLM to identify meaningful relationships
-            edges += self._create_semantic_edges(article, node_collection.nodes)
+            # Only use semantic edges, do not add BioREx relations
+            edges += self._create_semantic_edges(article, node_collection.nodes, self.num_articles)
         
         elif self.edge_method == "relation":
-            # Relation-only method: only use BioREx annotated relations (handled below)
-            pass
-        
-        # Always add BioREx relation edges when available (except in co-occurrence mode)
-        if self.edge_method != "co-occurrence":
+            # Relation-only method: only use BioREx annotated relations
             edges += self._create_relation_edges(
                 list(node_collection.mesh_nodes.keys()), article.relations
             )
@@ -222,7 +222,14 @@ class PubTatorGraphBuilder:
         return self.graph
 
     def _build_nodes(self, pmid_weights: dict[str, int | float] | None = None):
-        for _, data in self.graph.nodes(data=True):
+        for node_id, data in self.graph.nodes(data=True):
+            # Defensive check: ensure 'pmids' exists
+            if "pmids" not in data:
+                logger.warning(f"Node {node_id} missing 'pmids' field, skipping num_articles calculation")
+                data["num_articles"] = 0
+                data["weighted_num_articles"] = 0
+                continue
+            
             data["num_articles"] = len(data["pmids"])
             if pmid_weights is not None:
                 data["weighted_num_articles"] = round(
@@ -255,6 +262,7 @@ class PubTatorGraphBuilder:
                 n_threshold=2,
             )
 
+
         # Calculate scaled weights
         if weighting_method == "npmi":
             edge_weights: dict[tuple[str, str], float] = nx.get_edge_attributes(self.graph, "npmi")
@@ -263,11 +271,21 @@ class PubTatorGraphBuilder:
             edge_weights: dict[tuple[str, str], float] = nx.get_edge_attributes(
                 self.graph, "weighted_num_relations"
             )
+            
+            # Handle case when no edges were created (e.g., all semantic analysis failed)
+            if not edge_weights:
+                logger.warning(
+                    f"No edges in graph, skipping edge width calculation. "
+                    f"Graph has {self.graph.number_of_nodes()} nodes but 0 edges."
+                )
+                return
+            
             max_weight = max(edge_weights.values())
 
             # This only scales down the width. If # supporting relations is
             # smaller than MAX_EDGE_WIDTH, the edge width will equal the weight
             scale_factor = min(MAX_EDGE_WIDTH / max_weight, 1)
+
 
         # Update scaled weights for edges
         for edge, weight in edge_weights.items():
@@ -325,16 +343,36 @@ class PubTatorGraphBuilder:
         communities = nx.community.louvain_communities(graph, seed=seed, weight="edge_weight")  # type: ignore
         community_labels = set()
         for c_idx, community in enumerate(communities):
+            # Find highest degree node in community
             highest_degree_node = max(
                 graph.degree(community, weight="edge_weight"),  # type: ignore
                 key=itemgetter(1),
             )[0]
+            
             community_node = f"c{c_idx}"
             community_labels.add(community_node)
-            community_attrs = graph.nodes[highest_degree_node].copy()
-            community_attrs.update(
-                {"label_color": "#dd4444", "parent": None, "_id": community_node}
-            )
+            
+            # Copy attributes from highest degree node
+            source_attrs = graph.nodes[highest_degree_node].copy()
+            
+            # Ensure all required fields exist with safe defaults
+            # Community nodes inherit most attributes but need specific overrides
+            community_attrs = {
+                "_id": community_node,  # Override with community ID
+                "color": source_attrs.get("color", "#dd4444"),
+                "label_color": "#dd4444",  # Community nodes have red labels
+                "shape": source_attrs.get("shape", "ELLIPSE"),
+                "type": source_attrs.get("type", "Unknown"),
+                "mesh": source_attrs.get("mesh", ""),
+                "name": source_attrs.get("name", f"Community {c_idx}"),
+                "pmids": source_attrs.get("pmids", set()),  # Use source pmids or empty set
+                "num_articles": source_attrs.get("num_articles", 0),
+                "weighted_num_articles": source_attrs.get("weighted_num_articles", 0),
+                "marked": False,
+                "parent": None,
+                "pos": source_attrs.get("pos", None),
+            }
+            
             node_data = GraphNode(**community_attrs)
             graph.add_node(community_node, **asdict(node_data))
 
@@ -421,13 +459,14 @@ class PubTatorGraphBuilder:
         return edges
 
     def _create_semantic_edges(
-        self, article: PubTatorArticle, nodes: dict[str, PubTatorNode]
+        self, article: PubTatorArticle, nodes: dict[str, PubTatorNode], article_num: int = 0
     ) -> list[PubTatorEdge]:
         """Create edges using LLM semantic analysis
         
         Args:
             article: PubTator article with title and abstract
             nodes: Dictionary mapping node IDs to PubTatorNode objects
+            article_num: Current article number for progress tracking
             
         Returns:
             List of PubTatorEdge objects for semantically-identified relationships
@@ -438,7 +477,7 @@ class PubTatorGraphBuilder:
         
         try:
             semantic_edges = self.semantic_extractor.analyze_article_relationships(
-                article, nodes
+                article, nodes, article_num
             )
             
             # Convert SemanticEdge to PubTatorEdge
@@ -456,6 +495,20 @@ class PubTatorGraphBuilder:
 
     def _add_nodes(self, nodes: Mapping[str, PubTatorNode]):
         for node_id, data in nodes.items():
+            # Source validation: ensure node has valid PMID
+            if not hasattr(data, 'pmid') or not data.pmid or str(data.pmid).strip() == "":
+                logger.warning(f"Skipping invalid node {node_id}: missing or empty PMID")
+                continue
+            
+            # Source validation: ensure node has required basic attributes
+            if not hasattr(data, 'name') or not data.name:
+                logger.warning(f"Skipping invalid node {node_id}: missing name")
+                continue
+            
+            if not hasattr(data, 'type') or not data.type:
+                logger.warning(f"Skipping invalid node {node_id}: missing type")
+                continue
+            
             if self.graph.has_node(node_id):
                 self.graph.nodes[node_id]["pmids"].add(data.pmid)
             else:
@@ -528,11 +581,15 @@ class PubTatorGraphBuilder:
                 self.graph.add_edge(edge.node1_id, edge.node2_id, **asdict(edge_data))
 
     def _add_attributes(self, article: PubTatorArticle):
-        # Add pmid_title as a graph attribute
+        # Add pmid_title and pmid_abstract as graph attributes
         self.graph.graph["pmid_title"][article.pmid] = article.title
+        if article.abstract:
+            self.graph.graph["pmid_abstract"][article.pmid] = article.abstract
 
     def _init_graph_attributes(self):
         self.graph.graph["pmid_title"] = {}
+        self.graph.graph["pmid_abstract"] = {}  # NEW: Store abstracts for RAG
+
 
 
 def save_graph(

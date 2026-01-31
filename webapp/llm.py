@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 
 import os
 import logging
@@ -9,11 +11,20 @@ class LLMClient:
     def __init__(self):
         self.api_key = os.getenv("OPENAI_API_KEY")
         self.base_url = os.getenv("OPENAI_BASE_URL")
-        self.model = os.getenv("OPENAI_MODEL", "gpt-3.5-turbo")
+        self.model = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
         self.client = None
         
         # Initialize client if API key is present
-        self.initialize_client()
+        if self.api_key and self.api_key != "local-dummy-key":
+            # Only auto-initialize if we have a real API key
+            self.initialize_client()
+            logger.info(f"LLM Client auto-initialized from environment with model: {self.model}")
+        elif self.api_key == "local-dummy-key" and self.base_url:
+            # Local LLM setup
+            self.initialize_client()
+            logger.info(f"Local LLM Client auto-initialized from environment: {self.base_url} with model: {self.model}")
+        else:
+            logger.info("LLM Client not auto-initialized: No valid API key in environment")
 
     def initialize_client(self, api_key=None, base_url=None, model=None):
         if api_key:

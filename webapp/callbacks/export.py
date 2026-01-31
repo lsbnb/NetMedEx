@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dash import Input, Output, State, dcc
 
 from netmedex.cytoscape_js import save_as_html

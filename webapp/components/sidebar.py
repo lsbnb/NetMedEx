@@ -1,7 +1,8 @@
+from __future__ import annotations
+
 import dash_bootstrap_components as dbc
 from dash import dcc, html
 
-from webapp.components.advanced_settings import advanced_settings
 from webapp.components.advanced_settings import advanced_settings
 from webapp.components.graph_tools import (
     edge_weight_cutoff,
@@ -98,11 +99,21 @@ api_params = html.Div(
                     "AI Search",
                     "Use LLM to translate natural language queries into optimized PubTator boolean queries.",
                 ),
-                dbc.Switch(
-                    id="ai-search-toggle",
-                    label="Enable AI Search",
-                    value=False,
-                ),
+                dbc.Alert([
+                    html.Div([
+                        dbc.Switch(
+                            id="ai-search-toggle",
+                            label="🤖 Enable AI-Powered Search",
+                            value=False,
+                            className="mb-2"
+                        ),
+                        html.Small(
+                            "Let AI translate your natural language into optimized search queries",
+                            className="d-block text-muted",
+                            style={"fontSize": "0.85rem"}
+                        ),
+                    ])
+                ], color="info", className="mb-0", style={"padding": "0.75rem"}),
             ],
             className="param",
         ),
@@ -246,41 +257,6 @@ network_params = html.Div(
             ],
             className="param",
         ),
-        html.Div(
-            [
-                generate_param_title(
-                    "Edge Weight Cutoff",
-                    "Set the minimum edge weight to filter the graph",
-                ),
-                dcc.Slider(
-                    0,
-                    20,
-                    1,
-                    value=2,
-                    marks=None,
-                    id="cut-weight",
-                    tooltip={"placement": "bottom", "always_visible": True},
-                ),
-            ],
-            className="param",
-        ),
-        html.Div(
-            [
-                generate_param_title(
-                    "Network Parameters",
-                    "Community: Group nodes into communities",
-                ),
-                dbc.Checklist(
-                    options=[
-                        {"label": "Community", "value": "community"},
-                    ],
-                    switch=True,
-                    id="cy-params",
-                    value=["community"],
-                ),
-            ],
-            className="param",
-        ),
     ],
     id="cy-wrapper",
 )
@@ -288,11 +264,42 @@ network_params = html.Div(
 
 progress = html.Div(
     [
-        html.Div(
-            [html.H5("Progress"), html.P(" ", id="progress-status"), dbc.Progress(id="progress")],
-            className="param",
-        ),
-        html.Div([dbc.Button("Submit", id="submit-button"), html.Div(id="output")]),
+        dbc.Card([
+            dbc.CardBody([
+                # Progress header
+                html.H5("Progress", className="mb-3"),
+                
+                # Progress bar with percentage display
+                dbc.Progress([
+                    dbc.Progress(
+                        value=0,
+                        id="progress",
+                        bar=True,
+                        animated=True,
+                        striped=True,
+                        style={"minHeight": "25px"}
+                    )
+                ], className="mb-3", style={"height": "25px"}),
+                
+                # Status message with icon
+                html.Div([
+                    html.Span("", id="progress-status", className="text-muted"),
+                ], className="d-flex align-items-center"),
+            ])
+        ], className="shadow-sm mb-3", id="progress-card"),
+        
+        # Submit button
+        html.Div([
+            dbc.Button(
+                "Submit",
+                id="submit-button",
+                color="primary",
+                size="lg",
+                className="w-100 mb-2",
+                style={"borderRadius": "8px"}
+            ),
+            html.Div(id="output")
+        ]),
     ],
     id="progress-wrapper",
 )
@@ -321,7 +328,65 @@ search_panel = html.Div(
 )
 
 graph_settings_panel = html.Div(
-    [export_buttons, graph_layout, edge_weight_cutoff, minimal_degree],
+    [
+        # Network Statistics Summary Card
+        dbc.Card([
+            dbc.CardBody([
+                html.H5("Network Statistics", className="mb-3 text-center"),
+                html.Div([
+                    # Articles count
+                    html.Div([
+                        html.Div("📄", style={"fontSize": "1.5rem"}),
+                        html.Div([
+                            html.H4("0", id="stat-articles", className="mb-0"),
+                            html.Small("Articles", className="text-muted"),
+                        ]),
+                    ], className="d-flex align-items-center gap-2 mb-2"),
+                    
+                    # Nodes count
+                    html.Div([
+                        html.Div("🔵", style={"fontSize": "1.5rem"}),
+                        html.Div([
+                            html.H4("0", id="stat-nodes", className="mb-0"),
+                            html.Small("Nodes", className="text-muted"),
+                        ]),
+                    ], className="d-flex align-items-center gap-2 mb-2"),
+                    
+                    # Edges count
+                    html.Div([
+                        html.Div("🔗", style={"fontSize": "1.5rem"}),
+                        html.Div([
+                            html.H4("0", id="stat-edges", className="mb-0"),
+                            html.Small("Edges", className="text-muted"),
+                        ]),
+                    ], className="d-flex align-items-center gap-2"),
+                ]),
+            ])
+        ], className="shadow-sm mb-3", style={"backgroundColor": "rgba(255, 255, 255, 0.1)"}),
+        
+        export_buttons,
+        html.Div(
+            [
+                generate_param_title(
+                    "Network Display",
+                    "Community: Group nodes into communities for better visualization",
+                ),
+                dbc.Checklist(
+                    options=[
+                        {"label": "Show Communities", "value": "community"},
+                    ],
+                    switch=True,
+                    id="cy-params",
+                    value=["community"],
+                ),
+            ],
+            className="param",
+        ),
+        dcc.Store(id="memory-cy-params", data=["community"]),  # Store for tracking changes
+        graph_layout,
+        edge_weight_cutoff,
+        minimal_degree,
+    ],
     id="graph-settings-panel",
     style=display.none,
 )

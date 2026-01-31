@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import dash
 import dash_bootstrap_components as dbc
 from dash import dcc, html

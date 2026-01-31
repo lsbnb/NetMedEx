@@ -1,6 +1,9 @@
+from __future__ import annotations
+
 import base64
 import threading
 from queue import Queue
+import logging
 
 from dash import Input, Output, State, no_update
 
@@ -13,14 +16,19 @@ from netmedex.utils_threading import run_thread_with_error_notification
 from webapp.llm import llm_client
 from webapp.utils import generate_session_id, get_data_savepath, visibility
 
+logger = logging.getLogger(__name__)
+
 
 def callbacks(app):
-    @app.long_callback(
+    @app.callback(
         Output("cy-graph-container", "style", allow_duplicate=True),
         Output("memory-graph-cut-weight", "data", allow_duplicate=True),
         Output("is-new-graph", "data"),
         Output("pmid-title-dict", "data"),
         Output("current-session-path", "data"),
+        Output("stat-articles", "children"),
+        Output("stat-nodes", "children"),
+        Output("stat-edges", "children"),
         Input("submit-button", "n_clicks"),
         [
             State("api-toggle-items", "value"),
@@ -29,7 +37,7 @@ def callbacks(app):
             State("data-input", "value"),
             State("pmid-file-data", "contents"),
             State("pubtator-file-data", "contents"),
-            State("cut-weight", "value"),
+            State("graph-cut-weight", "value"),
             State("max-edges", "value"),
             State("max-articles", "value"),
             State("pubtator-params", "value"),
@@ -40,7 +48,7 @@ def callbacks(app):
             State("edge-method", "value"),
             State("semantic-threshold", "value"),
         ],
-        running=[(Input("submit-button", "disabled"), True, False)],
+        running=[(Output("submit-button", "disabled"), True, False)],
         progress=[
             Output("progress", "value"),
             Output("progress", "max"),
@@ -48,6 +56,7 @@ def callbacks(app):
             Output("progress-status", "children"),
         ],
         prevent_initial_call=True,
+        background=True,
     )
     def run_pubtator3_api(
         set_progress,
@@ -149,7 +158,7 @@ def callbacks(app):
                 else:
                     exception_msg = "An unexpected error occurred."
                 set_progress((1, 1, "", exception_msg))
-                return (no_update, weight, False, no_update, no_update)
+                return (no_update, weight, False, no_update, no_update, "0", "0", "0")
 
             job.join()
         elif source == "file":
@@ -159,46 +168,68 @@ def callbacks(app):
                 f.write(decoded_content)
 
         set_progress((0, 1, "0/1", "Generating network..."))
-        
+
         # Initialize LLM client if using semantic edge method
         llm_for_graph = None
-        progress_callback = None
-        
+        # Check LLM configuration for semantic analysis
         if edge_method == "semantic":
             if not llm_client.client:
                 set_progress(
-                    (1, 1, "", "Error: Semantic analysis requires LLM configuration. Please set your API key in Advanced Settings.")
+                    (
+                        1,
+                        1,
+                        "",
+                        "Error: Semantic analysis requires LLM configuration. Please set your API key in Advanced Settings.",
+                    )
                 )
-                return (no_update, weight, False, no_update, no_update)
-            llm_for_graph = llm_client
-            
-            # Track article processing for progress updates
-            articles_processed = [0]  # Use list to allow modification in nested function
-            
-            # Parse collection early to get total count
+                return (no_update, weight, False, no_update, no_update, "0", "0", "0")
+
+        # Semantic Analysis: Parse collection first to get article count
+        llm_for_graph = llm_client if edge_method == "semantic" else None
+
+        if edge_method == "semantic":
+            # Parse early to show accurate progress
             collection = PubTatorIO.parse(savepath["pubtator"])
             total_articles = len(collection.articles)
-            
+
             # Define progress callback for semantic analysis
-            def semantic_progress(message: str):
+            def progress_callback(current, total, status, error):
                 """Callback to update progress during semantic analysis"""
-                articles_processed[0] += 0.5  # Increment by 0.5 for each sub-step
-                current = int(articles_processed[0])
-                progress_pct = current / total_articles if total_articles > 0 else 0
-                set_progress((
-                    progress_pct, 
-                    1, 
-                    f"{current}/{total_articles}", 
-                    f"🤖 Semantic Analysis: {message}"
-                ))
-            
-            progress_callback = semantic_progress
-            set_progress((0, total_articles, f"0/{total_articles}", 
-                         f"Starting semantic analysis for {total_articles} articles (this may take 2-3 seconds per article)..."))
+                logger.info(
+                    f"Progress callback: current={current}, total={total}, status={status}, error={error}"
+                )
+                if error:
+                    set_progress(
+                        (
+                            current,
+                            total_articles,
+                            f"{current}/{total_articles}",
+                            f"❌ Error: {error}",
+                        )
+                    )
+                else:
+                    set_progress(
+                        (
+                            current,
+                            total_articles,
+                            f"{current}/{total_articles}",
+                            f"🤖 Semantic Analysis: {status}",
+                        )
+                    )
+
+            set_progress(
+                (
+                    0,
+                    total_articles,
+                    f"0/{total_articles}",
+                    f"Starting semantic analysis for {total_articles} articles (this may take 2-3 seconds per article)...",
+                )
+            )
         else:
             # For non-semantic methods, parse later
             collection = None
-        
+            progress_callback = None
+
         graph_builder = PubTatorGraphBuilder(
             node_type=node_type,
             edge_method=edge_method,
@@ -206,17 +237,17 @@ def callbacks(app):
             semantic_threshold=semantic_threshold,
             progress_callback=progress_callback,
         )
-        
+
         # Parse collection if not already done
         if collection is None:
             collection = PubTatorIO.parse(savepath["pubtator"])
-        
+
         graph_builder.add_collection(collection)
-        
+
         # Show building progress
         if edge_method == "semantic":
             set_progress((1, 1, "", "Building graph structure..."))
-        
+
         G = graph_builder.build(
             pmid_weights=None,
             weighting_method=weighting_method,
@@ -232,4 +263,18 @@ def callbacks(app):
         save_graph(G, savepath["html"], "html")
         save_graph(G, savepath["graph"], "pickle")
 
-        return (visibility.visible, weight, True, G.graph["pmid_title"], savepath)
+        # Calculate statistics for display
+        num_articles = len(G.graph["pmid_title"]) if G.graph.get("pmid_title") else 0
+        num_nodes = G.number_of_nodes() if G else 0
+        num_edges = G.number_of_edges() if G else 0
+
+        return (
+            visibility.visible,
+            weight,
+            True,
+            G.graph["pmid_title"],
+            savepath,
+            str(num_articles),
+            str(num_nodes),
+            str(num_edges),
+        )

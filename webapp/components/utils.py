@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import dash
 from dash import html
 
@@ -45,3 +47,4 @@ def icon_graph():
         height=20,
         style={"margin-right": "5px"},
     )
+

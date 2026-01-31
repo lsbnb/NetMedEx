@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 # https://www.ncbi.nlm.nih.gov/research/pubtator3/api
 import asyncio
 import logging

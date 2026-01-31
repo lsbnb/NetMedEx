@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 class EmptyInput(Exception):
     """Empty query or PMIDs"""
 

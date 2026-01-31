@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 """
 Callbacks for semantic edge method UI interactions
 """
@@ -15,7 +17,7 @@ def callbacks(app):
         Input("edge-method", "value"),
     )
     def toggle_semantic_options(edge_method):
-        """Show/hide semantic analysis options based on selected edge method"""
+        """Show/hide semantic threshold slider based on edge construction method"""
         if edge_method == "semantic":
-            return display.visible
+            return display.block
         return display.none

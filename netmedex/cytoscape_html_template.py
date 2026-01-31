@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,7 +84,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   </div>
 </div>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.30.1/cytoscape.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.30.2/cytoscape.min.js"></script>
 <script>
   let cy = cytoscape({{
     container: document.getElementById("cy"),
@@ -97,6 +99,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         "shape": "data(shape)",
         "color": "data(label_color)",
         "background-color" : "data(color)",
+        "font-size": "12px",
+        "font-weight": "500",
       }},
     }},
     {{
@@ -109,6 +113,25 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       selector: "edge",
       style: {{
         "width": "data(weight)",
+        "curve-style": "bezier",
+        "label": "data(label)",
+        "font-size": "11px",
+        "font-weight": "bold",
+        "text-background-color": "#ffffff",
+        "text-background-opacity": 0.9,
+        "text-background-padding": "3px",
+        "color": "#000000",
+        "text-wrap": "wrap",
+        "text-max-width": "100px",
+        "text-rotation": "autorotate",
+      }},
+    }},
+    {{
+      selector: "edge[is_directional]",
+      style: {{
+        "target-arrow-shape": "triangle",
+        "target-arrow-color": "#666",
+        "arrow-scale": 1.2,
       }},
     }},
     {{

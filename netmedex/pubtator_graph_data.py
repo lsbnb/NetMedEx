@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 """Intermediate Representations for PubTator Annotations"""
 
 import logging

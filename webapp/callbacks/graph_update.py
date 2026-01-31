@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import uuid
 
 import dash_cytoscape as cyto
@@ -41,6 +43,23 @@ def generate_cytoscape_js_network(graph_layout, graph_json):
                 "selector": "edge",
                 "style": {
                     "width": "data(weight)",
+                    "curve-style": "bezier",
+                    "label": "data(relation_display)",
+                    "font-size": "11px",
+                    "font-weight": "bold",
+                    "text-background-color": "#ffffff",
+                    "text-background-opacity": 0.8,
+                    "text-background-padding": "3px",
+                    "color": "#000000",
+                    "text-rotation": "autorotate",
+                },
+            },
+            {
+                "selector": "edge[is_directional]",
+                "style": {
+                    "target-arrow-shape": "triangle",
+                    "target-arrow-color": "#999",
+                    "arrow-scale": 1.2,
                 },
             },
             {
@@ -104,10 +123,13 @@ def callbacks(app):
         Output("is-new-graph", "data", allow_duplicate=True),
         Output("memory-node-degree", "data"),
         Output("memory-graph-cut-weight", "data", allow_duplicate=True),
+        Output("memory-cy-params", "data"),
         Input("node-degree", "value"),
         Input("graph-cut-weight", "value"),
+        Input("cy-params", "value"),
         State("memory-node-degree", "data"),
         State("memory-graph-cut-weight", "data"),
+        State("memory-cy-params", "data"),
         State("cy-graph-container", "style"),
         State("graph-layout", "value"),
         State("is-new-graph", "data"),
@@ -117,8 +139,10 @@ def callbacks(app):
     def update_graph(
         new_node_degree,
         new_cut_weight,
+        cy_params,
         old_node_degree,
         old_cut_weight,
+        old_cy_params,
         container_style,
         graph_layout,
         is_new_graph,
@@ -126,13 +150,19 @@ def callbacks(app):
     ):
         if container_style["visibility"] == "hidden":
             cy_graph = generate_cytoscape_js_network(graph_layout, None)
-            return cy_graph, False, new_node_degree, new_cut_weight
+            return cy_graph, False, new_node_degree, new_cut_weight, cy_params
 
         if new_node_degree is None:
             new_node_degree = old_node_degree
 
+        # Check if community display is enabled
+        show_community = "community" in cy_params if cy_params else False
+
         conditions = (
-            is_new_graph or new_cut_weight != old_cut_weight or new_node_degree != old_node_degree
+            is_new_graph
+            or new_cut_weight != old_cut_weight
+            or new_node_degree != old_node_degree
+            or cy_params != old_cy_params  # Check if community toggle changed!
         )
         if conditions:
             G = rebuild_graph(
@@ -141,13 +171,14 @@ def callbacks(app):
                 format="html",
                 with_layout=True,
                 graph_path=savepath["graph"],
+                community=show_community,
             )
             graph_json = create_cytoscape_js(G, style="dash")
             graph_json = generate_new_id(graph_json)
             cy_graph = generate_cytoscape_js_network(graph_layout, graph_json)
-            return cy_graph, False, new_node_degree, new_cut_weight
+            return cy_graph, False, new_node_degree, new_cut_weight, cy_params
         else:
-            return no_update, False, new_node_degree, new_cut_weight
+            return no_update, False, new_node_degree, new_cut_weight, cy_params
 
     @app.callback(
         Output("cy", "layout"),
@@ -162,7 +193,12 @@ def callbacks(app):
     def update_graph_layout(layout, node_degree, weight, elements, savepath):
         if layout == "preset":
             G = rebuild_graph(
-                node_degree, weight, format="html", with_layout=True, graph_path=savepath["graph"]
+                node_degree,
+                weight,
+                format="html",
+                with_layout=True,
+                graph_path=savepath["graph"],
+                community=False,  # Layout changes don't affect community
             )
             graph_json = create_cytoscape_js(G, style="dash")
             graph_json = generate_new_id(graph_json)

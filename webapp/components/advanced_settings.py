@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import dash
 import dash_bootstrap_components as dbc
 from dash import dcc, html
@@ -15,7 +17,7 @@ max_articles = html.Div(
             10,
             3000,
             10,
-            value=100,
+            value=30,
             marks=None,
             id="max-articles",
             tooltip={"placement": "bottom", "always_visible": False},
@@ -73,6 +75,38 @@ llm_config = html.Div(
                     placeholder="sk-...",
                     debounce=True,
                 ),
+                html.Div(style={"height": "15px"}),  # Spacer
+                generate_param_title(
+                    "Model",
+                    "Select OpenAI model or choose Custom to specify your own",
+                ),
+                dcc.Dropdown(
+                    id="openai-model-selector",
+                    options=[
+                        {"label": "GPT-4o (Recommended)", "value": "gpt-4o"},
+                        {"label": "GPT-4o Mini (Fast & Cheap)", "value": "gpt-4o-mini"},
+                        {"label": "GPT-4 Turbo", "value": "gpt-4-turbo"},
+                        {"label": "o1-preview (Advanced Reasoning)", "value": "o1-preview"},
+                        {"label": "o1-mini", "value": "o1-mini"},
+                        {"label": "GPT-3.5 Turbo (Legacy)", "value": "gpt-3.5-turbo"},
+                        {"label": "Custom Model...", "value": "custom"},
+                    ],
+                    value="gpt-4o-mini",  # Default
+                    clearable=False,
+                    className="mb-2",
+                ),
+                # Conditional custom input (shown when "custom" selected)
+                html.Div(
+                    [
+                        dbc.Input(
+                            id="openai-custom-model-input",
+                            placeholder="e.g., gpt-4o-2024-08-06",
+                            debounce=True,
+                        ),
+                    ],
+                    id="openai-custom-model-div",
+                    style={"display": "none"},
+                ),
             ],
             id="openai-config",
             style={"display": "block"},
@@ -105,6 +139,18 @@ llm_config = html.Div(
         ),
         # Unified status message
         html.Div(id="llm-config-status", className="text-success small mt-2"),
+        
+        # Save LLM Settings button
+        html.Div([
+            dbc.Button(
+                "💾 Save LLM Settings to .env",
+                id="save-llm-config-btn",
+                color="success",
+                size="sm",
+                className="mt-3 w-100",
+            ),
+            html.Div(id="llm-save-status", className="small mt-2"),
+        ], className="mt-2"),
     ],
     className="param",
 )
