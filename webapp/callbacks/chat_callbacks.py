@@ -13,8 +13,7 @@ This module handles:
 import logging
 
 import dash
-from dash import Input, Output, State, callback, no_update
-from dash.exceptions import PreventUpdate
+from dash import Input, Output, State, no_update
 
 logger = logging.getLogger(__name__)
 
@@ -82,7 +81,9 @@ def callbacks(app):
             Output("chat-send-btn", "disabled"),
             Output("clear-chat-btn", "style"),
             Output("chat-messages", "children"),
-            Output("sidebar-panel-toggle", "value"),  # Switch to Chat panel automatically
+            Output(
+                "sidebar-panel-toggle", "active_tab", allow_duplicate=True
+            ),  # Switch to Chat panel automatically
         ],
         Input("analyze-selection-btn", "n_clicks"),
         [
@@ -147,6 +148,12 @@ def callbacks(app):
             # Get abstracts from graph metadata
             pmid_abstracts = G.graph.get("pmid_abstract", {})
             pmid_titles = G.graph.get("pmid_title", {})
+
+            logger.info(f"PMIDs in selected edges: {list(pmid_data.keys())}")
+            logger.info(f"Total abstracts in graph: {len(pmid_abstracts)}")
+            logger.info(
+                f"Sample abstract key: {next(iter(pmid_abstracts.keys())) if pmid_abstracts else 'None'}"
+            )
 
             # Build AbstractDocument objects
             documents = []

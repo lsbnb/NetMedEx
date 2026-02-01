@@ -12,7 +12,6 @@ from webapp.components.graph_tools import (
 )
 from webapp.components.utils import (
     generate_param_title,
-    generate_param_title,
     icon_download,
 )
 from webapp.utils import display
@@ -430,24 +429,63 @@ graph_settings_panel = html.Div(
     style=display.none,
 )
 
+# Store to hold total statistics
+total_stats_store = dcc.Store(id="total-stats", data={"articles": 0, "nodes": 0, "edges": 0})
+
 sidebar_toggle = dbc.Tabs(
     [
-        dbc.Tab(label="Search", tab_id="search", label_style={"cursor": "pointer"}),
-        dbc.Tab(label="Graph", tab_id="graph", label_style={"cursor": "pointer"}),
-        dbc.Tab(label="Chat", tab_id="chat", label_style={"cursor": "pointer"}),
+        dbc.Tab(
+            label="🔍 Search",
+            tab_id="search",
+            label_style={"cursor": "pointer", "color": "black"},
+            active_label_style={
+                "color": "black",
+                "fontWeight": "bold",
+                "backgroundColor": "white",
+            },
+        ),
+        dbc.Tab(
+            label="🕸️ Graph",
+            tab_id="graph",
+            label_style={"cursor": "pointer", "color": "black"},
+            active_label_style={
+                "color": "black",
+                "fontWeight": "bold",
+                "backgroundColor": "white",
+            },
+        ),
+        dbc.Tab(
+            label="💬 Chat",
+            tab_id="chat",
+            label_style={"cursor": "pointer", "color": "black"},
+            active_label_style={
+                "color": "black",
+                "fontWeight": "bold",
+                "backgroundColor": "white",
+            },
+        ),
     ],
     id="sidebar-panel-toggle",
     active_tab="search",
-    className="mb-3",
+    className="flex-grow-1",  # Take available space
+)
+
+# Header row containing tabs and settings
+header_row = html.Div(
+    [
+        sidebar_toggle,
+        advanced_settings,
+    ],
+    className="d-flex align-items-center mb-3",
 )
 
 sidebar = html.Div(
     [
-        advanced_settings,
-        sidebar_toggle,
+        header_row,
         search_panel,
         graph_settings_panel,
         chat_panel,
+        total_stats_store,
     ],
     className="sidebar",
     id="sidebar-container",

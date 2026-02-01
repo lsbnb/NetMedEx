@@ -88,8 +88,24 @@ Format your responses clearly and include PMID citations like this: [PMID:123456
             user_msg = ChatMessage(role="user", content=user_message)
             self.history.append(user_msg)
 
-            # Retrieve relevant context from RAG
-            context, pmids_used = self.rag.get_context(user_message, top_k=top_k)
+            # Retrieve context
+            # Optimization: If we have a small number of documents (<= 20),
+            # just use all of them instead of vector search. This handles
+            # "summarize all" queries much better.
+            total_docs = len(self.rag.documents)
+            if total_docs <= 20:
+                logger.info(f"Small document set ({total_docs}), using all abstracts for context")
+                pmids_used = list(self.rag.documents.keys())
+                context_parts = []
+                for pmid in pmids_used:
+                    doc = self.rag.documents[pmid]
+                    context_parts.append(
+                        f"PMID: {pmid}\nTitle: {doc.title}\nAbstract: {doc.abstract}\n"
+                    )
+                context = "\n---\n\n".join(context_parts)
+            else:
+                # Use vector search for larger sets
+                context, pmids_used = self.rag.get_context(user_message, top_k=top_k)
 
             # Build conversation history for LLM
             messages = self._build_messages(user_message, context)

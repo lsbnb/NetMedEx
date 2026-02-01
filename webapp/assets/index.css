@@ -54,7 +54,7 @@ h4 {
 .main-div {
     background-color: var(--MAIN-BACKGROUND);
     max-height: calc(100% - 1px);
-    max-width: calc(100% - 350px);
+    max-width: calc(100% - 450px);
     padding: 10px 10px 0 10px;
 }
 
@@ -78,7 +78,7 @@ a:hover {
 }
 
 .sidebar {
-    flex: 0 0 350px;
+    flex: 0 0 450px;
     position: relative;
     /* padding: 5px; */
     padding: 1.5rem 20px 0 20px;
@@ -91,6 +91,11 @@ a:hover {
 
 .sidebar.graph-mode {
     background-color: #509B84;
+}
+
+.sidebar.chat-mode {
+    background-color: #00AAAA;
+    /* Indigo - distinct and professional */
 }
 
 .sidebar-toggle {
@@ -194,8 +199,8 @@ a:hover {
 .settings-container {
     display: flex;
     justify-content: end;
-    position: absolute;
-    right: 10px;
+    /* position: absolute; */
+    /* right: 10px; */
     z-index: 100;
 }
 
@@ -204,10 +209,14 @@ a:hover {
 }
 
 #advanced-settings {
-    position: absolute;
+    /* position: absolute;
     top: 20px;
-    right: 20px;
-    z-index: 1100;
+    right: 20px; */
+    z-index: 100;
+    /* margin-top: 10px; */
+    /* width: 100%; */
+    display: flex;
+    justify-content: flex-end;
 }
 
 .settings-container {
@@ -610,4 +619,12 @@ a:hover {
 
 .chat-message-user-content .message-text {
     color: white;
+}
+
+#sidebar-panel-toggle .nav {
+    flex-wrap: nowrap;
+}
+
+#sidebar-panel-toggle .nav-item {
+    white-space: nowrap;
 }

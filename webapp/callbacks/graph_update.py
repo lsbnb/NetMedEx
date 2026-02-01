@@ -20,9 +20,18 @@ def generate_cytoscape_js_network(graph_layout, graph_json):
         minZoom=0.1,
         maxZoom=20,
         wheelSensitivity=0.3,
+        boxSelectionEnabled=True,
         style={},
         layout={"name": graph_layout},
         stylesheet=[
+            {
+                "selector": "core",
+                "style": {
+                    "selection-box-color": "#FF0000",
+                    "selection-box-border-color": "#FF0000",
+                    "selection-box-opacity": "0.2",
+                },
+            },
             {
                 "selector": "node",
                 "style": {
@@ -68,6 +77,14 @@ def generate_cytoscape_js_network(graph_layout, graph_json):
                     "text-valign": "top",
                     "text-halign": "center",
                     "font-size": "20px",
+                },
+            },
+            {
+                "selector": ":selected",
+                "style": {
+                    "overlay-color": "#FF0000",
+                    "overlay-opacity": 0.2,
+                    "overlay-padding": "5px",
                 },
             },
         ],

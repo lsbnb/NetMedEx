@@ -139,18 +139,20 @@ llm_config = html.Div(
         ),
         # Unified status message
         html.Div(id="llm-config-status", className="text-success small mt-2"),
-        
         # Save LLM Settings button
-        html.Div([
-            dbc.Button(
-                "💾 Save LLM Settings to .env",
-                id="save-llm-config-btn",
-                color="success",
-                size="sm",
-                className="mt-3 w-100",
-            ),
-            html.Div(id="llm-save-status", className="small mt-2"),
-        ], className="mt-2"),
+        html.Div(
+            [
+                dbc.Button(
+                    "💾 Save LLM Settings to .env",
+                    id="save-llm-config-btn",
+                    color="success",
+                    size="sm",
+                    className="mt-3 w-100",
+                ),
+                html.Div(id="llm-save-status", className="small mt-2"),
+            ],
+            className="mt-2",
+        ),
     ],
     className="param",
 )
@@ -163,6 +165,17 @@ advanced_settings = html.Div(
             # "Settings",
             id="advanced-settings-btn",
             className="btn-secondary settings",
+        ),
+        html.Span(
+            [
+                html.Img(src=dash.get_asset_url("icon_info.svg"), className="info-img"),
+            ],
+            className="info-outer info-right",
+            **{
+                "data-tooltip": "Settings for LLM configuration and fetching PubMed literature",
+                "data-x": "0px",
+                "data-y": "0px",
+            },
         ),
         html.Div(
             [

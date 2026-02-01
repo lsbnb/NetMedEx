@@ -26,9 +26,7 @@ def callbacks(app):
         Output("is-new-graph", "data"),
         Output("pmid-title-dict", "data"),
         Output("current-session-path", "data"),
-        Output("stat-articles", "children"),
-        Output("stat-nodes", "children"),
-        Output("stat-edges", "children"),
+        Output("total-stats", "data"),
         Input("submit-button", "n_clicks"),
         [
             State("api-toggle-items", "value"),
@@ -274,7 +272,5 @@ def callbacks(app):
             True,
             G.graph["pmid_title"],
             savepath,
-            str(num_articles),
-            str(num_nodes),
-            str(num_edges),
+            {"articles": num_articles, "nodes": num_nodes, "edges": num_edges},
         )

@@ -21,3 +21,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Fixed various Dash 3.x compatibility issues.
+- Fixed sidebar toggle bug preventing automatic switch to Chat panel.
+- Resolved Chat Panel visibility issues by refactoring sidebar navigation to `dbc.Tabs`.
+- Updated Network Statistics to correctly count unique PMIDs for selected edges.
+
+### Varied
+- **Sidebar UI**:
+    - Implemented distinct background colors for different modes (Green for Graph, Indigo for Chat).
+    - Improved navigation with a clear tabbed interface (Search / Graph / Chat).
