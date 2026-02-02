@@ -182,6 +182,11 @@ a:hover {
 .settings {
     display: inline-block;
     margin: 2px;
+    pointer-events: auto;
+}
+
+.info-outer {
+    pointer-events: auto;
 }
 
 .settings-collapse {
@@ -194,6 +199,8 @@ a:hover {
     padding: 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
+    z-index: 1050;
+    pointer-events: auto;
 }
 
 .settings-container {
@@ -201,7 +208,7 @@ a:hover {
     justify-content: end;
     /* position: absolute; */
     /* right: 10px; */
-    z-index: 100;
+    pointer-events: none;
 }
 
 .settings-background {
@@ -212,7 +219,7 @@ a:hover {
     /* position: absolute;
     top: 20px;
     right: 20px; */
-    z-index: 100;
+    /* z-index: 100; */
     /* margin-top: 10px; */
     /* width: 100%; */
     display: flex;
@@ -354,7 +361,7 @@ a:hover {
     transition: opacity .1s ease-out, transform .1s ease-out;
     visibility: hidden;
     padding: 0 5px;
-    z-index: 10;
+    z-index: 2000;
     white-space: pre-wrap;
 }
 

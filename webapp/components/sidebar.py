@@ -123,7 +123,18 @@ api_params = html.Div(
             ],
             className="param",
         ),
-        html.Div(id="input-type", className="param"),
+        html.Div(
+            [
+                html.H5("Query"),
+                dbc.Input(
+                    placeholder="ex: COVID-19 AND PON1",
+                    type="text",
+                    id="data-input",
+                ),
+            ],
+            id="input-type",
+            className="param",
+        ),
         html.Div(
             [
                 generate_param_title("Sort", "Sort articles by recency or relevance"),
@@ -324,18 +335,30 @@ progress = html.Div(
 
 export_buttons = html.Div(
     [
-        html.H5("Export", className="text-center"),
-        dbc.Button([icon_download(), "HTML"], id="export-btn-html", className="export-btn"),
-        dcc.Download(id="export-html"),
-        dbc.Button([icon_download(), "XGMML"], id="export-btn-xgmml", className="export-btn"),
-        dcc.Download(id="export-xgmml"),
-        dbc.Button(
-            [icon_download(), "PubTator"],
-            id="download-pubtator-btn",
-            className="export-btn",
-            color="success",
+        generate_param_title(
+            "Export",
+            "Download HTML for Browser, XGMML for Cytoscape. The PubTator file can be re-loaded in the Search Panel for re-analysis.",
         ),
-        dcc.Download(id="download-pubtator"),
+        html.Div(
+            [
+                dbc.Button(
+                    [icon_download(), "HTML"], id="export-btn-html", className="export-btn"
+                ),
+                dcc.Download(id="export-html"),
+                dbc.Button(
+                    [icon_download(), "XGMML"], id="export-btn-xgmml", className="export-btn"
+                ),
+                dcc.Download(id="export-xgmml"),
+                dbc.Button(
+                    [icon_download(), "PubTator"],
+                    id="download-pubtator-btn",
+                    className="export-btn",
+                    color="success",
+                ),
+                dcc.Download(id="download-pubtator"),
+            ],
+            className="d-flex gap-2 flex-wrap mt-1",
+        ),
     ],
     className="param export-container",
 )

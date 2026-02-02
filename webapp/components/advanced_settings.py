@@ -5,7 +5,8 @@ import dash_bootstrap_components as dbc
 from dash import dcc, html
 
 from webapp.components.utils import generate_param_title
-from webapp.utils import visibility
+from webapp.utils import display
+
 
 max_articles = html.Div(
     [
@@ -186,7 +187,7 @@ advanced_settings = html.Div(
             ],
             id="advanced-settings-collapse",
             className="settings-collapse",
-            style=visibility.hidden,
+            style=display.none,
         ),
     ],
     id="advanced-settings",

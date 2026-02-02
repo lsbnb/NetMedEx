@@ -15,14 +15,18 @@ def filter_node(G: nx.Graph, node_degree_threshold: int):
 
 def rebuild_graph(
     node_degree: int,
-    cut_weight: int | float,
+    cut_weight: int | float | list[int | float],
     format: Literal["xgmml", "html"],
     graph_path: str,
     G: nx.Graph | None = None,
     with_layout: bool = False,
     community: bool = False,
+    weighting_method: Literal["freq", "npmi"] = "freq",
 ):
     graph = load_graph(graph_path) if G is None else G
+
+    # Recalculate edge weights and widths based on current method
+    PubTatorGraphBuilder.recalculate_edge_weights(graph, weighting_method)
 
     PubTatorGraphBuilder._remove_edges_by_weight(graph, edge_weight_cutoff=cut_weight)
     PubTatorGraphBuilder._remove_edges_by_rank(graph, graph.graph.get("max_edges", 0))

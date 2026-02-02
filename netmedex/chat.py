@@ -11,6 +11,7 @@ import logging
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Any
+import re
 
 logger = logging.getLogger(__name__)
 
@@ -41,30 +42,37 @@ class ChatMessage:
 class ChatSession:
     """Manages a conversation with RAG-augmented context"""
 
-    def __init__(self, rag_system, llm_client, max_history: int = 10):
+    def __init__(self, rag_system, llm_client, graph_retriever=None, max_history: int = 10):
         """
         Initialize chat session.
 
         Args:
             rag_system: AbstractRAG instance
             llm_client: LLM client for chat
+            graph_retriever: GraphRetriever instance (optional)
             max_history: Maximum conversation history to retain
         """
         self.rag = rag_system
         self.llm = llm_client
+        self.graph_retriever = graph_retriever
         self.max_history = max_history
         self.history: list[ChatMessage] = []
 
         # System prompt for biomedical context
         self.system_prompt = """You are a helpful biomedical research assistant analyzing scientific literature.
 
-You have access to a collection of PubMed abstracts selected by the user from a knowledge graph.
-Your task is to answer questions based ONLY on the information in these abstracts.
+You have access to two types of context:
+1. Scientific Abstracts (Text): Unstructured details selected by the user.
+2. Knowledge Graph (Structure): Structured entity relationships and paths.
+
+Your task is to answer questions by SYNTHESIZING these two sources.
+- Use Graph Structure to identify logical connections and multi-hop relationships.
+- Use Abstracts to provide specific experimental evidence and context.
 
 Guidelines:
-1. Always base your answers on the provided abstracts.
-2. Cite specific PMIDs when making claims using the format: [PMID:XXXXXXXX].
-3. If the abstracts don't contain relevant information, say so clearly.
+1. Always base your answers on the provided context.
+2. Cite specific PMIDs when making claims using the format: [PMID:XXXXXXXX]. You can find PMIDs in both the Graph Structure (e.g., "[type [PMID:123]]") and Abstracts.
+3. If the context doesn't contain relevant information, say so clearly.
 4. Be concise but informative.
 5. Use scientific terminology appropriately.
 6. Highlight key findings and relationships between entities.
@@ -88,7 +96,7 @@ Format your responses clearly and include PMID citations like this: [PMID:123456
             user_msg = ChatMessage(role="user", content=user_message)
             self.history.append(user_msg)
 
-            # Retrieve context
+            # 1. Retrieve Text Context (RAG)
             # Optimization: If we have a small number of documents (<= 20),
             # just use all of them instead of vector search. This handles
             # "summarize all" queries much better.
@@ -102,13 +110,24 @@ Format your responses clearly and include PMID citations like this: [PMID:123456
                     context_parts.append(
                         f"PMID: {pmid}\nTitle: {doc.title}\nAbstract: {doc.abstract}\n"
                     )
-                context = "\n---\n\n".join(context_parts)
+                text_context = "\n---\n\n".join(context_parts)
             else:
                 # Use vector search for larger sets
-                context, pmids_used = self.rag.get_context(user_message, top_k=top_k)
+                text_context, pmids_used = self.rag.get_context(user_message, top_k=top_k)
+
+            # 2. Retrieve Graph Context (Structure)
+            graph_context = ""
+            if self.graph_retriever:
+                logger.info("Retrieving graph context...")
+                relevant_nodes = self.graph_retriever.find_relevant_nodes(user_message)
+                if relevant_nodes:
+                    graph_context = self.graph_retriever.get_subgraph_context(relevant_nodes)
+                    logger.info(f"Found {len(relevant_nodes)} relevant nodes in graph")
+                else:
+                    logger.info("No relevant nodes found in graph query")
 
             # Build conversation history for LLM
-            messages = self._build_messages(user_message, context)
+            messages = self._build_messages(user_message, text_context, graph_context)
 
             # Call LLM
             logger.info(f"Sending chat request with {len(pmids_used)} context documents")
@@ -121,9 +140,16 @@ Format your responses clearly and include PMID citations like this: [PMID:123456
 
             assistant_content = response.choices[0].message.content.strip()
 
+            # Parse citations from response to filter sources
+            # Matches identifiers like: PMID:123456, [PMID:123456], PMID: 123456
+            cited_pmids = set(re.findall(r"PMID:?\s*(\d+)", assistant_content, re.IGNORECASE))
+
+            # Filter pmids_used to only include those actually cited
+            final_sources = [p for p in pmids_used if p in cited_pmids]
+
             # Create assistant message with sources
             assistant_msg = ChatMessage(
-                role="assistant", content=assistant_content, sources=pmids_used
+                role="assistant", content=assistant_content, sources=final_sources
             )
             self.history.append(assistant_msg)
 
@@ -135,7 +161,7 @@ Format your responses clearly and include PMID citations like this: [PMID:123456
             return {
                 "success": True,
                 "message": assistant_content,
-                "sources": pmids_used,
+                "sources": final_sources,
                 "context_count": len(pmids_used),
             }
 
@@ -147,7 +173,9 @@ Format your responses clearly and include PMID citations like this: [PMID:123456
                 "message": "Sorry, I encountered an error processing your request.",
             }
 
-    def _build_messages(self, user_message: str, context: str) -> list[dict]:
+    def _build_messages(
+        self, user_message: str, text_context: str, graph_context: str = ""
+    ) -> list[dict]:
         """Build message list for LLM API call"""
         messages = [{"role": "system", "content": self.system_prompt}]
 
@@ -156,10 +184,14 @@ Format your responses clearly and include PMID citations like this: [PMID:123456
             if msg.role != "system":  # Don't include system messages
                 messages.append({"role": msg.role, "content": msg.content})
 
-        # Add current message with RAG context
-        current_message = f"""Context (relevant abstracts):
+        # Add current message with Hybrid RAG context
+        current_message = f"""Context 1: Knowledge Graph Structure (Logic & Paths):
+{graph_context if graph_context else "No specific structural context found."}
 
-{context}
+---
+
+Context 2: Scientific Abstracts (Details & Evidence):
+{text_context}
 
 ---
 

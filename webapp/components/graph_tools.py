@@ -54,22 +54,25 @@ edge_weight_cutoff = html.Div(
         generate_param_title(
             "Edge Weight Cutoff",
             (
-                "Filter edges by minimum weight threshold:\n"
-                "• Frequency mode: Remove edges with co-occurrence count ≤ cutoff (e.g., 0 = keep all, 2 = keep edges appearing ≥3 times)\n"
-                "• NPMI mode: Remove edges with NPMI score ≤ cutoff (range -1 to 1, where 0 = neutral, >0 = positive correlation)\n"
-                "Tip: Start with 0 (no filtering) for exploration, increase to simplify complex networks"
+                "Filter edges by weight range:\n"
+                "• Frequency mode: Keep edges with co-occurrence count within range\n"
+                "• NPMI mode: Keep edges within NPMI score range:\n"
+                "   - 0.3 - 0.5 (Broad Association): Common comorbidities or standard therapies\n"
+                "   - 0.5 - 0.8 (Specific Association): Precise mechanisms (e.g. target proteins)\n"
+                "   - 0.8 - 1.0 (Strong Coupling): Medical definitions or rare findings"
             ),
+            id="edge-weight-cutoff-label",
         ),
-        dcc.Slider(
+        dcc.RangeSlider(
             id="graph-cut-weight",
             min=0,
             max=20,
             step=1,
-            value=0,
+            value=[0, 20],
             marks={i: str(i) for i in range(0, 21, 5)},
             tooltip={"placement": "bottom", "always_visible": False},
         ),
-        dcc.Store(id="memory-graph-cut-weight", data=0),
+        dcc.Store(id="memory-graph-cut-weight", data=[0, 20]),
     ],
     className="param",
 )

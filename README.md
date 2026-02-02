@@ -44,13 +44,14 @@ netmedex run
 
 The sidebar parameters are detailed in the [Available Commands](#available-commands) section and [Documentation](https://yehzx.github.io/NetMedEx/).
 
-### 🤖 AI-Powered Features (v0.5)
+### 🤖 AI-Powered Features (v0.6)
 
-NetMedEx now supports advanced AI-powered literature analysis using Retrieval-Augmented Generation (RAG):
+NetMedEx now supports advanced AI-powered literature analysis using **Hybrid Retrieval-Augmented Generation (Hybrid RAG)**, combining text search with knowledge graph reasoning:
 
 **Features:**
+- **Hybrid RAG Chat**: Analysis that synthesizes both **unstructured text** (abstracts) and **structured graph knowledge** (paths and neighbors) for highly contextual answers.
 - **Natural Language Queries**: Convert plain English queries into optimized PubTator3 search syntax.
-- **RAG-based Chat**: Select edges in the graph to index associated PubMed abstracts and have a contextual conversation with an LLM about the findings.
+- **Smart Context Retrieval**: Automatically identifies relevant subgraphs and shortest paths between entities to explain connections.
 - **Semantic Evidence**: View detailed relationship types, confidence scores, and specific evidence sentences extracted from the literature.
 - **Markdown Support**: Chat responses feature rich formatting for better readability of scientific content.
 

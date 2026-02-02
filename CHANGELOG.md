@@ -5,10 +5,38 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.5.0] - 2026-01-31
+## [0.6.0] - 2026-02-02
 
 ### Added
-- **RAG Chat Integration**: A new conversational interface that allows users to select graph edges and chat with an LLM about the associated literature.
+- **Hybrid RAG System**:
+    - **Dual-Source Analysis**: Combines unstructured text leverage (PubTator abstracts) with structured graph knowledge (network topology) for more robust answers.
+    - **Graph Context Retrieval**: 
+        - Automatically identifies shortest paths between queried entities.
+        - Retrieves neighbors and edge weights for context.
+    - **Entity Linking**: Maps natural language entity names to graph node IDs.
+- **UI Improvements**:
+    - **Range Slider**: New interactive slider for filtering edges by weight (NPMI/Frequency).
+    - **Export Info Tooltip**: Added detailed explanation for export formats.
+    - **Loading States**: Improved visual feedback during AI processing in modals.
+
+### Changed
+- **Chat System**: 
+    - Updated system prompts to explicitly distinguish between "Text Evidence" and "Graph Evidence".
+    - `ChatSession` now utilizes `GraphRetriever` for context injection.
+- **Controls**: 
+    - Refined "Reset" and "Stop" button logic for better job management.
+    - Optimized layout for control buttons to prevent overflow.
+
+## [0.5.0] - 2026-02-01
+
+### Added
+- **Advanced RAG Chat System**:
+    - **Interactive Chat Panel**: Context-aware chat with multi-line input and "Thinking" status indicator.
+    - **Expandable View**: "Expand Chat" modal for better readability, supporting direct query input and history synchronization.
+    - **Smart Citations**: 
+        - Citations are clickable links opening PubMed in a new tab.
+        - **Intelligent Filtering**: Source list automatically filters to display only the PMIDs actually cited by the AI in its response.
+    - **UX Enhancements**: One-click copy button for AI responses.
 - **Graph Visualization Enhancements**:
     - Edge labels displaying semantic relationship types (e.g., "inhibits", "activates").
     - Directional arrows for relationships with inherent directionality.

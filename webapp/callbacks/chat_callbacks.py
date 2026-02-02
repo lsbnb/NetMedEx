@@ -28,6 +28,7 @@ rag_system = None
 def callbacks(app):
     @app.callback(
         [
+            Output("chat-node-count", "children"),
             Output("chat-edge-count", "children"),
             Output("chat-abstract-count", "children"),
             Output("analyze-selection-btn", "disabled"),
@@ -49,29 +50,33 @@ def callbacks(app):
             graph_data: Full graph data with metadata
 
         Returns:
-            Tuple of (edge_count, abstract_count, button_disabled)
+            Tuple of (node_count, edge_count, abstract_count, button_disabled)
         """
-        if not selected_edges or len(selected_edges) == 0:
-            return "0", "0", True
+        if (not selected_edges or len(selected_edges) == 0) and (
+            not selected_nodes or len(selected_nodes) == 0
+        ):
+            return "0", "0", "0", True
 
-        edge_count = len(selected_edges)
+        node_count = len(selected_nodes) if selected_nodes else 0
+        edge_count = len(selected_edges) if selected_edges else 0
 
         # Extract unique PMIDs from selected edges
         pmids = set()
-        for edge in selected_edges:
-            if "pmids" in edge:
-                edge_pmids = edge["pmids"]
-                if isinstance(edge_pmids, list):
-                    pmids.update(edge_pmids)
-                elif isinstance(edge_pmids, str):
-                    pmids.add(edge_pmids)
+        if selected_edges:
+            for edge in selected_edges:
+                if "pmids" in edge:
+                    edge_pmids = edge["pmids"]
+                    if isinstance(edge_pmids, list):
+                        pmids.update(edge_pmids)
+                    elif isinstance(edge_pmids, str):
+                        pmids.add(edge_pmids)
 
         abstract_count = len(pmids)
 
         # Enable button if we have at least one abstract
         button_disabled = abstract_count == 0
 
-        return str(edge_count), str(abstract_count), button_disabled
+        return str(node_count), str(edge_count), str(abstract_count), button_disabled
 
     @app.callback(
         [
@@ -181,11 +186,20 @@ def callbacks(app):
             rag_system = AbstractRAG(llm_client)
             indexed_count = rag_system.index_abstracts(documents)
 
-            # Initialize chat session
-            chat_session = ChatSession(rag_system, llm_client)
+            # Initialize Graph Retriever
+            from netmedex.graph_rag import GraphRetriever
+
+            graph_retriever = GraphRetriever(G)
+            logger.info("GraphRetriever initialized with full graph")
+
+            # Initialize chat session with Hybrid RAG
+            chat_session = ChatSession(rag_system, llm_client, graph_retriever=graph_retriever)
 
             # Create welcome message
-            welcome_text = f"✅ Ready! I've indexed {indexed_count} abstracts. Ask me anything about these papers!"
+            welcome_text = (
+                f"✅ Hybrid RAG Ready! I've indexed {indexed_count} abstracts and loaded the knowledge graph. "
+                "I can analyze both text details and structural paths. Ask me anything!"
+            )
 
             from webapp.components.chat import create_message_component
 
@@ -193,7 +207,7 @@ def callbacks(app):
 
             return (
                 True,
-                f"✅ Indexed {indexed_count} abstracts",
+                f"✅ Indexed {indexed_count} abstracts + Graph",
                 False,  # Enable input
                 False,  # Enable send button
                 {"display": "block"},  # Show clear button
@@ -216,23 +230,44 @@ def callbacks(app):
     @app.callback(
         [
             Output("chat-messages", "children", allow_duplicate=True),
+            Output("modal-chat-content", "children", allow_duplicate=True),
             Output("chat-input-box", "value"),
+            Output("modal-chat-input", "value"),
+            Output("chat-processing-status", "children"),
+            Output("modal-chat-processing-status", "children"),
         ],
-        Input("chat-send-btn", "n_clicks"),
-        [State("chat-input-box", "value"), State("chat-messages", "children")],
+        [
+            Input("chat-send-btn", "n_clicks"),
+            Input("modal-chat-send-btn", "n_clicks"),
+        ],
+        [
+            State("chat-input-box", "value"),
+            State("modal-chat-input", "value"),
+            State("chat-messages", "children"),
+        ],
         prevent_initial_call=True,
     )
-    def send_message(n_clicks, user_input, current_messages):
+    def send_message(n1, n2, main_input, modal_input, current_messages):
         """
         Process user message and get AI response.
         """
         global chat_session
 
-        if not n_clicks or not user_input or not user_input.strip():
+        ctx = dash.callback_context
+        if not ctx.triggered:
+            raise dash.exceptions.PreventUpdate
+
+        button_id = ctx.triggered[0]["prop_id"].split(".")[0]
+
+        # Determine user input source
+        user_input = main_input if button_id == "chat-send-btn" else modal_input
+
+        if not user_input or not user_input.strip():
             raise dash.exceptions.PreventUpdate
 
         if not chat_session:
-            return current_messages, user_input
+            # Return same state, clear inputs (though likely already clear or invalid)
+            return current_messages, current_messages, "", "", "", ""
 
         try:
             from webapp.components.chat import create_message_component
@@ -258,7 +293,8 @@ def callbacks(app):
                 )
                 messages.append(error_msg)
 
-            return messages, ""  # Clear input box
+            # Update both views and clear both inputs
+            return messages, messages, "", "", "", ""
 
         except Exception as e:
             logger.error(f"Error sending message: {e}")
@@ -267,7 +303,7 @@ def callbacks(app):
             error_msg = create_message_component("assistant", f"❌ Error: {str(e)}")
             messages = list(current_messages) if current_messages else []
             messages.append(error_msg)
-            return messages, ""
+            return messages, messages, "", "", "", ""
 
     @app.callback(
         [
@@ -314,15 +350,32 @@ def callbacks(app):
             {"display": "none"},  # Hide clear button
         )
 
-    # Allow Enter key to send message
     @app.callback(
-        Output("chat-send-btn", "n_clicks", allow_duplicate=True),
-        Input("chat-input-box", "n_submit"),
-        State("chat-send-btn", "n_clicks"),
+        [
+            Output("chat-modal", "is_open"),
+            Output("modal-chat-content", "children"),
+        ],
+        [
+            Input("expand-chat-btn", "n_clicks"),
+            Input("close-modal-btn", "n_clicks"),
+        ],
+        [
+            State("chat-modal", "is_open"),
+            State("chat-messages", "children"),
+        ],
         prevent_initial_call=True,
     )
-    def submit_on_enter(n_submit, current_clicks):
-        """Trigger send button when Enter is pressed"""
-        if n_submit:
-            return (current_clicks or 0) + 1
-        raise dash.exceptions.PreventUpdate
+    def toggle_chat_modal(n1, n2, is_open, current_content):
+        """Toggle chat modal and sync content"""
+        ctx = dash.callback_context
+
+        if not ctx.triggered:
+            return is_open, current_content
+
+        button_id = ctx.triggered[0]["prop_id"].split(".")[0]
+        logger.info(f"Modal toggle triggered by: {button_id}")
+
+        if button_id in ["expand-chat-btn", "close-modal-btn"]:
+            return not is_open, current_content
+
+        return is_open, current_content

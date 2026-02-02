@@ -46,7 +46,9 @@ def callbacks(app):
             State("edge-method", "value"),
             State("semantic-threshold", "value"),
         ],
-        running=[(Output("submit-button", "disabled"), True, False)],
+        running=[
+            (Output("submit-button", "disabled"), True, False),
+        ],
         progress=[
             Output("progress", "value"),
             Output("progress", "max"),

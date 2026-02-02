@@ -11,8 +11,13 @@ graph = html.Div(
         html.Div(
             [
                 html.Img(src=dash.get_asset_url("NetMedEx.png"), height="40px"),
+                html.Span(
+                    "💡 Tip: Hold Shift + Left Click and drag to select a subnetwork",
+                    className="ms-4 align-self-center text-secondary fst-italic",
+                    style={"fontSize": "0.9rem"},
+                ),
             ],
-            className="d-flex flex-row justify-content-center",
+            className="d-flex flex-row justify-content-center align-items-center py-2",
         ),
         html.Div(
             [

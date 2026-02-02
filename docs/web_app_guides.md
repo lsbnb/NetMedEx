@@ -1,6 +1,6 @@
 ## Web Application
 
-This is the typical interface when you open the app in your browser (`NetMedEx v0.3.0`).
+This is the typical interface when you open the app in your browser (`NetMedEx v0.6.0`).
 
 ![NetMedEx Interface](./img/netmedex_interface.png)
 

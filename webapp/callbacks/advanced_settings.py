@@ -15,19 +15,19 @@ def callbacks(app):
         if n_clicks is None:
             return dash.no_update
 
-        # Get current visibility from style
-        current_visibility = style.get("visibility", "hidden")
+        # Get current display from style
+        current_display = style.get("display", "none")
 
-        # Toggle visibility
-        if current_visibility == "hidden":
-            new_visibility = "visible"
+        # Toggle display
+        if current_display == "none":
+            new_display = "block"
             tooltip_visible = True
         else:
-            new_visibility = "hidden"
+            new_display = "none"
             tooltip_visible = False
 
         return (
-            {"visibility": new_visibility},
+            {"display": new_display},
             {"placement": "bottom", "always_visible": tooltip_visible},
             {"placement": "bottom", "always_visible": tooltip_visible},
         )

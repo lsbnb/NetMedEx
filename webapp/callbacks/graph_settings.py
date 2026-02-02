@@ -91,3 +91,38 @@ def callbacks(app):
             return display.none, display.none, display.block, "sidebar chat-mode"
         # search (default)
         return display.block, display.none, display.none, "sidebar"
+
+    @app.callback(
+        [
+            Output("graph-cut-weight", "min"),
+            Output("graph-cut-weight", "max"),
+            Output("graph-cut-weight", "step"),
+            Output("graph-cut-weight", "marks"),
+            Output("graph-cut-weight", "value", allow_duplicate=True),
+            Output("edge-weight-cutoff-label", "children"),
+        ],
+        Input("weighting-method", "value"),
+        prevent_initial_call=True,
+    )
+    def update_weight_cutoff_range(weighting_method):
+        if weighting_method == "npmi":
+            # NPMI range 0 to 1
+            return (
+                0,
+                1,
+                0.1,
+                {0: "0", 0.5: "0.5", 1: "1.0"},
+                [0.3, 1.0],
+                "Edge Weight Cutoff (NPMI)",
+            )
+        else:
+            # Default (Frequency)
+            # Range 0 to 20
+            return (
+                0,
+                20,
+                1,
+                {i: str(i) for i in range(0, 21, 5)},
+                [0, 20],
+                "Edge Weight Cutoff (Frequency)",
+            )

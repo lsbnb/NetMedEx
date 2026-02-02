@@ -130,10 +130,23 @@ def callbacks(app):
         prevent_initial_call=True,
     )
     def plot_cytoscape_graph(graph_children, progress):
-        if graph_children is not None:
+        if graph_children:
+            # Check for elements to distinguish empty init from actual results
+            elements = []
+            if isinstance(graph_children, dict):
+                # Check for elements in props (standard component structure)
+                elements = graph_children.get("props", {}).get("elements", [])
+                # Or direct key (if raw dict was passed)
+                if not elements:
+                    elements = graph_children.get("elements", [])
+
+            # If no elements, reset progress (likely initial empty graph)
+            if not elements:
+                return 0, 1, "", ""
+
             return 1, 1, "1/1", "Done"
         else:
-            return 1, 1, "", progress
+            return 0, 1, "", ""
 
     @app.callback(
         Output("cy-graph", "children"),
@@ -151,6 +164,7 @@ def callbacks(app):
         State("graph-layout", "value"),
         State("is-new-graph", "data"),
         State("current-session-path", "data"),
+        State("weighting-method", "value"),
         prevent_initial_call=True,
     )
     def update_graph(
@@ -164,6 +178,7 @@ def callbacks(app):
         graph_layout,
         is_new_graph,
         savepath,
+        weighting_method,
     ):
         if container_style["visibility"] == "hidden":
             cy_graph = generate_cytoscape_js_network(graph_layout, None)
@@ -175,6 +190,17 @@ def callbacks(app):
         # Check if community display is enabled
         show_community = "community" in cy_params if cy_params else False
 
+        # Scale cutoff if using NPMI (User sees 0~1, Backend uses 0~20)
+        # Note: Backend clamps negative NPMI to width 0.
+        # So we can just scale by MAX_EDGE_WIDTH (20).
+        if weighting_method == "npmi":
+            if isinstance(new_cut_weight, list):
+                effective_cut_weight = [x * 20 for x in new_cut_weight]
+            else:
+                effective_cut_weight = new_cut_weight * 20
+        else:
+            effective_cut_weight = new_cut_weight
+
         conditions = (
             is_new_graph
             or new_cut_weight != old_cut_weight
@@ -184,11 +210,12 @@ def callbacks(app):
         if conditions:
             G = rebuild_graph(
                 new_node_degree,
-                new_cut_weight,
+                effective_cut_weight,
                 format="html",
                 with_layout=True,
                 graph_path=savepath["graph"],
                 community=show_community,
+                weighting_method=weighting_method,
             )
             graph_json = create_cytoscape_js(G, style="dash")
             graph_json = generate_new_id(graph_json)
@@ -205,17 +232,28 @@ def callbacks(app):
         State("graph-cut-weight", "value"),
         State("cy", "elements"),
         State("current-session-path", "data"),
+        State("weighting-method", "value"),
         prevent_initial_call=True,
     )
-    def update_graph_layout(layout, node_degree, weight, elements, savepath):
+    def update_graph_layout(layout, node_degree, weight, elements, savepath, weighting_method):
         if layout == "preset":
+            # Scale cutoff if using NPMI
+            if weighting_method == "npmi":
+                if isinstance(weight, list):
+                    effective_weight = [w * 20 for w in weight]
+                else:
+                    effective_weight = weight * 20
+            else:
+                effective_weight = weight
+
             G = rebuild_graph(
                 node_degree,
-                weight,
+                effective_weight,
                 format="html",
                 with_layout=True,
                 graph_path=savepath["graph"],
                 community=False,  # Layout changes don't affect community
+                weighting_method=weighting_method,
             )
             graph_json = create_cytoscape_js(G, style="dash")
             graph_json = generate_new_id(graph_json)

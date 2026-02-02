@@ -4,12 +4,18 @@ import dash
 from dash import html
 
 
-def generate_param_title(title, descriptions, is_right=False):
+def generate_param_title(title, descriptions, is_right=False, id=None):
     class_name = "info-outer info-right" if is_right else "info-outer info-left"
     kwargs = {"data-tooltip": descriptions, "data-x": "0px", "data-y": "0px"}
+
+    # Handle optional ID for H5
+    h5_props = {"children": title}
+    if id:
+        h5_props["id"] = id
+
     return html.Div(
         [
-            html.H5(title),
+            html.H5(**h5_props),
             html.Span(
                 [
                     html.Img(src=dash.get_asset_url("icon_info.svg"), className="info-img"),
