@@ -48,6 +48,60 @@ class SemanticRelationshipExtractor:
         self.progress_callback = progress_callback
         self.cache: dict[str, list[SemanticEdge]] = {}  # Cache results by PMID
 
+    def analyze_collection_relationships(
+        self,
+        articles: list[PubTatorArticle],
+        nodes_map: dict[str, dict[str, PubTatorNode]],
+        max_workers: int = 5,
+    ) -> list[SemanticEdge]:
+        """
+        Analyze a collection of articles in parallel.
+
+        Args:
+            articles: List of PubTatorArticle objects
+            nodes_map: Dictionary mapping PMID to its nodes (entity_id -> PubTatorNode)
+            max_workers: Number of concurrent threads
+
+        Returns:
+            Combined list of SemanticEdge objects from all articles
+        """
+        import concurrent.futures
+
+        all_edges = []
+        total = len(articles)
+        completed = 0
+
+        # Helper for progress tracking thread safety
+        def update_progress(article_num, count, msg, error=None):
+            if self.progress_callback:
+                self.progress_callback(article_num, total, msg, error)
+
+        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+            # Create a future for each article
+            future_to_article = {
+                executor.submit(
+                    self.analyze_article_relationships,
+                    article,
+                    nodes_map.get(article.pmid, {}),
+                    i + 1,
+                ): article
+                for i, article in enumerate(articles)
+            }
+
+            for future in concurrent.futures.as_completed(future_to_article):
+                article = future_to_article[future]
+                completed += 1
+                try:
+                    edges = future.result()
+                    all_edges.extend(edges)
+                    # Progress update is handled inside analyze_article_relationships,
+                    # but we can add a high-level update here if needed.
+                except Exception as e:
+                    logger.error(f"Exc generated for {article.pmid}: {e}")
+                    update_progress(completed, total, "", str(e))
+
+        return all_edges
+
     def analyze_article_relationships(
         self, article: PubTatorArticle, nodes: dict[str, PubTatorNode], article_num: int = 0
     ) -> list[SemanticEdge]:
@@ -65,6 +119,8 @@ class SemanticRelationshipExtractor:
         # Check cache first
         if article.pmid in self.cache:
             logger.debug(f"Using cached semantic edges for PMID {article.pmid}")
+            if self.progress_callback:
+                self.progress_callback(article_num, 0, f"Using cache for {article.pmid}", None)
             return self.cache[article.pmid]
 
         # Build entity list for the prompt
@@ -84,13 +140,17 @@ class SemanticRelationshipExtractor:
         # Call LLM with progress update
         try:
             if self.progress_callback:
-                self.progress_callback(article_num, 1, f"Analyzing PMID {article.pmid} ({len(entity_list)} entities)...", None)
-            
+                # Note: In threaded context, this callback must be thread-safe or handled carefully.
+                # Assuming the callback provided by webapp handles this or strictly just updates a queue.
+                self.progress_callback(
+                    article_num,
+                    1,
+                    f"Analyzing PMID {article.pmid} ({len(entity_list)} entities)...",
+                    None,
+                )
+
             response = self._call_llm(prompt)
-            
-            if self.progress_callback:
-                self.progress_callback(article_num, 1, f"Parsing relationships for PMID {article.pmid}...", None)
-            
+
             relationships = self._parse_llm_response(response, article.pmid)
         except Exception as e:
             logger.error(f"Error during semantic analysis for PMID {article.pmid}: {e}")
@@ -105,9 +165,6 @@ class SemanticRelationshipExtractor:
                 # Ensure alphabetical ordering for consistency
                 node1 = rel["entity1_id"]
                 node2 = rel["entity2_id"]
-                if node1 > node2:
-                    node1, node2 = node2, node1
-
                 edge = SemanticEdge(
                     node1_id=node1,
                     node2_id=node2,
@@ -149,10 +206,7 @@ class SemanticRelationshipExtractor:
         3. Include confidence scores and supporting evidence
         """
         entity_descriptions = "\n".join(
-            [
-                f"- {ent['id']}: {ent['name']} (Type: {ent['type']})"
-                for ent in entity_list
-            ]
+            [f"- {ent['id']}: {ent['name']} (Type: {ent['type']})" for ent in entity_list]
         )
 
         prompt = f"""You are a biomedical research assistant analyzing scientific abstracts to identify relationships between entities.
@@ -261,9 +315,7 @@ class SemanticRelationshipExtractor:
 
                     validated.append(rel)
                 else:
-                    logger.warning(
-                        f"PMID {pmid}: Skipping malformed relationship: {rel}"
-                    )
+                    logger.warning(f"PMID {pmid}: Skipping malformed relationship: {rel}")
 
             return validated
 
@@ -272,12 +324,10 @@ class SemanticRelationshipExtractor:
             logger.debug(f"Response was: {response[:200]}")
             return []
 
-    def convert_to_pubtator_edges(
-        self, semantic_edges: list[SemanticEdge]
-    ) -> list[PubTatorEdge]:
+    def convert_to_pubtator_edges(self, semantic_edges: list[SemanticEdge]) -> list[PubTatorEdge]:
         """
         Convert SemanticEdge objects to PubTatorEdge format.
-        
+
         Now preserves confidence and evidence metadata.
 
         Args:

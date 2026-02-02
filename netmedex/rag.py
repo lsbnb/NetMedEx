@@ -167,9 +167,7 @@ class AbstractRAG:
             # Extract PMIDs and scores
             pmid_scores = []
             if results["ids"] and results["distances"]:
-                for doc_id, distance in zip(
-                    results["ids"][0], results["distances"][0], strict=True
-                ):
+                for doc_id, distance in zip(results["ids"][0], results["distances"][0]):
                     pmid = doc_id.replace("pmid_", "")
                     # Convert distance to similarity score (lower distance = higher similarity)
                     # ChromaDB uses L2 distance, so we invert it

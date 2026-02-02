@@ -31,10 +31,29 @@ def create_message_component(role: str, content: str, sources: list[str] | None 
     icon = "👤" if is_user else "🤖"
 
     # Build message content
+    # Auto-linkify PMIDs in the text
+    import re
+
+    # Pattern to match PMID:123456, PMID 123456, etc.
+    # Group 1 is the prefix (PMID:), Group 2 is the ID
+    pmid_pattern = r"(?i)(pmid[:\s]?\s*)(\d+)"
+
+    def replace_pmid(match):
+        prefix = match.group(1)
+        pmid = match.group(2)
+        url = f"https://www.ncbi.nlm.nih.gov/research/pubtator3/publication/{pmid}"
+        return f"[{prefix}{pmid}]({url})"
+
+    # Apply replacement to content
+    linked_content = re.sub(pmid_pattern, replace_pmid, content)
+
     content_children = [
         html.Span(icon, className="message-icon me-2"),
         dcc.Markdown(
-            content, className="message-text d-inline-block", dangerously_allow_html=True
+            linked_content,
+            className="message-text d-inline-block",
+            dangerously_allow_html=True,
+            link_target="_blank",  # Ensure markdown links open in new tab
         ),
     ]
 
@@ -65,7 +84,8 @@ def create_message_component(role: str, content: str, sources: list[str] | None 
         source_badges = [
             html.A(
                 dbc.Badge(f"PMID:{pmid}", color="info", className="me-1", pill=True),
-                href=f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/",
+                # Link to PubTator 3 to show entity highlighting
+                href=f"https://www.ncbi.nlm.nih.gov/research/pubtator3/publication/{pmid}",
                 target="_blank",
                 style={"textDecoration": "none"},
             )
