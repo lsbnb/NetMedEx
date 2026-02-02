@@ -131,7 +131,6 @@ def callbacks(app):
     )
     def plot_cytoscape_graph(graph_children, progress):
         if graph_children:
-            print(f"DEBUG: plot_cytoscape_graph triggered. Type: {type(graph_children)}")
             # Check for elements to distinguish empty init from actual results
             elements = []
             if isinstance(graph_children, dict):

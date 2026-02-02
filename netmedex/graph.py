@@ -140,15 +140,50 @@ class PubTatorGraphBuilder:
         collection: PubTatorCollection,
     ):
         use_mesh_vocabulary = HEADERS["use_mesh_vocabulary"] in collection.headers
-        for article in collection.articles:
-            self.add_article(article, use_mesh_vocabulary=use_mesh_vocabulary)
 
-    def add_article(self, article: PubTatorArticle, use_mesh_vocabulary: bool = False) -> None:
+        if self.edge_method == "semantic" and self.semantic_extractor:
+            # Optimized batch processing for semantic analysis
+            nodes_map = {}
+            for article in collection.articles:
+                # Add nodes but skip edge creation
+                nodes = self.add_article(
+                    article, use_mesh_vocabulary=use_mesh_vocabulary, compute_edges=False
+                )
+                nodes_map[article.pmid] = nodes
+
+            # Run parallel analysis
+            logger.info(
+                f"Starting parallel semantic analysis for {len(collection.articles)} articles..."
+            )
+            semantic_edges = self.semantic_extractor.analyze_collection_relationships(
+                collection.articles, nodes_map
+            )
+
+            # Convert and add all edges
+            pubtator_edges = self.semantic_extractor.convert_to_pubtator_edges(semantic_edges)
+            self._add_edges(pubtator_edges)
+
+        else:
+            # Standard sequential processing
+            for article in collection.articles:
+                self.add_article(article, use_mesh_vocabulary=use_mesh_vocabulary)
+
+    def add_article(
+        self,
+        article: PubTatorArticle,
+        use_mesh_vocabulary: bool = False,
+        compute_edges: bool = True,
+    ) -> dict[str, PubTatorNode]:
         """Add an article to the graph
 
         Args:
             article: PubTator article with annotations
             use_mesh_vocabulary: If True, use MeSH vocabulary for node names
+            compute_edges: If True, calculate and add edges immediately.
+                          Set to False for batch processing.
+
+        Returns:
+            Dictionary of nodes created/updated from this article
         """
         self.num_articles += 1
         self._updated = True
@@ -162,26 +197,32 @@ class PubTatorGraphBuilder:
         edges = []
 
         # Edge creation based on selected method
-        if self.edge_method == "co-occurrence":
-            # Co-occurrence method: create edges for all co-occurring entities
-            edges += self._create_complete_graph_edges(
-                list(node_collection.nodes.keys()), article.pmid
-            )
+        # Edge creation based on selected method
+        if compute_edges:
+            if self.edge_method == "co-occurrence":
+                # Co-occurrence method: create edges for all co-occurring entities
+                edges += self._create_complete_graph_edges(
+                    list(node_collection.nodes.keys()), article.pmid
+                )
 
-        elif self.edge_method == "semantic":
-            # Semantic analysis method: use LLM to identify meaningful relationships
-            # Only use semantic edges, do not add BioREx relations
-            edges += self._create_semantic_edges(article, node_collection.nodes, self.num_articles)
+            elif self.edge_method == "semantic":
+                # Semantic analysis method: use LLM to identify meaningful relationships
+                # Only use semantic edges, do not add BioREx relations
+                edges += self._create_semantic_edges(
+                    article, node_collection.nodes, self.num_articles
+                )
 
-        elif self.edge_method == "relation":
-            # Relation-only method: only use BioREx annotated relations
-            edges += self._create_relation_edges(
-                list(node_collection.mesh_nodes.keys()), article.relations
-            )
+            elif self.edge_method == "relation":
+                # Relation-only method: only use BioREx annotated relations
+                edges += self._create_relation_edges(
+                    list(node_collection.mesh_nodes.keys()), article.relations
+                )
 
         self._add_attributes(article)
         self._add_nodes(node_collection.nodes)
         self._add_edges(edges)
+
+        return node_collection.nodes
 
     def build(
         self,

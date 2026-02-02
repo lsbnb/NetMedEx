@@ -53,7 +53,8 @@ h4 {
 
 .sidebar .progress-bar {
     background-color: var(--SIDEBAR-BTN);
-    color: var(--SIDEBAR-TEXT);
+    color: white !important;
+    font-weight: bold;
 }
 
 .sidebar .progress {

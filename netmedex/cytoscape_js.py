@@ -203,32 +203,52 @@ def create_cytoscape_edge(edge, G, with_id=True):
     relation_display = get_relation_display_name(primary_relation)
 
     # Create edge label with specific relation type
-    edge_label = f"{G.nodes[node_id_1]['name']} ({relation_display}) {G.nodes[node_id_2]['name']}"
+    # Determine source and target based on directionality info
+    source_id = G.nodes[node_id_1]["_id"]
+    target_id = G.nodes[node_id_2]["_id"]
+    source_name = G.nodes[node_id_1]["name"]
+    target_name = G.nodes[node_id_2]["name"]
+
+    if "source_id" in edge_attr:
+        # If we have explicit source tracking, respect it
+        real_source_id = edge_attr["source_id"]
+        # If the stored node1 is actually the source
+        if real_source_id == node_id_1:
+            pass  # Already correct
+        else:
+            # Swap source/target for display
+            source_id, target_id = target_id, source_id
+            source_name, target_name = target_name, source_name
+
+    edge_label = f"{source_name} ({relation_display}) {target_name}"
 
     # Convert relations dict (may contain sets) to JSON-serializable format
     relations = _convert_sets_to_lists(edge_attr.get("relations", {}))
 
-    edge_info = {
-        "data": {
-            "source": G.nodes[node_id_1]["_id"],
-            "target": G.nodes[node_id_2]["_id"],
-            "label": edge_label,
-            "weight": round(max(float(edge_attr["edge_width"]), 1), 1),
-            "pmids": pmids,
-            "edge_type": edge_attr["type"],
-            "relations": relations,
-            # NEW: Semantic relationship metadata
-            "primary_relation": primary_relation,
-            "relation_display": relation_display,
-            "is_directional": is_directional,
-            "relation_confidence": round(confidence, 2) if confidence > 0 else None,
-            "source_name": G.nodes[node_id_1]["name"],
-            "target_name": G.nodes[node_id_2]["name"],
-            # Include semantic metadata for display in edge info panel
-            "confidences": edge_attr.get("confidences", None),
-            "evidences": edge_attr.get("evidences", None),
-        }
+    edge_data = {
+        "source": source_id,
+        "target": target_id,
+        "label": edge_label,
+        "weight": round(max(float(edge_attr["edge_width"]), 1), 1),
+        "pmids": pmids,
+        "edge_type": edge_attr["type"],
+        "relations": relations,
+        # NEW: Semantic relationship metadata
+        "primary_relation": primary_relation,
+        "relation_display": relation_display,
+        "relation_confidence": round(confidence, 2) if confidence > 0 else None,
+        "source_name": source_name,
+        "target_name": target_name,
+        # Include semantic metadata for display in edge info panel
+        "confidences": edge_attr.get("confidences", None),
+        "evidences": edge_attr.get("evidences", None),
     }
+
+    # Only adding is_directional if True prevents selector matching on False
+    if is_directional:
+        edge_data["is_directional"] = True
+
+    edge_info = {"data": edge_data}
 
     if with_id:
         edge_info["data"]["id"] = edge_attr["_id"]
