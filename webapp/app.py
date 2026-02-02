@@ -45,11 +45,11 @@ app.layout = html.Div([content, html.Div(id="post-js-scripts")], id="main-contai
 def main():
     try:
         collect_callbacks(app)
-        # app.clientside_callback(
-        #     ClientsideFunction(namespace="clientside", function_name="info_scroll"),
-        #     Output("post-js-scripts", "children"),
-        #     Input("post-js-scripts", "id"),
-        # )
+        app.clientside_callback(
+            ClientsideFunction(namespace="clientside", function_name="info_scroll"),
+            Output("post-js-scripts", "children"),
+            Input("post-js-scripts", "id"),
+        )
         app.run(host=os.getenv("HOST", "127.0.0.1"), port=os.getenv("PORT", "8050"), debug=True)
     finally:
         cleanup_tempdir()

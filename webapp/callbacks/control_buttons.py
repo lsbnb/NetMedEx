@@ -9,7 +9,7 @@ def callbacks(app):
         Output("input-type-selection", "value"),
         Output("progress", "value"),
         Output("progress", "label"),
-        Output("progress-status", "children"),
+        Output("progress-status", "children", allow_duplicate=True),
         Output("output", "children"),
         Input("reset-button", "n_clicks"),
         prevent_initial_call=True,

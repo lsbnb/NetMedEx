@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import dash
 from dash import dcc, html
+import dash_cytoscape as cyto
 
 from webapp.components.graph_info import graph_info
 from webapp.utils import visibility
@@ -22,7 +23,20 @@ graph = html.Div(
         html.Div(
             [
                 graph_info,
-                html.Div(id="cy-graph", className="flex-grow-1"),
+                html.Div(
+                    [
+                        cyto.Cytoscape(
+                            id="cy",
+                            elements=[],
+                            style={"width": "100%", "height": "100%"},
+                            boxSelectionEnabled=True,
+                            minZoom=0.1,
+                            maxZoom=20,
+                        )
+                    ],
+                    id="cy-graph",
+                    className="flex-grow-1",
+                ),
                 dcc.Store(id="is-new-graph", data=False),
                 dcc.Store(id="pmid-title-dict", data={}),
             ],

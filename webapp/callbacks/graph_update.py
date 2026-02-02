@@ -120,10 +120,10 @@ def generate_new_id(graph_json):
 
 def callbacks(app):
     @app.callback(
-        Output("progress", "value"),
+        Output("progress", "value", allow_duplicate=True),
         Output("progress", "max"),
-        Output("progress", "label"),
-        Output("progress-status", "children"),
+        Output("progress", "label", allow_duplicate=True),
+        Output("progress-status", "children", allow_duplicate=True),
         Input("cy-graph", "children"),
         State("progress-status", "children"),
         running=[(Input("submit-button", "disabled"), True, False)],
@@ -131,6 +131,7 @@ def callbacks(app):
     )
     def plot_cytoscape_graph(graph_children, progress):
         if graph_children:
+            print(f"DEBUG: plot_cytoscape_graph triggered. Type: {type(graph_children)}")
             # Check for elements to distinguish empty init from actual results
             elements = []
             if isinstance(graph_children, dict):

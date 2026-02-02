@@ -36,6 +36,11 @@ h4 {
     color: var(--SIDEBAR-TEXT);
 }
 
+/* Fix for Cards inside Sidebar (White Card = Dark Text) */
+.sidebar .card :is(h1, h2, h3, h4, h5, h6, label, p, div) {
+    color: var(--TEXT);
+}
+
 .settings-collapse :is(h1, h2, h3, h4, h5, h6, p, label, .rc-slider-mark-text) {
     color: var(--TEXT);
 }
@@ -49,6 +54,11 @@ h4 {
 .sidebar .progress-bar {
     background-color: var(--SIDEBAR-BTN);
     color: var(--SIDEBAR-TEXT);
+}
+
+.sidebar .progress {
+    border: 1px solid var(--GRAY-TEXT);
+    background-color: white;
 }
 
 .main-div {
@@ -90,19 +100,6 @@ a:hover {
 
 .sidebar.graph-mode {
     background-color: #509B84;
-}
-
-.sidebar.chat-mode {
-    background-color: #00AAAA;
-}
-
-/* Sidebar Toggle Tabs - Simple Style */
-.sidebar-toggle {
-    display: flex;
-    border: 1px solid var(--SIDEBAR-TEXT);
-    border-radius: 4px;
-    overflow: hidden;
-    margin-bottom: 15px;
 }
 
 #sidebar-panel-toggle .nav-link {
@@ -312,48 +309,4 @@ a:hover {
 
 .info-left[data-tooltip]:hover:before {
     left: var(--tooltip-x);
-}
-
-/* Chat Styles - Simple */
-.chat-messages-container {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.chat-message-user {
-    align-self: flex-end;
-    max-width: 90%;
-    margin-bottom: 5px;
-}
-
-.chat-message-assistant {
-    align-self: flex-start;
-    max-width: 90%;
-    margin-bottom: 5px;
-}
-
-.chat-message-user-content {
-    background-color: var(--SIDEBAR-BTN);
-    color: white;
-    padding: 10px 15px;
-    border-radius: 8px;
-}
-
-.chat-message-assistant-content {
-    background-color: white;
-    color: var(--TEXT);
-    padding: 10px 15px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-}
-
-.message-text {
-    line-height: 1.4;
-}
-
-.chat-input-area {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 10px;
-    border-radius: 4px;
 }
