@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.0] - Planned
+
+### Planned Features
+- **To Be Determined**: Pending user roadmap input.
+
+## [0.7.0] - 2026-02-04
+
+### Added
+- **Enhanced Clientside Interactions**:
+    - **Chat Auto-Scroll**: Implemented `MutationObserver` to automatically scroll chat window to the newest message.
+    - **Dynamic Z-Index Management**: Smart z-index handling for Edge/Node info panels to prevent sidebar overlaps (replacing CSS hacks).
+    - **Improved Tooltips**: Better positioning logic for UI tooltips.
+
+### Changed
+- **Frontend Logic**: Migrated core clientside callbacks to `clientside_scripts_v7.js` for better performance and maintainability.
+
 ## [0.6.0] - 2026-02-02
 
 ### Added
