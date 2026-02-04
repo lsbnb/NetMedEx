@@ -6,6 +6,7 @@ from webapp.llm import llm_client
 from netmedex.pubtator import PubTatorAPI
 import asyncio
 import logging
+import requests
 
 logger = logging.getLogger(__name__)
 
@@ -19,6 +20,7 @@ def callbacks(app):
             Output("openai-model-selector", "value"),
             Output("llm-base-url-input", "value"),
             Output("llm-model-input", "value"),
+            Output("llm-model-input", "options"),
         ],
         Input("sidebar-container", "id"),  # Triggered on page load
     )
@@ -34,7 +36,9 @@ def callbacks(app):
         if api_key == "local-dummy-key" or (base_url and base_url != "https://api.openai.com/v1"):
             provider = "local"
             # For local, also populate the model input
-            return provider, "", "gpt-4o-mini", base_url, model
+            # Setup options with the current model
+            options = [{"label": model, "value": model}] if model else []
+            return provider, "", "gpt-4o-mini", base_url, model, options
         else:
             provider = "openai"
             # Check if model is in the dropdown, otherwise set to custom
@@ -47,10 +51,10 @@ def callbacks(app):
                 "gpt-3.5-turbo",
             ]
             if model in standard_models:
-                return provider, api_key, model, "http://localhost:11434/v1", ""
+                return provider, api_key, model, "http://localhost:11434/v1", "", []
             else:
                 # Custom model
-                return provider, api_key, "custom", "http://localhost:11434/v1", ""
+                return provider, api_key, "custom", "http://localhost:11434/v1", "", []
 
     # Populate custom model input when loading from env
     @app.callback(
@@ -124,7 +128,11 @@ def callbacks(app):
                     else:
                         model = openai_model if openai_model else "gpt-4o-mini"
 
-                    llm_client.initialize_client(api_key=api_key, model=model)
+                    llm_client.initialize_client(
+                        api_key=api_key,
+                        model=model,
+                        base_url="https://api.openai.com/v1",
+                    )
                     return f"✅ OpenAI configured with {model}"
                 elif api_key:
                     return "⚠️ Invalid API key format (should start with sk-)"
@@ -146,6 +154,51 @@ def callbacks(app):
 
         except Exception as e:
             return f"❌ Configuration error: {str(e)}"
+
+    # Fetch Local Models
+    @app.callback(
+        [
+            Output("llm-model-input", "options", allow_duplicate=True),
+            Output("model-fetch-status", "children"),
+        ],
+        Input("refresh-local-models-btn", "n_clicks"),
+        State("llm-base-url-input", "value"),
+        prevent_initial_call=True,
+    )
+    def fetch_local_models(n_clicks, base_url):
+        """Fetch available models from the local LLM endpoint"""
+        if not n_clicks or not base_url:
+            raise dash.exceptions.PreventUpdate
+
+        try:
+            # Construct the models endpoint URL
+            # OpenAI compatible endpoint is usually /v1/models
+            if base_url.endswith("/"):
+                url = f"{base_url}models"
+            else:
+                url = f"{base_url}/models"
+
+            logger.info(f"Fetching models from {url}")
+            response = requests.get(url, timeout=5)
+
+            if response.status_code == 200:
+                data = response.json()
+                models_list = data.get("data", [])
+
+                # Format for dropdown
+                options = []
+                for model in models_list:
+                    model_id = model.get("id", "unknown")
+                    options.append({"label": model_id, "value": model_id})
+
+                count = len(options)
+                return options, f"✅ Found {count} models"
+            else:
+                return no_update, f"❌ Check URL (Status: {response.status_code})"
+
+        except Exception as e:
+            logger.error(f"Error fetching models: {e}")
+            return no_update, f"❌ Error: Could not connect to {base_url}"
 
     # Save LLM Configuration to .env file
     @app.callback(

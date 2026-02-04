@@ -129,11 +129,26 @@ llm_config = html.Div(
                     "Model Name",
                     "Model to use (e.g., gpt-oss:20b, llama2)",
                 ),
-                dbc.Input(
-                    id="llm-model-input",
-                    placeholder="gpt-oss:20b",
-                    debounce=True,
+                html.Div(
+                    [
+                        dcc.Dropdown(
+                            id="llm-model-input",
+                            placeholder="Select or fetch models...",
+                            options=[],
+                            style={"flex": "1"},
+                        ),
+                        dbc.Button(
+                            html.I(className="bi bi-arrow-clockwise"),
+                            id="refresh-local-models-btn",
+                            color="secondary",
+                            outline=True,
+                            className="ms-2",
+                            title="Fetch models from Local LLM",
+                        ),
+                    ],
+                    className="d-flex align-items-center",
                 ),
+                html.Div(id="model-fetch-status", className="small text-muted mt-1"),
             ],
             id="local-llm-config",
             style={"display": "none"},
@@ -180,7 +195,18 @@ advanced_settings = html.Div(
         ),
         html.Div(
             [
-                html.H5("Advanced Settings", className="text-center"),
+                html.Div(
+                    [
+                        html.H5("Advanced Settings", className="mb-0"),
+                        html.Button(
+                            type="button",
+                            className="btn-close",
+                            id="close-advanced-settings-btn",
+                            **{"aria-label": "Close"},
+                        ),
+                    ],
+                    className="d-flex justify-content-between align-items-center mb-2",
+                ),
                 llm_config,
                 max_articles,
                 max_edges,

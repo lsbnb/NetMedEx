@@ -398,6 +398,10 @@ class PubTatorGraphBuilder:
 
     @staticmethod
     def _set_network_communities(graph: nx.Graph, seed: int = 1):
+        # Prevent ZeroDivisionError if graph has no edges
+        if graph.number_of_edges() == 0:
+            return
+
         communities = nx.community.louvain_communities(graph, seed=seed, weight="edge_weight")  # type: ignore
         community_labels = set()
         for c_idx, community in enumerate(communities):
@@ -568,9 +572,9 @@ class PubTatorGraphBuilder:
             else:
                 node_data = GraphNode(
                     _id=generate_uuid(),
-                    color=NODE_COLOR_MAP[data.type],
+                    color=NODE_COLOR_MAP.get(data.type, "#888888"),
                     label_color="#000000",
-                    shape=NODE_SHAPE_MAP[data.type],
+                    shape=NODE_SHAPE_MAP.get(data.type, "ELLIPSE"),
                     type=data.type,
                     mesh=data.mesh,
                     name=data.name,

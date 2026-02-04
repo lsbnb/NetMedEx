@@ -1,5 +1,4 @@
 from webapp.app import app
-import json
 
 
 def verify_callbacks():
@@ -29,7 +28,14 @@ def verify_callbacks():
             # Check outputs
             # It might be a list of outputs
             outs = outputs if isinstance(outputs, list) else [outputs]
-            out_ids = [o["id"] + "." + o["property"] for o in outs]
+            out_ids = []
+            for o in outs:
+                if hasattr(o, "component_id"):
+                    out_ids.append(f"{o.component_id}.{o.component_property}")
+                elif isinstance(o, dict):
+                    out_ids.append(f"{o['id']}.{o['property']}")
+                else:
+                    out_ids.append(str(o))
 
             if "search-panel.style" in out_ids and "chat-panel-container.style" in out_ids:
                 print(f"FOUND: toggle_panels callback. ID: {callback_id}")

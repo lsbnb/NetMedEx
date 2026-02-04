@@ -311,3 +311,60 @@ a:hover {
 .info-left[data-tooltip]:hover:before {
     left: var(--tooltip-x);
 }
+/* Cloud-native Table Styling for Chat */
+.chat-message-assistant-content table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 10px 0;
+    font-size: 0.9em;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+.chat-message-assistant-content th,
+.chat-message-assistant-content td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #dddddd;
+}
+
+.chat-message-assistant-content th {
+    background-color: #009879;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.chat-message-assistant-content tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.chat-message-assistant-content tr:last-of-type border-bottom {
+    border-bottom: 2px solid #009879;
+}
+
+.chat-message-assistant-content tr:hover {
+    background-color: #f5f5f5;
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* Loading Dots Animation */
+.loading-dots {
+  display: inline-block;
+  min-width: 24px;
+  text-align: left;
+}
+
+.loading-dots::after {
+  content: ".";
+  animation: dots 1.5s steps(1, end) infinite;
+}
+
+@keyframes dots {
+  0%, 20% { content: "."; }
+  40% { content: ".."; }
+  60% { content: "..."; }
+  80%, 100% { content: ""; }
+}

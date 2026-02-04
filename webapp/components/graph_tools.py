@@ -22,7 +22,7 @@ graph_layout = html.Div(
                 {"label": "Breadthfirst", "value": "breadthfirst"},
                 {"label": "Cose", "value": "cose"},
             ],
-            value="preset",
+            value="cose",
             style={"width": "200px"},
         ),
     ],

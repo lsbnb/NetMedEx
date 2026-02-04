@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dash import Input, Output, State
+from dash import Input, Output, State, no_update
 
 from webapp.utils import display
 
@@ -73,9 +73,14 @@ def callbacks(app):
         prevent_initial_call=True,
     )
     def switch_to_graph_panel(container_style, current_value):
-        if container_style and container_style.get("visibility") == "visible":
+        # Only auto-switch to graph if we are currently in search mode and graph becomes visible
+        if (
+            current_value == "search"
+            and container_style
+            and container_style.get("visibility") == "visible"
+        ):
             return "graph"
-        return current_value
+        return no_update
 
     @app.callback(
         Output("search-panel", "style"),
