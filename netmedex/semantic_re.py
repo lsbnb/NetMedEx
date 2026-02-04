@@ -158,22 +158,66 @@ class SemanticRelationshipExtractor:
                 self.progress_callback(article_num, 1, "", str(e))
             return []
 
+        # Cache results
+        if not relationships:
+            # Try to repair IDs if they are missing suffixes (common LLM behavior for mutations)
+            # This is handled in the Loop below, but if relationships is empty we can't do anything.
+            pass
+
         # Filter by confidence and convert to SemanticEdge
         semantic_edges = []
         for rel in relationships:
-            if rel.get("confidence", 0) >= self.confidence_threshold:
-                # Ensure alphabetical ordering for consistency
-                node1 = rel["entity1_id"]
-                node2 = rel["entity2_id"]
-                edge = SemanticEdge(
-                    node1_id=node1,
-                    node2_id=node2,
-                    pmid=article.pmid,
-                    relation_type=rel.get("relation_type", "related_to"),
-                    confidence=rel.get("confidence", 0.5),
-                    evidence=rel.get("evidence", ""),
+            node1 = rel["entity1_id"]
+            node2 = rel["entity2_id"]
+
+            # Repair IDs: Check if nodes exist, if not, try to match by prefix
+            # This handles cases where LLM strips the type suffix (e.g. _ProteinMutation)
+            # or truncates complex IDs containing semicolons (e.g. tmVar:...;...)
+            if node1 not in nodes:
+                # Match if n_id starts with node1 AND the next char is a separator or end of string
+                matches = [
+                    n_id
+                    for n_id in nodes
+                    if n_id.startswith(node1)
+                    and (len(n_id) == len(node1) or n_id[len(node1)] in ("_", ";"))
+                ]
+                if len(matches) == 1:
+                    node1 = matches[0]
+                    rel["entity1_id"] = node1  # Update for debugging
+
+            if node2 not in nodes:
+                matches = [
+                    n_id
+                    for n_id in nodes
+                    if n_id.startswith(node2)
+                    and (len(n_id) == len(node2) or n_id[len(node2)] in ("_", ";"))
+                ]
+                if len(matches) == 1:
+                    node2 = matches[0]
+                    rel["entity2_id"] = node2
+
+            # Only add if both nodes are valid (exist in our node map)
+            # This prevents creating edges to non-existent nodes (which causes export errors)
+            if node1 in nodes and node2 in nodes:
+                if rel.get("confidence", 0) >= self.confidence_threshold:
+                    # Ensure alphabetical ordering for consistency
+                    # (Though GraphEdge handles direction, having consistent storage is nice)
+                    # But wait, SemanticEdge stores node1/node2 as is, relation has direction.
+                    # We should keep order matched to relation.
+
+                    edge = SemanticEdge(
+                        node1_id=node1,
+                        node2_id=node2,
+                        pmid=article.pmid,
+                        relation_type=rel.get("relation_type", "related_to"),
+                        confidence=rel.get("confidence", 0.5),
+                        evidence=rel.get("evidence", ""),
+                    )
+                    semantic_edges.append(edge)
+            else:
+                logger.warning(
+                    f"PMID {article.pmid}: Skipping edge with invalid nodes: {node1}, {node2}"
                 )
-                semantic_edges.append(edge)
 
         # Cache results
         self.cache[article.pmid] = semantic_edges

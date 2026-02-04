@@ -93,21 +93,21 @@ class PubTatorLine:
         data = line.strip("\n").split("\t")
         if len(data) == 6:
             instance = PubTatorAnnotation(
-                pmid=data[0],
+                pmid=data[0].strip(),
                 start=int(data[1]),
                 end=int(data[2]),
-                name=data[3],
+                name=data[3].strip(),
                 identifier_name=None,
-                type=data[4],
-                mesh=data[5],
+                type=data[4].strip(),
+                mesh=data[5].strip(),
             )
         elif len(data) == 4:
             instance = PubTatorRelation(
-                pmid=data[0],
-                relation_type=data[1],
-                mesh1=data[2],
+                pmid=data[0].strip(),
+                relation_type=data[1].strip(),
+                mesh1=data[2].strip(),
                 name1=None,
-                mesh2=data[3].split(";")[0],
+                mesh2=data[3].strip().split(";")[0],
                 name2=None,
             )
         return instance

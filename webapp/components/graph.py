@@ -11,7 +11,11 @@ graph = html.Div(
     [
         html.Div(
             [
-                html.Img(src=dash.get_asset_url("NetMedEx.png"), height="40px"),
+                html.A(
+                    html.Img(src=dash.get_asset_url("NetMedEx.png"), height="40px"),
+                    href="https://github.com/lsbnb",
+                    target="_blank",
+                ),
                 html.Span(
                     "💡 Tip: Hold Shift + Left Click and drag to select a subnetwork",
                     className="ms-4 align-self-center text-secondary fst-italic",

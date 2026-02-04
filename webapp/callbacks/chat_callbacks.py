@@ -1,4 +1,5 @@
 from __future__ import annotations
+import re
 
 """
 Chat callbacks for RAG-based conversation system
@@ -13,7 +14,7 @@ This module handles:
 import logging
 
 import dash
-from dash import Input, Output, State, no_update
+from dash import Input, Output, State, html, no_update
 
 logger = logging.getLogger(__name__)
 
@@ -24,8 +25,37 @@ logger = logging.getLogger(__name__)
 chat_session = None
 rag_system = None
 
+COMMUNITY_NODE_PATTERN = re.compile(r"^c\d+$")
+
 
 def callbacks(app):
+    # Client-side callback for immediate feedback
+    app.clientside_callback(
+        """
+        function(n_clicks) {
+            if (n_clicks) {
+                return [
+                    {
+                        "props": {"className": "bi bi-arrow-clockwise bi-spin me-2"},
+                        "type": "I",
+                        "namespace": "dash_html_components"
+                    },
+                    "Processing",
+                    {
+                        "props": {"className": "loading-dots"},
+                        "type": "Span",
+                        "namespace": "dash_html_components"
+                    }
+                ];
+            }
+            return window.dash_clientside.no_update;
+        }
+        """,
+        Output("analyze-selection-btn", "children"),
+        Input("analyze-selection-btn", "n_clicks"),
+        prevent_initial_call=True,
+    )
+
     @app.callback(
         [
             Output("chat-node-count", "children"),
@@ -57,7 +87,16 @@ def callbacks(app):
         ):
             return "0", "0", "0", True
 
-        node_count = len(selected_nodes) if selected_nodes else 0
+        # Filter out community nodes from count
+        real_selected_nodes = []
+        if selected_nodes:
+            for node in selected_nodes:
+                # Check if it's a community node (c0, c1, etc.)
+                if "id" in node and COMMUNITY_NODE_PATTERN.match(node["id"]):
+                    continue
+                real_selected_nodes.append(node)
+
+        node_count = len(real_selected_nodes)
         edge_count = len(selected_edges) if selected_edges else 0
 
         # Extract unique PMIDs from selected edges
@@ -70,6 +109,16 @@ def callbacks(app):
                         pmids.update(edge_pmids)
                     elif isinstance(edge_pmids, str):
                         pmids.add(edge_pmids)
+
+        # Also extract PMIDs from selected REAL nodes
+        # (articles that mention the entity but might not have edges in the current selection)
+        for node in real_selected_nodes:
+            if "pmids" in node:
+                node_pmids = node["pmids"]
+                if isinstance(node_pmids, list):
+                    pmids.update(node_pmids)
+                elif isinstance(node_pmids, str):
+                    pmids.add(node_pmids)
 
         abstract_count = len(pmids)
 
@@ -89,21 +138,26 @@ def callbacks(app):
             Output(
                 "sidebar-panel-toggle", "active_tab", allow_duplicate=True
             ),  # Switch to Chat panel automatically
+            Output("analyze-selection-btn", "children", allow_duplicate=True),
         ],
         Input("analyze-selection-btn", "n_clicks"),
         [
+            State("cy", "selectedNodeData"),
             State("cy", "selectedEdgeData"),
             State("current-session-path", "data"),  # Used to get the graph file path if needed
         ],
         prevent_initial_call=True,
     )
-    def initialize_chat(n_clicks, selected_edges, savepath):
+    def initialize_chat(n_clicks, selected_nodes, selected_edges, savepath):
         """
         Initialize RAG system and chat session with selected abstracts.
         """
         global chat_session, rag_system
 
-        if not n_clicks or not selected_edges:
+        # Reset button content
+        reset_btn = [html.I(className="bi bi-chat-dots me-2"), "Analyze Selection"]
+
+        if not n_clicks or (not selected_edges and not selected_nodes):
             raise dash.exceptions.PreventUpdate
 
         try:
@@ -121,6 +175,7 @@ def callbacks(app):
                     {"display": "none"},
                     no_update,
                     no_update,
+                    reset_btn,
                 )
 
             # Load the graph to get abstracts
@@ -133,6 +188,7 @@ def callbacks(app):
                     {"display": "none"},
                     no_update,
                     no_update,
+                    reset_btn,
                 )
 
             with open(savepath["graph"], "rb") as f:
@@ -149,6 +205,20 @@ def callbacks(app):
                     if pmid not in pmid_data:
                         pmid_data[pmid] = {"pmid": pmid, "edges": []}
                     pmid_data[pmid]["edges"].append(edge)
+
+            # Extract PMIDs from nodes as well (to capture isolated entities)
+            if selected_nodes:
+                # Need to map node IDs back to graph nodes if selected_nodes doesn't have pmid info complete
+                # But Cytoscape selectedNodeData should contain the data object
+                for node in selected_nodes:
+                    node_pmids = node.get("pmids", [])
+                    if isinstance(node_pmids, str):
+                        node_pmids = [node_pmids]
+
+                    for pmid in node_pmids:
+                        if pmid not in pmid_data:
+                            # Nodes don't have edge data, so we leave edges empty
+                            pmid_data[pmid] = {"pmid": pmid, "edges": []}
 
             # Get abstracts from graph metadata
             pmid_abstracts = G.graph.get("pmid_abstract", {})
@@ -180,16 +250,36 @@ def callbacks(app):
                     {"display": "none"},
                     no_update,
                     no_update,
+                    reset_btn,
                 )
 
             # Initialize RAG system
             rag_system = AbstractRAG(llm_client)
             indexed_count = rag_system.index_abstracts(documents)
 
-            # Initialize Graph Retriever
+            # Initialize Node RAG System (New in v0.8)
+            from netmedex.node_rag import NodeRAG, GraphNode
+
+            node_rag = NodeRAG(llm_client)
+
+            # Index all nodes in the current graph
+            graph_nodes = []
+            for node_id, data in G.nodes(data=True):
+                # Ensure we have a name
+                name = data.get("name", str(node_id))
+                node_type = data.get("type", "Entity")
+                graph_node = GraphNode(
+                    node_id=str(node_id), name=name, type=node_type, metadata=data
+                )
+                graph_nodes.append(graph_node)
+
+            node_rag.index_nodes(graph_nodes)
+            logger.info(f"Indexed {len(graph_nodes)} nodes for semantic search")
+
+            # Initialize Graph Retriever with NodeRAG
             from netmedex.graph_rag import GraphRetriever
 
-            graph_retriever = GraphRetriever(G)
+            graph_retriever = GraphRetriever(G, node_rag=node_rag)
             logger.info("GraphRetriever initialized with full graph")
 
             # Initialize chat session with Hybrid RAG
@@ -198,12 +288,34 @@ def callbacks(app):
             # Create welcome message
             welcome_text = (
                 f"✅ Hybrid RAG Ready! I've indexed {indexed_count} abstracts and loaded the knowledge graph. "
-                "I can analyze both text details and structural paths. Ask me anything!"
+                "I can analyze both text details and structural paths."
             )
 
             from webapp.components.chat import create_message_component
 
             welcome_msg = create_message_component("assistant", welcome_text)
+            messages = [welcome_msg]
+
+            # Auto-generate summary
+            try:
+                logger.info("Auto-generating summary for selection...")
+                summary_prompt = (
+                    "Please provide a concise summary of the selected research based on the abstracts and graph structure. "
+                    "Highlight the main relationships and key findings."
+                )
+                response = chat_session.send_message(summary_prompt)
+
+                if response["success"]:
+                    summary_msg = create_message_component(
+                        "assistant",
+                        f"📊 **Analysis of Selection:**\n\n{response['message']}",
+                        response.get("sources", []),
+                    )
+                    messages.append(summary_msg)
+            except Exception as e:
+                logger.error(f"Error auto-generating summary: {e}")
+                # Fallback if summary fails, just show welcome
+                pass
 
             return (
                 True,
@@ -211,8 +323,9 @@ def callbacks(app):
                 False,  # Enable input
                 False,  # Enable send button
                 {"display": "block"},  # Show clear button
-                [welcome_msg],
+                messages,
                 "chat",  # Set toggle to chat
+                reset_btn,
             )
 
         except Exception as e:
@@ -225,6 +338,7 @@ def callbacks(app):
                 {"display": "none"},
                 no_update,
                 no_update,
+                reset_btn,
             )
 
     @app.callback(

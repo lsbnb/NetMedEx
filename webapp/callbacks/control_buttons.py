@@ -1,4 +1,4 @@
-from dash import Input, Output, State
+from dash import Input, Output
 
 
 def callbacks(app):
@@ -7,8 +7,8 @@ def callbacks(app):
         Output("pmid-file-data", "contents"),
         Output("pubtator-file-data", "contents"),
         Output("input-type-selection", "value"),
-        Output("progress", "value"),
-        Output("progress", "label"),
+        Output("progress", "value", allow_duplicate=True),
+        Output("progress", "label", allow_duplicate=True),
         Output("progress-status", "children", allow_duplicate=True),
         Output("output", "children"),
         Input("reset-button", "n_clicks"),

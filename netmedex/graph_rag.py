@@ -11,14 +11,16 @@ class GraphRetriever:
     Retrieves structured context from the knowledge graph for Hybrid RAG.
     """
 
-    def __init__(self, graph: nx.Graph):
+    def __init__(self, graph: nx.Graph, node_rag=None):
         """
         Initialize the Graph Retriever.
 
         Args:
             graph: The NetworkX graph containing the knowledge network.
+            node_rag: Optional NodeRAG instance for semantic search.
         """
         self.graph = graph
+        self.node_rag = node_rag
         self._build_node_index()
 
     def _build_node_index(self):
@@ -36,7 +38,9 @@ class GraphRetriever:
         """
         Identify nodes in the graph that are relevant to the user query.
 
-        Current strategy: Simple substring matching against indexed names.
+        Strategy: Hybrid Search
+        1. Exact/Substring matching (High precision)
+        2. Vector Semantic matching (High recall) - via NodeRAG
 
         Args:
             query: User's natural language query.
@@ -47,15 +51,22 @@ class GraphRetriever:
         query_lower = query.lower()
         matched_nodes = set()
 
-        # Check for direct presence of known entity names in the query
-        # This is a basic entity linking approach.
-        # Optimization: Sort names by length (descending) to match longest phrases first
+        # 1. Exact/Substring Matching
         sorted_names = sorted(self.name_to_id.keys(), key=len, reverse=True)
-
         for name in sorted_names:
             if name in query_lower:
-                # Basic boundary check could be improved (e.g., regex)
                 matched_nodes.add(self.name_to_id[name])
+
+        # 2. Semantic Vector Matching (if available)
+        if self.node_rag:
+            logger.info("Performing semantic node search...")
+            # Use a threshold to avoid irrelevant matches
+            semantic_hits = self.node_rag.search_nodes(query, top_k=5)
+            for node_id, score, meta in semantic_hits:
+                # Acceptance threshold (0.6 is a reasonable starting point for inverted L2)
+                if score > 0.6:
+                    matched_nodes.add(node_id)
+                    logger.info(f"  + Semantic match: {meta.get('name')} (Score: {score:.2f})")
 
         return list(matched_nodes)
 

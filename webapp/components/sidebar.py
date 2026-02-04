@@ -315,7 +315,7 @@ progress = html.Div(
             className="shadow-sm mb-3",
             id="progress-card",
         ),
-        # Submit button
+        # Submit and Reset buttons
         html.Div(
             [
                 dbc.Button(
@@ -323,12 +323,21 @@ progress = html.Div(
                     id="submit-button",
                     color="primary",
                     size="lg",
-                    className="w-100 mb-2",
-                    style={"borderRadius": "8px"},
+                    className="mb-2",
+                    style={"borderRadius": "8px", "flex": "2"},
                 ),
-                html.Div(id="output"),
-            ]
+                dbc.Button(
+                    "Reset",
+                    id="reset-button",
+                    color="danger",
+                    size="lg",
+                    className="mb-2",
+                    style={"borderRadius": "8px", "flex": "1"},
+                ),
+            ],
+            className="d-flex gap-2 w-100",
         ),
+        html.Div(id="output"),
     ],
     id="progress-wrapper",
 )
@@ -438,12 +447,12 @@ graph_settings_panel = html.Div(
                     ],
                     switch=True,
                     id="cy-params",
-                    value=["community"],
+                    value=[],
                 ),
             ],
             className="param",
         ),
-        dcc.Store(id="memory-cy-params", data=["community"]),  # Store for tracking changes
+        dcc.Store(id="memory-cy-params", data=[]),  # Store for tracking changes
         graph_layout,
         edge_weight_cutoff,
         minimal_degree,

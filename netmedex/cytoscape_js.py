@@ -70,7 +70,37 @@ def create_cytoscape_js(G: nx.Graph, style: Literal["dash", "cyjs"] = "cyjs"):
     if filtered_edge_count > 0:
         logger.info(f"Filtered out {filtered_edge_count} edges connected to invalid nodes")
 
-    nodes = [create_cytoscape_node(node) for node in valid_nodes]
+    # Calculate node degrees for sizing
+    node_degrees = {}
+    for node_id, _ in valid_nodes:
+        node_degrees[node_id] = G.degree(node_id)
+
+    if node_degrees:
+        min_degree = min(node_degrees.values())
+        max_degree = max(node_degrees.values())
+    else:
+        min_degree = 0
+        max_degree = 0
+
+    # Linear interpolation parameters
+    MIN_SIZE = 25
+    MAX_SIZE = 65
+
+    def get_node_size(node_id):
+        degree = node_degrees.get(node_id, 0)
+        if max_degree == min_degree:
+            return MIN_SIZE
+
+        # Linear mapping
+        normalized = (degree - min_degree) / (max_degree - min_degree)
+        return MIN_SIZE + (normalized * (MAX_SIZE - MIN_SIZE))
+
+    nodes = [
+        create_cytoscape_node(
+            node, size=get_node_size(node[0]), degree=node_degrees.get(node[0], 0)
+        )
+        for node in valid_nodes
+    ]
     edges = [create_cytoscape_edge(edge, G, with_id) for edge in valid_edges]
 
     if style == "cyjs":
@@ -81,7 +111,7 @@ def create_cytoscape_js(G: nx.Graph, style: Literal["dash", "cyjs"] = "cyjs"):
     return elements
 
 
-def create_cytoscape_node(node):
+def create_cytoscape_node(node, size=25, degree=0):
     def convert_shape(shape):
         return SHAPE_JS_MAP.get(shape, shape).lower()
 
@@ -99,6 +129,9 @@ def create_cytoscape_node(node):
             "num_articles": node_attr["num_articles"],
             "standardized_id": node_attr["mesh"],
             "node_type": node_attr["type"],
+            "node_type": node_attr["type"],
+            "node_size": size,
+            "degree": degree,
         },
         "position": {
             "x": round(node_attr["pos"][0], 3),
@@ -220,7 +253,7 @@ def create_cytoscape_edge(edge, G, with_id=True):
             source_id, target_id = target_id, source_id
             source_name, target_name = target_name, source_name
 
-    edge_label = f"{source_name} ({relation_display}) {target_name}"
+    edge_label = relation_display
 
     # Convert relations dict (may contain sets) to JSON-serializable format
     relations = _convert_sets_to_lists(edge_attr.get("relations", {}))

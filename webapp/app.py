@@ -50,7 +50,11 @@ def main():
             Output("post-js-scripts", "children"),
             Input("post-js-scripts", "id"),
         )
-        app.run(host=os.getenv("HOST", "127.0.0.1"), port=os.getenv("PORT", "8050"), debug=True)
+        app.run(
+            host=os.getenv("HOST", "127.0.0.1"),
+            port=os.getenv("PORT", "8050"),
+            debug=(os.getenv("FLASK_DEBUG") == "true"),
+        )
     finally:
         cleanup_tempdir()
 

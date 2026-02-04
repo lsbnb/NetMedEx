@@ -9,11 +9,40 @@ from netmedex.cytoscape_js import create_cytoscape_js
 from webapp.callbacks.graph_utils import rebuild_graph
 
 
+def get_layout_config(layout_name):
+    """
+    Get optimized layout configuration based on layout name.
+    Targeting better visualization for compound/community graphs.
+    """
+    if layout_name == "cose":
+        return {
+            "name": "cose",
+            "idealEdgeLength": 50,
+            "nodeOverlap": 20,
+            "refresh": 20,
+            "fit": True,
+            "padding": 30,
+            "randomize": False,
+            "componentSpacing": 40,
+            "nodeRepulsion": 10000,
+            "edgeElasticity": 100,
+            "nestingFactor": 1.2,
+            "gravity": 0.5,
+            "numIter": 1000,
+            "initialTemp": 200,
+            "coolingFactor": 0.95,
+            "minTemp": 1.0,
+        }
+    return {"name": layout_name}
+
+
 def generate_cytoscape_js_network(graph_layout, graph_json):
     if graph_json is not None:
         elements = [*graph_json["elements"]["nodes"], *graph_json["elements"]["edges"]]
     else:
         elements = []
+
+    layout_config = get_layout_config(graph_layout)
 
     cytoscape_graph = cyto.Cytoscape(
         id="cy",
@@ -22,7 +51,7 @@ def generate_cytoscape_js_network(graph_layout, graph_json):
         wheelSensitivity=0.3,
         boxSelectionEnabled=True,
         style={},
-        layout={"name": graph_layout},
+        layout=layout_config,
         stylesheet=[
             {
                 "selector": "core",
@@ -40,6 +69,8 @@ def generate_cytoscape_js_network(graph_layout, graph_json):
                     "shape": "data(shape)",
                     "color": "data(label_color)",
                     "background-color": "data(color)",
+                    "width": "data(node_size)",
+                    "height": "data(node_size)",
                 },
             },
             {
@@ -233,9 +264,12 @@ def callbacks(app):
         State("cy", "elements"),
         State("current-session-path", "data"),
         State("weighting-method", "value"),
+        State("cy-params", "value"),
         prevent_initial_call=True,
     )
-    def update_graph_layout(layout, node_degree, weight, elements, savepath, weighting_method):
+    def update_graph_layout(
+        layout, node_degree, weight, elements, savepath, weighting_method, cy_params
+    ):
         if layout == "preset":
             # Scale cutoff if using NPMI
             if weighting_method == "npmi":
@@ -246,20 +280,24 @@ def callbacks(app):
             else:
                 effective_weight = weight
 
+            # Check if community display is enabled
+            show_community = "community" in cy_params if cy_params else False
+
             G = rebuild_graph(
                 node_degree,
                 effective_weight,
                 format="html",
                 with_layout=True,
                 graph_path=savepath["graph"],
-                community=False,  # Layout changes don't affect community
+                community=show_community,
                 weighting_method=weighting_method,
             )
             graph_json = create_cytoscape_js(G, style="dash")
             graph_json = generate_new_id(graph_json)
             elements = [*graph_json["elements"]["nodes"], *graph_json["elements"]["edges"]]
 
-        return {"name": layout}, elements
+        layout_config = get_layout_config(layout)
+        return layout_config, elements
 
     clientside_callback(
         ClientsideFunction(namespace="clientside", function_name="show_edge_info"),
