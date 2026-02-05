@@ -60,7 +60,6 @@ def test_ui_components():
     assert custom_input_found, "openai-custom-model-div not found"
 
     print("✅ UI components test passed!")
-    return True
 
 
 def test_callback_signatures():
@@ -93,7 +92,6 @@ def test_callback_signatures():
     assert has_config_callback, "LLM configuration callback not found"
 
     print("✅ Callback signatures test passed!")
-    return True
 
 
 if __name__ == "__main__":
