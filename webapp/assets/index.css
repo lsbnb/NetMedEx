@@ -368,3 +368,16 @@ a:hover {
   60% { content: "..."; }
   80%, 100% { content: ""; }
 }
+
+/* Fix for dropdown option text overlap */
+.Select-option,
+.VirtualizedSelectOption {
+    height: auto !important;
+    white-space: normal !important;
+    line-height: 1.4 !important;
+    padding: 8px 10px !important;
+}
+
+.Select-menu-outer {
+    z-index: 2002 !important;
+}

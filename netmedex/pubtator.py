@@ -404,7 +404,7 @@ def check_if_need_retry(res: ClientResponse):
     wait=wait_exponential(multiplier=1, min=5, max=10),
     reraise=True,
     retry=retry_if_exception(
-        lambda e: isinstance(e, RetryableError | aiohttp.ServerDisconnectedError)
+        lambda e: isinstance(e, (RetryableError, aiohttp.ServerDisconnectedError))
     ),
 )
 async def request_pubtator3(

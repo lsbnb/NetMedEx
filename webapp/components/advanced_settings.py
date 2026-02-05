@@ -81,21 +81,39 @@ llm_config = html.Div(
                     "Model",
                     "Select OpenAI model or choose Custom to specify your own",
                 ),
-                dcc.Dropdown(
-                    id="openai-model-selector",
-                    options=[
-                        {"label": "GPT-4o (Recommended)", "value": "gpt-4o"},
-                        {"label": "GPT-4o Mini (Fast & Cheap)", "value": "gpt-4o-mini"},
-                        {"label": "GPT-4 Turbo", "value": "gpt-4-turbo"},
-                        {"label": "o1-preview (Advanced Reasoning)", "value": "o1-preview"},
-                        {"label": "o1-mini", "value": "o1-mini"},
-                        {"label": "GPT-3.5 Turbo (Legacy)", "value": "gpt-3.5-turbo"},
-                        {"label": "Custom Model...", "value": "custom"},
+                html.Div(
+                    [
+                        dcc.Dropdown(
+                            id="openai-model-selector",
+                            options=[
+                                {"label": "GPT-4o (Recommended)", "value": "gpt-4o"},
+                                {"label": "GPT-4o Mini (Fast & Cheap)", "value": "gpt-4o-mini"},
+                                {"label": "GPT-4 Turbo", "value": "gpt-4-turbo"},
+                                {
+                                    "label": "o1-preview (Advanced Reasoning)",
+                                    "value": "o1-preview",
+                                },
+                                {"label": "o1-mini", "value": "o1-mini"},
+                                {"label": "GPT-3.5 Turbo (Legacy)", "value": "gpt-3.5-turbo"},
+                                {"label": "Custom Model...", "value": "custom"},
+                            ],
+                            value="gpt-4o-mini",  # Default
+                            clearable=False,
+                            className="mb-2",
+                            style={"flex": "1"},  # Take available space
+                        ),
+                        dbc.Button(
+                            html.I(className="bi bi-arrow-clockwise"),
+                            id="refresh-openai-models-btn",
+                            color="secondary",
+                            outline=True,
+                            className="ms-2 mb-2",
+                            title="Fetch models from OpenAI",
+                        ),
                     ],
-                    value="gpt-4o-mini",  # Default
-                    clearable=False,
-                    className="mb-2",
+                    className="d-flex align-items-center",
                 ),
+                html.Div(id="openai-model-fetch-status", className="small text-muted mb-2"),
                 # Conditional custom input (shown when "custom" selected)
                 html.Div(
                     [

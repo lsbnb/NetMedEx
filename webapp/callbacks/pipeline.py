@@ -107,6 +107,7 @@ def callbacks(app):
                 # ... (existing api logic mostly unchanged, but we need to update the pmid_file decoding too)
                 if input_type == "query":
                     query = data_input
+
                     if ai_search_toggle:
                         set_progress((0, 1, "", "(Step 0/2) AI Translating query..."))
                         try:
@@ -173,6 +174,8 @@ def callbacks(app):
                         UnsuccessfulRequest,
                     )
                     if issubclass(_exception_type, known_exceptions):
+                        if issubclass(_exception_type, NoArticles) and query:
+                            logger.info(f"No articles found for query: {query}")
                         exception_msg = str(_exception_msg)
                     else:
                         logger.error(
