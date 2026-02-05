@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+
 class EmptyInput(Exception):
     """Empty query or PMIDs"""
 
@@ -10,7 +11,10 @@ class EmptyInput(Exception):
 class NoArticles(Exception):
     """No articles found by PubTator3 API"""
 
-    def __init__(self, msg="No articles found by PubTator3 API."):
+    def __init__(
+        self,
+        msg="No articles matched your criteria. Please broaden your specific terms or date range.",
+    ):
         super().__init__(msg)
 
 

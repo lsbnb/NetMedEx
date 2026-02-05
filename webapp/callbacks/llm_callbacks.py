@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import dash
 from dash import Input, Output, State, no_update, html
 import dash_bootstrap_components as dbc
 from webapp.llm import llm_client
@@ -199,6 +200,67 @@ def callbacks(app):
         except Exception as e:
             logger.error(f"Error fetching models: {e}")
             return no_update, f"❌ Error: Could not connect to {base_url}"
+
+    # Fetch OpenAI Models
+    @app.callback(
+        [
+            Output("openai-model-selector", "options", allow_duplicate=True),
+            Output("openai-model-fetch-status", "children"),
+            Output("openai-model-selector", "value", allow_duplicate=True),
+        ],
+        Input("refresh-openai-models-btn", "n_clicks"),
+        [
+            State("openai-api-key-input", "value"),
+            State("openai-model-selector", "options"),
+            State("openai-model-selector", "value"),
+        ],
+        prevent_initial_call=True,
+    )
+    def fetch_openai_models(n_clicks, api_key, current_options, current_value):
+        """Fetch available models from OpenAI API"""
+        if not n_clicks:
+            raise dash.exceptions.PreventUpdate
+
+        if not api_key:
+            return no_update, "⚠️ Enter API Key first", no_update
+
+        try:
+            logger.info("Fetching OpenAI models using provided key")
+            models = llm_client.get_openai_models(api_key)
+
+            if not models:
+                return no_update, "❌ No chat models found", no_update
+
+            # Create new options
+            new_options = [{"label": m, "value": m} for m in models]
+
+            # Preserve "Custom Model..." option if it existed
+            has_custom = False
+            for opt in current_options:
+                if opt["value"] == "custom":
+                    has_custom = True
+                    break
+
+            if has_custom:
+                new_options.append({"label": "Custom Model...", "value": "custom"})
+            else:
+                # Add it anyway as it's useful
+                new_options.append({"label": "Custom Model...", "value": "custom"})
+
+            # Check if current value is still valid
+            new_value = current_value
+            if current_value not in models and current_value != "custom":
+                # If current model not returned, default to first or keep custom
+                if "gpt-4o-mini" in models:
+                    new_value = "gpt-4o-mini"
+                elif models:
+                    new_value = models[0]
+
+            return new_options, f"✅ Found {len(models)} models", new_value
+
+        except Exception as e:
+            logger.error(f"Error fetching OpenAI models: {e}")
+            return no_update, f"❌ Fetch failed: {str(e)}", no_update
 
     # Save LLM Configuration to .env file
     @app.callback(

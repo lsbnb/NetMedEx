@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - **UI UX Improvements**: 
     - Added a "Close" button to the **Advanced Settings** panel for easier navigation.
+- **Dynamic OpenAI Model Fetching**:
+    - Automatic fetching of available models from OpenAI when a valid API key is provided.
+    - Dropdown population with fetched models for easier selection.
 
 ### Fixed
 - **Graph Layout Interaction**: Resolved unintended resets of Network Display settings when changing graph layouts.
