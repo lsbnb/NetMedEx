@@ -44,7 +44,7 @@ netmedex run
 
 The sidebar parameters are detailed in the [Available Commands](#available-commands) section and [Documentation](https://yehzx.github.io/NetMedEx/).
 
-### 🤖 AI-Powered Features (v0.6)
+### 🤖 AI-Powered Features (v0.8)
 
 NetMedEx now supports advanced AI-powered literature analysis using **Hybrid Retrieval-Augmented Generation (Hybrid RAG)**, combining text search with knowledge graph reasoning:
 
