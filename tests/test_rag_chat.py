@@ -1,13 +1,13 @@
 import sys
-from pathlib import Path
 import unittest
+from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 # Add project root to path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from netmedex.rag import AbstractDocument, AbstractRAG
 from netmedex.chat import ChatSession
+from netmedex.rag import AbstractDocument, AbstractRAG
 
 
 class TestRAGChat(unittest.TestCase):
@@ -50,11 +50,16 @@ class TestRAGChat(unittest.TestCase):
         self.assertTrue(self.mock_collection.add.called)
 
     def test_citation_formatting(self):
-        # Test the regex for citation formatting in chat.py if possible
-        # Or just test ChatSession message building
-        self.rag.get_context = MagicMock(
-            return_value=("Remdesivir is effective. [PMID:123456]", ["123456"])
+        # Populate rag.documents because ChatSession optimization uses all docs if count <= 20
+        # effectively bypassing get_context()
+        self.rag.documents["123456"] = AbstractDocument(
+            pmid="123456",
+            title="Test Document",
+            abstract="Test Abstract",
+            entities=[],
+            edges=[],
         )
+
         session = ChatSession(self.rag, self.llm_client)
 
         # Mock LLM response
