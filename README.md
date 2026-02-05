@@ -44,9 +44,9 @@ netmedex run
 
 The sidebar parameters are detailed in the [Available Commands](#available-commands) section and [Documentation](https://yehzx.github.io/NetMedEx/).
 
-### 🤖 AI-Powered Features (v0.8)
+### 🤖 Hybrid RAG-Powered Chat Panel
 
-NetMedEx now supports advanced AI-powered literature analysis using **Hybrid Retrieval-Augmented Generation (Hybrid RAG)**, combining text search with knowledge graph reasoning:
+NetMedEx features an interactive **Chat Panel** driven by advanced **Hybrid Retrieval-Augmented Generation (Hybrid RAG)**. This system combines text search with knowledge graph reasoning to transform static networks into dynamic knowledge engines:
 
 **Features:**
 - **Hybrid RAG Chat**: Analysis that synthesizes both **unstructured text** (abstracts) and **structured graph knowledge** (paths and neighbors) for highly contextual answers.
