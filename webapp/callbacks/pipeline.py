@@ -109,18 +109,33 @@ def callbacks(app):
                     query = data_input
 
                     if ai_search_toggle:
-                        set_progress((0, 1, "", "(Step 0/2) AI Translating query..."))
-                        try:
-                            translated_query = llm_client.translate_query_to_boolean(query)
-                            if translated_query != query:
-                                query = translated_query
-                                set_progress((0, 1, "", f"AI Translated: {query}"))
-                        except Exception as e:
-                            logger.error(f"Error executing AI search: {e}")
-                            # Continue with original query instead of failing
+                        if not llm_client.client:
                             set_progress(
-                                (0, 1, "", f"AI Translation Failed: {e}. Using original query.")
+                                (
+                                    0,
+                                    1,
+                                    "",
+                                    "⚠️ AI Search skipped: LLM not configured. Using original query.",
+                                )
                             )
+                        else:
+                            set_progress((0, 1, "", "(Step 0/2) AI Translating query..."))
+                            try:
+                                translated_query = llm_client.translate_query_to_boolean(query)
+                                if translated_query != query:
+                                    query = translated_query
+                                    set_progress((0, 1, "", f"AI Translated: {query}"))
+                            except Exception as e:
+                                logger.error(f"Error executing AI search: {e}")
+                                # Continue with original query instead of failing
+                                set_progress(
+                                    (
+                                        0,
+                                        1,
+                                        "",
+                                        f"AI Translation Failed: {e}. Using original query.",
+                                    )
+                                )
 
                 elif input_type == "pmids":
                     pmid_list = load_pmids(data_input, load_from="string")
