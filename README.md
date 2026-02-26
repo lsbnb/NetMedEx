@@ -63,36 +63,46 @@ NetMedEx features an interactive **Chat Panel** driven by advanced **Hybrid Retr
    - Enter via "Advanced Settings" in the web interface
 3. Start using AI features in the web application!
 
+> [!TIP]
+> **Using a Local LLM via Docker:**
+> If you are running NetMedEx via Docker and want to connect to a local LLM (e.g., Ollama) on your host machine, modify the **Base URL** in Advanced Settings based on your OS:
+> - **Windows/macOS:** Use `http://host.docker.internal:[PORT]` instead of `localhost`.
+> - **Linux:** Docker on Linux doesn't support the above hostname by default. Use your host machine's actual local network IP (e.g., `http://192.168.1.100:[PORT]`).
+
 _Note: AI features require an active OpenAI API key or local LLM setup. They are entirely optional and NetMedEx works fully without them._
 
 ## 🖼️ Interface & Quick Tour
 
-NetMedEx provides an intuitive three-panel dashboard for seamless knowledge discovery.
+NetMedEx provides an intuitive three-panel dashboard for seamless knowledge discovery. The workspace is divided into three main operational tabs located on the left side of the screen:
 
-![NetMedEx Interface](https://raw.githubusercontent.com/lsbnb/NetMedEx/main/docs/img/netmedex_interface.png)
+### 1. Search Panel
+The Search Panel is your main starting point for configuration and querying.
+![Search Panel](docs/img/netmedex_search_panel.png)
+*   **Configure AI Settings (Crucial First Step):** Expand the **Advanced Settings** at the bottom to input your **OpenAI API Key** or connect a local LLM.
+    ![Advanced Settings - LLM Selection](docs/img/netmedex_advanced_settings_llm_dropdown.png)
+    ![Advanced Settings - OpenAI](docs/img/netmedex_advanced_settings_openai.png)
+    *   ⚠️ **Important Note**: Without an LLM, NetMedEx operates in fallback mode. It will only construct networks based on the **co-mentioned approach** (entity co-occurrence) and the AI Chat feature will be disabled.
+*   **Search & Build:** Enter target bio-concepts (genes, diseases, etc.). If an LLM is configured, you can type natural language queries.
 
-### 1. Left Panel (Control Center)
-This panel provides three main tabs to configure and interact with the system:
-
-*   **Search**: 
-    *   **Configure AI Settings (Crucial First Step):** Expand the **Advanced Settings** at the bottom to input your **OpenAI API Key** or connect a local LLM. 
-        *   ⚠️ **Important Note**: Without an LLM, NetMedEx operates in fallback mode. It will only construct networks based on the **co-mentioned approach** (entity co-occurrence) and the AI Chat feature will be disabled.
-    *   **Search & Build:** Enter target bio-concepts (genes, diseases, etc.). If an LLM is configured, you can type natural language queries.
-*   **Graph**: Customize the visualization of your network (e.g., node colors, layout algorithms, labels).
-*   **Chat**: Engage in a Hybrid RAG conversation regarding the generated network *([Insert Chat screenshot here, if available])*.
-
-### 2. Center Panel: Interactive Network
-The main canvas displays your generated interactive knowledge graph. 
-![Network Visualization](https://raw.githubusercontent.com/lsbnb/NetMedEx/main/docs/img/netmedex_network.png)
+### 2. Graph Panel
+The Graph Panel provides an interactive canvas displaying your generated knowledge graph.
+![Network Visualization](docs/img/netmedex_graph_panel.png)
+*   **View Modes:** Customize the visualization of your network (e.g., node colors, layout algorithms, labels).
+    ![Graph Selection](docs/img/netmedex_graph_selection.png)
+    ![Graph Sarcopenia](docs/img/netmedex_graph_sarcopenia.png)
+    ![Graph Community Clusters](docs/img/netmedex_graph_community_clusters.png)
 *   **Nodes**: Represent entities like Genes, Diseases, Chemicals, and Species.
 *   **Edges**: Represent co-mentions in literature. Thicker edges indicate higher frequency or stronger relationships.
 *   **Interaction**: Zoom, pan, and click on nodes/edges to explore specific connections.
 
-### 3. Right Panel: Evidence & AI Chat
-This panel provides deep context for your network interactions.
-![Edge Evidence](https://raw.githubusercontent.com/lsbnb/NetMedEx/main/docs/img/netmedex_edge-info.png)
-*   **Evidence Viewer**: When you click an edge in the Center Panel, this tab displays the exact sentences from the literature supporting the relationship, including semantic relationship types (e.g., *treats*, *inhibits*) and confidence scores.
+### 3. Chat Panel
+The Chat Panel provides deep context and AI interaction for your network.
+![Chat Layout Selection](docs/img/netmedex_chat_layout_selection.png)
 *   **Hybrid RAG Chat**: *(Requires LLM configuration)* Use this tab to ask natural language questions about the entire network or selected subgraphs. The AI synthesizes graph structure and textual evidence to provide comprehensive, context-aware answers.
+    ![Chat History Panel](docs/img/netmedex_chat_history_panel.png)
+    ![Chat Table Example](docs/img/netmedex_chat_table_mirna.png)
+*   **Evidence Viewer**: When you click an edge in the Graph Panel and then open the feature here, this tab displays the exact sentences from the literature supporting the relationship, including semantic relationship types (e.g., *treats*, *inhibits*) and confidence scores.
+    ![Chat Analysis](docs/img/netmedex_chat_analysis.png)
 
 
 ## Command-Line Interface (CLI)
