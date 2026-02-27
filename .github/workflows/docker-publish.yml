@@ -47,4 +47,4 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           repository: lsbnb/netmedex
-          readme-filepath: ./README.md
+          readme-filepath: ./docs/DOCKERHUB_OVERVIEW.md
