@@ -12,6 +12,16 @@ Launch the interactive dashboard using Docker and access it at `localhost:8050`:
 docker run -p 8050:8050 --rm lsbnb/netmedex
 ```
 
+## AI Setup (Optional)
+To enable the AI-powered Hybrid RAG chat and natural language search:
+
+1. **Get an API Key**: Obtain one from OpenAI.
+2. **Configure the Container**: Pass your API key into the Docker container using an environment variable:
+   ```bash
+   docker run -p 8050:8050 --rm -e OPENAI_API_KEY='sk-...' lsbnb/netmedex
+   ```
+   Alternatively, you can enter your API key directly in the "Advanced Settings" tab within the web interface.
+
 ## 🔗 Links
 - **GitHub Repository**: [lsbnb/NetMedEx](https://github.com/lsbnb/NetMedEx)
 - **Documentation**: [Online Docs](https://yehzx.github.io/NetMedEx/)
