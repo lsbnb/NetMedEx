@@ -54,7 +54,7 @@ netmedex run
 NetMedEx features an interactive **Chat Panel** driven by **Hybrid RAG**, which combines the power of large language models (LLMs) with specialized bio-medical knowledge graphs.
 
 <p align="center">
-  <img src="./docs/img/netmedex_architecture_v2.jpg" width="800" alt="NetMedEx Architecture">
+  <img src="./docs/img/netmedex_architecture_v2.jpg" width="600" alt="NetMedEx Architecture">
   <br>
   <i>Figure 1: NetMedEx Hybrid RAG Architecture combining Text and Graph RAG for chatting with biomedical knowledge.</i>
 </p>
@@ -84,7 +84,7 @@ The workspace follows a logical discovery workflow across three main operational
 The **Search Panel** is where you define your research scope and configure the AI engine.
 
 <p align="center">
-  <img src="./docs/img/netmedex_search_panel_v2.jpg" width="800" alt="Search Panel">
+  <img src="./docs/img/netmedex_search_panel_v2.jpg" width="300" alt="Search Panel">
   <br>
   <i>Figure 2: The Search Panel for keyword and natural language querying.</i>
 </p>
@@ -92,13 +92,13 @@ The **Search Panel** is where you define your research scope and configure the A
 Expand **Advanced Settings** to configure your LLM provider. This is a crucial first step for enabling semantic analysis.
 
 <p align="center">
-  <img src="./docs/img/netmedex_advanced_settings_openai.png" width="600" alt="Advanced Settings">
+  <img src="./docs/img/netmedex_advanced_settings_openai.png" width="300" alt="Advanced Settings">
   <br>
   <i>Figure 3: Configuring the AI Engine (OpenAI or Local) in Advanced Settings.</i>
 </p>
 
 <p align="center">
-  <img src="./docs/img/netmedex_advanced_settings_llm_dropdown.png" width="600" alt="LLM Dropdown Selection">
+  <img src="./docs/img/netmedex_advanced_settings_llm_dropdown.png" width="300" alt="LLM Dropdown Selection">
   <br>
   <i>Figure 4: Selecting a specific model for local AI processing via the dropdown menu.</i>
 </p>
@@ -106,7 +106,7 @@ Expand **Advanced Settings** to configure your LLM provider. This is a crucial f
 Users can also upload previously downloaded PubTator format files for re-analysis.
 
 <p align="center">
-  <img src="./docs/img/netmedex_search_Pubtator.png" width="800" alt="PubTator Search">
+  <img src="./docs/img/netmedex_search_Pubtator.png" width="300" alt="PubTator Search">
   <br>
   <i>Figure 5: Uploading PubTator files for re-analysis within the Search Panel.</i>
 </p>
@@ -115,7 +115,7 @@ Users can also upload previously downloaded PubTator format files for re-analysi
 The **Graph Panel** visualizes the co-mention/ semantic analyzed network, providing the visualization of search results for your research. Using the shift key to select sub-network, those selected nodes and edges will be highlighted as the base for chat in next step. Users can visualize the network using different layouts and community detection algorithms. Users also can save the selected sub-network to an **[HTML file](https://htmlpreview.github.io/?https://github.com/lsbnb/NetMedEx/blob/main/docs/Diabetes_miRNA.html)** (Try this [Interactive Visualization Example](https://htmlpreview.github.io/?https://github.com/lsbnb/NetMedEx/blob/main/docs/Diabetes_miRNA.html)), original pubtator3 file, or XML for Cytoscape for further analysis. 
 
 <p align="center">
-  <img src="./docs/img/netmedex_graph_panel_v2.jpg" width="800" alt="Graph Panel">
+  <img src="./docs/img/netmedex_graph_panel_v2.jpg" width="300" alt="Graph Panel">
   <br>
   <i>Figure 6: Interactive Knowledge Graph showing Bio-Concept connections.</i>
 </p>
@@ -153,7 +153,7 @@ The **Graph Panel** visualizes the co-mention/ semantic analyzed network, provid
 The **Chat Panel** provides the deep semantic layer, interpreting the graph using LLMs.
 
 <p align="center">
-  <img src="./docs/img/netmedex_chat_panel_v2.jpg" width="800" alt="Chat Panel">
+  <img src="./docs/img/netmedex_chat_panel_v2.jpg" width="300" alt="Chat Panel">
   <br>
   <i>Figure 11: Hybrid RAG Chat for natural language reasoning over the network.</i>
 </p>
@@ -165,7 +165,7 @@ The **Chat Panel** provides the deep semantic layer, interpreting the graph usin
 </p>
 
 <p align="center">
-  <img src="./docs/img/netmedEx_chat_RAG.png" width="800" alt="RAG Processing">
+  <img src="./docs/img/netmedEx_chat_RAG.png" width="300" alt="RAG Processing">
   <br>
   <i>Figure 12(B): RAG generating to prepare the chat later.</i>
 </p>
