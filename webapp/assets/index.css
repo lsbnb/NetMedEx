@@ -223,6 +223,13 @@ a:hover {
     background-color: var(--MAIN-BACKGROUND);
     border: 1px solid var(--GRAY-TEXT);
     z-index: 100;
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    cursor: grab;
+    user-select: none;
+    border-radius: 4px;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
 }
 
 #edge-info,
@@ -311,6 +318,7 @@ a:hover {
 .info-left[data-tooltip]:hover:before {
     left: var(--tooltip-x);
 }
+
 /* Cloud-native Table Styling for Chat */
 .chat-message-assistant-content table {
     border-collapse: collapse;
@@ -352,21 +360,35 @@ a:hover {
 
 /* Loading Dots Animation */
 .loading-dots {
-  display: inline-block;
-  min-width: 24px;
-  text-align: left;
+    display: inline-block;
+    min-width: 24px;
+    text-align: left;
 }
 
 .loading-dots::after {
-  content: ".";
-  animation: dots 1.5s steps(1, end) infinite;
+    content: ".";
+    animation: dots 1.5s steps(1, end) infinite;
 }
 
 @keyframes dots {
-  0%, 20% { content: "."; }
-  40% { content: ".."; }
-  60% { content: "..."; }
-  80%, 100% { content: ""; }
+
+    0%,
+    20% {
+        content: ".";
+    }
+
+    40% {
+        content: "..";
+    }
+
+    60% {
+        content: "...";
+    }
+
+    80%,
+    100% {
+        content: "";
+    }
 }
 
 /* Fix for dropdown option text overlap */

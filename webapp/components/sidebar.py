@@ -452,7 +452,6 @@ graph_settings_panel = html.Div(
             ],
             className="param",
         ),
-        dcc.Store(id="memory-cy-params", data=[]),  # Store for tracking changes
         graph_layout,
         edge_weight_cutoff,
         minimal_degree,

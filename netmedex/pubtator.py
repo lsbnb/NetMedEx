@@ -313,7 +313,7 @@ async def send_search_query(
 ):
     return await request_pubtator3(
         PUBTATOR_SEARCH_URL,
-        params={"text": query},
+        params={"text": query, "limit": 100},
         session=session,
         is_json=True,
     )
@@ -339,9 +339,9 @@ async def send_search_query_with_page(
 ):
     url = "https://www.ncbi.nlm.nih.gov/research/pubtator3-api/search/"
     if sort == "score":
-        params = {"text": query, "sort": "score desc", "page": page}
+        params = {"text": query, "sort": "score desc", "page": page, "limit": 100}
     elif sort == "date":
-        params = {"text": query, "sort": "date desc", "page": page}
+        params = {"text": query, "sort": "date desc", "page": page, "limit": 100}
     return await request_pubtator3(url, params, session, is_json=True)
 
 

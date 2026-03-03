@@ -15,6 +15,59 @@ from chromadb.utils import embedding_functions
 
 logger = logging.getLogger(__name__)
 
+# Maximum tokens allowed per embedding request (OpenAI limit is 300k; use 250k as buffer)
+_MAX_TOKENS_PER_BATCH = 250_000
+
+
+def _count_tokens(text: str) -> int:
+    """Return an approximate token count for *text* using tiktoken when available.
+
+    Falls back to a simple word-count heuristic (÷0.75) if tiktoken is not
+    installed so the function never raises an ImportError at runtime.
+    """
+    try:
+        import tiktoken
+
+        enc = tiktoken.get_encoding("cl100k_base")
+        return len(enc.encode(text))
+    except ImportError:
+        # Rough heuristic: ~0.75 words per token on average
+        return int(len(text.split()) / 0.75) + 1
+
+
+def _build_token_batches(
+    documents_text: list[str],
+    metadatas: list[dict],
+    ids: list[str],
+    max_tokens: int = _MAX_TOKENS_PER_BATCH,
+) -> list[tuple[list[str], list[dict], list[str]]]:
+    """Split documents into batches that each stay under *max_tokens* tokens.
+
+    Returns a list of (texts, metadatas, ids) tuples ready to be passed to
+    ``collection.add()``.
+    """
+    batches: list[tuple[list[str], list[dict], list[str]]] = []
+    cur_texts: list[str] = []
+    cur_metas: list[dict] = []
+    cur_ids: list[str] = []
+    cur_tokens = 0
+
+    for text, meta, doc_id in zip(documents_text, metadatas, ids):
+        tokens = _count_tokens(text)
+        if cur_tokens + tokens > max_tokens and cur_texts:
+            batches.append((cur_texts, cur_metas, cur_ids))
+            cur_texts, cur_metas, cur_ids = [], [], []
+            cur_tokens = 0
+        cur_texts.append(text)
+        cur_metas.append(meta)
+        cur_ids.append(doc_id)
+        cur_tokens += tokens
+
+    if cur_texts:
+        batches.append((cur_texts, cur_metas, cur_ids))
+
+    return batches
+
 
 @dataclass
 class AbstractDocument:
@@ -130,12 +183,30 @@ class AbstractRAG:
             if progress_callback:
                 progress_callback(f"Indexing {len(abstracts)} abstracts...")
 
-            # Use OpenAI embeddings through ChromaDB's embedding function
-            # ChromaDB will automatically handle the embedding
-            self.collection.add(documents=documents_text, metadatas=metadatas, ids=ids)
+            # Split into token-aware batches to respect the 300k tokens/request limit.
+            batches = _build_token_batches(documents_text, metadatas, ids)
+            total_batches = len(batches)
+            logger.info(
+                f"Splitting {len(abstracts)} abstracts into {total_batches} batch(es) "
+                f"(max {_MAX_TOKENS_PER_BATCH:,} tokens each)"
+            )
+
+            for batch_idx, (batch_texts, batch_metas, batch_ids) in enumerate(batches, start=1):
+                logger.info(
+                    f"Sending batch {batch_idx}/{total_batches} "
+                    f"({len(batch_texts)} docs) to vector store..."
+                )
+                self.collection.add(documents=batch_texts, metadatas=batch_metas, ids=batch_ids)
+                if progress_callback:
+                    progress_callback(
+                        f"Indexed batch {batch_idx}/{total_batches} "
+                        f"({len(batch_texts)} abstracts)..."
+                    )
 
             self._initialized = True
-            logger.info(f"Indexed {len(abstracts)} abstracts successfully")
+            logger.info(
+                f"Indexed {len(abstracts)} abstracts successfully in {total_batches} batch(es)"
+            )
 
             if progress_callback:
                 progress_callback(f"✅ Indexed {len(abstracts)} abstracts")
