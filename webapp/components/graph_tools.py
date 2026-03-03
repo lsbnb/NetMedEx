@@ -4,6 +4,7 @@ import dash_bootstrap_components as dbc
 from dash import dcc, html
 
 from webapp.components.utils import generate_param_title
+from webapp.utils import display
 
 graph_layout = html.Div(
     [
@@ -15,15 +16,36 @@ graph_layout = html.Div(
             id="graph-layout",
             options=[
                 {"label": "Preset", "value": "preset"},
+                {"label": "Cose", "value": "cose"},
                 {"label": "Circle", "value": "circle"},
                 {"label": "Grid", "value": "grid"},
                 {"label": "Random", "value": "random"},
                 {"label": "Concentric", "value": "concentric"},
                 {"label": "Breadthfirst", "value": "breadthfirst"},
-                {"label": "Cose", "value": "cose"},
             ],
             value="cose",
             style={"width": "200px"},
+        ),
+        # Node Repulsion slider (visible only when fcose is selected)
+        html.Div(
+            [
+                generate_param_title(
+                    "Node Repulsion",
+                    "Higher values push nodes further apart, reducing crowding in dense networks.",
+                ),
+                dcc.Slider(
+                    id="fcose-node-repulsion",
+                    min=10000,
+                    max=100000,
+                    step=5000,
+                    value=45000,
+                    marks={10000: "10k", 45000: "45k", 100000: "100k"},
+                    tooltip={"placement": "bottom", "always_visible": True},
+                ),
+            ],
+            id="fcose-repulsion-wrapper",
+            className="mt-2",
+            style=display.none,
         ),
     ],
     className="param",
@@ -44,7 +66,6 @@ minimal_degree = html.Div(
             type="number",
             style={"width": "200px"},
         ),
-        dcc.Store(id="memory-node-degree", data=1),
     ],
     className="param",
 )
@@ -72,7 +93,6 @@ edge_weight_cutoff = html.Div(
             marks={i: str(i) for i in range(0, 21, 5)},
             tooltip={"placement": "bottom", "always_visible": False},
         ),
-        dcc.Store(id="memory-graph-cut-weight", data=[0, 20]),
     ],
     className="param",
 )

@@ -5,10 +5,11 @@ import threading
 from queue import Queue
 import logging
 
-from dash import Input, Output, State, no_update
+import dash_bootstrap_components as dbc
+from dash import Input, Output, State, html, no_update
 
 from netmedex.cli_utils import load_pmids
-from netmedex.exceptions import EmptyInput, NoArticles, UnsuccessfulRequest
+from netmedex.exceptions import EmptyInput, NoArticles, RetryableError, UnsuccessfulRequest
 from netmedex.graph import PubTatorGraphBuilder, save_graph
 from netmedex.pubtator import PubTatorAPI
 from netmedex.pubtator_parser import PubTatorIO
@@ -27,6 +28,7 @@ def callbacks(app):
         Output("pmid-title-dict", "data"),
         Output("current-session-path", "data"),
         Output("total-stats", "data"),
+        Output("output", "children", allow_duplicate=True),
         Input("submit-button", "n_clicks"),
         [
             State("api-toggle-items", "value"),
@@ -187,6 +189,7 @@ def callbacks(app):
                         EmptyInput,
                         NoArticles,
                         UnsuccessfulRequest,
+                        RetryableError,
                     )
                     if issubclass(_exception_type, known_exceptions):
                         if issubclass(_exception_type, NoArticles) and query:
@@ -205,6 +208,10 @@ def callbacks(app):
                         no_update,
                         no_update,
                         {"articles": 0, "nodes": 0, "edges": 0},
+                        html.Div(
+                            dbc.Alert(exception_msg, color="danger", dismissable=True),
+                            className="mt-3",
+                        ),
                     )
 
                 job.join()
@@ -238,6 +245,14 @@ def callbacks(app):
                         no_update,
                         no_update,
                         {"articles": 0, "nodes": 0, "edges": 0},
+                        html.Div(
+                            dbc.Alert(
+                                "Error: Semantic analysis requires LLM configuration. Please set your API key in Advanced Settings.",
+                                color="danger",
+                                dismissable=True,
+                            ),
+                            className="mt-3",
+                        ),
                     )
 
             # Semantic Analysis: Parse collection first to get article count
@@ -324,6 +339,7 @@ def callbacks(app):
             num_nodes = G.number_of_nodes() if G else 0
             num_edges = G.number_of_edges() if G else 0
 
+            print(f"DEBUG: run_pubtator3_api completed! num_articles={num_articles}")
             return (
                 visibility.visible,
                 weight,
@@ -331,6 +347,7 @@ def callbacks(app):
                 G.graph["pmid_title"],
                 savepath,
                 {"articles": num_articles, "nodes": num_nodes, "edges": num_edges},
+                "",  # Clear any previous error
             )
 
         except Exception as e:
@@ -343,4 +360,12 @@ def callbacks(app):
                 no_update,
                 no_update,
                 {"articles": 0, "nodes": 0, "edges": 0},
+                html.Div(
+                    dbc.Alert(
+                        f"An unexpected error occurred: {str(e)}",
+                        color="danger",
+                        dismissable=True,
+                    ),
+                    className="mt-3",
+                ),
             )

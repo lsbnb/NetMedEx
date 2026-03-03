@@ -1,5 +1,7 @@
 from dash import Input, Output
 
+from webapp.utils import visibility
+
 
 def callbacks(app):
     @app.callback(
@@ -11,11 +13,11 @@ def callbacks(app):
         Output("progress", "label", allow_duplicate=True),
         Output("progress-status", "children", allow_duplicate=True),
         Output("output", "children"),
+        Output("cy-graph-container", "style", allow_duplicate=True),
+        Output("cy", "elements", allow_duplicate=True),
         Input("reset-button", "n_clicks"),
         prevent_initial_call=True,
     )
     def reset_inputs(n_clicks):
-        # Reset to defaults
-        # data-input="", pmid-file=None, pubtator-file=None, input-type="query"
-        # progress=0, label="", status="", output=""
-        return "", None, None, "query", 0, "", "", ""
+        # Reset inputs, progress bar, and clear the graph
+        return "", None, None, "query", 0, "", "", "", visibility.hidden, []

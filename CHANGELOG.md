@@ -5,6 +5,42 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.4] - 2026-03-04
+
+### Added
+- **Chat Panel – Language Consistency**: Strengthened the system prompt to strictly follow the user's question language.
+- **Chat Panel – Auto-Summary**: Updated the initial research summary prompt to respect the user's preferred language (defaulting to Traditional Chinese).
+
+## [0.8.3] - 2026-03-04
+
+### Fixed
+- **Graph Visualization – Invisible Graph**: Resolved an issue where the graph area remained blank due to a crashing `fCose` extension. Reverted default layout to the stable `COSE`.
+- **Graph Layout – fCose Removal**: Removed `fCose` from the layout options as it was unstable in some environments.
+- **Chat Panel – Analyze Selection TypeError**: Fixed a compatibility error with Python 3.9 where `zip()` was called with a keyword argument (`strict=True`) only supported in Python 3.10+.
+- **UI UX**: Fixed broken component imports and removed temporary debug borders from the graph container.
+
+## [0.8.2] - 2026-03-03
+
+### Fixed
+- **Chat Panel – Analyze Selection token limit**: Replaced the single `collection.add()` call with a
+  dynamic token-aware batching loop.  Documents are now split into batches of ≤ 250,000 tokens
+  (using `tiktoken` when installed, with a word-count heuristic as fallback) before being sent to
+  the embedding endpoint, preventing the
+  `Error code: 400 – max_tokens_per_request (300 000)` error that occurred with ~1 000+ abstracts.
+- **Search Panel – Reset button**: Pressing **Reset** now also hides the graph container and clears
+  all Cytoscape elements, so the network is properly cleared along with the progress bar.
+- **Graph/Chat Panel – Legend position**: The node-type legend is now `position: absolute` and
+  draggable; users can click and drag it anywhere inside the graph canvas.
+
+### Added
+- `tiktoken` added as a core dependency for accurate token counting in the RAG embedding pipeline.
+- **Graph Layout – fCose**: Added `fcose` (Fast COSE) layout as the new default, with a **Node
+  Repulsion** slider (10k–100k, default 45k) that appears when fcose is selected.  The `fcose`
+  layout plugin is bundled locally (`webapp/assets/cytoscape-fcose.min.js`) to avoid CDN dependency.
+- **Graph Performance – Haystack edges**: Switched default edge `curve-style` from `bezier` to
+  `haystack` for significantly smoother interaction on large graphs.  Directional edges (semantic
+  analysis results) automatically fall back to `bezier` so arrowheads are preserved.
+
 ## [0.8.0] - 2026-02-05
 
 ### Added

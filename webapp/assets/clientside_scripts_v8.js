@@ -359,3 +359,89 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   bodyObserver.observe(document.body, { childList: true, subtree: true });
 });
+
+/**
+ * Register cytoscape-fcose layout plugin.
+ * The plugin JS is served from assets/ (cytoscape-fcose.min.js) and exposes
+ * window.fcose. We register it once cytoscape is also available.
+ */
+(function registerFcose() {
+  function tryRegister() {
+    if (window.cytoscape && window.cytoscapeFcose) {
+      cytoscape.use(window.cytoscapeFcose);
+      return true;
+    }
+    return false;
+  }
+
+  if (!tryRegister()) {
+    // Retry until both scripts are loaded (handles any load-order race)
+    const interval = setInterval(() => {
+      if (tryRegister()) clearInterval(interval);
+    }, 100);
+  }
+})();
+
+/**
+ * Draggable Legend
+ * Allows the user to freely reposition the #legend-container overlay
+ * by clicking and dragging it anywhere inside the graph area.
+ */
+function makeLegendDraggable() {
+  const legend = document.getElementById('legend-container');
+  if (!legend || legend._dragInitialised) return;
+  legend._dragInitialised = true;
+
+  let dragging = false;
+  let offsetX = 0;
+  let offsetY = 0;
+
+  legend.addEventListener('mousedown', function (e) {
+    dragging = true;
+    legend.style.cursor = 'grabbing';
+
+    // Switch from bottom/right to explicit top/left on first drag
+    const rect = legend.getBoundingClientRect();
+    const parentRect = legend.offsetParent
+      ? legend.offsetParent.getBoundingClientRect()
+      : { top: 0, left: 0 };
+
+    legend.style.bottom = 'auto';
+    legend.style.right = 'auto';
+    legend.style.top = (rect.top - parentRect.top) + 'px';
+    legend.style.left = (rect.left - parentRect.left) + 'px';
+
+    offsetX = e.clientX - rect.left;
+    offsetY = e.clientY - rect.top;
+
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', function (e) {
+    if (!dragging) return;
+    const parentRect = legend.offsetParent
+      ? legend.offsetParent.getBoundingClientRect()
+      : { top: 0, left: 0 };
+
+    legend.style.left = (e.clientX - parentRect.left - offsetX) + 'px';
+    legend.style.top = (e.clientY - parentRect.top - offsetY) + 'px';
+  });
+
+  document.addEventListener('mouseup', function () {
+    if (!dragging) return;
+    dragging = false;
+    legend.style.cursor = 'grab';
+  });
+}
+
+// Initialise as soon as the legend appears in the DOM
+document.addEventListener('DOMContentLoaded', makeLegendDraggable);
+
+(function () {
+  const legendObserver = new MutationObserver(() => {
+    if (document.getElementById('legend-container')) {
+      makeLegendDraggable();
+    }
+  });
+  legendObserver.observe(document.body, { childList: true, subtree: true });
+})();

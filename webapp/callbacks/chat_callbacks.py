@@ -301,7 +301,9 @@ def callbacks(app):
                 logger.info("Auto-generating summary for selection...")
                 summary_prompt = (
                     "Please provide a concise summary of the selected research based on the abstracts and graph structure. "
-                    "Highlight the main relationships and key findings."
+                    "Highlight the main relationships and key findings. "
+                    "(🚨 IMPORTANT: Respond in the same language as the user's interface or previous queries. "
+                    "If unsure, use Traditional Chinese as the default.)"
                 )
                 response = chat_session.send_message(summary_prompt)
 
