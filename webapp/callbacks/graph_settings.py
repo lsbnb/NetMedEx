@@ -132,3 +132,13 @@ def callbacks(app):
                 [0, 20],
                 "Edge Weight Cutoff (Frequency)",
             )
+
+    @app.callback(
+        Output("fcose-repulsion-wrapper", "style"),
+        Input("graph-layout", "value"),
+    )
+    def toggle_repulsion_slider(layout):
+        """Show Node Repulsion slider only when fcose is selected."""
+        if layout == "fcose":
+            return {"display": "block"}
+        return {"display": "none"}

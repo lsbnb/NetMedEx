@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import base64
 
-from dash import Input, Output, State, html, no_update
+from dash import Input, Output, State, html
 
 
 def display_uploaded_data(data, filename):
@@ -16,7 +16,7 @@ def display_uploaded_data(data, filename):
             html.Pre("\n".join(displayed_text), className="upload-preview"),
         ]
     else:
-        return no_update
+        return []
 
 
 def callbacks(app):
