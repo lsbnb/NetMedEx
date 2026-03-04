@@ -16,6 +16,7 @@ graph_layout = html.Div(
             id="graph-layout",
             options=[
                 {"label": "Preset", "value": "preset"},
+                {"label": "fCose", "value": "fcose"},
                 {"label": "Cose", "value": "cose"},
                 {"label": "Circle", "value": "circle"},
                 {"label": "Grid", "value": "grid"},

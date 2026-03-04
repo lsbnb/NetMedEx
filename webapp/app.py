@@ -7,6 +7,7 @@ load_dotenv()
 import os
 
 import dash_bootstrap_components as dbc
+import dash_cytoscape as cyto
 import diskcache
 from dash import ClientsideFunction, Dash, DiskcacheManager, Input, Output, dcc, html
 
@@ -16,6 +17,8 @@ from webapp.utils import cleanup_tempdir
 
 config_logger(is_debug=(os.getenv("LOGGING_DEBUG") == "true"))
 
+# Load external layout extensions (fCose, CoSE-Bilkent, etc.)
+cyto.load_extra_layouts()
 
 cache = diskcache.Cache("./cache")
 background_callback_manager = DiskcacheManager(cache)
