@@ -20,6 +20,25 @@ from webapp.utils import generate_session_id, get_data_savepath, visibility
 logger = logging.getLogger(__name__)
 
 
+def detect_query_language(text: str) -> str:
+    """
+    Detect the primary language of a query string using Unicode character ranges.
+    Returns a human-readable language name suitable for use in LLM prompts.
+    """
+    if not text:
+        return "English"
+    # Japanese: Hiragana (U+3040-U+309F) or Katakana (U+30A0-U+30FF)
+    if any("\u3040" <= c <= "\u309f" or "\u30a0" <= c <= "\u30ff" for c in text):
+        return "Japanese"
+    # Korean: Hangul (U+AC00-U+D7AF)
+    if any("\uac00" <= c <= "\ud7af" for c in text):
+        return "Korean"
+    # CJK Unified Ideographs — Chinese (after Japanese check, so this catches Chinese)
+    if any("\u4e00" <= c <= "\u9fff" for c in text):
+        return "Traditional Chinese"
+    return "English"
+
+
 def callbacks(app):
     @app.callback(
         Output("cy-graph-container", "style", allow_duplicate=True),
@@ -28,6 +47,7 @@ def callbacks(app):
         Output("pmid-title-dict", "data"),
         Output("current-session-path", "data"),
         Output("total-stats", "data"),
+        Output("session-language", "data"),
         Output("output", "children", allow_duplicate=True),
         Input("submit-button", "n_clicks"),
         [
@@ -102,6 +122,14 @@ def callbacks(app):
                     return decoded_bytes.decode("utf-8")
                 except UnicodeDecodeError:
                     return decoded_bytes.decode("latin-1")
+
+            # Detect language from the raw user query (before AI translation)
+            detected_language = (
+                detect_query_language(data_input)
+                if input_type == "query" and data_input
+                else "English"
+            )
+            logger.info(f"Detected query language: {detected_language}")
 
             if source == "api":
                 query = None
@@ -347,6 +375,7 @@ def callbacks(app):
                 G.graph["pmid_title"],
                 savepath,
                 {"articles": num_articles, "nodes": num_nodes, "edges": num_edges},
+                detected_language,
                 "",  # Clear any previous error
             )
 
@@ -360,6 +389,7 @@ def callbacks(app):
                 no_update,
                 no_update,
                 {"articles": 0, "nodes": 0, "edges": 0},
+                no_update,  # keep existing session-language
                 html.Div(
                     dbc.Alert(
                         f"An unexpected error occurred: {str(e)}",

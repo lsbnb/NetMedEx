@@ -145,10 +145,11 @@ def callbacks(app):
             State("cy", "selectedNodeData"),
             State("cy", "selectedEdgeData"),
             State("current-session-path", "data"),  # Used to get the graph file path if needed
+            State("session-language", "data"),
         ],
         prevent_initial_call=True,
     )
-    def initialize_chat(n_clicks, selected_nodes, selected_edges, savepath):
+    def initialize_chat(n_clicks, selected_nodes, selected_edges, savepath, session_language):
         """
         Initialize RAG system and chat session with selected abstracts.
         """
@@ -302,8 +303,8 @@ def callbacks(app):
                 summary_prompt = (
                     "Please provide a concise summary of the selected research based on the abstracts and graph structure. "
                     "Highlight the main relationships and key findings. "
-                    "(🚨 IMPORTANT: Respond in English by default. "
-                    "If the user has previously asked questions in a specific language (e.g., Chinese, Japanese), respond in that language instead.)"
+                    f"(🚨 IMPORTANT: Respond in {session_language or 'English'}. "
+                    "If the user subsequently asks questions in a different language, switch to that language.)"
                 )
                 response = chat_session.send_message(summary_prompt)
 
