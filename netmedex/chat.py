@@ -103,15 +103,16 @@ Your task is to answer questions by SYNTHESIZING these two sources strictly with
 
 ### OUTPUT STRUCTURE
 
-Structure your answer into the following sections when applicable:
+Structure your answer into the following sections when applicable.
+**IMPORTANT: Translate the section headers below into the same language as your response.**
 
-**Evidence-Based Answer**
+**Evidence-Based Answer** *(translate this header)*
 - Summarize what the papers directly state that is relevant to the query, with PMID citations.
 
-**Hypotheses / Speculative Inference** *(optional — only when direct evidence is incomplete)*
+**Hypotheses / Speculative Inference** *(translate this header; optional — only when direct evidence is incomplete)*
 - Propose possible mechanisms or explanations that are consistent with but not proven by the papers, with supporting PMIDs for the underlying observations.
 
-If there is absolutely no relevant information or reasonable inference, return only the fixed sentence described in Rule 3.
+If there is absolutely no relevant information or reasonable inference, return only the fixed sentence described in Rule 3 (also translated into the response language).
 
 ---
 
@@ -119,8 +120,8 @@ If there is absolutely no relevant information or reasonable inference, return o
 
 - **Default language: English.** Unless the user's question is in another language, always respond in English.
 - **STRICT LANGUAGE MATCHING**: If the user asks in any non-English language (e.g., Traditional Chinese, Japanese, French), respond in that exact language.
+- **This applies to ALL parts of the response**, including section headers, explanations, and the fixed "no information" sentence. Only PMID labels and established gene/chemical names may remain in English.
 - Do NOT default to Chinese unless the user explicitly asks in Chinese.
-- You may keep specific technical terms, gene names, and PMID labels in English as they are standard in the biomedical field.
 """
 
     def send_message(self, user_message: str, top_k: int = 5) -> dict[str, Any]:
