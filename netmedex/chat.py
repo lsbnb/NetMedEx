@@ -117,11 +117,10 @@ If there is absolutely no relevant information or reasonable inference, return o
 
 ### 🚨 LANGUAGE RULE (CRITICAL) 🚨
 
-- **STRICT LANGUAGE MATCHING**: Always respond using the EXACT SAME language as the user's question.
-- If the user asks in Traditional Chinese, you MUST answer in Traditional Chinese.
-- If the user asks in English, answer in English.
-- Do NOT switch to English by default unless the user asks in English.
-- You may keep specific technical terms or PMID labels in English if they are standard in the biomedical field.
+- **Default language: English.** Unless the user's question is in another language, always respond in English.
+- **STRICT LANGUAGE MATCHING**: If the user asks in any non-English language (e.g., Traditional Chinese, Japanese, French), respond in that exact language.
+- Do NOT default to Chinese unless the user explicitly asks in Chinese.
+- You may keep specific technical terms, gene names, and PMID labels in English as they are standard in the biomedical field.
 """
 
     def send_message(self, user_message: str, top_k: int = 5) -> dict[str, Any]:
