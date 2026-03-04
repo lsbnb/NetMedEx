@@ -47,6 +47,7 @@ graph = html.Div(
                 dcc.Store(id="memory-cy-params", data=[]),
                 dcc.Store(id="memory-graph-layout"),
                 dcc.Store(id="memory-fcose-node-repulsion"),
+                dcc.Store(id="session-language", data="English"),
             ],
             id="cy-graph-container",
             className="d-flex flex-column flex-grow-1 position-relative",
