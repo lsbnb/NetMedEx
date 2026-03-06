@@ -304,6 +304,7 @@ def callbacks(app):
                     "Please provide a concise summary of the selected research based on the abstracts and graph structure. "
                     "Highlight the main relationships and key findings. "
                     f"(🚨 IMPORTANT: Respond in {session_language or 'English'}. "
+                    f"Even if no relevant information is found, your refusal must be in {session_language or 'English'}. "
                     "If the user subsequently asks questions in a different language, switch to that language.)"
                 )
                 response = chat_session.send_message(summary_prompt)
