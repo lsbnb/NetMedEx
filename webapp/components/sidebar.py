@@ -24,7 +24,8 @@ api_or_file = html.Div(
                     "Source",
                     (
                         "PubTator3 API: Search + Network Generation\n"
-                        "PubTator File: Network Generation from PubTator File"
+                        "PubTator File: Network Generation from PubTator File\n"
+                        "Graph File: Load a previously exported NetMedEx graph (.pkl) to skip re-analysis"
                     ),
                 ),
                 dbc.RadioItems(
@@ -32,6 +33,7 @@ api_or_file = html.Div(
                     options=[
                         {"label": "PubTator3 API", "value": "api"},
                         {"label": "PubTator File", "value": "file"},
+                        {"label": "Graph File (.pkl)", "value": "graph_file"},
                     ],
                     value="api",
                     inline=True,
@@ -65,6 +67,32 @@ pubtator_file = html.Div(
     ],
     style=display.none,
     id="pubtator-file-wrapper",
+)
+
+graph_file = html.Div(
+    [
+        html.Div(
+            [
+                generate_param_title(
+                    "Graph File (.pkl)",
+                    "Load a NetMedEx graph file (.pkl) exported from the Graph Panel. "
+                    "Restores the full graph including semantic analysis results — no re-processing needed.",
+                ),
+                dcc.Upload(
+                    id="graph-file-data",
+                    children=html.Div(
+                        ["Drag and Drop or ", html.A("Select .pkl File", className="hyperlink")],
+                        className="upload-box form-control",
+                    ),
+                    accept=".pkl",
+                ),
+                html.Div(id="graph-file-upload"),
+            ],
+            className="param",
+        )
+    ],
+    style=display.none,
+    id="graph-file-wrapper",
 )
 
 api_params = html.Div(
@@ -346,7 +374,9 @@ export_buttons = html.Div(
     [
         generate_param_title(
             "Export",
-            "Download HTML for Browser, XGMML for Cytoscape. The PubTator file can be re-loaded in the Search Panel for re-analysis.",
+            "Download HTML for Browser, XGMML for Cytoscape. "
+            "The PubTator file can be re-loaded in the Search Panel for re-analysis. "
+            "The Graph file (.pkl) saves the full analysis state (including semantic results) for fast reload.",
         ),
         html.Div(
             [
@@ -365,6 +395,13 @@ export_buttons = html.Div(
                     color="success",
                 ),
                 dcc.Download(id="download-pubtator"),
+                dbc.Button(
+                    [icon_download(), "Graph (.pkl)"],
+                    id="export-btn-graph",
+                    className="export-btn",
+                    color="warning",
+                ),
+                dcc.Download(id="export-graph"),
             ],
             className="d-flex gap-2 flex-wrap mt-1",
         ),
@@ -373,7 +410,7 @@ export_buttons = html.Div(
 )
 
 search_panel = html.Div(
-    [api_or_file, api_params, pubtator_file, network_params, progress],
+    [api_or_file, api_params, pubtator_file, graph_file, network_params, progress],
     id="search-panel",
 )
 

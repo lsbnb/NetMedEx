@@ -76,3 +76,22 @@ def callbacks(app):
         n1, n2 = tap_edge["label"].split(" (interacts with) ")
         filename = f"{n1}_{n2}.csv"
         return dcc.send_file(savepath["edge_info"], filename=filename)
+
+    @app.callback(
+        Output("export-graph", "data"),
+        Input("export-btn-graph", "n_clicks"),
+        State("current-session-path", "data"),
+        prevent_initial_call=True,
+    )
+    def export_graph_pickle(n_clicks, savepath):
+        """Export the full graph state as a pickle file.
+
+        The exported .pkl file contains the complete NetworkX graph including
+        all node/edge attributes, pmid_title, pmid_abstract, and semantic
+        analysis results. It can be re-loaded in the Search Panel (Graph File
+        source) to restore the session without re-running the pipeline.
+        """
+        if savepath is None or not savepath.get("graph"):
+            return
+
+        return dcc.send_file(savepath["graph"], filename="netmedex_graph.pkl")

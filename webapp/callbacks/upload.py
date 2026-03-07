@@ -35,3 +35,22 @@ def callbacks(app):
     )
     def update_pubtator_upload(pubtator_data, filename):
         return display_uploaded_data(pubtator_data, filename)
+
+    @app.callback(
+        Output("graph-file-upload", "children"),
+        Input("graph-file-data", "contents"),
+        State("graph-file-data", "filename"),
+    )
+    def update_graph_file_upload(graph_data, filename):
+        if graph_data is not None:
+            return [
+                html.H6(
+                    f"✅ File ready: {filename}",
+                    style={"marginBottom": "5px", "marginTop": "5px", "color": "#28a745"},
+                ),
+                html.Small(
+                    "Click Submit to restore the graph session.",
+                    className="text-muted",
+                ),
+            ]
+        return []

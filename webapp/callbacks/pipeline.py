@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 import base64
+import logging
+import pickle
 import threading
 from queue import Queue
-import logging
 
+import networkx as nx
 import dash_bootstrap_components as dbc
 from dash import Input, Output, State, html, no_update
 
@@ -57,6 +59,7 @@ def callbacks(app):
             State("data-input", "value"),
             State("pmid-file-data", "contents"),
             State("pubtator-file-data", "contents"),
+            State("graph-file-data", "contents"),
             State("graph-cut-weight", "value"),
             State("max-edges", "value"),
             State("max-articles", "value"),
@@ -90,6 +93,7 @@ def callbacks(app):
         data_input,
         pmid_file_data,
         pubtator_file_data,
+        graph_file_data,
         weight,
         max_edges,
         max_articles,
@@ -115,6 +119,57 @@ def callbacks(app):
             full_text = "full_text" in pubtator_params
             community = "community" in cy_params
             savepath = get_data_savepath(generate_session_id())
+
+            # ----------------------------------------------------------------
+            # GRAPH FILE BYPASS: restore session from uploaded .pkl file
+            # ----------------------------------------------------------------
+            if source == "graph_file":
+                if not graph_file_data:
+                    raise EmptyInput("No Graph file uploaded")
+
+                content_type, content_string = graph_file_data.split(",")
+                graph_bytes = base64.b64decode(content_string)
+
+                # Write pickle to session path
+                with open(savepath["graph"], "wb") as f:
+                    f.write(graph_bytes)
+
+                # Load and validate
+                with open(savepath["graph"], "rb") as f:
+                    G = pickle.load(f)
+
+                if not isinstance(G, nx.Graph):
+                    raise ValueError(
+                        "Invalid Graph file: not a NetworkX Graph object. "
+                        "Please upload a file exported from NetMedEx Graph Panel."
+                    )
+                required_keys = ["pmid_title"]
+                for k in required_keys:
+                    if k not in G.graph:
+                        raise ValueError(
+                            f"Invalid Graph file: missing required metadata '{k}'. "
+                            "Please upload a file exported from NetMedEx Graph Panel."
+                        )
+
+                num_articles = len(G.graph.get("pmid_title", {}))
+                num_nodes = G.number_of_nodes()
+                num_edges = G.number_of_edges()
+                set_progress((1, 1, "1/1", "Graph restored from file!"))
+                logger.info(
+                    f"Graph file loaded: {num_articles} articles, "
+                    f"{num_nodes} nodes, {num_edges} edges"
+                )
+                return (
+                    visibility.visible,
+                    weight,
+                    True,
+                    G.graph["pmid_title"],
+                    savepath,
+                    {"articles": num_articles, "nodes": num_nodes, "edges": num_edges},
+                    "English",  # Default language; user can switch in Chat
+                    "",  # Clear any previous error
+                )
+            # ----------------------------------------------------------------
 
             def decode_file_content(content_string):
                 decoded_bytes = base64.b64decode(content_string)
