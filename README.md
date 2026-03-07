@@ -103,16 +103,26 @@ Expand **Advanced Settings** to configure your LLM provider. This is a crucial f
   <i>Figure 4: Selecting a specific model for local AI processing via the dropdown menu.</i>
 </p>
 
-Users can also upload previously downloaded PubTator format files for re-analysis.
+Users can also upload previously downloaded PubTator format files for re-analysis, or restore a previously exported **Graph File** (`.pkl`) to skip re-processing entirely.
 
 <p align="center">
   <img src="./docs/img/netmedex_search_Pubtator.png" width="300" alt="PubTator Search">
   <br>
-  <i>Figure 5: Uploading PubTator files for re-analysis within the Search Panel.</i>
+  <i>Figure 5: Uploading PubTator files for re-analysis, or a Graph File (.pkl) to instantly restore a saved session.</i>
 </p>
 
+> [!TIP]
+> **Graph File Restore**: After a time-consuming Semantic Analysis run, export the result as a **Graph (.pkl)** from the Graph Panel, then reload it later via **Search Panel → Source: Graph File (.pkl)**. The full graph state — including all semantic edges, node metadata, and article abstracts — is restored instantly, allowing you to continue adjusting the network and using the Chat Panel without re-running any analysis.
+
 ### 2. Graph & Scaffolding (Structural View)
-The **Graph Panel** visualizes the co-mention/ semantic analyzed network, providing the visualization of search results for your research. Using the shift key to select sub-network, those selected nodes and edges will be highlighted as the base for chat in next step. Users can visualize the network using different layouts and community detection algorithms. Users also can save the selected sub-network to an **[HTML file](https://htmlpreview.github.io/?https://github.com/lsbnb/NetMedEx/blob/main/docs/Diabetes_miRNA.html)** (Try this [Interactive Visualization Example](https://htmlpreview.github.io/?https://github.com/lsbnb/NetMedEx/blob/main/docs/Diabetes_miRNA.html)), original pubtator3 file, or XML for Cytoscape for further analysis. 
+The **Graph Panel** visualizes the co-mention/semantic analyzed network, providing the visualization of search results for your research. Using the shift key to select sub-network, those selected nodes and edges will be highlighted as the base for chat in next step. Users can visualize the network using different layouts and community detection algorithms. Users also can export the network in several formats:
+
+| Export Format | Description | Re-importable? |
+|---|---|---|
+| **HTML** | Interactive visualization for browsers ([example](https://htmlpreview.github.io/?https://github.com/lsbnb/NetMedEx/blob/main/docs/Diabetes_miRNA.html)) | ❌ |
+| **XGMML** | Network file for Cytoscape Desktop | ❌ |
+| **PubTator** | Raw annotation file | ✅ Re-upload in Search Panel |
+| **Graph (.pkl)** | **Full graph state** including semantic analysis results and article abstracts | ✅ Restore in Search Panel → "Graph File" |
 
 <p align="center">
   <img src="./docs/img/netmedex_graph_panel_v2.jpg" width="300" alt="Graph Panel">
