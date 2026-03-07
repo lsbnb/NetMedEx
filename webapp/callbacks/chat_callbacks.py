@@ -390,26 +390,23 @@ def callbacks(app):
         try:
             from webapp.components.chat import create_message_component
 
-            # Add user message
+            # Get AI response
+            response = chat_session.send_message(user_input)
+
             user_msg = create_message_component("user", user_input)
             messages = list(current_messages) if current_messages else []
             messages.append(user_msg)
 
-            # Get AI response
-            response = chat_session.send_message(user_input)
-
             if response["success"]:
-                # Add assistant message with sources
-                assistant_msg = create_message_component(
+                ai_msg = create_message_component(
                     "assistant", response["message"], response.get("sources", [])
                 )
-                messages.append(assistant_msg)
             else:
-                # Add error message
-                error_msg = create_message_component(
+                ai_msg = create_message_component(
                     "assistant", f"❌ {response.get('message', 'Error processing request')}"
                 )
-                messages.append(error_msg)
+
+            messages.append(ai_msg)
 
             # Update both views and clear both inputs
             return messages, messages, "", "", "", ""
@@ -519,4 +516,41 @@ def callbacks(app):
         Output("chat-status", "style"),  # Using a dummy output
         Input("sidebar-panel-toggle", "active_tab"),
         prevent_initial_call=False,
+    )
+
+    # Clientside callback to auto-scroll chat containers to bottom when messages are added
+    app.clientside_callback(
+        """
+        function(children) {
+            if (!children) return window.dash_clientside.no_update;
+            setTimeout(function() {
+                var chatContainer = document.getElementById('chat-messages');
+                if (chatContainer) {
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                }
+            }, 100);
+            return window.dash_clientside.no_update;
+        }
+        """,
+        Output("chat-messages", "style"),  # dummy output
+        Input("chat-messages", "children"),
+        prevent_initial_call=True,
+    )
+
+    app.clientside_callback(
+        """
+        function(children) {
+            if (!children) return window.dash_clientside.no_update;
+            setTimeout(function() {
+                var modalContainer = document.getElementById('modal-chat-content');
+                if (modalContainer) {
+                    modalContainer.scrollTop = modalContainer.scrollHeight;
+                }
+            }, 100);
+            return window.dash_clientside.no_update;
+        }
+        """,
+        Output("modal-chat-content", "style"),  # dummy output
+        Input("modal-chat-content", "children"),
+        prevent_initial_call=True,
     )

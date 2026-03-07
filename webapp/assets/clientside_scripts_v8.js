@@ -323,6 +323,18 @@ window.dash_clientside.clientside = {
       },
       elements,
     ]
+  },
+  sync_llm_toggles: function (provider, api_key, local_url, local_model) {
+    if (provider === "openai") {
+      if (api_key && api_key.trim().startsWith("sk-")) {
+        return [true, "semantic"];
+      }
+    } else if (provider === "local") {
+      if (local_url && local_url.trim() !== "" && local_model && local_model.trim() !== "") {
+        return [true, "semantic"];
+      }
+    }
+    return [false, "co-occurrence"];
   }
 }
 
@@ -338,10 +350,17 @@ function setupChatAutoScroll() {
 
   // Create an observer to scroll when new messages are added
   const observer = new MutationObserver(() => {
-    chatContainer.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    const anchors = chatContainer.querySelectorAll('.chat-message-user-anchor');
+    if (anchors.length > 0) {
+      const latestAnchor = anchors[anchors.length - 1];
+      latestAnchor.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    } else {
+      // Fallback for welcome message / system messages
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
   });
 
   observer.observe(chatContainer, { childList: true });
@@ -360,27 +379,8 @@ document.addEventListener('DOMContentLoaded', () => {
   bodyObserver.observe(document.body, { childList: true, subtree: true });
 });
 
-/**
- * Register cytoscape-fcose layout plugin.
- * The plugin JS is served from assets/ (cytoscape-fcose.min.js) and exposes
- * window.fcose. We register it once cytoscape is also available.
- */
-(function registerFcose() {
-  function tryRegister() {
-    if (window.cytoscape && window.cytoscapeFcose) {
-      cytoscape.use(window.cytoscapeFcose);
-      return true;
-    }
-    return false;
-  }
-
-  if (!tryRegister()) {
-    // Retry until both scripts are loaded (handles any load-order race)
-    const interval = setInterval(() => {
-      if (tryRegister()) clearInterval(interval);
-    }, 100);
-  }
-})();
+// fCose is now loaded via dash_cytoscape load_extra_layouts() in Python.
+// No manual registration needed here.
 
 /**
  * Draggable Legend

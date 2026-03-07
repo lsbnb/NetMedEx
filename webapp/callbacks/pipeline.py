@@ -221,6 +221,28 @@ def callbacks(app):
                                         f"AI Translation Failed: {e}. Using original query.",
                                     )
                                 )
+                    else:
+                        # Mandatory English translation for non-English queries when AI search is off
+                        detected_lang = detect_query_language(query)
+                        if detected_lang != "English" and llm_client.client:
+                            set_progress(
+                                (0, 1, "", f"Translating {detected_lang} query to English...")
+                            )
+                            try:
+                                translated_query = llm_client.translate_to_english(query)
+                                if translated_query != query:
+                                    query = translated_query
+                                    set_progress((0, 1, "", f"Translated to English: {query}"))
+                            except Exception as e:
+                                logger.error(f"Error executing translation: {e}")
+                                set_progress(
+                                    (
+                                        0,
+                                        1,
+                                        "",
+                                        f"Translation Failed: {e}. Using original query.",
+                                    )
+                                )
 
                 elif input_type == "pmids":
                     pmid_list = load_pmids(data_input, load_from="string")
