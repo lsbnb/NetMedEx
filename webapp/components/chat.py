@@ -106,12 +106,14 @@ chat_messages = html.Div(
     id="chat-messages",
     className="chat-messages-container",
     style={
-        "height": "400px",
+        "height": "500px",  # Increased height for better visibility
         "overflowY": "auto",
         "border": "1px solid #ddd",
         "borderRadius": "8px",
         "padding": "15px",
         "backgroundColor": "#f8f9fa",
+        "display": "flex",
+        "flexDirection": "column-reverse",  # Newest messages at the top
     },
     children=[
         html.Div(
@@ -254,7 +256,15 @@ selection_info = html.Div(
 chat_modal = dbc.Modal(
     [
         dbc.ModalHeader(dbc.ModalTitle("Chat History"), close_button=True),
-        dbc.ModalBody(id="modal-chat-content", style={"minHeight": "400px"}),
+        dbc.ModalBody(
+            id="modal-chat-content",
+            style={
+                "minHeight": "400px",
+                "display": "flex",
+                "flexDirection": "column-reverse",
+                "overflowY": "auto",
+            },
+        ),
         dbc.ModalFooter(
             dbc.Row(
                 [

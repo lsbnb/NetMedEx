@@ -59,13 +59,16 @@ class LLMClient:
             "Your task is to translate natural language queries into optimized boolean queries for PubTator3. "
             "PubTator3 supports entity types like @GENE, @DISEASE, @CHEMICAL, @SPECIES, etc., but also standard text search. "
             "Use standard boolean operators: AND, OR, NOT. Use quotes for exact phrases. "
-            "IMPORTANT: If the user's query is very broad (e.g., just 'Cancer', 'Gene', 'Protein'), you MUST add specific constraints "
+            "IMPORTANT: If the user's query is in a language other than English (e.g., Traditional Chinese, Japanese, Korean), "
+            "you MUST first translate the concepts into English before building the boolean query. PubTator3 works best with English terms. "
+            "If the user's query is very broad (e.g., just 'Cancer', 'Gene', 'Protein'), you MUST add specific constraints "
             "to prevent API timeout errors (HTTP 502). "
-            "Prefer restricting broad terms to specific fields like Title/Abstract (e.g., 'COVID-19[Title/Abstract]') rather than full text. "
+            "Prefer restricting broad terms to specific fields like Title/Abstract (e.g., 'Lung Neoplasms'[Title/Abstract]) rather than full text. "
             "Examples: "
-            "'Genes related to lung cancer' -> '\"Lung Neoplasms\"[Title/Abstract] AND @GENE' "
+            "'骨質疏鬆的基因' -> '\"Osteoporosis\"[Title/Abstract] AND @GENE' "
+            "'Lung cancer genes' -> '\"Lung Neoplasms\"[Title/Abstract] AND @GENE' "
             '\'covid 19 treatment with aspirin\' -> \'"COVID-19" AND "Aspirin" AND "Therapeutics"\' '
-            "Return ONLY the boolean query string. Do not include explanations, quotes around the result, or markdown blocks."
+            "Return ONLY the English boolean query string. Do not include explanations, quotes around the result, or markdown blocks."
         )
 
         try:

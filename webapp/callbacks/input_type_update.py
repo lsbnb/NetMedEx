@@ -47,14 +47,19 @@ def callbacks(app):
     @app.callback(
         Output("api-wrapper", "style"),
         Output("pubtator-file-wrapper", "style"),
+        Output("graph-file-wrapper", "style"),
         Input("api-toggle-items", "value"),
         prevent_initial_call=True,
     )
     def update_api_toggle(api_toggle):
         if api_toggle == "api":
-            return display.block, display.none
+            return display.block, display.none, display.none
         elif api_toggle == "file":
-            return display.none, display.block
+            return display.none, display.block, display.none
+        elif api_toggle == "graph_file":
+            return display.none, display.none, display.block
+        # fallback
+        return display.block, display.none, display.none
 
     @app.callback(
         Output("input-type", "children"),
