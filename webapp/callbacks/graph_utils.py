@@ -39,5 +39,27 @@ def rebuild_graph(
     # Use the community parameter instead of graph metadata
     if community and format == "html":
         PubTatorGraphBuilder._set_network_communities(graph)
+    else:
+        # Explicitly clear community data to avoid persistent state issues
+        graph.graph["num_communities"] = 0
+
+        # Remove community nodes and their associated edges
+        to_remove_nodes = [
+            n for n in graph.nodes if str(n).startswith("c") and str(n)[1:].isdigit()
+        ]
+        graph.remove_nodes_from(to_remove_nodes)
+
+        # Also remove any edges that might be leftover as 'community' type
+        to_remove_edges = [
+            (u, v) for u, v, d in graph.edges(data=True) if d.get("type") == "community"
+        ]
+        graph.remove_edges_from(to_remove_edges)
+
+        # Reset parent for remaining nodes
+        for node in graph.nodes:
+            graph.nodes[node]["parent"] = None
+
+    # Enforce stable IDs based on the FINAL state of the graph
+    PubTatorGraphBuilder.normalize_graph_ids(graph)
 
     return graph

@@ -10,6 +10,12 @@ def generate_uuid():
     return str(uuid4())
 
 
+def generate_stable_id(input_str: str):
+    import hashlib
+
+    return hashlib.sha1(input_str.encode("utf-8")).hexdigest()
+
+
 def config_logger(is_debug: bool, filename: str | None = None):
     handlers = [logging.StreamHandler(stream=sys.stdout)]
 

@@ -39,9 +39,9 @@ try:
 except ImportError:
     # Semantic RE may not be available if dependencies are missing
     SemanticRelationshipExtractor = None
-from netmedex.utils import generate_uuid
+from netmedex.utils import generate_stable_id
 
-MIN_EDGE_WIDTH = 0
+MIN_EDGE_WIDTH = 1.0
 MAX_EDGE_WIDTH = 20
 
 
@@ -267,7 +267,31 @@ class PubTatorGraphBuilder:
 
         return self.graph
 
+    @staticmethod
+    def normalize_graph_ids(graph: nx.Graph):
+        """Enforce stable hash-based IDs for all nodes and edges in the graph"""
+        is_comm = graph.graph.get("num_communities", 0) > 0
+        suffix = "_comm" if is_comm else ""
+
+        for node_id, data in graph.nodes(data=True):
+            if str(node_id).startswith("c") and str(node_id)[1:].isdigit():
+                data["_id"] = generate_stable_id(f"comm_node_{node_id}")
+            else:
+                data["_id"] = generate_stable_id(f"node_{node_id}{suffix}")
+                if data.get("parent"):
+                    # The parent is a community node like 'c0', so we must convert it to its stable ID
+                    data["parent"] = generate_stable_id(f"comm_node_{data['parent']}")
+
+        for u, v, data in graph.edges(data=True):
+            if data.get("type") == "node":
+                data["_id"] = generate_stable_id(f"edge_{u}_{v}{suffix}")
+            elif data.get("type") == "community" and "_id" not in data:
+                data["_id"] = generate_stable_id(f"comm_edge_{u}_{v}")
+
     def _build_nodes(self, pmid_weights: dict[str, int | float] | None = None):
+        # Apply stable IDs first
+        self.normalize_graph_ids(self.graph)
+
         for node_id, data in self.graph.nodes(data=True):
             # Defensive check: ensure 'pmids' exists
             if "pmids" not in data:
@@ -291,6 +315,9 @@ class PubTatorGraphBuilder:
         pmid_weights: dict[str, int | float] | None,
         weighting_method: Literal["npmi", "freq"],
     ):
+        # Apply stable IDs to edges
+        self.normalize_graph_ids(self.graph)
+
         # Update attributes for edges
         for u, v, data in self.graph.edges(data=True):
             data["num_relations"] = len(data["relations"])
@@ -467,7 +494,7 @@ class PubTatorGraphBuilder:
                 weight = 0.0
             pmids = set(inter_edge_pmids[(c_0, c_1)])
             edge_data = CommunityEdge(
-                _id=generate_uuid(),
+                _id=generate_stable_id(f"comm_{c_0}_{c_1}"),
                 type="community",
                 edge_weight=weight,
                 edge_width=max(weight, MIN_EDGE_WIDTH),
@@ -571,7 +598,7 @@ class PubTatorGraphBuilder:
                 self.graph.nodes[node_id]["pmids"].add(data.pmid)
             else:
                 node_data = GraphNode(
-                    _id=generate_uuid(),
+                    _id=generate_stable_id(f"node_{node_id}"),
                     color=NODE_COLOR_MAP.get(data.type, "#888888"),
                     label_color="#000000",
                     shape=NODE_SHAPE_MAP.get(data.type, "ELLIPSE"),
@@ -625,7 +652,7 @@ class PubTatorGraphBuilder:
                     evidences = {edge.pmid: {edge.relation: edge.evidence}}
 
                 edge_data = GraphEdge(
-                    _id=generate_uuid(),
+                    _id=generate_stable_id(f"edge_{edge.node1_id}_{edge.node2_id}"),
                     type="node",
                     relations={edge.pmid: {edge.relation}},
                     num_relations=None,

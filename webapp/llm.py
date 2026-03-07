@@ -47,6 +47,38 @@ class LLMClient:
         self.api_key = api_key
         self.initialize_client()
 
+    def translate_to_english(self, text: str) -> str:
+        """
+        Translates text to English unconditionally.
+        Keeps original formatting / text if already in English or translation fails.
+        """
+        if not self.client:
+            return text
+
+        system_prompt = (
+            "You are a biomedical translator. "
+            "Your task is to translate the user's query into English. "
+            "If the query is already in English, return it exactly as is. "
+            "Do NOT add any explanations, boolean operators, or quotes. "
+            "Just return the translated English text."
+        )
+
+        try:
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": text},
+                ],
+                temperature=0,
+                max_tokens=200,
+            )
+            translated = response.choices[0].message.content.strip()
+            return translated
+        except OpenAIError as e:
+            logger.error(f"LLM Error during query translation to English: {e}")
+            return text
+
     def translate_query_to_boolean(self, natural_query: str) -> str:
         """
         Translates a natural language query into a PubTator3 boolean query key.

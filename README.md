@@ -61,7 +61,8 @@ NetMedEx features an interactive **Chat Panel** driven by **Hybrid RAG**, which 
 
 ### Key Capabilities
 - **Hybrid RAG Chat**: Synthesizes **unstructured text** (abstracts) and **structured graph knowledge** (paths and neighbors).
-- **Natural Language to Query**: Ask in plain English; NetMedEx converts it to optimized PubTator3 syntax.
+- **Natural Language & Universal Translation**: Ask in English, Japanese, Chinese, or Korean! NetMedEx automatically translates non-English queries to optimized standard PubTator3 English syntax before searching.
+- **ChatGPT-Style Chat Experience**: Features an intuitive, auto-scrolling Chat Panel that perfectly mimics modern AI layouts (user queries on the right, AI responses on the left), preventing the need for manual scrolling.
 - **Semantic Evidence Extraction**: Automatically identifies relationship types (e.g., *treats*, *inhibits*) and confidence scores.
 - **Contextual Reasoning**: Identifies shortest paths and relevant subgraphs to explain hidden connections between entities.
 

@@ -1,5 +1,12 @@
-import dash_cytoscape as cyto
-from dash import ClientsideFunction, Input, Output, State, clientside_callback, no_update
+from dash import (
+    ClientsideFunction,
+    Input,
+    Output,
+    State,
+    callback_context,
+    clientside_callback,
+    no_update,
+)
 
 from netmedex.cytoscape_js import create_cytoscape_js
 from webapp.callbacks.graph_utils import rebuild_graph
@@ -13,9 +20,9 @@ def get_layout_config(layout_name, node_repulsion=45000):
     if layout_name == "fcose":
         return {
             "name": "fcose",
-            "quality": "default",  # "proof" is more thorough but slower
+            "quality": "default",
             "randomize": True,
-            "animate": False,  # skip animation for large graphs
+            "animate": False,
             "fit": True,
             "padding": 30,
             "nodeSeparation": 75,
@@ -24,7 +31,7 @@ def get_layout_config(layout_name, node_repulsion=45000):
             "edgeElasticity": 0.45,
             "nestingFactor": 0.1,
             "numIter": 2500,
-            "tile": True,  # spread disconnected components
+            "tile": True,
             "tilingPaddingVertical": 10,
             "tilingPaddingHorizontal": 10,
         }
@@ -67,6 +74,22 @@ def callbacks(app):
         else:
             return 0, 1, "", ""
 
+    clientside_callback(
+        """
+        function(is_disabled) {
+            if (is_disabled) {
+                // Return empty style to effectively hide the graph while keeping it technically mounted
+                return {"visibility": "hidden", "height": "400px"};
+            }
+            // Once the search is done, the button is re-enabled. Unhide the graph.
+            return {"visibility": "visible", "height": "800px"};
+        }
+        """,
+        Output("cy-graph-container", "style", allow_duplicate=True),
+        Input("submit-button", "disabled"),
+        prevent_initial_call=True,
+    )
+
     @app.callback(
         Output("cy", "elements"),
         Output("cy", "layout"),
@@ -108,67 +131,74 @@ def callbacks(app):
         savepath,
         weighting_method,
     ):
-        print(
-            f"DEBUG: update_graph triggered! is_new_graph={is_new_graph}, layout={graph_layout}, repulsion={node_repulsion}"
-        )
+        triggered = [t["prop_id"] for t in callback_context.triggered]
 
-        if not savepath or not savepath.get("graph"):
-            print("DEBUG: No graph path found, skipping update.")
-            return (
-                no_update,
-                no_update,
-                False,
-                new_node_degree,
-                new_cut_weight,
-                cy_params,
-                graph_layout,
-                node_repulsion,
-            )
-
-        if container_style.get("visibility") == "hidden":
-            print("DEBUG: Graph container is hidden, skipping update.")
-            return (
-                no_update,
-                no_update,
-                False,
-                new_node_degree,
-                new_cut_weight,
-                cy_params,
-                graph_layout,
-                node_repulsion,
-            )
-
+        # Normalization
+        if cy_params is None:
+            cy_params = []
+        if old_cy_params is None:
+            old_cy_params = []
         if new_node_degree is None:
-            new_node_degree = old_node_degree
+            new_node_degree = old_node_degree if old_node_degree is not None else 1
+        if new_cut_weight is None:
+            new_cut_weight = old_cut_weight if old_cut_weight is not None else [0, 20]
 
-        # Check if community display is enabled
-        show_community = "community" in cy_params if cy_params else False
+        if (
+            not savepath
+            or not savepath.get("graph")
+            or (container_style and container_style.get("visibility") == "hidden")
+        ):
+            return (
+                no_update,
+                no_update,
+                False,
+                new_node_degree,
+                new_cut_weight,
+                cy_params,
+                graph_layout,
+                node_repulsion,
+            )
 
-        # Scale cutoff if using NPMI
+        show_community = "community" in cy_params
+
+        # NPMI scaling if needed
         if weighting_method == "npmi":
             effective_cut_weight = (
                 [x * 20 for x in new_cut_weight]
                 if isinstance(new_cut_weight, list)
-                else new_cut_weight * 20
+                else (new_cut_weight * 20 if new_cut_weight is not None else 0)
             )
         else:
             effective_cut_weight = new_cut_weight
 
-        # Conditions to REBUILD the graph elements (data filter changed)
+        # Check triggers
         rebuild_needed = (
             is_new_graph
             or new_cut_weight != old_cut_weight
             or new_node_degree != old_node_degree
-            or cy_params != old_cy_params
+            or set(cy_params) != set(old_cy_params)
         )
-
-        # Conditions to just update the LAYOUT (no data change, but layout params changed)
         layout_changed = graph_layout != old_layout or node_repulsion != old_repulsion
 
-        if rebuild_needed or layout_changed:
-            print(
-                f"DEBUG: Updating graph structure. rebuild={rebuild_needed}, layout_change={layout_changed}"
+        # Avoid redundant reset cycles
+        if (
+            triggered == ["is-new-graph.data"]
+            and not is_new_graph
+            and not rebuild_needed
+            and not layout_changed
+        ):
+            return (
+                no_update,
+                no_update,
+                False,
+                no_update,
+                no_update,
+                no_update,
+                no_update,
+                no_update,
             )
+
+        if rebuild_needed or layout_changed:
             G = rebuild_graph(
                 new_node_degree,
                 effective_cut_weight,
@@ -178,12 +208,15 @@ def callbacks(app):
                 community=show_community,
                 weighting_method=weighting_method,
             )
-            graph_json = create_cytoscape_js(G, style="dash")
 
+            graph_json = create_cytoscape_js(G, style="dash")
             elements = [*graph_json["elements"]["nodes"], *graph_json["elements"]["edges"]]
             layout_config = get_layout_config(graph_layout, node_repulsion)
 
-            print(f"DEBUG: returning {len(elements)} elements")
+            # Ensure elements is at least an empty list, not None
+            if elements is None:
+                elements = []
+
             return (
                 elements,
                 layout_config,

@@ -83,7 +83,11 @@ CYTO_STYLESHEET = [
         "style": {
             "text-valign": "top",
             "text-halign": "center",
-            "font-size": "20px",
+            "font-size": "36px",
+            "font-weight": "bold",
+            "text-outline-color": "#ffffff",
+            "text-outline-width": "2px",
+            "text-outline-opacity": "0.8",
         },
     },
     {

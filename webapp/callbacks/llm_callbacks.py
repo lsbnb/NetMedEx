@@ -1,18 +1,19 @@
 from __future__ import annotations
 
-import dash
-from dash import Input, Output, State, no_update, html
-import dash_bootstrap_components as dbc
-from webapp.llm import llm_client
-from netmedex.pubtator import PubTatorAPI
-import asyncio
 import logging
 import requests
+
+import dash
+from dash import ClientsideFunction, Input, Output, State, no_update
+
+from webapp.llm import llm_client
 
 logger = logging.getLogger(__name__)
 
 
 def callbacks(app):
+    print("DEBUG: Registering llm_callbacks")
+
     # Load LLM Configuration from .env on page load
     @app.callback(
         [
@@ -23,39 +24,67 @@ def callbacks(app):
             Output("llm-model-input", "value"),
             Output("llm-model-input", "options"),
         ],
-        Input("sidebar-container", "id"),  # Triggered on page load
+        Input("main-container", "id"),  # Triggered on page load
     )
     def load_llm_configuration(_):
         """Load LLM configuration from environment variables"""
-        import os
+        try:
+            import os
 
-        api_key = os.getenv("OPENAI_API_KEY", "")
-        base_url = os.getenv("OPENAI_BASE_URL", "")
-        model = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+            api_key = os.getenv("OPENAI_API_KEY", "")
+            base_url = os.getenv("OPENAI_BASE_URL", "")
+            model = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 
-        # Determine provider based on base_url or api_key
-        if api_key == "local-dummy-key" or (base_url and base_url != "https://api.openai.com/v1"):
-            provider = "local"
-            # For local, also populate the model input
-            # Setup options with the current model
-            options = [{"label": model, "value": model}] if model else []
-            return provider, "", "gpt-4o-mini", base_url, model, options
-        else:
-            provider = "openai"
-            # Check if model is in the dropdown, otherwise set to custom
-            standard_models = [
-                "gpt-4o",
-                "gpt-4o-mini",
-                "gpt-4-turbo",
-                "o1-preview",
-                "o1-mini",
-                "gpt-3.5-turbo",
-            ]
-            if model in standard_models:
-                return provider, api_key, model, "http://localhost:11434/v1", "", []
+            # Determine provider based on base_url or api_key
+            if api_key == "local-dummy-key" or (
+                base_url and base_url != "https://api.openai.com/v1"
+            ):
+                provider = "local"
+                # For local, also populate the model input
+                # Setup options with the current model
+                options = [{"label": model, "value": model}] if model else []
+                return provider, "", "gpt-4o-mini", base_url, model, options
             else:
-                # Custom model
-                return provider, api_key, "custom", "http://localhost:11434/v1", "", []
+                provider = "openai"
+                # Check if model is in the dropdown, otherwise set to custom
+                standard_models = [
+                    "gpt-4o",
+                    "gpt-4o-mini",
+                    "gpt-4-turbo",
+                    "o1-preview",
+                    "o1-mini",
+                    "gpt-3.5-turbo",
+                ]
+
+                if model in standard_models:
+                    return (
+                        provider,
+                        api_key,
+                        model,
+                        "http://localhost:11434/v1",
+                        "",
+                        [],
+                    )
+                else:
+                    # Custom model
+                    return (
+                        provider,
+                        api_key,
+                        "custom",
+                        "http://localhost:11434/v1",
+                        "",
+                        [],
+                    )
+        except Exception as e:
+            logger.error(f"Error in load_llm_configuration: {e}")
+            return (
+                dash.no_update,
+                dash.no_update,
+                dash.no_update,
+                dash.no_update,
+                dash.no_update,
+                dash.no_update,
+            )
 
     # Populate custom model input when loading from env
     @app.callback(
@@ -104,6 +133,7 @@ def callbacks(app):
         return {"display": "none"}
 
     # Unified LLM Configuration
+    # Server-side callback for LLM initialization and status
     @app.callback(
         Output("llm-config-status", "children"),
         [
@@ -114,47 +144,58 @@ def callbacks(app):
             Input("llm-base-url-input", "value"),
             Input("llm-model-input", "value"),
         ],
-        prevent_initial_call=True,
     )
-    def update_llm_configuration(
+    def update_llm_initialization(
         provider, api_key, openai_model, custom_model, base_url, local_model
     ):
-        """Update LLM client based on selected provider and configuration"""
+        """Initialize LLM client on the server when configuration changes"""
+        logger.info(
+            f"CALLBACK: update_llm_initialization triggered | provider={provider}, api_key={'PRESENT' if api_key else 'NONE'}, model={openai_model}"
+        )
         try:
             if provider == "openai":
                 if api_key and api_key.startswith("sk-"):
-                    # Determine which model to use
-                    if openai_model == "custom":
-                        model = custom_model if custom_model else "gpt-4o-mini"
-                    else:
-                        model = openai_model if openai_model else "gpt-4o-mini"
-
+                    model = custom_model if openai_model == "custom" else openai_model
                     llm_client.initialize_client(
-                        api_key=api_key,
-                        model=model,
-                        base_url="https://api.openai.com/v1",
+                        api_key=api_key, model=model, base_url="https://api.openai.com/v1"
                     )
+                    logger.info(f"✅ OpenAI configured with {model}")
                     return f"✅ OpenAI configured with {model}"
                 elif api_key:
+                    logger.info("⚠️ Invalid API key format (should start with sk-)")
                     return "⚠️ Invalid API key format (should start with sk-)"
                 else:
                     return ""
-
             else:  # local
                 if base_url and local_model:
                     llm_client.initialize_client(
-                        api_key="local-dummy-key",  # Dummy key for local LLM
-                        base_url=base_url,
-                        model=local_model,
+                        api_key="local-dummy-key", base_url=base_url, model=local_model
                     )
+                    logger.info(f"✅ Local LLM configured: {local_model}")
                     return f"✅ Local LLM configured: {local_model}"
                 elif base_url or local_model:
+                    logger.info("⚠️ Invalid Local LLM config")
                     return "⚠️ Please provide both base URL and model name"
                 else:
                     return ""
-
         except Exception as e:
+            logger.error(f"❌ Configuration error: {str(e)}")
             return f"❌ Configuration error: {str(e)}"
+
+    # Clientside callback for INSTANT UI synchronization
+    app.clientside_callback(
+        ClientsideFunction(namespace="clientside", function_name="sync_llm_toggles"),
+        [
+            Output("ai-search-toggle", "value"),
+            Output("edge-method", "value"),
+        ],
+        [
+            Input("llm-provider-selector", "value"),
+            Input("openai-api-key-input", "value"),
+            Input("llm-base-url-input", "value"),
+            Input("llm-model-input", "value"),
+        ],
+    )
 
     # Fetch Local Models
     @app.callback(
