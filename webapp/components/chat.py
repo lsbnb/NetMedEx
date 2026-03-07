@@ -16,26 +16,18 @@ from webapp.utils import display
 def create_message_component(role: str, content: str, sources: list[str] | None = None):
     """
     Create a chat message component.
-
-    Args:
-        role: "user" or "assistant"
-        content: Message text
-        sources: List of PMIDs (for assistant messages)
-
-    Returns:
-        Dash component for the message
     """
     is_user = role == "user"
-
-    message_class = "chat-message-user" if is_user else "chat-message-assistant"
+    base_message_class = "chat-message-user" if is_user else "chat-message-assistant"
+    wrapper_class = (
+        f"{base_message_class} chat-message-user-anchor mb-3"
+        if is_user
+        else f"{base_message_class} mb-3"
+    )
     icon = "👤" if is_user else "🤖"
 
-    # Build message content
-    # Auto-linkify PMIDs in the text
     import re
 
-    # Pattern to match PMID:123456, PMID 123456, etc.
-    # Group 1 is the prefix (PMID:), Group 2 is the ID
     pmid_pattern = r"(?i)(pmid[:\s]?\s*)(\d+)"
 
     def replace_pmid(match):
@@ -44,27 +36,34 @@ def create_message_component(role: str, content: str, sources: list[str] | None 
         url = f"https://www.ncbi.nlm.nih.gov/research/pubtator3/publication/{pmid}"
         return f"[{prefix}{pmid}]({url})"
 
-    # Apply replacement to content
     linked_content = re.sub(pmid_pattern, replace_pmid, content)
 
-    content_children = [
-        html.Span(icon, className="message-icon me-2"),
-        dcc.Markdown(
-            linked_content,
-            className="message-text d-inline-block",
-            dangerously_allow_html=True,
-            link_target="_blank",  # Ensure markdown links open in new tab
-        ),
-    ]
+    markdown_component = dcc.Markdown(
+        linked_content,
+        className="message-text m-0",
+        dangerously_allow_html=True,
+        link_target="_blank",
+    )
 
-    if not is_user:
+    if is_user:
+        # User Layout: Bubble on left, Icon on right
+        bubble_content = html.Div(markdown_component, className=f"{base_message_class}-content")
+        message_parts = [
+            bubble_content,
+            html.Span(icon, className="message-icon ms-2 fs-4 text-secondary"),
+        ]
+    else:
+        # Assistant Layout: Icon on left, Bubble and Sources in a column on right
+        content_children = [markdown_component]
+
         content_children.append(
             dcc.Clipboard(
                 content=content,
                 title="Copy",
                 style={
-                    "display": "inline-block",
+                    "display": "block",
                     "float": "right",
+                    "marginTop": "2px",
                     "marginLeft": "10px",
                     "color": "#6c757d",
                     "cursor": "pointer",
@@ -72,33 +71,34 @@ def create_message_component(role: str, content: str, sources: list[str] | None 
             )
         )
 
-    message_parts = [
-        html.Div(
-            content_children,
-            className=f"{message_class}-content clearfix",  # Add clearfix for float
+        bubble_content = html.Div(
+            content_children, className=f"{base_message_class}-content clearfix"
         )
-    ]
+        assistant_column = [bubble_content]
 
-    # Add sources for assistant messages
-    if not is_user and sources:
-        source_badges = [
-            html.A(
-                dbc.Badge(f"PMID:{pmid}", color="info", className="me-1", pill=True),
-                # Link to PubTator 3 to show entity highlighting
-                href=f"https://www.ncbi.nlm.nih.gov/research/pubtator3/publication/{pmid}",
-                target="_blank",
-                style={"textDecoration": "none"},
+        if sources:
+            source_badges = [
+                html.A(
+                    dbc.Badge(f"PMID:{pmid}", color="info", className="me-1", pill=True),
+                    href=f"https://www.ncbi.nlm.nih.gov/research/pubtator3/publication/{pmid}",
+                    target="_blank",
+                    style={"textDecoration": "none"},
+                )
+                for pmid in sources
+            ]
+            assistant_column.append(
+                html.Div(
+                    [html.Small("📎 Sources: ", className="text-muted")] + source_badges,
+                    className="message-sources mt-2",
+                )
             )
-            for pmid in sources
+
+        message_parts = [
+            html.Span(icon, className="message-icon me-2 fs-3 text-primary"),
+            html.Div(assistant_column, style={"maxWidth": "90%", "width": "100%"}),
         ]
-        message_parts.append(
-            html.Div(
-                [html.Small("📎 Sources: ", className="text-muted")] + source_badges,
-                className="message-sources mt-2",
-            )
-        )
 
-    return html.Div(message_parts, className=f"{message_class} mb-3")
+    return html.Div(message_parts, className=wrapper_class)
 
 
 # Chat messages container
@@ -113,7 +113,7 @@ chat_messages = html.Div(
         "padding": "15px",
         "backgroundColor": "#f8f9fa",
         "display": "flex",
-        "flexDirection": "column-reverse",  # Newest messages at the top
+        "flexDirection": "column",  # Oldest messages at the top, newest at bottom
     },
     children=[
         html.Div(
@@ -261,7 +261,7 @@ chat_modal = dbc.Modal(
             style={
                 "minHeight": "400px",
                 "display": "flex",
-                "flexDirection": "column-reverse",
+                "flexDirection": "column",
                 "overflowY": "auto",
             },
         ),

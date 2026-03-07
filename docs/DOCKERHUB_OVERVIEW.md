@@ -5,6 +5,10 @@ NetMedEx is an AI-powered knowledge discovery platform that transforms biomedica
 ## 🌟 Core Philosophy
 In NetMedEx, the **Co-Mention Network** serves as a structural "scaffolding" for discovery. The **AI-driven Semantic Layer** breathes life into these connections by extracting evidence, identifying relationship types, and answering complex natural language queries.
 
+### What's New in 0.9.2
+- **Universal Translation**: Ask queries in Japanese, Chinese, or Korean. NetMedEx automatically translates them to English before searching PubTator3.
+- **ChatGPT-Style Chat**: Intuitive right-aligned user messages and left-aligned AI responses with auto-scrolling.
+- **Improved Graph Stability**: Flawless panel clearing and dynamic UI statistics calculation when transitioning between different query networks.
 ## 🚀 Quick Start
 Launch the interactive dashboard using Docker and access it at `localhost:8050`:
 

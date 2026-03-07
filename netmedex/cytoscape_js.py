@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import logging
 import re
+import time
 from typing import Literal
 
 import networkx as nx
@@ -33,82 +34,100 @@ def save_as_json(G: nx.Graph, savepath: str):
 
 
 def create_cytoscape_js(G: nx.Graph, style: Literal["dash", "cyjs"] = "cyjs"):
-    # TODO: Check whether to set id for edges
-    with_id = False
+    """
+    Creates Cytoscape JSON with paranoid ID validation and REAL-TIME PRINTING for debugging.
+    """
+    start_t = time.time()
+    print(f"\n>>> [CYJS-DEBUG] Starting export at {start_t}")
 
-    # Filter out invalid nodes (missing required fields) to prevent export errors
-    valid_nodes = []
-    valid_node_ids = set()  # Track valid node IDs for edge filtering
-    invalid_count = 0
-    for node in G.nodes(data=True):
-        node_id, node_attr = node
-        if "_id" not in node_attr:
-            logger.warning(f"Skipping node {node_id} during export: missing '_id' field")
-            invalid_count += 1
+    # Track exactly which node IDs (UUIDs) we are sending to the browser
+    final_node_uuids = set()
+    valid_nodes_for_export = []
+
+    skipped_missing_id = 0
+    skipped_duplicates = 0
+
+    # 1. Collect and Validate Nodes
+    for node_id, node_attr in G.nodes(data=True):
+        uuid = node_attr.get("_id")
+        if not uuid:
+            print(f">>> [CYJS-DEBUG] Skipping node {node_id}: No '_id' attribute.")
+            skipped_missing_id += 1
             continue
+
         if "pmids" not in node_attr:
-            logger.warning(f"Skipping node {node_id} during export: missing 'pmids' field")
-            invalid_count += 1
+            print(f">>> [CYJS-DEBUG] Skipping node {node_id}: No 'pmids' attribute.")
+            skipped_missing_id += 1
             continue
-        valid_nodes.append(node)
-        valid_node_ids.add(node_id)  # Track this node as valid
 
-    if invalid_count > 0:
-        logger.info(f"Filtered out {invalid_count} invalid nodes during graph export")
+        if uuid in final_node_uuids:
+            skipped_duplicates += 1
+            continue
 
-    # Filter edges to only include those connecting valid nodes
-    valid_edges = []
-    filtered_edge_count = 0
-    for edge in G.edges(data=True):
-        node_id_1, node_id_2, edge_attr = edge
-        # Only include edge if both nodes are valid
-        if node_id_1 in valid_node_ids and node_id_2 in valid_node_ids:
-            valid_edges.append(edge)
-        else:
-            filtered_edge_count += 1
+        final_node_uuids.add(uuid)
+        valid_nodes_for_export.append((node_id, node_attr))
 
-    if filtered_edge_count > 0:
-        logger.info(f"Filtered out {filtered_edge_count} edges connected to invalid nodes")
+    # 2. Collect and Filter Edges
+    valid_edges_for_export = []
+    skipped_missing_source = 0
+    skipped_missing_target = 0
+
+    for u, v, edge_attr in G.edges(data=True):
+        source_uuid = G.nodes[u].get("_id")
+        target_uuid = G.nodes[v].get("_id")
+
+        if not source_uuid or source_uuid not in final_node_uuids:
+            skipped_missing_source += 1
+            # print(f">>> [CYJS-DEBUG] Edge filtered: source {source_uuid} not in nodes.")
+            continue
+
+        if not target_uuid or target_uuid not in final_node_uuids:
+            skipped_missing_target += 1
+            # print(f">>> [CYJS-DEBUG] Edge filtered: target {target_uuid} not in nodes.")
+            continue
+
+        valid_edges_for_export.append((u, v, edge_attr))
+
+    print(
+        f">>> [CYJS-DEBUG] Summary: Nodes({len(valid_nodes_for_export)}), Edges({len(valid_edges_for_export)}). "
+        f"Filtered: MissingID={skipped_missing_id}, Dups={skipped_duplicates}, "
+        f"NoSource={skipped_missing_source}, NoTarget={skipped_missing_target}"
+    )
 
     # Calculate node degrees for sizing
-    node_degrees = {}
-    for node_id, _ in valid_nodes:
-        node_degrees[node_id] = G.degree(node_id)
-
+    node_degrees = {node_id: G.degree(node_id) for node_id, _ in valid_nodes_for_export}
     if node_degrees:
-        min_degree = min(node_degrees.values())
-        max_degree = max(node_degrees.values())
+        min_deg = min(node_degrees.values())
+        max_deg = max(node_degrees.values())
     else:
-        min_degree = 0
-        max_degree = 0
+        min_deg = max_deg = 0
 
-    # Linear interpolation parameters
-    MIN_SIZE = 25
-    MAX_SIZE = 65
+    MIN_SIZE, MAX_SIZE = 25, 65
 
-    def get_node_size(node_id):
-        degree = node_degrees.get(node_id, 0)
-        if max_degree == min_degree:
+    def get_node_size(nid):
+        deg = node_degrees.get(nid, 0)
+        if max_deg == min_deg:
             return MIN_SIZE
+        norm = (deg - min_deg) / (max_deg - min_deg)
+        return MIN_SIZE + (norm * (MAX_SIZE - MIN_SIZE))
 
-        # Linear mapping
-        normalized = (degree - min_degree) / (max_degree - min_degree)
-        return MIN_SIZE + (normalized * (MAX_SIZE - MIN_SIZE))
-
-    nodes = [
+    # Convert to Cytoscape format
+    nodes_json = [
         create_cytoscape_node(
-            node, size=get_node_size(node[0]), degree=node_degrees.get(node[0], 0)
+            (nid, attr), size=get_node_size(nid), degree=node_degrees.get(nid, 0)
         )
-        for node in valid_nodes
+        for nid, attr in valid_nodes_for_export
     ]
-    edges = [create_cytoscape_edge(edge, G, with_id) for edge in valid_edges]
+    edges_json = [
+        create_cytoscape_edge((u, v, attr), G, with_id=True)
+        for u, v, attr in valid_edges_for_export
+    ]
+
+    print(f">>> [CYJS-DEBUG] Export finished in {time.time() - start_t:.4f}s")
 
     if style == "cyjs":
-        elements = nodes + edges
-    elif style == "dash":
-        elements = {"elements": {"nodes": nodes, "edges": edges}}
-
-    return elements
+        return nodes_json + edges_json
+    return {"elements": {"nodes": nodes_json, "edges": edges_json}}
 
 
 def create_cytoscape_node(node, size=25, degree=0):
@@ -116,7 +135,6 @@ def create_cytoscape_node(node, size=25, degree=0):
         return SHAPE_JS_MAP.get(shape, shape).lower()
 
     node_id, node_attr = node
-
     node_info = {
         "data": {
             "id": node_attr["_id"],
@@ -129,25 +147,22 @@ def create_cytoscape_node(node, size=25, degree=0):
             "num_articles": node_attr["num_articles"],
             "standardized_id": node_attr["mesh"],
             "node_type": node_attr["type"],
-            "node_type": node_attr["type"],
             "node_size": size,
             "degree": degree,
         },
         "position": {
-            "x": round(node_attr["pos"][0], 3),
-            "y": round(node_attr["pos"][1], 3),
+            "x": round(node_attr["pos"][0], 3) if "pos" in node_attr else 0,
+            "y": round(node_attr["pos"][1], 3) if "pos" in node_attr else 0,
         },
     }
 
-    # Community nodes
-    if COMMUNITY_NODE_PATTERN.search(node_attr["_id"]):
+    if COMMUNITY_NODE_PATTERN.search(str(node_id)):
         node_info["classes"] = "top-center"
 
     return node_info
 
 
 def _convert_sets_to_lists(obj):
-    """Recursively convert all sets to lists for JSON serialization"""
     if isinstance(obj, set):
         return list(obj)
     elif isinstance(obj, dict):
@@ -158,64 +173,37 @@ def _convert_sets_to_lists(obj):
 
 
 def _extract_primary_relation(edge_attr: dict) -> tuple[str, float]:
-    """Extract the primary relation type from edge attributes.
-
-    For semantic edges, finds the relation with highest confidence.
-    For co-occurrence edges, returns "co-mention".
-
-    Args:
-        edge_attr: Edge attributes dictionary
-
-    Returns:
-        Tuple of (relation_type, confidence)
-    """
-    # Check if this is a semantic edge with confidence scores
     if "confidences" in edge_attr and edge_attr["confidences"]:
-        # Find relation with highest average confidence across all PMIDs
         relation_confidences = {}
-
         for pmid_confidences in edge_attr["confidences"].values():
             for relation, confidence in pmid_confidences.items():
                 if relation not in relation_confidences:
                     relation_confidences[relation] = []
                 relation_confidences[relation].append(confidence)
-
-        # Calculate average confidence for each relation type
         avg_confidences = {
             rel: sum(confs) / len(confs) for rel, confs in relation_confidences.items()
         }
-
         if avg_confidences:
             primary_relation = max(avg_confidences, key=avg_confidences.get)
             return normalize_relation_type(primary_relation), avg_confidences[primary_relation]
 
-    # Check the relations dict for co-occurrence or BioREx edges
     if "relations" in edge_attr and edge_attr["relations"]:
-        # Get all unique relation types from all PMIDs
         all_relations = set()
-        for pmid, relations in edge_attr["relations"].items():
-            if isinstance(relations, set):
-                all_relations.update(relations)
-            elif isinstance(relations, list):
+        for relations in edge_attr["relations"].values():
+            if isinstance(relations, (set, list)):
                 all_relations.update(relations)
             elif isinstance(relations, str):
                 all_relations.add(relations)
 
-        # Remove "co-mention" if other specific relations exist
         if len(all_relations) > 1 and "co-mention" in all_relations:
             all_relations.remove("co-mention")
 
         if all_relations:
-            # Prefer more specific relations over generic ones
-            if len(all_relations) == 1:
-                return normalize_relation_type(list(all_relations)[0]), 0.5
-            else:
-                # Multiple relation types - pick the first non-co-mention one
-                for rel in all_relations:
-                    if rel != "co-mention":
-                        return normalize_relation_type(rel), 0.5
+            for rel in all_relations:
+                if rel != "co-mention":
+                    return normalize_relation_type(rel), 0.5
+            return normalize_relation_type(list(all_relations)[0]), 0.5
 
-    # Default to generic interaction
     return "interacts_with", 0.0
 
 
@@ -226,64 +214,46 @@ def create_cytoscape_edge(edge, G, with_id=True):
     else:
         pmids = list(edge_attr["relations"].keys())
 
-    # Extract primary relation type and confidence
     primary_relation, confidence = _extract_primary_relation(edge_attr)
-
-    # Determine if this is a directional relationship
     is_directional = is_directional_relation(primary_relation)
-
-    # Get display-friendly relation name
     relation_display = get_relation_display_name(primary_relation)
 
-    # Create edge label with specific relation type
-    # Determine source and target based on directionality info
     source_id = G.nodes[node_id_1]["_id"]
     target_id = G.nodes[node_id_2]["_id"]
     source_name = G.nodes[node_id_1]["name"]
     target_name = G.nodes[node_id_2]["name"]
 
     if "source_id" in edge_attr:
-        # If we have explicit source tracking, respect it
-        real_source_id = edge_attr["source_id"]
-        # If the stored node1 is actually the source
-        if real_source_id == node_id_1:
-            pass  # Already correct
-        else:
-            # Swap source/target for display
+        if edge_attr["source_id"] != node_id_1:
             source_id, target_id = target_id, source_id
             source_name, target_name = target_name, source_name
 
-    edge_label = relation_display
-
-    # Convert relations dict (may contain sets) to JSON-serializable format
     relations = _convert_sets_to_lists(edge_attr.get("relations", {}))
 
     edge_data = {
         "source": source_id,
         "target": target_id,
-        "label": edge_label,
-        "weight": round(max(float(edge_attr["edge_width"]), 1), 1),
+        "label": relation_display,
+        "weight": round(max(float(edge_attr["edge_width"] or 0), 1), 1),
         "pmids": pmids,
         "edge_type": edge_attr["type"],
         "relations": relations,
-        # NEW: Semantic relationship metadata
         "primary_relation": primary_relation,
         "relation_display": relation_display,
         "relation_confidence": round(confidence, 2) if confidence > 0 else None,
         "source_name": source_name,
         "target_name": target_name,
-        # Include semantic metadata for display in edge info panel
         "confidences": edge_attr.get("confidences", None),
         "evidences": edge_attr.get("evidences", None),
     }
 
-    # Only adding is_directional if True prevents selector matching on False
     if is_directional:
         edge_data["is_directional"] = True
 
     edge_info = {"data": edge_data}
-
     if with_id:
+        # NOTE: Using a timestamp-based suffix here could force a redraw, but let's stick to stable IDs first
+        # and just ensure they are valid.
         edge_info["data"]["id"] = edge_attr["_id"]
 
     return edge_info
