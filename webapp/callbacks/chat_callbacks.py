@@ -497,3 +497,26 @@ def callbacks(app):
             return not is_open, current_content
 
         return is_open, current_content
+
+    # Clientside callback to scroll sidebar to bottom when switching to Chat tab
+    app.clientside_callback(
+        """
+        function(active_tab) {
+            if (active_tab === 'chat') {
+                setTimeout(function() {
+                    const sidebar = document.querySelector('.sidebar');
+                    if (sidebar) {
+                        sidebar.scrollTo({
+                            top: sidebar.scrollHeight,
+                            behavior: 'smooth'
+                        });
+                    }
+                }, 300);
+            }
+            return window.dash_clientside.no_update;
+        }
+        """,
+        Output("chat-status", "style"),  # Using a dummy output
+        Input("sidebar-panel-toggle", "active_tab"),
+        prevent_initial_call=False,
+    )

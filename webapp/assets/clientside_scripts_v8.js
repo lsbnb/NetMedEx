@@ -339,7 +339,7 @@ function setupChatAutoScroll() {
   // Create an observer to scroll when new messages are added
   const observer = new MutationObserver(() => {
     chatContainer.scrollTo({
-      top: chatContainer.scrollHeight,
+      top: 0,
       behavior: 'smooth'
     });
   });

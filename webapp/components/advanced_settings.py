@@ -37,7 +37,7 @@ max_edges = html.Div(
             0,
             1000,
             50,
-            value=200,
+            value=0,
             marks=None,
             id="max-edges",
             tooltip={"placement": "bottom", "always_visible": False},
