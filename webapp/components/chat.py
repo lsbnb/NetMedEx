@@ -13,7 +13,9 @@ from dash import dcc, html
 from webapp.utils import display
 
 
-def create_message_component(role: str, content: str, sources: list[str] | None = None):
+def create_message_component(
+    role: str, content: str, sources: list[str] | None = None, msg_id: str | None = None
+):
     """
     Create a chat message component.
     """
@@ -27,6 +29,7 @@ def create_message_component(role: str, content: str, sources: list[str] | None 
     icon = "👤" if is_user else "🤖"
 
     import re
+    import uuid
 
     pmid_pattern = r"(?i)(pmid[:\s]?\s*)(\d+)"
 
@@ -54,19 +57,87 @@ def create_message_component(role: str, content: str, sources: list[str] | None 
         ]
     else:
         # Assistant Layout: Icon on left, Bubble and Sources in a column on right
+
+        # Check for suggested questions (usually at the end)
+        import re
+
+        # Robust parsing for suggested questions using multiple headers
+        suggestion_headers = [
+            "Suggested Questions:",
+            "Suggested Questions：",
+            "建議問題:",
+            "建議問題：",
+            "建議的問題:",
+            "建議的問題：",
+            "Suggested Follow-up:",
+            "Suggested Follow-up：",
+            "提案された質問:",
+            "提案された質問：",
+        ]
+        main_content = content
+        suggestions = []
+
+        found_header = None
+        # Check for bolded versions first to avoid leaving trailing **
+        for header in suggestion_headers:
+            bolded = f"**{header}**"
+            if bolded in content:
+                found_header = bolded
+                break
+
+        # Then check for unbolded if not found
+        if not found_header:
+            for header in suggestion_headers:
+                if header in content:
+                    found_header = header
+                    break
+        if found_header:
+            parts = content.split(found_header)
+            main_content = parts[0].strip()
+            # Try to extract bullet points or numbered lists
+            raw_suggestions = parts[1].strip().split("\n")
+            for line in raw_suggestions:
+                line = line.strip()
+                # Remove common list prefixes like -, *, 1., •, etc.
+                clean_line = re.sub(r"^(\d+\.|\*|-|•)\s*", "", line).strip()
+                # Remove trailing punctuations often added by LLMs
+                clean_line = re.sub(r"[.?!]$", "", clean_line).strip()
+                if clean_line and len(clean_line) > 3:
+                    suggestions.append(clean_line)
+
+        # Clean up main_content from any trailing markdown artifacts left behind
+        # (e.g., if the model put ** on a new line before the header)
+        main_content = re.sub(r"[\s\*_#]+$", "", main_content).strip()
+
+        # Replace main content markdown with potentially split text
+        markdown_component = dcc.Markdown(
+            re.sub(pmid_pattern, replace_pmid, main_content),
+            className="message-text m-0",
+            dangerously_allow_html=True,
+            link_target="_blank",
+        )
+
         content_children = [markdown_component]
 
+        # Add declarative copy button (pure JS approach for reliability)
+        copy_id_index = msg_id if msg_id else f"copy-{uuid.uuid4().hex[:8]}"
         content_children.append(
-            dcc.Clipboard(
-                content=content,
-                title="Copy",
+            html.Div(
+                [
+                    # Hidden text for copying (prevents attribute length issues)
+                    html.Pre(content, id=f"copy-text-{copy_id_index}", style={"display": "none"}),
+                    html.I(
+                        className="bi bi-files text-secondary p-2 js-copy-btn",
+                        **{"data-copy-id": copy_id_index},
+                        style={"fontSize": "1.1rem", "cursor": "pointer"},
+                        title="Copy Response",
+                    ),
+                ],
                 style={
-                    "display": "block",
-                    "float": "right",
-                    "marginTop": "2px",
-                    "marginLeft": "10px",
-                    "color": "#6c757d",
-                    "cursor": "pointer",
+                    "textAlign": "right",
+                    "marginTop": "8px",
+                    "borderTop": "1px solid #eee",
+                    "paddingTop": "10px",
                 },
             )
         )
@@ -75,6 +146,35 @@ def create_message_component(role: str, content: str, sources: list[str] | None 
             content_children, className=f"{base_message_class}-content clearfix"
         )
         assistant_column = [bubble_content]
+
+        # Render suggestions as buttons
+        if suggestions:
+            suggestion_btns = [
+                dbc.Button(
+                    q,
+                    id={
+                        "type": "suggested-question",
+                        "index": f"suggest-{uuid.uuid4().hex[:8]}-{i}",
+                    },
+                    color="primary",
+                    outline=True,
+                    size="sm",
+                    className="me-2 mb-2 text-start",
+                    style={"borderRadius": "15px", "fontSize": "0.85rem"},
+                )
+                for i, q in enumerate(suggestions[:3])  # Limit to 3
+            ]
+            assistant_column.append(
+                html.Div(
+                    [
+                        html.Div(
+                            "💡 Suggested Follow-up:", className="text-muted small mb-2 mt-2"
+                        ),
+                        html.Div(suggestion_btns, className="d-flex flex-wrap"),
+                    ],
+                    className="message-suggestions",
+                )
+            )
 
         if sources:
             source_badges = [
@@ -247,6 +347,15 @@ selection_info = html.Div(
             size="sm",
             className="w-100 mt-1",
         ),
+        dbc.Button(
+            [html.I(className="bi bi-download me-2"), "Download History"],
+            id="download-chat-btn",
+            color="info",
+            outline=True,
+            size="sm",
+            className="w-100 mt-1",
+        ),
+        dcc.Download(id="download-chat-history"),
         html.Div(id="chat-status", className="mt-2 small"),
     ],
     className="param",
@@ -320,10 +429,10 @@ chat_panel = html.Div(
         html.Hr(),
         chat_input,
         chat_modal,
-        # Hidden storage for chat state
         dcc.Store(id="chat-session-active", data=False),
         dcc.Store(id="chat-history-store", data=[]),
         dcc.Store(id="selected-edges-data", data=None),
+        dcc.Store(id="suggested-question-store", data=None),
     ],
     id="chat-panel-container",
     style=display.none,
