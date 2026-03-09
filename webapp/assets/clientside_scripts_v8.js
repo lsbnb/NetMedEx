@@ -317,10 +317,6 @@ window.dash_clientside.clientside = {
     }
 
     return [
-      {
-        display: display,
-        zIndex: get_z_index(display),
-      },
       elements,
     ]
   },
@@ -336,112 +332,177 @@ window.dash_clientside.clientside = {
     }
     return [false, "co-occurrence"];
   }
-}
+};
 
-/**
- * Chat component enhancements
- */
-function setupChatAutoScroll() {
-  const chatContainer = document.getElementById('chat-messages');
-  if (!chatContainer) return;
+// --- GLOBAL PURE-JS INTERACTION HANDLERS ---
+// This handles the copy feature using event delegation on the document.
+// This is 100% stable regardless of Dash re-renders or component replacement.
+document.addEventListener("click", function (e) {
+  const btn = e.target.closest(".js-copy-btn");
+  if (!btn) return;
 
-  // Scroll to bottom initially
-  chatContainer.scrollTop = chatContainer.scrollHeight;
+  const copyId = btn.getAttribute("data-copy-id");
+  const textEl = document.getElementById("copy-text-" + copyId);
+  if (!textEl) return;
 
-  // Create an observer to scroll when new messages are added
-  const observer = new MutationObserver(() => {
-    const anchors = chatContainer.querySelectorAll('.chat-message-user-anchor');
-    if (anchors.length > 0) {
-      const latestAnchor = anchors[anchors.length - 1];
-      latestAnchor.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    } else {
-      // Fallback for welcome message / system messages
-      chatContainer.scrollTop = chatContainer.scrollHeight;
+  const textToCopy = textEl.textContent;
+
+  // Copy to clipboard
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(textToCopy);
+  } else {
+    const textArea = document.createElement("textarea");
+    textArea.value = textToCopy;
+    textArea.style.position = "fixed";
+    textArea.style.left = "-9999px";
+    textArea.style.top = "-9999px";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    document.execCommand("copy");
+    textArea.remove();
+  }
+
+  // Visual Feedback (Toggle class)
+  btn.classList.remove("bi-files", "text-secondary");
+  btn.classList.add("bi-check2", "text-success");
+
+  setTimeout(function () {
+    // Revert back if the button is still in the DOM
+    if (btn && btn.classList.contains("bi-check2")) {
+      btn.classList.remove("bi-check2", "text-success");
+      btn.classList.add("bi-files", "text-secondary");
     }
-  });
-
-  observer.observe(chatContainer, { childList: true });
-}
-
-// Re-run setup when the chat panel might have been rendered/updated
-document.addEventListener('DOMContentLoaded', () => {
-  setupChatAutoScroll();
-
-  // Also watch for the container being added/shown
-  const bodyObserver = new MutationObserver((mutationsList) => {
-    if (document.getElementById('chat-messages')) {
-      setupChatAutoScroll();
-    }
-  });
-  bodyObserver.observe(document.body, { childList: true, subtree: true });
+  }, 2000);
 });
 
-// fCose is now loaded via dash_cytoscape load_extra_layouts() in Python.
-// No manual registration needed here.
-
-/**
- * Draggable Legend
- * Allows the user to freely reposition the #legend-container overlay
- * by clicking and dragging it anywhere inside the graph area.
- */
-function makeLegendDraggable() {
-  const legend = document.getElementById('legend-container');
-  if (!legend || legend._dragInitialised) return;
-  legend._dragInitialised = true;
-
-  let dragging = false;
-  let offsetX = 0;
-  let offsetY = 0;
-
-  legend.addEventListener('mousedown', function (e) {
-    dragging = true;
-    legend.style.cursor = 'grabbing';
-
-    // Switch from bottom/right to explicit top/left on first drag
-    const rect = legend.getBoundingClientRect();
-    const parentRect = legend.offsetParent
-      ? legend.offsetParent.getBoundingClientRect()
-      : { top: 0, left: 0 };
-
-    legend.style.bottom = 'auto';
-    legend.style.right = 'auto';
-    legend.style.top = (rect.top - parentRect.top) + 'px';
-    legend.style.left = (rect.left - parentRect.left) + 'px';
-
-    offsetX = e.clientX - rect.left;
-    offsetY = e.clientY - rect.top;
-
-    e.preventDefault();
-  });
-
-  document.addEventListener('mousemove', function (e) {
-    if (!dragging) return;
-    const parentRect = legend.offsetParent
-      ? legend.offsetParent.getBoundingClientRect()
-      : { top: 0, left: 0 };
-
-    legend.style.left = (e.clientX - parentRect.left - offsetX) + 'px';
-    legend.style.top = (e.clientY - parentRect.top - offsetY) + 'px';
-  });
-
-  document.addEventListener('mouseup', function () {
-    if (!dragging) return;
-    dragging = false;
-    legend.style.cursor = 'grab';
-  });
-}
-
-// Initialise as soon as the legend appears in the DOM
-document.addEventListener('DOMContentLoaded', makeLegendDraggable);
-
+// Global initialization and cleanup
 (function () {
-  const legendObserver = new MutationObserver(() => {
-    if (document.getElementById('legend-container')) {
-      makeLegendDraggable();
+  /**
+   * Chat component enhancements
+   */
+  function setupChatAutoScroll() {
+    const chatContainer = document.getElementById('chat-messages');
+    if (!chatContainer || chatContainer._scrollInitialized) return;
+    chatContainer._scrollInitialized = true;
+
+    // Scroll to bottom initially
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+
+    // Create an observer to scroll when new messages are added
+    const observer = new MutationObserver(() => {
+      const anchors = chatContainer.querySelectorAll('.chat-message-user-anchor');
+      if (anchors.length > 0) {
+        const latestAnchor = anchors[anchors.length - 1];
+        latestAnchor.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      } else {
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }
+    });
+
+    observer.observe(chatContainer, { childList: true });
+  }
+
+  /**
+   * Draggable Legend
+   */
+  function makeLegendDraggable() {
+    const legend = document.getElementById('legend-container');
+    if (!legend || legend._dragInitialised) return;
+    legend._dragInitialised = true;
+
+    let dragging = false;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    legend.addEventListener('mousedown', function (e) {
+      dragging = true;
+      legend.style.cursor = 'grabbing';
+
+      const rect = legend.getBoundingClientRect();
+      const parentRect = legend.offsetParent
+        ? legend.offsetParent.getBoundingClientRect()
+        : { top: 0, left: 0 };
+
+      legend.style.bottom = 'auto';
+      legend.style.right = 'auto';
+      legend.style.top = (rect.top - parentRect.top) + 'px';
+      legend.style.left = (rect.left - parentRect.left) + 'px';
+
+      offsetX = e.clientX - rect.left;
+      offsetY = e.clientY - rect.top;
+
+      e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', function (e) {
+      if (!dragging) return;
+      const parentRect = legend.offsetParent
+        ? legend.offsetParent.getBoundingClientRect()
+        : { top: 0, left: 0 };
+
+      legend.style.left = (e.clientX - parentRect.left - offsetX) + 'px';
+      legend.style.top = (e.clientY - parentRect.top - offsetY) + 'px';
+    });
+
+    document.addEventListener('mouseup', function () {
+      if (!dragging) return;
+      dragging = false;
+      legend.style.cursor = 'grab';
+    });
+  }
+
+  /**
+   * Handle outside clicks to close advanced settings
+   */
+  function handleAdvancedSettingsOutsideClick(event) {
+    const aBtn = document.getElementById('advanced-settings-btn');
+    const aCollapse = document.getElementById('advanced-settings-collapse');
+
+    // Check if the panel is currently displayed
+    if (aBtn && aCollapse && aCollapse.style.display !== 'none') {
+      // If click is outside both button and panel
+      if (!aCollapse.contains(event.target) && !aBtn.contains(event.target)) {
+        // Find close button or click main button to toggle
+        const closeBtn = document.getElementById('close-advanced-settings-btn');
+        if (closeBtn) {
+          closeBtn.click();
+        } else {
+          aBtn.click();
+        }
+      }
     }
+  }
+
+  function init() {
+    setupChatAutoScroll();
+    makeLegendDraggable();
+  }
+
+  // Bind outside click listener once
+  if (!window._netmedex_outside_click_bound) {
+    document.addEventListener('click', handleAdvancedSettingsOutsideClick);
+    window._netmedex_outside_click_bound = true;
+  }
+
+  // Initial call
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  // Throttled observer for dynamic elements
+  let timeout = null;
+  const bodyObserver = new MutationObserver(() => {
+    if (timeout) return;
+    timeout = setTimeout(() => {
+      init();
+      timeout = null;
+    }, 500); // Only check twice per second max
   });
-  legendObserver.observe(document.body, { childList: true, subtree: true });
+  bodyObserver.observe(document.body, { childList: true, subtree: true });
 })();

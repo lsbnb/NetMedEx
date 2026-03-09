@@ -14,7 +14,7 @@ This module handles:
 import logging
 
 import dash
-from dash import Input, Output, State, html, no_update
+from dash import ALL, Input, Output, State, dcc, html, no_update
 
 logger = logging.getLogger(__name__)
 
@@ -294,26 +294,30 @@ def callbacks(app):
 
             from webapp.components.chat import create_message_component
 
-            welcome_msg = create_message_component("assistant", welcome_text)
+            welcome_msg = create_message_component("assistant", welcome_text, msg_id="welcome-msg")
             messages = [welcome_msg]
 
             # Auto-generate summary
             try:
                 logger.info("Auto-generating summary for selection...")
                 summary_prompt = (
-                    "Please provide a concise summary of the selected research based on the abstracts and graph structure. "
-                    "Highlight the main relationships and key findings. "
-                    f"(🚨 IMPORTANT: Respond in {session_language or 'English'}. "
-                    f"Even if no relevant information is found, your refusal must be in {session_language or 'English'}. "
-                    "If the user subsequently asks questions in a different language, switch to that language.)"
+                    "Please provide a structured summary of the selected research based on the abstracts and graph structure. "
+                    "You MUST follow the standard output structure: \n"
+                    "1. **Evidence-Based Answer**: Key findings directly from the papers.\n"
+                    "2. **Hypotheses / Speculative Inference**: Potential mechanisms or implications suggested by the patterns.\n"
+                    "3. **Suggested Questions:**: 3 brief follow-up questions.\n"
+                    f"All content must be in {session_language or 'English'}. Translate the section headers accordingly."
                 )
                 response = chat_session.send_message(summary_prompt)
 
                 if response["success"]:
+                    # The last message in history is the summary
+                    summary_obj = chat_session.history[-1]
                     summary_msg = create_message_component(
                         "assistant",
                         f"📊 **Analysis of Selection:**\n\n{response['message']}",
                         response.get("sources", []),
+                        msg_id=summary_obj.msg_id,
                     )
                     messages.append(summary_msg)
             except Exception as e:
@@ -349,10 +353,11 @@ def callbacks(app):
         [
             Output("chat-messages", "children", allow_duplicate=True),
             Output("modal-chat-content", "children", allow_duplicate=True),
-            Output("chat-input-box", "value"),
-            Output("modal-chat-input", "value"),
+            Output("chat-input-box", "value", allow_duplicate=True),
+            Output("modal-chat-input", "value", allow_duplicate=True),
             Output("chat-processing-status", "children"),
             Output("modal-chat-processing-status", "children"),
+            Output("suggested-question-store", "data", allow_duplicate=True),
         ],
         [
             Input("chat-send-btn", "n_clicks"),
@@ -362,10 +367,14 @@ def callbacks(app):
             State("chat-input-box", "value"),
             State("modal-chat-input", "value"),
             State("chat-messages", "children"),
+            State("suggested-question-store", "data"),
+            State("session-language", "data"),
         ],
         prevent_initial_call=True,
     )
-    def send_message(n1, n2, main_input, modal_input, current_messages):
+    def send_message(
+        n1, n2, main_input, modal_input, current_messages, suggested_input, session_language
+    ):
         """
         Process user message and get AI response.
         """
@@ -377,39 +386,60 @@ def callbacks(app):
 
         button_id = ctx.triggered[0]["prop_id"].split(".")[0]
 
-        # Determine user input source
-        user_input = main_input if button_id == "chat-send-btn" else modal_input
+        # Determine user input source: Priority to suggested_input if it exists
+        if suggested_input:
+            user_input = suggested_input
+        else:
+            user_input = main_input if button_id == "chat-send-btn" else modal_input
 
         if not user_input or not user_input.strip():
             raise dash.exceptions.PreventUpdate
 
         if not chat_session:
-            # Return same state, clear inputs (though likely already clear or invalid)
-            return current_messages, current_messages, "", "", "", ""
+            # Return same state, clear inputs and store
+            return current_messages, current_messages, "", "", "", "", None
 
         try:
             from webapp.components.chat import create_message_component
+            from webapp.callbacks.pipeline import detect_query_language
+
+            # Dynamically detect language of the new message
+            msg_lang = detect_query_language(user_input)
+            # If a specific non-English language is detected, use it. Otherwise, fallback to the session language
+            # unless the input is clearly long enough to be an English question.
+            effective_language = msg_lang if msg_lang != "English" else session_language
 
             # Get AI response
-            response = chat_session.send_message(user_input)
+            response = chat_session.send_message(user_input, session_language=effective_language)
 
-            user_msg = create_message_component("user", user_input)
+            # Retrieve message objects from history to get stable msg_ids
+            user_msg_obj = chat_session.history[-2]
+            assistant_msg_obj = chat_session.history[-1]
+
+            user_msg = create_message_component(
+                "user", user_msg_obj.content, msg_id=user_msg_obj.msg_id
+            )
             messages = list(current_messages) if current_messages else []
             messages.append(user_msg)
 
             if response["success"]:
                 ai_msg = create_message_component(
-                    "assistant", response["message"], response.get("sources", [])
+                    "assistant",
+                    assistant_msg_obj.content,
+                    assistant_msg_obj.sources,
+                    msg_id=assistant_msg_obj.msg_id,
                 )
             else:
                 ai_msg = create_message_component(
-                    "assistant", f"❌ {response.get('message', 'Error processing request')}"
+                    "assistant",
+                    f"❌ {response.get('message', 'Error processing request')}",
+                    msg_id=assistant_msg_obj.msg_id,
                 )
 
             messages.append(ai_msg)
 
-            # Update both views and clear both inputs
-            return messages, messages, "", "", "", ""
+            # Update both views and clear both inputs + the suggestion store
+            return messages, messages, "", "", "", "", None
 
         except Exception as e:
             logger.error(f"Error sending message: {e}")
@@ -466,6 +496,135 @@ def callbacks(app):
         )
 
     @app.callback(
+        Output("download-chat-history", "data"),
+        Input("download-chat-btn", "n_clicks"),
+        prevent_initial_call=True,
+    )
+    def download_chat_history(n_clicks):
+        global chat_session
+        if not n_clicks or not chat_session or not chat_session.history:
+            raise dash.exceptions.PreventUpdate
+
+        import datetime
+
+        def hyperlink_pmids(text):
+            return re.sub(
+                r"PMID:?\s*(\d+)",
+                r'<a href="https://pubmed.ncbi.nlm.nih.gov/\1/" target="_blank">PMID: \1</a>',
+                text,
+                flags=re.IGNORECASE,
+            )
+
+        def md_to_html(text):
+            # Better markdown to HTML conversion for bubbles
+            # 1. Bolding
+            text = text.replace("**", "<strong>").replace("**", "</strong>")
+            # 2. Section Headers (Clearer hierarchy)
+            headers = [
+                ("Evidence-Based Answer", "證據基礎的回答"),
+                ("Hypotheses / Speculative Inference", "假設 / 推理性推論"),
+                ("Suggested Questions", "建議的問題"),
+            ]
+            for eng, chi in headers:
+                pattern = f"(?i)^({re.escape(eng)}|{re.escape(chi)})[:：]?"
+                replacement = (
+                    f"<div style='font-weight:700; color:#007bff; margin-top:12px; "
+                    f"border-bottom:1px solid rgba(0,0,0,0.1); padding-bottom:3px; "
+                    f"margin-bottom:8px; font-size:16px;'>\\1</div>"
+                )
+                text = re.sub(pattern, replacement, text, flags=re.MULTILINE)
+
+            # 3. Newlines to breaks
+            text = text.replace("\n", "<br>")
+            # 4. Bullet points
+            text = re.sub(r"^-\s+(.+)$", r"<li>\1</li>", text, flags=re.MULTILINE)
+            text = text.replace("</li><br><li>", "</li><li>")
+            if "<li>" in text:
+                text = re.sub(
+                    r"(<li>.*</li>)",
+                    r"<ul style='margin:8px 0; padding-left:20px;'>\1</ul>",
+                    text,
+                    flags=re.DOTALL,
+                )
+
+            return hyperlink_pmids(text)
+
+        html_content = [
+            "<!DOCTYPE html>",
+            "<html>",
+            "<head>",
+            "<meta charset='utf-8'>",
+            "<meta name='viewport' content='width=device-width, initial-scale=1'>",
+            "<title>NetMedEx Chat History</title>",
+            "<style>",
+            "body { background-color: #f0f2f5; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 40px 20px; color: #1c1e21; }",
+            ".chat-container { max-width: 850px; margin: 0 auto; background: white; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.1); overflow: hidden; display: flex; flex-direction: column; }",
+            ".header { background: #ffffff; border-bottom: 2px solid #f0f2f5; padding: 25px 35px; }",
+            ".header h1 { margin: 0; font-size: 22px; color: #007bff; font-weight: 700; }",
+            ".timestamp { font-size: 13px; color: #8d949e; margin-top: 6px; }",
+            ".chat-box { padding: 35px; display: flex; flex-direction: column; gap: 28px; }",
+            ".message-row { display: flex; width: 100%; }",
+            ".user-row { justify-content: flex-end; }",
+            ".assistant-row { justify-content: flex-start; }",
+            ".bubble { max-width: 85%; padding: 14px 20px; border-radius: 20px; position: relative; font-size: 15px; line-height: 1.6; }",
+            ".user-bubble { background-color: #0084ff; color: white; border-bottom-right-radius: 4px; box-shadow: 0 2px 4px rgba(0,132,255,0.2); }",
+            ".assistant-bubble { background-color: #f0f2f5; color: #050505; border-bottom-left-radius: 4px; border: 1px solid #e4e6eb; }",
+            ".role-label { font-size: 11px; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; opacity: 0.8; letter-spacing: 0.8px; }",
+            ".user-row .role-label { text-align: right; margin-right: 8px; color: #0084ff; }",
+            ".assistant-row .role-label { text-align: left; margin-left: 8px; color: #65676b; }",
+            ".sources-box { margin-top: 15px; padding-top: 10px; border-top: 1px dotted #ccc; font-size: 12px; color: #65676b; }",
+            "a { color: #0084ff; text-decoration: none; font-weight: 500; }",
+            "a:hover { text-decoration: underline; }",
+            ".user-bubble a { color: #fff; text-decoration: underline; }",
+            "ul { margin: 10px 0; padding-left: 25px; }",
+            "li { margin-bottom: 6px; }",
+            "strong { font-weight: 600; }",
+            "</style>",
+            "</head>",
+            "<body>",
+            "<div class='chat-container'>",
+            "<div class='header'>",
+            "<h1>NetMedEx Professional Chat Transcript</h1>",
+            f"<div class='timestamp'>Generated on {datetime.datetime.now().strftime('%B %d, %Y - %H:%M:%S')}</div>",
+            "</div>",
+            "<div class='chat-box'>",
+        ]
+
+        for msg in chat_session.history:
+            if msg.role == "system":
+                continue
+
+            is_user = msg.role == "user"
+            row_class = "user-row" if is_user else "assistant-row"
+            bubble_class = "user-bubble" if is_user else "assistant-bubble"
+            role_text = "User" if is_user else "NetMedEx Assistant"
+
+            content_html = md_to_html(msg.content)
+
+            html_content.append(f"<div class='message-row {row_class}'>")
+            html_content.append("<div>")
+            html_content.append(f"<div class='role-label'>{role_text}</div>")
+            html_content.append(f"<div class='bubble {bubble_class}'>")
+            html_content.append(f"<div class='content'>{content_html}</div>")
+
+            if hasattr(msg, "sources") and msg.sources:
+                source_links = [
+                    f'<a href="https://pubmed.ncbi.nlm.nih.gov/{p}/" target="_blank">PMID:{p}</a>'
+                    for p in msg.sources
+                ]
+                html_content.append(
+                    f"<div class='sources-box'><strong>References:</strong> {', '.join(source_links)}</div>"
+                )
+
+            html_content.append("</div></div></div>")
+
+        html_content.append("</div></div></body></html>")
+
+        final_html = "\n".join(html_content)
+        filename = f"NetMedEx_Transcript_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.html"
+        return dcc.send_string(final_html, filename)
+
+    @app.callback(
         [
             Output("chat-modal", "is_open"),
             Output("modal-chat-content", "children"),
@@ -495,7 +654,42 @@ def callbacks(app):
 
         return is_open, current_content
 
-    # Clientside callback to scroll sidebar to bottom when switching to Chat tab
+    # Callback to handle suggested question clicks via Store to keep inputs blank
+    @app.callback(
+        [
+            Output("suggested-question-store", "data"),
+            Output("chat-send-btn", "n_clicks", allow_duplicate=True),
+            Output("modal-chat-send-btn", "n_clicks", allow_duplicate=True),
+        ],
+        [Input({"type": "suggested-question", "index": ALL}, "n_clicks")],
+        [
+            State({"type": "suggested-question", "index": ALL}, "children"),
+            State("chat-send-btn", "n_clicks"),
+            State("modal-chat-send-btn", "n_clicks"),
+        ],
+        prevent_initial_call=True,
+    )
+    def handle_suggested_question(
+        n_clicks_list, question_texts, current_send_clicks, current_modal_send_clicks
+    ):
+        ctx = dash.callback_context
+        if not ctx.triggered or not any(n_clicks_list):
+            raise dash.exceptions.PreventUpdate
+
+        clicked_idx = -1
+        for i, n in enumerate(n_clicks_list):
+            if n:
+                clicked_idx = i
+
+        if clicked_idx != -1:
+            question = question_texts[clicked_idx]
+            send_n = (current_send_clicks or 0) + 1
+            modal_n = (current_modal_send_clicks or 0) + 1
+            return question, send_n, modal_n
+
+        raise dash.exceptions.PreventUpdate
+
+    # Clientside callback to scroll sidebar...
     app.clientside_callback(
         """
         function(active_tab) {

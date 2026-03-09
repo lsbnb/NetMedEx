@@ -8,7 +8,7 @@ cd /home/cylin/NetMedEx
 export MPLBACKEND=Agg
 export JUPYTER_PLATFORM_DIRS=0
 export PYTHONPATH=$PYTHONPATH:.
-export HOST=127.0.0.1
+export HOST=0.0.0.0
 
 # Start the webapp
 python webapp/app.py
