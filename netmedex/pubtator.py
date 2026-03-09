@@ -404,7 +404,7 @@ def check_if_need_retry(res: ClientResponse):
     wait=wait_exponential(multiplier=1, min=5, max=10),
     reraise=True,
     retry=retry_if_exception(
-        lambda e: isinstance(e, (RetryableError, aiohttp.ServerDisconnectedError))
+        lambda e: isinstance(e, (RetryableError, aiohttp.ClientError, asyncio.TimeoutError))
     ),
 )
 async def request_pubtator3(
@@ -420,8 +420,8 @@ async def request_pubtator3(
                 result = await res.json()
             else:
                 result = await res.text()
-        except Exception:
-            msg = f"Failed to parse response: {res.url}"
+        except Exception as e:
+            msg = f"Failed to parse response: {res.url} Error: {e}"
             logger.warning(f"{msg} Retrying.")
             raise RetryableError(msg)
 

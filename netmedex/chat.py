@@ -24,10 +24,15 @@ class ChatMessage:
     content: str
     sources: list[str] | None = None  # PMIDs for assistant messages
     timestamp: str | None = None
+    msg_id: str | None = None
 
     def __post_init__(self):
+        import uuid
+
         if self.timestamp is None:
             self.timestamp = datetime.now().isoformat()
+        if self.msg_id is None:
+            self.msg_id = f"msg-{uuid.uuid4().hex[:8]}"
 
     def to_dict(self) -> dict[str, Any]:
         """Convert to dictionary for JSON serialization"""
@@ -36,6 +41,7 @@ class ChatMessage:
             "content": self.content,
             "sources": self.sources,
             "timestamp": self.timestamp,
+            "msg_id": self.msg_id,
         }
 
 
@@ -78,59 +84,56 @@ Your task is to answer questions by SYNTHESIZING these two sources strictly with
    - When a claim is directly supported by the context, clearly indicate that it is **evidence-based**.
 
 2. **Hypotheses and Inference (When Direct Evidence Is Limited):**
-   - If the context does not contain a clear or complete answer, you may **carefully infer or hypothesize** based on patterns and relationships described in the context.
-   - These inferences must be **grounded in the provided papers only**. Do NOT use any knowledge or assumptions from outside the context.
-   - Clearly separate such content into a section titled **"Hypotheses / Speculative Inference"** and explicitly state that these are **not directly confirmed by the papers**.
-   - Use cautious language (e.g., "may", "might", "could", "is consistent with", "suggests") and avoid making definitive claims about unproven relationships.
+   - If the context does not contain a clear or complete answer, you MUST still attempt to identify relevant patterns or related information in the context.
+   - Propose hypotheses grounded in the provided papers, clearly labeling them as such. Only a complete lack of any relevant information justifies a refusal.
 
 3. **When No Meaningful Inference Is Possible:**
-    - If the context is empty or the papers are clearly unrelated and do not allow a reasonable hypothesis about the query, clearly state that the provided journals/literature do not contain information to answer the question.
-    - **CRITICAL**: This refusal must be written in the EXACT SAME language as the query. (e.g., if asked in Chinese, reply in Chinese: "所提供的文獻不包含與此查詢相關的信息。")
+    - If the context is empty or unrelated, clearly state that the provided literature does not contain information to answer the question.
+    - **STRICT LANGUAGE MATCHING**:
+      - If query is English -> "The provided literature does not contain information relevant to this query."
+      - If query is Chinese -> "所提供的文獻不包含與此查詢相關的信息。"
 
 4. **Strict Citation:**
-   - Every **evidence-based** claim must be cited with its PMID from the context.
-   - For **hypotheses / speculative inference**, cite the PMIDs providing the underlying observations, but make it clear that the final conclusion is not directly stated in any paper.
-   - **Format:** place citations at the end of the sentence using brackets.
-     - Single citation: `[PMID:12345678]`
-     - Multiple citations: `[PMID:12345678, PMID:87654321]`
-   - You can find PMIDs in both the Graph Structure (e.g., "[type [PMID:123]]") and Abstracts.
+   - Cite PMIDs for all claims. For inferences, cite the papers containing the underlying observations.
 
 5. **No External Knowledge:**
-   - Do NOT use your internal training data, external databases, or general domain knowledge beyond what is explicitly stated in the provided context.
-   - All reasoning and hypotheses must be derivable from the information in the provided papers.
+   - Use ONLY the provided context.
 
 ---
 
 ### OUTPUT STRUCTURE
 
-Structure your answer into the following sections when applicable.
-**IMPORTANT: Translate the section headers below into the same language as your response.**
+You MUST structure every response into the following sections. **Translate the section headers into the same language as your response.**
 
-**Evidence-Based Answer** *(translate this header)*
+**Evidence-Based Answer**
 - Summarize what the papers directly state that is relevant to the query, with PMID citations.
 
-**Hypotheses / Speculative Inference** *(translate this header; optional — only when direct evidence is incomplete)*
-- Propose possible mechanisms or explanations that are consistent with but not proven by the papers, with supporting PMIDs for the underlying observations.
+**Hypotheses / Speculative Inference** (Include even if short)
+- Based on the patterns in the papers, propose possible mechanisms or explanations that are consistent with but not directly proven by the text.
+- **CRITICAL:** You MUST explicitly cite the specific PMIDs that form the basis of your hypothesis (e.g., "This hypothesis is supported by findings in PMID: 123456").
 
-If there is absolutely no relevant information or reasonable inference, return only the fixed sentence described in Rule 3 (also translated into the response language).
+**Suggested Questions:** (Mandatory)
+- Provide 3 brief follow-up questions for the user to explore further.
+- Format these as a bulleted list.
 
 ---
 
 ### 🚨 LANGUAGE RULE (CRITICAL) 🚨
 
-- **Default language: English.** Unless the user's question is in another language, always respond in English.
-- **STRICT LANGUAGE MATCHING**: If the user asks in any non-English language (e.g., Traditional Chinese, Japanese, French), respond in that exact language.
-- **This applies to ALL parts of the response**, including section headers, explanations, and the fixed "no information" sentence. Only PMID labels and established gene/chemical names may remain in English.
-- Do NOT default to Chinese unless the user explicitly asks in Chinese.
+- **STRICT LANGUAGE MATCHING**: Respond in the EXACT SAME language as the user's query (e.g., Traditional Chinese if asked in Traditional Chinese).
+- This applies to ALL parts of the response, including section headers and suggested questions.
 """
 
-    def send_message(self, user_message: str, top_k: int = 5) -> dict[str, Any]:
+    def send_message(
+        self, user_message: str, top_k: int = 5, session_language: str = "English"
+    ) -> dict[str, Any]:
         """
         Process user message and generate AI response.
 
         Args:
             user_message: User's question
             top_k: Number of abstracts to retrieve for context
+            session_language: Language to enforce for the response
 
         Returns:
             Dictionary with response and metadata
@@ -171,7 +174,9 @@ If there is absolutely no relevant information or reasonable inference, return o
                     logger.info("No relevant nodes found in graph query")
 
             # Build conversation history for LLM
-            messages = self._build_messages(user_message, text_context, graph_context)
+            messages = self._build_messages(
+                user_message, text_context, graph_context, session_language
+            )
 
             # Call LLM
             logger.info(f"Sending chat request with {len(pmids_used)} context documents")
@@ -218,7 +223,11 @@ If there is absolutely no relevant information or reasonable inference, return o
             }
 
     def _build_messages(
-        self, user_message: str, text_context: str, graph_context: str = ""
+        self,
+        user_message: str,
+        text_context: str,
+        graph_context: str = "",
+        session_language: str = "English",
     ) -> list[dict]:
         """Build message list for LLM API call"""
         messages = [{"role": "system", "content": self.system_prompt}]
@@ -241,7 +250,8 @@ Context 2: Scientific Abstracts (Details & Evidence):
 
 User question: {user_message}
 
-Please answer based on the context provided above."""
+Please answer based on the context provided above. 
+CRITICAL RULE: You MUST respond entirely in {session_language}."""
 
         messages.append({"role": "user", "content": current_message})
 
