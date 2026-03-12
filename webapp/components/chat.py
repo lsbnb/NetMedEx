@@ -159,7 +159,7 @@ def create_message_component(
                     color="primary",
                     outline=True,
                     size="sm",
-                    className="me-2 mb-2 text-start",
+                    className="me-2 mb-2 text-start suggested-question-btn",
                     style={"borderRadius": "15px", "fontSize": "0.85rem"},
                 )
                 for i, q in enumerate(suggestions[:3])  # Limit to 3

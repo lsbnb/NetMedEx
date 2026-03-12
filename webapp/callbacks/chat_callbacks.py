@@ -139,6 +139,7 @@ def callbacks(app):
                 "sidebar-panel-toggle", "active_tab", allow_duplicate=True
             ),  # Switch to Chat panel automatically
             Output("analyze-selection-btn", "children", allow_duplicate=True),
+            Output("suggested-question-store", "data", allow_duplicate=True),
         ],
         Input("analyze-selection-btn", "n_clicks"),
         [
@@ -177,6 +178,7 @@ def callbacks(app):
                     no_update,
                     no_update,
                     reset_btn,
+                    no_update,
                 )
 
             # Load the graph to get abstracts
@@ -190,6 +192,7 @@ def callbacks(app):
                     no_update,
                     no_update,
                     reset_btn,
+                    no_update,
                 )
 
             with open(savepath["graph"], "rb") as f:
@@ -252,6 +255,7 @@ def callbacks(app):
                     no_update,
                     no_update,
                     reset_btn,
+                    no_update,
                 )
 
             # Initialize RAG system
@@ -334,6 +338,7 @@ def callbacks(app):
                 messages,
                 "chat",  # Set toggle to chat
                 reset_btn,
+                None,  # ⚠️ FIX: Clear suggested-question-store on re-initialization
             )
 
         except Exception as e:
@@ -347,6 +352,7 @@ def callbacks(app):
                 no_update,
                 no_update,
                 reset_btn,
+                no_update,
             )
 
     @app.callback(
@@ -358,22 +364,32 @@ def callbacks(app):
             Output("chat-processing-status", "children"),
             Output("modal-chat-processing-status", "children"),
             Output("suggested-question-store", "data", allow_duplicate=True),
+            Output("chat-send-btn", "disabled", allow_duplicate=True),
+            Output("modal-chat-send-btn", "disabled", allow_duplicate=True),
         ],
         [
             Input("chat-send-btn", "n_clicks"),
             Input("modal-chat-send-btn", "n_clicks"),
+            Input("suggested-question-store", "data"),
         ],
         [
             State("chat-input-box", "value"),
             State("modal-chat-input", "value"),
             State("chat-messages", "children"),
-            State("suggested-question-store", "data"),
             State("session-language", "data"),
+            State("chat-send-btn", "disabled"),
         ],
         prevent_initial_call=True,
     )
     def send_message(
-        n1, n2, main_input, modal_input, current_messages, suggested_input, session_language
+        n1,
+        n2,
+        suggested_input,
+        main_input,
+        modal_input,
+        current_messages,
+        session_language,
+        is_disabled,
     ):
         """
         Process user message and get AI response.
@@ -384,20 +400,24 @@ def callbacks(app):
         if not ctx.triggered:
             raise dash.exceptions.PreventUpdate
 
-        button_id = ctx.triggered[0]["prop_id"].split(".")[0]
+        trigger_id = ctx.triggered[0]["prop_id"].split(".")[0]
 
-        # Determine user input source: Priority to suggested_input if it exists
-        if suggested_input:
+        # Prevent double trigger if buttons are already disabled
+        if is_disabled and trigger_id in ["chat-send-btn", "modal-chat-send-btn"]:
+            raise dash.exceptions.PreventUpdate
+
+        # Determine user input source
+        if trigger_id == "suggested-question-store":
             user_input = suggested_input
         else:
-            user_input = main_input if button_id == "chat-send-btn" else modal_input
+            user_input = main_input if trigger_id == "chat-send-btn" else modal_input
 
         if not user_input or not user_input.strip():
             raise dash.exceptions.PreventUpdate
 
         if not chat_session:
-            # Return same state, clear inputs and store
-            return current_messages, current_messages, "", "", "", "", None
+            # Return same state, clear inputs and store, but unlock buttons
+            return current_messages, current_messages, "", "", "", "", None, False, False
 
         try:
             from webapp.components.chat import create_message_component
@@ -412,17 +432,20 @@ def callbacks(app):
             # Get AI response
             response = chat_session.send_message(user_input, session_language=effective_language)
 
-            # Retrieve message objects from history to get stable msg_ids
-            user_msg_obj = chat_session.history[-2]
-            assistant_msg_obj = chat_session.history[-1]
-
-            user_msg = create_message_component(
-                "user", user_msg_obj.content, msg_id=user_msg_obj.msg_id
-            )
-            messages = list(current_messages) if current_messages else []
-            messages.append(user_msg)
-
             if response["success"]:
+                # Use returned message objects for stability instead of relying on history indexing
+                user_msg_obj = response.get("user_msg")
+                assistant_msg_obj = response.get("assistant_msg")
+
+                # Fallback if objects are missing
+                if not user_msg_obj:
+                    user_msg_obj = chat_session.history[-2]
+                if not assistant_msg_obj:
+                    assistant_msg_obj = chat_session.history[-1]
+
+                user_msg = create_message_component(
+                    "user", user_msg_obj.content, msg_id=user_msg_obj.msg_id
+                )
                 ai_msg = create_message_component(
                     "assistant",
                     assistant_msg_obj.content,
@@ -430,16 +453,21 @@ def callbacks(app):
                     msg_id=assistant_msg_obj.msg_id,
                 )
             else:
+                # Handle error case
+                assistant_msg_obj = chat_session.history[-1]
+                user_msg = create_message_component("user", user_input)
                 ai_msg = create_message_component(
                     "assistant",
                     f"❌ {response.get('message', 'Error processing request')}",
-                    msg_id=assistant_msg_obj.msg_id,
+                    msg_id=assistant_msg_obj.msg_id if assistant_msg_obj else None,
                 )
 
+            messages = list(current_messages) if current_messages else []
+            messages.append(user_msg)
             messages.append(ai_msg)
 
-            # Update both views and clear both inputs + the suggestion store
-            return messages, messages, "", "", "", "", None
+            # Update both views and clear both inputs + the suggestion store + unlock buttons
+            return messages, messages, "", "", "", "", None, False, False
 
         except Exception as e:
             logger.error(f"Error sending message: {e}")
@@ -448,7 +476,7 @@ def callbacks(app):
             error_msg = create_message_component("assistant", f"❌ Error: {str(e)}")
             messages = list(current_messages) if current_messages else []
             messages.append(error_msg)
-            return messages, messages, "", "", "", ""
+            return messages, messages, "", "", "", "", None, False, False
 
     @app.callback(
         [
@@ -658,34 +686,46 @@ def callbacks(app):
     @app.callback(
         [
             Output("suggested-question-store", "data"),
-            Output("chat-send-btn", "n_clicks", allow_duplicate=True),
-            Output("modal-chat-send-btn", "n_clicks", allow_duplicate=True),
         ],
         [Input({"type": "suggested-question", "index": ALL}, "n_clicks")],
         [
             State({"type": "suggested-question", "index": ALL}, "children"),
-            State("chat-send-btn", "n_clicks"),
-            State("modal-chat-send-btn", "n_clicks"),
         ],
         prevent_initial_call=True,
     )
-    def handle_suggested_question(
-        n_clicks_list, question_texts, current_send_clicks, current_modal_send_clicks
-    ):
+    def handle_suggested_question(n_clicks_list, question_texts):
         ctx = dash.callback_context
         if not ctx.triggered or not any(n_clicks_list):
             raise dash.exceptions.PreventUpdate
 
         clicked_idx = -1
         for i, n in enumerate(n_clicks_list):
-            if n:
-                clicked_idx = i
+            # Check for the specific index that was clicked
+            if ctx.triggered[0]["prop_id"].startswith(f'{{"index":"{i}"') or n:
+                # More reliable to use triggered prop_id if possible, but n_clicks works
+                pass
 
-        if clicked_idx != -1:
-            question = question_texts[clicked_idx]
-            send_n = (current_send_clicks or 0) + 1
-            modal_n = (current_modal_send_clicks or 0) + 1
-            return question, send_n, modal_n
+        # Simpler: find the one with the highest clicks or just the first non-zero
+        # since only one is clicked at a time
+        trigger_info = ctx.triggered[0]
+        import json
+
+        try:
+            prop_id = trigger_info["prop_id"]
+            # Format is {"index":"...","type":"suggested-question"}.n_clicks
+            json_str = prop_id.split(".n_clicks")[0]
+            triggered_index = json.loads(json_str)["index"]
+
+            # Find the match in question_texts
+            # Note: question_texts order should match n_clicks_list order
+            # but we need the correct text. Let's find it by index.
+            # dash.callback_context.inputs_list[0] has the IDs
+            inputs = ctx.inputs_list[0]
+            for i, input_item in enumerate(inputs):
+                if input_item["id"]["index"] == triggered_index:
+                    return [question_texts[i]]
+        except Exception as e:
+            logger.error(f"Error identifying clicked question: {e}")
 
         raise dash.exceptions.PreventUpdate
 

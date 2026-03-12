@@ -376,6 +376,13 @@ document.addEventListener("click", function (e) {
   }, 2000);
 });
 
+// Chat Send Button Processing Feedback
+document.addEventListener("click", function (e) {
+  const btn = e.target.closest(".suggested-question-btn, #chat-send-btn, #modal-chat-send-btn");
+  if (!btn) return;
+  btn.classList.add("processing");
+});
+
 // Global initialization and cleanup
 (function () {
   /**
@@ -464,6 +471,16 @@ document.addEventListener("click", function (e) {
 
     // Check if the panel is currently displayed
     if (aBtn && aCollapse && aCollapse.style.display !== 'none') {
+      // ⚠️ FIX: Ignore clicks on portal elements (like dropdown menus)
+      // Standard Dash/React-Select menus and other overlays are often appended to body
+      const isPortalClick = event.target.closest('.Select-menu-outer') ||
+        event.target.closest('.VirtualizedSelect__menu') ||
+        event.target.closest('.rc-slider-tooltip') ||
+        event.target.closest('.Select-option') ||
+        event.target.closest('.VirtualizedSelectOption');
+
+      if (isPortalClick) return;
+
       // If click is outside both button and panel
       if (!aCollapse.contains(event.target) && !aBtn.contains(event.target)) {
         // Find close button or click main button to toggle

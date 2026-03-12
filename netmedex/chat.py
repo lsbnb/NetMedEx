@@ -202,8 +202,8 @@ You MUST structure every response into the following sections. **Translate the s
             )
             self.history.append(assistant_msg)
 
-            # Trim history if needed
-            self._trim_history()
+            # Skip physical trimming to keep full history for downloads
+            # self._trim_history()
 
             logger.info("Chat response generated successfully")
 
@@ -212,6 +212,8 @@ You MUST structure every response into the following sections. **Translate the s
                 "message": assistant_content,
                 "sources": final_sources,
                 "context_count": len(pmids_used),
+                "user_msg": user_msg,
+                "assistant_msg": assistant_msg,
             }
 
         except Exception as e:
@@ -233,9 +235,23 @@ You MUST structure every response into the following sections. **Translate the s
         messages = [{"role": "system", "content": self.system_prompt}]
 
         # Add recent conversation history (excluding current message)
-        for msg in self.history[-(self.max_history - 1) :]:
-            if msg.role != "system":  # Don't include system messages
-                messages.append({"role": msg.role, "content": msg.content})
+        # Prevents accidental consecutive repetition
+        # Use a sliding window for context (max_history - 1)
+        last_added_content = None
+        history_window = (
+            self.history[-(self.max_history - 1) :] if self.max_history > 0 else self.history
+        )
+
+        for msg in history_window:
+            if msg.role == "system":
+                continue
+            if msg.content == user_message:
+                continue
+            if msg.content == last_added_content:
+                continue
+
+            messages.append({"role": msg.role, "content": msg.content})
+            last_added_content = msg.content
 
         # Add current message with Hybrid RAG context
         current_message = f"""Context 1: Knowledge Graph Structure (Logic & Paths):

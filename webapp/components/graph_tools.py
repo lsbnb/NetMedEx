@@ -24,7 +24,7 @@ graph_layout = html.Div(
                 {"label": "Concentric", "value": "concentric"},
                 {"label": "Breadthfirst", "value": "breadthfirst"},
             ],
-            value="cose",
+            value="fcose",
             style={"width": "200px"},
         ),
         # Node Repulsion slider (visible only when fcose is selected)

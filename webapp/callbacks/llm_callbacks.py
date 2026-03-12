@@ -35,13 +35,14 @@ def callbacks(app):
             base_url = os.getenv("OPENAI_BASE_URL", "")
             model = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 
-            # Determine provider based on base_url or api_key
-            if api_key == "local-dummy-key" or (
-                base_url and base_url != "https://api.openai.com/v1"
-            ):
+            # Determine provider
+            is_local = (api_key == "local-dummy-key") or (
+                base_url and "api.openai.com" not in base_url
+            )
+
+            if is_local:
                 provider = "local"
-                # For local, also populate the model input
-                # Setup options with the current model
+                # For local, populate local inputs, use defaults for openai side
                 options = [{"label": model, "value": model}] if model else []
                 return provider, "", "gpt-4o-mini", base_url, model, options
             else:
