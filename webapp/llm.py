@@ -114,14 +114,39 @@ class LLMClient:
                 max_tokens=60,
             )
             boolean_query = response.choices[0].message.content.strip()
-            # Cleanup widely used markdown code blocks if any
-            if boolean_query.startswith("```") and boolean_query.endswith("```"):
-                boolean_query = boolean_query.strip("`")
-                if boolean_query.startswith("markdown"):
-                    boolean_query = boolean_query[8:]
-                boolean_query = boolean_query.strip()
 
-            return boolean_query
+            # Robust cleanup for local LLMs
+            # 1. Strip markdown code blocks
+            import re
+
+            code_match = re.search(r"```(?:[a-zA-Z]*)?\s*([\s\S]*?)\s*```", boolean_query)
+            if code_match:
+                boolean_query = code_match.group(1).strip()
+
+            # 2. Remove common text labels and bolding
+            boolean_query = re.sub(
+                r"^(Query|Boolean|Result|Output):\s*", "", boolean_query, flags=re.IGNORECASE
+            )
+            boolean_query = boolean_query.replace("**", "").replace("__", "").strip()
+
+            # 3. If it looks like a sentence (contains 'The query is'), try to extract the quoted part
+            if len(boolean_query.split()) > 10 and '"' in boolean_query:
+                quoted = re.findall(r'"([^"]*)"', boolean_query)
+                # If we find strings with boolean operators, take the most likely candidate
+                for q in quoted:
+                    if any(op in q.upper() for op in ("AND", "OR", "NOT", "@")):
+                        boolean_query = q
+                        break
+
+            # 4. Final check: if it starts and ends with quotes, strip them
+            if (
+                boolean_query.startswith('"')
+                and boolean_query.endswith('"')
+                and boolean_query.count('"') == 2
+            ):
+                boolean_query = boolean_query[1:-1]
+
+            return boolean_query.strip()
         except OpenAIError as e:
             logger.error(f"LLM Error during query translation: {e}")
             return natural_query
