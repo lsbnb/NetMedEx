@@ -53,9 +53,22 @@ def main():
             Output("post-js-scripts", "children"),
             Input("post-js-scripts", "id"),
         )
+        # Provide user-friendly access instructions
+        host = os.getenv("HOST", "127.0.0.1")
+        port = os.getenv("PORT", "8050")
+
+        print("\n" + "=" * 50)
+        print("NetMedEx Web Application Starting...")
+        if host == "0.0.0.0":
+            print(f"Listening on all interfaces (0.0.0.0:{port})")
+            print(f"👉 To access the app, open: http://localhost:{port}")
+        else:
+            print(f"👉 Access the app at: http://{host}:{port}")
+        print("=" * 50 + "\n")
+
         app.run(
-            host=os.getenv("HOST", "127.0.0.1"),
-            port=os.getenv("PORT", "8050"),
+            host=host,
+            port=port,
             debug=(os.getenv("FLASK_DEBUG") == "true"),
         )
     finally:
