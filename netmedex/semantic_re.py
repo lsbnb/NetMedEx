@@ -322,15 +322,24 @@ class SemanticRelationshipExtractor:
         Handles various response formats and performs validation.
         """
         # Clean up markdown code blocks if present
-        cleaned_response = response.strip()
-        if cleaned_response.startswith("```"):
-            # Remove markdown code fence
-            lines = cleaned_response.split("\n")
-            # Remove first line (```json or ```) and last line (```)
-            cleaned_response = "\n".join(lines[1:-1])
+        text = response.strip()
+        if "```" in text:
+            # Try to extract content between code fences
+            import re
+
+            json_match = re.search(r"```(?:json)?\s*([\s\S]*?)\s*```", text)
+            if json_match:
+                text = json_match.group(1).strip()
+
+        # If no code fences, or regex failed, try to find the first [ and last ]
+        if not (text.startswith("[") and text.endswith("]")):
+            start = text.find("[")
+            end = text.rfind("]")
+            if start != -1 and end != -1 and end > start:
+                text = text[start : end + 1]
 
         try:
-            relationships = json.loads(cleaned_response)
+            relationships = json.loads(text)
 
             if not isinstance(relationships, list):
                 logger.warning(f"PMID {pmid}: LLM returned non-list response")
@@ -365,7 +374,7 @@ class SemanticRelationshipExtractor:
 
         except json.JSONDecodeError as e:
             logger.error(f"PMID {pmid}: Failed to parse LLM response as JSON: {e}")
-            logger.debug(f"Response was: {response[:200]}")
+            logger.debug(f"Raw response: {response}")
             return []
 
     def convert_to_pubtator_edges(self, semantic_edges: list[SemanticEdge]) -> list[PubTatorEdge]:
