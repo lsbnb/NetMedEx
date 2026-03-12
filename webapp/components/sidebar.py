@@ -542,7 +542,13 @@ sidebar_toggle = dbc.Tabs(
 header_row = html.Div(
     [
         sidebar_toggle,
-        advanced_settings,
+        html.Div(
+            [
+                html.Small("v0.9.4", className="text-muted", style={"fontSize": "0.7rem"}),
+                advanced_settings,
+            ],
+            className="d-flex flex-column align-items-center ms-auto",
+        ),
     ],
     className="d-flex align-items-center mb-3",
 )
