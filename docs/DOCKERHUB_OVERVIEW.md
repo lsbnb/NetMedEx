@@ -16,7 +16,7 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v0.9.5
+## 🆕 What's New in V0.9.5
 - **🔍 Semantic Diagnostics**: Gain full transparency with real-time metrics on parsing success, recall expansion, and edge filtering.
 - **🤖 Robust Local AI**: Optimized regex-based parsing for stable results when using local models (Llama 3, Mistral) via Ollama.
 - **🎨 Streamlined UI**: A cleaner Advanced Settings experience, standardizing on ChromaDB for zero-config vector storage.
