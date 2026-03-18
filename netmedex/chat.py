@@ -163,7 +163,9 @@ Rely ONLY on the provided context (PMIDs provided below).
             return "mrna"
         return None
 
-    def _build_entity_listing_response(self, entity_kind: str, user_message: str) -> dict[str, Any] | None:
+    def _build_entity_listing_response(
+        self, entity_kind: str, user_message: str
+    ) -> dict[str, Any] | None:
         if not self.graph_retriever or not getattr(self.graph_retriever, "graph", None):
             return None
 
@@ -263,7 +265,9 @@ Rely ONLY on the provided context (PMIDs provided below).
 
             entity_listing_kind = self._detect_entity_listing_request(user_message)
             if entity_listing_kind:
-                listing_response = self._build_entity_listing_response(entity_listing_kind, user_message)
+                listing_response = self._build_entity_listing_response(
+                    entity_listing_kind, user_message
+                )
                 if listing_response:
                     assistant_msg = ChatMessage(
                         role="assistant",
@@ -289,18 +293,27 @@ Rely ONLY on the provided context (PMIDs provided below).
 
             if total_docs <= 20:
                 logger.info(f"Small document set ({total_docs}), using all abstracts for context")
-                pmids_used = list(self.rag.documents.keys())
-                
+                # Sort by weight (citation-normalized) descending
+                sorted_docs = sorted(
+                    self.rag.documents.values(), key=lambda d: d.weight, reverse=True
+                )
+                pmids_used = [doc.pmid for doc in sorted_docs]
+
                 # Truncate if local to save context window
                 if is_local and total_docs > 8:
-                    logger.info("Local model detected: capping context to 8 abstracts to preserve window")
+                    logger.info(
+                        "Local model detected: capping context to 8 highest-priority abstracts"
+                    )
                     pmids_used = pmids_used[:8]
-                
+
                 context_parts = []
-                for pmid in pmids_used:
+                for rank, pmid in enumerate(pmids_used, start=1):
                     doc = self.rag.documents[pmid]
+                    priority_label = f"Priority #{rank} (Impact Score: {doc.weight:.2f})"
                     context_parts.append(
-                        f"PMID: {pmid}\nTitle: {doc.title}\nAbstract: {doc.abstract}\n"
+                        f"PMID: {pmid} [{priority_label}]\n"
+                        f"Title: {doc.title}\n"
+                        f"Abstract: {doc.abstract}\n"
                     )
                 text_context = "\n---\n\n".join(context_parts)
             else:
@@ -404,7 +417,7 @@ Rely ONLY on the provided context (PMIDs provided below).
         """Build message list for LLM API call"""
         provider = getattr(self.llm, "provider", "openai")
         is_local = provider == "local"
-        
+
         system_content = self.local_system_prompt if is_local else self.system_prompt
         messages = [{"role": "system", "content": system_content}]
 
@@ -445,7 +458,9 @@ CRITICAL RULE: You MUST respond entirely in {session_language}."""
 
         if is_local:
             # Append reinforcing reminder for local models
-            current_message += f"\n\nREMINDER: Use {session_language}. Cite PMIDs (e.g. [PMID:123456])."
+            current_message += (
+                f"\n\nREMINDER: Use {session_language}. Cite PMIDs (e.g. [PMID:123456])."
+            )
 
         messages.append({"role": "user", "content": current_message})
 
