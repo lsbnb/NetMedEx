@@ -88,14 +88,18 @@ def callbacks(app):
         Output("sidebar-panel-toggle", "active_tab", allow_duplicate=True),
         Input("cy-graph-container", "style"),
         State("sidebar-panel-toggle", "active_tab"),
+        State("cy", "elements"),
         prevent_initial_call=True,
     )
-    def switch_to_graph_panel(container_style, current_value):
-        # Only auto-switch to graph if we are currently in search mode and graph becomes visible
+    def switch_to_graph_panel(container_style, current_value, elements):
+        # Only auto-switch to graph if we are currently in search mode, 
+        # graph becomes visible, and we actually HAVE elements to show.
         if (
             current_value == "search"
             and container_style
             and container_style.get("visibility") == "visible"
+            and elements
+            and len(elements) > 0
         ):
             return "graph"
         return no_update

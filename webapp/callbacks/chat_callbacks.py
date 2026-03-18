@@ -18,12 +18,8 @@ from dash import ALL, Input, Output, State, dcc, html, no_update
 
 logger = logging.getLogger(__name__)
 
-# Local stores for chat state
-# These are used to avoid global variables in a multi-user environment
-# However, for simplicity in this prototype, we'll keep the session-based imports
-# and use dcc.Stores for persistent state.
-chat_session = None
-rag_system = None
+# Local stores for chat state (keyed by graph path)
+_sessions: dict[str, dict] = {}
 
 COMMUNITY_NODE_PATTERN = re.compile(r"^c\d+$")
 
@@ -99,7 +95,8 @@ def callbacks(app):
         node_count = len(real_selected_nodes)
         edge_count = len(selected_edges) if selected_edges else 0
 
-        # Extract unique PMIDs from selected edges
+        # Extract unique PMIDs from selected edges AND nodes
+        # This matches the RAG indexing logic which indexes documents from both sources
         pmids = set()
         if selected_edges:
             for edge in selected_edges:
@@ -110,22 +107,22 @@ def callbacks(app):
                     elif isinstance(edge_pmids, str):
                         pmids.add(edge_pmids)
 
-        # Also extract PMIDs from selected REAL nodes
-        # (articles that mention the entity but might not have edges in the current selection)
-        for node in real_selected_nodes:
-            if "pmids" in node:
-                node_pmids = node["pmids"]
-                if isinstance(node_pmids, list):
-                    pmids.update(node_pmids)
-                elif isinstance(node_pmids, str):
-                    pmids.add(node_pmids)
+        # Also include PMIDs from selected nodes (union, not fallback)
+        if real_selected_nodes:
+            for node in real_selected_nodes:
+                if "pmids" in node:
+                    node_pmids = node["pmids"]
+                    if isinstance(node_pmids, list):
+                        pmids.update(node_pmids)
+                    elif isinstance(node_pmids, str):
+                        pmids.add(node_pmids)
 
-        abstract_count = len(pmids)
+        article_count = len(pmids)
 
-        # Enable button if we have at least one abstract
-        button_disabled = abstract_count == 0
+        # Enable button if we have at least one article
+        button_disabled = article_count == 0
 
-        return str(node_count), str(edge_count), str(abstract_count), button_disabled
+        return str(node_count), str(edge_count), str(article_count), button_disabled
 
     @app.callback(
         [
@@ -147,14 +144,39 @@ def callbacks(app):
             State("cy", "selectedEdgeData"),
             State("current-session-path", "data"),  # Used to get the graph file path if needed
             State("session-language", "data"),
+            # LLM Configuration States (align with pipeline callback behavior)
+            State("llm-provider-selector", "value"),
+            State("openai-api-key-input", "value"),
+            State("openai-model-selector", "value"),
+            State("openai-custom-model-input", "value"),
+            State("google-api-key-input", "value"),
+            State("google-model-selector", "value"),
+            State("google-safety-setting", "value"),
+            State("llm-base-url-input", "value"),
+            State("llm-model-input", "value"),
         ],
         prevent_initial_call=True,
     )
-    def initialize_chat(n_clicks, selected_nodes, selected_edges, savepath, session_language):
+    def initialize_chat(
+        n_clicks,
+        selected_nodes,
+        selected_edges,
+        savepath,
+        session_language,
+        llm_provider,
+        openai_api_key,
+        openai_model,
+        openai_custom_model,
+        google_api_key,
+        google_model,
+        google_safety_setting,
+        llm_base_url,
+        llm_model,
+    ):
         """
         Initialize RAG system and chat session with selected abstracts.
         """
-        global chat_session, rag_system
+        global _sessions
 
         # Reset button content
         reset_btn = [html.I(className="bi bi-chat-dots me-2"), "Analyze Selection"]
@@ -166,7 +188,36 @@ def callbacks(app):
             import pickle
             from netmedex.chat import ChatSession
             from netmedex.rag import AbstractDocument, AbstractRAG
-            from webapp.llm import llm_client
+            from webapp.llm import GEMINI_OPENAI_BASE_URL, OPENAI_BASE_URL, llm_client
+
+            # Keep chat process LLM config aligned with current Advanced Settings.
+            if llm_provider == "openai":
+                model = (
+                    openai_custom_model.strip()
+                    if openai_model == "custom" and openai_custom_model
+                    else openai_model
+                ) or "gpt-4o-mini"
+                llm_client.initialize_client(
+                    provider="openai",
+                    api_key=openai_api_key,
+                    model=model,
+                    base_url=OPENAI_BASE_URL,
+                )
+            elif llm_provider == "google":
+                llm_client.initialize_client(
+                    provider="google",
+                    api_key=google_api_key,
+                    model=google_model or "gemini-1.5-pro",
+                    base_url=GEMINI_OPENAI_BASE_URL,
+                    safety_setting=google_safety_setting or "medium",
+                )
+            else:
+                llm_client.initialize_client(
+                    provider="local",
+                    api_key="local-dummy-key",
+                    base_url=llm_base_url or "http://localhost:11434/v1",
+                    model=llm_model,
+                )
 
             if not llm_client.client:
                 return (
@@ -288,7 +339,14 @@ def callbacks(app):
             logger.info("GraphRetriever initialized with full graph")
 
             # Initialize chat session with Hybrid RAG
-            chat_session = ChatSession(rag_system, llm_client, graph_retriever=graph_retriever)
+            session = ChatSession(rag_system, llm_client, graph_retriever=graph_retriever)
+            
+            # Store in global session manager
+            session_id = savepath["graph"]
+            _sessions[session_id] = {
+                "session": session,
+                "rag": rag_system
+            }
 
             # Create welcome message
             welcome_text = (
@@ -307,19 +365,19 @@ def callbacks(app):
                 summary_prompt = (
                     "Please provide a structured summary of the selected research based on the abstracts and graph structure. "
                     "You MUST follow the standard output structure: \n"
-                    "1. **Evidence-Based Answer**: Key findings directly from the papers.\n"
-                    "2. **Hypotheses / Speculative Inference**: Potential mechanisms or implications suggested by the patterns.\n"
-                    "3. **Suggested Questions:**: 3 brief follow-up questions.\n"
+                    "1. **Evidence-Based Answer**: Summarize key findings directly stated in the papers with PMID citations.\n"
+                    "2. **Hypotheses / Speculative Inference**: Propose potential mechanisms or implications suggested by the patterns, with PMID citations.\n"
+                    "3. **Suggested Questions:** Provide 3 brief follow-up questions for the user to explore further.\n"
                     f"All content must be in {session_language or 'English'}. Translate the section headers accordingly."
                 )
-                response = chat_session.send_message(summary_prompt)
+                response = session.send_message(summary_prompt)
 
                 if response["success"]:
                     # The last message in history is the summary
-                    summary_obj = chat_session.history[-1]
+                    summary_obj = session.history[-1]
                     summary_msg = create_message_component(
                         "assistant",
-                        f"📊 **Analysis of Selection:**\n\n{response['message']}",
+                        f"### Analysis of Selection\n\n{response['message']}",
                         response.get("sources", []),
                         msg_id=summary_obj.msg_id,
                     )
@@ -378,6 +436,7 @@ def callbacks(app):
             State("chat-messages", "children"),
             State("session-language", "data"),
             State("chat-send-btn", "disabled"),
+            State("current-session-path", "data"),
         ],
         prevent_initial_call=True,
     )
@@ -390,11 +449,12 @@ def callbacks(app):
         current_messages,
         session_language,
         is_disabled,
+        savepath,
     ):
         """
         Process user message and get AI response.
         """
-        global chat_session
+        global _sessions
 
         ctx = dash.callback_context
         if not ctx.triggered:
@@ -415,9 +475,12 @@ def callbacks(app):
         if not user_input or not user_input.strip():
             raise dash.exceptions.PreventUpdate
 
-        if not chat_session:
+        if not savepath or "graph" not in savepath or savepath["graph"] not in _sessions:
             # Return same state, clear inputs and store, but unlock buttons
             return current_messages, current_messages, "", "", "", "", None, False, False
+
+        session_data = _sessions[savepath["graph"]]
+        session = session_data["session"]
 
         try:
             from webapp.components.chat import create_message_component
@@ -430,7 +493,7 @@ def callbacks(app):
             effective_language = msg_lang if msg_lang != "English" else session_language
 
             # Get AI response
-            response = chat_session.send_message(user_input, session_language=effective_language)
+            response = session.send_message(user_input, session_language=effective_language)
 
             if response["success"]:
                 # Use returned message objects for stability instead of relying on history indexing
@@ -439,9 +502,9 @@ def callbacks(app):
 
                 # Fallback if objects are missing
                 if not user_msg_obj:
-                    user_msg_obj = chat_session.history[-2]
+                    user_msg_obj = session.history[-2]
                 if not assistant_msg_obj:
-                    assistant_msg_obj = chat_session.history[-1]
+                    assistant_msg_obj = session.history[-1]
 
                 user_msg = create_message_component(
                     "user", user_msg_obj.content, msg_id=user_msg_obj.msg_id
@@ -454,7 +517,7 @@ def callbacks(app):
                 )
             else:
                 # Handle error case
-                assistant_msg_obj = chat_session.history[-1]
+                assistant_msg_obj = session.history[-1]
                 user_msg = create_message_component("user", user_input)
                 ai_msg = create_message_component(
                     "assistant",
@@ -488,23 +551,21 @@ def callbacks(app):
             Output("clear-chat-btn", "style", allow_duplicate=True),
         ],
         Input("clear-chat-btn", "n_clicks"),
+        State("current-session-path", "data"),
         prevent_initial_call=True,
     )
-    def clear_chat(n_clicks):
+    def clear_chat(n_clicks, savepath):
         """Clear chat history and reset session"""
-        global chat_session, rag_system
+        global _sessions
 
         if not n_clicks:
             raise dash.exceptions.PreventUpdate
 
         # Clear session
-        if chat_session:
-            chat_session.clear()
-        if rag_system:
-            rag_system.clear()
-
-        chat_session = None
-        rag_system = None
+        if savepath and "graph" in savepath and savepath["graph"] in _sessions:
+            session_data = _sessions.pop(savepath["graph"])
+            session_data["session"].clear()
+            session_data["rag"].clear()
 
         # Return to welcome state
         from webapp.components.chat import create_message_component
@@ -526,14 +587,65 @@ def callbacks(app):
     @app.callback(
         Output("download-chat-history", "data"),
         Input("download-chat-btn", "n_clicks"),
+        [
+            State("data-input", "value"),
+            State("llm-provider-selector", "value"),
+            State("openai-model-selector", "value"),
+            State("openai-custom-model-input", "value"),
+            State("google-model-selector", "value"),
+            State("llm-model-input", "value"),
+            State("current-session-path", "data"),
+        ],
         prevent_initial_call=True,
     )
-    def download_chat_history(n_clicks):
-        global chat_session
-        if not n_clicks or not chat_session or not chat_session.history:
+    def download_chat_history(
+        n_clicks, initial_query, provider, oa_model, oa_custom, g_model, l_model, savepath
+    ):
+        global _sessions
+        if not n_clicks or not savepath or "graph" not in savepath or savepath["graph"] not in _sessions:
+            raise dash.exceptions.PreventUpdate
+        
+        session_data = _sessions[savepath["graph"]]
+        session = session_data["session"]
+        
+        if not session or not session.history:
             raise dash.exceptions.PreventUpdate
 
         import datetime
+        from webapp.llm import llm_client
+
+        # Determine the model name used
+        if provider == "openai":
+            model_name = oa_custom if oa_model == "custom" else oa_model
+        elif provider == "google":
+            model_name = g_model
+        else:
+            model_name = l_model
+
+        # Use AI to generate a research title based on chat history
+        research_title = "NetMedEx Professional Chat Transcript"
+        try:
+            # Combine first few exchanges for context
+            context_messages = []
+            for m in session.history[1:5]:  # Skip system, take first 4
+                context_messages.append(f"{m.role}: {m.content[:200]}")
+            
+            context_text = "\n".join(context_messages)
+            title_prompt = (
+                "Based on the following biomedical research chat snippet, "
+                "generate a concise, professional research subject title (max 12 words). "
+                "Return ONLY the title text, no quotes or explanations.\n\n"
+                f"Context:\n{context_text}"
+            )
+            ai_title = llm_client.chat_completion_text(
+                messages=[{"role": "user", "content": title_prompt}],
+                max_tokens=50,
+                temperature=0.3
+            )
+            if ai_title and len(ai_title.strip()) > 5:
+                research_title = ai_title.strip()
+        except Exception as e:
+            logger.error(f"Error generating AI title for transcript: {e}")
 
         def hyperlink_pmids(text):
             return re.sub(
@@ -583,13 +695,16 @@ def callbacks(app):
             "<head>",
             "<meta charset='utf-8'>",
             "<meta name='viewport' content='width=device-width, initial-scale=1'>",
-            "<title>NetMedEx Chat History</title>",
+            f"<title>{research_title}</title>",
             "<style>",
             "body { background-color: #f0f2f5; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 40px 20px; color: #1c1e21; }",
             ".chat-container { max-width: 850px; margin: 0 auto; background: white; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.1); overflow: hidden; display: flex; flex-direction: column; }",
             ".header { background: #ffffff; border-bottom: 2px solid #f0f2f5; padding: 25px 35px; }",
-            ".header h1 { margin: 0; font-size: 22px; color: #007bff; font-weight: 700; }",
-            ".timestamp { font-size: 13px; color: #8d949e; margin-top: 6px; }",
+            ".header h1 { margin: 0; font-size: 24px; color: #007bff; font-weight: 700; line-height: 1.3; }",
+            ".metadata { margin-top: 15px; padding: 12px 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #007bff; font-size: 13px; color: #4b4f56; }",
+            ".metadata-item { margin-bottom: 4px; }",
+            ".metadata-label { font-weight: 700; color: #1c1e21; width: 100px; display: inline-block; }",
+            ".timestamp { font-size: 12px; color: #8d949e; margin-top: 10px; text-align: right; }",
             ".chat-box { padding: 35px; display: flex; flex-direction: column; gap: 28px; }",
             ".message-row { display: flex; width: 100%; }",
             ".user-row { justify-content: flex-end; }",
@@ -612,13 +727,18 @@ def callbacks(app):
             "<body>",
             "<div class='chat-container'>",
             "<div class='header'>",
-            "<h1>NetMedEx Professional Chat Transcript</h1>",
-            f"<div class='timestamp'>Generated on {datetime.datetime.now().strftime('%B %d, %Y - %H:%M:%S')}</div>",
+            f"<h1>{research_title}</h1>",
+            "<div class='metadata'>",
+            f"<div class='metadata-item'><span class='metadata-label'>LLM Model:</span> {model_name} ({provider.capitalize()})</div>",
+            f"<div class='metadata-item'><span class='metadata-label'>Initial Query:</span> {initial_query or 'N/A'}</div>",
+            "</div>",
+            f"<div class='timestamp'>Generated by NetMedEx on {datetime.datetime.now().strftime('%B %d, %Y - %H:%M:%S')}</div>",
             "</div>",
             "<div class='chat-box'>",
+
         ]
 
-        for msg in chat_session.history:
+        for msg in session.history:
             if msg.role == "system":
                 continue
 

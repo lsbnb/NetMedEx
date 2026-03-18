@@ -152,6 +152,80 @@ def test_api_key_update():
             return True
 
 
+def test_get_openai_models_filtering_with_modern_families():
+    """Test OpenAI model filtering includes o3/o4 and excludes non-chat models."""
+    from webapp.llm import LLMClient, OPENAI_BASE_URL
+
+    with patch.dict(os.environ, {}, clear=True):
+        with patch("webapp.llm.OpenAI") as mock_openai:
+            mock_temp_client = MagicMock()
+            mock_temp_client.models.list.return_value = MagicMock(
+                data=[
+                    MagicMock(id="gpt-4o"),
+                    MagicMock(id="o3-mini"),
+                    MagicMock(id="o4-mini"),
+                    MagicMock(id="text-embedding-3-small"),
+                    MagicMock(id="whisper-1"),
+                ]
+            )
+            mock_openai.return_value = mock_temp_client
+
+            client = LLMClient()
+            models = client.get_openai_models("sk-test-key")
+            mock_openai.assert_called_with(api_key="sk-test-key", base_url=OPENAI_BASE_URL)
+
+            assert "gpt-4o" in models, "Expected gpt-4o to be included"
+            assert "o3-mini" in models, "Expected o3-mini to be included"
+            assert "o4-mini" in models, "Expected o4-mini to be included"
+            assert "gpt-oss:20b" not in models, "Local-tagged models should be excluded"
+            assert "text-embedding-3-small" not in models, "Embedding model should be excluded"
+            assert "whisper-1" not in models, "Whisper model should be excluded"
+            print("✓ OpenAI model filtering handles modern model families")
+            return True
+
+
+def test_translate_query_to_boolean_retries_on_truncated_output():
+    """Truncated boolean output should trigger strict retry and return valid query."""
+    from webapp.llm import LLMClient
+
+    with patch.dict(os.environ, {}, clear=True):
+        client = LLMClient()
+        client.client = object()  # bypass "no client" fallback path
+        client.chat_completion_text = MagicMock(
+            side_effect=[
+                '"miRNA" AND "',  # invalid/truncated first pass
+                '"miRNA" AND "Osteoporosis"',  # strict retry
+            ]
+        )
+
+        result = client.translate_query_to_boolean("the relationship among miRNA and Osteoporosis")
+        assert result == '"miRNA" AND "Osteoporosis"', f"Unexpected retry result: {result}"
+        assert client.chat_completion_text.call_count == 2, "Expected one retry for truncated output"
+        print("✓ Translation retry recovers from truncated output")
+        return True
+
+
+def test_translate_query_to_boolean_fallback_when_retries_fail():
+    """If outputs remain invalid, fallback should produce a complete boolean query."""
+    from webapp.llm import LLMClient
+
+    with patch.dict(os.environ, {}, clear=True):
+        client = LLMClient()
+        client.client = object()  # bypass "no client" fallback path
+        client.chat_completion_text = MagicMock(
+            side_effect=[
+                "",            # invalid first pass
+                "SELECT ...",  # invalid strict retry
+            ]
+        )
+
+        result = client.translate_query_to_boolean("the relationship among miRNA and Osteoporosis")
+        assert result == '"miRNA" AND "Osteoporosis"', f"Unexpected fallback result: {result}"
+        assert client.chat_completion_text.call_count == 2, "Expected strict retry before fallback"
+        print("✓ Translation fallback handles persistent invalid outputs")
+        return True
+
+
 def run_all_tests():
     """Run all tests and report results."""
     print("\n" + "="*60)
@@ -167,6 +241,9 @@ def run_all_tests():
         ("Abstract Summarization (Mocked)", test_abstract_summarization_with_mock),
         ("Abstract Summarization (No Client)", test_abstract_summarization_without_client),
         ("API Key Update", test_api_key_update),
+        ("OpenAI Model Filtering", test_get_openai_models_filtering_with_modern_families),
+        ("Translation Retry on Truncation", test_translate_query_to_boolean_retries_on_truncated_output),
+        ("Translation Fallback on Invalid", test_translate_query_to_boolean_fallback_when_retries_fail),
     ]
     
     passed = 0
