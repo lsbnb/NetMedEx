@@ -95,6 +95,13 @@ def _biocjson_to_pubtator(
             except Exception:
                 pass
 
+        # authors
+        authors = None
+        try:
+            authors = each_res_json["passages"][0]["infons"].get("authors")
+        except Exception:
+            pass
+
         output.append(
             PubTatorArticle(
                 pmid=pmid,
@@ -110,6 +117,7 @@ def _biocjson_to_pubtator(
                     for annotation in annotation_list
                     if annotation.mesh != "-"
                 },
+                metadata={"authors": authors} if authors else None,
             )
         )
 

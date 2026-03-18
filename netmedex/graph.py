@@ -39,6 +39,7 @@ try:
 except ImportError:
     # Semantic RE may not be available if dependencies are missing
     SemanticRelationshipExtractor = None
+from netmedex.citation_fetcher import fetch_citation_counts
 from netmedex.utils import generate_stable_id
 
 MIN_EDGE_WIDTH = 1.0
@@ -110,6 +111,7 @@ class PubTatorGraphBuilder:
         llm_client=None,
         semantic_threshold: float = 0.5,
         progress_callback=None,
+        fetch_citations: bool = False,
     ) -> None:
         self.node_type = node_type
         self.edge_method = edge_method
@@ -118,6 +120,7 @@ class PubTatorGraphBuilder:
         self.graph = nx.Graph()
         self._updated = False
         self.progress_callback = progress_callback
+        self.fetch_citations = fetch_citations
 
         # Initialize semantic extractor if using semantic edge method
         self.semantic_extractor = None
@@ -140,6 +143,30 @@ class PubTatorGraphBuilder:
         collection: PubTatorCollection,
     ):
         use_mesh_vocabulary = HEADERS["use_mesh_vocabulary"] in collection.headers
+
+        # Fetch citation counts if requested
+        if self.fetch_citations:
+            logger.info(f"Fetching citation counts for {len(collection.articles)} articles...")
+            if self.progress_callback:
+                self.progress_callback(
+                    0, len(collection.articles), "fetching citation counts", None
+                )
+
+            pmid_list = [a.pmid for a in collection.articles]
+            citation_counts = fetch_citation_counts(pmid_list)
+            for article in collection.articles:
+                if article.pmid in citation_counts:
+                    if article.metadata is None:
+                        article.metadata = {}
+                    article.metadata["citation_count"] = citation_counts[article.pmid]
+
+            if self.progress_callback:
+                self.progress_callback(
+                    len(collection.articles),
+                    len(collection.articles),
+                    "fetching citation counts",
+                    None,
+                )
 
         if self.edge_method == "semantic" and self.semantic_extractor:
             # Optimized batch processing for semantic analysis
@@ -687,9 +714,42 @@ class PubTatorGraphBuilder:
         if article.abstract:
             self.graph.graph["pmid_abstract"][article.pmid] = article.abstract
 
+        # Store full bibliography metadata for RIS export
+        pmid_metadata = {
+            "journal": article.journal,
+            "date": article.date,
+            "doi": article.doi,
+            "authors": article.metadata.get("authors") if article.metadata else None,
+            "citation_count": article.metadata.get("citation_count") if article.metadata else None,
+        }
+        self.graph.graph["pmid_metadata"][article.pmid] = pmid_metadata
+
     def _init_graph_attributes(self):
         self.graph.graph["pmid_title"] = {}
         self.graph.graph["pmid_abstract"] = {}  # NEW: Store abstracts for RAG
+        self.graph.graph["pmid_metadata"] = {}  # NEW: Store full bibliography metadata
+
+    def calculate_citation_weights(self) -> dict[str, float]:
+        """Calculate time-normalized citation weights for articles.
+
+        Formula: weight = log10( (citations / age) + 1.1 ) + 1.0
+        Age = CurrentYear - PubYear + 1
+        This gives a boost to highly cited and recent papers.
+        """
+        import datetime
+
+        from netmedex.utils import calculate_citation_weight
+
+        current_year = datetime.datetime.now().year
+        weights = {}
+
+        pmid_metadata = self.graph.graph.get("pmid_metadata", {})
+        for pmid, meta in pmid_metadata.items():
+            weights[pmid] = calculate_citation_weight(
+                meta.get("citation_count"), meta.get("date"), current_year
+            )
+
+        return weights
 
 
 def save_graph(

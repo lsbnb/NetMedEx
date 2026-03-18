@@ -50,7 +50,7 @@ def _build_token_batches(
     cur_ids: list[str] = []
     cur_tokens = 0
 
-    for text, meta, doc_id in zip(documents_text, metadatas, ids):
+    for text, meta, doc_id in zip(documents_text, metadatas, ids, strict=True):
         tokens = _count_tokens(text)
         if cur_tokens + tokens > max_tokens and cur_texts:
             batches.append((cur_texts, cur_metas, cur_ids))
@@ -76,6 +76,7 @@ class AbstractDocument:
     abstract: str
     entities: list[dict[str, str]]  # Entity metadata from graph
     edges: list[dict[str, Any]]  # Edge information
+    weight: float = 1.0  # Citation-based weight
 
 
 class AbstractRAG:
@@ -162,6 +163,7 @@ class AbstractRAG:
                         "title": doc.title,
                         "entity_count": str(len(doc.entities)),
                         "edge_count": str(len(doc.edges)),
+                        "weight": str(doc.weight),
                     }
                 )
 
@@ -182,7 +184,9 @@ class AbstractRAG:
             )
 
             try:
-                for batch_idx, (batch_texts, batch_metas, batch_ids) in enumerate(batches, start=1):
+                for batch_idx, (batch_texts, batch_metas, batch_ids) in enumerate(
+                    batches, start=1
+                ):
                     logger.info(
                         f"Sending batch {batch_idx}/{total_batches} "
                         f"({len(batch_texts)} docs) to vector store..."
@@ -235,12 +239,26 @@ class AbstractRAG:
             # Extract PMIDs and scores
             pmid_scores = []
             if results["ids"] and results["distances"]:
-                for doc_id, distance in zip(results["ids"][0], results["distances"][0]):
+                for doc_id, distance in zip(
+                    results["ids"][0], results["distances"][0], strict=True
+                ):
                     pmid = doc_id.replace("pmid_", "")
                     # Convert distance to similarity score (lower distance = higher similarity)
                     # ChromaDB uses L2 distance, so we invert it
                     similarity = 1.0 / (1.0 + distance)
-                    pmid_scores.append((pmid, similarity))
+
+                    # Apply weight boost if available
+                    weight = 1.0
+                    doc = self.documents.get(pmid)
+                    if doc:
+                        weight = doc.weight
+
+                    # Hybrid score: semantic similarity boosted by citation weight
+                    hybrid_score = similarity * weight
+                    pmid_scores.append((pmid, hybrid_score))
+
+            # Sort by hybrid score descending
+            pmid_scores.sort(key=lambda x: x[1], reverse=True)
 
             logger.info(f"Found {len(pmid_scores)} relevant abstracts for query")
             return pmid_scores

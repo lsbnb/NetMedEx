@@ -128,9 +128,7 @@ def callbacks(app):
         try:
             # Initialize LLM Client for the background process
             if llm_provider == "openai":
-                model = (
-                    openai_custom_model if openai_model == "custom" else openai_model
-                )
+                model = openai_custom_model if openai_model == "custom" else openai_model
                 llm_client.initialize_client(
                     api_key=openai_api_key,
                     model=model,
@@ -167,6 +165,7 @@ def callbacks(app):
 
             use_mesh = "use_mesh" in pubtator_params
             full_text = "full_text" in pubtator_params
+            fetch_citations = "fetch_citations" in pubtator_params
             community = "community" in cy_params
             savepath = get_data_savepath(generate_session_id())
 
@@ -261,7 +260,9 @@ def callbacks(app):
                                     query = translated_query.strip()
                                     set_progress((0, 1, "", f"AI Translated: {query}"))
                                 else:
-                                    logger.warning("AI Search returned empty result, falling back to original query")
+                                    logger.warning(
+                                        "AI Search returned empty result, falling back to original query"
+                                    )
                                     set_progress(
                                         (
                                             0,
@@ -475,6 +476,7 @@ def callbacks(app):
                 llm_client=llm_for_graph,
                 semantic_threshold=semantic_threshold,
                 progress_callback=progress_callback,
+                fetch_citations=fetch_citations,
             )
 
             # Parse collection if not already done
@@ -487,8 +489,14 @@ def callbacks(app):
             if edge_method == "semantic":
                 set_progress((1, 1, "", "Building graph structure..."))
 
+            # Calculate and apply citation-based weights if fetched
+            pmid_weights = None
+            if fetch_citations:
+                set_progress((1, 1, "", "Calculating citation-normalized weights..."))
+                pmid_weights = graph_builder.calculate_citation_weights()
+
             G = graph_builder.build(
-                pmid_weights=None,
+                pmid_weights=pmid_weights,
                 weighting_method=weighting_method,
                 edge_weight_cutoff=0,
                 community=False,
@@ -516,7 +524,9 @@ def callbacks(app):
             semantic_coverage_expansions = int(semantic_stats.get("coverage_expansions", 0))
             semantic_dropped_threshold = int(semantic_stats.get("dropped_by_threshold", 0))
             semantic_dropped_invalid_nodes = int(semantic_stats.get("dropped_invalid_nodes", 0))
-            semantic_provider = getattr(llm_client, "provider", "") if edge_method == "semantic" else ""
+            semantic_provider = (
+                getattr(llm_client, "provider", "") if edge_method == "semantic" else ""
+            )
             semantic_model = getattr(llm_client, "model", "") if edge_method == "semantic" else ""
 
             warning_output = ""
@@ -525,11 +535,9 @@ def callbacks(app):
                     dbc.Alert(
                         [
                             html.Div(
-                                (
-                                    f"Semantic analysis completed with partial failures: "
-                                    f"{semantic_failed}/{semantic_total} articles failed due to LLM/API errors. "
-                                    "Graph was still generated from successful articles."
-                                )
+                                f"Semantic analysis completed with partial failures: "
+                                f"{semantic_failed}/{semantic_total} articles failed due to LLM/API errors. "
+                                "Graph was still generated from successful articles."
                             ),
                             html.Hr(),
                             html.Div(
@@ -556,11 +564,9 @@ def callbacks(app):
                     dbc.Alert(
                         [
                             html.Div(
-                                (
-                                    "Semantic analysis completed but no semantic edges were generated. "
-                                    "This usually means most LLM calls failed or confidence filtering removed all relations. "
-                                    "Try a smaller query, different model, or lower semantic threshold."
-                                )
+                                "Semantic analysis completed but no semantic edges were generated. "
+                                "This usually means most LLM calls failed or confidence filtering removed all relations. "
+                                "Try a smaller query, different model, or lower semantic threshold."
                             ),
                             html.Hr(),
                             html.Div(
