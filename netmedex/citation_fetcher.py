@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import asyncio
 import logging
+from concurrent.futures import ThreadPoolExecutor
+from functools import partial
 
 import aiohttp
 import aiometer
@@ -49,11 +51,11 @@ async def _fetch_citation_counts_async(pmid_list: list[str]) -> dict[str, int]:
     results = {}
 
     async with aiohttp.ClientSession() as session:
-        jobs = [fetch_citation_count(session, pmid) for pmid in pmid_list]
+        jobs = [partial(fetch_citation_count, session, pmid) for pmid in pmid_list]
         counts = await aiometer.run_all(
             jobs, max_at_once=MAX_AT_ONCE, max_per_second=MAX_PER_SECOND
         )
-        for pmid, count in zip(pmid_list, counts, strict=True):
+        for pmid, count in zip(pmid_list, counts):
             results[pmid] = count
 
     return results
@@ -62,14 +64,11 @@ async def _fetch_citation_counts_async(pmid_list: list[str]) -> dict[str, int]:
 def fetch_citation_counts(pmid_list: list[str]) -> dict[str, int]:
     """Synchronous wrapper to fetch citation counts for a list of PMIDs."""
     try:
-        # Check if an event loop is already running
-        loop = asyncio.get_event_loop()
-        if loop.is_running():
-            # If running in a background thread of Dash (which uses asyncio),
-            # we might need to handle this differently.
-            # But usually, PubTatorGraphBuilder is called in a separate thread.
-            return asyncio.run(_fetch_citation_counts_async(pmid_list))
+        asyncio.get_running_loop()
     except RuntimeError:
         return asyncio.run(_fetch_citation_counts_async(pmid_list))
 
-    return asyncio.run(_fetch_citation_counts_async(pmid_list))
+    # In an existing async context, execute in a separate thread.
+    with ThreadPoolExecutor(max_workers=1) as executor:
+        future = executor.submit(asyncio.run, _fetch_citation_counts_async(pmid_list))
+        return future.result()
