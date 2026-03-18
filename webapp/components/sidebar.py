@@ -85,7 +85,10 @@ graph_file = html.Div(
                 html.Div(
                     [
                         html.Div(
-                            ["Drag and Drop or ", html.A("Select .pkl File", className="hyperlink")],
+                            [
+                                "Drag and Drop or ",
+                                html.A("Select .pkl File", className="hyperlink"),
+                            ],
                             className="upload-box form-control",
                             id="graph-file-upload-trigger",
                         ),
@@ -197,6 +200,7 @@ api_params = html.Div(
                     options=[
                         {"label": "Use MeSH Vocabulary", "value": "use_mesh"},
                         {"label": "Full Text", "value": "full_text"},
+                        {"label": "Fetch Citation Counts", "value": "fetch_citations"},
                     ],
                     switch=True,
                     id="pubtator-params",
@@ -408,6 +412,13 @@ export_buttons = html.Div(
                 ),
                 dcc.Download(id="download-pubtator"),
                 dbc.Button(
+                    [icon_download(), "RIS (EndNote)"],
+                    id="export-btn-ris",
+                    className="export-btn",
+                    color="info",
+                ),
+                dcc.Download(id="export-ris"),
+                dbc.Button(
                     [icon_download(), "Graph (.pkl)"],
                     id="export-btn-graph",
                     className="export-btn",
@@ -585,7 +596,7 @@ header_row = html.Div(
         sidebar_toggle,
         html.Div(
             [
-                html.Small("v0.9.5", className="text-muted", style={"fontSize": "0.7rem"}),
+                html.Small("V0.9.5", className="text-muted", style={"fontSize": "0.7rem"}),
                 advanced_settings,
             ],
             className="d-flex flex-column align-items-center ms-auto",

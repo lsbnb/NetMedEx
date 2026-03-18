@@ -10,7 +10,7 @@ NetMedEx is container-ready and can be easily deployed using Docker.
 Run the following command in the project root directory:
 
 ```bash
-docker build -t netmedex:v0.9.5 .
+docker build -t netmedex:V0.9.5 .
 ```
 
 ## 2. Running the Container
@@ -21,7 +21,7 @@ docker run -d \
   -p 8050:8050 \
   -e OPENAI_API_KEY="your-api-key-here" \
   --name netmedex-app \
-  netmedex:v0.9.5
+  netmedex:V0.9.5
 ```
 
 > [!IMPORTANT]

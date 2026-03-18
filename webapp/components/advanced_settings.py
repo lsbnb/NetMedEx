@@ -62,7 +62,7 @@ llm_config = html.Div(
                 {"label": "Local Ollama", "value": "local"},
             ],
             value="openai",  # Default to OpenAI
-            inline=True,
+            inline=False,
             className="mb-3",
         ),
         html.H6("Connectivity", className="mt-2"),
@@ -220,7 +220,10 @@ llm_config = html.Div(
                         dcc.Dropdown(
                             id="google-model-selector",
                             options=[
-                                {"label": "gemini-2.0-flash (Latest Flash)", "value": "gemini-2.0-flash"},
+                                {
+                                    "label": "gemini-2.0-flash (Latest Flash)",
+                                    "value": "gemini-2.0-flash",
+                                },
                                 {"label": "gemini-1.5-pro (Reasoning)", "value": "gemini-1.5-pro"},
                                 {"label": "gemini-1.5-flash", "value": "gemini-1.5-flash"},
                             ],
