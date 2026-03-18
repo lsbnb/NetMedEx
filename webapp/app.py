@@ -11,11 +11,13 @@ import dash_cytoscape as cyto
 import diskcache
 from dash import ClientsideFunction, Dash, DiskcacheManager, Input, Output, dcc, html
 
+import logging
 from netmedex.utils import config_logger
 from webapp.callbacks import collect_callbacks
 from webapp.utils import cleanup_tempdir
 
-config_logger(is_debug=(os.getenv("LOGGING_DEBUG") == "true"))
+config_logger(is_debug=(os.getenv("LOGGING_DEBUG") == "true"), filename="webapp.log")
+logger = logging.getLogger(__name__)
 
 # Load external layout extensions (fCose, CoSE-Bilkent, etc.)
 cyto.load_extra_layouts()
@@ -48,6 +50,35 @@ app.layout = html.Div([content, html.Div(id="post-js-scripts")], id="main-contai
 def main():
     try:
         collect_callbacks(app)
+
+        # Clientside callback to trigger hidden dcc.Upload components
+        app.clientside_callback(
+            """
+            function(n) {
+                if (n) {
+                    const upload = document.getElementById('pmid-file-data').querySelector('input');
+                    if (upload) upload.click();
+                }
+                return null;
+            }
+            """,
+            Output("pmid-file-upload-trigger", "data-clicked"),
+            Input("pmid-file-upload-trigger", "n_clicks"),
+        )
+        app.clientside_callback(
+            """
+            function(n) {
+                if (n) {
+                    const upload = document.getElementById('graph-file-data').querySelector('input');
+                    if (upload) upload.click();
+                }
+                return null;
+            }
+            """,
+            Output("graph-file-upload-trigger", "data-clicked"),
+            Input("graph-file-upload-trigger", "n_clicks"),
+        )
+
         app.clientside_callback(
             ClientsideFunction(namespace="clientside", function_name="info_scroll"),
             Output("post-js-scripts", "children"),
@@ -71,6 +102,7 @@ def main():
             port=port,
             debug=(os.getenv("FLASK_DEBUG") == "true"),
         )
+        logger.info(f"NetMedEx started on {host}:{port}")
     finally:
         cleanup_tempdir()
 

@@ -132,6 +132,7 @@ def callbacks(app):
         weighting_method,
     ):
         triggered = [t["prop_id"] for t in callback_context.triggered]
+        print(f"DEBUG: update_graph triggered by {triggered}")
 
         # Normalization
         if cy_params is None:
@@ -146,7 +147,6 @@ def callbacks(app):
         if (
             not savepath
             or not savepath.get("graph")
-            or (container_style and container_style.get("visibility") == "hidden")
         ):
             return (
                 no_update,
@@ -161,15 +161,8 @@ def callbacks(app):
 
         show_community = "community" in cy_params
 
-        # NPMI scaling if needed
-        if weighting_method == "npmi":
-            effective_cut_weight = (
-                [x * 20 for x in new_cut_weight]
-                if isinstance(new_cut_weight, list)
-                else (new_cut_weight * 20 if new_cut_weight is not None else 0)
-            )
-        else:
-            effective_cut_weight = new_cut_weight
+        # Use cutoff directly; backend already handles scaling mapping
+        effective_cut_weight = new_cut_weight
 
         # Check triggers
         rebuild_needed = (

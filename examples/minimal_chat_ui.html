@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NetMedEx Minimal Chat UI</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #0f766e;
+      --accent-2: #0b5d56;
+      --border: #dbe3ef;
+    }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Noto Sans", sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #eef5ff 0%, var(--bg) 40%);
+    }
+    .container {
+      max-width: 980px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 14px;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
+    }
+    h1 {
+      margin: 0 0 12px 0;
+      font-size: 22px;
+    }
+    .grid {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    @media (max-width: 800px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    label {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 4px;
+      color: var(--muted);
+    }
+    input, select, textarea, button {
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 14px;
+      padding: 9px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    button {
+      cursor: pointer;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      width: auto;
+      min-width: 140px;
+    }
+    button:hover {
+      background: var(--accent-2);
+    }
+    button.secondary {
+      background: #475569;
+    }
+    #status {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 6px;
+      white-space: pre-wrap;
+    }
+    #chatLog {
+      min-height: 220px;
+      max-height: 420px;
+      overflow: auto;
+      background: #f9fbff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px;
+    }
+    .msg {
+      margin: 0 0 10px 0;
+      white-space: pre-wrap;
+      line-height: 1.35;
+      font-size: 14px;
+    }
+    .user { color: #0f172a; }
+    .assistant { color: #164e63; }
+    .meta {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>NetMedEx Minimal Chat UI</h1>
+      <div class="grid">
+        <div>
+          <label for="baseUrl">API Base URL</label>
+          <input id="baseUrl" value="http://127.0.0.1:8000" />
+        </div>
+        <div>
+          <label for="provider">Provider</label>
+          <select id="provider">
+            <option value="openai">openai</option>
+            <option value="google" selected>google</option>
+            <option value="local">local</option>
+          </select>
+        </div>
+        <div>
+          <label for="model">Model</label>
+          <input id="model" value="gemini-2.0-flash" />
+        </div>
+        <div>
+          <label for="edgeMethod">Edge Method</label>
+          <select id="edgeMethod">
+            <option value="semantic" selected>semantic</option>
+            <option value="co-occurrence">co-occurrence</option>
+            <option value="relation">relation</option>
+          </select>
+        </div>
+        <div>
+          <label for="maxArticles">Max Articles</label>
+          <input id="maxArticles" type="number" value="120" />
+        </div>
+        <div>
+          <label for="sort">Sort</label>
+          <select id="sort">
+            <option value="score" selected>score</option>
+            <option value="date">date</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid" style="margin-top:10px;">
+        <div>
+          <label for="genes">Genes (comma-separated)</label>
+          <input id="genes" value="SOST,LRP5,TNFRSF11B,RUNX2,ALPL" />
+        </div>
+        <div>
+          <label for="disease">Disease</label>
+          <input id="disease" value="osteoporosis" />
+        </div>
+      </div>
+
+      <div style="margin-top:10px;">
+        <label for="query">Query (optional, use this instead of genes/disease)</label>
+        <input id="query" placeholder='Example: "osteoporosis" AND ("SOST" OR "LRP5")' />
+      </div>
+
+      <div class="btn-row">
+        <button id="createBtn">Create Session</button>
+        <button id="closeBtn" class="secondary">Close Session</button>
+      </div>
+      <div id="status">No session yet.</div>
+      <div class="meta" id="sessionMeta"></div>
+    </div>
+
+    <div class="card">
+      <div id="chatLog"></div>
+      <div style="margin-top:10px;">
+        <label for="question">Question</label>
+        <textarea id="question" placeholder="Ask a biomedical question..."></textarea>
+      </div>
+      <div class="btn-row">
+        <button id="askBtn">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const statusEl = document.getElementById("status");
+    const sessionMetaEl = document.getElementById("sessionMeta");
+    const chatLogEl = document.getElementById("chatLog");
+    let sessionId = null;
+
+    function baseUrl() {
+      return document.getElementById("baseUrl").value.replace(/\/+$/, "");
+    }
+
+    function setStatus(msg) {
+      statusEl.textContent = msg;
+    }
+
+    function appendChat(role, text) {
+      const p = document.createElement("p");
+      p.className = `msg ${role}`;
+      p.textContent = `${role === "user" ? "You" : "Assistant"}: ${text}`;
+      chatLogEl.appendChild(p);
+      chatLogEl.scrollTop = chatLogEl.scrollHeight;
+    }
+
+    async function callApi(path, method, body) {
+      const res = await fetch(`${baseUrl()}${path}`, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: body ? JSON.stringify(body) : undefined
+      });
+      const text = await res.text();
+      let data = {};
+      try { data = text ? JSON.parse(text) : {}; } catch (_) {}
+      if (!res.ok) {
+        const detail = data.detail || text || `HTTP ${res.status}`;
+        throw new Error(detail);
+      }
+      return data;
+    }
+
+    document.getElementById("createBtn").addEventListener("click", async () => {
+      try {
+        setStatus("Creating session...");
+        const provider = document.getElementById("provider").value;
+        const model = document.getElementById("model").value.trim();
+        const edge_method = document.getElementById("edgeMethod").value;
+        const max_articles = Number(document.getElementById("maxArticles").value || "120");
+        const sort = document.getElementById("sort").value;
+        const query = document.getElementById("query").value.trim();
+        const genes = document.getElementById("genes").value
+          .split(",")
+          .map(x => x.trim())
+          .filter(Boolean);
+        const disease = document.getElementById("disease").value.trim() || "osteoporosis";
+
+        const payload = {
+          config: { provider, model, edge_method, max_articles, sort }
+        };
+        if (query) {
+          payload.query = query;
+        } else {
+          payload.genes = genes;
+          payload.disease = disease;
+        }
+
+        const data = await callApi("/sessions", "POST", payload);
+        sessionId = data.session_id;
+        setStatus(`Session created: ${sessionId}`);
+        sessionMetaEl.textContent = `PMIDs: ${data.context?.pmid_count ?? "-"}, Query: ${data.context?.query ?? "-"}`;
+        appendChat("assistant", "Session ready. Ask your question.");
+      } catch (err) {
+        setStatus(`Create session failed: ${err.message}`);
+      }
+    });
+
+    document.getElementById("askBtn").addEventListener("click", async () => {
+      try {
+        if (!sessionId) {
+          setStatus("Please create session first.");
+          return;
+        }
+        const question = document.getElementById("question").value.trim();
+        if (!question) return;
+        appendChat("user", question);
+        document.getElementById("question").value = "";
+        setStatus("Waiting for answer...");
+        const data = await callApi(`/sessions/${sessionId}/ask`, "POST", { question });
+        if (data.success) {
+          appendChat("assistant", data.message || "");
+          if (Array.isArray(data.sources) && data.sources.length) {
+            appendChat("assistant", `Sources: ${data.sources.join(", ")}`);
+          }
+        } else {
+          appendChat("assistant", `Error: ${data.error || "Unknown error"}`);
+        }
+        setStatus("Ready.");
+      } catch (err) {
+        setStatus(`Ask failed: ${err.message}`);
+      }
+    });
+
+    document.getElementById("closeBtn").addEventListener("click", async () => {
+      try {
+        if (!sessionId) {
+          setStatus("No active session.");
+          return;
+        }
+        await callApi(`/sessions/${sessionId}`, "DELETE");
+        setStatus(`Session closed: ${sessionId}`);
+        sessionId = null;
+      } catch (err) {
+        setStatus(`Close failed: ${err.message}`);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -4,12 +4,75 @@ from __future__ import annotations
 
 import argparse
 import logging
+import os
 import sys
 from pathlib import Path
 
 from netmedex.utils import config_logger
 
 logger = logging.getLogger(__name__)
+
+
+def _init_cli_llm_client(args, usage_context: str):
+    from dotenv import load_dotenv
+    from webapp.llm import LLMClient
+
+    load_dotenv()
+    llm_client = LLMClient()
+
+    provider = args.llm_provider or llm_client.provider or "openai"
+    if provider not in {"openai", "google", "local"}:
+        logger.error(f"Unsupported LLM provider: {provider}")
+        logger.error("Supported providers: openai, google, local")
+        sys.exit(1)
+
+    base_url = args.llm_base_url or os.getenv("OPENAI_BASE_URL")
+    model = args.llm_model
+    api_key = args.llm_api_key
+
+    if provider == "openai":
+        api_key = api_key or os.getenv("OPENAI_API_KEY")
+        if not api_key:
+            logger.error(
+                f"{usage_context} with OpenAI provider requires OPENAI_API_KEY (or --llm_api_key)."
+            )
+            sys.exit(1)
+    elif provider == "google":
+        api_key = api_key or os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY") or os.getenv(
+            "OPENAI_API_KEY"
+        )
+        if not api_key:
+            logger.error(
+                f"{usage_context} with Google provider requires GEMINI_API_KEY "
+                "(or GOOGLE_API_KEY / --llm_api_key)."
+            )
+            sys.exit(1)
+    else:
+        api_key = api_key or os.getenv("LOCAL_LLM_API_KEY") or os.getenv("OPENAI_API_KEY") or "local-dummy-key"
+        base_url = base_url or os.getenv("LOCAL_LLM_BASE_URL") or "http://localhost:11434/v1"
+        if not base_url:
+            logger.error(
+                f"{usage_context} with local provider requires LOCAL_LLM_BASE_URL "
+                "(or --llm_base_url)."
+            )
+            sys.exit(1)
+
+    llm_client.initialize_client(
+        api_key=api_key,
+        base_url=base_url,
+        model=model,
+        provider=provider,
+    )
+
+    if not llm_client.client:
+        logger.error("Failed to initialize LLM client.")
+        sys.exit(1)
+
+    logger.info(
+        f"LLM client initialized for {usage_context} "
+        f"(provider: {llm_client.provider}, model: {llm_client.model}, base_url: {llm_client.base_url})"
+    )
+    return llm_client
 
 
 def main():
@@ -38,6 +101,28 @@ def pubtator_entry(args):
     pmid_list = None
     if args.query is not None:
         query = args.query
+        use_llm_search = bool(
+            args.ai_search
+            or args.llm_provider
+            or args.llm_api_key
+            or args.llm_model
+            or args.llm_base_url
+        )
+        if use_llm_search:
+            try:
+                llm_client = _init_cli_llm_client(args, usage_context="query translation")
+                translated_query = llm_client.translate_query_to_boolean(query)
+                if translated_query and not str(translated_query).startswith("Error:"):
+                    logger.info(f"AI search query translated: {translated_query}")
+                    query = translated_query
+                else:
+                    logger.warning("AI search translation returned empty/invalid result. Using original query.")
+            except ImportError as e:
+                logger.error(f"Failed to import required libraries for AI search: {e}")
+                logger.error("Please install: pip install openai python-dotenv requests")
+                sys.exit(1)
+            except Exception as e:
+                logger.warning(f"AI search translation failed, using original query: {e}")
         suffix = query.replace(" ", "_").replace('"', "")
         savepath = args.output if args.output is not None else f"./query_{suffix}.pubtator"
     else:
@@ -102,33 +187,11 @@ def network_entry(args):
     # Graph
     llm_client = None
     if args.edge_method == "semantic":
-        # Initialize LLM client for semantic analysis
         try:
-            import os
-            from dotenv import load_dotenv
-            from openai import OpenAI
-            
-            load_dotenv()
-            api_key = os.getenv("OPENAI_API_KEY")
-            if not api_key:
-                logger.error(
-                    "Semantic edge method requires OPENAI_API_KEY environment variable. "
-                    "Please set it in your environment or .env file."
-                )
-                sys.exit(1)
-            
-            # Create a simple LLM client wrapper
-            class SimpleLLMClient:
-                def __init__(self, api_key):
-                    self.client = OpenAI(api_key=api_key)
-                    self.model = os.getenv("OPENAI_MODEL", "gpt-3.5-turbo")
-            
-            llm_client = SimpleLLMClient(api_key)
-            logger.info(f"LLM client initialized for semantic analysis (model: {llm_client.model})")
-            
+            llm_client = _init_cli_llm_client(args, usage_context="semantic edge extraction")
         except ImportError as e:
             logger.error(f"Failed to import required libraries for semantic analysis: {e}")
-            logger.error("Please install: pip install openai python-dotenv")
+            logger.error("Please install: pip install openai python-dotenv requests")
             sys.exit(1)
     
     graph_builder = PubTatorGraphBuilder(
@@ -156,6 +219,199 @@ def webapp_entry(args):
     main()
 
 
+def _sorted_pmids(pmids):
+    return sorted(pmids, key=lambda x: (not str(x).isdigit(), int(x) if str(x).isdigit() else str(x)))
+
+
+def _collect_pmid_edges(G):
+    pmid_edges = {}
+    for u, v, data in G.edges(data=True):
+        relations = data.get("relations", {})
+        if isinstance(relations, dict):
+            relation_pmids = relations.keys()
+        else:
+            relation_pmids = []
+
+        fallback_pmids = data.get("pmids", [])
+        if isinstance(fallback_pmids, str):
+            fallback_pmids = [fallback_pmids]
+
+        all_pmids = set(str(p) for p in relation_pmids) | set(str(p) for p in fallback_pmids)
+        for pmid in all_pmids:
+            pmid_edges.setdefault(pmid, []).append(
+                {
+                    "source": str(u),
+                    "target": str(v),
+                    "relations": sorted(relations.get(pmid, [])) if isinstance(relations, dict) else [],
+                }
+            )
+    return pmid_edges
+
+
+def chat_entry(args):
+    from netmedex.chat import ChatSession
+    from netmedex.cli_utils import load_pmids
+    from netmedex.graph import load_graph
+    from netmedex.graph_rag import GraphRetriever
+    from netmedex.node_rag import GraphNode, NodeRAG
+    from netmedex.rag import AbstractDocument, AbstractRAG
+
+    debug = args.debug
+    logfile_name = "chat" if debug else None
+    config_logger(debug, logfile_name)
+
+    graph_path = Path(args.graph)
+    if not graph_path.exists():
+        logger.error(f"Graph file not found: {graph_path}")
+        sys.exit(1)
+
+    if graph_path.suffix not in {".pickle", ".pkl"}:
+        logger.error("Chat currently requires a pickle graph file (.pickle or .pkl).")
+        logger.error("Please build network with: netmedex network ... -f pickle")
+        sys.exit(1)
+
+    try:
+        G = load_graph(str(graph_path))
+    except Exception as e:
+        logger.error(f"Failed to load graph: {e}")
+        sys.exit(1)
+
+    if args.pmids is not None and args.pmid_file is not None:
+        logger.error("Please specify only one of: --pmids, --pmid_file")
+        sys.exit(1)
+
+    try:
+        llm_client = _init_cli_llm_client(args, usage_context="chat")
+    except ImportError as e:
+        logger.error(f"Failed to import required libraries for chat: {e}")
+        logger.error("Please install: pip install openai python-dotenv requests chromadb")
+        sys.exit(1)
+
+    pmid_titles = {str(k): v for k, v in G.graph.get("pmid_title", {}).items()}
+    pmid_abstracts = {str(k): v for k, v in G.graph.get("pmid_abstract", {}).items()}
+    all_pmids = _sorted_pmids(set(pmid_titles.keys()) | set(pmid_abstracts.keys()))
+    if not all_pmids:
+        logger.error("No PMID metadata found in graph. Rebuild graph from PubTator input before chat.")
+        sys.exit(1)
+
+    selected_pmids = all_pmids
+    if args.pmids is not None:
+        selected_pmids = load_pmids(args.pmids, load_from="string")
+    elif args.pmid_file is not None:
+        selected_pmids = load_pmids(args.pmid_file, load_from="file")
+
+    selected_pmids = [str(p) for p in selected_pmids if str(p) in set(all_pmids)]
+    selected_pmids = _sorted_pmids(selected_pmids)
+    if args.max_pmids and args.max_pmids > 0:
+        selected_pmids = selected_pmids[: args.max_pmids]
+
+    if not selected_pmids:
+        logger.error("No valid PMIDs selected for chat context.")
+        sys.exit(1)
+
+    pmid_edges = _collect_pmid_edges(G)
+    documents = []
+    for pmid in selected_pmids:
+        documents.append(
+            AbstractDocument(
+                pmid=pmid,
+                title=pmid_titles.get(pmid, f"PMID {pmid}"),
+                abstract=pmid_abstracts.get(pmid, "Abstract not available."),
+                entities=[],
+                edges=pmid_edges.get(pmid, []),
+            )
+        )
+
+    rag_system = AbstractRAG(llm_client)
+    indexed_count = rag_system.index_abstracts(documents)
+
+    node_rag = None
+    try:
+        node_rag = NodeRAG(llm_client)
+        graph_nodes = []
+        for node_id, data in G.nodes(data=True):
+            graph_nodes.append(
+                GraphNode(
+                    node_id=str(node_id),
+                    name=str(data.get("name", node_id)),
+                    type=str(data.get("type", "Entity")),
+                    metadata=data,
+                )
+            )
+        node_rag.index_nodes(graph_nodes)
+    except Exception as e:
+        logger.warning(f"Node semantic retrieval disabled: {e}")
+
+    graph_retriever = GraphRetriever(G, node_rag=node_rag)
+    session = ChatSession(
+        rag_system,
+        llm_client,
+        graph_retriever=graph_retriever,
+        max_history=args.max_history,
+    )
+
+    logger.info(
+        f"Hybrid RAG chat ready with {indexed_count} abstracts from {graph_path} "
+        f"(provider={llm_client.provider}, model={llm_client.model})"
+    )
+
+    if args.query:
+        result = session.send_message(
+            args.query,
+            top_k=args.top_k,
+            session_language=args.session_language,
+        )
+        if result["success"]:
+            print(result["message"])
+            if result.get("sources"):
+                print(f"\nSources: {', '.join(result['sources'])}")
+            return
+        logger.error(result.get("error", "Unknown chat error"))
+        sys.exit(1)
+
+    print(
+        "Hybrid RAG CLI chat started. Type 'exit' to quit, '/clear' to clear history, '/stats' for session stats."
+    )
+    while True:
+        try:
+            user_input = input("chat> ").strip()
+        except (EOFError, KeyboardInterrupt):
+            print("\nExiting chat.")
+            break
+
+        if not user_input:
+            continue
+        if user_input.lower() in {"exit", "quit"}:
+            break
+        if user_input == "/clear":
+            session.clear()
+            print("History cleared.")
+            continue
+        if user_input == "/stats":
+            stats = session.get_stats()
+            print(
+                "Stats: "
+                f"messages={stats['message_count']}, "
+                f"user={stats['user_messages']}, "
+                f"assistant={stats['assistant_messages']}, "
+                f"indexed_pmids={stats['indexed_pmids']}"
+            )
+            continue
+
+        result = session.send_message(
+            user_input,
+            top_k=args.top_k,
+            session_language=args.session_language,
+        )
+        if result["success"]:
+            print(f"\n{result['message']}")
+            if result.get("sources"):
+                print(f"\nSources: {', '.join(result['sources'])}")
+            print("")
+        else:
+            print(f"Error: {result.get('error', 'Unknown chat error')}")
+
+
 def parse_args(args):
     parser = argparse.ArgumentParser()
     subparser = parser.add_subparsers()
@@ -179,6 +435,13 @@ def parse_args(args):
         help="Run NetMedEx app",
     )
     webapp_subparser.set_defaults(entry_func=webapp_entry)
+
+    chat_subparser = subparser.add_parser(
+        "chat",
+        parents=[get_chat_parser()],
+        help="Chat with a pickled graph via Hybrid RAG",
+    )
+    chat_subparser.set_defaults(entry_func=chat_entry)
 
     return parser.parse_args(args)
 
@@ -234,10 +497,16 @@ def get_pubtator_parser():
         help="Use MeSH vocabulary instead of the most commonly used original text in articles",
     )
     parser.add_argument(
+        "--ai_search",
+        action="store_true",
+        help="Enable LLM-powered natural language to PubTator boolean query translation.",
+    )
+    parser.add_argument(
         "--debug",
         action="store_true",
         help="Print debug information",
     )
+    _add_llm_parser_args(parser, help_context="search query translation")
 
     return parser
 
@@ -319,7 +588,91 @@ def get_network_parser():
         help="Minimum confidence score for semantic edges, range 0-1 (default: 0.5). "
              "Only used when --edge_method=semantic",
     )
+    _add_llm_parser_args(parser, help_context="semantic edge extraction")
 
+    return parser
+
+
+def _add_llm_parser_args(parser, help_context: str):
+    parser.add_argument(
+        "--llm_provider",
+        choices=["openai", "google", "local"],
+        default=None,
+        help=f"LLM provider for {help_context} (default: read from LLM_PROVIDER/.env).",
+    )
+    parser.add_argument(
+        "--llm_api_key",
+        default=None,
+        help=f"LLM API key override for {help_context}.",
+    )
+    parser.add_argument(
+        "--llm_model",
+        default=None,
+        help=f"LLM model override for {help_context}.",
+    )
+    parser.add_argument(
+        "--llm_base_url",
+        default=None,
+        help=f"LLM base URL override for {help_context}.",
+    )
+
+
+def get_chat_parser():
+    parser = argparse.ArgumentParser(add_help=False)
+    parser.add_argument(
+        "-g",
+        "--graph",
+        required=True,
+        help="Path to pickled graph (.pickle/.pkl) generated by `netmedex network -f pickle`.",
+    )
+    parser.add_argument(
+        "-q",
+        "--query",
+        default=None,
+        help="One-shot question. If omitted, starts interactive chat mode.",
+    )
+    parser.add_argument(
+        "-p",
+        "--pmids",
+        default=None,
+        type=str,
+        help="Optional PMID subset for chat context (comma-separated).",
+    )
+    parser.add_argument(
+        "-f",
+        "--pmid_file",
+        default=None,
+        help="Optional file containing PMIDs (one per line) to limit chat context.",
+    )
+    parser.add_argument(
+        "--top_k",
+        type=int,
+        default=5,
+        help="Top-k abstracts for retrieval when document set is large (default: 5).",
+    )
+    parser.add_argument(
+        "--max_pmids",
+        type=int,
+        default=0,
+        help="Maximum PMIDs to load from graph context (default: 0 = all).",
+    )
+    parser.add_argument(
+        "--session_language",
+        default="English",
+        help="Target language for responses (default: English).",
+    )
+    parser.add_argument(
+        "--max_history",
+        type=int,
+        default=10,
+        help="Maximum chat history messages to keep (default: 10).",
+    )
+    parser.add_argument(
+        "--debug",
+        action="store_true",
+        help="Print debug information.",
+    )
+    _add_llm_parser_args(parser, help_context="chat")
     return parser
 
 

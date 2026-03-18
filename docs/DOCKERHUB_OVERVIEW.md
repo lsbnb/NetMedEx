@@ -5,10 +5,11 @@ NetMedEx is an AI-powered knowledge discovery platform that transforms biomedica
 ## 🌟 Core Philosophy
 In NetMedEx, the **Co-Mention Network** serves as a structural "scaffolding" for discovery. The **AI-driven Semantic Layer** breathes life into these connections by extracting evidence, identifying relationship types, and answering complex natural language queries.
 
-### What's New in 0.9.4
-- **Professional Chat Transcript (HTML)**: Download your chat history in a high-fidelity HTML format featuring chat bubbles, clear hierarchical section headers, and clickable PubMed links.
-- **Ultra-Stable Copy Feedback**: Re-engineered the clipboard feedback system for 100% stability. Get instant visual confirmation (checkmark toggle) every time you copy a response.
-- **Improved Hierarchical Layout**: AI-generated answers now feature better structural clarity with emphasized headers for Evidence, Hypotheses, and Suggested Questions.
+### What's New in 0.9.5
+- **Semantic Extraction diagnostics**: Added a new UI alert in the Search Panel that provides detailed metrics after semantic analysis.
+- **Improved Local LLM Parsing**: Enhanced robustness when handling outputs from Ollama or LocalAI models.
+- **Simplified Advanced Settings UI**: Standardized on ChromaDB default embeddings.
+- **Improved Hierarchical Layout**: AI-generated answers now feature better structural clarity.
 ## 🚀 Quick Start
 Launch the interactive dashboard using Docker and access it at `localhost:8050`:
 

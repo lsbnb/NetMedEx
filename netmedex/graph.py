@@ -152,12 +152,28 @@ class PubTatorGraphBuilder:
                 nodes_map[article.pmid] = nodes
 
             # Run parallel analysis
+            provider = getattr(self.semantic_extractor.llm_client, "provider", "")
+            model_name = str(getattr(self.semantic_extractor.llm_client, "model", "")).lower()
+            max_workers = 5
+            if provider == "google":
+                # Flash can handle more concurrency, Pro stays conservative but increased to 5
+                max_workers = 5 if "pro" in model_name else 8
+            elif provider == "openai":
+                # OpenAI models like gpt-4o have high rate limits, increase to 7 for speed
+                max_workers = 7
+            elif provider == "local":
+                # Increase local workers to 4 for better throughput
+                max_workers = 4
+            else:
+                max_workers = 5
             logger.info(
-                f"Starting parallel semantic analysis for {len(collection.articles)} articles..."
+                f"Starting parallel semantic analysis for {len(collection.articles)} articles "
+                f"(provider={provider or 'unknown'}, model={model_name or 'unknown'}, workers={max_workers})..."
             )
             semantic_edges = self.semantic_extractor.analyze_collection_relationships(
-                collection.articles, nodes_map
+                collection.articles, nodes_map, max_workers=max_workers
             )
+            self.graph.graph["semantic_stats"] = dict(self.semantic_extractor.last_run_stats)
 
             # Convert and add all edges
             pubtator_edges = self.semantic_extractor.convert_to_pubtator_edges(semantic_edges)
@@ -384,7 +400,7 @@ class PubTatorGraphBuilder:
             max_cut = float("inf")
 
         for u, v, edge_attrs in graph.edges(data=True):
-            width = edge_attrs["edge_width"]
+            width = edge_attrs.get("edge_width", 1.0)
             # Filter: Check if outside the range [min_cut, max_cut]
             if width < min_cut or width > max_cut:
                 to_remove.append((u, v))

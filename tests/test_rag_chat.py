@@ -2,6 +2,7 @@ import sys
 import unittest
 from pathlib import Path
 from unittest.mock import MagicMock, patch
+import networkx as nx
 
 # Add project root to path
 sys.path.append(str(Path(__file__).parent.parent))
@@ -72,6 +73,30 @@ class TestRAGChat(unittest.TestCase):
 
         self.assertTrue(result["success"])
         self.assertIn("123456", result["sources"])
+
+    def test_entity_listing_query_returns_full_mirna_list_from_graph(self):
+        graph = nx.Graph()
+        for i in range(1, 7):
+            graph.add_node(
+                f"mir-{i}",
+                name=f"miR-{i}",
+                type="Gene",
+                pmids={str(100000 + i)},
+            )
+        graph.add_node("gene-a", name="TP53", type="Gene", pmids={"200001"})
+
+        graph_retriever = MagicMock()
+        graph_retriever.graph = graph
+
+        session = ChatSession(self.rag, self.llm_client, graph_retriever=graph_retriever)
+        result = session.send_message("請列出所有 miRNA")
+
+        self.assertTrue(result["success"])
+        self.assertIn("miR-1", result["message"])
+        self.assertIn("miR-6", result["message"])
+        self.assertNotIn("TP53", result["message"])
+        # Deterministic listing path should bypass LLM chat completion.
+        self.assertFalse(self.llm_client.client.chat.completions.create.called)
 
 
 if __name__ == "__main__":

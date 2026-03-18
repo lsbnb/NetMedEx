@@ -26,7 +26,6 @@ def create_message_component(
         if is_user
         else f"{base_message_class} mb-3"
     )
-    icon = "👤" if is_user else "🤖"
 
     import re
     import uuid
@@ -49,14 +48,11 @@ def create_message_component(
     )
 
     if is_user:
-        # User Layout: Bubble on left, Icon on right
+        # User Layout: right-aligned bubble
         bubble_content = html.Div(markdown_component, className=f"{base_message_class}-content")
-        message_parts = [
-            bubble_content,
-            html.Span(icon, className="message-icon ms-2 fs-4 text-secondary"),
-        ]
+        message_parts = [bubble_content]
     else:
-        # Assistant Layout: Icon on left, Bubble and Sources in a column on right
+        # Assistant Layout: full-width bubble
 
         # Check for suggested questions (usually at the end)
         import re
@@ -160,7 +156,14 @@ def create_message_component(
                     outline=True,
                     size="sm",
                     className="me-2 mb-2 text-start suggested-question-btn",
-                    style={"borderRadius": "15px", "fontSize": "0.85rem"},
+                    style={
+                        "borderRadius": "20px", 
+                        "fontSize": "0.8rem", 
+                        "padding": "6px 14px",
+                        "backgroundColor": "rgba(16, 163, 127, 0.05)",
+                        "borderColor": "rgba(16, 163, 127, 0.3)",
+                        "color": "#10a37f"
+                    },
                 )
                 for i, q in enumerate(suggestions[:3])  # Limit to 3
             ]
@@ -168,11 +171,16 @@ def create_message_component(
                 html.Div(
                     [
                         html.Div(
-                            "💡 Suggested Follow-up:", className="text-muted small mb-2 mt-2"
+                            [
+                                html.I(className="bi bi-lightbulb me-2"),
+                                "Suggested Follow-up"
+                            ], 
+                            className="text-muted small fw-bold mb-2 mt-3 d-flex align-items-center"
                         ),
-                        html.Div(suggestion_btns, className="d-flex flex-wrap"),
+                        html.Div(suggestion_btns, className="d-flex flex-wrap gap-1"),
                     ],
-                    className="message-suggestions",
+                    className="message-suggestions bg-light p-3 rounded-3 mt-3",
+                    style={"border": "1px solid #e5e7eb"}
                 )
             )
 
@@ -193,10 +201,7 @@ def create_message_component(
                 )
             )
 
-        message_parts = [
-            html.Span(icon, className="message-icon me-2 fs-3 text-primary"),
-            html.Div(assistant_column, style={"maxWidth": "90%", "width": "100%"}),
-        ]
+        message_parts = [html.Div(assistant_column, style={"maxWidth": "100%", "width": "100%"})]
 
     return html.Div(message_parts, className=wrapper_class)
 
@@ -245,11 +250,12 @@ chat_input = html.Div(
                     style={"resize": "none"},
                 ),
                 dbc.Button(
-                    "Send",
+                    html.I(className="bi bi-arrow-up"),
                     id="chat-send-btn",
                     color="primary",
                     disabled=True,
-                    style={"height": "auto", "alignSelf": "stretch"},  # Match textarea height
+                    className="chat-send-button",
+                    style={"height": "44px", "width": "44px", "alignSelf": "end"},
                 ),
             ],
             className="mb-2",
@@ -257,14 +263,14 @@ chat_input = html.Div(
         html.Div(
             [
                 html.Small(
-                    "💡 Tip: Ask about relationships, mechanisms, or key findings",
+                    "💡 Tip: Press Enter to send, Shift+Enter for a new line",
                     className="text-muted",
                     id="chat-input-hint",
                 ),
                 dcc.Loading(
                     id="chat-loading",
                     type="dot",
-                    children=html.Div(id="chat-processing-status", style={"display": "none"}),
+                    children=html.Div(id="chat-processing-status", className="small text-muted"),
                     style={"marginLeft": "10px"},
                 ),
             ],
@@ -279,14 +285,35 @@ selection_info = html.Div(
     [
         html.Div(
             [
-                html.H6("📊 Selection Summary", className="mb-3"),
+                html.Div(
+                    [
+                        html.H6("📊 Selection Summary", className="mb-0"),
+                        html.Span(
+                            [
+                                html.I(
+                                    className="bi bi-info-circle ms-2 text-muted",
+                                    id="selection-summary-info",
+                                    style={"cursor": "pointer", "fontSize": "0.9rem"},
+                                ),
+                                dbc.Tooltip(
+                                    "This count includes all unique PMIDs from selected nodes and edges. "
+                                    "It may be larger than the 'Network Statistics' count because it includes "
+                                    "PMIDs from isolated nodes that have no edges.",
+                                    target="selection-summary-info",
+                                    placement="right",
+                                ),
+                            ]
+                        ),
+                    ],
+                    className="d-flex align-items-center mb-3",
+                ),
                 dbc.Row(
                     [
                         dbc.Col(
                             [
                                 html.Div(
                                     [
-                                        html.Span("Abstracts: ", className="text-muted small"),
+                                        html.Span("Articles: ", className="text-muted small"),
                                         html.Span(
                                             "0", id="chat-abstract-count", className="fw-bold"
                                         ),
@@ -387,7 +414,13 @@ chat_modal = dbc.Modal(
                         className="flex-grow-1",
                     ),
                     dbc.Col(
-                        dbc.Button("Send", id="modal-chat-send-btn", color="primary"),
+                        dbc.Button(
+                            html.I(className="bi bi-arrow-up"),
+                            id="modal-chat-send-btn",
+                            color="primary",
+                            className="chat-send-button",
+                            style={"height": "44px", "width": "44px"},
+                        ),
                         width="auto",
                     ),
                     dbc.Col(
@@ -395,7 +428,7 @@ chat_modal = dbc.Modal(
                             id="modal-chat-loading",
                             type="dot",
                             children=html.Div(
-                                id="modal-chat-processing-status", style={"display": "none"}
+                                id="modal-chat-processing-status", className="small text-muted"
                             ),
                         ),
                         width="auto",

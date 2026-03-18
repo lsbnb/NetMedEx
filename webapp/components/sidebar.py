@@ -69,6 +69,10 @@ pubtator_file = html.Div(
     id="pubtator-file-wrapper",
 )
 
+# Define permanent upload components to ensure IDs always exist in layout
+pmid_file_upload = dcc.Upload(id="pmid-file-data", style={"display": "none"})
+graph_file_upload = dcc.Upload(id="graph-file-data", accept=".pkl", style={"display": "none"})
+
 graph_file = html.Div(
     [
         html.Div(
@@ -78,13 +82,15 @@ graph_file = html.Div(
                     "Load a NetMedEx graph file (.pkl) exported from the Graph Panel. "
                     "Restores the full graph including semantic analysis results — no re-processing needed.",
                 ),
-                dcc.Upload(
-                    id="graph-file-data",
-                    children=html.Div(
-                        ["Drag and Drop or ", html.A("Select .pkl File", className="hyperlink")],
-                        className="upload-box form-control",
-                    ),
-                    accept=".pkl",
+                html.Div(
+                    [
+                        html.Div(
+                            ["Drag and Drop or ", html.A("Select .pkl File", className="hyperlink")],
+                            className="upload-box form-control",
+                            id="graph-file-upload-trigger",
+                        ),
+                    ],
+                    style={"cursor": "pointer"},
                 ),
                 html.Div(id="graph-file-upload"),
             ],
@@ -195,6 +201,7 @@ api_params = html.Div(
                     switch=True,
                     id="pubtator-params",
                     value=["use_mesh"],
+                    inline=True,
                 ),
             ],
             className="param",
@@ -265,14 +272,19 @@ network_params = html.Div(
                 ),
                 generate_param_title(
                     "Semantic Confidence Threshold",
-                    "Minimum confidence score (0-1) for LLM-identified relationships. Higher values = more precision, fewer edges.",
+                    (
+                        "Suggested Settings:\n"
+                        "• 0.3 - 0.5: Recommended (Balanced recall & precision)\n"
+                        "• > 0.7: Strict (High-confidence evidence)\n"
+                        "• < 0.2: Exploratory (Weak/novel associations)"
+                    ),
                 ),
                 dcc.Slider(
                     0,
                     1.0,
-                    0.1,
-                    value=0.5,
-                    marks={0: "0.0", 0.5: "0.5", 1.0: "1.0"},
+                    0.05,
+                    value=0.4,
+                    marks={0: "0.0", 0.4: "0.4", 0.7: "0.7", 1.0: "1.0"},
                     id="semantic-threshold",
                     tooltip={"placement": "bottom", "always_visible": True},
                 ),
@@ -410,7 +422,16 @@ export_buttons = html.Div(
 )
 
 search_panel = html.Div(
-    [api_or_file, api_params, pubtator_file, graph_file, network_params, progress],
+    [
+        api_or_file,
+        api_params,
+        pubtator_file,
+        graph_file,
+        network_params,
+        progress,
+        pmid_file_upload,
+        graph_file_upload,
+    ],
     id="search-panel",
 )
 
@@ -421,7 +442,27 @@ graph_settings_panel = html.Div(
             [
                 dbc.CardBody(
                     [
-                        html.H5("Network Statistics", className="mb-3 text-center"),
+                        html.Div(
+                            [
+                                html.H5("Network Statistics", className="mb-0 text-center"),
+                                html.Span(
+                                    [
+                                        html.I(
+                                            className="bi bi-info-circle ms-2 text-muted",
+                                            id="network-stats-info",
+                                            style={"cursor": "pointer", "fontSize": "0.8rem"},
+                                        ),
+                                        dbc.Tooltip(
+                                            "This count represents unique PMIDs linked to explicit relationships (edges) in the current graph. "
+                                            "It may be smaller than the Chat panel count because it excludes isolated nodes without edges.",
+                                            target="network-stats-info",
+                                            placement="bottom",
+                                        ),
+                                    ]
+                                ),
+                            ],
+                            className="d-flex align-items-center justify-content-center mb-3",
+                        ),
                         html.Div(
                             [
                                 # Articles count
@@ -544,7 +585,7 @@ header_row = html.Div(
         sidebar_toggle,
         html.Div(
             [
-                html.Small("v0.9.4", className="text-muted", style={"fontSize": "0.7rem"}),
+                html.Small("v0.9.5", className="text-muted", style={"fontSize": "0.7rem"}),
                 advanced_settings,
             ],
             className="d-flex flex-column align-items-center ms-auto",

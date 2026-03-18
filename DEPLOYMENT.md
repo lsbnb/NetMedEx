@@ -10,21 +10,23 @@ NetMedEx is container-ready and can be easily deployed using Docker.
 Run the following command in the project root directory:
 
 ```bash
-docker build -t netmedex:v0.6.0 .
+docker build -t netmedex:v0.9.5 .
 ```
 
 ## 2. Running the Container
-To run the application, you need to provide your OpenAI API key as an environment variable.
+To run the application, you need to provide your OpenAI API key as an environment variable (or use a local LLM).
 
 ```bash
 docker run -d \
   -p 8050:8050 \
   -e OPENAI_API_KEY="your-api-key-here" \
   --name netmedex-app \
-  netmedex:v0.6.0
+  netmedex:v0.9.5
 ```
 
-The application will be available at `http://localhost:8050`.
+> [!IMPORTANT]
+> **Access the Application**: Once the container is running, open your browser and go to:
+> **[http://localhost:8050](http://localhost:8050)**
 
 ## Configuration
 You can customize the deployment using environment variables:

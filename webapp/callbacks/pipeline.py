@@ -16,6 +16,7 @@ from netmedex.graph import PubTatorGraphBuilder, save_graph
 from netmedex.pubtator import PubTatorAPI
 from netmedex.pubtator_parser import PubTatorIO
 from netmedex.utils_threading import run_thread_with_error_notification
+from webapp.llm import GEMINI_OPENAI_BASE_URL, OPENAI_BASE_URL
 from webapp.llm import llm_client
 from webapp.utils import generate_session_id, get_data_savepath, visibility
 
@@ -70,6 +71,16 @@ def callbacks(app):
             State("ai-search-toggle", "value"),
             State("edge-method", "value"),
             State("semantic-threshold", "value"),
+            # LLM Configuration States (to handle background process isolation)
+            State("llm-provider-selector", "value"),
+            State("openai-api-key-input", "value"),
+            State("openai-model-selector", "value"),
+            State("openai-custom-model-input", "value"),
+            State("google-api-key-input", "value"),
+            State("google-model-selector", "value"),
+            State("google-safety-setting", "value"),
+            State("llm-base-url-input", "value"),
+            State("llm-model-input", "value"),
         ],
         running=[
             (Output("submit-button", "disabled"), True, False),
@@ -104,8 +115,47 @@ def callbacks(app):
         ai_search_toggle,
         edge_method,
         semantic_threshold,
+        llm_provider,
+        openai_api_key,
+        openai_model,
+        openai_custom_model,
+        google_api_key,
+        google_model,
+        google_safety_setting,
+        llm_base_url,
+        llm_model,
     ):
         try:
+            # Initialize LLM Client for the background process
+            if llm_provider == "openai":
+                model = (
+                    openai_custom_model if openai_model == "custom" else openai_model
+                )
+                llm_client.initialize_client(
+                    api_key=openai_api_key,
+                    model=model,
+                    base_url=OPENAI_BASE_URL,
+                    provider="openai",
+                )
+            elif llm_provider == "google":
+                llm_client.initialize_client(
+                    api_key=google_api_key,
+                    model=google_model,
+                    base_url=GEMINI_OPENAI_BASE_URL,
+                    provider="google",
+                    safety_setting=google_safety_setting,
+                )
+            else:  # local
+                llm_client.initialize_client(
+                    api_key="local-dummy-key",
+                    base_url=llm_base_url,
+                    model=llm_model,
+                    provider="local",
+                )
+            logger.info(
+                f"LLM Client initialized in background process: provider={llm_provider}, model={llm_client.model}"
+            )
+
             _exception_msg = None
             _exception_type = None
 
@@ -207,9 +257,19 @@ def callbacks(app):
                             set_progress((0, 1, "", "(Step 0/2) AI Translating query..."))
                             try:
                                 translated_query = llm_client.translate_query_to_boolean(query)
-                                if translated_query != query:
-                                    query = translated_query
+                                if translated_query and translated_query.strip():
+                                    query = translated_query.strip()
                                     set_progress((0, 1, "", f"AI Translated: {query}"))
+                                else:
+                                    logger.warning("AI Search returned empty result, falling back to original query")
+                                    set_progress(
+                                        (
+                                            0,
+                                            1,
+                                            "",
+                                            "⚠️ AI Search returned empty. Using original query.",
+                                        )
+                                    )
                             except Exception as e:
                                 logger.error(f"Error executing AI search: {e}")
                                 # Continue with original query instead of failing
@@ -313,6 +373,7 @@ def callbacks(app):
                         no_update,
                         no_update,
                         {"articles": 0, "nodes": 0, "edges": 0},
+                        no_update,  # keep existing session-language
                         html.Div(
                             dbc.Alert(exception_msg, color="danger", dismissable=True),
                             className="mt-3",
@@ -350,6 +411,7 @@ def callbacks(app):
                         no_update,
                         no_update,
                         {"articles": 0, "nodes": 0, "edges": 0},
+                        no_update,
                         html.Div(
                             dbc.Alert(
                                 "Error: Semantic analysis requires LLM configuration. Please set your API key in Advanced Settings.",
@@ -375,12 +437,13 @@ def callbacks(app):
                         f"Progress callback: current={current}, total={total}, status={status}, error={error}"
                     )
                     if error:
+                        short_error = str(error).split("\n", 1)[0]
                         set_progress(
                             (
                                 current,
                                 total_articles,
                                 f"{current}/{total_articles}",
-                                f"❌ Error: {error}",
+                                f"⚠️ Skipped one article: {short_error} (continuing)",
                             )
                         )
                     else:
@@ -443,6 +506,103 @@ def callbacks(app):
             num_articles = len(G.graph["pmid_title"]) if G.graph.get("pmid_title") else 0
             num_nodes = G.number_of_nodes() if G else 0
             num_edges = G.number_of_edges() if G else 0
+            semantic_stats = G.graph.get("semantic_stats", {})
+            semantic_failed = int(semantic_stats.get("failed_articles", 0))
+            semantic_total = int(semantic_stats.get("total_articles", 0))
+            semantic_parse_failures = int(semantic_stats.get("parse_failures", 0))
+            semantic_relaxed_recoveries = int(semantic_stats.get("relaxed_recoveries", 0))
+            semantic_compact_retries = int(semantic_stats.get("compact_retries", 0))
+            semantic_coverage_passes = int(semantic_stats.get("coverage_passes", 0))
+            semantic_coverage_expansions = int(semantic_stats.get("coverage_expansions", 0))
+            semantic_dropped_threshold = int(semantic_stats.get("dropped_by_threshold", 0))
+            semantic_dropped_invalid_nodes = int(semantic_stats.get("dropped_invalid_nodes", 0))
+            semantic_provider = getattr(llm_client, "provider", "") if edge_method == "semantic" else ""
+            semantic_model = getattr(llm_client, "model", "") if edge_method == "semantic" else ""
+
+            warning_output = ""
+            if edge_method == "semantic" and semantic_total > 0 and semantic_failed > 0:
+                warning_output = html.Div(
+                    dbc.Alert(
+                        [
+                            html.Div(
+                                (
+                                    f"Semantic analysis completed with partial failures: "
+                                    f"{semantic_failed}/{semantic_total} articles failed due to LLM/API errors. "
+                                    "Graph was still generated from successful articles."
+                                )
+                            ),
+                            html.Hr(),
+                            html.Div(
+                                (
+                                    f"Diagnostics: provider={semantic_provider}, model={semantic_model}, "
+                                    f"parse_failures={semantic_parse_failures}, "
+                                    f"relaxed_recoveries={semantic_relaxed_recoveries}, "
+                                    f"compact_retries={semantic_compact_retries}, "
+                                    f"coverage_passes={semantic_coverage_passes}, "
+                                    f"coverage_expansions={semantic_coverage_expansions}, "
+                                    f"dropped_threshold={semantic_dropped_threshold}, "
+                                    f"dropped_invalid_nodes={semantic_dropped_invalid_nodes}"
+                                ),
+                                className="small mb-0",
+                            ),
+                        ],
+                        color="warning",
+                        dismissable=True,
+                    ),
+                    className="mt-3",
+                )
+            if edge_method == "semantic" and num_edges == 0:
+                warning_output = html.Div(
+                    dbc.Alert(
+                        [
+                            html.Div(
+                                (
+                                    "Semantic analysis completed but no semantic edges were generated. "
+                                    "This usually means most LLM calls failed or confidence filtering removed all relations. "
+                                    "Try a smaller query, different model, or lower semantic threshold."
+                                )
+                            ),
+                            html.Hr(),
+                            html.Div(
+                                (
+                                    f"Diagnostics: provider={semantic_provider}, model={semantic_model}, "
+                                    f"parse_failures={semantic_parse_failures}, "
+                                    f"relaxed_recoveries={semantic_relaxed_recoveries}, "
+                                    f"compact_retries={semantic_compact_retries}, "
+                                    f"coverage_passes={semantic_coverage_passes}, "
+                                    f"coverage_expansions={semantic_coverage_expansions}, "
+                                    f"dropped_threshold={semantic_dropped_threshold}, "
+                                    f"dropped_invalid_nodes={semantic_dropped_invalid_nodes}"
+                                ),
+                                className="small mb-0",
+                            ),
+                        ],
+                        color="warning",
+                        dismissable=True,
+                    ),
+                    className="mt-3",
+                )
+            elif edge_method == "semantic":
+                warning_output = html.Div(
+                    dbc.Alert(
+                        html.Div(
+                            (
+                                f"Semantic diagnostics: provider={semantic_provider}, model={semantic_model}, "
+                                f"parse_failures={semantic_parse_failures}, "
+                                f"relaxed_recoveries={semantic_relaxed_recoveries}, "
+                                f"compact_retries={semantic_compact_retries}, "
+                                f"coverage_passes={semantic_coverage_passes}, "
+                                f"coverage_expansions={semantic_coverage_expansions}, "
+                                f"dropped_threshold={semantic_dropped_threshold}, "
+                                f"dropped_invalid_nodes={semantic_dropped_invalid_nodes}"
+                            ),
+                            className="small mb-0",
+                        ),
+                        color="info",
+                        dismissable=True,
+                    ),
+                    className="mt-3",
+                )
 
             print(f"DEBUG: run_pubtator3_api completed! num_articles={num_articles}")
             return (
@@ -453,7 +613,7 @@ def callbacks(app):
                 savepath,
                 {"articles": num_articles, "nodes": num_nodes, "edges": num_edges},
                 detected_language,
-                "",  # Clear any previous error
+                warning_output,
             )
 
         except Exception as e:

@@ -11,8 +11,6 @@ import logging
 from dataclasses import dataclass
 from typing import Any
 
-from chromadb.utils import embedding_functions
-
 logger = logging.getLogger(__name__)
 
 
@@ -54,16 +52,9 @@ class NodeRAG:
                 )
             )
 
-            # Setup embedding function
+            # Standardize to ChromaDB default embeddings for all providers.
             self.embedding_fn = None
-            if self.llm_client.api_key and self.llm_client.api_key != "local-dummy-key":
-                self.embedding_fn = embedding_functions.OpenAIEmbeddingFunction(
-                    api_key=self.llm_client.api_key,
-                    model_name="text-embedding-3-small",
-                )
-                logger.info("NodeRAG: OpenAI Embedding Function initialized")
-            elif self.llm_client.base_url:
-                logger.info("NodeRAG: Local LLM detected, using ChromaDB default embeddings")
+            logger.info("NodeRAG: Using ChromaDB default embeddings")
 
             logger.info("NodeRAG: ChromaDB client initialized")
         except ImportError:
@@ -124,7 +115,10 @@ class NodeRAG:
             if progress_callback:
                 progress_callback(f"Indexing {len(nodes)} graph nodes...")
 
-            self.collection.add(documents=documents_text, metadatas=metadatas, ids=ids)
+            try:
+                self.collection.add(documents=documents_text, metadatas=metadatas, ids=ids)
+            except Exception as e:
+                raise e
 
             self._initialized = True
             logger.info(f"Indexed {len(nodes)} nodes successfully")
