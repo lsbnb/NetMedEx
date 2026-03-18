@@ -143,14 +143,15 @@ api_params = html.Div(
                                     id="ai-search-toggle",
                                     label="🤖 Enable AI-Powered Search",
                                     value=False,
-                                    className="mb-2",
+                                    className="me-3",
                                 ),
                                 html.Small(
                                     "Let AI translate your natural language into optimized search queries",
-                                    className="d-block text-muted",
+                                    className="text-muted",
                                     style={"fontSize": "0.85rem"},
                                 ),
-                            ]
+                            ],
+                            className="d-flex align-items-center",
                         )
                     ],
                     color="info",
@@ -167,6 +168,7 @@ api_params = html.Div(
                     placeholder="ex: COVID-19 AND PON1",
                     type="text",
                     id="data-input",
+                    style={"width": "100%", "minHeight": "46px"},
                 ),
             ],
             id="input-type",
@@ -188,26 +190,34 @@ api_params = html.Div(
             className="param",
         ),
         html.Div(
-            [
-                generate_param_title(
-                    "PubTator3 Parameters",
-                    (
-                        "Use MeSH Vocabulary: Replace original text in articles with standardized MeSH terms\n"
-                        "Full Text: Build network from full-text articles if available, defaulting to abstracts otherwise (not recommended to enable)"
+            html.Div(
+                [
+                    html.Div(
+                        [
+                            generate_param_title(
+                                "PubTator3 Parameters",
+                                (
+                                    "Use MeSH Vocabulary: Replace original text in articles with standardized MeSH terms\n"
+                                    "Full Text: Build network from full-text articles if available, defaulting to abstracts otherwise (not recommended to enable)"
+                                ),
+                            )
+                        ],
+                        className="flex-grow-1 me-3",
                     ),
-                ),
-                dbc.Checklist(
-                    options=[
-                        {"label": "Use MeSH Vocabulary", "value": "use_mesh"},
-                        {"label": "Full Text", "value": "full_text"},
-                        {"label": "Fetch Citation Counts", "value": "fetch_citations"},
-                    ],
-                    switch=True,
-                    id="pubtator-params",
-                    value=["use_mesh"],
-                    inline=True,
-                ),
-            ],
+                    dbc.Checklist(
+                        options=[
+                            {"label": "Use MeSH Vocabulary", "value": "use_mesh"},
+                            {"label": "Full Text", "value": "full_text"},
+                            {"label": "Fetch Citation Counts", "value": "fetch_citations"},
+                        ],
+                        switch=True,
+                        id="pubtator-params",
+                        value=["use_mesh"],
+                        inline=True,
+                    ),
+                ],
+                className="d-flex align-items-center",
+            ),
             className="param",
         ),
     ],
@@ -596,7 +606,7 @@ header_row = html.Div(
         sidebar_toggle,
         html.Div(
             [
-                html.Small("V0.9.5", className="text-muted", style={"fontSize": "0.7rem"}),
+                html.Small("v0.9.5", className="text-muted", style={"fontSize": "0.7rem"}),
                 advanced_settings,
             ],
             className="d-flex flex-column align-items-center ms-auto",
