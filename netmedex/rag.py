@@ -50,7 +50,7 @@ def _build_token_batches(
     cur_ids: list[str] = []
     cur_tokens = 0
 
-    for text, meta, doc_id in zip(documents_text, metadatas, ids, strict=True):
+    for text, meta, doc_id in zip(documents_text, metadatas, ids):
         tokens = _count_tokens(text)
         if cur_tokens + tokens > max_tokens and cur_texts:
             batches.append((cur_texts, cur_metas, cur_ids))
