@@ -1,35 +1,50 @@
-# NetMedEx: AI-Powered Biomedical Knowledge Discovery
+# NetMedEx: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
-NetMedEx is a state-of-the-art platform designed to transform raw biomedical literature into actionable insights. By combining structured co-mention networks with unstructured text analysis, NetMedEx provides a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** experience that allows researchers to explore complex biological relationships with unprecedented clarity.
+NetMedEx is a premium, AI-driven platform that transforms millions of biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridge the gap between structured networks and unstructured text using our proprietary **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine.
 
-## 🌟 Key Features
-- **Interactive Co-Mention Networks**: Visualize relationships between genes, diseases, chemicals, and species extracted directly from PubTator3.
-- **AI-Powered Semantic Layer**: Beyond simple co-mentions, our LLM integration (OpenAI, Gemini, Local LLMs) identifies specific relationship types (e.g., *inhibits*, *activates*) and extracts supporting evidence.
-- **Hybrid RAG Chat**: Chat directly with your literature collection. NetMedEx synthesizes answers using both the network topology and underlying abstract text.
-- **Natural Language Search**: Use simple English (or even Traditional Chinese/Japanese) to generate optimized PubTator boolean queries automatically.
+---
 
-## 🚀 What's New in 0.9.5
-This version focuses on **reliability and transparency**:
-- **Semantic Extraction Diagnostics**: A new real-time alert system shows exactly how many articles were successfully parsed, where recall was expanded, and why certain edges were dropped.
-- **Robust Local LLM Support**: Enhanced parsing logic ensures stable extraction even when using local models like Llama 3 or Mistral via Ollama/LocalAI.
-- **Simplified Configuration**: We've streamlined the Advanced Settings UI, standardizing on ChromaDB for a zero-config vector database experience.
-- **Enhanced Translation Logic**: Improved multi-language support ensuring non-English queries are accurately translated for maximum PubTator recall.
+## 🌟 Why NetMedEx?
+While other tools simply list entities, NetMedEx **interprets the links**. It provides the "scaffolding" for discovery, allowing researchers to navigate the complex landscape of genes, diseases, chemicals, and species with AI as their co-pilot.
+
+### 🚀 Core Capabilities
+- **🧠 Hybrid RAG Engine**: Combines graph topology (paths, neighbors) with deep text analysis (abstracts) for high-fidelity discovery.
+- **🕸️ Interactive Visualization**: Explore co-mention and semantic networks with real-time layout adjustments, community detection, and sub-network selection.
+- **⚡ Semantic Extraction**: Automatically identifies relationship types (e.g., *inhibits*, *treats*, *activates*) with confidence scores and direct evidence sentences.
+- **🌐 Universal Translation**: Search and chat in English, Traditional Chinese, Japanese, or Korean. AI handles the translation to optimized PubTator syntax.
+- **💾 Full Session Portability**: Export your entire research state as a **Graph File (.pkl)** and restore it instantly later — no re-analysis required.
+
+---
+
+## 🆕 What's New in v0.9.5
+- **🔍 Semantic Diagnostics**: Gain full transparency with real-time metrics on parsing success, recall expansion, and edge filtering.
+- **🤖 Robust Local AI**: Optimized regex-based parsing for stable results when using local models (Llama 3, Mistral) via Ollama.
+- **🎨 Streamlined UI**: A cleaner Advanced Settings experience, standardizing on ChromaDB for zero-config vector storage.
+- **📍 Precise Citations**: Enhanced HTML exports with clickable PubMed links and hierarchically structured AI answers.
+
+---
 
 ## 🛠️ Quick Start
-Run the latest version instantly:
+Launch the interactive dashboard instantly on `localhost:8050`:
+
 ```bash
 docker run -p 8050:8050 --rm lsbnb/netmedex
 ```
-Access the dashboard at `http://localhost:8050`.
 
-### Using with AI (Recommended)
-To unlock the full power of Semantic Analysis and Hybrid RAG, provide an OpenAI or Gemini API key:
+### 🔓 Unlock Full AI Power
+To enable Semantic Analysis and Hybrid RAG Chat, simply pass your API key:
+
 ```bash
-docker run -p 8050:8050 --rm -e OPENAI_API_KEY='your-key-here' lsbnb/netmedex
+docker run -p 8050:8050 --rm -e OPENAI_API_KEY='sk-...' lsbnb/netmedex
 ```
-*Note: You can also configure keys and models directly within the "Advanced Settings" tab in the web interface.*
+*Note: You can also configure OpenAI, Gemini, or Local LLM endpoints directly within the "Advanced Settings" tab in the app.*
 
-## 🔗 Resources
+---
+
+## 🔗 Connect With Us
 - **GitHub**: [lsbnb/NetMedEx](https://github.com/lsbnb/NetMedEx)
-- **Documentation**: [Full Docs](https://yehzx.github.io/NetMedEx/)
+- **Documentation**: [Official Docs](https://yehzx.github.io/NetMedEx/)
 - **PyPI**: [netmedex](https://pypi.org/project/netmedex/)
+
+---
+© 2026 LSBNB Lab @ IIS, Academia Sinica, TAIWAN.
