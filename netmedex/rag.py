@@ -11,8 +11,6 @@ import logging
 from dataclasses import dataclass
 from typing import Any
 
-from chromadb.utils import embedding_functions
-
 logger = logging.getLogger(__name__)
 
 # Maximum tokens allowed per embedding request (OpenAI limit is 300k; use 250k as buffer)
@@ -110,18 +108,10 @@ class AbstractRAG:
                 )
             )
 
-            # Setup embedding function if API key is available
+            # Standardize to ChromaDB default embeddings for all providers.
+            # This avoids provider-specific embedding endpoint compatibility issues.
             self.embedding_fn = None
-            if self.llm_client.api_key and self.llm_client.api_key != "local-dummy-key":
-                self.embedding_fn = embedding_functions.OpenAIEmbeddingFunction(
-                    api_key=self.llm_client.api_key,
-                    model_name="text-embedding-3-small",  # Optimal for speed/cost
-                )
-                logger.info("OpenAI Embedding Function initialized")
-            elif self.llm_client.base_url:
-                # For local LLMs, we might need a different approach or fall back to default
-                # ChromaDB's default uses Sentence Transformers locally
-                logger.info("Local LLM detected, using ChromaDB default embeddings")
+            logger.info("Using ChromaDB default embeddings")
 
             logger.info("ChromaDB client initialized")
         except ImportError:
@@ -191,17 +181,24 @@ class AbstractRAG:
                 f"(max {_MAX_TOKENS_PER_BATCH:,} tokens each)"
             )
 
-            for batch_idx, (batch_texts, batch_metas, batch_ids) in enumerate(batches, start=1):
-                logger.info(
-                    f"Sending batch {batch_idx}/{total_batches} "
-                    f"({len(batch_texts)} docs) to vector store..."
-                )
-                self.collection.add(documents=batch_texts, metadatas=batch_metas, ids=batch_ids)
-                if progress_callback:
-                    progress_callback(
-                        f"Indexed batch {batch_idx}/{total_batches} "
-                        f"({len(batch_texts)} abstracts)..."
+            try:
+                for batch_idx, (batch_texts, batch_metas, batch_ids) in enumerate(batches, start=1):
+                    logger.info(
+                        f"Sending batch {batch_idx}/{total_batches} "
+                        f"({len(batch_texts)} docs) to vector store..."
                     )
+                    self.collection.add(
+                        documents=batch_texts,
+                        metadatas=batch_metas,
+                        ids=batch_ids,
+                    )
+                    if progress_callback:
+                        progress_callback(
+                            f"Indexed batch {batch_idx}/{total_batches} "
+                            f"({len(batch_texts)} abstracts)..."
+                        )
+            except Exception as e:
+                raise e
 
             self._initialized = True
             logger.info(

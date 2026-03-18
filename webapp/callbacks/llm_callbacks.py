@@ -1,189 +1,342 @@
 from __future__ import annotations
 
 import logging
-import requests
+import os
+from pathlib import Path
 
 import dash
+import requests
 from dash import ClientsideFunction, Input, Output, State, no_update
 
-from webapp.llm import llm_client
+from webapp.llm import GEMINI_OPENAI_BASE_URL, OPENAI_BASE_URL, llm_client
 
 logger = logging.getLogger(__name__)
 
+STANDARD_OPENAI_MODELS = [
+    "gpt-4o",
+    "gpt-4o-mini",
+    "gpt-4-turbo",
+    "o1-preview",
+    "o1-mini",
+    "gpt-3.5-turbo",
+]
+
+def _sanitize_error_message(message: str) -> str:
+    if not message:
+        return "Unknown error"
+    # Prevent accidental key leakage from URLs like ...?key=XXXX
+    if "key=" in message:
+        parts = message.split("key=", 1)
+        if len(parts) == 2:
+            tail = parts[1]
+            for sep in ("&", " ", "\n"):
+                if sep in tail:
+                    tail = tail.split(sep, 1)[1]
+                    return f"{parts[0]}key=***{sep}{tail}"
+            return f"{parts[0]}key=***"
+    return message
+
+
+def _default_settings() -> dict:
+    return {
+        "provider": "openai",
+        "openai_api_key": "",
+        "openai_model": "gpt-4o-mini",
+        "openai_custom_model": "",
+        "google_api_key": "",
+        "google_model": "gemini-1.5-pro",
+        "google_safety_setting": "medium",
+        "local_base_url": "http://localhost:11434/v1",
+        "local_model": "",
+        "local_model_options": [],
+    }
+
+
+def _settings_from_env() -> dict:
+    settings = _default_settings()
+    provider = os.getenv("LLM_PROVIDER", "").strip()
+    openai_api_key = os.getenv("OPENAI_API_KEY", "").strip()
+    google_api_key = (
+        os.getenv("GEMINI_API_KEY", "").strip()
+        or os.getenv("GOOGLE_API_KEY", "").strip()
+    )
+    base_url = os.getenv("OPENAI_BASE_URL", "").strip()
+    model = os.getenv("OPENAI_MODEL", "").strip()
+    embedding_model = os.getenv("EMBEDDING_MODEL", "").strip()
+    google_model = os.getenv("GOOGLE_MODEL", "").strip()
+    local_base_url = os.getenv("LOCAL_LLM_BASE_URL", "").strip()
+    local_model = os.getenv("LOCAL_LLM_MODEL", "").strip()
+
+    if not provider:
+        if openai_api_key == "local-dummy-key" or local_base_url:
+            provider = "local"
+        elif google_api_key or "generativelanguage.googleapis.com" in base_url:
+            provider = "google"
+        else:
+            provider = "openai"
+
+    settings["provider"] = provider
+    if provider == "openai":
+        settings["openai_api_key"] = openai_api_key if openai_api_key != "local-dummy-key" else ""
+        if model:
+            if model in STANDARD_OPENAI_MODELS:
+                settings["openai_model"] = model
+            else:
+                settings["openai_model"] = "custom"
+                settings["openai_custom_model"] = model
+        if embedding_model:
+            settings["local_embedding_model"] = embedding_model
+    elif provider == "google":
+        # Backward compatible: older configs stored Gemini key/model in OPENAI_*.
+        if not google_api_key and openai_api_key and openai_api_key != "local-dummy-key":
+            google_api_key = openai_api_key
+        settings["google_api_key"] = google_api_key
+        settings["google_model"] = google_model or model or settings["google_model"]
+        settings["google_safety_setting"] = os.getenv("GOOGLE_SAFETY_SETTING", "medium")
+    else:
+        chosen_local_url = local_base_url or base_url
+        chosen_local_model = local_model or model
+        settings["local_base_url"] = chosen_local_url or settings["local_base_url"]
+        settings["local_model"] = chosen_local_model
+        settings["local_model_options"] = (
+            [{"label": chosen_local_model, "value": chosen_local_model}] if chosen_local_model else []
+        )
+    return settings
+
+
+def _merge_store_settings(store_data: dict | None) -> dict:
+    settings = _settings_from_env()
+    if not isinstance(store_data, dict):
+        return settings
+    merged = settings.copy()
+    merged.update({k: v for k, v in store_data.items() if v is not None})
+    return merged
+
 
 def callbacks(app):
-    print("DEBUG: Registering llm_callbacks")
-
-    # Load LLM Configuration from .env on page load
+    # Load from localStorage first, fallback to env.
     @app.callback(
         [
             Output("llm-provider-selector", "value"),
             Output("openai-api-key-input", "value"),
             Output("openai-model-selector", "value"),
+            Output("openai-custom-model-input", "value"),
+            Output("google-api-key-input", "value"),
+            Output("google-model-selector", "value"),
+            Output("google-safety-setting", "value"),
             Output("llm-base-url-input", "value"),
             Output("llm-model-input", "value"),
             Output("llm-model-input", "options"),
         ],
-        Input("main-container", "id"),  # Triggered on page load
+        Input("main-container", "id"),
+        State("llm-settings-store", "data"),
     )
-    def load_llm_configuration(_):
-        """Load LLM configuration from environment variables"""
+    def load_llm_configuration(_, store_data):
         try:
-            import os
-
-            api_key = os.getenv("OPENAI_API_KEY", "")
-            base_url = os.getenv("OPENAI_BASE_URL", "")
-            model = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
-
-            # Determine provider
-            is_local = (api_key == "local-dummy-key") or (
-                base_url and "api.openai.com" not in base_url
-            )
-
-            if is_local:
-                provider = "local"
-                # For local, populate local inputs, use defaults for openai side
-                options = [{"label": model, "value": model}] if model else []
-                return provider, "", "gpt-4o-mini", base_url, model, options
-            else:
-                provider = "openai"
-                # Check if model is in the dropdown, otherwise set to custom
-                standard_models = [
-                    "gpt-4o",
-                    "gpt-4o-mini",
-                    "gpt-4-turbo",
-                    "o1-preview",
-                    "o1-mini",
-                    "gpt-3.5-turbo",
-                ]
-
-                if model in standard_models:
-                    return (
-                        provider,
-                        api_key,
-                        model,
-                        "http://localhost:11434/v1",
-                        "",
-                        [],
-                    )
-                else:
-                    # Custom model
-                    return (
-                        provider,
-                        api_key,
-                        "custom",
-                        "http://localhost:11434/v1",
-                        "",
-                        [],
-                    )
-        except Exception as e:
-            logger.error(f"Error in load_llm_configuration: {e}")
+            settings = _merge_store_settings(store_data)
             return (
-                dash.no_update,
-                dash.no_update,
-                dash.no_update,
-                dash.no_update,
-                dash.no_update,
-                dash.no_update,
+                settings["provider"],
+                settings["openai_api_key"],
+                settings["openai_model"],
+                settings["openai_custom_model"],
+                settings["google_api_key"],
+                settings["google_model"],
+                settings["google_safety_setting"],
+                settings["local_base_url"],
+                settings["local_model"],
+                settings["local_model_options"],
             )
+        except Exception as e:
+            logger.error(f"Error loading LLM configuration: {e}")
+            return (dash.no_update,) * 10
 
-    # Populate custom model input when loading from env
     @app.callback(
-        Output("openai-custom-model-input", "value"),
-        Input("openai-model-selector", "value"),
-    )
-    def populate_custom_model(selected_model):
-        """Populate custom model input when custom is selected during env load"""
-        import os
-
-        if selected_model == "custom":
-            model = os.getenv("OPENAI_MODEL", "")
-            standard_models = [
-                "gpt-4o",
-                "gpt-4o-mini",
-                "gpt-4-turbo",
-                "o1-preview",
-                "o1-mini",
-                "gpt-3.5-turbo",
-            ]
-            if model and model not in standard_models:
-                return model
-        return ""
-
-    # Toggle LLM Configuration Sections
-    @app.callback(
-        [Output("openai-config", "style"), Output("local-llm-config", "style")],
-        Input("llm-provider-selector", "value"),
-    )
-    def toggle_llm_config(provider):
-        """Show/hide configuration sections based on selected provider"""
-        if provider == "openai":
-            return {"display": "block"}, {"display": "none"}
-        else:  # local
-            return {"display": "none"}, {"display": "block"}
-
-    # Toggle Custom Model Input for OpenAI
-    @app.callback(
-        Output("openai-custom-model-div", "style"),
-        Input("openai-model-selector", "value"),
-    )
-    def toggle_custom_model_input(selected_model):
-        """Show custom model input when 'custom' is selected"""
-        if selected_model == "custom":
-            return {"display": "block", "marginTop": "10px"}
-        return {"display": "none"}
-
-    # Unified LLM Configuration
-    # Server-side callback for LLM initialization and status
-    @app.callback(
-        Output("llm-config-status", "children"),
+        Output("llm-settings-store", "data"),
         [
             Input("llm-provider-selector", "value"),
             Input("openai-api-key-input", "value"),
             Input("openai-model-selector", "value"),
             Input("openai-custom-model-input", "value"),
+            Input("google-api-key-input", "value"),
+            Input("google-model-selector", "value"),
+            Input("google-safety-setting", "value"),
             Input("llm-base-url-input", "value"),
             Input("llm-model-input", "value"),
+            Input("llm-model-input", "options"),
         ],
     )
-    def update_llm_initialization(
-        provider, api_key, openai_model, custom_model, base_url, local_model
+    def persist_llm_settings(
+        provider,
+        openai_api_key,
+        openai_model,
+        openai_custom_model,
+        google_api_key,
+        google_model,
+        google_safety_setting,
+        local_base_url,
+        local_model,
+        local_model_options,
     ):
-        """Initialize LLM client on the server when configuration changes"""
-        logger.info(
-            f"CALLBACK: update_llm_initialization triggered | provider={provider}, api_key={'PRESENT' if api_key else 'NONE'}, model={openai_model}"
-        )
+        return {
+            "provider": provider,
+            "openai_api_key": openai_api_key or "",
+            "openai_model": openai_model or "gpt-4o-mini",
+            "openai_custom_model": openai_custom_model or "",
+            "google_api_key": google_api_key or "",
+            "google_model": google_model or "gemini-1.5-pro",
+            "google_safety_setting": google_safety_setting or "medium",
+            "local_base_url": local_base_url or "http://localhost:11434/v1",
+            "local_model": local_model or "",
+            "local_model_options": local_model_options or [],
+        }
+
+    # Toggle provider-specific sections.
+    @app.callback(
+        [
+            Output("openai-config", "style"),
+            Output("google-config", "style"),
+            Output("local-llm-config", "style"),
+            Output("google-params-config", "style"),
+        ],
+        Input("llm-provider-selector", "value"),
+    )
+    def toggle_llm_config(provider):
+        if provider == "openai":
+            return {"display": "block"}, {"display": "none"}, {"display": "none"}, {"display": "none"}
+        if provider == "google":
+            return {"display": "none"}, {"display": "block"}, {"display": "none"}, {"display": "block"}
+        return {"display": "none"}, {"display": "none"}, {"display": "block"}, {"display": "none"}
+
+    @app.callback(
+        Output("openai-custom-model-div", "style"),
+        Input("openai-model-selector", "value"),
+    )
+    def toggle_custom_model_input(selected_model):
+        if selected_model == "custom":
+            return {"display": "block", "marginTop": "10px"}
+        return {"display": "none"}
+
+    @app.callback(
+        [
+            Output("llm-config-status", "children"),
+            Output("llm-status-light", "className"),
+            Output("llm-status-light", "title"),
+        ],
+        Input("verify-llm-connection-btn", "n_clicks"),
+        [
+            State("llm-provider-selector", "value"),
+            State("openai-api-key-input", "value"),
+            State("openai-model-selector", "value"),
+            State("openai-custom-model-input", "value"),
+            State("google-api-key-input", "value"),
+            State("google-model-selector", "value"),
+            State("google-safety-setting", "value"),
+            State("llm-base-url-input", "value"),
+            State("llm-model-input", "value"),
+        ],
+        prevent_initial_call=True,
+    )
+    def verify_llm_connection(
+        n_clicks,
+        provider,
+        openai_api_key,
+        openai_model,
+        openai_custom_model,
+        google_api_key,
+        google_model,
+        google_safety_setting,
+        local_base_url,
+        local_model,
+    ):
+        if not n_clicks:
+            raise dash.exceptions.PreventUpdate
         try:
             if provider == "openai":
-                if api_key and api_key.startswith("sk-"):
-                    model = custom_model if openai_model == "custom" else openai_model
-                    llm_client.initialize_client(
-                        api_key=api_key, model=model, base_url="https://api.openai.com/v1"
+                if not openai_api_key or not openai_api_key.startswith("sk-"):
+                    return (
+                        "⚠️ Invalid OpenAI key format",
+                        "status-indicator status-warning",
+                        "OpenAI API key should start with sk-",
                     )
-                    logger.info(f"✅ OpenAI configured with {model}")
-                    return f"✅ OpenAI configured with {model}"
-                elif api_key:
-                    logger.info("⚠️ Invalid API key format (should start with sk-)")
-                    return "⚠️ Invalid API key format (should start with sk-)"
-                else:
-                    return ""
-            else:  # local
-                if base_url and local_model:
-                    llm_client.initialize_client(
-                        api_key="local-dummy-key", base_url=base_url, model=local_model
+                model = (
+                    openai_custom_model.strip()
+                    if openai_model == "custom" and openai_custom_model
+                    else openai_model
+                )
+                llm_client.initialize_client(
+                    provider="openai",
+                    api_key=openai_api_key,
+                    model=model,
+                    base_url=OPENAI_BASE_URL,
+                )
+            elif provider == "google":
+                if not google_api_key:
+                    return (
+                        "⚠️ Gemini API key is required",
+                        "status-indicator status-warning",
+                        "Provide Gemini API key from Google AI Studio",
                     )
-                    logger.info(f"✅ Local LLM configured: {local_model}")
-                    return f"✅ Local LLM configured: {local_model}"
-                elif base_url or local_model:
-                    logger.info("⚠️ Invalid Local LLM config")
-                    return "⚠️ Please provide both base URL and model name"
-                else:
-                    return ""
-        except Exception as e:
-            logger.error(f"❌ Configuration error: {str(e)}")
-            return f"❌ Configuration error: {str(e)}"
+                models = llm_client.get_gemini_models(google_api_key)
+                if not models:
+                    return (
+                        "❌ Google connection failed: no models returned",
+                        "status-indicator status-offline",
+                        "Gemini models API returned empty result",
+                    )
+                selected_model = google_model or "gemini-1.5-pro"
+                matched = any(m == selected_model or m.startswith(f"{selected_model}-") for m in models)
+                if not matched:
+                    return (
+                        f"❌ Google connection failed: model '{selected_model}' not found",
+                        "status-indicator status-offline",
+                        "Select a model from fetched Gemini model list",
+                    )
+                llm_client.initialize_client(
+                    provider="google",
+                    api_key=google_api_key,
+                    model=selected_model,
+                    base_url=GEMINI_OPENAI_BASE_URL,
+                    safety_setting=google_safety_setting or "medium",
+                )
+                return (
+                    f"✅ Google connection verified ({selected_model})",
+                    "status-indicator status-online",
+                    f"Fetched {len(models)} Gemini models",
+                )
+            else:
+                if not local_base_url or not local_model:
+                    return (
+                        "⚠️ Incomplete Ollama configuration",
+                        "status-indicator status-warning",
+                        "Provide both base URL and model",
+                    )
+                llm_client.initialize_client(
+                    provider="local",
+                    api_key="local-dummy-key",
+                    base_url=local_base_url,
+                    model=local_model,
+                )
 
-    # Clientside callback for INSTANT UI synchronization
+            success, msg = llm_client.test_connection()
+            if success:
+                return (
+                    f"✅ {provider.title()} connection verified ({llm_client.model})",
+                    "status-indicator status-online",
+                    msg,
+                )
+            return (
+                f"❌ {provider.title()} connection failed: {msg}",
+                "status-indicator status-offline",
+                msg,
+            )
+        except Exception as e:
+            logger.error(f"LLM verification error: {e}")
+            return (
+                f"❌ Error: {str(e)}",
+                "status-indicator status-offline",
+                str(e),
+            )
+
     app.clientside_callback(
         ClientsideFunction(namespace="clientside", function_name="sync_llm_toggles"),
         [
@@ -193,12 +346,13 @@ def callbacks(app):
         [
             Input("llm-provider-selector", "value"),
             Input("openai-api-key-input", "value"),
+            Input("google-api-key-input", "value"),
+            Input("google-model-selector", "value"),
             Input("llm-base-url-input", "value"),
             Input("llm-model-input", "value"),
         ],
     )
 
-    # Fetch Local Models
     @app.callback(
         [
             Output("llm-model-input", "options", allow_duplicate=True),
@@ -209,45 +363,78 @@ def callbacks(app):
         prevent_initial_call=True,
     )
     def fetch_local_models(n_clicks, base_url):
-        """Fetch available models from the local LLM endpoint"""
         if not n_clicks or not base_url:
             raise dash.exceptions.PreventUpdate
-
         try:
-            # Construct the models endpoint URL
-            # OpenAI compatible endpoint is usually /v1/models
-            if base_url.endswith("/"):
-                url = f"{base_url}models"
-            else:
-                url = f"{base_url}/models"
-
-            logger.info(f"Fetching models from {url}")
+            url = f"{base_url.rstrip('/')}/models"
             response = requests.get(url, timeout=5)
-
-            if response.status_code == 200:
-                data = response.json()
-                models_list = data.get("data", [])
-
-                # Format for dropdown
-                options = []
-                for model in models_list:
-                    model_id = model.get("id", "unknown")
-                    options.append({"label": model_id, "value": model_id})
-
-                count = len(options)
-                return options, f"✅ Found {count} models"
-            else:
-                return no_update, f"❌ Check URL (Status: {response.status_code})"
-
+            if response.status_code != 200:
+                return no_update, f"❌ Check URL (status: {response.status_code})"
+            models_list = response.json().get("data", [])
+            options = [{"label": m.get("id", "unknown"), "value": m.get("id", "unknown")} for m in models_list]
+            return options, f"✅ Found {len(options)} models"
         except Exception as e:
-            logger.error(f"Error fetching models: {e}")
-            return no_update, f"❌ Error: Could not connect to {base_url}"
+            logger.error(f"Error fetching local models: {e}")
+            return no_update, "❌ Error: Could not connect"
 
-    # Fetch OpenAI Models
+
+
+    def _build_openai_model_options(api_key, current_options, current_value, auto=False):
+        if not api_key:
+            return no_update, "⚠️ Enter API key first", no_update
+        models = llm_client.get_openai_models(api_key)
+        if not models:
+            return no_update, "❌ No chat models found", no_update
+
+        friendly_names = {
+            "gpt-4o": "GPT-4o (Recommended)",
+            "gpt-4o-mini": "GPT-4o Mini (Fast & Cheap)",
+            "gpt-4.1": "GPT-4.1",
+            "gpt-4.1-mini": "GPT-4.1 Mini",
+            "o4-mini": "o4-mini (Reasoning)",
+            "o3-mini": "o3-mini (Reasoning)",
+            "gpt-4-turbo": "GPT-4 Turbo",
+            "o1-preview": "o1-preview (Advanced Reasoning)",
+            "o1-mini": "o1-mini",
+            "gpt-3.5-turbo": "GPT-3.5 Turbo (Legacy)",
+        }
+        new_options = [{"label": friendly_names.get(m, m), "value": m} for m in models]
+        has_custom = any(opt.get("value") == "custom" for opt in (current_options or []))
+        if has_custom or True:
+            new_options.append({"label": "Custom Model...", "value": "custom"})
+
+        new_value = current_value
+        if current_value not in models and current_value != "custom":
+            new_value = "gpt-4o-mini" if "gpt-4o-mini" in models else models[0]
+
+        status = f"✅ {'Auto-synced' if auto else 'Found'} {len(models)} models"
+        return new_options, status, new_value
+
+    def _build_google_model_options(api_key, current_value, auto=False):
+        if not api_key:
+            return no_update, "⚠️ Enter Gemini API key first", no_update
+        if not api_key.startswith("AIza"):
+            return (
+                no_update,
+                "⚠️ Invalid Gemini API key format (expected prefix 'AIza')",
+                no_update,
+            )
+
+        models = llm_client.get_gemini_models(api_key)
+        if not models:
+            return no_update, "❌ No Gemini models found", no_update
+
+        new_options = [{"label": m, "value": m} for m in models]
+        new_value = current_value
+        if current_value not in models:
+            new_value = models[0]
+        status = f"✅ {'Auto-synced' if auto else 'Found'} {len(models)} Gemini models"
+        return new_options, status, new_value
+
     @app.callback(
         [
             Output("openai-model-selector", "options", allow_duplicate=True),
-            Output("openai-model-fetch-status", "children"),
+            Output("openai-model-fetch-status", "children", allow_duplicate=True),
             Output("openai-model-selector", "value", allow_duplicate=True),
         ],
         Input("refresh-openai-models-btn", "n_clicks"),
@@ -259,52 +446,87 @@ def callbacks(app):
         prevent_initial_call=True,
     )
     def fetch_openai_models(n_clicks, api_key, current_options, current_value):
-        """Fetch available models from OpenAI API"""
         if not n_clicks:
             raise dash.exceptions.PreventUpdate
-
-        if not api_key:
-            return no_update, "⚠️ Enter API Key first", no_update
-
         try:
-            logger.info("Fetching OpenAI models using provided key")
-            models = llm_client.get_openai_models(api_key)
-
-            if not models:
-                return no_update, "❌ No chat models found", no_update
-
-            # Create new options
-            new_options = [{"label": m, "value": m} for m in models]
-
-            # Preserve "Custom Model..." option if it existed
-            has_custom = False
-            for opt in current_options:
-                if opt["value"] == "custom":
-                    has_custom = True
-                    break
-
-            if has_custom:
-                new_options.append({"label": "Custom Model...", "value": "custom"})
-            else:
-                # Add it anyway as it's useful
-                new_options.append({"label": "Custom Model...", "value": "custom"})
-
-            # Check if current value is still valid
-            new_value = current_value
-            if current_value not in models and current_value != "custom":
-                # If current model not returned, default to first or keep custom
-                if "gpt-4o-mini" in models:
-                    new_value = "gpt-4o-mini"
-                elif models:
-                    new_value = models[0]
-
-            return new_options, f"✅ Found {len(models)} models", new_value
-
+            return _build_openai_model_options(api_key, current_options, current_value, auto=False)
         except Exception as e:
             logger.error(f"Error fetching OpenAI models: {e}")
             return no_update, f"❌ Fetch failed: {str(e)}", no_update
 
-    # Save LLM Configuration to .env file
+    @app.callback(
+        [
+            Output("openai-model-selector", "options", allow_duplicate=True),
+            Output("openai-model-fetch-status", "children", allow_duplicate=True),
+            Output("openai-model-selector", "value", allow_duplicate=True),
+        ],
+        [
+            Input("llm-provider-selector", "value"),
+            Input("openai-api-key-input", "value"),
+        ],
+        [
+            State("openai-model-selector", "options"),
+            State("openai-model-selector", "value"),
+        ],
+        prevent_initial_call=True,
+    )
+    def auto_fetch_openai_models(provider, api_key, current_options, current_value):
+        if provider != "openai":
+            raise dash.exceptions.PreventUpdate
+        if not api_key or not api_key.startswith("sk-"):
+            raise dash.exceptions.PreventUpdate
+        try:
+            return _build_openai_model_options(api_key, current_options, current_value, auto=True)
+        except Exception as e:
+            logger.error(f"Error auto-fetching OpenAI models: {e}")
+            return no_update, f"❌ Auto-sync failed: {str(e)}", no_update
+
+    @app.callback(
+        [
+            Output("google-model-selector", "options", allow_duplicate=True),
+            Output("google-model-fetch-status", "children", allow_duplicate=True),
+            Output("google-model-selector", "value", allow_duplicate=True),
+        ],
+        Input("refresh-google-models-btn", "n_clicks"),
+        [
+            State("google-api-key-input", "value"),
+            State("google-model-selector", "value"),
+        ],
+        prevent_initial_call=True,
+    )
+    def fetch_google_models(n_clicks, api_key, current_value):
+        if not n_clicks:
+            raise dash.exceptions.PreventUpdate
+        try:
+            return _build_google_model_options(api_key, current_value, auto=False)
+        except Exception as e:
+            logger.error(f"Error fetching Gemini models: {e}")
+            return no_update, f"❌ Fetch failed: {_sanitize_error_message(str(e))}", no_update
+
+    @app.callback(
+        [
+            Output("google-model-selector", "options", allow_duplicate=True),
+            Output("google-model-fetch-status", "children", allow_duplicate=True),
+            Output("google-model-selector", "value", allow_duplicate=True),
+        ],
+        [
+            Input("llm-provider-selector", "value"),
+            Input("google-api-key-input", "value"),
+        ],
+        State("google-model-selector", "value"),
+        prevent_initial_call=True,
+    )
+    def auto_fetch_google_models(provider, api_key, current_value):
+        if provider != "google":
+            raise dash.exceptions.PreventUpdate
+        if not api_key:
+            raise dash.exceptions.PreventUpdate
+        try:
+            return _build_google_model_options(api_key, current_value, auto=True)
+        except Exception as e:
+            logger.error(f"Error auto-fetching Gemini models: {e}")
+            return no_update, f"❌ Auto-sync failed: {_sanitize_error_message(str(e))}", no_update
+
     @app.callback(
         Output("llm-save-status", "children"),
         Input("save-llm-config-btn", "n_clicks"),
@@ -313,26 +535,30 @@ def callbacks(app):
             State("openai-api-key-input", "value"),
             State("openai-model-selector", "value"),
             State("openai-custom-model-input", "value"),
+            State("google-api-key-input", "value"),
+            State("google-model-selector", "value"),
+            State("google-safety-setting", "value"),
             State("llm-base-url-input", "value"),
             State("llm-model-input", "value"),
         ],
         prevent_initial_call=True,
     )
     def save_llm_configuration(
-        n_clicks, provider, api_key, openai_model, custom_model, base_url, local_model
+        n_clicks,
+        provider,
+        openai_api_key,
+        openai_model,
+        openai_custom_model,
+        google_api_key,
+        google_model,
+        google_safety_setting,
+        local_base_url,
+        local_model,
     ):
-        """Save LLM configuration to .env file"""
         if not n_clicks:
             return ""
-
         try:
-            import os
-            from pathlib import Path
-
-            # Get the .env file path (should be in project root)
-            env_path = Path(__file__).parent.parent / ".env"
-
-            # Read existing .env file
+            env_path = Path(__file__).resolve().parents[2] / ".env"
             env_vars = {}
             if env_path.exists():
                 with open(env_path, "r") as f:
@@ -342,54 +568,81 @@ def callbacks(app):
                             key, value = line.split("=", 1)
                             env_vars[key.strip()] = value.strip()
 
-            # Update LLM-related variables based on provider
+            env_vars["LLM_PROVIDER"] = provider
             if provider == "openai":
-                if not api_key or not api_key.startswith("sk-"):
+                if not openai_api_key or not openai_api_key.startswith("sk-"):
                     return "⚠️ Please enter a valid OpenAI API key before saving"
-
-                # Determine which model to save
-                if openai_model == "custom":
-                    model = custom_model if custom_model else "gpt-4o-mini"
-                else:
-                    model = openai_model if openai_model else "gpt-4o-mini"
-
-                env_vars["OPENAI_API_KEY"] = api_key
+                model = (
+                    openai_custom_model.strip()
+                    if openai_model == "custom" and openai_custom_model
+                    else (openai_model or "gpt-4o-mini")
+                )
+                env_vars["OPENAI_API_KEY"] = openai_api_key
+                env_vars["OPENAI_BASE_URL"] = OPENAI_BASE_URL
                 env_vars["OPENAI_MODEL"] = model
-                env_vars["OPENAI_BASE_URL"] = "https://api.openai.com/v1"
-
-            else:  # local
-                if not base_url or not local_model:
+                env_vars["EMBEDDING_MODEL"] = "text-embedding-3-small"
+            elif provider == "google":
+                if not google_api_key:
+                    return "⚠️ Please enter Gemini API key before saving"
+                # Keep provider-specific keys separate.
+                env_vars["GEMINI_API_KEY"] = google_api_key
+                env_vars["OPENAI_BASE_URL"] = GEMINI_OPENAI_BASE_URL
+                env_vars["GOOGLE_MODEL"] = google_model or "gemini-1.5-pro"
+                env_vars["OPENAI_MODEL"] = google_model or "gemini-1.5-pro"
+                env_vars["EMBEDDING_MODEL"] = "text-embedding-004"
+                env_vars["GOOGLE_SAFETY_SETTING"] = google_safety_setting or "medium"
+            else:
+                if not local_base_url or not local_model:
                     return "⚠️ Please enter both base URL and model name before saving"
-
+                env_vars["LOCAL_LLM_API_KEY"] = "local-dummy-key"
+                env_vars["LOCAL_LLM_BASE_URL"] = local_base_url
+                env_vars["LOCAL_LLM_MODEL"] = local_model
                 env_vars["OPENAI_API_KEY"] = "local-dummy-key"
+                env_vars["OPENAI_BASE_URL"] = local_base_url
                 env_vars["OPENAI_MODEL"] = local_model
-                env_vars["OPENAI_BASE_URL"] = base_url
+                env_vars["EMBEDDING_MODEL"] = "nomic-embed-text"
 
-            # Write back to .env file
             with open(env_path, "w") as f:
-                # Write header comment
-                f.write("# OpenAI API Configuration\n")
-
-                # Write LLM configuration
-                for key in ["OPENAI_API_KEY", "OPENAI_BASE_URL", "OPENAI_MODEL"]:
+                f.write("# NetMedEx LLM Configuration\n")
+                for key in [
+                    "LLM_PROVIDER",
+                    "OPENAI_API_KEY",
+                    "GEMINI_API_KEY",
+                    "OPENAI_BASE_URL",
+                    "OPENAI_MODEL",
+                    "GOOGLE_MODEL",
+                    "EMBEDDING_MODEL",
+                    "GOOGLE_SAFETY_SETTING",
+                    "LOCAL_LLM_API_KEY",
+                    "LOCAL_LLM_BASE_URL",
+                    "LOCAL_LLM_MODEL",
+                ]:
                     if key in env_vars:
                         f.write(f"{key}={env_vars[key]}\n")
-
-                # Write other non-LLM variables
                 other_vars = {
                     k: v
                     for k, v in env_vars.items()
-                    if k not in ["OPENAI_API_KEY", "OPENAI_BASE_URL", "OPENAI_MODEL"]
+                    if k
+                    not in {
+                        "LLM_PROVIDER",
+                        "OPENAI_API_KEY",
+                        "GEMINI_API_KEY",
+                        "OPENAI_BASE_URL",
+                        "OPENAI_MODEL",
+                        "GOOGLE_MODEL",
+                        "EMBEDDING_MODEL",
+                        "GOOGLE_SAFETY_SETTING",
+                        "LOCAL_LLM_API_KEY",
+                        "LOCAL_LLM_BASE_URL",
+                        "LOCAL_LLM_MODEL",
+                    }
                 }
-
                 if other_vars:
                     f.write("\n# Other Configuration\n")
                     for key, value in other_vars.items():
                         f.write(f"{key}={value}\n")
 
-            provider_name = "OpenAI" if provider == "openai" else "Local LLM"
-            return f"✅ LLM settings saved successfully to .env ({provider_name})"
-
+            return f"✅ LLM settings saved to {env_path.name} ({provider})"
         except Exception as e:
             logger.error(f"Failed to save LLM configuration: {e}")
             return f"❌ Failed to save settings: {str(e)}"

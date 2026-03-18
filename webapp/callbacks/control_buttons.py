@@ -14,10 +14,12 @@ def callbacks(app):
         Output("progress-status", "children", allow_duplicate=True),
         Output("output", "children"),
         Output("cy-graph-container", "style", allow_duplicate=True),
-        Output("cy", "elements", allow_duplicate=True),
+        Output("reset-button", "n_clicks"),
+        Output("sidebar-panel-toggle", "active_tab", allow_duplicate=True),
         Input("reset-button", "n_clicks"),
         prevent_initial_call=True,
     )
     def reset_inputs(n_clicks):
         # Reset inputs, progress bar, and clear the graph
-        return "", None, None, "query", 0, "", "", "", visibility.hidden, []
+        # And force return to search tab
+        return "", None, None, "query", 0, "", "", [], visibility.hidden, 0, "search"

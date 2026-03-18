@@ -320,9 +320,13 @@ window.dash_clientside.clientside = {
       elements,
     ]
   },
-  sync_llm_toggles: function (provider, api_key, local_url, local_model) {
+  sync_llm_toggles: function (provider, openai_api_key, google_api_key, google_model, local_url, local_model) {
     if (provider === "openai") {
-      if (api_key && api_key.trim().startsWith("sk-")) {
+      if (openai_api_key && openai_api_key.trim().startsWith("sk-")) {
+        return [true, "semantic"];
+      }
+    } else if (provider === "google") {
+      if (google_api_key && google_api_key.trim() !== "" && google_model && google_model.trim() !== "") {
         return [true, "semantic"];
       }
     } else if (provider === "local") {
@@ -381,6 +385,15 @@ document.addEventListener("click", function (e) {
   const btn = e.target.closest(".suggested-question-btn, #chat-send-btn, #modal-chat-send-btn");
   if (!btn) return;
   btn.classList.add("processing");
+
+  if (btn.id === "chat-send-btn" || btn.classList.contains("suggested-question-btn")) {
+    const status = document.getElementById("chat-processing-status");
+    if (status) status.textContent = "Assistant is thinking...";
+  }
+  if (btn.id === "modal-chat-send-btn" || btn.classList.contains("suggested-question-btn")) {
+    const modalStatus = document.getElementById("modal-chat-processing-status");
+    if (modalStatus) modalStatus.textContent = "Assistant is thinking...";
+  }
 });
 
 // Global initialization and cleanup
@@ -408,6 +421,15 @@ document.addEventListener("click", function (e) {
       } else {
         chatContainer.scrollTop = chatContainer.scrollHeight;
       }
+
+      const status = document.getElementById('chat-processing-status');
+      const modalStatus = document.getElementById('modal-chat-processing-status');
+      if (status) status.textContent = '';
+      if (modalStatus) modalStatus.textContent = '';
+      const sendBtn = document.getElementById('chat-send-btn');
+      const modalSendBtn = document.getElementById('modal-chat-send-btn');
+      if (sendBtn) sendBtn.classList.remove('processing');
+      if (modalSendBtn) modalSendBtn.classList.remove('processing');
     });
 
     observer.observe(chatContainer, { childList: true });
@@ -463,6 +485,78 @@ document.addEventListener("click", function (e) {
   }
 
   /**
+   * ChatGPT-like input behavior:
+   * - Enter => send
+   * - Shift+Enter => newline
+   * - Disable send button for blank input
+   * - Keep input focused after sending
+   */
+  function setupChatInputBehavior() {
+    const pairs = [
+      { inputId: 'chat-input-box', buttonId: 'chat-send-btn' },
+      { inputId: 'modal-chat-input', buttonId: 'modal-chat-send-btn' },
+    ];
+
+    pairs.forEach(({ inputId, buttonId }) => {
+      const input = document.getElementById(inputId);
+      const button = document.getElementById(buttonId);
+      if (!input || !button) return;
+      if (input._chatBehaviorBound) {
+        // Keep button state synced even on re-render.
+        if (input.disabled) {
+          button.disabled = true;
+        } else {
+          button.disabled = input.value.trim().length === 0;
+        }
+        return;
+      }
+      input._chatBehaviorBound = true;
+
+      const syncButtonState = () => {
+        if (input.disabled) {
+          button.disabled = true;
+          return;
+        }
+        button.disabled = input.value.trim().length === 0;
+      };
+
+      const autoResize = () => {
+        input.style.height = 'auto';
+        const maxHeight = 220;
+        const next = Math.min(input.scrollHeight, maxHeight);
+        input.style.height = `${Math.max(next, 52)}px`;
+        input.style.overflowY = input.scrollHeight > maxHeight ? 'auto' : 'hidden';
+      };
+
+      autoResize();
+      syncButtonState();
+
+      input.addEventListener('input', () => {
+        autoResize();
+        syncButtonState();
+      });
+
+      input.addEventListener('keydown', (e) => {
+        if (e.isComposing) return;
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          autoResize();
+          syncButtonState();
+          if (!button.disabled) {
+            button.click();
+            setTimeout(() => input.focus(), 50);
+          }
+        }
+      });
+
+      button.addEventListener('click', () => {
+        setTimeout(autoResize, 0);
+        setTimeout(() => input.focus(), 50);
+      });
+    });
+  }
+
+  /**
    * Handle outside clicks to close advanced settings
    */
   function handleAdvancedSettingsOutsideClick(event) {
@@ -496,6 +590,7 @@ document.addEventListener("click", function (e) {
 
   function init() {
     setupChatAutoScroll();
+    setupChatInputBehavior();
     makeLegendDraggable();
   }
 

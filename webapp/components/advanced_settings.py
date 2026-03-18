@@ -49,6 +49,7 @@ max_edges = html.Div(
 
 llm_config = html.Div(
     [
+        dcc.Store(id="llm-settings-store", storage_type="local"),
         generate_param_title(
             "LLM Provider",
             "Choose your LLM provider for AI-powered features",
@@ -57,12 +58,14 @@ llm_config = html.Div(
             id="llm-provider-selector",
             options=[
                 {"label": "OpenAI", "value": "openai"},
-                {"label": "Local LLM (e.g., Ollama)", "value": "local"},
+                {"label": "Google Gemini", "value": "google"},
+                {"label": "Local Ollama", "value": "local"},
             ],
             value="openai",  # Default to OpenAI
             inline=True,
             className="mb-3",
         ),
+        html.H6("Connectivity", className="mt-2"),
         # OpenAI Configuration (shown by default)
         html.Div(
             [
@@ -79,7 +82,13 @@ llm_config = html.Div(
                 html.Div(style={"height": "15px"}),  # Spacer
                 generate_param_title(
                     "Model",
-                    "Select OpenAI model or choose Custom to specify your own",
+                    (
+                        "Select OpenAI model or choose Custom to specify your own.\n"
+                        "💡 Recommended: gpt-4o (High Accuracy) or gpt-4o-mini (Fast & Cheap).\n"
+                        "⚠️ For Semantic Analysis, use GPT-4o-mini or higher.\n"
+                        "Smaller models (nano, micro, etc.) may produce empty or unreliable results, "
+                        "leading to very few or no semantic edges being generated."
+                    ),
                 ),
                 html.Div(
                     [
@@ -130,6 +139,28 @@ llm_config = html.Div(
             id="openai-config",
             style={"display": "block"},
         ),
+        # Google Gemini Configuration
+        html.Div(
+            [
+                generate_param_title(
+                    "Gemini API Key",
+                    "Enter your Gemini API key from Google AI Studio",
+                ),
+                dbc.Input(
+                    id="google-api-key-input",
+                    type="password",
+                    placeholder="AIza...",
+                    debounce=True,
+                ),
+                html.Small(
+                    "Use an API key from Google AI Studio.",
+                    className="text-muted d-block mt-1",
+                    style={"fontSize": "0.8rem"},
+                ),
+            ],
+            id="google-config",
+            style={"display": "none"},
+        ),
         # Local LLM Configuration (hidden by default)
         html.Div(
             [
@@ -145,7 +176,10 @@ llm_config = html.Div(
                 ),
                 generate_param_title(
                     "Model Name",
-                    "Model to use (e.g., gpt-oss:20b, llama2)",
+                    (
+                        "Model to use (e.g., gpt-oss:20b, llama3:8b).\n"
+                        "💡 Recommended: Models with 8B+ parameters (e.g., llama3:8b, mistral) for stable extraction."
+                    ),
                 ),
                 html.Div(
                     [
@@ -166,13 +200,84 @@ llm_config = html.Div(
                     ],
                     className="d-flex align-items-center",
                 ),
-                html.Div(id="model-fetch-status", className="small text-muted mt-1"),
+                html.Div(id="local-model-fetch-status", className="small text-muted mt-1"),
             ],
             id="local-llm-config",
             style={"display": "none"},
         ),
-        # Unified status message
-        html.Div(id="llm-config-status", className="text-success small mt-2"),
+        html.H6("Parameters", className="mt-3"),
+        html.Div(
+            [
+                generate_param_title(
+                    "Gemini Model",
+                    (
+                        "Choose a Gemini model version.\n"
+                        "💡 Recommended: gemini-2.0-flash (Fast & Capable) or gemini-1.5-pro (Deep Reasoning)."
+                    ),
+                ),
+                html.Div(
+                    [
+                        dcc.Dropdown(
+                            id="google-model-selector",
+                            options=[
+                                {"label": "gemini-2.0-flash (Latest Flash)", "value": "gemini-2.0-flash"},
+                                {"label": "gemini-1.5-pro (Reasoning)", "value": "gemini-1.5-pro"},
+                                {"label": "gemini-1.5-flash", "value": "gemini-1.5-flash"},
+                            ],
+                            value="gemini-2.0-flash",
+                            clearable=False,
+                            style={"flex": "1"},
+                        ),
+                        dbc.Button(
+                            html.I(className="bi bi-arrow-clockwise"),
+                            id="refresh-google-models-btn",
+                            color="secondary",
+                            outline=True,
+                            className="ms-2",
+                            title="Fetch models from Gemini",
+                        ),
+                    ],
+                    className="d-flex align-items-center",
+                ),
+                html.Div(id="google-model-fetch-status", className="small text-muted mt-1"),
+                generate_param_title(
+                    "Safety Settings",
+                    "Gemini content filtering level.",
+                ),
+                dcc.Dropdown(
+                    id="google-safety-setting",
+                    options=[
+                        {"label": "Unrestricted", "value": "none"},
+                        {"label": "Low Filtering", "value": "low"},
+                        {"label": "Moderate Filtering", "value": "medium"},
+                    ],
+                    value="medium",
+                    clearable=False,
+                ),
+            ],
+            id="google-params-config",
+            style={"display": "none"},
+        ),
+        html.Div(
+            [
+                dbc.Button(
+                    "Verify Connection",
+                    id="verify-llm-connection-btn",
+                    color="primary",
+                    outline=True,
+                    size="sm",
+                    className="mt-3",
+                ),
+            ]
+        ),
+        # Unified status message and connection light
+        html.Div(
+            [
+                html.Span(id="llm-status-light", className="status-indicator status-unknown"),
+                html.Span(id="llm-config-status", className="text-success small"),
+            ],
+            className="d-flex align-items-center mt-2",
+        ),
         # Save LLM Settings button
         html.Div(
             [

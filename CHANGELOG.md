@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.9.5] - 2026-03-14
+
+### Added
+- **Semantic Extraction diagnostics**: Added a new UI alert in the Search Panel that provides detailed metrics after semantic analysis, including article success rates, parse failures, coverage expansions, and dropped edges.
+- **Improved Local LLM Parsing**: Enhanced the regex-based relaxed parser in `semantic_re.py` to be more robust when handling outputs from Ollama or LocalAI models.
+
+### Changed
+- **Simplified Advanced Settings UI**: Standardized on ChromaDB default embeddings. Removed redundant embedding model selection sections for both OpenAI and Gemini providers to reduce UI clutter.
+- **LLM Search Panel Alerts**: Migrated to a more professional `dbc.Alert` system for communicating processing status and semantic analysis results.
+- **Enhanced Translation Strategy**: Refined the system instructions for query translation to ensure consistent English-only output for PubTator compatibility.
+
+### Fixed
+- **Gemini Coverage Bug**: Fixed a critical error where `pair_count` was undefined in the Gemini coverage prompt, which previously caused crashes during the second round of recall.
+- **Model Fetching Robustness**: Improved error handling when local LLM endpoints are unreachable during model list fetching.
+
 ## [0.9.4] - 2026-03-09
 
 ### Added

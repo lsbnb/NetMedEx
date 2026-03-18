@@ -30,12 +30,10 @@ def generate_pmid_file_component(hidden=False):
     return html.Div(
         [
             html.H5("PMID File"),
-            dcc.Upload(
-                id="pmid-file-data",
-                children=html.Div(
-                    ["Drag and Drop or ", html.A("Select Files", className="hyperlink")],
-                    className="upload-box form-control",
-                ),
+            html.Div(
+                ["Drag and Drop or ", html.A("Select Files", className="hyperlink")],
+                className="upload-box form-control",
+                id="pmid-file-upload-trigger",  # Non-functional visual placeholder
             ),
             html.Div(id="output-data-upload"),
         ],
