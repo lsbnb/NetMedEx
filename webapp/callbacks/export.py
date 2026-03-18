@@ -95,3 +95,49 @@ def callbacks(app):
             return
 
         return dcc.send_file(savepath["graph"], filename="netmedex_graph.pkl")
+
+    @app.callback(
+        Output("export-ris", "data"),
+        Input("export-btn-ris", "n_clicks"),
+        State("current-session-path", "data"),
+        prevent_initial_call=True,
+    )
+    def export_ris(n_clicks, savepath):
+        """Export bibliography of articles in the graph in RIS format."""
+        from netmedex.graph import load_graph
+        from netmedex.pubtator_data import PubTatorArticle
+        from netmedex.ris_exporter import convert_to_ris
+
+        if savepath is None or not savepath.get("graph"):
+            return
+
+        G = load_graph(savepath["graph"])
+        pmid_metadata = G.graph.get("pmid_metadata", {})
+        pmid_title = G.graph.get("pmid_title", {})
+
+        articles = []
+        # Use pmid_title to ensure we only export PMIDs that have a title in the graph
+        for pmid, title in pmid_title.items():
+            meta = pmid_metadata.get(pmid, {})
+            articles.append(
+                PubTatorArticle(
+                    pmid=pmid,
+                    title=title,
+                    journal=meta.get("journal"),
+                    date=meta.get("date"),
+                    doi=meta.get("doi"),
+                    abstract=None,
+                    annotations=[],
+                    relations=[],
+                    metadata={"authors": meta.get("authors")},
+                )
+            )
+
+        if not articles:
+            return
+
+        ris_content = convert_to_ris(articles)
+        with open(savepath["ris"], "w") as f:
+            f.write(ris_content)
+
+        return dcc.send_file(savepath["ris"], filename="citations.ris")

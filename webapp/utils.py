@@ -22,6 +22,7 @@ DATA_FILENAME = {
     "html": "output.html",
     "pubtator": "output.pubtator",
     "edge_info": "output.csv",
+    "ris": "citations.ris",
 }
 visibility = SimpleNamespace(visible={"visibility": "visible"}, hidden={"visibility": "hidden"})
 display = SimpleNamespace(block={"display": "block"}, none={"display": "none"})
