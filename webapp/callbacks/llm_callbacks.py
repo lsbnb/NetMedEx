@@ -8,7 +8,7 @@ import dash
 import requests
 from dash import ClientsideFunction, Input, Output, State, no_update
 
-from webapp.llm import GEMINI_OPENAI_BASE_URL, OPENAI_BASE_URL, llm_client
+from webapp.llm import GEMINI_OPENAI_BASE_URL, OPENAI_BASE_URL, OPENROUTER_BASE_URL, llm_client
 
 logger = logging.getLogger(__name__)
 
@@ -20,6 +20,17 @@ STANDARD_OPENAI_MODELS = [
     "o1-mini",
     "gpt-3.5-turbo",
 ]
+
+
+def _normalize_local_base_url(base_url: str | None) -> str:
+    """Normalize Ollama/OpenAI-compatible base URL to include /v1."""
+    raw = (base_url or "").strip().rstrip("/")
+    if not raw:
+        return "http://localhost:11434/v1"
+    if raw.endswith("/v1"):
+        return raw
+    return f"{raw}/v1"
+
 
 def _sanitize_error_message(message: str) -> str:
     if not message:
@@ -49,6 +60,9 @@ def _default_settings() -> dict:
         "local_base_url": "http://localhost:11434/v1",
         "local_model": "",
         "local_model_options": [],
+        "openrouter_api_key": "",
+        "openrouter_model": "openai/gpt-4o-mini",
+        "openrouter_custom_model": "",
     }
 
 
@@ -72,6 +86,8 @@ def _settings_from_env() -> dict:
             provider = "local"
         elif google_api_key or "generativelanguage.googleapis.com" in base_url:
             provider = "google"
+        elif "openrouter.ai" in base_url:
+            provider = "openrouter"
         else:
             provider = "openai"
 
@@ -87,12 +103,19 @@ def _settings_from_env() -> dict:
         if embedding_model:
             settings["local_embedding_model"] = embedding_model
     elif provider == "google":
-        # Backward compatible: older configs stored Gemini key/model in OPENAI_*.
-        if not google_api_key and openai_api_key and openai_api_key != "local-dummy-key":
-            google_api_key = openai_api_key
         settings["google_api_key"] = google_api_key
         settings["google_model"] = google_model or model or settings["google_model"]
         settings["google_safety_setting"] = os.getenv("GOOGLE_SAFETY_SETTING", "medium")
+    elif provider == "openrouter":
+        settings["openrouter_api_key"] = os.getenv("OPENROUTER_API_KEY", "").strip()
+        settings["openrouter_model"] = model or os.getenv("OPENROUTER_MODEL", "openai/gpt-4o-mini")
+        if settings["openrouter_model"] not in [
+            "openai/gpt-4o-mini",
+            "anthropic/claude-3.5-sonnet",
+            "deepseek/deepseek-chat",
+        ]:
+            settings["openrouter_custom_model"] = settings["openrouter_model"]
+            settings["openrouter_model"] = "custom"
     else:
         chosen_local_url = local_base_url or base_url
         chosen_local_model = local_model or model
@@ -127,6 +150,9 @@ def callbacks(app):
             Output("llm-base-url-input", "value"),
             Output("llm-model-input", "value"),
             Output("llm-model-input", "options"),
+            Output("openrouter-api-key-input", "value"),
+            Output("openrouter-model-selector", "value"),
+            Output("openrouter-custom-model-input", "value"),
         ],
         Input("main-container", "id"),
         State("llm-settings-store", "data"),
@@ -145,10 +171,13 @@ def callbacks(app):
                 settings["local_base_url"],
                 settings["local_model"],
                 settings["local_model_options"],
+                settings["openrouter_api_key"],
+                settings["openrouter_model"],
+                settings["openrouter_custom_model"],
             )
         except Exception as e:
             logger.error(f"Error loading LLM configuration: {e}")
-            return (dash.no_update,) * 10
+            return (dash.no_update,) * 13
 
     @app.callback(
         Output("llm-settings-store", "data"),
@@ -163,6 +192,9 @@ def callbacks(app):
             Input("llm-base-url-input", "value"),
             Input("llm-model-input", "value"),
             Input("llm-model-input", "options"),
+            Input("openrouter-api-key-input", "value"),
+            Input("openrouter-model-selector", "value"),
+            Input("openrouter-custom-model-input", "value"),
         ],
     )
     def persist_llm_settings(
@@ -176,6 +208,9 @@ def callbacks(app):
         local_base_url,
         local_model,
         local_model_options,
+        openrouter_api_key,
+        openrouter_model,
+        openrouter_custom_model,
     ):
         return {
             "provider": provider,
@@ -188,6 +223,9 @@ def callbacks(app):
             "local_base_url": local_base_url or "http://localhost:11434/v1",
             "local_model": local_model or "",
             "local_model_options": local_model_options or [],
+            "openrouter_api_key": openrouter_api_key or "",
+            "openrouter_model": openrouter_model or "openai/gpt-4o-mini",
+            "openrouter_custom_model": openrouter_custom_model or "",
         }
 
     # Toggle provider-specific sections.
@@ -195,6 +233,7 @@ def callbacks(app):
         [
             Output("openai-config", "style"),
             Output("google-config", "style"),
+            Output("openrouter-config", "style"),
             Output("local-llm-config", "style"),
             Output("google-params-config", "style"),
         ],
@@ -202,16 +241,51 @@ def callbacks(app):
     )
     def toggle_llm_config(provider):
         if provider == "openai":
-            return {"display": "block"}, {"display": "none"}, {"display": "none"}, {"display": "none"}
+            return (
+                {"display": "block"},
+                {"display": "none"},
+                {"display": "none"},
+                {"display": "none"},
+                {"display": "none"},
+            )
         if provider == "google":
-            return {"display": "none"}, {"display": "block"}, {"display": "none"}, {"display": "block"}
-        return {"display": "none"}, {"display": "none"}, {"display": "block"}, {"display": "none"}
+            return (
+                {"display": "none"},
+                {"display": "block"},
+                {"display": "none"},
+                {"display": "none"},
+                {"display": "block"},
+            )
+        if provider == "openrouter":
+            return (
+                {"display": "none"},
+                {"display": "none"},
+                {"display": "block"},
+                {"display": "none"},
+                {"display": "none"},
+            )
+        return (
+            {"display": "none"},
+            {"display": "none"},
+            {"display": "none"},
+            {"display": "block"},
+            {"display": "none"},
+        )
 
     @app.callback(
         Output("openai-custom-model-div", "style"),
         Input("openai-model-selector", "value"),
     )
     def toggle_custom_model_input(selected_model):
+        if selected_model == "custom":
+            return {"display": "block", "marginTop": "10px"}
+        return {"display": "none"}
+
+    @app.callback(
+        Output("openrouter-custom-model-div", "style"),
+        Input("openrouter-model-selector", "value"),
+    )
+    def toggle_openrouter_custom_model_input(selected_model):
         if selected_model == "custom":
             return {"display": "block", "marginTop": "10px"}
         return {"display": "none"}
@@ -233,6 +307,9 @@ def callbacks(app):
             State("google-safety-setting", "value"),
             State("llm-base-url-input", "value"),
             State("llm-model-input", "value"),
+            State("openrouter-api-key-input", "value"),
+            State("openrouter-model-selector", "value"),
+            State("openrouter-custom-model-input", "value"),
         ],
         prevent_initial_call=True,
     )
@@ -247,6 +324,9 @@ def callbacks(app):
         google_safety_setting,
         local_base_url,
         local_model,
+        openrouter_api_key,
+        openrouter_model,
+        openrouter_custom_model,
     ):
         if not n_clicks:
             raise dash.exceptions.PreventUpdate
@@ -303,6 +383,24 @@ def callbacks(app):
                     "status-indicator status-online",
                     f"Fetched {len(models)} Gemini models",
                 )
+            elif provider == "openrouter":
+                if not openrouter_api_key:
+                    return (
+                        "⚠️ OpenRouter API key is required",
+                        "status-indicator status-warning",
+                        "Provide OpenRouter API key (sk-or-...)",
+                    )
+                model = (
+                    openrouter_custom_model.strip()
+                    if openrouter_model == "custom" and openrouter_custom_model
+                    else openrouter_model
+                )
+                llm_client.initialize_client(
+                    provider="openrouter",
+                    api_key=openrouter_api_key,
+                    model=model,
+                    base_url=OPENROUTER_BASE_URL,
+                )
             else:
                 if not local_base_url or not local_model:
                     return (
@@ -310,10 +408,11 @@ def callbacks(app):
                         "status-indicator status-warning",
                         "Provide both base URL and model",
                     )
+                resolved_local_url = _normalize_local_base_url(local_base_url)
                 llm_client.initialize_client(
                     provider="local",
                     api_key="local-dummy-key",
-                    base_url=local_base_url,
+                    base_url=resolved_local_url,
                     model=local_model,
                 )
 
@@ -350,13 +449,15 @@ def callbacks(app):
             Input("google-model-selector", "value"),
             Input("llm-base-url-input", "value"),
             Input("llm-model-input", "value"),
+            Input("openrouter-api-key-input", "value"),
+            Input("openrouter-model-selector", "value"),
         ],
     )
 
     @app.callback(
         [
             Output("llm-model-input", "options", allow_duplicate=True),
-            Output("model-fetch-status", "children"),
+            Output("local-model-fetch-status", "children"),
         ],
         Input("refresh-local-models-btn", "n_clicks"),
         State("llm-base-url-input", "value"),
@@ -366,16 +467,75 @@ def callbacks(app):
         if not n_clicks or not base_url:
             raise dash.exceptions.PreventUpdate
         try:
-            url = f"{base_url.rstrip('/')}/models"
-            response = requests.get(url, timeout=5)
-            if response.status_code != 200:
-                return no_update, f"❌ Check URL (status: {response.status_code})"
-            models_list = response.json().get("data", [])
-            options = [{"label": m.get("id", "unknown"), "value": m.get("id", "unknown")} for m in models_list]
-            return options, f"✅ Found {len(options)} models"
+            base = (base_url or "").strip().rstrip("/")
+            if not base:
+                return no_update, "⚠️ Enter Local base URL first"
+
+            # Try OpenAI-compatible endpoints first, then native Ollama tags endpoint.
+            candidates = [
+                f"{base}/models",
+                f"{base}/v1/models",
+                f"{base}/api/tags",
+            ]
+
+            for url in candidates:
+                try:
+                    response = requests.get(url, timeout=5)
+                except Exception:
+                    continue
+                if response.status_code != 200:
+                    continue
+                payload = response.json() if response.content else {}
+                if url.endswith("/api/tags"):
+                    models_list = payload.get("models", [])
+                    options = [
+                        {"label": m.get("name", "unknown"), "value": m.get("name", "unknown")}
+                        for m in models_list
+                    ]
+                else:
+                    models_list = payload.get("data", [])
+                    options = [
+                        {"label": m.get("id", "unknown"), "value": m.get("id", "unknown")}
+                        for m in models_list
+                    ]
+                options = [o for o in options if o["value"] and o["value"] != "unknown"]
+                if options:
+                    return options, f"✅ Found {len(options)} models"
+
+            return no_update, "❌ Could not fetch models. Try URL like http://<host>:11434 or .../v1"
         except Exception as e:
             logger.error(f"Error fetching local models: {e}")
             return no_update, "❌ Error: Could not connect"
+
+    @app.callback(
+        [
+            Output("openrouter-model-selector", "options", allow_duplicate=True),
+            Output("openrouter-model-fetch-status", "children", allow_duplicate=True),
+            Output("openrouter-model-selector", "value", allow_duplicate=True),
+        ],
+        Input("refresh-openrouter-models-btn", "n_clicks"),
+        [
+            State("openrouter-api-key-input", "value"),
+            State("openrouter-model-selector", "value"),
+        ],
+        prevent_initial_call=True,
+    )
+    def fetch_openrouter_models(n_clicks, api_key, current_value):
+        if not n_clicks or not api_key:
+            return no_update, "⚠️ Enter OpenRouter API key first", no_update
+        try:
+            models = llm_client.get_openrouter_models(api_key)
+            if not models:
+                return no_update, "❌ No models found", no_update
+            new_options = [{"label": m, "value": m} for m in models]
+            new_options.append({"label": "Custom Model...", "value": "custom"})
+            new_value = current_value
+            if current_value not in models and current_value != "custom":
+                new_value = "openai/gpt-4o-mini" if "openai/gpt-4o-mini" in models else models[0]
+            return new_options, f"✅ Found {len(models)} models", new_value
+        except Exception as e:
+            logger.error(f"Error fetching OpenRouter models: {e}")
+            return no_update, f"❌ Fetch failed: {str(e)}", no_update
 
 
 
@@ -540,6 +700,9 @@ def callbacks(app):
             State("google-safety-setting", "value"),
             State("llm-base-url-input", "value"),
             State("llm-model-input", "value"),
+            State("openrouter-api-key-input", "value"),
+            State("openrouter-model-selector", "value"),
+            State("openrouter-custom-model-input", "value"),
         ],
         prevent_initial_call=True,
     )
@@ -554,6 +717,9 @@ def callbacks(app):
         google_safety_setting,
         local_base_url,
         local_model,
+        openrouter_api_key,
+        openrouter_model,
+        openrouter_custom_model,
     ):
         if not n_clicks:
             return ""
@@ -591,14 +757,28 @@ def callbacks(app):
                 env_vars["OPENAI_MODEL"] = google_model or "gemini-1.5-pro"
                 env_vars["EMBEDDING_MODEL"] = "text-embedding-004"
                 env_vars["GOOGLE_SAFETY_SETTING"] = google_safety_setting or "medium"
+            elif provider == "openrouter":
+                if not openrouter_api_key:
+                    return "⚠️ Please enter OpenRouter API key before saving"
+                model = (
+                    openrouter_custom_model.strip()
+                    if openrouter_model == "custom" and openrouter_custom_model
+                    else (openrouter_model or "openai/gpt-4o-mini")
+                )
+                env_vars["OPENROUTER_API_KEY"] = openrouter_api_key
+                env_vars["OPENROUTER_MODEL"] = model
+                env_vars["OPENAI_BASE_URL"] = OPENROUTER_BASE_URL
+                env_vars["OPENAI_MODEL"] = model
+                env_vars["EMBEDDING_MODEL"] = "text-embedding-3-small"
             else:
                 if not local_base_url or not local_model:
                     return "⚠️ Please enter both base URL and model name before saving"
+                resolved_local_url = _normalize_local_base_url(local_base_url)
                 env_vars["LOCAL_LLM_API_KEY"] = "local-dummy-key"
-                env_vars["LOCAL_LLM_BASE_URL"] = local_base_url
+                env_vars["LOCAL_LLM_BASE_URL"] = resolved_local_url
                 env_vars["LOCAL_LLM_MODEL"] = local_model
                 env_vars["OPENAI_API_KEY"] = "local-dummy-key"
-                env_vars["OPENAI_BASE_URL"] = local_base_url
+                env_vars["OPENAI_BASE_URL"] = resolved_local_url
                 env_vars["OPENAI_MODEL"] = local_model
                 env_vars["EMBEDDING_MODEL"] = "nomic-embed-text"
 
@@ -607,9 +787,11 @@ def callbacks(app):
                 for key in [
                     "LLM_PROVIDER",
                     "OPENAI_API_KEY",
+                    "OPENROUTER_API_KEY",
                     "GEMINI_API_KEY",
                     "OPENAI_BASE_URL",
                     "OPENAI_MODEL",
+                    "OPENROUTER_MODEL",
                     "GOOGLE_MODEL",
                     "EMBEDDING_MODEL",
                     "GOOGLE_SAFETY_SETTING",
@@ -626,9 +808,11 @@ def callbacks(app):
                     not in {
                         "LLM_PROVIDER",
                         "OPENAI_API_KEY",
+                        "OPENROUTER_API_KEY",
                         "GEMINI_API_KEY",
                         "OPENAI_BASE_URL",
                         "OPENAI_MODEL",
+                        "OPENROUTER_MODEL",
                         "GOOGLE_MODEL",
                         "EMBEDDING_MODEL",
                         "GOOGLE_SAFETY_SETTING",
