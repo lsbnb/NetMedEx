@@ -1,239 +1,196 @@
-from __future__ import annotations
-
-from pathlib import Path
+import json
+import xml.etree.ElementTree as ET
 
 import networkx as nx
-from lxml import etree
-from lxml.builder import E
-from lxml.etree import QName
-
-XML_NAMESPACE = {
-    "cy": "http://www.cytoscape.org",
-    "dc": "http://purl.org/dc/elements/1.1/",
-    "xlink": "http://www.w3.org/1999/xlink",
-    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-}
-
-
-for prefix, uri in XML_NAMESPACE.items():
-    etree.register_namespace(prefix, uri)
-
-
-TYPE_ATTR = {
-    "string": {"type": "string", QName(XML_NAMESPACE["cy"], "type"): "String"},
-    "boolean": {"type": "boolean", QName(XML_NAMESPACE["cy"], "type"): "Boolean"},
-    "integer": {"type": "integer", QName(XML_NAMESPACE["cy"], "type"): "Integer"},
-    "double": {"type": "double", QName(XML_NAMESPACE["cy"], "type"): "Double"},
-}
-
 
 def save_as_xgmml(G: nx.Graph, savepath):
-    with open(savepath, "wb") as f:
-        graph = create_graph_xml(G, Path(savepath).stem)
-        f.write(
-            etree.tostring(
-                graph, encoding="utf-8", xml_declaration=True, standalone="yes", pretty_print=True
-            )
-        )
+    simplified = _build_simple_graph(G)
+    _write_xgmml(simplified, savepath)
 
 
-def create_graph_xml(G, graph_label="0"):
-    _dummy_attr = {
-        QName(XML_NAMESPACE["dc"], "dummy"): "",
-        QName(XML_NAMESPACE["xlink"], "dummy"): "",
-        QName(XML_NAMESPACE["rdf"], "dummy"): "",
-    }
-    _graph_attr = {
+def _write_xgmml(G: nx.Graph, path):
+    """Custom XGMML writer for NetworkX graphs."""
+    root = ET.Element("graph", {
+        "directed": "1" if G.is_directed() else "0",
         "id": "0",
-        "label": graph_label,
-        "directed": "1",
-        "xmlns": "http://www.cs.rpi.edu/XGMML",
-        QName(XML_NAMESPACE["cy"], "documentVersion"): "3.0",
-        **_dummy_attr,
+        "label": "NetMedEx Network",
+        "xmlns": "http://www.cs.rpi.edu/XGMML"
+    })
+
+    # Add network attributes
+    for key, val in G.graph.items():
+        if key == "name":
+            continue
+        xgmml_type = _get_xgmml_type(val)
+        ET.SubElement(root, "att", {
+            "name": str(key),
+            "value": _to_xgmml_value(val),
+            "type": xgmml_type
+        })
+
+    # Add nodes
+    for node_id, data in G.nodes(data=True):
+        node_elem = ET.SubElement(root, "node", {
+            "id": str(node_id),
+            "label": str(data.get("label", node_id))
+        })
+
+        # Add visual information
+        fill = data.get("color", "#888888")
+        shape = data.get("shape", "ELLIPSE")
+        ET.SubElement(node_elem, "graphics", {
+            "type": str(shape),
+            "h": "40.0",
+            "w": "40.0",
+            "fill": str(fill),
+            "outline": "#666666",
+            "width": "1.0"
+        })
+
+        for key, val in data.items():
+            if key in ("label", "color", "shape", "label_color", "shared name", "name"):
+                if key in ("shared name", "name"):
+                    # Ensure standard names are written as attributes too
+                    xgmml_type = _get_xgmml_type(val)
+                    ET.SubElement(node_elem, "att", {
+                        "name": str(key),
+                        "value": _to_xgmml_value(val),
+                        "type": xgmml_type
+                    })
+                continue
+            
+            xgmml_type = _get_xgmml_type(val)
+            ET.SubElement(node_elem, "att", {
+                "name": str(key),
+                "value": _to_xgmml_value(val),
+                "type": xgmml_type
+            })
+
+    # Add edges
+    edge_counter = 1
+    for u, v, data in G.edges(data=True):
+        edge_id = str(data.get("id", f"e{edge_counter}"))
+        edge_counter += 1
+        edge_elem = ET.SubElement(root, "edge", {
+            "id": edge_id,
+            "source": str(u),
+            "target": str(v),
+            "label": str(data.get("label", f"{u} -> {v}"))
+        })
+
+        # Add visual information
+        width = data.get("edge_width", 1.0)
+        ET.SubElement(edge_elem, "graphics", {
+            "width": str(width),
+            "fill": "#888888"
+        })
+
+        for key, val in data.items():
+            if key in ("label", "edge_width", "edge_weight", "shared name", "name", "interaction"):
+                if key in ("shared name", "name", "interaction"):
+                    # Cytoscape needs these as explicit atts as well
+                    xgmml_type = _get_xgmml_type(val)
+                    ET.SubElement(edge_elem, "att", {
+                        "name": str(key),
+                        "value": _to_xgmml_value(val),
+                        "type": xgmml_type
+                    })
+                continue
+            
+            xgmml_type = _get_xgmml_type(val)
+            ET.SubElement(edge_elem, "att", {
+                "name": str(key),
+                "value": _to_xgmml_value(val),
+                "type": xgmml_type
+            })
+
+    tree = ET.ElementTree(root)
+    with open(path, "wb") as f:
+        tree.write(f, encoding="utf-8", xml_declaration=True)
+
+
+def _build_simple_graph(G: nx.Graph) -> nx.Graph:
+    simplified = nx.DiGraph()
+    simplified.graph.update(G.graph)
+
+    for node, data in G.nodes(data=True):
+        node_id = data.get("_id", node)
+        attributes = {
+            key: value
+            for key, value in data.items()
+            if key not in ("_id", "pos")
+        }
+        node_name = data.get("name", data.get("label", str(node_id)))
+        attributes.setdefault("label", node_name)
+        attributes.setdefault("shared name", node_name)
+        attributes.setdefault("name", node_name)
+        simplified.add_node(node_id, **attributes)
+
+    for u, v, data in G.edges(data=True):
+        source_id = G.nodes[u].get("_id", u)
+        target_id = G.nodes[v].get("_id", v)
+        source_name = G.nodes[u].get("name", G.nodes[u].get("label", str(source_id)))
+        target_name = G.nodes[v].get("name", G.nodes[v].get("label", str(target_id)))
+
+        attributes = {
+            key: value
+            for key, value in data.items()
+            if key not in ("_id", "relations")
+        }
+        # Add a flat list of PMIDs for easy reading in Cytoscape
+        relations = data.get("relations", {})
+        attributes["pmid_list"] = sorted(set(relations.keys()))
+        attributes["relations"] = _serialize_relations(relations)
+        
+        # Use primary_relation if available, else fallback
+        interaction_type = attributes.get("primary_relation", "interacts with")
+        edge_name = f"{source_name} ({interaction_type}) {target_name}"
+        
+        attributes["label"] = edge_name
+        attributes["shared name"] = edge_name
+        attributes["name"] = edge_name
+        attributes["interaction"] = interaction_type
+        
+        simplified.add_edge(source_id, target_id, **attributes)
+
+    return simplified
+
+
+def _get_xgmml_type(value) -> str:
+    if isinstance(value, bool):
+        return "boolean"
+    if isinstance(value, int):
+        return "integer"
+    if isinstance(value, float):
+        return "real"
+    return "string"
+
+
+def _to_xgmml_value(value) -> str:
+    if isinstance(value, (list, set, tuple, dict)):
+        return json.dumps(_to_jsonable(value), ensure_ascii=False)
+    if value is None:
+        return ""
+    if isinstance(value, bool):
+        return str(value).lower()
+    return str(value)
+
+
+def _to_jsonable(value):
+    if isinstance(value, dict):
+        return {str(k): _to_jsonable(v) for k, v in value.items()}
+    if isinstance(value, (list, tuple, set)):
+        return [_to_jsonable(v) for v in value]
+    return value
+
+
+def _serialize_relations(relations):
+    if not relations:
+        return ""
+
+    normalized = {
+        str(pmid): sorted(set(rel_list))
+        for pmid, rel_list in relations.items()
+        if pmid and rel_list
     }
-
-    graph = E.graph(_graph_attr, create_graphic_xml(), *create_node_xml(G), *create_edge_xml(G))
-
-    # Delete attributes, keep namespace definition only
-    for key in _dummy_attr:
-        del graph.attrib[key]
-
-    return graph
-
-
-def create_graphic_xml():
-    graph = E.graphics(
-        # E.att(name_value("NETWORK_WIDTH", "795.0")),
-        # E.att(name_value("NETWORK_DEPTH", "0.0")),
-        # E.att(name_value("NETWORK_HEIGHT", "500.0")),
-        # E.att(name_value("NETWORK_NODE_SELECTION", "true")),
-        # E.att(name_value("NETWORK_EDGE_SELECTION", "true")),
-        # E.att(name_value("NETWORK_BACKGROUND_PAINT", "#FFFFFF")),
-        # E.att(name_value("NETWORK_CENTER_Z_LOCATION", "0.0")),
-        # E.att(name_value("NETWORK_NODE_LABEL_SELECTION", "false")),
-        # E.att(name_value("NETWORK_TITLE", "")),
-    )
-
-    return graph
-
-
-def create_node_xml(G):
-    node_collection = []
-    for node in G.nodes(data=True):
-        node_collection.append(_create_node_xml(node))
-
-    return node_collection
-
-
-def _create_node_xml(node):
-    node_id, node_attr = node
-
-    _node_attr = {"id": node_attr["_id"], "label": node_attr["name"]}
-    _graphics_attr = {
-        "width": "0.0",
-        "h": "35.0",
-        "w": "35.0",
-        "z": "0.0",
-        "x": str(round(node_attr["pos"][0], 3)),
-        "y": str(round(node_attr["pos"][1], 3)),
-        "type": node_attr["shape"],
-        "outline": "#CCCCCC",
-        "fill": node_attr["color"],
-    }
-    if node_attr["marked"]:
-        _graphics_attr["outline"] = "#CF382C"
-        _graphics_attr["width"] = "5.0"
-
-    node = E.node(
-        _node_attr,
-        E.att(name_value("shared name", node_attr["name"])),
-        E.att(name_value("name", node_attr["name"])),
-        E.att(name_value("class", node_attr["type"])),
-        E.graphics(
-            _graphics_attr,
-            # E.att(name_value("NODE_SELECTED", "false")),
-            # E.att(name_value("NODE_NESTED_NETWORK_IMAGE_VISIBLE", "true")),
-            # E.att(name_value("NODE_DEPTH", "0.0")),
-            # E.att(name_value("NODE_SELECTED_PAINT", "#FFFF00")),
-            # E.att(name_value("NODE_LABEL_ROTATION", "0.0")),
-            # E.att(name_value("NODE_LABEL_WIDTH", "200.0")),
-            # E.att(name_value("COMPOUND_NODE_PADDING", "10.0")),
-            # E.att(name_value("NODE_LABEL_TRANSPARENCY", "255")),
-            # E.att(name_value("NODE_LABEL_POSITION", "C,C,c,0.00,0.00")),
-            # E.att(name_value("NODE_LABEL", node_attr["name"])),
-            # E.att(name_value("NODE_VISIBLE", "true")),
-            # E.att(name_value("NODE_LABEL_FONT_SIZE", "12")),
-            # E.att(name_value("NODE_BORDER_STROKE", "SOLID")),
-            # E.att(name_value("NODE_LABEL_FONT_FACE",
-            #                  "SansSerif.plain,plain,12")),
-            # E.att(name_value("NODE_BORDER_TRANSPARENCY", "255")),
-            # E.att(name_value("COMPOUND_NODE_SHAPE", node_attr["shape"])),
-            # E.att(name_value("NODE_LABEL_COLOR", "#000000")),
-            # E.att(name_value("NODE_TRANSPARENCY", "255")),
-        ),
-    )
-
-    return node
-
-
-def name_value(name, value, with_type="string"):
-    attr = {"name": name, "value": value}
-    if with_type is not None:
-        attr.update(TYPE_ATTR[with_type])
-    return attr
-
-
-def create_edge_xml(G):
-    edge_collection = []
-    for edge in G.edges(data=True):
-        edge_collection.append(_create_edge_xml(edge, G))
-
-    return edge_collection
-
-
-def _create_edge_xml(edge, G):
-    node_id_1, node_id_2, edge_attr = edge
-
-    _edge_attr = {
-        "id": edge_attr["_id"],
-        "label": f"{G.nodes[node_id_1]['name']} (interacts with) {G.nodes[node_id_2]['name']}",
-        "source": G.nodes[node_id_1]["_id"],
-        "target": G.nodes[node_id_2]["_id"],
-        QName(XML_NAMESPACE["cy"], "directed"): "1",
-    }
-
-    _graphics_attr = {"width": str(edge_attr["edge_width"]), "fill": "#848484"}
-    if edge_attr["type"] == "community":
-        pmids = ",".join(list(edge_attr["pmids"]))
-    else:
-        pmids = ",".join(list(edge_attr["relations"].keys()))
-
-    edge = E.edge(
-        _edge_attr,
-        E.att(
-            name_value(
-                "shared name",
-                f"{G.nodes[node_id_1]['name']} (interacts with) {G.nodes[node_id_2]['name']}",
-            )
-        ),
-        E.att(name_value("shared interaction", "interacts with")),
-        E.att(
-            name_value(
-                "name",
-                f"{G.nodes[node_id_1]['name']} (interacts with) {G.nodes[node_id_2]['name']}",
-            )
-        ),
-        E.att(name_value("selected", "0", with_type="boolean")),
-        E.att(name_value("interaction", "interacts with")),
-        E.att(name_value("num relations", str(edge_attr["num_relations"]), with_type="double")),
-        E.att(
-            name_value(
-                "weighted num relations",
-                str(edge_attr["weighted_num_relations"]),
-                with_type="double",
-            )
-        ),
-        E.att(name_value("edge weight", str(edge_attr["edge_weight"]), with_type="double")),
-        E.att(name_value("edge width", str(edge_attr["edge_width"]), with_type="double")),
-        E.att(name_value("pubmed id", pmids)),
-        E.graphics(
-            _graphics_attr,
-            # E.att(name_value("EDGE_TOOLTIP", "")),
-            # E.att(name_value("EDGE_SELECTED", "false")),
-            # E.att(name_value("EDGE_TARGET_ARROW_SIZE", "6.0")),
-            # E.att(name_value("EDGE_LABEL", "")),
-            # E.att(name_value("EDGE_LABEL_TRANSPARENCY", "255")),
-            # E.att(name_value("EDGE_STACKING_DENSITY", "0.5")),
-            # E.att(name_value("EDGE_TARGET_ARROW_SHAPE", "NONE")),
-            # E.att(
-            #     name_value("EDGE_SOURCE_ARROW_UNSELECTED_PAINT",
-            #                "#000000")),
-            # E.att(name_value("EDGE_TARGET_ARROW_SELECTED_PAINT",
-            #                  "#FFFF00")),
-            # E.att(
-            #     name_value(
-            #         "EDGE_TARGET_ARROW_UNSELECTED_PAINT",
-            #         "#000000")),
-            # E.att(name_value("EDGE_SOURCE_ARROW_SHAPE", "None")),
-            # E.att(name_value("EDGE_BEND", "")),
-            # E.att(name_value("EDGE_STACKING", "AUTO_BEND")),
-            # E.att(name_value("EDGE_LABEL_COLOR", "#000000")),
-            # E.att(name_value("EDGE_TRANSPARENCY", "255")),
-            # E.att(name_value("EDGE_LABEL_ROTATION", "0.0")),
-            # E.att(name_value("EDGE_LABEL_WIDTH", "200.0")),
-            # E.att(name_value("EDGE_CURVED", "true")),
-            # E.att(name_value("EDGE_SOURCE_ARROW_SIZE", "6.0")),
-            # E.att(name_value("EDGE_VISIBLE", "true")),
-            # E.att(name_value("EDGE_LINE_TYPE", "SOLID")),
-            # E.att(name_value("EDGE_STROKE_SELECTED_PAINT", "#FF0000")),
-            # E.att(name_value("EDGE_LABEL_FONT_SIZE", "10")),
-            # E.att(
-            #     name_value("EDGE_LABEL_FONT_FACE",
-            #                "Dialog.plain,plain,10")),
-            # E.att(name_value("EDGE_Z_ORDER", "0.0")),
-            # E.att(name_value("EDGE_SOURCE_ARROW_SELECTED_PAINT",
-            #                  "#FFFF00")),
-        ),
-    )
-
-    return edge
+    return json.dumps(normalized, ensure_ascii=False)

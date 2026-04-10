@@ -24,8 +24,24 @@ class PubTatorIO:
 
     @staticmethod
     def parse(filepath: str | Path) -> PubTatorCollection:
+        import json
+        from netmedex.biocjson_parser import biocjson_to_pubtator
+
         articles: list[PubTatorArticle] = []
         with open(filepath) as stream:
+            # Check for JSON format (BioC-JSON)
+            first_char = stream.read(1)
+            stream.seek(0)
+            if first_char == "{":
+                try:
+                    data = json.load(stream)
+                    articles = biocjson_to_pubtator(data)
+                    return PubTatorCollection(headers=[], articles=articles)
+                except Exception as e:
+                    from netmedex.pubtator_parser import logger
+                    logger.error(f"Failed to parse BioC-JSON file: {e}")
+                    stream.seek(0)  # Try falling back to line-by-line
+
             result = PubTatorIO._parse_header(stream)
             if (non_header_line := result.non_header_line) is not None:
                 for article in PubTatorIterator(stream, non_header_line):
@@ -36,7 +52,7 @@ class PubTatorIO:
         return PubTatorCollection(result.headers, articles)
 
     @staticmethod
-    def _parse_header(stream: TextIOBase) -> "PubTatorHeaderResult":
+    def _parse_header(stream: TextIOBase) -> PubTatorHeaderResult:
         headers = []
         for line in stream:
             if not line.startswith(HEADER_SYMBOL):

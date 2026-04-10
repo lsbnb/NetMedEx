@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import os
+
 from dash import Input, Output, State, dcc
 
 from netmedex.cytoscape_js import save_as_html
@@ -18,7 +20,18 @@ def callbacks(app):
         if savepath is None:
             return
 
+        import os
+
+        # Prefer BioC-JSON (preserves journal/date/authors) over plain pubtator format
+        biocjson_path = savepath.get("biocjson", "")
+        if biocjson_path and os.path.exists(biocjson_path):
+            return dcc.send_file(biocjson_path, filename="output.biocjson")
+
+        if not os.path.exists(savepath["pubtator"]):
+             return None # Silent failure or add alert if possible
+
         return dcc.send_file(savepath["pubtator"], filename="output.pubtator")
+
 
     @app.callback(
         Output("export-html", "data"),
@@ -32,6 +45,9 @@ def callbacks(app):
     def export_html(n_clicks, layout, node_degree, weight, savepath):
         if savepath is None:
             return
+
+        if not os.path.exists(savepath["graph"]):
+            return None
 
         G = rebuild_graph(
             node_degree, weight, format="html", with_layout=True, graph_path=savepath["graph"]
@@ -91,8 +107,8 @@ def callbacks(app):
         analysis results. It can be re-loaded in the Search Panel (Graph File
         source) to restore the session without re-running the pipeline.
         """
-        if savepath is None or not savepath.get("graph"):
-            return
+        if savepath is None or not savepath.get("graph") or not os.path.exists(savepath["graph"]):
+            return None
 
         return dcc.send_file(savepath["graph"], filename="netmedex_graph.pkl")
 
@@ -106,6 +122,7 @@ def callbacks(app):
         """Export bibliography of articles in the graph in RIS format."""
         from netmedex.graph import load_graph
         from netmedex.pubtator_data import PubTatorArticle
+        from netmedex.pubtator_parser import PubTatorIO
         from netmedex.ris_exporter import convert_to_ris
 
         if savepath is None or not savepath.get("graph"):
@@ -114,22 +131,47 @@ def callbacks(app):
         G = load_graph(savepath["graph"])
         pmid_metadata = G.graph.get("pmid_metadata", {})
         pmid_title = G.graph.get("pmid_title", {})
+        bioc_meta = {}
+
+        # Enrich RIS fields from original BioC-JSON when graph metadata is incomplete.
+        biocjson_path = savepath.get("biocjson", "")
+        if biocjson_path and os.path.exists(biocjson_path):
+            collection = PubTatorIO.parse(biocjson_path)
+            for article in collection.articles:
+                bioc_meta[str(article.pmid)] = {
+                    "journal": article.journal,
+                    "date": article.date,
+                    "doi": article.doi,
+                    "volume": article.volume,
+                    "issue": article.issue,
+                    "pages": article.pages,
+                    "authors": (article.metadata or {}).get("authors"),
+                }
 
         articles = []
         # Use pmid_title to ensure we only export PMIDs that have a title in the graph
         for pmid, title in pmid_title.items():
-            meta = pmid_metadata.get(pmid, {})
+            meta = pmid_metadata.get(str(pmid), {})
+            fallback = bioc_meta.get(str(pmid), {})
+            authors = meta.get("authors") or fallback.get("authors")
+            citation_count = meta.get("citation_count")
             articles.append(
                 PubTatorArticle(
                     pmid=pmid,
                     title=title,
-                    journal=meta.get("journal"),
-                    date=meta.get("date"),
-                    doi=meta.get("doi"),
+                    journal=meta.get("journal") or fallback.get("journal"),
+                    date=meta.get("date") or fallback.get("date"),
+                    doi=meta.get("doi") or fallback.get("doi"),
+                    volume=meta.get("volume") or fallback.get("volume"),
+                    issue=meta.get("issue") or fallback.get("issue"),
+                    pages=meta.get("pages") or fallback.get("pages"),
                     abstract=None,
                     annotations=[],
                     relations=[],
-                    metadata={"authors": meta.get("authors")},
+                    metadata={
+                        "authors": authors,
+                        "citation_count": citation_count,
+                    },
                 )
             )
 

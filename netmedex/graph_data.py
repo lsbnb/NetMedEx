@@ -55,6 +55,7 @@ class GraphEdge:
     # Semantic analysis metadata (optional, only for LLM-extracted edges)
     confidences: dict[str, dict[str, float]] | None = None  # {pmid: {relation: confidence}}
     evidences: dict[str, dict[str, str]] | None = None  # {pmid: {relation: evidence}}
+    source_id: str | None = None  # Explicit source node ID for directed relationships
 
 
 @dataclass

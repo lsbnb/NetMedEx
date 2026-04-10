@@ -61,6 +61,7 @@ class SemanticRelationshipExtractor:
             "processed_articles": 0,
             "succeeded_articles": 0,
             "failed_articles": 0,
+            "api_errors": 0,
             "parse_failures": 0,
             "relaxed_recoveries": 0,
             "compact_retries": 0,
@@ -78,11 +79,18 @@ class SemanticRelationshipExtractor:
             return "unknown"
         provider = str(getattr(self.llm_client, "provider", "unknown")).lower()
         base_url = str(getattr(self.llm_client, "base_url", "unknown")).lower()
-        
-        if provider == "local" or "127.0.0.1" in base_url or "localhost" in base_url or "100.103" in base_url:
+
+        if (
+            provider == "local"
+            or "127.0.0.1" in base_url
+            or "localhost" in base_url
+            or "100.103" in base_url
+        ):
             return "local"
         if provider == "google" or "generativelanguage" in base_url:
             return "google"
+        if provider == "openrouter" or "openrouter.ai" in base_url:
+            return "openrouter"
         return provider
 
     def _update_stats(self, **kwargs):
@@ -96,12 +104,14 @@ class SemanticRelationshipExtractor:
                         self.last_run_stats[key] = value
 
     def _effective_confidence_threshold(self, threshold: float) -> float:
-        """Lower threshold for Gemini and Local LLMs to account for conservative scoring."""
+        """Lower threshold for Gemini, OpenAI and Local LLMs to account for conservative scoring."""
         provider = self._get_provider()
-        
-        if provider in ("google", "local"):
+
+        if provider in ("google", "local", "openai"):
             res = min(threshold, 0.25)
-            logger.info(f"DIAGNOSTIC: Applying CONSERVATIVE threshold for {provider}: {threshold} -> {res}")
+            logger.info(
+                f"DIAGNOSTIC: Applying CONSERVATIVE threshold for {provider}: {threshold} -> {res}"
+            )
             return res
         return threshold
 
@@ -160,25 +170,28 @@ class SemanticRelationshipExtractor:
 
         provider = self._get_provider()
         model_name = str(getattr(self.llm_client, "model", "unknown")).lower()
-        
+
         self.last_article_errors = {}
         # Reset but preserve provider/model info
         with self._stats_lock:
-            self.last_run_stats.update({
-                "total_articles": total,
-                "processed_articles": 0,
-                "succeeded_articles": 0,
-                "failed_articles": 0,
-                "parse_failures": 0,
-                "relaxed_recoveries": 0,
-                "compact_retries": 0,
-                "coverage_passes": 0,
-                "coverage_expansions": 0,
-                "dropped_by_threshold": 0,
-                "dropped_invalid_nodes": 0,
-                "provider": provider,
-                "model": model_name,
-            })
+            self.last_run_stats.update(
+                {
+                    "total_articles": total,
+                    "processed_articles": 0,
+                    "succeeded_articles": 0,
+                    "failed_articles": 0,
+                    "api_errors": 0,
+                    "parse_failures": 0,
+                    "relaxed_recoveries": 0,
+                    "compact_retries": 0,
+                    "coverage_passes": 0,
+                    "coverage_expansions": 0,
+                    "dropped_by_threshold": 0,
+                    "dropped_invalid_nodes": 0,
+                    "provider": provider,
+                    "model": model_name,
+                }
+            )
 
         # Helper for progress tracking thread safety
         def update_progress(current, count, msg, error=None):
@@ -210,8 +223,10 @@ class SemanticRelationshipExtractor:
                     else:
                         succeeded += 1
                         update_progress(
-                            completed, total, 
-                            f"Completed PMID {article.pmid} ({len(edges)} semantic edges)", None
+                            completed,
+                            total,
+                            f"Completed PMID {article.pmid} ({len(edges)} semantic edges)",
+                            None,
                         )
                 except Exception as e:
                     failed += 1
@@ -220,12 +235,8 @@ class SemanticRelationshipExtractor:
 
         # Final stats sync
         self._update_stats(
-            processed_articles=completed,
-            succeeded_articles=succeeded,
-            failed_articles=failed
+            processed_articles=completed, succeeded_articles=succeeded, failed_articles=failed
         )
-
-        return all_edges
 
         return all_edges
 
@@ -275,45 +286,41 @@ class SemanticRelationshipExtractor:
                 prompt = self._build_llm_prompt(article.title, article.abstract, entity_list)
 
             # First pass: Use selected prompt
-            # Gemini benefits from JSON mode; OpenAI nano/mini models often return empty
-            # strings with JSON mode enabled, so we skip it for OpenAI and let the parser handle it
-            call_kwargs = {}
-            if provider == "google":
+            # Use a large max_tokens by default for all providers to prevent truncation
+            call_kwargs = {"max_tokens": 3000}
+
+            # Enable JSON mode for all providers that support it (including OpenRouter)
+            if provider in ("google", "openai", "openrouter"):
                 call_kwargs["response_format"] = {"type": "json_object"}
-                call_kwargs["max_tokens"] = 3000
-            elif provider == "openai":
-                call_kwargs["max_tokens"] = 3000
-                # Don't set response_format - let the model output free-form JSON
-            
+
             response = self._call_llm(prompt, **call_kwargs)
             relationships = self._parse_llm_response(response, article.pmid)
 
             initial_recall = len(relationships)
             entity_count = len(entity_list)
-            
+
             # Threshold for triggering a recovery pass:
-            # - Gemini: uses high-coverage prompt first, only retry if empty
-            # - OpenAI: capable models, trust first-pass result; avoid doubling API calls
-            # - Local: less capable, always do a coverage pass if recall is low
-            if provider in ["google", "openai"]:
-                RECOVERY_THRESHOLD = 1  # Only retry if the first pass is literally empty
-            else:
-                RECOVERY_THRESHOLD = max(2, entity_count // 3)
+            # - More aggressive threshold to ensure high recall, especially for complex abstracts
+            RECOVERY_THRESHOLD = max(2, entity_count // 3)
 
             # --- Provider-specific recovery and enhancement ---
-            
+
             # 1. Global Recovery Strategy (only when first pass is meaningfully below threshold)
             if initial_recall < RECOVERY_THRESHOLD and entity_count >= 2:
                 # Decide if we need a second pass or just a compact retry
                 if initial_recall == 0:
                     self._update_stats(compact_retries=1)
-                    coverage_prompt = self._build_compact_retry_prompt(article.title, article.abstract, entity_list)
+                    coverage_prompt = self._build_compact_retry_prompt(
+                        article.title, article.abstract, entity_list
+                    )
                     pass_name = "compact-retry"
                 else:
                     self._update_stats(coverage_passes=1)
-                    coverage_prompt = self._build_coverage_prompt(article.title, article.abstract, entity_list)
+                    coverage_prompt = self._build_coverage_prompt(
+                        article.title, article.abstract, entity_list
+                    )
                     pass_name = "coverage-pass"
-                
+
                 # Global recovery pass
                 coverage_response = self._call_llm(coverage_prompt, max_tokens=2000)
                 coverage_rels = self._parse_llm_response(coverage_response, article.pmid)
@@ -343,7 +350,9 @@ class SemanticRelationshipExtractor:
             # (OpenAI/Gemini trust: empty = nothing found, no retry to preserve speed)
             if not relationships and len(entity_list) >= 2 and provider == "local":
                 self._update_stats(compact_retries=1)
-                retry_prompt = self._build_compact_retry_prompt(article.title, article.abstract, entity_list)
+                retry_prompt = self._build_compact_retry_prompt(
+                    article.title, article.abstract, entity_list
+                )
                 response = self._call_llm(retry_prompt, max_tokens=1000)
                 relationships = self._parse_llm_response(response, article.pmid)
 
@@ -351,8 +360,8 @@ class SemanticRelationshipExtractor:
             err_str = str(e)
             logger.error(f"Error during semantic analysis for PMID {article.pmid}: {e}")
             self.last_article_errors[article.pmid] = err_str
-            # Count API/call failures in parse_failures so diagnostics accurately reflect errors
-            self._update_stats(parse_failures=1)
+            # Count API/call failures separately from parse failures
+            self._update_stats(api_errors=1)
             return []
 
         # Filter by confidence and convert to SemanticEdge
@@ -433,7 +442,7 @@ class SemanticRelationshipExtractor:
         self.last_article_errors.pop(article.pmid, None)
         self._update_stats(
             dropped_by_threshold=dropped_by_threshold,
-            dropped_invalid_nodes=dropped_by_invalid_nodes
+            dropped_invalid_nodes=dropped_by_invalid_nodes,
         )
 
         logger.info(
@@ -493,10 +502,10 @@ class SemanticRelationshipExtractor:
 2. For each candidate pair, decide whether a biomedical relation is supported by abstract evidence.
 3. Output only supported pairs as relations.
 4. For each relationship, determine:
-   - The two entities involved (use their IDs)
-   - The relationship type (must be one of: {allowed_relations})
-   - Confidence score (0-1): How confident are you this relationship is explicitly stated?
-   - Supporting evidence: The specific sentence or phrase supporting this relationship
+-   - The two entities involved (use their IDs)
+-   - The relationship type (must be one of: {allowed_relations})
+-   - Confidence score (0-1): How confident are you this relationship is explicitly stated? **Do not reuse the sample value; personalize it for each edge.**
+-   - Supporting evidence: The specific sentence or phrase supporting this relationship
 
 4. Return ONLY a JSON array with this exact structure:
 [
@@ -504,7 +513,7 @@ class SemanticRelationshipExtractor:
     "entity1_id": "...",
     "entity2_id": "...",
     "relation_type": "...",
-    "confidence": 0.9,
+    "confidence": 0.41,
     "evidence": "exact quote from abstract"
   }}
 ]
@@ -599,7 +608,9 @@ Output format:
 If no relations are found, return [].
 """
 
-    def _build_local_prompt(self, title: str, abstract: str, entity_list: list[dict[str, str]]) -> str:
+    def _build_local_prompt(
+        self, title: str, abstract: str, entity_list: list[dict[str, str]]
+    ) -> str:
         """Concise and structured prompt optimized for local models (e.g., Llama 3, Mistral)."""
         entity_block = "\n".join([f"- {e['id']}: {e['name']}" for e in entity_list])
         allowed = ", ".join(self._allowed_relation_types())
@@ -623,7 +634,9 @@ Title: {title}
 ### JSON Output:
 """
 
-    def _call_llm(self, prompt: str, max_tokens: int = 1500, response_format: dict | None = None) -> str:
+    def _call_llm(
+        self, prompt: str, max_tokens: int = 1500, response_format: dict | None = None
+    ) -> str:
         """Call the LLM API with the constructed prompt"""
         provider = self._get_provider()
         if not self.llm_client or not self.llm_client.client:
@@ -637,7 +650,9 @@ Title: {title}
             "Always respond with valid JSON."
         )
         try:
-            logger.info(f"DIAGNOSTIC: Initiating LLM call (provider={provider}, max_tokens={max_tokens})")
+            logger.info(
+                f"DIAGNOSTIC: Initiating LLM call (provider={provider}, max_tokens={max_tokens})"
+            )
             response_text = self.llm_client.chat_completion_text(
                 messages=[
                     {"role": "system", "content": system_instruction},
@@ -678,12 +693,12 @@ Title: {title}
 
         # If no code fences, or regex failed, try to find the first significant JSON structure
         # We look for the most encompassing [] or {} block
-        
+
         # Priority 1: Find the first '[' and last ']'
         array_match = re.search(r"\[[\s\S]*\]", text)
         # Priority 2: Find the first '{' and last '}'
         object_match = re.search(r"\{[\s\S]*\}", text)
-        
+
         if array_match and object_match:
             # Use whichever comes first and ends last (most encompassing)
             if array_match.start() < object_match.start():
@@ -697,7 +712,7 @@ Title: {title}
 
         try:
             data = json.loads(text)
-            
+
             # Handle potential object wrapping (e.g., {"relationships": [...]})
             if isinstance(data, dict):
                 # Search for any list value within the object
@@ -726,7 +741,9 @@ Title: {title}
 
                 required_fields = ["entity1_id", "entity2_id", "relation_type"]
                 if all(field in rel for field in required_fields):
-                    rel["relation_type"] = normalize_relation_type(str(rel.get("relation_type", "")))
+                    rel["relation_type"] = normalize_relation_type(
+                        str(rel.get("relation_type", ""))
+                    )
                     # Ensure confidence is a float
                     rel["confidence"] = self._normalize_confidence(rel.get("confidence"))
 
@@ -758,6 +775,7 @@ Title: {title}
         Best-effort parser for malformed JSON-like outputs.
         Extracts repeated relationship fields even if the JSON structure is invalid.
         """
+
         # Helper to extract values even if keys are unquoted or quotes are mismatching
         def _extract(field_name: str, chunk: str, default: str = "") -> str:
             # Regex designed to handle:
@@ -766,27 +784,41 @@ Title: {title}
             # 3. key: 'value' (single quotes)
             # 4. key: value (unquoted if no space)
             # 5. Handle escaped quotes within value
-            
+
             # Pattern for: key_name (optional quotes) : (optional quotes) value (optional quotes)
             pattern = rf'[\'"]?{field_name}[\'"]?\s*:\s*([\'"])(.*?)\1'
             match = re.search(pattern, chunk, flags=re.IGNORECASE | re.DOTALL)
             if match:
                 return match.group(2).strip()
-            
+
             # Fallback for unquoted numerical or single-word values (like confidence)
             pattern_noquote = rf'[\'"]?{field_name}[\'"]?\s*:\s*([^,\s\}}\]]+)'
             match = re.search(pattern_noquote, chunk, flags=re.IGNORECASE)
             if match:
-                res = match.group(1).strip().strip('",\'')
+                res = match.group(1).strip().strip("\",'")
                 return res
-                
+
             return default
 
         # Find potential object blocks
         chunks = re.findall(r"\{[\s\S]*?\}", text)
         if not chunks:
-            # If no {}, maybe it's just a comma separated list of things?
-            # Very unlikely for current prompts but let's be safe.
+            # If no {}, look for common bulleted list patterns or line-based pairs
+            # This handles cases where models omit braces but keep property-like lines
+            # Example: "entity1_id: ID1, entity2_id: ID2, relation_type: Inhibits..."
+            lines = text.split("\n")
+            current_chunk = []
+            for line in lines:
+                if any(k in line for k in ["entity1_id", "entity2_id", "relation_type"]):
+                    current_chunk.append(line)
+                elif current_chunk:
+                    # End of a potential logical block
+                    chunks.append("\n".join(current_chunk))
+                    current_chunk = []
+            if current_chunk:
+                chunks.append("\n".join(current_chunk))
+
+        if not chunks:
             chunks = [text]
 
         recovered: list[dict[str, Any]] = []
@@ -834,6 +866,7 @@ Title: {title}
                 relation=se.relation_type,
                 confidence=se.confidence,  # Preserve confidence score
                 evidence=se.evidence,  # Preserve supporting evidence
+                source_id=se.node1_id,  # Explicitly mark node1 as source
             )
             pubtator_edges.append(edge)
 

@@ -46,6 +46,37 @@ max_edges = html.Div(
     className="param",
 )
 
+normalization_toggle = html.Div(
+    [
+        generate_param_title(
+            "KG Normalization",
+            (
+                "sapBERT-based Knowledge Graph Normalization (v1.1)\n\n"
+                "Automatically merges semantically equivalent nodes (e.g., case variants, "
+                "abbreviations, and synonyms) using biomedical vector embeddings trained on UMLS.\n\n"
+                "💡 Reduces graph redundancy by collapsing near-duplicate entities into a single "
+                "canonical node, producing a cleaner and more interpretable knowledge graph.\n\n"
+                "⚠️ Requires an active LLM connection (used for embedding generation). "
+                "May add processing time for large graphs."
+            ),
+        ),
+        dbc.Checklist(
+            options=[
+                {
+                    "label": "🧬 Enable sapBERT KG Normalization",
+                    "value": "enabled",
+                },
+            ],
+            id="normalization-toggle",
+            value=["enabled"],
+            switch=True,
+            inline=True,
+            className="mt-1",
+        ),
+    ],
+    className="param",
+)
+
 
 llm_config = html.Div(
     [
@@ -59,6 +90,7 @@ llm_config = html.Div(
             options=[
                 {"label": "OpenAI", "value": "openai"},
                 {"label": "Google Gemini", "value": "google"},
+                {"label": "OpenRouter", "value": "openrouter"},
                 {"label": "Local Ollama", "value": "local"},
             ],
             value="openai",  # Default to OpenAI
@@ -159,6 +191,71 @@ llm_config = html.Div(
                 ),
             ],
             id="google-config",
+            style={"display": "none"},
+        ),
+        # OpenRouter Configuration
+        html.Div(
+            [
+                generate_param_title(
+                    "OpenRouter API Key",
+                    "Enter your OpenRouter API Key (starts with sk-or-...)",
+                ),
+                dbc.Input(
+                    id="openrouter-api-key-input",
+                    type="password",
+                    placeholder="sk-or-...",
+                    debounce=True,
+                ),
+                html.Div(style={"height": "15px"}),
+                generate_param_title(
+                    "Model",
+                    "Select or fetch models from OpenRouter (e.g., anthropic/claude-3-opus).",
+                ),
+                html.Div(
+                    [
+                        dcc.Dropdown(
+                            id="openrouter-model-selector",
+                            options=[
+                                {
+                                    "label": "GPT-4o Mini (OpenRouter)",
+                                    "value": "openai/gpt-4o-mini",
+                                },
+                                {
+                                    "label": "Claude 3.5 Sonnet",
+                                    "value": "anthropic/claude-3.5-sonnet",
+                                },
+                                {"label": "DeepSeek V3", "value": "deepseek/deepseek-chat"},
+                                {"label": "Custom...", "value": "custom"},
+                            ],
+                            value="openai/gpt-4o-mini",
+                            clearable=False,
+                            style={"flex": "1"},
+                        ),
+                        dbc.Button(
+                            html.I(className="bi bi-arrow-clockwise"),
+                            id="refresh-openrouter-models-btn",
+                            color="secondary",
+                            outline=True,
+                            className="ms-2",
+                            title="Fetch models from OpenRouter",
+                        ),
+                    ],
+                    className="d-flex align-items-center mb-2",
+                ),
+                html.Div(id="openrouter-model-fetch-status", className="small text-muted mb-2"),
+                html.Div(
+                    [
+                        dbc.Input(
+                            id="openrouter-custom-model-input",
+                            placeholder="e.g., meta-llama/llama-3-70b-instruct",
+                            debounce=True,
+                        ),
+                    ],
+                    id="openrouter-custom-model-div",
+                    style={"display": "none"},
+                ),
+            ],
+            id="openrouter-config",
             style={"display": "none"},
         ),
         # Local LLM Configuration (hidden by default)
@@ -276,10 +373,15 @@ llm_config = html.Div(
         # Unified status message and connection light
         html.Div(
             [
-                html.Span(id="llm-status-light", className="status-indicator status-unknown"),
-                html.Span(id="llm-config-status", className="text-success small"),
+                html.Span(
+                    id="llm-status-light",
+                    className="status-indicator status-unknown",
+                    style={"marginTop": "0"},
+                ),
+                html.Span(id="llm-config-status", className="small ms-1"),
             ],
             className="d-flex align-items-center mt-2",
+            style={"minHeight": "20px"},
         ),
         # Save LLM Settings button
         html.Div(
@@ -291,7 +393,7 @@ llm_config = html.Div(
                     size="sm",
                     className="mt-3 w-100",
                 ),
-                html.Div(id="llm-save-status", className="small mt-2"),
+                html.Div(id="llm-save-status", className="small mt-1 text-success"),
             ],
             className="mt-2",
         ),
@@ -323,7 +425,7 @@ advanced_settings = html.Div(
             [
                 html.Div(
                     [
-                        html.H5("Advanced Settings", className="mb-0"),
+                        html.H4("Advanced Settings", className="mb-0 fw-semibold"),
                         html.Button(
                             type="button",
                             className="btn-close",
@@ -336,6 +438,7 @@ advanced_settings = html.Div(
                 llm_config,
                 max_articles,
                 max_edges,
+                normalization_toggle,
             ],
             id="advanced-settings-collapse",
             className="settings-collapse",

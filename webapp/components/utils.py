@@ -6,12 +6,18 @@ from dash import html
 
 def generate_param_title(title, descriptions, is_right=False, id=None):
     class_name = "info-outer info-right" if is_right else "info-outer info-left"
-    kwargs = {"data-tooltip": descriptions, "data-x": "0px", "data-y": "0px"}
+    span_props = {
+        "className": class_name,
+        "data-tooltip": descriptions,
+        "data-x": "0px",
+        "data-y": "0px",
+    }
 
-    # Handle optional ID for H5
+    # Handle optional ID for H5 and Span
     h5_props = {"children": title}
     if id:
         h5_props["id"] = id
+        span_props["id"] = f"{id}-tooltip"
 
     return html.Div(
         [
@@ -20,8 +26,7 @@ def generate_param_title(title, descriptions, is_right=False, id=None):
                 [
                     html.Img(src=dash.get_asset_url("icon_info.svg"), className="info-img"),
                 ],
-                className=class_name,
-                **kwargs,
+                **span_props,
             ),
         ],
         className="param-title",

@@ -146,27 +146,40 @@ class PubTatorGraphBuilder:
 
         # Fetch citation counts if requested
         if self.fetch_citations:
-            logger.info(f"Fetching citation counts for {len(collection.articles)} articles...")
-            if self.progress_callback:
-                self.progress_callback(
-                    0, len(collection.articles), "fetching citation counts", None
-                )
+            n_articles = len(collection.articles)
+            logger.info(f"Fetching citation counts for {n_articles} articles...")
+
+            # Define a per-PMID progress relay callback
+            _pcb = self.progress_callback
+
+            def citation_progress_cb(current: int, total: int):
+                if _pcb:
+                    _pcb(current, total, "fetching citation counts", None)
+
+            if _pcb:
+                _pcb(0, n_articles, "fetching citation counts", None)
 
             pmid_list = [a.pmid for a in collection.articles]
-            citation_counts = fetch_citation_counts(pmid_list)
+            citation_counts = fetch_citation_counts(
+                pmid_list, progress_callback=citation_progress_cb
+            )
+            articles_with_count = 0
             for article in collection.articles:
                 if article.pmid in citation_counts:
                     if article.metadata is None:
                         article.metadata = {}
                     article.metadata["citation_count"] = citation_counts[article.pmid]
+                    if citation_counts[article.pmid] > 0:
+                        articles_with_count += 1
 
-            if self.progress_callback:
-                self.progress_callback(
-                    len(collection.articles),
-                    len(collection.articles),
-                    "fetching citation counts",
-                    None,
-                )
+            # Store summary for the pipeline to report
+            self._citation_summary = {
+                "total": n_articles,
+                "with_count": articles_with_count,
+            }
+            logger.info(
+                f"Citation counts fetched: {articles_with_count}/{n_articles} articles have citation data."
+            )
 
         if self.edge_method == "semantic" and self.semantic_extractor:
             # Optimized batch processing for semantic analysis
@@ -296,14 +309,15 @@ class PubTatorGraphBuilder:
         self._remove_edges_by_weight(self.graph, edge_weight_cutoff)
         self._remove_edges_by_rank(self.graph, max_edges)
 
-        self._remove_isolated_nodes(self.graph)
-
         self._check_graph_properties(self.graph)
-
-        self._set_network_layout(self.graph)
 
         if community:
             self._set_network_communities(self.graph)
+
+        # Remove isolated nodes and set layout AFTER community detection
+        # (Community detection removes inter-community edges, which can create new isolates)
+        self._remove_isolated_nodes(self.graph)
+        self._set_network_layout(self.graph)
 
         self._log_graph_info()
         self._updated = False
@@ -326,10 +340,12 @@ class PubTatorGraphBuilder:
                     data["parent"] = generate_stable_id(f"comm_node_{data['parent']}")
 
         for u, v, data in graph.edges(data=True):
-            if data.get("type") == "node":
+            if data.get("type") == "community":
+                if "_id" not in data:
+                    data["_id"] = generate_stable_id(f"comm_edge_{u}_{v}")
+            else:
+                # Catch all regular edges (co-mention, semantic, etc.)
                 data["_id"] = generate_stable_id(f"edge_{u}_{v}{suffix}")
-            elif data.get("type") == "community" and "_id" not in data:
-                data["_id"] = generate_stable_id(f"comm_edge_{u}_{v}")
 
     def _build_nodes(self, pmid_weights: dict[str, int | float] | None = None):
         # Apply stable IDs first
@@ -463,7 +479,13 @@ class PubTatorGraphBuilder:
         if graph.number_of_edges() > 1000:
             pos = nx.circular_layout(graph, scale=300)
         else:
-            pos = nx.spring_layout(graph, weight="edge_weight", scale=300, k=0.25, iterations=15)
+            try:
+                pos = nx.spring_layout(
+                    graph, weight="edge_weight", scale=300, k=0.25, iterations=15
+                )
+            except Exception as exc:
+                logger.warning("spring_layout failed (%s), falling back to circular_layout", exc)
+                pos = nx.circular_layout(graph, scale=300)
         nx.set_node_attributes(graph, pos, "pos")
 
     @staticmethod
@@ -473,6 +495,12 @@ class PubTatorGraphBuilder:
             return
 
         communities = nx.community.louvain_communities(graph, seed=seed, weight="edge_weight")  # type: ignore
+        # If community detection yields a single community, keep original graph untouched.
+        # Creating one giant compound node degrades readability without adding information.
+        if len(communities) <= 1:
+            graph.graph["num_communities"] = 0
+            return
+
         community_labels = set()
         for c_idx, community in enumerate(communities):
             # Find highest degree node in community
@@ -517,17 +545,22 @@ class PubTatorGraphBuilder:
         inter_edge_weight = defaultdict(float)
         inter_edge_pmids = defaultdict(dict)
         to_remove = []
+        intra_count = 0
         for u, v, attrs in graph.edges(data=True):
             if (c_0 := graph.nodes[u]["parent"]) != (c_1 := graph.nodes[v]["parent"]):
                 if c_0 is None or c_1 is None:
-                    logger.warning(f"[Error] Node {u} or {v} is not in any community")
                     continue
                 to_remove.append((u, v))
                 community_edge = tuple(sorted([c_0, c_1]))
                 inter_edge_weight[community_edge] += attrs["edge_weight"]
                 inter_edge_pmids[community_edge].update(attrs["relations"])
+            else:
+                intra_count += 1
 
         graph.remove_edges_from(to_remove)
+        logger.info(
+            f"Community view: Kept {intra_count} intra-community edges, removed {len(to_remove)} inter-community edges."
+        )
         for (c_0, c_1), weight in inter_edge_weight.items():
             # Log-adjusted weight for balance
             try:
@@ -585,7 +618,13 @@ class PubTatorGraphBuilder:
                 continue
             else:
                 edges.append(
-                    PubTatorEdge(node_ids[0], node_ids[1], relation.pmid, relation.relation_type)
+                    PubTatorEdge(
+                        node_ids[0],
+                        node_ids[1],
+                        relation.pmid,
+                        relation.relation_type,
+                        source_id=node_ids[0],
+                    )
                 )
 
         return edges
@@ -683,6 +722,10 @@ class PubTatorGraphBuilder:
                     if edge.pmid not in edge_data["evidences"]:
                         edge_data["evidences"][edge.pmid] = {}
                     edge_data["evidences"][edge.pmid][edge.relation] = edge.evidence
+
+                # Set source_id if present in PubTatorEdge and not already set
+                if edge.source_id is not None and edge_data.get("source_id") is None:
+                    edge_data["source_id"] = edge.source_id
             else:
                 # Create new edge with metadata
                 confidences = None
@@ -696,7 +739,7 @@ class PubTatorGraphBuilder:
 
                 edge_data = GraphEdge(
                     _id=generate_stable_id(f"edge_{edge.node1_id}_{edge.node2_id}"),
-                    type="node",
+                    type="semantic" if self.edge_method == "semantic" else "node",
                     relations={edge.pmid: {edge.relation}},
                     num_relations=None,
                     weighted_num_relations=None,
@@ -705,6 +748,7 @@ class PubTatorGraphBuilder:
                     edge_width=None,
                     confidences=confidences,
                     evidences=evidences,
+                    source_id=edge.source_id,
                 )
                 self.graph.add_edge(edge.node1_id, edge.node2_id, **asdict(edge_data))
 
@@ -719,6 +763,9 @@ class PubTatorGraphBuilder:
             "journal": article.journal,
             "date": article.date,
             "doi": article.doi,
+            "volume": article.volume,
+            "issue": article.issue,
+            "pages": article.pages,
             "authors": article.metadata.get("authors") if article.metadata else None,
             "citation_count": article.metadata.get("citation_count") if article.metadata else None,
         }

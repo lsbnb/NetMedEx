@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(override=True)
 
 import os
 
@@ -37,7 +37,7 @@ app._favicon = "NetMedEx_ico.ico"
 from webapp.components.graph import graph
 from webapp.components.sidebar import sidebar
 
-current_session_path = dcc.Store(id="current-session-path")
+current_session_path = dcc.Store(id="current-session-path", storage_type="session")
 
 content = html.Div(
     [current_session_path, sidebar, graph],
@@ -51,41 +51,18 @@ def main():
     try:
         collect_callbacks(app)
 
-        # Clientside callback to trigger hidden dcc.Upload components
-        app.clientside_callback(
-            """
-            function(n) {
-                if (n) {
-                    const upload = document.getElementById('pmid-file-data').querySelector('input');
-                    if (upload) upload.click();
-                }
-                return null;
-            }
-            """,
-            Output("pmid-file-upload-trigger", "data-clicked"),
-            Input("pmid-file-upload-trigger", "n_clicks"),
-        )
-        app.clientside_callback(
-            """
-            function(n) {
-                if (n) {
-                    const upload = document.getElementById('graph-file-data').querySelector('input');
-                    if (upload) upload.click();
-                }
-                return null;
-            }
-            """,
-            Output("graph-file-upload-trigger", "data-clicked"),
-            Input("graph-file-upload-trigger", "n_clicks"),
-        )
-
+        # Clientside callback to handle info icons scroll positioning
         app.clientside_callback(
             ClientsideFunction(namespace="clientside", function_name="info_scroll"),
             Output("post-js-scripts", "children"),
             Input("post-js-scripts", "id"),
         )
         # Provide user-friendly access instructions
-        host = os.getenv("HOST", "127.0.0.1")
+        _host_env = os.getenv("HOST", "127.0.0.1")
+        # Conda build environments set HOST to the build triplet (e.g. x86_64-conda-linux-gnu).
+        # Fall back to 127.0.0.1 if the value doesn't look like an IP or "0.0.0.0".
+        import re as _re
+        host = _host_env if _re.match(r"^[\d.]+$", _host_env) else "127.0.0.1"
         port = os.getenv("PORT", "8050")
 
         print("\n" + "=" * 50)

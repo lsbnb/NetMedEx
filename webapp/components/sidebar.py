@@ -37,6 +37,7 @@ api_or_file = html.Div(
                     ],
                     value="api",
                     inline=True,
+                    style={"fontSize": "0.76rem"},
                 ),
             ],
             className="param",
@@ -70,8 +71,7 @@ pubtator_file = html.Div(
 )
 
 # Define permanent upload components to ensure IDs always exist in layout
-pmid_file_upload = dcc.Upload(id="pmid-file-data", style={"display": "none"})
-graph_file_upload = dcc.Upload(id="graph-file-data", accept=".pkl", style={"display": "none"})
+# Note: pmid-file-data is now managed in input_type_update.py
 
 graph_file = html.Div(
     [
@@ -82,18 +82,23 @@ graph_file = html.Div(
                     "Load a NetMedEx graph file (.pkl) exported from the Graph Panel. "
                     "Restores the full graph including semantic analysis results — no re-processing needed.",
                 ),
-                html.Div(
-                    [
-                        html.Div(
-                            [
-                                "Drag and Drop or ",
-                                html.A("Select .pkl File", className="hyperlink"),
-                            ],
-                            className="upload-box form-control",
-                            id="graph-file-upload-trigger",
-                        ),
-                    ],
-                    style={"cursor": "pointer"},
+                dcc.Upload(
+                    id="graph-file-data",
+                    accept=".pkl",
+                    children=html.Div(
+                        [
+                            html.Div(
+                                [
+                                    "Drag and Drop or ",
+                                    html.A("Select .pkl File", className="hyperlink"),
+                                ],
+                                className="upload-box form-control",
+                                id="graph-file-upload-trigger",
+                            ),
+                        ],
+                        style={"cursor": "pointer"},
+                    ),
+                    style={"width": "100%"},
                 ),
                 html.Div(id="graph-file-upload"),
             ],
@@ -141,34 +146,41 @@ api_params = html.Div(
                             [
                                 dbc.Switch(
                                     id="ai-search-toggle",
-                                    label="🤖 Enable AI-Powered Search",
                                     value=False,
-                                    className="me-3",
+                                    className="me-2",
+                                ),
+                                html.Span(
+                                    "🤖 Enable AI Search:",
+                                    className="fw-bold me-2",
+                                    style={"fontSize": "0.9rem", "whiteSpace": "nowrap"},
                                 ),
                                 html.Small(
-                                    "Let AI translate your natural language into optimized search queries",
+                                    "Let AI translate your language into PubTator queries",
                                     className="text-muted",
-                                    style={"fontSize": "0.85rem"},
+                                    style={"fontSize": "0.8rem"},
                                 ),
                             ],
-                            className="d-flex align-items-center",
+                            className="d-flex align-items-center flex-wrap",
                         )
                     ],
                     color="info",
                     className="mb-0",
-                    style={"padding": "0.75rem"},
+                    style={"padding": "0.5rem 0.75rem"},
                 ),
             ],
             className="param",
         ),
         html.Div(
             [
-                html.H5("Query"),
-                dbc.Input(
-                    placeholder="ex: COVID-19 AND PON1",
-                    type="text",
+                generate_param_title(
+                    "Query",
+                    "Enter PMIDs (comma-separated), keywords, or natural language if AI Search is enabled.",
+                ),
+                dbc.Textarea(
+                    placeholder="ex: COVID-19 AND PON1\nor paste a list of PMIDs (separate with comma or newline)...",
                     id="data-input",
-                    style={"width": "100%", "minHeight": "46px"},
+                    style={"width": "100%", "minHeight": "120px", "resize": "vertical"},
+                    className="form-control",
                 ),
             ],
             id="input-type",
@@ -190,34 +202,33 @@ api_params = html.Div(
             className="param",
         ),
         html.Div(
-            html.Div(
-                [
-                    html.Div(
-                        [
-                            generate_param_title(
-                                "PubTator3 Parameters",
-                                (
-                                    "Use MeSH Vocabulary: Replace original text in articles with standardized MeSH terms\n"
-                                    "Full Text: Build network from full-text articles if available, defaulting to abstracts otherwise (not recommended to enable)"
-                                ),
-                            )
-                        ],
-                        className="flex-grow-1 me-3",
-                    ),
-                    dbc.Checklist(
-                        options=[
-                            {"label": "Use MeSH Vocabulary", "value": "use_mesh"},
-                            {"label": "Full Text", "value": "full_text"},
-                            {"label": "Fetch Citation Counts", "value": "fetch_citations"},
-                        ],
-                        switch=True,
-                        id="pubtator-params",
-                        value=["use_mesh"],
-                        inline=True,
-                    ),
-                ],
-                className="d-flex align-items-center",
-            ),
+            [
+                html.Div(
+                    [
+                        generate_param_title(
+                            "PubTator Parameters",
+                            (
+                                "Use MeSH Vocabulary: Replace original text in articles with standardized MeSH terms\n"
+                                "Full Text: Build network from full-text articles if available, defaulting to abstracts otherwise (not recommended to enable)\n"
+                                "Fetch Citation Counts: Fetch citation counts from OpenCitations for all articles (v0.9.7 feature)"
+                            ),
+                        ),
+                    ],
+                    className="flex-grow-1",
+                ),
+                dbc.Checklist(
+                    options=[
+                        {"label": "Use MeSH Vocabulary", "value": "use_mesh"},
+                        {"label": "Full Text", "value": "full_text"},
+                        {"label": "Fetch Citation Counts", "value": "fetch_citations"},
+                    ],
+                    id="pubtator-params",
+                    value=["use_mesh"],
+                    switch=True,
+                    inline=True,
+                    style={"fontSize": "0.76rem"},
+                ),
+            ],
             className="param",
         ),
     ],
@@ -305,7 +316,7 @@ network_params = html.Div(
             ],
             className="param",
             id="semantic-options",
-            style=display.none,
+            style=display.hidden_panel,
         ),
         html.Div(
             [
@@ -331,6 +342,23 @@ network_params = html.Div(
     ],
     id="cy-wrapper",
 )
+
+# Semantic coloring constants
+COLOR_POSITIVE = "#28a745"  # Green
+COLOR_NEGATIVE = "#dc3545"  # Red
+COLOR_NEUTRAL = "#999999"  # Gray
+
+NODE_TYPE_OPTIONS = [
+    {"label": "Gene", "value": "Gene"},
+    {"label": "Disease", "value": "Disease"},
+    {"label": "Chemical", "value": "Chemical"},
+    {"label": "Species", "value": "Species"},
+    {"label": "CellLine", "value": "CellLine"},
+    {"label": "DNAMutation", "value": "DNAMutation"},
+    {"label": "ProteinMutation", "value": "ProteinMutation"},
+    {"label": "SNP", "value": "SNP"},
+    {"label": "Community", "value": "Community"},
+]
 
 
 progress = html.Div(
@@ -368,6 +396,7 @@ progress = html.Div(
             ],
             className="shadow-sm mb-3",
             id="progress-card",
+            style=display.none,
         ),
         # Submit and Reset buttons
         html.Div(
@@ -400,9 +429,12 @@ export_buttons = html.Div(
     [
         generate_param_title(
             "Export",
-            "Download HTML for Browser, XGMML for Cytoscape. "
-            "The PubTator file can be re-loaded in the Search Panel for re-analysis. "
-            "The Graph file (.pkl) saves the full analysis state (including semantic results) for fast reload.",
+            (
+                "HTML/XGMML: Browser previews or Cytoscape import (preserves full network depth).\n"
+                "PubTator: Original annotation file for re-analysis.\n"
+                "RIS (EndNote): Full bibliographic metadata (authors, journal, DOI) for citation management.\n"
+                "Graph (.pkl): Complete analysis state (including semantic results) for instant restoration."
+            ),
         ),
         html.Div(
             [
@@ -450,8 +482,6 @@ search_panel = html.Div(
         graph_file,
         network_params,
         progress,
-        pmid_file_upload,
-        graph_file_upload,
     ],
     id="search-panel",
 )
@@ -553,10 +583,72 @@ graph_settings_panel = html.Div(
         ),
         graph_layout,
         edge_weight_cutoff,
+        html.Div(
+            [
+                generate_param_title(
+                    "Edge Confidence Threshold",
+                    "Only show semantic edges with confidence score above this value. "
+                    "Higher values prioritize precision, while lower values increase recall.",
+                ),
+                dcc.Slider(
+                    id="confidence-threshold",
+                    min=0,
+                    max=1,
+                    step=0.05,
+                    value=0.0,
+                    marks={0: "0.0", 0.5: "0.5", 1.0: "1.0"},
+                    tooltip={"placement": "bottom", "always_visible": True},
+                    updatemode="drag",
+                ),
+            ],
+            className="param",
+            id="confidence-threshold-wrapper",
+        ),
+        html.Div(
+            [
+                generate_param_title(
+                    "Search Nodes",
+                    "Find nodes by name or identifier. Supports case-insensitive, fuzzy matching, and common synonym aliases.",
+                ),
+                dbc.Input(
+                    id="graph-node-search",
+                    type="text",
+                    placeholder="e.g. metformin, MESH:D008687, TP53",
+                ),
+            ],
+            className="param",
+        ),
+        html.Div(
+            [
+                generate_param_title(
+                    "Visible Node Types",
+                    "Choose which node types remain visible in the graph.",
+                ),
+                dbc.Checklist(
+                    id="graph-visible-node-types",
+                    options=NODE_TYPE_OPTIONS,
+                    value=[option["value"] for option in NODE_TYPE_OPTIONS],
+                    inline=True,
+                ),
+            ],
+            className="param",
+        ),
+        html.Div(
+            [
+                dbc.Button(
+                    "Reset Graph View",
+                    id="graph-reset-view-btn",
+                    color="secondary",
+                    outline=True,
+                    className="w-100",
+                ),
+            ],
+            className="param",
+        ),
         minimal_degree,
     ],
     id="graph-settings-panel",
-    style=display.none,
+    style=display.hidden_panel,
 )
 
 # Store to hold total statistics
@@ -598,6 +690,7 @@ sidebar_toggle = dbc.Tabs(
     id="sidebar-panel-toggle",
     active_tab="search",
     className="flex-grow-1",  # Take available space
+    persistence=False,
 )
 
 # Header row containing tabs and settings
@@ -606,7 +699,7 @@ header_row = html.Div(
         sidebar_toggle,
         html.Div(
             [
-                html.Small("v0.9.5", className="text-muted", style={"fontSize": "0.7rem"}),
+                html.Small("v1.1.0", className="text-muted", style={"fontSize": "0.7rem"}),
                 advanced_settings,
             ],
             className="d-flex flex-column align-items-center ms-auto",

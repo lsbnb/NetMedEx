@@ -16,11 +16,8 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in V0.9.5
-- **🔍 Semantic Diagnostics**: Gain full transparency with real-time metrics on parsing success, recall expansion, and edge filtering.
-- **🤖 Robust Local AI**: Optimized regex-based parsing for stable results when using local models (Llama 3, Mistral) via Ollama.
-- **🎨 Streamlined UI**: A cleaner Advanced Settings experience, standardizing on ChromaDB for zero-config vector storage.
-- **📍 Precise Citations**: Enhanced HTML exports with clickable PubMed links and hierarchically structured AI answers.
+## 🆕 What's New in v0.9.7
+- This release bundles the latest semantic diagnostics, local LLM parsing robustness, UI refinements, and citation enhancements—see the [Changelog](../CHANGELOG.md) for the full story.
 
 ---
 
@@ -47,4 +44,4 @@ docker run -p 8050:8050 --rm -e OPENAI_API_KEY='sk-...' lsbnb/netmedex
 - **PyPI**: [netmedex](https://pypi.org/project/netmedex/)
 
 ---
-© 2026 LSBNB Lab @ IIS, Academia Sinica, TAIWAN.
+© 2026 Lab of Systems Biology and Network Biology (LSBNB) @ Institute of Information Science, Academia Sinica, TAIWAN.

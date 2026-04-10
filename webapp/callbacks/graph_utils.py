@@ -23,20 +23,53 @@ def rebuild_graph(
     community: bool = False,
     weighting_method: Literal["freq", "npmi"] = "freq",
 ):
+    # Scale cutoff if using NPMI (UI uses 0-1, backend uses 0-20)
+    if weighting_method == "npmi":
+        if isinstance(cut_weight, list):
+            cut_weight = [w * 20 for w in cut_weight]
+        elif isinstance(cut_weight, (int, float)):
+            cut_weight = cut_weight * 20
+
     graph = load_graph(graph_path) if G is None else G
 
     # Recalculate edge weights and widths based on current method
     PubTatorGraphBuilder.recalculate_edge_weights(graph, weighting_method)
 
+    # NEW: Safety-cap for interactive rendering to prevent browser crashes
+    # 1. Edge Pruning
+    initial_edge_count = graph.number_of_edges()
+    MAX_INTERACTIVE_EDGES = 3000
+    effective_max_edges = graph.graph.get("max_edges", 0)
+
+    # Use the smaller of user-defined max_edges or our safety cap
+    if effective_max_edges <= 0 or effective_max_edges > MAX_INTERACTIVE_EDGES:
+        effective_max_edges = MAX_INTERACTIVE_EDGES
+
+    if initial_edge_count > effective_max_edges:
+        print(
+            f"DEBUG: Pruning large graph: {initial_edge_count} edges -> {effective_max_edges} edges limit"
+        )
+        PubTatorGraphBuilder._remove_edges_by_rank(graph, effective_max_edges)
+        graph.graph["is_pruned"] = True
+
+    # 2. Apply cuts and rank filters (standard behavior)
     PubTatorGraphBuilder._remove_edges_by_weight(graph, edge_weight_cutoff=cut_weight)
-    PubTatorGraphBuilder._remove_edges_by_rank(graph, graph.graph.get("max_edges", 0))
     PubTatorGraphBuilder._remove_isolated_nodes(graph)
     filter_node(graph, node_degree)
 
-    if with_layout:
-        PubTatorGraphBuilder._set_network_layout(graph)
+    # 3. Node Pruning (if still too big after edge filter)
+    MAX_INTERACTIVE_NODES = 1500
+    if graph.number_of_nodes() > MAX_INTERACTIVE_NODES:
+        # Keep nodes with highest degrees
+        nodes_by_degree = sorted(graph.degree(), key=lambda x: x[1], reverse=True)
+        to_keep = {n[0] for n in nodes_by_degree[:MAX_INTERACTIVE_NODES]}
+        to_remove = [n for n in graph.nodes if n not in to_keep]
+        graph.remove_nodes_from(to_remove)
 
-    # Use the community parameter instead of graph metadata
+        # Cleanup any resulting isolated edges (shouldn't be any but let's be safe)
+        PubTatorGraphBuilder._remove_isolated_nodes(graph)
+        graph.graph["is_pruned"] = True
+
     if community and format == "html":
         PubTatorGraphBuilder._set_network_communities(graph)
     else:
@@ -58,6 +91,12 @@ def rebuild_graph(
         # Reset parent for remaining nodes
         for node in graph.nodes:
             graph.nodes[node]["parent"] = None
+
+    # FINAL CLEANUP: Remove isolated nodes potentially created by community detection
+    # and compute layout on the final set of visible nodes.
+    PubTatorGraphBuilder._remove_isolated_nodes(graph)
+    if with_layout:
+        PubTatorGraphBuilder._set_network_layout(graph)
 
     # Enforce stable IDs based on the FINAL state of the graph
     PubTatorGraphBuilder.normalize_graph_ids(graph)
