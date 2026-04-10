@@ -47,7 +47,9 @@ class NetMedExChatBridge:
         gene_clause = " OR ".join(f'"{gene}"' for gene in normalized_genes)
         return f'"{disease}" AND ({gene_clause})'
 
-    def build_context_from_genes(self, genes: list[str], disease: str = "osteoporosis") -> dict[str, Any]:
+    def build_context_from_genes(
+        self, genes: list[str], disease: str = "osteoporosis"
+    ) -> dict[str, Any]:
         query = self.build_gene_disease_query(genes=genes, disease=disease)
         return self.build_context_from_query(query)
 
@@ -122,6 +124,7 @@ class NetMedExChatBridge:
             self.llm_client,
             graph_retriever=graph_retriever,
             max_history=self.config.max_history,
+            topic=self.last_query if self.last_query else "biomedical research",
         )
         self.graph = graph
         self.last_query = query
@@ -133,7 +136,9 @@ class NetMedExChatBridge:
 
     def ask(self, question: str) -> dict[str, Any]:
         if self.session is None:
-            raise RuntimeError("Context is not initialized. Call build_context_from_query(...) first.")
+            raise RuntimeError(
+                "Context is not initialized. Call build_context_from_query(...) first."
+            )
         return self.session.send_message(
             question,
             top_k=self.config.top_k,
@@ -156,7 +161,9 @@ class NetMedExChatBridge:
                     {
                         "source": str(u),
                         "target": str(v),
-                        "relations": sorted(relations.get(pmid, [])) if isinstance(relations, dict) else [],
+                        "relations": sorted(relations.get(pmid, []))
+                        if isinstance(relations, dict)
+                        else [],
                     }
                 )
         return pmid_edges
@@ -174,11 +181,9 @@ class NetMedExChatBridge:
         if provider == "openai":
             api_key = api_key or os.getenv("OPENAI_API_KEY")
         elif provider == "google":
-            api_key = api_key or os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY") or os.getenv(
-                "OPENAI_API_KEY"
-            )
+            api_key = api_key or os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
         else:
-            api_key = api_key or os.getenv("LOCAL_LLM_API_KEY") or os.getenv("OPENAI_API_KEY") or "local-dummy-key"
+            api_key = api_key or os.getenv("LOCAL_LLM_API_KEY") or "local-dummy-key"
             base_url = base_url or os.getenv("LOCAL_LLM_BASE_URL") or "http://localhost:11434/v1"
 
         if not api_key:

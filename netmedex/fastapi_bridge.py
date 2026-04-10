@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import threading
 import uuid
+import os
 from datetime import datetime, timezone
 from typing import Any
 
@@ -76,10 +77,23 @@ store = _SessionStore()
 
 def create_app() -> FastAPI:
     app = FastAPI(title="NetMedEx FastAPI Bridge", version="0.1.0")
+    cors_origins_env = os.getenv("NETMEDEX_CORS_ORIGINS", "").strip()
+    cors_origins = (
+        [o.strip() for o in cors_origins_env.split(",") if o.strip()]
+        if cors_origins_env
+        else ["http://localhost:8050", "http://127.0.0.1:8050"]
+    )
+    allow_credentials = os.getenv("NETMEDEX_CORS_ALLOW_CREDENTIALS", "false").lower() in {
+        "1",
+        "true",
+        "yes",
+    }
+    if "*" in cors_origins:
+        allow_credentials = False
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["*"],
-        allow_credentials=True,
+        allow_origins=cors_origins,
+        allow_credentials=allow_credentials,
         allow_methods=["*"],
         allow_headers=["*"],
     )

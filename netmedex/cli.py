@@ -38,9 +38,7 @@ def _init_cli_llm_client(args, usage_context: str):
             )
             sys.exit(1)
     elif provider == "google":
-        api_key = api_key or os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY") or os.getenv(
-            "OPENAI_API_KEY"
-        )
+        api_key = api_key or os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
         if not api_key:
             logger.error(
                 f"{usage_context} with Google provider requires GEMINI_API_KEY "
@@ -48,7 +46,7 @@ def _init_cli_llm_client(args, usage_context: str):
             )
             sys.exit(1)
     else:
-        api_key = api_key or os.getenv("LOCAL_LLM_API_KEY") or os.getenv("OPENAI_API_KEY") or "local-dummy-key"
+        api_key = api_key or os.getenv("LOCAL_LLM_API_KEY") or "local-dummy-key"
         base_url = base_url or os.getenv("LOCAL_LLM_BASE_URL") or "http://localhost:11434/v1"
         if not base_url:
             logger.error(
