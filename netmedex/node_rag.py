@@ -27,16 +27,20 @@ class GraphNode:
 class NodeRAG:
     """RAG system for indexing and retrieving Graph Nodes"""
 
-    def __init__(self, llm_client, collection_name: str = "graph_nodes"):
+    def __init__(
+        self, llm_client, collection_name: str = "graph_nodes", persist_directory: str = None
+    ):
         """
         Initialize the Node RAG system.
 
         Args:
             llm_client: LLM client with embeddings capability
             collection_name: Name for the vector database collection
+            persist_directory: Optional directory for persistent storage
         """
         self.llm_client = llm_client
         self.collection_name = collection_name
+        self.persist_directory = persist_directory
         self.collection = None
         self._initialized = False
 
@@ -44,19 +48,33 @@ class NodeRAG:
             import chromadb
             from chromadb.config import Settings
 
-            # Initialize ChromaDB with ephemeral storage
-            self.client = chromadb.Client(
-                Settings(
-                    anonymized_telemetry=False,
-                    allow_reset=True,
+            if persist_directory:
+                # Initialize persistent ChromaDB
+                import os
+
+                if not os.path.exists(persist_directory):
+                    os.makedirs(persist_directory, exist_ok=True)
+
+                self.client = chromadb.PersistentClient(
+                    path=persist_directory,
+                    settings=Settings(
+                        anonymized_telemetry=False,
+                        allow_reset=True,
+                    ),
                 )
-            )
+                logger.info(f"NodeRAG: Persistent ChromaDB initialized at {persist_directory}")
+            else:
+                # Initialize ChromaDB with ephemeral storage
+                self.client = chromadb.Client(
+                    Settings(
+                        anonymized_telemetry=False,
+                        allow_reset=True,
+                    )
+                )
+                logger.info("NodeRAG: Ephemeral ChromaDB client initialized")
 
-            # Standardize to ChromaDB default embeddings for all providers.
+            # Standardize to ChromaDB default embeddings
             self.embedding_fn = None
-            logger.info("NodeRAG: Using ChromaDB default embeddings")
-
-            logger.info("NodeRAG: ChromaDB client initialized")
         except ImportError:
             logger.error("ChromaDB not installed.")
             raise
@@ -77,16 +95,33 @@ class NodeRAG:
             return 0
 
         try:
-            # Reset collection if exists for a fresh start with the current graph
-            if self._initialized:
-                self.client.reset()
-
-            # Create new collection
+            # Create or get collection
             self.collection = self.client.get_or_create_collection(
                 name=self.collection_name,
                 metadata={"description": "Graph nodes for semantic search"},
                 embedding_function=self.embedding_fn,
             )
+
+            # Check if already indexed (for persistent storage)
+            if self.persist_directory:
+                count = self.collection.count()
+                if count > 0:
+                    logger.info(
+                        f"NodeRAG: Found {count} existing records in persistent collection. Skipping re-index."
+                    )
+                    self._initialized = True
+                    if progress_callback:
+                        progress_callback(f"✅ Loaded {count} nodes from cache")
+                    return count
+
+            # Reset collection if exists for a fresh start with the current graph (only for ephemeral)
+            if not self.persist_directory and self._initialized:
+                self.client.reset()
+                self.collection = self.client.get_or_create_collection(
+                    name=self.collection_name,
+                    metadata={"description": "Graph nodes for semantic search"},
+                    embedding_function=self.embedding_fn,
+                )
 
             documents_text = []
             metadatas = []
@@ -169,6 +204,25 @@ class NodeRAG:
         except Exception as e:
             logger.error(f"Error during node search: {e}")
             return []
+
+    def is_indexed(self) -> bool:
+        """Check if the vector collection is already populated"""
+        if not self.persist_directory:
+            return self._initialized
+        
+        try:
+            # Re-initialize collection if needed
+            if self.collection is None:
+                self.collection = self.client.get_or_create_collection(
+                    name=self.collection_name,
+                    metadata={"description": "Graph nodes for semantic search"},
+                    embedding_function=self.embedding_fn,
+                )
+            
+            count = self.collection.count()
+            return count > 0
+        except Exception:
+            return False
 
     def clear(self):
         """Clear the RAG system"""

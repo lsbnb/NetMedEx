@@ -15,6 +15,8 @@ logger = logging.getLogger(__name__)
 
 # Maximum tokens allowed per embedding request (OpenAI limit is 300k; use 250k as buffer)
 _MAX_TOKENS_PER_BATCH = 250_000
+# ChromaDB hard limit is 5 461 documents per add() call; use 5 000 as a safe buffer
+_MAX_DOCS_PER_BATCH = 5_000
 
 
 def _count_tokens(text: str) -> int:
@@ -38,8 +40,12 @@ def _build_token_batches(
     metadatas: list[dict],
     ids: list[str],
     max_tokens: int = _MAX_TOKENS_PER_BATCH,
+    max_docs: int = _MAX_DOCS_PER_BATCH,
 ) -> list[tuple[list[str], list[dict], list[str]]]:
-    """Split documents into batches that each stay under *max_tokens* tokens.
+    """Split documents into batches respecting both *max_tokens* and *max_docs* limits.
+
+    ChromaDB has a hard per-call limit of 5 461 documents; this function keeps
+    each batch under both the token budget and the document-count ceiling.
 
     Returns a list of (texts, metadatas, ids) tuples ready to be passed to
     ``collection.add()``.
@@ -52,7 +58,8 @@ def _build_token_batches(
 
     for text, meta, doc_id in zip(documents_text, metadatas, ids):
         tokens = _count_tokens(text)
-        if cur_tokens + tokens > max_tokens and cur_texts:
+        # Flush when either limit would be exceeded
+        if (cur_tokens + tokens > max_tokens or len(cur_texts) >= max_docs) and cur_texts:
             batches.append((cur_texts, cur_metas, cur_ids))
             cur_texts, cur_metas, cur_ids = [], [], []
             cur_tokens = 0
@@ -82,16 +89,18 @@ class AbstractDocument:
 class AbstractRAG:
     """RAG system for indexing and retrieving PubMed abstracts"""
 
-    def __init__(self, llm_client, collection_name: str = "abstracts"):
+    def __init__(self, llm_client=None, collection_name: str = "abstracts", persist_directory: str | None = None):
         """
         Initialize the RAG system.
 
         Args:
             llm_client: LLM client with embeddings capability
             collection_name: Name for the vector database collection
+            persist_directory: Optional path for persistent storage
         """
         self.llm_client = llm_client
         self.collection_name = collection_name
+        self.persist_directory = persist_directory
         self.documents: dict[str, AbstractDocument] = {}
         self.collection = None
         self._initialized = False
@@ -100,14 +109,18 @@ class AbstractRAG:
             import chromadb
             from chromadb.config import Settings
 
-            # Initialize ChromaDB with ephemeral storage (in-memory for now)
-            # Use a fresh client for each RAG instance to avoid cross-session pollution
-            self.client = chromadb.Client(
-                Settings(
-                    anonymized_telemetry=False,
-                    allow_reset=True,
+            if self.persist_directory:
+                logger.info(f"Using persistent ChromaDB at {self.persist_directory}")
+                self.client = chromadb.PersistentClient(path=self.persist_directory)
+            else:
+                # Initialize ChromaDB with ephemeral storage (in-memory for now)
+                # Use a fresh client for each RAG instance to avoid cross-session pollution
+                self.client = chromadb.Client(
+                    Settings(
+                        anonymized_telemetry=False,
+                        allow_reset=True,
+                    )
                 )
-            )
 
             # Standardize to ChromaDB default embeddings for all providers.
             # This avoids provider-specific embedding endpoint compatibility issues.
@@ -289,11 +302,30 @@ class AbstractRAG:
         for pmid, score in results:
             if pmid in self.documents:
                 doc = self.documents[pmid]
-                context_parts.append(
-                    f"PMID: {pmid} (Relevance: {score:.2f})\n"
-                    f"Title: {doc.title}\n"
-                    f"Abstract: {doc.abstract}\n"
-                )
+                part = [
+                    f"PMID: {pmid} (Relevance: {score:.2f})",
+                    f"Title: {doc.title}",
+                    f"Abstract: {doc.abstract}",
+                ]
+
+                # Include structured semantic relationships if available
+                if doc.edges:
+                    # De-duplicate relationships for the prompt (sometimes multiple PMIDs map to same edge)
+                    unique_rels = set()
+                    for edge in doc.edges:
+                        source = edge.get("source", "Unknown")
+                        target = edge.get("target", "Unknown")
+                        # relations is a list of strings
+                        rels = edge.get("relations", ["associated"])
+                        for r in rels:
+                            unique_rels.add(f"- {source} --[{r}]--> {target}")
+                    
+                    if unique_rels:
+                        part.append("Structural Relationships (Extracted):")
+                        # Limit to top 15 edges to avoid context window pressure
+                        part.extend(sorted(list(unique_rels))[:15])
+
+                context_parts.append("\n".join(part))
                 pmids_used.append(pmid)
 
         context = "\n---\n\n".join(context_parts)

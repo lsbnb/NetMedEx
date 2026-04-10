@@ -14,7 +14,11 @@ from webapp.utils import display
 
 
 def create_message_component(
-    role: str, content: str, sources: list[str] | None = None, msg_id: str | None = None
+    role: str,
+    content: str,
+    sources: list[str] | None = None,
+    msg_id: str | None = None,
+    suggestions: list[str] | None = None,
 ):
     """
     Create a chat message component.
@@ -30,14 +34,36 @@ def create_message_component(
     import re
     import uuid
 
-    pmid_pattern = r"(?i)(pmid[:\s]?\s*)(\d+)"
+    # Aggressive Regex for PMID link conversion
+    # Matches: PMID: 123456, PMID 123456, PMID123456, [123456], (123456), or bare 7-10 digit numbers
+    # It also handles (and removes) redundant parenthetical URLs often appended by LLMs.
+    pmid_pattern = r"(?i)\[?\(?(pmid[:\s]?\s*)?(\d{7,10})\)?\]?(?:\s*\((https?://\S+)\))?"
 
     def replace_pmid(match):
-        prefix = match.group(1)
         pmid = match.group(2)
         url = f"https://www.ncbi.nlm.nih.gov/research/pubtator3/publication/{pmid}"
-        return f"[{prefix}{pmid}]({url})"
+        # Use native Markdown link syntax — raw HTML <a> tags are stripped by react-markdown's sanitizer.
+        # Escaped brackets \[ \] in Markdown link text render as literal [ ] characters.
+        return f" [\\[{pmid}\\]]({url}) "
 
+    def normalize_mermaid_blocks(text: str) -> str:
+        """Wrap plain Mermaid graph syntax into fenced ```mermaid blocks."""
+        if not text or "```mermaid" in text:
+            return text
+        # Common Mermaid graph starts: graph LR/TD/TB/BT/RL
+        pattern = re.compile(
+            r"(^|\n)(graph\s+(?:LR|TD|TB|BT|RL)\b[\s\S]*?)(?=\n(?:\*\*|###|\Z))",
+            flags=re.IGNORECASE,
+        )
+
+        def _wrap(match):
+            prefix = match.group(1)
+            block = match.group(2).strip()
+            return f"{prefix}```mermaid\n{block}\n```"
+
+        return re.sub(pattern, _wrap, text, count=1)
+
+    content = normalize_mermaid_blocks(content)
     linked_content = re.sub(pmid_pattern, replace_pmid, content)
 
     markdown_component = dcc.Markdown(
@@ -48,64 +74,69 @@ def create_message_component(
     )
 
     if is_user:
-        # User Layout: right-aligned bubble
+        # User Layout: right-aligned bubble with avatar
+        avatar = html.Div(
+            html.I(className="bi bi-person-fill"), className="chat-avatar user-avatar"
+        )
         bubble_content = html.Div(markdown_component, className=f"{base_message_class}-content")
-        message_parts = [bubble_content]
+        message_parts = [bubble_content, avatar]
     else:
-        # Assistant Layout: full-width bubble
+        # Assistant Layout: full-width bubble with avatar
+        avatar = html.Div(
+            html.I(className="bi bi-robot"), className="chat-avatar assistant-avatar"
+        )
 
-        # Check for suggested questions (usually at the end)
         import re
 
-        # Robust parsing for suggested questions using multiple headers
-        suggestion_headers = [
-            "Suggested Questions:",
-            "Suggested Questions：",
-            "建議問題:",
-            "建議問題：",
-            "建議的問題:",
-            "建議的問題：",
-            "Suggested Follow-up:",
-            "Suggested Follow-up：",
-            "提案された質問:",
-            "提案された質問：",
-        ]
         main_content = content
-        suggestions = []
-
-        found_header = None
-        # Check for bolded versions first to avoid leaving trailing **
-        for header in suggestion_headers:
-            bolded = f"**{header}**"
-            if bolded in content:
-                found_header = bolded
-                break
-
-        # Then check for unbolded if not found
-        if not found_header:
+        if suggestions is None:
+            suggestions = []
+            # Robust parsing for suggested questions using multiple headers
+            suggestion_headers = [
+                "Suggested Questions:",
+                "Suggested Questions：",
+                "建議問題:",
+                "建議問題：",
+                "建議的問題:",
+                "建議的問題：",
+                "Suggested Follow-up:",
+                "Suggested Follow-up：",
+                "提案された質問:",
+                "提案された質問：",
+            ]
+            found_header = None
             for header in suggestion_headers:
-                if header in content:
-                    found_header = header
+                bolded = f"**{header}**"
+                if bolded in content:
+                    found_header = bolded
                     break
-        if found_header:
-            parts = content.split(found_header)
-            main_content = parts[0].strip()
-            # Try to extract bullet points or numbered lists
-            raw_suggestions = parts[1].strip().split("\n")
-            for line in raw_suggestions:
-                line = line.strip()
-                # Remove common list prefixes like -, *, 1., •, etc.
-                clean_line = re.sub(r"^(\d+\.|\*|-|•)\s*", "", line).strip()
-                # Remove trailing punctuations often added by LLMs
-                clean_line = re.sub(r"[.?!]$", "", clean_line).strip()
-                if clean_line and len(clean_line) > 3:
-                    suggestions.append(clean_line)
 
-        # Clean up main_content from any trailing markdown artifacts left behind
-        # (e.g., if the model put ** on a new line before the header)
-        main_content = re.sub(r"[\s\*_#]+$", "", main_content).strip()
+            if not found_header:
+                for header in suggestion_headers:
+                    if header in content:
+                        found_header = header
+                        break
+            if found_header:
+                parts = content.split(found_header)
+                main_content = parts[0].strip()
+                raw_suggestions = parts[1].strip().split("\n")
+                for line in raw_suggestions:
+                    line = line.strip()
+                    # Remove bullet/numbering
+                    clean_line = re.sub(r"^(?:\d+\.|\*|-|•)\s*", "", line).strip()
+                    # Handle Q1: [Q1:] or other variations
+                    clean_line = re.sub(
+                        r"^\[?Q\d*[:\.\-\)\、：]?\s*(.*?)\]?$", r"\1", clean_line
+                    ).strip()
+                    # Remove trailing punctuation
+                    clean_line = re.sub(r"[.?!]$", "", clean_line).strip()
+                    if clean_line and len(clean_line) > 3:
+                        suggestions.append(clean_line)
 
-        # Replace main content markdown with potentially split text
+        main_content = normalize_mermaid_blocks(main_content)
+        main_content = re.sub(r"[\s\*_#\-]+$", "", main_content).strip()
+
+        # pmid_pattern is applied to main_content later during rendering
         markdown_component = dcc.Markdown(
             re.sub(pmid_pattern, replace_pmid, main_content),
             className="message-text m-0",
@@ -115,72 +146,53 @@ def create_message_component(
 
         content_children = [markdown_component]
 
-        # Add declarative copy button (pure JS approach for reliability)
         copy_id_index = msg_id if msg_id else f"copy-{uuid.uuid4().hex[:8]}"
         content_children.append(
             html.Div(
                 [
-                    # Hidden text for copying (prevents attribute length issues)
                     html.Pre(content, id=f"copy-text-{copy_id_index}", style={"display": "none"}),
                     html.I(
                         className="bi bi-files text-secondary p-2 js-copy-btn",
                         **{"data-copy-id": copy_id_index},
-                        style={"fontSize": "1.1rem", "cursor": "pointer"},
+                        style={"fontSize": "1rem", "cursor": "pointer"},
                         title="Copy Response",
                     ),
                 ],
                 style={
                     "textAlign": "right",
                     "marginTop": "8px",
-                    "borderTop": "1px solid #eee",
-                    "paddingTop": "10px",
+                    "borderTop": "1px solid #f0f0f0",
+                    "paddingTop": "6px",
                 },
             )
         )
 
         bubble_content = html.Div(
-            content_children, className=f"{base_message_class}-content clearfix"
+            [html.Div(content_children, className="message-bubble clearfix")],
+            className=f"{base_message_class}-content",
         )
         assistant_column = [bubble_content]
 
-        # Render suggestions as buttons
         if suggestions:
             suggestion_btns = [
                 dbc.Button(
                     q,
                     id={
                         "type": "suggested-question",
-                        "index": f"suggest-{uuid.uuid4().hex[:8]}-{i}",
+                        "index": f"suggest-{msg_id}-{i}" if msg_id else f"suggest-new-{i}",
                     },
-                    color="primary",
-                    outline=True,
+                    color="light",
                     size="sm",
-                    className="me-2 mb-2 text-start suggested-question-btn",
-                    style={
-                        "borderRadius": "20px", 
-                        "fontSize": "0.8rem", 
-                        "padding": "6px 14px",
-                        "backgroundColor": "rgba(16, 163, 127, 0.05)",
-                        "borderColor": "rgba(16, 163, 127, 0.3)",
-                        "color": "#10a37f"
-                    },
+                    className="me-2 mb-2 px-3 text-start suggested-question-btn rounded-pill",
                 )
-                for i, q in enumerate(suggestions[:3])  # Limit to 3
+                for i, q in enumerate(suggestions[:3])
             ]
             assistant_column.append(
                 html.Div(
                     [
-                        html.Div(
-                            [
-                                html.I(className="bi bi-lightbulb me-2"),
-                                "Suggested Follow-up"
-                            ], 
-                            className="text-muted small fw-bold mb-2 mt-3 d-flex align-items-center"
-                        ),
-                        html.Div(suggestion_btns, className="d-flex flex-wrap gap-1"),
+                        html.Div(suggestion_btns, className="d-flex flex-wrap gap-1 mt-3"),
                     ],
-                    className="message-suggestions bg-light p-3 rounded-3 mt-3",
-                    style={"border": "1px solid #e5e7eb"}
+                    className="message-suggestions",
                 )
             )
 
@@ -201,7 +213,12 @@ def create_message_component(
                 )
             )
 
-        message_parts = [html.Div(assistant_column, style={"maxWidth": "100%", "width": "100%"})]
+        message_parts = [
+            avatar,
+            html.Div(assistant_column, style={"maxWidth": "100%", "width": "100%"}),
+        ]
+
+    return html.Div(message_parts, className=wrapper_class)
 
     return html.Div(message_parts, className=wrapper_class)
 
@@ -211,7 +228,7 @@ chat_messages = html.Div(
     id="chat-messages",
     className="chat-messages-container",
     style={
-        "height": "500px",  # Increased height for better visibility
+        "height": "380px",
         "overflowY": "auto",
         "border": "1px solid #ddd",
         "borderRadius": "8px",
@@ -247,7 +264,11 @@ chat_input = html.Div(
                     placeholder="Ask a question about the selected abstracts...",
                     disabled=True,  # Disabled until RAG is initialized
                     rows=3,
-                    style={"resize": "none"},
+                    style={
+                        "resize": "none",
+                        "whiteSpace": "nowrap",
+                        "overflow": "hidden",
+                    },
                 ),
                 dbc.Button(
                     html.I(className="bi bi-arrow-up"),
@@ -357,6 +378,28 @@ selection_info = html.Div(
             className="w-100 mb-2",
             disabled=True,
         ),
+        html.Div(
+            [
+                dbc.Progress(
+                    id="chat-analyze-progress",
+                    value=100,
+                    striped=True,
+                    animated=True,
+                    color="success",
+                    className="chat-analyze-progress-bar mb-1",
+                    style={"height": "6px", "borderRadius": "3px"},
+                ),
+                html.Div(
+                    "🔬 Analyzing selection...",
+                    id="chat-analyze-status-text",
+                    className="text-muted small text-center mt-1",
+                    style={"fontSize": "0.75rem"},
+                ),
+            ],
+            id="chat-analyze-progress-container",
+            style={"display": "none"},
+            className="mb-2",
+        ),
         dbc.Button(
             [html.I(className="bi bi-trash me-2"), "Clear Chat"],
             id="clear-chat-btn",
@@ -457,6 +500,7 @@ chat_modal = dbc.Modal(
 chat_panel = html.Div(
     [
         selection_info,
+        html.Div(id="chat-context-banner", className="chat-context-banner", style=display.none),
         html.Hr(),
         chat_messages,
         html.Hr(),

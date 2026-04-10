@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetMedEx | 10k CNS Tumor Discovery Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: radial-gradient(circle at top right, #1a2a44, #0f172a);
+            color: #e2e8f0;
+            min-height: 100vh;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+        }
+        .tab-btn.active {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+            border-color: transparent;
+        }
+        #network-container {
+            height: 500px;
+            width: 100%;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <!-- Header -->
+    <header class="max-w-7xl mx-auto mb-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div>
+            <h1 class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+                NetMedEx Discovery Hub
+            </h1>
+            <p class="text-slate-400 mt-1">10,000 Pediatric CNS Tumor Articles Analysis (PCA + K-Means + KG Mining)</p>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="glass px-4 py-2 text-sm font-medium">9,957 Articles</div>
+            <div class="glass px-4 py-2 text-sm font-medium border-blue-500/30 text-blue-300">8 Subtypes Identified</div>
+        </div>
+    </header>
+
+    <!-- Main Grid -->
+    <main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="lg:col-span-3 space-y-4">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4 ml-2">Selective Subtypes</h2>
+            <div id="cluster-tabs" class="space-y-2 max-h-[600px] overflow-y-auto pr-2">
+                <!-- Tabs generated via JS -->
+            </div>
+        </aside>
+
+        <!-- Dynamic Content Area -->
+        <div class="lg:col-span-9 space-y-8">
+            
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass p-6">
+                    <div class="text-slate-400 text-xs mb-1">Cluster Size</div>
+                    <div id="stat-size" class="text-3xl font-bold">---</div>
+                </div>
+                <div class="glass p-6">
+                    <div class="text-slate-400 text-xs mb-1">Predominant Diagnosis</div>
+                    <div id="stat-diagnosis" class="text-lg font-semibold truncate text-blue-400">---</div>
+                </div>
+                <div class="glass p-6">
+                    <div class="text-slate-400 text-xs mb-1">Signal Strength</div>
+                    <div class="text-3xl font-bold text-emerald-400">92%</div>
+                </div>
+            </div>
+
+            <!-- Visualization Row -->
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+                
+                <!-- Molecular Graph -->
+                <div class="glass p-6 relative overflow-hidden group">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-semibold text-slate-200">Biological Interaction Network</h3>
+                        <span class="text-[10px] bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Interactive Graph</span>
+                    </div>
+                    <div id="network-container" class="bg-black/20 rounded-xl"></div>
+                </div>
+
+                <!-- Biomarker Profile -->
+                <div class="glass p-6 min-h-[500px]">
+                    <h3 class="font-semibold text-slate-200 mb-6">Molecular Fingerprint (%)</h3>
+                    <canvas id="biomarkerChart"></canvas>
+                    <div id="biomarker-list" class="mt-8 space-y-2">
+                        <!-- List Generated via JS -->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        let dashboardData = {}; // Will be loaded from external JSON or embedded
+        let currentChart = null;
+        let network = null;
+
+        // Fetch Data
+        async function init() {
+            try {
+                const response = await fetch('dashboard_data_v1.json');
+                dashboardData = await response.json();
+                renderTabs();
+                switchCluster(5); // Default to SHH Subtype (Cluster 5)
+            } catch (e) {
+                console.error("Dashboard data not found. Ensure dashboard_data_v1.json exists in the same directory.");
+            }
+        }
+
+        function renderTabs() {
+            const container = document.getElementById('cluster-tabs');
+            dashboardData.clusters.forEach((c, idx) => {
+                const btn = document.createElement('button');
+                btn.className = `tab-btn glass w-full text-left p-4 transition-all hover:bg-white/10 border-transparent`;
+                btn.id = `btn-${c.id}`;
+                btn.innerHTML = `
+                    <div class="text-[10px] opacity-50 font-bold">CLUSTER ${c.id}</div>
+                    <div class="font-bold text-sm truncate">${c.dominance}</div>
+                    <div class="text-xs opacity-60 mt-1">${c.size} articles</div>
+                `;
+                btn.onclick = () => switchCluster(c.id);
+                container.appendChild(btn);
+            });
+        }
+
+        function switchCluster(cid) {
+            const data = dashboardData.clusters.find(c => c.id == cid);
+            if(!data) return;
+
+            // Update UI State
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(`btn-${cid}`).classList.add('active');
+
+            document.getElementById('stat-size').innerText = data.size;
+            document.getElementById('stat-diagnosis').innerText = data.dominance;
+
+            updateChart(data.biomarkers);
+            updateNetwork(data);
+        }
+
+        function updateChart(biomarkers) {
+            const ctx = document.getElementById('biomarkerChart').getContext('2d');
+            if(currentChart) currentChart.destroy();
+
+            const labels = biomarkers.map(b => b.name);
+            const values = biomarkers.map(b => b.val);
+
+            currentChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Observed Frequency (%)',
+                        data: values,
+                        backgroundColor: 'rgba(59, 130, 246, 0.6)',
+                        borderColor: '#3b82f6',
+                        borderWidth: 1,
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8' } },
+                        y: { grid: { display: false }, ticks: { color: '#e2e8f0', font: { weight: 'bold' } } }
+                    }
+                }
+            });
+        }
+
+        function updateNetwork(cluster) {
+            const container = document.getElementById('network-container');
+            
+            // Filter global interactions to those involving top biomarkers of this cluster
+            const clusterSymbols = new Set(cluster.biomarkers.map(b => b.name.toLowerCase()));
+            const clusterInteractions = dashboardData.global_interactions.filter(i => {
+                return clusterSymbols.has(i.source.toLowerCase()) || clusterSymbols.has(i.target.toLowerCase());
+            }).slice(0, 25); // Limit for readability
+
+            const nodes = new vis.DataSet();
+            const edges = new vis.DataSet();
+            const seenNodes = new Set();
+
+            clusterInteractions.forEach(i => {
+                if(!seenNodes.has(i.source)) {
+                    nodes.add({ id: i.source, label: i.source, color: clusterSymbols.has(i.source.toLowerCase()) ? '#60a5fa' : '#94a3b8' });
+                    seenNodes.add(i.source);
+                }
+                if(!seenNodes.has(i.target)) {
+                    nodes.add({ id: i.target, label: i.target, color: clusterSymbols.has(i.target.toLowerCase()) ? '#60a5fa' : '#94a3b8' });
+                    seenNodes.add(i.target);
+                }
+                edges.add({ from: i.source, to: i.target, label: i.rel, font: { size: 8, color: '#64748b' }, arrows: 'to' });
+            });
+
+            // If no path found, add centroids
+            if(seenNodes.size === 0) {
+                 cluster.biomarkers.slice(0,5).forEach(b => {
+                     nodes.add({ id: b.name, label: b.name, color: '#f59e0b' });
+                 });
+            }
+
+            const data = { nodes, edges };
+            const options = {
+                nodes: { shape: 'dot', size: 16, font: { color: '#ffffff', size: 12 } },
+                edges: { color: { color: 'rgba(255,255,255,0.2)' }, smooth: true },
+                physics: { stabilization: true, barnesHut: { gravitationalConstant: -2000 } }
+            };
+            
+            if(network) network.destroy();
+            network = new vis.Network(container, data, options);
+        }
+
+        init();
+    </script>
+</body>
+</html>

@@ -1,13 +1,11 @@
-# NetMedEx
+# NetMedEx v1.1.0
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![Doc](https://img.shields.io/badge/Doc-online)](https://yehzx.github.io/NetMedEx/)  
 
-NetMedEx is an AI-powered knowledge discovery platform designed to transform biomedical literature into actionable insights. Unlike traditional tools that merely extract entities, NetMedEx leverages **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** to synthesize structured co-mention networks with unstructured text, providing a holistic understanding of biological relationships.
+NetMedEx is an AI-powered knowledge discovery platform designed to transform biomedical literature into actionable insights. Unlike traditional tools that merely extract entities, NetMedEx leverages **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** and **Full-Text BioC-JSON Processing** to synthesize structured co-mention networks with unstructured text, providing a holistic understanding of biological relationships.
 
-## 🌟 Core Philosophy: Scaffolding for Discovery
-
-In NetMedEx, the **Co-Mention Network** serves as a structural "scaffolding." While the network visualizes the landscape of bio-concepts (genes, diseases, chemicals, etc.), the **AI-driven Semantic Layer** breathes life into these connections by extracting evidence, identifying relationship types, and answering complex natural language queries.
+In NetMedEx, the **Co-Mention Network** serves as a structural "scaffolding." While the network visualizes the landscape of bio-concepts (genes, diseases, chemicals, etc.), the **AI-driven Semantic Layer** breathes life into these connections by extracting evidence, identifying relationship types, and answering complex natural language queries. **v1.1.0** introduces **sapBERT-based KG Normalization**, ensuring semantic consistency by merging equivalent concept variants across the Knowledge Graph.
 
 ---
 
@@ -64,12 +62,15 @@ NetMedEx features an interactive **Chat Panel** driven by **Hybrid RAG**, which 
 </p>
 
 ### Key Capabilities
-- **Hybrid RAG Chat**: Synthesizes **unstructured text** (abstracts) and **structured graph knowledge** (paths and neighbors).
-- **Natural Language & Universal Translation**: Ask in English, Japanese, Chinese, or Korean! NetMedEx automatically translates non-English queries to optimized standard PubTator3 English syntax before searching.
-- **ChatGPT-Style Chat Experience**: Features an intuitive, auto-scrolling Chat Panel that perfectly mimics modern AI layouts (user queries on the right, AI responses on the left), preventing the need for manual scrolling.
-- **Semantic Evidence Extraction**: Automatically identifies relationship types (e.g., *treats*, *inhibits*) and **confidence scores**.
-- **Evidence Confidence Scoring**: The AI evaluates its own extraction certainty (0.0 to 1.0) based on the textual strength of the abstract. Users can adjust a **Semantic Confidence Threshold** to filter for strict clinical evidence (>0.7) or exploratory novel associations (<0.3).
-- **Contextual Reasoning**: Identifies shortest paths and relevant subgraphs to explain hidden connections between entities.
+- **Full-Text BioC-JSON Ingestion**: Retrieve and analyze the entire article (Methods, Results, Discussion) via PubTator3 API integration.
+- **PMID-Based De-duplication**: Automatically consolidates multiple mentions of entities and relations within the same paper to ensure accurate NPMI calculation and knowledge graph stability.
+- **Hybrid RAG Chat**: Synthesizes **unstructured text** (abstracts + full-text) and **structured graph knowledge** (paths and neighbors).
+- **🧬 sapBERT KG Normalization**: Automated merging of synonymous nodes (e.g., abbreviations, MeSH synonyms) for cleaner networks.
+- **Relation Directionality**: High-resolution arrows indicate the direction of semantic influence (e.g., A → activates → B).
+- **Edge Confidence Coloring**: Edges are color-coded (gradient heatmap) based on AI-extracted confidence scores.
+- **Dynamic Node Repulsion**: Real-time control of node spacing using the **fCose layout** slider.
+- **ChatGPT-Style Chat Experience**: Features an intuitive Chat Panel with **Smart Provenance Links**, **Native Markdown Tables**, and **Suggested Questions**.
+- **Natural Language & Universal Translation**: Ask in English, Japanese, Chinese, or Korean! Automatic translation to optimized PubTator3 English syntax.
 
 ### Setup AI Engine
 1. Obtain an API key from [OpenAI](https://platform.openai.com/api-keys) or set up a local LLM endpoint (e.g., Ollama).
@@ -130,6 +131,9 @@ The **Graph Panel** visualizes the co-mention/semantic analyzed network, providi
 | **PubTator** | Raw annotation file | ✅ Re-upload in Search Panel |
 | **Graph (.pkl)** | **Full graph state** including semantic analysis results and article abstracts | ✅ Restore in Search Panel → "Graph File" |
 
+> [!NOTE]
+> **Cytoscape XGMML Export**: When exporting an XGMML file, the topological Graph structure, relation edge data, and structural directionality translate natively to Cytoscape Desktop for sophisticated third-party graph analysis without information loss.
+
 <p align="center">
   <img src="./docs/img/netmedex_graph_panel_v2.jpg" width="300" alt="Graph Panel">
   <br>
@@ -149,8 +153,10 @@ The **Graph Panel** visualizes the co-mention/semantic analyzed network, providi
 </p>
 
 - **Nodes**: Genes, Diseases, Chemicals, and Species.
-- **Edges**: Literature co-occurrence. Thicker edges indicate higher frequency.
-- **Clusters**: Use the **Community Detection** feature to group related concepts automatically.
+- **Edges**: Literature co-occurrence or Semantic relations. Thicker edges indicate higher frequency/NPMI; **arrows** indicate directionality in semantic mode.
+- **Confidence Heatmap**: Edge colors transition from cool to warm based on the extracted confidence score.
+- **FCoSE Node Repulsion**: Use the slider in the Graph Settings to adjust network spacing dynamically (10k to 100k units).
+- **Clusters**: Use the **Community Detection** feature to group related concepts automatically using the Louvain method.
 
 <p align="center">
   <img src="./docs/img/netmedex_graph_community_clusters.png" width="800" alt="Community Clusters">
@@ -192,14 +198,14 @@ The **Chat Panel** provides the deep semantic layer, interpreting the graph usin
   <i>Figure 13: The Chat History panel for managing and reviewing previous discovery sessions.</i>
 </p>
 
+> [!TIP]
+> **Semantic Markdown Tables**: You can request conversational output directly as semantic tables natively rendering within the chat interface, tracking interactions and PMIDs structurally. These tables are styled natively in HTML History file downloads.
+
 <p align="center">
   <img src="./docs/img/netmedex_chat_table_mirna.png" width="800" alt="miRNA Relationship Table">
   <br>
   <i>Figure 14: Tabular representation of semantic analysis results (e.g., miRNA relationships).</i>
 </p>
-
-
-
 ## ⚙️ Batch Processing vs. Interactive Discovery
 
 While the **Web Interface** provides a full "Interactive Discovery" workflow—including dynamic sub-network selection (Shift+Select) and real-time Hybrid RAG chat—the **CLI** and **API** are designed for automated batch processing and static graph construction. 
@@ -507,6 +513,17 @@ python examples/gradio_chat_ui.py
 Then open:
 - `http://127.0.0.1:7860`
 - In the UI, click `Create Session` first, then ask questions.
+
+---
+
+
+---
+
+## 🛠️ Contribution & Development
+
+NetMedEx is an open-source research initiative. We welcome contributions to our semantic extraction pipeline and UI visualization modules.
+
+© 2026 NetMedEx Team. Prepared for submission to GitHub under **cylin2022**.
 
 ---
 © 2026 LSBNB Lab@ IIS, Academia Sinica, TAIWAN. Refer to [LICENSE](LICENSE) for details.

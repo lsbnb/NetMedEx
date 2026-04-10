@@ -42,6 +42,7 @@ graph = html.Div(
                 ),
                 dcc.Store(id="is-new-graph", data=False),
                 dcc.Store(id="pmid-title-dict", data={}),
+                dcc.Store(id="pmid-citation-dict", data={}),
                 dcc.Store(id="memory-node-degree", data=1),
                 dcc.Store(id="memory-graph-cut-weight", data=[0, 20]),
                 dcc.Store(id="memory-cy-params", data=[]),

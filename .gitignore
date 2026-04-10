@@ -171,3 +171,36 @@ cython_debug/
 #.idea/
 *.pubtator
 manuscript/
+brain_network/
+tests/
+
+# Debug and Test Scripts
+test_*
+debug_*
+verify_*
+inspect_*
+benchmark_*
+pilot_*
+interactive_*
+test_log.txt
+semantic_extraction_pipeline.py
+prepare_dashboard_data.py
+final_discovery_結案.py
+*.log
+*.txt
+webapp.log_*
+traceback.log
+out.log
+wait.log
+translate.log
+
+# Temporary / Scratch
+webapp-temp/
+cache/
+cache_pediatric/
+node_modules/
+.claude/
+.codex/
+batch_job_id.txt
+NetMedEx_Transcript_*.html
+scratch/

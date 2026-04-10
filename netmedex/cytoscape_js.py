@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import json
 import logging
+from collections import defaultdict
+from pathlib import Path
 import re
 import time
 from typing import Literal
@@ -22,9 +24,34 @@ COMMUNITY_NODE_PATTERN = re.compile(r"^c\d+$")
 
 
 def save_as_html(G: nx.Graph, savepath: str, layout="preset"):
-    with open(savepath, "w") as f:
+    # Load vendor JS files for embedding
+    vendor_dir = Path(__file__).parent / "vendor"
+    js_contents = {}
+    js_files = {
+        "cytoscape_js_lib": "cytoscape.min.js",
+        "layout_base_js": "layout-base.js",
+        "cose_base_js": "cose-base.js",
+        "fcose_js": "cytoscape-fcose.js",
+    }
+
+    for key, filename in js_files.items():
+        filepath = vendor_dir / filename
+        if filepath.exists():
+            with open(filepath, encoding="utf-8") as f:
+                js_contents[key] = f.read()
+        else:
+            logger.warning(
+                f"Vendor JS file not found: {filepath}. HTML export may rely on CDNs if template defaults are kept."
+            )
+            js_contents[key] = ""  # Fallback logic handled in template or keep as empty
+
+    with open(savepath, "w", encoding="utf-8") as f:
         cytoscape_js = create_cytoscape_js(G, style="cyjs")
-        f.write(HTML_TEMPLATE.format(cytoscape_js=json.dumps(cytoscape_js), layout=layout))
+        f.write(
+            HTML_TEMPLATE.format(
+                cytoscape_js=json.dumps(cytoscape_js), layout=layout, **js_contents
+            )
+        )
 
 
 def save_as_json(G: nx.Graph, savepath: str):
@@ -88,8 +115,14 @@ def create_cytoscape_js(G: nx.Graph, style: Literal["dash", "cyjs"] = "cyjs"):
 
         valid_edges_for_export.append((u, v, edge_attr))
 
+    # Calculate edge type counts for debugging
+    edge_types = defaultdict(int)
+    for _, _, d in valid_edges_for_export:
+        edge_types[d.get("type", "unknown")] += 1
+
     print(
         f">>> [CYJS-DEBUG] Summary: Nodes({len(valid_nodes_for_export)}), Edges({len(valid_edges_for_export)}). "
+        f"Types: {dict(edge_types)}. "
         f"Filtered: MissingID={skipped_missing_id}, Dups={skipped_duplicates}, "
         f"NoSource={skipped_missing_source}, NoTarget={skipped_missing_target}"
     )
@@ -135,6 +168,8 @@ def create_cytoscape_node(node, size=25, degree=0):
         return SHAPE_JS_MAP.get(shape, shape).lower()
 
     node_id, node_attr = node
+    is_community_node = bool(COMMUNITY_NODE_PATTERN.search(str(node_id)))
+    node_type = "Community" if is_community_node else node_attr["type"]
     node_info = {
         "data": {
             "id": node_attr["_id"],
@@ -146,7 +181,8 @@ def create_cytoscape_node(node, size=25, degree=0):
             "pmids": list(node_attr["pmids"]),
             "num_articles": node_attr["num_articles"],
             "standardized_id": node_attr["mesh"],
-            "node_type": node_attr["type"],
+            "node_type": node_type,
+            "is_community": is_community_node,
             "node_size": size,
             "degree": degree,
         },
@@ -230,13 +266,23 @@ def create_cytoscape_edge(edge, G, with_id=True):
 
     relations = _convert_sets_to_lists(edge_attr.get("relations", {}))
 
+    # Robust edge type resolution:
+    # - keep explicit types as-is
+    # - infer semantic when confidence metadata exists
+    # - default to "node" for unknown/legacy values
+    raw_edge_type = edge_attr.get("type")
+    if raw_edge_type in {"node", "semantic", "community"}:
+        resolved_edge_type = raw_edge_type
+    else:
+        resolved_edge_type = "semantic" if edge_attr.get("confidences") else "node"
+
     edge_data = {
         "source": source_id,
         "target": target_id,
         "label": relation_display,
         "weight": round(max(float(edge_attr["edge_width"] or 0), 1), 1),
         "pmids": pmids,
-        "edge_type": edge_attr["type"],
+        "edge_type": resolved_edge_type,
         "relations": relations,
         "primary_relation": primary_relation,
         "relation_display": relation_display,

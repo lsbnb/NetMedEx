@@ -6,6 +6,9 @@ cache/
 examples/
 notebooks/
 **/.env
+**/.env.*
+**/webapp.log*
+**/*_restart*.log
 pytest.ini
 docs/
 .ruff_cache/

@@ -21,11 +21,24 @@ DATA_FILENAME = {
     "xgmml": "output.xgmml",
     "html": "output.html",
     "pubtator": "output.pubtator",
+    "biocjson": "output.biocjson",
     "edge_info": "output.csv",
     "ris": "citations.ris",
 }
 visibility = SimpleNamespace(visible={"visibility": "visible"}, hidden={"visibility": "hidden"})
-display = SimpleNamespace(block={"display": "block"}, none={"display": "none"})
+display = SimpleNamespace(
+    block={"display": "block"},
+    none={"display": "none"},
+    hidden_panel={
+        "position": "absolute",
+        "top": "-9999px",
+        "left": "-9999px",
+        "visibility": "hidden",
+        "height": "0px",
+        "width": "100%",
+        "overflow": "hidden",
+    },
+)
 
 CYTO_STYLESHEET = [
     {
@@ -92,6 +105,22 @@ CYTO_STYLESHEET = [
         },
     },
     {
+        "selector": "edge[primary_relation = 'activates'], edge[primary_relation = 'increases'], edge[primary_relation = 'upregulates'], edge[primary_relation = 'induces'], edge[primary_relation = 'enhances'], edge[primary_relation = 'promotes'], edge[primary_relation = 'stimulates'], edge[primary_relation = 'treats'], edge[primary_relation = 'prevents'], edge[primary_relation = 'cures'], edge[primary_relation = 'ameliorates']",
+        "style": {
+            "line-color": "#28a745",
+            "target-arrow-color": "#28a745",
+            "source-arrow-color": "#28a745",
+        },
+    },
+    {
+        "selector": "edge[primary_relation = 'inhibits'], edge[primary_relation = 'decreases'], edge[primary_relation = 'downregulates'], edge[primary_relation = 'suppresses'], edge[primary_relation = 'represses'], edge[primary_relation = 'blocks'], edge[primary_relation = 'causes'], edge[primary_relation = 'triggers']",
+        "style": {
+            "line-color": "#dc3545",
+            "target-arrow-color": "#dc3545",
+            "source-arrow-color": "#dc3545",
+        },
+    },
+    {
         "selector": ":selected",
         "style": {
             "overlay-color": "#FF0000",
@@ -116,5 +145,38 @@ def get_data_savepath(session_id: str):
 
 
 def cleanup_tempdir():
-    if os.getenv("SAVEDIR") is None:
-        shutil.rmtree(BASE_SAVEDIR, ignore_errors=True)
+    """
+    Perform surgical cleanup of the temporary directory.
+    Attempts to remove session folders older than 24 hours to preserve
+    active sessions across server restarts.
+    """
+    # Only cleanup if we are NOT in debug/reloader mode.
+    if os.getenv("FLASK_DEBUG") == "true":
+        return
+
+    if not BASE_SAVEDIR.exists():
+        return
+
+    import time
+
+    current_time = time.time()
+    retention_seconds = 24 * 3600  # 24 hours
+
+    try:
+        # If SAVEDIR is set explicitly, we assume managed persistence and skip auto-cleanup
+        if os.getenv("SAVEDIR") is not None:
+            return
+
+        for item in BASE_SAVEDIR.iterdir():
+            if item.is_dir():
+                # Check modification time of the directory
+                mtime = item.stat().st_mtime
+                if (current_time - mtime) > retention_seconds:
+                    print(f"Cleaning up old session directory: {item.name}")
+                    shutil.rmtree(item, ignore_errors=True)
+            elif item.is_file() and item.name != ".gitignore":
+                # Remove loose files in tempdir
+                item.unlink(missing_ok=True)
+
+    except Exception as e:
+        print(f"Warning during tempdir cleanup: {e}")

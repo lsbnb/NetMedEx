@@ -39,6 +39,7 @@ class PubTatorEdge:
     # Optional semantic analysis metadata
     confidence: float | None = None  # LLM confidence score (0-1)
     evidence: str | None = None  # Supporting text from abstract
+    source_id: str | None = None  # Explicit source of a directed relationship
 
 
 class NodeCollection(ABC):

@@ -109,7 +109,7 @@ window.dash_clientside.clientside = {
 
     return null
   },
-  show_edge_info: function (selected_edges, tap_edge, pmid_title) {
+  show_edge_info: function (selected_edges, tap_edge, pmid_title, pmid_citations) {
     function check_if_selected(tap_edge) {
       for (let i = 0; i < selected_edges.length; i++) {
         if (selected_edges[i].id === tap_edge.id) {
@@ -227,7 +227,7 @@ window.dash_clientside.clientside = {
         })
       }
 
-      const edge_table = create_pmid_table(tap_edge.pmids, pmid_title)
+      const edge_table = create_pmid_table(tap_edge.pmids, pmid_title, pmid_citations)
       display = "block"
       elements.push(edge_table)
     }
@@ -241,7 +241,7 @@ window.dash_clientside.clientside = {
       elements,
     ]
   },
-  show_node_info: function (selected_nodes, tap_node, pmid_title) {
+  show_node_info: function (selected_nodes, tap_node, pmid_title, pmid_citations) {
     function check_if_selected(tap_node) {
       for (let i = 0; i < selected_nodes.length; i++) {
         if (selected_nodes[i].id === tap_node.id) {
@@ -311,16 +311,20 @@ window.dash_clientside.clientside = {
         elements.push({ props: { children: `Identifier: ${identifier}` }, type: "P", namespace: "dash_html_components" })
       }
 
-      const node_table = create_pmid_table(tap_node.pmids, pmid_title)
+      const node_table = create_pmid_table(tap_node.pmids, pmid_title, pmid_citations)
       display = "block"
       elements.push(node_table)
     }
 
     return [
+      {
+        display: display,
+        zIndex: get_z_index(display),
+      },
       elements,
     ]
   },
-  sync_llm_toggles: function (provider, openai_api_key, google_api_key, google_model, local_url, local_model) {
+  sync_llm_toggles: function (provider, openai_api_key, google_api_key, google_model, local_url, local_model, openrouter_api_key, openrouter_model) {
     if (provider === "openai") {
       if (openai_api_key && openai_api_key.trim().startsWith("sk-")) {
         return [true, "semantic"];
@@ -329,12 +333,247 @@ window.dash_clientside.clientside = {
       if (google_api_key && google_api_key.trim() !== "" && google_model && google_model.trim() !== "") {
         return [true, "semantic"];
       }
+    } else if (provider === "openrouter") {
+      if (openrouter_api_key && openrouter_api_key.trim() !== "" && openrouter_model && openrouter_model.trim() !== "") {
+        return [true, "semantic"];
+      }
     } else if (provider === "local") {
       if (local_url && local_url.trim() !== "" && local_model && local_model.trim() !== "") {
         return [true, "semantic"];
       }
     }
     return [false, "co-occurrence"];
+  },
+  apply_graph_visual_filters: function (threshold, searchQuery, visibleNodeTypes, elements, current_stylesheet) {
+    const CHUNK_SIZE = 200;
+    const isDynamic = (rule) => {
+      if (!rule) return false;
+      if (rule._netmedex_dynamic === true) return true;
+      const selector = rule.selector || "";
+      const style = rule.style || {};
+      // Signature of our dynamic rules (search highlight, confidence filter, etc.)
+      if (selector.includes('[id="')) return true;
+      if (style.opacity === 0.1 || style.opacity === 0.2 || style.opacity === 0.95 || style.opacity === 0.05) return true;
+      if (style["border-color"] === "#ff6b00") return true;
+      return false;
+    };
+
+    const stripDynamicRules = (rules) => (Array.isArray(rules) ? rules : []).filter(
+      (rule) => !isDynamic(rule)
+    );
+
+    let base_rules = [];
+    if (Array.isArray(current_stylesheet) && current_stylesheet.length > 0) {
+      base_rules = stripDynamicRules(current_stylesheet);
+      window.__netmedex_base_stylesheet = base_rules;
+    } else if (Array.isArray(window.__netmedex_base_stylesheet)) {
+      base_rules = [...window.__netmedex_base_stylesheet];
+    } else {
+      return window.dash_clientside.no_update;
+    }
+
+    const new_stylesheet = [...base_rules];
+    const graphElements = Array.isArray(elements) ? elements : [];
+    const nodeElements = [];
+    const edgeElements = [];
+    for (const el of graphElements) {
+      if (!el || !el.data) continue;
+      if (el.data.source && el.data.target) edgeElements.push(el);
+      else nodeElements.push(el);
+    }
+    const hasCommunityNodes = nodeElements.some(
+      (node) => Boolean(node && node.data && node.data.is_community)
+    );
+    const wasCommunityMode = Boolean(window.__netmedex_prev_has_community);
+    const justExitedCommunityMode = wasCommunityMode && !hasCommunityNodes;
+    window.__netmedex_prev_has_community = hasCommunityNodes;
+
+    const addRule = (selector, style) => {
+      if (!selector) return;
+      new_stylesheet.push({ selector, style, _netmedex_dynamic: true });
+    };
+    const addChunkedIdRules = (ids, elementType, style) => {
+      if (!ids || ids.length === 0) return;
+      for (let i = 0; i < ids.length; i += CHUNK_SIZE) {
+        const chunk = ids.slice(i, i + CHUNK_SIZE);
+        const selector = chunk.map((id) => `${elementType}[id="${id}"]`).join(", ");
+        addRule(selector, style);
+      }
+    };
+
+    // Always reset opacity before applying interactive highlights.
+    addRule("node", { opacity: 1, "text-opacity": 1 });
+    addRule("edge", { opacity: 1 });
+
+    if (hasCommunityNodes) {
+      addRule("edge", {
+        "curve-style": "bezier",
+        "line-opacity": 0.9
+      });
+      addRule(":parent", {
+        "z-compound-depth": "bottom"
+      });
+      return new_stylesheet.map(rule => {
+        const { _netmedex_dynamic, ...cleanRule } = rule;
+        return cleanRule;
+      });
+    }
+
+    // 1) Confidence threshold: hide only low-confidence semantic edges.
+    const numericThreshold = Number(threshold) || 0;
+    const hideEdgeIds = new Set();
+    if (numericThreshold > 0 && !hasCommunityNodes && !justExitedCommunityMode) {
+      for (const edge of edgeElements) {
+        const data = edge.data || {};
+        if (data.edge_type !== "semantic") continue;
+        const conf = data.relation_confidence;
+        if (typeof conf === "number" && conf < numericThreshold && data.id) {
+          hideEdgeIds.add(data.id);
+        }
+      }
+    }
+
+    // 2) Node type filter
+    const normalizedTypeFilter = new Set((visibleNodeTypes || []).map((t) => String(t).toLowerCase()));
+    const ALL_KNOWN_NODE_TYPES = new Set([
+      "gene", "disease", "chemical", "species", "cellline",
+      "dnamutation", "proteinmutation", "snp", "community",
+    ]);
+    const hideNodeIds = new Set();
+    const isShowAllNodeTypes = normalizedTypeFilter.size === ALL_KNOWN_NODE_TYPES.size;
+    if (normalizedTypeFilter.size > 0 && !isShowAllNodeTypes && !hasCommunityNodes) {
+      for (const node of nodeElements) {
+        const data = node.data || {};
+        const nodeId = data.id;
+        if (!nodeId) continue;
+        const nodeType = String(data.node_type || "").toLowerCase();
+        if (!normalizedTypeFilter.has(nodeType)) {
+          hideNodeIds.add(nodeId);
+        }
+      }
+      for (const edge of edgeElements) {
+        const data = edge.data || {};
+        if (!data.id) continue;
+        if (hideNodeIds.has(data.source) || hideNodeIds.has(data.target)) {
+          hideEdgeIds.add(data.id);
+        }
+      }
+    }
+
+    // 3a) Isolate-node hiding: when confidence threshold is active, hide nodes
+    //     whose every edge has been filtered out (no visible edges remain).
+    if (numericThreshold > 0 && !hasCommunityNodes && !justExitedCommunityMode) {
+      // Build a map: nodeId -> list of edge ids connected to it
+      const nodeEdgeCount = new Map();
+      const nodeVisibleEdgeCount = new Map();
+      for (const node of nodeElements) {
+        const id = node.data && node.data.id;
+        if (id) {
+          nodeEdgeCount.set(id, 0);
+          nodeVisibleEdgeCount.set(id, 0);
+        }
+      }
+      for (const edge of edgeElements) {
+        const data = edge.data || {};
+        const src = data.source;
+        const tgt = data.target;
+        if (!src || !tgt) continue;
+        // Count total edges for each endpoint
+        if (nodeEdgeCount.has(src)) nodeEdgeCount.set(src, nodeEdgeCount.get(src) + 1);
+        if (nodeEdgeCount.has(tgt)) nodeEdgeCount.set(tgt, nodeEdgeCount.get(tgt) + 1);
+        // Count visible (non-hidden) edges for each endpoint
+        if (!hideEdgeIds.has(data.id)) {
+          if (nodeVisibleEdgeCount.has(src)) nodeVisibleEdgeCount.set(src, nodeVisibleEdgeCount.get(src) + 1);
+          if (nodeVisibleEdgeCount.has(tgt)) nodeVisibleEdgeCount.set(tgt, nodeVisibleEdgeCount.get(tgt) + 1);
+        }
+      }
+      for (const [nodeId, visibleCount] of nodeVisibleEdgeCount) {
+        // Only hide nodes that originally had edges but now have none visible
+        if (visibleCount === 0 && nodeEdgeCount.get(nodeId) > 0 && !hideNodeIds.has(nodeId)) {
+          hideNodeIds.add(nodeId);
+        }
+      }
+    }
+
+    addChunkedIdRules(Array.from(hideNodeIds), "node", { display: "none" });
+    addChunkedIdRules(Array.from(hideEdgeIds), "edge", { display: "none" });
+
+    // 3) Search highlight
+    const normalizeText = (txt) => String(txt || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+    const SYNONYM_MAP = {
+      metformin: ["glucophage", "dimethylbiguanide"],
+      t2dm: ["type2diabetes", "type2diabetesmellitus", "diabetesmellitustype2"],
+      diabetes: ["diabetesmellitus", "dm"],
+      covid19: ["sarscov2", "coronavirusdisease2019", "covid"],
+      egfr: ["erb1", "epidermalgrowthfactorreceptor"],
+      tp53: ["p53", "tumorproteinp53"],
+    };
+    const buildQueryCandidates = (query) => {
+      const q = normalizeText(query);
+      if (!q) return [];
+      const out = new Set([q]);
+      const aliases = SYNONYM_MAP[q] || [];
+      for (const alias of aliases) out.add(normalizeText(alias));
+      for (const [base, list] of Object.entries(SYNONYM_MAP)) {
+        if (list.map(normalizeText).includes(q)) out.add(base);
+      }
+      return Array.from(out).filter(Boolean);
+    };
+
+    const query = String(searchQuery || "").trim();
+    const queryCandidates = buildQueryCandidates(query);
+    if (queryCandidates.length > 0) {
+      const anchorNodeIds = new Set();
+      for (const node of nodeElements) {
+        const data = node.data || {};
+        const nodeId = data.id;
+        if (!nodeId || hideNodeIds.has(nodeId)) continue;
+        const labelNorm = normalizeText(data.label || "");
+        const idNorm = normalizeText(data.standardized_id || "");
+        if (queryCandidates.some((q) => labelNorm.includes(q) || idNorm.includes(q))) {
+          anchorNodeIds.add(nodeId);
+        }
+      }
+
+      if (anchorNodeIds.size > 0) {
+        const neighborNodeIds = new Set(anchorNodeIds);
+        const focusEdgeIds = new Set();
+        for (const edge of edgeElements) {
+          const data = edge.data || {};
+          const edgeId = data.id;
+          if (!edgeId || hideEdgeIds.has(edgeId)) continue;
+          if (anchorNodeIds.has(data.source) || anchorNodeIds.has(data.target)) {
+            focusEdgeIds.add(edgeId);
+            if (!hideNodeIds.has(data.source)) neighborNodeIds.add(data.source);
+            if (!hideNodeIds.has(data.target)) neighborNodeIds.add(data.target);
+          }
+        }
+
+        addRule("node", { opacity: 0.2, "text-opacity": 0.2 });
+        addRule("edge", { opacity: 0.1 });
+        addChunkedIdRules(Array.from(neighborNodeIds), "node", { opacity: 1, "text-opacity": 1 });
+        addChunkedIdRules(Array.from(anchorNodeIds), "node", {
+          "border-width": 3,
+          "border-color": "#ff6b00",
+          "border-opacity": 1,
+        });
+        addChunkedIdRules(Array.from(focusEdgeIds), "edge", { opacity: 0.95 });
+      }
+    }
+
+    return new_stylesheet.map(rule => {
+      const { _netmedex_dynamic, ...cleanRule } = rule;
+      return cleanRule;
+    });
+  },
+  filter_edges_by_confidence: function (threshold, elements, current_stylesheet) {
+    return window.dash_clientside.clientside.apply_graph_visual_filters(
+      threshold,
+      "",
+      [],
+      elements,
+      current_stylesheet
+    );
   }
 };
 
@@ -386,13 +625,14 @@ document.addEventListener("click", function (e) {
   if (!btn) return;
   btn.classList.add("processing");
 
+  const thinkingHTML = '<span class="chat-thinking-dots"><span></span><span></span><span></span></span>';
   if (btn.id === "chat-send-btn" || btn.classList.contains("suggested-question-btn")) {
     const status = document.getElementById("chat-processing-status");
-    if (status) status.textContent = "Assistant is thinking...";
+    if (status) status.innerHTML = thinkingHTML;
   }
   if (btn.id === "modal-chat-send-btn" || btn.classList.contains("suggested-question-btn")) {
     const modalStatus = document.getElementById("modal-chat-processing-status");
-    if (modalStatus) modalStatus.textContent = "Assistant is thinking...";
+    if (modalStatus) modalStatus.innerHTML = thinkingHTML;
   }
 });
 

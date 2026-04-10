@@ -11,6 +11,35 @@ from netmedex.pubtator_data import PubTatorAnnotation, PubTatorArticle, PubTator
 logger = logging.getLogger(__name__)
 
 DOI_PATTERN = re.compile(r"doi:\s?(10\.\d{4,}/[\S]+)\.", re.IGNORECASE)
+JOURNAL_REF_PATTERN = re.compile(r";(\d+)(?:\(([^)]+)\))?:([^.\s;]+)")
+
+
+def parse_journal_info(journal_str: str) -> dict[str, str | None]:
+    """Parse PubMed journal string for Journal Name, Volume, Issue, and Pages."""
+    info = {"journal_name": None, "volume": None, "issue": None, "pages": None}
+    if not journal_str:
+        return info
+
+    # Example: "Breast Cancer Res. 2012 Mar 19;14(2):R50. doi: 10.1186/bcr3151."
+    # 1. Try to find volume, issue, pages via pattern
+    match = JOURNAL_REF_PATTERN.search(journal_str)
+    if match:
+        info["volume"] = match.group(1)
+        info["issue"] = match.group(2)
+        info["pages"] = match.group(3)
+
+    # 2. Extract Journal Name and Date part
+    # Split by the first semicolon found (start of volume/issue/pages)
+    main_part = journal_str.split(";", 1)[0].strip()
+    if "." in main_part:
+        # Standard PubMed: Journal. Year Mon Day;
+        # We take the part before the last period as the journal name.
+        last_period_idx = main_part.rfind(".")
+        info["journal_name"] = main_part[:last_period_idx].strip()
+    else:
+        info["journal_name"] = main_part
+
+    return info
 
 
 def biocjson_to_pubtator(
@@ -45,17 +74,31 @@ def _biocjson_to_pubtator(
 
     output = []
     for each_res_json in res_json:
-        pmid = each_res_json["pmid"]
+        pmid = str(each_res_json["pmid"])
 
         title_passage = extract_passage(each_res_json, "TITLE")
         abstract_passage = extract_passage(each_res_json, "ABSTRACT")
-        journal = each_res_json.get("journal")
+
+        # metadata extraction
+        infons = each_res_json["passages"][0]["infons"] if each_res_json["passages"] else {}
+
+        # Prefer passage infons for full citation string
+        journal_raw = infons.get("journal") or each_res_json.get("journal")
+        date_str = each_res_json.get("date") or infons.get("date")
+
         date = None
-        if (date_str := each_res_json.get("date")) is not None:
+        if date_str is not None:
             try:
-                date = datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%SZ").strftime("%Y-%m-%d")
+                # Handle both "YYYY-MM-DDTHH:MM:SSZ" and "YYYY" or "YYYY Mon DD"
+                if "T" in date_str:
+                    date = datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%SZ").strftime("%Y-%m-%d")
+                else:
+                    date = date_str  # Keep as is if it's already a simple date
             except Exception:
-                pass
+                date = date_str
+
+        if (not date or date == "None") and infons.get("year"):
+            date = infons.get("year")
 
         if not title_passage or not abstract_passage:
             continue
@@ -84,23 +127,38 @@ def _biocjson_to_pubtator(
         doi = None
         try:
             # Abstract only biocjson file
-            if (
-                match := DOI_PATTERN.search(each_res_json["passages"][0]["infons"]["journal"])
-            ) is not None:
+            if "journal" in infons and (match := DOI_PATTERN.search(infons["journal"])) is not None:
                 doi = match.group(1)
         except Exception:
             # Full-text biocjson file
             try:
-                doi = each_res_json["passages"][0]["infons"]["article-id_doi"]
+                doi = infons.get("article-id_doi")
             except Exception:
                 pass
 
+        # volume, issue, pages, journal_name
+        vol_issue_pages = parse_journal_info(journal_raw or "")
+        journal = vol_issue_pages["journal_name"] or journal_raw
+        volume = infons.get("volume") or vol_issue_pages["volume"]
+        issue = infons.get("issue") or vol_issue_pages["issue"]
+        pages = infons.get("pages") or vol_issue_pages["pages"]
+
         # authors
-        authors = None
-        try:
-            authors = each_res_json["passages"][0]["infons"].get("authors")
-        except Exception:
-            pass
+        authors = each_res_json.get("authors")
+        if not authors:
+            try:
+                # Try from infons
+                authors = infons.get("authors")
+            except Exception:
+                pass
+        
+        # If still not found, check all passages for an 'author' section
+        if not authors:
+            for passage in each_res_json.get("passages", []):
+                if passage.get("infons", {}).get("type", "").lower() == "author":
+                    authors = passage.get("text")
+                    if authors:
+                        break
 
         output.append(
             PubTatorArticle(
@@ -108,6 +166,9 @@ def _biocjson_to_pubtator(
                 date=date,
                 journal=journal,
                 doi=doi,
+                volume=volume,
+                issue=issue,
+                pages=pages,
                 title=title,
                 abstract=abstract,
                 annotations=annotation_list,

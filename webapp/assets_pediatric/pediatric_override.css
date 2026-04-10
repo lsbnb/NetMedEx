@@ -1,0 +1,591 @@
+/* ============================================================
+   NetMedEx: Pediatric CNS Tumor Edition — Full CSS Theme
+   Deep navy/teal dark theme optimized for brain tumor research
+   ============================================================ */
+
+/* ── Reset & Base ─────────────────────────────────────────── */
+:root {
+    --PED-NAVY:       #0d1117;
+    --PED-NAVY-2:     #161b22;
+    --PED-NAVY-3:     #1a2233;
+    --PED-SIDEBAR-BG: #111827;
+    --PED-ACCENT:     #4fc3f7;
+    --PED-ACCENT-DIM: rgba(79,195,247,0.15);
+    --PED-GREEN:      #81c784;
+    --PED-ORANGE:     #ffb74d;
+    --PED-PINK:       #f06292;
+    --PED-TEAL:       #80cbc4;
+    --PED-TEXT:       #e8f4fd;
+    --PED-TEXT-DIM:   rgba(232,244,253,0.55);
+    --PED-BORDER:     rgba(79,195,247,0.2);
+    --SIDEBAR-BTN:    #0f3460;
+    --SIDEBAR-TEXT:   #e8f4fd;
+    --SIDEBAR-BACKGROUND: #111827;
+    --TEXT:           #0d1b2a;
+    --SETTINGS-BACKGROUND: #1a2233;
+    --GRAY-TEXT:      #94a3b8;
+    --MAIN-BACKGROUND:#f0f4f8;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--PED-NAVY);
+    color: var(--PED-TEXT);
+    height: 100%; width: 100%;
+}
+
+h1, h2, h3, h4 { text-align: center; }
+
+/* ── Top Navigation Bar ──────────────────────────────────────── */
+#ped-topnav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 60px;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background: linear-gradient(135deg, #080d14 0%, #0d1117 30%, #0a1628 70%, #0f1e3d 100%);
+    border-bottom: 1px solid var(--PED-BORDER);
+    box-shadow: 0 2px 24px rgba(0,0,0,0.6), 0 0 60px rgba(79,195,247,0.06);
+    backdrop-filter: blur(12px);
+}
+
+/* ── Nav Tab Buttons ─────────────────────────────────────────── */
+.ped-nav-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    color: rgba(232,244,253,0.55);
+    padding: 7px 18px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: 0.3px;
+}
+.ped-nav-btn:hover {
+    color: var(--PED-ACCENT);
+    border-color: var(--PED-BORDER);
+    background: var(--PED-ACCENT-DIM);
+}
+.ped-nav-btn.active {
+    color: var(--PED-ACCENT);
+    border-color: rgba(79,195,247,0.45);
+    background: linear-gradient(135deg, rgba(79,195,247,0.15), rgba(79,195,247,0.05));
+    box-shadow: 0 0 16px rgba(79,195,247,0.2);
+}
+
+/* ── Badges ──────────────────────────────────────────────────── */
+.ped-badge {
+    background: rgba(79,195,247,0.1);
+    border: 1px solid rgba(79,195,247,0.3);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 0.7rem;
+    color: var(--PED-ACCENT);
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+/* ── Load Button ─────────────────────────────────────────────── */
+.ped-load-btn {
+    background: linear-gradient(135deg, rgba(79,195,247,0.2), rgba(79,195,247,0.08)) !important;
+    border: 1px solid rgba(79,195,247,0.5) !important;
+    color: #fff !important;
+    border-radius: 20px !important;
+    font-weight: 700 !important;
+    font-size: 0.75rem !important;
+    transition: all 0.25s ease !important;
+    letter-spacing: 0.3px;
+}
+.ped-load-btn:hover {
+    background: linear-gradient(135deg, rgba(79,195,247,0.35), rgba(79,195,247,0.18)) !important;
+    box-shadow: 0 0 18px rgba(79,195,247,0.4) !important;
+    transform: translateY(-1px);
+}
+
+/* ── Content area (below 60px nav) ──────────────────────────── */
+#ped-content {
+    margin-top: 60px;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* ── Stats Bar ───────────────────────────────────────────────── */
+.ped-stats-bar {
+    display: flex;
+    gap: 12px;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #111827 0%, #0d1117 100%);
+    border-bottom: 1px solid var(--PED-BORDER);
+    overflow-x: auto;
+    flex-shrink: 0;
+}
+
+.ped-stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(79,195,247,0.05);
+    border: 1px solid var(--PED-BORDER);
+    border-radius: 12px;
+    padding: 12px 20px;
+    min-width: 120px;
+    text-align: center;
+    transition: all 0.2s ease;
+    flex: 1;
+}
+.ped-stat-card:hover {
+    background: rgba(79,195,247,0.1);
+    border-color: rgba(79,195,247,0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(79,195,247,0.15);
+}
+
+/* ── Subtype Filter Row ──────────────────────────────────────── */
+.ped-subtype-selector {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background: rgba(13,17,23,0.8);
+    border-bottom: 1px solid var(--PED-BORDER);
+    gap: 6px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+.ped-subtype-btn {
+    background: transparent;
+    border: 1px solid rgba(79,195,247,0.25);
+    border-radius: 16px;
+    color: rgba(232,244,253,0.6);
+    padding: 4px 14px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+}
+.ped-subtype-btn:hover {
+    border-color: var(--PED-ACCENT);
+    color: var(--PED-ACCENT);
+    background: var(--PED-ACCENT-DIM);
+}
+.ped-subtype-btn.active {
+    background: var(--PED-ACCENT);
+    border-color: var(--PED-ACCENT);
+    color: #0d1117;
+    font-weight: 800;
+    box-shadow: 0 0 12px rgba(79,195,247,0.5);
+}
+
+/* ── Info banner for Network panel ──────────────────────────── */
+.ped-info-banner {
+    background: linear-gradient(135deg, rgba(79,195,247,0.08), rgba(79,195,247,0.02));
+    border-bottom: 1px solid var(--PED-BORDER);
+    color: rgba(232,244,253,0.65);
+    font-size: 0.78rem;
+    padding: 8px 20px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* ── sidebar (dark navy for pediatric) ──────────────────────── */
+.sidebar {
+    background: linear-gradient(180deg, #111827 0%, #0d1525 60%, #090f1e 100%) !important;
+    border-right: 1px solid var(--PED-BORDER);
+    box-shadow: 4px 0 20px rgba(0,0,0,0.5);
+    height: 100% !important;
+    flex: 0 0 450px;
+    position: relative;
+    padding: 1.5rem 20px 0 20px;
+    overflow-y: auto;
+    overflow-x: visible;
+    transition: background 0.3s ease;
+}
+
+.sidebar.graph-mode {
+    background: linear-gradient(180deg, #0f1e30 0%, #0a1828 100%) !important;
+}
+
+.sidebar :is(h1, h2, h3, h4, h5, h6, label, .rc-slider-mark-text) {
+    color: var(--PED-TEXT) !important;
+}
+
+.sidebar .card :is(h1, h2, h3, h4, h5, h6, p, div) {
+    color: var(--PED-TEXT) !important;
+}
+
+.sidebar .btn {
+    background: linear-gradient(135deg, #0f3460 0%, #0a2040 100%) !important;
+    border-color: rgba(79,195,247,0.35) !important;
+    color: var(--PED-TEXT) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    transition: all 0.2s ease;
+}
+.sidebar .btn:hover {
+    border-color: var(--PED-ACCENT) !important;
+    box-shadow: 0 0 14px rgba(79,195,247,0.35);
+    transform: translateY(-1px);
+}
+
+#submit-button {
+    background: linear-gradient(135deg, #00897b, #006064) !important;
+    border-color: #00897b !important;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 16px rgba(0,137,123,0.4) !important;
+}
+#submit-button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #00acc1, #00838f) !important;
+    box-shadow: 0 4px 24px rgba(0,172,193,0.5) !important;
+    transform: translateY(-1px);
+}
+
+#sidebar-panel-toggle .nav-link {
+    color: rgba(232,244,253,0.6) !important;
+    border: 1px solid transparent !important;
+    transition: all 0.2s ease;
+}
+#sidebar-panel-toggle .nav-link:hover {
+    color: var(--PED-ACCENT) !important;
+    background: var(--PED-ACCENT-DIM) !important;
+}
+#sidebar-panel-toggle .nav-link.active {
+    background: linear-gradient(135deg, rgba(79,195,247,0.18), rgba(79,195,247,0.06)) !important;
+    color: var(--PED-ACCENT) !important;
+    font-weight: bold !important;
+    border: 1px solid rgba(79,195,247,0.35) !important;
+    border-radius: 6px !important;
+}
+
+.sidebar .progress-bar {
+    background: linear-gradient(90deg, #00897b, #4fc3f7) !important;
+    color: white !important;
+    font-weight: bold;
+}
+.sidebar .progress {
+    border: 1px solid rgba(79,195,247,0.2);
+    background-color: rgba(255,255,255,0.05);
+}
+.sidebar .card {
+    background: rgba(255,255,255,0.04) !important;
+    border: 1px solid var(--PED-BORDER) !important;
+}
+
+#stat-articles, #stat-nodes, #stat-edges {
+    color: var(--PED-ACCENT) !important;
+    font-weight: 800;
+    text-shadow: 0 0 12px rgba(79,195,247,0.5);
+}
+
+/* Export buttons */
+.export-btn {
+    background: rgba(79,195,247,0.1) !important;
+    border: 1px solid rgba(79,195,247,0.3) !important;
+    color: var(--PED-ACCENT) !important;
+    border-radius: 6px;
+}
+
+/* Upload areas */
+.upload-box {
+    background: rgba(79,195,247,0.04) !important;
+    border-color: rgba(79,195,247,0.35) !important;
+    color: rgba(232,244,253,0.7) !important;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+.upload-box:hover {
+    background: rgba(79,195,247,0.08) !important;
+    border-color: var(--PED-ACCENT) !important;
+}
+
+/* Form controls */
+.sidebar .form-control, .sidebar textarea {
+    background: rgba(255,255,255,0.06) !important;
+    border-color: rgba(79,195,247,0.25) !important;
+    color: var(--PED-TEXT) !important;
+    border-radius: 8px;
+}
+.sidebar .form-control::placeholder { color: rgba(232,244,253,0.35) !important; }
+
+/* ── Graph main area ─────────────────────────────────────────── */
+.main-div { background: #f0f4f8; }
+
+#main-container {
+    height: 100%;
+    width: 100%;
+    min-height: 600px;
+}
+
+/* ── Chat panel (pediatric edition) ─────────────────────────── */
+.ped-chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #111827, #0d1525);
+    border-bottom: 1px solid var(--PED-BORDER);
+    flex-shrink: 0;
+}
+
+.ped-chat-hints {
+    padding: 10px 20px;
+    background: rgba(13,17,23,0.7);
+    border-bottom: 1px solid rgba(79,195,247,0.1);
+    flex-shrink: 0;
+}
+
+.ped-hint-btn {
+    background: rgba(79,195,247,0.07);
+    border: 1px solid rgba(79,195,247,0.25);
+    border-radius: 20px;
+    color: rgba(232,244,253,0.7);
+    padding: 5px 14px;
+    font-size: 0.73rem;
+    cursor: pointer;
+    transition: all 0.18s ease;
+}
+.ped-hint-btn:hover {
+    background: rgba(79,195,247,0.18);
+    border-color: var(--PED-ACCENT);
+    color: var(--PED-ACCENT);
+    transform: translateY(-1px);
+}
+
+/* Make the inner chat panel fill the remaining space */
+#ped-chat-wrapper,
+#ped-chat-wrapper > div,
+.chat-panel,
+#chat-panel-container {
+    height: 100% !important;
+    flex: 1 !important;
+    min-height: 0 !important;
+}
+
+/* ── Keep existing chat rendering styles intact ──────────────── */
+.chat-messages-container,
+#modal-chat-content {
+    background: linear-gradient(180deg, #f8fafc, #ffffff) !important;
+    padding: 20px !important;
+    scrollbar-width: thin;
+}
+
+.chat-message-user,
+.chat-message-assistant {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    gap: 12px;
+}
+.chat-message-user    { flex-direction: row-reverse; }
+.chat-message-assistant { flex-direction: row; }
+
+.chat-message-user-content {
+    background-color: #f4f4f9;
+    color: #1a1a1a;
+    padding: 10px 16px;
+    border-radius: 18px 18px 4px 18px;
+    max-width: 80%;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.chat-message-assistant-content {
+    background: transparent;
+    padding: 2px 0;
+    width: 100%;
+    max-width: 90%;
+}
+.chat-message-assistant-content .message-bubble {
+    border: 1px solid #e5e7eb;
+    padding: 16px 20px;
+    border-radius: 4px 18px 18px 18px;
+    background: white;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+.message-text :is(h1,h2,h3,h4,h5,h6,p,li,span,strong) { color: #1f2937 !important; }
+.message-text h2 {
+    color: #1a6bbf !important; font-size: 1.1rem !important;
+    font-weight: 700; margin: 1.2rem 0 0.6rem; text-align: left;
+}
+.message-text p { margin-bottom: 0.75rem; line-height: 1.6; }
+
+.suggested-question-btn {
+    border-radius: 50rem !important;
+    border: 1px solid rgba(0,123,255,0.2) !important;
+    background-color: #fff !important;
+    color: #2c5282 !important;
+    padding: 10px 22px !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    transition: all 0.2s !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04) !important;
+    margin: 0 10px 10px 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    cursor: pointer !important;
+}
+.suggested-question-btn:hover {
+    border-color: #007bff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,123,255,0.1) !important;
+}
+
+.chat-send-button {
+    background-color: #10a37f !important;
+    border: none !important;
+    border-radius: 50% !important;
+    width: 36px !important; height: 36px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.chat-avatar { width:32px; height:32px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0; font-size:1.2rem; }
+.user-avatar { background:#5c6bc0; color:white; }
+.assistant-avatar { background:#10a37f; color:white; }
+
+.chat-input-area .input-group {
+    background: white;
+    border: 1px solid #d1d5db;
+    border-radius: 24px;
+    padding: 4px 12px 4px 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.chat-input-area .input-group:focus-within {
+    border-color: #10a37f;
+    box-shadow: 0 0 0 3px rgba(16,163,127,0.1);
+}
+#chat-input-box, #modal-chat-input {
+    border: none !important; box-shadow: none !important;
+    padding: 10px 12px !important; background: transparent !important;
+}
+
+/* ── Semantic edge colors (cytoscape) ────────────────────────── */
+.edge-activation  { line-color: #28a745; target-arrow-color: #28a745; }
+.edge-inhibition  { line-color: #dc3545; target-arrow-color: #dc3545; }
+.edge-neutral     { line-color: #aab7b8; target-arrow-color: #aab7b8; }
+
+/* Loading dots */
+.loading-dots { display:inline-flex; align-items:center; gap:5px; }
+.loading-dots span {
+    width:6px; height:6px; background:#fff !important;
+    border-radius:50%;
+    animation: loading-pulse 1.4s infinite ease-in-out both;
+}
+.loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+.loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+@keyframes loading-pulse {
+    0%,80%,100% { transform:scale(0.6); opacity:0.25; }
+    40%          { transform:scale(1.1); opacity:1; }
+}
+
+/* Status indicators */
+.status-indicator { display:inline-block; width:10px; height:10px;
+    border-radius:50%; margin-right:8px; vertical-align:middle; }
+.status-online  { background:#28a745; box-shadow:0 0 5px #28a745; }
+.status-offline { background:#dc3545; box-shadow:0 0 5px #dc3545; }
+
+/* Scrollbar style */
+::-webkit-scrollbar { width:6px; height:6px; }
+::-webkit-scrollbar-track { background: rgba(255,255,255,0.03); }
+::-webkit-scrollbar-thumb { background: rgba(79,195,247,0.3); border-radius:3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(79,195,247,0.6); }
+
+/* Settings collapse (dark) */
+.settings-collapse {
+    position: absolute; right: 0; top: 40px;
+    background: #1a2233;
+    border: 2px solid rgba(79,195,247,0.3);
+    width: 350px; padding: 15px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.6);
+    border-radius: 8px; z-index: 2000;
+}
+.settings-collapse :is(h1,h2,h3,h4,h5,h6,p,label) { color: var(--PED-TEXT) !important; }
+
+/* Dropdown / select inside sidebar */
+.Select-control {
+    background: rgba(255,255,255,0.06) !important;
+    border-color: rgba(79,195,247,0.25) !important;
+    color: var(--PED-TEXT) !important;
+}
+.Select-menu-outer {
+    background: #1a2233 !important;
+    border: 1px solid rgba(79,195,247,0.3) !important;
+    z-index: 2002 !important;
+}
+.Select-option { color: var(--PED-TEXT) !important; background: transparent !important; }
+.Select-option:hover { background: var(--PED-ACCENT-DIM) !important; }
+.Select-value-label { color: var(--PED-TEXT) !important; }
+
+/* param title text */
+.param-title h5 { display:inline-block; margin:0; }
+.param { padding-bottom: 16px; position: relative; }
+.param p { color: var(--PED-TEXT-DIM); }
+
+/* Tooltip */
+[data-tooltip]:before {
+    position: fixed; display: inline-block;
+    content: attr(data-tooltip);
+    background: #1a2233; color: var(--PED-TEXT-DIM);
+    border: 1px solid var(--PED-BORDER);
+    border-radius: 4px; text-align: left;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.4);
+    opacity: 0; transition: opacity .1s ease-out;
+    visibility: hidden; padding: 4px 8px;
+    z-index: 3000; white-space: pre-wrap;
+    font-size: 0.78rem;
+}
+[data-tooltip]:hover:before { opacity: 1; top: var(--tooltip-y); visibility: visible; }
+
+/* Table inside chat */
+.chat-message-assistant-content table {
+    border-collapse: collapse; width: 100%; margin: 10px 0;
+    font-size: 0.9em; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.05);
+}
+.chat-message-assistant-content th {
+    background: #009879; color: #fff;
+    font-weight: bold; padding: 12px 15px;
+    text-transform: uppercase; letter-spacing: 0.03em;
+}
+.chat-message-assistant-content td {
+    padding: 12px 15px; border-bottom: 1px solid #ddd;
+}
+.chat-message-assistant-content tr:nth-of-type(even) { background: #f3f3f3; }
+
+/* ── BioDashboard iframe fill ────────────────────────────────── */
+#biodashboard-iframe {
+    flex: 1;
+    min-height: 0;
+    border: none;
+    width: 100%;
+}
+
+/* context banner in chat */
+.chat-context-banner {
+    background: #f7f9fc; border: 1px solid #e2e8f0;
+    border-radius: 12px; padding: 12px 14px; margin-bottom: 10px;
+}
+.chat-context-query { color: #475569; font-size: 0.9rem; line-height: 1.5; }
+
+/* message suggestions */
+.message-suggestions { background: transparent !important; border: none !important; padding: 0 !important; margin-top: 12px !important; }
+
+/* progress bar stripes */
+.chat-analyze-progress-bar .progress-bar {
+    background-image: linear-gradient(45deg, rgba(255,255,255,.18) 25%, transparent 25%,
+        transparent 50%, rgba(255,255,255,.18) 50%, rgba(255,255,255,.18) 75%, transparent 75%, transparent);
+    background-size: 1.5rem 1.5rem;
+    animation: progress-bar-stripes 0.6s linear infinite !important;
+}
+@keyframes chat-analyze-pulse { 0%,100% { opacity:1; } 50% { opacity:0.7; } }
+#chat-analyze-progress-container { animation: chat-analyze-pulse 1.5s ease-in-out infinite; }

@@ -13,7 +13,10 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Any
 
+from netmedex.subtype_service import SubtypeService
+
 logger = logging.getLogger(__name__)
+subtype_checker = SubtypeService()
 
 
 @dataclass
@@ -48,7 +51,14 @@ class ChatMessage:
 class ChatSession:
     """Manages a conversation with RAG-augmented context"""
 
-    def __init__(self, rag_system, llm_client, graph_retriever=None, max_history: int = 10):
+    def __init__(
+        self,
+        rag_system,
+        llm_client,
+        graph_retriever=None,
+        max_history: int = 10,
+        topic: str = "biomedical research",
+    ):
         """
         Initialize chat session.
 
@@ -57,80 +67,87 @@ class ChatSession:
             llm_client: LLM client for chat
             graph_retriever: GraphRetriever instance (optional)
             max_history: Maximum conversation history to retain
+            topic: Research topic for the assistant (default: "biomedical research")
         """
         self.rag = rag_system
         self.llm = llm_client
         self.graph_retriever = graph_retriever
         self.max_history = max_history
+        self.topic = topic
         self.history: list[ChatMessage] = []
 
-        # System prompt for biomedical context
-        self.system_prompt = """You are a specialized Biomedical Expert and Research Assistant. Your goal is to provide high-quality, clinical-grade analysis of scientific literature.
-
-You have access to a Hybrid RAG system combining:
-1. **Knowledge Graph**: Structural links and entity paths connecting concepts.
-2. **Textual RAG**: Deep context from relevant PubMed abstracts.
+        # system_prompt is the core ROLE, OPERATIONAL RULES and OUTPUT STRUCTURE
+        # from the user-provided optimized prompt.
+        self.system_prompt = """### ROLE
+You are a highly specialized biomedical research assistant focusing on {TOPIC}. Your goal is to synthesize information from the provided PubMed CONTEXT to provide structured, evidence-based answers to the user's QUERY.
 
 ---
 
-### OPERATING PROTOCOL
+### OPERATIONAL RULES
+1. **Evidence-Based Synthesis:**
+   - Prioritize information explicitly stated in the CONTEXT.
+   - Integrate findings across multiple papers to identify consensus, trends, or conflicting results.
+   - Every factual claim must be followed by its corresponding citation: `[PMID]`.
 
-1.  **Hierarchical Structuring (CRITICAL)**:
-    - Use `## Evidence-Based Answer` for findings directly stated in the context with PMID citations.
-    - Use `## Hypotheses / Speculative Inference` for identifying patterns, mechanisms, or gaps when direct evidence is partial.
-    - Use `### ` for sub-sections or specific PMID-based studies.
+2. **Comprehensive Listing (Types, Genes & Numbers):**
+   - If the QUERY asks for specific categories, types, or counts (e.g., associated genes, proteins, biomarkers, or cell types), you must **exhaustively list** all relevant entities found in the CONTEXT.
+   - For clarity, use **bullet points** or a **table** when listing more than 3 items.
+   - Each item in the list must be accompanied by its specific `[PMID]`.
 
-2.  **Authoritative Reasoning**:
-    - Synthesize observations across multiple papers.
-    - If papers A and B mention a drug and a gene respectively, and the graph shows a link, explain the structural connection as a pathway hypothesis.
+3. **Inference & Hypotheses (Grounding Only):**
+   - If direct evidence is missing, you may cautiously infer or hypothesize based on patterns within the provided papers.
+   - Use tentative language (e.g., "suggests," "is consistent with," "may indicate").
+   - These inferences must rely *only* on the provided CONTEXT; do not use external training knowledge.
 
-3.  **Strict Language Adherence**:
-    - Respond in the language of the query (e.g., Traditional Chinese if asked in Traditional Chinese).
+4. **No External Knowledge:**
+   - If the CONTEXT is "N/A" or irrelevant, output exactly: *"The provided papers do not contain information regarding this query."*
+   - Strictly avoid using internal model knowledge or databases.
 
-4.  **No Outside Knowledge**:
-    - Rely ONLY on the provided context. If the answer isn't there, say: "The provided literature does not contain information relevant to this query."
+5. **Strict Citation Format:**
+   - Always place PMIDs at the end of the relevant sentence or list item: `[PMID]`.
 
-5.  **Citations**:
-    - Cite PMIDs (e.g., [PMID: 156...]) for EVERY factual claim.
+6. **Language Rule:**
+   - **CRITICAL**: Respond in **{LANGUAGE}**. This is a hard requirement.
+   - **Intermediary English Synthesis**: To ensure maximum accuracy against the English PubMed context, you MUST first perform an internal reasoning step in English.
+   - **Format**: Begin your response with `<thinking_english>... your internal synthesis and PMID mapping ...</thinking_english>`. This block will be automatically hidden from the user.
+   - After the thinking block, provide the FINAL response and ALL headers in **{LANGUAGE}**.
+   - Specifically, use these translated section headers:
+     - **Traditional Chinese**: "證據分析", "假說與推論", "建議問題", "其餘推斷"
+     - **Japanese**: "根拠に基づく回答", "仮説・推論", "推奨されるフォローアップの質問"
+     - **Korean**: "근거 중심 답변", "가설 및 추론", "권장 후속 질문"
+   - Ensure the tone remains professional and information synthesis is grounded strictly in the CONTEXT.
 
 ---
 
 ### OUTPUT STRUCTURE
 
-You MUST structure every response into the following sections. **Translate the section headers into the same language as your response.**
+Please format your response as follows:
 
-**Evidence-Based Answer**
-- Summarize what the papers directly state that is relevant to the query, with PMID citations.
+1. **[Translated "Evidence-Based Answer"]** - A synthesized summary of findings. If listing genes, proteins, or counts, use a clear **bulleted list** (or a **Markdown table** if requested by the user) with corresponding PMIDs and brief functional descriptions for each entry.
 
-**Hypotheses / Speculative Inference** (Include even if short)
-- Based on the patterns in the papers, propose possible mechanisms or explanations that are consistent with but not directly proven by the text.
-- **CRITICAL:** You MUST explicitly cite the specific PMIDs that form the basis of your hypothesis (e.g., "This hypothesis is supported by findings in PMID: 123456").
+2. **[Translated "Hypotheses / Speculative Inference"]** (Optional)
+   - Proposed mechanisms or research directions derived from the data in the papers. Clearly state these are not directly proven.
 
-**Suggested Questions:** (Mandatory)
-- Provide 3 brief follow-up questions for the user to explore further.
-- Format these as a bulleted list.
-
----
-
-### 🚨 LANGUAGE RULE (CRITICAL) 🚨
-
-- **STRICT LANGUAGE MATCHING**: Respond in the EXACT SAME language as the user's query (e.g., Traditional Chinese if asked in Traditional Chinese).
-- This applies to ALL parts of the response, including section headers and suggested questions.
+3. **[Translated "Suggested Follow-up Questions"]**
+   - Provide exactly 3 questions.
+   - **RIGID UI FORMAT (No bullets):**
+     [Q1: Question 1 text]
+     [Q2: Question 2 text]
+     [Q3: Question 3 text]
+   - Important: Do NOT use markdown lists or bullets (-, *) for these three lines.
 """
-        # Compact prompt for local LLMs with smaller context windows
-        self.local_system_prompt = """You are a Biomedical Research Assistant. 
-Rely ONLY on the provided context (PMIDs provided below).
-1. Respond in the language of the query.
-2. Structure: 
-   ## Evidence: What papers state. Cite [PMID: XXX].
-   ## Hypotheses: What is suggested.
-   ## Follow-up: 3 questions.
-3. Cite PMIDs for EVERY factual claim.
-"""
+        # Compact prompt for local LLMs
+        self.local_system_prompt = self.system_prompt
 
     @staticmethod
     def _looks_like_cjk(text: str) -> bool:
-        return any("\u4e00" <= c <= "\u9fff" for c in text)
+        return any(
+            "\u4e00" <= c <= "\u9fff"  # CJK Unified Ideographs (Chinese/Kanji)
+            or "\u3040" <= c <= "\u309f"  # Hiragana
+            or "\u30a0" <= c <= "\u30ff"  # Katakana
+            or "\uac00" <= c <= "\ud7af"  # Hangul syllables
+            for c in text
+        )
 
     @staticmethod
     def _is_mirna_name(name: str) -> bool:
@@ -141,6 +158,21 @@ Rely ONLY on the provided context (PMIDs provided below).
             or normalized.startswith("microRNA".lower())
             or normalized.startswith("let-")
         )
+
+    @staticmethod
+    def _strip_generic_subtype_prefix(text: str) -> str:
+        """Remove generic subtype preface lines that are often unhelpful."""
+        if not text:
+            return text
+        cleaned = text
+        # Cover plain line, markdown heading, bold wrappers, and bracketed tag variants.
+        leading_patterns = [
+            r"^\s*#{0,6}\s*\*{0,2}\[?\s*Detected\s+Subtype:\s*General/Glioma\s*\(Cluster\s*0\)\s*\]?\*{0,2}\s*$\n?",
+            r"^\s*\[\s*Detected\s+Subtype:\s*General/Glioma\s*\(Cluster\s*0\)\s*\]\s*$\n?",
+        ]
+        for pattern in leading_patterns:
+            cleaned = re.sub(pattern, "", cleaned, flags=re.IGNORECASE | re.MULTILINE)
+        return cleaned.strip()
 
     def _detect_entity_listing_request(self, user_message: str) -> str | None:
         query = user_message.lower()
@@ -164,7 +196,7 @@ Rely ONLY on the provided context (PMIDs provided below).
         return None
 
     def _build_entity_listing_response(
-        self, entity_kind: str, user_message: str
+        self, entity_kind: str, user_message: str, session_language: str = "English"
     ) -> dict[str, Any] | None:
         if not self.graph_retriever or not getattr(self.graph_retriever, "graph", None):
             return None
@@ -191,10 +223,13 @@ Rely ONLY on the provided context (PMIDs provided below).
         if not sorted_entities:
             return None
 
-        if self._looks_like_cjk(user_message):
-            title = "Evidence-Based Answer"
-            hypo = "Hypotheses / Speculative Inference"
-            follow = "Suggested Questions:"
+        # Determine if we should use CJK headers based on either message or session language
+        use_cjk = self._looks_like_cjk(user_message) or self._looks_like_cjk(session_language)
+
+        if use_cjk:
+            title = "證據分析"
+            hypo = "假說與推論"
+            follow = "建議問題："
             intro = f"在目前選取的網路中，共找到 {len(sorted_entities)} 個{entity_kind}相關實體："
             no_hypo = "這是根據目前圖譜節點直接整理出的完整清單，無需額外推論。"
             follow_lines = [
@@ -214,21 +249,42 @@ Rely ONLY on the provided context (PMIDs provided below).
                 "Should I regroup them by PMID or relation type?",
             ]
 
-        bullet_lines = []
+        output_lines = []
         cited_pmids: set[str] = set()
-        for name, pmid_set in sorted_entities:
-            pmids = sorted(pmid_set)
-            shown_pmids = pmids[:3]
-            cited_pmids.update(shown_pmids)
-            pmid_text = ", ".join(f"PMID:{p}" for p in shown_pmids) if shown_pmids else "No PMID"
-            extra = f" (+{len(pmids) - 3} more)" if len(pmids) > 3 else ""
-            bullet_lines.append(f"- {name} [{pmid_text}{extra}]")
+        as_table = "table" in user_message.lower() or "表格" in user_message
+
+        if as_table:
+            if use_cjk:
+                output_lines.append("| 實體名稱 | 相關 PubMed ID (PMIDs) |")
+            else:
+                output_lines.append("| Entity Name | Related PubMed ID (PMIDs) |")
+            output_lines.append("|---|---|")
+
+            for name, pmid_set in sorted_entities:
+                pmids = sorted(pmid_set)
+                shown_pmids = pmids[:3]
+                cited_pmids.update(shown_pmids)
+                pmid_text = (
+                    ", ".join(f"PMID:{p}" for p in shown_pmids) if shown_pmids else "No PMID"
+                )
+                extra = f" (+{len(pmids) - 3} more)" if len(pmids) > 3 else ""
+                output_lines.append(f"| {name} | {pmid_text}{extra} |")
+        else:
+            for name, pmid_set in sorted_entities:
+                pmids = sorted(pmid_set)
+                shown_pmids = pmids[:3]
+                cited_pmids.update(shown_pmids)
+                pmid_text = (
+                    ", ".join(f"PMID:{p}" for p in shown_pmids) if shown_pmids else "No PMID"
+                )
+                extra = f" (+{len(pmids) - 3} more)" if len(pmids) > 3 else ""
+                output_lines.append(f"- {name} [{pmid_text}{extra}]")
 
         assistant_content = "\n".join(
             [
                 f"**{title}**",
                 intro,
-                *bullet_lines,
+                *output_lines,
                 "",
                 f"**{hypo}**",
                 no_hypo,
@@ -245,7 +301,11 @@ Rely ONLY on the provided context (PMIDs provided below).
         }
 
     def send_message(
-        self, user_message: str, top_k: int = 5, session_language: str = "English"
+        self,
+        user_message: str,
+        top_k: int = 8,
+        session_language: str = "English",
+        skip_translation: bool = False,
     ) -> dict[str, Any]:
         """
         Process user message and generate AI response.
@@ -254,6 +314,7 @@ Rely ONLY on the provided context (PMIDs provided below).
             user_message: User's question
             top_k: Number of abstracts to retrieve for context
             session_language: Language to enforce for the response
+            skip_translation: Whether to skip LLM translation for query optimization
 
         Returns:
             Dictionary with response and metadata
@@ -266,7 +327,7 @@ Rely ONLY on the provided context (PMIDs provided below).
             entity_listing_kind = self._detect_entity_listing_request(user_message)
             if entity_listing_kind:
                 listing_response = self._build_entity_listing_response(
-                    entity_listing_kind, user_message
+                    entity_listing_kind, user_message, session_language
                 )
                 if listing_response:
                     assistant_msg = ChatMessage(
@@ -284,63 +345,119 @@ Rely ONLY on the provided context (PMIDs provided below).
                         "assistant_msg": assistant_msg,
                     }
 
+            # English Intermediary: Translate query to English for optimal retrieval if needed
+            search_query = user_message
+
+            # Detect internal bootstrap triggers to auto-skip translation
+            bootstrap_triggers = [
+                "Please provide a concise initial brief for the selected abstracts",
+            ]
+            is_internal = any(trigger in user_message for trigger in bootstrap_triggers)
+
+            needs_translation = (
+                not skip_translation
+                and not is_internal
+                and (session_language != "English" or self._looks_like_cjk(user_message))
+            )
+
+            if needs_translation:
+                logger.info(
+                    f"Translating query to English for optimal retrieval (Language: {session_language}, CJK: {self._looks_like_cjk(user_message)})"
+                )
+                if hasattr(self.llm, "translate_to_english"):
+                    search_query = self.llm.translate_to_english(user_message)
+                    logger.info(f"Translated query: '{search_query}'")
+                else:
+                    logger.warning(
+                        "LLM client does not support translate_to_english; using original query"
+                    )
+            elif is_internal:
+                # Use a generic meaningful query for internal bootstrap if empty or overly structured
+                search_query = self.topic
+                logger.debug(
+                    f"Internal bootstrap detected. Using topic '{search_query}' as retrieval query."
+                )
+
             # 1. Retrieve Text Context (RAG)
-            # Optimization: If we have a small number of documents (<= 20),
-            # just use all of them instead of vector search. This handles
-            # "summarize all" queries much better.
+            # Use top_k to limit context size and speed up LLM response
             total_docs = len(self.rag.documents)
             is_local = getattr(self.llm, "provider", "") == "local"
+            effective_k = top_k
 
-            if total_docs <= 20:
-                logger.info(f"Small document set ({total_docs}), using all abstracts for context")
+            if is_local:
+                effective_k = min(effective_k, 5)
+                logger.info("Local model detected: capping context to 5 abstracts")
+
+            if total_docs <= effective_k:
+                logger.info(
+                    f"Document set ({total_docs}) smaller than k({effective_k}), using subset of abstracts"
+                )
                 # Sort by weight (citation-normalized) descending
                 sorted_docs = sorted(
                     self.rag.documents.values(), key=lambda d: d.weight, reverse=True
                 )
-                pmids_used = [doc.pmid for doc in sorted_docs]
-
-                # Truncate if local to save context window
-                if is_local and total_docs > 8:
-                    logger.info(
-                        "Local model detected: capping context to 8 highest-priority abstracts"
-                    )
-                    pmids_used = pmids_used[:8]
+                pmids_used = [doc.pmid for doc in sorted_docs[:effective_k]]
 
                 context_parts = []
                 for rank, pmid in enumerate(pmids_used, start=1):
                     doc = self.rag.documents[pmid]
                     priority_label = f"Priority #{rank} (Impact Score: {doc.weight:.2f})"
-                    context_parts.append(
-                        f"PMID: {pmid} [{priority_label}]\n"
-                        f"Title: {doc.title}\n"
-                        f"Abstract: {doc.abstract}\n"
-                    )
+                    part = [
+                        f"PMID: {pmid} [{priority_label}]",
+                        f"Title: {doc.title}",
+                        f"Abstract: {doc.abstract}",
+                    ]
+
+                    # Include structured semantic relationships if available
+                    if hasattr(doc, "edges") and doc.edges:
+                        unique_rels = set()
+                        for edge in doc.edges:
+                            source = edge.get("source", "Unknown")
+                            target = edge.get("target", "Unknown")
+                            rels = edge.get("relations", ["associated"])
+                            for r in rels:
+                                unique_rels.add(f"- {source} --[{r}]--> {target}")
+                        if unique_rels:
+                            part.append("Structural Relationships (Extracted):")
+                            part.extend(sorted(unique_rels)[:15])
+
+                    context_parts.append("\n".join(part))
                 text_context = "\n---\n\n".join(context_parts)
             else:
                 # Use vector search for larger sets - cap top_k for local
                 search_k = min(top_k, 5) if is_local else top_k
-                text_context, pmids_used = self.rag.get_context(user_message, top_k=search_k)
+                text_context, pmids_used = self.rag.get_context(search_query, top_k=search_k)
 
             # 2. Retrieve Graph Context (Structure)
             graph_context = ""
             if self.graph_retriever:
                 logger.info("Retrieving graph context...")
-                relevant_nodes = self.graph_retriever.find_relevant_nodes(user_message)
+                relevant_nodes = self.graph_retriever.find_relevant_nodes(search_query)
                 if relevant_nodes:
                     graph_context = self.graph_retriever.get_subgraph_context(relevant_nodes)
                     logger.info(f"Found {len(relevant_nodes)} relevant nodes in graph")
                 else:
                     logger.info("No relevant nodes found in graph query")
 
+            # 3. Subtype Prediction Utility (kept for metadata only; not injected into prompt)
+            subtype_info = subtype_checker.predict_subtype(text_context)
+            logger.info(
+                f"Subtype identified: {subtype_info['name']} (Conf: {subtype_info['confidence']:.2f})"
+            )
+
             # Build conversation history for LLM
             messages = self._build_messages(
-                user_message, text_context, graph_context, session_language
+                user_message, text_context, graph_context, session_language, ""
             )
 
             # Call LLM - use unified helper so Gemini uses its HTTP path
-            logger.info(f"Sending chat request with {len(pmids_used)} context documents")
-            # Use a higher token limit for rich multi-section responses
-            chat_max_tokens = 4000
+            logger.info(
+                f"Sending chat request with {len(pmids_used)} context documents to {getattr(self.llm, 'provider', 'unknown')} LLM"
+            )
+            start_time = datetime.now()
+            # Bootstrap summaries should be fast; keep token/time budget tighter.
+            chat_max_tokens = 1400 if is_internal else 4000
+            chat_timeout = 90.0 if is_internal else 300.0
             assistant_content = None
             if hasattr(self.llm, "chat_completion_text"):
                 try:
@@ -348,14 +465,30 @@ Rely ONLY on the provided context (PMIDs provided below).
                         messages=messages,
                         temperature=0.3,
                         max_tokens=chat_max_tokens,
-                        timeout=240.0,
+                        timeout=chat_timeout,
                     )
+                    duration = (datetime.now() - start_time).total_seconds()
+                    logger.info(f"LLM Response received in {duration:.2f}s")
                     if assistant_content is not None and not isinstance(assistant_content, str):
                         logger.warning(
                             "chat_completion_text returned non-string content; falling back to SDK call"
                         )
                         assistant_content = None
                 except Exception as e:
+                    err = str(e).lower()
+                    is_transient = any(
+                        token in err
+                        for token in (
+                            "timed out",
+                            "timeout",
+                            "connection",
+                            "rate limit",
+                            "429",
+                        )
+                    )
+                    # Avoid a second long wait on flaky providers during bootstrap.
+                    if is_internal or is_transient:
+                        raise
                     logger.warning(f"chat_completion_text failed, falling back to SDK call: {e}")
 
             if assistant_content is None and getattr(self.llm, "client", None) is not None:
@@ -371,6 +504,18 @@ Rely ONLY on the provided context (PMIDs provided below).
             if assistant_content is None:
                 assistant_content = ""
             assistant_content = assistant_content.strip()
+
+            # 6. Intermediary Reasoning Chain Filter
+            # Strip internal <thinking_english> block before returning to user
+            assistant_content = re.sub(
+                r"<thinking_english>.*?</thinking_english>",
+                "",
+                assistant_content,
+                flags=re.IGNORECASE | re.DOTALL,
+            ).strip()
+
+            # Guardrail: remove generic subtype prefix noise (common with some models).
+            assistant_content = self._strip_generic_subtype_prefix(assistant_content)
 
             # Parse citations from response to filter sources
             # Matches identifiers like: PMID:123456, [PMID:123456], PMID: 123456
@@ -394,6 +539,7 @@ Rely ONLY on the provided context (PMIDs provided below).
                 "success": True,
                 "message": assistant_content,
                 "sources": final_sources,
+                "subtype": subtype_info,
                 "context_count": len(pmids_used),
                 "user_msg": user_msg,
                 "assistant_msg": assistant_msg,
@@ -413,17 +559,20 @@ Rely ONLY on the provided context (PMIDs provided below).
         text_context: str,
         graph_context: str = "",
         session_language: str = "English",
+        subtype_context: str = "",
     ) -> list[dict]:
         """Build message list for LLM API call"""
         provider = getattr(self.llm, "provider", "openai")
         is_local = provider == "local"
 
         system_content = self.local_system_prompt if is_local else self.system_prompt
+        # Populate {TOPIC} and {LANGUAGE}
+        system_content = system_content.replace("{TOPIC}", self.topic)
+        system_content = system_content.replace("{LANGUAGE}", session_language)
+
         messages = [{"role": "system", "content": system_content}]
 
         # Add recent conversation history (excluding current message)
-        # Prevents accidental consecutive repetition
-        # Use a sliding window for context (max_history - 1)
         last_added_content = None
         history_window = (
             self.history[-(self.max_history - 1) :] if self.max_history > 0 else self.history
@@ -440,27 +589,23 @@ Rely ONLY on the provided context (PMIDs provided below).
             messages.append({"role": msg.role, "content": msg.content})
             last_added_content = msg.content
 
-        # Add current message with Hybrid RAG context
-        current_message = f"""Context 1: Knowledge Graph Structure (Logic & Paths):
-{graph_context if graph_context else "No specific structural context found."}
+        # Add current message with structure-reinforced context
+        context_str = (
+            f"{subtype_context}\n"
+            f"Knowledge Graph Structure:\n{graph_context}\n\n"
+            f"PubMed Abstracts:\n{text_context}"
+        )
+        if not text_context.strip() and not graph_context.strip():
+            context_str = "N/A"
+
+        current_message = f"""### CONTEXT
+{context_str}
 
 ---
 
-Context 2: Scientific Abstracts (Details & Evidence):
-{text_context}
-
----
-
-User question: {user_message}
-
-Please answer based on the context provided above. 
-CRITICAL RULE: You MUST respond entirely in {session_language}."""
-
-        if is_local:
-            # Append reinforcing reminder for local models
-            current_message += (
-                f"\n\nREMINDER: Use {session_language}. Cite PMIDs (e.g. [PMID:123456])."
-            )
+### TASK
+*User:* {user_message}
+*Assistant:*"""
 
         messages.append({"role": "user", "content": current_message})
 
