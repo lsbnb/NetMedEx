@@ -1,26 +1,68 @@
 from __future__ import annotations
 
 import base64
+import io
 import logging
+import os
 import pickle
 import threading
 from queue import Queue
 
-import networkx as nx
 import dash_bootstrap_components as dbc
+import networkx as nx
 from dash import Input, Output, State, html, no_update
 
 from netmedex.cli_utils import load_pmids
-from netmedex.exceptions import EmptyInput, NoArticles, RetryableError, UnsuccessfulRequest
+from netmedex.exceptions import (
+    EmptyInput,
+    NoArticles,
+    RetryableError,
+    UnsuccessfulRequest,
+)
 from netmedex.graph import PubTatorGraphBuilder, save_graph
+from netmedex.normalization import normalize_knowledge_graph
 from netmedex.pubtator import PubTatorAPI
 from netmedex.pubtator_parser import PubTatorIO
 from netmedex.utils_threading import run_thread_with_error_notification
-from webapp.llm import GEMINI_OPENAI_BASE_URL, OPENAI_BASE_URL
-from webapp.llm import llm_client
-from webapp.utils import generate_session_id, get_data_savepath, visibility
+from webapp.llm import GEMINI_OPENAI_BASE_URL, OPENAI_BASE_URL, llm_client
+from webapp.utils import display, generate_session_id, get_data_savepath, visibility
 
 logger = logging.getLogger(__name__)
+
+
+class _RestrictedGraphUnpickler(pickle.Unpickler):
+    """Restricted unpickler for trusted NetMedEx graph pickle payloads."""
+
+    _ALLOWED = {
+        "builtins": {
+            "dict",
+            "list",
+            "tuple",
+            "set",
+            "frozenset",
+            "str",
+            "int",
+            "float",
+            "bool",
+            "bytes",
+            "bytearray",
+        },
+        "networkx.classes.graph": {"Graph"},
+        "networkx.classes.digraph": {"DiGraph"},
+        "networkx.classes.multigraph": {"MultiGraph"},
+        "networkx.classes.multidigraph": {"MultiDiGraph"},
+        "collections": {"defaultdict"},
+    }
+
+    def find_class(self, module, name):
+        allowed_names = self._ALLOWED.get(module, set())
+        if name in allowed_names:
+            return super().find_class(module, name)
+        raise pickle.UnpicklingError(f"Blocked pickle class: {module}.{name}")
+
+
+def _safe_load_graph_pickle(payload: bytes):
+    return _RestrictedGraphUnpickler(io.BytesIO(payload)).load()
 
 
 def detect_query_language(text: str) -> str:
@@ -48,9 +90,11 @@ def callbacks(app):
         Output("memory-graph-cut-weight", "data", allow_duplicate=True),
         Output("is-new-graph", "data"),
         Output("pmid-title-dict", "data"),
+        Output("pmid-citation-dict", "data"),
         Output("current-session-path", "data"),
         Output("total-stats", "data"),
         Output("session-language", "data"),
+        Output("sidebar-panel-toggle", "active_tab"),
         Output("output", "children", allow_duplicate=True),
         Input("submit-button", "n_clicks"),
         [
@@ -60,6 +104,7 @@ def callbacks(app):
             State("data-input", "value"),
             State("pmid-file-data", "contents"),
             State("pubtator-file-data", "contents"),
+            State("pubtator-file-data", "filename"),
             State("graph-file-data", "contents"),
             State("graph-cut-weight", "value"),
             State("max-edges", "value"),
@@ -81,9 +126,13 @@ def callbacks(app):
             State("google-safety-setting", "value"),
             State("llm-base-url-input", "value"),
             State("llm-model-input", "value"),
+            State("openrouter-api-key-input", "value"),
+            State("openrouter-model-selector", "value"),
+            State("normalization-toggle", "value"),
         ],
         running=[
             (Output("submit-button", "disabled"), True, False),
+            (Output("progress-card", "style"), display.block, display.none),
         ],
         progress=[
             Output("progress", "value"),
@@ -104,6 +153,7 @@ def callbacks(app):
         data_input,
         pmid_file_data,
         pubtator_file_data,
+        pubtator_filename,
         graph_file_data,
         weight,
         max_edges,
@@ -124,8 +174,81 @@ def callbacks(app):
         google_safety_setting,
         llm_base_url,
         llm_model,
+        openrouter_api_key,
+        openrouter_model,
+        normalization_toggle,
     ):
         try:
+            # Initialize progress bar to empty/start
+            set_progress((0, 100, "0%", "Initializing..."))
+            # ----------------------------------------------------------------
+            # GRAPH FILE BYPASS: restore session from uploaded .pkl file
+            # ----------------------------------------------------------------
+            savepath = get_data_savepath(generate_session_id())
+
+            if source == "graph_file":
+                if not graph_file_data:
+                    raise EmptyInput("No Graph file uploaded")
+                if os.getenv("ALLOW_UNSAFE_GRAPH_PICKLE_UPLOAD", "false").lower() not in {
+                    "1",
+                    "true",
+                    "yes",
+                }:
+                    raise ValueError(
+                        "Graph pickle upload is disabled by default for security. "
+                        "Set ALLOW_UNSAFE_GRAPH_PICKLE_UPLOAD=true only for trusted files."
+                    )
+
+                content_type, content_string = graph_file_data.split(",")
+                graph_bytes = base64.b64decode(content_string)
+
+                # Write pickle to session path
+                with open(savepath["graph"], "wb") as f:
+                    f.write(graph_bytes)
+
+                # Load and validate
+                G = _safe_load_graph_pickle(graph_bytes)
+
+                if not isinstance(G, nx.Graph):
+                    raise ValueError(
+                        "Invalid Graph file: not a NetworkX Graph object. "
+                        "Please upload a file exported from NetMedEx Graph Panel."
+                    )
+                required_keys = ["pmid_title"]
+                for k in required_keys:
+                    if k not in G.graph:
+                        raise ValueError(
+                            f"Invalid Graph file: missing required metadata '{k}'. "
+                            "Please upload a file exported from NetMedEx Graph Panel."
+                        )
+
+                num_articles = len(G.graph.get("pmid_title", {}))
+                num_nodes = G.number_of_nodes()
+                num_edges = G.number_of_edges()
+                pmid_citation_dict = {
+                    pmid: meta.get("citation_count")
+                    for pmid, meta in G.graph.get("pmid_metadata", {}).items()
+                    if isinstance(meta, dict)
+                }
+                set_progress((1, 1, "1/1", "Graph restored from file!"))
+                logger.info(
+                    f"Graph file loaded: {num_articles} articles, "
+                    f"{num_nodes} nodes, {num_edges} edges"
+                )
+                return (
+                    visibility.visible,
+                    weight,
+                    True,
+                    G.graph["pmid_title"],
+                    pmid_citation_dict,
+                    savepath,
+                    {"articles": num_articles, "nodes": num_nodes, "edges": num_edges},
+                    "English",  # Default language; user can switch in Chat
+                    "graph",  # Switch to Graph tab
+                    "",  # Clear any previous error
+                )
+            # ----------------------------------------------------------------
+
             # Initialize LLM Client for the background process
             if llm_provider == "openai":
                 model = openai_custom_model if openai_model == "custom" else openai_model
@@ -142,6 +265,13 @@ def callbacks(app):
                     base_url=GEMINI_OPENAI_BASE_URL,
                     provider="google",
                     safety_setting=google_safety_setting,
+                )
+            elif llm_provider == "openrouter":
+                llm_client.initialize_client(
+                    api_key=openrouter_api_key,
+                    model=openrouter_model,
+                    base_url="https://openrouter.ai/api/v1",
+                    provider="openrouter",
                 )
             else:  # local
                 llm_client.initialize_client(
@@ -167,58 +297,6 @@ def callbacks(app):
             full_text = "full_text" in pubtator_params
             fetch_citations = "fetch_citations" in pubtator_params
             community = "community" in cy_params
-            savepath = get_data_savepath(generate_session_id())
-
-            # ----------------------------------------------------------------
-            # GRAPH FILE BYPASS: restore session from uploaded .pkl file
-            # ----------------------------------------------------------------
-            if source == "graph_file":
-                if not graph_file_data:
-                    raise EmptyInput("No Graph file uploaded")
-
-                content_type, content_string = graph_file_data.split(",")
-                graph_bytes = base64.b64decode(content_string)
-
-                # Write pickle to session path
-                with open(savepath["graph"], "wb") as f:
-                    f.write(graph_bytes)
-
-                # Load and validate
-                with open(savepath["graph"], "rb") as f:
-                    G = pickle.load(f)
-
-                if not isinstance(G, nx.Graph):
-                    raise ValueError(
-                        "Invalid Graph file: not a NetworkX Graph object. "
-                        "Please upload a file exported from NetMedEx Graph Panel."
-                    )
-                required_keys = ["pmid_title"]
-                for k in required_keys:
-                    if k not in G.graph:
-                        raise ValueError(
-                            f"Invalid Graph file: missing required metadata '{k}'. "
-                            "Please upload a file exported from NetMedEx Graph Panel."
-                        )
-
-                num_articles = len(G.graph.get("pmid_title", {}))
-                num_nodes = G.number_of_nodes()
-                num_edges = G.number_of_edges()
-                set_progress((1, 1, "1/1", "Graph restored from file!"))
-                logger.info(
-                    f"Graph file loaded: {num_articles} articles, "
-                    f"{num_nodes} nodes, {num_edges} edges"
-                )
-                return (
-                    visibility.visible,
-                    weight,
-                    True,
-                    G.graph["pmid_title"],
-                    savepath,
-                    {"articles": num_articles, "nodes": num_nodes, "edges": num_edges},
-                    "English",  # Default language; user can switch in Chat
-                    "",  # Clear any previous error
-                )
-            # ----------------------------------------------------------------
 
             def decode_file_content(content_string):
                 decoded_bytes = base64.b64decode(content_string)
@@ -283,19 +361,28 @@ def callbacks(app):
                                     )
                                 )
                     else:
-                        # Mandatory English translation for non-English queries when AI search is off
+                        # Mandatory English translation and restructuring for non-English queries
                         detected_lang = detect_query_language(query)
                         if detected_lang != "English" and llm_client.client:
                             set_progress(
-                                (0, 1, "", f"Translating {detected_lang} query to English...")
+                                (
+                                    0,
+                                    1,
+                                    "",
+                                    f"Translating and restructuring {detected_lang} query for PubTator3...",
+                                )
                             )
                             try:
-                                translated_query = llm_client.translate_to_english(query)
-                                if translated_query != query:
+                                # For non-English, we use the boolean translator anyway because it handles
+                                # scientific restructuring better than simple translation.
+                                translated_query = llm_client.translate_query_to_boolean(query)
+                                if translated_query and translated_query != query:
                                     query = translated_query
-                                    set_progress((0, 1, "", f"Translated to English: {query}"))
+                                    set_progress(
+                                        (0, 1, "", f"Translated and restructured: {query}")
+                                    )
                             except Exception as e:
-                                logger.error(f"Error executing translation: {e}")
+                                logger.error(f"Error executing translation/restructuring: {e}")
                                 set_progress(
                                     (
                                         0,
@@ -319,6 +406,8 @@ def callbacks(app):
                 threading.excepthook = custom_hook
 
                 def run_pubtator_and_save():
+                    import json as _json
+
                     result = PubTatorAPI(
                         query=query,
                         pmid_list=pmid_list,
@@ -329,6 +418,10 @@ def callbacks(app):
                     ).run()
                     with open(savepath["pubtator"], "w") as f:
                         f.write(result.to_pubtator_str(annotation_use_identifier_name=use_mesh))
+                    # Also save raw BioC-JSON (retains journal/date/authors for RIS export and download)
+                    if result.raw_biocjson and savepath.get("biocjson"):
+                        with open(savepath["biocjson"], "w", encoding="utf-8") as f:
+                            _json.dump(result.raw_biocjson, f, ensure_ascii=False)
 
                 job = threading.Thread(
                     target=run_thread_with_error_notification(run_pubtator_and_save, queue),
@@ -373,8 +466,10 @@ def callbacks(app):
                         False,
                         no_update,
                         no_update,
+                        no_update,
                         {"articles": 0, "nodes": 0, "edges": 0},
                         no_update,  # keep existing session-language
+                        no_update,  # keep existing tab
                         html.Div(
                             dbc.Alert(exception_msg, color="danger", dismissable=True),
                             className="mt-3",
@@ -385,10 +480,23 @@ def callbacks(app):
             elif source == "file":
                 if not pubtator_file_data:
                     raise EmptyInput("No PubTator file uploaded")
-                with open(savepath["pubtator"], "w") as f:
-                    content_type, content_string = pubtator_file_data.split(",")
-                    decoded_content = decode_file_content(content_string)
-                    f.write(decoded_content)
+                content_type, content_string = pubtator_file_data.split(",")
+                decoded_content = decode_file_content(content_string)
+                stripped_content = decoded_content.lstrip()
+                filename_lower = (pubtator_filename or "").lower()
+                is_biocjson_upload = (
+                    "json" in content_type.lower()
+                    or filename_lower.endswith(".json")
+                    or filename_lower.endswith(".biocjson")
+                    or stripped_content.startswith("{")
+                )
+
+                if is_biocjson_upload and savepath.get("biocjson"):
+                    with open(savepath["biocjson"], "w", encoding="utf-8") as f:
+                        f.write(decoded_content)
+                else:
+                    with open(savepath["pubtator"], "w") as f:
+                        f.write(decoded_content)
 
             set_progress((0, 1, "0/1", "Generating network..."))
 
@@ -411,8 +519,9 @@ def callbacks(app):
                         False,
                         no_update,
                         no_update,
-                        {"articles": 0, "nodes": 0, "edges": 0},
                         no_update,
+                        {"articles": 0, "nodes": 0, "edges": 0},
+                        no_update,  # tab
                         html.Div(
                             dbc.Alert(
                                 "Error: Semantic analysis requires LLM configuration. Please set your API key in Advanced Settings.",
@@ -427,6 +536,30 @@ def callbacks(app):
             llm_for_graph = llm_client if edge_method == "semantic" else None
 
             if edge_method == "semantic":
+                # Ensure session directory exists
+                import os
+
+                if not os.path.exists(savepath["pubtator"]):
+                    return (
+                        no_update,
+                        no_update,
+                        no_update,
+                        no_update,
+                        no_update,
+                        no_update,
+                        no_update,
+                        no_update,
+                        no_update,  # tab
+                        html.Div(
+                            dbc.Alert(
+                                "⚠️ Session data has expired. Please re-run the search to continue.",
+                                color="warning",
+                                dismissable=True,
+                            ),
+                            className="mt-3",
+                        ),
+                    )
+
                 # Parse early to show accurate progress
                 collection = PubTatorIO.parse(savepath["pubtator"])
                 total_articles = len(collection.articles)
@@ -468,7 +601,24 @@ def callbacks(app):
             else:
                 # For non-semantic methods, parse later
                 collection = None
-                progress_callback = None
+                # Provide a progress callback if fetching citations (for progress bar)
+                if fetch_citations:
+                    _total_articles_estimate = [0]  # Will be updated when we know count
+
+                    def progress_callback(current, total, status, error):
+                        if status == "fetching citation counts":
+                            set_progress(
+                                (
+                                    current,
+                                    total,
+                                    f"{current}/{total}",
+                                    f"📚 Fetching citation counts: {current}/{total}...",
+                                )
+                            )
+                        else:
+                            set_progress((current, total, f"{current}/{total}", status))
+                else:
+                    progress_callback = None
 
             graph_builder = PubTatorGraphBuilder(
                 node_type=node_type,
@@ -478,12 +628,54 @@ def callbacks(app):
                 progress_callback=progress_callback,
                 fetch_citations=fetch_citations,
             )
+            graph_builder._citation_summary = None  # initialize
 
             # Parse collection if not already done
             if collection is None:
-                collection = PubTatorIO.parse(savepath["pubtator"])
+                # Prefer BioC-JSON if available to preserve metadata (journal, authors, etc.)
+                import os
+
+                if not os.path.exists(savepath.get("biocjson", "")) and not os.path.exists(
+                    savepath["pubtator"]
+                ):
+                    return (
+                        no_update,
+                        no_update,
+                        no_update,
+                        no_update,
+                        no_update,
+                        no_update,
+                        no_update,
+                        no_update,
+                        no_update,  # tab
+                        html.Div(
+                            dbc.Alert(
+                                "⚠️ Session data has expired. Please re-run the search to continue.",
+                                color="warning",
+                                dismissable=True,
+                            ),
+                            className="mt-3",
+                        ),
+                    )
+
+                if os.path.exists(savepath.get("biocjson", "")):
+                    collection = PubTatorIO.parse(savepath["biocjson"])
+                else:
+                    collection = PubTatorIO.parse(savepath["pubtator"])
 
             graph_builder.add_collection(collection)
+
+            # Show citation summary if we fetched citation data
+            if fetch_citations and graph_builder._citation_summary:
+                cs = graph_builder._citation_summary
+                set_progress(
+                    (
+                        cs["total"],
+                        cs["total"],
+                        f"{cs['total']}/{cs['total']}",
+                        f"✅ Citations fetched: {cs['with_count']}/{cs['total']} articles have citation data.",
+                    )
+                )
 
             # Show building progress
             if edge_method == "semantic":
@@ -503,6 +695,39 @@ def callbacks(app):
                 max_edges=0,
             )
 
+            # ----------------------------------------------------------------
+            # SAPBERT KG NORMALIZATION (NEW in v1.1)
+            # ----------------------------------------------------------------
+            if "enabled" in (normalization_toggle or []) and llm_client.client:
+                logger.info("Executing sapBERT Knowledge Graph normalization...")
+                set_progress((1, 1, "", "🤖 Normalizing Knowledge Graph..."))
+
+                # Use a wrapper for progress reporting during normalization
+                def norm_progress_cb(current, total, status, error):
+                    if error:
+                        set_progress(
+                            (
+                                current,
+                                total,
+                                f"{current}/{total}",
+                                f"⚠️ Normalization warning: {error}",
+                            )
+                        )
+                    else:
+                        set_progress(
+                            (
+                                current,
+                                total,
+                                f"{current}/{total}",
+                                f"🤖 Normalizing Knowledge Graph: {status}",
+                            )
+                        )
+
+                G = normalize_knowledge_graph(
+                    G, llm_client, threshold=0.96, progress_callback=norm_progress_cb
+                )
+            # ----------------------------------------------------------------
+
             # Keeping track of the graph's metadata
             G.graph["is_community"] = True if community else False
             G.graph["max_edges"] = max_edges
@@ -517,6 +742,7 @@ def callbacks(app):
             semantic_stats = G.graph.get("semantic_stats", {})
             semantic_failed = int(semantic_stats.get("failed_articles", 0))
             semantic_total = int(semantic_stats.get("total_articles", 0))
+            semantic_api_errors = int(semantic_stats.get("api_errors", 0))
             semantic_parse_failures = int(semantic_stats.get("parse_failures", 0))
             semantic_relaxed_recoveries = int(semantic_stats.get("relaxed_recoveries", 0))
             semantic_compact_retries = int(semantic_stats.get("compact_retries", 0))
@@ -543,6 +769,7 @@ def callbacks(app):
                             html.Div(
                                 (
                                     f"Diagnostics: provider={semantic_provider}, model={semantic_model}, "
+                                    f"api_errors={semantic_api_errors}, "
                                     f"parse_failures={semantic_parse_failures}, "
                                     f"relaxed_recoveries={semantic_relaxed_recoveries}, "
                                     f"compact_retries={semantic_compact_retries}, "
@@ -572,6 +799,7 @@ def callbacks(app):
                             html.Div(
                                 (
                                     f"Diagnostics: provider={semantic_provider}, model={semantic_model}, "
+                                    f"api_errors={semantic_api_errors}, "
                                     f"parse_failures={semantic_parse_failures}, "
                                     f"relaxed_recoveries={semantic_relaxed_recoveries}, "
                                     f"compact_retries={semantic_compact_retries}, "
@@ -594,6 +822,7 @@ def callbacks(app):
                         html.Div(
                             (
                                 f"Semantic diagnostics: provider={semantic_provider}, model={semantic_model}, "
+                                f"api_errors={semantic_api_errors}, "
                                 f"parse_failures={semantic_parse_failures}, "
                                 f"relaxed_recoveries={semantic_relaxed_recoveries}, "
                                 f"compact_retries={semantic_compact_retries}, "
@@ -611,14 +840,21 @@ def callbacks(app):
                 )
 
             print(f"DEBUG: run_pubtator3_api completed! num_articles={num_articles}")
+            pmid_citation_dict = {
+                pmid: meta.get("citation_count")
+                for pmid, meta in G.graph.get("pmid_metadata", {}).items()
+                if isinstance(meta, dict)
+            }
             return (
                 visibility.visible,
                 weight,
                 True,
                 G.graph["pmid_title"],
+                pmid_citation_dict,
                 savepath,
                 {"articles": num_articles, "nodes": num_nodes, "edges": num_edges},
                 detected_language,
+                "graph",  # Switch to Graph tab
                 warning_output,
             )
 
@@ -631,8 +867,10 @@ def callbacks(app):
                 False,
                 no_update,
                 no_update,
+                no_update,
                 {"articles": 0, "nodes": 0, "edges": 0},
                 no_update,  # keep existing session-language
+                no_update,  # keep existing tab
                 html.Div(
                     dbc.Alert(
                         f"An unexpected error occurred: {str(e)}",

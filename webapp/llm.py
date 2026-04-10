@@ -1,15 +1,16 @@
 from __future__ import annotations
 
-
-import os
 import logging
-from openai import OpenAI, OpenAIError
+import os
+
 import requests
+from openai import OpenAI
 
 logger = logging.getLogger(__name__)
 
 OPENAI_BASE_URL = "https://api.openai.com/v1"
 GEMINI_OPENAI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
+OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 
 
 class LLMClient:
@@ -24,17 +25,19 @@ class LLMClient:
 
         # Provider-specific env resolution (with legacy fallbacks).
         if self.provider == "google":
-            self.api_key = (
-                os.getenv("GEMINI_API_KEY")
-                or os.getenv("GOOGLE_API_KEY")
-                or os.getenv("OPENAI_API_KEY")
-            )
+            self.api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
             self.base_url = self.base_url or GEMINI_OPENAI_BASE_URL
             self.model = os.getenv("GOOGLE_MODEL", self.model)
             self.embedding_model = os.getenv("GOOGLE_EMBEDDING_MODEL", self.embedding_model)
+        elif self.provider == "openrouter":
+            self.api_key = os.getenv("OPENROUTER_API_KEY")
+            self.base_url = self.base_url or OPENROUTER_BASE_URL
+            self.model = os.getenv("OPENROUTER_MODEL", self.model)
         elif self.provider == "local":
-            self.api_key = os.getenv("LOCAL_LLM_API_KEY") or os.getenv("OPENAI_API_KEY") or "local-dummy-key"
-            self.base_url = self.base_url or os.getenv("LOCAL_LLM_BASE_URL") or "http://localhost:11434/v1"
+            self.api_key = os.getenv("LOCAL_LLM_API_KEY") or "local-dummy-key"
+            self.base_url = (
+                self.base_url or os.getenv("LOCAL_LLM_BASE_URL") or "http://localhost:11434/v1"
+            )
             self.model = os.getenv("LOCAL_LLM_MODEL", self.model)
             self.embedding_model = os.getenv("LOCAL_EMBEDDING_MODEL", self.embedding_model)
         else:
@@ -81,7 +84,18 @@ class LLMClient:
             self.safety_setting = safety_setting
 
         if self.api_key:
-            self.client = OpenAI(api_key=self.api_key, base_url=self.base_url)
+            # OpenRouter headers (optional but recommended for rate limiting/diagnostics)
+            extra_headers = {}
+            if self.provider == "openrouter":
+                extra_headers = {
+                    "HTTP-Referer": "https://github.com/NetMedEx/NetMedEx",
+                    "X-Title": "NetMedEx",
+                }
+            self.client = OpenAI(
+                api_key=self.api_key,
+                base_url=self.base_url,
+                default_headers=extra_headers,
+            )
             logger.info(
                 f"LLM Client initialized with provider: {self.provider}, model: {self.model}, embedding: {self.embedding_model}"
             )
@@ -135,16 +149,26 @@ class LLMClient:
         # Use max_completion_tokens and fixed temperature for newer/restricted models
         limit_param = "max_tokens"
         actual_temp = temperature
-        
+
         model_lower = str(self.model).lower()
-        # Restricted models usually include o1, gpt-4o, gpt-5, nano, mini
-        is_restricted = any(m in model_lower for m in ["o1", "gpt-4o", "gpt-5", "nano", "mini"])
-        
-        if is_restricted:
+        # Reasoning models (o1, o3) typically have fixed/restricted sampling parameters.
+        # gpt-4o, gpt-4o-mini, and most others support standard temperature (0-2).
+        is_reasoning_model = any(m in model_lower for m in ["o1", "o3"])
+        is_mini_nano = any(m in model_lower for m in ["nano", "mini"])
+
+        if is_reasoning_model:
             limit_param = "max_completion_tokens"
-            # Some restricted models only support default temperature=1
             actual_temp = 1.0
-            
+        elif is_mini_nano or "gpt-4o" in model_lower:
+            # Note: Some OpenRouter/Local providers might not support max_completion_tokens
+            # We prefer max_tokens for OpenRouter/Local for better compatibility.
+            if self.provider in ["openrouter", "local"]:
+                limit_param = "max_tokens"
+            else:
+                limit_param = "max_completion_tokens"
+            # Support lower temperature for these models
+            actual_temp = temperature
+
         kwargs = {
             "model": self.model,
             "messages": messages,
@@ -152,7 +176,7 @@ class LLMClient:
             "timeout": timeout,
         }
         kwargs[limit_param] = max_tokens
-        
+
         if response_format:
             kwargs["response_format"] = response_format
 
@@ -172,10 +196,11 @@ class LLMClient:
 
         system_prompt = (
             "You are a professional all-around expert in biomedical literature, specializing in finding information and precise translation. "
-            "Your task is to translate the user's query into English accurately. "
+            "Your task is to translate and restructure the user's query into precise English for scientific search. "
             "If the query is already in English, return it exactly as is. "
-            "Do NOT add any explanations, boolean operators, or quotes. "
-            "Just return the translated English text."
+            "Optimize the terminology for biomedical databases (e.g., use 'Neoplasms' or 'Cancer' appropriately). "
+            "Do NOT add any explanations, boolean operators (AND/OR), or quotes unless they were in the original. "
+            "Just return the translated and restructured English text."
         )
 
         try:
@@ -203,11 +228,11 @@ class LLMClient:
 
         system_prompt = (
             "You are a professional all-around expert in biomedical literature, specializing in finding information and optimizing search queries. "
-            "Your task is to translate natural language queries into optimized boolean queries for PubTator3. "
+            "Your task is to translate, restructure, and optimize natural language queries into optimized boolean queries for PubTator3. "
             "PubTator3 supports entity types like @GENE, @DISEASE, @CHEMICAL, @SPECIES, etc., but also standard text search. "
             "Use standard boolean operators: AND, OR, NOT. Use quotes for exact phrases. "
             "IMPORTANT: If the user's query is in a language other than English (e.g., Traditional Chinese, Japanese, Korean), "
-            "you MUST first translate the concepts into English before building the boolean query. PubTator3 works best with English terms. "
+            "you MUST first translate and restructure the concepts into scientifically accurate English before building the boolean query. "
             "If the user's query is very broad (e.g., just 'Cancer', 'Gene', 'Protein'), you MUST add specific constraints "
             "to prevent API timeout errors (HTTP 502). "
             "CRITICAL: Do NOT use specific field tags like [Title/Abstract], [Title], [Author], etc. "
@@ -216,6 +241,7 @@ class LLMClient:
             "Examples: "
             "'骨質疏鬆的基因' -> '\"Osteoporosis\" AND @GENE' "
             "'Lung cancer genes' -> '\"Lung Neoplasms\" AND @GENE' "
+            "'胃癌與幽門螺旋桿菌的關係' -> '\"Stomach Neoplasms\" AND \"Helicobacter pylori\"' "
             '\'covid 19 treatment with aspirin\' -> \'"COVID-19" AND "Aspirin" AND "Therapeutics"\' '
             "Return ONLY the English boolean query string. Do not include explanations, quotes around the result, or markdown blocks."
         )
@@ -231,7 +257,9 @@ class LLMClient:
             boolean_query = re.sub(
                 r"^(Query|Boolean|Result|Output):\s*", "", boolean_query, flags=re.IGNORECASE
             )
-            boolean_query = boolean_query.replace("**", "").replace("__", "").replace("`", "").strip()
+            boolean_query = (
+                boolean_query.replace("**", "").replace("__", "").replace("`", "").strip()
+            )
             boolean_query = re.sub(r"\s+", " ", boolean_query).strip()
 
             # If it looks like a sentence, try to extract a quoted boolean candidate.
@@ -249,7 +277,6 @@ class LLMClient:
                 and boolean_query.count('"') == 2
             ):
                 boolean_query = boolean_query[1:-1]
-
             return boolean_query.strip()
 
         def _is_valid_boolean_query(text: str) -> bool:
@@ -278,24 +305,39 @@ class LLMClient:
             return True
 
         def _fallback_boolean_query(query: str) -> str:
-            import re
-
             q = (query or "").strip()
             if not q:
                 return natural_query
 
+            import re
+
             terms: list[str] = []
+
+            # 1. Look for known entities of interest
             if re.search(r"\b(mirna|micro ?rna)\b", q, re.IGNORECASE):
                 terms.append('"miRNA"')
             if re.search(r"\bosteoporosis\b", q, re.IGNORECASE):
                 terms.append('"Osteoporosis"')
 
-            # Add 1-2 additional biomedical-looking keywords if needed.
+            # Add more specific entity search if needed
             if len(terms) < 2:
+                # Basic scientific term extraction (3+ chars, skipping common words)
                 keywords = re.findall(r"[A-Za-z][A-Za-z0-9\-]{2,}", q)
                 for kw in keywords:
                     up = kw.lower()
-                    if up in {"the", "and", "among", "with", "for", "about", "relationship"}:
+                    if up in {
+                        "the",
+                        "and",
+                        "among",
+                        "with",
+                        "for",
+                        "about",
+                        "relationship",
+                        "of",
+                        "genes",
+                        "related",
+                        "to",
+                    }:
                         continue
                     candidate = f'"{kw}"'
                     if candidate not in terms:
@@ -303,12 +345,27 @@ class LLMClient:
                     if len(terms) >= 2:
                         break
 
+            # 2. If we found solid terms, use them
+            if terms and len(terms) >= 2:
+                return " AND ".join(terms[:2])
+
+            # 3. Fallback: if the original query already contains boolean operators or entity tags, trust it
+            upper_q = q.upper()
+            if (
+                any(op in upper_q for op in (" AND ", " OR ", " NOT "))
+                or "@GENE" in upper_q
+                or "@MIRNA" in upper_q
+                or "@DISEASE" in upper_q
+                or "@CHEMICAL" in upper_q
+            ):
+                return q
+
             if terms:
                 return " AND ".join(terms[:2])
             return natural_query
 
         try:
-            print(f"\n[LLM-DEBUG] Translating query: '{natural_query}'")
+            logger.debug("Translating natural language query to boolean syntax.")
             raw_query = self.chat_completion_text(
                 messages=[
                     {
@@ -319,8 +376,7 @@ class LLMClient:
                 temperature=0.1,
                 max_tokens=200,
             )
-            print(f"[LLM-DEBUG] Result: '{raw_query}'")
-            logger.info(f"Raw LLM boolean query response: '{raw_query}'")
+            logger.debug("Received boolean query candidate from provider.")
 
             boolean_query = _clean_boolean_query(raw_query)
 
@@ -529,6 +585,60 @@ class LLMClient:
             raise ValueError(f"Gemini models API error (HTTP {status_code}).") from e
         except Exception as e:
             logger.error(f"Error fetching Gemini models: {e}")
+            raise e
+
+    def get_openrouter_models(self, api_key: str) -> list[str]:
+        """
+        Fetch available models from OpenRouter API using the provided key.
+        OpenRouter also uses the OpenAI-compatible models.list() endpoint.
+        """
+        if not api_key:
+            return []
+
+        try:
+            temp_client = OpenAI(api_key=api_key, base_url=OPENROUTER_BASE_URL)
+            models_page = temp_client.models.list()
+            model_ids = [m.id for m in models_page.data]
+
+            # OpenRouter has 1000s of models. Let's provide some sensible sorting.
+            # We'll prioritize common/recommended ones and keep the rest.
+            priority_prefixes = (
+                "openai/",
+                "anthropic/",
+                "google/",
+                "meta-llama/",
+                "mistralai/",
+                "deepseek/",
+            )
+
+            filtered_models = []
+            for mid in model_ids:
+                if any(mid.startswith(p) for p in priority_prefixes):
+                    filtered_models.append(mid)
+                elif "/" not in mid:  # Catch-all for simple names
+                    filtered_models.append(mid)
+
+            # Sort: Priority ones first
+            recommended = [
+                "openai/gpt-4o-mini",
+                "openai/gpt-4o",
+                "anthropic/claude-3.5-sonnet",
+                "deepseek/deepseek-chat",
+                "google/gemini-2.0-flash-001",
+                "meta-llama/llama-3.1-405b-instruct",
+            ]
+
+            sorted_models = []
+            for r in recommended:
+                if r in filtered_models:
+                    sorted_models.append(r)
+                    filtered_models.remove(r)
+
+            sorted_models.extend(sorted(filtered_models))
+            return sorted_models
+
+        except Exception as e:
+            logger.error(f"Error fetching OpenRouter models: {e}")
             raise e
 
 
