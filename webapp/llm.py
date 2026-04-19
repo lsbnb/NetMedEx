@@ -12,6 +12,50 @@ OPENAI_BASE_URL = "https://api.openai.com/v1"
 GEMINI_OPENAI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 
+COMMON_OPENAI_MODELS = {
+    "gpt-4o",
+    "gpt-4o-mini",
+    "gpt-4.1",
+    "gpt-4.1-mini",
+    "gpt-4-turbo",
+    "gpt-3.5-turbo",
+    "o1",
+    "o1-mini",
+    "o1-preview",
+    "o3",
+    "o3-mini",
+    "o4-mini",
+}
+
+
+def normalize_model_for_provider(provider: str | None, model: str | None) -> str:
+    """
+    Normalize provider/model combinations to avoid common misconfiguration errors.
+    - OpenAI provider should use bare model IDs (e.g. gpt-4o-mini, not openai/gpt-4o-mini)
+    - OpenRouter provider usually expects namespaced IDs; auto-prefix common OpenAI IDs
+    """
+    raw_provider = (provider or "openai").strip().lower()
+    raw_model = (model or "").strip()
+    if not raw_model:
+        if raw_provider == "openrouter":
+            return "openai/gpt-4o-mini"
+        if raw_provider == "google":
+            return "gemini-1.5-pro"
+        return "gpt-4o-mini"
+
+    if raw_provider == "openai":
+        if "/" in raw_model:
+            # Fix common OpenRouter-style model notation under OpenAI provider.
+            return raw_model.rsplit("/", 1)[-1].strip() or "gpt-4o-mini"
+        return raw_model
+
+    if raw_provider == "openrouter":
+        if "/" not in raw_model and raw_model in COMMON_OPENAI_MODELS:
+            return f"openai/{raw_model}"
+        return raw_model
+
+    return raw_model
+
 
 class LLMClient:
     def __init__(self):
@@ -43,6 +87,7 @@ class LLMClient:
         else:
             self.api_key = os.getenv("OPENAI_API_KEY")
             self.base_url = self.base_url or OPENAI_BASE_URL
+        self.model = normalize_model_for_provider(self.provider, self.model)
 
         # Initialize client if key/base_url configuration is usable.
         if self.provider == "local":
@@ -82,6 +127,7 @@ class LLMClient:
             self.provider = provider
         if safety_setting:
             self.safety_setting = safety_setting
+        self.model = normalize_model_for_provider(self.provider, self.model)
 
         if self.api_key:
             # OpenRouter headers (optional but recommended for rate limiting/diagnostics)
