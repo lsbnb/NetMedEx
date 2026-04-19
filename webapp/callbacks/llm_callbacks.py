@@ -8,7 +8,13 @@ import dash
 import requests
 from dash import ClientsideFunction, Input, Output, State, no_update
 
-from webapp.llm import GEMINI_OPENAI_BASE_URL, OPENAI_BASE_URL, OPENROUTER_BASE_URL, llm_client
+from webapp.llm import (
+    GEMINI_OPENAI_BASE_URL,
+    OPENAI_BASE_URL,
+    OPENROUTER_BASE_URL,
+    llm_client,
+    normalize_model_for_provider,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -94,12 +100,16 @@ def _settings_from_env() -> dict:
     settings["provider"] = provider
     if provider == "openai":
         settings["openai_api_key"] = openai_api_key if openai_api_key != "local-dummy-key" else ""
-        if model:
+        normalized = normalize_model_for_provider("openai", model)
+        if normalized:
             if model in STANDARD_OPENAI_MODELS:
-                settings["openai_model"] = model
+                settings["openai_model"] = normalized
             else:
-                settings["openai_model"] = "custom"
-                settings["openai_custom_model"] = model
+                if normalized in STANDARD_OPENAI_MODELS:
+                    settings["openai_model"] = normalized
+                else:
+                    settings["openai_model"] = "custom"
+                    settings["openai_custom_model"] = normalized
         if embedding_model:
             settings["local_embedding_model"] = embedding_model
     elif provider == "google":
@@ -108,7 +118,10 @@ def _settings_from_env() -> dict:
         settings["google_safety_setting"] = os.getenv("GOOGLE_SAFETY_SETTING", "medium")
     elif provider == "openrouter":
         settings["openrouter_api_key"] = os.getenv("OPENROUTER_API_KEY", "").strip()
-        settings["openrouter_model"] = model or os.getenv("OPENROUTER_MODEL", "openai/gpt-4o-mini")
+        settings["openrouter_model"] = normalize_model_for_provider(
+            "openrouter",
+            model or os.getenv("OPENROUTER_MODEL", "openai/gpt-4o-mini"),
+        )
         if settings["openrouter_model"] not in [
             "openai/gpt-4o-mini",
             "anthropic/claude-3.5-sonnet",
@@ -743,6 +756,7 @@ def callbacks(app):
                     if openai_model == "custom" and openai_custom_model
                     else (openai_model or "gpt-4o-mini")
                 )
+                model = normalize_model_for_provider("openai", model)
                 env_vars["OPENAI_API_KEY"] = openai_api_key
                 env_vars["OPENAI_BASE_URL"] = OPENAI_BASE_URL
                 env_vars["OPENAI_MODEL"] = model
@@ -765,6 +779,7 @@ def callbacks(app):
                     if openrouter_model == "custom" and openrouter_custom_model
                     else (openrouter_model or "openai/gpt-4o-mini")
                 )
+                model = normalize_model_for_provider("openrouter", model)
                 env_vars["OPENROUTER_API_KEY"] = openrouter_api_key
                 env_vars["OPENROUTER_MODEL"] = model
                 env_vars["OPENAI_BASE_URL"] = OPENROUTER_BASE_URL
