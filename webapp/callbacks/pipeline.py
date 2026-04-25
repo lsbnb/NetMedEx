@@ -24,7 +24,7 @@ from netmedex.normalization import normalize_knowledge_graph
 from netmedex.pubtator import PubTatorAPI
 from netmedex.pubtator_parser import PubTatorIO
 from netmedex.utils_threading import run_thread_with_error_notification
-from webapp.llm import GEMINI_OPENAI_BASE_URL, OPENAI_BASE_URL, llm_client
+from webapp.llm import GEMINI_OPENAI_BASE_URL, OPENAI_BASE_URL, OPENROUTER_BASE_URL, llm_client
 from webapp.utils import display, generate_session_id, get_data_savepath, visibility
 
 logger = logging.getLogger(__name__)
@@ -128,6 +128,7 @@ def callbacks(app):
             State("llm-model-input", "value"),
             State("openrouter-api-key-input", "value"),
             State("openrouter-model-selector", "value"),
+            State("openrouter-custom-model-input", "value"),
             State("normalization-toggle", "value"),
         ],
         running=[
@@ -176,6 +177,7 @@ def callbacks(app):
         llm_model,
         openrouter_api_key,
         openrouter_model,
+        openrouter_custom_model,
         normalization_toggle,
     ):
         try:
@@ -267,10 +269,15 @@ def callbacks(app):
                     safety_setting=google_safety_setting,
                 )
             elif llm_provider == "openrouter":
+                or_model = (
+                    openrouter_custom_model.strip()
+                    if openrouter_model == "custom" and openrouter_custom_model
+                    else openrouter_model
+                )
                 llm_client.initialize_client(
                     api_key=openrouter_api_key,
-                    model=openrouter_model,
-                    base_url="https://openrouter.ai/api/v1",
+                    model=or_model,
+                    base_url=OPENROUTER_BASE_URL,
                     provider="openrouter",
                 )
             else:  # local
@@ -521,6 +528,7 @@ def callbacks(app):
                         no_update,
                         no_update,
                         {"articles": 0, "nodes": 0, "edges": 0},
+                        no_update,  # session-language
                         no_update,  # tab
                         html.Div(
                             dbc.Alert(

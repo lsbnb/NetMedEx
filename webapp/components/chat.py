@@ -220,8 +220,6 @@ def create_message_component(
 
     return html.Div(message_parts, className=wrapper_class)
 
-    return html.Div(message_parts, className=wrapper_class)
-
 
 # Chat messages container
 chat_messages = html.Div(

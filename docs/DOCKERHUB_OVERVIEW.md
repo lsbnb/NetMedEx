@@ -16,8 +16,11 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v0.9.7
-- This release bundles the latest semantic diagnostics, local LLM parsing robustness, UI refinements, and citation enhancements—see the [Changelog](../CHANGELOG.md) for the full story.
+## 🆕 What's New in v1.1.0
+- **sapBERT Knowledge Graph Normalization**: Automated pipeline to merge semantically equivalent nodes using vector embeddings, reducing graph redundancy.
+- **Pediatric CNS 10k Dataset Support**: Full integration and optimization for the 10,000-article pediatric brain tumor dataset.
+- **Improved CJK Reasoning**: Enhanced multi-stage intermediary English reasoning for Chinese, Japanese, and Korean queries.
+- See the [Changelog](../CHANGELOG.md) for the full story.
 
 ---
 
