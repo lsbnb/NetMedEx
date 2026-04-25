@@ -210,7 +210,7 @@ api_params = html.Div(
                             (
                                 "Use MeSH Vocabulary: Replace original text in articles with standardized MeSH terms\n"
                                 "Full Text: Build network from full-text articles if available, defaulting to abstracts otherwise (not recommended to enable)\n"
-                                "Fetch Citation Counts: Fetch citation counts from OpenCitations for all articles (v0.9.7 feature)"
+                                "Fetch Citation Counts: Fetch citation counts from OpenCitations for all articles"
                             ),
                         ),
                     ],

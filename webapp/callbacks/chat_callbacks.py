@@ -52,6 +52,34 @@ def parse_suggestions(content):
     def looks_like_cjk(text):
         return any("\u4e00" <= c <= "\u9fff" for c in text)
 
+    def clean_candidate(text: str) -> str:
+        return re.sub(r"\s+", " ", (text or "").strip(" []-.*•")).strip()
+
+    def is_noise_candidate(text: str) -> bool:
+        t = (text or "").strip().lower().strip(".,;:!?")
+        if not t:
+            return True
+        # Prevent provider formatting fragments (e.g., trailing "and").
+        noise = {
+            "and",
+            "or",
+            "but",
+            "the",
+            "a",
+            "an",
+            "to",
+            "of",
+            "in",
+            "on",
+            "for",
+            "with",
+            "these",
+            "this",
+            "that",
+            "those",
+        }
+        return t in noise
+
     for i, line in enumerate(lines):
         stripped = line.strip()
         if not stripped:
@@ -85,10 +113,26 @@ def parse_suggestions(content):
                         len(after_colon) > 10
                         or (looks_like_cjk(after_colon) and len(after_colon) > 5)
                     ):
-                        parts = re.split(r"Q\d+[:：\.]|,\s*|，\s*|(?=\[Q\d:)", after_colon)
+                        # Prefer explicit [Q1:] blocks. Avoid splitting prose by commas,
+                        # which can create fragments like "and" in some Google outputs.
+                        explicit_q_parts = re.findall(
+                            r"(?:\[\s*)?Q\d+\s*[:：]\s*([^\]]+?)(?:\]|\s*$)",
+                            after_colon,
+                            flags=re.IGNORECASE,
+                        )
+                        if explicit_q_parts:
+                            parts = explicit_q_parts
+                        elif "?" in after_colon or "？" in after_colon:
+                            parts = re.split(r"(?<=[\?\？])\s+", after_colon)
+                        else:
+                            parts = [after_colon]
                         for p in parts:
-                            p_clean = p.strip(" []-.*•")
-                            if p_clean and len(p_clean) > 2:
+                            p_clean = clean_candidate(p)
+                            if (
+                                p_clean
+                                and len(p_clean) > 2
+                                and not is_noise_candidate(p_clean)
+                            ):
                                 suggestions.append(p_clean)
                 continue
 
@@ -107,7 +151,7 @@ def parse_suggestions(content):
 
             match = re.search(q_pattern, stripped)
             if match:
-                q_text = match.group(1).split("]")[0].strip(" []-.*•")
+                q_text = clean_candidate(match.group(1).split("]")[0])
                 min_len = 2 if looks_like_cjk(q_text) else 4
                 if q_text and len(q_text) >= min_len:
                     if (
@@ -119,7 +163,8 @@ def parse_suggestions(content):
                         in_suggestion_section = False
                         clean_lines.append(line)
                     else:
-                        suggestions.append(q_text)
+                        if not is_noise_candidate(q_text):
+                            suggestions.append(q_text)
                         continue
             else:
                 if suggestions and not is_near_end:
@@ -160,7 +205,9 @@ def parse_suggestions(content):
                     continue
                 if len(q) < 6 or len(q) > 160:
                     continue
-                candidates.append(q.rstrip("?？").strip())
+                cleaned = q.rstrip("?？").strip()
+                if not is_noise_candidate(cleaned):
+                    candidates.append(cleaned)
         return candidates
 
     def _fallback_default_questions(text: str) -> list[str]:

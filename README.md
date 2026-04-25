@@ -143,7 +143,7 @@ The **Graph Panel** visualizes the co-mention/semantic analyzed network, providi
 <p align="center">
   <img src="./docs/img/netmedex_graph_panel.png" width="800" alt="Full Graph Panel">
   <br>
-  <i>Figure 7: High-resolution view of the Graph Panel interface.</i>There are several options in the top right corner of the graph panel, including layout, community detection, and save. 
+  <i>Figure 7: High-resolution view of the Graph Panel interface. There are several options in the top right corner of the graph panel, including layout, community detection, and save.</i>
 </p>
 
 <p align="center">
@@ -155,7 +155,7 @@ The **Graph Panel** visualizes the co-mention/semantic analyzed network, providi
 - **Nodes**: Genes, Diseases, Chemicals, and Species.
 - **Edges**: Literature co-occurrence or Semantic relations. Thicker edges indicate higher frequency/NPMI; **arrows** indicate directionality in semantic mode.
 - **Confidence Heatmap**: Edge colors transition from cool to warm based on the extracted confidence score.
-- **FCoSE Node Repulsion**: Use the slider in the Graph Settings to adjust network spacing dynamically (10k to 100k units).
+- **fCose Node Repulsion**: Use the slider in the Graph Settings to adjust network spacing dynamically (10k to 100k units).
 - **Clusters**: Use the **Community Detection** feature to group related concepts automatically using the Louvain method.
 
 <p align="center">
@@ -167,7 +167,7 @@ The **Graph Panel** visualizes the co-mention/semantic analyzed network, providi
 <p align="center">
   <img src="./docs/img/netmedex_graph_selection.png" width="800" alt="Graph Selection">
   <br>
-  <i>Figure 10: Selecting a sub-network by holding the Shift key to isolate relevant nodes and edges as the base for hybridRAG to chat with.</i>
+  <i>Figure 10: Selecting a sub-network by holding the Shift key to isolate relevant nodes and edges as the base for Hybrid RAG to chat with.</i>
 </p>
 
 
@@ -189,7 +189,7 @@ The **Chat Panel** provides the deep semantic layer, interpreting the graph usin
 <p align="center">
   <img src="./docs/img/netmedEx_chat_RAG.png" width="300" alt="RAG Processing">
   <br>
-  <i>Figure 12(B): RAG generating to prepare the chat later.</i>
+  <i>Figure 12(B): Generating RAG context to prepare for the chat session.</i>
 </p>
 
 <p align="center">
@@ -206,6 +206,7 @@ The **Chat Panel** provides the deep semantic layer, interpreting the graph usin
   <br>
   <i>Figure 14: Tabular representation of semantic analysis results (e.g., miRNA relationships).</i>
 </p>
+
 ## ⚙️ Batch Processing vs. Interactive Discovery
 
 While the **Web Interface** provides a full "Interactive Discovery" workflow—including dynamic sub-network selection (Shift+Select) and real-time Hybrid RAG chat—the **CLI** and **API** are designed for automated batch processing and static graph construction. 
