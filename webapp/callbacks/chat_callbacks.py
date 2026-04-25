@@ -948,6 +948,19 @@ def callbacks(app):
             node_rag = NodeRAG(llm_client, persist_directory=persist_dir)
 
             # Check if NodeRAG is already indexed for this graph
+            # Check if NodeRAG is already indexed for this graph
+            core_node_ids = set()
+            if selected_nodes:
+                for n in selected_nodes:
+                    if "id" in n and not str(n["id"]).startswith("c"):
+                        core_node_ids.add(str(n["id"]))
+            if selected_edges:
+                for e in selected_edges:
+                    if "source" in e:
+                        core_node_ids.add(str(e["source"]))
+                    if "target" in e:
+                        core_node_ids.add(str(e["target"]))
+
             if not node_rag.is_indexed():
                 total_nodes = len(G.nodes)
                 # Optimization for large graphs: only index selected nodes + nodes in selected edges
@@ -955,20 +968,8 @@ def callbacks(app):
                     logger.info(
                         f"Large graph detected ({total_nodes} nodes). Indexing selection only for instant initialization."
                     )
-                    selected_node_ids = set()
-                    if selected_nodes:
-                        for n in selected_nodes:
-                            if "id" in n:
-                                selected_node_ids.add(str(n["id"]))
-                    if selected_edges:
-                        for e in selected_edges:
-                            if "source" in e:
-                                selected_node_ids.add(str(e["source"]))
-                            if "target" in e:
-                                selected_node_ids.add(str(e["target"]))
-
                     graph_nodes = []
-                    for node_id in selected_node_ids:
+                    for node_id in core_node_ids:
                         if node_id in G.nodes:
                             data = G.nodes[node_id]
                             name = data.get("name", str(node_id))
@@ -1064,6 +1065,7 @@ def callbacks(app):
                 bootstrap_prompt,
                 session_language=session_language or "English",
                 skip_translation=True,  # The translation instruction is embedded in the prompt
+                focus_nodes=list(core_node_ids) if core_node_ids else None,
             )
             t_sum = time.time()
             logger.info(f"Initial summary generated in {t_sum - t_node:.2f}s")

@@ -98,6 +98,11 @@ You are a highly specialized biomedical research assistant focusing on {TOPIC}. 
    - If direct evidence is missing, you may cautiously infer or hypothesize based on patterns within the provided papers.
    - Use tentative language (e.g., "suggests," "is consistent with," "may indicate").
    - These inferences must rely *only* on the provided CONTEXT; do not use external training knowledge.
+   
+4. **Graph Path Validation (2-Hop Evidence):**
+   - The CONTEXT may include multihop paths (Latent Mechanisms, e.g., A -> B -> C).
+   - Treat these as *hypothetical mechanistic chains*. You must explicitly distinguish between direct links (A-B) and these derived multihop paths in your analysis.
+   - Cross-verify the biological plausibility of the entire chain using the evidence provided for each individual link.
 
 4. **No External Knowledge:**
    - If the CONTEXT is "N/A" or irrelevant, output exactly: *"The provided papers do not contain information regarding this query."*
@@ -306,6 +311,7 @@ Please format your response as follows:
         top_k: int = 8,
         session_language: str = "English",
         skip_translation: bool = False,
+        focus_nodes: list[str] | None = None,
     ) -> dict[str, Any]:
         """
         Process user message and generate AI response.
@@ -315,6 +321,8 @@ Please format your response as follows:
             top_k: Number of abstracts to retrieve for context
             session_language: Language to enforce for the response
             skip_translation: Whether to skip LLM translation for query optimization
+            focus_nodes: Optional list of node IDs to root the 2-hop graph traversal. 
+                         If provided, bypasses NLP-based relevance matching.
 
         Returns:
             Dictionary with response and metadata
@@ -432,9 +440,9 @@ Please format your response as follows:
             graph_context = ""
             if self.graph_retriever:
                 logger.info("Retrieving graph context...")
-                relevant_nodes = self.graph_retriever.find_relevant_nodes(search_query)
+                relevant_nodes = focus_nodes if focus_nodes is not None else self.graph_retriever.find_relevant_nodes(search_query)
                 if relevant_nodes:
-                    graph_context = self.graph_retriever.get_subgraph_context(relevant_nodes)
+                    graph_context = self.graph_retriever.get_subgraph_context(relevant_nodes, query=search_query)
                     logger.info(f"Found {len(relevant_nodes)} relevant nodes in graph")
                 else:
                     logger.info("No relevant nodes found in graph query")
