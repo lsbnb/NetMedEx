@@ -23,7 +23,7 @@ version = "1.2.0"
 authors = [{ name = "Zheng-Xiang Ye", email = "r12b48005@ntu.edu.tw" }, { name = "Chung-Yen Lin", email = "cylin@iis.sinica.edu.tw" }, { name = "Shu-Hwa Chen", email = "sophia0715@tmu.edu.tw" }]
 description = "A tool to extract BioConcept entities (e.g., genes, diseases, chemicals, and species) from Pubtator3 and generate a co-mention network for interactive use."
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.11"
 dependencies = [
   "requests",
   "aiohttp",
@@ -41,6 +41,9 @@ dependencies = [
   "tiktoken",
   "rispy>=0.10.0",
   "markdown>=3.4.4",
+  "scikit-learn>=1.0",
+  "numpy>=1.24",
+  "plotly>=5.0",
 ]
 classifiers = [
   "Development Status :: 5 - Production/Stable",

@@ -10,6 +10,7 @@ import dash_bootstrap_components as dbc
 import dash_cytoscape as cyto
 import diskcache
 from dash import ClientsideFunction, Dash, DiskcacheManager, Input, Output, dcc, html
+from pathlib import Path
 
 import logging
 from netmedex.utils import config_logger
@@ -22,7 +23,7 @@ logger = logging.getLogger(__name__)
 # Load external layout extensions (fCose, CoSE-Bilkent, etc.)
 cyto.load_extra_layouts()
 
-cache = diskcache.Cache("./cache")
+cache = diskcache.Cache(str(Path(__file__).parent / "cache"))
 background_callback_manager = DiskcacheManager(cache)
 
 app = Dash(
