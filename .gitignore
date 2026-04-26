@@ -6,6 +6,18 @@ webapp-*/
 pytest.ini
 .ruff_cache/
 
+# Pediatric CNS tumor edition (domain-specific, not part of main NetMedEx)
+brain_network/
+manuscript/
+manuscript*.md
+manuscript*.docx
+start_pediatric.sh
+webapp/app_pediatric.py
+webapp/assets_pediatric/
+netmedex/initialize_expert_session.py
+data/pediatric_10k/
+cache_pediatric/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

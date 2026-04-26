@@ -14,4 +14,4 @@ export PYTHONPATH="${PYTHONPATH:-}:."
 export HOST=0.0.0.0
 
 # Start the webapp
-python webapp/app.py
+/home/cylin/miniconda3/envs/netmedex/bin/python webapp/app.py

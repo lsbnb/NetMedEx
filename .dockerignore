@@ -1,3 +1,16 @@
+# Pediatric CNS tumor edition (domain-specific, not part of main NetMedEx)
+brain_network/
+data/
+manuscript/
+manuscript*.md
+manuscript*.docx
+start_pediatric.sh
+webapp/app_pediatric.py
+webapp/assets_pediatric/
+netmedex/initialize_expert_session.py
+cache_pediatric/
+scripts/
+
 **/dev
 **/dev_notebooks
 cache/

@@ -13,10 +13,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Any
 
-from netmedex.subtype_service import SubtypeService
-
 logger = logging.getLogger(__name__)
-subtype_checker = SubtypeService()
 
 
 @dataclass
@@ -98,20 +95,26 @@ You are a highly specialized biomedical research assistant focusing on {TOPIC}. 
    - If direct evidence is missing, you may cautiously infer or hypothesize based on patterns within the provided papers.
    - Use tentative language (e.g., "suggests," "is consistent with," "may indicate").
    - These inferences must rely *only* on the provided CONTEXT; do not use external training knowledge.
-   
+
 4. **Graph Path Validation (2-Hop Evidence):**
    - The CONTEXT may include multihop paths (Latent Mechanisms, e.g., A -> B -> C).
    - Treat these as *hypothetical mechanistic chains*. You must explicitly distinguish between direct links (A-B) and these derived multihop paths in your analysis.
    - Cross-verify the biological plausibility of the entire chain using the evidence provided for each individual link.
+   - **MANDATORY**: For every 2-hop path present in the Knowledge Graph Structure, you MUST map each link (A→B and B→C) to supporting PMIDs found in the PubMed Abstracts. If a link lacks direct PMID support, state it explicitly as "no direct literature support found."
+   - All 2-hop inference results MUST appear in the **[Translated "Hypotheses / Speculative Inference"]** section, NOT in the Evidence-Based Answer section.
 
-4. **No External Knowledge:**
+5. **Species & Study-Type Distinction:**
+   - You MUST distinguish between findings in Human (clinical/patient data) and Animal models (e.g., mice, rats, zebrafish, cell lines).
+   - If a claim is based on an animal model, you must explicitly state it (e.g., "In murine models [PMID]," or "Observed in cell cultures [PMID]").
+   - Do NOT generalize animal findings as human clinical facts without clear comparative evidence.
+   - Use the metadata [Study Type: Animal/Cell-Line] if provided in the context to guide your distinction.
+
+6. **No External Knowledge & Citation Format:**
    - If the CONTEXT is "N/A" or irrelevant, output exactly: *"The provided papers do not contain information regarding this query."*
    - Strictly avoid using internal model knowledge or databases.
-
-5. **Strict Citation Format:**
    - Always place PMIDs at the end of the relevant sentence or list item: `[PMID]`.
 
-6. **Language Rule:**
+7. **Language Rule:**
    - **CRITICAL**: Respond in **{LANGUAGE}**. This is a hard requirement.
    - **Intermediary English Synthesis**: To ensure maximum accuracy against the English PubMed context, you MUST first perform an internal reasoning step in English.
    - **Format**: Begin your response with `<thinking_english>... your internal synthesis and PMID mapping ...</thinking_english>`. This block will be automatically hidden from the user.
@@ -130,8 +133,12 @@ Please format your response as follows:
 
 1. **[Translated "Evidence-Based Answer"]** - A synthesized summary of findings. If listing genes, proteins, or counts, use a clear **bulleted list** (or a **Markdown table** if requested by the user) with corresponding PMIDs and brief functional descriptions for each entry.
 
-2. **[Translated "Hypotheses / Speculative Inference"]** (Optional)
-   - Proposed mechanisms or research directions derived from the data in the papers. Clearly state these are not directly proven.
+2. **[Translated "Hypotheses / Speculative Inference"]** (**REQUIRED** when the CONTEXT contains Knowledge Graph Structure paths; otherwise include if inference is warranted)
+   - **MANDATORY for 2-hop paths**: For each "Latent Network Mechanism" path (A → B → C) in the Knowledge Graph Structure, present it as a mechanistic hypothesis with:
+     - The full chain clearly stated (e.g., "A may influence C via B")
+     - PMID support for the A→B link and the B→C link separately
+     - An explicit note if a link lacks literature support in the provided abstracts
+   - Also include any additional speculative mechanisms or research directions derived from the papers. Clearly state these are not directly proven.
 
 3. **[Translated "Suggested Follow-up Questions"]**
    - Provide exactly 3 questions.
@@ -321,7 +328,7 @@ Please format your response as follows:
             top_k: Number of abstracts to retrieve for context
             session_language: Language to enforce for the response
             skip_translation: Whether to skip LLM translation for query optimization
-            focus_nodes: Optional list of node IDs to root the 2-hop graph traversal. 
+            focus_nodes: Optional list of node IDs to root the 2-hop graph traversal.
                          If provided, bypasses NLP-based relevance matching.
 
         Returns:
@@ -410,8 +417,19 @@ Please format your response as follows:
                 for rank, pmid in enumerate(pmids_used, start=1):
                     doc = self.rag.documents[pmid]
                     priority_label = f"Priority #{rank} (Impact Score: {doc.weight:.2f})"
+
+                    # Detect Species Study Type
+                    study_type = "Human/General"
+                    if hasattr(doc, "entities") and doc.entities:
+                        non_human_species = [
+                            e.get("name") for e in doc.entities
+                            if e.get("type") == "Species" and e.get("mesh") != "MESH:D006801"
+                        ]
+                        if non_human_species:
+                            study_type = f"Animal Model/In vitro (Target: {', '.join(non_human_species[:2])})"
+
                     part = [
-                        f"PMID: {pmid} [{priority_label}]",
+                        f"PMID: {pmid} [{priority_label}] [Study Type: {study_type}]",
                         f"Title: {doc.title}",
                         f"Abstract: {doc.abstract}",
                     ]
@@ -446,12 +464,6 @@ Please format your response as follows:
                     logger.info(f"Found {len(relevant_nodes)} relevant nodes in graph")
                 else:
                     logger.info("No relevant nodes found in graph query")
-
-            # 3. Subtype Prediction Utility (kept for metadata only; not injected into prompt)
-            subtype_info = subtype_checker.predict_subtype(text_context)
-            logger.info(
-                f"Subtype identified: {subtype_info['name']} (Conf: {subtype_info['confidence']:.2f})"
-            )
 
             # Build conversation history for LLM
             messages = self._build_messages(
@@ -547,7 +559,6 @@ Please format your response as follows:
                 "success": True,
                 "message": assistant_content,
                 "sources": final_sources,
-                "subtype": subtype_info,
                 "context_count": len(pmids_used),
                 "user_msg": user_msg,
                 "assistant_msg": assistant_msg,
