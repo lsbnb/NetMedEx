@@ -64,6 +64,8 @@ def main():
         # Fall back to 127.0.0.1 if the value doesn't look like an IP or "0.0.0.0".
         import re as _re
         host = _host_env if _re.match(r"^[\d.]+$", _host_env) else "127.0.0.1"
+        # Write back the resolved host so Werkzeug reloader subprocesses inherit the correct value.
+        os.environ["HOST"] = host
         port = os.getenv("PORT", "8050")
 
         print("\n" + "=" * 50)

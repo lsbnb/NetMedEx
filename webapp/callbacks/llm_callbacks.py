@@ -99,7 +99,7 @@ def _settings_from_env() -> dict:
 
     settings["provider"] = provider
     if provider == "openai":
-        settings["openai_api_key"] = openai_api_key if openai_api_key != "local-dummy-key" else ""
+        settings["openai_api_key"] = ""
         normalized = normalize_model_for_provider("openai", model)
         if normalized:
             if model in STANDARD_OPENAI_MODELS:
@@ -113,11 +113,11 @@ def _settings_from_env() -> dict:
         if embedding_model:
             settings["local_embedding_model"] = embedding_model
     elif provider == "google":
-        settings["google_api_key"] = google_api_key
+        settings["google_api_key"] = ""
         settings["google_model"] = google_model or model or settings["google_model"]
         settings["google_safety_setting"] = os.getenv("GOOGLE_SAFETY_SETTING", "medium")
     elif provider == "openrouter":
-        settings["openrouter_api_key"] = os.getenv("OPENROUTER_API_KEY", "").strip()
+        settings["openrouter_api_key"] = ""
         settings["openrouter_model"] = normalize_model_for_provider(
             "openrouter",
             model or os.getenv("OPENROUTER_MODEL", "openai/gpt-4o-mini"),
@@ -145,7 +145,10 @@ def _merge_store_settings(store_data: dict | None) -> dict:
     if not isinstance(store_data, dict):
         return settings
     merged = settings.copy()
-    merged.update({k: v for k, v in store_data.items() if v is not None})
+    secret_keys = {"openai_api_key", "google_api_key", "openrouter_api_key"}
+    merged.update(
+        {k: v for k, v in store_data.items() if v is not None and k not in secret_keys}
+    )
     return merged
 
 
@@ -227,16 +230,16 @@ def callbacks(app):
     ):
         return {
             "provider": provider,
-            "openai_api_key": openai_api_key or "",
+            "openai_api_key": "",
             "openai_model": openai_model or "gpt-4o-mini",
             "openai_custom_model": openai_custom_model or "",
-            "google_api_key": google_api_key or "",
+            "google_api_key": "",
             "google_model": google_model or "gemini-1.5-pro",
             "google_safety_setting": google_safety_setting or "medium",
             "local_base_url": local_base_url or "http://localhost:11434/v1",
             "local_model": local_model or "",
             "local_model_options": local_model_options or [],
-            "openrouter_api_key": openrouter_api_key or "",
+            "openrouter_api_key": "",
             "openrouter_model": openrouter_model or "openai/gpt-4o-mini",
             "openrouter_custom_model": openrouter_custom_model or "",
         }
@@ -345,11 +348,12 @@ def callbacks(app):
             raise dash.exceptions.PreventUpdate
         try:
             if provider == "openai":
+                openai_api_key = openai_api_key or os.getenv("OPENAI_API_KEY", "").strip()
                 if not openai_api_key or not openai_api_key.startswith("sk-"):
                     return (
-                        "⚠️ Invalid OpenAI key format",
+                        "⚠️ OpenAI API key is not configured",
                         "status-indicator status-warning",
-                        "OpenAI API key should start with sk-",
+                        "Enter a key for this session or set OPENAI_API_KEY on the server",
                     )
                 model = (
                     openai_custom_model.strip()
@@ -363,11 +367,16 @@ def callbacks(app):
                     base_url=OPENAI_BASE_URL,
                 )
             elif provider == "google":
+                google_api_key = (
+                    google_api_key
+                    or os.getenv("GEMINI_API_KEY", "").strip()
+                    or os.getenv("GOOGLE_API_KEY", "").strip()
+                )
                 if not google_api_key:
                     return (
                         "⚠️ Gemini API key is required",
                         "status-indicator status-warning",
-                        "Provide Gemini API key from Google AI Studio",
+                        "Enter a key for this session or set GEMINI_API_KEY on the server",
                     )
                 models = llm_client.get_gemini_models(google_api_key)
                 if not models:
@@ -397,11 +406,14 @@ def callbacks(app):
                     f"Fetched {len(models)} Gemini models",
                 )
             elif provider == "openrouter":
+                openrouter_api_key = openrouter_api_key or os.getenv(
+                    "OPENROUTER_API_KEY", ""
+                ).strip()
                 if not openrouter_api_key:
                     return (
                         "⚠️ OpenRouter API key is required",
                         "status-indicator status-warning",
-                        "Provide OpenRouter API key (sk-or-...)",
+                        "Enter a key for this session or set OPENROUTER_API_KEY on the server",
                     )
                 model = (
                     openrouter_custom_model.strip()
@@ -437,16 +449,17 @@ def callbacks(app):
                     msg,
                 )
             return (
-                f"❌ {provider.title()} connection failed: {msg}",
+                f"❌ {provider.title()} connection failed: {_sanitize_error_message(msg)}",
                 "status-indicator status-offline",
-                msg,
+                _sanitize_error_message(msg),
             )
         except Exception as e:
             logger.error(f"LLM verification error: {e}")
+            msg = _sanitize_error_message(str(e))
             return (
-                f"❌ Error: {str(e)}",
+                f"❌ Error: {msg}",
                 "status-indicator status-offline",
-                str(e),
+                msg,
             )
 
     app.clientside_callback(
@@ -534,6 +547,7 @@ def callbacks(app):
         prevent_initial_call=True,
     )
     def fetch_openrouter_models(n_clicks, api_key, current_value):
+        api_key = api_key or os.getenv("OPENROUTER_API_KEY", "").strip()
         if not n_clicks or not api_key:
             return no_update, "⚠️ Enter OpenRouter API key first", no_update
         try:
@@ -548,11 +562,12 @@ def callbacks(app):
             return new_options, f"✅ Found {len(models)} models", new_value
         except Exception as e:
             logger.error(f"Error fetching OpenRouter models: {e}")
-            return no_update, f"❌ Fetch failed: {str(e)}", no_update
+            return no_update, f"❌ Fetch failed: {_sanitize_error_message(str(e))}", no_update
 
 
 
     def _build_openai_model_options(api_key, current_options, current_value, auto=False):
+        api_key = api_key or os.getenv("OPENAI_API_KEY", "").strip()
         if not api_key:
             return no_update, "⚠️ Enter API key first", no_update
         models = llm_client.get_openai_models(api_key)
@@ -584,6 +599,11 @@ def callbacks(app):
         return new_options, status, new_value
 
     def _build_google_model_options(api_key, current_value, auto=False):
+        api_key = (
+            api_key
+            or os.getenv("GEMINI_API_KEY", "").strip()
+            or os.getenv("GOOGLE_API_KEY", "").strip()
+        )
         if not api_key:
             return no_update, "⚠️ Enter Gemini API key first", no_update
         if not api_key.startswith("AIza"):
@@ -625,7 +645,7 @@ def callbacks(app):
             return _build_openai_model_options(api_key, current_options, current_value, auto=False)
         except Exception as e:
             logger.error(f"Error fetching OpenAI models: {e}")
-            return no_update, f"❌ Fetch failed: {str(e)}", no_update
+            return no_update, f"❌ Fetch failed: {_sanitize_error_message(str(e))}", no_update
 
     @app.callback(
         [
@@ -646,13 +666,14 @@ def callbacks(app):
     def auto_fetch_openai_models(provider, api_key, current_options, current_value):
         if provider != "openai":
             raise dash.exceptions.PreventUpdate
+        api_key = api_key or os.getenv("OPENAI_API_KEY", "").strip()
         if not api_key or not api_key.startswith("sk-"):
             raise dash.exceptions.PreventUpdate
         try:
             return _build_openai_model_options(api_key, current_options, current_value, auto=True)
         except Exception as e:
             logger.error(f"Error auto-fetching OpenAI models: {e}")
-            return no_update, f"❌ Auto-sync failed: {str(e)}", no_update
+            return no_update, f"❌ Auto-sync failed: {_sanitize_error_message(str(e))}", no_update
 
     @app.callback(
         [
@@ -692,6 +713,11 @@ def callbacks(app):
     def auto_fetch_google_models(provider, api_key, current_value):
         if provider != "google":
             raise dash.exceptions.PreventUpdate
+        api_key = (
+            api_key
+            or os.getenv("GEMINI_API_KEY", "").strip()
+            or os.getenv("GOOGLE_API_KEY", "").strip()
+        )
         if not api_key:
             raise dash.exceptions.PreventUpdate
         try:
@@ -736,6 +762,15 @@ def callbacks(app):
     ):
         if not n_clicks:
             return ""
+        if os.getenv("NETMEDEX_ALLOW_WEB_ENV_WRITE", "false").lower() not in {
+            "1",
+            "true",
+            "yes",
+        }:
+            return (
+                "⚠️ Saving server .env from the web UI is disabled. "
+                "Use the current session fields or set NETMEDEX_ALLOW_WEB_ENV_WRITE=true for trusted local use."
+            )
         try:
             env_path = Path(__file__).resolve().parents[2] / ".env"
             env_vars = {}

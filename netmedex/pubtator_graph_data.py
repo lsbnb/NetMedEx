@@ -98,9 +98,9 @@ class NonMeshNodeCollection(NodeCollection):
             if len(node_id_set) > 1:
                 # Remove nodes with the same name but annotated as different types
                 # Choose the node with the most occurrences
-                node_id = max(node_id_set, key=lambda x: self.node_id_occurrences[x])
+                canonical_id = max(node_id_set, key=lambda x: self.node_id_occurrences[x])
                 for node_id in node_id_set:
-                    if node_id != node_id:
+                    if node_id != canonical_id:
                         nodes.pop(node_id)
         return nodes
 
@@ -148,6 +148,9 @@ class MeshNodeCollection(NodeCollection):
         nodes = {}
         for node_id, node_data in self.nodes.items():
             name: str = max(node_data.name, key=node_data.name.get)  # type: ignore
+            # Enforce lowercase for consistency regardless of use_mesh_vocabulary,
+            # so nodes built from different papers always share the same case.
+            name = name.lower()
             nodes[node_id] = PubTatorNode(
                 mesh=node_data.mesh,
                 type=node_data.type,

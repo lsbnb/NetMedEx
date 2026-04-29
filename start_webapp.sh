@@ -11,7 +11,7 @@ cd "$SCRIPT_DIR"
 export MPLBACKEND=Agg
 export JUPYTER_PLATFORM_DIRS=0
 export PYTHONPATH="${PYTHONPATH:-}:."
-export HOST=0.0.0.0
+export HOST="${HOST:-127.0.0.1}"
 
 # Start the webapp
 /home/cylin/miniconda3/envs/netmedex/bin/python webapp/app.py

@@ -28,6 +28,20 @@ COMMON_OPENAI_MODELS = {
 }
 
 
+def get_provider_api_key(provider: str | None, explicit_key: str | None = None) -> str | None:
+    """Resolve an API key without requiring it to be stored in browser state."""
+    if explicit_key:
+        return explicit_key
+    raw_provider = (provider or "openai").strip().lower()
+    if raw_provider == "google":
+        return os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
+    if raw_provider == "openrouter":
+        return os.getenv("OPENROUTER_API_KEY")
+    if raw_provider == "local":
+        return os.getenv("LOCAL_LLM_API_KEY") or "local-dummy-key"
+    return os.getenv("OPENAI_API_KEY")
+
+
 def normalize_model_for_provider(provider: str | None, model: str | None) -> str:
     """
     Normalize provider/model combinations to avoid common misconfiguration errors.
@@ -115,16 +129,15 @@ class LLMClient:
         provider=None,
         safety_setting=None,
     ):
-        if api_key:
-            self.api_key = api_key
+        if provider:
+            self.provider = provider
+        self.api_key = get_provider_api_key(self.provider, api_key)
         if base_url:
             self.base_url = base_url
         if model:
             self.model = model
         if embedding_model:
             self.embedding_model = embedding_model
-        if provider:
-            self.provider = provider
         if safety_setting:
             self.safety_setting = safety_setting
         self.model = normalize_model_for_provider(self.provider, self.model)
@@ -170,8 +183,7 @@ class LLMClient:
             return False, str(e)
 
     def update_api_key(self, api_key):
-        self.api_key = api_key
-        self.initialize_client()
+        self.initialize_client(api_key=api_key)
 
     def chat_completion_text(
         self,

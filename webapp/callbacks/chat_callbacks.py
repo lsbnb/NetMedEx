@@ -6,12 +6,18 @@ import re
 import dash
 from dash import ALL, Input, Output, State, dcc, html, no_update
 
+from webapp.utils import SessionPathError, resolve_session_savepath
+
 logger = logging.getLogger(__name__)
 
 # Local stores for chat state (keyed by graph path)
 _sessions: dict[str, dict] = {}
 
 COMMUNITY_NODE_PATTERN = re.compile(r"^c\d+$")
+
+
+def _resolve_savepath(session_data):
+    return resolve_session_savepath(session_data)
 
 
 # Helper to extract suggested questions from AI response
@@ -422,7 +428,7 @@ def callbacks(app):
     )
     def auto_initialize_chat(
         current_tab,
-        savepath,
+        session_data,
         is_new_graph,
         session_language,
         search_query,
@@ -446,16 +452,20 @@ def callbacks(app):
         # 1. User must be in the chat tab
         # 2. Graph must be newly loaded (is_new_graph)
         # 3. No existing history for this session yet
-        if current_tab != "chat" or not savepath or not is_new_graph:
+        if current_tab != "chat" or not session_data or not is_new_graph:
             raise dash.exceptions.PreventUpdate
 
         global _sessions
-        session_key = savepath.get("graph") if isinstance(savepath, dict) else None
+        try:
+            savepath = _resolve_savepath(session_data)
+        except SessionPathError:
+            raise dash.exceptions.PreventUpdate
+        session_key = savepath["graph"]
         if session_key in _sessions and _sessions[session_key].get("history"):
             # Already initialized for this session
             raise dash.exceptions.PreventUpdate
 
-        logger.info(f"DEBUG: auto_initialize_chat STARTING for tab={current_tab}, path={savepath}")
+        logger.info(f"DEBUG: auto_initialize_chat STARTING for tab={current_tab}")
 
         import pickle
 
@@ -709,7 +719,7 @@ def callbacks(app):
         n_clicks,
         selected_nodes,
         selected_edges,
-        savepath,
+        session_data,
         session_language,
         search_query,
         llm_provider,
@@ -749,6 +759,23 @@ def callbacks(app):
 
             t0 = time.time()
             logger.info("Starting Chat Analysis...")
+
+            try:
+                savepath = _resolve_savepath(session_data)
+            except SessionPathError:
+                return (
+                    False,
+                    "❌ Error: Graph session data not found.",
+                    True,
+                    True,
+                    {"display": "none"},
+                    no_update,
+                    {"display": "none"},
+                    no_update,
+                    reset_btn,
+                    no_update,
+                    "chat",
+                )
 
             # Keep chat process LLM config aligned with current Advanced Settings.
             if llm_provider == "openai":
@@ -807,21 +834,6 @@ def callbacks(app):
                 )
 
             # Load the graph to get abstracts
-            if not savepath or "graph" not in savepath:
-                return (
-                    False,
-                    "❌ Error: Graph session data not found.",
-                    True,
-                    True,
-                    {"display": "none"},
-                    no_update,
-                    {"display": "none"},
-                    no_update,
-                    reset_btn,
-                    no_update,
-                    "chat",
-                )
-
             if not os.path.exists(savepath["graph"]):
                 return (
                     False,
@@ -1174,7 +1186,7 @@ def callbacks(app):
         current_messages,
         _session_language,
         is_disabled,
-        savepath,
+        session_data,
     ):
         """
         Process user message and get AI response.
@@ -1201,7 +1213,12 @@ def callbacks(app):
             raise dash.exceptions.PreventUpdate
 
         # Guard: session may be missing if server was restarted after graph was built
-        if not savepath or "graph" not in savepath or savepath["graph"] not in _sessions:
+        try:
+            savepath = _resolve_savepath(session_data)
+        except SessionPathError:
+            savepath = None
+
+        if not savepath or savepath["graph"] not in _sessions:
             from webapp.components.chat import create_message_component
             err_msg = create_message_component(
                 "assistant",
@@ -1294,7 +1311,7 @@ def callbacks(app):
         State("current-session-path", "data"),
         prevent_initial_call=True,
     )
-    def clear_chat(n_clicks, savepath):
+    def clear_chat(n_clicks, session_data):
         """Clear chat history and reset session"""
         global _sessions
 
@@ -1302,7 +1319,12 @@ def callbacks(app):
             raise dash.exceptions.PreventUpdate
 
         # Clear session
-        if savepath and "graph" in savepath and savepath["graph"] in _sessions:
+        try:
+            savepath = _resolve_savepath(session_data)
+        except SessionPathError:
+            savepath = None
+
+        if savepath and savepath["graph"] in _sessions:
             session_data = _sessions.pop(savepath["graph"])
             session_data["session"].clear()
             session_data["rag"].clear()
@@ -1341,15 +1363,14 @@ def callbacks(app):
         prevent_initial_call=True,
     )
     def download_chat_history(
-        n_clicks, initial_query, provider, oa_model, oa_custom, g_model, l_model, savepath
+        n_clicks, initial_query, provider, oa_model, oa_custom, g_model, l_model, session_data
     ):
         global _sessions
-        if (
-            not n_clicks
-            or not savepath
-            or "graph" not in savepath
-            or savepath["graph"] not in _sessions
-        ):
+        try:
+            savepath = _resolve_savepath(session_data)
+        except SessionPathError:
+            savepath = None
+        if not n_clicks or not savepath or savepath["graph"] not in _sessions:
             raise dash.exceptions.PreventUpdate
 
         session_data = _sessions[savepath["graph"]]
@@ -1359,6 +1380,7 @@ def callbacks(app):
             raise dash.exceptions.PreventUpdate
 
         import datetime
+        import html as html_lib
         import markdown
         from webapp.llm import llm_client
 
@@ -1396,20 +1418,33 @@ def callbacks(app):
             logger.error(f"Error generating AI title for transcript: {e}")
 
         def hyperlink_pmids(html_text):
-            # Precise regex for PMID strings in generated HTML
-            # Looks for: PMID: 1234567, [PMID: 1234567], or bare PMID indicators
-            # We target text nodes, avoiding attributes.
-            def replace_pmid(match):
+            pubmed_base = "https://pubmed.ncbi.nlm.nih.gov"
+            link_style = "color:#0084ff; text-decoration:none; font-weight:500;"
+
+            def make_link_prefixed(match):
+                # Matches: PMID:12345678 / PMID: 12345678 / PMID：12345678
                 full_match = match.group(0)
                 pmid = match.group(2)
-                # If already inside a link or bracket, try to be surgical
-                return f'<a href="https://pubmed.ncbi.nlm.nih.gov/{pmid}/" target="_blank" style="color:#0084ff; text-decoration:none; font-weight:500;">{full_match}</a>'
+                return f'<a href="{pubmed_base}/{pmid}/" target="_blank" style="{link_style}">{full_match}</a>'
 
-            return re.sub(
-                r"(?i)(PMID:?\s*)(\d{7,10})",
-                replace_pmid,
-                html_text,
-            )
+            def make_link_bracketed(match):
+                # Matches: [12345678] — bare number in brackets (LLM citation style)
+                pmid = match.group(1)
+                return f'[<a href="{pubmed_base}/{pmid}/" target="_blank" style="{link_style}">{pmid}</a>]'
+
+            # Split on existing <a>…</a> blocks to avoid double-wrapping
+            segments = re.split(r'(<a\s[^>]*>.*?</a>)', html_text, flags=re.DOTALL | re.IGNORECASE)
+            result = []
+            for i, seg in enumerate(segments):
+                if i % 2 == 1:  # inside existing <a> tag – skip
+                    result.append(seg)
+                else:
+                    # Pass 1: PMID:12345678 / PMID：12345678 (with prefix)
+                    seg = re.sub(r"(?i)(PMID[：:]?\s*)(\d{7,10})", make_link_prefixed, seg)
+                    # Pass 2: [12345678] (bare number in brackets, LLM citation style)
+                    seg = re.sub(r"\[(\d{7,10})\]", make_link_bracketed, seg)
+                    result.append(seg)
+            return "".join(result)
 
         def normalize_mermaid_blocks(text):
             if not text or "```mermaid" in text:
@@ -1427,7 +1462,7 @@ def callbacks(app):
             return re.sub(pattern, _wrap, text, count=1)
 
         def md_to_html(text):
-            text = normalize_mermaid_blocks(text)
+            text = normalize_mermaid_blocks(html_lib.escape(text or ""))
             # 1. Render Markdown first for structural integrity
             html_body = markdown.markdown(
                 text,
@@ -1460,7 +1495,7 @@ def callbacks(app):
             "<head>",
             "<meta charset='utf-8'>",
             "<meta name='viewport' content='width=device-width, initial-scale=1'>",
-            f"<title>{research_title}</title>",
+            f"<title>{html_lib.escape(research_title)}</title>",
             "<style>",
             "body { background-color: #f0f2f5; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 40px 20px; color: #1c1e21; line-height: 1.5; }",
             ".chat-container { max-width: 850px; margin: 0 auto; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.08); }",
@@ -1502,10 +1537,10 @@ def callbacks(app):
             "<body>",
             "<div class='chat-container'>",
             "<div class='header'>",
-            f"<h1>{research_title}</h1>",
+            f"<h1>{html_lib.escape(research_title)}</h1>",
             "<div class='metadata'>",
-            f"<div class='metadata-item'><span class='metadata-label'>LLM Model:</span> {model_name} ({provider.capitalize()})</div>",
-            f"<div class='metadata-item'><span class='metadata-label'>Initial Query:</span> {initial_query or 'N/A'}</div>",
+            f"<div class='metadata-item'><span class='metadata-label'>LLM Model:</span> {html_lib.escape(str(model_name or 'N/A'))} ({html_lib.escape(str(provider or 'unknown').capitalize())})</div>",
+            f"<div class='metadata-item'><span class='metadata-label'>Initial Query:</span> {html_lib.escape(initial_query or 'N/A')}</div>",
             "</div>",
             f"<div class='timestamp'>Generated by NetMedEx on {datetime.datetime.now().strftime('%B %d, %Y - %H:%M:%S')}</div>",
             "</div>",
@@ -1514,6 +1549,22 @@ def callbacks(app):
 
         user_svg = '<svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/></svg>'
         assistant_svg = '<svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5ZM3 8.062C3 6.76 4.235 5.765 5.53 5.889a28.02 28.02 0 0 1 4.94 0C11.765 5.765 13 6.76 13 8.062v1.157a.933.933 0 0 1-.765.935c-.845.147-2.34.346-4.235.346-1.895 0-3.39-.2-4.235-.346A.933.933 0 0 1 3 9.219V8.062Zm4.542-.827a.25.25 0 0 0-.217.068l-.92.9a24.767 24.767 0 0 1-1.871-.183.25.25 0 0 0-.068.495c.55.076 1.232.149 2.02.193a.25.25 0 0 0 .189-.071l.758-.736.847 1.71a.25.25 0 0 0 .404.062l.932-.97a25.286 25.286 0 0 0 1.922-.188.25.25 0 0 0-.068-.495c-.538.074-1.207.145-1.98.189a.25.25 0 0 0-.166.076l-.754.785-.842-1.7a.25.25 0 0 0-.182-.135Z"/><path d="M8.5 1.866a1 1 0 1 0-1 0V3h-2A4.5 4.5 0 0 0 1 7.5V8a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1v1a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-1a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1v-.5A4.5 4.5 0 0 0 10.5 3h-2V1.866ZM14 7.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.5A3.5 3.5 0 0 1 5.5 4h5A3.5 3.5 0 0 1 14 7.5Z"/></svg>'
+
+        skip_prompts = {
+            "Please provide a structured summary of the selected research based on the abstracts and graph structure.",
+            "Please provide a concise initial brief for the selected abstracts",
+        }
+
+        # Resolve display query: prefer data-input value; fall back to first real user message
+        if not initial_query:
+            for msg in session.history:
+                if msg.role == "user" and msg.content and not any(
+                    sp in msg.content for sp in skip_prompts
+                ):
+                    initial_query = msg.content.strip()[:300]
+                    if len(msg.content.strip()) > 300:
+                        initial_query += "…"
+                    break
 
         skip_prompt = "Please provide a structured summary of the selected research based on the abstracts and graph structure."
         last_msg_content = None
@@ -1554,12 +1605,14 @@ def callbacks(app):
             if suggestions:
                 html_content.append("<div class='suggestions-box'>")
                 for q in suggestions[:3]:
-                    html_content.append(f"<div class='suggested-pill'>{q}</div>")
+                    html_content.append(
+                        f"<div class='suggested-pill'>{html_lib.escape(q)}</div>"
+                    )
                 html_content.append("</div>")
 
             if hasattr(msg, "sources") and msg.sources:
                 source_links = [
-                    f'<a href="https://pubmed.ncbi.nlm.nih.gov/{p}/" target="_blank">[PMID:{p}]</a>'
+                    f'<a href="https://pubmed.ncbi.nlm.nih.gov/{html_lib.escape(str(p))}/" target="_blank">[PMID:{html_lib.escape(str(p))}]</a>'
                     for p in msg.sources
                 ]
                 html_content.append(
@@ -1587,7 +1640,7 @@ def callbacks(app):
                 "  }",
                 "  function initMermaid(){",
                 "    if (!window.mermaid) return;",
-                "    window.mermaid.initialize({startOnLoad:false, securityLevel:'loose', theme:'default'});",
+                "    window.mermaid.initialize({startOnLoad:false, securityLevel:'strict', theme:'default'});",
                 "    convertCodeBlocks();",
                 "    if (typeof window.mermaid.run === 'function') {",
                 "      window.mermaid.run({querySelector: '.mermaid'});",

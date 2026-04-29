@@ -7,6 +7,20 @@ from dash import Input, Output, State, dcc
 from netmedex.cytoscape_js import save_as_html
 from netmedex.cytoscape_xgmml import save_as_xgmml
 from webapp.callbacks.graph_utils import rebuild_graph
+from webapp.utils import SessionPathError, resolve_session_savepath
+
+
+def _resolve_savepath(session_data):
+    try:
+        return resolve_session_savepath(session_data)
+    except SessionPathError:
+        return None
+
+
+def _safe_download_name(name: str, fallback: str) -> str:
+    safe = "".join(c if c.isalnum() or c in ("-", "_", ".") else "_" for c in str(name))
+    safe = safe.strip("._")
+    return safe or fallback
 
 
 def callbacks(app):
@@ -16,7 +30,8 @@ def callbacks(app):
         State("current-session-path", "data"),
         prevent_initial_call=True,
     )
-    def download_pubtator(n_clicks, savepath):
+    def download_pubtator(n_clicks, session_data):
+        savepath = _resolve_savepath(session_data)
         if savepath is None:
             return
 
@@ -42,7 +57,8 @@ def callbacks(app):
         State("current-session-path", "data"),
         prevent_initial_call=True,
     )
-    def export_html(n_clicks, layout, node_degree, weight, savepath):
+    def export_html(n_clicks, layout, node_degree, weight, session_data):
+        savepath = _resolve_savepath(session_data)
         if savepath is None:
             return
 
@@ -64,7 +80,8 @@ def callbacks(app):
         State("current-session-path", "data"),
         prevent_initial_call=True,
     )
-    def export_xgmml(n_clicks, layout, node_degree, weight, savepath):
+    def export_xgmml(n_clicks, layout, node_degree, weight, session_data):
+        savepath = _resolve_savepath(session_data)
         if savepath is None:
             return
 
@@ -82,15 +99,19 @@ def callbacks(app):
         State("current-session-path", "data"),
         prevent_initial_call=True,
     )
-    def export_edge_csv(n_clicks, tap_edge, pmid_title, savepath):
+    def export_edge_csv(n_clicks, tap_edge, pmid_title, session_data):
         import csv
+
+        savepath = _resolve_savepath(session_data)
+        if savepath is None or not tap_edge or not pmid_title:
+            return None
 
         with open(savepath["edge_info"], "w", newline="") as f:
             writer = csv.writer(f)
             writer.writerow(["PMID", "Title"])
             writer.writerows([[pmid, pmid_title[pmid]] for pmid in tap_edge["pmids"]])
         n1, n2 = tap_edge["label"].split(" (interacts with) ")
-        filename = f"{n1}_{n2}.csv"
+        filename = _safe_download_name(f"{n1}_{n2}.csv", "edge_info.csv")
         return dcc.send_file(savepath["edge_info"], filename=filename)
 
     @app.callback(
@@ -99,7 +120,7 @@ def callbacks(app):
         State("current-session-path", "data"),
         prevent_initial_call=True,
     )
-    def export_graph_pickle(n_clicks, savepath):
+    def export_graph_pickle(n_clicks, session_data):
         """Export the full graph state as a pickle file.
 
         The exported .pkl file contains the complete NetworkX graph including
@@ -107,6 +128,7 @@ def callbacks(app):
         analysis results. It can be re-loaded in the Search Panel (Graph File
         source) to restore the session without re-running the pipeline.
         """
+        savepath = _resolve_savepath(session_data)
         if savepath is None or not savepath.get("graph") or not os.path.exists(savepath["graph"]):
             return None
 
@@ -118,13 +140,14 @@ def callbacks(app):
         State("current-session-path", "data"),
         prevent_initial_call=True,
     )
-    def export_ris(n_clicks, savepath):
+    def export_ris(n_clicks, session_data):
         """Export bibliography of articles in the graph in RIS format."""
         from netmedex.graph import load_graph
         from netmedex.pubtator_data import PubTatorArticle
         from netmedex.pubtator_parser import PubTatorIO
         from netmedex.ris_exporter import convert_to_ris
 
+        savepath = _resolve_savepath(session_data)
         if savepath is None or not savepath.get("graph"):
             return
 

@@ -32,6 +32,11 @@ def rebuild_graph(
 
     graph = load_graph(graph_path) if G is None else G
 
+    # Normalize all node names to lowercase for consistency across builds and pk versions
+    for _, data in graph.nodes(data=True):
+        if "name" in data and isinstance(data["name"], str):
+            data["name"] = data["name"].lower()
+
     # Recalculate edge weights and widths based on current method
     PubTatorGraphBuilder.recalculate_edge_weights(graph, weighting_method)
 
