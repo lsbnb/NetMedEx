@@ -49,8 +49,13 @@ function create_pmid_table(pmids, pmid_title) {
   }
 
   const table_entry = pmid_table.props.children[1].props.children
+  const safeTitle = (pmid) => {
+    if (!pmid_title) return "—"
+    return pmid_title[pmid] || pmid_title[String(pmid)] || pmid_title[Number(pmid)] || "—"
+  }
+
   pmids.forEach((pmid, index) => {
-    const title = pmid_title[pmid]
+    const title = safeTitle(pmid)
 
     table_entry.push({
       type: "Tr",
@@ -80,7 +85,7 @@ function create_pmid_table(pmids, pmid_title) {
           {
             type: "Td",
             namespace: "dash_html_components",
-            props: { children: `${title}` }
+            props: { children: title }
           }
         ]
       }
@@ -520,45 +525,46 @@ window.dash_clientside.clientside = {
       return Array.from(out).filter(Boolean);
     };
 
-    const query = String(searchQuery || "").trim();
-    const queryCandidates = buildQueryCandidates(query);
-    if (queryCandidates.length > 0) {
-      const anchorNodeIds = new Set();
+    const rawTerms = String(searchQuery || "").split(",").map((t) => t.trim()).filter(Boolean);
+    const anchorNodeIds = new Set();
+    for (const term of rawTerms) {
+      const candidates = buildQueryCandidates(term);
+      if (candidates.length === 0) continue;
       for (const node of nodeElements) {
         const data = node.data || {};
         const nodeId = data.id;
         if (!nodeId || hideNodeIds.has(nodeId)) continue;
         const labelNorm = normalizeText(data.label || "");
         const idNorm = normalizeText(data.standardized_id || "");
-        if (queryCandidates.some((q) => labelNorm.includes(q) || idNorm.includes(q))) {
+        if (candidates.some((q) => labelNorm.includes(q) || idNorm.includes(q))) {
           anchorNodeIds.add(nodeId);
         }
       }
+    }
 
-      if (anchorNodeIds.size > 0) {
-        const neighborNodeIds = new Set(anchorNodeIds);
-        const focusEdgeIds = new Set();
-        for (const edge of edgeElements) {
-          const data = edge.data || {};
-          const edgeId = data.id;
-          if (!edgeId || hideEdgeIds.has(edgeId)) continue;
-          if (anchorNodeIds.has(data.source) || anchorNodeIds.has(data.target)) {
-            focusEdgeIds.add(edgeId);
-            if (!hideNodeIds.has(data.source)) neighborNodeIds.add(data.source);
-            if (!hideNodeIds.has(data.target)) neighborNodeIds.add(data.target);
-          }
+    if (anchorNodeIds.size > 0) {
+      const neighborNodeIds = new Set(anchorNodeIds);
+      const focusEdgeIds = new Set();
+      for (const edge of edgeElements) {
+        const data = edge.data || {};
+        const edgeId = data.id;
+        if (!edgeId || hideEdgeIds.has(edgeId)) continue;
+        if (anchorNodeIds.has(data.source) || anchorNodeIds.has(data.target)) {
+          focusEdgeIds.add(edgeId);
+          if (!hideNodeIds.has(data.source)) neighborNodeIds.add(data.source);
+          if (!hideNodeIds.has(data.target)) neighborNodeIds.add(data.target);
         }
-
-        addRule("node", { opacity: 0.2, "text-opacity": 0.2 });
-        addRule("edge", { opacity: 0.1 });
-        addChunkedIdRules(Array.from(neighborNodeIds), "node", { opacity: 1, "text-opacity": 1 });
-        addChunkedIdRules(Array.from(anchorNodeIds), "node", {
-          "border-width": 3,
-          "border-color": "#ff6b00",
-          "border-opacity": 1,
-        });
-        addChunkedIdRules(Array.from(focusEdgeIds), "edge", { opacity: 0.95 });
       }
+
+      addRule("node", { opacity: 0.2, "text-opacity": 0.2 });
+      addRule("edge", { opacity: 0.1 });
+      addChunkedIdRules(Array.from(neighborNodeIds), "node", { opacity: 1, "text-opacity": 1 });
+      addChunkedIdRules(Array.from(anchorNodeIds), "node", {
+        "border-width": 3,
+        "border-color": "#ff6b00",
+        "border-opacity": 1,
+      });
+      addChunkedIdRules(Array.from(focusEdgeIds), "edge", { opacity: 0.95 });
     }
 
     return new_stylesheet.map(rule => {

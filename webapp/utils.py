@@ -1,10 +1,13 @@
 from __future__ import annotations
 
+import hashlib
+import hmac
 import os
+import secrets
 import shutil
 from pathlib import Path
 from types import SimpleNamespace
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 from dotenv import load_dotenv
 
@@ -25,6 +28,95 @@ DATA_FILENAME = {
     "edge_info": "output.csv",
     "ris": "citations.ris",
 }
+_SESSION_SECRET = os.getenv("NETMEDEX_SESSION_SECRET") or secrets.token_hex(32)
+
+
+class SessionPathError(ValueError):
+    """Raised when browser-provided session data cannot be trusted."""
+
+
+def _validate_session_id(session_id: str) -> str:
+    try:
+        return str(UUID(str(session_id)))
+    except (TypeError, ValueError) as exc:
+        raise SessionPathError("Invalid session id") from exc
+
+
+def _session_signature(session_id: str) -> str:
+    return hmac.new(
+        _SESSION_SECRET.encode("utf-8"),
+        session_id.encode("utf-8"),
+        hashlib.sha256,
+    ).hexdigest()
+
+
+def make_session_token(session_id: str) -> str:
+    """Create a signed browser token for a server-side session directory."""
+    session_id = _validate_session_id(session_id)
+    return f"{session_id}.{_session_signature(session_id)}"
+
+
+def _session_id_from_token(token: str) -> str:
+    try:
+        session_id, supplied_sig = str(token).rsplit(".", 1)
+    except ValueError as exc:
+        raise SessionPathError("Invalid session token") from exc
+
+    session_id = _validate_session_id(session_id)
+    expected_sig = _session_signature(session_id)
+    if not hmac.compare_digest(supplied_sig, expected_sig):
+        raise SessionPathError("Invalid session token signature")
+    return session_id
+
+
+def _legacy_session_id_from_savepath(savepath: dict) -> str:
+    """Accept old path dictionaries only when explicitly enabled for migration."""
+    if os.getenv("ALLOW_LEGACY_SESSION_PATH_STORE", "false").lower() not in {
+        "1",
+        "true",
+        "yes",
+    }:
+        raise SessionPathError("Legacy session path dictionaries are disabled")
+
+    graph_path = savepath.get("graph")
+    if not graph_path:
+        raise SessionPathError("Missing graph path")
+
+    base = BASE_SAVEDIR.resolve()
+    try:
+        rel = Path(graph_path).resolve(strict=False).relative_to(base)
+    except ValueError as exc:
+        raise SessionPathError("Session path escapes save directory") from exc
+    if len(rel.parts) < 2:
+        raise SessionPathError("Invalid session path")
+    session_id = _validate_session_id(rel.parts[0])
+    expected = get_data_savepath(session_id, create=False)
+    for key, value in savepath.items():
+        if key not in expected:
+            raise SessionPathError("Unexpected session path key")
+        if Path(value).resolve(strict=False) != Path(expected[key]).resolve(strict=False):
+            raise SessionPathError("Session path does not match expected layout")
+    return session_id
+
+
+def resolve_session_savepath(session_data, *, create: bool = False) -> dict[str, str]:
+    """Resolve signed browser session data into trusted server-side file paths."""
+    if not session_data:
+        raise SessionPathError("Missing session data")
+    if isinstance(session_data, str):
+        session_id = _session_id_from_token(session_data)
+    elif isinstance(session_data, dict):
+        # Newer clients may send an object wrapper; old path dictionaries require opt-in.
+        token = session_data.get("token")
+        if token:
+            session_id = _session_id_from_token(token)
+        else:
+            session_id = _legacy_session_id_from_savepath(session_data)
+    else:
+        raise SessionPathError("Unsupported session data")
+    return get_data_savepath(session_id, create=create)
+
+
 visibility = SimpleNamespace(visible={"visibility": "visible"}, hidden={"visibility": "hidden"})
 display = SimpleNamespace(
     block={"display": "block"},
@@ -135,10 +227,12 @@ def generate_session_id():
     return str(uuid4())
 
 
-def get_data_savepath(session_id: str):
+def get_data_savepath(session_id: str, *, create: bool = True):
+    session_id = _validate_session_id(session_id)
     savepath = {}
     savedir = BASE_SAVEDIR / session_id
-    savedir.mkdir(parents=True, exist_ok=True)
+    if create:
+        savedir.mkdir(parents=True, exist_ok=True)
     for file, filepath in DATA_FILENAME.items():
         savepath[file] = str(savedir / filepath)
     return savepath

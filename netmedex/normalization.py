@@ -77,8 +77,6 @@ def normalize_knowledge_graph(
                     if node_cuis[idx]:
                         canonical_idx = idx
                         break
-                    if display_names[idx].isupper():
-                        canonical_idx = idx
                 canonical_nid = node_ids[canonical_idx]
                 for idx in bucket:
                     if idx != canonical_idx:

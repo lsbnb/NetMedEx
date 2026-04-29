@@ -1,4 +1,4 @@
-# NetMedEx v1.1.0
+# NetMedEx v1.2.0
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![Doc](https://img.shields.io/badge/Doc-online)](https://yehzx.github.io/NetMedEx/)  
@@ -65,7 +65,9 @@ NetMedEx features an interactive **Chat Panel** driven by **Hybrid RAG**, which 
 - **Full-Text BioC-JSON Ingestion**: Retrieve and analyze the entire article (Methods, Results, Discussion) via PubTator3 API integration.
 - **PMID-Based De-duplication**: Automatically consolidates multiple mentions of entities and relations within the same paper to ensure accurate NPMI calculation and knowledge graph stability.
 - **Hybrid RAG Chat**: Synthesizes **unstructured text** (abstracts + full-text) and **structured graph knowledge** (paths and neighbors).
+- **🧠 Smart 2-Hop Graph RAG**: Deep mechanistic discovery using two-hop traversal with hybrid scoring (NPMI + Confidence + Semantic Relevance).
 - **🧬 sapBERT KG Normalization**: Automated merging of synonymous nodes (e.g., abbreviations, MeSH synonyms) for cleaner networks.
+- **⚖️ Study-Type Labeling**: Automated distinction between Human clinical data and Animal/Cell-line models.
 - **Relation Directionality**: High-resolution arrows indicate the direction of semantic influence (e.g., A → activates → B).
 - **Edge Confidence Coloring**: Edges are color-coded (gradient heatmap) based on AI-extracted confidence scores.
 - **Dynamic Node Repulsion**: Real-time control of node spacing using the **fCose layout** slider.

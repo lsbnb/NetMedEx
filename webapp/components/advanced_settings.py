@@ -80,7 +80,7 @@ normalization_toggle = html.Div(
 
 llm_config = html.Div(
     [
-        dcc.Store(id="llm-settings-store", storage_type="local"),
+        dcc.Store(id="llm-settings-store", storage_type="session"),
         generate_param_title(
             "LLM Provider",
             "Choose your LLM provider for AI-powered features",

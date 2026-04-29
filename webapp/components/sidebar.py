@@ -608,12 +608,12 @@ graph_settings_panel = html.Div(
             [
                 generate_param_title(
                     "Search Nodes",
-                    "Find nodes by name or identifier. Supports case-insensitive, fuzzy matching, and common synonym aliases.",
+                    "Find nodes by name or identifier. Separate multiple terms with commas to highlight all matches simultaneously. Supports case-insensitive, fuzzy matching, and common synonym aliases.",
                 ),
                 dbc.Input(
                     id="graph-node-search",
                     type="text",
-                    placeholder="e.g. metformin, MESH:D008687, TP53",
+                    placeholder="e.g. TP53, BRAF, EGFR",
                 ),
             ],
             className="param",

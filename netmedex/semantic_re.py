@@ -12,6 +12,7 @@ import json
 import logging
 import re
 import threading
+import time
 from dataclasses import dataclass
 from typing import Any
 
@@ -649,27 +650,35 @@ Title: {title}
             "You analyze scientific abstracts and identify relationships between entities. "
             "Always respond with valid JSON."
         )
-        try:
-            logger.info(
-                f"DIAGNOSTIC: Initiating LLM call (provider={provider}, max_tokens={max_tokens})"
-            )
-            response_text = self.llm_client.chat_completion_text(
-                messages=[
-                    {"role": "system", "content": system_instruction},
-                    {"role": "user", "content": prompt},
-                ],
-                temperature=0.1,
-                max_tokens=max_tokens,
-                timeout=180.0,
-                response_format=response_format,
-            )
-            # Log first 200 chars of response for debugging
-            preview = (response_text[:400] + "...") if len(response_text) > 400 else response_text
-            logger.info(f"DIAGNOSTIC: LLM Response preview: {preview}")
-            return response_text
-        except Exception as e:
-            logger.error(f"LLM call failed: {e}")
-            raise
+        max_retries = 5
+        for attempt in range(max_retries):
+            try:
+                logger.info(
+                    f"DIAGNOSTIC: Initiating LLM call (provider={provider}, max_tokens={max_tokens})"
+                )
+                response_text = self.llm_client.chat_completion_text(
+                    messages=[
+                        {"role": "system", "content": system_instruction},
+                        {"role": "user", "content": prompt},
+                    ],
+                    temperature=0.1,
+                    max_tokens=max_tokens,
+                    timeout=180.0,
+                    response_format=response_format,
+                )
+                preview = (response_text[:400] + "...") if len(response_text) > 400 else response_text
+                logger.info(f"DIAGNOSTIC: LLM Response preview: {preview}")
+                return response_text
+            except Exception as e:
+                err = str(e).lower()
+                is_rate_limit = any(t in err for t in ("429", "rate limit", "quota", "resource exhausted", "too many requests"))
+                if is_rate_limit and attempt < max_retries - 1:
+                    wait = 15 * (2 ** attempt)  # 15s, 30s, 60s, 120s
+                    logger.warning(f"Rate limit hit (attempt {attempt + 1}/{max_retries}), waiting {wait}s before retry...")
+                    time.sleep(wait)
+                else:
+                    logger.error(f"LLM call failed: {e}")
+                    raise
 
     def _parse_llm_response(self, response: str, pmid: str) -> list[dict[str, Any]]:
         """

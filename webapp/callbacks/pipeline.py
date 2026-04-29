@@ -25,7 +25,13 @@ from netmedex.pubtator import PubTatorAPI
 from netmedex.pubtator_parser import PubTatorIO
 from netmedex.utils_threading import run_thread_with_error_notification
 from webapp.llm import GEMINI_OPENAI_BASE_URL, OPENAI_BASE_URL, OPENROUTER_BASE_URL, llm_client
-from webapp.utils import display, generate_session_id, get_data_savepath, visibility
+from webapp.utils import (
+    display,
+    generate_session_id,
+    get_data_savepath,
+    make_session_token,
+    visibility,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -186,7 +192,9 @@ def callbacks(app):
             # ----------------------------------------------------------------
             # GRAPH FILE BYPASS: restore session from uploaded .pkl file
             # ----------------------------------------------------------------
-            savepath = get_data_savepath(generate_session_id())
+            session_id = generate_session_id()
+            savepath = get_data_savepath(session_id)
+            session_token = make_session_token(session_id)
 
             if source == "graph_file":
                 if not graph_file_data:
@@ -243,7 +251,7 @@ def callbacks(app):
                     True,
                     G.graph["pmid_title"],
                     pmid_citation_dict,
-                    savepath,
+                    session_token,
                     {"articles": num_articles, "nodes": num_nodes, "edges": num_edges},
                     "English",  # Default language; user can switch in Chat
                     "graph",  # Switch to Graph tab
@@ -859,7 +867,7 @@ def callbacks(app):
                 True,
                 G.graph["pmid_title"],
                 pmid_citation_dict,
-                savepath,
+                session_token,
                 {"articles": num_articles, "nodes": num_nodes, "edges": num_edges},
                 detected_language,
                 "graph",  # Switch to Graph tab

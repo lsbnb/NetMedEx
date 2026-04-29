@@ -486,19 +486,21 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       }});
 
       const filterList = document.getElementById('type-filter-list');
-      Array.from(types).sort().forEach(type => {{
-          const div = document.createElement('div');
-          div.className = 'filter-item';
-          div.innerHTML = `
-              <label>
-                  <input type="checkbox" checked value="${{type}}">
-                  ${{type}}
-              </label>
-          `;
-          filterList.appendChild(div);
+	      Array.from(types).sort().forEach(type => {{
+	          const div = document.createElement('div');
+	          div.className = 'filter-item';
+	          const label = document.createElement('label');
+	          const input = document.createElement('input');
+	          input.type = 'checkbox';
+	          input.checked = true;
+	          input.value = String(type);
+	          label.appendChild(input);
+	          label.appendChild(document.createTextNode(` ${{String(type)}}`));
+	          div.appendChild(label);
+	          filterList.appendChild(div);
 
-          div.querySelector('input').addEventListener('change', applyFilters);
-      }});
+	          input.addEventListener('change', applyFilters);
+	      }});
   }}
 
   function applyFilters() {{
@@ -572,9 +574,21 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       infoPanel.style.display = 'block';
   }}
 
-  function hidePanel() {{
-      infoPanel.style.display = 'none';
-  }}
+	  function hidePanel() {{
+	      infoPanel.style.display = 'none';
+	  }}
+
+	  function escapeHtml(value) {{
+	      return String(value ?? '').replace(/[&<>"']/g, function(ch) {{
+	          return {{
+	              '&': '&amp;',
+	              '<': '&lt;',
+	              '>': '&gt;',
+	              '"': '&quot;',
+	              "'": '&#39;'
+	          }}[ch];
+	      }});
+	  }}
 
   cy.on('tap', 'node', function(evt){{
       const node = evt.target;
@@ -583,12 +597,12 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       // Skip community nodes for detailed info if generic
       if (data.type === 'community') return;
 
-      let html = `<div class="info-title">${{data.label}}</div>`;
-      html += `<div class="info-row"><span class="info-label">Type:</span> ${{data.node_type || data.type}}</div>`;
-      html += `<div class="info-row"><span class="info-label">Degree:</span> ${{data.degree}}</div>`;
-      if (data.standardized_id) {{
-          html += `<div class="info-row"><span class="info-label">ID:</span> ${{data.standardized_id}}</div>`;
-      }}
+	      let html = `<div class="info-title">${{escapeHtml(data.label)}}</div>`;
+	      html += `<div class="info-row"><span class="info-label">Type:</span> ${{escapeHtml(data.node_type || data.type)}}</div>`;
+	      html += `<div class="info-row"><span class="info-label">Degree:</span> ${{escapeHtml(data.degree)}}</div>`;
+	      if (data.standardized_id) {{
+	          html += `<div class="info-row"><span class="info-label">ID:</span> ${{escapeHtml(data.standardized_id)}}</div>`;
+	      }}
 
       infoContent.innerHTML = html;
       showPanel();
@@ -604,20 +618,23 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       const sourceName = data.source_name || data.source;
       const targetName = data.target_name || data.target;
 
-      html += `<div class="info-row"><span class="info-label">Source:</span> ${{sourceName}}</div>`;
-      html += `<div class="info-row"><span class="info-label">Target:</span> ${{targetName}}</div>`;
-      html += `<div class="info-row"><span class="info-label">Relation:</span> ${{data.relation_display || data.label}}</div>`;
+	      html += `<div class="info-row"><span class="info-label">Source:</span> ${{escapeHtml(sourceName)}}</div>`;
+	      html += `<div class="info-row"><span class="info-label">Target:</span> ${{escapeHtml(targetName)}}</div>`;
+	      html += `<div class="info-row"><span class="info-label">Relation:</span> ${{escapeHtml(data.relation_display || data.label)}}</div>`;
 
-      if (data.relation_confidence) {{
-          html += `<div class="info-row"><span class="info-label">Confidence:</span> ${{data.relation_confidence}}</div>`;
-      }}
+	      if (data.relation_confidence) {{
+	          html += `<div class="info-row"><span class="info-label">Confidence:</span> ${{escapeHtml(data.relation_confidence)}}</div>`;
+	      }}
 
       if (data.pmids && data.pmids.length > 0) {{
-          html += `<div class="info-row"><span class="info-label">Evidence (${{data.pmids.length}} articles):</span></div>`;
-          html += `<div class="pmid-list">`;
-          data.pmids.forEach(pmid => {{
-              html += `<a href="https://pubmed.ncbi.nlm.nih.gov/${{pmid}}/" target="_blank" class="pmid-link" title="Open in PubMed">${{pmid}}</a>`;
-          }});
+	          html += `<div class="info-row"><span class="info-label">Evidence (${{data.pmids.length}} articles):</span></div>`;
+	          html += `<div class="pmid-list">`;
+	          data.pmids.forEach(pmid => {{
+	              const safePmid = String(pmid || '').replace(/[^0-9]/g, '');
+	              if (safePmid) {{
+	                  html += `<a href="https://pubmed.ncbi.nlm.nih.gov/${{safePmid}}/" target="_blank" class="pmid-link" title="Open in PubMed">${{safePmid}}</a>`;
+	              }}
+	          }});
           html += `</div>`;
       }} else {{
           html += `<div class="info-row">No specific articles linked.</div>`;

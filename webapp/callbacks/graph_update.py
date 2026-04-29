@@ -11,6 +11,7 @@ from dash import (
 
 from netmedex.cytoscape_js import create_cytoscape_js
 from webapp.callbacks.graph_utils import rebuild_graph
+from webapp.utils import SessionPathError, resolve_session_savepath
 
 
 def build_pmid_citation_dict(graph_obj):
@@ -123,6 +124,7 @@ def callbacks(app):
         Output("memory-graph-layout", "data"),
         Output("memory-fcose-node-repulsion", "data"),
         Output("pmid-citation-dict", "data", allow_duplicate=True),
+        Output("pmid-title-dict", "data", allow_duplicate=True),
         Input("is-new-graph", "data"),
         Input("graph-layout", "value"),
         Input("node-degree", "value"),
@@ -152,7 +154,7 @@ def callbacks(app):
         old_layout,
         old_repulsion,
         container_style,
-        savepath,
+        session_data,
         weighting_method,
     ):
         triggered = [t["prop_id"] for t in callback_context.triggered]
@@ -168,7 +170,9 @@ def callbacks(app):
         if new_cut_weight is None:
             new_cut_weight = old_cut_weight if old_cut_weight is not None else [0, 20]
 
-        if not savepath or not savepath.get("graph"):
+        try:
+            savepath = resolve_session_savepath(session_data)
+        except SessionPathError:
             return (
                 no_update,
                 no_update,
@@ -178,6 +182,7 @@ def callbacks(app):
                 cy_params,
                 graph_layout,
                 node_repulsion,
+                no_update,
                 no_update,
             )
 
@@ -212,6 +217,7 @@ def callbacks(app):
                 no_update,
                 no_update,
                 no_update,
+                no_update,
             )
 
         if rebuild_needed or layout_changed:
@@ -230,6 +236,7 @@ def callbacks(app):
                         cy_params,
                         graph_layout,
                         node_repulsion,
+                        no_update,
                         no_update,
                     )
 
@@ -252,6 +259,7 @@ def callbacks(app):
                 elements = [*graph_json["elements"]["nodes"], *graph_json["elements"]["edges"]]
                 layout_config = get_layout_config(graph_layout, node_repulsion)
                 pmid_citation_dict = build_pmid_citation_dict(G)
+                pmid_title_dict = G.graph.get("pmid_title", {})
 
                 # Ensure elements is at least an empty list, not None
                 if elements is None:
@@ -267,6 +275,7 @@ def callbacks(app):
                     graph_layout,
                     node_repulsion,
                     pmid_citation_dict,
+                    pmid_title_dict,
                 )
             except Exception as e:
                 print(f"ERROR in update_graph: {e}")
@@ -283,6 +292,7 @@ def callbacks(app):
                     graph_layout,
                     node_repulsion,
                     no_update,
+                    no_update,
                 )
 
         return (
@@ -294,6 +304,7 @@ def callbacks(app):
             cy_params,
             graph_layout,
             node_repulsion,
+            no_update,
             no_update,
         )
 

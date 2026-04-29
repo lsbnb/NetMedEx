@@ -196,13 +196,12 @@ class PubTatorGraphBuilder:
             model_name = str(getattr(self.semantic_extractor.llm_client, "model", "")).lower()
             max_workers = 5
             if provider == "google":
-                # Flash can handle more concurrency, Pro stays conservative but increased to 5
+                # Rate limiting is handled automatically via 429 retry backoff in semantic_re.py.
+                # Use high concurrency for paid accounts; free-tier will self-throttle on 429.
                 max_workers = 5 if "pro" in model_name else 8
             elif provider == "openai":
-                # OpenAI models like gpt-4o have high rate limits, increase to 7 for speed
                 max_workers = 7
             elif provider == "local":
-                # Increase local workers to 4 for better throughput
                 max_workers = 4
             else:
                 max_workers = 5

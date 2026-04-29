@@ -69,7 +69,7 @@ def create_message_component(
     markdown_component = dcc.Markdown(
         linked_content,
         className="message-text m-0",
-        dangerously_allow_html=True,
+        dangerously_allow_html=False,
         link_target="_blank",
     )
 
@@ -140,7 +140,7 @@ def create_message_component(
         markdown_component = dcc.Markdown(
             re.sub(pmid_pattern, replace_pmid, main_content),
             className="message-text m-0",
-            dangerously_allow_html=True,
+            dangerously_allow_html=False,
             link_target="_blank",
         )
 
