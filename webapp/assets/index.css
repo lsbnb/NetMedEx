@@ -96,7 +96,22 @@ a:hover {
     overflow-y: auto;
     overflow-x: visible;
     background-color: var(--SIDEBAR-BACKGROUND);
-    transition: background-color 0.3s ease;
+    transition: flex 0.25s ease, min-width 0.25s ease, padding 0.25s ease, background-color 0.3s ease;
+}
+
+.sidebar.sidebar-collapsed {
+    flex: 0 0 0 !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+}
+
+.main-div {
+    transition: max-width 0.25s ease;
+}
+
+.main-div.sidebar-expanded {
+    max-width: 100% !important;
 }
 
 .sidebar.graph-mode {
@@ -736,6 +751,23 @@ a:hover {
 .message-text .mermaid svg {
     max-width: 100%;
     height: auto;
+}
+
+.history-chip {
+    font-size: 0.72rem !important;
+    padding: 2px 8px !important;
+    border-radius: 999px !important;
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: var(--SIDEBAR-TEXT) !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+.history-chip:hover {
+    background-color: rgba(255, 255, 255, 0.3) !important;
 }
 
 #graph-empty-state {

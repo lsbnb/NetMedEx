@@ -182,6 +182,7 @@ api_params = html.Div(
                     style={"width": "100%", "minHeight": "120px", "resize": "vertical"},
                     className="form-control",
                 ),
+                html.Div(id="search-history-panel"),
             ],
             id="input-type",
             className="param",
@@ -699,7 +700,7 @@ header_row = html.Div(
         sidebar_toggle,
         html.Div(
             [
-                html.Small("v1.2.2", className="text-muted", style={"fontSize": "0.7rem"}),
+                html.Small("v1.2.3", className="text-muted", style={"fontSize": "0.7rem"}),
                 advanced_settings,
             ],
             className="d-flex flex-column align-items-center ms-auto",
@@ -715,6 +716,7 @@ sidebar = html.Div(
         graph_settings_panel,
         chat_panel,
         total_stats_store,
+        dcc.Store(id="search-history-store", storage_type="local", data=[]),
     ],
     className="sidebar",
     id="sidebar-container",
