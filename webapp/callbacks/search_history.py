@@ -13,7 +13,7 @@ def callbacks(app):
         State("search-history-store", "data"),
         prevent_initial_call=True,
     )
-    def save_search_history(n_clicks, query, source, history):
+    def save_search_history(_, query, source, history):
         if source != "api" or not query or not query.strip():
             return no_update
         query = query.strip()
@@ -53,7 +53,7 @@ def callbacks(app):
         )
 
     @app.callback(
-        Output("data-input", "value"),
+        Output("data-input", "value", allow_duplicate=True),
         Input({"type": "history-chip", "index": ALL}, "n_clicks"),
         State("search-history-store", "data"),
         prevent_initial_call=True,

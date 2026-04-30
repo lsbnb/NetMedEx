@@ -44,6 +44,7 @@ graph = html.Div(
             ],
             id="graph-empty-state",
         ),
+        html.Div(id="sidebar-init", style={"display": "none"}),
         html.Div(
             [
                 graph_info,
