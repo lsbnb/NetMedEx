@@ -213,6 +213,14 @@ CYTO_STYLESHEET = [
         },
     },
     {
+        "selector": "edge[edge_type = 'node']",
+        "style": {
+            "line-style": "dashed",
+            "line-dash-pattern": [6, 3],
+            "opacity": 0.65,
+        },
+    },
+    {
         "selector": ":selected",
         "style": {
             "overlay-color": "#FF0000",

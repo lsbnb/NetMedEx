@@ -834,10 +834,32 @@ document.addEventListener("click", function (e) {
     }
   }
 
+  function setupGraphEmptyState() {
+    const container = document.getElementById('cy-graph-container');
+    const emptyState = document.getElementById('graph-empty-state');
+    if (!container || !emptyState) return;
+    if (container._emptyStateInitialized) return;
+    container._emptyStateInitialized = true;
+
+    function update() {
+      const submitBtn = document.getElementById('submit-button');
+      const isRunning = submitBtn && submitBtn.disabled;
+      const isHidden = container.style.visibility !== 'visible';
+      emptyState.style.display = (isHidden && !isRunning) ? 'flex' : 'none';
+    }
+
+    update();
+    const obs = new MutationObserver(update);
+    obs.observe(container, { attributes: true, attributeFilter: ['style'] });
+    const submitBtn = document.getElementById('submit-button');
+    if (submitBtn) obs.observe(submitBtn, { attributes: true, attributeFilter: ['disabled'] });
+  }
+
   function init() {
     setupChatAutoScroll();
     setupChatInputBehavior();
     makeLegendDraggable();
+    setupGraphEmptyState();
   }
 
   // Bind outside click listener once

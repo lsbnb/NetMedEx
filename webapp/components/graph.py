@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 import dash
-from dash import dcc, html
 import dash_cytoscape as cyto
+from dash import dcc, html
 
 from webapp.components.graph_info import graph_info
 from webapp.utils import visibility, CYTO_STYLESHEET
@@ -23,6 +23,17 @@ graph = html.Div(
                 ),
             ],
             className="d-flex flex-row justify-content-center align-items-center py-2",
+        ),
+        html.Div(
+            [
+                html.I(className="bi bi-diagram-3"),
+                html.H4("No network loaded"),
+                html.P(
+                    "Run a search or upload a file from the Search panel to generate a knowledge graph.",
+                    className="text-muted",
+                ),
+            ],
+            id="graph-empty-state",
         ),
         html.Div(
             [

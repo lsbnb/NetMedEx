@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.2] - 2026-04-30
+
+### Added
+- **Graph Empty State**: Added a guidance placeholder ("No network loaded") that appears on the main canvas when no graph has been loaded, replacing the blank screen and improving onboarding clarity.
+- **Edge Visual Distinction**: Co-occurrence-only edges (`edge_type='node'`) now render as dashed lines with reduced opacity, visually distinguishing them from LLM-semantically-confirmed edges (solid lines). This maps to the 1-hop direct evidence vs. inferred co-occurrence distinction.
+
+### Changed
+- **LLM Settings Persistence**: LLM provider and model settings (`llm-settings-store`) now use `localStorage` instead of `sessionStorage`, so preferences (provider, model, etc.) survive page refreshes. API keys remain server-side only and are never persisted in the browser.
+
 ## [1.2.1] - 2026-04-29
 
 ### Security
