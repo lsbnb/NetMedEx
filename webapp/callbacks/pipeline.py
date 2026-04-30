@@ -376,7 +376,10 @@ def callbacks(app):
                                     )
                                 )
                     else:
-                        # Mandatory English translation and restructuring for non-English queries
+                        # Mandatory English translation for non-English queries.
+                        # Use translate_to_english() (faithful, no boolean operators) so the
+                        # resulting query is equivalent to the user typing the same concept in
+                        # English — producing the same article count from PubTator3.
                         detected_lang = detect_query_language(query)
                         if detected_lang != "English" and llm_client.client:
                             set_progress(
@@ -384,20 +387,18 @@ def callbacks(app):
                                     0,
                                     1,
                                     "",
-                                    f"Translating and restructuring {detected_lang} query for PubTator3...",
+                                    f"Translating {detected_lang} query to English for PubTator3...",
                                 )
                             )
                             try:
-                                # For non-English, we use the boolean translator anyway because it handles
-                                # scientific restructuring better than simple translation.
-                                translated_query = llm_client.translate_query_to_boolean(query)
-                                if translated_query and translated_query != query:
-                                    query = translated_query
+                                translated_query = llm_client.translate_to_english(query)
+                                if translated_query and translated_query.strip() and translated_query.strip() != query:
+                                    query = translated_query.strip()
                                     set_progress(
-                                        (0, 1, "", f"Translated and restructured: {query}")
+                                        (0, 1, "", f"Translated: {query}")
                                     )
                             except Exception as e:
-                                logger.error(f"Error executing translation/restructuring: {e}")
+                                logger.error(f"Error executing translation: {e}")
                                 set_progress(
                                     (
                                         0,
