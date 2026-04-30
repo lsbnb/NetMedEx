@@ -1,7 +1,7 @@
 window.dash_clientside = window.dash_clientside || {}
 
 function create_pmid_table(pmids, pmid_title) {
-  const pubtator_href = "https://www.ncbi.nlm.nih.gov/research/pubtator3/publication/"
+  const pubtator_href = "https://pubmed.ncbi.nlm.nih.gov/"
   const pmid_table = {
     type: "Table",
     namespace: "dash_html_components",
