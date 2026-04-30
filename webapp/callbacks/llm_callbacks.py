@@ -462,6 +462,18 @@ def callbacks(app):
                 msg,
             )
 
+    @app.callback(
+        Output("ai-search-toggle", "value"),
+        Output("edge-method", "value"),
+        Input("llm-settings-store", "data"),
+        prevent_initial_call=False,
+    )
+    def sync_ai_toggle_from_server(_store):
+        """Enable AI Search on page load when the server LLM client is already configured."""
+        if llm_client.client:
+            return True, "semantic"
+        return no_update, no_update
+
     app.clientside_callback(
         ClientsideFunction(namespace="clientside", function_name="sync_llm_toggles"),
         [
@@ -478,19 +490,8 @@ def callbacks(app):
             Input("openrouter-api-key-input", "value"),
             Input("openrouter-model-selector", "value"),
         ],
+        prevent_initial_call=True,
     )
-
-    @app.callback(
-        Output("ai-search-toggle", "value"),
-        Output("edge-method", "value"),
-        Input("llm-settings-store", "data"),
-        prevent_initial_call=False,
-    )
-    def sync_ai_toggle_from_server(_store):
-        """Enable AI Search on page load when the server LLM client is already configured."""
-        if llm_client.client:
-            return True, "semantic"
-        return no_update, no_update
 
     @app.callback(
         [
