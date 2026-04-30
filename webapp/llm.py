@@ -420,6 +420,11 @@ class LLMClient:
 
             if terms:
                 return " AND ".join(terms[:2])
+            # Do not return the original query if it contains no ASCII text —
+            # non-English text sent directly to PubTator3 returns no results.
+            import re as _re
+            if not _re.search(r"[A-Za-z]", natural_query):
+                return ""
             return natural_query
 
         try:
