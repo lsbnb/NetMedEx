@@ -348,6 +348,25 @@ def callbacks(app):
                         else:
                             set_progress((0, 1, "", "(Step 0/2) AI Translating query..."))
                             try:
+                                # For non-English queries, translate to English first so that
+                                # translate_query_to_boolean() always receives English input.
+                                # This prevents the boolean fallback from returning the original
+                                # non-English text (which PubTator3 cannot search).
+                                detected_lang = detect_query_language(query)
+                                if detected_lang != "English":
+                                    set_progress(
+                                        (
+                                            0,
+                                            1,
+                                            "",
+                                            f"(Step 0a/2) Translating {detected_lang} query to English...",
+                                        )
+                                    )
+                                    eng_query = llm_client.translate_to_english(query)
+                                    if eng_query and eng_query.strip():
+                                        query = eng_query.strip()
+                                        logger.info(f"Pre-translated to English: {query}")
+
                                 translated_query = llm_client.translate_query_to_boolean(query)
                                 if translated_query and translated_query.strip():
                                     query = translated_query.strip()
@@ -366,7 +385,6 @@ def callbacks(app):
                                     )
                             except Exception as e:
                                 logger.error(f"Error executing AI search: {e}")
-                                # Continue with original query instead of failing
                                 set_progress(
                                     (
                                         0,
