@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.3] - 2026-04-30
+
+### Added
+- **Collapsible Sidebar**: Added a toggle button (☰) in the graph header to collapse and expand the sidebar with a smooth CSS transition. State is persisted to `localStorage` and restored on page reload.
+- **Search History**: Recent API text queries are now saved (up to 8) in `localStorage` and shown as clickable chips below the query textarea. Clicking a chip re-populates the input instantly.
+
 ## [1.2.2] - 2026-04-30
 
 ### Added
