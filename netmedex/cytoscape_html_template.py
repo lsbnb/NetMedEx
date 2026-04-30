@@ -257,9 +257,14 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     • Drag nodes to move
   </div>
 
+  <div class="control-group">
+    <label>Node Scale: <span id="nodesize-val" class="value-display">1.0×</span></label>
+    <input type="range" id="nodesize-slider" min="20" max="150" value="100" step="5">
+  </div>
+
   <div class="search-container">
     <label class="filter-title">Search Nodes</label>
-    <input type="text" id="search-input" placeholder="Enter node name...">
+    <input type="text" id="search-input" placeholder="e.g. TP53, EGFR">
   </div>
 
   <div class="filter-container">
@@ -350,7 +355,19 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   let cy = cytoscape({{
     container: document.getElementById("cy"),
     elements: {cytoscape_js},
-    layout: {{"name": "{layout}", animate: false}},
+    layout: Object.assign({{"name": "{layout}", animate: false}}, (function() {{
+      if ("{layout}" === "cose") return {{
+        nodeRepulsion: function() {{ return 8000; }},
+        idealEdgeLength: function() {{ return 120; }},
+        nodeOverlap: 0, componentSpacing: 50, numIter: 1000, gravity: 0.25
+      }};
+      if ("{layout}" === "fcose") return {{
+        nodeRepulsion: 8000, idealEdgeLength: 80, nodeSeparation: 75,
+        numIter: 2500, tile: true, tilingPaddingVertical: 40,
+        tilingPaddingHorizontal: 40, gravity: 0.25, gravityRange: 3.8
+      }};
+      return {{}};
+    }}())),
     style: [
     {{
       selector: "node",
@@ -440,33 +457,74 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   ]
   }});
 
+  // Layout parameters per algorithm
+  function getLayoutParams(name) {{
+      if (name === 'cose') return {{
+          nodeRepulsion: function() {{ return 8000; }},
+          idealEdgeLength: function() {{ return 120; }},
+          nodeOverlap: 0,
+          componentSpacing: 50,
+          numIter: 1000,
+          gravity: 0.25,
+      }};
+      if (name === 'fcose') return {{
+          nodeRepulsion: 8000,
+          idealEdgeLength: 80,
+          nodeSeparation: 75,
+          numIter: 2500,
+          tile: true,
+          tilingPaddingVertical: 40,
+          tilingPaddingHorizontal: 40,
+          gravity: 0.25,
+          gravityRange: 3.8,
+      }};
+      return {{}};
+  }}
+
   // Update Layout
   document.getElementById('layout-select').addEventListener('change', function(e) {{
       const layoutName = e.target.value;
-      cy.layout({{name: layoutName, animate: true, fit: true}}).run();
+      cy.layout(Object.assign({{name: layoutName, animate: true, fit: true}}, getLayoutParams(layoutName))).run();
   }});
 
-  // Search Logic
+  // Node Scale slider
+  const nodeSizeSlider = document.getElementById('nodesize-slider');
+  const nodeSizeVal = document.getElementById('nodesize-val');
+  nodeSizeSlider.addEventListener('input', function() {{
+      const scale = this.value / 100;
+      nodeSizeVal.textContent = scale.toFixed(1) + '×';
+      cy.batch(() => {{
+          cy.nodes().forEach(n => {{
+              const orig = n.data('node_size');
+              if (orig) {{
+                  n.style({{ width: orig * scale, height: orig * scale }});
+              }}
+          }});
+      }});
+  }});
+
+  // Search Logic — supports comma-separated multi-term queries
   const searchInput = document.getElementById('search-input');
   searchInput.addEventListener('input', function(e) {{
-      const query = e.target.value.trim().toLowerCase();
-      
+      const rawQuery = e.target.value.trim().toLowerCase();
+
       cy.batch(() => {{
-          if (!query) {{
+          if (!rawQuery) {{
               cy.elements().removeClass('dimmed').removeClass('dimmed-edge').removeClass('highlighted');
               return;
           }}
 
+          const terms = rawQuery.split(',').map(t => t.trim()).filter(Boolean);
+
           const matches = cy.nodes().filter(n => {{
               const label = (n.data('label') || "").toLowerCase();
               const id = (n.data('standardized_id') || "").toLowerCase();
-              return label.includes(query) || id.includes(query);
+              return terms.some(term => label.includes(term) || id.includes(term));
           }});
 
           if (matches.length > 0) {{
               cy.elements().addClass('dimmed');
               cy.edges().addClass('dimmed-edge');
-              
               const neighborhood = matches.neighborhood();
               matches.removeClass('dimmed').addClass('highlighted');
               neighborhood.removeClass('dimmed').removeClass('dimmed-edge');

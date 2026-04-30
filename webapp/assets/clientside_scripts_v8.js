@@ -855,28 +855,11 @@ document.addEventListener("click", function (e) {
     if (submitBtn) obs.observe(submitBtn, { attributes: true, attributeFilter: ['disabled'] });
   }
 
-  function restoreSidebarState() {
-    try {
-      var stored = localStorage.getItem('_dash-sidebar-collapsed-store');
-      if (!stored) return;
-      var parsed = JSON.parse(stored);
-      if (parsed && parsed.data === true) {
-        var sidebar = document.getElementById('sidebar-container');
-        var graphPanel = document.getElementById('graph-panel');
-        var icon = document.querySelector('#sidebar-toggle-btn i');
-        if (sidebar) sidebar.classList.add('sidebar-collapsed');
-        if (graphPanel) graphPanel.classList.add('sidebar-expanded');
-        if (icon) icon.className = 'bi bi-layout-sidebar-inset';
-      }
-    } catch (e) {}
-  }
-
   function init() {
     setupChatAutoScroll();
     setupChatInputBehavior();
     makeLegendDraggable();
     setupGraphEmptyState();
-    restoreSidebarState();
   }
 
   // Bind outside click listener once
