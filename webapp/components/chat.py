@@ -41,7 +41,7 @@ def create_message_component(
 
     def replace_pmid(match):
         pmid = match.group(2)
-        url = f"https://www.ncbi.nlm.nih.gov/research/pubtator3/publication/{pmid}"
+        url = f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/"
         # Use native Markdown link syntax — raw HTML <a> tags are stripped by react-markdown's sanitizer.
         # Escaped brackets \[ \] in Markdown link text render as literal [ ] characters.
         return f" [\\[{pmid}\\]]({url}) "
@@ -200,7 +200,7 @@ def create_message_component(
             source_badges = [
                 html.A(
                     dbc.Badge(f"PMID:{pmid}", color="info", className="me-1", pill=True),
-                    href=f"https://www.ncbi.nlm.nih.gov/research/pubtator3/publication/{pmid}",
+                    href=f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/",
                     target="_blank",
                     style={"textDecoration": "none"},
                 )
