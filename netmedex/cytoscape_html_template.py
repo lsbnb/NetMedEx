@@ -258,6 +258,11 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   </div>
 
   <div class="control-group">
+    <label>Node Repulsion: <span id="repulsion-val" class="value-display">45k</span></label>
+    <input type="range" id="repulsion-slider" min="5000" max="200000" value="45000" step="5000">
+  </div>
+
+  <div class="control-group">
     <label>Node Scale: <span id="nodesize-val" class="value-display">1.0×</span></label>
     <input type="range" id="nodesize-slider" min="20" max="150" value="100" step="5">
   </div>
@@ -362,9 +367,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         nodeOverlap: 0, componentSpacing: 50, numIter: 1000, gravity: 0.25
       }};
       if ("{layout}" === "fcose") return {{
-        nodeRepulsion: 8000, idealEdgeLength: 80, nodeSeparation: 75,
-        numIter: 2500, tile: true, tilingPaddingVertical: 40,
-        tilingPaddingHorizontal: 40, gravity: 0.25, gravityRange: 3.8
+        nodeRepulsion: 45000, idealEdgeLength: 80, nodeSeparation: 100,
+        numIter: 3000, tile: true, tilingPaddingVertical: 20,
+        tilingPaddingHorizontal: 20, gravity: 0.25, gravityRange: 3.8,
+        nodeDimensionsIncludeLabels: true, uniformNodeDimensions: false, sampleSize: 25
       }};
       return {{}};
     }}())),
@@ -458,28 +464,48 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   }});
 
   // Layout parameters per algorithm
+  function getRepulsion() {{
+      return parseInt(document.getElementById('repulsion-slider').value) || 45000;
+  }}
+
   function getLayoutParams(name) {{
+      const repulsion = getRepulsion();
       if (name === 'cose') return {{
-          nodeRepulsion: function() {{ return 8000; }},
-          idealEdgeLength: function() {{ return 120; }},
-          nodeOverlap: 0,
-          componentSpacing: 50,
-          numIter: 1000,
+          nodeRepulsion: function() {{ return repulsion; }},
+          idealEdgeLength: function() {{ return 80; }},
+          nodeOverlap: 4,
+          componentSpacing: 60,
+          numIter: 1500,
           gravity: 0.25,
       }};
       if (name === 'fcose') return {{
-          nodeRepulsion: 8000,
+          nodeRepulsion: repulsion,
           idealEdgeLength: 80,
-          nodeSeparation: 75,
-          numIter: 2500,
+          nodeSeparation: 100,
+          numIter: 3000,
           tile: true,
-          tilingPaddingVertical: 40,
-          tilingPaddingHorizontal: 40,
+          tilingPaddingVertical: 20,
+          tilingPaddingHorizontal: 20,
           gravity: 0.25,
           gravityRange: 3.8,
+          nodeDimensionsIncludeLabels: true,
+          uniformNodeDimensions: false,
+          sampleSize: 25,
       }};
       return {{}};
   }}
+
+  // Node Repulsion slider
+  const repulsionSlider = document.getElementById('repulsion-slider');
+  const repulsionVal = document.getElementById('repulsion-val');
+  repulsionSlider.addEventListener('change', function() {{
+      const v = parseInt(this.value);
+      repulsionVal.textContent = v >= 1000 ? (v/1000).toFixed(0) + 'k' : v;
+      const layoutName = document.getElementById('layout-select').value;
+      if (layoutName === 'fcose' || layoutName === 'cose') {{
+          cy.layout(Object.assign({{name: layoutName, animate: false, fit: true}}, getLayoutParams(layoutName))).run();
+      }}
+  }});
 
   // Update Layout
   document.getElementById('layout-select').addEventListener('change', function(e) {{

@@ -57,7 +57,25 @@ class _RestrictedGraphUnpickler(pickle.Unpickler):
         "networkx.classes.digraph": {"DiGraph"},
         "networkx.classes.multigraph": {"MultiGraph"},
         "networkx.classes.multidigraph": {"MultiDiGraph"},
+        "networkx.classes.reportviews": {
+            "NodeView", "EdgeView", "DegreeView",
+            "NodeDataView", "EdgeDataView", "DegreeDataView",
+            "AdjacencyView", "AtlasView",
+            "DiDegreeView", "InDegreeView", "OutDegreeView",
+            "InEdgeView", "OutEdgeView",
+        },
+        "networkx.classes.coreviews": {
+            "AdjacencyView", "AtlasView", "FilterAdjacency",
+            "FilterAtlas", "FilterMultiAdjacency", "FilterMultiInner",
+            "UnionAdjacency", "UnionAtlas", "UnionMultiAdjacency", "UnionMultiInner",
+        },
+        "networkx.classes.filters": {"no_filter", "hide_nodes", "hide_edges"},
         "collections": {"defaultdict"},
+        # numpy array reconstruction (numpy >= 2.0 uses _core, older uses core)
+        "numpy._core.multiarray": {"_reconstruct", "scalar"},
+        "numpy.core.multiarray": {"_reconstruct", "scalar"},
+        "numpy": {"ndarray", "dtype"},
+        "numpy._core._multiarray_umath": {"_reconstruct"},
     }
 
     def find_class(self, module, name):
@@ -572,8 +590,6 @@ def callbacks(app):
 
             if edge_method == "semantic":
                 # Ensure session directory exists
-                import os
-
                 if not os.path.exists(savepath["pubtator"]):
                     return (
                         no_update,
@@ -668,8 +684,6 @@ def callbacks(app):
             # Parse collection if not already done
             if collection is None:
                 # Prefer BioC-JSON if available to preserve metadata (journal, authors, etc.)
-                import os
-
                 if not os.path.exists(savepath.get("biocjson", "")) and not os.path.exists(
                     savepath["pubtator"]
                 ):

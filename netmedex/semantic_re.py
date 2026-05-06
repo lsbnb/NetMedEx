@@ -37,6 +37,7 @@ class SemanticEdge:
     relation_type: str
     confidence: float  # 0-1 score from LLM
     evidence: str  # Supporting sentence/phrase from abstract
+    study_type: str = "Human"  # Human, Animal, or Cell-line
 
 
 class SemanticRelationshipExtractor:
@@ -302,7 +303,7 @@ class SemanticRelationshipExtractor:
 
             # Threshold for triggering a recovery pass:
             # - More aggressive threshold to ensure high recall, especially for complex abstracts
-            RECOVERY_THRESHOLD = max(2, entity_count // 3)
+            RECOVERY_THRESHOLD = max(2, entity_count // 2)
 
             # --- Provider-specific recovery and enhancement ---
 
@@ -428,6 +429,7 @@ class SemanticRelationshipExtractor:
                         relation_type=rel.get("relation_type", "related_to"),
                         confidence=confidence,
                         evidence=rel.get("evidence", ""),
+                        study_type=rel.get("study_type", "Human"),
                     )
                     semantic_edges.append(edge)
                 else:
@@ -515,9 +517,15 @@ class SemanticRelationshipExtractor:
     "entity2_id": "...",
     "relation_type": "...",
     "confidence": 0.41,
-    "evidence": "exact quote from abstract"
+    "evidence": "exact quote from abstract",
+    "study_type": "Human"
   }}
 ]
+
+**Study Type Categories**:
+- `Human`: Clinical data, patient samples, or human population studies.
+- `Animal`: Mouse, rat, zebrafish, or other non-human in-vivo models.
+- `Cell-line`: In-vitro experiments using immortalized or primary cell cultures.
 
 **Important**:
 - Do NOT perform NER. PubTator3 already provided entities; only classify relations between those IDs.
@@ -561,7 +569,8 @@ Rules:
      "entity1_id": "...",
      "entity2_id": "...",
      "relation_type": "...",
-     "confidence": 0.0 to 1.0
+     "confidence": 0.0 to 1.0,
+     "study_type": "Human/Animal/Cell-line"
    }}
 5. relation_type must be one of: {allowed_relations}
 6. Keep only explicit or strongly implied relations from the abstract.
@@ -602,7 +611,8 @@ Output format:
     "entity2_id": "ID from Entities",
     "relation_type": "one of: {allowed_relations}",
     "confidence": 0.0 to 1.0,
-    "evidence": "sentence from abstract"
+    "evidence": "sentence from abstract",
+    "study_type": "Human/Animal/Cell-line"
   }}
 ]
 
@@ -628,7 +638,7 @@ Title: {title}
 
 ### Instructions:
 1. Identify relationships only from the list: {allowed}.
-2. For each relationship, provide: entity1_id, entity2_id, relation_type, confidence (0-1), and evidence.
+2. For each relationship, provide: entity1_id, entity2_id, relation_type, confidence (0-1), evidence, and study_type (Human, Animal, or Cell-line).
 3. Be EXTREMELY thorough. Extract every mentioned interaction.
 4. Output ONLY a JSON array of objects. No preamble.
 
@@ -849,6 +859,7 @@ Title: {title}
                     "relation_type": relation,
                     "confidence": confidence,
                     "evidence": evidence,
+                    "study_type": _extract("study_type", chunk, "Human"),
                 }
             )
 
@@ -875,6 +886,7 @@ Title: {title}
                 relation=se.relation_type,
                 confidence=se.confidence,  # Preserve confidence score
                 evidence=se.evidence,  # Preserve supporting evidence
+                study_type=se.study_type,  # Preserve study type (Human/Animal/Cell-line)
                 source_id=se.node1_id,  # Explicitly mark node1 as source
             )
             pubtator_edges.append(edge)

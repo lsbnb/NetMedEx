@@ -54,3 +54,78 @@ def callbacks(app):
         Input("sidebar-collapsed-store", "data"),
         prevent_initial_call=False,
     )
+
+    # Search Options collapse — toggle on click, restore from store on page load
+    app.clientside_callback(
+        """
+        function(n_clicks, stored) {
+            var open;
+            if (!n_clicks) {
+                open = (stored !== null && stored !== undefined) ? stored : true;
+            } else {
+                open = !stored;
+            }
+            var chevron = document.getElementById('search-options-chevron');
+            if (chevron) chevron.style.transform = open ? '' : 'rotate(-90deg)';
+            if (!n_clicks) {
+                return [open, window.dash_clientside.no_update];
+            }
+            return [open, open];
+        }
+        """,
+        Output("search-options-collapse", "is_open"),
+        Output("search-options-open-store", "data"),
+        Input("search-options-toggle-btn", "n_clicks"),
+        State("search-options-open-store", "data"),
+        prevent_initial_call=False,
+    )
+
+    # Display Filters collapse (Graph tab) — toggle on click, restore from store on page load
+    app.clientside_callback(
+        """
+        function(n_clicks, stored) {
+            var open;
+            if (!n_clicks) {
+                open = (stored !== null && stored !== undefined) ? stored : false;
+            } else {
+                open = !stored;
+            }
+            var chevron = document.getElementById('display-filters-chevron');
+            if (chevron) chevron.style.transform = open ? '' : 'rotate(-90deg)';
+            if (!n_clicks) {
+                return [open, window.dash_clientside.no_update];
+            }
+            return [open, open];
+        }
+        """,
+        Output("display-filters-collapse", "is_open"),
+        Output("display-filters-open-store", "data"),
+        Input("display-filters-toggle-btn", "n_clicks"),
+        State("display-filters-open-store", "data"),
+        prevent_initial_call=False,
+    )
+
+    # Advanced Network Options collapse — toggle on click, restore from store on page load
+    app.clientside_callback(
+        """
+        function(n_clicks, stored) {
+            var open;
+            if (!n_clicks) {
+                open = (stored !== null && stored !== undefined) ? stored : false;
+            } else {
+                open = !stored;
+            }
+            var chevron = document.getElementById('network-options-chevron');
+            if (chevron) chevron.style.transform = open ? '' : 'rotate(-90deg)';
+            if (!n_clicks) {
+                return [open, window.dash_clientside.no_update];
+            }
+            return [open, open];
+        }
+        """,
+        Output("network-options-collapse", "is_open"),
+        Output("network-options-open-store", "data"),
+        Input("network-options-toggle-btn", "n_clicks"),
+        State("network-options-open-store", "data"),
+        prevent_initial_call=False,
+    )

@@ -72,20 +72,24 @@ def callbacks(app):
             if n_selected_edges > 0:
                 edges_text = f"{total_edges} ({n_selected_edges} selected)"
 
-            # Count selected articles (unique PMIDs from selected edges)
-            if selected_edges:
-                pmids = set()
-                for edge in selected_edges:
-                    if "pmids" in edge:
-                        edge_pmids = edge["pmids"]
-                        if isinstance(edge_pmids, list):
-                            pmids.update(edge_pmids)
-                        elif isinstance(edge_pmids, str):
-                            pmids.add(edge_pmids)
+            # Count selected articles (unique PMIDs from selected nodes + edges)
+            pmids = set()
+            for node in (selected_nodes or []):
+                node_pmids = node.get("pmids", [])
+                if isinstance(node_pmids, list):
+                    pmids.update(node_pmids)
+                elif isinstance(node_pmids, str):
+                    pmids.add(node_pmids)
+            for edge in (selected_edges or []):
+                edge_pmids = edge.get("pmids", [])
+                if isinstance(edge_pmids, list):
+                    pmids.update(edge_pmids)
+                elif isinstance(edge_pmids, str):
+                    pmids.add(edge_pmids)
 
-                n_selected_articles = len(pmids)
-                if n_selected_articles > 0:
-                    articles_text = f"{total_articles} ({n_selected_articles} selected)"
+            n_selected_articles = len(pmids)
+            if n_selected_articles > 0:
+                articles_text = f"{total_articles} ({n_selected_articles} selected)"
 
         return articles_text, nodes_text, edges_text
 

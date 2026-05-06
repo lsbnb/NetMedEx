@@ -23,44 +23,61 @@ def build_pmid_citation_dict(graph_obj):
     }
 
 
-def get_layout_config(layout_name, node_repulsion=45000):
+def get_layout_config(layout_name, node_repulsion=45000, node_count=0):
     """
     Get optimized layout configuration based on layout name.
     Targeting better visualization for compound/community graphs.
     """
     if layout_name == "fcose":
+        # Adaptive parameters: scale up separation and iterations for denser graphs
+        if node_count > 200:
+            separation = 150
+            iterations = 5000
+            quality = "proof"
+        elif node_count > 100:
+            separation = 120
+            iterations = 3500
+            quality = "default"
+        else:
+            separation = 75
+            iterations = 2500
+            quality = "default"
+
         return {
             "name": "fcose",
-            "quality": "default",
+            "quality": quality,
             "randomize": True,
             "animate": False,
             "fit": True,
-            "padding": 30,
-            "nodeSeparation": 75,
+            "padding": 50,
+            "nodeSeparation": separation,
             "nodeRepulsion": node_repulsion,
-            "idealEdgeLength": 50,
+            "idealEdgeLength": 80,
             "edgeElasticity": 0.45,
             "nestingFactor": 0.1,
-            "numIter": 2500,
+            "numIter": iterations,
             "tile": True,
-            "tilingPaddingVertical": 10,
-            "tilingPaddingHorizontal": 10,
+            "tilingPaddingVertical": 20,
+            "tilingPaddingHorizontal": 20,
+            "uniformNodeDimensions": False,
+            "sampleSize": 25,
+            "nodeDimensionsIncludeLabels": True,
         }
     if layout_name == "cose":
         return {
             "name": "cose",
-            "idealEdgeLength": 50,
-            "nodeOverlap": 20,
+            "idealEdgeLength": 80,
+            "nodeOverlap": 4,
             "refresh": 20,
             "fit": True,
-            "padding": 30,
+            "padding": 50,
             "randomize": False,
-            "componentSpacing": 40,
-            "nodeRepulsion": 10000,
+            "componentSpacing": 60,
+            "nodeRepulsion": node_repulsion if node_repulsion else 10000,
             "edgeElasticity": 100,
             "nestingFactor": 1.2,
-            "gravity": 0.5,
-            "numIter": 1000,
+            "gravity": 0.25,
+            "numIter": 1500,
             "initialTemp": 200,
             "coolingFactor": 0.95,
             "minTemp": 1.0,
@@ -257,7 +274,8 @@ def callbacks(app):
                     )
 
                 elements = [*graph_json["elements"]["nodes"], *graph_json["elements"]["edges"]]
-                layout_config = get_layout_config(graph_layout, node_repulsion)
+                n_nodes = len(graph_json["elements"]["nodes"])
+                layout_config = get_layout_config(graph_layout, node_repulsion, node_count=n_nodes)
                 pmid_citation_dict = build_pmid_citation_dict(G)
                 pmid_title_dict = G.graph.get("pmid_title", {})
 
