@@ -1,4 +1,4 @@
-# NetMedEx v1.2.1
+# NetMedEx v1.2.4
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![Doc](https://img.shields.io/badge/Doc-online)](https://yehzx.github.io/NetMedEx/)  
@@ -6,6 +6,33 @@
 NetMedEx is an AI-powered knowledge discovery platform designed to transform biomedical literature into actionable insights. Unlike traditional tools that merely extract entities, NetMedEx leverages **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** and **Full-Text BioC-JSON Processing** to synthesize structured co-mention networks with unstructured text, providing a holistic understanding of biological relationships.
 
 In NetMedEx, the **Co-Mention Network** serves as a structural "scaffolding." While the network visualizes the landscape of bio-concepts (genes, diseases, chemicals, etc.), the **AI-driven Semantic Layer** breathes life into these connections by extracting evidence, identifying relationship types, and answering complex natural language queries. **v1.1.0** introduces **sapBERT-based KG Normalization**, ensuring semantic consistency by merging equivalent concept variants across the Knowledge Graph.
+
+---
+
+## 🆕 Recent Updates
+
+### v1.2.4 — 2026-04-30
+- **NVIDIA NIM Support**: Added NVIDIA NIM as a fifth LLM provider (alongside OpenAI, Google Gemini, OpenRouter, Local Ollama). Supports both cloud NIM (`integrate.api.nvidia.com`) and on-premises deployments with preset model catalogue and endpoint fetch.
+- **Active LLM Banner**: Advanced Settings now displays the currently loaded server-side LLM provider and model on page load, eliminating ambiguity about which AI engine is active.
+- **Collapsible UI Panels**: Search Panel reorganized into three zones — always-visible core fields, collapsible *Search Options* (Sort, PubTator Parameters), and collapsible *Advanced Network Options* (Node Filter, Edge Method, Weighting, Semantic Threshold). Graph tab gains a collapsible *Display Filters* section (Edge Confidence, Visible Node Types, Minimal Degree). Collapse states persist across sessions.
+- **AI Search Simplified**: Replaced heavy Alert-box wrapper with a compact inline toggle row, reducing vertical space by ~40 px.
+- **Chat Tab Accent**: Chat tab rendered in teal (`#0d9488`) when active for clearer panel differentiation.
+- **HOST Environment Fix**: Resolved Conda build-triplet variable conflict that prevented `HOST=0.0.0.0` from loading via `.env`; `dotenv override=True` now uses an explicit absolute path.
+
+### v1.2.3 — 2026-04-29
+- **Collapsible Sidebar**: Toggle button collapses/expands the entire left sidebar; state persists via `localStorage`.
+- **Search History**: Query history chips appear below the search box for one-click re-execution of recent queries (up to 8 entries, stored locally).
+
+### v1.2.2 — 2026-04-28
+- **Co-occurrence Edge Styling**: Dashed lines visually distinguish co-occurrence edges from solid semantic edges.
+- **LLM Settings Persistence**: Advanced Settings values (provider, model selection) survive page reload via `localStorage`.
+- **Save to .env**: Button to write LLM configuration back to the server `.env` file (requires `NETMEDEX_ALLOW_WEB_ENV_WRITE=true`).
+- **Graph Empty State**: Friendly placeholder shown in the Graph Panel before any search is run.
+
+### v1.2.1 — 2026-04-27
+- Security hardening: HMAC-signed session tokens, path traversal prevention.
+- Rate-limit retry with exponential back-off for PubTator3 API calls.
+- Bug fixes: HTML export multi-node search, topological layout node overlap, CJK query translation pipeline.
 
 ---
 
@@ -75,13 +102,25 @@ NetMedEx features an interactive **Chat Panel** driven by **Hybrid RAG**, which 
 - **Natural Language & Universal Translation**: Ask in English, Japanese, Chinese, or Korean! Automatic translation to optimized PubTator3 English syntax.
 
 ### Setup AI Engine
-1. Obtain an API key from [OpenAI](https://platform.openai.com/api-keys) or set up a local LLM endpoint (e.g., Ollama).
+1. Obtain an API key from your preferred provider or set up a local/on-premises LLM endpoint.
 2. Configure via **"Advanced Settings"** in the web interface or via `.env` file.
 
+Supported LLM providers:
+
+| Provider | Where to get key | Notes |
+|---|---|---|
+| **OpenAI** | [platform.openai.com](https://platform.openai.com/api-keys) | Recommended: `gpt-4o` |
+| **Google Gemini** | [aistudio.google.com](https://aistudio.google.com) | Recommended: `gemini-2.0-flash` |
+| **OpenRouter** | [openrouter.ai](https://openrouter.ai/keys) | Access 200+ models via single key |
+| **NVIDIA NIM** | [build.nvidia.com](https://build.nvidia.com) | Cloud or on-premises NIM (`nvapi-...`) |
+| **Local Ollama** | — | Self-hosted, no key required |
+
 > [!TIP]
-> **Connecting to Local LLMs (Ollama/LM Studio):**
+> **Connecting to Local / On-premises LLMs:**
 > - **Linux/Docker**: Use your host IP (e.g., `http://192.168.1.100:11434`).
 > - **Windows/macOS (Docker)**: Use `http://host.docker.internal:[PORT]`.
+> - **NVIDIA NIM (cloud)**: Base URL `https://integrate.api.nvidia.com/v1`, key starts with `nvapi-`.
+> - **NVIDIA NIM (on-prem)**: Set Base URL to your internal NIM server, use any non-empty key value.
 
 ---
 
@@ -238,7 +277,7 @@ netmedex search -q '"N-dimethylnitrosamine" AND "Metformin"' --sort score
 - `--full_text`: Collect full-text annotations when available.
 - `--use_mesh`: Use MeSH vocabulary in output.
 - `--ai_search`: Enable LLM-based natural language to PubTator boolean query translation.
-- `--llm_provider {openai,google,local}`: Provider for AI search translation.
+- `--llm_provider {openai,google,openrouter,nvidia,local}`: Provider for AI search translation.
 - `--llm_api_key`: API key override for selected provider.
 - `--llm_model`: Model override for selected provider.
 - `--llm_base_url`: Base URL override (primarily for local/OpenAI-compatible endpoints).
@@ -323,7 +362,7 @@ netmedex network \
 You can also omit `--llm_*` flags and configure defaults via `.env` (e.g., `LLM_PROVIDER`, `OPENAI_API_KEY`, `GEMINI_API_KEY`, `LOCAL_LLM_BASE_URL`, `OPENAI_MODEL`, `GOOGLE_MODEL`, `LOCAL_LLM_MODEL`).
 
 Provider consistency note:
-- CLI now supports the same three providers (`openai`, `google`, `local`) across `search`, `network`, and `chat`.
+- CLI supports five providers (`openai`, `google`, `openrouter`, `nvidia`, `local`) across `search`, `network`, and `chat`.
 - Provider settings are passed by CLI flags or `.env` values; they are not serialized into `.pubtator`/graph outputs automatically.
 
 #### Step 4 (Optional): Hybrid RAG CLI Chat (Search → Network → Chat)

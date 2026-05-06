@@ -37,10 +37,10 @@ graph_layout = html.Div(
                 dcc.Slider(
                     id="fcose-node-repulsion",
                     min=10000,
-                    max=100000,
+                    max=200000,
                     step=5000,
                     value=45000,
-                    marks={10000: "10k", 45000: "45k", 100000: "100k"},
+                    marks={10000: "10k", 45000: "45k", 100000: "100k", 200000: "200k"},
                     tooltip={"placement": "bottom", "always_visible": True},
                 ),
             ],

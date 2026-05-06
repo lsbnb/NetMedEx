@@ -11,6 +11,7 @@ logger = logging.getLogger(__name__)
 OPENAI_BASE_URL = "https://api.openai.com/v1"
 GEMINI_OPENAI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
+NVIDIA_NIM_BASE_URL = "https://integrate.api.nvidia.com/v1"
 
 COMMON_OPENAI_MODELS = {
     "gpt-4o",
@@ -39,6 +40,8 @@ def get_provider_api_key(provider: str | None, explicit_key: str | None = None) 
         return os.getenv("OPENROUTER_API_KEY")
     if raw_provider == "local":
         return os.getenv("LOCAL_LLM_API_KEY") or "local-dummy-key"
+    if raw_provider == "nvidia":
+        return os.getenv("NVIDIA_API_KEY")
     return os.getenv("OPENAI_API_KEY")
 
 
@@ -98,6 +101,10 @@ class LLMClient:
             )
             self.model = os.getenv("LOCAL_LLM_MODEL", self.model)
             self.embedding_model = os.getenv("LOCAL_EMBEDDING_MODEL", self.embedding_model)
+        elif self.provider == "nvidia":
+            self.api_key = os.getenv("NVIDIA_API_KEY")
+            self.base_url = os.getenv("NVIDIA_NIM_BASE_URL") or NVIDIA_NIM_BASE_URL
+            self.model = os.getenv("NVIDIA_NIM_MODEL", self.model)
         else:
             self.api_key = os.getenv("OPENAI_API_KEY")
             self.base_url = self.base_url or OPENAI_BASE_URL
@@ -174,6 +181,15 @@ class LLMClient:
                 has_google_model = any(self.model in m for m in available_models)
                 if not has_google_model:
                     return False, f"Model '{self.model}' not found on Gemini endpoint."
+            elif self.provider == "nvidia":
+                # NIM namespaced IDs (e.g. meta/llama-3.1-70b-instruct) may appear
+                # with or without the namespace prefix depending on deployment type.
+                short_name = self.model.rsplit("/", 1)[-1]
+                has_nim_model = not available_models or any(
+                    self.model == m or short_name in m for m in available_models
+                )
+                if not has_nim_model:
+                    return False, f"Model '{self.model}' not found on NIM endpoint."
             elif self.model not in available_models:
                 return False, f"Model '{self.model}' not found on server. Please pull it first."
 

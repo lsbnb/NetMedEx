@@ -111,6 +111,7 @@ graph_file = html.Div(
 
 api_params = html.Div(
     [
+        # --- Always visible: Search Type ---
         html.Div(
             [
                 generate_param_title(
@@ -134,42 +135,33 @@ api_params = html.Div(
             ],
             className="param",
         ),
+        # --- Always visible: AI Search ---
         html.Div(
             [
-                generate_param_title(
-                    "AI Search",
-                    "Use LLM to translate natural language queries into optimized PubTator boolean queries.",
-                ),
-                dbc.Alert(
+                html.Div(
                     [
-                        html.Div(
-                            [
-                                dbc.Switch(
-                                    id="ai-search-toggle",
-                                    value=False,
-                                    className="me-2",
-                                ),
-                                html.Span(
-                                    "🤖 Enable AI Search:",
-                                    className="fw-bold me-2",
-                                    style={"fontSize": "0.9rem", "whiteSpace": "nowrap"},
-                                ),
-                                html.Small(
-                                    "Let AI translate your language into PubTator queries",
-                                    className="text-muted",
-                                    style={"fontSize": "0.8rem"},
-                                ),
-                            ],
-                            className="d-flex align-items-center flex-wrap",
-                        )
+                        dbc.Switch(
+                            id="ai-search-toggle",
+                            value=False,
+                            className="me-2",
+                        ),
+                        html.Span(
+                            "🤖 AI Search",
+                            className="fw-bold me-2",
+                            style={"fontSize": "0.9rem"},
+                        ),
+                        html.Small(
+                            "— LLM translates your query into PubTator format",
+                            className="text-muted",
+                            style={"fontSize": "0.78rem"},
+                        ),
                     ],
-                    color="info",
-                    className="mb-0",
-                    style={"padding": "0.5rem 0.75rem"},
+                    className="d-flex align-items-center flex-wrap",
                 ),
             ],
             className="param",
         ),
+        # --- Always visible: Query ---
         html.Div(
             [
                 generate_param_title(
@@ -187,50 +179,68 @@ api_params = html.Div(
             id="input-type",
             className="param",
         ),
+        # --- Collapsible: Search Options ---
         html.Div(
-            [
-                generate_param_title("Sort", "Sort articles by recency or relevance"),
-                dbc.RadioItems(
-                    id="sort-toggle-methods",
-                    options=[
-                        {"label": "Recency", "value": "date"},
-                        {"label": "Relevance", "value": "score"},
-                    ],
-                    value="date",
-                    inline=True,
-                ),
-            ],
-            className="param",
+            dbc.Button(
+                [
+                    html.I(className="bi bi-chevron-down collapse-chevron me-2", id="search-options-chevron"),
+                    "Search Options",
+                ],
+                id="search-options-toggle-btn",
+                className="collapse-section-btn",
+            ),
+            className="param py-1",
         ),
-        html.Div(
+        dbc.Collapse(
             [
                 html.Div(
                     [
-                        generate_param_title(
-                            "PubTator Parameters",
-                            (
-                                "Use MeSH Vocabulary: Replace original text in articles with standardized MeSH terms\n"
-                                "Full Text: Build network from full-text articles if available, defaulting to abstracts otherwise (not recommended to enable)\n"
-                                "Fetch Citation Counts: Fetch citation counts from OpenCitations for all articles"
-                            ),
+                        generate_param_title("Sort", "Sort articles by recency or relevance"),
+                        dbc.RadioItems(
+                            id="sort-toggle-methods",
+                            options=[
+                                {"label": "Recency", "value": "date"},
+                                {"label": "Relevance", "value": "score"},
+                            ],
+                            value="date",
+                            inline=True,
                         ),
                     ],
-                    className="flex-grow-1",
+                    className="param",
                 ),
-                dbc.Checklist(
-                    options=[
-                        {"label": "Use MeSH Vocabulary", "value": "use_mesh"},
-                        {"label": "Full Text", "value": "full_text"},
-                        {"label": "Fetch Citation Counts", "value": "fetch_citations"},
+                html.Div(
+                    [
+                        html.Div(
+                            [
+                                generate_param_title(
+                                    "PubTator Parameters",
+                                    (
+                                        "Use MeSH Vocabulary: Replace original text in articles with standardized MeSH terms\n"
+                                        "Full Text: Build network from full-text articles if available, defaulting to abstracts otherwise (not recommended to enable)\n"
+                                        "Fetch Citation Counts: Fetch citation counts from OpenCitations for all articles"
+                                    ),
+                                ),
+                            ],
+                            className="flex-grow-1",
+                        ),
+                        dbc.Checklist(
+                            options=[
+                                {"label": "Use MeSH Vocabulary", "value": "use_mesh"},
+                                {"label": "Full Text", "value": "full_text"},
+                                {"label": "Fetch Citation Counts", "value": "fetch_citations"},
+                            ],
+                            id="pubtator-params",
+                            value=["use_mesh"],
+                            switch=True,
+                            inline=True,
+                            style={"fontSize": "0.76rem"},
+                        ),
                     ],
-                    id="pubtator-params",
-                    value=["use_mesh"],
-                    switch=True,
-                    inline=True,
-                    style={"fontSize": "0.76rem"},
+                    className="param",
                 ),
             ],
-            className="param",
+            id="search-options-collapse",
+            is_open=True,
         ),
     ],
     id="api-wrapper",
@@ -239,106 +249,124 @@ api_params = html.Div(
 
 network_params = html.Div(
     [
+        # --- Collapsible: Advanced Network Options ---
         html.Div(
-            [
-                generate_param_title(
-                    "Node Filter",
-                    (
-                        "All: Retain all annotations\n"
-                        "MeSH: Retain annotations with standardized MeSH terms only\n"
-                        "BioREx Relation: Retain annotations with high-confidence relationships from PubTator3 BioREx model"
-                    ),
-                ),
-                dcc.Dropdown(
-                    id="node-type",
-                    options=[
-                        {"label": "All", "value": "all"},
-                        {"label": "MeSH", "value": "mesh"},
-                        {"label": "BioREx Relation", "value": "relation"},
-                    ],
-                    value="all",
-                    style={"width": "200px"},
-                ),
-            ],
-            className="param",
+            dbc.Button(
+                [
+                    html.I(className="bi bi-chevron-down collapse-chevron me-2", id="network-options-chevron"),
+                    "Advanced Network Options",
+                ],
+                id="network-options-toggle-btn",
+                className="collapse-section-btn",
+            ),
+            className="param py-1",
         ),
-        html.Div(
-            [
-                generate_param_title(
-                    "Edge Construction Method",
-                    (
-                        "Co-occurrence: Fast edge creation based on entity co-mentions (high recall)\n"
-                        "Semantic Analysis: LLM-based relationship extraction (balanced precision/recall, requires API) ⚡\n"
-                        "BioREx Relations Only: Use only expert-curated relationships (high precision, low coverage)"
-                    ),
-                ),
-                dcc.Dropdown(
-                    id="edge-method",
-                    options=[
-                        {"label": "Co-occurrence (Fast)", "value": "co-occurrence"},
-                        {"label": "Semantic Analysis (LLM) ⚡", "value": "semantic"},
-                        {"label": "BioREx Relations Only", "value": "relation"},
-                    ],
-                    value="co-occurrence",
-                    style={"width": "250px"},
-                ),
-            ],
-            className="param",
-        ),
-        html.Div(
+        dbc.Collapse(
             [
                 html.Div(
                     [
-                        html.Small(
-                            "⚠️ Semantic analysis requires LLM configuration and may incur API costs.",
-                            className="text-warning",
+                        generate_param_title(
+                            "Node Filter",
+                            (
+                                "All: Retain all annotations\n"
+                                "MeSH: Retain annotations with standardized MeSH terms only\n"
+                                "BioREx Relation: Retain annotations with high-confidence relationships from PubTator3 BioREx model"
+                            ),
+                        ),
+                        dcc.Dropdown(
+                            id="node-type",
+                            options=[
+                                {"label": "All", "value": "all"},
+                                {"label": "MeSH", "value": "mesh"},
+                                {"label": "BioREx Relation", "value": "relation"},
+                            ],
+                            value="all",
+                            style={"width": "200px"},
                         ),
                     ],
-                    className="mb-2",
+                    className="param",
                 ),
-                generate_param_title(
-                    "Semantic Confidence Threshold",
-                    (
-                        "Suggested Settings:\n"
-                        "• 0.3 - 0.5: Recommended (Balanced recall & precision)\n"
-                        "• > 0.7: Strict (High-confidence evidence)\n"
-                        "• < 0.2: Exploratory (Weak/novel associations)"
-                    ),
-                ),
-                dcc.Slider(
-                    0,
-                    1.0,
-                    0.05,
-                    value=0.4,
-                    marks={0: "0.0", 0.4: "0.4", 0.7: "0.7", 1.0: "1.0"},
-                    id="semantic-threshold",
-                    tooltip={"placement": "bottom", "always_visible": True},
-                ),
-            ],
-            className="param",
-            id="semantic-options",
-            style=display.hidden_panel,
-        ),
-        html.Div(
-            [
-                generate_param_title(
-                    "Weighting Method",
-                    (
-                        "Frequency: Calculate edge weights using co-occurence counts\n"
-                        "NPMI: Calulate edge weights using normalized mutual pointwise information"
-                    ),
-                ),
-                dcc.Dropdown(
-                    id="weighting-method",
-                    options=[
-                        {"label": "Frequency", "value": "freq"},
-                        {"label": "NPMI", "value": "npmi"},
+                html.Div(
+                    [
+                        generate_param_title(
+                            "Edge Construction Method",
+                            (
+                                "Co-occurrence: Fast edge creation based on entity co-mentions (high recall)\n"
+                                "Semantic Analysis: LLM-based relationship extraction (balanced precision/recall, requires API) ⚡\n"
+                                "BioREx Relations Only: Use only expert-curated relationships (high precision, low coverage)"
+                            ),
+                        ),
+                        dcc.Dropdown(
+                            id="edge-method",
+                            options=[
+                                {"label": "Co-occurrence (Fast)", "value": "co-occurrence"},
+                                {"label": "Semantic Analysis (LLM) ⚡", "value": "semantic"},
+                                {"label": "BioREx Relations Only", "value": "relation"},
+                            ],
+                            value="co-occurrence",
+                            style={"width": "250px"},
+                        ),
                     ],
-                    value="freq",
-                    style={"width": "200px"},
+                    className="param",
+                ),
+                html.Div(
+                    [
+                        html.Div(
+                            [
+                                html.Small(
+                                    "⚠️ Semantic analysis requires LLM configuration and may incur API costs.",
+                                    className="text-warning",
+                                ),
+                            ],
+                            className="mb-2",
+                        ),
+                        generate_param_title(
+                            "Semantic Confidence Threshold",
+                            (
+                                "Suggested Settings:\n"
+                                "• 0.3 - 0.5: Recommended (Balanced recall & precision)\n"
+                                "• > 0.7: Strict (High-confidence evidence)\n"
+                                "• < 0.2: Exploratory (Weak/novel associations)"
+                            ),
+                        ),
+                        dcc.Slider(
+                            0,
+                            1.0,
+                            0.05,
+                            value=0.4,
+                            marks={0: "0.0", 0.4: "0.4", 0.7: "0.7", 1.0: "1.0"},
+                            id="semantic-threshold",
+                            tooltip={"placement": "bottom", "always_visible": True},
+                        ),
+                    ],
+                    className="param",
+                    id="semantic-options",
+                    style=display.hidden_panel,
+                ),
+                html.Div(
+                    [
+                        generate_param_title(
+                            "Weighting Method",
+                            (
+                                "Frequency: Calculate edge weights using co-occurence counts\n"
+                                "NPMI: Calulate edge weights using normalized mutual pointwise information"
+                            ),
+                        ),
+                        dcc.Dropdown(
+                            id="weighting-method",
+                            options=[
+                                {"label": "Frequency", "value": "freq"},
+                                {"label": "NPMI", "value": "npmi"},
+                            ],
+                            value="freq",
+                            style={"width": "200px"},
+                        ),
+                    ],
+                    className="param",
                 ),
             ],
-            className="param",
+            id="network-options-collapse",
+            is_open=False,
         ),
     ],
     id="cy-wrapper",
@@ -587,27 +615,6 @@ graph_settings_panel = html.Div(
         html.Div(
             [
                 generate_param_title(
-                    "Edge Confidence Threshold",
-                    "Only show semantic edges with confidence score above this value. "
-                    "Higher values prioritize precision, while lower values increase recall.",
-                ),
-                dcc.Slider(
-                    id="confidence-threshold",
-                    min=0,
-                    max=1,
-                    step=0.05,
-                    value=0.0,
-                    marks={0: "0.0", 0.5: "0.5", 1.0: "1.0"},
-                    tooltip={"placement": "bottom", "always_visible": True},
-                    updatemode="drag",
-                ),
-            ],
-            className="param",
-            id="confidence-threshold-wrapper",
-        ),
-        html.Div(
-            [
-                generate_param_title(
                     "Search Nodes",
                     "Find nodes by name or identifier. Separate multiple terms with commas to highlight all matches simultaneously. Supports case-insensitive, fuzzy matching, and common synonym aliases.",
                 ),
@@ -615,21 +622,6 @@ graph_settings_panel = html.Div(
                     id="graph-node-search",
                     type="text",
                     placeholder="e.g. TP53, BRAF, EGFR",
-                ),
-            ],
-            className="param",
-        ),
-        html.Div(
-            [
-                generate_param_title(
-                    "Visible Node Types",
-                    "Choose which node types remain visible in the graph.",
-                ),
-                dbc.Checklist(
-                    id="graph-visible-node-types",
-                    options=NODE_TYPE_OPTIONS,
-                    value=[option["value"] for option in NODE_TYPE_OPTIONS],
-                    inline=True,
                 ),
             ],
             className="param",
@@ -646,7 +638,60 @@ graph_settings_panel = html.Div(
             ],
             className="param",
         ),
-        minimal_degree,
+        html.Div(
+            dbc.Button(
+                [
+                    html.I(className="bi bi-chevron-down collapse-chevron me-2", id="display-filters-chevron"),
+                    "Display Filters",
+                ],
+                id="display-filters-toggle-btn",
+                className="collapse-section-btn",
+            ),
+            className="param py-1",
+        ),
+        dbc.Collapse(
+            [
+                html.Div(
+                    [
+                        generate_param_title(
+                            "Edge Confidence Threshold",
+                            "Only show semantic edges with confidence score above this value. "
+                            "Higher values prioritize precision, while lower values increase recall.",
+                        ),
+                        dcc.Slider(
+                            id="confidence-threshold",
+                            min=0,
+                            max=1,
+                            step=0.05,
+                            value=0.0,
+                            marks={0: "0.0", 0.5: "0.5", 1.0: "1.0"},
+                            tooltip={"placement": "bottom", "always_visible": True},
+                            updatemode="drag",
+                        ),
+                    ],
+                    className="param",
+                    id="confidence-threshold-wrapper",
+                ),
+                html.Div(
+                    [
+                        generate_param_title(
+                            "Visible Node Types",
+                            "Choose which node types remain visible in the graph.",
+                        ),
+                        dbc.Checklist(
+                            id="graph-visible-node-types",
+                            options=NODE_TYPE_OPTIONS,
+                            value=[option["value"] for option in NODE_TYPE_OPTIONS],
+                            inline=True,
+                        ),
+                    ],
+                    className="param",
+                ),
+                minimal_degree,
+            ],
+            id="display-filters-collapse",
+            is_open=False,
+        ),
     ],
     id="graph-settings-panel",
     style=display.hidden_panel,
@@ -680,9 +725,10 @@ sidebar_toggle = dbc.Tabs(
         dbc.Tab(
             label="💬 Chat",
             tab_id="chat",
+            tab_class_name="chat-tab",
             label_style={"cursor": "pointer", "color": "black"},
             active_label_style={
-                "color": "black",
+                "color": "#0d9488",
                 "fontWeight": "bold",
                 "backgroundColor": "white",
             },
@@ -700,7 +746,7 @@ header_row = html.Div(
         sidebar_toggle,
         html.Div(
             [
-                html.Small("v1.2.3", className="text-muted", style={"fontSize": "0.7rem"}),
+                html.Small("v1.2.4", className="text-muted", style={"fontSize": "0.7rem"}),
                 advanced_settings,
             ],
             className="d-flex flex-column align-items-center ms-auto",
@@ -717,6 +763,9 @@ sidebar = html.Div(
         chat_panel,
         total_stats_store,
         dcc.Store(id="search-history-store", storage_type="local", data=[]),
+        dcc.Store(id="search-options-open-store", storage_type="local", data=True),
+        dcc.Store(id="network-options-open-store", storage_type="local", data=False),
+        dcc.Store(id="display-filters-open-store", storage_type="local", data=False),
     ],
     className="sidebar",
     id="sidebar-container",

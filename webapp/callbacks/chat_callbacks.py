@@ -1234,14 +1234,17 @@ def callbacks(app):
             from webapp.callbacks.pipeline import detect_query_language
             from webapp.components.chat import create_message_component
 
-            # Dynamically detect language of the new message.
-            # Always honour the language of the current message:
-            #   - CJK input  → respond in that CJK language
-            #   - English input → respond in English, regardless of session_language
-            # This prevents the case where a CJK search session causes English
-            # chat messages to receive CJK replies.
+            # Determine response language:
+            # - If session_language is non-English (set from search query language),
+            #   always honour it — so a Chinese-query session always replies in Chinese
+            #   even when the user clicks an English suggested question.
+            # - If session_language is English (or unset), fall back to per-message
+            #   detection so CJK chat messages still get CJK replies.
             msg_lang = detect_query_language(user_input)
-            effective_language = msg_lang
+            if _session_language and _session_language not in ("English", ""):
+                effective_language = _session_language
+            else:
+                effective_language = msg_lang
 
             # Get AI response
             response = session.send_message(user_input, session_language=effective_language)
@@ -1442,7 +1445,9 @@ def callbacks(app):
                     # Pass 1: PMID:12345678 / PMID：12345678 (with prefix)
                     seg = re.sub(r"(?i)(PMID[：:]?\s*)(\d{7,10})", make_link_prefixed, seg)
                     # Pass 2: [12345678] (bare number in brackets, LLM citation style)
-                    seg = re.sub(r"\[(\d{7,10})\]", make_link_bracketed, seg)
+                    # Negative lookbehind (?<![a-zA-Z]) prevents matching SNP rsIDs (e.g. rs[1234567]),
+                    # gene accessions, or any identifier where a letter immediately precedes the bracket.
+                    seg = re.sub(r"(?<![a-zA-Z])\[(\d{7,10})\]", make_link_bracketed, seg)
                     result.append(seg)
             return "".join(result)
 

@@ -81,6 +81,7 @@ normalization_toggle = html.Div(
 llm_config = html.Div(
     [
         dcc.Store(id="llm-settings-store", storage_type="local"),
+        html.Div(id="active-llm-banner", className="mb-3"),
         generate_param_title(
             "LLM Provider",
             "Choose your LLM provider for AI-powered features",
@@ -91,6 +92,7 @@ llm_config = html.Div(
                 {"label": "OpenAI", "value": "openai"},
                 {"label": "Google Gemini", "value": "google"},
                 {"label": "OpenRouter", "value": "openrouter"},
+                {"label": "NVIDIA NIM", "value": "nvidia"},
                 {"label": "Local Ollama", "value": "local"},
             ],
             value="openai",  # Default to OpenAI
@@ -256,6 +258,67 @@ llm_config = html.Div(
                 ),
             ],
             id="openrouter-config",
+            style={"display": "none"},
+        ),
+        # NVIDIA NIM Configuration (hidden by default)
+        html.Div(
+            [
+                generate_param_title(
+                    "NVIDIA API Key",
+                    "API key from build.nvidia.com (starts with nvapi-...).\nFor on-premises NIM, use any non-empty value.",
+                ),
+                dbc.Input(
+                    id="nvidia-api-key-input",
+                    type="password",
+                    placeholder="nvapi-...",
+                    debounce=True,
+                ),
+                html.Div(style={"height": "10px"}),
+                generate_param_title(
+                    "Base URL",
+                    "Cloud NIM: https://integrate.api.nvidia.com/v1\nOn-premises NIM: http://<host>:<port>/v1",
+                ),
+                dbc.Input(
+                    id="nvidia-nim-base-url-input",
+                    placeholder="https://integrate.api.nvidia.com/v1",
+                    value="https://integrate.api.nvidia.com/v1",
+                    debounce=True,
+                ),
+                html.Div(style={"height": "10px"}),
+                generate_param_title(
+                    "Model",
+                    "Select a preset NIM model or fetch the full list from your endpoint.",
+                ),
+                html.Div(
+                    [
+                        dcc.Dropdown(
+                            id="nvidia-model-selector",
+                            options=[
+                                {"label": "Llama 3.1 70B Instruct", "value": "meta/llama-3.1-70b-instruct"},
+                                {"label": "Llama 3.1 8B Instruct", "value": "meta/llama-3.1-8b-instruct"},
+                                {"label": "Llama 3.3 70B Instruct", "value": "meta/llama-3.3-70b-instruct"},
+                                {"label": "Nemotron 70B Instruct", "value": "nvidia/llama-3.1-nemotron-70b-instruct"},
+                                {"label": "Mixtral 8x22B Instruct", "value": "mistralai/mixtral-8x22b-instruct-v0.1"},
+                                {"label": "Mistral Large", "value": "mistralai/mistral-large-latest"},
+                            ],
+                            value="meta/llama-3.1-70b-instruct",
+                            clearable=False,
+                            style={"flex": "1"},
+                        ),
+                        dbc.Button(
+                            html.I(className="bi bi-arrow-clockwise"),
+                            id="refresh-nvidia-models-btn",
+                            color="secondary",
+                            outline=True,
+                            className="ms-2",
+                            title="Fetch models from NIM endpoint",
+                        ),
+                    ],
+                    className="d-flex align-items-center",
+                ),
+                html.Div(id="nvidia-model-fetch-status", className="small text-muted mt-1"),
+            ],
+            id="nvidia-config",
             style={"display": "none"},
         ),
         # Local LLM Configuration (hidden by default)

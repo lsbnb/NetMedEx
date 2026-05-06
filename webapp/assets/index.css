@@ -800,3 +800,38 @@ a:hover {
     max-width: 340px;
     line-height: 1.5;
 }
+
+/* Collapsible section header buttons */
+.sidebar .collapse-section-btn {
+    background-color: rgba(0, 0, 0, 0.18) !important;
+    border: none !important;
+    color: var(--SIDEBAR-TEXT) !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.02em;
+    padding: 5px 10px !important;
+    width: 100%;
+    text-align: left !important;
+    border-radius: 4px !important;
+    transition: background-color 0.15s ease;
+}
+
+.sidebar .collapse-section-btn:hover {
+    background-color: rgba(0, 0, 0, 0.28) !important;
+}
+
+.collapse-chevron {
+    display: inline-block;
+    transition: transform 0.25s ease;
+}
+
+/* Chat tab — teal accent when active */
+#sidebar-panel-toggle .chat-tab .nav-link.active {
+    color: #0d9488 !important;
+}
+
+/* AI Search inline toggle — subtle left border accent */
+.sidebar .param .ai-search-row {
+    border-left: 3px solid rgba(13, 202, 240, 0.5);
+    padding-left: 8px;
+}

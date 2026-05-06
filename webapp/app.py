@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 from dotenv import load_dotenv
+from pathlib import Path
 
-load_dotenv(override=True)
+load_dotenv(Path(__file__).parent.parent / ".env", override=True)
 
 import os
 

@@ -5,11 +5,13 @@ import os
 from pathlib import Path
 
 import dash
+import dash_bootstrap_components as dbc
 import requests
-from dash import ClientsideFunction, Input, Output, State, no_update
+from dash import ClientsideFunction, Input, Output, State, html, no_update
 
 from webapp.llm import (
     GEMINI_OPENAI_BASE_URL,
+    NVIDIA_NIM_BASE_URL,
     OPENAI_BASE_URL,
     OPENROUTER_BASE_URL,
     llm_client,
@@ -69,6 +71,9 @@ def _default_settings() -> dict:
         "openrouter_api_key": "",
         "openrouter_model": "openai/gpt-4o-mini",
         "openrouter_custom_model": "",
+        "nvidia_api_key": "",
+        "nvidia_nim_base_url": NVIDIA_NIM_BASE_URL,
+        "nvidia_model": "meta/llama-3.1-70b-instruct",
     }
 
 
@@ -129,6 +134,10 @@ def _settings_from_env() -> dict:
         ]:
             settings["openrouter_custom_model"] = settings["openrouter_model"]
             settings["openrouter_model"] = "custom"
+    elif provider == "nvidia":
+        settings["nvidia_api_key"] = ""
+        settings["nvidia_nim_base_url"] = os.getenv("NVIDIA_NIM_BASE_URL", NVIDIA_NIM_BASE_URL)
+        settings["nvidia_model"] = os.getenv("NVIDIA_NIM_MODEL", "meta/llama-3.1-70b-instruct")
     else:
         chosen_local_url = local_base_url or base_url
         chosen_local_model = local_model or model
@@ -169,6 +178,9 @@ def callbacks(app):
             Output("openrouter-api-key-input", "value"),
             Output("openrouter-model-selector", "value"),
             Output("openrouter-custom-model-input", "value"),
+            Output("nvidia-api-key-input", "value"),
+            Output("nvidia-nim-base-url-input", "value"),
+            Output("nvidia-model-selector", "value"),
         ],
         Input("main-container", "id"),
         State("llm-settings-store", "data"),
@@ -190,10 +202,13 @@ def callbacks(app):
                 settings["openrouter_api_key"],
                 settings["openrouter_model"],
                 settings["openrouter_custom_model"],
+                settings["nvidia_api_key"],
+                settings["nvidia_nim_base_url"],
+                settings["nvidia_model"],
             )
         except Exception as e:
             logger.error(f"Error loading LLM configuration: {e}")
-            return (dash.no_update,) * 13
+            return (dash.no_update,) * 16
 
     @app.callback(
         Output("llm-settings-store", "data"),
@@ -211,22 +226,28 @@ def callbacks(app):
             Input("openrouter-api-key-input", "value"),
             Input("openrouter-model-selector", "value"),
             Input("openrouter-custom-model-input", "value"),
+            Input("nvidia-api-key-input", "value"),
+            Input("nvidia-nim-base-url-input", "value"),
+            Input("nvidia-model-selector", "value"),
         ],
     )
     def persist_llm_settings(
         provider,
-        openai_api_key,
+        _openai_api_key,
         openai_model,
         openai_custom_model,
-        google_api_key,
+        _google_api_key,
         google_model,
         google_safety_setting,
         local_base_url,
         local_model,
         local_model_options,
-        openrouter_api_key,
+        _openrouter_api_key,
         openrouter_model,
         openrouter_custom_model,
+        _nvidia_api_key,
+        nvidia_nim_base_url,
+        nvidia_model,
     ):
         return {
             "provider": provider,
@@ -242,6 +263,9 @@ def callbacks(app):
             "openrouter_api_key": "",
             "openrouter_model": openrouter_model or "openai/gpt-4o-mini",
             "openrouter_custom_model": openrouter_custom_model or "",
+            "nvidia_api_key": "",
+            "nvidia_nim_base_url": nvidia_nim_base_url or NVIDIA_NIM_BASE_URL,
+            "nvidia_model": nvidia_model or "meta/llama-3.1-70b-instruct",
         }
 
     # Toggle provider-specific sections.
@@ -250,43 +274,25 @@ def callbacks(app):
             Output("openai-config", "style"),
             Output("google-config", "style"),
             Output("openrouter-config", "style"),
+            Output("nvidia-config", "style"),
             Output("local-llm-config", "style"),
             Output("google-params-config", "style"),
         ],
         Input("llm-provider-selector", "value"),
     )
     def toggle_llm_config(provider):
+        none = {"display": "none"}
+        block = {"display": "block"}
         if provider == "openai":
-            return (
-                {"display": "block"},
-                {"display": "none"},
-                {"display": "none"},
-                {"display": "none"},
-                {"display": "none"},
-            )
+            return block, none, none, none, none, none
         if provider == "google":
-            return (
-                {"display": "none"},
-                {"display": "block"},
-                {"display": "none"},
-                {"display": "none"},
-                {"display": "block"},
-            )
+            return none, block, none, none, none, block
         if provider == "openrouter":
-            return (
-                {"display": "none"},
-                {"display": "none"},
-                {"display": "block"},
-                {"display": "none"},
-                {"display": "none"},
-            )
-        return (
-            {"display": "none"},
-            {"display": "none"},
-            {"display": "none"},
-            {"display": "block"},
-            {"display": "none"},
-        )
+            return none, none, block, none, none, none
+        if provider == "nvidia":
+            return none, none, none, block, none, none
+        # local
+        return none, none, none, none, block, none
 
     @app.callback(
         Output("openai-custom-model-div", "style"),
@@ -326,6 +332,9 @@ def callbacks(app):
             State("openrouter-api-key-input", "value"),
             State("openrouter-model-selector", "value"),
             State("openrouter-custom-model-input", "value"),
+            State("nvidia-api-key-input", "value"),
+            State("nvidia-nim-base-url-input", "value"),
+            State("nvidia-model-selector", "value"),
         ],
         prevent_initial_call=True,
     )
@@ -343,6 +352,9 @@ def callbacks(app):
         openrouter_api_key,
         openrouter_model,
         openrouter_custom_model,
+        nvidia_api_key,
+        nvidia_nim_base_url,
+        nvidia_model,
     ):
         if not n_clicks:
             raise dash.exceptions.PreventUpdate
@@ -426,6 +438,21 @@ def callbacks(app):
                     model=model,
                     base_url=OPENROUTER_BASE_URL,
                 )
+            elif provider == "nvidia":
+                nvidia_api_key = nvidia_api_key or os.getenv("NVIDIA_API_KEY", "").strip()
+                if not nvidia_api_key:
+                    return (
+                        "⚠️ NVIDIA API key is required",
+                        "status-indicator status-warning",
+                        "Enter a key or set NVIDIA_API_KEY on the server",
+                    )
+                nim_base_url = (nvidia_nim_base_url or NVIDIA_NIM_BASE_URL).rstrip("/")
+                llm_client.initialize_client(
+                    provider="nvidia",
+                    api_key=nvidia_api_key,
+                    base_url=nim_base_url,
+                    model=nvidia_model or "meta/llama-3.1-70b-instruct",
+                )
             else:
                 if not local_base_url or not local_model:
                     return (
@@ -461,6 +488,37 @@ def callbacks(app):
                 "status-indicator status-offline",
                 msg,
             )
+
+    @app.callback(
+        Output("active-llm-banner", "children"),
+        Input("llm-settings-store", "data"),
+        prevent_initial_call=False,
+    )
+    def show_active_llm_banner(_store):
+        if llm_client.client:
+            return dbc.Alert(
+                [
+                    html.Span("🟢 ", style={"fontSize": "0.9rem"}),
+                    html.Strong("Active: "),
+                    html.Span(f"{llm_client.provider.title()} / {llm_client.model}"),
+                    html.Br(),
+                    html.Small("Loaded from server environment", className="text-muted"),
+                ],
+                color="success",
+                className="py-2 px-3 mb-0",
+                style={"fontSize": "0.85rem"},
+            )
+        return dbc.Alert(
+            [
+                html.Span("⚪ ", style={"fontSize": "0.9rem"}),
+                html.Strong("No LLM configured"),
+                html.Br(),
+                html.Small("Configure below or set in .env", className="text-muted"),
+            ],
+            color="secondary",
+            className="py-2 px-3 mb-0",
+            style={"fontSize": "0.85rem"},
+        )
 
     @app.callback(
         Output("ai-search-toggle", "value"),
@@ -577,7 +635,44 @@ def callbacks(app):
             logger.error(f"Error fetching OpenRouter models: {e}")
             return no_update, f"❌ Fetch failed: {_sanitize_error_message(str(e))}", no_update
 
-
+    @app.callback(
+        [
+            Output("nvidia-model-selector", "options", allow_duplicate=True),
+            Output("nvidia-model-fetch-status", "children"),
+            Output("nvidia-model-selector", "value", allow_duplicate=True),
+        ],
+        Input("refresh-nvidia-models-btn", "n_clicks"),
+        [
+            State("nvidia-api-key-input", "value"),
+            State("nvidia-nim-base-url-input", "value"),
+            State("nvidia-model-selector", "value"),
+        ],
+        prevent_initial_call=True,
+    )
+    def fetch_nvidia_models(n_clicks, api_key, base_url, current_value):
+        if not n_clicks:
+            raise dash.exceptions.PreventUpdate
+        api_key = api_key or os.getenv("NVIDIA_API_KEY", "").strip()
+        nim_url = (base_url or NVIDIA_NIM_BASE_URL).rstrip("/")
+        if not api_key:
+            return no_update, "⚠️ Enter NVIDIA API key first", no_update
+        try:
+            resp = requests.get(
+                f"{nim_url}/models",
+                headers={"Authorization": f"Bearer {api_key}"},
+                timeout=10,
+            )
+            if resp.status_code != 200:
+                return no_update, f"❌ HTTP {resp.status_code}: {resp.text[:120]}", no_update
+            data = resp.json().get("data", [])
+            options = [{"label": m["id"], "value": m["id"]} for m in data if m.get("id")]
+            if not options:
+                return no_update, "❌ No models returned", no_update
+            new_value = current_value if any(o["value"] == current_value for o in options) else options[0]["value"]
+            return options, f"✅ Found {len(options)} models", new_value
+        except Exception as e:
+            logger.error(f"Error fetching NVIDIA NIM models: {e}")
+            return no_update, f"❌ {_sanitize_error_message(str(e))}", no_update
 
     def _build_openai_model_options(api_key, current_options, current_value, auto=False):
         api_key = api_key or os.getenv("OPENAI_API_KEY", "").strip()
@@ -755,6 +850,9 @@ def callbacks(app):
             State("openrouter-api-key-input", "value"),
             State("openrouter-model-selector", "value"),
             State("openrouter-custom-model-input", "value"),
+            State("nvidia-api-key-input", "value"),
+            State("nvidia-nim-base-url-input", "value"),
+            State("nvidia-model-selector", "value"),
         ],
         prevent_initial_call=True,
     )
@@ -772,6 +870,9 @@ def callbacks(app):
         openrouter_api_key,
         openrouter_model,
         openrouter_custom_model,
+        nvidia_api_key,
+        nvidia_nim_base_url,
+        nvidia_model,
     ):
         if not n_clicks:
             return ""
@@ -788,7 +889,7 @@ def callbacks(app):
             env_path = Path(__file__).resolve().parents[2] / ".env"
             env_vars = {}
             if env_path.exists():
-                with open(env_path, "r") as f:
+                with open(env_path) as f:
                     for line in f:
                         line = line.strip()
                         if line and not line.startswith("#") and "=" in line:
@@ -833,6 +934,18 @@ def callbacks(app):
                 env_vars["OPENAI_BASE_URL"] = OPENROUTER_BASE_URL
                 env_vars["OPENAI_MODEL"] = model
                 env_vars["EMBEDDING_MODEL"] = "text-embedding-3-small"
+            elif provider == "nvidia":
+                nvidia_api_key = nvidia_api_key or os.getenv("NVIDIA_API_KEY", "").strip()
+                if not nvidia_api_key:
+                    return "⚠️ Please enter NVIDIA API key before saving"
+                nim_base_url = (nvidia_nim_base_url or NVIDIA_NIM_BASE_URL).rstrip("/")
+                nim_model = nvidia_model or "meta/llama-3.1-70b-instruct"
+                env_vars["NVIDIA_API_KEY"] = nvidia_api_key
+                env_vars["NVIDIA_NIM_BASE_URL"] = nim_base_url
+                env_vars["NVIDIA_NIM_MODEL"] = nim_model
+                env_vars["OPENAI_BASE_URL"] = nim_base_url
+                env_vars["OPENAI_MODEL"] = nim_model
+                env_vars["EMBEDDING_MODEL"] = "NV-Embed-QA"
             else:
                 if not local_base_url or not local_model:
                     return "⚠️ Please enter both base URL and model name before saving"
@@ -845,6 +958,15 @@ def callbacks(app):
                 env_vars["OPENAI_MODEL"] = local_model
                 env_vars["EMBEDDING_MODEL"] = "nomic-embed-text"
 
+            _LLM_KEYS = {
+                "LLM_PROVIDER",
+                "OPENAI_API_KEY", "OPENROUTER_API_KEY", "GEMINI_API_KEY",
+                "NVIDIA_API_KEY", "NVIDIA_NIM_BASE_URL", "NVIDIA_NIM_MODEL",
+                "OPENAI_BASE_URL", "OPENAI_MODEL",
+                "OPENROUTER_MODEL", "GOOGLE_MODEL", "EMBEDDING_MODEL",
+                "GOOGLE_SAFETY_SETTING",
+                "LOCAL_LLM_API_KEY", "LOCAL_LLM_BASE_URL", "LOCAL_LLM_MODEL",
+            }
             with open(env_path, "w") as f:
                 f.write("# NetMedEx LLM Configuration\n")
                 for key in [
@@ -852,6 +974,7 @@ def callbacks(app):
                     "OPENAI_API_KEY",
                     "OPENROUTER_API_KEY",
                     "GEMINI_API_KEY",
+                    "NVIDIA_API_KEY",
                     "OPENAI_BASE_URL",
                     "OPENAI_MODEL",
                     "OPENROUTER_MODEL",
@@ -861,29 +984,12 @@ def callbacks(app):
                     "LOCAL_LLM_API_KEY",
                     "LOCAL_LLM_BASE_URL",
                     "LOCAL_LLM_MODEL",
+                    "NVIDIA_NIM_BASE_URL",
+                    "NVIDIA_NIM_MODEL",
                 ]:
                     if key in env_vars:
                         f.write(f"{key}={env_vars[key]}\n")
-                other_vars = {
-                    k: v
-                    for k, v in env_vars.items()
-                    if k
-                    not in {
-                        "LLM_PROVIDER",
-                        "OPENAI_API_KEY",
-                        "OPENROUTER_API_KEY",
-                        "GEMINI_API_KEY",
-                        "OPENAI_BASE_URL",
-                        "OPENAI_MODEL",
-                        "OPENROUTER_MODEL",
-                        "GOOGLE_MODEL",
-                        "EMBEDDING_MODEL",
-                        "GOOGLE_SAFETY_SETTING",
-                        "LOCAL_LLM_API_KEY",
-                        "LOCAL_LLM_BASE_URL",
-                        "LOCAL_LLM_MODEL",
-                    }
-                }
+                other_vars = {k: v for k, v in env_vars.items() if k not in _LLM_KEYS}
                 if other_vars:
                     f.write("\n# Other Configuration\n")
                     for key, value in other_vars.items():
