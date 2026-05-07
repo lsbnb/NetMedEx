@@ -17,7 +17,7 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.2.0
+## 🆕 What's New in v1.2.4
 - **Smart 2-Hop Mechanism Discovery**: Automatically surfaces latent A → B → C mechanistic hypotheses from the knowledge graph, ranked by a multi-factor confidence score.
 - **Hybrid Scoring 2.0**: Each graph path is scored by three components — Topological NPMI (30%), Semantic Extraction Confidence (40%), and Query Relevance (30%) — with directional relation boosts and evidence-frequency calibration.
 - **Confidence Calibration**: Relation strength and supporting PMID count now modulate edge confidence, reducing false-positive mechanistic inferences.
