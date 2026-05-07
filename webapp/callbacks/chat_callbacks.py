@@ -1718,8 +1718,15 @@ def callbacks(app):
         if not ctx.triggered or not any(n_clicks_list):
             raise dash.exceptions.PreventUpdate
 
-        # Simpler: find the one with the highest clicks or just the first non-zero
         trigger_info = ctx.triggered[0]
+
+        # Guard: when new pills are added to the DOM after an AI response, Dash
+        # re-fires this ALL-pattern callback with value=None/0 for the new pill
+        # while old pills still have n_clicks>0, causing any() to pass falsely.
+        # Only proceed if the triggering component actually received a real click.
+        if not trigger_info.get("value"):
+            raise dash.exceptions.PreventUpdate
+
         import json
 
         try:
@@ -1732,7 +1739,6 @@ def callbacks(app):
             inputs = ctx.inputs_list[0]
             for i, input_item in enumerate(inputs):
                 if input_item["id"]["index"] == triggered_index:
-                    # Clear input boxes immediately, force "chat" tab, AND trigger the actual send via the store
                     matched_text = question_texts[i]
                     return "", "", matched_text, "chat"
         except Exception as e:

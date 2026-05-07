@@ -737,7 +737,8 @@ sidebar_toggle = dbc.Tabs(
     id="sidebar-panel-toggle",
     active_tab="search",
     className="flex-grow-1",  # Take available space
-    persistence=False,
+    persistence=True,
+    persistence_type="session",
 )
 
 # Header row containing tabs and settings
