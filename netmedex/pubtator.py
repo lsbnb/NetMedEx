@@ -137,7 +137,9 @@ class PubTatorAPI:
         responses = await self.batch_publication_search(pmid_list)
 
         articles: list[PubTatorArticle] = []
+        raw_biocjson = None
         if self.response_format == "biocjson":
+            all_records = []
             for res_json in responses:
                 articles.extend(
                     biocjson_to_pubtator(
@@ -145,13 +147,21 @@ class PubTatorAPI:
                         full_text=self.full_text,
                     )
                 )
+                # Collect raw records for BioC-JSON download (preserves journal/date/authors)
+                all_records.extend(res_json.get("PubTator3", []))
+            raw_biocjson = {"PubTator3": all_records}
         elif self.response_format == "pubtator":
             for result in responses:
                 articles.extend(
                     [article for article in PubTatorIterator(result) if article is not None]
                 )
 
-        return PubTatorCollection(headers=[], articles=articles, metadata={"pmid_list": pmid_list})
+        return PubTatorCollection(
+            headers=[],
+            articles=articles,
+            metadata={"pmid_list": pmid_list},
+            raw_biocjson=raw_biocjson,
+        )
 
     async def get_query_results(self, query: str):
         logger.info(f"Query: {query}")

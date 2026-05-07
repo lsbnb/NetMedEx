@@ -11,6 +11,67 @@ logger = logging.getLogger(__name__)
 OPENAI_BASE_URL = "https://api.openai.com/v1"
 GEMINI_OPENAI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
+NVIDIA_NIM_BASE_URL = "https://integrate.api.nvidia.com/v1"
+
+COMMON_OPENAI_MODELS = {
+    "gpt-4o",
+    "gpt-4o-mini",
+    "gpt-4.1",
+    "gpt-4.1-mini",
+    "gpt-4-turbo",
+    "gpt-3.5-turbo",
+    "o1",
+    "o1-mini",
+    "o1-preview",
+    "o3",
+    "o3-mini",
+    "o4-mini",
+}
+
+
+def get_provider_api_key(provider: str | None, explicit_key: str | None = None) -> str | None:
+    """Resolve an API key without requiring it to be stored in browser state."""
+    if explicit_key:
+        return explicit_key
+    raw_provider = (provider or "openai").strip().lower()
+    if raw_provider == "google":
+        return os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
+    if raw_provider == "openrouter":
+        return os.getenv("OPENROUTER_API_KEY")
+    if raw_provider == "local":
+        return os.getenv("LOCAL_LLM_API_KEY") or "local-dummy-key"
+    if raw_provider == "nvidia":
+        return os.getenv("NVIDIA_API_KEY")
+    return os.getenv("OPENAI_API_KEY")
+
+
+def normalize_model_for_provider(provider: str | None, model: str | None) -> str:
+    """
+    Normalize provider/model combinations to avoid common misconfiguration errors.
+    - OpenAI provider should use bare model IDs (e.g. gpt-4o-mini, not openai/gpt-4o-mini)
+    - OpenRouter provider usually expects namespaced IDs; auto-prefix common OpenAI IDs
+    """
+    raw_provider = (provider or "openai").strip().lower()
+    raw_model = (model or "").strip()
+    if not raw_model:
+        if raw_provider == "openrouter":
+            return "openai/gpt-4o-mini"
+        if raw_provider == "google":
+            return "gemini-1.5-pro"
+        return "gpt-4o-mini"
+
+    if raw_provider == "openai":
+        if "/" in raw_model:
+            # Fix common OpenRouter-style model notation under OpenAI provider.
+            return raw_model.rsplit("/", 1)[-1].strip() or "gpt-4o-mini"
+        return raw_model
+
+    if raw_provider == "openrouter":
+        if "/" not in raw_model and raw_model in COMMON_OPENAI_MODELS:
+            return f"openai/{raw_model}"
+        return raw_model
+
+    return raw_model
 
 
 class LLMClient:
@@ -40,9 +101,14 @@ class LLMClient:
             )
             self.model = os.getenv("LOCAL_LLM_MODEL", self.model)
             self.embedding_model = os.getenv("LOCAL_EMBEDDING_MODEL", self.embedding_model)
+        elif self.provider == "nvidia":
+            self.api_key = os.getenv("NVIDIA_API_KEY")
+            self.base_url = os.getenv("NVIDIA_NIM_BASE_URL") or NVIDIA_NIM_BASE_URL
+            self.model = os.getenv("NVIDIA_NIM_MODEL", self.model)
         else:
             self.api_key = os.getenv("OPENAI_API_KEY")
             self.base_url = self.base_url or OPENAI_BASE_URL
+        self.model = normalize_model_for_provider(self.provider, self.model)
 
         # Initialize client if key/base_url configuration is usable.
         if self.provider == "local":
@@ -70,18 +136,18 @@ class LLMClient:
         provider=None,
         safety_setting=None,
     ):
-        if api_key:
-            self.api_key = api_key
+        if provider:
+            self.provider = provider
+        self.api_key = get_provider_api_key(self.provider, api_key)
         if base_url:
             self.base_url = base_url
         if model:
             self.model = model
         if embedding_model:
             self.embedding_model = embedding_model
-        if provider:
-            self.provider = provider
         if safety_setting:
             self.safety_setting = safety_setting
+        self.model = normalize_model_for_provider(self.provider, self.model)
 
         if self.api_key:
             # OpenRouter headers (optional but recommended for rate limiting/diagnostics)
@@ -115,6 +181,15 @@ class LLMClient:
                 has_google_model = any(self.model in m for m in available_models)
                 if not has_google_model:
                     return False, f"Model '{self.model}' not found on Gemini endpoint."
+            elif self.provider == "nvidia":
+                # NIM namespaced IDs (e.g. meta/llama-3.1-70b-instruct) may appear
+                # with or without the namespace prefix depending on deployment type.
+                short_name = self.model.rsplit("/", 1)[-1]
+                has_nim_model = not available_models or any(
+                    self.model == m or short_name in m for m in available_models
+                )
+                if not has_nim_model:
+                    return False, f"Model '{self.model}' not found on NIM endpoint."
             elif self.model not in available_models:
                 return False, f"Model '{self.model}' not found on server. Please pull it first."
 
@@ -124,8 +199,99 @@ class LLMClient:
             return False, str(e)
 
     def update_api_key(self, api_key):
-        self.api_key = api_key
-        self.initialize_client()
+        self.initialize_client(api_key=api_key)
+
+    def chat_completion_text(
+        self,
+        messages: list[dict[str, str]],
+        temperature: float = 0.1,
+        max_tokens: int = 200,
+        timeout: float = 180.0,
+        response_format: dict | None = None,
+    ) -> str:
+        """
+        Unified chat completion helper.
+        - All providers (OpenAI, Google/Gemini, and local LLMs) now use the OpenAI SDK
+          via the initialized client for consistency and correct URL/header handling.
+        """
+        if not self.api_key:
+            raise ValueError("LLM API key is not configured")
+
+        if not self.client:
+            raise ValueError("LLM client not initialized")
+
+        # Use max_completion_tokens and fixed temperature for newer/restricted models
+        limit_param = "max_tokens"
+        actual_temp = temperature
+
+        model_lower = str(self.model).lower()
+        # Reasoning models (o1, o3) typically have fixed/restricted sampling parameters.
+        # gpt-4o, gpt-4o-mini, and most others support standard temperature (0-2).
+        is_reasoning_model = any(m in model_lower for m in ["o1", "o3"])
+        is_mini_nano = any(m in model_lower for m in ["nano", "mini"])
+
+        if is_reasoning_model:
+            limit_param = "max_completion_tokens"
+            actual_temp = 1.0
+        elif is_mini_nano or "gpt-4o" in model_lower:
+            # Note: Some OpenRouter/Local providers might not support max_completion_tokens
+            # We prefer max_tokens for OpenRouter/Local for better compatibility.
+            if self.provider in ["openrouter", "local"]:
+                limit_param = "max_tokens"
+            else:
+                limit_param = "max_completion_tokens"
+            # Support lower temperature for these models
+            actual_temp = temperature
+
+        kwargs = {
+            "model": self.model,
+            "messages": messages,
+            "temperature": actual_temp,
+            "timeout": timeout,
+        }
+        kwargs[limit_param] = max_tokens
+
+        if response_format:
+            kwargs["response_format"] = response_format
+
+        response = self.client.chat.completions.create(**kwargs)
+        content = response.choices[0].message.content
+        if content is None:
+            return ""
+        return str(content).strip()
+
+    def translate_to_english(self, text: str) -> str:
+        """
+        Translates text to English unconditionally.
+        Keeps original formatting / text if already in English or translation fails.
+        """
+        if not self.client:
+            return text
+
+        system_prompt = (
+            "You are a professional all-around expert in biomedical literature, specializing in finding information and precise translation. "
+            "Your task is to translate and restructure the user's query into precise English for scientific search. "
+            "If the query is already in English, return it exactly as is. "
+            "Optimize the terminology for biomedical databases (e.g., use 'Neoplasms' or 'Cancer' appropriately). "
+            "Do NOT add any explanations, boolean operators (AND/OR), or quotes unless they were in the original. "
+            "Just return the translated and restructured English text."
+        )
+
+        try:
+            translated = self.chat_completion_text(
+                messages=[
+                    {
+                        "role": "user",
+                        "content": f"{system_prompt}\n\nTask: Translate the following text to English.\nText: {text}",
+                    },
+                ],
+                temperature=0.1,
+                max_tokens=200,
+            )
+            return translated
+        except Exception as e:
+            logger.error(f"LLM Error during query translation to English: {e}")
+            return text
 
     def chat_completion_text(
         self,
@@ -362,6 +528,11 @@ class LLMClient:
 
             if terms:
                 return " AND ".join(terms[:2])
+            # Do not return the original query if it contains no ASCII text —
+            # non-English text sent directly to PubTator3 returns no results.
+            import re as _re
+            if not _re.search(r"[A-Za-z]", natural_query):
+                return ""
             return natural_query
 
         try:

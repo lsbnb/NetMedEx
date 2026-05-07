@@ -24,13 +24,13 @@ MUTATION_PATTERNS = {
 ANNOTATION_TYPES = {
     "Chemical",
     "Gene",
+    "miRNA",  # Added "miRNA" to support miRNA extraction
     "Species",
     "Disease",
     "DNAMutation",
     "ProteinMutation",
     "CellLine",
     "SNP",
-    # "Chromosome",  # Exclude Chromosome
 }
 
 logger = logging.getLogger(__name__)
@@ -123,6 +123,9 @@ class PubTatorArticle:
     abstract: str | None
     annotations: list[PubTatorAnnotation]
     relations: list[PubTatorRelation]
+    volume: str | None = None
+    issue: str | None = None
+    pages: str | None = None
     identifiers: dict[str, str | None] | None = None
     metadata: dict[str, str] | None = None
 
@@ -168,6 +171,7 @@ class PubTatorCollection:
     headers: list[str]
     articles: list[PubTatorArticle]
     metadata: dict[str, Any] = field(default_factory=dict)
+    raw_biocjson: dict | None = field(default=None, repr=False)
     num_articles: int = field(init=False)
 
     def __post_init__(self):
@@ -199,7 +203,7 @@ class PubTatorCollection:
         return asdict(self)
 
     @classmethod
-    def from_json(cls, collection_json: dict[str, Any]) -> "PubTatorCollection":
+    def from_json(cls, collection_json: dict[str, Any]) -> PubTatorCollection:
         collection_copy = deepcopy(collection_json)
 
         # Post initialization handles this
@@ -263,10 +267,7 @@ class PubTatorRelationParser:
                 return
             nodes.append(node)
 
-        if nodes[0] <= nodes[1]:
-            return tuple(nodes)
-        else:
-            return tuple(reversed(nodes))
+        return tuple(nodes)
 
     def match_mutation_mesh(self, mesh: str) -> str | None:
         matched_node_id = None

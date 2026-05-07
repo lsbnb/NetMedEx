@@ -54,7 +54,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       font-size: 14px;
   }}
 
-  .control-group select, 
+  .control-group select,
   .control-group input[type="range"] {{
       width: 100%;
       padding: 5px;
@@ -169,6 +169,64 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       display: block;
       height: 40px;
   }}
+
+  /* New Search & Filter Styles */
+  .search-container {{
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid #eee;
+  }}
+  #search-input {{
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+  }}
+  #search-input:focus {{
+      border-color: #007bff;
+      box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+  }}
+  .filter-container {{
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid #eee;
+  }}
+  .filter-title {{
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #333;
+  }}
+  .filter-list {{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+  }}
+  .filter-item {{
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+      cursor: pointer;
+      user-select: none;
+  }}
+  .filter-item input {{
+      margin-right: 8px;
+  }}
+  .highlighted {{
+      overlay-color: #ffc107;
+      overlay-opacity: 0.3;
+      overlay-padding: 10px;
+  }}
+  .dimmed {{
+      opacity: 0.2;
+      text-opacity: 0.1;
+  }}
+  .dimmed-edge {{
+      opacity: 0.05;
+  }}
 </style>
 <body>
 
@@ -177,6 +235,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   <div class="control-group">
     <label>Layout Algorithm</label>
     <select id="layout-select">
+      <option value="fcose">fCose (Compound)</option>
       <option value="cose" selected>Cose (Physics)</option>
       <option value="circle">Circle</option>
       <option value="grid">Grid</option>
@@ -185,18 +244,41 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       <option value="random">Random</option>
     </select>
   </div>
-  
+
   <div class="control-group">
     <label>Min Degree Filter: <span id="degree-val" class="value-display">0</span></label>
     <input type="range" id="degree-slider" min="0" max="20" value="0" step="1">
   </div>
-  
+
   <div style="font-size: 11px; color: #666; margin-top: 10px; line-height: 1.4;">
     <strong>Tips:</strong><br>
     • Scroll to zoom<br>
     • Drag background to pan<br>
     • Drag nodes to move
   </div>
+
+  <div class="control-group">
+    <label>Node Repulsion: <span id="repulsion-val" class="value-display">45k</span></label>
+    <input type="range" id="repulsion-slider" min="5000" max="200000" value="45000" step="5000">
+  </div>
+
+  <div class="control-group">
+    <label>Node Scale: <span id="nodesize-val" class="value-display">1.0×</span></label>
+    <input type="range" id="nodesize-slider" min="20" max="150" value="100" step="5">
+  </div>
+
+  <div class="search-container">
+    <label class="filter-title">Search Nodes</label>
+    <input type="text" id="search-input" placeholder="e.g. TP53, EGFR">
+  </div>
+
+  <div class="filter-container">
+    <label class="filter-title">Layer Filter</label>
+    <div id="type-filter-list" class="filter-list">
+      <!-- Dynamically populated -->
+    </div>
+  </div>
+</div>
 </div>
 
 <!-- Logo -->
@@ -248,12 +330,50 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   </div>
 </div>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.30.2/cytoscape.min.js"></script>
+<!-- Inlined JS Dependencies for Offline/Portable Execution -->
 <script>
+{cytoscape_js_lib}
+</script>
+<script>
+{layout_base_js}
+</script>
+<script>
+{cose_base_js}
+</script>
+<script>
+{fcose_js}
+</script>
+<script>
+  const fcosePlugin =
+    typeof cytoscapeFcose !== "undefined"
+      ? cytoscapeFcose
+      : typeof fcose !== "undefined"
+      ? fcose
+      : typeof cytoscapeFcoseLayout !== "undefined"
+      ? cytoscapeFcoseLayout
+      : null;
+
+  if (fcosePlugin) {{
+    cytoscape.use(fcosePlugin);
+  }}
+
   let cy = cytoscape({{
     container: document.getElementById("cy"),
     elements: {cytoscape_js},
-    layout: {{"name": "{layout}", animate: false}},
+    layout: Object.assign({{"name": "{layout}", animate: false}}, (function() {{
+      if ("{layout}" === "cose") return {{
+        nodeRepulsion: function() {{ return 8000; }},
+        idealEdgeLength: function() {{ return 120; }},
+        nodeOverlap: 0, componentSpacing: 50, numIter: 1000, gravity: 0.25
+      }};
+      if ("{layout}" === "fcose") return {{
+        nodeRepulsion: 45000, idealEdgeLength: 80, nodeSeparation: 100,
+        numIter: 3000, tile: true, tilingPaddingVertical: 20,
+        tilingPaddingHorizontal: 20, gravity: 0.25, gravityRange: 3.8,
+        nodeDimensionsIncludeLabels: true, uniformNodeDimensions: false, sampleSize: 25
+      }};
+      return {{}};
+    }}())),
     style: [
     {{
       selector: "node",
@@ -316,20 +436,183 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         style: {{
             'display': 'none'
         }}
+    }},
+    {{
+        selector: '.highlighted',
+        style: {{
+            'overlay-color': '#ffc107',
+            'overlay-opacity': 0.4,
+            'overlay-padding': '8px',
+            'text-outline-color': '#ffc107',
+            'text-outline-width': 2
+        }}
+    }},
+    {{
+        selector: '.dimmed',
+        style: {{
+            'opacity': 0.2,
+            'text-opacity': 0.1
+        }}
+    }},
+    {{
+        selector: '.dimmed-edge',
+        style: {{
+            'opacity': 0.05
+        }}
     }}
   ]
   }});
-  
+
+  // Layout parameters per algorithm
+  function getRepulsion() {{
+      return parseInt(document.getElementById('repulsion-slider').value) || 45000;
+  }}
+
+  function getLayoutParams(name) {{
+      const repulsion = getRepulsion();
+      if (name === 'cose') return {{
+          nodeRepulsion: function() {{ return repulsion; }},
+          idealEdgeLength: function() {{ return 80; }},
+          nodeOverlap: 4,
+          componentSpacing: 60,
+          numIter: 1500,
+          gravity: 0.25,
+      }};
+      if (name === 'fcose') return {{
+          nodeRepulsion: repulsion,
+          idealEdgeLength: 80,
+          nodeSeparation: 100,
+          numIter: 3000,
+          tile: true,
+          tilingPaddingVertical: 20,
+          tilingPaddingHorizontal: 20,
+          gravity: 0.25,
+          gravityRange: 3.8,
+          nodeDimensionsIncludeLabels: true,
+          uniformNodeDimensions: false,
+          sampleSize: 25,
+      }};
+      return {{}};
+  }}
+
+  // Node Repulsion slider
+  const repulsionSlider = document.getElementById('repulsion-slider');
+  const repulsionVal = document.getElementById('repulsion-val');
+  repulsionSlider.addEventListener('change', function() {{
+      const v = parseInt(this.value);
+      repulsionVal.textContent = v >= 1000 ? (v/1000).toFixed(0) + 'k' : v;
+      const layoutName = document.getElementById('layout-select').value;
+      if (layoutName === 'fcose' || layoutName === 'cose') {{
+          cy.layout(Object.assign({{name: layoutName, animate: false, fit: true}}, getLayoutParams(layoutName))).run();
+      }}
+  }});
+
   // Update Layout
   document.getElementById('layout-select').addEventListener('change', function(e) {{
       const layoutName = e.target.value;
-      cy.layout({{name: layoutName, animate: true, fit: true}}).run();
+      cy.layout(Object.assign({{name: layoutName, animate: true, fit: true}}, getLayoutParams(layoutName))).run();
+  }});
+
+  // Node Scale slider
+  const nodeSizeSlider = document.getElementById('nodesize-slider');
+  const nodeSizeVal = document.getElementById('nodesize-val');
+  nodeSizeSlider.addEventListener('input', function() {{
+      const scale = this.value / 100;
+      nodeSizeVal.textContent = scale.toFixed(1) + '×';
+      cy.batch(() => {{
+          cy.nodes().forEach(n => {{
+              const orig = n.data('node_size');
+              if (orig) {{
+                  n.style({{ width: orig * scale, height: orig * scale }});
+              }}
+          }});
+      }});
+  }});
+
+  // Search Logic — supports comma-separated multi-term queries
+  const searchInput = document.getElementById('search-input');
+  searchInput.addEventListener('input', function(e) {{
+      const rawQuery = e.target.value.trim().toLowerCase();
+
+      cy.batch(() => {{
+          if (!rawQuery) {{
+              cy.elements().removeClass('dimmed').removeClass('dimmed-edge').removeClass('highlighted');
+              return;
+          }}
+
+          const terms = rawQuery.split(',').map(t => t.trim()).filter(Boolean);
+
+          const matches = cy.nodes().filter(n => {{
+              const label = (n.data('label') || "").toLowerCase();
+              const id = (n.data('standardized_id') || "").toLowerCase();
+              return terms.some(term => label.includes(term) || id.includes(term));
+          }});
+
+          if (matches.length > 0) {{
+              cy.elements().addClass('dimmed');
+              cy.edges().addClass('dimmed-edge');
+              const neighborhood = matches.neighborhood();
+              matches.removeClass('dimmed').addClass('highlighted');
+              neighborhood.removeClass('dimmed').removeClass('dimmed-edge');
+          }} else {{
+              cy.elements().addClass('dimmed');
+              cy.edges().addClass('dimmed-edge');
+          }}
+      }});
+  }});
+
+  // Dynamic Layer Filters
+  function initTypeFilters() {{
+      const types = new Set();
+      cy.nodes().forEach(n => {{
+          const t = n.data('node_type') || n.data('type');
+          if (t && t !== 'community') types.add(t);
+      }});
+
+      const filterList = document.getElementById('type-filter-list');
+	      Array.from(types).sort().forEach(type => {{
+	          const div = document.createElement('div');
+	          div.className = 'filter-item';
+	          const label = document.createElement('label');
+	          const input = document.createElement('input');
+	          input.type = 'checkbox';
+	          input.checked = true;
+	          input.value = String(type);
+	          label.appendChild(input);
+	          label.appendChild(document.createTextNode(` ${{String(type)}}`));
+	          div.appendChild(label);
+	          filterList.appendChild(div);
+
+	          input.addEventListener('change', applyFilters);
+	      }});
+  }}
+
+  function applyFilters() {{
+      const checkedTypes = Array.from(document.querySelectorAll('#type-filter-list input:checked'))
+                                .map(cb => cb.value);
+      
+      cy.batch(() => {{
+          cy.nodes().forEach(node => {{
+              const t = node.data('node_type') || node.data('type');
+              if (t === 'community') return;
+              
+              if (checkedTypes.includes(t)) {{
+                  node.removeClass('filtered');
+              }} else {{
+                  node.addClass('filtered');
+              }}
+          }});
+      }});
+  }}
+
+  cy.ready(() => {{
+      initTypeFilters();
   }});
 
   // Filter by Degree
   const degreeSlider = document.getElementById('degree-slider');
   const degreeVal = document.getElementById('degree-val');
-  
+
   // Find max degree in graph to set slider max
   // Wait for initial render
   cy.ready(function() {{
@@ -337,26 +620,26 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       cy.nodes().forEach(node => {{
           // Skip community nodes if any
           if (node.data('type') === 'community') return;
-          
+
           const d = node.data('degree') || 0;
           if (d > maxDegree) maxDegree = d;
       }});
       // Cap at reasonable value if too high
       if (maxDegree > 50) maxDegree = 50;
       if (maxDegree < 5) maxDegree = 5;
-      
+
       degreeSlider.max = maxDegree;
   }});
-  
+
   degreeSlider.addEventListener('input', function(e) {{
       const threshold = parseInt(e.target.value);
       degreeVal.textContent = threshold;
-      
+
       cy.batch(() => {{
           cy.nodes().forEach(node => {{
               // Always show community nodes
               if (node.data('type') === 'community') return;
-              
+
               const d = node.data('degree') || 0;
               if (d < threshold) {{
                   node.addClass('filtered');
@@ -375,24 +658,36 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       infoPanel.style.display = 'block';
   }}
 
-  function hidePanel() {{
-      infoPanel.style.display = 'none';
-  }}
+	  function hidePanel() {{
+	      infoPanel.style.display = 'none';
+	  }}
+
+	  function escapeHtml(value) {{
+	      return String(value ?? '').replace(/[&<>"']/g, function(ch) {{
+	          return {{
+	              '&': '&amp;',
+	              '<': '&lt;',
+	              '>': '&gt;',
+	              '"': '&quot;',
+	              "'": '&#39;'
+	          }}[ch];
+	      }});
+	  }}
 
   cy.on('tap', 'node', function(evt){{
       const node = evt.target;
       const data = node.data();
-      
+
       // Skip community nodes for detailed info if generic
       if (data.type === 'community') return;
 
-      let html = `<div class="info-title">${{data.label}}</div>`;
-      html += `<div class="info-row"><span class="info-label">Type:</span> ${{data.node_type || data.type}}</div>`;
-      html += `<div class="info-row"><span class="info-label">Degree:</span> ${{data.degree}}</div>`;
-      if (data.standardized_id) {{
-          html += `<div class="info-row"><span class="info-label">ID:</span> ${{data.standardized_id}}</div>`;
-      }}
-      
+	      let html = `<div class="info-title">${{escapeHtml(data.label)}}</div>`;
+	      html += `<div class="info-row"><span class="info-label">Type:</span> ${{escapeHtml(data.node_type || data.type)}}</div>`;
+	      html += `<div class="info-row"><span class="info-label">Degree:</span> ${{escapeHtml(data.degree)}}</div>`;
+	      if (data.standardized_id) {{
+	          html += `<div class="info-row"><span class="info-label">ID:</span> ${{escapeHtml(data.standardized_id)}}</div>`;
+	      }}
+
       infoContent.innerHTML = html;
       showPanel();
   }});
@@ -400,32 +695,35 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   cy.on('tap', 'edge', function(evt){{
       const edge = evt.target;
       const data = edge.data();
-      
+
       let html = `<div class="info-title">Relationship Details</div>`;
-      
+
       // Handle Source/Target Names (Using data attributes which might include swapped names for display)
       const sourceName = data.source_name || data.source;
       const targetName = data.target_name || data.target;
-      
-      html += `<div class="info-row"><span class="info-label">Source:</span> ${{sourceName}}</div>`;
-      html += `<div class="info-row"><span class="info-label">Target:</span> ${{targetName}}</div>`;
-      html += `<div class="info-row"><span class="info-label">Relation:</span> ${{data.relation_display || data.label}}</div>`;
-      
-      if (data.relation_confidence) {{
-          html += `<div class="info-row"><span class="info-label">Confidence:</span> ${{data.relation_confidence}}</div>`;
-      }}
-      
+
+	      html += `<div class="info-row"><span class="info-label">Source:</span> ${{escapeHtml(sourceName)}}</div>`;
+	      html += `<div class="info-row"><span class="info-label">Target:</span> ${{escapeHtml(targetName)}}</div>`;
+	      html += `<div class="info-row"><span class="info-label">Relation:</span> ${{escapeHtml(data.relation_display || data.label)}}</div>`;
+
+	      if (data.relation_confidence) {{
+	          html += `<div class="info-row"><span class="info-label">Confidence:</span> ${{escapeHtml(data.relation_confidence)}}</div>`;
+	      }}
+
       if (data.pmids && data.pmids.length > 0) {{
-          html += `<div class="info-row"><span class="info-label">Evidence (${{data.pmids.length}} articles):</span></div>`;
-          html += `<div class="pmid-list">`;
-          data.pmids.forEach(pmid => {{
-              html += `<a href="https://pubmed.ncbi.nlm.nih.gov/${{pmid}}/" target="_blank" class="pmid-link" title="Open in PubMed">${{pmid}}</a>`;
-          }});
+	          html += `<div class="info-row"><span class="info-label">Evidence (${{data.pmids.length}} articles):</span></div>`;
+	          html += `<div class="pmid-list">`;
+	          data.pmids.forEach(pmid => {{
+	              const safePmid = String(pmid || '').replace(/[^0-9]/g, '');
+	              if (safePmid) {{
+	                  html += `<a href="https://pubmed.ncbi.nlm.nih.gov/${{safePmid}}/" target="_blank" class="pmid-link" title="Open in PubMed">${{safePmid}}</a>`;
+	              }}
+	          }});
           html += `</div>`;
       }} else {{
           html += `<div class="info-row">No specific articles linked.</div>`;
       }}
-      
+
       infoContent.innerHTML = html;
       showPanel();
   }});

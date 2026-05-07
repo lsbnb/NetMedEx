@@ -15,11 +15,13 @@ def callbacks(app):
     def open_advanced_options(n_toggle, n_close, style):
         ctx = dash.callback_context
         if not ctx.triggered:
-            return dash.no_update
+            return dash.no_update, dash.no_update, dash.no_update
 
         button_id = ctx.triggered[0]["prop_id"].split(".")[0]
 
         # Get current display from style
+        if not isinstance(style, dict):
+            style = {"display": "none"}
         current_display = style.get("display", "none")
 
         if button_id == "close-advanced-settings-btn":

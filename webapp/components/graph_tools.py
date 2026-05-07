@@ -37,16 +37,16 @@ graph_layout = html.Div(
                 dcc.Slider(
                     id="fcose-node-repulsion",
                     min=10000,
-                    max=100000,
+                    max=200000,
                     step=5000,
                     value=45000,
-                    marks={10000: "10k", 45000: "45k", 100000: "100k"},
+                    marks={10000: "10k", 45000: "45k", 100000: "100k", 200000: "200k"},
                     tooltip={"placement": "bottom", "always_visible": True},
                 ),
             ],
             id="fcose-repulsion-wrapper",
             className="mt-2",
-            style=display.none,
+            style=display.hidden_panel,
         ),
     ],
     className="param",
@@ -76,12 +76,12 @@ edge_weight_cutoff = html.Div(
         generate_param_title(
             "Edge Weight Cutoff",
             (
-                "Filter edges by weight range:\n"
-                "• Frequency mode: Keep edges with co-occurrence count within range\n"
-                "• NPMI mode: Keep edges within NPMI score range:\n"
-                "   - 0.3 - 0.5 (Broad Association): Common comorbidities or standard therapies\n"
-                "   - 0.5 - 0.8 (Specific Association): Precise mechanisms (e.g. target proteins)\n"
-                "   - 0.8 - 1.0 (Strong Coupling): Medical definitions or rare findings"
+                "Filter edges by normalized weight (0-20):\n"
+                "• Frequency mode: Co-occurrence count (scaled to 0-20 relative to max)\n"
+                "• NPMI mode: Raw NPMI score (0.3-1.0) scaled to 6-20 range:\n"
+                "   - 6 - 10 (NPMI 0.3-0.5, Broad Association): Common comorbidities\n"
+                "   - 10 - 16 (NPMI 0.5-0.8, Specific Association): Precise mechanisms\n"
+                "   - 16 - 20 (NPMI 0.8-1.0, Strong Coupling): Medical definitions"
             ),
             id="edge-weight-cutoff-label",
         ),
@@ -95,5 +95,6 @@ edge_weight_cutoff = html.Div(
             tooltip={"placement": "bottom", "always_visible": False},
         ),
     ],
+    id="edge-weight-cutoff-wrapper",
     className="param",
 )

@@ -24,8 +24,14 @@ from netmedex.normalization import normalize_knowledge_graph
 from netmedex.pubtator import PubTatorAPI
 from netmedex.pubtator_parser import PubTatorIO
 from netmedex.utils_threading import run_thread_with_error_notification
-from webapp.llm import GEMINI_OPENAI_BASE_URL, OPENAI_BASE_URL, llm_client
-from webapp.utils import display, generate_session_id, get_data_savepath, visibility
+from webapp.llm import GEMINI_OPENAI_BASE_URL, OPENAI_BASE_URL, OPENROUTER_BASE_URL, llm_client
+from webapp.utils import (
+    display,
+    generate_session_id,
+    get_data_savepath,
+    make_session_token,
+    visibility,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -51,7 +57,25 @@ class _RestrictedGraphUnpickler(pickle.Unpickler):
         "networkx.classes.digraph": {"DiGraph"},
         "networkx.classes.multigraph": {"MultiGraph"},
         "networkx.classes.multidigraph": {"MultiDiGraph"},
+        "networkx.classes.reportviews": {
+            "NodeView", "EdgeView", "DegreeView",
+            "NodeDataView", "EdgeDataView", "DegreeDataView",
+            "AdjacencyView", "AtlasView",
+            "DiDegreeView", "InDegreeView", "OutDegreeView",
+            "InEdgeView", "OutEdgeView",
+        },
+        "networkx.classes.coreviews": {
+            "AdjacencyView", "AtlasView", "FilterAdjacency",
+            "FilterAtlas", "FilterMultiAdjacency", "FilterMultiInner",
+            "UnionAdjacency", "UnionAtlas", "UnionMultiAdjacency", "UnionMultiInner",
+        },
+        "networkx.classes.filters": {"no_filter", "hide_nodes", "hide_edges"},
         "collections": {"defaultdict"},
+        # numpy array reconstruction (numpy >= 2.0 uses _core, older uses core)
+        "numpy._core.multiarray": {"_reconstruct", "scalar"},
+        "numpy.core.multiarray": {"_reconstruct", "scalar"},
+        "numpy": {"ndarray", "dtype"},
+        "numpy._core._multiarray_umath": {"_reconstruct"},
     }
 
     def find_class(self, module, name):
@@ -128,6 +152,7 @@ def callbacks(app):
             State("llm-model-input", "value"),
             State("openrouter-api-key-input", "value"),
             State("openrouter-model-selector", "value"),
+            State("openrouter-custom-model-input", "value"),
             State("normalization-toggle", "value"),
         ],
         running=[
@@ -176,6 +201,7 @@ def callbacks(app):
         llm_model,
         openrouter_api_key,
         openrouter_model,
+        openrouter_custom_model,
         normalization_toggle,
     ):
         try:
@@ -184,7 +210,9 @@ def callbacks(app):
             # ----------------------------------------------------------------
             # GRAPH FILE BYPASS: restore session from uploaded .pkl file
             # ----------------------------------------------------------------
-            savepath = get_data_savepath(generate_session_id())
+            session_id = generate_session_id()
+            savepath = get_data_savepath(session_id)
+            session_token = make_session_token(session_id)
 
             if source == "graph_file":
                 if not graph_file_data:
@@ -241,7 +269,7 @@ def callbacks(app):
                     True,
                     G.graph["pmid_title"],
                     pmid_citation_dict,
-                    savepath,
+                    session_token,
                     {"articles": num_articles, "nodes": num_nodes, "edges": num_edges},
                     "English",  # Default language; user can switch in Chat
                     "graph",  # Switch to Graph tab
@@ -267,10 +295,15 @@ def callbacks(app):
                     safety_setting=google_safety_setting,
                 )
             elif llm_provider == "openrouter":
+                or_model = (
+                    openrouter_custom_model.strip()
+                    if openrouter_model == "custom" and openrouter_custom_model
+                    else openrouter_model
+                )
                 llm_client.initialize_client(
                     api_key=openrouter_api_key,
-                    model=openrouter_model,
-                    base_url="https://openrouter.ai/api/v1",
+                    model=or_model,
+                    base_url=OPENROUTER_BASE_URL,
                     provider="openrouter",
                 )
             else:  # local
@@ -333,6 +366,25 @@ def callbacks(app):
                         else:
                             set_progress((0, 1, "", "(Step 0/2) AI Translating query..."))
                             try:
+                                # For non-English queries, translate to English first so that
+                                # translate_query_to_boolean() always receives English input.
+                                # This prevents the boolean fallback from returning the original
+                                # non-English text (which PubTator3 cannot search).
+                                detected_lang = detect_query_language(query)
+                                if detected_lang != "English":
+                                    set_progress(
+                                        (
+                                            0,
+                                            1,
+                                            "",
+                                            f"(Step 0a/2) Translating {detected_lang} query to English...",
+                                        )
+                                    )
+                                    eng_query = llm_client.translate_to_english(query)
+                                    if eng_query and eng_query.strip():
+                                        query = eng_query.strip()
+                                        logger.info(f"Pre-translated to English: {query}")
+
                                 translated_query = llm_client.translate_query_to_boolean(query)
                                 if translated_query and translated_query.strip():
                                     query = translated_query.strip()
@@ -351,7 +403,6 @@ def callbacks(app):
                                     )
                             except Exception as e:
                                 logger.error(f"Error executing AI search: {e}")
-                                # Continue with original query instead of failing
                                 set_progress(
                                     (
                                         0,
@@ -361,7 +412,10 @@ def callbacks(app):
                                     )
                                 )
                     else:
-                        # Mandatory English translation and restructuring for non-English queries
+                        # Mandatory English translation for non-English queries.
+                        # Use translate_to_english() (faithful, no boolean operators) so the
+                        # resulting query is equivalent to the user typing the same concept in
+                        # English — producing the same article count from PubTator3.
                         detected_lang = detect_query_language(query)
                         if detected_lang != "English" and llm_client.client:
                             set_progress(
@@ -369,20 +423,18 @@ def callbacks(app):
                                     0,
                                     1,
                                     "",
-                                    f"Translating and restructuring {detected_lang} query for PubTator3...",
+                                    f"Translating {detected_lang} query to English for PubTator3...",
                                 )
                             )
                             try:
-                                # For non-English, we use the boolean translator anyway because it handles
-                                # scientific restructuring better than simple translation.
-                                translated_query = llm_client.translate_query_to_boolean(query)
-                                if translated_query and translated_query != query:
-                                    query = translated_query
+                                translated_query = llm_client.translate_to_english(query)
+                                if translated_query and translated_query.strip() and translated_query.strip() != query:
+                                    query = translated_query.strip()
                                     set_progress(
-                                        (0, 1, "", f"Translated and restructured: {query}")
+                                        (0, 1, "", f"Translated: {query}")
                                     )
                             except Exception as e:
-                                logger.error(f"Error executing translation/restructuring: {e}")
+                                logger.error(f"Error executing translation: {e}")
                                 set_progress(
                                     (
                                         0,
@@ -521,6 +573,7 @@ def callbacks(app):
                         no_update,
                         no_update,
                         {"articles": 0, "nodes": 0, "edges": 0},
+                        no_update,  # session-language
                         no_update,  # tab
                         html.Div(
                             dbc.Alert(
@@ -537,8 +590,6 @@ def callbacks(app):
 
             if edge_method == "semantic":
                 # Ensure session directory exists
-                import os
-
                 if not os.path.exists(savepath["pubtator"]):
                     return (
                         no_update,
@@ -633,8 +684,6 @@ def callbacks(app):
             # Parse collection if not already done
             if collection is None:
                 # Prefer BioC-JSON if available to preserve metadata (journal, authors, etc.)
-                import os
-
                 if not os.path.exists(savepath.get("biocjson", "")) and not os.path.exists(
                     savepath["pubtator"]
                 ):
@@ -851,7 +900,7 @@ def callbacks(app):
                 True,
                 G.graph["pmid_title"],
                 pmid_citation_dict,
-                savepath,
+                session_token,
                 {"articles": num_articles, "nodes": num_nodes, "edges": num_edges},
                 detected_language,
                 "graph",  # Switch to Graph tab

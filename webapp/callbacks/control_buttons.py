@@ -22,4 +22,5 @@ def callbacks(app):
     def reset_inputs(n_clicks):
         # Reset inputs, progress bar, and clear the graph
         # And force return to search tab
+        print(f"DEBUG: reset_inputs returning active_tab='search'")
         return "", None, None, "query", 0, "", "", [], visibility.hidden, 0, "search"

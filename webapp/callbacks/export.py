@@ -1,10 +1,26 @@
 from __future__ import annotations
 
+import os
+
 from dash import Input, Output, State, dcc
 
 from netmedex.cytoscape_js import save_as_html
 from netmedex.cytoscape_xgmml import save_as_xgmml
 from webapp.callbacks.graph_utils import rebuild_graph
+from webapp.utils import SessionPathError, resolve_session_savepath
+
+
+def _resolve_savepath(session_data):
+    try:
+        return resolve_session_savepath(session_data)
+    except SessionPathError:
+        return None
+
+
+def _safe_download_name(name: str, fallback: str) -> str:
+    safe = "".join(c if c.isalnum() or c in ("-", "_", ".") else "_" for c in str(name))
+    safe = safe.strip("._")
+    return safe or fallback
 
 
 def callbacks(app):
@@ -14,11 +30,23 @@ def callbacks(app):
         State("current-session-path", "data"),
         prevent_initial_call=True,
     )
-    def download_pubtator(n_clicks, savepath):
+    def download_pubtator(n_clicks, session_data):
+        savepath = _resolve_savepath(session_data)
         if savepath is None:
             return
 
+        import os
+
+        # Prefer BioC-JSON (preserves journal/date/authors) over plain pubtator format
+        biocjson_path = savepath.get("biocjson", "")
+        if biocjson_path and os.path.exists(biocjson_path):
+            return dcc.send_file(biocjson_path, filename="output.biocjson")
+
+        if not os.path.exists(savepath["pubtator"]):
+             return None # Silent failure or add alert if possible
+
         return dcc.send_file(savepath["pubtator"], filename="output.pubtator")
+
 
     @app.callback(
         Output("export-html", "data"),
@@ -29,9 +57,13 @@ def callbacks(app):
         State("current-session-path", "data"),
         prevent_initial_call=True,
     )
-    def export_html(n_clicks, layout, node_degree, weight, savepath):
+    def export_html(n_clicks, layout, node_degree, weight, session_data):
+        savepath = _resolve_savepath(session_data)
         if savepath is None:
             return
+
+        if not os.path.exists(savepath["graph"]):
+            return None
 
         G = rebuild_graph(
             node_degree, weight, format="html", with_layout=True, graph_path=savepath["graph"]
@@ -48,7 +80,8 @@ def callbacks(app):
         State("current-session-path", "data"),
         prevent_initial_call=True,
     )
-    def export_xgmml(n_clicks, layout, node_degree, weight, savepath):
+    def export_xgmml(n_clicks, layout, node_degree, weight, session_data):
+        savepath = _resolve_savepath(session_data)
         if savepath is None:
             return
 
@@ -66,15 +99,19 @@ def callbacks(app):
         State("current-session-path", "data"),
         prevent_initial_call=True,
     )
-    def export_edge_csv(n_clicks, tap_edge, pmid_title, savepath):
+    def export_edge_csv(n_clicks, tap_edge, pmid_title, session_data):
         import csv
+
+        savepath = _resolve_savepath(session_data)
+        if savepath is None or not tap_edge or not pmid_title:
+            return None
 
         with open(savepath["edge_info"], "w", newline="") as f:
             writer = csv.writer(f)
             writer.writerow(["PMID", "Title"])
             writer.writerows([[pmid, pmid_title[pmid]] for pmid in tap_edge["pmids"]])
         n1, n2 = tap_edge["label"].split(" (interacts with) ")
-        filename = f"{n1}_{n2}.csv"
+        filename = _safe_download_name(f"{n1}_{n2}.csv", "edge_info.csv")
         return dcc.send_file(savepath["edge_info"], filename=filename)
 
     @app.callback(
@@ -83,7 +120,7 @@ def callbacks(app):
         State("current-session-path", "data"),
         prevent_initial_call=True,
     )
-    def export_graph_pickle(n_clicks, savepath):
+    def export_graph_pickle(n_clicks, session_data):
         """Export the full graph state as a pickle file.
 
         The exported .pkl file contains the complete NetworkX graph including
@@ -91,8 +128,9 @@ def callbacks(app):
         analysis results. It can be re-loaded in the Search Panel (Graph File
         source) to restore the session without re-running the pipeline.
         """
-        if savepath is None or not savepath.get("graph"):
-            return
+        savepath = _resolve_savepath(session_data)
+        if savepath is None or not savepath.get("graph") or not os.path.exists(savepath["graph"]):
+            return None
 
         return dcc.send_file(savepath["graph"], filename="netmedex_graph.pkl")
 
@@ -102,34 +140,61 @@ def callbacks(app):
         State("current-session-path", "data"),
         prevent_initial_call=True,
     )
-    def export_ris(n_clicks, savepath):
+    def export_ris(n_clicks, session_data):
         """Export bibliography of articles in the graph in RIS format."""
         from netmedex.graph import load_graph
         from netmedex.pubtator_data import PubTatorArticle
+        from netmedex.pubtator_parser import PubTatorIO
         from netmedex.ris_exporter import convert_to_ris
 
+        savepath = _resolve_savepath(session_data)
         if savepath is None or not savepath.get("graph"):
             return
 
         G = load_graph(savepath["graph"])
         pmid_metadata = G.graph.get("pmid_metadata", {})
         pmid_title = G.graph.get("pmid_title", {})
+        bioc_meta = {}
+
+        # Enrich RIS fields from original BioC-JSON when graph metadata is incomplete.
+        biocjson_path = savepath.get("biocjson", "")
+        if biocjson_path and os.path.exists(biocjson_path):
+            collection = PubTatorIO.parse(biocjson_path)
+            for article in collection.articles:
+                bioc_meta[str(article.pmid)] = {
+                    "journal": article.journal,
+                    "date": article.date,
+                    "doi": article.doi,
+                    "volume": article.volume,
+                    "issue": article.issue,
+                    "pages": article.pages,
+                    "authors": (article.metadata or {}).get("authors"),
+                }
 
         articles = []
         # Use pmid_title to ensure we only export PMIDs that have a title in the graph
         for pmid, title in pmid_title.items():
-            meta = pmid_metadata.get(pmid, {})
+            meta = pmid_metadata.get(str(pmid), {})
+            fallback = bioc_meta.get(str(pmid), {})
+            authors = meta.get("authors") or fallback.get("authors")
+            citation_count = meta.get("citation_count")
             articles.append(
                 PubTatorArticle(
                     pmid=pmid,
                     title=title,
-                    journal=meta.get("journal"),
-                    date=meta.get("date"),
-                    doi=meta.get("doi"),
+                    journal=meta.get("journal") or fallback.get("journal"),
+                    date=meta.get("date") or fallback.get("date"),
+                    doi=meta.get("doi") or fallback.get("doi"),
+                    volume=meta.get("volume") or fallback.get("volume"),
+                    issue=meta.get("issue") or fallback.get("issue"),
+                    pages=meta.get("pages") or fallback.get("pages"),
                     abstract=None,
                     annotations=[],
                     relations=[],
-                    metadata={"authors": meta.get("authors")},
+                    metadata={
+                        "authors": authors,
+                        "citation_count": citation_count,
+                    },
                 )
             )
 

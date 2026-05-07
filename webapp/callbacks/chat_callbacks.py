@@ -6,12 +6,18 @@ import re
 import dash
 from dash import ALL, Input, Output, State, dcc, html, no_update
 
+from webapp.utils import SessionPathError, resolve_session_savepath
+
 logger = logging.getLogger(__name__)
 
 # Local stores for chat state (keyed by graph path)
 _sessions: dict[str, dict] = {}
 
 COMMUNITY_NODE_PATTERN = re.compile(r"^c\d+$")
+
+
+def _resolve_savepath(session_data):
+    return resolve_session_savepath(session_data)
 
 
 # Helper to extract suggested questions from AI response
@@ -52,6 +58,34 @@ def parse_suggestions(content):
     def looks_like_cjk(text):
         return any("\u4e00" <= c <= "\u9fff" for c in text)
 
+    def clean_candidate(text: str) -> str:
+        return re.sub(r"\s+", " ", (text or "").strip(" []-.*•")).strip()
+
+    def is_noise_candidate(text: str) -> bool:
+        t = (text or "").strip().lower().strip(".,;:!?")
+        if not t:
+            return True
+        # Prevent provider formatting fragments (e.g., trailing "and").
+        noise = {
+            "and",
+            "or",
+            "but",
+            "the",
+            "a",
+            "an",
+            "to",
+            "of",
+            "in",
+            "on",
+            "for",
+            "with",
+            "these",
+            "this",
+            "that",
+            "those",
+        }
+        return t in noise
+
     for i, line in enumerate(lines):
         stripped = line.strip()
         if not stripped:
@@ -85,10 +119,26 @@ def parse_suggestions(content):
                         len(after_colon) > 10
                         or (looks_like_cjk(after_colon) and len(after_colon) > 5)
                     ):
-                        parts = re.split(r"Q\d+[:：\.]|,\s*|，\s*|(?=\[Q\d:)", after_colon)
+                        # Prefer explicit [Q1:] blocks. Avoid splitting prose by commas,
+                        # which can create fragments like "and" in some Google outputs.
+                        explicit_q_parts = re.findall(
+                            r"(?:\[\s*)?Q\d+\s*[:：]\s*([^\]]+?)(?:\]|\s*$)",
+                            after_colon,
+                            flags=re.IGNORECASE,
+                        )
+                        if explicit_q_parts:
+                            parts = explicit_q_parts
+                        elif "?" in after_colon or "？" in after_colon:
+                            parts = re.split(r"(?<=[\?\？])\s+", after_colon)
+                        else:
+                            parts = [after_colon]
                         for p in parts:
-                            p_clean = p.strip(" []-.*•")
-                            if p_clean and len(p_clean) > 2:
+                            p_clean = clean_candidate(p)
+                            if (
+                                p_clean
+                                and len(p_clean) > 2
+                                and not is_noise_candidate(p_clean)
+                            ):
                                 suggestions.append(p_clean)
                 continue
 
@@ -107,7 +157,7 @@ def parse_suggestions(content):
 
             match = re.search(q_pattern, stripped)
             if match:
-                q_text = match.group(1).split("]")[0].strip(" []-.*•")
+                q_text = clean_candidate(match.group(1).split("]")[0])
                 min_len = 2 if looks_like_cjk(q_text) else 4
                 if q_text and len(q_text) >= min_len:
                     if (
@@ -119,7 +169,8 @@ def parse_suggestions(content):
                         in_suggestion_section = False
                         clean_lines.append(line)
                     else:
-                        suggestions.append(q_text)
+                        if not is_noise_candidate(q_text):
+                            suggestions.append(q_text)
                         continue
             else:
                 if suggestions and not is_near_end:
@@ -160,7 +211,9 @@ def parse_suggestions(content):
                     continue
                 if len(q) < 6 or len(q) > 160:
                     continue
-                candidates.append(q.rstrip("?？").strip())
+                cleaned = q.rstrip("?？").strip()
+                if not is_noise_candidate(cleaned):
+                    candidates.append(cleaned)
         return candidates
 
     def _fallback_default_questions(text: str) -> list[str]:
@@ -375,7 +428,7 @@ def callbacks(app):
     )
     def auto_initialize_chat(
         current_tab,
-        savepath,
+        session_data,
         is_new_graph,
         session_language,
         search_query,
@@ -399,16 +452,20 @@ def callbacks(app):
         # 1. User must be in the chat tab
         # 2. Graph must be newly loaded (is_new_graph)
         # 3. No existing history for this session yet
-        if current_tab != "chat" or not savepath or not is_new_graph:
+        if current_tab != "chat" or not session_data or not is_new_graph:
             raise dash.exceptions.PreventUpdate
 
         global _sessions
-        session_key = savepath.get("graph") if isinstance(savepath, dict) else None
+        try:
+            savepath = _resolve_savepath(session_data)
+        except SessionPathError:
+            raise dash.exceptions.PreventUpdate
+        session_key = savepath["graph"]
         if session_key in _sessions and _sessions[session_key].get("history"):
             # Already initialized for this session
             raise dash.exceptions.PreventUpdate
 
-        logger.info(f"DEBUG: auto_initialize_chat STARTING for tab={current_tab}, path={savepath}")
+        logger.info(f"DEBUG: auto_initialize_chat STARTING for tab={current_tab}")
 
         import pickle
 
@@ -662,7 +719,7 @@ def callbacks(app):
         n_clicks,
         selected_nodes,
         selected_edges,
-        savepath,
+        session_data,
         session_language,
         search_query,
         llm_provider,
@@ -702,6 +759,23 @@ def callbacks(app):
 
             t0 = time.time()
             logger.info("Starting Chat Analysis...")
+
+            try:
+                savepath = _resolve_savepath(session_data)
+            except SessionPathError:
+                return (
+                    False,
+                    "❌ Error: Graph session data not found.",
+                    True,
+                    True,
+                    {"display": "none"},
+                    no_update,
+                    {"display": "none"},
+                    no_update,
+                    reset_btn,
+                    no_update,
+                    "chat",
+                )
 
             # Keep chat process LLM config aligned with current Advanced Settings.
             if llm_provider == "openai":
@@ -760,21 +834,6 @@ def callbacks(app):
                 )
 
             # Load the graph to get abstracts
-            if not savepath or "graph" not in savepath:
-                return (
-                    False,
-                    "❌ Error: Graph session data not found.",
-                    True,
-                    True,
-                    {"display": "none"},
-                    no_update,
-                    {"display": "none"},
-                    no_update,
-                    reset_btn,
-                    no_update,
-                    "chat",
-                )
-
             if not os.path.exists(savepath["graph"]):
                 return (
                     False,
@@ -901,6 +960,19 @@ def callbacks(app):
             node_rag = NodeRAG(llm_client, persist_directory=persist_dir)
 
             # Check if NodeRAG is already indexed for this graph
+            # Check if NodeRAG is already indexed for this graph
+            core_node_ids = set()
+            if selected_nodes:
+                for n in selected_nodes:
+                    if "id" in n and not str(n["id"]).startswith("c"):
+                        core_node_ids.add(str(n["id"]))
+            if selected_edges:
+                for e in selected_edges:
+                    if "source" in e:
+                        core_node_ids.add(str(e["source"]))
+                    if "target" in e:
+                        core_node_ids.add(str(e["target"]))
+
             if not node_rag.is_indexed():
                 total_nodes = len(G.nodes)
                 # Optimization for large graphs: only index selected nodes + nodes in selected edges
@@ -908,20 +980,8 @@ def callbacks(app):
                     logger.info(
                         f"Large graph detected ({total_nodes} nodes). Indexing selection only for instant initialization."
                     )
-                    selected_node_ids = set()
-                    if selected_nodes:
-                        for n in selected_nodes:
-                            if "id" in n:
-                                selected_node_ids.add(str(n["id"]))
-                    if selected_edges:
-                        for e in selected_edges:
-                            if "source" in e:
-                                selected_node_ids.add(str(e["source"]))
-                            if "target" in e:
-                                selected_node_ids.add(str(e["target"]))
-
                     graph_nodes = []
-                    for node_id in selected_node_ids:
+                    for node_id in core_node_ids:
                         if node_id in G.nodes:
                             data = G.nodes[node_id]
                             name = data.get("name", str(node_id))
@@ -1017,6 +1077,7 @@ def callbacks(app):
                 bootstrap_prompt,
                 session_language=session_language or "English",
                 skip_translation=True,  # The translation instruction is embedded in the prompt
+                focus_nodes=list(core_node_ids) if core_node_ids else None,
             )
             t_sum = time.time()
             logger.info(f"Initial summary generated in {t_sum - t_node:.2f}s")
@@ -1125,7 +1186,7 @@ def callbacks(app):
         current_messages,
         _session_language,
         is_disabled,
-        savepath,
+        session_data,
     ):
         """
         Process user message and get AI response.
@@ -1152,7 +1213,12 @@ def callbacks(app):
             raise dash.exceptions.PreventUpdate
 
         # Guard: session may be missing if server was restarted after graph was built
-        if not savepath or "graph" not in savepath or savepath["graph"] not in _sessions:
+        try:
+            savepath = _resolve_savepath(session_data)
+        except SessionPathError:
+            savepath = None
+
+        if not savepath or savepath["graph"] not in _sessions:
             from webapp.components.chat import create_message_component
             err_msg = create_message_component(
                 "assistant",
@@ -1168,14 +1234,17 @@ def callbacks(app):
             from webapp.callbacks.pipeline import detect_query_language
             from webapp.components.chat import create_message_component
 
-            # Dynamically detect language of the new message.
-            # Always honour the language of the current message:
-            #   - CJK input  → respond in that CJK language
-            #   - English input → respond in English, regardless of session_language
-            # This prevents the case where a CJK search session causes English
-            # chat messages to receive CJK replies.
+            # Determine response language:
+            # - If session_language is non-English (set from search query language),
+            #   always honour it — so a Chinese-query session always replies in Chinese
+            #   even when the user clicks an English suggested question.
+            # - If session_language is English (or unset), fall back to per-message
+            #   detection so CJK chat messages still get CJK replies.
             msg_lang = detect_query_language(user_input)
-            effective_language = msg_lang
+            if _session_language and _session_language not in ("English", ""):
+                effective_language = _session_language
+            else:
+                effective_language = msg_lang
 
             # Get AI response
             response = session.send_message(user_input, session_language=effective_language)
@@ -1245,7 +1314,7 @@ def callbacks(app):
         State("current-session-path", "data"),
         prevent_initial_call=True,
     )
-    def clear_chat(n_clicks, savepath):
+    def clear_chat(n_clicks, session_data):
         """Clear chat history and reset session"""
         global _sessions
 
@@ -1253,7 +1322,12 @@ def callbacks(app):
             raise dash.exceptions.PreventUpdate
 
         # Clear session
-        if savepath and "graph" in savepath and savepath["graph"] in _sessions:
+        try:
+            savepath = _resolve_savepath(session_data)
+        except SessionPathError:
+            savepath = None
+
+        if savepath and savepath["graph"] in _sessions:
             session_data = _sessions.pop(savepath["graph"])
             session_data["session"].clear()
             session_data["rag"].clear()
@@ -1276,6 +1350,323 @@ def callbacks(app):
             None,
             {"display": "none"},
         )
+
+    @app.callback(
+        Output("download-chat-history", "data"),
+        Input("download-chat-btn", "n_clicks"),
+        [
+            State("data-input", "value"),
+            State("llm-provider-selector", "value"),
+            State("openai-model-selector", "value"),
+            State("openai-custom-model-input", "value"),
+            State("google-model-selector", "value"),
+            State("llm-model-input", "value"),
+            State("current-session-path", "data"),
+        ],
+        prevent_initial_call=True,
+    )
+    def download_chat_history(
+        n_clicks, initial_query, provider, oa_model, oa_custom, g_model, l_model, session_data
+    ):
+        global _sessions
+        try:
+            savepath = _resolve_savepath(session_data)
+        except SessionPathError:
+            savepath = None
+        if not n_clicks or not savepath or savepath["graph"] not in _sessions:
+            raise dash.exceptions.PreventUpdate
+
+        session_data = _sessions[savepath["graph"]]
+        session = session_data["session"]
+
+        if not session or not session.history:
+            raise dash.exceptions.PreventUpdate
+
+        import datetime
+        import html as html_lib
+        import markdown
+        from webapp.llm import llm_client
+
+        # Determine the model name used
+        if provider == "openai":
+            model_name = oa_custom if oa_model == "custom" else oa_model
+        elif provider == "google":
+            model_name = g_model
+        else:
+            model_name = l_model
+
+        # Use AI to generate a research title based on chat history
+        research_title = "NetMedEx Professional Chat Transcript"
+        try:
+            # Combine first few exchanges for context
+            context_messages = []
+            for m in session.history[1:5]:  # Skip system, take first 4
+                context_messages.append(f"{m.role}: {m.content[:200]}")
+
+            context_text = "\n".join(context_messages)
+            title_prompt = (
+                "Based on the following biomedical research chat snippet, "
+                "generate a concise, professional research subject title (max 12 words). "
+                "Return ONLY the title text, no quotes or explanations.\n\n"
+                f"Context:\n{context_text}"
+            )
+            ai_title = llm_client.chat_completion_text(
+                messages=[{"role": "user", "content": title_prompt}],
+                max_tokens=50,
+                temperature=0.3,
+            )
+            if ai_title and len(ai_title.strip()) > 5:
+                research_title = ai_title.strip()
+        except Exception as e:
+            logger.error(f"Error generating AI title for transcript: {e}")
+
+        def hyperlink_pmids(html_text):
+            pubmed_base = "https://pubmed.ncbi.nlm.nih.gov"
+            link_style = "color:#0084ff; text-decoration:none; font-weight:500;"
+
+            def make_link_prefixed(match):
+                # Matches: PMID:12345678 / PMID: 12345678 / PMID：12345678
+                full_match = match.group(0)
+                pmid = match.group(2)
+                return f'<a href="{pubmed_base}/{pmid}/" target="_blank" style="{link_style}">{full_match}</a>'
+
+            def make_link_bracketed(match):
+                # Matches: [12345678] — bare number in brackets (LLM citation style)
+                pmid = match.group(1)
+                return f'[<a href="{pubmed_base}/{pmid}/" target="_blank" style="{link_style}">{pmid}</a>]'
+
+            # Split on existing <a>…</a> blocks to avoid double-wrapping
+            segments = re.split(r'(<a\s[^>]*>.*?</a>)', html_text, flags=re.DOTALL | re.IGNORECASE)
+            result = []
+            for i, seg in enumerate(segments):
+                if i % 2 == 1:  # inside existing <a> tag – skip
+                    result.append(seg)
+                else:
+                    # Pass 1: PMID:12345678 / PMID：12345678 (with prefix)
+                    seg = re.sub(r"(?i)(PMID[：:]?\s*)(\d{7,10})", make_link_prefixed, seg)
+                    # Pass 2: [12345678] (bare number in brackets, LLM citation style)
+                    # Negative lookbehind (?<![a-zA-Z]) prevents matching SNP rsIDs (e.g. rs[1234567]),
+                    # gene accessions, or any identifier where a letter immediately precedes the bracket.
+                    seg = re.sub(r"(?<![a-zA-Z])\[(\d{7,10})\]", make_link_bracketed, seg)
+                    result.append(seg)
+            return "".join(result)
+
+        def normalize_mermaid_blocks(text):
+            if not text or "```mermaid" in text:
+                return text
+            pattern = re.compile(
+                r"(^|\n)(graph\s+(?:LR|TD|TB|BT|RL)\b[\s\S]*?)(?=\n(?:\*\*|###|\Z))",
+                flags=re.IGNORECASE,
+            )
+
+            def _wrap(match):
+                prefix = match.group(1)
+                block = match.group(2).strip()
+                return f"{prefix}```mermaid\n{block}\n```"
+
+            return re.sub(pattern, _wrap, text, count=1)
+
+        def md_to_html(text):
+            text = normalize_mermaid_blocks(html_lib.escape(text or ""))
+            # 1. Render Markdown first for structural integrity
+            html_body = markdown.markdown(
+                text,
+                extensions=["extra", "sane_lists", "nl2br"],
+                output_format="html5",
+            )
+            # 2. Hyperlink PMIDs in the resulting HTML text
+            html_body = hyperlink_pmids(html_body)
+
+            def style_header(match):
+                return (
+                    "<div style='font-weight:700; color:#007bff; margin-top:12px;"
+                    " border-bottom:1px solid rgba(0,0,0,0.1); padding-bottom:3px;"
+                    " margin-bottom:8px; font-size:16px;'>"
+                    f"{match.group(1)}</div>"
+                )
+
+            html_body = re.sub(
+                r"<h2>(.*?)</h2>",
+                style_header,
+                html_body,
+                flags=re.IGNORECASE | re.DOTALL,
+            )
+
+            return html_body
+
+        html_content = [
+            "<!DOCTYPE html>",
+            "<html>",
+            "<head>",
+            "<meta charset='utf-8'>",
+            "<meta name='viewport' content='width=device-width, initial-scale=1'>",
+            f"<title>{html_lib.escape(research_title)}</title>",
+            "<style>",
+            "body { background-color: #f0f2f5; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 40px 20px; color: #1c1e21; line-height: 1.5; }",
+            ".chat-container { max-width: 850px; margin: 0 auto; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.08); }",
+            ".header { padding-bottom: 25px; border-bottom: 2px solid #f0f2f5; margin-bottom: 30px; }",
+            ".header h1 { margin: 0; font-size: 30px; color: #1a1b1e; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; }",
+            ".metadata { margin-top: 20px; padding: 15px 20px; background: #f8f9fa; border-radius: 12px; border-left: 5px solid #00a67e; font-size: 14px; color: #495057; }",
+            ".metadata-item { margin-bottom: 6px; display: flex; align-items: baseline; }",
+            ".metadata-label { font-weight: 700; color: #212529; width: 110px; flex-shrink: 0; }",
+            ".timestamp { font-size: 12px; color: #adb5bd; margin-top: 15px; text-align: right; font-weight: 500; }",
+            ".chat-box { display: flex; flex-direction: column; gap: 32px; }",
+            ".message-row { display: flex; width: 100%; align-items: flex-start; gap: 12px; }",
+            ".user-row { flex-direction: row-reverse; }",
+            ".assistant-row { flex-direction: row; }",
+            ".avatar { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: white; margin-top: 4px; }",
+            ".user-avatar { background: linear-gradient(135deg, #6e8efb, #a777e3); }",
+            ".assistant-avatar { background: linear-gradient(135deg, #00b09b, #96c93d); }",
+            ".bubble { max-width: 85%; padding: 16px 22px; border-radius: 20px; font-size: 15.5px; line-height: 1.6; position: relative; }",
+            ".user-bubble { background-color: #007bff; color: #ffffff; border-bottom-right-radius: 4px; box-shadow: 0 4px 15px rgba(0,123,255,0.2); }",
+            ".assistant-bubble { background-color: #ffffff; color: #212529; border-bottom-left-radius: 4px; border: 1px solid #e9ecef; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }",
+            ".content p { margin-top: 0; margin-bottom: 12px; }",
+            ".content p:last-child { margin-bottom: 0; }",
+            "table { border-collapse: collapse; width: 100%; margin: 16px 0; border: 1px solid #dee2e6; border-radius: 8px; overflow: hidden; font-size: 14px; }",
+            "th, td { border: 1px solid #dee2e6; padding: 12px 16px; text-align: left; }",
+            "th { background-color: #f1f3f5; font-weight: 700; color: #343a40; }",
+            ".sources-box { margin-top: 16px; padding-top: 12px; border-top: 1px solid #f1f3f5; font-size: 13px; color: #6c757d; }",
+            ".suggestions-box { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }",
+            ".suggested-pill { background-color: #f8f9fa; border: 1px solid #e9ecef; color: #495057; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 500; cursor: default; }",
+            "a { color: #007bff; text-decoration: none; transition: color 0.2s; }",
+            "a:hover { color: #0056b3; text-decoration: underline; }",
+            "ul, ol { margin: 12px 0; padding-left: 24px; }",
+            "li { margin-bottom: 8px; }",
+            "li:last-child { margin-bottom: 0; }",
+            "strong { font-weight: 700; color: inherit; }",
+            ".content .mermaid { overflow-x: auto; max-width: 100%; padding: 4px 0; }",
+            ".content .mermaid svg { max-width: 100%; height: auto; }",
+            "</style>",
+            "<script src='https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js'></script>",
+            "</head>",
+            "<body>",
+            "<div class='chat-container'>",
+            "<div class='header'>",
+            f"<h1>{html_lib.escape(research_title)}</h1>",
+            "<div class='metadata'>",
+            f"<div class='metadata-item'><span class='metadata-label'>LLM Model:</span> {html_lib.escape(str(model_name or 'N/A'))} ({html_lib.escape(str(provider or 'unknown').capitalize())})</div>",
+            f"<div class='metadata-item'><span class='metadata-label'>Initial Query:</span> {html_lib.escape(initial_query or 'N/A')}</div>",
+            "</div>",
+            f"<div class='timestamp'>Generated by NetMedEx on {datetime.datetime.now().strftime('%B %d, %Y - %H:%M:%S')}</div>",
+            "</div>",
+            "<div class='chat-box'>",
+        ]
+
+        user_svg = '<svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/></svg>'
+        assistant_svg = '<svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5ZM3 8.062C3 6.76 4.235 5.765 5.53 5.889a28.02 28.02 0 0 1 4.94 0C11.765 5.765 13 6.76 13 8.062v1.157a.933.933 0 0 1-.765.935c-.845.147-2.34.346-4.235.346-1.895 0-3.39-.2-4.235-.346A.933.933 0 0 1 3 9.219V8.062Zm4.542-.827a.25.25 0 0 0-.217.068l-.92.9a24.767 24.767 0 0 1-1.871-.183.25.25 0 0 0-.068.495c.55.076 1.232.149 2.02.193a.25.25 0 0 0 .189-.071l.758-.736.847 1.71a.25.25 0 0 0 .404.062l.932-.97a25.286 25.286 0 0 0 1.922-.188.25.25 0 0 0-.068-.495c-.538.074-1.207.145-1.98.189a.25.25 0 0 0-.166.076l-.754.785-.842-1.7a.25.25 0 0 0-.182-.135Z"/><path d="M8.5 1.866a1 1 0 1 0-1 0V3h-2A4.5 4.5 0 0 0 1 7.5V8a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1v1a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-1a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1v-.5A4.5 4.5 0 0 0 10.5 3h-2V1.866ZM14 7.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.5A3.5 3.5 0 0 1 5.5 4h5A3.5 3.5 0 0 1 14 7.5Z"/></svg>'
+
+        skip_prompts = {
+            "Please provide a structured summary of the selected research based on the abstracts and graph structure.",
+            "Please provide a concise initial brief for the selected abstracts",
+        }
+
+        # Resolve display query: prefer data-input value; fall back to first real user message
+        if not initial_query:
+            for msg in session.history:
+                if msg.role == "user" and msg.content and not any(
+                    sp in msg.content for sp in skip_prompts
+                ):
+                    initial_query = msg.content.strip()[:300]
+                    if len(msg.content.strip()) > 300:
+                        initial_query += "…"
+                    break
+
+        skip_prompt = "Please provide a structured summary of the selected research based on the abstracts and graph structure."
+        last_msg_content = None
+        for msg in session.history:
+            if msg.role == "system":
+                continue
+            if not msg.content or msg.content.strip() == "":
+                continue
+            if skip_prompt in msg.content:
+                continue
+
+            # Simple deduplication for consecutive identity messages
+            current_content = msg.content.strip()
+            if current_content == last_msg_content:
+                continue
+            last_msg_content = current_content
+
+            is_user = msg.role == "user"
+            row_class = "user-row" if is_user else "assistant-row"
+            bubble_class = "user-bubble" if is_user else "assistant-bubble"
+            avatar_class = "user-avatar" if is_user else "assistant-avatar"
+            avatar_svg = user_svg if is_user else assistant_svg
+
+            # Separate suggestions for assistant messages
+            suggestions = []
+            clean_text = msg.content
+            if not is_user:
+                suggestions, clean_text = parse_suggestions(msg.content)
+
+            content_html = md_to_html(clean_text)
+
+            html_content.append(f"<div class='message-row {row_class}'>")
+            html_content.append(f"<div class='avatar {avatar_class}'>{avatar_svg}</div>")
+            html_content.append(f"<div class='bubble {bubble_class}'>")
+            html_content.append(f"<div class='content'>{content_html}</div>")
+
+            # Add suggested question pills
+            if suggestions:
+                html_content.append("<div class='suggestions-box'>")
+                for q in suggestions[:3]:
+                    html_content.append(
+                        f"<div class='suggested-pill'>{html_lib.escape(q)}</div>"
+                    )
+                html_content.append("</div>")
+
+            if hasattr(msg, "sources") and msg.sources:
+                source_links = [
+                    f'<a href="https://pubmed.ncbi.nlm.nih.gov/{html_lib.escape(str(p))}/" target="_blank">[PMID:{html_lib.escape(str(p))}]</a>'
+                    for p in msg.sources
+                ]
+                html_content.append(
+                    f"<div class='sources-box'><strong>References:</strong> {', '.join(source_links)}</div>"
+                )
+
+            html_content.append("</div></div>")
+
+        html_content.extend(
+            [
+                "<script>",
+                "(function(){",
+                "  function convertCodeBlocks(){",
+                "    const codeBlocks = document.querySelectorAll('pre code.language-mermaid');",
+                "    codeBlocks.forEach((code) => {",
+                "      const pre = code.closest('pre');",
+                "      if (!pre) return;",
+                "      const graphDef = (code.textContent || '').trim();",
+                "      if (!graphDef) return;",
+                "      const wrapper = document.createElement('div');",
+                "      wrapper.className = 'mermaid';",
+                "      wrapper.textContent = graphDef;",
+                "      pre.replaceWith(wrapper);",
+                "    });",
+                "  }",
+                "  function initMermaid(){",
+                "    if (!window.mermaid) return;",
+                "    window.mermaid.initialize({startOnLoad:false, securityLevel:'strict', theme:'default'});",
+                "    convertCodeBlocks();",
+                "    if (typeof window.mermaid.run === 'function') {",
+                "      window.mermaid.run({querySelector: '.mermaid'});",
+                "    } else if (typeof window.mermaid.init === 'function') {",
+                "      window.mermaid.init(undefined, document.querySelectorAll('.mermaid'));",
+                "    }",
+                "  }",
+                "  if (document.readyState === 'loading') {",
+                "    document.addEventListener('DOMContentLoaded', initMermaid);",
+                "  } else {",
+                "    initMermaid();",
+                "  }",
+                "})();",
+                "</script>",
+                "</div></div></body></html>",
+            ]
+        )
+
+        final_html = "\n".join(html_content)
+        filename = f"NetMedEx_Transcript_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.html"
+        return dcc.send_string(final_html, filename)
 
     @app.callback(
         Output("download-chat-history", "data"),
@@ -1611,8 +2002,15 @@ def callbacks(app):
         if not ctx.triggered or not any(n_clicks_list):
             raise dash.exceptions.PreventUpdate
 
-        # Simpler: find the one with the highest clicks or just the first non-zero
         trigger_info = ctx.triggered[0]
+
+        # Guard: when new pills are added to the DOM after an AI response, Dash
+        # re-fires this ALL-pattern callback with value=None/0 for the new pill
+        # while old pills still have n_clicks>0, causing any() to pass falsely.
+        # Only proceed if the triggering component actually received a real click.
+        if not trigger_info.get("value"):
+            raise dash.exceptions.PreventUpdate
+
         import json
 
         try:
@@ -1625,7 +2023,6 @@ def callbacks(app):
             inputs = ctx.inputs_list[0]
             for i, input_item in enumerate(inputs):
                 if input_item["id"]["index"] == triggered_index:
-                    # Clear input boxes immediately, force "chat" tab, AND trigger the actual send via the store
                     matched_text = question_texts[i]
                     return "", "", matched_text, "chat"
         except Exception as e:
