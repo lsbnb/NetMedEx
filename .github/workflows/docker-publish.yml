@@ -45,7 +45,7 @@ jobs:
       - name: Update Docker Hub Description
         uses: peter-evans/dockerhub-description@v4
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          username: lsbnb
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
           repository: lsbnb/netmedex
           readme-filepath: ./docs/DOCKERHUB_OVERVIEW.md
