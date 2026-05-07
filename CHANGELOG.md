@@ -5,18 +5,102 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.9.5] - 2026-03-14
+## [1.2.3] - 2026-04-30
+
+### Added
+- **Collapsible Sidebar**: Added a toggle button (☰) in the graph header to collapse and expand the sidebar with a smooth CSS transition. State is persisted to `localStorage` and restored on page reload.
+- **Search History**: Recent API text queries are now saved (up to 8) in `localStorage` and shown as clickable chips below the query textarea. Clicking a chip re-populates the input instantly.
+
+## [1.2.2] - 2026-04-30
+
+### Added
+- **Graph Empty State**: Added a guidance placeholder ("No network loaded") that appears on the main canvas when no graph has been loaded, replacing the blank screen and improving onboarding clarity.
+- **Edge Visual Distinction**: Co-occurrence-only edges (`edge_type='node'`) now render as dashed lines with reduced opacity, visually distinguishing them from LLM-semantically-confirmed edges (solid lines). This maps to the 1-hop direct evidence vs. inferred co-occurrence distinction.
+
+### Changed
+- **LLM Settings Persistence**: LLM provider and model settings (`llm-settings-store`) now use `localStorage` instead of `sessionStorage`, so preferences (provider, model, etc.) survive page refreshes. API keys remain server-side only and are never persisted in the browser.
+
+## [1.2.1] - 2026-04-29
+
+### Security
+- **HMAC-Signed Session Tokens**: Browser-side session data is now a signed token instead of a raw file path, preventing path traversal attacks.
+- **API Key Isolation**: LLM API keys are no longer stored in or read from browser-side `dcc.Store`; keys are resolved exclusively from server environment variables.
+- **XSS Prevention**: Added `escapeHtml()` to the standalone Cytoscape HTML export template; all node/edge data rendered into the info panel is now properly escaped.
+- **Download Filename Sanitization**: Export filenames are sanitized server-side before being sent as download headers.
+
+### Fixed
+- **Rate Limit Retry**: Semantic extraction LLM calls now retry up to 5 times with exponential back-off (15 s → 30 s → 60 s → 120 s) on 429 / quota errors.
+- **pmid-title-dict Sync**: Graph update callback now outputs the restored `pmid_title` dictionary on graph rebuild, fixing stale article-title references after re-load.
+- **Node Name Normalisation**: Node names are lowercased on graph rebuild for consistent matching across `.pkl` versions.
+- **HOST env Propagation**: Resolved `HOST` value is written back to the environment so Werkzeug reloader subprocesses inherit the correct binding address.
+- **Docker Workflow**: Updated `build-push-action` v5 → v6 and corrected the DockerHub secret name (`DOCKERHUB_TOKEN` → `DOCKERHUB_PASSWORD`).
+
+## [1.2.0] - 2026-04-28
+
+### Added
+- **Smart 2-Hop Graph RAG**: Implemented a sophisticated two-hop retrieval mechanism for deep mechanistic discovery.
+- **Hybrid Scoring System**: Integrated NPMI (30%), LLM Confidence (40%), and Semantic Query Relevance (30%) for more accurate path prioritization.
+- **Study-Type Labeling**: Added automated detection and labeling of research types (Human clinical data vs. Animal/Cell-line models) to ensure evidence clarity.
+- **Ontology-Based Filtering**: Integrated strict node-type filtering (Genes, Diseases, Chemicals) to reduce noise from species or geographic metadata.
+- **Bottleneck Scoring**: Implemented "Min-Link" scoring for 2-hop paths to ensure the weakest link determines the overall path strength, reducing false inferences.
+- **2-Hop Penalty**: Applied a 0.8x uncertainty penalty to 2-hop connections to distinguish them from direct literature evidence.
+
+## [1.1.0] - 2026-04-10
+
+### Added
+- **sapBERT Knowledge Graph Normalization**: Added an automated pipeline to merge semantically equivalent nodes (e.g., case variants and synonyms) using vector embeddings, significantly reducing graph redundancy.
+- **Pediatric CNS 10k Dataset Support**: Fully verified and optimized the extraction and normalization pipeline for the 10,000-article pediatric brain tumor dataset.
+- **Improved CJK Reasoning**: Enhanced multi-stage intermediary English reasoning for Chinese, Japanese, and Korean queries.
+
+### Changed
+- **Version Bump**: Officially transitioned from v0.9.9 to v1.1.0 to reflect the integration of advanced graph normalization and large-scale data support.
+
+
+## [0.9.9] - 2026-03-29
+
+### Added
+- **Semantic Edge Coloring**: Integrated real-time edge coloring based on LLM-extracted relationship types (Green for activation/positive, Red for inhibition/negative).
+- **Edge Confidence Threshold Slider**: Added a high-performance clientside filter in the Graph panel to instantly hide/show edges based on LLM confidence scores.
+- **10k Article Pipeline Optimization**: Stabilized and verified the semantic extraction pipeline for large-scale pediatric CNS tumor datasets (9,000+ PMIDs).
+- **BioC-JSON Metadata Enrichment**: Enhanced BioC-JSON parsing to preserve full author and publication year metadata during direct file loading.
+
+### Changed
+- **Version Alignment**: Officially bumped project version to v0.9.9 across technical metadata and UI labels.
+
+## [0.9.7] - 2026-03-19
+
+### Added
+- **Citation Count Visibility**: Integrated "Total Citations" in Edge Info and a new "Citations" column in article tables (Nodes/Edges).
+- **Automated Chat Summary**: The Chat Panel now automatically generates an initial evidence-based summary (Answers, Hypotheses, Suggested Questions) upon analysis.
+- **Search Query Banner**: Added a persistent banner in the Chat Panel to maintain awareness of the original search context.
+
+### Changed
+- **Version Alignment**: Updated UI and package metadata to reflect the v0.9.7 release.
+
+## [0.9.6] - 2026-03-19
+
+### Changed
+- Realigned release metadata (package version, Docker tags, sidebar badge, and docs) to publish the current set of updates under **v0.9.6**; see the Deployment guide and DockHub overview for the refreshed labels.
+
+## [0.9.5] - 2026-03-18
 
 ### Added
 - **Semantic Extraction diagnostics**: Added a new UI alert in the Search Panel that provides detailed metrics after semantic analysis, including article success rates, parse failures, coverage expansions, and dropped edges.
 - **Improved Local LLM Parsing**: Enhanced the regex-based relaxed parser in `semantic_re.py` to be more robust when handling outputs from Ollama or LocalAI models.
+- **Fetch Citation Counts**: New option in the Search Panel to pull real-time citation metrics from OpenCitations for all retrieved articles.
 
 ### Changed
+- **Chat UX – PMID Reference Refinement**: Standardized PMID link formatting across the chat interface, ensuring consistent hyperlinking to PubTator3 and removing redundant URL displays.
+- **Chat UX – Suggested Questions**: Improved parsing for "Suggested Follow-up" questions, making them more robust across different LLM response styles and languages.
 - **Simplified Advanced Settings UI**: Standardized on ChromaDB default embeddings. Removed redundant embedding model selection sections for both OpenAI and Gemini providers to reduce UI clutter.
 - **LLM Search Panel Alerts**: Migrated to a more professional `dbc.Alert` system for communicating processing status and semantic analysis results.
 - **Enhanced Translation Strategy**: Refined the system instructions for query translation to ensure consistent English-only output for PubTator compatibility.
+- **Sidebar Styling**: Optimized version tag display and advanced settings icon placement for better alignment.
 
 ### Fixed
+- **Python 3.9 Compatibility**: Resolved `TypeError` where `zip()` was called with the `strict=True` keyword argument (only supported in Python 3.10+).
+- **Search Panel Layout**: Fixed alignment issues between the AI Search toggle row and the query input textarea.
+- **Citation Fetcher Stability**: Corrected `aiometer` job scheduling to prevent potential race conditions when fetching large batches of citations.
 - **Gemini Coverage Bug**: Fixed a critical error where `pair_count` was undefined in the Gemini coverage prompt, which previously caused crashes during the second round of recall.
 - **Model Fetching Robustness**: Improved error handling when local LLM endpoints are unreachable during model list fetching.
 

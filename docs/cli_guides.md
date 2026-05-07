@@ -57,13 +57,14 @@ Available commands are detailed in [Network Command](#network-command).
 ### General
 
 ```bash
-usage: netmedex [-h] {search,network,run} ...
+usage: netmedex [-h] {search,network,run,chat} ...
 
 positional arguments:
-  {search,network,run}
+  {search,network,run,chat}
     search              Search PubMed articles and obtain annotations
     network             Build a network from annotations
     run                 Run NetMedEx app
+    chat                Chat with a pickled graph via Hybrid RAG
 
 options:
   -h, --help            Show this help message and exit
@@ -73,7 +74,10 @@ options:
 
 ```bash
 usage: netmedex search [-h] [-q QUERY] [-o OUTPUT] [-p PMIDS] [-f PMID_FILE] [-s {score,date}] [--max_articles MAX_ARTICLES] [--full_text]
-                       [--use_mesh] [--debug]
+                       [--use_mesh] [--ai_search] [--debug]
+                       [--llm_provider {openai,google,local}]
+                       [--llm_api_key LLM_API_KEY] [--llm_model LLM_MODEL]
+                       [--llm_base_url LLM_BASE_URL]
 
 options:
   -h, --help            show this help message and exit
@@ -91,7 +95,16 @@ options:
                         Maximal articles to request from the searching result (default: 1000)
   --full_text           Collect full-text annotations if available
   --use_mesh            Use MeSH vocabulary instead of the most commonly used original text in articles
+  --ai_search           Enable LLM-powered natural language to PubTator boolean query translation.
   --debug               Print debug information
+  --llm_provider {openai,google,local}
+                        LLM provider for query translation.
+  --llm_api_key LLM_API_KEY
+                        LLM API key override for query translation.
+  --llm_model LLM_MODEL
+                        LLM model override for query translation.
+  --llm_base_url LLM_BASE_URL
+                        LLM base URL override for query translation.
 ```
 
 ### Network Command
@@ -99,6 +112,11 @@ options:
 ```bash
 usage: netmedex network [-h] [-i INPUT] [-o OUTPUT] [-w CUT_WEIGHT] [-f {xgmml,html,json}] [--node_type {all,mesh,relation}]
                         [--weighting_method {freq,npmi}] [--pmid_weight PMID_WEIGHT] [--debug] [--community] [--max_edges MAX_EDGES]
+                        [--edge_method {co-occurrence,semantic,relation}]
+                        [--semantic_threshold SEMANTIC_THRESHOLD]
+                        [--llm_provider {openai,google,local}]
+                        [--llm_api_key LLM_API_KEY] [--llm_model LLM_MODEL]
+                        [--llm_base_url LLM_BASE_URL]
 
 options:
   -h, --help            show this help message and exit
@@ -118,6 +136,18 @@ options:
                         CSV file for the weight of the edge from a PMID (default: 1)
   --debug               Print debug information
   --community           Divide nodes into distinct communities by the Louvain method
+  --edge_method {co-occurrence,semantic,relation}
+                        Method for edge construction.
+  --semantic_threshold SEMANTIC_THRESHOLD
+                        Minimum confidence score for semantic edges, range 0-1.
+  --llm_provider {openai,google,local}
+                        LLM provider for semantic edge extraction.
+  --llm_api_key LLM_API_KEY
+                        LLM API key override for semantic edge extraction.
+  --llm_model LLM_MODEL
+                        LLM model override for semantic edge extraction.
+  --llm_base_url LLM_BASE_URL
+                        LLM base URL override for semantic edge extraction.
   --max_edges MAX_EDGES
                         Maximum number of edges to display (default: 0, no limit)
 ```

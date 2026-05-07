@@ -1,7 +1,10 @@
 from __future__ import annotations
 
 import logging
+
 import networkx as nx
+
+from netmedex.relation_types import is_directional_relation
 
 logger = logging.getLogger(__name__)
 
@@ -10,6 +13,12 @@ class GraphRetriever:
     """
     Retrieves structured context from the knowledge graph for Hybrid RAG.
     """
+
+    # Ontology Preference: Prioritize Genes and Diseases while ignoring non-biomedical noise
+    VALID_NODE_TYPES = {"gene", "disease", "chemical", "variant", "pathway", "cellline"}
+    IGNORED_NODE_TYPES = {"species", "entity", "geographic area", "organism"}
+
+    TYPE_WEIGHTS = {"gene": 1.2, "disease": 1.2, "chemical": 1.1, "variant": 1.1}
 
     def __init__(self, graph: nx.Graph, node_rag=None):
         """
@@ -70,16 +79,18 @@ class GraphRetriever:
 
         return list(matched_nodes)
 
-    def get_subgraph_context(self, relevant_nodes: list[str], max_hops: int = 2) -> str:
+    def get_subgraph_context(
+        self, relevant_nodes: list[str], query: str | None = None, max_hops: int = 2
+    ) -> str:
         """
-        Extract textual context describing the subgraph relevant to the nodes.
+        Extract textual context describing the subgraph relevant to the nodes using 2-hop Graph Pruning/Filtering.
 
-        Strategy:
-        1. If 1 node: Return 1-hop neighbors.
-        2. If 2+ nodes: Find shortest paths between them to reveal connections.
+        Strategy: Hybrid Scoring 2.0
+        Combines Topological NPMI + Semantic Confidence + Query Relevance.
 
         Args:
             relevant_nodes: List of starting node IDs.
+            query: User's original query for semantic relevance scoring.
             max_hops: Maximum number of hops for pathfinding.
 
         Returns:
@@ -89,7 +100,6 @@ class GraphRetriever:
             return "No specific entities from the graph were found in the query."
 
         # Filter nodes to ensure they exist in the current graph
-        # (graph might have changed or passed subgraphs might be disjoint)
         valid_nodes = [n for n in relevant_nodes if self.graph.has_node(n)]
 
         if not valid_nodes:
@@ -97,75 +107,140 @@ class GraphRetriever:
 
         context_lines = []
 
-        # Case 1: Single Node Analysis - Show immediate context
-        if len(valid_nodes) == 1:
-            start_node = valid_nodes[0]
-            start_data = self.graph.nodes[start_node]
-            start_name = start_data.get("name", start_node)
-            start_type = start_data.get("type", "Entity")
+        # Support robust 2-hop contextual paths using hybrid scoring and filtering
+        explored_paths = self._extract_top_k_paths(valid_nodes, query=query, max_hops=max_hops, top_k=20)
 
-            context_lines.append(f"Entity: {start_name} ({start_type})")
-
-            neighbors = list(self.graph.neighbors(start_node))
-            if not neighbors:
-                context_lines.append(f"- {start_name} has no connections in this view.")
-            else:
-                context_lines.append(f"- Direct connections ({len(neighbors)}):")
-                # Sort neighbors by edge weight if available
-                scored_neighbors = []
-                for n in neighbors:
-                    edge = self.graph[start_node][n]
-                    weight = edge.get("edge_weight", 0)
-                    scored_neighbors.append((n, weight))
-
-                scored_neighbors.sort(key=lambda x: x[1], reverse=True)
-
-                for n, weight in scored_neighbors[:10]:  # Limit to top 10
-                    n_data = self.graph.nodes[n]
-                    n_name = n_data.get("name", n)
-                    n_type = n_data.get("type", "m")
-
-                    # Inspect edge relations
-                    edge_data = self.graph[start_node][n]
-                    relations = self._summarize_relations(edge_data)
-
-                    context_lines.append(
-                        f"  * {n_name} ({n_type}) [{relations}] (Weight: {weight})"
-                    )
-
-        # Case 2: Multi-Node Analysis - Find paths
+        if not explored_paths:
+            context_lines.append("No significant relational paths could be found for the queried entities.")
         else:
             context_lines.append(
-                f"Relational analysis between: {', '.join([self.graph.nodes[n].get('name', n) for n in valid_nodes])}"
+                f"Latent Network Mechanisms (Top {len(explored_paths)} 2-hop paths based on Confidence+Topology+Topic):"
             )
-
-            pairs_analyzed = 0
-            # Compare all pairs (limit to a reasonable number to avoid combinatorial explosion)
-            import itertools
-
-            for n1, n2 in itertools.combinations(valid_nodes, 2):
-                if pairs_analyzed > 5:
-                    break
-
-                path = self._find_connection(n1, n2, max_hops)
-                if path:
-                    context_lines.append(f"\nPath: {self._format_path(path)}")
-                    pairs_analyzed += 1
-                else:
-                    context_lines.append(
-                        f"\nNo direct connection found between {self.graph.nodes[n1].get('name', n1)} and {self.graph.nodes[n2].get('name', n2)} within {max_hops} hops."
-                    )
+            for path, score in explored_paths:
+                context_lines.append(f"- {self._format_path(path)} (Score: {score:.2f})")
 
         return "\n".join(context_lines)
 
-    def _find_connection(self, source: str, target: str, cutoff: int) -> list[str] | None:
-        """Find meaningful connection between two nodes."""
-        try:
-            return nx.shortest_path(self.graph, source, target)
-        except nx.NetworkXNoPath:
-            return None
-        except Exception:
-            return None
+    def _is_valid_node(self, node_id: str) -> bool:
+        """Check if node should be included based on Ontology Filtering."""
+        node_data = self.graph.nodes.get(node_id, {})
+        n_type = str(node_data.get("type", "entity")).lower()
+
+        if n_type in self.IGNORED_NODE_TYPES:
+            return False
+
+        # If we have a strict whitelist, check it
+        if self.VALID_NODE_TYPES and n_type not in self.VALID_NODE_TYPES:
+            return False
+
+        return True
+
+    def _extract_top_k_paths(
+        self, start_nodes: list[str], query: str | None, max_hops: int, top_k: int
+    ) -> list[tuple[list[str], float]]:
+        """Traverse 1 and 2 hops from core nodes, score paths via hybrid confidence, and return Top K."""
+        all_paths = []
+
+        # Pre-compute maximum edge weight for normalization across the requested subnetwork
+        max_edge_weight = 1e-6
+        for _, _, data in self.graph.edges(data=True):
+            w = data.get("edge_weight", 0)
+            if w > max_edge_weight:
+                max_edge_weight = w
+
+        # Strategy 2.0: Fetch node semantic relevance to the actual user query
+        semantic_relevance_map = {}
+        if query and self.node_rag:
+            logger.info(f"Scoring 2-hop graph relevance for query: {query}")
+            # Search for more nodes to ensure we cover the 2-hop neighborhood
+            hits = self.node_rag.search_nodes(query, top_k=100)
+            semantic_relevance_map = {node_id: score for node_id, score, _ in hits}
+
+        def calculate_score(u, v, edge_data):
+            # 1. Topological Evidence (NPMI) - 30%
+            npmi = edge_data.get("edge_weight", 0) / max_edge_weight
+
+            # 2. Semantic Extraction Confidence - 40%
+            # Calibrate confidence based on relation strength and evidence frequency
+            raw_conf = edge_data.get("confidence", 0.5)
+
+            # Relation Strength: Directional/Mechanistic relations are more valuable than generic associations
+            rel_types = set()
+            pmid_count = 0
+            if "relations" in edge_data:
+                pmid_count = len(edge_data["relations"])
+                for pmid_rels in edge_data["relations"].values():
+                    rel_types.update(pmid_rels)
+
+            strength_mult = 1.0
+            if any(is_directional_relation(t) for t in rel_types):
+                strength_mult = 1.1  # Mechanistic boost
+            elif any(t in ("associated_with", "related_to", "co_occurs_with") for t in rel_types):
+                strength_mult = 0.9  # Weak association penalty
+
+            # Evidence Frequency: More papers supporting the edge increases its trustworthiness
+            evidence_boost = min(1.2, 1.0 + (max(0, pmid_count - 1) * 0.05))
+
+            calibrated_conf = float(raw_conf) * strength_mult * evidence_boost
+            calibrated_conf = min(1.0, calibrated_conf)  # Cap at 1.0
+
+            # 3. Query Relevance (Semantic proximity to user question) - 30%
+            u_rel = semantic_relevance_map.get(u, 0.5)
+            v_rel = semantic_relevance_map.get(v, 0.5)
+            rel_score = max(u_rel, v_rel)
+
+            base_score = (float(npmi) * 0.3) + (float(calibrated_conf) * 0.4) + (float(rel_score) * 0.3)
+
+            # 4. Ontology Weighting (Gene/Disease Boost)
+            u_type = str(self.graph.nodes[u].get("type", "")).lower()
+            v_type = str(self.graph.nodes[v].get("type", "")).lower()
+            multiplier = max(self.TYPE_WEIGHTS.get(u_type, 1.0), self.TYPE_WEIGHTS.get(v_type, 1.0))
+
+            return base_score * multiplier
+
+        visited_paths = set()
+
+        for start_node in start_nodes:
+            # 1-hop
+            for neighbor in self.graph.neighbors(start_node):
+                if neighbor == start_node:
+                    continue
+                if not self._is_valid_node(neighbor):
+                    continue
+
+                edge_1 = self.graph[start_node][neighbor]
+                score_1 = calculate_score(start_node, neighbor, edge_1)
+
+                path_sig_1 = tuple(sorted([start_node, neighbor]))
+                if path_sig_1 not in visited_paths:
+                    all_paths.append(([start_node, neighbor], score_1))
+                    visited_paths.add(path_sig_1)
+
+                if max_hops >= 2:
+                    # 2-hop
+                    for n2 in self.graph.neighbors(neighbor):
+                        if n2 == start_node or n2 == neighbor:
+                            continue
+                        if not self._is_valid_node(n2):
+                            continue
+
+                        edge_2 = self.graph[neighbor][n2]
+                        score_2 = calculate_score(neighbor, n2, edge_2)
+
+                        # Strategy: Reduce False Inferences
+                        # Use 'Bottleneck Scoring' (Min-Link) instead of Average.
+                        # Also apply a 0.8x penalty for the 2-hop jump to acknowledge increased uncertainty.
+                        path_score = min(score_1, score_2) * 0.8
+
+                        # Use a directed-aware sig for 2-hop to distinguish start->mid->end
+                        path_sig_2 = (start_node, neighbor, n2)
+                        if path_sig_2 not in visited_paths:
+                            all_paths.append((list(path_sig_2), path_score))
+                            visited_paths.add(path_sig_2)
+
+        # Sort paths by score descending
+        all_paths.sort(key=lambda x: x[1], reverse=True)
+        return all_paths[:top_k]
 
     def _format_path(self, path: list[str]) -> str:
         """Format a node sequence path into a readable string."""
@@ -182,7 +257,6 @@ class GraphRetriever:
 
     def _summarize_relations(self, edge_data: dict) -> str:
         """Summarize relation types in an edge with supporting PMIDs."""
-        # relations is typically {pmid: {set of types}}
         all_types = set()
         pmids = set()
 
@@ -194,7 +268,8 @@ class GraphRetriever:
         if not all_types:
             type_str = "associated"
         else:
-            type_str = ", ".join(list(all_types)[:3])
+            sorted_types = sorted(all_types)
+            type_str = ", ".join(sorted_types[:3])
 
         # Add PMIDs
         if pmids:
