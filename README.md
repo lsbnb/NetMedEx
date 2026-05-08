@@ -1,6 +1,7 @@
 # NetMedEx v1.2.4
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
+[![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
 [![Doc](https://img.shields.io/badge/Doc-online)](https://yehzx.github.io/NetMedEx/)  
 
 NetMedEx is an AI-powered knowledge discovery platform designed to transform biomedical literature into actionable insights. Unlike traditional tools that merely extract entities, NetMedEx leverages **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** and **Full-Text BioC-JSON Processing** to synthesize structured co-mention networks with unstructured text, providing a holistic understanding of biological relationships.
@@ -61,12 +62,15 @@ docker run -d -p 8050:8050 --rm lsbnb/netmedex
 
 ## 📦 Installation
 
-Alternatively, install via PyPI for local hosting or CLI access:
+Install the **latest version** directly from GitHub for local hosting or CLI access:
 
 ```bash
-pip install netmedex
+pip install git+https://github.com/lsbnb/NetMedEx.git
 ```
 *Recommended: Python >= 3.11*
+
+> [!NOTE]
+> The PyPI release (`pip install netmedex`) is currently behind the latest codebase. Use the GitHub install above to get all v1.2.x features including NVIDIA NIM support, collapsible UI panels, and Hybrid RAG improvements.
 
 ## 💻 Web Application (Local)
 
@@ -170,6 +174,7 @@ The **Graph Panel** visualizes the co-mention/semantic analyzed network, providi
 | **HTML** | Interactive visualization for browsers ([example](https://htmlpreview.github.io/?https://github.com/lsbnb/NetMedEx/blob/main/docs/Diabetes_miRNA.html)) | ❌ |
 | **XGMML** | Network file for Cytoscape Desktop | ❌ |
 | **PubTator** | Raw annotation file | ✅ Re-upload in Search Panel |
+| **RIS (EndNote)** | Full bibliographic metadata (authors, journal, DOI) for citation management | ❌ |
 | **Graph (.pkl)** | **Full graph state** including semantic analysis results and article abstracts | ✅ Restore in Search Panel → "Graph File" |
 
 > [!NOTE]
