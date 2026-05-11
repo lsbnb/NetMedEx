@@ -9,6 +9,9 @@ license-files = []
 include = ["netmedex*", "webapp*"]
 
 [tool.setuptools.package-data]
+netmedex = [
+  "vendor/*.js",
+]
 webapp = [
   "assets/*.js",
   "assets/*.svg",

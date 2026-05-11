@@ -321,12 +321,16 @@ netmedex search \
 
 #### Step 2: Build the Network
 ```bash
-# Generate HTML network from annotations
+# Generate HTML network for browser viewing
 netmedex network -i annotations.pubtator -o network.html -w 2 --community
 
 # Generate pickle graph for CLI chat (required for `netmedex chat`)
 netmedex network -i annotations.pubtator -o network.pickle -f pickle
 ```
+
+> [!IMPORTANT]
+> The default output format is **HTML**. To use the graph with `netmedex chat`, you **must** specify `-f pickle` explicitly.
+> Simply naming the output file `.pkl` is not enough — without `-f pickle`, it will still be written as HTML and `chat` will fail with `invalid load key`.
 
 #### Step 3 (Optional): Semantic Edge Extraction with LLM Providers
 Use `--edge_method semantic` to enable semantic relationship extraction.
@@ -372,6 +376,9 @@ Provider consistency note:
 
 #### Step 4 (Optional): Hybrid RAG CLI Chat (Search → Network → Chat)
 `netmedex chat` uses the pickled graph (`-f pickle`) as Hybrid RAG context and supports the same three providers.
+
+> [!NOTE]
+> **First run**: `netmedex chat` uses ChromaDB with the `all-MiniLM-L6-v2` embedding model (~79 MB). This model is downloaded automatically on first use and cached locally — subsequent runs do not require a download. Ensure internet access is available for the initial run.
 
 ```bash
 # One-shot question
