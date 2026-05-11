@@ -1,4 +1,4 @@
-# NetMedEx v1.2.4
+# NetMedEx v1.2.5
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -11,6 +11,13 @@ In NetMedEx, the **Co-Mention Network** serves as a structural "scaffolding." Wh
 ---
 
 ## 🆕 Recent Updates
+
+### v1.2.5 — 2026-05-08
+- **Docker ONNX pre-bundle**: ChromaDB `all-MiniLM-L6-v2` model (~80 MB) is now bundled in the Docker image — no first-run download required, works offline.
+- **Vendor JS packaging**: `netmedex/vendor/*.js` (Cytoscape, fCose) is now included in pip/Docker builds, enabling offline HTML export without CDN fallback.
+- **Bug fix — Suggested question multi-fire**: Clicking a suggestion pill in Chat could trigger multiple responses due to Dash ALL-pattern callback re-firing when new pills were added; resolved with an explicit click-value guard.
+- **Bug fix — Tab persistence**: Active sidebar tab (Search/Graph/Chat) is now preserved across page refreshes via `persistence_type="session"`.
+- **CLI docs**: Added `[!IMPORTANT]` callout clarifying that `-f pickle` must be explicit for `netmedex network` when piping into `netmedex chat`.
 
 ### v1.2.4 — 2026-04-30
 - **NVIDIA NIM Support**: Added NVIDIA NIM as a fifth LLM provider (alongside OpenAI, Google Gemini, OpenRouter, Local Ollama). Supports both cloud NIM (`integrate.api.nvidia.com`) and on-premises deployments with preset model catalogue and endpoint fetch.
