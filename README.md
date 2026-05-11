@@ -378,7 +378,8 @@ Provider consistency note:
 `netmedex chat` uses the pickled graph (`-f pickle`) as Hybrid RAG context and supports the same three providers.
 
 > [!NOTE]
-> **First run**: `netmedex chat` uses ChromaDB with the `all-MiniLM-L6-v2` embedding model (~79 MB). This model is downloaded automatically on first use and cached locally — subsequent runs do not require a download. Ensure internet access is available for the initial run.
+> **First run (pip install only)**: `netmedex chat` uses ChromaDB with the `all-MiniLM-L6-v2` embedding model (~79 MB). This model is downloaded automatically on first use and cached locally — subsequent runs do not require a download. Ensure internet access is available for the initial run.
+> The **Docker image** already bundles this model — no download needed.
 
 ```bash
 # One-shot question

@@ -10,6 +10,10 @@ COPY netmedex/ netmedex/
 COPY webapp/ webapp/
 RUN pip install --no-cache-dir ".[api]" gunicorn
 
+# Pre-download ChromaDB ONNX embedding model (~80 MB) so first-run chat
+# works without internet access and without a delay inside the container.
+RUN python -c "from chromadb.utils.embedding_functions import ONNXMiniLM_L6_V2; ONNXMiniLM_L6_V2()"
+
 # ── Runtime stage ──────────────────────────────────────────────────────────────
 FROM python:3.11-slim-bookworm
 WORKDIR /app
@@ -22,8 +26,12 @@ COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/pytho
 COPY --from=builder /usr/local/bin /usr/local/bin
 COPY --from=builder /app /app
 
-# Create writable data directory and cache directory
-RUN mkdir -p /app/data /app/webapp/cache && chown -R appuser:appuser /app
+# Copy pre-downloaded ONNX model cache into appuser home
+COPY --from=builder /root/.cache/chroma /home/appuser/.cache/chroma
+
+# Create writable data directory and cache directory; set ownership
+RUN mkdir -p /app/data /app/webapp/cache && \
+    chown -R appuser:appuser /app /home/appuser/.cache
 
 USER appuser
 
