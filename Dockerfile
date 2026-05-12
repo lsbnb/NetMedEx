@@ -2,13 +2,21 @@ FROM python:3.11-slim-bookworm AS builder
 WORKDIR /app
 
 # Install build deps
-RUN pip install --no-cache-dir --upgrade pip
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/* \
+    && pip install --no-cache-dir --upgrade pip
 
 # Install project and production deps
 COPY pyproject.toml .
 COPY netmedex/ netmedex/
 COPY webapp/ webapp/
 RUN pip install --no-cache-dir ".[api]" gunicorn
+
+# Pre-download ChromaDB ONNX embedding model (~80 MB).
+# Must CALL the function — instantiation alone does not trigger download.
+RUN python -c "from chromadb.utils.embedding_functions import ONNXMiniLM_L6_V2; ef = ONNXMiniLM_L6_V2(); ef(['warmup'])" && \
+    ls -la /root/.cache/chroma/onnx_models/
 
 # ── Runtime stage ──────────────────────────────────────────────────────────────
 FROM python:3.11-slim-bookworm
@@ -22,8 +30,12 @@ COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/pytho
 COPY --from=builder /usr/local/bin /usr/local/bin
 COPY --from=builder /app /app
 
-# Create writable data directory and cache directory
-RUN mkdir -p /app/data /app/webapp/cache && chown -R appuser:appuser /app
+# Copy pre-downloaded ONNX model cache into appuser home
+COPY --from=builder /root/.cache/chroma /home/appuser/.cache/chroma
+
+# Create writable data directory and cache directory; set ownership
+RUN mkdir -p /app/data /app/webapp/cache && \
+    chown -R appuser:appuser /app /home/appuser/.cache
 
 USER appuser
 

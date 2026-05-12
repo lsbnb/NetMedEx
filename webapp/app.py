@@ -11,7 +11,6 @@ import dash_bootstrap_components as dbc
 import dash_cytoscape as cyto
 import diskcache
 from dash import ClientsideFunction, Dash, DiskcacheManager, Input, Output, dcc, html
-from pathlib import Path
 
 import logging
 from netmedex.utils import config_logger
