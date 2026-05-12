@@ -1,4 +1,4 @@
-# NetMedEx v1.2.4
+# NetMedEx v1.2.5
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![Doc](https://img.shields.io/badge/Doc-online)](https://yehzx.github.io/NetMedEx/)  
