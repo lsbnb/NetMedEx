@@ -1,4 +1,4 @@
-# NetMedEx: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.2.5: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
@@ -17,12 +17,12 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.2.4
-- **Smart 2-Hop Mechanism Discovery**: Automatically surfaces latent A → B → C mechanistic hypotheses from the knowledge graph, ranked by a multi-factor confidence score.
-- **Hybrid Scoring 2.0**: Each graph path is scored by three components — Topological NPMI (30%), Semantic Extraction Confidence (40%), and Query Relevance (30%) — with directional relation boosts and evidence-frequency calibration.
-- **Confidence Calibration**: Relation strength and supporting PMID count now modulate edge confidence, reducing false-positive mechanistic inferences.
-- **Species Differentiation**: AI responses now explicitly flag animal model vs. human clinical evidence for every claim.
-- **Mandatory 2-Hop Hypothesis Section**: Every chat response now always includes a dedicated hypothesis section when latent graph paths are found, with per-link PMID citations.
+## 🆕 What's New in v1.2.5
+- **ONNX Model Pre-bundled**: ChromaDB `all-MiniLM-L6-v2` embedding model (~80 MB) is now bundled in the Docker image — first-run chat works instantly, no internet download required.
+- **NVIDIA NIM Support**: Added NVIDIA NIM as a fifth LLM provider alongside OpenAI, Google Gemini, OpenRouter, and Local Ollama. Supports both cloud NIM and on-premises deployments.
+- **Offline HTML Export**: Vendor JS libraries (Cytoscape, fCose) are now bundled in pip/Docker builds — HTML export no longer requires CDN access.
+- **UI Polish**: Collapsible Search Options / Advanced Network Options / Display Filters panels; AI Search simplified to inline toggle; Chat tab teal accent.
+- **Bug Fixes**: Suggested question pills no longer trigger duplicate responses; active sidebar tab preserved across page refreshes.
 
 ---
 
@@ -55,6 +55,13 @@ docker run -p 8050:8050 --rm \
   -e LLM_PROVIDER=local \
   -e LOCAL_LLM_BASE_URL='http://host.docker.internal:11434/v1' \
   -e LOCAL_LLM_MODEL='llama3' \
+  lsbnb/netmedex
+
+# NVIDIA NIM (Cloud)
+docker run -p 8050:8050 --rm \
+  -e LLM_PROVIDER=nvidia \
+  -e NVIDIA_API_KEY='nvapi-...' \
+  -e NVIDIA_NIM_MODEL='meta/llama-3.1-70b-instruct' \
   lsbnb/netmedex
 ```
 
