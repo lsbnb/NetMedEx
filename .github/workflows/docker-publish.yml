@@ -44,6 +44,7 @@ jobs:
 
       - name: Update Docker Hub Description
         uses: peter-evans/dockerhub-description@v4
+        continue-on-error: true
         with:
           username: lsbnb
           password: ${{ secrets.DOCKERHUB_TOKEN }}
