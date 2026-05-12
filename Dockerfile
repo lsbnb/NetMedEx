@@ -2,7 +2,10 @@ FROM python:3.11-slim-bookworm AS builder
 WORKDIR /app
 
 # Install build deps
-RUN pip install --no-cache-dir --upgrade pip
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/* \
+    && pip install --no-cache-dir --upgrade pip
 
 # Install project and production deps
 COPY pyproject.toml .
@@ -10,9 +13,10 @@ COPY netmedex/ netmedex/
 COPY webapp/ webapp/
 RUN pip install --no-cache-dir ".[api]" gunicorn
 
-# Pre-download ChromaDB ONNX embedding model (~80 MB) so first-run chat
-# works without internet access and without a delay inside the container.
-RUN python -c "from chromadb.utils.embedding_functions import ONNXMiniLM_L6_V2; ONNXMiniLM_L6_V2()"
+# Pre-download ChromaDB ONNX embedding model (~80 MB).
+# Must CALL the function — instantiation alone does not trigger download.
+RUN python -c "from chromadb.utils.embedding_functions import ONNXMiniLM_L6_V2; ef = ONNXMiniLM_L6_V2(); ef(['warmup'])" && \
+    ls -la /root/.cache/chroma/onnx_models/
 
 # ── Runtime stage ──────────────────────────────────────────────────────────────
 FROM python:3.11-slim-bookworm
