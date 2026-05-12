@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.5] - 2026-05-11
+
+### Added
+- **ONNX Pre-bundling**: The ChromaDB ONNX embedding model is now pre-downloaded and bundled within the Docker image, significantly reducing first-run latency and improving air-gapped environment support.
+
+### Fixed
+- **Vendor JS Packaging**: Fixed a critical bug in `pyproject.toml` where local Javascript assets (Cytoscape extensions) were not being correctly included in the installed package.
+- **Chat UI Bugfixes**: Resolved issues with message ordering and auto-scroll behavior in the Chat panel.
+- **CLI Documentation**: Updated help strings and error messages for the `netmedex` CLI.
+
+## [1.2.4] - 2026-05-07
+
+### Added
+- **NVIDIA NIM Support**: Integrated NVIDIA NIM (microservices) as a supported LLM provider, enabling high-performance local or cloud-based inference for semantic extraction and RAG.
+- **Active LLM Banner**: Added a status indicator in the Chat and Search panels to clearly show which LLM provider and model are currently active.
+- **Collapsible UI Panels**: Further optimized the layout with collapsible sections in the Graph and Search panels to maximize screen real estate for visualization.
+
 ## [1.2.3] - 2026-04-30
 
 ### Added

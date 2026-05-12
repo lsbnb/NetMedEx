@@ -1,6 +1,7 @@
-# NetMedEx v1.2.4
+# NetMedEx v1.2.5
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
+[![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
 [![Doc](https://img.shields.io/badge/Doc-online)](https://yehzx.github.io/NetMedEx/)  
 
 NetMedEx is an AI-powered knowledge discovery platform designed to transform biomedical literature into actionable insights. Unlike traditional tools that merely extract entities, NetMedEx leverages **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** and **Full-Text BioC-JSON Processing** to synthesize structured co-mention networks with unstructured text, providing a holistic understanding of biological relationships.
@@ -10,6 +11,13 @@ In NetMedEx, the **Co-Mention Network** serves as a structural "scaffolding." Wh
 ---
 
 ## 🆕 Recent Updates
+
+### v1.2.5 — 2026-05-08
+- **Docker ONNX pre-bundle**: ChromaDB `all-MiniLM-L6-v2` model (~80 MB) is now bundled in the Docker image — no first-run download required, works offline.
+- **Vendor JS packaging**: `netmedex/vendor/*.js` (Cytoscape, fCose) is now included in pip/Docker builds, enabling offline HTML export without CDN fallback.
+- **Bug fix — Suggested question multi-fire**: Clicking a suggestion pill in Chat could trigger multiple responses due to Dash ALL-pattern callback re-firing when new pills were added; resolved with an explicit click-value guard.
+- **Bug fix — Tab persistence**: Active sidebar tab (Search/Graph/Chat) is now preserved across page refreshes via `persistence_type="session"`.
+- **CLI docs**: Added `[!IMPORTANT]` callout clarifying that `-f pickle` must be explicit for `netmedex network` when piping into `netmedex chat`.
 
 ### v1.2.4 — 2026-04-30
 - **NVIDIA NIM Support**: Added NVIDIA NIM as a fifth LLM provider (alongside OpenAI, Google Gemini, OpenRouter, Local Ollama). Supports both cloud NIM (`integrate.api.nvidia.com`) and on-premises deployments with preset model catalogue and endpoint fetch.
@@ -61,12 +69,15 @@ docker run -d -p 8050:8050 --rm lsbnb/netmedex
 
 ## 📦 Installation
 
-Alternatively, install via PyPI for local hosting or CLI access:
+Install the **latest version** directly from GitHub for local hosting or CLI access:
 
 ```bash
-pip install netmedex
+pip install git+https://github.com/lsbnb/NetMedEx.git
 ```
 *Recommended: Python >= 3.11*
+
+> [!NOTE]
+> The PyPI release (`pip install netmedex`) is currently behind the latest codebase. Use the GitHub install above to get all v1.2.x features including NVIDIA NIM support, collapsible UI panels, and Hybrid RAG improvements.
 
 ## 💻 Web Application (Local)
 
@@ -170,6 +181,7 @@ The **Graph Panel** visualizes the co-mention/semantic analyzed network, providi
 | **HTML** | Interactive visualization for browsers ([example](https://htmlpreview.github.io/?https://github.com/lsbnb/NetMedEx/blob/main/docs/Diabetes_miRNA.html)) | ❌ |
 | **XGMML** | Network file for Cytoscape Desktop | ❌ |
 | **PubTator** | Raw annotation file | ✅ Re-upload in Search Panel |
+| **RIS (EndNote)** | Full bibliographic metadata (authors, journal, DOI) for citation management | ❌ |
 | **Graph (.pkl)** | **Full graph state** including semantic analysis results and article abstracts | ✅ Restore in Search Panel → "Graph File" |
 
 > [!NOTE]
@@ -316,12 +328,16 @@ netmedex search \
 
 #### Step 2: Build the Network
 ```bash
-# Generate HTML network from annotations
+# Generate HTML network for browser viewing
 netmedex network -i annotations.pubtator -o network.html -w 2 --community
 
 # Generate pickle graph for CLI chat (required for `netmedex chat`)
 netmedex network -i annotations.pubtator -o network.pickle -f pickle
 ```
+
+> [!IMPORTANT]
+> The default output format is **HTML**. To use the graph with `netmedex chat`, you **must** specify `-f pickle` explicitly.
+> Simply naming the output file `.pkl` is not enough — without `-f pickle`, it will still be written as HTML and `chat` will fail with `invalid load key`.
 
 #### Step 3 (Optional): Semantic Edge Extraction with LLM Providers
 Use `--edge_method semantic` to enable semantic relationship extraction.
@@ -367,6 +383,10 @@ Provider consistency note:
 
 #### Step 4 (Optional): Hybrid RAG CLI Chat (Search → Network → Chat)
 `netmedex chat` uses the pickled graph (`-f pickle`) as Hybrid RAG context and supports the same three providers.
+
+> [!NOTE]
+> **First run (pip install only)**: `netmedex chat` uses ChromaDB with the `all-MiniLM-L6-v2` embedding model (~79 MB). This model is downloaded automatically on first use and cached locally — subsequent runs do not require a download. Ensure internet access is available for the initial run.
+> The **Docker image** already bundles this model — no download needed.
 
 ```bash
 # One-shot question

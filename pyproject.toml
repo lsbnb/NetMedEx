@@ -9,6 +9,9 @@ license-files = []
 include = ["netmedex*", "webapp*"]
 
 [tool.setuptools.package-data]
+netmedex = [
+  "vendor/*.js",
+]
 webapp = [
   "assets/*.js",
   "assets/*.svg",
@@ -19,7 +22,7 @@ webapp = [
 
 [project]
 name = "netmedex"
-version = "1.2.4"
+version = "1.2.5"
 authors = [{ name = "Zheng-Xiang Ye", email = "r12b48005@ntu.edu.tw" }, { name = "Chung-Yen Lin", email = "cylin@iis.sinica.edu.tw" }, { name = "Shu-Hwa Chen", email = "sophia0715@tmu.edu.tw" }]
 description = "A tool to extract BioConcept entities (e.g., genes, diseases, chemicals, and species) from Pubtator3 and generate a co-mention network for interactive use."
 readme = "README.md"
