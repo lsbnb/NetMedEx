@@ -94,6 +94,35 @@ def normalize_knowledge_graph(
                 if idx != canonical_idx:
                     merging_map[node_ids[idx]] = canonical_nid
 
+    # 1.6 CUI-based Pass: merge nodes that share the same non-null MeSH ID.
+    # This catches abbreviation/alias pairs (e.g. "hcv" ↔ "hepatitis c virus")
+    # that have identical expert CUIs but different surface names, which the
+    # case-insensitive pass and embedding pass both miss.
+    cui_to_indices: dict[str, list[int]] = defaultdict(list)
+    for i, cui in enumerate(node_cuis):
+        if cui and str(cui).strip() and node_ids[i] not in merging_map:
+            cui_to_indices[str(cui).strip()].append(i)
+
+    for cui, indices in cui_to_indices.items():
+        if len(indices) < 2:
+            continue
+        # Group by node type to avoid cross-type merges (e.g. a Gene CUI vs Disease CUI clash)
+        type_buckets: dict[str, list[int]] = defaultdict(list)
+        for idx in indices:
+            type_buckets[node_types[idx]].append(idx)
+        for bucket in type_buckets.values():
+            if len(bucket) < 2:
+                continue
+            # Prefer the longest (most descriptive) name as canonical
+            canonical_idx = max(bucket, key=lambda idx: len(display_names[idx] or ""))
+            canonical_nid = node_ids[canonical_idx]
+            for idx in bucket:
+                if idx != canonical_idx and node_ids[idx] not in merging_map:
+                    merging_map[node_ids[idx]] = canonical_nid
+                    logger.debug(
+                        f"CUI merge: '{display_names[idx]}' → '{display_names[canonical_idx]}' (CUI={cui})"
+                    )
+
     if progress_callback:
         progress_callback(1, 5, "Metadata analysis complete.", None)
 

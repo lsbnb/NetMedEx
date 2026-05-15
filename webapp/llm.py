@@ -312,11 +312,25 @@ class LLMClient:
             "CRITICAL: Do NOT use specific field tags like [Title/Abstract], [Title], [Author], etc. "
             "These tags often cause internal server errors (HTTP 500) in the PubTator3 API. "
             "Just use keywords, entity tags, and boolean operators. "
+            "QUERY SIMPLICITY RULE: Extract at most 2-3 of the most specific biological entities (organism, gene, disease, chemical). "
+            "Do NOT include every concept from the sentence — generic terms like 'signaling', 'pathway', 'mechanism', 'modulate', 'regulation' should be omitted unless they are the sole focus. "
+            "A query with too many AND conditions returns zero results. Prefer a focused query over an exhaustive one. "
+            "OR EXPANSION RULE: When adding a secondary concept, use OR to include common synonyms rather than a single exact phrase. "
+            "For example, instead of AND \"inflammatory regulation\", write AND (\"inflammation\" OR \"anti-inflammatory\" OR \"immune response\"). "
+            "RARE ENTITY RULE: If the query contains a highly specific entity (e.g., a rare microorganism species, uncommon gene), "
+            "that entity name alone is often sufficient — adding secondary AND constraints may discard most relevant papers. "
+            "In that case, return just the specific entity name without any AND conditions. "
+            "MIRNA / NON-CODING RNA RULE: When the query mentions miRNA, microRNA, lncRNA, or other non-coding RNAs, "
+            "always include them explicitly as text terms alongside @GENE. "
+            "Do NOT replace miRNA/microRNA with just @GENE alone — use (@GENE OR \"miRNA\" OR \"microRNA\"). "
             "Examples: "
             "'骨質疏鬆的基因' -> '\"Osteoporosis\" AND @GENE' "
             "'Lung cancer genes' -> '\"Lung Neoplasms\" AND @GENE' "
             "'胃癌與幽門螺旋桿菌的關係' -> '\"Stomach Neoplasms\" AND \"Helicobacter pylori\"' "
-            '\'covid 19 treatment with aspirin\' -> \'"COVID-19" AND "Aspirin" AND "Therapeutics"\' '
+            "'大腸直腸癌相關的菌相及其調控基因、miRNA' -> '\"Colorectal Neoplasms\" AND (\"microbiota\" OR \"gut microbiome\") AND (@GENE OR \"miRNA\" OR \"microRNA\")' "
+            "'Anaerostipes hadrus inflammatory regulation' -> '\"Anaerostipes hadrus\" AND (\"inflammation\" OR \"butyrate\" OR \"gut microbiota\")' "
+            "'pathway linking Anaerostipes hadrus to inflammation' -> '\"Anaerostipes hadrus\"' "
+            '\'covid 19 treatment with aspirin\' -> \'"COVID-19" AND "Aspirin"\' '
             "Return ONLY the English boolean query string. Do not include explanations, quotes around the result, or markdown blocks."
         )
 
@@ -337,10 +351,15 @@ class LLMClient:
             boolean_query = re.sub(r"\s+", " ", boolean_query).strip()
 
             # If it looks like a sentence, try to extract a quoted boolean candidate.
+            # Use word-boundary checks to avoid false positives like "OR" in "COLORECTAL".
             if len(boolean_query.split()) > 10 and '"' in boolean_query:
                 quoted = re.findall(r'"([^"]*)"', boolean_query)
                 for q in quoted:
-                    if any(op in q.upper() for op in ("AND", "OR", "NOT", "@")):
+                    has_op = (
+                        re.search(r'\b(AND|OR|NOT)\b', q, re.IGNORECASE) is not None
+                        or "@" in q
+                    )
+                    if has_op:
                         boolean_query = q
                         break
 

@@ -355,6 +355,7 @@ def callbacks(app):
         Input("graph-node-search", "value"),
         Input("graph-visible-node-types", "value"),
         Input("cy", "elements"),
+        Input("twohop-highlight-paths", "data"),
         State("cy", "stylesheet"),
         prevent_initial_call=False,
     )

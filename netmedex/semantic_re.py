@@ -506,6 +506,8 @@ class SemanticRelationshipExtractor:
 3. Output only supported pairs as relations.
 4. For each relationship, determine:
 -   - The two entities involved (use their IDs)
+-   - **Directionality Rule**: For directional relations (e.g., activates, inhibits), `entity1_id` MUST be the source (effector/regulator) and `entity2_id` MUST be the target (effectee).
+-   - **Passive Voice Rule**: When the text uses passive voice ("gene X is downregulated in disease Y", "protein Z was found decreased in condition W"), this does NOT establish who is the active effector. Use `associated_with` or `correlates_with` for such observations. Only use directional relation types (downregulates, inhibits, activates, etc.) for ACTIVE VOICE statements where one entity directly acts on another (e.g., "miRNA-155 directly targets SOST", "TNF-α activates NF-κB signaling").
 -   - The relationship type (must be one of: {allowed_relations})
 -   - Confidence score (0-1): How confident are you this relationship is explicitly stated? **Do not reuse the sample value; personalize it for each edge.**
 -   - Supporting evidence: The specific sentence or phrase supporting this relationship
@@ -566,8 +568,8 @@ Rules:
 3. Do NOT perform NER. Do not introduce new entities.
 4. Output each relation as:
    {{
-     "entity1_id": "...",
-     "entity2_id": "...",
+     "entity1_id": "...", // Source/effector for directional relations
+     "entity2_id": "...", // Target/effectee for directional relations
      "relation_type": "...",
      "confidence": 0.0 to 1.0,
      "study_type": "Human/Animal/Cell-line"
@@ -575,6 +577,7 @@ Rules:
 5. relation_type must be one of: {allowed_relations}
 6. Keep only explicit or strongly implied relations from the abstract.
 7. If none, return [].
+8. Passive Voice Rule: "X is downregulated/inhibited in Y" → use `associated_with`, NOT `downregulates`. Only use directional types for active voice: "A inhibits B", "A activates B".
 """
 
     def _build_coverage_prompt(
@@ -603,12 +606,13 @@ Task:
 - Treat all co-mentioned entity pairs as candidates ({pair_count} unordered pairs).
 - Extract as many explicit or strongly implied relations as supported by the abstract.
 - **CRITICAL**: Prioritize recall. Do not overlook subtle but explicit connections.
+- **Passive Voice Rule**: "X is downregulated/inhibited in Y" → use `associated_with`, NOT `downregulates`. Only use directional types for active voice ("A inhibits B", "A activates B").
 
 Output format:
 [
   {{
-    "entity1_id": "ID from Entities",
-    "entity2_id": "ID from Entities",
+    "entity1_id": "ID from Entities (Source/effector if directional)",
+    "entity2_id": "ID from Entities (Target/effectee if directional)",
     "relation_type": "one of: {allowed_relations}",
     "confidence": 0.0 to 1.0,
     "evidence": "sentence from abstract",
@@ -639,6 +643,8 @@ Title: {title}
 ### Instructions:
 1. Identify relationships only from the list: {allowed}.
 2. For each relationship, provide: entity1_id, entity2_id, relation_type, confidence (0-1), evidence, and study_type (Human, Animal, or Cell-line).
+   *CRITICAL: For directional relations (e.g. activates), entity1_id MUST be the source/effector and entity2_id MUST be the target/effectee.*
+   *PASSIVE VOICE RULE: "X is downregulated/inhibited in Y" → use `associated_with`. Only use directional types for active voice: "A inhibits B".*
 3. Be EXTREMELY thorough. Extract every mentioned interaction.
 4. Output ONLY a JSON array of objects. No preamble.
 

@@ -1,10 +1,7 @@
 from __future__ import annotations
 
-import base64
-import io
 import logging
 import os
-import pickle
 import threading
 from queue import Queue
 
@@ -19,7 +16,7 @@ from netmedex.exceptions import (
     RetryableError,
     UnsuccessfulRequest,
 )
-from netmedex.graph import PubTatorGraphBuilder, save_graph
+from netmedex.graph import PubTatorGraphBuilder, safe_load_graph_pickle, save_graph
 from netmedex.normalization import normalize_knowledge_graph
 from netmedex.pubtator import PubTatorAPI
 from netmedex.pubtator_parser import PubTatorIO
@@ -32,62 +29,15 @@ from webapp.utils import (
     make_session_token,
     visibility,
 )
+from webapp.upload_limits import (
+    MAX_GRAPH_UPLOAD_BYTES,
+    MAX_PMID_UPLOAD_BYTES,
+    MAX_PUBTATOR_UPLOAD_BYTES,
+    decode_upload_bytes,
+    decode_upload_text,
+)
 
 logger = logging.getLogger(__name__)
-
-
-class _RestrictedGraphUnpickler(pickle.Unpickler):
-    """Restricted unpickler for trusted NetMedEx graph pickle payloads."""
-
-    _ALLOWED = {
-        "builtins": {
-            "dict",
-            "list",
-            "tuple",
-            "set",
-            "frozenset",
-            "str",
-            "int",
-            "float",
-            "bool",
-            "bytes",
-            "bytearray",
-        },
-        "networkx.classes.graph": {"Graph"},
-        "networkx.classes.digraph": {"DiGraph"},
-        "networkx.classes.multigraph": {"MultiGraph"},
-        "networkx.classes.multidigraph": {"MultiDiGraph"},
-        "networkx.classes.reportviews": {
-            "NodeView", "EdgeView", "DegreeView",
-            "NodeDataView", "EdgeDataView", "DegreeDataView",
-            "AdjacencyView", "AtlasView",
-            "DiDegreeView", "InDegreeView", "OutDegreeView",
-            "InEdgeView", "OutEdgeView",
-        },
-        "networkx.classes.coreviews": {
-            "AdjacencyView", "AtlasView", "FilterAdjacency",
-            "FilterAtlas", "FilterMultiAdjacency", "FilterMultiInner",
-            "UnionAdjacency", "UnionAtlas", "UnionMultiAdjacency", "UnionMultiInner",
-        },
-        "networkx.classes.filters": {"no_filter", "hide_nodes", "hide_edges"},
-        "collections": {"defaultdict"},
-        # numpy array reconstruction (numpy >= 2.0 uses _core, older uses core)
-        "numpy._core.multiarray": {"_reconstruct", "scalar"},
-        "numpy.core.multiarray": {"_reconstruct", "scalar"},
-        "numpy": {"ndarray", "dtype"},
-        "numpy._core._multiarray_umath": {"_reconstruct"},
-    }
-
-    def find_class(self, module, name):
-        allowed_names = self._ALLOWED.get(module, set())
-        if name in allowed_names:
-            return super().find_class(module, name)
-        raise pickle.UnpicklingError(f"Blocked pickle class: {module}.{name}")
-
-
-def _safe_load_graph_pickle(payload: bytes):
-    return _RestrictedGraphUnpickler(io.BytesIO(payload)).load()
-
 
 def detect_query_language(text: str) -> str:
     """
@@ -227,15 +177,14 @@ def callbacks(app):
                         "Set ALLOW_UNSAFE_GRAPH_PICKLE_UPLOAD=true only for trusted files."
                     )
 
-                content_type, content_string = graph_file_data.split(",")
-                graph_bytes = base64.b64decode(content_string)
+                _, graph_bytes = decode_upload_bytes(
+                    graph_file_data,
+                    max_bytes=MAX_GRAPH_UPLOAD_BYTES,
+                    label="Graph pickle",
+                )
 
-                # Write pickle to session path
-                with open(savepath["graph"], "wb") as f:
-                    f.write(graph_bytes)
-
-                # Load and validate
-                G = _safe_load_graph_pickle(graph_bytes)
+                # Load and validate before writing to the trusted session path.
+                G = safe_load_graph_pickle(graph_bytes)
 
                 if not isinstance(G, nx.Graph):
                     raise ValueError(
@@ -249,6 +198,9 @@ def callbacks(app):
                             f"Invalid Graph file: missing required metadata '{k}'. "
                             "Please upload a file exported from NetMedEx Graph Panel."
                         )
+
+                with open(savepath["graph"], "wb") as f:
+                    f.write(graph_bytes)
 
                 num_articles = len(G.graph.get("pmid_title", {}))
                 num_nodes = G.number_of_nodes()
@@ -331,12 +283,8 @@ def callbacks(app):
             fetch_citations = "fetch_citations" in pubtator_params
             community = "community" in cy_params
 
-            def decode_file_content(content_string):
-                decoded_bytes = base64.b64decode(content_string)
-                try:
-                    return decoded_bytes.decode("utf-8")
-                except UnicodeDecodeError:
-                    return decoded_bytes.decode("latin-1")
+            def decode_file_content(contents, max_bytes, label):
+                return decode_upload_text(contents, max_bytes=max_bytes, label=label)
 
             # Detect language from the raw user query (before AI translation)
             detected_language = (
@@ -449,8 +397,11 @@ def callbacks(app):
                 elif input_type == "pmid_file":
                     if not pmid_file_data:
                         raise EmptyInput("No PMID file uploaded")
-                    content_type, content_string = pmid_file_data.split(",")
-                    decoded_content = decode_file_content(content_string)
+                    _, decoded_content = decode_file_content(
+                        pmid_file_data,
+                        MAX_PMID_UPLOAD_BYTES,
+                        "PMID list",
+                    )
                     decoded_content = decoded_content.replace("\n", ",")
                     pmid_list = load_pmids(decoded_content, load_from="string")
 
@@ -532,8 +483,11 @@ def callbacks(app):
             elif source == "file":
                 if not pubtator_file_data:
                     raise EmptyInput("No PubTator file uploaded")
-                content_type, content_string = pubtator_file_data.split(",")
-                decoded_content = decode_file_content(content_string)
+                content_type, decoded_content = decode_file_content(
+                    pubtator_file_data,
+                    MAX_PUBTATOR_UPLOAD_BYTES,
+                    "PubTator/BioC-JSON file",
+                )
                 stripped_content = decoded_content.lstrip()
                 filename_lower = (pubtator_filename or "").lower()
                 is_biocjson_upload = (
