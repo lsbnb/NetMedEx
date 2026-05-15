@@ -349,7 +349,7 @@ window.dash_clientside.clientside = {
     }
     return [false, "co-occurrence"];
   },
-  apply_graph_visual_filters: function (threshold, searchQuery, visibleNodeTypes, elements, current_stylesheet) {
+  apply_graph_visual_filters: function (threshold, searchQuery, visibleNodeTypes, elements, twohopPaths, current_stylesheet) {
     const CHUNK_SIZE = 200;
     const isDynamic = (rule) => {
       if (!rule) return false;
@@ -525,6 +525,20 @@ window.dash_clientside.clientside = {
       return Array.from(out).filter(Boolean);
     };
 
+    // Segment-aware label matching: split at non-alnum boundaries to avoid false positives
+    // e.g. "COVID-19" segments to ["covid","19"] so "id1" no longer matches it.
+    // For long candidates (≥5 chars) also allow full-strip substring as fallback
+    // to keep compound IDs like "SARS-CoV-2" matchable via "sarscov2".
+    const matchLabelCandidate = (text, candidate) => {
+      const segs = String(text || "").toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+      if (segs.some((s) => s === candidate || s.startsWith(candidate))) return true;
+      if (candidate.length >= 5) {
+        const stripped = segs.join("");
+        if (stripped.includes(candidate)) return true;
+      }
+      return false;
+    };
+
     const rawTerms = String(searchQuery || "").split(",").map((t) => t.trim()).filter(Boolean);
     const anchorNodeIds = new Set();
     for (const term of rawTerms) {
@@ -534,15 +548,14 @@ window.dash_clientside.clientside = {
         const data = node.data || {};
         const nodeId = data.id;
         if (!nodeId || hideNodeIds.has(nodeId)) continue;
-        const labelNorm = normalizeText(data.label || "");
-        const idNorm = normalizeText(data.standardized_id || "");
-        if (candidates.some((q) => labelNorm.includes(q) || idNorm.includes(q))) {
+        if (candidates.some((q) => matchLabelCandidate(data.label || "", q) || matchLabelCandidate(data.standardized_id || "", q))) {
           anchorNodeIds.add(nodeId);
         }
       }
     }
 
     if (anchorNodeIds.size > 0) {
+      // Always compute neighbours (used as fallback when no path found)
       const neighborNodeIds = new Set(anchorNodeIds);
       const focusEdgeIds = new Set();
       for (const edge of edgeElements) {
@@ -556,15 +569,218 @@ window.dash_clientside.clientside = {
         }
       }
 
+      // When 2+ anchors exist, attempt BFS shortest paths between every pair
+      let pathMode = false;
+      const allPathNodes = new Set(anchorNodeIds);
+      const allPathEdges = new Set();
+
+      if (anchorNodeIds.size >= 2) {
+        // Build weighted adjacency list; cost = 1 / weight so high-NPMI edges are preferred
+        const adj = new Map();
+        for (const node of nodeElements) {
+          const id = (node.data || {}).id;
+          if (id && !hideNodeIds.has(id)) adj.set(id, []);
+        }
+        for (const edge of edgeElements) {
+          const d = edge.data || {};
+          if (!d.id || hideEdgeIds.has(d.id)) continue;
+          if (adj.has(d.source) && adj.has(d.target)) {
+            const cost = 1 / Math.max(Number(d.weight) || 1, 0.1);
+            adj.get(d.source).push({ id: d.target, edgeId: d.id, cost });
+            adj.get(d.target).push({ id: d.source, edgeId: d.id, cost });
+          }
+        }
+
+        // Dijkstra between every pair of anchor nodes
+        const dijkstra = (src, tgt) => {
+          const dist = new Map([[src, 0]]);
+          const prev = new Map([[src, null]]);
+          const pq = [[0, src]]; // [dist, nodeId]
+          while (pq.length > 0) {
+            // Extract minimum-distance entry
+            let minIdx = 0;
+            for (let k = 1; k < pq.length; k++) {
+              if (pq[k][0] < pq[minIdx][0]) minIdx = k;
+            }
+            const [d, u] = pq.splice(minIdx, 1)[0];
+            if (u === tgt) break;
+            if (d > (dist.get(u) ?? Infinity)) continue;
+            for (const { id: v, edgeId, cost } of (adj.get(u) || [])) {
+              const nd = d + cost;
+              if (nd < (dist.get(v) ?? Infinity)) {
+                dist.set(v, nd);
+                prev.set(v, { prev: u, edgeId });
+                pq.push([nd, v]);
+              }
+            }
+          }
+          if (!dist.has(tgt)) return false;
+          let cur = tgt;
+          while (prev.get(cur) !== null) {
+            allPathNodes.add(cur);
+            const { prev: p, edgeId } = prev.get(cur);
+            if (edgeId) allPathEdges.add(edgeId);
+            cur = p;
+          }
+          return true;
+        };
+
+        const anchorList = Array.from(anchorNodeIds);
+        for (let i = 0; i < anchorList.length; i++) {
+          for (let j = i + 1; j < anchorList.length; j++) {
+            if (dijkstra(anchorList[i], anchorList[j])) pathMode = true;
+          }
+        }
+      }
+
       addRule("node", { opacity: 0.2, "text-opacity": 0.2 });
       addRule("edge", { opacity: 0.1 });
-      addChunkedIdRules(Array.from(neighborNodeIds), "node", { opacity: 1, "text-opacity": 1 });
-      addChunkedIdRules(Array.from(anchorNodeIds), "node", {
-        "border-width": 3,
-        "border-color": "#ff6b00",
-        "border-opacity": 1,
-      });
-      addChunkedIdRules(Array.from(focusEdgeIds), "edge", { opacity: 0.95 });
+
+      if (pathMode) {
+        // Path mode: show only nodes/edges on shortest paths
+        addChunkedIdRules(Array.from(allPathNodes), "node", { opacity: 1, "text-opacity": 1 });
+        // Anchor nodes: orange border
+        addChunkedIdRules(Array.from(anchorNodeIds), "node", {
+          "border-width": 3,
+          "border-color": "#ff6b00",
+          "border-opacity": 1,
+        });
+        // Intermediate path nodes: teal border
+        const intermediates = Array.from(allPathNodes).filter((n) => !anchorNodeIds.has(n));
+        if (intermediates.length > 0) {
+          addChunkedIdRules(intermediates, "node", {
+            "border-width": 2,
+            "border-color": "#20b2aa",
+            "border-opacity": 1,
+          });
+        }
+        // Path edges: orange, thicker
+        addChunkedIdRules(Array.from(allPathEdges), "edge", {
+          opacity: 1,
+          "line-color": "#ff8c00",
+          "target-arrow-color": "#ff8c00",
+          "source-arrow-color": "#ff8c00",
+          width: 3,
+        });
+      } else {
+        // Fallback: neighbour mode (single anchor, or no path found between anchors)
+        addChunkedIdRules(Array.from(neighborNodeIds), "node", { opacity: 1, "text-opacity": 1 });
+        addChunkedIdRules(Array.from(anchorNodeIds), "node", {
+          "border-width": 3,
+          "border-color": "#ff6b00",
+          "border-opacity": 1,
+        });
+        addChunkedIdRules(Array.from(focusEdgeIds), "edge", { opacity: 0.95 });
+      }
+    }
+
+    // 4) 2-Hop Path Highlighting
+    // Match by node *name/label* (not by _id) so the lookup is immune to
+    // community-suffix mismatches between the pickled graph and the displayed graph.
+    const pathData = Array.isArray(twohopPaths) ? twohopPaths : [];
+    if (pathData.length > 0 && anchorNodeIds.size === 0) {
+      // Build label → Cytoscape node ID map from the current elements
+      const labelToId = new Map();
+      for (const node of nodeElements) {
+        const lbl = String((node.data || {}).label || "").toLowerCase().trim();
+        const nid = (node.data || {}).id;
+        if (lbl && nid && !hideNodeIds.has(nid)) labelToId.set(lbl, nid);
+      }
+
+      const bridgeNodeIds = new Set();
+      const pathNodeIds = new Set();
+      const pathEdgePairs = new Set();
+
+      for (const p of pathData) {
+        const names = (p.names || []).map(n => String(n).toLowerCase().trim());
+        const cyIds = names.map(n => labelToId.get(n)).filter(Boolean);
+        if (cyIds.length < 2) continue;
+
+        for (const id of cyIds) pathNodeIds.add(id);
+
+        // Bridge nodes: all middle positions
+        if (cyIds.length >= 3) {
+          for (let i = 1; i < cyIds.length - 1; i++) {
+            bridgeNodeIds.add(cyIds[i]);
+          }
+        }
+
+        // Edge pairs using the resolved Cytoscape IDs (matches edge data.source/target)
+        for (let i = 0; i < cyIds.length - 1; i++) {
+          pathEdgePairs.add(`${cyIds[i]}|${cyIds[i + 1]}`);
+          pathEdgePairs.add(`${cyIds[i + 1]}|${cyIds[i]}`);
+        }
+      }
+
+      if (pathNodeIds.size > 0) {
+        // Dim all non-path nodes and edges first (same as search highlight pattern)
+        addRule("node", { opacity: 0.15, "text-opacity": 0.15 });
+        addRule("edge", { opacity: 0.06 });
+
+        // Restore full opacity for all path nodes
+        addChunkedIdRules(Array.from(pathNodeIds), "node", { opacity: 1, "text-opacity": 1 });
+
+        // Bridge nodes: gold thick border + overlay glow
+        if (bridgeNodeIds.size > 0) {
+          addChunkedIdRules(Array.from(bridgeNodeIds), "node", {
+            "border-width": 6,
+            "border-color": "#ffd700",
+            "border-opacity": 1,
+            "background-opacity": 1,
+            "overlay-color": "#ffd700",
+            "overlay-opacity": 0.25,
+            "overlay-padding": 6,
+          });
+        }
+
+        // Endpoint nodes: blue thick border
+        const endpointIds = new Set();
+        for (const id of pathNodeIds) {
+          if (!bridgeNodeIds.has(id)) endpointIds.add(id);
+        }
+        if (endpointIds.size > 0) {
+          addChunkedIdRules(Array.from(endpointIds), "node", {
+            "border-width": 5,
+            "border-color": "#2271b3",
+            "border-opacity": 1,
+            "background-opacity": 1,
+          });
+        }
+
+        // Path edges: bright orange + thick, but preserve original line-style
+        // (semantic edges = solid, co-occurrence = dashed) so the dashed/solid
+        // distinction keeps its meaning elsewhere in the graph.
+        const twohopSemanticEdgeIds = [];
+        const twohopCooccurEdgeIds = [];
+        for (const edge of edgeElements) {
+          const data = edge.data || {};
+          if (!data.id || hideEdgeIds.has(data.id)) continue;
+          const pairKey = `${data.source}|${data.target}`;
+          if (!pathEdgePairs.has(pairKey)) continue;
+          if (data.edge_type === "semantic") {
+            twohopSemanticEdgeIds.push(data.id);
+          } else {
+            twohopCooccurEdgeIds.push(data.id);
+          }
+        }
+        const pathEdgeBase = {
+          "line-color": "#ff7700",
+          "target-arrow-color": "#ff7700",
+          "source-arrow-color": "#ff7700",
+          "width": 5,
+          "opacity": 1,
+        };
+        if (twohopSemanticEdgeIds.length > 0) {
+          addChunkedIdRules(twohopSemanticEdgeIds, "edge", {
+            ...pathEdgeBase, "line-style": "solid",
+          });
+        }
+        if (twohopCooccurEdgeIds.length > 0) {
+          addChunkedIdRules(twohopCooccurEdgeIds, "edge", {
+            ...pathEdgeBase, "line-style": "dashed", "line-dash-pattern": [10, 5],
+          });
+        }
+      }
     }
 
     return new_stylesheet.map(rule => {
@@ -578,6 +794,7 @@ window.dash_clientside.clientside = {
       "",
       [],
       elements,
+      [],
       current_stylesheet
     );
   }

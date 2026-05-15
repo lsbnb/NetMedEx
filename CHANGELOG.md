@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.6] - 2026-05-14
+
+### Added
+- **2-Hop Pathway Diagrams**: In the Chat Panel, 2-hop mechanism inferences are now automatically visualized as interactive Dash pathway cards (replacing Mermaid SVG). Each card shows nodes as styled boxes, edges as arrows with relation labels, and clickable PMID badges linking directly to PubMed. Bridge (mediator) nodes are rendered with a gold border.
+- **Chat→Graph Interactive Highlighting**: 2-hop inference results automatically synchronize back to the Graph panel. Bridge nodes glow gold; inferred path edges render as dashed orange lines to distinguish them from direct 1-hop literature evidence.
+- **Search Nodes — Dijkstra Shortest Path**: When 2 or more node names are entered in the Graph Panel "Search Nodes" field (comma-separated), the graph now computes the weighted shortest path between them using Dijkstra's algorithm (`cost = 1/weight`, where weight reflects NPMI/co-occurrence strength). Path nodes and edges are highlighted; intermediate nodes receive a teal border. Single-node searches retain the existing neighbour-highlight behaviour.
+- **HTML Export — Shortest Path Search**: The standalone exported HTML file now includes the same Dijkstra-based Search Nodes functionality, with identical visual styling and segment-aware label matching.
+
+### Fixed
+- **CUI-based Node Deduplication**: Added a MeSH-ID pass to `normalize_knowledge_graph()` that merges nodes sharing the same non-null MeSH CUI regardless of surface name. This fixes cases like `"hcv"` and `"hepatitis c virus"` appearing as separate nodes; the most descriptive name is kept as canonical.
+- **Search Nodes False Positives**: Replaced full-strip `includes()` matching with segment-aware prefix matching. Short queries (e.g. `ID1`) no longer incorrectly match nodes whose normalized name contains the query as an accidental substring (e.g. `COVID-19` → `"covid19"` contains `"id1"`). Longer queries (≥ 5 chars) retain full-strip substring fallback for compound identifiers like `SARS-CoV-2`.
+- **Pathway Card Regex — Hyphenated Node IDs**: The Mermaid parser in the Chat Panel now accepts node IDs containing hyphens (e.g. `CAR-T`), fixing cases where the first hop of a 2-hop diagram was silently dropped and only 1 edge rendered.
+- **Chat→Graph Synchronization — ID Mismatch**: Fixed a critical bug where `twohop_paths` stored Cytoscape stable UUIDs that never matched the raw NetworkX node IDs used by the graph, causing Chat→Graph highlighting to silently do nothing. The JS now matches paths by node **label/name** instead of ID, making the lookup immune to community-suffix mismatches between the pickled and displayed graph.
+- **Focus Nodes ID Mismatch**: Fixed a root cause where `core_node_ids` (built from selected edge `source`/`target` UUIDs) failed `graph.has_node()` lookups because the pickled graph uses raw NetworkX hashes. The callback now resolves node IDs via a `label → raw_id` lookup table, ensuring `focus_nodes` contains valid graph IDs and 2-hop path extraction produces non-zero results.
+- **2-Hop Path Highlighting Contrast**: Non-path nodes and edges are now dimmed to 15% opacity when a 2-hop highlight is active, and path elements use stronger visual styles (6px gold border + overlay glow for bridge nodes, 5px thick orange edges) to make the inferred route clearly visible against the background graph.
+- **AI Search Query Over-constraining**: The `translate_query_to_boolean` prompt now enforces an OR expansion rule (concept synonyms connected by OR rather than a single exact phrase) and a rare entity rule (highly specific organism/gene names alone are sufficient — secondary AND constraints should be omitted to avoid zero-result queries).
+- **Semantic RE Directionality**: Prompts in `semantic_re.py` now explicitly enforce that `entity1_id` is the source/effector and `entity2_id` is the target/effectee for directional relation types (e.g., activates, inhibits), preventing reversed edges in the knowledge graph.
+- **No-Context Response Language**: When the provided context is insufficient to answer a query, the Chat assistant now responds in the session language instead of always falling back to English.
+- **Chat PMID Support Full Names**: The 2-hop PMID support section now uses actual entity names (e.g., **bacteria → covid-19**) instead of placeholder letters A/B/C, and the Mermaid pathway diagram is enforced as mandatory for every 2-hop path.
+
 ## [1.2.5] - 2026-05-11
 
 ### Added

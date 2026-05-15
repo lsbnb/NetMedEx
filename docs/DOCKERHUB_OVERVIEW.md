@@ -1,4 +1,4 @@
-# NetMedEx v1.2.5: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.2.6: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
@@ -17,12 +17,11 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.2.5
-- **ONNX Model Pre-bundled**: ChromaDB `all-MiniLM-L6-v2` embedding model (~80 MB) is now bundled in the Docker image — first-run chat works instantly, no internet download required.
-- **NVIDIA NIM Support**: Added NVIDIA NIM as a fifth LLM provider alongside OpenAI, Google Gemini, OpenRouter, and Local Ollama. Supports both cloud NIM and on-premises deployments.
-- **Offline HTML Export**: Vendor JS libraries (Cytoscape, fCose) are now bundled in pip/Docker builds — HTML export no longer requires CDN access.
-- **UI Polish**: Collapsible Search Options / Advanced Network Options / Display Filters panels; AI Search simplified to inline toggle; Chat tab teal accent.
-- **Bug Fixes**: Suggested question pills no longer trigger duplicate responses; active sidebar tab preserved across page refreshes.
+## 🆕 What's New in v1.2.6
+- **2-Hop Pathway Diagrams**: The Chat Panel now renders Mermaid `graph LR` flowcharts for each 2-hop mechanistic inference, with PMID-annotated edges and gold-highlighted bridge (mediator) nodes — pathways are instantly readable, not just listed.
+- **Chat→Graph Highlighting**: 2-hop inference results automatically sync to the Graph panel. Bridge nodes glow gold; inferred path edges appear as dashed orange lines, clearly distinguishing speculative 2-hop chains from direct 1-hop literature evidence.
+- **Semantic RE Directionality Fix**: Directional relation extraction (activates, inhibits, etc.) now correctly assigns `entity1_id` as source/effector and `entity2_id` as target/effectee, eliminating reversed edges in the knowledge graph.
+- **No-Context Response Language**: When context is insufficient, the Chat assistant now responds in the active session language rather than always falling back to English.
 
 ---
 

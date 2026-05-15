@@ -70,6 +70,7 @@ graph = html.Div(
                 dcc.Store(id="memory-graph-layout"),
                 dcc.Store(id="memory-fcose-node-repulsion"),
                 dcc.Store(id="session-language", data="English"),
+                dcc.Store(id="twohop-highlight-paths", data=[]),
                 dcc.Store(id="sidebar-collapsed-store", storage_type="local", data=False),
             ],
             id="cy-graph-container",
