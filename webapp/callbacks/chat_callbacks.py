@@ -908,8 +908,13 @@ def callbacks(app):
                 topic=search_query if search_query else "biomedical research",
             )
 
-            # Store in global session manager
+            # Close old NodeRAG before overwriting to release ChromaDB file handles
             session_id = savepath["graph"]
+            if session_id in _sessions:
+                old = _sessions[session_id]
+                gr = getattr(getattr(old.get("session"), "graph_retriever", None), "node_rag", None)
+                if gr is not None:
+                    gr.close()
             _sessions[session_id] = {"session": session, "rag": rag_system}
 
             context_banner = [
@@ -974,10 +979,15 @@ def callbacks(app):
                 summary_msg = summary_result.get("assistant_msg")
                 summary_content = summary_result.get("message") or (summary_msg.content if summary_msg else "")
                 suggestions, clean_content = parse_suggestions(summary_content)
+                cited_in_summary = sorted(set(
+                    re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", summary_content)
+                ) | set(
+                    re.findall(r"\[(\d{7,10})\]", summary_content)
+                ))
                 summary_component = create_message_component(
                     "assistant",
                     clean_content,
-                    summary_msg.sources if summary_msg else None,
+                    cited_in_summary or (summary_msg.sources if summary_msg else None),
                     msg_id=summary_msg.msg_id if summary_msg else None,
                     suggestions=suggestions,
                 )
@@ -1126,13 +1136,13 @@ def callbacks(app):
             # "English" as the default — matching the "fallback to English" rule.
             effective_language = detect_query_language(user_input)
 
-            # Get AI response — reuse cached focus_nodes from analyze_selection
-            # to avoid expensive find_relevant_nodes() on every follow-up turn
-            cached_focus = session_data.get("focus_nodes")
+            # Pass focus_nodes=None so find_relevant_nodes() runs fresh on each
+            # user question — reusing the initial selection caused every follow-up
+            # to receive identical graph context, producing repetitive responses.
             response = session.send_message(
                 user_input,
                 session_language=effective_language,
-                focus_nodes=cached_focus,
+                focus_nodes=None,
             )
 
             if response["success"]:
@@ -1152,6 +1162,16 @@ def callbacks(app):
                 response_content = response.get("message") or (assistant_msg_obj.content if assistant_msg_obj else "")
                 suggestions, clean_content = parse_suggestions(response_content)
 
+                # Sources = union of (PMIDs cited in response text) and
+                # (all PMIDs retrieved by RAG for this turn).  This ensures
+                # Sources stays comprehensive even when LLM cites fewer papers
+                # in later rounds due to compressed history context.
+                cited_in_response = sorted(set(
+                    re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", response_content)
+                ) | set(
+                    re.findall(r"\[(\d{7,10})\]", response_content)
+                ) | set(response.get("pmids_used") or []))
+
                 # Update 2-hop paths from the latest response
                 twohop_paths = response.get("twohop_paths", [])
                 if twohop_paths and savepath:
@@ -1160,7 +1180,7 @@ def callbacks(app):
                 ai_msg = create_message_component(
                     "assistant",
                     clean_content,
-                    assistant_msg_obj.sources,
+                    cited_in_response or assistant_msg_obj.sources,
                     msg_id=assistant_msg_obj.msg_id,
                     suggestions=suggestions,
                 )
@@ -1222,6 +1242,9 @@ def callbacks(app):
 
         if savepath and savepath["graph"] in _sessions:
             session_data = _sessions.pop(savepath["graph"])
+            gr = getattr(getattr(session_data.get("session"), "graph_retriever", None), "node_rag", None)
+            if gr is not None:
+                gr.close()
             session_data["session"].clear()
             session_data["rag"].clear()
 
@@ -1493,9 +1516,11 @@ def callbacks(app):
 
             # Separate suggestions for assistant messages
             suggestions = []
-            clean_text = msg.content
+            # Use full_content for export if available (compressed content is for LLM history only)
+            display_text = getattr(msg, "full_content", None) or msg.content
+            clean_text = display_text
             if not is_user:
-                suggestions, clean_text = parse_suggestions(msg.content)
+                suggestions, clean_text = parse_suggestions(display_text)
 
             content_html = md_to_html(clean_text)
 
@@ -1513,14 +1538,23 @@ def callbacks(app):
                     )
                 html_content.append("</div>")
 
-            if hasattr(msg, "sources") and msg.sources:
-                source_links = [
-                    f'<a href="https://pubmed.ncbi.nlm.nih.gov/{html_lib.escape(str(p))}/" target="_blank">[PMID:{html_lib.escape(str(p))}]</a>'
-                    for p in msg.sources
-                ]
-                html_content.append(
-                    f"<div class='sources-box'><strong>References:</strong> {', '.join(source_links)}</div>"
-                )
+            if not is_user:
+                # Extract PMIDs from full_content for comprehensive References,
+                # matching the same logic used in the live chat Sources display.
+                full_text = getattr(msg, "full_content", None) or msg.content
+                export_pmids = sorted(set(
+                    re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", full_text)
+                ) | set(
+                    re.findall(r"\[(\d{7,10})\]", full_text)
+                ) | set(msg.sources or []))
+                if export_pmids:
+                    source_links = [
+                        f'<a href="https://pubmed.ncbi.nlm.nih.gov/{html_lib.escape(str(p))}/" target="_blank">[PMID:{html_lib.escape(str(p))}]</a>'
+                        for p in export_pmids
+                    ]
+                    html_content.append(
+                        f"<div class='sources-box'><strong>References:</strong> {', '.join(source_links)}</div>"
+                    )
 
             html_content.append("</div></div>")
 
