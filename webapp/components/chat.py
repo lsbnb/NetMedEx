@@ -13,6 +13,7 @@ from dash import dcc, html
 from webapp.utils import display
 
 
+
 def create_message_component(
     role: str,
     content: str,
@@ -133,6 +134,8 @@ def create_message_component(
                     if clean_line and len(clean_line) > 3:
                         suggestions.append(clean_line)
 
+        # Strip mermaid code blocks — we replace them with structured path cards
+        main_content = re.sub(r"```mermaid[\s\S]*?```", "", main_content, flags=re.IGNORECASE)
         main_content = normalize_mermaid_blocks(main_content)
         main_content = re.sub(r"[\s\*_#\-]+$", "", main_content).strip()
 
