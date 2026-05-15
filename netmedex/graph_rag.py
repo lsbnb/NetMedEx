@@ -5,6 +5,7 @@ import logging
 import networkx as nx
 
 from netmedex.relation_types import is_directional_relation
+from netmedex.utils import generate_stable_id
 
 logger = logging.getLogger(__name__)
 
@@ -61,7 +62,7 @@ class GraphRetriever:
         matched_nodes = set()
 
         # 1. Exact/Substring Matching
-        sorted_names = sorted(self.name_to_id.keys(), key=len, reverse=True)
+        sorted_names: list[str] = sorted(self.name_to_id.keys(), key=len, reverse=True)
         for name in sorted_names:
             if name in query_lower:
                 matched_nodes.add(self.name_to_id[name])
@@ -83,7 +84,17 @@ class GraphRetriever:
         self, relevant_nodes: list[str], query: str | None = None, max_hops: int = 2
     ) -> str:
         """
-        Extract textual context describing the subgraph relevant to the nodes using 2-hop Graph Pruning/Filtering.
+        Extract textual context describing the subgraph relevant to the nodes.
+        Thin wrapper around get_subgraph_context_with_paths() for backward compatibility.
+        """
+        text, _ = self.get_subgraph_context_with_paths(relevant_nodes, query=query, max_hops=max_hops)
+        return text
+
+    def get_subgraph_context_with_paths(
+        self, relevant_nodes: list[str], query: str | None = None, max_hops: int = 2
+    ) -> tuple[str, list[dict]]:
+        """
+        Extract textual context AND structured path data for 2-hop Graph RAG.
 
         Strategy: Hybrid Scoring 2.0
         Combines Topological NPMI + Semantic Confidence + Query Relevance.
@@ -94,18 +105,21 @@ class GraphRetriever:
             max_hops: Maximum number of hops for pathfinding.
 
         Returns:
-            Formatted string describing the structural relationships.
+            Tuple of (formatted_text, structured_paths) where structured_paths is a list of dicts:
+            [{"path": [id1, id2, id3], "names": [name1, name2, name3],
+              "score": 0.72, "hop_count": 2}, ...]
         """
         if not relevant_nodes:
-            return "No specific entities from the graph were found in the query."
+            return "No specific entities from the graph were found in the query.", []
 
         # Filter nodes to ensure they exist in the current graph
         valid_nodes = [n for n in relevant_nodes if self.graph.has_node(n)]
 
         if not valid_nodes:
-            return "Identified entities are not present in the current subnetwork."
+            return "Identified entities are not present in the current subnetwork.", []
 
         context_lines = []
+        structured_paths = []
 
         # Support robust 2-hop contextual paths using hybrid scoring and filtering
         explored_paths = self._extract_top_k_paths(valid_nodes, query=query, max_hops=max_hops, top_k=20)
@@ -119,7 +133,47 @@ class GraphRetriever:
             for path, score in explored_paths:
                 context_lines.append(f"- {self._format_path(path)} (Score: {score:.2f})")
 
-        return "\n".join(context_lines)
+                # Build structured path entry.
+                # Recompute stable Cytoscape IDs using the same logic as
+                # normalize_graph_ids() so they always match element data.id /
+                # data.source / data.target regardless of when _id was last written
+                # to the node attributes (e.g. community-suffix mismatch).
+                is_comm = self.graph.graph.get("num_communities", 0) > 0
+                suffix = "_comm" if is_comm else ""
+                names = [
+                    self.graph.nodes[node_id].get("name", node_id) for node_id in path
+                ]
+                stable_ids = [
+                    generate_stable_id(f"node_{node_id}{suffix}") for node_id in path
+                ]
+                # Collect primary relation type and PMIDs for each edge in the path
+                edge_relations = []
+                edge_pmids = []
+                for i in range(len(path) - 1):
+                    u, v = path[i], path[i + 1]
+                    if self.graph.has_edge(u, v):
+                        edata = self.graph.edges[u, v]
+                        rel_sets = edata.get("relations", {})
+                        all_rels = [r for rels in rel_sets.values() for r in rels]
+                        from collections import Counter
+                        primary = Counter(all_rels).most_common(1)[0][0] if all_rels else "associated_with"
+                        pmids = sorted(rel_sets.keys())[:3]
+                    else:
+                        primary = "associated_with"
+                        pmids = []
+                    edge_relations.append(primary)
+                    edge_pmids.append(pmids)
+
+                structured_paths.append({
+                    "path": stable_ids,
+                    "names": names,
+                    "relations": edge_relations,
+                    "edge_pmids": edge_pmids,
+                    "score": round(score, 3),
+                    "hop_count": len(path) - 1,
+                })
+
+        return "\n".join(context_lines), structured_paths
 
     def _is_valid_node(self, node_id: str) -> bool:
         """Check if node should be included based on Ontology Filtering."""
@@ -197,6 +251,12 @@ class GraphRetriever:
             multiplier = max(self.TYPE_WEIGHTS.get(u_type, 1.0), self.TYPE_WEIGHTS.get(v_type, 1.0))
 
             return base_score * multiplier
+
+        # Cap start nodes to prevent O(n²) traversal on large graphs
+        MAX_START_NODES = 50
+        if len(start_nodes) > MAX_START_NODES:
+            # Prefer nodes that are in the graph and have edges
+            start_nodes = [n for n in start_nodes if self.graph.degree(n) > 0][:MAX_START_NODES]
 
         visited_paths = set()
 

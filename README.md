@@ -1,4 +1,4 @@
-# NetMedEx v1.2.5
+# NetMedEx v1.2.6
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -6,18 +6,21 @@
 
 NetMedEx is an AI-powered knowledge discovery platform designed to transform biomedical literature into actionable insights. Unlike traditional tools that merely extract entities, NetMedEx leverages **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** and **Full-Text BioC-JSON Processing** to synthesize structured co-mention networks with unstructured text, providing a holistic understanding of biological relationships.
 
-In NetMedEx, the **Co-Mention Network** serves as a structural "scaffolding." While the network visualizes the landscape of bio-concepts (genes, diseases, chemicals, etc.), the **AI-driven Semantic Layer** breathes life into these connections by extracting evidence, identifying relationship types, and answering complex natural language queries. **v1.1.0** introduces **sapBERT-based KG Normalization**, ensuring semantic consistency by merging equivalent concept variants across the Knowledge Graph.
+In NetMedEx, the **Co-Mention Network** serves as a structural "scaffolding." While the network visualizes the landscape of bio-concepts (genes, diseases, chemicals, etc.), the **AI-driven Semantic Layer** breathes life into these connections by extracting evidence, identifying relationship types, and answering complex natural language queries. **v1.1.0** introduces **sapBERT-based KG Normalization**, ensuring semantic consistency by merging equivalent concept variants across the Knowledge Graph. **v1.2.6** advances the Chat Panel with a **5-Layer Evidence Reasoning Framework** that strictly separates direct literature evidence, association inference, causal mechanism hypotheses, and integrated summary—each with edge-level PMID citations—alongside **Dijkstra weighted shortest-path search** in the Graph Panel and **MeSH CUI-based entity deduplication** to prevent abbreviation/full-name fragmentation (e.g., `"hcv"` ↔ `"hepatitis c virus"`).
 
 ---
 
 ## 🆕 Recent Updates
 
-### v1.2.5 — 2026-05-08
-- **Docker ONNX pre-bundle**: ChromaDB `all-MiniLM-L6-v2` model (~80 MB) is now bundled in the Docker image — no first-run download required, works offline.
-- **Vendor JS packaging**: `netmedex/vendor/*.js` (Cytoscape, fCose) is now included in pip/Docker builds, enabling offline HTML export without CDN fallback.
-- **Bug fix — Suggested question multi-fire**: Clicking a suggestion pill in Chat could trigger multiple responses due to Dash ALL-pattern callback re-firing when new pills were added; resolved with an explicit click-value guard.
-- **Bug fix — Tab persistence**: Active sidebar tab (Search/Graph/Chat) is now preserved across page refreshes via `persistence_type="session"`.
-- **CLI docs**: Added `[!IMPORTANT]` callout clarifying that `-f pickle` must be explicit for `netmedex network` when piping into `netmedex chat`.
+### v1.2.6 — 2026-05-15
+- **5-Layer Evidence Reasoning Framework**: Chat responses are now structured into five layers — (1) Evidence-Based Answer with direct PMID citations per claim and `[Human]`/`[Animal/In vitro]` labelling; (2) Association / Speculative Inference with structured hypothesis blocks (graph path, per-edge PMIDs, path confidence, why speculative); (3) Causal Biomedical Mechanism with directional causal chain, polarity, evidence table, weakest link, and testable prediction (only when directional edges exist); (4) Final Integrated Summary with inline PMIDs; (5) Suggested Follow-up Questions.
+- **Anti-Hallucination Core Principles**: 8 hard rules enforced at prompt level — never hallucinate PMIDs, never convert co-occurrence into regulation, edge-level citation required, strict layer separation, causal language (`inhibits`/`activates`/`drives`) restricted to Layer 3, speculative language mandate for Layers 2–3, species distinction mandatory, no external knowledge.
+- **Per-message Language Detection**: Response language now follows each individual user message (English fallback for unrecognized scripts). Removes session-level language lock that forced non-English replies even for English questions.
+- **Rolling History with Memory Compression**: Conversation history uses a sliding window (`max_history=3 pairs`). Aged-out turns are compressed into a structured memory buffer (stripped of tables, mermaid, layer headers, bold sub-labels) and re-injected as a system message each turn, preserving long-term context without token bloat.
+- **Chat→Graph Highlighting**: 2-hop paths sync to Graph panel — bridge nodes glow gold, inferred edges render as dashed orange.
+- **Dijkstra Shortest Path in Search Nodes**: Enter 2+ node names (comma-separated) to highlight the strongest-evidence path between them. Works in both the webapp and exported HTML.
+- **CUI-based Node Deduplication**: Nodes sharing the same MeSH ID (e.g. `"hcv"` and `"hepatitis c virus"`) are now merged in the normalization step.
+- **Search Nodes False-Positive Fix**: Segment-aware matching prevents short queries (e.g. `ID1`) from matching unrelated nodes (e.g. `COVID-19`).
 
 ### v1.2.4 — 2026-04-30
 - **NVIDIA NIM Support**: Added NVIDIA NIM as a fifth LLM provider (alongside OpenAI, Google Gemini, OpenRouter, Local Ollama). Supports both cloud NIM (`integrate.api.nvidia.com`) and on-premises deployments with preset model catalogue and endpoint fetch.
@@ -104,7 +107,10 @@ NetMedEx features an interactive **Chat Panel** driven by **Hybrid RAG**, which 
 - **PMID-Based De-duplication**: Automatically consolidates multiple mentions of entities and relations within the same paper to ensure accurate NPMI calculation and knowledge graph stability.
 - **Hybrid RAG Chat**: Synthesizes **unstructured text** (abstracts + full-text) and **structured graph knowledge** (paths and neighbors).
 - **🧠 Smart 2-Hop Graph RAG**: Deep mechanistic discovery using two-hop traversal with hybrid scoring (NPMI + Confidence + Semantic Relevance).
-- **🧬 sapBERT KG Normalization**: Automated merging of synonymous nodes (e.g., abbreviations, MeSH synonyms) for cleaner networks.
+- **🔬 Interactive Pathway Cards** *(v1.2.6)*: 2-hop mechanistic inferences are rendered as inline pathway cards — clickable PMID badges, gold-bordered bridge nodes, and directional edge labels. No more static SVG diagrams.
+- **🔗 Chat→Graph Synchronization** *(v1.2.6)*: 2-hop inference paths automatically highlight back in the Graph Panel — bridge nodes glow gold, inferred path edges render as dashed orange.
+- **🛤️ Dijkstra Weighted Shortest Path** *(v1.2.6)*: Enter 2+ node names (comma-separated) in **Search Nodes** to find the strongest-evidence route between them, weighted by NPMI. Available in both the webapp and exported HTML.
+- **🧬 sapBERT + CUI-based KG Normalization** *(v1.2.6)*: Two-pass normalization — MeSH CUI-based deduplication (merges abbreviations with their full names, e.g., `"hcv"` → `"hepatitis c virus"`) followed by sapBERT embedding similarity.
 - **⚖️ Study-Type Labeling**: Automated distinction between Human clinical data and Animal/Cell-line models.
 - **Relation Directionality**: High-resolution arrows indicate the direction of semantic influence (e.g., A → activates → B).
 - **Edge Confidence Coloring**: Edges are color-coded (gradient heatmap) based on AI-extracted confidence scores.
@@ -174,7 +180,12 @@ Users can also upload previously downloaded PubTator format files for re-analysi
 > **Graph File Restore**: After a time-consuming Semantic Analysis run, export the result as a **Graph (.pkl)** from the Graph Panel, then reload it later via **Search Panel → Source: Graph File (.pkl)**. The full graph state — including all semantic edges, node metadata, and article abstracts — is restored instantly, allowing you to continue adjusting the network and using the Chat Panel without re-running any analysis.
 
 ### 2. Graph & Scaffolding (Structural View)
-The **Graph Panel** visualizes the co-mention/semantic analyzed network, providing the visualization of search results for your research. Using the shift key to select sub-network, those selected nodes and edges will be highlighted as the base for chat in next step. Users can visualize the network using different layouts and community detection algorithms. Users also can export the network in several formats:
+The **Graph Panel** visualizes the co-mention/semantic analyzed network, providing the visualization of search results for your research. Using the shift key to select sub-network, those selected nodes and edges will be highlighted as the base for chat in next step. Users can visualize the network using different layouts and community detection algorithms.
+
+> [!TIP]
+> **Search Nodes — Shortest Path** *(v1.2.6)*: Type two or more node names separated by commas in the **Search Nodes** field (e.g., `Piezo1, neoplasms`) to compute the **Dijkstra weighted shortest path** between them. The strongest-evidence route is highlighted: anchor nodes in orange, intermediate bridge nodes in teal, and path edges as thicker orange lines. If no path exists the panel falls back to standard neighbor highlighting. The same feature is available in the exported HTML file.
+
+Users also can export the network in several formats:
 
 | Export Format | Description | Re-importable? |
 |---|---|---|
@@ -225,7 +236,18 @@ The **Graph Panel** visualizes the co-mention/semantic analyzed network, providi
 
 
 ### 3. Chat & Semantic Insights (Interpretation)
-The **Chat Panel** provides the deep semantic layer, interpreting the graph using LLMs.
+The **Chat Panel** provides the deep semantic layer, interpreting the graph using LLMs. When the system identifies 2-hop mechanistic paths, each path is rendered as an **interactive pathway card** *(v1.2.6)* — nodes displayed as styled boxes (gold border for bridge/mediator nodes), edges annotated with relation type and clickable PMID badges.
+
+**Chat→Graph Synchronization** *(v1.2.6)*: Every time a Chat response is generated (either on "Analyze Selection" or any follow-up question), any 2-hop inference paths identified by the Graph RAG are automatically reflected back onto the Graph Panel **without any extra click**. The synchronization works as follows:
+
+| Element | Visual Change |
+|---|---|
+| Bridge / mediator node (the middle node B in A→B→C) | Gold border glow (4 px, `#ffd700`) |
+| Endpoint nodes (the queried entities A and C) | Blue border (3 px, `#4a90d9`) |
+| Edges connecting the inferred path | Dashed orange lines (width 3, `#e8a317`) |
+| All other nodes and edges | No change (remain at full opacity) |
+
+The highlights update automatically with each new Chat response and are cleared when the user activates a **Search Nodes** query (which takes visual priority). This bidirectional link lets researchers immediately locate the inferred mechanism within the full network topology, assess its position relative to other hubs, and verify whether it is a peripheral or central route through the knowledge graph.
 
 <p align="center">
   <img src="./docs/img/netmedex_chat_panel_v2.jpg" width="300" alt="Chat Panel">

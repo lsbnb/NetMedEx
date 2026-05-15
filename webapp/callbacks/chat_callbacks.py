@@ -20,204 +20,47 @@ def _resolve_savepath(session_data):
     return resolve_session_savepath(session_data)
 
 
-# Helper to extract suggested questions from AI response
+def _strip_message_suggestions(messages: list) -> list:
+    """Remove .message-suggestions div from all rendered message components.
+
+    Dash serialises component trees as nested dicts. This walks the tree and
+    removes any node whose className contains 'message-suggestions', so that
+    only the *latest* assistant message shows its pill questions.
+    """
+    def _strip(node):
+        if not isinstance(node, dict):
+            return node
+        props = node.get("props", {})
+        cls = props.get("className", "") or ""
+        if "message-suggestions" in cls:
+            return None
+        children = props.get("children")
+        if isinstance(children, list):
+            new_children = [c for c in (_strip(c) for c in children) if c is not None]
+            if len(new_children) != len(children):
+                node = {**node, "props": {**props, "children": new_children}}
+        elif isinstance(children, dict):
+            new_child = _strip(children)
+            if new_child is None:
+                node = {**node, "props": {**props, "children": []}}
+            elif new_child is not children:
+                node = {**node, "props": {**props, "children": new_child}}
+        return node
+
+    return [_strip(m) for m in (messages or []) if m is not None]
+
+
+# Helper to extract suggested questions from AI response.
+# Relies solely on the explicit [Q1:] / [Q2:] / [Q3:] markers that the system
+# prompt instructs the LLM to emit.  Previous broad keyword matching (e.g.
+# "追問", "建議問題" as substrings) would falsely enter the suggestion section
+# inside 2-hop inference text, swallowing that content.
 def parse_suggestions(content):
     if not content:
         return [], ""
 
-    # Common headers for suggestions (multiple languages)
-    headers = [
-        "Suggested Follow-up Questions",
-        "Suggested Questions",
-        "Suggested Follow-up",
-        "## Suggested Questions:",
-        "建議問題",
-        "建議的問題",
-        "提案された質問",
-        "권장 후속 질문",
-        "Recommended Questions",
-        "Follow-up Questions",
-        "Recommend Questions",
-        "您可以問",
-        "您可以繼續追問",
-        "您可以追問",
-        "追問",
-        "推薦問題",
-    ]
-
-    suggestions = []
-    lines = content.split("\n")
-    clean_lines = []
-    in_suggestion_section = False
-
-    # Regex to match list items: bullet is optional.
-    # Group 1 captures the actual question text.
-    # Handles: 1. [Q1: text], - [Q1: text], Q1: text, [text], etc.
-    q_pattern = r"^(?:[\-\*\•\+]|\d+[\.\)\、]|\d+)?\s*\[?(?:Q\d+)?\s*[:\.\-\)\、：]?\s*(.*)$"
-
-    def looks_like_cjk(text):
-        return any("\u4e00" <= c <= "\u9fff" for c in text)
-
-    def clean_candidate(text: str) -> str:
-        return re.sub(r"\s+", " ", (text or "").strip(" []-.*•")).strip()
-
-    def is_noise_candidate(text: str) -> bool:
-        t = (text or "").strip().lower().strip(".,;:!?")
-        if not t:
-            return True
-        # Prevent provider formatting fragments (e.g., trailing "and").
-        noise = {
-            "and",
-            "or",
-            "but",
-            "the",
-            "a",
-            "an",
-            "to",
-            "of",
-            "in",
-            "on",
-            "for",
-            "with",
-            "these",
-            "this",
-            "that",
-            "those",
-        }
-        return t in noise
-
-    for i, line in enumerate(lines):
-        stripped = line.strip()
-        if not stripped:
-            if not in_suggestion_section:
-                clean_lines.append(line)
-            continue
-
-        # Check for explicit header
-        is_header = any(h.lower() in stripped.lower() for h in headers)
-
-        # Check for implicit section start
-        is_near_end = (len(lines) - i) <= 12  # Increased threshold
-        is_implicit_start = (
-            not in_suggestion_section
-            and is_near_end
-            and (
-                stripped.startswith("[Q1:")
-                or stripped.startswith("1. [Q1:")
-                or "Q1:" in stripped[:10]
-                or re.search(r"\[Q\d:.*?\]", stripped)
-            )
-        )
-
-        if is_header or is_implicit_start:
-            in_suggestion_section = True
-            if is_header:
-                header_parts = re.split(r"[:：]", stripped, maxsplit=1)
-                if len(header_parts) > 1:
-                    after_colon = header_parts[1].strip()
-                    if after_colon and (
-                        len(after_colon) > 10
-                        or (looks_like_cjk(after_colon) and len(after_colon) > 5)
-                    ):
-                        # Prefer explicit [Q1:] blocks. Avoid splitting prose by commas,
-                        # which can create fragments like "and" in some Google outputs.
-                        explicit_q_parts = re.findall(
-                            r"(?:\[\s*)?Q\d+\s*[:：]\s*([^\]]+?)(?:\]|\s*$)",
-                            after_colon,
-                            flags=re.IGNORECASE,
-                        )
-                        if explicit_q_parts:
-                            parts = explicit_q_parts
-                        elif "?" in after_colon or "？" in after_colon:
-                            parts = re.split(r"(?<=[\?\？])\s+", after_colon)
-                        else:
-                            parts = [after_colon]
-                        for p in parts:
-                            p_clean = clean_candidate(p)
-                            if (
-                                p_clean
-                                and len(p_clean) > 2
-                                and not is_noise_candidate(p_clean)
-                            ):
-                                suggestions.append(p_clean)
-                continue
-
-        if in_suggestion_section:
-            # Check for multi-match on one line (e.g. LLM collapsed them)
-            sub_matches = re.findall(r"\[Q\d: (.*?)\]", stripped)
-            if sub_matches:
-                for sm in sub_matches:
-                    suggestions.append(sm.strip())
-                continue
-
-            if (stripped.startswith("**") and stripped.endswith("**")) or stripped == "---":
-                in_suggestion_section = False
-                clean_lines.append(line)
-                continue
-
-            match = re.search(q_pattern, stripped)
-            if match:
-                q_text = clean_candidate(match.group(1).split("]")[0])
-                min_len = 2 if looks_like_cjk(q_text) else 4
-                if q_text and len(q_text) >= min_len:
-                    if (
-                        q_text.startswith("**")
-                        and q_text.endswith("**")
-                        and len(q_text) > 40
-                        and not q_text.endswith("?")
-                    ):
-                        in_suggestion_section = False
-                        clean_lines.append(line)
-                    else:
-                        if not is_noise_candidate(q_text):
-                            suggestions.append(q_text)
-                        continue
-            else:
-                if suggestions and not is_near_end:
-                    in_suggestion_section = False
-                clean_lines.append(line)
-        else:
-            clean_lines.append(line)
-
-    final_suggestions = []
-    seen = set()
-    for s in suggestions[:6]:  # Check up to 6 to find 3 unique
-        s = re.sub(r"[:\.\?\!\]]+$", "", s).strip()
-        if s and s.lower() not in seen:
-            final_suggestions.append(s)
-            seen.add(s.lower())
-
-    def _extract_question_candidates(text: str) -> list[str]:
-        """Best-effort extraction for models that ignore strict [Q1:] format."""
-        if not text:
-            return []
-        candidates = []
-        tail = "\n".join(text.splitlines()[-24:])  # Suggestions are usually near the end.
-        for raw in tail.splitlines():
-            line = raw.strip()
-            if not line:
-                continue
-            # Remove bullets/numbering.
-            line = re.sub(r"^(?:[\-\*\•\+]\s*|\d+[\.\)\、]\s*)", "", line).strip()
-            if not line:
-                continue
-            # Split packed lines containing multiple questions.
-            parts = re.split(r"(?<=[\?\？])\s+", line)
-            for p in parts:
-                q = p.strip(" []-*•")
-                if not q:
-                    continue
-                if q.count("?") + q.count("？") < 1:
-                    continue
-                if len(q) < 6 or len(q) > 160:
-                    continue
-                cleaned = q.rstrip("?？").strip()
-                if not is_noise_candidate(cleaned):
-                    candidates.append(cleaned)
-        return candidates
-
-    def _fallback_default_questions(text: str) -> list[str]:
-        has_cjk = looks_like_cjk(text)
+    def _default_questions(text: str) -> list[str]:
+        has_cjk = any("\u4e00" <= c <= "\u9fff" for c in text)
         if has_cjk:
             return [
                 "哪些證據最能支持目前的核心結論",
@@ -230,27 +73,42 @@ def parse_suggestions(content):
             "What is the highest-priority hypothesis to validate next",
         ]
 
-    if len(final_suggestions) < 3:
-        for c in _extract_question_candidates(content):
-            key = c.lower()
-            if key in seen:
-                continue
-            final_suggestions.append(c)
-            seen.add(key)
-            if len(final_suggestions) >= 3:
-                break
+    # ── find the first [Q1: …] marker ──────────────────────────────────────
+    q1_match = re.search(r"\[Q1\s*:", content, re.IGNORECASE)
+    if not q1_match:
+        if re.search(r"Suggested(?:\s+Follow-up)?\s+Questions?", content, re.IGNORECASE):
+            return _default_questions(content), content
+        return [], content          # no explicit markers → no pills, full content
 
-    if len(final_suggestions) < 3:
-        for c in _fallback_default_questions(content):
-            key = c.lower()
-            if key in seen:
-                continue
-            final_suggestions.append(c)
-            seen.add(key)
-            if len(final_suggestions) >= 3:
-                break
+    cut = q1_match.start()
 
-    return final_suggestions[:3], "\n".join(clean_lines).strip()
+    # ── remove the suggestion-section header line immediately before Q1 ────
+    before = content[:cut].rstrip()
+    before = re.sub(
+        r"\n[^\n]*(?:建議問題|Suggested(?:\s+Follow-up)?\s+Questions?|"
+        r"建議的問題|提案された質問|권장 후속 질문)[^\n]*$",
+        "",
+        before,
+        flags=re.IGNORECASE,
+    ).rstrip()
+
+    # ── extract [Q1:…] [Q2:…] [Q3:…] ─────────────────────────────────────
+    raw_qs = re.findall(
+        r"\[Q\d+\s*:\s*(.*?)\]",
+        content[cut:],
+        re.IGNORECASE | re.DOTALL,
+    )
+    suggestions: list[str] = []
+    seen: set[str] = set()
+    for q in raw_qs:
+        q = re.sub(r"\s+", " ", q).strip().rstrip("?？.!！").strip()
+        if q and len(q) > 3 and q.lower() not in seen:
+            suggestions.append(q)
+            seen.add(q.lower())
+        if len(suggestions) >= 3:
+            break
+
+    return suggestions, before
 
 
 def callbacks(app):
@@ -467,9 +325,8 @@ def callbacks(app):
 
         logger.info(f"DEBUG: auto_initialize_chat STARTING for tab={current_tab}")
 
-        import pickle
-
         from netmedex.chat import ChatSession
+        from netmedex.graph import load_graph
         from netmedex.rag import AbstractDocument, AbstractRAG
         from webapp.llm import (
             GEMINI_OPENAI_BASE_URL,
@@ -550,8 +407,7 @@ def callbacks(app):
                     False,
                 )
 
-            with open(savepath["graph"], "rb") as f:
-                G = pickle.load(f)
+            G = load_graph(savepath["graph"])
 
             # Extract TOP abstracts for overall summary (Top 50 by citation/weight)
             pmid_abstracts = G.graph.get("pmid_abstract", {})
@@ -608,16 +464,19 @@ def callbacks(app):
 
             prompt_lang = session_language if session_language else "English"
             bootstrap_prompt = (
-                "Please provide a comprehensive research summary of the provided abstracts.\n"
+                "Please provide a comprehensive research summary of the provided abstracts using the two-layer framework below.\n"
                 "Focus on the overall field findings related to the search topic.\n"
                 "Use exactly these sections:\n"
-                "1. Overall Evidence Summary\n"
-                "- A concise synthesis of the main research findings supported by PMID citations.\n"
-                "2. Research Trends & Hypotheses\n"
-                "- One or two major trends or speculative inferences derived from the current data.\n"
+                "1. Evidence-Based Answer\n"
+                "- Synthesise the main research findings directly supported by PubMed abstracts.\n"
+                "- Every claim must include its PMID. Label findings as [Human] or [Animal/In vitro].\n"
+                "- Do NOT use causal language (inhibits/activates/causes) unless the paper provides intervention evidence.\n"
+                "2. Association / Speculative Inference\n"
+                "- One or two major research trends or speculative inferences derived from the data.\n"
+                "- Use may/might/potentially. State why each inference is speculative.\n"
                 "3. Suggested Follow-up Questions\n"
                 "- Provide exactly 3 questions.\n"
-                "- **RIGID UI FORMAT (No bullets):**\n"
+                "- **RIGID FORMAT (No bullets):**\n"
                 "  [Q1: Question 1 text]\n"
                 "  [Q2: Question 2 text]\n"
                 "  [Q3: Question 3 text]\n"
@@ -635,13 +494,13 @@ def callbacks(app):
                 summary_msg = summary_result.get("assistant_msg")
                 from webapp.components.chat import create_message_component
 
-                summary_content = summary_msg.content
+                summary_content = summary_result.get("message") or (summary_msg.content if summary_msg else "")
                 suggestions, clean_content = parse_suggestions(summary_content)
                 summary_component = create_message_component(
                     "assistant",
                     clean_content,
-                    summary_msg.sources,
-                    msg_id=summary_msg.msg_id,
+                    summary_msg.sources if summary_msg else None,
+                    msg_id=summary_msg.msg_id if summary_msg else None,
                     suggestions=suggestions,
                 )
                 messages = [summary_component]
@@ -692,6 +551,7 @@ def callbacks(app):
             Output("analyze-selection-btn", "children", allow_duplicate=True),
             Output("suggested-question-store", "data", allow_duplicate=True),
             Output("sidebar-panel-toggle", "active_tab", allow_duplicate=True),
+            Output("twohop-highlight-paths", "data", allow_duplicate=True),
         ],
         Input("analyze-selection-btn", "n_clicks"),
         [
@@ -747,8 +607,8 @@ def callbacks(app):
         try:
             import os
             import time
-            import pickle
             from netmedex.chat import ChatSession
+            from netmedex.graph import load_graph
             from netmedex.rag import AbstractDocument, AbstractRAG
             from webapp.llm import (
                 GEMINI_OPENAI_BASE_URL,
@@ -775,6 +635,7 @@ def callbacks(app):
                     reset_btn,
                     no_update,
                     "chat",
+                    [],
                 )
 
             # Keep chat process LLM config aligned with current Advanced Settings.
@@ -831,6 +692,7 @@ def callbacks(app):
                     reset_btn,
                     no_update,
                     "chat",
+                    [],
                 )
 
             # Load the graph to get abstracts
@@ -847,10 +709,10 @@ def callbacks(app):
                     reset_btn,
                     no_update,
                     "chat",
+                    [],
                 )
 
-            with open(savepath["graph"], "rb") as f:
-                G = pickle.load(f)
+            G = load_graph(savepath["graph"])
             t_load = time.time()
             logger.info(f"Graph loaded in {t_load - t0:.2f}s")
 
@@ -943,6 +805,7 @@ def callbacks(app):
                     reset_btn,
                     no_update,
                     "chat",
+                    [],
                 )
 
             # Initialize RAG system
@@ -961,17 +824,29 @@ def callbacks(app):
 
             # Check if NodeRAG is already indexed for this graph
             # Check if NodeRAG is already indexed for this graph
+            # Build label→raw_node_id lookup from the pickled graph.
+            # Cytoscape element source/target use stable UUIDs, which differ from
+            # the raw NetworkX node IDs used inside the graph — match by name instead.
+            label_to_raw_id = {
+                str(data.get("name", "")).lower().strip(): nid
+                for nid, data in G.nodes(data=True)
+                if data.get("name")
+            }
+
             core_node_ids = set()
             if selected_nodes:
                 for n in selected_nodes:
-                    if "id" in n and not str(n["id"]).startswith("c"):
-                        core_node_ids.add(str(n["id"]))
+                    if str(n.get("id", "")).startswith("c"):
+                        continue  # skip community nodes
+                    name_key = str(n.get("label", n.get("name", ""))).lower().strip()
+                    if name_key in label_to_raw_id:
+                        core_node_ids.add(label_to_raw_id[name_key])
             if selected_edges:
                 for e in selected_edges:
-                    if "source" in e:
-                        core_node_ids.add(str(e["source"]))
-                    if "target" in e:
-                        core_node_ids.add(str(e["target"]))
+                    for name_field in ("source_name", "target_name"):
+                        name_key = str(e.get(name_field, "")).lower().strip()
+                        if name_key in label_to_raw_id:
+                            core_node_ids.add(label_to_raw_id[name_key])
 
             if not node_rag.is_indexed():
                 total_nodes = len(G.nodes)
@@ -1054,16 +929,17 @@ def callbacks(app):
             # Bootstrap summary: ALWAYS use English internally for faster LLM reasoning and better RAG retrieval.
             # The final response will be translated by the system_prompt or a post-processing step.
             bootstrap_prompt = (
-                "Please provide a concise initial brief for the selected abstracts.\n"
-                "Use exactly these sections:\n"
-                "1. Evidence-Based Answer\n"
-                "2. Hypotheses / Speculative Inference\n"
-                "3. Suggested Follow-up Questions\n"
-                "- One short conclusion/inference per section directly supported by PMID citations.\n"
-                "- Suggested Questions format (No bullets):\n"
+                "Please provide a concise initial analysis of the selected abstracts using the three-layer reasoning framework.\n"
+                "Use exactly these layers:\n"
+                "1. Evidence-Based Answer — direct findings from abstracts, PMID per claim, label [Human] or [Animal/In vitro].\n"
+                "2. Association / Speculative Inference — for each 2-hop graph path: hypothesis, graph path with named entities, PMIDs per edge, path confidence, why speculative. Use may/might/potentially only.\n"
+                "3. Causal Biomedical Mechanism — ONLY if directional edges exist: mechanistic claim, causal chain with polarity, evidence table per edge, causal confidence, weakest link, testable prediction. Skip and state insufficient data if no directional edges.\n"
+                "4. Final Integrated Summary — three short paragraphs: directly supported / inferred / mechanistically plausible.\n"
+                "5. Suggested Follow-up Questions — RIGID FORMAT (no bullets):\n"
                 "  [Q1: Question 1 text]\n"
                 "  [Q2: Question 2 text]\n"
                 "  [Q3: Question 3 text]\n"
+                "IMPORTANT: Never mix direct evidence with speculative inference. Never hallucinate PMIDs. Never use causal language (inhibits/activates/drives) outside Layer 3.\n"
             )
 
             # If user is in a non-English session, append a translation instruction at the end
@@ -1083,18 +959,26 @@ def callbacks(app):
             logger.info(f"Initial summary generated in {t_sum - t_node:.2f}s")
             logger.info(f"Total Analyze Selection time: {t_sum - t0:.2f}s")
             bootstrap_user = summary_result.get("user_msg")
-            if bootstrap_user in session.history:
+            if bootstrap_user is not None and bootstrap_user in session.history:
                 session.history.remove(bootstrap_user)
+
+            # Extract 2-hop paths from the initial summary for Graph highlighting
+            twohop_paths = summary_result.get("twohop_paths", [])
+            # Store in session for subsequent messages
+            _sessions[session_id]["twohop_paths"] = twohop_paths
+            # Cache focus_nodes so follow-up messages reuse the same node set
+            # instead of re-running find_relevant_nodes() on every turn (O(n²) risk)
+            _sessions[session_id]["focus_nodes"] = list(core_node_ids) if core_node_ids else None
 
             if summary_result.get("success"):
                 summary_msg = summary_result.get("assistant_msg")
-                summary_content = summary_msg.content
+                summary_content = summary_result.get("message") or (summary_msg.content if summary_msg else "")
                 suggestions, clean_content = parse_suggestions(summary_content)
                 summary_component = create_message_component(
                     "assistant",
                     clean_content,
-                    summary_msg.sources,
-                    msg_id=summary_msg.msg_id,
+                    summary_msg.sources if summary_msg else None,
+                    msg_id=summary_msg.msg_id if summary_msg else None,
                     suggestions=suggestions,
                 )
                 messages = [summary_component]
@@ -1132,6 +1016,7 @@ def callbacks(app):
                 reset_btn,
                 None,  # ⚠️ FIX: Clear suggested-question-store on re-initialization
                 "chat",
+                twohop_paths,
             )
 
         except Exception as e:
@@ -1148,6 +1033,7 @@ def callbacks(app):
                 reset_btn,
                 no_update,
                 "chat",
+                [],
             )
 
     @app.callback(
@@ -1161,6 +1047,7 @@ def callbacks(app):
             Output("suggested-question-store", "data", allow_duplicate=True),
             Output("chat-send-btn", "disabled", allow_duplicate=True),
             Output("modal-chat-send-btn", "disabled", allow_duplicate=True),
+            Output("twohop-highlight-paths", "data", allow_duplicate=True),
         ],
         [
             Input("chat-send-btn", "n_clicks"),
@@ -1225,7 +1112,7 @@ def callbacks(app):
                 "⚠️ Session expired (server was restarted). Please run a new search to rebuild the graph and start chatting.",
             )
             msgs = list(current_messages or []) + [err_msg]
-            return msgs, msgs, "", "", "", "", None, False, False
+            return msgs, msgs, "", "", "", "", None, False, False, []
 
         session_data = _sessions[savepath["graph"]]
         session = session_data["session"]
@@ -1234,20 +1121,19 @@ def callbacks(app):
             from webapp.callbacks.pipeline import detect_query_language
             from webapp.components.chat import create_message_component
 
-            # Determine response language:
-            # - If session_language is non-English (set from search query language),
-            #   always honour it — so a Chinese-query session always replies in Chinese
-            #   even when the user clicks an English suggested question.
-            # - If session_language is English (or unset), fall back to per-message
-            #   detection so CJK chat messages still get CJK replies.
-            msg_lang = detect_query_language(user_input)
-            if _session_language and _session_language not in ("English", ""):
-                effective_language = _session_language
-            else:
-                effective_language = msg_lang
+            # Response language follows the user's current message.
+            # If the script cannot be determined, detect_query_language returns
+            # "English" as the default — matching the "fallback to English" rule.
+            effective_language = detect_query_language(user_input)
 
-            # Get AI response
-            response = session.send_message(user_input, session_language=effective_language)
+            # Get AI response — reuse cached focus_nodes from analyze_selection
+            # to avoid expensive find_relevant_nodes() on every follow-up turn
+            cached_focus = session_data.get("focus_nodes")
+            response = session.send_message(
+                user_input,
+                session_language=effective_language,
+                focus_nodes=cached_focus,
+            )
 
             if response["success"]:
                 # Use returned message objects for stability instead of relying on history indexing
@@ -1263,8 +1149,13 @@ def callbacks(app):
                 user_msg = create_message_component(
                     "user", user_msg_obj.content, msg_id=user_msg_obj.msg_id
                 )
-                response_content = assistant_msg_obj.content
+                response_content = response.get("message") or (assistant_msg_obj.content if assistant_msg_obj else "")
                 suggestions, clean_content = parse_suggestions(response_content)
+
+                # Update 2-hop paths from the latest response
+                twohop_paths = response.get("twohop_paths", [])
+                if twohop_paths and savepath:
+                    _sessions[savepath["graph"]]["twohop_paths"] = twohop_paths
 
                 ai_msg = create_message_component(
                     "assistant",
@@ -1282,13 +1173,15 @@ def callbacks(app):
                     f"❌ {response.get('message', 'Error processing request')}",
                     msg_id=assistant_msg_obj.msg_id if assistant_msg_obj else None,
                 )
+                twohop_paths = []
 
-            messages = list(current_messages) if current_messages else []
-            messages.append(user_msg)
-            messages.append(ai_msg)
+            # Strip suggestions from all previous messages — only the newest reply
+            # should show pill questions, avoiding repeated rows of the same pills.
+            previous = _strip_message_suggestions(list(current_messages) if current_messages else [])
+            messages = previous + [user_msg, ai_msg]
 
             logger.info(f"DEBUG: send_message SUCCESS. Clearing inputs for trigger: {trigger_id}")
-            return messages, messages, "", "", "", "", None, False, False
+            return messages, messages, "", "", "", "", None, False, False, twohop_paths
 
         except Exception as e:
             logger.error(f"Error sending message: {e}")
@@ -1297,7 +1190,7 @@ def callbacks(app):
             error_msg = create_message_component("assistant", f"❌ Error: {str(e)}")
             messages = list(current_messages) if current_messages else []
             messages.append(error_msg)
-            return messages, messages, "", "", "", "", None, False, False
+            return messages, messages, "", "", "", "", None, False, False, []
 
     @app.callback(
         [
@@ -1332,13 +1225,18 @@ def callbacks(app):
             session_data["session"].clear()
             session_data["rag"].clear()
 
-        # Return to welcome state
-        from webapp.components.chat import create_message_component
-
-        welcome_text = (
-            "Chat cleared. Select edges and click 'Analyze Selection' to start a new conversation."
-        )
-        messages = [create_message_component("assistant", welcome_text)]
+        messages = [
+            html.Div(
+                [
+                    html.Div("💬 Welcome to AI Chat!", className="text-primary fw-bold text-center mb-2"),
+                    html.Div(
+                        "Select edges in the graph, then click 'Analyze Selection' to start chatting.",
+                        className="text-muted text-center small",
+                    ),
+                ],
+                id="chat-welcome-message",
+            )
+        ]
 
         return (
             messages,
@@ -1472,7 +1370,7 @@ def callbacks(app):
             html_body = markdown.markdown(
                 text,
                 extensions=["extra", "sane_lists", "nl2br"],
-                output_format="html5",
+                output_format="html",
             )
             # 2. Hyperlink PMIDs in the resulting HTML text
             html_body = hyperlink_pmids(html_body)
