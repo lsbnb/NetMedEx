@@ -65,6 +65,16 @@ def create_message_component(
         return re.sub(pattern, _wrap, text, count=1)
 
     content = normalize_mermaid_blocks(content)
+
+    # Convert study-type labels in brackets to bold plain text so Markdown
+    # doesn't treat them as reference links.  Match any [Human...] or [Animal...]
+    # variant (including "unspecified", "In vitro", etc.) and CJK equivalents.
+    _STUDY_TYPE_LABELS = re.compile(
+        r'\[((?:Human|Animal|人類|動物|ヒト|인간|동물)[^\]]{0,60})\]',
+        re.IGNORECASE,
+    )
+    content = _STUDY_TYPE_LABELS.sub(lambda m: f"**({m.group(1)})**", content)
+
     linked_content = re.sub(pmid_pattern, replace_pmid, content)
 
     markdown_component = dcc.Markdown(
@@ -266,9 +276,8 @@ chat_input = html.Div(
                     disabled=True,  # Disabled until RAG is initialized
                     rows=3,
                     style={
-                        "resize": "none",
-                        "whiteSpace": "nowrap",
-                        "overflow": "hidden",
+                        "resize": "vertical",
+                        "overflowY": "auto",
                     },
                 ),
                 dbc.Button(
@@ -453,7 +462,7 @@ chat_modal = dbc.Modal(
                             id="modal-chat-input",
                             placeholder="Ask a question...",
                             rows=2,
-                            style={"resize": "none"},
+                            style={"resize": "vertical", "overflowY": "auto"},
                         ),
                         className="flex-grow-1",
                     ),

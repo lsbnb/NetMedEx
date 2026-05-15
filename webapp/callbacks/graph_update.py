@@ -32,15 +32,15 @@ def get_layout_config(layout_name, node_repulsion=45000, node_count=0):
         # Adaptive parameters: scale up separation and iterations for denser graphs
         if node_count > 200:
             separation = 150
-            iterations = 5000
-            quality = "proof"
+            iterations = 1500
+            quality = "default"
         elif node_count > 100:
             separation = 120
-            iterations = 3500
+            iterations = 1000
             quality = "default"
         else:
             separation = 75
-            iterations = 2500
+            iterations = 800
             quality = "default"
 
         return {

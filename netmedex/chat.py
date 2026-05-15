@@ -21,10 +21,11 @@ class ChatMessage:
     """Represents a single chat message"""
 
     role: str  # "user" or "assistant"
-    content: str
+    content: str  # compressed for history (assistant); full text for user
     sources: list[str] | None = None  # PMIDs for assistant messages
     timestamp: str | None = None
     msg_id: str | None = None
+    full_content: str | None = None  # full uncompressed assistant response for export
 
     def __post_init__(self):
         import uuid
@@ -49,7 +50,7 @@ class ChatSession:
     """Manages a conversation with RAG-augmented context"""
 
     # Maximum characters stored per assistant message in the rolling history window.
-    _HISTORY_ASSISTANT_MAX_CHARS = 700
+    _HISTORY_ASSISTANT_MAX_CHARS = 1400
     # Budget for the accumulated memory buffer (all aged-out pairs, compressed).
     _MEMORY_BUFFER_MAX_CHARS = 1800
     # Characters kept per aged-out pair when compressing into memory buffer.
@@ -202,7 +203,18 @@ Three short paragraphs (2–3 sentences each). **Every factual sentence must inc
 
 ## Layer 5 — Suggested Follow-up Questions
 
-Provide exactly 3 questions. **RIGID FORMAT — no bullets, no numbering prefix:**
+Generate exactly 3 questions that help the user **explore deeper**, NOT rephrase the current query.
+Each question must target a **different analytical angle**:
+- Q1: Drill into a **specific mechanism or pathway** identified in the evidence (e.g., "What is the molecular mechanism by which X regulates Y?")
+- Q2: Explore **clinical or translational implications** (e.g., "How might X be leveraged as a therapeutic target for Y?")
+- Q3: Identify a **key knowledge gap or experimental validation** needed (e.g., "What experimental model would best confirm the X→Y→Z causal chain?")
+
+**Rules:**
+- Do NOT restate or rephrase the original user query.
+- Each question must be specific to the findings in THIS response, not generic.
+- Questions should be answerable using PubMed literature and the current knowledge graph.
+
+**RIGID FORMAT — no bullets, no numbering prefix:**
 [Q1: Question 1 text]
 [Q2: Question 2 text]
 [Q3: Question 3 text]
@@ -462,22 +474,26 @@ Provide exactly 3 questions. **RIGID FORMAT — no bullets, no numbering prefix:
                 effective_k = min(effective_k, 5)
                 logger.info("Local model detected: capping context to 5 abstracts")
 
-            if total_docs <= effective_k:
+            # Always use vector search so each question retrieves docs ranked by
+            # similarity to that specific query.  For small collections the search
+            # returns all docs anyway, but in query-relevant order rather than a
+            # fixed weight-based order that would be identical every turn.
+            search_k = min(top_k, 5) if is_local else top_k
+            if total_docs <= search_k:
+                # Small collection: vector search returns all docs; build rich
+                # context that includes edge/relationship data per abstract.
                 logger.info(
-                    f"Document set ({total_docs}) smaller than k({effective_k}), using subset of abstracts"
+                    f"Document set ({total_docs}) ≤ k({search_k}); using vector search with rich formatting"
                 )
-                # Sort by weight (citation-normalized) descending
-                sorted_docs = sorted(
-                    self.rag.documents.values(), key=lambda d: d.weight, reverse=True
-                )
-                pmids_used = [doc.pmid for doc in sorted_docs[:effective_k]]
+                _, pmids_used = self.rag.get_context(search_query, top_k=search_k)
 
                 context_parts = []
                 for rank, pmid in enumerate(pmids_used, start=1):
-                    doc = self.rag.documents[pmid]
-                    priority_label = f"Priority #{rank} (Impact Score: {doc.weight:.2f})"
+                    doc = self.rag.documents.get(pmid)
+                    if doc is None:
+                        continue
+                    priority_label = f"Relevance #{rank} (Impact Score: {doc.weight:.2f})"
 
-                    # Detect Species Study Type
                     study_type = "Human/General"
                     if hasattr(doc, "entities") and doc.entities:
                         non_human_species = [
@@ -493,7 +509,6 @@ Provide exactly 3 questions. **RIGID FORMAT — no bullets, no numbering prefix:
                         f"Abstract: {doc.abstract}",
                     ]
 
-                    # Include structured semantic relationships if available
                     if hasattr(doc, "edges") and doc.edges:
                         unique_rels = set()
                         for edge in doc.edges:
@@ -509,8 +524,7 @@ Provide exactly 3 questions. **RIGID FORMAT — no bullets, no numbering prefix:
                     context_parts.append("\n".join(part))
                 text_context = "\n---\n\n".join(context_parts)
             else:
-                # Use vector search for larger sets - cap top_k for local
-                search_k = min(top_k, 5) if is_local else top_k
+                # Large collection: standard vector search
                 text_context, pmids_used = self.rag.get_context(search_query, top_k=search_k)
 
             # 2. Retrieve Graph Context (Structure)
@@ -597,9 +611,15 @@ Provide exactly 3 questions. **RIGID FORMAT — no bullets, no numbering prefix:
             # Guardrail: remove generic subtype prefix noise (common with some models).
             assistant_content = self._strip_generic_subtype_prefix(assistant_content)
 
-            # Parse citations from response to filter sources
-            # Matches identifiers like: PMID:123456, [PMID:123456], PMID: 123456
-            cited_pmids = set(re.findall(r"PMID:?\s*(\d+)", assistant_content, re.IGNORECASE))
+            # Parse citations from response to filter sources.
+            # Catch all formats the LLM uses:
+            #   PMID:123456 / PMID: 123456 / PMID 123456
+            #   [PMID:123456] / [123456] (bare 7-10 digit number in brackets)
+            cited_pmids = set(
+                re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", assistant_content)
+            ) | set(
+                re.findall(r"\[(\d{7,10})\]", assistant_content)
+            )
 
             # Filter pmids_used to only include those actually cited
             final_sources = [p for p in pmids_used if p in cited_pmids]
@@ -607,7 +627,10 @@ Provide exactly 3 questions. **RIGID FORMAT — no bullets, no numbering prefix:
             history_content = self._compress_for_history(assistant_content)
 
             assistant_msg = ChatMessage(
-                role="assistant", content=history_content, sources=final_sources
+                role="assistant",
+                content=history_content,
+                sources=final_sources,
+                full_content=assistant_content,
             )
             self.history.append(assistant_msg)
             self._trim_history()
@@ -618,6 +641,7 @@ Provide exactly 3 questions. **RIGID FORMAT — no bullets, no numbering prefix:
                 "success": True,
                 "message": assistant_content,
                 "sources": final_sources,
+                "pmids_used": pmids_used,
                 "context_count": len(pmids_used),
                 "user_msg": user_msg,
                 "assistant_msg": assistant_msg,
@@ -743,12 +767,27 @@ Provide exactly 3 questions. **RIGID FORMAT — no bullets, no numbering prefix:
         text = re.sub(r"\n{3,}", "\n\n", text)
         text = re.sub(r" {2,}", " ", text).strip()
 
-        # 8. Truncate at a sentence boundary within the char budget
+        # 8. Collect all PMIDs from original content before truncation
+        all_cited = sorted(set(
+            re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", content)
+        ) | set(
+            re.findall(r"\[(\d{7,10})\]", content)
+        ))
+
+        # 9. Truncate at a sentence boundary within the char budget
         if len(text) > self._HISTORY_ASSISTANT_MAX_CHARS:
             cutoff = text[: self._HISTORY_ASSISTANT_MAX_CHARS].rfind(". ")
             if cutoff < self._HISTORY_ASSISTANT_MAX_CHARS // 2:
                 cutoff = self._HISTORY_ASSISTANT_MAX_CHARS
             text = text[: cutoff + 1].strip() + " [...]"
+
+        # 10. Append PMID summary so truncation never loses citation context
+        if all_cited:
+            pmid_line = f"\n[Cited PMIDs: {', '.join(all_cited[:15])}]"
+            # Only append if not all PMIDs already appear in the compressed text
+            present = set(re.findall(r"\d{7,10}", text))
+            if not set(all_cited).issubset(present):
+                text = text + pmid_line
 
         return text
 
