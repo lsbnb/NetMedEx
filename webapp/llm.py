@@ -74,6 +74,81 @@ def normalize_model_for_provider(provider: str | None, model: str | None) -> str
     return raw_model
 
 
+def initialize_llm_client_from_settings(
+    client,
+    *,
+    provider: str | None,
+    openai_api_key: str | None = None,
+    openai_model: str | None = None,
+    openai_custom_model: str | None = None,
+    google_api_key: str | None = None,
+    google_model: str | None = None,
+    google_safety_setting: str | None = None,
+    local_base_url: str | None = None,
+    local_model: str | None = None,
+    openrouter_api_key: str | None = None,
+    openrouter_model: str | None = None,
+    openrouter_custom_model: str | None = None,
+    nvidia_api_key: str | None = None,
+    nvidia_nim_base_url: str | None = None,
+    nvidia_model: str | None = None,
+):
+    """Initialize an LLMClient from the Advanced Settings UI state.
+
+    Dash callbacks run in different contexts, so keeping provider dispatch in
+    one place prevents the UI from saying one provider while a callback uses
+    another.
+    """
+    selected = (provider or "openai").strip().lower()
+    if selected == "openai":
+        model = (
+            openai_custom_model.strip()
+            if openai_model == "custom" and openai_custom_model
+            else openai_model
+        ) or "gpt-4o-mini"
+        client.initialize_client(
+            provider="openai",
+            api_key=openai_api_key,
+            model=model,
+            base_url=OPENAI_BASE_URL,
+        )
+    elif selected == "google":
+        client.initialize_client(
+            provider="google",
+            api_key=google_api_key,
+            model=google_model or "gemini-1.5-pro",
+            base_url=GEMINI_OPENAI_BASE_URL,
+            safety_setting=google_safety_setting or "medium",
+        )
+    elif selected == "openrouter":
+        model = (
+            openrouter_custom_model.strip()
+            if openrouter_model == "custom" and openrouter_custom_model
+            else openrouter_model
+        ) or "openai/gpt-4o-mini"
+        client.initialize_client(
+            provider="openrouter",
+            api_key=openrouter_api_key,
+            model=model,
+            base_url=OPENROUTER_BASE_URL,
+        )
+    elif selected == "nvidia":
+        client.initialize_client(
+            provider="nvidia",
+            api_key=nvidia_api_key,
+            model=nvidia_model or "meta/llama-3.1-70b-instruct",
+            base_url=(nvidia_nim_base_url or NVIDIA_NIM_BASE_URL).rstrip("/"),
+        )
+    else:
+        client.initialize_client(
+            provider="local",
+            api_key="local-dummy-key",
+            base_url=local_base_url or "http://localhost:11434/v1",
+            model=local_model,
+        )
+    return client
+
+
 class LLMClient:
     def __init__(self):
         self.provider = os.getenv("LLM_PROVIDER", "openai")
@@ -166,6 +241,7 @@ class LLMClient:
                 f"LLM Client initialized with provider: {self.provider}, model: {self.model}, embedding: {self.embedding_model}"
             )
         else:
+            self.client = None
             logger.warning("LLM Client not initialized: No API Key provided")
 
     def test_connection(self) -> tuple[bool, str]:

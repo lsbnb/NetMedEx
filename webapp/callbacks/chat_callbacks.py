@@ -20,6 +20,119 @@ def _resolve_savepath(session_data):
     return resolve_session_savepath(session_data)
 
 
+def _abstract_documents_from_graph(G, *, limit: int | None = None):
+    import datetime
+
+    from netmedex.rag import AbstractDocument
+    from netmedex.utils import calculate_citation_weight
+
+    pmid_abstracts = G.graph.get("pmid_abstract", {}) or {}
+    pmid_titles = G.graph.get("pmid_title", {}) or {}
+    pmid_metadata = G.graph.get("pmid_metadata", {}) or {}
+    current_year = datetime.datetime.now().year
+
+    weighted_pmids = []
+    for raw_pmid in pmid_abstracts:
+        pmid = str(raw_pmid)
+        meta = pmid_metadata.get(raw_pmid, pmid_metadata.get(pmid, {}))
+        if not isinstance(meta, dict):
+            meta = {}
+        weight = calculate_citation_weight(
+            meta.get("citation_count"), meta.get("date"), current_year
+        )
+        weighted_pmids.append((pmid, raw_pmid, weight))
+
+    weighted_pmids.sort(key=lambda item: item[2], reverse=True)
+    if limit is not None:
+        weighted_pmids = weighted_pmids[:limit]
+
+    documents = []
+    for pmid, raw_pmid, weight in weighted_pmids:
+        documents.append(
+            AbstractDocument(
+                pmid=pmid,
+                title=str(pmid_titles.get(raw_pmid, pmid_titles.get(pmid, f"PMID {pmid}")) or f"PMID {pmid}"),
+                abstract=str(pmid_abstracts.get(raw_pmid, pmid_abstracts.get(pmid, "")) or ""),
+                entities=[],
+                edges=[],
+                weight=weight,
+            )
+        )
+    return documents
+
+
+def _initialize_llm_from_callback_state(
+    *,
+    llm_provider,
+    openai_api_key=None,
+    openai_model=None,
+    openai_custom_model=None,
+    google_api_key=None,
+    google_model=None,
+    google_safety_setting=None,
+    llm_base_url=None,
+    llm_model=None,
+    openrouter_api_key=None,
+    openrouter_model=None,
+    openrouter_custom_model=None,
+    nvidia_api_key=None,
+    nvidia_nim_base_url=None,
+    nvidia_model=None,
+):
+    from webapp.llm import initialize_llm_client_from_settings, llm_client
+
+    return initialize_llm_client_from_settings(
+        llm_client,
+        provider=llm_provider,
+        openai_api_key=openai_api_key,
+        openai_model=openai_model,
+        openai_custom_model=openai_custom_model,
+        google_api_key=google_api_key,
+        google_model=google_model,
+        google_safety_setting=google_safety_setting,
+        local_base_url=llm_base_url,
+        local_model=llm_model,
+        openrouter_api_key=openrouter_api_key,
+        openrouter_model=openrouter_model,
+        openrouter_custom_model=openrouter_custom_model,
+        nvidia_api_key=nvidia_api_key,
+        nvidia_nim_base_url=nvidia_nim_base_url,
+        nvidia_model=nvidia_model,
+    )
+
+
+def _rebuild_chat_session_from_graph(savepath, llm_client, topic: str | None = None):
+    from netmedex.chat import ChatSession
+    from netmedex.graph import load_graph
+    from netmedex.graph_rag import GraphRetriever
+    from netmedex.rag import AbstractRAG
+
+    G = load_graph(savepath["graph"])
+    documents = _abstract_documents_from_graph(G)
+    if not documents:
+        raise ValueError("No abstracts available in graph file")
+
+    rag_system = AbstractRAG(llm_client)
+    rag_system.index_abstracts(documents)
+    graph_retriever = GraphRetriever(G, node_rag=None)
+    session = ChatSession(
+        rag_system,
+        llm_client,
+        graph_retriever=graph_retriever,
+        topic=topic or "biomedical research",
+    )
+    _sessions[savepath["graph"]] = {
+        "session": session,
+        "rag": rag_system,
+        "rebuilt_from_graph": True,
+    }
+    logger.info(
+        "Rebuilt chat session from graph file: %s abstracts indexed",
+        len(documents),
+    )
+    return _sessions[savepath["graph"]]
+
+
 def _strip_message_suggestions(messages: list) -> list:
     """Remove .message-suggestions div from all rendered message components.
 
@@ -281,6 +394,9 @@ def callbacks(app):
             State("openrouter-api-key-input", "value"),
             State("openrouter-model-selector", "value"),
             State("openrouter-custom-model-input", "value"),
+            State("nvidia-api-key-input", "value"),
+            State("nvidia-nim-base-url-input", "value"),
+            State("nvidia-model-selector", "value"),
         ],
         prevent_initial_call=True,
     )
@@ -302,6 +418,9 @@ def callbacks(app):
         openrouter_api_key,
         openrouter_model,
         openrouter_custom_model,
+        nvidia_api_key,
+        nvidia_nim_base_url,
+        nvidia_model,
     ):
         """
         Automatically initialize chat with an overall summary when a new graph is loaded.
@@ -327,54 +446,25 @@ def callbacks(app):
 
         from netmedex.chat import ChatSession
         from netmedex.graph import load_graph
-        from netmedex.rag import AbstractDocument, AbstractRAG
-        from webapp.llm import (
-            GEMINI_OPENAI_BASE_URL,
-            OPENAI_BASE_URL,
-            OPENROUTER_BASE_URL,
-            llm_client,
-        )
+        from netmedex.rag import AbstractRAG
 
-        # Initialize LLM Client
-        if llm_provider == "openai":
-            model = (
-                openai_custom_model.strip()
-                if openai_model == "custom" and openai_custom_model
-                else openai_model
-            ) or "gpt-4o-mini"
-            llm_client.initialize_client(
-                provider="openai",
-                api_key=openai_api_key,
-                model=model,
-                base_url=OPENAI_BASE_URL,
-            )
-        elif llm_provider == "google":
-            llm_client.initialize_client(
-                provider="google",
-                api_key=google_api_key,
-                model=google_model or "gemini-1.5-pro",
-                base_url=GEMINI_OPENAI_BASE_URL,
-                safety_setting=google_safety_setting or "medium",
-            )
-        elif llm_provider == "openrouter":
-            model = (
-                openrouter_custom_model.strip()
-                if openrouter_model == "custom" and openrouter_custom_model
-                else openrouter_model
-            ) or "openai/gpt-4o-mini"
-            llm_client.initialize_client(
-                provider="openrouter",
-                api_key=openrouter_api_key,
-                model=model,
-                base_url=OPENROUTER_BASE_URL,
-            )
-        else:
-            llm_client.initialize_client(
-                provider="local",
-                api_key="local-dummy-key",
-                base_url=llm_base_url or "http://localhost:11434/v1",
-                model=llm_model,
-            )
+        llm_client = _initialize_llm_from_callback_state(
+            llm_provider=llm_provider,
+            openai_api_key=openai_api_key,
+            openai_model=openai_model,
+            openai_custom_model=openai_custom_model,
+            google_api_key=google_api_key,
+            google_model=google_model,
+            google_safety_setting=google_safety_setting,
+            llm_base_url=llm_base_url,
+            llm_model=llm_model,
+            openrouter_api_key=openrouter_api_key,
+            openrouter_model=openrouter_model,
+            openrouter_custom_model=openrouter_custom_model,
+            nvidia_api_key=nvidia_api_key,
+            nvidia_nim_base_url=nvidia_nim_base_url,
+            nvidia_model=nvidia_model,
+        )
 
         if not llm_client.client:
             return (
@@ -409,40 +499,7 @@ def callbacks(app):
 
             G = load_graph(savepath["graph"])
 
-            # Extract TOP abstracts for overall summary (Top 50 by citation/weight)
-            pmid_abstracts = G.graph.get("pmid_abstract", {})
-            pmid_titles = G.graph.get("pmid_title", {})
-            pmid_metadata = G.graph.get("pmid_metadata", {})
-
-            import datetime
-
-            from netmedex.utils import calculate_citation_weight
-
-            current_year = datetime.datetime.now().year
-            documents = []
-
-            # Sort PMIDs by weight if citation counts are available
-            all_pmids = list(pmid_abstracts.keys())
-            pmid_weights = []
-            for pmid in all_pmids:
-                meta = pmid_metadata.get(pmid, {})
-                weight = calculate_citation_weight(
-                    meta.get("citation_count"), meta.get("date"), current_year
-                )
-                pmid_weights.append((pmid, weight))
-
-            # Sort by weight descending
-            sorted_pmids = [p for p, w in sorted(pmid_weights, key=lambda x: x[1], reverse=True)]
-            top_pmids = sorted_pmids[:50]  # Limit to top 50 for summary
-
-            for pmid in top_pmids:
-                title = pmid_titles.get(pmid, f"PMID {pmid}")
-                abstract = pmid_abstracts.get(pmid, "")
-                # We don't need edge data for the overall summary, just the abstracts
-                doc = AbstractDocument(
-                    pmid=pmid, title=title, abstract=abstract, entities=[], edges=[], weight=1.0
-                )
-                documents.append(doc)
+            documents = _abstract_documents_from_graph(G, limit=50)
 
             if not documents:
                 raise ValueError("No abstracts available for summary")
@@ -572,6 +629,9 @@ def callbacks(app):
             State("openrouter-api-key-input", "value"),
             State("openrouter-model-selector", "value"),
             State("openrouter-custom-model-input", "value"),
+            State("nvidia-api-key-input", "value"),
+            State("nvidia-nim-base-url-input", "value"),
+            State("nvidia-model-selector", "value"),
         ],
         prevent_initial_call=True,
     )
@@ -594,6 +654,9 @@ def callbacks(app):
         openrouter_api_key,
         openrouter_model,
         openrouter_custom_model,
+        nvidia_api_key,
+        nvidia_nim_base_url,
+        nvidia_model,
     ):
         logger.info("DEBUG: initialize_chat (MANUAL) triggered")
         global _sessions
@@ -610,12 +673,6 @@ def callbacks(app):
             from netmedex.chat import ChatSession
             from netmedex.graph import load_graph
             from netmedex.rag import AbstractDocument, AbstractRAG
-            from webapp.llm import (
-                GEMINI_OPENAI_BASE_URL,
-                OPENAI_BASE_URL,
-                OPENROUTER_BASE_URL,
-                llm_client,
-            )
 
             t0 = time.time()
             logger.info("Starting Chat Analysis...")
@@ -638,46 +695,23 @@ def callbacks(app):
                     [],
                 )
 
-            # Keep chat process LLM config aligned with current Advanced Settings.
-            if llm_provider == "openai":
-                model = (
-                    openai_custom_model.strip()
-                    if openai_model == "custom" and openai_custom_model
-                    else openai_model
-                ) or "gpt-4o-mini"
-                llm_client.initialize_client(
-                    provider="openai",
-                    api_key=openai_api_key,
-                    model=model,
-                    base_url=OPENAI_BASE_URL,
-                )
-            elif llm_provider == "google":
-                llm_client.initialize_client(
-                    provider="google",
-                    api_key=google_api_key,
-                    model=google_model or "gemini-1.5-pro",
-                    base_url=GEMINI_OPENAI_BASE_URL,
-                    safety_setting=google_safety_setting or "medium",
-                )
-            elif llm_provider == "openrouter":
-                model = (
-                    openrouter_custom_model.strip()
-                    if openrouter_model == "custom" and openrouter_custom_model
-                    else openrouter_model
-                ) or "openai/gpt-4o-mini"
-                llm_client.initialize_client(
-                    provider="openrouter",
-                    api_key=openrouter_api_key,
-                    model=model,
-                    base_url=OPENROUTER_BASE_URL,
-                )
-            else:
-                llm_client.initialize_client(
-                    provider="local",
-                    api_key="local-dummy-key",
-                    base_url=llm_base_url or "http://localhost:11434/v1",
-                    model=llm_model,
-                )
+            llm_client = _initialize_llm_from_callback_state(
+                llm_provider=llm_provider,
+                openai_api_key=openai_api_key,
+                openai_model=openai_model,
+                openai_custom_model=openai_custom_model,
+                google_api_key=google_api_key,
+                google_model=google_model,
+                google_safety_setting=google_safety_setting,
+                llm_base_url=llm_base_url,
+                llm_model=llm_model,
+                openrouter_api_key=openrouter_api_key,
+                openrouter_model=openrouter_model,
+                openrouter_custom_model=openrouter_custom_model,
+                nvidia_api_key=nvidia_api_key,
+                nvidia_nim_base_url=nvidia_nim_base_url,
+                nvidia_model=nvidia_model,
+            )
 
             if not llm_client.client:
                 return (
@@ -716,10 +750,85 @@ def callbacks(app):
             t_load = time.time()
             logger.info(f"Graph loaded in {t_load - t0:.2f}s")
 
+            raw_id_to_node = {str(nid): (nid, data) for nid, data in G.nodes(data=True)}
+            cy_id_to_raw_id = {
+                str(data.get("_id")): str(nid)
+                for nid, data in G.nodes(data=True)
+                if data.get("_id")
+            }
+            label_to_raw_ids = {}
+            for nid, data in G.nodes(data=True):
+                label = str(data.get("name", "")).lower().strip()
+                if label:
+                    label_to_raw_ids.setdefault(label, []).append(str(nid))
+
+            def _pmids_from_graph_node(node_payload: dict) -> list[str]:
+                candidates = []
+                for key in ("raw_node_id", "node_id"):
+                    if node_payload.get(key):
+                        candidates.append(str(node_payload[key]))
+                if node_payload.get("id"):
+                    candidates.append(cy_id_to_raw_id.get(str(node_payload["id"]), ""))
+                name_key = str(
+                    node_payload.get("label") or node_payload.get("name") or ""
+                ).lower().strip()
+                candidates.extend(label_to_raw_ids.get(name_key, []))
+
+                seen = set()
+                pmids = []
+                for raw_id in candidates:
+                    if not raw_id or raw_id in seen:
+                        continue
+                    seen.add(raw_id)
+                    graph_node = raw_id_to_node.get(raw_id)
+                    if not graph_node:
+                        continue
+                    node_pmids = graph_node[1].get("pmids", [])
+                    if isinstance(node_pmids, str):
+                        pmids.append(node_pmids)
+                    else:
+                        pmids.extend(str(p) for p in node_pmids)
+                return pmids
+
+            def _edge_pmids_from_graph(edge_payload: dict) -> list[str]:
+                raw_source = edge_payload.get("source_raw_id")
+                raw_target = edge_payload.get("target_raw_id")
+                if not raw_source and edge_payload.get("source"):
+                    raw_source = cy_id_to_raw_id.get(str(edge_payload["source"]))
+                if not raw_target and edge_payload.get("target"):
+                    raw_target = cy_id_to_raw_id.get(str(edge_payload["target"]))
+
+                source_node = raw_id_to_node.get(str(raw_source or ""))
+                target_node = raw_id_to_node.get(str(raw_target or ""))
+                if (
+                    source_node
+                    and target_node
+                    and G.has_edge(source_node[0], target_node[0])
+                ):
+                    data = G.edges[source_node[0], target_node[0]]
+                else:
+                    source_name = str(edge_payload.get("source_name", "")).lower().strip()
+                    target_name = str(edge_payload.get("target_name", "")).lower().strip()
+                    data = None
+                    for u in label_to_raw_ids.get(source_name, []):
+                        for v in label_to_raw_ids.get(target_name, []):
+                            u_node = raw_id_to_node.get(u)
+                            v_node = raw_id_to_node.get(v)
+                            if u_node and v_node and G.has_edge(u_node[0], v_node[0]):
+                                data = G.edges[u_node[0], v_node[0]]
+                                break
+                        if data is not None:
+                            break
+                if not data:
+                    return []
+                if data.get("pmids"):
+                    return [str(p) for p in data.get("pmids", [])]
+                return [str(p) for p in data.get("relations", {}).keys()]
+
             # Extract PMIDs and build abstract documents
             pmid_data = {}
-            for edge in selected_edges:
-                edge_pmids = edge.get("pmids", [])
+            for edge in selected_edges or []:
+                edge_pmids = edge.get("pmids", []) or _edge_pmids_from_graph(edge)
                 if isinstance(edge_pmids, str):
                     edge_pmids = [edge_pmids]
 
@@ -733,7 +842,7 @@ def callbacks(app):
                 # Need to map node IDs back to graph nodes if selected_nodes doesn't have pmid info complete
                 # But Cytoscape selectedNodeData should contain the data object
                 for node in selected_nodes:
-                    node_pmids = node.get("pmids", [])
+                    node_pmids = node.get("pmids", []) or _pmids_from_graph_node(node)
                     if isinstance(node_pmids, str):
                         node_pmids = [node_pmids]
 
@@ -754,8 +863,25 @@ def callbacks(app):
 
             current_year = datetime.datetime.now().year
 
-            logger.info(f"PMIDs in selected edges: {list(pmid_data.keys())}")
-            logger.info(f"Total abstracts in graph: {len(pmid_abstracts)}")
+            # Preflight diagnostic — log before indexing
+            pmid_count = len(pmid_data)
+            matched_abstract_count = sum(1 for p in pmid_data if p in pmid_abstracts)
+            logger.info(
+                "Preflight: selected_nodes=%s selected_edges=%s pmids=%s abstracts_matched=%s/%s",
+                len(selected_nodes or []),
+                len(selected_edges or []),
+                pmid_count,
+                matched_abstract_count,
+                len(pmid_abstracts),
+            )
+            if matched_abstract_count < pmid_count:
+                logger.warning(
+                    "Only %s/%s selected PMIDs have abstracts in the graph; "
+                    "%s PMID(s) will be indexed without abstract text.",
+                    matched_abstract_count,
+                    pmid_count,
+                    pmid_count - matched_abstract_count,
+                )
 
             # Build node ID → display name map so edge context uses readable names
             node_name_map = {
@@ -838,11 +964,19 @@ def callbacks(app):
                 for n in selected_nodes:
                     if str(n.get("id", "")).startswith("c"):
                         continue  # skip community nodes
+                    raw_node_id = n.get("raw_node_id") or cy_id_to_raw_id.get(str(n.get("id", "")))
+                    if raw_node_id and str(raw_node_id) in raw_id_to_node:
+                        core_node_ids.add(raw_id_to_node[str(raw_node_id)][0])
+                        continue
                     name_key = str(n.get("label", n.get("name", ""))).lower().strip()
                     if name_key in label_to_raw_id:
                         core_node_ids.add(label_to_raw_id[name_key])
             if selected_edges:
                 for e in selected_edges:
+                    for raw_field in ("source_raw_id", "target_raw_id"):
+                        raw_node_id = e.get(raw_field)
+                        if raw_node_id and str(raw_node_id) in raw_id_to_node:
+                            core_node_ids.add(raw_id_to_node[str(raw_node_id)][0])
                     for name_field in ("source_name", "target_name"):
                         name_key = str(e.get(name_field, "")).lower().strip()
                         if name_key in label_to_raw_id:
@@ -872,13 +1006,14 @@ def callbacks(app):
                         logger.info(
                             f"Partial indexing complete: {len(graph_nodes)}/ {total_nodes} nodes indexed."
                         )
+                    _node_index_count = len(graph_nodes)
+                    _node_index_mode = "partial"
                 else:
                     logger.info(
                         f"Small graph detected ({total_nodes} nodes). Building full node list..."
                     )
                     graph_nodes = []
                     for node_id, data in G.nodes(data=True):
-                        # Ensure we have a name
                         name = data.get("name", str(node_id))
                         node_type = data.get("type", "Entity")
                         graph_node = GraphNode(
@@ -888,8 +1023,12 @@ def callbacks(app):
 
                     node_rag.index_nodes(graph_nodes)
                     logger.info(f"Full indexing complete: {len(graph_nodes)} nodes indexed.")
+                    _node_index_count = len(graph_nodes)
+                    _node_index_mode = "full"
             else:
                 logger.info("NodeRAG already indexed. Skipping re-scan.")
+                _node_index_count = node_rag.count() if hasattr(node_rag, "count") else len(G.nodes)
+                _node_index_mode = "cached"
 
             t_node = time.time()
             logger.info(f"Node indexing check in {t_node - t_rag:.2f}s")
@@ -1014,9 +1153,15 @@ def callbacks(app):
                     )
                 ]
 
+            _index_summary = (
+                f"📊 {matched_abstract_count} abstracts · "
+                f"{_node_index_count} nodes ({_node_index_mode})"
+            )
+            logger.info("Indexing summary: %s", _index_summary)
+
             return (
                 True,
-                "",
+                _index_summary,
                 False,  # Enable input
                 False,  # Enable send button
                 {"display": "block"},  # Show clear button
@@ -1071,6 +1216,22 @@ def callbacks(app):
             State("session-language", "data"),
             State("chat-send-btn", "disabled"),
             State("current-session-path", "data"),
+            State("data-input", "value"),
+            State("llm-provider-selector", "value"),
+            State("openai-api-key-input", "value"),
+            State("openai-model-selector", "value"),
+            State("openai-custom-model-input", "value"),
+            State("google-api-key-input", "value"),
+            State("google-model-selector", "value"),
+            State("google-safety-setting", "value"),
+            State("llm-base-url-input", "value"),
+            State("llm-model-input", "value"),
+            State("openrouter-api-key-input", "value"),
+            State("openrouter-model-selector", "value"),
+            State("openrouter-custom-model-input", "value"),
+            State("nvidia-api-key-input", "value"),
+            State("nvidia-nim-base-url-input", "value"),
+            State("nvidia-model-selector", "value"),
         ],
         prevent_initial_call=True,
     )
@@ -1084,6 +1245,22 @@ def callbacks(app):
         _session_language,
         is_disabled,
         session_data,
+        search_query,
+        llm_provider,
+        openai_api_key,
+        openai_model,
+        openai_custom_model,
+        google_api_key,
+        google_model,
+        google_safety_setting,
+        llm_base_url,
+        llm_model,
+        openrouter_api_key,
+        openrouter_model,
+        openrouter_custom_model,
+        nvidia_api_key,
+        nvidia_nim_base_url,
+        nvidia_model,
     ):
         """
         Process user message and get AI response.
@@ -1115,11 +1292,42 @@ def callbacks(app):
         except SessionPathError:
             savepath = None
 
+        if savepath and savepath["graph"] not in _sessions:
+            try:
+                import os
+
+                if os.path.exists(savepath["graph"]):
+                    llm_client = _initialize_llm_from_callback_state(
+                        llm_provider=llm_provider,
+                        openai_api_key=openai_api_key,
+                        openai_model=openai_model,
+                        openai_custom_model=openai_custom_model,
+                        google_api_key=google_api_key,
+                        google_model=google_model,
+                        google_safety_setting=google_safety_setting,
+                        llm_base_url=llm_base_url,
+                        llm_model=llm_model,
+                        openrouter_api_key=openrouter_api_key,
+                        openrouter_model=openrouter_model,
+                        openrouter_custom_model=openrouter_custom_model,
+                        nvidia_api_key=nvidia_api_key,
+                        nvidia_nim_base_url=nvidia_nim_base_url,
+                        nvidia_model=nvidia_model,
+                    )
+                    if llm_client.client:
+                        _rebuild_chat_session_from_graph(
+                            savepath,
+                            llm_client,
+                            topic=search_query,
+                        )
+            except Exception as e:
+                logger.error(f"Failed to rebuild chat session from graph: {e}")
+
         if not savepath or savepath["graph"] not in _sessions:
             from webapp.components.chat import create_message_component
             err_msg = create_message_component(
                 "assistant",
-                "⚠️ Session expired (server was restarted). Please run a new search to rebuild the graph and start chatting.",
+                "⚠️ Session expired and the chat context could not be rebuilt. Please verify the LLM settings or run a new search.",
             )
             msgs = list(current_messages or []) + [err_msg]
             return msgs, msgs, "", "", "", "", None, False, False, []
