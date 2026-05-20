@@ -72,6 +72,18 @@ def _pubtator_timeout() -> aiohttp.ClientTimeout:
     )
 
 
+def _dedupe_pmids(pmids: Sequence[str | int]) -> list[str]:
+    seen = set()
+    deduped = []
+    for pmid in pmids:
+        value = str(pmid).strip()
+        if not value or value in seen:
+            continue
+        seen.add(value)
+        deduped.append(value)
+    return deduped
+
+
 class PubTatorAPI:
     """Retrieve PubMed articles with entity annotations via PubTator3 API.
 
@@ -152,6 +164,14 @@ class PubTatorAPI:
         if not pmid_list:
             raise NoArticles
 
+        original_pmid_count = len(pmid_list)
+        pmid_list = _dedupe_pmids(pmid_list)
+        if len(pmid_list) < original_pmid_count:
+            logger.info(
+                "Removed %s duplicate PMID(s) before annotation fetch",
+                original_pmid_count - len(pmid_list),
+            )
+
         if self.return_pmid_only:
             return PubTatorCollection(headers=[], articles=[], metadata={"pmid_list": pmid_list})
 
@@ -177,6 +197,13 @@ class PubTatorAPI:
                     [article for article in PubTatorIterator(result) if article is not None]
                 )
 
+        if len(articles) < len(pmid_list):
+            logger.warning(
+                "PubTator returned parsed annotations for %s/%s requested PMID(s)",
+                len(articles),
+                len(pmid_list),
+            )
+
         return PubTatorCollection(
             headers=[],
             articles=articles,
@@ -196,7 +223,7 @@ class PubTatorAPI:
         return article_list
 
     async def _handle_query_search(self, query: str, session: ClientSession):
-        res_json = await send_search_query(query, session=session)
+        res_json = await send_search_query(query, self.sort, session=session)
 
         collected_article_ids: list[str] = []
         total_articles = int(res_json["count"])
@@ -340,11 +367,17 @@ class PubTatorAPI:
 
 async def send_search_query(
     query: str,
+    sort: Literal["score", "date"],
     session: ClientSession,
 ):
+    params = {"text": query, "limit": 100}
+    if sort == "score":
+        params["sort"] = "score desc"
+    elif sort == "date":
+        params["sort"] = "date desc"
     return await request_pubtator3(
         PUBTATOR_SEARCH_URL,
-        params={"text": query, "limit": 100},
+        params=params,
         session=session,
         is_json=True,
     )

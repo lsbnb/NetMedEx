@@ -212,11 +212,16 @@ class SemanticRelationshipExtractor:
                 for i, article in enumerate(articles)
             }
 
+            # Per-article hard timeout: 2× LLM_TIMEOUT (first pass) + 2× coverage pass + retry waits
+            # 90s × 2 passes × (1 call + 1 retry) + 15+30s backoff ≈ 420s is the absolute worst case.
+            # Using 300s (5 min) is a practical ceiling; timed-out articles are skipped with a warning.
+            ARTICLE_TIMEOUT = 300
+
             for future in concurrent.futures.as_completed(future_to_article):
                 article = future_to_article[future]
                 completed += 1
                 try:
-                    edges = future.result()
+                    edges = future.result(timeout=ARTICLE_TIMEOUT)
                     all_edges.extend(edges)
                     error_msg = self.last_article_errors.get(article.pmid)
                     if error_msg:
@@ -230,6 +235,11 @@ class SemanticRelationshipExtractor:
                             f"Completed PMID {article.pmid} ({len(edges)} semantic edges)",
                             None,
                         )
+                except concurrent.futures.TimeoutError:
+                    failed += 1
+                    msg = f"Timed out PMID {article.pmid} (>{ARTICLE_TIMEOUT}s) — skipped"
+                    logger.warning(msg)
+                    update_progress(completed, total, msg, "timeout")
                 except Exception as e:
                     failed += 1
                     logger.error(f"Unexpected executor error for {article.pmid}: {e}")
@@ -295,7 +305,7 @@ class SemanticRelationshipExtractor:
             if provider in ("google", "openai", "openrouter"):
                 call_kwargs["response_format"] = {"type": "json_object"}
 
-            response = self._call_llm(prompt, **call_kwargs)
+            response = self._call_llm(prompt, **call_kwargs, pmid=article.pmid, current=article_num, total=0)
             relationships = self._parse_llm_response(response, article.pmid)
 
             initial_recall = len(relationships)
@@ -324,7 +334,7 @@ class SemanticRelationshipExtractor:
                     pass_name = "coverage-pass"
 
                 # Global recovery pass
-                coverage_response = self._call_llm(coverage_prompt, max_tokens=2000)
+                coverage_response = self._call_llm(coverage_prompt, max_tokens=2000, pmid=article.pmid, current=article_num, total=0)
                 coverage_rels = self._parse_llm_response(coverage_response, article.pmid)
 
                 # Merge results using robust sorted-pair deduplication
@@ -355,7 +365,7 @@ class SemanticRelationshipExtractor:
                 retry_prompt = self._build_compact_retry_prompt(
                     article.title, article.abstract, entity_list
                 )
-                response = self._call_llm(retry_prompt, max_tokens=1000)
+                response = self._call_llm(retry_prompt, max_tokens=1000, pmid=article.pmid, current=article_num, total=0)
                 relationships = self._parse_llm_response(response, article.pmid)
 
         except Exception as e:
@@ -652,7 +662,13 @@ Title: {title}
 """
 
     def _call_llm(
-        self, prompt: str, max_tokens: int = 1500, response_format: dict | None = None
+        self,
+        prompt: str,
+        max_tokens: int = 1500,
+        response_format: dict | None = None,
+        pmid: str = "",
+        current: int = 0,
+        total: int = 0,
     ) -> str:
         """Call the LLM API with the constructed prompt"""
         provider = self._get_provider()
@@ -666,7 +682,10 @@ Title: {title}
             "You analyze scientific abstracts and identify relationships between entities. "
             "Always respond with valid JSON."
         )
-        max_retries = 5
+        # Semantic-RE responses are compact JSON; 90s is sufficient for all providers.
+        # Using a shorter timeout improves perceived responsiveness on slow networks.
+        LLM_TIMEOUT = 90.0
+        max_retries = 4
         for attempt in range(max_retries):
             try:
                 logger.info(
@@ -679,7 +698,7 @@ Title: {title}
                     ],
                     temperature=0.1,
                     max_tokens=max_tokens,
-                    timeout=180.0,
+                    timeout=LLM_TIMEOUT,
                     response_format=response_format,
                 )
                 preview = (response_text[:400] + "...") if len(response_text) > 400 else response_text
@@ -689,8 +708,14 @@ Title: {title}
                 err = str(e).lower()
                 is_rate_limit = any(t in err for t in ("429", "rate limit", "quota", "resource exhausted", "too many requests"))
                 if is_rate_limit and attempt < max_retries - 1:
-                    wait = 15 * (2 ** attempt)  # 15s, 30s, 60s, 120s
+                    wait = 15 * (2 ** attempt)  # 15s, 30s, 60s
                     logger.warning(f"Rate limit hit (attempt {attempt + 1}/{max_retries}), waiting {wait}s before retry...")
+                    if self.progress_callback and pmid and total:
+                        self.progress_callback(
+                            current, total,
+                            f"Rate limit — retrying PMID {pmid} (attempt {attempt + 2}/{max_retries}, wait {wait}s)",
+                            None,
+                        )
                     time.sleep(wait)
                 else:
                     logger.error(f"LLM call failed: {e}")

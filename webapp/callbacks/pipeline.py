@@ -21,7 +21,7 @@ from netmedex.normalization import normalize_knowledge_graph
 from netmedex.pubtator import PubTatorAPI
 from netmedex.pubtator_parser import PubTatorIO
 from netmedex.utils_threading import run_thread_with_error_notification
-from webapp.llm import GEMINI_OPENAI_BASE_URL, OPENAI_BASE_URL, OPENROUTER_BASE_URL, llm_client
+from webapp.llm import initialize_llm_client_from_settings, llm_client
 from webapp.utils import (
     display,
     generate_session_id,
@@ -103,6 +103,9 @@ def callbacks(app):
             State("openrouter-api-key-input", "value"),
             State("openrouter-model-selector", "value"),
             State("openrouter-custom-model-input", "value"),
+            State("nvidia-api-key-input", "value"),
+            State("nvidia-nim-base-url-input", "value"),
+            State("nvidia-model-selector", "value"),
             State("normalization-toggle", "value"),
         ],
         running=[
@@ -152,6 +155,9 @@ def callbacks(app):
         openrouter_api_key,
         openrouter_model,
         openrouter_custom_model,
+        nvidia_api_key,
+        nvidia_nim_base_url,
+        nvidia_model,
         normalization_toggle,
     ):
         try:
@@ -229,42 +235,24 @@ def callbacks(app):
                 )
             # ----------------------------------------------------------------
 
-            # Initialize LLM Client for the background process
-            if llm_provider == "openai":
-                model = openai_custom_model if openai_model == "custom" else openai_model
-                llm_client.initialize_client(
-                    api_key=openai_api_key,
-                    model=model,
-                    base_url=OPENAI_BASE_URL,
-                    provider="openai",
-                )
-            elif llm_provider == "google":
-                llm_client.initialize_client(
-                    api_key=google_api_key,
-                    model=google_model,
-                    base_url=GEMINI_OPENAI_BASE_URL,
-                    provider="google",
-                    safety_setting=google_safety_setting,
-                )
-            elif llm_provider == "openrouter":
-                or_model = (
-                    openrouter_custom_model.strip()
-                    if openrouter_model == "custom" and openrouter_custom_model
-                    else openrouter_model
-                )
-                llm_client.initialize_client(
-                    api_key=openrouter_api_key,
-                    model=or_model,
-                    base_url=OPENROUTER_BASE_URL,
-                    provider="openrouter",
-                )
-            else:  # local
-                llm_client.initialize_client(
-                    api_key="local-dummy-key",
-                    base_url=llm_base_url,
-                    model=llm_model,
-                    provider="local",
-                )
+            initialize_llm_client_from_settings(
+                llm_client,
+                provider=llm_provider,
+                openai_api_key=openai_api_key,
+                openai_model=openai_model,
+                openai_custom_model=openai_custom_model,
+                google_api_key=google_api_key,
+                google_model=google_model,
+                google_safety_setting=google_safety_setting,
+                local_base_url=llm_base_url,
+                local_model=llm_model,
+                openrouter_api_key=openrouter_api_key,
+                openrouter_model=openrouter_model,
+                openrouter_custom_model=openrouter_custom_model,
+                nvidia_api_key=nvidia_api_key,
+                nvidia_nim_base_url=nvidia_nim_base_url,
+                nvidia_model=nvidia_model,
+            )
             logger.info(
                 f"LLM Client initialized in background process: provider={llm_provider}, model={llm_client.model}"
             )
@@ -300,6 +288,12 @@ def callbacks(app):
                 # ... (existing api logic mostly unchanged, but we need to update the pmid_file decoding too)
                 if input_type == "query":
                     query = data_input
+                    detected_lang = detect_query_language(query)
+                    if detected_lang != "English" and not llm_client.client:
+                        raise ValueError(
+                            f"{detected_lang} Search requires an active LLM configuration "
+                            "so NetMedEx can translate the query to PubTator-compatible English."
+                        )
 
                     if ai_search_toggle:
                         if not llm_client.client:
@@ -318,7 +312,6 @@ def callbacks(app):
                                 # translate_query_to_boolean() always receives English input.
                                 # This prevents the boolean fallback from returning the original
                                 # non-English text (which PubTator3 cannot search).
-                                detected_lang = detect_query_language(query)
                                 if detected_lang != "English":
                                     set_progress(
                                         (
@@ -364,7 +357,6 @@ def callbacks(app):
                         # Use translate_to_english() (faithful, no boolean operators) so the
                         # resulting query is equivalent to the user typing the same concept in
                         # English — producing the same article count from PubTator3.
-                        detected_lang = detect_query_language(query)
                         if detected_lang != "English" and llm_client.client:
                             set_progress(
                                 (
@@ -391,6 +383,7 @@ def callbacks(app):
                                         f"Translation Failed: {e}. Using original query.",
                                     )
                                 )
+                    logger.info("Final PubTator query: %s", query)
 
                 elif input_type == "pmids":
                     pmid_list = load_pmids(data_input, load_from="string")
