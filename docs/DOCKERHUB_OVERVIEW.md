@@ -1,4 +1,4 @@
-# NetMedEx v1.2.6: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.2.7: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
@@ -17,11 +17,15 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.2.6
-- **2-Hop Pathway Diagrams**: The Chat Panel now renders Mermaid `graph LR` flowcharts for each 2-hop mechanistic inference, with PMID-annotated edges and gold-highlighted bridge (mediator) nodes — pathways are instantly readable, not just listed.
-- **Chat→Graph Highlighting**: 2-hop inference results automatically sync to the Graph panel. Bridge nodes glow gold; inferred path edges appear as dashed orange lines, clearly distinguishing speculative 2-hop chains from direct 1-hop literature evidence.
-- **Semantic RE Directionality Fix**: Directional relation extraction (activates, inhibits, etc.) now correctly assigns `entity1_id` as source/effector and `entity2_id` as target/effectee, eliminating reversed edges in the knowledge graph.
-- **No-Context Response Language**: When context is insufficient, the Chat assistant now responds in the active session language rather than always falling back to English.
+## 🆕 What's New in v1.2.7
+- **Graph Performance**: Large graphs (>700 nodes) skip redundant client-side fCoSE re-layout; server-side rebuild timing is now logged.
+- **Graph Loading Spinner**: A loading overlay appears during graph rebuild, eliminating the blank-graph gap after Search completes.
+- **NVIDIA NIM Everywhere**: NIM is now correctly dispatched in Search, auto-Chat, manual Chat, and session-rebuild callbacks.
+- **Non-English Search Gate**: CJK/Korean queries require an active LLM; final translated query is logged.
+- **PubTator Sort Fix**: Page-1 search now uses the selected sort, preventing duplicate/missing PMIDs across pages.
+- **Lazy Session Rebuild**: Server restart no longer shows "session expired" — ChatSession is lazily reconstructed from persisted graph file.
+- **Chat Indexing Diagnostic**: Preflight log and UI summary show selected nodes/edges, PMID count, and abstract match rate before indexing.
+- **Semantic RE Reliability**: LLM timeout 180 s → 90 s; per-article hard timeout 300 s; rate-limit retry progress shown in UI.
 
 ---
 
