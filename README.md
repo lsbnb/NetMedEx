@@ -1,4 +1,4 @@
-# NetMedEx v1.2.6
+# NetMedEx v1.2.7
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -6,11 +6,23 @@
 
 NetMedEx is an AI-powered knowledge discovery platform designed to transform biomedical literature into actionable insights. Unlike traditional tools that merely extract entities, NetMedEx leverages **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** and **Full-Text BioC-JSON Processing** to synthesize structured co-mention networks with unstructured text, providing a holistic understanding of biological relationships.
 
-In NetMedEx, the **Co-Mention Network** serves as a structural "scaffolding." While the network visualizes the landscape of bio-concepts (genes, diseases, chemicals, etc.), the **AI-driven Semantic Layer** breathes life into these connections by extracting evidence, identifying relationship types, and answering complex natural language queries. **v1.1.0** introduces **sapBERT-based KG Normalization**, ensuring semantic consistency by merging equivalent concept variants across the Knowledge Graph. **v1.2.6** advances the Chat Panel with a **5-Layer Evidence Reasoning Framework** that strictly separates direct literature evidence, association inference, causal mechanism hypotheses, and integrated summary—each with edge-level PMID citations—alongside **Dijkstra weighted shortest-path search** in the Graph Panel and **MeSH CUI-based entity deduplication** to prevent abbreviation/full-name fragmentation (e.g., `"hcv"` ↔ `"hepatitis c virus"`).
+In NetMedEx, the **Co-Mention Network** serves as a structural "scaffolding." While the network visualizes the landscape of bio-concepts (genes, diseases, chemicals, etc.), the **AI-driven Semantic Layer** breathes life into these connections by extracting evidence, identifying relationship types, and answering complex natural language queries. **v1.1.0** introduces **sapBERT-based KG Normalization**, ensuring semantic consistency by merging equivalent concept variants across the Knowledge Graph. **v1.2.7** delivers stability and performance improvements — graph lag fixes (preset layout fallback for large graphs), a loading spinner during graph rebuild, NVIDIA NIM wired into all Search/Chat callbacks, lazy ChatSession reconstruction after server restarts, and a preflight diagnostic for Chat indexing. **v1.2.6** advances the Chat Panel with a **5-Layer Evidence Reasoning Framework** that strictly separates direct literature evidence, association inference, causal mechanism hypotheses, and integrated summary—each with edge-level PMID citations—alongside **Dijkstra weighted shortest-path search** in the Graph Panel and **MeSH CUI-based entity deduplication** to prevent abbreviation/full-name fragmentation (e.g., `"hcv"` ↔ `"hepatitis c virus"`).
 
 ---
 
 ## 🆕 Recent Updates
+
+### v1.2.7 — 2026-05-21
+- **Graph Lag Fix**: Server-side rebuild timing logs added; large graphs (>700 visible nodes) now use Cytoscape `preset` layout to skip a redundant client-side fCoSE pass after server-side layout.
+- **Graph Loading Spinner**: A `dcc.Loading` overlay appears while the server-side graph rebuild callback runs, eliminating the blank-graph gap after Search completes.
+- **NVIDIA NIM in All Callbacks**: Shared LLM initialisation helper ensures NVIDIA NIM is correctly wired into Search pipeline, auto-Chat, manual Chat, and session-rebuild paths (previously fell through to Local Ollama).
+- **Non-English Search Gate**: Non-English queries now require an active LLM client to proceed; the final translated PubTator query is logged. Previously, CJK/Korean queries could reach PubTator untranslated when no LLM was configured.
+- **PubTator Sort Consistency**: Page-1 search now passes the selected sort parameter, matching subsequent pages and eliminating duplicate/missing PMIDs across pagination.
+- **PMID Deduplication**: PMIDs are deduplicated (order-preserving) before annotation fetch; a warning is emitted when parsed article count is significantly below `max_articles`.
+- **Lazy Session Rebuild**: After a server restart, the Chat send-message callback reconstructs `ChatSession` from the persisted `G.pkl` instead of showing "session expired".
+- **Chat Indexing Diagnostic**: Preflight log reports `selected_nodes`, `selected_edges`, `pmids`, and `abstracts_matched/total` before indexing. Indexing summary (`📊 N abstracts · M nodes (mode)`) displayed in status bar.
+- **Semantic RE Timeout**: LLM timeout reduced 180 s → 90 s; per-article hard timeout of 300 s added; rate-limit retry progress reported in UI.
+- **Node-Degree Debounce**: Number input fires graph rebuild only on Enter/blur, preventing per-keystroke rebuilds.
 
 ### v1.2.6 — 2026-05-15
 - **5-Layer Evidence Reasoning Framework**: Chat responses are now structured into five layers — (1) Evidence-Based Answer with direct PMID citations per claim and `[Human]`/`[Animal/In vitro]` labelling; (2) Association / Speculative Inference with structured hypothesis blocks (graph path, per-edge PMIDs, path confidence, why speculative); (3) Causal Biomedical Mechanism with directional causal chain, polarity, evidence table, weakest link, and testable prediction (only when directional edges exist); (4) Final Integrated Summary with inline PMIDs; (5) Suggested Follow-up Questions.
