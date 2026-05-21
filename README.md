@@ -91,8 +91,8 @@ pip install git+https://github.com/lsbnb/NetMedEx.git
 ```
 *Recommended: Python >= 3.11*
 
-> [!NOTE]
-> The PyPI release (`pip install netmedex`) is currently behind the latest codebase. Use the GitHub install above to get all v1.2.x features including NVIDIA NIM support, collapsible UI panels, and Hybrid RAG improvements.
+> [!WARNING]
+> The PyPI release (`pip install netmedex`) is outdated and only supports up to version `0.3.0`. Please use the GitHub installation command above to get the latest `v1.2.x` features (including Hybrid RAG, Google Gemini/NVIDIA NIM support, collapsible UI panels, and performance optimizations).
 
 ## 💻 Web Application (Local)
 

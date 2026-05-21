@@ -98,7 +98,7 @@ HOST=127.0.0.1 python -m webapp.app
 ```bash
 pip install -r requirements.txt
 # 或
-pip install netmedex
+pip install git+https://github.com/lsbnb/NetMedEx.git
 ```
 
 ## 測試環境
