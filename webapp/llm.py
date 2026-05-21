@@ -220,6 +220,16 @@ class LLMClient:
             self.model = model
         if embedding_model:
             self.embedding_model = embedding_model
+        elif provider:
+            # Dynamically set a default embedding model for the new provider
+            if self.provider == "google":
+                self.embedding_model = "text-embedding-004"
+            elif self.provider == "local":
+                self.embedding_model = "nomic-embed-text"
+            elif self.provider == "nvidia":
+                self.embedding_model = "nvidia/embeddings-nv-embed-qa-4"
+            else:
+                self.embedding_model = "text-embedding-3-small"
         if safety_setting:
             self.safety_setting = safety_setting
         self.model = normalize_model_for_provider(self.provider, self.model)
@@ -336,6 +346,32 @@ class LLMClient:
             return ""
         return str(content).strip()
 
+    def get_embeddings(self, texts: list[str]) -> list[list[float]]:
+        """
+        Fetch embeddings for a list of texts using the configured provider and embedding model.
+        """
+        if not self.api_key:
+            raise ValueError("LLM API key is not configured")
+
+        if not self.client:
+            raise ValueError("LLM client not initialized")
+
+        if not texts:
+            return []
+
+        # Batch inputs to avoid token/size limits (OpenAI limit is 2048 per request)
+        batch_size = 128
+        embeddings = []
+        for i in range(0, len(texts), batch_size):
+            batch = texts[i : i + batch_size]
+            response = self.client.embeddings.create(
+                input=batch,
+                model=self.embedding_model,
+            )
+            embeddings.extend([item.embedding for item in response.data])
+
+        return embeddings
+
     def translate_to_english(self, text: str) -> str:
         """
         Translates text to English unconditionally.
@@ -392,21 +428,21 @@ class LLMClient:
             "Do NOT include every concept from the sentence — generic terms like 'signaling', 'pathway', 'mechanism', 'modulate', 'regulation' should be omitted unless they are the sole focus. "
             "A query with too many AND conditions returns zero results. Prefer a focused query over an exhaustive one. "
             "OR EXPANSION RULE: When adding a secondary concept, use OR to include common synonyms rather than a single exact phrase. "
-            "For example, instead of AND \"inflammatory regulation\", write AND (\"inflammation\" OR \"anti-inflammatory\" OR \"immune response\"). "
+            'For example, instead of AND "inflammatory regulation", write AND ("inflammation" OR "anti-inflammatory" OR "immune response"). '
             "RARE ENTITY RULE: If the query contains a highly specific entity (e.g., a rare microorganism species, uncommon gene), "
             "that entity name alone is often sufficient — adding secondary AND constraints may discard most relevant papers. "
             "In that case, return just the specific entity name without any AND conditions. "
             "MIRNA / NON-CODING RNA RULE: When the query mentions miRNA, microRNA, lncRNA, or other non-coding RNAs, "
             "always include them explicitly as text terms alongside @GENE. "
-            "Do NOT replace miRNA/microRNA with just @GENE alone — use (@GENE OR \"miRNA\" OR \"microRNA\"). "
+            'Do NOT replace miRNA/microRNA with just @GENE alone — use (@GENE OR "miRNA" OR "microRNA"). '
             "Examples: "
             "'骨質疏鬆的基因' -> '\"Osteoporosis\" AND @GENE' "
             "'Lung cancer genes' -> '\"Lung Neoplasms\" AND @GENE' "
             "'胃癌與幽門螺旋桿菌的關係' -> '\"Stomach Neoplasms\" AND \"Helicobacter pylori\"' "
-            "'大腸直腸癌相關的菌相及其調控基因、miRNA' -> '\"Colorectal Neoplasms\" AND (\"microbiota\" OR \"gut microbiome\") AND (@GENE OR \"miRNA\" OR \"microRNA\")' "
-            "'Anaerostipes hadrus inflammatory regulation' -> '\"Anaerostipes hadrus\" AND (\"inflammation\" OR \"butyrate\" OR \"gut microbiota\")' "
+            '\'大腸直腸癌相關的菌相及其調控基因、miRNA\' -> \'"Colorectal Neoplasms" AND ("microbiota" OR "gut microbiome") AND (@GENE OR "miRNA" OR "microRNA")\' '
+            '\'Anaerostipes hadrus inflammatory regulation\' -> \'"Anaerostipes hadrus" AND ("inflammation" OR "butyrate" OR "gut microbiota")\' '
             "'pathway linking Anaerostipes hadrus to inflammation' -> '\"Anaerostipes hadrus\"' "
-            '\'covid 19 treatment with aspirin\' -> \'"COVID-19" AND "Aspirin"\' '
+            "'covid 19 treatment with aspirin' -> '\"COVID-19\" AND \"Aspirin\"' "
             "Return ONLY the English boolean query string. Do not include explanations, quotes around the result, or markdown blocks."
         )
 
@@ -432,8 +468,7 @@ class LLMClient:
                 quoted = re.findall(r'"([^"]*)"', boolean_query)
                 for q in quoted:
                     has_op = (
-                        re.search(r'\b(AND|OR|NOT)\b', q, re.IGNORECASE) is not None
-                        or "@" in q
+                        re.search(r"\b(AND|OR|NOT)\b", q, re.IGNORECASE) is not None or "@" in q
                     )
                     if has_op:
                         boolean_query = q
@@ -534,6 +569,7 @@ class LLMClient:
             # Do not return the original query if it contains no ASCII text —
             # non-English text sent directly to PubTator3 returns no results.
             import re as _re
+
             if not _re.search(r"[A-Za-z]", natural_query):
                 return ""
             return natural_query
