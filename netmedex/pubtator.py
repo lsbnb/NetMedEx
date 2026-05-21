@@ -3,6 +3,7 @@ from __future__ import annotations
 # https://www.ncbi.nlm.nih.gov/research/pubtator3/api
 import asyncio
 import logging
+import os
 import sys
 from collections.abc import Awaitable, Callable, Sequence
 from functools import partial
@@ -35,6 +36,18 @@ PUBTATOR_CITE_URL = "https://www.ncbi.nlm.nih.gov/research/pubtator3-api/cite/ts
 MAX_CONCURRENT_REQUESTS = 3
 REQUEST_INTERVAL = 0.8
 
+
+def _timeout_value(env_name: str, default: float) -> float:
+    try:
+        return max(1.0, float(os.getenv(env_name, str(default))))
+    except ValueError:
+        return default
+
+
+PUBTATOR_TIMEOUT_TOTAL = _timeout_value("NETMEDEX_PUBTATOR_TIMEOUT_TOTAL", 120.0)
+PUBTATOR_TIMEOUT_CONNECT = _timeout_value("NETMEDEX_PUBTATOR_TIMEOUT_CONNECT", 15.0)
+PUBTATOR_TIMEOUT_SOCK_READ = _timeout_value("NETMEDEX_PUBTATOR_TIMEOUT_SOCK_READ", 60.0)
+
 PUBTATOR_RETRY_ERRORS = {
     # Error code: custom error message
     408: "Please retry later",  # Request Timeout
@@ -49,6 +62,26 @@ PUBTATOR_RETRY_ERRORS = {
 # RESPONSE_FORMAT = ["pubtator", "biocxml", "biocjson"][2]
 logger = logging.getLogger(__name__)
 config_logger(is_debug=False)
+
+
+def _pubtator_timeout() -> aiohttp.ClientTimeout:
+    return aiohttp.ClientTimeout(
+        total=PUBTATOR_TIMEOUT_TOTAL,
+        connect=PUBTATOR_TIMEOUT_CONNECT,
+        sock_read=PUBTATOR_TIMEOUT_SOCK_READ,
+    )
+
+
+def _dedupe_pmids(pmids: Sequence[str | int]) -> list[str]:
+    seen = set()
+    deduped = []
+    for pmid in pmids:
+        value = str(pmid).strip()
+        if not value or value in seen:
+            continue
+        seen.add(value)
+        deduped.append(value)
+    return deduped
 
 
 class PubTatorAPI:
@@ -131,6 +164,14 @@ class PubTatorAPI:
         if not pmid_list:
             raise NoArticles
 
+        original_pmid_count = len(pmid_list)
+        pmid_list = _dedupe_pmids(pmid_list)
+        if len(pmid_list) < original_pmid_count:
+            logger.info(
+                "Removed %s duplicate PMID(s) before annotation fetch",
+                original_pmid_count - len(pmid_list),
+            )
+
         if self.return_pmid_only:
             return PubTatorCollection(headers=[], articles=[], metadata={"pmid_list": pmid_list})
 
@@ -156,6 +197,13 @@ class PubTatorAPI:
                     [article for article in PubTatorIterator(result) if article is not None]
                 )
 
+        if len(articles) < len(pmid_list):
+            logger.warning(
+                "PubTator returned parsed annotations for %s/%s requested PMID(s)",
+                len(articles),
+                len(pmid_list),
+            )
+
         return PubTatorCollection(
             headers=[],
             articles=articles,
@@ -166,7 +214,7 @@ class PubTatorAPI:
     async def get_query_results(self, query: str):
         logger.info(f"Query: {query}")
         article_list: list[str] = []
-        async with ClientSession() as session:
+        async with ClientSession(timeout=_pubtator_timeout()) as session:
             if self.api_method == "search":
                 article_list = await self._handle_query_search(query, session=session)
             elif self.api_method == "cite":
@@ -175,7 +223,7 @@ class PubTatorAPI:
         return article_list
 
     async def _handle_query_search(self, query: str, session: ClientSession):
-        res_json = await send_search_query(query, session=session)
+        res_json = await send_search_query(query, self.sort, session=session)
 
         collected_article_ids: list[str] = []
         total_articles = int(res_json["count"])
@@ -263,7 +311,7 @@ class PubTatorAPI:
         else:
             logger.info("Step 2/2: Requesting article annotations...")
 
-        async with ClientSession() as session:
+        async with ClientSession(timeout=_pubtator_timeout()) as session:
 
             async def each_request(batch, pbar):
                 pmid_start = batch * PMID_REQUEST_SIZE
@@ -319,11 +367,17 @@ class PubTatorAPI:
 
 async def send_search_query(
     query: str,
+    sort: Literal["score", "date"],
     session: ClientSession,
 ):
+    params = {"text": query, "limit": 100}
+    if sort == "score":
+        params["sort"] = "score desc"
+    elif sort == "date":
+        params["sort"] = "date desc"
     return await request_pubtator3(
         PUBTATOR_SEARCH_URL,
-        params={"text": query, "limit": 100},
+        params=params,
         session=session,
         is_json=True,
     )
@@ -423,17 +477,22 @@ async def request_pubtator3(
     session: ClientSession,
     is_json: bool = True,
 ) -> Any:
-    async with session.get(url, params=params) as res:
-        check_if_need_retry(res)
-        try:
-            if is_json:
-                result = await res.json()
-            else:
-                result = await res.text()
-        except Exception as e:
-            msg = f"Failed to parse response: {res.url} Error: {e}"
-            logger.warning(f"{msg} Retrying.")
-            raise RetryableError(msg)
+    try:
+        async with session.get(url, params=params) as res:
+            check_if_need_retry(res)
+            try:
+                if is_json:
+                    result = await res.json()
+                else:
+                    result = await res.text()
+            except Exception as e:
+                msg = f"Failed to parse response: {res.url} Error: {e}"
+                logger.warning(f"{msg} Retrying.")
+                raise RetryableError(msg)
+    except asyncio.TimeoutError as exc:
+        msg = "PubTator request timed out. Please retry later or use a more specific query."
+        logger.warning(f"{msg} URL: {url}")
+        raise RetryableError(msg) from exc
 
     return result
 

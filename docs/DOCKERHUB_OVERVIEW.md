@@ -1,4 +1,4 @@
-# NetMedEx v1.2.5: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.2.7: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
@@ -17,12 +17,15 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.2.5
-- **ONNX Model Pre-bundled**: ChromaDB `all-MiniLM-L6-v2` embedding model (~80 MB) is now bundled in the Docker image — first-run chat works instantly, no internet download required.
-- **NVIDIA NIM Support**: Added NVIDIA NIM as a fifth LLM provider alongside OpenAI, Google Gemini, OpenRouter, and Local Ollama. Supports both cloud NIM and on-premises deployments.
-- **Offline HTML Export**: Vendor JS libraries (Cytoscape, fCose) are now bundled in pip/Docker builds — HTML export no longer requires CDN access.
-- **UI Polish**: Collapsible Search Options / Advanced Network Options / Display Filters panels; AI Search simplified to inline toggle; Chat tab teal accent.
-- **Bug Fixes**: Suggested question pills no longer trigger duplicate responses; active sidebar tab preserved across page refreshes.
+## 🆕 What's New in v1.2.7
+- **Graph Performance**: Large graphs (>700 nodes) skip redundant client-side fCoSE re-layout; server-side rebuild timing is now logged.
+- **Graph Loading Spinner**: A loading overlay appears during graph rebuild, eliminating the blank-graph gap after Search completes.
+- **NVIDIA NIM Everywhere**: NIM is now correctly dispatched in Search, auto-Chat, manual Chat, and session-rebuild callbacks.
+- **Non-English Search Gate**: CJK/Korean queries require an active LLM; final translated query is logged.
+- **PubTator Sort Fix**: Page-1 search now uses the selected sort, preventing duplicate/missing PMIDs across pages.
+- **Lazy Session Rebuild**: Server restart no longer shows "session expired" — ChatSession is lazily reconstructed from persisted graph file.
+- **Chat Indexing Diagnostic**: Preflight log and UI summary show selected nodes/edges, PMID count, and abstract match rate before indexing.
+- **Semantic RE Reliability**: LLM timeout 180 s → 90 s; per-article hard timeout 300 s; rate-limit retry progress shown in UI.
 
 ---
 

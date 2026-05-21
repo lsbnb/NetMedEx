@@ -1,4 +1,6 @@
 import os
+import logging
+import time
 from dash import (
     ClientsideFunction,
     Input,
@@ -12,6 +14,8 @@ from dash import (
 from netmedex.cytoscape_js import create_cytoscape_js
 from webapp.callbacks.graph_utils import rebuild_graph
 from webapp.utils import SessionPathError, resolve_session_savepath
+
+logger = logging.getLogger(__name__)
 
 
 def build_pmid_citation_dict(graph_obj):
@@ -29,18 +33,25 @@ def get_layout_config(layout_name, node_repulsion=45000, node_count=0):
     Targeting better visualization for compound/community graphs.
     """
     if layout_name == "fcose":
+        if node_count > 700:
+            logger.info(
+                "Large graph (%s nodes): using preset layout to avoid expensive client-side fCoSE",
+                node_count,
+            )
+            return {"name": "preset", "fit": True, "padding": 50}
+
         # Adaptive parameters: scale up separation and iterations for denser graphs
         if node_count > 200:
             separation = 150
-            iterations = 5000
-            quality = "proof"
+            iterations = 1500
+            quality = "default"
         elif node_count > 100:
             separation = 120
-            iterations = 3500
+            iterations = 1000
             quality = "default"
         else:
             separation = 75
-            iterations = 2500
+            iterations = 800
             quality = "default"
 
         return {
@@ -239,6 +250,7 @@ def callbacks(app):
 
         if rebuild_needed or layout_changed:
             try:
+                t0 = time.time()
                 # Defensive check: Ensure graph path exists before trying to load it
                 graph_path = savepath.get("graph")
                 if not graph_path or not os.path.exists(graph_path):
@@ -266,8 +278,10 @@ def callbacks(app):
                     community=show_community,
                     weighting_method=weighting_method,
                 )
+                t_rebuild = time.time()
 
                 graph_json = create_cytoscape_js(G, style="dash")
+                t_json = time.time()
                 if G.graph.get("is_pruned"):
                     print(
                         f"WARNING: Graph was pruned for performance. Final Elements: {len(graph_json['elements']['nodes'])} nodes, {len(graph_json['elements']['edges'])} edges"
@@ -276,6 +290,15 @@ def callbacks(app):
                 elements = [*graph_json["elements"]["nodes"], *graph_json["elements"]["edges"]]
                 n_nodes = len(graph_json["elements"]["nodes"])
                 layout_config = get_layout_config(graph_layout, node_repulsion, node_count=n_nodes)
+                logger.info(
+                    "Graph update timing: rebuild=%.2fs cytoscape_json=%.2fs total_server=%.2fs nodes=%s edges=%s layout=%s",
+                    t_rebuild - t0,
+                    t_json - t_rebuild,
+                    time.time() - t0,
+                    n_nodes,
+                    len(graph_json["elements"]["edges"]),
+                    layout_config.get("name"),
+                )
                 pmid_citation_dict = build_pmid_citation_dict(G)
                 pmid_title_dict = G.graph.get("pmid_title", {})
 
@@ -355,6 +378,7 @@ def callbacks(app):
         Input("graph-node-search", "value"),
         Input("graph-visible-node-types", "value"),
         Input("cy", "elements"),
+        Input("twohop-highlight-paths", "data"),
         State("cy", "stylesheet"),
         prevent_initial_call=False,
     )

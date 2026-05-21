@@ -1,10 +1,7 @@
 from __future__ import annotations
 
-import base64
-import io
 import logging
 import os
-import pickle
 import threading
 from queue import Queue
 
@@ -19,12 +16,12 @@ from netmedex.exceptions import (
     RetryableError,
     UnsuccessfulRequest,
 )
-from netmedex.graph import PubTatorGraphBuilder, save_graph
+from netmedex.graph import PubTatorGraphBuilder, safe_load_graph_pickle, save_graph
 from netmedex.normalization import normalize_knowledge_graph
 from netmedex.pubtator import PubTatorAPI
 from netmedex.pubtator_parser import PubTatorIO
 from netmedex.utils_threading import run_thread_with_error_notification
-from webapp.llm import GEMINI_OPENAI_BASE_URL, OPENAI_BASE_URL, OPENROUTER_BASE_URL, llm_client
+from webapp.llm import initialize_llm_client_from_settings, llm_client
 from webapp.utils import (
     display,
     generate_session_id,
@@ -32,62 +29,15 @@ from webapp.utils import (
     make_session_token,
     visibility,
 )
+from webapp.upload_limits import (
+    MAX_GRAPH_UPLOAD_BYTES,
+    MAX_PMID_UPLOAD_BYTES,
+    MAX_PUBTATOR_UPLOAD_BYTES,
+    decode_upload_bytes,
+    decode_upload_text,
+)
 
 logger = logging.getLogger(__name__)
-
-
-class _RestrictedGraphUnpickler(pickle.Unpickler):
-    """Restricted unpickler for trusted NetMedEx graph pickle payloads."""
-
-    _ALLOWED = {
-        "builtins": {
-            "dict",
-            "list",
-            "tuple",
-            "set",
-            "frozenset",
-            "str",
-            "int",
-            "float",
-            "bool",
-            "bytes",
-            "bytearray",
-        },
-        "networkx.classes.graph": {"Graph"},
-        "networkx.classes.digraph": {"DiGraph"},
-        "networkx.classes.multigraph": {"MultiGraph"},
-        "networkx.classes.multidigraph": {"MultiDiGraph"},
-        "networkx.classes.reportviews": {
-            "NodeView", "EdgeView", "DegreeView",
-            "NodeDataView", "EdgeDataView", "DegreeDataView",
-            "AdjacencyView", "AtlasView",
-            "DiDegreeView", "InDegreeView", "OutDegreeView",
-            "InEdgeView", "OutEdgeView",
-        },
-        "networkx.classes.coreviews": {
-            "AdjacencyView", "AtlasView", "FilterAdjacency",
-            "FilterAtlas", "FilterMultiAdjacency", "FilterMultiInner",
-            "UnionAdjacency", "UnionAtlas", "UnionMultiAdjacency", "UnionMultiInner",
-        },
-        "networkx.classes.filters": {"no_filter", "hide_nodes", "hide_edges"},
-        "collections": {"defaultdict"},
-        # numpy array reconstruction (numpy >= 2.0 uses _core, older uses core)
-        "numpy._core.multiarray": {"_reconstruct", "scalar"},
-        "numpy.core.multiarray": {"_reconstruct", "scalar"},
-        "numpy": {"ndarray", "dtype"},
-        "numpy._core._multiarray_umath": {"_reconstruct"},
-    }
-
-    def find_class(self, module, name):
-        allowed_names = self._ALLOWED.get(module, set())
-        if name in allowed_names:
-            return super().find_class(module, name)
-        raise pickle.UnpicklingError(f"Blocked pickle class: {module}.{name}")
-
-
-def _safe_load_graph_pickle(payload: bytes):
-    return _RestrictedGraphUnpickler(io.BytesIO(payload)).load()
-
 
 def detect_query_language(text: str) -> str:
     """
@@ -153,6 +103,9 @@ def callbacks(app):
             State("openrouter-api-key-input", "value"),
             State("openrouter-model-selector", "value"),
             State("openrouter-custom-model-input", "value"),
+            State("nvidia-api-key-input", "value"),
+            State("nvidia-nim-base-url-input", "value"),
+            State("nvidia-model-selector", "value"),
             State("normalization-toggle", "value"),
         ],
         running=[
@@ -202,6 +155,9 @@ def callbacks(app):
         openrouter_api_key,
         openrouter_model,
         openrouter_custom_model,
+        nvidia_api_key,
+        nvidia_nim_base_url,
+        nvidia_model,
         normalization_toggle,
     ):
         try:
@@ -227,15 +183,14 @@ def callbacks(app):
                         "Set ALLOW_UNSAFE_GRAPH_PICKLE_UPLOAD=true only for trusted files."
                     )
 
-                content_type, content_string = graph_file_data.split(",")
-                graph_bytes = base64.b64decode(content_string)
+                _, graph_bytes = decode_upload_bytes(
+                    graph_file_data,
+                    max_bytes=MAX_GRAPH_UPLOAD_BYTES,
+                    label="Graph pickle",
+                )
 
-                # Write pickle to session path
-                with open(savepath["graph"], "wb") as f:
-                    f.write(graph_bytes)
-
-                # Load and validate
-                G = _safe_load_graph_pickle(graph_bytes)
+                # Load and validate before writing to the trusted session path.
+                G = safe_load_graph_pickle(graph_bytes)
 
                 if not isinstance(G, nx.Graph):
                     raise ValueError(
@@ -249,6 +204,9 @@ def callbacks(app):
                             f"Invalid Graph file: missing required metadata '{k}'. "
                             "Please upload a file exported from NetMedEx Graph Panel."
                         )
+
+                with open(savepath["graph"], "wb") as f:
+                    f.write(graph_bytes)
 
                 num_articles = len(G.graph.get("pmid_title", {}))
                 num_nodes = G.number_of_nodes()
@@ -277,42 +235,24 @@ def callbacks(app):
                 )
             # ----------------------------------------------------------------
 
-            # Initialize LLM Client for the background process
-            if llm_provider == "openai":
-                model = openai_custom_model if openai_model == "custom" else openai_model
-                llm_client.initialize_client(
-                    api_key=openai_api_key,
-                    model=model,
-                    base_url=OPENAI_BASE_URL,
-                    provider="openai",
-                )
-            elif llm_provider == "google":
-                llm_client.initialize_client(
-                    api_key=google_api_key,
-                    model=google_model,
-                    base_url=GEMINI_OPENAI_BASE_URL,
-                    provider="google",
-                    safety_setting=google_safety_setting,
-                )
-            elif llm_provider == "openrouter":
-                or_model = (
-                    openrouter_custom_model.strip()
-                    if openrouter_model == "custom" and openrouter_custom_model
-                    else openrouter_model
-                )
-                llm_client.initialize_client(
-                    api_key=openrouter_api_key,
-                    model=or_model,
-                    base_url=OPENROUTER_BASE_URL,
-                    provider="openrouter",
-                )
-            else:  # local
-                llm_client.initialize_client(
-                    api_key="local-dummy-key",
-                    base_url=llm_base_url,
-                    model=llm_model,
-                    provider="local",
-                )
+            initialize_llm_client_from_settings(
+                llm_client,
+                provider=llm_provider,
+                openai_api_key=openai_api_key,
+                openai_model=openai_model,
+                openai_custom_model=openai_custom_model,
+                google_api_key=google_api_key,
+                google_model=google_model,
+                google_safety_setting=google_safety_setting,
+                local_base_url=llm_base_url,
+                local_model=llm_model,
+                openrouter_api_key=openrouter_api_key,
+                openrouter_model=openrouter_model,
+                openrouter_custom_model=openrouter_custom_model,
+                nvidia_api_key=nvidia_api_key,
+                nvidia_nim_base_url=nvidia_nim_base_url,
+                nvidia_model=nvidia_model,
+            )
             logger.info(
                 f"LLM Client initialized in background process: provider={llm_provider}, model={llm_client.model}"
             )
@@ -331,12 +271,8 @@ def callbacks(app):
             fetch_citations = "fetch_citations" in pubtator_params
             community = "community" in cy_params
 
-            def decode_file_content(content_string):
-                decoded_bytes = base64.b64decode(content_string)
-                try:
-                    return decoded_bytes.decode("utf-8")
-                except UnicodeDecodeError:
-                    return decoded_bytes.decode("latin-1")
+            def decode_file_content(contents, max_bytes, label):
+                return decode_upload_text(contents, max_bytes=max_bytes, label=label)
 
             # Detect language from the raw user query (before AI translation)
             detected_language = (
@@ -352,6 +288,12 @@ def callbacks(app):
                 # ... (existing api logic mostly unchanged, but we need to update the pmid_file decoding too)
                 if input_type == "query":
                     query = data_input
+                    detected_lang = detect_query_language(query)
+                    if detected_lang != "English" and not llm_client.client:
+                        raise ValueError(
+                            f"{detected_lang} Search requires an active LLM configuration "
+                            "so NetMedEx can translate the query to PubTator-compatible English."
+                        )
 
                     if ai_search_toggle:
                         if not llm_client.client:
@@ -370,7 +312,6 @@ def callbacks(app):
                                 # translate_query_to_boolean() always receives English input.
                                 # This prevents the boolean fallback from returning the original
                                 # non-English text (which PubTator3 cannot search).
-                                detected_lang = detect_query_language(query)
                                 if detected_lang != "English":
                                     set_progress(
                                         (
@@ -416,7 +357,6 @@ def callbacks(app):
                         # Use translate_to_english() (faithful, no boolean operators) so the
                         # resulting query is equivalent to the user typing the same concept in
                         # English — producing the same article count from PubTator3.
-                        detected_lang = detect_query_language(query)
                         if detected_lang != "English" and llm_client.client:
                             set_progress(
                                 (
@@ -443,14 +383,18 @@ def callbacks(app):
                                         f"Translation Failed: {e}. Using original query.",
                                     )
                                 )
+                    logger.info("Final PubTator query: %s", query)
 
                 elif input_type == "pmids":
                     pmid_list = load_pmids(data_input, load_from="string")
                 elif input_type == "pmid_file":
                     if not pmid_file_data:
                         raise EmptyInput("No PMID file uploaded")
-                    content_type, content_string = pmid_file_data.split(",")
-                    decoded_content = decode_file_content(content_string)
+                    _, decoded_content = decode_file_content(
+                        pmid_file_data,
+                        MAX_PMID_UPLOAD_BYTES,
+                        "PMID list",
+                    )
                     decoded_content = decoded_content.replace("\n", ",")
                     pmid_list = load_pmids(decoded_content, load_from="string")
 
@@ -532,8 +476,11 @@ def callbacks(app):
             elif source == "file":
                 if not pubtator_file_data:
                     raise EmptyInput("No PubTator file uploaded")
-                content_type, content_string = pubtator_file_data.split(",")
-                decoded_content = decode_file_content(content_string)
+                content_type, decoded_content = decode_file_content(
+                    pubtator_file_data,
+                    MAX_PUBTATOR_UPLOAD_BYTES,
+                    "PubTator/BioC-JSON file",
+                )
                 stripped_content = decoded_content.lstrip()
                 filename_lower = (pubtator_filename or "").lower()
                 is_biocjson_upload = (

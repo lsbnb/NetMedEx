@@ -48,6 +48,24 @@ graph = html.Div(
         html.Div(
             [
                 graph_info,
+                # Spinner that activates when cy.elements is being updated.
+                # Placed as a sibling (not a wrapper) so Cytoscape's flex height
+                # is never disrupted.
+                dcc.Loading(
+                    id="cy-loading",
+                    type="circle",
+                    color="#0d6efd",
+                    target_components={"cy": "elements"},
+                    overlay_style={
+                        "position": "absolute",
+                        "top": "50%",
+                        "left": "50%",
+                        "transform": "translate(-50%, -50%)",
+                        "zIndex": 20,
+                        "pointerEvents": "none",
+                    },
+                    style={"display": "none"},
+                ),
                 html.Div(
                     id="cytoscape-graph",
                     className="flex-grow-1",
@@ -70,6 +88,7 @@ graph = html.Div(
                 dcc.Store(id="memory-graph-layout"),
                 dcc.Store(id="memory-fcose-node-repulsion"),
                 dcc.Store(id="session-language", data="English"),
+                dcc.Store(id="twohop-highlight-paths", data=[]),
                 dcc.Store(id="sidebar-collapsed-store", storage_type="local", data=False),
             ],
             id="cy-graph-container",

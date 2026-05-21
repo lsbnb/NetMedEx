@@ -459,6 +459,32 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         style: {{
             'opacity': 0.05
         }}
+    }},
+    {{
+        selector: '.path-anchor',
+        style: {{
+            'border-width': 3,
+            'border-color': '#ff6b00',
+            'border-opacity': 1,
+        }}
+    }},
+    {{
+        selector: '.path-intermediate',
+        style: {{
+            'border-width': 2,
+            'border-color': '#20b2aa',
+            'border-opacity': 1,
+        }}
+    }},
+    {{
+        selector: '.path-edge',
+        style: {{
+            'opacity': 1,
+            'line-color': '#ff8c00',
+            'target-arrow-color': '#ff8c00',
+            'source-arrow-color': '#ff8c00',
+            'width': 3,
+        }}
     }}
   ]
   }});
@@ -529,34 +555,141 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       }});
   }});
 
-  // Search Logic — supports comma-separated multi-term queries
+  // Search Logic — segment-aware matching + Dijkstra shortest path (weighted by edge strength)
   const searchInput = document.getElementById('search-input');
+
+  const _normalizeText = txt => String(txt || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  const _SYNONYM_MAP = {{
+      metformin: ['glucophage', 'dimethylbiguanide'],
+      t2dm: ['type2diabetes', 'type2diabetesmellitus', 'diabetesmellitustype2'],
+      diabetes: ['diabetesmellitus', 'dm'],
+      covid19: ['sarscov2', 'coronavirusdisease2019', 'covid'],
+      egfr: ['erb1', 'epidermalgrowthfactorreceptor'],
+      tp53: ['p53', 'tumorproteinp53'],
+  }};
+  const _buildCandidates = query => {{
+      const q = _normalizeText(query);
+      if (!q) return [];
+      const out = new Set([q]);
+      for (const a of (_SYNONYM_MAP[q] || [])) out.add(_normalizeText(a));
+      for (const [base, list] of Object.entries(_SYNONYM_MAP)) {{
+          if (list.map(_normalizeText).includes(q)) out.add(base);
+      }}
+      return Array.from(out).filter(Boolean);
+  }};
+  const _matchLabel = (text, candidate) => {{
+      const segs = String(text || '').toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+      if (segs.some(s => s === candidate || s.startsWith(candidate))) return true;
+      if (candidate.length >= 5) {{
+          if (segs.join('').includes(candidate)) return true;
+      }}
+      return false;
+  }};
+
   searchInput.addEventListener('input', function(e) {{
-      const rawQuery = e.target.value.trim().toLowerCase();
+      const rawQuery = e.target.value.trim();
 
       cy.batch(() => {{
-          if (!rawQuery) {{
-              cy.elements().removeClass('dimmed').removeClass('dimmed-edge').removeClass('highlighted');
+          cy.elements()
+              .removeClass('dimmed').removeClass('dimmed-edge').removeClass('highlighted')
+              .removeClass('path-anchor').removeClass('path-intermediate').removeClass('path-edge');
+
+          if (!rawQuery) return;
+
+          const rawTerms = rawQuery.split(',').map(t => t.trim()).filter(Boolean);
+
+          // Find anchor nodes via segment-aware matching
+          let anchorNodes = cy.collection();
+          for (const term of rawTerms) {{
+              const candidates = _buildCandidates(term);
+              if (!candidates.length) continue;
+              anchorNodes = anchorNodes.union(
+                  cy.nodes().filter(n =>
+                      candidates.some(q =>
+                          _matchLabel(n.data('label') || '', q) ||
+                          _matchLabel(n.data('standardized_id') || '', q)
+                      )
+                  )
+              );
+          }}
+
+          if (anchorNodes.length === 0) {{
+              cy.elements().addClass('dimmed');
+              cy.edges().addClass('dimmed-edge');
               return;
           }}
 
-          const terms = rawQuery.split(',').map(t => t.trim()).filter(Boolean);
+          // Dijkstra shortest paths between every pair of anchor nodes
+          let pathMode = false;
+          const anchorIds = [];
+          anchorNodes.forEach(n => anchorIds.push(n.id()));
+          const anchorIdSet = new Set(anchorIds);
+          const allPathNodes = new Set(anchorIds);
+          const allPathEdges = new Set();
 
-          const matches = cy.nodes().filter(n => {{
-              const label = (n.data('label') || "").toLowerCase();
-              const id = (n.data('standardized_id') || "").toLowerCase();
-              return terms.some(term => label.includes(term) || id.includes(term));
-          }});
+          if (anchorNodes.length >= 2) {{
+              // Weighted adjacency: cost = 1 / weight (higher NPMI → lower cost)
+              const adj = new Map();
+              cy.nodes().forEach(n => {{ if (!n.hasClass('filtered')) adj.set(n.id(), []); }});
+              cy.edges().forEach(ed => {{
+                  if (ed.hasClass('filtered')) return;
+                  const src = ed.data('source'), tgt = ed.data('target');
+                  if (!adj.has(src) || !adj.has(tgt)) return;
+                  const cost = 1 / Math.max(Number(ed.data('weight')) || 1, 0.1);
+                  adj.get(src).push({{ id: tgt, edgeId: ed.id(), cost }});
+                  adj.get(tgt).push({{ id: src, edgeId: ed.id(), cost }});
+              }});
 
-          if (matches.length > 0) {{
-              cy.elements().addClass('dimmed');
-              cy.edges().addClass('dimmed-edge');
-              const neighborhood = matches.neighborhood();
-              matches.removeClass('dimmed').addClass('highlighted');
-              neighborhood.removeClass('dimmed').removeClass('dimmed-edge');
+              for (let i = 0; i < anchorIds.length; i++) {{
+                  for (let j = i + 1; j < anchorIds.length; j++) {{
+                      const src = anchorIds[i], tgt = anchorIds[j];
+                      const dist = new Map([[src, 0]]);
+                      const prev = new Map([[src, null]]);
+                      const pq = [[0, src]];
+                      while (pq.length > 0) {{
+                          let mi = 0;
+                          for (let k = 1; k < pq.length; k++) {{ if (pq[k][0] < pq[mi][0]) mi = k; }}
+                          const [d, u] = pq.splice(mi, 1)[0];
+                          if (u === tgt) break;
+                          if (d > (dist.get(u) ?? Infinity)) continue;
+                          for (const {{ id: v, edgeId, cost }} of (adj.get(u) || [])) {{
+                              const nd = d + cost;
+                              if (nd < (dist.get(v) ?? Infinity)) {{
+                                  dist.set(v, nd);
+                                  prev.set(v, {{ prev: u, edgeId }});
+                                  pq.push([nd, v]);
+                              }}
+                          }}
+                      }}
+                      if (dist.has(tgt)) {{
+                          pathMode = true;
+                          let cur = tgt;
+                          while (prev.get(cur) !== null) {{
+                              allPathNodes.add(cur);
+                              const {{ prev: p, edgeId }} = prev.get(cur);
+                              if (edgeId) allPathEdges.add(edgeId);
+                              cur = p;
+                          }}
+                      }}
+                  }}
+              }}
+          }}
+
+          cy.elements().addClass('dimmed');
+          cy.edges().addClass('dimmed-edge');
+
+          if (pathMode) {{
+              allPathNodes.forEach(id => cy.$id(id).removeClass('dimmed'));
+              allPathEdges.forEach(id => cy.$id(id).removeClass('dimmed').removeClass('dimmed-edge').addClass('path-edge'));
+              anchorNodes.removeClass('dimmed').addClass('path-anchor');
+              allPathNodes.forEach(id => {{
+                  if (!anchorIdSet.has(id)) cy.$id(id).addClass('path-intermediate');
+              }});
           }} else {{
-              cy.elements().addClass('dimmed');
-              cy.edges().addClass('dimmed-edge');
+              // Fallback: neighbour highlight
+              const nbhood = anchorNodes.neighborhood();
+              anchorNodes.removeClass('dimmed').addClass('highlighted');
+              nbhood.removeClass('dimmed').removeClass('dimmed-edge');
           }}
       }});
   }});
