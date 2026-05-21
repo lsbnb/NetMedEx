@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib
+import io
 import logging
 import math
 import pickle
@@ -820,8 +821,83 @@ def save_graph(
     logger.info(f"Save graph to {savepath}")
 
 
-def load_graph(graph_pickle_path: str):
+class _RestrictedGraphUnpickler(pickle.Unpickler):
+    """Restricted unpickler for NetMedEx NetworkX graph payloads."""
+
+    _ALLOWED = {
+        "builtins": {
+            "dict",
+            "list",
+            "tuple",
+            "set",
+            "frozenset",
+            "str",
+            "int",
+            "float",
+            "bool",
+            "bytes",
+            "bytearray",
+        },
+        "collections": {"defaultdict"},
+        "networkx.classes.graph": {"Graph"},
+        "networkx.classes.digraph": {"DiGraph"},
+        "networkx.classes.multigraph": {"MultiGraph"},
+        "networkx.classes.multidigraph": {"MultiDiGraph"},
+        "networkx.classes.reportviews": {
+            "NodeView",
+            "EdgeView",
+            "DegreeView",
+            "NodeDataView",
+            "EdgeDataView",
+            "DegreeDataView",
+            "AdjacencyView",
+            "AtlasView",
+            "DiDegreeView",
+            "InDegreeView",
+            "OutDegreeView",
+            "InEdgeView",
+            "OutEdgeView",
+        },
+        "networkx.classes.coreviews": {
+            "AdjacencyView",
+            "AtlasView",
+            "FilterAdjacency",
+            "FilterAtlas",
+            "FilterMultiAdjacency",
+            "FilterMultiInner",
+            "UnionAdjacency",
+            "UnionAtlas",
+            "UnionMultiAdjacency",
+            "UnionMultiInner",
+        },
+        "networkx.classes.filters": {"no_filter", "hide_nodes", "hide_edges"},
+        "numpy": {"ndarray", "dtype"},
+        "numpy.core.multiarray": {"_reconstruct", "scalar"},
+        "numpy._core.multiarray": {"_reconstruct", "scalar"},
+        "numpy._core._multiarray_umath": {"_reconstruct"},
+    }
+
+    def find_class(self, module, name):
+        allowed_names = self._ALLOWED.get(module, set())
+        if name in allowed_names:
+            return super().find_class(module, name)
+        raise pickle.UnpicklingError(f"Blocked pickle class: {module}.{name}")
+
+
+def safe_load_graph_pickle(payload: bytes) -> nx.Graph:
+    graph = _RestrictedGraphUnpickler(io.BytesIO(payload)).load()
+    if not isinstance(graph, nx.Graph):
+        raise ValueError("Graph pickle payload is not a NetworkX graph.")
+    return graph
+
+
+def unsafe_load_graph(graph_pickle_path: str):
     with open(graph_pickle_path, "rb") as f:
         G = pickle.load(f)
 
     return G
+
+
+def load_graph(graph_pickle_path: str):
+    with open(graph_pickle_path, "rb") as f:
+        return safe_load_graph_pickle(f.read())

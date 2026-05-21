@@ -20,204 +20,160 @@ def _resolve_savepath(session_data):
     return resolve_session_savepath(session_data)
 
 
-# Helper to extract suggested questions from AI response
+def _abstract_documents_from_graph(G, *, limit: int | None = None):
+    import datetime
+
+    from netmedex.rag import AbstractDocument
+    from netmedex.utils import calculate_citation_weight
+
+    pmid_abstracts = G.graph.get("pmid_abstract", {}) or {}
+    pmid_titles = G.graph.get("pmid_title", {}) or {}
+    pmid_metadata = G.graph.get("pmid_metadata", {}) or {}
+    current_year = datetime.datetime.now().year
+
+    weighted_pmids = []
+    for raw_pmid in pmid_abstracts:
+        pmid = str(raw_pmid)
+        meta = pmid_metadata.get(raw_pmid, pmid_metadata.get(pmid, {}))
+        if not isinstance(meta, dict):
+            meta = {}
+        weight = calculate_citation_weight(
+            meta.get("citation_count"), meta.get("date"), current_year
+        )
+        weighted_pmids.append((pmid, raw_pmid, weight))
+
+    weighted_pmids.sort(key=lambda item: item[2], reverse=True)
+    if limit is not None:
+        weighted_pmids = weighted_pmids[:limit]
+
+    documents = []
+    for pmid, raw_pmid, weight in weighted_pmids:
+        documents.append(
+            AbstractDocument(
+                pmid=pmid,
+                title=str(pmid_titles.get(raw_pmid, pmid_titles.get(pmid, f"PMID {pmid}")) or f"PMID {pmid}"),
+                abstract=str(pmid_abstracts.get(raw_pmid, pmid_abstracts.get(pmid, "")) or ""),
+                entities=[],
+                edges=[],
+                weight=weight,
+            )
+        )
+    return documents
+
+
+def _initialize_llm_from_callback_state(
+    *,
+    llm_provider,
+    openai_api_key=None,
+    openai_model=None,
+    openai_custom_model=None,
+    google_api_key=None,
+    google_model=None,
+    google_safety_setting=None,
+    llm_base_url=None,
+    llm_model=None,
+    openrouter_api_key=None,
+    openrouter_model=None,
+    openrouter_custom_model=None,
+    nvidia_api_key=None,
+    nvidia_nim_base_url=None,
+    nvidia_model=None,
+):
+    from webapp.llm import initialize_llm_client_from_settings, llm_client
+
+    return initialize_llm_client_from_settings(
+        llm_client,
+        provider=llm_provider,
+        openai_api_key=openai_api_key,
+        openai_model=openai_model,
+        openai_custom_model=openai_custom_model,
+        google_api_key=google_api_key,
+        google_model=google_model,
+        google_safety_setting=google_safety_setting,
+        local_base_url=llm_base_url,
+        local_model=llm_model,
+        openrouter_api_key=openrouter_api_key,
+        openrouter_model=openrouter_model,
+        openrouter_custom_model=openrouter_custom_model,
+        nvidia_api_key=nvidia_api_key,
+        nvidia_nim_base_url=nvidia_nim_base_url,
+        nvidia_model=nvidia_model,
+    )
+
+
+def _rebuild_chat_session_from_graph(savepath, llm_client, topic: str | None = None):
+    from netmedex.chat import ChatSession
+    from netmedex.graph import load_graph
+    from netmedex.graph_rag import GraphRetriever
+    from netmedex.rag import AbstractRAG
+
+    G = load_graph(savepath["graph"])
+    documents = _abstract_documents_from_graph(G)
+    if not documents:
+        raise ValueError("No abstracts available in graph file")
+
+    rag_system = AbstractRAG(llm_client)
+    rag_system.index_abstracts(documents)
+    graph_retriever = GraphRetriever(G, node_rag=None)
+    session = ChatSession(
+        rag_system,
+        llm_client,
+        graph_retriever=graph_retriever,
+        topic=topic or "biomedical research",
+    )
+    _sessions[savepath["graph"]] = {
+        "session": session,
+        "rag": rag_system,
+        "rebuilt_from_graph": True,
+    }
+    logger.info(
+        "Rebuilt chat session from graph file: %s abstracts indexed",
+        len(documents),
+    )
+    return _sessions[savepath["graph"]]
+
+
+def _strip_message_suggestions(messages: list) -> list:
+    """Remove .message-suggestions div from all rendered message components.
+
+    Dash serialises component trees as nested dicts. This walks the tree and
+    removes any node whose className contains 'message-suggestions', so that
+    only the *latest* assistant message shows its pill questions.
+    """
+    def _strip(node):
+        if not isinstance(node, dict):
+            return node
+        props = node.get("props", {})
+        cls = props.get("className", "") or ""
+        if "message-suggestions" in cls:
+            return None
+        children = props.get("children")
+        if isinstance(children, list):
+            new_children = [c for c in (_strip(c) for c in children) if c is not None]
+            if len(new_children) != len(children):
+                node = {**node, "props": {**props, "children": new_children}}
+        elif isinstance(children, dict):
+            new_child = _strip(children)
+            if new_child is None:
+                node = {**node, "props": {**props, "children": []}}
+            elif new_child is not children:
+                node = {**node, "props": {**props, "children": new_child}}
+        return node
+
+    return [_strip(m) for m in (messages or []) if m is not None]
+
+
+# Helper to extract suggested questions from AI response.
+# Relies solely on the explicit [Q1:] / [Q2:] / [Q3:] markers that the system
+# prompt instructs the LLM to emit.  Previous broad keyword matching (e.g.
+# "追問", "建議問題" as substrings) would falsely enter the suggestion section
+# inside 2-hop inference text, swallowing that content.
 def parse_suggestions(content):
     if not content:
         return [], ""
 
-    # Common headers for suggestions (multiple languages)
-    headers = [
-        "Suggested Follow-up Questions",
-        "Suggested Questions",
-        "Suggested Follow-up",
-        "## Suggested Questions:",
-        "建議問題",
-        "建議的問題",
-        "提案された質問",
-        "권장 후속 질문",
-        "Recommended Questions",
-        "Follow-up Questions",
-        "Recommend Questions",
-        "您可以問",
-        "您可以繼續追問",
-        "您可以追問",
-        "追問",
-        "推薦問題",
-    ]
-
-    suggestions = []
-    lines = content.split("\n")
-    clean_lines = []
-    in_suggestion_section = False
-
-    # Regex to match list items: bullet is optional.
-    # Group 1 captures the actual question text.
-    # Handles: 1. [Q1: text], - [Q1: text], Q1: text, [text], etc.
-    q_pattern = r"^(?:[\-\*\•\+]|\d+[\.\)\、]|\d+)?\s*\[?(?:Q\d+)?\s*[:\.\-\)\、：]?\s*(.*)$"
-
-    def looks_like_cjk(text):
-        return any("\u4e00" <= c <= "\u9fff" for c in text)
-
-    def clean_candidate(text: str) -> str:
-        return re.sub(r"\s+", " ", (text or "").strip(" []-.*•")).strip()
-
-    def is_noise_candidate(text: str) -> bool:
-        t = (text or "").strip().lower().strip(".,;:!?")
-        if not t:
-            return True
-        # Prevent provider formatting fragments (e.g., trailing "and").
-        noise = {
-            "and",
-            "or",
-            "but",
-            "the",
-            "a",
-            "an",
-            "to",
-            "of",
-            "in",
-            "on",
-            "for",
-            "with",
-            "these",
-            "this",
-            "that",
-            "those",
-        }
-        return t in noise
-
-    for i, line in enumerate(lines):
-        stripped = line.strip()
-        if not stripped:
-            if not in_suggestion_section:
-                clean_lines.append(line)
-            continue
-
-        # Check for explicit header
-        is_header = any(h.lower() in stripped.lower() for h in headers)
-
-        # Check for implicit section start
-        is_near_end = (len(lines) - i) <= 12  # Increased threshold
-        is_implicit_start = (
-            not in_suggestion_section
-            and is_near_end
-            and (
-                stripped.startswith("[Q1:")
-                or stripped.startswith("1. [Q1:")
-                or "Q1:" in stripped[:10]
-                or re.search(r"\[Q\d:.*?\]", stripped)
-            )
-        )
-
-        if is_header or is_implicit_start:
-            in_suggestion_section = True
-            if is_header:
-                header_parts = re.split(r"[:：]", stripped, maxsplit=1)
-                if len(header_parts) > 1:
-                    after_colon = header_parts[1].strip()
-                    if after_colon and (
-                        len(after_colon) > 10
-                        or (looks_like_cjk(after_colon) and len(after_colon) > 5)
-                    ):
-                        # Prefer explicit [Q1:] blocks. Avoid splitting prose by commas,
-                        # which can create fragments like "and" in some Google outputs.
-                        explicit_q_parts = re.findall(
-                            r"(?:\[\s*)?Q\d+\s*[:：]\s*([^\]]+?)(?:\]|\s*$)",
-                            after_colon,
-                            flags=re.IGNORECASE,
-                        )
-                        if explicit_q_parts:
-                            parts = explicit_q_parts
-                        elif "?" in after_colon or "？" in after_colon:
-                            parts = re.split(r"(?<=[\?\？])\s+", after_colon)
-                        else:
-                            parts = [after_colon]
-                        for p in parts:
-                            p_clean = clean_candidate(p)
-                            if (
-                                p_clean
-                                and len(p_clean) > 2
-                                and not is_noise_candidate(p_clean)
-                            ):
-                                suggestions.append(p_clean)
-                continue
-
-        if in_suggestion_section:
-            # Check for multi-match on one line (e.g. LLM collapsed them)
-            sub_matches = re.findall(r"\[Q\d: (.*?)\]", stripped)
-            if sub_matches:
-                for sm in sub_matches:
-                    suggestions.append(sm.strip())
-                continue
-
-            if (stripped.startswith("**") and stripped.endswith("**")) or stripped == "---":
-                in_suggestion_section = False
-                clean_lines.append(line)
-                continue
-
-            match = re.search(q_pattern, stripped)
-            if match:
-                q_text = clean_candidate(match.group(1).split("]")[0])
-                min_len = 2 if looks_like_cjk(q_text) else 4
-                if q_text and len(q_text) >= min_len:
-                    if (
-                        q_text.startswith("**")
-                        and q_text.endswith("**")
-                        and len(q_text) > 40
-                        and not q_text.endswith("?")
-                    ):
-                        in_suggestion_section = False
-                        clean_lines.append(line)
-                    else:
-                        if not is_noise_candidate(q_text):
-                            suggestions.append(q_text)
-                        continue
-            else:
-                if suggestions and not is_near_end:
-                    in_suggestion_section = False
-                clean_lines.append(line)
-        else:
-            clean_lines.append(line)
-
-    final_suggestions = []
-    seen = set()
-    for s in suggestions[:6]:  # Check up to 6 to find 3 unique
-        s = re.sub(r"[:\.\?\!\]]+$", "", s).strip()
-        if s and s.lower() not in seen:
-            final_suggestions.append(s)
-            seen.add(s.lower())
-
-    def _extract_question_candidates(text: str) -> list[str]:
-        """Best-effort extraction for models that ignore strict [Q1:] format."""
-        if not text:
-            return []
-        candidates = []
-        tail = "\n".join(text.splitlines()[-24:])  # Suggestions are usually near the end.
-        for raw in tail.splitlines():
-            line = raw.strip()
-            if not line:
-                continue
-            # Remove bullets/numbering.
-            line = re.sub(r"^(?:[\-\*\•\+]\s*|\d+[\.\)\、]\s*)", "", line).strip()
-            if not line:
-                continue
-            # Split packed lines containing multiple questions.
-            parts = re.split(r"(?<=[\?\？])\s+", line)
-            for p in parts:
-                q = p.strip(" []-*•")
-                if not q:
-                    continue
-                if q.count("?") + q.count("？") < 1:
-                    continue
-                if len(q) < 6 or len(q) > 160:
-                    continue
-                cleaned = q.rstrip("?？").strip()
-                if not is_noise_candidate(cleaned):
-                    candidates.append(cleaned)
-        return candidates
-
-    def _fallback_default_questions(text: str) -> list[str]:
-        has_cjk = looks_like_cjk(text)
+    def _default_questions(text: str) -> list[str]:
+        has_cjk = any("\u4e00" <= c <= "\u9fff" for c in text)
         if has_cjk:
             return [
                 "哪些證據最能支持目前的核心結論",
@@ -230,27 +186,42 @@ def parse_suggestions(content):
             "What is the highest-priority hypothesis to validate next",
         ]
 
-    if len(final_suggestions) < 3:
-        for c in _extract_question_candidates(content):
-            key = c.lower()
-            if key in seen:
-                continue
-            final_suggestions.append(c)
-            seen.add(key)
-            if len(final_suggestions) >= 3:
-                break
+    # ── find the first [Q1: …] marker ──────────────────────────────────────
+    q1_match = re.search(r"\[Q1\s*:", content, re.IGNORECASE)
+    if not q1_match:
+        if re.search(r"Suggested(?:\s+Follow-up)?\s+Questions?", content, re.IGNORECASE):
+            return _default_questions(content), content
+        return [], content          # no explicit markers → no pills, full content
 
-    if len(final_suggestions) < 3:
-        for c in _fallback_default_questions(content):
-            key = c.lower()
-            if key in seen:
-                continue
-            final_suggestions.append(c)
-            seen.add(key)
-            if len(final_suggestions) >= 3:
-                break
+    cut = q1_match.start()
 
-    return final_suggestions[:3], "\n".join(clean_lines).strip()
+    # ── remove the suggestion-section header line immediately before Q1 ────
+    before = content[:cut].rstrip()
+    before = re.sub(
+        r"\n[^\n]*(?:建議問題|Suggested(?:\s+Follow-up)?\s+Questions?|"
+        r"建議的問題|提案された質問|권장 후속 질문)[^\n]*$",
+        "",
+        before,
+        flags=re.IGNORECASE,
+    ).rstrip()
+
+    # ── extract [Q1:…] [Q2:…] [Q3:…] ─────────────────────────────────────
+    raw_qs = re.findall(
+        r"\[Q\d+\s*:\s*(.*?)\]",
+        content[cut:],
+        re.IGNORECASE | re.DOTALL,
+    )
+    suggestions: list[str] = []
+    seen: set[str] = set()
+    for q in raw_qs:
+        q = re.sub(r"\s+", " ", q).strip().rstrip("?？.!！").strip()
+        if q and len(q) > 3 and q.lower() not in seen:
+            suggestions.append(q)
+            seen.add(q.lower())
+        if len(suggestions) >= 3:
+            break
+
+    return suggestions, before
 
 
 def callbacks(app):
@@ -423,6 +394,9 @@ def callbacks(app):
             State("openrouter-api-key-input", "value"),
             State("openrouter-model-selector", "value"),
             State("openrouter-custom-model-input", "value"),
+            State("nvidia-api-key-input", "value"),
+            State("nvidia-nim-base-url-input", "value"),
+            State("nvidia-model-selector", "value"),
         ],
         prevent_initial_call=True,
     )
@@ -444,6 +418,9 @@ def callbacks(app):
         openrouter_api_key,
         openrouter_model,
         openrouter_custom_model,
+        nvidia_api_key,
+        nvidia_nim_base_url,
+        nvidia_model,
     ):
         """
         Automatically initialize chat with an overall summary when a new graph is loaded.
@@ -467,57 +444,27 @@ def callbacks(app):
 
         logger.info(f"DEBUG: auto_initialize_chat STARTING for tab={current_tab}")
 
-        import pickle
-
         from netmedex.chat import ChatSession
-        from netmedex.rag import AbstractDocument, AbstractRAG
-        from webapp.llm import (
-            GEMINI_OPENAI_BASE_URL,
-            OPENAI_BASE_URL,
-            OPENROUTER_BASE_URL,
-            llm_client,
-        )
+        from netmedex.graph import load_graph
+        from netmedex.rag import AbstractRAG
 
-        # Initialize LLM Client
-        if llm_provider == "openai":
-            model = (
-                openai_custom_model.strip()
-                if openai_model == "custom" and openai_custom_model
-                else openai_model
-            ) or "gpt-4o-mini"
-            llm_client.initialize_client(
-                provider="openai",
-                api_key=openai_api_key,
-                model=model,
-                base_url=OPENAI_BASE_URL,
-            )
-        elif llm_provider == "google":
-            llm_client.initialize_client(
-                provider="google",
-                api_key=google_api_key,
-                model=google_model or "gemini-1.5-pro",
-                base_url=GEMINI_OPENAI_BASE_URL,
-                safety_setting=google_safety_setting or "medium",
-            )
-        elif llm_provider == "openrouter":
-            model = (
-                openrouter_custom_model.strip()
-                if openrouter_model == "custom" and openrouter_custom_model
-                else openrouter_model
-            ) or "openai/gpt-4o-mini"
-            llm_client.initialize_client(
-                provider="openrouter",
-                api_key=openrouter_api_key,
-                model=model,
-                base_url=OPENROUTER_BASE_URL,
-            )
-        else:
-            llm_client.initialize_client(
-                provider="local",
-                api_key="local-dummy-key",
-                base_url=llm_base_url or "http://localhost:11434/v1",
-                model=llm_model,
-            )
+        llm_client = _initialize_llm_from_callback_state(
+            llm_provider=llm_provider,
+            openai_api_key=openai_api_key,
+            openai_model=openai_model,
+            openai_custom_model=openai_custom_model,
+            google_api_key=google_api_key,
+            google_model=google_model,
+            google_safety_setting=google_safety_setting,
+            llm_base_url=llm_base_url,
+            llm_model=llm_model,
+            openrouter_api_key=openrouter_api_key,
+            openrouter_model=openrouter_model,
+            openrouter_custom_model=openrouter_custom_model,
+            nvidia_api_key=nvidia_api_key,
+            nvidia_nim_base_url=nvidia_nim_base_url,
+            nvidia_model=nvidia_model,
+        )
 
         if not llm_client.client:
             return (
@@ -550,43 +497,9 @@ def callbacks(app):
                     False,
                 )
 
-            with open(savepath["graph"], "rb") as f:
-                G = pickle.load(f)
+            G = load_graph(savepath["graph"])
 
-            # Extract TOP abstracts for overall summary (Top 50 by citation/weight)
-            pmid_abstracts = G.graph.get("pmid_abstract", {})
-            pmid_titles = G.graph.get("pmid_title", {})
-            pmid_metadata = G.graph.get("pmid_metadata", {})
-
-            import datetime
-
-            from netmedex.utils import calculate_citation_weight
-
-            current_year = datetime.datetime.now().year
-            documents = []
-
-            # Sort PMIDs by weight if citation counts are available
-            all_pmids = list(pmid_abstracts.keys())
-            pmid_weights = []
-            for pmid in all_pmids:
-                meta = pmid_metadata.get(pmid, {})
-                weight = calculate_citation_weight(
-                    meta.get("citation_count"), meta.get("date"), current_year
-                )
-                pmid_weights.append((pmid, weight))
-
-            # Sort by weight descending
-            sorted_pmids = [p for p, w in sorted(pmid_weights, key=lambda x: x[1], reverse=True)]
-            top_pmids = sorted_pmids[:50]  # Limit to top 50 for summary
-
-            for pmid in top_pmids:
-                title = pmid_titles.get(pmid, f"PMID {pmid}")
-                abstract = pmid_abstracts.get(pmid, "")
-                # We don't need edge data for the overall summary, just the abstracts
-                doc = AbstractDocument(
-                    pmid=pmid, title=title, abstract=abstract, entities=[], edges=[], weight=1.0
-                )
-                documents.append(doc)
+            documents = _abstract_documents_from_graph(G, limit=50)
 
             if not documents:
                 raise ValueError("No abstracts available for summary")
@@ -608,16 +521,19 @@ def callbacks(app):
 
             prompt_lang = session_language if session_language else "English"
             bootstrap_prompt = (
-                "Please provide a comprehensive research summary of the provided abstracts.\n"
+                "Please provide a comprehensive research summary of the provided abstracts using the two-layer framework below.\n"
                 "Focus on the overall field findings related to the search topic.\n"
                 "Use exactly these sections:\n"
-                "1. Overall Evidence Summary\n"
-                "- A concise synthesis of the main research findings supported by PMID citations.\n"
-                "2. Research Trends & Hypotheses\n"
-                "- One or two major trends or speculative inferences derived from the current data.\n"
+                "1. Evidence-Based Answer\n"
+                "- Synthesise the main research findings directly supported by PubMed abstracts.\n"
+                "- Every claim must include its PMID. Label findings as [Human] or [Animal/In vitro].\n"
+                "- Do NOT use causal language (inhibits/activates/causes) unless the paper provides intervention evidence.\n"
+                "2. Association / Speculative Inference\n"
+                "- One or two major research trends or speculative inferences derived from the data.\n"
+                "- Use may/might/potentially. State why each inference is speculative.\n"
                 "3. Suggested Follow-up Questions\n"
                 "- Provide exactly 3 questions.\n"
-                "- **RIGID UI FORMAT (No bullets):**\n"
+                "- **RIGID FORMAT (No bullets):**\n"
                 "  [Q1: Question 1 text]\n"
                 "  [Q2: Question 2 text]\n"
                 "  [Q3: Question 3 text]\n"
@@ -635,13 +551,13 @@ def callbacks(app):
                 summary_msg = summary_result.get("assistant_msg")
                 from webapp.components.chat import create_message_component
 
-                summary_content = summary_msg.content
+                summary_content = summary_result.get("message") or (summary_msg.content if summary_msg else "")
                 suggestions, clean_content = parse_suggestions(summary_content)
                 summary_component = create_message_component(
                     "assistant",
                     clean_content,
-                    summary_msg.sources,
-                    msg_id=summary_msg.msg_id,
+                    summary_msg.sources if summary_msg else None,
+                    msg_id=summary_msg.msg_id if summary_msg else None,
                     suggestions=suggestions,
                 )
                 messages = [summary_component]
@@ -692,6 +608,7 @@ def callbacks(app):
             Output("analyze-selection-btn", "children", allow_duplicate=True),
             Output("suggested-question-store", "data", allow_duplicate=True),
             Output("sidebar-panel-toggle", "active_tab", allow_duplicate=True),
+            Output("twohop-highlight-paths", "data", allow_duplicate=True),
         ],
         Input("analyze-selection-btn", "n_clicks"),
         [
@@ -712,6 +629,9 @@ def callbacks(app):
             State("openrouter-api-key-input", "value"),
             State("openrouter-model-selector", "value"),
             State("openrouter-custom-model-input", "value"),
+            State("nvidia-api-key-input", "value"),
+            State("nvidia-nim-base-url-input", "value"),
+            State("nvidia-model-selector", "value"),
         ],
         prevent_initial_call=True,
     )
@@ -734,6 +654,9 @@ def callbacks(app):
         openrouter_api_key,
         openrouter_model,
         openrouter_custom_model,
+        nvidia_api_key,
+        nvidia_nim_base_url,
+        nvidia_model,
     ):
         logger.info("DEBUG: initialize_chat (MANUAL) triggered")
         global _sessions
@@ -747,15 +670,9 @@ def callbacks(app):
         try:
             import os
             import time
-            import pickle
             from netmedex.chat import ChatSession
+            from netmedex.graph import load_graph
             from netmedex.rag import AbstractDocument, AbstractRAG
-            from webapp.llm import (
-                GEMINI_OPENAI_BASE_URL,
-                OPENAI_BASE_URL,
-                OPENROUTER_BASE_URL,
-                llm_client,
-            )
 
             t0 = time.time()
             logger.info("Starting Chat Analysis...")
@@ -775,48 +692,26 @@ def callbacks(app):
                     reset_btn,
                     no_update,
                     "chat",
+                    [],
                 )
 
-            # Keep chat process LLM config aligned with current Advanced Settings.
-            if llm_provider == "openai":
-                model = (
-                    openai_custom_model.strip()
-                    if openai_model == "custom" and openai_custom_model
-                    else openai_model
-                ) or "gpt-4o-mini"
-                llm_client.initialize_client(
-                    provider="openai",
-                    api_key=openai_api_key,
-                    model=model,
-                    base_url=OPENAI_BASE_URL,
-                )
-            elif llm_provider == "google":
-                llm_client.initialize_client(
-                    provider="google",
-                    api_key=google_api_key,
-                    model=google_model or "gemini-1.5-pro",
-                    base_url=GEMINI_OPENAI_BASE_URL,
-                    safety_setting=google_safety_setting or "medium",
-                )
-            elif llm_provider == "openrouter":
-                model = (
-                    openrouter_custom_model.strip()
-                    if openrouter_model == "custom" and openrouter_custom_model
-                    else openrouter_model
-                ) or "openai/gpt-4o-mini"
-                llm_client.initialize_client(
-                    provider="openrouter",
-                    api_key=openrouter_api_key,
-                    model=model,
-                    base_url=OPENROUTER_BASE_URL,
-                )
-            else:
-                llm_client.initialize_client(
-                    provider="local",
-                    api_key="local-dummy-key",
-                    base_url=llm_base_url or "http://localhost:11434/v1",
-                    model=llm_model,
-                )
+            llm_client = _initialize_llm_from_callback_state(
+                llm_provider=llm_provider,
+                openai_api_key=openai_api_key,
+                openai_model=openai_model,
+                openai_custom_model=openai_custom_model,
+                google_api_key=google_api_key,
+                google_model=google_model,
+                google_safety_setting=google_safety_setting,
+                llm_base_url=llm_base_url,
+                llm_model=llm_model,
+                openrouter_api_key=openrouter_api_key,
+                openrouter_model=openrouter_model,
+                openrouter_custom_model=openrouter_custom_model,
+                nvidia_api_key=nvidia_api_key,
+                nvidia_nim_base_url=nvidia_nim_base_url,
+                nvidia_model=nvidia_model,
+            )
 
             if not llm_client.client:
                 return (
@@ -831,6 +726,7 @@ def callbacks(app):
                     reset_btn,
                     no_update,
                     "chat",
+                    [],
                 )
 
             # Load the graph to get abstracts
@@ -847,17 +743,92 @@ def callbacks(app):
                     reset_btn,
                     no_update,
                     "chat",
+                    [],
                 )
 
-            with open(savepath["graph"], "rb") as f:
-                G = pickle.load(f)
+            G = load_graph(savepath["graph"])
             t_load = time.time()
             logger.info(f"Graph loaded in {t_load - t0:.2f}s")
 
+            raw_id_to_node = {str(nid): (nid, data) for nid, data in G.nodes(data=True)}
+            cy_id_to_raw_id = {
+                str(data.get("_id")): str(nid)
+                for nid, data in G.nodes(data=True)
+                if data.get("_id")
+            }
+            label_to_raw_ids = {}
+            for nid, data in G.nodes(data=True):
+                label = str(data.get("name", "")).lower().strip()
+                if label:
+                    label_to_raw_ids.setdefault(label, []).append(str(nid))
+
+            def _pmids_from_graph_node(node_payload: dict) -> list[str]:
+                candidates = []
+                for key in ("raw_node_id", "node_id"):
+                    if node_payload.get(key):
+                        candidates.append(str(node_payload[key]))
+                if node_payload.get("id"):
+                    candidates.append(cy_id_to_raw_id.get(str(node_payload["id"]), ""))
+                name_key = str(
+                    node_payload.get("label") or node_payload.get("name") or ""
+                ).lower().strip()
+                candidates.extend(label_to_raw_ids.get(name_key, []))
+
+                seen = set()
+                pmids = []
+                for raw_id in candidates:
+                    if not raw_id or raw_id in seen:
+                        continue
+                    seen.add(raw_id)
+                    graph_node = raw_id_to_node.get(raw_id)
+                    if not graph_node:
+                        continue
+                    node_pmids = graph_node[1].get("pmids", [])
+                    if isinstance(node_pmids, str):
+                        pmids.append(node_pmids)
+                    else:
+                        pmids.extend(str(p) for p in node_pmids)
+                return pmids
+
+            def _edge_pmids_from_graph(edge_payload: dict) -> list[str]:
+                raw_source = edge_payload.get("source_raw_id")
+                raw_target = edge_payload.get("target_raw_id")
+                if not raw_source and edge_payload.get("source"):
+                    raw_source = cy_id_to_raw_id.get(str(edge_payload["source"]))
+                if not raw_target and edge_payload.get("target"):
+                    raw_target = cy_id_to_raw_id.get(str(edge_payload["target"]))
+
+                source_node = raw_id_to_node.get(str(raw_source or ""))
+                target_node = raw_id_to_node.get(str(raw_target or ""))
+                if (
+                    source_node
+                    and target_node
+                    and G.has_edge(source_node[0], target_node[0])
+                ):
+                    data = G.edges[source_node[0], target_node[0]]
+                else:
+                    source_name = str(edge_payload.get("source_name", "")).lower().strip()
+                    target_name = str(edge_payload.get("target_name", "")).lower().strip()
+                    data = None
+                    for u in label_to_raw_ids.get(source_name, []):
+                        for v in label_to_raw_ids.get(target_name, []):
+                            u_node = raw_id_to_node.get(u)
+                            v_node = raw_id_to_node.get(v)
+                            if u_node and v_node and G.has_edge(u_node[0], v_node[0]):
+                                data = G.edges[u_node[0], v_node[0]]
+                                break
+                        if data is not None:
+                            break
+                if not data:
+                    return []
+                if data.get("pmids"):
+                    return [str(p) for p in data.get("pmids", [])]
+                return [str(p) for p in data.get("relations", {}).keys()]
+
             # Extract PMIDs and build abstract documents
             pmid_data = {}
-            for edge in selected_edges:
-                edge_pmids = edge.get("pmids", [])
+            for edge in selected_edges or []:
+                edge_pmids = edge.get("pmids", []) or _edge_pmids_from_graph(edge)
                 if isinstance(edge_pmids, str):
                     edge_pmids = [edge_pmids]
 
@@ -871,7 +842,7 @@ def callbacks(app):
                 # Need to map node IDs back to graph nodes if selected_nodes doesn't have pmid info complete
                 # But Cytoscape selectedNodeData should contain the data object
                 for node in selected_nodes:
-                    node_pmids = node.get("pmids", [])
+                    node_pmids = node.get("pmids", []) or _pmids_from_graph_node(node)
                     if isinstance(node_pmids, str):
                         node_pmids = [node_pmids]
 
@@ -892,8 +863,25 @@ def callbacks(app):
 
             current_year = datetime.datetime.now().year
 
-            logger.info(f"PMIDs in selected edges: {list(pmid_data.keys())}")
-            logger.info(f"Total abstracts in graph: {len(pmid_abstracts)}")
+            # Preflight diagnostic — log before indexing
+            pmid_count = len(pmid_data)
+            matched_abstract_count = sum(1 for p in pmid_data if p in pmid_abstracts)
+            logger.info(
+                "Preflight: selected_nodes=%s selected_edges=%s pmids=%s abstracts_matched=%s/%s",
+                len(selected_nodes or []),
+                len(selected_edges or []),
+                pmid_count,
+                matched_abstract_count,
+                len(pmid_abstracts),
+            )
+            if matched_abstract_count < pmid_count:
+                logger.warning(
+                    "Only %s/%s selected PMIDs have abstracts in the graph; "
+                    "%s PMID(s) will be indexed without abstract text.",
+                    matched_abstract_count,
+                    pmid_count,
+                    pmid_count - matched_abstract_count,
+                )
 
             # Build node ID → display name map so edge context uses readable names
             node_name_map = {
@@ -943,6 +931,7 @@ def callbacks(app):
                     reset_btn,
                     no_update,
                     "chat",
+                    [],
                 )
 
             # Initialize RAG system
@@ -961,17 +950,37 @@ def callbacks(app):
 
             # Check if NodeRAG is already indexed for this graph
             # Check if NodeRAG is already indexed for this graph
+            # Build label→raw_node_id lookup from the pickled graph.
+            # Cytoscape element source/target use stable UUIDs, which differ from
+            # the raw NetworkX node IDs used inside the graph — match by name instead.
+            label_to_raw_id = {
+                str(data.get("name", "")).lower().strip(): nid
+                for nid, data in G.nodes(data=True)
+                if data.get("name")
+            }
+
             core_node_ids = set()
             if selected_nodes:
                 for n in selected_nodes:
-                    if "id" in n and not str(n["id"]).startswith("c"):
-                        core_node_ids.add(str(n["id"]))
+                    if str(n.get("id", "")).startswith("c"):
+                        continue  # skip community nodes
+                    raw_node_id = n.get("raw_node_id") or cy_id_to_raw_id.get(str(n.get("id", "")))
+                    if raw_node_id and str(raw_node_id) in raw_id_to_node:
+                        core_node_ids.add(raw_id_to_node[str(raw_node_id)][0])
+                        continue
+                    name_key = str(n.get("label", n.get("name", ""))).lower().strip()
+                    if name_key in label_to_raw_id:
+                        core_node_ids.add(label_to_raw_id[name_key])
             if selected_edges:
                 for e in selected_edges:
-                    if "source" in e:
-                        core_node_ids.add(str(e["source"]))
-                    if "target" in e:
-                        core_node_ids.add(str(e["target"]))
+                    for raw_field in ("source_raw_id", "target_raw_id"):
+                        raw_node_id = e.get(raw_field)
+                        if raw_node_id and str(raw_node_id) in raw_id_to_node:
+                            core_node_ids.add(raw_id_to_node[str(raw_node_id)][0])
+                    for name_field in ("source_name", "target_name"):
+                        name_key = str(e.get(name_field, "")).lower().strip()
+                        if name_key in label_to_raw_id:
+                            core_node_ids.add(label_to_raw_id[name_key])
 
             if not node_rag.is_indexed():
                 total_nodes = len(G.nodes)
@@ -997,13 +1006,14 @@ def callbacks(app):
                         logger.info(
                             f"Partial indexing complete: {len(graph_nodes)}/ {total_nodes} nodes indexed."
                         )
+                    _node_index_count = len(graph_nodes)
+                    _node_index_mode = "partial"
                 else:
                     logger.info(
                         f"Small graph detected ({total_nodes} nodes). Building full node list..."
                     )
                     graph_nodes = []
                     for node_id, data in G.nodes(data=True):
-                        # Ensure we have a name
                         name = data.get("name", str(node_id))
                         node_type = data.get("type", "Entity")
                         graph_node = GraphNode(
@@ -1013,8 +1023,12 @@ def callbacks(app):
 
                     node_rag.index_nodes(graph_nodes)
                     logger.info(f"Full indexing complete: {len(graph_nodes)} nodes indexed.")
+                    _node_index_count = len(graph_nodes)
+                    _node_index_mode = "full"
             else:
                 logger.info("NodeRAG already indexed. Skipping re-scan.")
+                _node_index_count = node_rag.count() if hasattr(node_rag, "count") else len(G.nodes)
+                _node_index_mode = "cached"
 
             t_node = time.time()
             logger.info(f"Node indexing check in {t_node - t_rag:.2f}s")
@@ -1033,8 +1047,13 @@ def callbacks(app):
                 topic=search_query if search_query else "biomedical research",
             )
 
-            # Store in global session manager
+            # Close old NodeRAG before overwriting to release ChromaDB file handles
             session_id = savepath["graph"]
+            if session_id in _sessions:
+                old = _sessions[session_id]
+                gr = getattr(getattr(old.get("session"), "graph_retriever", None), "node_rag", None)
+                if gr is not None:
+                    gr.close()
             _sessions[session_id] = {"session": session, "rag": rag_system}
 
             context_banner = [
@@ -1054,16 +1073,17 @@ def callbacks(app):
             # Bootstrap summary: ALWAYS use English internally for faster LLM reasoning and better RAG retrieval.
             # The final response will be translated by the system_prompt or a post-processing step.
             bootstrap_prompt = (
-                "Please provide a concise initial brief for the selected abstracts.\n"
-                "Use exactly these sections:\n"
-                "1. Evidence-Based Answer\n"
-                "2. Hypotheses / Speculative Inference\n"
-                "3. Suggested Follow-up Questions\n"
-                "- One short conclusion/inference per section directly supported by PMID citations.\n"
-                "- Suggested Questions format (No bullets):\n"
+                "Please provide a concise initial analysis of the selected abstracts using the three-layer reasoning framework.\n"
+                "Use exactly these layers:\n"
+                "1. Evidence-Based Answer — direct findings from abstracts, PMID per claim, label [Human] or [Animal/In vitro].\n"
+                "2. Association / Speculative Inference — for each 2-hop graph path: hypothesis, graph path with named entities, PMIDs per edge, path confidence, why speculative. Use may/might/potentially only.\n"
+                "3. Causal Biomedical Mechanism — ONLY if directional edges exist: mechanistic claim, causal chain with polarity, evidence table per edge, causal confidence, weakest link, testable prediction. Skip and state insufficient data if no directional edges.\n"
+                "4. Final Integrated Summary — three short paragraphs: directly supported / inferred / mechanistically plausible.\n"
+                "5. Suggested Follow-up Questions — RIGID FORMAT (no bullets):\n"
                 "  [Q1: Question 1 text]\n"
                 "  [Q2: Question 2 text]\n"
                 "  [Q3: Question 3 text]\n"
+                "IMPORTANT: Never mix direct evidence with speculative inference. Never hallucinate PMIDs. Never use causal language (inhibits/activates/drives) outside Layer 3.\n"
             )
 
             # If user is in a non-English session, append a translation instruction at the end
@@ -1083,18 +1103,31 @@ def callbacks(app):
             logger.info(f"Initial summary generated in {t_sum - t_node:.2f}s")
             logger.info(f"Total Analyze Selection time: {t_sum - t0:.2f}s")
             bootstrap_user = summary_result.get("user_msg")
-            if bootstrap_user in session.history:
+            if bootstrap_user is not None and bootstrap_user in session.history:
                 session.history.remove(bootstrap_user)
+
+            # Extract 2-hop paths from the initial summary for Graph highlighting
+            twohop_paths = summary_result.get("twohop_paths", [])
+            # Store in session for subsequent messages
+            _sessions[session_id]["twohop_paths"] = twohop_paths
+            # Cache focus_nodes so follow-up messages reuse the same node set
+            # instead of re-running find_relevant_nodes() on every turn (O(n²) risk)
+            _sessions[session_id]["focus_nodes"] = list(core_node_ids) if core_node_ids else None
 
             if summary_result.get("success"):
                 summary_msg = summary_result.get("assistant_msg")
-                summary_content = summary_msg.content
+                summary_content = summary_result.get("message") or (summary_msg.content if summary_msg else "")
                 suggestions, clean_content = parse_suggestions(summary_content)
+                cited_in_summary = sorted(set(
+                    re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", summary_content)
+                ) | set(
+                    re.findall(r"\[(\d{7,10})\]", summary_content)
+                ))
                 summary_component = create_message_component(
                     "assistant",
                     clean_content,
-                    summary_msg.sources,
-                    msg_id=summary_msg.msg_id,
+                    cited_in_summary or (summary_msg.sources if summary_msg else None),
+                    msg_id=summary_msg.msg_id if summary_msg else None,
                     suggestions=suggestions,
                 )
                 messages = [summary_component]
@@ -1120,9 +1153,15 @@ def callbacks(app):
                     )
                 ]
 
+            _index_summary = (
+                f"📊 {matched_abstract_count} abstracts · "
+                f"{_node_index_count} nodes ({_node_index_mode})"
+            )
+            logger.info("Indexing summary: %s", _index_summary)
+
             return (
                 True,
-                "",
+                _index_summary,
                 False,  # Enable input
                 False,  # Enable send button
                 {"display": "block"},  # Show clear button
@@ -1132,6 +1171,7 @@ def callbacks(app):
                 reset_btn,
                 None,  # ⚠️ FIX: Clear suggested-question-store on re-initialization
                 "chat",
+                twohop_paths,
             )
 
         except Exception as e:
@@ -1148,6 +1188,7 @@ def callbacks(app):
                 reset_btn,
                 no_update,
                 "chat",
+                [],
             )
 
     @app.callback(
@@ -1161,6 +1202,7 @@ def callbacks(app):
             Output("suggested-question-store", "data", allow_duplicate=True),
             Output("chat-send-btn", "disabled", allow_duplicate=True),
             Output("modal-chat-send-btn", "disabled", allow_duplicate=True),
+            Output("twohop-highlight-paths", "data", allow_duplicate=True),
         ],
         [
             Input("chat-send-btn", "n_clicks"),
@@ -1174,6 +1216,22 @@ def callbacks(app):
             State("session-language", "data"),
             State("chat-send-btn", "disabled"),
             State("current-session-path", "data"),
+            State("data-input", "value"),
+            State("llm-provider-selector", "value"),
+            State("openai-api-key-input", "value"),
+            State("openai-model-selector", "value"),
+            State("openai-custom-model-input", "value"),
+            State("google-api-key-input", "value"),
+            State("google-model-selector", "value"),
+            State("google-safety-setting", "value"),
+            State("llm-base-url-input", "value"),
+            State("llm-model-input", "value"),
+            State("openrouter-api-key-input", "value"),
+            State("openrouter-model-selector", "value"),
+            State("openrouter-custom-model-input", "value"),
+            State("nvidia-api-key-input", "value"),
+            State("nvidia-nim-base-url-input", "value"),
+            State("nvidia-model-selector", "value"),
         ],
         prevent_initial_call=True,
     )
@@ -1187,6 +1245,22 @@ def callbacks(app):
         _session_language,
         is_disabled,
         session_data,
+        search_query,
+        llm_provider,
+        openai_api_key,
+        openai_model,
+        openai_custom_model,
+        google_api_key,
+        google_model,
+        google_safety_setting,
+        llm_base_url,
+        llm_model,
+        openrouter_api_key,
+        openrouter_model,
+        openrouter_custom_model,
+        nvidia_api_key,
+        nvidia_nim_base_url,
+        nvidia_model,
     ):
         """
         Process user message and get AI response.
@@ -1218,14 +1292,45 @@ def callbacks(app):
         except SessionPathError:
             savepath = None
 
+        if savepath and savepath["graph"] not in _sessions:
+            try:
+                import os
+
+                if os.path.exists(savepath["graph"]):
+                    llm_client = _initialize_llm_from_callback_state(
+                        llm_provider=llm_provider,
+                        openai_api_key=openai_api_key,
+                        openai_model=openai_model,
+                        openai_custom_model=openai_custom_model,
+                        google_api_key=google_api_key,
+                        google_model=google_model,
+                        google_safety_setting=google_safety_setting,
+                        llm_base_url=llm_base_url,
+                        llm_model=llm_model,
+                        openrouter_api_key=openrouter_api_key,
+                        openrouter_model=openrouter_model,
+                        openrouter_custom_model=openrouter_custom_model,
+                        nvidia_api_key=nvidia_api_key,
+                        nvidia_nim_base_url=nvidia_nim_base_url,
+                        nvidia_model=nvidia_model,
+                    )
+                    if llm_client.client:
+                        _rebuild_chat_session_from_graph(
+                            savepath,
+                            llm_client,
+                            topic=search_query,
+                        )
+            except Exception as e:
+                logger.error(f"Failed to rebuild chat session from graph: {e}")
+
         if not savepath or savepath["graph"] not in _sessions:
             from webapp.components.chat import create_message_component
             err_msg = create_message_component(
                 "assistant",
-                "⚠️ Session expired (server was restarted). Please run a new search to rebuild the graph and start chatting.",
+                "⚠️ Session expired and the chat context could not be rebuilt. Please verify the LLM settings or run a new search.",
             )
             msgs = list(current_messages or []) + [err_msg]
-            return msgs, msgs, "", "", "", "", None, False, False
+            return msgs, msgs, "", "", "", "", None, False, False, []
 
         session_data = _sessions[savepath["graph"]]
         session = session_data["session"]
@@ -1234,20 +1339,19 @@ def callbacks(app):
             from webapp.callbacks.pipeline import detect_query_language
             from webapp.components.chat import create_message_component
 
-            # Determine response language:
-            # - If session_language is non-English (set from search query language),
-            #   always honour it — so a Chinese-query session always replies in Chinese
-            #   even when the user clicks an English suggested question.
-            # - If session_language is English (or unset), fall back to per-message
-            #   detection so CJK chat messages still get CJK replies.
-            msg_lang = detect_query_language(user_input)
-            if _session_language and _session_language not in ("English", ""):
-                effective_language = _session_language
-            else:
-                effective_language = msg_lang
+            # Response language follows the user's current message.
+            # If the script cannot be determined, detect_query_language returns
+            # "English" as the default — matching the "fallback to English" rule.
+            effective_language = detect_query_language(user_input)
 
-            # Get AI response
-            response = session.send_message(user_input, session_language=effective_language)
+            # Pass focus_nodes=None so find_relevant_nodes() runs fresh on each
+            # user question — reusing the initial selection caused every follow-up
+            # to receive identical graph context, producing repetitive responses.
+            response = session.send_message(
+                user_input,
+                session_language=effective_language,
+                focus_nodes=None,
+            )
 
             if response["success"]:
                 # Use returned message objects for stability instead of relying on history indexing
@@ -1263,13 +1367,28 @@ def callbacks(app):
                 user_msg = create_message_component(
                     "user", user_msg_obj.content, msg_id=user_msg_obj.msg_id
                 )
-                response_content = assistant_msg_obj.content
+                response_content = response.get("message") or (assistant_msg_obj.content if assistant_msg_obj else "")
                 suggestions, clean_content = parse_suggestions(response_content)
+
+                # Sources = union of (PMIDs cited in response text) and
+                # (all PMIDs retrieved by RAG for this turn).  This ensures
+                # Sources stays comprehensive even when LLM cites fewer papers
+                # in later rounds due to compressed history context.
+                cited_in_response = sorted(set(
+                    re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", response_content)
+                ) | set(
+                    re.findall(r"\[(\d{7,10})\]", response_content)
+                ) | set(response.get("pmids_used") or []))
+
+                # Update 2-hop paths from the latest response
+                twohop_paths = response.get("twohop_paths", [])
+                if twohop_paths and savepath:
+                    _sessions[savepath["graph"]]["twohop_paths"] = twohop_paths
 
                 ai_msg = create_message_component(
                     "assistant",
                     clean_content,
-                    assistant_msg_obj.sources,
+                    cited_in_response or assistant_msg_obj.sources,
                     msg_id=assistant_msg_obj.msg_id,
                     suggestions=suggestions,
                 )
@@ -1282,13 +1401,15 @@ def callbacks(app):
                     f"❌ {response.get('message', 'Error processing request')}",
                     msg_id=assistant_msg_obj.msg_id if assistant_msg_obj else None,
                 )
+                twohop_paths = []
 
-            messages = list(current_messages) if current_messages else []
-            messages.append(user_msg)
-            messages.append(ai_msg)
+            # Strip suggestions from all previous messages — only the newest reply
+            # should show pill questions, avoiding repeated rows of the same pills.
+            previous = _strip_message_suggestions(list(current_messages) if current_messages else [])
+            messages = previous + [user_msg, ai_msg]
 
             logger.info(f"DEBUG: send_message SUCCESS. Clearing inputs for trigger: {trigger_id}")
-            return messages, messages, "", "", "", "", None, False, False
+            return messages, messages, "", "", "", "", None, False, False, twohop_paths
 
         except Exception as e:
             logger.error(f"Error sending message: {e}")
@@ -1297,7 +1418,7 @@ def callbacks(app):
             error_msg = create_message_component("assistant", f"❌ Error: {str(e)}")
             messages = list(current_messages) if current_messages else []
             messages.append(error_msg)
-            return messages, messages, "", "", "", "", None, False, False
+            return messages, messages, "", "", "", "", None, False, False, []
 
     @app.callback(
         [
@@ -1329,16 +1450,24 @@ def callbacks(app):
 
         if savepath and savepath["graph"] in _sessions:
             session_data = _sessions.pop(savepath["graph"])
+            gr = getattr(getattr(session_data.get("session"), "graph_retriever", None), "node_rag", None)
+            if gr is not None:
+                gr.close()
             session_data["session"].clear()
             session_data["rag"].clear()
 
-        # Return to welcome state
-        from webapp.components.chat import create_message_component
-
-        welcome_text = (
-            "Chat cleared. Select edges and click 'Analyze Selection' to start a new conversation."
-        )
-        messages = [create_message_component("assistant", welcome_text)]
+        messages = [
+            html.Div(
+                [
+                    html.Div("💬 Welcome to AI Chat!", className="text-primary fw-bold text-center mb-2"),
+                    html.Div(
+                        "Select edges in the graph, then click 'Analyze Selection' to start chatting.",
+                        className="text-muted text-center small",
+                    ),
+                ],
+                id="chat-welcome-message",
+            )
+        ]
 
         return (
             messages,
@@ -1472,7 +1601,7 @@ def callbacks(app):
             html_body = markdown.markdown(
                 text,
                 extensions=["extra", "sane_lists", "nl2br"],
-                output_format="html5",
+                output_format="html",
             )
             # 2. Hyperlink PMIDs in the resulting HTML text
             html_body = hyperlink_pmids(html_body)
@@ -1595,9 +1724,11 @@ def callbacks(app):
 
             # Separate suggestions for assistant messages
             suggestions = []
-            clean_text = msg.content
+            # Use full_content for export if available (compressed content is for LLM history only)
+            display_text = getattr(msg, "full_content", None) or msg.content
+            clean_text = display_text
             if not is_user:
-                suggestions, clean_text = parse_suggestions(msg.content)
+                suggestions, clean_text = parse_suggestions(display_text)
 
             content_html = md_to_html(clean_text)
 
@@ -1615,14 +1746,23 @@ def callbacks(app):
                     )
                 html_content.append("</div>")
 
-            if hasattr(msg, "sources") and msg.sources:
-                source_links = [
-                    f'<a href="https://pubmed.ncbi.nlm.nih.gov/{html_lib.escape(str(p))}/" target="_blank">[PMID:{html_lib.escape(str(p))}]</a>'
-                    for p in msg.sources
-                ]
-                html_content.append(
-                    f"<div class='sources-box'><strong>References:</strong> {', '.join(source_links)}</div>"
-                )
+            if not is_user:
+                # Extract PMIDs from full_content for comprehensive References,
+                # matching the same logic used in the live chat Sources display.
+                full_text = getattr(msg, "full_content", None) or msg.content
+                export_pmids = sorted(set(
+                    re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", full_text)
+                ) | set(
+                    re.findall(r"\[(\d{7,10})\]", full_text)
+                ) | set(msg.sources or []))
+                if export_pmids:
+                    source_links = [
+                        f'<a href="https://pubmed.ncbi.nlm.nih.gov/{html_lib.escape(str(p))}/" target="_blank">[PMID:{html_lib.escape(str(p))}]</a>'
+                        for p in export_pmids
+                    ]
+                    html_content.append(
+                        f"<div class='sources-box'><strong>References:</strong> {', '.join(source_links)}</div>"
+                    )
 
             html_content.append("</div></div>")
 

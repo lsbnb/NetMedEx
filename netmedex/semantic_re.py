@@ -212,11 +212,16 @@ class SemanticRelationshipExtractor:
                 for i, article in enumerate(articles)
             }
 
+            # Per-article hard timeout: 2× LLM_TIMEOUT (first pass) + 2× coverage pass + retry waits
+            # 90s × 2 passes × (1 call + 1 retry) + 15+30s backoff ≈ 420s is the absolute worst case.
+            # Using 300s (5 min) is a practical ceiling; timed-out articles are skipped with a warning.
+            ARTICLE_TIMEOUT = 300
+
             for future in concurrent.futures.as_completed(future_to_article):
                 article = future_to_article[future]
                 completed += 1
                 try:
-                    edges = future.result()
+                    edges = future.result(timeout=ARTICLE_TIMEOUT)
                     all_edges.extend(edges)
                     error_msg = self.last_article_errors.get(article.pmid)
                     if error_msg:
@@ -230,6 +235,11 @@ class SemanticRelationshipExtractor:
                             f"Completed PMID {article.pmid} ({len(edges)} semantic edges)",
                             None,
                         )
+                except concurrent.futures.TimeoutError:
+                    failed += 1
+                    msg = f"Timed out PMID {article.pmid} (>{ARTICLE_TIMEOUT}s) — skipped"
+                    logger.warning(msg)
+                    update_progress(completed, total, msg, "timeout")
                 except Exception as e:
                     failed += 1
                     logger.error(f"Unexpected executor error for {article.pmid}: {e}")
@@ -295,7 +305,7 @@ class SemanticRelationshipExtractor:
             if provider in ("google", "openai", "openrouter"):
                 call_kwargs["response_format"] = {"type": "json_object"}
 
-            response = self._call_llm(prompt, **call_kwargs)
+            response = self._call_llm(prompt, **call_kwargs, pmid=article.pmid, current=article_num, total=0)
             relationships = self._parse_llm_response(response, article.pmid)
 
             initial_recall = len(relationships)
@@ -324,7 +334,7 @@ class SemanticRelationshipExtractor:
                     pass_name = "coverage-pass"
 
                 # Global recovery pass
-                coverage_response = self._call_llm(coverage_prompt, max_tokens=2000)
+                coverage_response = self._call_llm(coverage_prompt, max_tokens=2000, pmid=article.pmid, current=article_num, total=0)
                 coverage_rels = self._parse_llm_response(coverage_response, article.pmid)
 
                 # Merge results using robust sorted-pair deduplication
@@ -355,7 +365,7 @@ class SemanticRelationshipExtractor:
                 retry_prompt = self._build_compact_retry_prompt(
                     article.title, article.abstract, entity_list
                 )
-                response = self._call_llm(retry_prompt, max_tokens=1000)
+                response = self._call_llm(retry_prompt, max_tokens=1000, pmid=article.pmid, current=article_num, total=0)
                 relationships = self._parse_llm_response(response, article.pmid)
 
         except Exception as e:
@@ -506,6 +516,8 @@ class SemanticRelationshipExtractor:
 3. Output only supported pairs as relations.
 4. For each relationship, determine:
 -   - The two entities involved (use their IDs)
+-   - **Directionality Rule**: For directional relations (e.g., activates, inhibits), `entity1_id` MUST be the source (effector/regulator) and `entity2_id` MUST be the target (effectee).
+-   - **Passive Voice Rule**: When the text uses passive voice ("gene X is downregulated in disease Y", "protein Z was found decreased in condition W"), this does NOT establish who is the active effector. Use `associated_with` or `correlates_with` for such observations. Only use directional relation types (downregulates, inhibits, activates, etc.) for ACTIVE VOICE statements where one entity directly acts on another (e.g., "miRNA-155 directly targets SOST", "TNF-α activates NF-κB signaling").
 -   - The relationship type (must be one of: {allowed_relations})
 -   - Confidence score (0-1): How confident are you this relationship is explicitly stated? **Do not reuse the sample value; personalize it for each edge.**
 -   - Supporting evidence: The specific sentence or phrase supporting this relationship
@@ -566,8 +578,8 @@ Rules:
 3. Do NOT perform NER. Do not introduce new entities.
 4. Output each relation as:
    {{
-     "entity1_id": "...",
-     "entity2_id": "...",
+     "entity1_id": "...", // Source/effector for directional relations
+     "entity2_id": "...", // Target/effectee for directional relations
      "relation_type": "...",
      "confidence": 0.0 to 1.0,
      "study_type": "Human/Animal/Cell-line"
@@ -575,6 +587,7 @@ Rules:
 5. relation_type must be one of: {allowed_relations}
 6. Keep only explicit or strongly implied relations from the abstract.
 7. If none, return [].
+8. Passive Voice Rule: "X is downregulated/inhibited in Y" → use `associated_with`, NOT `downregulates`. Only use directional types for active voice: "A inhibits B", "A activates B".
 """
 
     def _build_coverage_prompt(
@@ -603,12 +616,13 @@ Task:
 - Treat all co-mentioned entity pairs as candidates ({pair_count} unordered pairs).
 - Extract as many explicit or strongly implied relations as supported by the abstract.
 - **CRITICAL**: Prioritize recall. Do not overlook subtle but explicit connections.
+- **Passive Voice Rule**: "X is downregulated/inhibited in Y" → use `associated_with`, NOT `downregulates`. Only use directional types for active voice ("A inhibits B", "A activates B").
 
 Output format:
 [
   {{
-    "entity1_id": "ID from Entities",
-    "entity2_id": "ID from Entities",
+    "entity1_id": "ID from Entities (Source/effector if directional)",
+    "entity2_id": "ID from Entities (Target/effectee if directional)",
     "relation_type": "one of: {allowed_relations}",
     "confidence": 0.0 to 1.0,
     "evidence": "sentence from abstract",
@@ -639,6 +653,8 @@ Title: {title}
 ### Instructions:
 1. Identify relationships only from the list: {allowed}.
 2. For each relationship, provide: entity1_id, entity2_id, relation_type, confidence (0-1), evidence, and study_type (Human, Animal, or Cell-line).
+   *CRITICAL: For directional relations (e.g. activates), entity1_id MUST be the source/effector and entity2_id MUST be the target/effectee.*
+   *PASSIVE VOICE RULE: "X is downregulated/inhibited in Y" → use `associated_with`. Only use directional types for active voice: "A inhibits B".*
 3. Be EXTREMELY thorough. Extract every mentioned interaction.
 4. Output ONLY a JSON array of objects. No preamble.
 
@@ -646,7 +662,13 @@ Title: {title}
 """
 
     def _call_llm(
-        self, prompt: str, max_tokens: int = 1500, response_format: dict | None = None
+        self,
+        prompt: str,
+        max_tokens: int = 1500,
+        response_format: dict | None = None,
+        pmid: str = "",
+        current: int = 0,
+        total: int = 0,
     ) -> str:
         """Call the LLM API with the constructed prompt"""
         provider = self._get_provider()
@@ -660,7 +682,10 @@ Title: {title}
             "You analyze scientific abstracts and identify relationships between entities. "
             "Always respond with valid JSON."
         )
-        max_retries = 5
+        # Semantic-RE responses are compact JSON; 90s is sufficient for all providers.
+        # Using a shorter timeout improves perceived responsiveness on slow networks.
+        LLM_TIMEOUT = 90.0
+        max_retries = 4
         for attempt in range(max_retries):
             try:
                 logger.info(
@@ -673,7 +698,7 @@ Title: {title}
                     ],
                     temperature=0.1,
                     max_tokens=max_tokens,
-                    timeout=180.0,
+                    timeout=LLM_TIMEOUT,
                     response_format=response_format,
                 )
                 preview = (response_text[:400] + "...") if len(response_text) > 400 else response_text
@@ -683,8 +708,14 @@ Title: {title}
                 err = str(e).lower()
                 is_rate_limit = any(t in err for t in ("429", "rate limit", "quota", "resource exhausted", "too many requests"))
                 if is_rate_limit and attempt < max_retries - 1:
-                    wait = 15 * (2 ** attempt)  # 15s, 30s, 60s, 120s
+                    wait = 15 * (2 ** attempt)  # 15s, 30s, 60s
                     logger.warning(f"Rate limit hit (attempt {attempt + 1}/{max_retries}), waiting {wait}s before retry...")
+                    if self.progress_callback and pmid and total:
+                        self.progress_callback(
+                            current, total,
+                            f"Rate limit — retrying PMID {pmid} (attempt {attempt + 2}/{max_retries}, wait {wait}s)",
+                            None,
+                        )
                     time.sleep(wait)
                 else:
                     logger.error(f"LLM call failed: {e}")

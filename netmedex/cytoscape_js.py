@@ -173,6 +173,7 @@ def create_cytoscape_node(node, size=25, degree=0):
     node_info = {
         "data": {
             "id": node_attr["_id"],
+            "raw_node_id": str(node_id),
             "parent": node_attr.get("parent", None),
             "color": node_attr["color"],
             "label_color": node_attr["label_color"],
@@ -258,11 +259,14 @@ def create_cytoscape_edge(edge, G, with_id=True):
     target_id = G.nodes[node_id_2]["_id"]
     source_name = G.nodes[node_id_1]["name"]
     target_name = G.nodes[node_id_2]["name"]
+    source_raw_id = str(node_id_1)
+    target_raw_id = str(node_id_2)
 
     if "source_id" in edge_attr:
         if edge_attr["source_id"] != node_id_1:
             source_id, target_id = target_id, source_id
             source_name, target_name = target_name, source_name
+            source_raw_id, target_raw_id = target_raw_id, source_raw_id
 
     relations = _convert_sets_to_lists(edge_attr.get("relations", {}))
 
@@ -289,6 +293,8 @@ def create_cytoscape_edge(edge, G, with_id=True):
         "relation_confidence": round(confidence, 2) if confidence > 0 else None,
         "source_name": source_name,
         "target_name": target_name,
+        "source_raw_id": source_raw_id,
+        "target_raw_id": target_raw_id,
         "confidences": edge_attr.get("confidences", None),
         "evidences": edge_attr.get("evidences", None),
     }

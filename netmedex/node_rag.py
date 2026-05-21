@@ -224,6 +224,19 @@ class NodeRAG:
         except Exception:
             return False
 
+    def close(self):
+        """Release ChromaDB file handles without deleting data on disk."""
+        try:
+            if self.client is not None:
+                # ChromaDB PersistentClient keeps SQLite files open; drop the
+                # reference so CPython's reference-counting closes the handles.
+                self.client = None  # type: ignore[assignment]
+                self.collection = None
+                self._initialized = False
+                logger.debug("NodeRAG: ChromaDB client closed")
+        except Exception as e:
+            logger.warning(f"NodeRAG.close(): {e}")
+
     def clear(self):
         """Clear the RAG system"""
         if self.client:

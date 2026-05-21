@@ -65,6 +65,7 @@ minimal_degree = html.Div(
             step=1,
             value=1,
             type="number",
+            debounce=True,
             style={"width": "200px"},
         ),
     ],

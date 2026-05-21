@@ -153,7 +153,7 @@ def callbacks(app):
             Output("edge-weight-cutoff-label-tooltip", "data-tooltip"),
         ],
         Input("weighting-method", "value"),
-        prevent_initial_call="initial_duplicate",
+        prevent_initial_call=True,
     )
     def update_weight_cutoff_range(weighting_method):
         if weighting_method == "npmi":

@@ -21,10 +21,11 @@ class ChatMessage:
     """Represents a single chat message"""
 
     role: str  # "user" or "assistant"
-    content: str
+    content: str  # compressed for history (assistant); full text for user
     sources: list[str] | None = None  # PMIDs for assistant messages
     timestamp: str | None = None
     msg_id: str | None = None
+    full_content: str | None = None  # full uncompressed assistant response for export
 
     def __post_init__(self):
         import uuid
@@ -48,12 +49,19 @@ class ChatMessage:
 class ChatSession:
     """Manages a conversation with RAG-augmented context"""
 
+    # Maximum characters stored per assistant message in the rolling history window.
+    _HISTORY_ASSISTANT_MAX_CHARS = 1400
+    # Budget for the accumulated memory buffer (all aged-out pairs, compressed).
+    _MEMORY_BUFFER_MAX_CHARS = 1800
+    # Characters kept per aged-out pair when compressing into memory buffer.
+    _MEMORY_ENTRY_MAX_CHARS = 250
+
     def __init__(
         self,
         rag_system,
         llm_client,
         graph_retriever=None,
-        max_history: int = 10,
+        max_history: int = 3,
         topic: str = "biomedical research",
     ):
         """
@@ -63,7 +71,9 @@ class ChatSession:
             rag_system: AbstractRAG instance
             llm_client: LLM client for chat
             graph_retriever: GraphRetriever instance (optional)
-            max_history: Maximum conversation history to retain
+            max_history: Number of conversation PAIRS (user+assistant) to keep in the
+                rolling history window.  Older pairs are compressed into memory_buffer
+                rather than discarded, so the session retains long-term continuity.
             topic: Research topic for the assistant (default: "biomedical research")
         """
         self.rag = rag_system
@@ -72,81 +82,142 @@ class ChatSession:
         self.max_history = max_history
         self.topic = topic
         self.history: list[ChatMessage] = []
+        # Accumulated compressed summaries of conversation pairs that have aged out
+        # of the rolling window.  Injected as a system message on every turn so the
+        # LLM retains long-term awareness without a growing token cost.
+        self.memory_buffer: list[str] = []
 
-        # system_prompt is the core ROLE, OPERATIONAL RULES and OUTPUT STRUCTURE
-        # from the user-provided optimized prompt.
+        # system_prompt is the core ROLE, OPERATIONAL RULES and OUTPUT STRUCTURE.
         self.system_prompt = """### ROLE
-You are a highly specialized biomedical research assistant focusing on {TOPIC}. Your goal is to synthesize information from the provided PubMed CONTEXT to provide structured, evidence-based answers to the user's QUERY.
+You are a highly specialized biomedical evidence reasoning agent focusing on {TOPIC}. Synthesize information from the provided PubMed CONTEXT using a strict three-layer reasoning framework that cleanly separates direct evidence, association inference, and causal mechanism hypotheses.
 
 ---
 
-### OPERATIONAL RULES
-1. **Evidence-Based Synthesis:**
-   - Prioritize information explicitly stated in the CONTEXT.
-   - Integrate findings across multiple papers to identify consensus, trends, or conflicting results.
-   - Every factual claim must be followed by its corresponding citation: `[PMID]`.
+### CORE PRINCIPLES
+1. **Never hallucinate PMIDs.** Only cite PMIDs that appear explicitly in the CONTEXT.
+2. **Never convert co-occurrence into regulation.** Entities appearing in the same paper are NOT necessarily causal.
+3. **Edge-level citation.** Attach the supporting PMID at the edge/claim level: `[PMID]`, not only at the end of a paragraph.
+4. **Strict layer separation.** Direct literature evidence, graph-based association, and causal hypotheses must NEVER be mixed within the same section.
+5. **Causal language restriction.** Words such as *causes / drives / prevents / inhibits / activates / upregulates / downregulates* are ONLY permitted in **Layer 3**, and only when the edge polarity is supported by the CONTEXT.
+6. **Speculative language mandate.** Layers 2 and 3 must use: *may / might / potentially / is consistent with / suggests*.
+7. **Species distinction.** Label every finding as **Human** (clinical/patient data) or **Animal/In vitro** (mouse, rat, zebrafish, cell line). Do NOT generalise animal findings as human facts.
+8. **No external knowledge.** All claims must trace back to the provided CONTEXT. If CONTEXT is insufficient, state so explicitly.
 
-2. **Comprehensive Listing (Types, Genes & Numbers):**
-   - If the QUERY asks for specific categories, types, or counts (e.g., associated genes, proteins, biomarkers, or cell types), you must **exhaustively list** all relevant entities found in the CONTEXT.
-   - For clarity, use **bullet points** or a **table** when listing more than 3 items.
-   - Each item in the list must be accompanied by its specific `[PMID]`.
+---
 
-3. **Inference & Hypotheses (Grounding Only):**
-   - If direct evidence is missing, you may cautiously infer or hypothesize based on patterns within the provided papers.
-   - Use tentative language (e.g., "suggests," "is consistent with," "may indicate").
-   - These inferences must rely *only* on the provided CONTEXT; do not use external training knowledge.
+### LANGUAGE RULE
+- **CRITICAL**: Respond entirely in **{LANGUAGE}** — every word, every header, every sub-label. Hard requirement.
+- Begin with `<thinking_english>... internal synthesis and PMID mapping ...</thinking_english>`. This block is automatically hidden.
+- After the thinking block, write the ENTIRE response in **{LANGUAGE}**.
+- **If {LANGUAGE} is English**: keep ALL section headers and sub-labels in English exactly as written in the OUTPUT STRUCTURE below. Do NOT use any Chinese, Japanese, or Korean text.
+- **If {LANGUAGE} is not English**: translate ALL section headers AND ALL bold sub-labels according to the tables below. Do NOT mix languages.
 
-4. **Graph Path Validation (2-Hop Evidence):**
-   - The CONTEXT may include multihop paths (Latent Mechanisms, e.g., A -> B -> C).
-   - Treat these as *hypothetical mechanistic chains*. You must explicitly distinguish between direct links (A-B) and these derived multihop paths in your analysis.
-   - Cross-verify the biological plausibility of the entire chain using the evidence provided for each individual link.
-   - **MANDATORY**: For every 2-hop path present in the Knowledge Graph Structure, you MUST map each link (A→B and B→C) to supporting PMIDs found in the PubMed Abstracts. If a link lacks direct PMID support, state it explicitly as "no direct literature support found."
-   - All 2-hop inference results MUST appear in the **[Translated "Hypotheses / Speculative Inference"]** section, NOT in the Evidence-Based Answer section.
+**Section header translations (non-English only):**
+  - **Traditional Chinese**: "直接文獻證據", "關聯推論 / 推測假說", "因果生物機制假說", "整合摘要", "建議問題"
+  - **Japanese**: "直接的文献エビデンス", "関連推論 / 推測仮説", "因果メカニズム仮説", "統合サマリー", "推奨フォローアップ質問"
+  - **Korean**: "직접 문헌 증거", "연관 추론 / 추론 가설", "인과 메커니즘 가설", "통합 요약", "권장 후속 질문"
 
-5. **Species & Study-Type Distinction:**
-   - You MUST distinguish between findings in Human (clinical/patient data) and Animal models (e.g., mice, rats, zebrafish, cell lines).
-   - If a claim is based on an animal model, you must explicitly state it (e.g., "In murine models [PMID]," or "Observed in cell cultures [PMID]").
-   - Do NOT generalize animal findings as human clinical facts without clear comparative evidence.
-   - Use the metadata [Study Type: Animal/Cell-Line] if provided in the context to guide your distinction.
-
-6. **No External Knowledge & Citation Format:**
-   - If the CONTEXT is "N/A" or irrelevant, output exactly: *"The provided papers do not contain information regarding this query."*
-   - Strictly avoid using internal model knowledge or databases.
-   - Always place PMIDs at the end of the relevant sentence or list item: `[PMID]`.
-
-7. **Language Rule:**
-   - **CRITICAL**: Respond in **{LANGUAGE}**. This is a hard requirement.
-   - **Intermediary English Synthesis**: To ensure maximum accuracy against the English PubMed context, you MUST first perform an internal reasoning step in English.
-   - **Format**: Begin your response with `<thinking_english>... your internal synthesis and PMID mapping ...</thinking_english>`. This block will be automatically hidden from the user.
-   - After the thinking block, provide the FINAL response and ALL headers in **{LANGUAGE}**.
-   - Specifically, use these translated section headers:
-     - **Traditional Chinese**: "證據分析", "假說與推論", "建議問題", "其餘推斷"
-     - **Japanese**: "根拠に基づく回答", "仮説・推論", "推奨されるフォローアップの質問"
-     - **Korean**: "근거 중심 답변", "가설 및 추론", "권장 후속 질문"
-   - Ensure the tone remains professional and information synthesis is grounded strictly in the CONTEXT.
+**Sub-label translations (non-English only):**
+  - **Traditional Chinese**: 假說、圖譜路徑、每條邊的證據、路徑信心度、推測原因、意義、機制主張、因果鏈、證據表、因果信心度、最弱環節、替代解釋、可測試預測、建議驗證方式、直接支持的內容？、推論的內容？、機制上合理的假說？
+  - **Japanese**: 仮説、グラフパス、各エッジの証拠、パス信頼度、推測の理由、示唆、機序的主張、因果連鎖、証拠表、因果信頼度、最弱リンク、代替説明、検証可能な予測、推奨検証方法、直接支持された内容は？、推論された内容は？、機序的に妥当な仮説は？
+  - **Korean**: 가설、그래프 경로、엣지별 증거、경로 신뢰도、추측 이유、시사점、기전적 주장、인과 연쇄、증거 표、인과 신뢰도、가장 약한 연결、대안적 설명、검증 가능한 예측、권장 검증 방법、직접 지지된 내용은?、추론된 내용은?、기전적으로 타당한 가설은?
 
 ---
 
 ### OUTPUT STRUCTURE
 
-Please format your response as follows:
+## Layer 1 — Evidence-Based Answer
 
-1. **[Translated "Evidence-Based Answer"]** - A synthesized summary of findings. If listing genes, proteins, or counts, use a clear **bulleted list** (or a **Markdown table** if requested by the user) with corresponding PMIDs and brief functional descriptions for each entry.
+List only conclusions directly supported by PubMed abstracts in the CONTEXT.
+- Every claim format: {entity A} → {relation} → {entity B} [PMID]
+- Use bullet points or a Markdown table for ≥ 3 items; include a brief functional description per item.
+- Label each finding **[Human]** or **[Animal/In vitro]**.
+- Do NOT include causal language unless the paper itself provides intervention evidence (knockdown, overexpression, CRISPR, etc.).
+- If evidence only shows co-occurrence or weak association, state it explicitly.
 
-2. **[Translated "Hypotheses / Speculative Inference"]** (**REQUIRED** when the CONTEXT contains Knowledge Graph Structure paths; otherwise include if inference is warranted)
-   - **MANDATORY for 2-hop paths**: For each "Latent Network Mechanism" path (A → B → C) in the Knowledge Graph Structure, present it as a mechanistic hypothesis with:
-     - The full chain clearly stated (e.g., "A may influence C via B")
-     - PMID support for the A→B link and the B→C link separately
-     - An explicit note if a link lacks literature support in the provided abstracts
-   - Also include any additional speculative mechanisms or research directions derived from the papers. Clearly state these are not directly proven.
+## Layer 2 — Association / Speculative Inference
 
-3. **[Translated "Suggested Follow-up Questions"]**
-   - Provide exactly 3 questions.
-   - **RIGID UI FORMAT (No bullets):**
-     [Q1: Question 1 text]
-     [Q2: Question 2 text]
-     [Q3: Question 3 text]
-   - Important: Do NOT use markdown lists or bullets (-, *) for these three lines.
+**REQUIRED** when the CONTEXT contains Knowledge Graph Structure paths (Latent Network Mechanisms). Also include text-based speculative inferences from the abstracts.
+
+For each 2-hop path, output one structured block:
+
+**Hypothesis:** {Entity A} may potentially be associated with {Entity C}
+
+**Graph Path:** {Entity A} → {intermediate node} → {Entity C}
+
+**Evidence per edge:**
+- {Entity A} → {Node B}: [PMID:xxxxx], relation: {relation type}
+- {Node B} → {Entity C}: [PMID:yyyyy], relation: {relation type}
+(If an edge lacks a PMID, write: "no direct literature support — confidence reduced")
+
+**Path Confidence:** {0.00–1.00}
+
+**Why speculative:** {e.g., no direct A→C PMID; edges are co-occurrence not mechanistic; single-paper evidence}
+
+**Implication:** {What this association may suggest for the research question}
+
+Rules for this layer:
+- Use ONLY: *may / might / potentially / is consistent with / suggests*
+- Do NOT use: *causes / drives / prevents / inhibits / activates* — those belong in Layer 3.
+- Never use placeholder labels "EntityA / EntityB / EntityC" — always write the real biological names.
+
+## Layer 3 — Causal Biomedical Mechanism
+
+**Include ONLY when** the Knowledge Graph Structure contains directional, mechanistic edges (e.g., upregulates, inhibits, activates, suppresses, promotes). **Skip this layer entirely** if only association edges exist; instead note: "Current evidence is insufficient to form a causal mechanism hypothesis — only association-level inference is supported."
+
+For each mechanistically plausible causal hypothesis:
+
+**Mechanistic Claim:** {Entity A} may influence {Entity C} via {pathway / process}
+
+**Causal Chain:**
+{Entity A} --[{relation}, polarity: {+/-/unknown}, PMID:{xxxx}]--> {Node B} --[{relation}, polarity: {+/-/unknown}, PMID:{yyyy}]--> {Entity C}
+
+**Evidence Table:**
+| Edge | Relation | Polarity | PMID | Confidence |
+|------|----------|----------|------|------------|
+| {A → B} | {relation} | {+ / - / unknown} | {PMID} | {high/medium/low} |
+| {B → C} | {relation} | {+ / - / unknown} | {PMID} | {high/medium/low} |
+
+**Causal Confidence:** {0.00–1.00}
+
+**Weakest Link:** {Which edge is least supported and why}
+
+**Alternative Explanations:** {Possible non-causal explanations: confounding, co-expression, tissue-specific effects}
+
+**Testable Prediction:** {What experimental result would confirm this mechanism}
+
+**Suggested Validation:** {qPCR / knockdown / overexpression / CRISPR / reporter assay / animal model / single-cell validation}
+
+Rules for this layer:
+- This is a "mechanistically plausible hypothesis", NOT proven causation.
+- If polarity is unknown, write "unknown" — do not guess.
+- If direction is ambiguous, move the path to Layer 2 instead.
+- Do NOT claim proven causation unless the CONTEXT contains explicit intervention evidence.
+
+## Layer 4 — Final Integrated Summary
+
+Three short paragraphs (2–3 sentences each). **Every factual sentence must include its supporting PMID(s) inline.**
+1. **What is directly supported?** Summarise the key Layer 1 findings with PMIDs [PMID].
+2. **What is inferred?** Summarise the Layer 2 association hypotheses; reference the key PMIDs per edge [PMID].
+3. **What is mechanistically plausible?** Summarise Layer 3 (or state "insufficient data for a causal mechanism hypothesis" if Layer 3 was skipped). Include causal PMIDs where available [PMID].
+
+## Layer 5 — Suggested Follow-up Questions
+
+Generate exactly 3 questions that help the user **explore deeper**, NOT rephrase the current query.
+Each question must target a **different analytical angle**:
+- Q1: Drill into a **specific mechanism or pathway** identified in the evidence (e.g., "What is the molecular mechanism by which X regulates Y?")
+- Q2: Explore **clinical or translational implications** (e.g., "How might X be leveraged as a therapeutic target for Y?")
+- Q3: Identify a **key knowledge gap or experimental validation** needed (e.g., "What experimental model would best confirm the X→Y→Z causal chain?")
+
+**Rules:**
+- Do NOT restate or rephrase the original user query.
+- Each question must be specific to the findings in THIS response, not generic.
+- Questions should be answerable using PubMed literature and the current knowledge graph.
+
+**RIGID FORMAT — no bullets, no numbering prefix:**
+[Q1: Question 1 text]
+[Q2: Question 2 text]
+[Q3: Question 3 text]
 """
         # Compact prompt for local LLMs
         self.local_system_prompt = self.system_prompt
@@ -403,22 +474,26 @@ Please format your response as follows:
                 effective_k = min(effective_k, 5)
                 logger.info("Local model detected: capping context to 5 abstracts")
 
-            if total_docs <= effective_k:
+            # Always use vector search so each question retrieves docs ranked by
+            # similarity to that specific query.  For small collections the search
+            # returns all docs anyway, but in query-relevant order rather than a
+            # fixed weight-based order that would be identical every turn.
+            search_k = min(top_k, 5) if is_local else top_k
+            if total_docs <= search_k:
+                # Small collection: vector search returns all docs; build rich
+                # context that includes edge/relationship data per abstract.
                 logger.info(
-                    f"Document set ({total_docs}) smaller than k({effective_k}), using subset of abstracts"
+                    f"Document set ({total_docs}) ≤ k({search_k}); using vector search with rich formatting"
                 )
-                # Sort by weight (citation-normalized) descending
-                sorted_docs = sorted(
-                    self.rag.documents.values(), key=lambda d: d.weight, reverse=True
-                )
-                pmids_used = [doc.pmid for doc in sorted_docs[:effective_k]]
+                _, pmids_used = self.rag.get_context(search_query, top_k=search_k)
 
                 context_parts = []
                 for rank, pmid in enumerate(pmids_used, start=1):
-                    doc = self.rag.documents[pmid]
-                    priority_label = f"Priority #{rank} (Impact Score: {doc.weight:.2f})"
+                    doc = self.rag.documents.get(pmid)
+                    if doc is None:
+                        continue
+                    priority_label = f"Relevance #{rank} (Impact Score: {doc.weight:.2f})"
 
-                    # Detect Species Study Type
                     study_type = "Human/General"
                     if hasattr(doc, "entities") and doc.entities:
                         non_human_species = [
@@ -434,7 +509,6 @@ Please format your response as follows:
                         f"Abstract: {doc.abstract}",
                     ]
 
-                    # Include structured semantic relationships if available
                     if hasattr(doc, "edges") and doc.edges:
                         unique_rels = set()
                         for edge in doc.edges:
@@ -450,18 +524,18 @@ Please format your response as follows:
                     context_parts.append("\n".join(part))
                 text_context = "\n---\n\n".join(context_parts)
             else:
-                # Use vector search for larger sets - cap top_k for local
-                search_k = min(top_k, 5) if is_local else top_k
+                # Large collection: standard vector search
                 text_context, pmids_used = self.rag.get_context(search_query, top_k=search_k)
 
             # 2. Retrieve Graph Context (Structure)
             graph_context = ""
+            twohop_paths = []
             if self.graph_retriever:
                 logger.info("Retrieving graph context...")
                 relevant_nodes = focus_nodes if focus_nodes is not None else self.graph_retriever.find_relevant_nodes(search_query)
                 if relevant_nodes:
-                    graph_context = self.graph_retriever.get_subgraph_context(relevant_nodes, query=search_query)
-                    logger.info(f"Found {len(relevant_nodes)} relevant nodes in graph")
+                    graph_context, twohop_paths = self.graph_retriever.get_subgraph_context_with_paths(relevant_nodes, query=search_query)
+                    logger.info(f"Found {len(relevant_nodes)} relevant nodes in graph, {len(twohop_paths)} paths")
                 else:
                     logger.info("No relevant nodes found in graph query")
 
@@ -537,21 +611,29 @@ Please format your response as follows:
             # Guardrail: remove generic subtype prefix noise (common with some models).
             assistant_content = self._strip_generic_subtype_prefix(assistant_content)
 
-            # Parse citations from response to filter sources
-            # Matches identifiers like: PMID:123456, [PMID:123456], PMID: 123456
-            cited_pmids = set(re.findall(r"PMID:?\s*(\d+)", assistant_content, re.IGNORECASE))
+            # Parse citations from response to filter sources.
+            # Catch all formats the LLM uses:
+            #   PMID:123456 / PMID: 123456 / PMID 123456
+            #   [PMID:123456] / [123456] (bare 7-10 digit number in brackets)
+            cited_pmids = set(
+                re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", assistant_content)
+            ) | set(
+                re.findall(r"\[(\d{7,10})\]", assistant_content)
+            )
 
             # Filter pmids_used to only include those actually cited
             final_sources = [p for p in pmids_used if p in cited_pmids]
 
-            # Create assistant message with sources
+            history_content = self._compress_for_history(assistant_content)
+
             assistant_msg = ChatMessage(
-                role="assistant", content=assistant_content, sources=final_sources
+                role="assistant",
+                content=history_content,
+                sources=final_sources,
+                full_content=assistant_content,
             )
             self.history.append(assistant_msg)
-
-            # Skip physical trimming to keep full history for downloads
-            # self._trim_history()
+            self._trim_history()
 
             logger.info("Chat response generated successfully")
 
@@ -559,9 +641,11 @@ Please format your response as follows:
                 "success": True,
                 "message": assistant_content,
                 "sources": final_sources,
+                "pmids_used": pmids_used,
                 "context_count": len(pmids_used),
                 "user_msg": user_msg,
                 "assistant_msg": assistant_msg,
+                "twohop_paths": twohop_paths,
             }
 
         except Exception as e:
@@ -591,20 +675,21 @@ Please format your response as follows:
 
         messages = [{"role": "system", "content": system_content}]
 
-        # Add recent conversation history (excluding current message)
-        last_added_content = None
-        history_window = (
-            self.history[-(self.max_history - 1) :] if self.max_history > 0 else self.history
-        )
+        # Inject long-term memory buffer (compressed earlier turns) as a system message
+        # so the LLM can reference prior findings even after they've left the rolling window.
+        memory_text = self._render_memory_buffer()
+        if memory_text:
+            messages.append({"role": "system", "content": memory_text})
 
-        for msg in history_window:
+        # Add recent conversation history (all stored pairs; already trimmed to max_history pairs)
+        last_added_content = None
+        for msg in self.history:
             if msg.role == "system":
                 continue
             if msg.content == user_message:
                 continue
             if msg.content == last_added_content:
                 continue
-
             messages.append({"role": msg.role, "content": msg.content})
             last_added_content = msg.content
 
@@ -630,21 +715,164 @@ Please format your response as follows:
 
         return messages
 
+    def _compress_for_history(self, content: str) -> str:
+        """Compress an assistant response for history storage.
+
+        Strips structural formatting introduced by the 5-layer prompt as well as
+        visual/heavy sections, retaining primarily factual biomedical text with
+        PMID citations.  Truncates to _HISTORY_ASSISTANT_MAX_CHARS so that token
+        growth across multi-turn conversations stays bounded.  The RAG context for
+        each new turn is always re-fetched fresh, so heavy formatting has no value
+        in history.
+        """
+        text = content
+
+        # 1. Remove <thinking_english> internal reasoning blocks
+        text = re.sub(
+            r"<thinking_english>[\s\S]*?</thinking_english>", "", text, flags=re.IGNORECASE
+        )
+
+        # 2. Remove mermaid diagrams
+        text = re.sub(r"```mermaid[\s\S]*?```", "", text)
+
+        # 3. Remove [Q1/Q2/Q3] suggested-question lines
+        text = re.sub(r"\[Q\d+:.*?\]", "", text, flags=re.DOTALL)
+
+        # 4. Remove layer/section headers produced by the 5-layer prompt
+        #    Matches: ## Layer 1 — …, ## Finding 1, ## Association Hypothesis 1, etc.
+        text = re.sub(
+            r"^#{1,3}\s*(?:Layer\s+\d+|Finding\s+\d+|Association\s+Hypothesis\s+\d+|"
+            r"Causal\s+Mechanism\s+Hypothesis\s+\d+)[^\n]*\n?",
+            "",
+            text,
+            flags=re.MULTILINE | re.IGNORECASE,
+        )
+
+        # 5. Remove Markdown table rows (lines starting and ending with |)
+        text = re.sub(r"^\|[^\n]+\|[ \t]*\n?", "", text, flags=re.MULTILINE)
+
+        # 6. Remove structured bold sub-labels that are pure formatting noise
+        _LABEL_PATTERN = (
+            r"\*\*(?:"
+            r"Why speculative|Path Confidence|Mechanistic Claim|Causal Confidence|"
+            r"Weakest Link|Testable Prediction|Suggested Validation|Alternative Explanations|"
+            r"Evidence per edge|Graph Path|Hypothesis|Implication|Causal Chain|"
+            r"Evidence Table|Directionality|Polarity|Causal Chain|"
+            r"What is directly supported|What is inferred|What is mechanistically plausible"
+            r")[^*\n]*\*\*[^\n]*\n?"
+        )
+        text = re.sub(_LABEL_PATTERN, "", text, flags=re.IGNORECASE)
+
+        # 7. Collapse excessive blank lines and spaces
+        text = re.sub(r"\n{3,}", "\n\n", text)
+        text = re.sub(r" {2,}", " ", text).strip()
+
+        # 8. Collect all PMIDs from original content before truncation
+        all_cited = sorted(set(
+            re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", content)
+        ) | set(
+            re.findall(r"\[(\d{7,10})\]", content)
+        ))
+
+        # 9. Truncate at a sentence boundary within the char budget
+        if len(text) > self._HISTORY_ASSISTANT_MAX_CHARS:
+            cutoff = text[: self._HISTORY_ASSISTANT_MAX_CHARS].rfind(". ")
+            if cutoff < self._HISTORY_ASSISTANT_MAX_CHARS // 2:
+                cutoff = self._HISTORY_ASSISTANT_MAX_CHARS
+            text = text[: cutoff + 1].strip() + " [...]"
+
+        # 10. Append PMID summary so truncation never loses citation context
+        if all_cited:
+            pmid_line = f"\n[Cited PMIDs: {', '.join(all_cited[:15])}]"
+            # Only append if not all PMIDs already appear in the compressed text
+            present = set(re.findall(r"\d{7,10}", text))
+            if not set(all_cited).issubset(present):
+                text = text + pmid_line
+
+        return text
+
+    # ------------------------------------------------------------------
+    # Memory buffer helpers
+    # ------------------------------------------------------------------
+
+    @staticmethod
+    def _first_sentences(text: str, max_chars: int) -> str:
+        """Return leading text up to max_chars, breaking at the last sentence end."""
+        if len(text) <= max_chars:
+            return text
+        cut = text[:max_chars].rfind(". ")
+        if cut < max_chars // 2:
+            cut = max_chars
+        return text[: cut + 1].strip()
+
+    def _pair_to_memory_entry(self, user_msg: ChatMessage, asst_msg: ChatMessage) -> str:
+        """Compress a conversation pair into a single memory entry line."""
+        # User side: just the question text (strip template wrapper if present)
+        q_raw = user_msg.content
+        # Strip the CONTEXT/TASK wrapper that _build_messages injects
+        task_marker = "### TASK"
+        if task_marker in q_raw:
+            q_raw = q_raw.split(task_marker, 1)[1]
+        q_raw = re.sub(r"\*User:\*\s*", "", q_raw).split("*Assistant:*")[0].strip()
+        q_text = q_raw[:120].strip()
+        if len(q_raw) > 120:
+            q_text += "…"
+
+        # Assistant side: already compressed; take the first substantive sentences
+        a_raw = asst_msg.content
+        # Strip markdown headers and bullets for a cleaner summary line
+        a_lines = [
+            re.sub(r"^[#\*\-\•\s]+", "", ln).strip()
+            for ln in a_raw.splitlines()
+            if len(ln.strip()) > 20 and not ln.strip().startswith("[")
+        ]
+        a_text = self._first_sentences(" ".join(a_lines), self._MEMORY_ENTRY_MAX_CHARS)
+
+        return f"Q: {q_text}\nA: {a_text}"
+
+    def _update_memory_buffer(self, entry: str) -> None:
+        """Append entry to memory_buffer, trimming oldest entries if over budget."""
+        self.memory_buffer.append(entry)
+        # Drop oldest entries until total chars fits within budget
+        while sum(len(e) for e in self.memory_buffer) > self._MEMORY_BUFFER_MAX_CHARS:
+            self.memory_buffer.pop(0)
+
+    def _render_memory_buffer(self) -> str:
+        """Render memory_buffer as a system message string, or empty string if empty."""
+        if not self.memory_buffer:
+            return ""
+        entries = "\n\n".join(
+            f"[Turn {i + 1}]\n{e}" for i, e in enumerate(self.memory_buffer)
+        )
+        return f"### Long-term Conversation Memory (earlier turns, compressed)\n{entries}"
+
     def _trim_history(self):
-        """Trim conversation history to max length"""
-        if len(self.history) > self.max_history:
-            # Keep the most recent messages
-            self.history = self.history[-self.max_history :]
-            logger.debug(f"Trimmed chat history to {self.max_history} messages")
+        """Sliding-window trim: pairs that fall out are compressed into memory_buffer."""
+        max_messages = self.max_history * 2  # each pair = 1 user + 1 assistant
+        while len(self.history) > max_messages:
+            # Pop the oldest pair (user then assistant)
+            if len(self.history) >= 2 and self.history[0].role == "user" and self.history[1].role == "assistant":
+                old_user = self.history.pop(0)
+                old_asst = self.history.pop(0)
+                entry = self._pair_to_memory_entry(old_user, old_asst)
+                self._update_memory_buffer(entry)
+                logger.debug("Compressed 1 conversation pair into memory buffer")
+            else:
+                # Misaligned — just drop the oldest message
+                self.history.pop(0)
+        logger.debug(
+            f"History: {len(self.history)} messages, memory buffer: {len(self.memory_buffer)} entries"
+        )
 
     def get_history(self) -> list[dict]:
         """Get conversation history as list of dictionaries"""
         return [msg.to_dict() for msg in self.history]
 
     def clear(self):
-        """Clear conversation history"""
+        """Clear conversation history and memory buffer"""
         self.history.clear()
-        logger.info("Chat history cleared")
+        self.memory_buffer.clear()
+        logger.info("Chat history and memory buffer cleared")
 
     def get_stats(self) -> dict[str, Any]:
         """Get statistics about the chat session"""
