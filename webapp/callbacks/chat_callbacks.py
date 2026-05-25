@@ -1429,12 +1429,16 @@ def callbacks(app):
                         groq_model=groq_model,
                         groq_custom_model=groq_custom_model,
                     )
-                    if llm_client.client:
-                        _rebuild_chat_session_from_graph(
-                            savepath,
-                            llm_client,
-                            topic=search_query,
+                    if not llm_client.client:
+                        logger.warning(
+                            "Rebuilding chat session from graph, but LLM client is not fully initialized. "
+                            "Provider: %s", llm_client.provider
                         )
+                    _rebuild_chat_session_from_graph(
+                        savepath,
+                        llm_client,
+                        topic=search_query,
+                    )
             except Exception as e:
                 logger.error(f"Failed to rebuild chat session from graph: {e}")
 
