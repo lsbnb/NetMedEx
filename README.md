@@ -1,4 +1,4 @@
-# NetMedEx v1.2.7
+# NetMedEx v1.2.8
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -6,13 +6,22 @@
 
 NetMedEx is an AI-powered knowledge discovery platform designed to transform biomedical literature into actionable insights. Unlike traditional tools that merely extract entities, NetMedEx leverages **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** and **Full-Text BioC-JSON Processing** to synthesize structured co-mention networks with unstructured text, providing a holistic understanding of biological relationships.
 
-In NetMedEx, the **Co-Mention Network** serves as a structural "scaffolding." While the network visualizes the landscape of bio-concepts (genes, diseases, chemicals, etc.), the **AI-driven Semantic Layer** breathes life into these connections by extracting evidence, identifying relationship types, and answering complex natural language queries. **v1.1.0** introduces **sapBERT-based KG Normalization**, ensuring semantic consistency by merging equivalent concept variants across the Knowledge Graph. **v1.2.7** delivers stability and performance improvements — graph lag fixes (preset layout fallback for large graphs), a loading spinner during graph rebuild, NVIDIA NIM wired into all Search/Chat callbacks, lazy ChatSession reconstruction after server restarts, and a preflight diagnostic for Chat indexing. **v1.2.6** advances the Chat Panel with a **5-Layer Evidence Reasoning Framework** that strictly separates direct literature evidence, association inference, causal mechanism hypotheses, and integrated summary—each with edge-level PMID citations—alongside **Dijkstra weighted shortest-path search** in the Graph Panel and **MeSH CUI-based entity deduplication** to prevent abbreviation/full-name fragmentation (e.g., `"hcv"` ↔ `"hepatitis c virus"`).
+In NetMedEx, the **Co-Mention Network** serves as a structural "scaffolding." While the network visualizes the landscape of bio-concepts (genes, diseases, chemicals, etc.), the **AI-driven Semantic Layer** breathes life into these connections by extracting evidence, identifying relationship types, and answering complex natural language queries. **v1.1.0** introduces **sapBERT-based KG Normalization**, ensuring semantic consistency by merging equivalent concept variants across the Knowledge Graph. **v1.2.8** integrates the Groq API provider for high-speed semantic relationship extraction and Hybrid RAG chat, automatically filters publication-type noise (e.g. editorials, congress reports) from text queries, updates the suggested question framework to target specific cited concepts instead of generic placeholders, resolves modal component ID conflicts, and fixes all broken tests. **v1.2.7** delivers stability and performance improvements — graph lag fixes (preset layout fallback for large graphs), a loading spinner during graph rebuild, NVIDIA NIM wired into all Search/Chat callbacks, lazy ChatSession reconstruction after server restarts, and a preflight diagnostic for Chat indexing. **v1.2.6** advances the Chat Panel with a **5-Layer Evidence Reasoning Framework** that strictly separates direct literature evidence, association inference, causal mechanism hypotheses, and integrated summary—each with edge-level PMID citations—alongside **Dijkstra weighted shortest-path search** in the Graph Panel and **MeSH CUI-based entity deduplication** to prevent abbreviation/full-name fragmentation (e.g., `"hcv"` ↔ `"hepatitis c virus"`).
 
 ---
 
 ## 🆕 Recent Updates
 
+### v1.2.8 — 2026-05-25
+
+- **Groq API Provider**: Dynamic model list fetching, connection testing, and server-side `.env` saving for Groq models (preset Llama 3.3, Llama 3.1, Mixtral, Gemma 2, and Custom).
+- **Query Filtering**: Automatically appends publication-type exclusion tags (e.g., `NOT "Editorial"[pt]`) to free-text queries, filtering out non-research articles.
+- **Suggested Questions**: Refined the format to use specific concepts from context rather than placeholders (X/Y), and expanded parser to handle bare `Q1:` formats.
+- **Modal ID Suffixing**: Prevents ID conflicts when rendering chat components in Modal dialogs.
+- **Test Suite Pass**: Restored all historical test data files and corrected LLM mock signatures to restore a 100% success rate (49/49 passed).
+
 ### v1.2.7 — 2026-05-21
+
 - **Graph Lag Fix**: Server-side rebuild timing logs added; large graphs (>700 visible nodes) now use Cytoscape `preset` layout to skip a redundant client-side fCoSE pass after server-side layout.
 - **Graph Loading Spinner**: A `dcc.Loading` overlay appears while the server-side graph rebuild callback runs, eliminating the blank-graph gap after Search completes.
 - **NVIDIA NIM in All Callbacks**: Shared LLM initialisation helper ensures NVIDIA NIM is correctly wired into Search pipeline, auto-Chat, manual Chat, and session-rebuild paths (previously fell through to Local Ollama).
@@ -25,6 +34,7 @@ In NetMedEx, the **Co-Mention Network** serves as a structural "scaffolding." Wh
 - **Node-Degree Debounce**: Number input fires graph rebuild only on Enter/blur, preventing per-keystroke rebuilds.
 
 ### v1.2.6 — 2026-05-15
+
 - **5-Layer Evidence Reasoning Framework**: Chat responses are now structured into five layers — (1) Evidence-Based Answer with direct PMID citations per claim and `[Human]`/`[Animal/In vitro]` labelling; (2) Association / Speculative Inference with structured hypothesis blocks (graph path, per-edge PMIDs, path confidence, why speculative); (3) Causal Biomedical Mechanism with directional causal chain, polarity, evidence table, weakest link, and testable prediction (only when directional edges exist); (4) Final Integrated Summary with inline PMIDs; (5) Suggested Follow-up Questions.
 - **Anti-Hallucination Core Principles**: 8 hard rules enforced at prompt level — never hallucinate PMIDs, never convert co-occurrence into regulation, edge-level citation required, strict layer separation, causal language (`inhibits`/`activates`/`drives`) restricted to Layer 3, speculative language mandate for Layers 2–3, species distinction mandatory, no external knowledge.
 - **Per-message Language Detection**: Response language now follows each individual user message (English fallback for unrecognized scripts). Removes session-level language lock that forced non-English replies even for English questions.
@@ -35,6 +45,7 @@ In NetMedEx, the **Co-Mention Network** serves as a structural "scaffolding." Wh
 - **Search Nodes False-Positive Fix**: Segment-aware matching prevents short queries (e.g. `ID1`) from matching unrelated nodes (e.g. `COVID-19`).
 
 ### v1.2.4 — 2026-04-30
+
 - **NVIDIA NIM Support**: Added NVIDIA NIM as a fifth LLM provider (alongside OpenAI, Google Gemini, OpenRouter, Local Ollama). Supports both cloud NIM (`integrate.api.nvidia.com`) and on-premises deployments with preset model catalogue and endpoint fetch.
 - **Active LLM Banner**: Advanced Settings now displays the currently loaded server-side LLM provider and model on page load, eliminating ambiguity about which AI engine is active.
 - **Collapsible UI Panels**: Search Panel reorganized into three zones — always-visible core fields, collapsible *Search Options* (Sort, PubTator Parameters), and collapsible *Advanced Network Options* (Node Filter, Edge Method, Weighting, Semantic Threshold). Graph tab gains a collapsible *Display Filters* section (Edge Confidence, Visible Node Types, Minimal Degree). Collapse states persist across sessions.

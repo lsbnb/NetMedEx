@@ -5,6 +5,40 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.8] - 2026-05-25
+
+### Added
+- **Groq API Provider Integration**: Full support for Groq models (Llama 3.3, Llama 3.1, Mixtral, Gemma 2, and Custom) including connection verification, dynamic model fetching in Advanced Settings, and writing config back to server `.env`.
+- **Query Auto-Filtering**: Automatically appends publication-type exclusion tags (e.g. `NOT "Editorial"[pt] NOT "Letter"[pt] ...`) to free-text searches to eliminate noisy, non-research PubMed documents.
+- **Dynamic Suggested Question IDs**: Automatically appends suffixes to suggested questions in Modal windows, preventing element ID collision bugs.
+
+### Changed
+- **Suggested Question Focus**: Enhanced system instructions to strictly citation-bind questions to specific biological concepts in context instead of generic X/Y placeholders.
+- **Robust Suggested Question Parser**: Updated the parser in `chat.py` to handle both bracketed `[Q1: ...]` and bare `Q1:` formats.
+- **RAG Consistency**: Set對話 `temperature=0` (was 0.3) for more deterministic response consistency.
+- **Markdown Tables Spacing**: Enforced a blank line buffer before and after markdown tables in chat cards to resolve markdown rendering bugs.
+
+### Fixed
+- **100% Test Coverage Recovery**: Restored all deleted `tests/test_data` PubTator and JSON files, and adjusted mock client argument signatures/PMID extraction regexes in `test_cli.py`, `test_rag_chat.py`, and `test_semantic_prompt.py` to achieve full test success.
+
+## [1.2.7] - 2026-05-21
+
+### Added
+- **Graph Rebuild Timing Logs**: Timing logs for server-side graph layout rebuild and Cytoscape JSON serialization to diagnose lag.
+- **Graph Loading Spinner**: Added `dcc.Loading` wrapping to the Cytoscape canvas to display a spinner during server rebuilds.
+- **Chat Indexing Diagnostic**: Preflight diagnostic checks and logging (selected nodes, edges, PMIDs, abstract match counts) before indexing NodeRAG, and displays configuration summary in the status bar.
+
+### Changed
+- **NVIDIA NIM Integration**: Shared LLM initialization helper ensuring NIM is correctly dispatched in Search, auto-Chat, manual Chat, and session-rebuild callbacks.
+- **Large Graph preset Layout**: Skipped redundant client-side fCoSE passes on graphs with >700 nodes by falling back to `preset` layout, eliminating visual lag.
+- **Non-English Search Gate**: Requires an active LLM for CJK/Korean search queries to translate and log the PubTator query properly.
+- **Deduplication and Validation Warnings**: Preserves order while deduplicating PMIDs before annotation fetch; emits warnings in logs when parsed article count is significantly lower than requested PMIDs.
+- **Debounced Node-Degree Input**: Fires graph updates only on Enter/blur to prevent per-keystroke rebuild lag.
+
+### Fixed
+- **PubTator Search Sort Consistency**: Ensured page-1 queries receive the selected sort parameter, aligning search results with subsequent pages to prevent missing PMIDs.
+- **Lazy Session Rebuild**: Send-message callbacks now dynamically rebuild ChatSession from persisted `G.pkl` after server restarts instead of raising "session expired" errors.
+
 ## [1.2.6] - 2026-05-14
 
 ### Added

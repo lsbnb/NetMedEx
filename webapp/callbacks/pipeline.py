@@ -106,6 +106,9 @@ def callbacks(app):
             State("nvidia-api-key-input", "value"),
             State("nvidia-nim-base-url-input", "value"),
             State("nvidia-model-selector", "value"),
+            State("groq-api-key-input", "value"),
+            State("groq-model-selector", "value"),
+            State("groq-custom-model-input", "value"),
             State("normalization-toggle", "value"),
         ],
         running=[
@@ -158,6 +161,9 @@ def callbacks(app):
         nvidia_api_key,
         nvidia_nim_base_url,
         nvidia_model,
+        groq_api_key,
+        groq_model,
+        groq_custom_model,
         normalization_toggle,
     ):
         try:
@@ -252,6 +258,9 @@ def callbacks(app):
                 nvidia_api_key=nvidia_api_key,
                 nvidia_nim_base_url=nvidia_nim_base_url,
                 nvidia_model=nvidia_model,
+                groq_api_key=groq_api_key,
+                groq_model=groq_model,
+                groq_custom_model=groq_custom_model,
             )
             logger.info(
                 f"LLM Client initialized in background process: provider={llm_provider}, model={llm_client.model}"
@@ -384,6 +393,25 @@ def callbacks(app):
                                     )
                                 )
                     logger.info("Final PubTator query: %s", query)
+
+                    # Append publication-type exclusion filters so that non-research
+                    # article types (which typically lack abstracts and add noise) are
+                    # automatically removed from every free-text query.
+                    # These use standard PubMed [pt] (Publication Type) field tags.
+                    EXCLUDED_PUB_TYPES = [
+                        "Editorial",
+                        "Letter",
+                        "Published Erratum",
+                        "Congress",       # Conference proceedings / abstracts
+                        "News",
+                        "Comment",
+                        "Retraction of Publication",
+                    ]
+                    exclusion_suffix = " ".join(
+                        f'NOT "{pt}"[pt]' for pt in EXCLUDED_PUB_TYPES
+                    )
+                    query = f"({query}) {exclusion_suffix}"
+                    logger.info("Query after pub-type exclusion: %s", query)
 
                 elif input_type == "pmids":
                     pmid_list = load_pmids(data_input, load_from="string")

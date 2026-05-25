@@ -1,0 +1,129 @@
+38258094|t|Combined Role of Interleukin-15 Stimulated Natural Killer Cell-Derived Extracellular Vesicles and Carboplatin in Osimertinib-Resistant H1975 Lung Cancer Cells with EGFR Mutations.
+38258094|a|In this study, we evaluated IL-15 stimulated natural killer cell-derived EVs (NK-EVs) as therapeutic agents in vitro and in vivo in Osimertinib-resistant lung cancer (H1975R) with EGFR mutations (L858R) in combination with carboplatin (CBP). NK-EVs were isolated by ultracentrifugation and characterized by nanoparticle tracking analysis, and atomic force microscopy imaging revealed vesicles with a spherical form and sizes meeting the criteria of exosomal EVs. Further, Western blot studies demonstrated the presence of regular EV markers along with specific NK markers (perforin and granzyme). EVs were also characterized by proteomic analysis, which demonstrated that EVs had proteins for natural killer cell-mediated cytotoxicity (Granzyme B) and T cell activation (perforin and plastin-2). Gene oncology analysis showed that these differentially expressed proteins are involved in programmed cell death and positive regulation of cell death. Further, isolated NK-EVs were cytotoxic to H1975R cells in vitro in 2D and 3D cell cultures. CBP's IC50 was reduced by approximately in 2D and 3D cell cultures when combined with NK-EVs. The EVs were then combined with CBP and administered by i.p. route to H1975R tumor xenografts, and a significant reduction in tumor volume in vivo was observed. Our findings show for the first time that NK-EVs target the PD-L1/PD-1 immunological checkpoint to induce apoptosis and anti-inflammatory response by downregulation of SOD2, PARP, BCL2, SET, NF-kappaB, and TGF-ss. The ability to isolate functional NK-EVs on a large scale and use them with platinum-based drugs may lead to new clinical applications. The results of the present study suggest the possibility of the combination of NK-cell-derived EVs and CBP as a viable immunochemotherapeutic strategy for resistant cancers.
+38258094	17	31	IL15	Gene	3600
+38258094	98	109	Carboplatin	Chemical	MESH:D016190
+38258094	113	124	osimertinib	Chemical	MESH:C000596361
+38258094	135	140	#1956#	ProteinMutation	tmVar:p|Allele|H|1975;VariantGroup:1;CorrespondingGene:1956;CorrespondingSpecies:9606
+38258094	141	152	Lung Neoplasms	Disease	MESH:D008175
+38258094	164	168	EGFR	Gene	1956
+38258094	208	213	IL15	Gene	3600
+38258094	312	323	osimertinib	Chemical	MESH:C000596361
+38258094	334	345	Lung Neoplasms	Disease	MESH:D008175
+38258094	347	353	p.H1975R	ProteinMutation	tmVar:p|SUB|H|1975|R;HGVS:p.H1975R;VariantGroup:1;CorrespondingGene:1956;CorrespondingSpecies:9606
+38258094	360	364	EGFR	Gene	1956
+38258094	376	381	p.L858R	ProteinMutation	tmVar:p|SUB|L|858|R;HGVS:p.L858R;VariantGroup:0;CorrespondingGene:1956;RS#:121434568;CorrespondingSpecies:9606;CA#:126713
+38258094	403	414	Carboplatin	Chemical	MESH:D016190
+38258094	416	419	Carboplatin	Chemical	MESH:D016190
+38258094	916	926	GZMB	Gene	3002
+38258094	964	973	LCP1	Gene	3936
+38258094	1171	1177	p.H1975R	ProteinMutation	tmVar:p|SUB|H|1975|R;HGVS:p.H1975R;VariantGroup:1;CorrespondingGene:1956;CorrespondingSpecies:9606
+38258094	1221	1224	Carboplatin	Chemical	MESH:D016190
+38258094	1347	1350	Carboplatin	Chemical	MESH:D016190
+38258094	1385	1391	p.H1975R	ProteinMutation	tmVar:p|SUB|H|1975|R;HGVS:p.H1975R;VariantGroup:1;CorrespondingGene:1956;CorrespondingSpecies:9606
+38258094	1392	1397	Neoplasms	Disease	MESH:D009369
+38258094	1441	1446	Neoplasms	Disease	MESH:D009369
+38258094	1536	1541	CD274	Gene	29126
+38258094	1542	1546	PDCD1	Gene	5133
+38258094	1601	1613	Inflammation	Disease	MESH:D007249
+38258094	1644	1648	SOD2	Gene	6648
+38258094	1650	1654	COL11A2	Gene	1302
+38258094	1656	1660	BCL2	Gene	596
+38258094	1667	1676	NFKB1	Gene	4790
+38258094	1766	1774	Platinum	Chemical	MESH:D010984
+38258094	1929	1932	Carboplatin	Chemical	MESH:D016190
+38258094	1991	1998	Neoplasms	Disease	MESH:D009369
+38258094	Negative_Correlation	MESH:D016190	HGVS:p.H1975R;CorrespondingGene:1956
+38258094	Negative_Correlation	MESH:C000596361	MESH:D016190
+38258094	Negative_Correlation	MESH:D016190	RS#:121434568;HGVS:p.L858R;CorrespondingGene:1956
+38258094	Negative_Correlation	MESH:C000596361	CorrespondingGene:1956;CorrespondingSpecies:9606;VariantGroup:1;tmVar:p|Allele|H|1975
+38258094	Negative_Correlation	MESH:D016190	CorrespondingGene:1956;CorrespondingSpecies:9606;VariantGroup:1;tmVar:p|Allele|H|1975
+38258094	Negative_Correlation	MESH:C000596361	RS#:121434568;HGVS:p.L858R;CorrespondingGene:1956
+38258094	Association	MESH:D008175	RS#:121434568;HGVS:p.L858R;CorrespondingGene:1956
+38258094	Association	MESH:D016190	3600
+38258094	Negative_Correlation	MESH:C000596361	MESH:D008175
+38258094	Association	MESH:D008175	1956
+38258094	Negative_Correlation	MESH:D016190	1956
+38258094	Association	MESH:D007249	6648
+38258094	Association	MESH:D007249	4790
+38258094	Negative_Correlation	MESH:D016190	MESH:D008175
+38258094	Negative_Correlation	MESH:D016190	MESH:D009369
+
+38601677|t|Pharmacogenomics-based systematic review of coronary artery disease based on personalized medicine procedure.
+38601677|a|Background: Coronary artery disease (CAD) is the most common reason for mortality and disability-adjusted life years (DALYs) lost globally. This study aimed to suggest a new gene list for the treatment of CAD by a systematic review of bioinformatics analyses of pharmacogenomics impacts of potential genes and variants. Methods: PubMed search was filtered by the title including Coronary Artery Disease during 2020-2023. To find the genes with pharmacogenetic impact on the CAD, additional filtrations were considered according to the variant annotations. Protein-Protein Interactions (PPIs), Gene-miRNA Interactions (GMIs), Protein-Drug Interactions (PDIs), and variant annotation assessments (VAAs) performed by STRING-MODEL (ver. 12), Cytoscape (ver. 3.10), miRTargetLink.2., NetworkAnalyst (ver 0.3.0), and PharmGKB. Results: Results revealed 5618 publications, 1290 papers were qualified, and finally, 650 papers were included. 4608 protein-coding genes were extracted, among them, 1432 unique genes were distinguished and 530 evidence-based repeated genes remained. 71 genes showed a pharmacogenetics-related variant annotation in at least (entirely 6331 annotations). Variant annotation assessment (VAA) showed 532 potential variants for the final report, and finally, the concluding PGs list represented 175 variants. Based on the function and MAF, 57 nonsynonymous variants of 29 Pharmacogenomics-related genes were associated with CAD. Conclusion: Conclusively, evaluating circulating miR33a in individuals' plasma with CAD, and genotyping of rs2230806, rs2230808, rs2487032, rs12003906, rs2472507, rs2515629, and rs4149297 (ABCA1 variants) lead to precisely prescribing of well-known drugs. Also, the findings of this review can be used in both whole-genome sequencing (WGS) and whole-exome sequencing (WES) analysis in the prognosis and diagnosis of CAD.
+38601677	44	67	Coronary Artery Disease	Disease	MESH:D003324
+38601677	122	145	Coronary Artery Disease	Disease	MESH:D003324
+38601677	147	150	Coronary Artery Disease	Disease	MESH:D003324
+38601677	315	318	Coronary Artery Disease	Disease	MESH:D003324
+38601677	489	512	Coronary Artery Disease	Disease	MESH:D003324
+38601677	584	587	Coronary Artery Disease	Disease	MESH:D003324
+38601677	1551	1554	Coronary Artery Disease	Disease	MESH:D003324
+38601677	1605	1611	MIR33A	Gene	407039
+38601677	1640	1643	Coronary Artery Disease	Disease	MESH:D003324
+38601677	1663	1672	rs2230806	SNP	tmVar:rs2230806;VariantGroup:0;CorrespondingGene:19;RS#:2230806;CorrespondingSpecies:9606
+38601677	1674	1683	rs2230808	SNP	tmVar:rs2230808;VariantGroup:3;CorrespondingGene:19;RS#:2230808;CorrespondingSpecies:9606
+38601677	1685	1694	rs2487032	SNP	tmVar:rs2487032;VariantGroup:1;RS#:2487032
+38601677	1696	1706	rs12003906	SNP	tmVar:rs12003906;VariantGroup:4;CorrespondingGene:19;RS#:12003906;CorrespondingSpecies:9606
+38601677	1708	1717	rs2472507	SNP	tmVar:rs2472507;VariantGroup:2;CorrespondingGene:19;RS#:2472507;CorrespondingSpecies:9606
+38601677	1719	1728	rs2515629	SNP	tmVar:rs2515629;VariantGroup:6;CorrespondingGene:19;RS#:2515629;CorrespondingSpecies:9606
+38601677	1734	1743	rs4149297	SNP	tmVar:rs4149297;VariantGroup:5;CorrespondingGene:19;RS#:4149297;CorrespondingSpecies:9606
+38601677	1745	1750	ABCA1	Gene	19
+38601677	1972	1975	Coronary Artery Disease	Disease	MESH:D003324
+38601677	Positive_Correlation	MESH:D003324	RS#:2230808;CorrespondingGene:19
+38601677	Positive_Correlation	MESH:D003324	RS#:2487032
+38601677	Positive_Correlation	MESH:D003324	RS#:12003906;CorrespondingGene:19
+38601677	Association	MESH:D003324	RS#:2515629;CorrespondingGene:19
+38601677	Positive_Correlation	MESH:D003324	RS#:2472507;CorrespondingGene:19
+38601677	Positive_Correlation	MESH:D003324	RS#:2230806;CorrespondingGene:19
+38601677	Association	MESH:D003324	RS#:4149297;CorrespondingGene:19
+38601677	Association	MESH:D003324	407039
+38601677	Association	MESH:D003324	19
+
+12345678|t|Combined Role of Interleukin-15 Stimulated Natural Killer Cell-Derived Extracellular Vesicles and Carboplatin in Osimertinib-Resistant H1975 Lung Cancer Cells with EGFR Mutations.
+12345678|a|In this study, we evaluated IL-15 stimulated natural killer cell-derived EVs (NK-EVs) as therapeutic agents in vitro and in vivo in Osimertinib-resistant lung cancer (H1975R) with EGFR mutations (L858R) in combination with carboplatin (CBP). NK-EVs were isolated by ultracentrifugation and characterized by nanoparticle tracking analysis, and atomic force microscopy imaging revealed vesicles with a spherical form and sizes meeting the criteria of exosomal EVs. Further, Western blot studies demonstrated the presence of regular EV markers along with specific NK markers (perforin and granzyme). EVs were also characterized by proteomic analysis, which demonstrated that EVs had proteins for natural killer cell-mediated cytotoxicity (Granzyme B) and T cell activation (perforin and plastin-2). Gene oncology analysis showed that these differentially expressed proteins are involved in programmed cell death and positive regulation of cell death. Further, isolated NK-EVs were cytotoxic to H1975R cells in vitro in 2D and 3D cell cultures. CBP's IC50 was reduced by approximately in 2D and 3D cell cultures when combined with NK-EVs. The EVs were then combined with CBP and administered by i.p. route to H1975R tumor xenografts, and a significant reduction in tumor volume in vivo was observed. Our findings show for the first time that NK-EVs target the PD-L1/PD-1 immunological checkpoint to induce apoptosis and anti-inflammatory response by downregulation of SOD2, PARP, BCL2, SET, NF-kappaB, and TGF-ss. The ability to isolate functional NK-EVs on a large scale and use them with platinum-based drugs may lead to new clinical applications. The results of the present study suggest the possibility of the combination of NK-cell-derived EVs and CBP as a viable immunochemotherapeutic strategy for resistant cancers.
+12345678	17	31	IL15	Gene	3600
+12345678	98	109	Carboplatin	Chemical	MESH:D016190
+12345678	113	124	osimertinib	Chemical	MESH:C000596361
+12345678	135	140	#1956#	ProteinMutation	tmVar:p|Allele|H|1975;VariantGroup:1;CorrespondingGene:1956;CorrespondingSpecies:9606
+12345678	141	152	Lung Neoplasms	Disease	MESH:D008175
+12345678	164	168	EGFR	Gene	1956
+12345678	208	213	IL15	Gene	3600
+12345678	312	323	osimertinib	Chemical	MESH:C000596361
+12345678	334	345	Lung Neoplasms	Disease	MESH:D008175
+12345678	347	353	p.H1975R	ProteinMutation	tmVar:p|SUB|H|1975|R;HGVS:p.H1975R;VariantGroup:1;CorrespondingGene:1956;CorrespondingSpecies:9606
+12345678	360	364	EGFR	Gene	1956
+12345678	376	381	p.L858R	ProteinMutation	tmVar:p|SUB|L|858|R;HGVS:p.L858R;VariantGroup:0;CorrespondingGene:1956;RS#:121434568;CorrespondingSpecies:9606;CA#:126713
+12345678	403	414	Carboplatin	Chemical	MESH:D016190
+12345678	416	419	Carboplatin	Chemical	MESH:D016190
+12345678	916	926	GZMB	Gene	3002
+12345678	964	973	LCP1	Gene	3936
+12345678	1171	1177	p.H1975R	ProteinMutation	tmVar:p|SUB|H|1975|R;HGVS:p.H1975R;VariantGroup:1;CorrespondingGene:1956;CorrespondingSpecies:9606
+12345678	1221	1224	Carboplatin	Chemical	MESH:D016190
+12345678	1347	1350	Carboplatin	Chemical	MESH:D016190
+12345678	1385	1391	p.H1975R	ProteinMutation	tmVar:p|SUB|H|1975|R;HGVS:p.H1975R;VariantGroup:1;CorrespondingGene:1956;CorrespondingSpecies:9606
+12345678	1392	1397	Neoplasms	Disease	MESH:D009369
+12345678	1441	1446	Neoplasms	Disease	MESH:D009369
+12345678	1536	1541	CD274	Gene	29126
+12345678	1542	1546	PDCD1	Gene	5133
+12345678	1601	1613	Inflammation	Disease	MESH:D007249
+12345678	1644	1648	SOD2	Gene	6648
+12345678	1650	1654	COL11A2	Gene	1302
+12345678	1656	1660	BCL2	Gene	596
+12345678	1667	1676	NFKB1	Gene	4790
+12345678	1766	1774	Platinum	Chemical	MESH:D010984
+12345678	1929	1932	Carboplatin	Chemical	MESH:D016190
+12345678	1991	1998	Neoplasms	Disease	MESH:D009369
+12345678	Negative_Correlation	MESH:D016190	HGVS:p.H1975R;CorrespondingGene:1956
+12345678	Negative_Correlation	MESH:C000596361	MESH:D016190
+12345678	Negative_Correlation	MESH:D016190	RS#:121434568;HGVS:p.L858R;CorrespondingGene:1956
+12345678	Negative_Correlation	MESH:C000596361	CorrespondingGene:1956;CorrespondingSpecies:9606;VariantGroup:1;tmVar:p|Allele|H|1975
+12345678	Negative_Correlation	MESH:D016190	CorrespondingGene:1956;CorrespondingSpecies:9606;VariantGroup:1;tmVar:p|Allele|H|1975
+12345678	Negative_Correlation	MESH:C000596361	RS#:121434568;HGVS:p.L858R;CorrespondingGene:1956
+12345678	Association	MESH:D008175	RS#:121434568;HGVS:p.L858R;CorrespondingGene:1956
+12345678	Association	MESH:D016190	3600
+12345678	Negative_Correlation	MESH:C000596361	MESH:D008175
+12345678	Association	MESH:D008175	1956
+12345678	Negative_Correlation	MESH:D016190	1956
+12345678	Association	MESH:D007249	6648
+12345678	Association	MESH:D007249	4790
+12345678	Negative_Correlation	MESH:D016190	MESH:D008175
+12345678	Negative_Correlation	MESH:D016190	MESH:D009369

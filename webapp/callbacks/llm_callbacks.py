@@ -14,6 +14,7 @@ from webapp.llm import (
     NVIDIA_NIM_BASE_URL,
     OPENAI_BASE_URL,
     OPENROUTER_BASE_URL,
+    GROQ_BASE_URL,
     llm_client,
     normalize_model_for_provider,
 )
@@ -74,6 +75,9 @@ def _default_settings() -> dict:
         "nvidia_api_key": "",
         "nvidia_nim_base_url": NVIDIA_NIM_BASE_URL,
         "nvidia_model": "meta/llama-3.1-70b-instruct",
+        "groq_api_key": "",
+        "groq_model": "llama-3.3-70b-versatile",
+        "groq_custom_model": "",
     }
 
 
@@ -138,6 +142,10 @@ def _settings_from_env() -> dict:
         settings["nvidia_api_key"] = ""
         settings["nvidia_nim_base_url"] = os.getenv("NVIDIA_NIM_BASE_URL", NVIDIA_NIM_BASE_URL)
         settings["nvidia_model"] = os.getenv("NVIDIA_NIM_MODEL", "meta/llama-3.1-70b-instruct")
+    elif provider == "groq":
+        settings["groq_api_key"] = ""
+        settings["groq_model"] = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
+        settings["groq_custom_model"] = ""
     else:
         chosen_local_url = local_base_url or base_url
         chosen_local_model = local_model or model
@@ -181,6 +189,9 @@ def callbacks(app):
             Output("nvidia-api-key-input", "value"),
             Output("nvidia-nim-base-url-input", "value"),
             Output("nvidia-model-selector", "value"),
+            Output("groq-api-key-input", "value"),
+            Output("groq-model-selector", "value"),
+            Output("groq-custom-model-input", "value"),
         ],
         Input("main-container", "id"),
         State("llm-settings-store", "data"),
@@ -205,10 +216,13 @@ def callbacks(app):
                 settings["nvidia_api_key"],
                 settings["nvidia_nim_base_url"],
                 settings["nvidia_model"],
+                settings["groq_api_key"],
+                settings["groq_model"],
+                settings["groq_custom_model"],
             )
         except Exception as e:
             logger.error(f"Error loading LLM configuration: {e}")
-            return (dash.no_update,) * 16
+            return (dash.no_update,) * 19
 
     @app.callback(
         Output("llm-settings-store", "data"),
@@ -229,6 +243,9 @@ def callbacks(app):
             Input("nvidia-api-key-input", "value"),
             Input("nvidia-nim-base-url-input", "value"),
             Input("nvidia-model-selector", "value"),
+            Input("groq-api-key-input", "value"),
+            Input("groq-model-selector", "value"),
+            Input("groq-custom-model-input", "value"),
         ],
     )
     def persist_llm_settings(
@@ -248,6 +265,9 @@ def callbacks(app):
         _nvidia_api_key,
         nvidia_nim_base_url,
         nvidia_model,
+        _groq_api_key,
+        groq_model,
+        groq_custom_model,
     ):
         return {
             "provider": provider,
@@ -266,6 +286,9 @@ def callbacks(app):
             "nvidia_api_key": "",
             "nvidia_nim_base_url": nvidia_nim_base_url or NVIDIA_NIM_BASE_URL,
             "nvidia_model": nvidia_model or "meta/llama-3.1-70b-instruct",
+            "groq_api_key": "",
+            "groq_model": groq_model or "llama-3.3-70b-versatile",
+            "groq_custom_model": groq_custom_model or "",
         }
 
     # Toggle provider-specific sections.
@@ -275,6 +298,7 @@ def callbacks(app):
             Output("google-config", "style"),
             Output("openrouter-config", "style"),
             Output("nvidia-config", "style"),
+            Output("groq-config", "style"),
             Output("local-llm-config", "style"),
             Output("google-params-config", "style"),
         ],
@@ -284,15 +308,17 @@ def callbacks(app):
         none = {"display": "none"}
         block = {"display": "block"}
         if provider == "openai":
-            return block, none, none, none, none, none
+            return block, none, none, none, none, none, none
         if provider == "google":
-            return none, block, none, none, none, block
+            return none, block, none, none, none, none, block
         if provider == "openrouter":
-            return none, none, block, none, none, none
+            return none, none, block, none, none, none, none
         if provider == "nvidia":
-            return none, none, none, block, none, none
+            return none, none, none, block, none, none, none
+        if provider == "groq":
+            return none, none, none, none, block, none, none
         # local
-        return none, none, none, none, block, none
+        return none, none, none, none, none, block, none
 
     @app.callback(
         Output("openai-custom-model-div", "style"),
@@ -308,6 +334,15 @@ def callbacks(app):
         Input("openrouter-model-selector", "value"),
     )
     def toggle_openrouter_custom_model_input(selected_model):
+        if selected_model == "custom":
+            return {"display": "block", "marginTop": "10px"}
+        return {"display": "none"}
+
+    @app.callback(
+        Output("groq-custom-model-div", "style"),
+        Input("groq-model-selector", "value"),
+    )
+    def toggle_groq_custom_model_input(selected_model):
         if selected_model == "custom":
             return {"display": "block", "marginTop": "10px"}
         return {"display": "none"}
@@ -335,6 +370,9 @@ def callbacks(app):
             State("nvidia-api-key-input", "value"),
             State("nvidia-nim-base-url-input", "value"),
             State("nvidia-model-selector", "value"),
+            State("groq-api-key-input", "value"),
+            State("groq-model-selector", "value"),
+            State("groq-custom-model-input", "value"),
         ],
         prevent_initial_call=True,
     )
@@ -355,6 +393,9 @@ def callbacks(app):
         nvidia_api_key,
         nvidia_nim_base_url,
         nvidia_model,
+        groq_api_key,
+        groq_model,
+        groq_custom_model,
     ):
         if not n_clicks:
             raise dash.exceptions.PreventUpdate
@@ -453,6 +494,26 @@ def callbacks(app):
                     base_url=nim_base_url,
                     model=nvidia_model or "meta/llama-3.1-70b-instruct",
                 )
+            elif provider == "groq":
+                groq_api_key = groq_api_key or os.getenv("GROQ_API_KEY", "").strip()
+                if not groq_api_key:
+                    return (
+                        "⚠️ Groq API key is required",
+                        "status-indicator status-warning",
+                        "Enter a key for this session or set GROQ_API_KEY on the server",
+                    )
+                model = (
+                    groq_custom_model.strip()
+                    if groq_model == "custom" and groq_custom_model
+                    else groq_model
+                )
+                from webapp.llm import GROQ_BASE_URL
+                llm_client.initialize_client(
+                    provider="groq",
+                    api_key=groq_api_key,
+                    model=model,
+                    base_url=GROQ_BASE_URL,
+                )
             else:
                 if not local_base_url or not local_model:
                     return (
@@ -491,10 +552,14 @@ def callbacks(app):
 
     @app.callback(
         Output("active-llm-banner", "children"),
-        Input("llm-settings-store", "data"),
+        [
+            Input("llm-settings-store", "data"),
+            Input("llm-config-status", "children"),
+            Input("llm-save-status", "children"),
+        ],
         prevent_initial_call=False,
     )
-    def show_active_llm_banner(_store):
+    def show_active_llm_banner(_store, _verify_status, _save_status):
         if llm_client.client:
             return dbc.Alert(
                 [
@@ -547,6 +612,8 @@ def callbacks(app):
             Input("llm-model-input", "value"),
             Input("openrouter-api-key-input", "value"),
             Input("openrouter-model-selector", "value"),
+            Input("groq-api-key-input", "value"),
+            Input("groq-model-selector", "value"),
         ],
         prevent_initial_call=True,
     )
@@ -853,6 +920,9 @@ def callbacks(app):
             State("nvidia-api-key-input", "value"),
             State("nvidia-nim-base-url-input", "value"),
             State("nvidia-model-selector", "value"),
+            State("groq-api-key-input", "value"),
+            State("groq-model-selector", "value"),
+            State("groq-custom-model-input", "value"),
         ],
         prevent_initial_call=True,
     )
@@ -873,6 +943,9 @@ def callbacks(app):
         nvidia_api_key,
         nvidia_nim_base_url,
         nvidia_model,
+        groq_api_key,
+        groq_model,
+        groq_custom_model,
     ):
         if not n_clicks:
             return ""
@@ -946,6 +1019,19 @@ def callbacks(app):
                 env_vars["OPENAI_BASE_URL"] = nim_base_url
                 env_vars["OPENAI_MODEL"] = nim_model
                 env_vars["EMBEDDING_MODEL"] = "NV-Embed-QA"
+            elif provider == "groq":
+                groq_api_key = groq_api_key or os.getenv("GROQ_API_KEY", "").strip()
+                if not groq_api_key:
+                    return "⚠️ Please enter a Groq API key before saving"
+                model = (
+                    groq_custom_model.strip()
+                    if groq_model == "custom" and groq_custom_model
+                    else (groq_model or "llama-3.3-70b-versatile")
+                )
+                env_vars["GROQ_API_KEY"] = groq_api_key
+                env_vars["OPENAI_BASE_URL"] = GROQ_BASE_URL
+                env_vars["OPENAI_MODEL"] = model
+                env_vars["EMBEDDING_MODEL"] = "text-embedding-3-small"
             else:
                 if not local_base_url or not local_model:
                     return "⚠️ Please enter both base URL and model name before saving"
@@ -960,7 +1046,7 @@ def callbacks(app):
 
             _LLM_KEYS = {
                 "LLM_PROVIDER",
-                "OPENAI_API_KEY", "OPENROUTER_API_KEY", "GEMINI_API_KEY",
+                "OPENAI_API_KEY", "OPENROUTER_API_KEY", "GEMINI_API_KEY", "GROQ_API_KEY",
                 "NVIDIA_API_KEY", "NVIDIA_NIM_BASE_URL", "NVIDIA_NIM_MODEL",
                 "OPENAI_BASE_URL", "OPENAI_MODEL",
                 "OPENROUTER_MODEL", "GOOGLE_MODEL", "EMBEDDING_MODEL",
@@ -974,6 +1060,7 @@ def callbacks(app):
                     "OPENAI_API_KEY",
                     "OPENROUTER_API_KEY",
                     "GEMINI_API_KEY",
+                    "GROQ_API_KEY",
                     "NVIDIA_API_KEY",
                     "OPENAI_BASE_URL",
                     "OPENAI_MODEL",
@@ -995,7 +1082,59 @@ def callbacks(app):
                     for key, value in other_vars.items():
                         f.write(f"{key}={value}\n")
 
+            from webapp.llm import initialize_llm_client_from_settings
+            initialize_llm_client_from_settings(
+                llm_client,
+                provider=provider,
+                openai_api_key=openai_api_key,
+                openai_model=openai_model,
+                openai_custom_model=openai_custom_model,
+                google_api_key=google_api_key,
+                google_model=google_model,
+                google_safety_setting=google_safety_setting,
+                local_base_url=local_base_url,
+                local_model=local_model,
+                openrouter_api_key=openrouter_api_key,
+                openrouter_model=openrouter_model,
+                openrouter_custom_model=openrouter_custom_model,
+                nvidia_api_key=nvidia_api_key,
+                nvidia_nim_base_url=nvidia_nim_base_url,
+                nvidia_model=nvidia_model,
+                groq_api_key=groq_api_key,
+                groq_model=groq_model,
+                groq_custom_model=groq_custom_model,
+            )
+
             return f"✅ LLM settings saved to {env_path.name} ({provider})"
         except Exception as e:
             logger.error(f"Failed to save LLM configuration: {e}")
             return f"❌ Failed to save settings: {str(e)}"
+
+    @app.callback(
+        [
+            Output("groq-model-selector", "options", allow_duplicate=True),
+            Output("groq-model-fetch-status", "children", allow_duplicate=True),
+            Output("groq-model-selector", "value", allow_duplicate=True),
+        ],
+        Input("refresh-groq-models-btn", "n_clicks"),
+        [
+            State("groq-api-key-input", "value"),
+            State("groq-model-selector", "value"),
+        ],
+        prevent_initial_call=True,
+    )
+    def fetch_groq_models(n_clicks, api_key, current_value):
+        api_key = api_key or os.getenv("GROQ_API_KEY", "").strip()
+        if not n_clicks or not api_key:
+            return dash.no_update, "⚠️ Enter Groq API key first", dash.no_update
+        try:
+            models = llm_client.get_groq_models(api_key)
+            if not models:
+                return dash.no_update, "❌ No models found", dash.no_update
+            new_options = [{"label": m, "value": m} for m in models]
+            if not any(m == current_value for m in models):
+                current_value = models[0] if models else dash.no_update
+            return new_options, f"✅ Found {len(models)} models", current_value
+        except Exception as e:
+            logger.error(f"Error fetching Groq models: {e}")
+            return dash.no_update, "❌ Error: Could not connect", dash.no_update

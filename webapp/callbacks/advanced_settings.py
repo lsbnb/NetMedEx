@@ -1,7 +1,6 @@
 import dash
 from dash import Input, Output, State
 
-
 def callbacks(app):
     @app.callback(
         Output("advanced-settings-collapse", "style"),
