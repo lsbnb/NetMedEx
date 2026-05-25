@@ -325,7 +325,7 @@ window.dash_clientside.clientside = {
       elements,
     ]
   },
-  sync_llm_toggles: function (provider, openai_api_key, google_api_key, google_model, local_url, local_model, openrouter_api_key, openrouter_model) {
+  sync_llm_toggles: function (provider, openai_api_key, google_api_key, google_model, local_url, local_model, openrouter_api_key, openrouter_model, groq_api_key, groq_model) {
     if (provider === "openai") {
       if (openai_api_key && openai_api_key.trim().startsWith("sk-")) {
         return [true, "semantic"];
@@ -336,6 +336,10 @@ window.dash_clientside.clientside = {
       }
     } else if (provider === "openrouter") {
       if (openrouter_api_key && openrouter_api_key.trim() !== "" && openrouter_model && openrouter_model.trim() !== "") {
+        return [true, "semantic"];
+      }
+    } else if (provider === "groq") {
+      if (groq_api_key && groq_api_key.trim() !== "" && groq_model && groq_model.trim() !== "") {
         return [true, "semantic"];
       }
     } else if (provider === "local") {

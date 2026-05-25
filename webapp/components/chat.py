@@ -75,6 +75,18 @@ def create_message_component(
     )
     content = _STUDY_TYPE_LABELS.sub(lambda m: f"**({m.group(1)})**", content)
 
+    # Ensure markdown tables have a blank line before and after them so they parse correctly
+    lines = content.split('\n')
+    new_lines = []
+    for idx, line in enumerate(lines):
+        if line.strip().startswith('|'):
+            if idx > 0 and new_lines[-1].strip() and not new_lines[-1].strip().startswith('|'):
+                new_lines.append('')
+        elif idx > 0 and new_lines[-1].strip().startswith('|') and line.strip():
+            new_lines.append('')
+        new_lines.append(line)
+    content = '\n'.join(new_lines)
+
     linked_content = re.sub(pmid_pattern, replace_pmid, content)
 
     markdown_component = dcc.Markdown(

@@ -12,6 +12,7 @@ OPENAI_BASE_URL = "https://api.openai.com/v1"
 GEMINI_OPENAI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 NVIDIA_NIM_BASE_URL = "https://integrate.api.nvidia.com/v1"
+GROQ_BASE_URL = "https://api.groq.com/openai/v1"
 
 COMMON_OPENAI_MODELS = {
     "gpt-4o",
@@ -42,6 +43,8 @@ def get_provider_api_key(provider: str | None, explicit_key: str | None = None) 
         return os.getenv("LOCAL_LLM_API_KEY") or "local-dummy-key"
     if raw_provider == "nvidia":
         return os.getenv("NVIDIA_API_KEY")
+    if raw_provider == "groq":
+        return os.getenv("GROQ_API_KEY")
     return os.getenv("OPENAI_API_KEY")
 
 
@@ -92,6 +95,9 @@ def initialize_llm_client_from_settings(
     nvidia_api_key: str | None = None,
     nvidia_nim_base_url: str | None = None,
     nvidia_model: str | None = None,
+    groq_api_key: str | None = None,
+    groq_model: str | None = None,
+    groq_custom_model: str | None = None,
 ):
     """Initialize an LLMClient from the Advanced Settings UI state.
 
@@ -139,6 +145,18 @@ def initialize_llm_client_from_settings(
             model=nvidia_model or "meta/llama-3.1-70b-instruct",
             base_url=(nvidia_nim_base_url or NVIDIA_NIM_BASE_URL).rstrip("/"),
         )
+    elif selected == "groq":
+        model = (
+            groq_custom_model.strip()
+            if groq_model == "custom" and groq_custom_model
+            else groq_model
+        ) or "llama3-70b-8192"
+        client.initialize_client(
+            provider="groq",
+            api_key=groq_api_key,
+            model=model,
+            base_url=GROQ_BASE_URL,
+        )
     else:
         client.initialize_client(
             provider="local",
@@ -180,6 +198,10 @@ class LLMClient:
             self.api_key = os.getenv("NVIDIA_API_KEY")
             self.base_url = os.getenv("NVIDIA_NIM_BASE_URL") or NVIDIA_NIM_BASE_URL
             self.model = os.getenv("NVIDIA_NIM_MODEL", self.model)
+        elif self.provider == "groq":
+            self.api_key = os.getenv("GROQ_API_KEY")
+            self.base_url = os.getenv("GROQ_BASE_URL") or GROQ_BASE_URL
+            self.model = os.getenv("GROQ_MODEL", self.model)
         else:
             self.api_key = os.getenv("OPENAI_API_KEY")
             self.base_url = self.base_url or OPENAI_BASE_URL
@@ -888,6 +910,20 @@ class LLMClient:
         except Exception as e:
             logger.error(f"Error fetching Gemini models: {e}")
             raise e
+
+
+    def get_groq_models(self, api_key: str) -> list[str]:
+        import requests
+        try:
+            headers = {"Authorization": f"Bearer {api_key}"}
+            response = requests.get("https://api.groq.com/openai/v1/models", headers=headers, timeout=10)
+            if response.status_code == 200:
+                data = response.json().get("data", [])
+                return [m.get("id") for m in data if m.get("id")]
+            return []
+        except Exception as e:
+            logger.error(f"Failed to fetch Groq models: {e}")
+            return []
 
     def get_openrouter_models(self, api_key: str) -> list[str]:
         """

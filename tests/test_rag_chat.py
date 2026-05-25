@@ -53,26 +53,28 @@ class TestRAGChat(unittest.TestCase):
     def test_citation_formatting(self):
         # Populate rag.documents because ChatSession optimization uses all docs if count <= 20
         # effectively bypassing get_context()
-        self.rag.documents["123456"] = AbstractDocument(
-            pmid="123456",
+        self.rag.documents["1234567"] = AbstractDocument(
+            pmid="1234567",
             title="Test Document",
             abstract="Test Abstract",
             entities=[],
             edges=[],
         )
+        self.rag._initialized = True
+        self.rag.search = MagicMock(return_value=[("1234567", 1.0)])
 
         session = ChatSession(self.rag, self.llm_client)
 
         # Mock LLM response
         mock_response = MagicMock()
         mock_response.choices = [MagicMock()]
-        mock_response.choices[0].message.content = "Remdesivir is effective [PMID:123456]."
+        mock_response.choices[0].message.content = "Remdesivir is effective [PMID:1234567]."
         self.llm_client.client.chat.completions.create.return_value = mock_response
 
         result = session.send_message("Is Remdesivir effective?")
 
         self.assertTrue(result["success"])
-        self.assertIn("123456", result["sources"])
+        self.assertIn("1234567", result["sources"])
 
     def test_entity_listing_query_returns_full_mirna_list_from_graph(self):
         graph = nx.Graph()

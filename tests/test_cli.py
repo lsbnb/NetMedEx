@@ -53,7 +53,7 @@ def network_cli_args(paths):
     "query,error_msg",
     [
         ("", "Your search cannot be empty."),
-        ("qtihasioghasaoi", "No articles found by PubTator3 API."),
+        ("qtihasioghasaoi", "No articles matched your criteria. Please broaden your specific terms or date range."),
         # ("chuan mu tong", "Possibly too many articles. Please try more specific queries."),  # Disable this because requesting by `cite` isn't used anymore
     ],
 )

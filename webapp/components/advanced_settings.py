@@ -93,6 +93,7 @@ llm_config = html.Div(
                 {"label": "Google Gemini", "value": "google"},
                 {"label": "OpenRouter", "value": "openrouter"},
                 {"label": "NVIDIA NIM", "value": "nvidia"},
+                {"label": "Groq", "value": "groq"},
                 {"label": "Local Ollama", "value": "local"},
             ],
             value="openai",  # Default to OpenAI
@@ -319,6 +320,66 @@ llm_config = html.Div(
                 html.Div(id="nvidia-model-fetch-status", className="small text-muted mt-1"),
             ],
             id="nvidia-config",
+            style={"display": "none"},
+        ),
+        # Groq Configuration (hidden by default)
+        html.Div(
+            [
+                generate_param_title(
+                    "Groq API Key",
+                    "Enter your Groq API Key (starts with gsk_...)",
+                ),
+                dbc.Input(
+                    id="groq-api-key-input",
+                    type="password",
+                    placeholder="gsk_...",
+                    debounce=True,
+                ),
+                html.Div(style={"height": "10px"}),
+                generate_param_title(
+                    "Model",
+                    "Select a model from Groq.",
+                ),
+                html.Div(
+                    [
+                        dcc.Dropdown(
+                            id="groq-model-selector",
+                            options=[
+                                {"label": "Llama 3.3 70B Versatile", "value": "llama-3.3-70b-versatile"},
+                                {"label": "Llama 3.1 8B Instant", "value": "llama-3.1-8b-instant"},
+                                {"label": "Mixtral 8x7B", "value": "mixtral-8x7b-32768"},
+                                {"label": "Gemma 2 9B", "value": "gemma2-9b-it"},
+                                {"label": "Custom...", "value": "custom"},
+                            ],
+                            value="llama-3.3-70b-versatile",
+                            clearable=False,
+                            style={"flex": "1"},
+                        ),
+                        dbc.Button(
+                            html.I(className="bi bi-arrow-clockwise"),
+                            id="refresh-groq-models-btn",
+                            color="secondary",
+                            outline=True,
+                            className="ms-2",
+                            title="Fetch models from Groq",
+                        ),
+                    ],
+                    className="d-flex align-items-center mb-2",
+                ),
+                html.Div(id="groq-model-fetch-status", className="small text-muted mb-2"),
+                html.Div(
+                    [
+                        dbc.Input(
+                            id="groq-custom-model-input",
+                            placeholder="e.g., llama-3.3-70b-versatile",
+                            debounce=True,
+                        ),
+                    ],
+                    id="groq-custom-model-div",
+                    style={"display": "none"},
+                ),
+            ],
+            id="groq-config",
             style={"display": "none"},
         ),
         # Local LLM Configuration (hidden by default)

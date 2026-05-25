@@ -1,13 +1,15 @@
-# NetMedEx v1.2.7: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.2.8: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
 ---
 
 ## 🌟 Why NetMedEx?
+
 While other tools simply list entities, NetMedEx **interprets the links**. It provides the scaffolding for discovery, allowing researchers to navigate the complex landscape of genes, diseases, chemicals, and species with AI as their co-pilot.
 
 ### 🚀 Core Capabilities
+
 - **🧠 Smart 2-Hop Graph RAG**: Discovers latent mechanistic chains (A → B → C) scored by Hybrid Scoring 2.0 — combining topological NPMI, semantic confidence, and query relevance.
 - **🕸️ Interactive Visualization**: Explore co-mention and semantic networks with real-time layout adjustments, community detection, and sub-network selection.
 - **⚡ Semantic Extraction**: Automatically identifies relationship types (e.g., *inhibits*, *treats*, *activates*) with calibrated confidence scores and direct evidence sentences.
@@ -17,15 +19,13 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.2.7
-- **Graph Performance**: Large graphs (>700 nodes) skip redundant client-side fCoSE re-layout; server-side rebuild timing is now logged.
-- **Graph Loading Spinner**: A loading overlay appears during graph rebuild, eliminating the blank-graph gap after Search completes.
-- **NVIDIA NIM Everywhere**: NIM is now correctly dispatched in Search, auto-Chat, manual Chat, and session-rebuild callbacks.
-- **Non-English Search Gate**: CJK/Korean queries require an active LLM; final translated query is logged.
-- **PubTator Sort Fix**: Page-1 search now uses the selected sort, preventing duplicate/missing PMIDs across pages.
-- **Lazy Session Rebuild**: Server restart no longer shows "session expired" — ChatSession is lazily reconstructed from persisted graph file.
-- **Chat Indexing Diagnostic**: Preflight log and UI summary show selected nodes/edges, PMID count, and abstract match rate before indexing.
-- **Semantic RE Reliability**: LLM timeout 180 s → 90 s; per-article hard timeout 300 s; rate-limit retry progress shown in UI.
+## 🆕 What's New in v1.2.8
+
+- **Groq API Provider**: Integration of Groq for semantic relationship extraction and Hybrid RAG chat (supports preset models like Llama 3.3 and Mixtral, custom models, and dynamic model list fetching).
+- **Search Query Filtering**: Automatically appends publication-type filters (e.g. `NOT "Editorial"[pt] NOT "News"[pt]`) to free-text queries, removing non-research literature noise.
+- **Suggested Questions Format**: Implemented structured prompts to cite specific biological concepts instead of abstract placeholders. Handles both bracketed `[Q1: ...]` and bare `Q1:` formats.
+- **Modal Collision Fix**: Added dynamic ID suffixing for suggested question components when rendering in Modal dialogs to prevent ID collisions.
+- **100% Test Coverage**: Restored missing test datasets from history and resolved legacy test mock and assertion errors.
 
 ---
 

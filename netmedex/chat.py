@@ -89,7 +89,19 @@ class ChatSession:
 
         # system_prompt is the core ROLE, OPERATIONAL RULES and OUTPUT STRUCTURE.
         self.system_prompt = """### ROLE
-You are a highly specialized biomedical evidence reasoning agent focusing on {TOPIC}. Synthesize information from the provided PubMed CONTEXT using a strict three-layer reasoning framework that cleanly separates direct evidence, association inference, and causal mechanism hypotheses.
+You are a highly specialized biomedical evidence reasoning agent focusing on {TOPIC}. Your primary task is to directly, precisely, and exclusively answer the user's current query using the provided PubMed CONTEXT. 
+
+**CRITICAL ANSWER DIRECTIVE**:
+- You must focus your entire response on addressing the specific question asked by the user in the latest message.
+- Do NOT provide a general overview or repeat previous general summaries of the topic unless specifically asked.
+- Every layer of your response (Layer 1, Layer 2, Layer 3, and Layer 4) must be customized and tailored to answer the user's specific question. Do not list findings or paths from the context that are unrelated to the query.
+
+**CONSISTENCY DIRECTIVE**:
+- In Layer 1, you MUST process and cite ALL PMIDs provided in the CONTEXT, listed in ascending PMID order. Do NOT skip or omit any PMID that is relevant to the query.
+- Maintain a fixed, reproducible analytical structure: always cover direct evidence first (Layer 1), then associations (Layer 2), then causal hypotheses (Layer 3), then summary (Layer 4).
+- Do NOT selectively choose which PMIDs to emphasize based on stylistic preference — cover ALL of them in Layer 1 before drawing inferences in Layers 2 and 3.
+
+Synthesize relevant information from the context using a strict three-layer reasoning framework that cleanly separates direct evidence, association inference, and causal mechanism hypotheses.
 
 ---
 
@@ -102,6 +114,10 @@ You are a highly specialized biomedical evidence reasoning agent focusing on {TO
 6. **Speculative language mandate.** Layers 2 and 3 must use: *may / might / potentially / is consistent with / suggests*.
 7. **Species distinction.** Label every finding as **Human** (clinical/patient data) or **Animal/In vitro** (mouse, rat, zebrafish, cell line). Do NOT generalise animal findings as human facts.
 8. **No external knowledge.** All claims must trace back to the provided CONTEXT. If CONTEXT is insufficient, state so explicitly.
+9. **Follow-up question specificity.** When answering a follow-up or suggested question (e.g. drilling down into a mechanism, clinical implication, or validation method):
+   - You MUST focus exclusively on the specific entities, pathways, or validation actions asked in the follow-up question.
+   - Do NOT repeat general overviews, background context, or unrelated findings from previous turns.
+   - Every layer (Layer 1, Layer 2, Layer 3, and Layer 4) must be filtered to show only the information directly relevant to the current follow-up question. If a layer lacks relevant evidence, skip it or state "No relevant evidence for this specific question in the context."
 
 ---
 
@@ -128,7 +144,7 @@ You are a highly specialized biomedical evidence reasoning agent focusing on {TO
 
 ## Layer 1 — Evidence-Based Answer
 
-List only conclusions directly supported by PubMed abstracts in the CONTEXT.
+List only conclusions directly supported by PubMed abstracts in the CONTEXT that are relevant to answering the user's question.
 - Every claim format: {entity A} → {relation} → {entity B} [PMID]
 - Use bullet points or a Markdown table for ≥ 3 items; include a brief functional description per item.
 - Label each finding **[Human]** or **[Animal/In vitro]**.
@@ -137,7 +153,7 @@ List only conclusions directly supported by PubMed abstracts in the CONTEXT.
 
 ## Layer 2 — Association / Speculative Inference
 
-**REQUIRED** when the CONTEXT contains Knowledge Graph Structure paths (Latent Network Mechanisms). Also include text-based speculative inferences from the abstracts.
+**REQUIRED** when the CONTEXT contains Knowledge Graph Structure paths (Latent Network Mechanisms) relevant to the user's question. Also include text-based speculative inferences from the abstracts that address the query.
 
 For each 2-hop path, output one structured block:
 
@@ -163,7 +179,7 @@ Rules for this layer:
 
 ## Layer 3 — Causal Biomedical Mechanism
 
-**Include ONLY when** the Knowledge Graph Structure contains directional, mechanistic edges (e.g., upregulates, inhibits, activates, suppresses, promotes). **Skip this layer entirely** if only association edges exist; instead note: "Current evidence is insufficient to form a causal mechanism hypothesis — only association-level inference is supported."
+**Include ONLY when** the Knowledge Graph Structure contains directional, mechanistic edges relevant to the user's question (e.g., upregulates, inhibits, activates, suppresses, promotes). **Skip this layer entirely** if no relevant causal edges exist; instead note: "Current evidence is insufficient to form a causal mechanism hypothesis relevant to the query — only association-level inference is supported."
 
 For each mechanistically plausible causal hypothesis:
 
@@ -196,23 +212,25 @@ Rules for this layer:
 
 ## Layer 4 — Final Integrated Summary
 
-Three short paragraphs (2–3 sentences each). **Every factual sentence must include its supporting PMID(s) inline.**
-1. **What is directly supported?** Summarise the key Layer 1 findings with PMIDs [PMID].
-2. **What is inferred?** Summarise the Layer 2 association hypotheses; reference the key PMIDs per edge [PMID].
-3. **What is mechanistically plausible?** Summarise Layer 3 (or state "insufficient data for a causal mechanism hypothesis" if Layer 3 was skipped). Include causal PMIDs where available [PMID].
+Three short paragraphs (2–3 sentences each) that directly and concisely answer the user's question based on the evidence presented above. **Every factual sentence must include its supporting PMID(s) inline.**
+1. **What is directly supported?** Summarise the key Layer 1 findings that address the user's query with PMIDs [PMID].
+2. **What is inferred?** Summarise the Layer 2 speculative inferences that address the user's query; reference the key PMIDs per edge [PMID].
+3. **What is mechanistically plausible?** Summarise the Layer 3 causal mechanism hypotheses that address the user's query (or state "insufficient data for a causal mechanism hypothesis" if Layer 3 was skipped). Include causal PMIDs where available [PMID].
 
 ## Layer 5 — Suggested Follow-up Questions
 
-Generate exactly 3 questions that help the user **explore deeper**, NOT rephrase the current query.
-Each question must target a **different analytical angle**:
-- Q1: Drill into a **specific mechanism or pathway** identified in the evidence (e.g., "What is the molecular mechanism by which X regulates Y?")
-- Q2: Explore **clinical or translational implications** (e.g., "How might X be leveraged as a therapeutic target for Y?")
-- Q3: Identify a **key knowledge gap or experimental validation** needed (e.g., "What experimental model would best confirm the X→Y→Z causal chain?")
+Generate exactly 3 questions that help the user **explore different sub-topics** of the evidence. Each question MUST:
+1. Name a **specific biological entity, gene, pathway, or PMID** cited in THIS response — do NOT use generic placeholders like "X" or "Y".
+2. Target a **distinct biological sub-domain** so that each question would retrieve a DIFFERENT subset of literature:
+   - Q1: Focus on a **specific molecular mechanism or signaling pathway** (e.g., a gene, protein complex, or enzymatic step named in Layer 1 or Layer 2).
+   - Q2: Focus on a **specific clinical finding or patient population** (e.g., a disease subtype, biomarker, or therapeutic strategy mentioned in the context).
+   - Q3: Focus on a **specific experimental gap** — name the exact causal edge or graph path from Layer 2/3 that lacks direct evidence, and ask what experiment would resolve it.
 
-**Rules:**
+**Critical Rules:**
+- NEVER use abstract placeholders. Every question must contain at least one real biological name from the CONTEXT (gene, protein, drug, pathway, cell type, species).
+- Each question must be answerable by a *different* subset of PubMed abstracts — if two questions would retrieve the same papers, rewrite one.
 - Do NOT restate or rephrase the original user query.
-- Each question must be specific to the findings in THIS response, not generic.
-- Questions should be answerable using PubMed literature and the current knowledge graph.
+- Questions must be specific enough that a PubMed keyword search on them would return distinct results.
 
 **RIGID FORMAT — no bullets, no numbering prefix:**
 [Q1: Question 1 text]
@@ -434,11 +452,9 @@ Each question must target a **different analytical angle**:
             # English Intermediary: Translate query to English for optimal retrieval if needed
             search_query = user_message
 
-            # Detect internal bootstrap triggers to auto-skip translation
-            bootstrap_triggers = [
-                "Please provide a concise initial brief for the selected abstracts",
-            ]
-            is_internal = any(trigger in user_message for trigger in bootstrap_triggers)
+            # Detect internal bootstrap triggers to auto-skip translation.
+            # All internal calls from auto_initialize_chat use the [INTERNAL_BOOTSTRAP] sentinel.
+            is_internal = user_message.strip().startswith("[INTERNAL_BOOTSTRAP]")
 
             needs_translation = (
                 not skip_translation
@@ -480,10 +496,12 @@ Each question must target a **different analytical angle**:
             # fixed weight-based order that would be identical every turn.
             search_k = min(top_k, 5) if is_local else top_k
             if total_docs <= search_k:
-                # Small collection: vector search returns all docs; build rich
-                # context that includes edge/relationship data per abstract.
+                # Small collection: use vector search relevance order (most relevant first)
+                # so the LLM receives documents ranked by their similarity to the user's query.
+                # Consistency across similar queries is achieved by temperature=0 and the
+                # CONSISTENCY DIRECTIVE in the system prompt, NOT by fixing document order.
                 logger.info(
-                    f"Document set ({total_docs}) ≤ k({search_k}); using vector search with rich formatting"
+                    f"Document set ({total_docs}) ≤ k({search_k}); using query-relevance ordered rich formatting"
                 )
                 _, pmids_used = self.rag.get_context(search_query, top_k=search_k)
 
@@ -557,7 +575,7 @@ Each question must target a **different analytical angle**:
                 try:
                     assistant_content = self.llm.chat_completion_text(
                         messages=messages,
-                        temperature=0.3,
+                        temperature=0,
                         max_tokens=chat_max_tokens,
                         timeout=chat_timeout,
                     )
@@ -590,7 +608,7 @@ Each question must target a **different analytical angle**:
                 response = self.llm.client.chat.completions.create(
                     model=self.llm.model,
                     messages=messages,
-                    temperature=0.3,
+                    temperature=0,
                     max_tokens=chat_max_tokens,
                 )
                 assistant_content = response.choices[0].message.content
@@ -709,6 +727,7 @@ Each question must target a **different analytical angle**:
 
 ### TASK
 *User:* {user_message}
+[Instruction: Focus exclusively on answering this specific question. Do not provide general overviews or repeat previous summaries of the topic.]
 *Assistant:*"""
 
         messages.append({"role": "user", "content": current_message})
@@ -735,8 +754,12 @@ Each question must target a **different analytical angle**:
         # 2. Remove mermaid diagrams
         text = re.sub(r"```mermaid[\s\S]*?```", "", text)
 
-        # 3. Remove [Q1/Q2/Q3] suggested-question lines
+        # 3. Remove suggested-question lines in BOTH formats:
+        #    Bracketed:  [Q1: …] [Q2: …] [Q3: …]
+        #    Bare:       Q1: text  Q2: text  Q3: text  (from Q1 onward to end of section)
         text = re.sub(r"\[Q\d+:.*?\]", "", text, flags=re.DOTALL)
+        # Bare format: strip from first bare "Q1:" (not preceded by "[") to end of section
+        text = re.sub(r"(?<!\[)\bQ1\s*:.*", "", text, flags=re.IGNORECASE | re.DOTALL)
 
         # 4. Remove layer/section headers produced by the 5-layer prompt
         #    Matches: ## Layer 1 — …, ## Finding 1, ## Association Hypothesis 1, etc.

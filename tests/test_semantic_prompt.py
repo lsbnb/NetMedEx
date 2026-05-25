@@ -84,7 +84,7 @@ def test_confidence_percent_is_normalized_and_kept_in_semantic_edge():
         ),
     }
 
-    extractor._call_llm = lambda prompt, max_tokens=1500, response_format=None: (
+    extractor._call_llm = lambda prompt, *args, **kwargs: (
         '[{"entity1_id":"MESH:D012559_Disease","entity2_id":"MESH:D007333_Chemical",'
         '"relation_type":"associated_with","confidence":"78%","evidence":"associated"}]'
     )
@@ -110,7 +110,7 @@ def test_google_compact_retry_recovers_when_first_pass_empty():
 
     calls = {"n": 0}
 
-    def fake_call(prompt, max_tokens=1500, response_format=None):
+    def fake_call(prompt, *args, **kwargs):
         calls["n"] += 1
         if calls["n"] == 1:
             return "[]"
@@ -150,7 +150,7 @@ def test_name_based_entity_fallback_is_not_allowed():
     }
 
     # LLM returns names instead of canonical IDs; this should be rejected.
-    extractor._call_llm = lambda prompt, max_tokens=1500, response_format=None: (
+    extractor._call_llm = lambda prompt, *args, **kwargs: (
         '[{"entity1_id":"Retinal Diseases","entity2_id":"Lutein",'
         '"relation_type":"associated_with","confidence":0.92}]'
     )
