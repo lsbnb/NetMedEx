@@ -252,7 +252,10 @@ def parse_suggestions(content):
         suggestions: list = []
         seen: set = set()
         for q in raw_list:
-            q = re.sub(r"\s+", " ", q).strip().rstrip("?？.!！").strip()
+            q = re.sub(r"\s+", " ", q).strip()
+            # Strip leading/trailing asterisks or brackets if they were captured
+            q = re.sub(r"^[\s*_\[\]()\"'-]+|[\s*_\[\]()\"'-]+$", "", q)
+            q = q.rstrip("?？.！!").strip()
             if q and len(q) > 3 and q.lower() not in seen:
                 suggestions.append(q)
                 seen.add(q.lower())
@@ -260,32 +263,31 @@ def parse_suggestions(content):
                 break
         return suggestions
 
-    # ── Pattern 1: bracketed format  [Q1: …] ─────────────────────────────
-    q1_bracketed = re.search(r"\[Q1\s*:", content, re.IGNORECASE)
+    # Unified Q1 search pattern:
+    # Matches Q1 optionally surrounded by asterisks/brackets, followed by colon/dot, and any trailing spaces/punctuation.
+    q1_pattern = r"(?:\*\*|)?\[?(?:\*\*|)?\bQ1\b[\]*]*\s*[:.][\]*:\s.-]*"
+    q1_match = re.search(q1_pattern, content, re.IGNORECASE)
 
-    # ── Pattern 2: bare format  Q1: … (not preceded by "[") ──────────────
-    q1_bare = re.search(r"(?<!\[)\bQ1\s*:", content, re.IGNORECASE)
-
-    # Pick whichever occurs first in the text
-    if q1_bracketed and q1_bare:
-        if q1_bracketed.start() <= q1_bare.start():
-            q1_match, use_bracketed = q1_bracketed, True
-        else:
-            q1_match, use_bracketed = q1_bare, False
-    elif q1_bracketed:
-        q1_match, use_bracketed = q1_bracketed, True
-    elif q1_bare:
-        q1_match, use_bracketed = q1_bare, False
-    else:
+    if not q1_match:
         # No Q1 marker found at all
         if re.search(r"Suggested(?:\s+Follow-up)?\s+Questions?", content, re.IGNORECASE):
             return _default_questions(content), content
         return [], content          # no explicit markers → no pills, full content
 
     cut = q1_match.start()
+    
+    # Check if bracketed format (brackets enclosing the entire question rather than just the marker)
+    matched_text = q1_match.group(0)
+    q1_idx = matched_text.lower().find("q1")
+    has_leading_bracket = "[" in matched_text[:q1_idx]
+    
+    # Find the position of the colon or dot
+    colon_match = re.search(r"[:.]", matched_text)
+    colon_idx = colon_match.start() if colon_match else len(matched_text)
+    has_bracket_before_colon = "]" in matched_text[:colon_idx]
+    
+    use_bracketed = has_leading_bracket and not has_bracket_before_colon
 
-    # ── Strip the suggestion-section header (Layer 5 / "Suggested Questions")
-    # that appears on the line(s) immediately before Q1 ──────────────────────
     before = content[:cut].rstrip()
     before = re.sub(
         r"\n[^\n]*(?:Layer\s*5|建議問題|Suggested(?:\s+Follow-up)?\s+Questions?|"
@@ -295,19 +297,19 @@ def parse_suggestions(content):
         flags=re.IGNORECASE,
     ).rstrip()
 
-    # ── Extract questions from the tail ──────────────────────────────────
     tail = content[cut:]
 
     if use_bracketed:
-        # [Q1: …] [Q2: …] [Q3: …]
+        # Matches [Q1: text] or [**Q1**: text] or [**Q1:** text]
         raw_qs = re.findall(
-            r"\[Q\d+\s*:\s*(.*?)\]",
+            r"\[(?:\*\*)?Q\d+(?:\*\*)?\s*[:.]\s*(.*?)\]",
             tail,
             re.IGNORECASE | re.DOTALL,
         )
     else:
-        # Bare: Q1: text Q2: text Q3: text  — split on each "Q\d+:" boundary
-        parts = re.split(r"\bQ\d+\s*:\s*", tail, flags=re.IGNORECASE)
+        # Split on any Q\d+ marker variation
+        marker_pattern = r"(?:\*\*|)?\[?(?:\*\*|)?\bQ\d+\b[\]*]*\s*[:.][\]*:\s.-]*"
+        parts = re.split(marker_pattern, tail, flags=re.IGNORECASE)
         raw_qs = [p.strip() for p in parts if p.strip()]
 
     suggestions = _clean_questions(raw_qs)
