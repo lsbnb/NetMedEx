@@ -118,6 +118,7 @@ Synthesize relevant information from the context using a strict three-layer reas
    - You MUST focus exclusively on the specific entities, pathways, or validation actions asked in the follow-up question.
    - Do NOT repeat general overviews, background context, or unrelated findings from previous turns.
    - Every layer (Layer 1, Layer 2, Layer 3, and Layer 4) must be filtered to show only the information directly relevant to the current follow-up question. If a layer lacks relevant evidence, skip it or state "No relevant evidence for this specific question in the context."
+10. **Strict Graph Grounding**: In Layer 2 and Layer 3, every node, intermediate node, edge, and relationship MUST be retrieved directly from the 'Knowledge Graph Structure' section of the CONTEXT. Do NOT assume, extrapolate, or invent any path or relationship that is not explicitly present in the provided graph context, even if it is mentioned in the text abstracts. If the graph context lacks relevant paths, skip Layer 2 and Layer 3 and state so explicitly.
 
 ---
 
@@ -176,6 +177,7 @@ Rules for this layer:
 - Use ONLY: *may / might / potentially / is consistent with / suggests*
 - Do NOT use: *causes / drives / prevents / inhibits / activates* — those belong in Layer 3.
 - Never use placeholder labels "EntityA / EntityB / EntityC" — always write the real biological names.
+- Every node, intermediate node, edge, and relation MUST be fetched directly from the 'Knowledge Graph Structure'. Do NOT invent or assume any nodes or connections.
 
 ## Layer 3 — Causal Biomedical Mechanism
 
@@ -209,6 +211,13 @@ Rules for this layer:
 - If polarity is unknown, write "unknown" — do not guess.
 - If direction is ambiguous, move the path to Layer 2 instead.
 - Do NOT claim proven causation unless the CONTEXT contains explicit intervention evidence.
+- Every node, intermediate node, edge, and relation MUST be fetched directly from the 'Knowledge Graph Structure'. Do NOT invent or assume any nodes or connections.
+- **Causal Confidence Calibration Rules**:
+  - The confidence score (0.00 to 1.00) MUST realistically reflect the strength of evidence:
+    - **0.85 – 1.00**: Direct human clinical intervention trials.
+    - **0.60 – 0.80**: Direct animal model or in vitro intervention experiments (knockdowns, CRISPR, overexpression, etc.).
+    - **0.10 – 0.40**: Review articles, observational data, or co-occurrence evidence (never exceed 0.50). Lower confidence significantly if the supporting abstracts are reviews or mention association without active molecular manipulation.
+    - **0.10 – 0.30**: Mixed or single-paper support.
 
 ## Layer 4 — Final Integrated Summary
 
@@ -732,13 +741,21 @@ Generate exactly 3 questions that help the user **explore different sub-topics**
         if not text_context.strip() and not graph_context.strip():
             context_str = "N/A"
 
+        lang_directive = ""
+        if session_language and session_language != "English":
+            lang_directive = (
+                f"\n[CRITICAL LANGUAGE REQUIREMENT: You MUST write the ENTIRE response (including ALL section headings, "
+                f"bold sub-labels, and content) in {session_language}. Do NOT write any part of the final response "
+                f"(outside <thinking_english>) in English. Translate everything to {session_language} accurately.]"
+            )
+
         current_message = f"""### CONTEXT
 {context_str}
 
 ---
 
 ### TASK
-*User:* {user_message}
+*User:* {user_message}{lang_directive}
 [Instruction: Focus exclusively on answering this specific question. Do not provide general overviews or repeat previous summaries of the topic.]
 *Assistant:*"""
 

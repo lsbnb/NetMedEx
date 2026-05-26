@@ -21,39 +21,50 @@ def _init_cli_llm_client(args, usage_context: str):
     llm_client = LLMClient()
 
     provider = args.llm_provider or llm_client.provider or "openai"
-    if provider not in {"openai", "google", "local"}:
+    supported_providers = {"openai", "google", "local", "openrouter", "nvidia", "groq"}
+    if provider not in supported_providers:
         logger.error(f"Unsupported LLM provider: {provider}")
-        logger.error("Supported providers: openai, google, local")
+        logger.error(f"Supported providers: {', '.join(sorted(list(supported_providers)))}")
         sys.exit(1)
 
-    base_url = args.llm_base_url or os.getenv("OPENAI_BASE_URL")
+    base_url = args.llm_base_url
     model = args.llm_model
     api_key = args.llm_api_key
 
+    # Resolve API key / base URL defaults depending on provider
     if provider == "openai":
         api_key = api_key or os.getenv("OPENAI_API_KEY")
+        base_url = base_url or os.getenv("OPENAI_BASE_URL") or "https://api.openai.com/v1"
         if not api_key:
-            logger.error(
-                f"{usage_context} with OpenAI provider requires OPENAI_API_KEY (or --llm_api_key)."
-            )
+            logger.error(f"{usage_context} with OpenAI provider requires OPENAI_API_KEY (or --llm_api_key).")
             sys.exit(1)
     elif provider == "google":
         api_key = api_key or os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
+        base_url = base_url or "https://generativelanguage.googleapis.com/v1beta/openai/"
         if not api_key:
-            logger.error(
-                f"{usage_context} with Google provider requires GEMINI_API_KEY "
-                "(or GOOGLE_API_KEY / --llm_api_key)."
-            )
+            logger.error(f"{usage_context} with Google provider requires GEMINI_API_KEY or GOOGLE_API_KEY (or --llm_api_key).")
             sys.exit(1)
-    else:
+    elif provider == "openrouter":
+        api_key = api_key or os.getenv("OPENROUTER_API_KEY")
+        base_url = base_url or "https://openrouter.ai/api/v1"
+        if not api_key:
+            logger.error(f"{usage_context} with OpenRouter provider requires OPENROUTER_API_KEY (or --llm_api_key).")
+            sys.exit(1)
+    elif provider == "nvidia":
+        api_key = api_key or os.getenv("NVIDIA_API_KEY")
+        base_url = base_url or os.getenv("NVIDIA_NIM_BASE_URL") or "https://integrate.api.nvidia.com/v1"
+        if not api_key:
+            logger.error(f"{usage_context} with NVIDIA provider requires NVIDIA_API_KEY (or --llm_api_key).")
+            sys.exit(1)
+    elif provider == "groq":
+        api_key = api_key or os.getenv("GROQ_API_KEY")
+        base_url = base_url or "https://api.groq.com/openai/v1"
+        if not api_key:
+            logger.error(f"{usage_context} with Groq provider requires GROQ_API_KEY (or --llm_api_key).")
+            sys.exit(1)
+    else:  # local
         api_key = api_key or os.getenv("LOCAL_LLM_API_KEY") or "local-dummy-key"
         base_url = base_url or os.getenv("LOCAL_LLM_BASE_URL") or "http://localhost:11434/v1"
-        if not base_url:
-            logger.error(
-                f"{usage_context} with local provider requires LOCAL_LLM_BASE_URL "
-                "(or --llm_base_url)."
-            )
-            sys.exit(1)
 
     llm_client.initialize_client(
         api_key=api_key,
@@ -594,7 +605,7 @@ def get_network_parser():
 def _add_llm_parser_args(parser, help_context: str):
     parser.add_argument(
         "--llm_provider",
-        choices=["openai", "google", "local"],
+        choices=["openai", "google", "local", "openrouter", "nvidia", "groq"],
         default=None,
         help=f"LLM provider for {help_context} (default: read from LLM_PROVIDER/.env).",
     )
