@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import logging
 from dash import Input, Output, State, no_update
 from webapp.utils import display
+
+logger = logging.getLogger(__name__)
 
 hidden_panel_style = {
     "position": "absolute",
@@ -98,7 +101,6 @@ def callbacks(app):
         Input("cy", "elements"),
         Input("cy-graph-container", "style"),
         State("sidebar-panel-toggle", "active_tab"),
-        State("cy", "elements"),
         prevent_initial_call=True,
     )
     def switch_to_graph_panel(elements, container_style, current_value):
@@ -122,7 +124,7 @@ def callbacks(app):
         Input("sidebar-panel-toggle", "active_tab"),
     )
     def toggle_panels(toggle_value):
-        print(f"DEBUG: toggle_panels triggered with value: {toggle_value}")
+        logger.debug(f"toggle_panels: value={toggle_value}")
         if not toggle_value:
             return no_update
 

@@ -55,6 +55,7 @@ class NodeRAG:
                 if not os.path.exists(persist_directory):
                     os.makedirs(persist_directory, exist_ok=True)
 
+                logger.info(f"NodeRAG: Opening PersistentClient at {persist_directory}")
                 self.client = chromadb.PersistentClient(
                     path=persist_directory,
                     settings=Settings(

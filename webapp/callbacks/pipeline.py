@@ -70,6 +70,8 @@ def callbacks(app):
         Output("session-language", "data"),
         Output("sidebar-panel-toggle", "active_tab"),
         Output("output", "children", allow_duplicate=True),
+        Output("data-input", "value", allow_duplicate=True),
+        Output("input-type-selection", "value", allow_duplicate=True),
         Input("submit-button", "n_clicks"),
         [
             State("api-toggle-items", "value"),
@@ -238,6 +240,8 @@ def callbacks(app):
                     "English",  # Default language; user can switch in Chat
                     "graph",  # Switch to Graph tab
                     "",  # Clear any previous error
+                    G.graph.get("query", ""),
+                    G.graph.get("input_type", "query"),
                 )
             # ----------------------------------------------------------------
 
@@ -397,7 +401,8 @@ def callbacks(app):
                     # Append publication-type exclusion filters so that non-research
                     # article types (which typically lack abstracts and add noise) are
                     # automatically removed from every free-text query.
-                    # These use standard PubMed [pt] (Publication Type) field tags.
+                    # PubTator3 API does not support standard [pt] field tags (which cause 0 results).
+                    # Instead, we just use standard NOT keyword exclusions.
                     EXCLUDED_PUB_TYPES = [
                         "Editorial",
                         "Letter",
@@ -408,7 +413,7 @@ def callbacks(app):
                         "Retraction of Publication",
                     ]
                     exclusion_suffix = " ".join(
-                        f'NOT "{pt}"[pt]' for pt in EXCLUDED_PUB_TYPES
+                        f'NOT "{pt}"' for pt in EXCLUDED_PUB_TYPES
                     )
                     query = f"({query}) {exclusion_suffix}"
                     logger.info("Query after pub-type exclusion: %s", query)
@@ -498,6 +503,8 @@ def callbacks(app):
                             dbc.Alert(exception_msg, color="danger", dismissable=True),
                             className="mt-3",
                         ),
+                        no_update,
+                        no_update,
                     )
 
                 job.join()
@@ -558,6 +565,8 @@ def callbacks(app):
                             ),
                             className="mt-3",
                         ),
+                        no_update,
+                        no_update,
                     )
 
             # Semantic Analysis: Parse collection first to get article count
@@ -584,6 +593,8 @@ def callbacks(app):
                             ),
                             className="mt-3",
                         ),
+                        no_update,
+                        no_update,
                     )
 
                 # Parse early to show accurate progress
@@ -680,6 +691,8 @@ def callbacks(app):
                             ),
                             className="mt-3",
                         ),
+                        no_update,
+                        no_update,
                     )
 
                 if os.path.exists(savepath.get("biocjson", "")):
@@ -755,6 +768,9 @@ def callbacks(app):
             # Keeping track of the graph's metadata
             G.graph["is_community"] = True if community else False
             G.graph["max_edges"] = max_edges
+            G.graph["query"] = data_input
+            G.graph["input_type"] = input_type
+            G.graph["language"] = detected_language  # Persist so Chat restores the correct reply language
 
             save_graph(G, savepath["html"], "html")
             save_graph(G, savepath["graph"], "pickle")
@@ -863,7 +879,6 @@ def callbacks(app):
                     className="mt-3",
                 )
 
-            print(f"DEBUG: run_pubtator3_api completed! num_articles={num_articles}")
             pmid_citation_dict = {
                 pmid: meta.get("citation_count")
                 for pmid, meta in G.graph.get("pmid_metadata", {}).items()
@@ -880,6 +895,8 @@ def callbacks(app):
                 detected_language,
                 "graph",  # Switch to Graph tab
                 warning_output,
+                no_update,
+                no_update,
             )
 
         except Exception as e:
@@ -903,4 +920,6 @@ def callbacks(app):
                     ),
                     className="mt-3",
                 ),
+                no_update,
+                no_update,
             )

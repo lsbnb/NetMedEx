@@ -255,7 +255,37 @@ class GraphRetriever:
         # Cap start nodes to prevent O(n²) traversal on large graphs
         MAX_START_NODES = 50
         if len(start_nodes) > MAX_START_NODES:
-            # Prefer nodes that are in the graph and have edges
+            # Sort start nodes by query relevance so the most query-relevant nodes are prioritized as start nodes
+            if query:
+                query_lower = query.lower()
+                def get_start_node_priority(node_id):
+                    node_data = self.graph.nodes.get(node_id, {})
+                    name = str(node_data.get("name", "")).lower().strip()
+                    
+                    # 1. Substring match of node name/label in query
+                    in_query = 0.0
+                    if name and name in query_lower:
+                        in_query = 2.0
+                    elif name:
+                        words = [w for w in name.split() if len(w) > 2]
+                        if words and any(w in query_lower for w in words):
+                            in_query = 1.0
+                    
+                    # 2. Semantic relevance score
+                    sem_score = semantic_relevance_map.get(node_id, 0.0)
+                    
+                    # 3. Graph degree (as a tie breaker)
+                    deg = self.graph.degree(node_id) if self.graph.has_node(node_id) else 0
+                    deg_score = min(0.1, deg / 1000.0)
+                    
+                    return in_query + sem_score + deg_score
+                
+                start_nodes = sorted(start_nodes, key=get_start_node_priority, reverse=True)
+            else:
+                # If no query, sort by degree descending
+                start_nodes = sorted(start_nodes, key=lambda n: self.graph.degree(n) if self.graph.has_node(n) else 0, reverse=True)
+
+            # Keep only the top MAX_START_NODES that have edges
             start_nodes = [n for n in start_nodes if self.graph.degree(n) > 0][:MAX_START_NODES]
 
         visited_paths = set()
@@ -271,7 +301,11 @@ class GraphRetriever:
                 edge_1 = self.graph[start_node][neighbor]
                 score_1 = calculate_score(start_node, neighbor, edge_1)
 
-                path_sig_1 = tuple(sorted([start_node, neighbor]))
+                # Use a DIRECTED signature so (A→B) and (B→A) are kept separately.
+                # An undirected edge storing "inhibits" may mean A inhibits B when
+                # explored from A, and B inhibits A when explored from B; keeping
+                # both lets the LLM see the biologically correct direction.
+                path_sig_1 = (start_node, neighbor)
                 if path_sig_1 not in visited_paths:
                     all_paths.append(([start_node, neighbor], score_1))
                     visited_paths.add(path_sig_1)

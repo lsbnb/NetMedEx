@@ -479,6 +479,17 @@ Generate exactly 3 questions that help the user **explore different sub-topics**
                 logger.debug(
                     f"Internal bootstrap detected. Using topic '{search_query}' as retrieval query."
                 )
+                if self._looks_like_cjk(search_query):
+                    logger.info(
+                        f"Translating internal topic query to English for optimal retrieval: '{search_query}'"
+                    )
+                    if hasattr(self.llm, "translate_to_english"):
+                        search_query = self.llm.translate_to_english(search_query)
+                        logger.info(f"Translated internal query: '{search_query}'")
+                    else:
+                        logger.warning(
+                            "LLM client does not support translate_to_english; using original query"
+                        )
 
             # 1. Retrieve Text Context (RAG)
             # Use top_k to limit context size and speed up LLM response
@@ -567,9 +578,10 @@ Generate exactly 3 questions that help the user **explore different sub-topics**
                 f"Sending chat request with {len(pmids_used)} context documents to {getattr(self.llm, 'provider', 'unknown')} LLM"
             )
             start_time = datetime.now()
-            # Bootstrap summaries should be fast; keep token/time budget tighter.
-            chat_max_tokens = 1400 if is_internal else 4000
-            chat_timeout = 90.0 if is_internal else 300.0
+            # Bootstrap summaries use a generous budget so all 5 layers fit;
+            # the initial analysis quality matters more than marginal speed gains.
+            chat_max_tokens = 3500 if is_internal else 4000
+            chat_timeout = 180.0 if is_internal else 300.0
             assistant_content = None
             if hasattr(self.llm, "chat_completion_text"):
                 try:
