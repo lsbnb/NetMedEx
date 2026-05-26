@@ -7,6 +7,7 @@ import dash
 from dash import ALL, Input, Output, State, dcc, html, no_update
 
 from webapp.utils import SessionPathError, resolve_session_savepath
+from webapp.callbacks.pipeline import detect_query_language
 
 logger = logging.getLogger(__name__)
 
@@ -540,7 +541,7 @@ def callbacks(app):
             # Already initialized for this session
             raise dash.exceptions.PreventUpdate
 
-        logger.info(f"DEBUG: auto_initialize_chat STARTING for tab={current_tab}")
+        logger.info(f"auto_initialize_chat STARTING for tab={current_tab}")
 
         from netmedex.chat import ChatSession
         from netmedex.graph import load_graph
@@ -600,6 +601,26 @@ def callbacks(app):
 
             G = load_graph(savepath["graph"])
 
+            # Restore the search query from the saved graph when the UI field is
+            # empty (e.g. after a page reload or when loading a cached graph).
+            effective_query = search_query or G.graph.get("query", "")
+
+            # Language priority: query text is the most reliable signal.
+            # If the query is clearly non-English, always honour that regardless of
+            # what session_language or the graph metadata say (they can be stale or
+            # set to "English" as a default by the upload/restore pipeline path).
+            _query_lang = detect_query_language(effective_query) if effective_query else None
+            if _query_lang and _query_lang != "English":
+                effective_language = _query_lang
+            elif session_language and session_language != "English":
+                effective_language = session_language
+            elif G.graph.get("language") and G.graph["language"] != "English":
+                effective_language = G.graph["language"]
+            elif session_language:
+                effective_language = session_language
+            else:
+                effective_language = "English"
+
             documents = _abstract_documents_from_graph(G, limit=50)
 
             if not documents:
@@ -609,25 +630,32 @@ def callbacks(app):
             rag_system = AbstractRAG(llm_client)
             rag_system.index_abstracts(documents)
 
-            # No NodeRAG or GraphRetriever for overall summary bypass (too slow/complex for initial start)
+            # Add lightweight GraphRetriever (no NodeRAG — no expensive indexing required).
+            # Substring matching alone is sufficient to resolve entity names from the query,
+            # and it enables Layer 3 (Causal Mechanism) to populate when the graph has
+            # directional edges (inhibits, activates, ameliorates, etc.).
+            from netmedex.graph_rag import GraphRetriever
+            graph_retriever_auto = GraphRetriever(G, node_rag=None)
+
             session = ChatSession(
                 rag_system,
                 llm_client,
-                topic=search_query if search_query else "biomedical research overview",
+                graph_retriever=graph_retriever_auto,
+                topic=effective_query if effective_query else "biomedical research overview",
             )
 
             # Store session
             session_id = savepath["graph"]
             _sessions[session_id] = {"session": session, "rag": rag_system}
 
-            prompt_lang = session_language if session_language else "English"
+            prompt_lang = effective_language
             # The bootstrap prompt is kept short and uses a special sentinel so that
             # send_message() can detect it as an internal call and:
             #   1. Set search_query = self.topic  (the real search terms, not this prompt)
             #   2. Skip all translation passes
             # The actual 5-layer response format is governed entirely by the system_prompt
             # in ChatSession, so we do NOT duplicate format instructions here.
-            topic_display = search_query if search_query else "the provided abstracts"
+            topic_display = effective_query if effective_query else "the provided abstracts"
             bootstrap_prompt = (
                 f"[INTERNAL_BOOTSTRAP] Provide a comprehensive integrated summary of {topic_display} "
                 f"based on all provided PubMed abstracts. "
@@ -636,7 +664,7 @@ def callbacks(app):
 
             summary_result = session.send_message(
                 bootstrap_prompt,
-                session_language=session_language or "English",
+                session_language=effective_language,
                 skip_translation=True,
             )
 
@@ -661,8 +689,8 @@ def callbacks(app):
                         [
                             html.Span("🔍 Research Context: ", className="fw-bold"),
                             html.Span(
-                                f"Overall Findings for '{search_query}'"
-                                if search_query
+                                f"Overall Findings for '{effective_query}'"
+                                if effective_query
                                 else "Full Dataset Summary"
                             ),
                         ],
@@ -741,11 +769,16 @@ def callbacks(app):
                 [html.I(className="bi bi-chat-dots me-2"), "Analyze Selection"],
             ),
         ],
+        progress=[
+            Output("chat-analyze-progress", "value"),
+            Output("chat-analyze-status-text", "children"),
+        ],
         background=True,
         prevent_initial_call=True,
     )
 
     def initialize_chat(
+        set_progress,
         n_clicks,
         selected_nodes,
         selected_edges,
@@ -771,7 +804,7 @@ def callbacks(app):
         groq_model,
         groq_custom_model,
     ):
-        logger.info("DEBUG: initialize_chat (MANUAL) triggered")
+        logger.info("initialize_chat (MANUAL) triggered")
         global _sessions
 
         # Reset button content
@@ -862,9 +895,28 @@ def callbacks(app):
                     [],
                 )
 
+            set_progress((5, "🔬 Loading graph..."))
             G = load_graph(savepath["graph"])
             t_load = time.time()
             logger.info(f"Graph loaded in {t_load - t0:.2f}s")
+
+            # Restore the search query from the saved graph when the UI field is
+            # empty (e.g. after a page reload or when loading a cached graph).
+            search_query = search_query or G.graph.get("query", "")
+
+            # Language priority: query text is the most reliable signal.
+            # Non-English queries always take precedence over stale session/graph values.
+            _query_lang = detect_query_language(search_query) if search_query else None
+            if _query_lang and _query_lang != "English":
+                effective_language = _query_lang
+            elif session_language and session_language != "English":
+                effective_language = session_language
+            elif G.graph.get("language") and G.graph["language"] != "English":
+                effective_language = G.graph["language"]
+            elif session_language:
+                effective_language = session_language
+            else:
+                effective_language = "English"
 
             raw_id_to_node = {str(nid): (nid, data) for nid, data in G.nodes(data=True)}
             cy_id_to_raw_id = {
@@ -1050,11 +1102,28 @@ def callbacks(app):
                     [],
                 )
 
+            set_progress((12, f"📄 Preparing {len(documents)} abstracts..."))
+
             # Initialize RAG system
+            import re as _re
+
+            def _rag_progress(msg):
+                m = _re.search(r'batch (\d+)/(\d+)', msg)
+                if m:
+                    bi, bt = int(m.group(1)), int(m.group(2))
+                    v = 15 + int((bi / bt) * 25)
+                    set_progress((min(v, 40), f"📄 {msg}"))
+                elif "✅" in msg:
+                    set_progress((40, msg))
+                else:
+                    set_progress((18, f"📄 {msg}"))
+
             rag_system = AbstractRAG(llm_client)
-            rag_system.index_abstracts(documents)
+            rag_system.index_abstracts(documents, progress_callback=_rag_progress)
             t_rag = time.time()
             logger.info(f"Abstracts indexed in {t_rag - t_load:.2f}s")
+
+            set_progress((42, "🧬 Initializing node index..."))
 
             # Initialize Node RAG System with Persistent Cache (New in v1.1.0)
             from netmedex.node_rag import NodeRAG, GraphNode
@@ -1062,9 +1131,24 @@ def callbacks(app):
             # Determine persistent directory based on graph path
             # Example: data/graph.pickle -> data/graph.pickle_chroma
             persist_dir = f"{savepath['graph']}_chroma"
+
+            # Close the existing NodeRAG for this graph BEFORE opening a new
+            # PersistentClient on the same directory.  If the old handle is still
+            # open, SQLite WAL-mode will block the new connection indefinitely.
+            _session_id_for_close = savepath["graph"]
+            if _session_id_for_close in _sessions:
+                _old_session = _sessions[_session_id_for_close]
+                _old_gr = getattr(
+                    getattr(_old_session.get("session"), "graph_retriever", None),
+                    "node_rag",
+                    None,
+                )
+                if _old_gr is not None:
+                    _old_gr.close()
+                    logger.info("Closed old NodeRAG before re-opening persistent store.")
+
             node_rag = NodeRAG(llm_client, persist_directory=persist_dir)
 
-            # Check if NodeRAG is already indexed for this graph
             # Check if NodeRAG is already indexed for this graph
             # Build label→raw_node_id lookup from the pickled graph.
             # Cytoscape element source/target use stable UUIDs, which differ from
@@ -1098,6 +1182,12 @@ def callbacks(app):
                         if name_key in label_to_raw_id:
                             core_node_ids.add(label_to_raw_id[name_key])
 
+            def _node_progress(msg):
+                if "✅" in msg or "cache" in msg.lower():
+                    set_progress((65, msg))
+                else:
+                    set_progress((55, f"🧬 {msg}"))
+
             if not node_rag.is_indexed():
                 total_nodes = len(G.nodes)
                 # Optimization for large graphs: only index selected nodes + nodes in selected edges
@@ -1118,7 +1208,8 @@ def callbacks(app):
                             )
 
                     if graph_nodes:
-                        node_rag.index_nodes(graph_nodes)
+                        set_progress((48, f"🧬 Indexing {len(graph_nodes)} nodes..."))
+                        node_rag.index_nodes(graph_nodes, progress_callback=_node_progress)
                         logger.info(
                             f"Partial indexing complete: {len(graph_nodes)}/ {total_nodes} nodes indexed."
                         )
@@ -1137,7 +1228,8 @@ def callbacks(app):
                         )
                         graph_nodes.append(graph_node)
 
-                    node_rag.index_nodes(graph_nodes)
+                    set_progress((48, f"🧬 Indexing {len(graph_nodes)} nodes..."))
+                    node_rag.index_nodes(graph_nodes, progress_callback=_node_progress)
                     logger.info(f"Full indexing complete: {len(graph_nodes)} nodes indexed.")
                     _node_index_count = len(graph_nodes)
                     _node_index_mode = "full"
@@ -1148,6 +1240,8 @@ def callbacks(app):
 
             t_node = time.time()
             logger.info(f"Node indexing check in {t_node - t_rag:.2f}s")
+
+            set_progress((68, "🌐 Building graph retriever..."))
 
             # Initialize Graph Retriever with NodeRAG
             from netmedex.graph_rag import GraphRetriever
@@ -1163,13 +1257,10 @@ def callbacks(app):
                 topic=search_query if search_query else "biomedical research",
             )
 
-            # Close old NodeRAG before overwriting to release ChromaDB file handles
+            set_progress((74, "✨ Generating AI summary..."))
+
+            # Register the new session (old NodeRAG was already closed before NodeRAG init above)
             session_id = savepath["graph"]
-            if session_id in _sessions:
-                old = _sessions[session_id]
-                gr = getattr(getattr(old.get("session"), "graph_retriever", None), "node_rag", None)
-                if gr is not None:
-                    gr.close()
             _sessions[session_id] = {"session": session, "rag": rag_system}
 
             context_banner = [
@@ -1184,7 +1275,7 @@ def callbacks(app):
 
             from webapp.components.chat import create_message_component
 
-            prompt_lang = session_language if session_language else "English"
+            prompt_lang = effective_language
 
             # The [INTERNAL_BOOTSTRAP] sentinel tells send_message() to:
             #   1. Use self.topic (= the real search query) for RAG retrieval, not this prompt text
@@ -1203,13 +1294,14 @@ def callbacks(app):
             )
             summary_result = session.send_message(
                 bootstrap_prompt,
-                session_language=session_language or "English",
+                session_language=effective_language,
                 skip_translation=True,  # The translation instruction is embedded in the prompt
                 focus_nodes=list(core_node_ids) if core_node_ids else None,
             )
             t_sum = time.time()
             logger.info(f"Initial summary generated in {t_sum - t_node:.2f}s")
             logger.info(f"Total Analyze Selection time: {t_sum - t0:.2f}s")
+            set_progress((95, "🎉 Almost done..."))
             bootstrap_user = summary_result.get("user_msg")
             if bootstrap_user is not None and bootstrap_user in session.history:
                 session.history.remove(bootstrap_user)
@@ -1526,7 +1618,7 @@ def callbacks(app):
             previous = _strip_message_suggestions(list(current_messages) if current_messages else [])
             messages = previous + [user_msg, ai_msg]
 
-            logger.info(f"DEBUG: send_message SUCCESS. Clearing inputs for trigger: {trigger_id}")
+            logger.info(f"send_message SUCCESS for trigger: {trigger_id}")
             return messages, [rename_suggested_question_ids(m, suffix="-modal") for m in messages] if messages else [], "", "", "", "", None, False, False, twohop_paths
 
         except Exception as e:
@@ -1548,13 +1640,14 @@ def callbacks(app):
             Output("clear-chat-btn", "style", allow_duplicate=True),
             Output("chat-context-banner", "children", allow_duplicate=True),
             Output("chat-context-banner", "style", allow_duplicate=True),
+            Output("twohop-highlight-paths", "data", allow_duplicate=True),
         ],
         Input("clear-chat-btn", "n_clicks"),
         State("current-session-path", "data"),
         prevent_initial_call=True,
     )
     def clear_chat(n_clicks, session_data):
-        """Clear chat history and reset session"""
+        """Clear chat history, reset session, and remove sub-network highlighting"""
         global _sessions
 
         if not n_clicks:
@@ -1589,13 +1682,14 @@ def callbacks(app):
 
         return (
             messages,
-            False,  # Session not active
-            "",  # Clear status
-            True,  # Disable input
-            True,  # Disable send
+            False,   # Session not active
+            "",      # Clear status
+            True,    # Disable input
+            True,    # Disable send button
             {"display": "none"},  # Hide clear button
             None,
             {"display": "none"},
+            [],      # ← Clear sub-network highlight paths (unlocks the graph)
         )
 
     @app.callback(
@@ -2105,3 +2199,25 @@ def callbacks(app):
         Input("modal-chat-content", "children"),
         prevent_initial_call=True,
     )
+
+    # ── Sub-network Freeze Fix ──────────────────────────────────────────────────
+    # After a chat response, twohop-highlight-paths holds path data that causes
+    # the graph to stay dimmed/highlighted ("frozen"). Tapping any node or edge
+    # clears the paths so apply_graph_visual_filters removes the dimming effect.
+    @app.callback(
+        Output("twohop-highlight-paths", "data", allow_duplicate=True),
+        Input("cy", "tapNodeData"),
+        Input("cy", "tapEdgeData"),
+        State("twohop-highlight-paths", "data"),
+        prevent_initial_call=True,
+    )
+    def clear_twohop_on_graph_tap(tap_node, tap_edge, current_paths):
+        """Clear 2-hop path highlighting when user taps any node/edge in the graph.
+
+        This allows users to 'unlock' the sub-network after a chat response has
+        applied the 2-hop path highlight without requiring a full chat clear.
+        """
+        if not current_paths:
+            raise dash.exceptions.PreventUpdate
+        logger.debug("Graph tap detected — clearing twohop-highlight-paths")
+        return []

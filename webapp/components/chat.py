@@ -404,7 +404,7 @@ selection_info = html.Div(
             [
                 dbc.Progress(
                     id="chat-analyze-progress",
-                    value=100,
+                    value=0,
                     striped=True,
                     animated=True,
                     color="success",

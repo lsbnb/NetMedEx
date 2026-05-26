@@ -358,8 +358,16 @@ window.dash_clientside.clientside = {
       const style = rule.style || {};
       // Signature of our dynamic rules (search highlight, confidence filter, etc.)
       if (selector.includes('[id="')) return true;
-      if (style.opacity === 0.1 || style.opacity === 0.2 || style.opacity === 0.95 || style.opacity === 0.05) return true;
+      // Include 2-hop path dim opacities (0.06 for edges, 0.15 for nodes) so
+      // these rules are always stripped before the next re-render — otherwise
+      // they survive as "base rules" and the sub-network stays frozen.
+      if (style.opacity === 0.06 || style.opacity === 0.1 || style.opacity === 0.15 ||
+          style.opacity === 0.2 || style.opacity === 0.95 || style.opacity === 0.05) return true;
       if (style["border-color"] === "#ff6b00") return true;
+      // 2-hop path endpoint/bridge node borders
+      if (style["border-color"] === "#ffd700" || style["border-color"] === "#2271b3") return true;
+      // 2-hop path edge highlight
+      if (style["line-color"] === "#ff7700") return true;
       return false;
     };
 

@@ -174,11 +174,11 @@ api_params = html.Div(
                     style={"width": "100%", "minHeight": "120px", "resize": "vertical"},
                     className="form-control",
                 ),
-                html.Div(id="search-history-panel"),
             ],
             id="input-type",
             className="param",
         ),
+        html.Div(id="search-history-panel"),
         # --- Collapsible: Search Options ---
         html.Div(
             dbc.Button(

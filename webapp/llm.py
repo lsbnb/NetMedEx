@@ -530,7 +530,7 @@ class LLMClient:
             "You are a professional all-around expert in biomedical literature, specializing in finding information and optimizing search queries. "
             "Your task is to translate, restructure, and optimize natural language queries into optimized boolean queries for PubTator3. "
             "PubTator3 supports entity types like @GENE, @DISEASE, @CHEMICAL, @SPECIES, etc., but also standard text search. "
-            "Use standard boolean operators: AND, OR, NOT. Use quotes for exact phrases. "
+            "Use standard boolean operators: AND, OR, NOT. Use quotes for exact phrases representing established names (e.g., \"Helicobacter pylori\"). "
             "IMPORTANT: If the user's query is in a language other than English (e.g., Traditional Chinese, Japanese, Korean), "
             "you MUST first translate and restructure the concepts into scientifically accurate English before building the boolean query. "
             "If the user's query is very broad (e.g., just 'Cancer', 'Gene', 'Protein'), you MUST add specific constraints "
@@ -543,6 +543,7 @@ class LLMClient:
             "A query with too many AND conditions returns zero results. Prefer a focused query over an exhaustive one. "
             "OR EXPANSION RULE: When adding a secondary concept, use OR to include common synonyms rather than a single exact phrase. "
             'For example, instead of AND "inflammatory regulation", write AND ("inflammation" OR "anti-inflammatory" OR "immune response"). '
+            "PHRASE QUOTING AVOIDANCE RULE: Do NOT wrap multi-word biological processes, functions, or mechanisms (e.g. \"osteoblast differentiation\", \"cell division\", \"gene regulation\") in quotes, as this over-constrains PubTator3 query matching and results in zero matches. Instead, simplify them to the core entity noun (e.g. \"osteoblast\") or connect the words with AND (e.g. osteoblast AND differentiation) or expand with OR (e.g. (\"osteoblast\" OR \"osteogenesis\")). "
             "RARE ENTITY RULE: If the query contains a highly specific entity (e.g., a rare microorganism species, uncommon gene), "
             "that entity name alone is often sufficient — adding secondary AND constraints may discard most relevant papers. "
             "In that case, return just the specific entity name without any AND conditions. "
@@ -553,6 +554,8 @@ class LLMClient:
             "'骨質疏鬆的基因' -> '\"Osteoporosis\" AND @GENE' "
             "'Lung cancer genes' -> '\"Lung Neoplasms\" AND @GENE' "
             "'胃癌與幽門螺旋桿菌的關係' -> '\"Stomach Neoplasms\" AND \"Helicobacter pylori\"' "
+            "'淫羊藿苷 (Icariin) 如何調控成骨細胞分化？' -> '\"Icariin\" AND (\"osteoblast\" OR \"osteogenesis\")' "
+            "'How does Icariin regulate osteoblast differentiation?' -> '\"Icariin\" AND (\"osteoblast\" OR \"osteogenesis\")' "
             '\'大腸直腸癌相關的菌相及其調控基因、miRNA\' -> \'"Colorectal Neoplasms" AND ("microbiota" OR "gut microbiome") AND (@GENE OR "miRNA" OR "microRNA")\' '
             '\'Anaerostipes hadrus inflammatory regulation\' -> \'"Anaerostipes hadrus" AND ("inflammation" OR "butyrate" OR "gut microbiota")\' '
             "'pathway linking Anaerostipes hadrus to inflammation' -> '\"Anaerostipes hadrus\"' "

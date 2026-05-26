@@ -147,6 +147,7 @@ class AbstractRAG:
             logger.warning("No abstracts to index")
             return 0
 
+        logger.info(f"Indexing {len(abstracts)} abstracts into vector store...")
         try:
             # Reset collection if exists
             if self._initialized:
@@ -215,6 +216,7 @@ class AbstractRAG:
                             f"({len(batch_texts)} abstracts)..."
                         )
             except Exception as e:
+                logger.error(f"Exception during collection.add: {e}", exc_info=True)
                 raise e
 
             self._initialized = True
@@ -228,7 +230,7 @@ class AbstractRAG:
             return len(abstracts)
 
         except Exception as e:
-            logger.error(f"Error indexing abstracts: {e}")
+            logger.error(f"Error indexing abstracts: {e}", exc_info=True)
             raise
 
     def search(self, query: str, top_k: int = 5) -> list[tuple[str, float]]:

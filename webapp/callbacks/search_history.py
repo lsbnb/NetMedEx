@@ -24,10 +24,11 @@ def callbacks(app):
     @app.callback(
         Output("search-history-panel", "children"),
         Input("search-history-store", "data"),
+        Input("input-type-selection", "value"),
         prevent_initial_call=False,
     )
-    def render_history(history):
-        if not history:
+    def render_history(history, input_type):
+        if not history or input_type != "query":
             return []
         chips = [
             dbc.Button(
