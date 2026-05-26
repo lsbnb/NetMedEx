@@ -279,7 +279,7 @@ The highlights update automatically with each new Chat response and are cleared 
 </p>
 
 <p align="center">
-  <img src="./docs/img/netmedex_chat_layout_selection.png" width="800" alt="Chat Layout Selection">
+  <img src="./docs/img/netmedex_chat_layout_selection.png" width="300" alt="Chat Layout Selection">
   <br>
   <i>Figure 12(A): Press the "Analyze Selection" button to construct RAGs for communications with the selected sub-network.</i>
 </p>
@@ -291,7 +291,7 @@ The highlights update automatically with each new Chat response and are cleared 
 </p>
 
 <p align="center">
-  <img src="./docs/img/netmedex_chat_history_panel.png" width="800" alt="Chat History Panel">
+  <img src="./docs/img/netmedex_chat_history_panel.png" width="300" alt="Chat History Panel">
   <br>
   <i>Figure 13: The Chat History panel for managing and reviewing previous discovery sessions.</i>
 </p>
