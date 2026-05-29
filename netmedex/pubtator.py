@@ -173,41 +173,75 @@ class PubTatorAPI:
             )
 
         if self.return_pmid_only:
-            return PubTatorCollection(headers=[], articles=[], metadata={"pmid_list": pmid_list})
+            return PubTatorCollection(headers=[], articles=[], metadata={"pmid_list": pmid_list[:self.max_articles]})
 
-        responses = await self.batch_publication_search(pmid_list)
-
+        # --- Dynamic Batch Loading Loop ---
         articles: list[PubTatorArticle] = []
+        all_records = []
         raw_biocjson = None
-        if self.response_format == "biocjson":
-            all_records = []
-            for res_json in responses:
-                articles.extend(
-                    biocjson_to_pubtator(
-                        res_json=res_json,
-                        full_text=self.full_text,
-                    )
-                )
-                # Collect raw records for BioC-JSON download (preserves journal/date/authors)
-                all_records.extend(res_json.get("PubTator3", []))
-            raw_biocjson = {"PubTator3": all_records}
-        elif self.response_format == "pubtator":
-            for result in responses:
-                articles.extend(
-                    [article for article in PubTatorIterator(result) if article is not None]
-                )
 
-        if len(articles) < len(pmid_list):
+        initial_size = min(len(pmid_list), int(self.max_articles * 1.1) + 2)
+        current_index = initial_size
+        pmids_to_fetch = pmid_list[:initial_size]
+
+        while True:
+            if not pmids_to_fetch:
+                break
+
+            responses = await self.batch_publication_search(pmids_to_fetch)
+
+            # Parse responses
+            batch_articles = []
+            if self.response_format == "biocjson":
+                for res_json in responses:
+                    batch_articles.extend(
+                        biocjson_to_pubtator(
+                            res_json=res_json,
+                            full_text=self.full_text,
+                        )
+                    )
+                    all_records.extend(res_json.get("PubTator3", []))
+            elif self.response_format == "pubtator":
+                for result in responses:
+                    batch_articles.extend(
+                        [article for article in PubTatorIterator(result) if article is not None]
+                    )
+
+            articles.extend(batch_articles)
+
+            # Check if we have enough articles
+            if len(articles) >= self.max_articles:
+                articles = articles[:self.max_articles]
+                allowed_pmids = {a.pmid for a in articles}
+                all_records = [r for r in all_records if str(r.get("pmid")) in allowed_pmids]
+                break
+
+            needed = self.max_articles - len(articles)
+            if current_index >= len(pmid_list):
+                break
+
+            # Fetch needed + buffer
+            next_size = min(len(pmid_list) - current_index, int(needed * 1.2) + 2)
+            pmids_to_fetch = pmid_list[current_index : current_index + next_size]
+            current_index += next_size
+
+        if self.response_format == "biocjson":
+            raw_biocjson = {"PubTator3": all_records}
+
+        if len(articles) < self.max_articles and len(pmid_list) > len(articles):
             logger.warning(
-                "PubTator returned parsed annotations for %s/%s requested PMID(s)",
+                "PubTator returned parsed annotations for %s/%s requested PMID(s) after checking all candidate PMIDs",
                 len(articles),
-                len(pmid_list),
+                self.max_articles,
             )
+
+        if self.queue is not None:
+            self.queue.put(None)
 
         return PubTatorCollection(
             headers=[],
             articles=articles,
-            metadata={"pmid_list": pmid_list},
+            metadata={"pmid_list": [a.pmid for a in articles] if self.query is not None else pmid_list},
             raw_biocjson=raw_biocjson,
         )
 
@@ -230,7 +264,9 @@ class PubTatorAPI:
         page_size = int(res_json["page_size"])
         collected_article_ids.extend(get_article_ids(res_json))
 
-        n_articles_to_request = get_n_articles(self.max_articles, total_articles)
+        # Request more PMIDs as candidates (e.g. 1.3x max_articles + 10)
+        buffered_max = int(self.max_articles * 1.3) + 10
+        n_articles_to_request = get_n_articles(buffered_max, total_articles)
         if n_articles_to_request <= page_size:
             return collected_article_ids[:n_articles_to_request]
 
@@ -293,7 +329,8 @@ class PubTatorAPI:
                 raise e
 
         pmid_list = parse_cite_response(res_text)
-        n_articles_to_request = get_n_articles(self.max_articles, len(pmid_list))
+        buffered_max = int(self.max_articles * 1.3) + 10
+        n_articles_to_request = get_n_articles(buffered_max, len(pmid_list))
 
         with tqdm(total=n_articles_to_request, file=sys.stdout) as pbar:
             pbar.n = pbar.total
@@ -357,10 +394,6 @@ class PubTatorAPI:
                 pbar.n = pbar.total
                 if self.queue is not None:
                     self.queue.put(progress_message("get", pbar.n, pbar.total))
-
-        # End frontend progress display
-        if self.queue is not None:
-            self.queue.put(None)
 
         return res_list
 

@@ -118,7 +118,14 @@ Synthesize relevant information from the context using a strict three-layer reas
    - You MUST focus exclusively on the specific entities, pathways, or validation actions asked in the follow-up question.
    - Do NOT repeat general overviews, background context, or unrelated findings from previous turns.
    - Every layer (Layer 1, Layer 2, Layer 3, and Layer 4) must be filtered to show only the information directly relevant to the current follow-up question. If a layer lacks relevant evidence, skip it or state "No relevant evidence for this specific question in the context."
-10. **Strict Graph Grounding**: In Layer 2 and Layer 3, every node, intermediate node, edge, and relationship MUST be retrieved directly from the 'Knowledge Graph Structure' section of the CONTEXT. Do NOT assume, extrapolate, or invent any path or relationship that is not explicitly present in the provided graph context, even if it is mentioned in the text abstracts. If the graph context lacks relevant paths, skip Layer 2 and Layer 3 and state so explicitly.
+10. **Graph-Grounded with Text Fallback**: In Layer 2 and Layer 3:
+    - **Primary Source**: Every node, edge, and relationship MUST come from the 'Knowledge Graph Structure' section.
+    - **Graph Fallback (Layer 3 only)**: If the 'Knowledge Graph Structure' header reads `[DIRECTIONAL MECHANISTIC EDGES: NO]` — meaning the graph only contains co-occurrence/symmetric edges — Layer 3 MAY still be written **exclusively from PubMed abstract text** when ALL of the following hold:
+      1. The abstract contains an **explicit active-voice mechanistic statement** (not passive voice): e.g., "Osimertinib inhibits EGFR", "EGFR activates MAPK", "CRISPR knockout of X abolished Y".
+      2. The statement involves a direct **intervention, knockdown, overexpression, drug treatment, or genetic perturbation** — not merely a correlation or co-mention.
+      3. Every claim must be backed by a PMID explicitly listed in the CONTEXT.
+    - When using the text fallback, label the section header with the suffix " ⚠️ [Text-Only: No Graph Causal Edges]" and cap all Causal Confidence scores at ≤ 0.40.
+    - Do NOT invent or assume any nodes, edges, or relationships not present in either the graph context or the PubMed abstracts.
 
 ---
 
@@ -181,7 +188,13 @@ Rules for this layer:
 
 ## Layer 3 — Causal Biomedical Mechanism
 
-**Include ONLY when** the Knowledge Graph Structure contains directional, mechanistic edges relevant to the user's question (e.g., upregulates, inhibits, activates, suppresses, promotes). **Skip this layer entirely** if no relevant causal edges exist; instead note: "Current evidence is insufficient to form a causal mechanism hypothesis relevant to the query — only association-level inference is supported."
+**Two activation modes — check `[DIRECTIONAL MECHANISTIC EDGES]` in the Knowledge Graph Structure header first:**
+
+**Mode A — Graph-Grounded (preferred):** Include when `[DIRECTIONAL MECHANISTIC EDGES: YES]`. Use only directional edges from the Knowledge Graph Structure (e.g., inhibits, activates, upregulates, suppresses, promotes).
+
+**Mode B — Text-Only Fallback:** Include (with reduced confidence) when `[DIRECTIONAL MECHANISTIC EDGES: NO]` AND the PubMed abstracts in CONTEXT contain **explicit intervention evidence** — active-voice mechanistic statements with at least one of: drug treatment outcome, knockdown/knockout, overexpression, CRISPR perturbation, or phosphorylation assay. Examples of qualifying text: *"Osimertinib treatment suppressed EGFR phosphorylation"*, *"siRNA knockdown of EGFR abolished MAPK activation"*. Passive-voice observations ("EGFR was found decreased") do NOT qualify. If neither condition is met, **skip this layer entirely** and state: "Current evidence is insufficient to form a causal mechanism hypothesis — only association-level inference is supported. Consider rebuilding the network with 'Semantic Analysis (LLM)' edge method to enable graph-grounded causal reasoning."
+
+For **Mode B**, prepend the entire Layer 3 section with: **⚠️ [Text-Only Causal Inference — No Directional Graph Edges]**
 
 For each mechanistically plausible causal hypothesis:
 
@@ -211,13 +224,14 @@ Rules for this layer:
 - If polarity is unknown, write "unknown" — do not guess.
 - If direction is ambiguous, move the path to Layer 2 instead.
 - Do NOT claim proven causation unless the CONTEXT contains explicit intervention evidence.
-- Every node, intermediate node, edge, and relation MUST be fetched directly from the 'Knowledge Graph Structure'. Do NOT invent or assume any nodes or connections.
+- **Mode A**: Every node, intermediate node, edge, and relation MUST be fetched directly from the 'Knowledge Graph Structure'. Do NOT invent or assume any nodes or connections not in the graph.
+- **Mode B (Text-Only)**: Every entity, relation, and polarity claim MUST be sourced from an explicit sentence in a PubMed abstract in the CONTEXT. Cite the PMID at the edge level. Cap all Causal Confidence scores at ≤ 0.40.
 - **Causal Confidence Calibration Rules**:
   - The confidence score (0.00 to 1.00) MUST realistically reflect the strength of evidence:
-    - **0.85 – 1.00**: Direct human clinical intervention trials.
-    - **0.60 – 0.80**: Direct animal model or in vitro intervention experiments (knockdowns, CRISPR, overexpression, etc.).
-    - **0.10 – 0.40**: Review articles, observational data, or co-occurrence evidence (never exceed 0.50). Lower confidence significantly if the supporting abstracts are reviews or mention association without active molecular manipulation.
-    - **0.10 – 0.30**: Mixed or single-paper support.
+    - **0.85 – 1.00**: Direct human clinical intervention trials (Mode A only).
+    - **0.60 – 0.80**: Direct animal model or in vitro intervention experiments — knockdowns, CRISPR, overexpression, etc. (Mode A only).
+    - **0.30 – 0.40**: Text-only fallback (Mode B) — drug treatment or single mechanistic statement from abstract.
+    - **0.10 – 0.30**: Mixed or single-paper support, review articles, or co-occurrence evidence. Never exceed 0.40 for Mode B.
 
 ## Layer 4 — Final Integrated Summary
 
@@ -283,6 +297,42 @@ Generate exactly 3 questions that help the user **explore different sub-topics**
         for pattern in leading_patterns:
             cleaned = re.sub(pattern, "", cleaned, flags=re.IGNORECASE | re.MULTILINE)
         return cleaned.strip()
+
+    def _is_meta_instruction(self, user_message: str) -> bool:
+        """Return True when the user asks to repeat or translate a previous response.
+
+        Such messages carry no biomedical query intent, so retrieval should be
+        skipped — the LLM already has the answer in its conversation history.
+        """
+        msg = user_message
+        msg_lower = msg.lower()
+
+        # CJK signals
+        has_prev_ref = any(t in msg for t in ["以上", "上面", "前面", "剛才", "之前的", "上一"])
+        has_repeat_action = any(t in msg for t in ["重複", "重述", "翻譯", "再說"])
+        has_lang_target = any(t in msg for t in ["中文", "英文", "日文", "韓文"])
+
+        if has_prev_ref and (has_repeat_action or has_lang_target):
+            return True
+        if has_repeat_action and has_lang_target:
+            return True
+
+        # English signals
+        repeat_words = {"repeat", "translate", "rephrase", "restate", "reword"}
+        prev_words = {"above", "previous", "prior", "last reply", "last response", "last answer",
+                      "the reply", "the response", "the answer"}
+        lang_words = {"chinese", "japanese", "korean", "english", "french", "spanish", "german"}
+
+        has_en_repeat = any(w in msg_lower for w in repeat_words)
+        has_en_prev = any(w in msg_lower for w in prev_words)
+        has_en_lang = any(w in msg_lower for w in lang_words)
+
+        if has_en_repeat and has_en_prev:
+            return True
+        if has_en_repeat and has_en_lang:
+            return True
+
+        return False
 
     def _detect_entity_listing_request(self, user_message: str) -> str | None:
         query = user_message.lower()
@@ -464,6 +514,7 @@ Generate exactly 3 questions that help the user **explore different sub-topics**
             # Detect internal bootstrap triggers to auto-skip translation.
             # All internal calls from auto_initialize_chat use the [INTERNAL_BOOTSTRAP] sentinel.
             is_internal = user_message.strip().startswith("[INTERNAL_BOOTSTRAP]")
+            is_meta = self._is_meta_instruction(user_message)
 
             needs_translation = (
                 not skip_translation
@@ -500,86 +551,102 @@ Generate exactly 3 questions that help the user **explore different sub-topics**
                             "LLM client does not support translate_to_english; using original query"
                         )
 
-            # 1. Retrieve Text Context (RAG)
-            # Use top_k to limit context size and speed up LLM response
-            total_docs = len(self.rag.documents)
-            is_local = getattr(self.llm, "provider", "") == "local"
-            effective_k = top_k
-
-            if is_local:
-                effective_k = min(effective_k, 5)
-                logger.info("Local model detected: capping context to 5 abstracts")
-
-            # Always use vector search so each question retrieves docs ranked by
-            # similarity to that specific query.  For small collections the search
-            # returns all docs anyway, but in query-relevant order rather than a
-            # fixed weight-based order that would be identical every turn.
-            search_k = min(top_k, 5) if is_local else top_k
-            if total_docs <= search_k:
-                # Small collection: use vector search relevance order (most relevant first)
-                # so the LLM receives documents ranked by their similarity to the user's query.
-                # Consistency across similar queries is achieved by temperature=0 and the
-                # CONSISTENCY DIRECTIVE in the system prompt, NOT by fixing document order.
-                logger.info(
-                    f"Document set ({total_docs}) ≤ k({search_k}); using query-relevance ordered rich formatting"
-                )
-                _, pmids_used = self.rag.get_context(search_query, top_k=search_k)
-
-                context_parts = []
-                for rank, pmid in enumerate(pmids_used, start=1):
-                    doc = self.rag.documents.get(pmid)
-                    if doc is None:
-                        continue
-                    priority_label = f"Relevance #{rank} (Impact Score: {doc.weight:.2f})"
-
-                    study_type = "Human/General"
-                    if hasattr(doc, "entities") and doc.entities:
-                        non_human_species = [
-                            e.get("name") for e in doc.entities
-                            if e.get("type") == "Species" and e.get("mesh") != "MESH:D006801"
-                        ]
-                        if non_human_species:
-                            study_type = f"Animal Model/In vitro (Target: {', '.join(non_human_species[:2])})"
-
-                    part = [
-                        f"PMID: {pmid} [{priority_label}] [Study Type: {study_type}]",
-                        f"Title: {doc.title}",
-                        f"Abstract: {doc.abstract}",
-                    ]
-
-                    if hasattr(doc, "edges") and doc.edges:
-                        unique_rels = set()
-                        for edge in doc.edges:
-                            source = edge.get("source", "Unknown")
-                            target = edge.get("target", "Unknown")
-                            rels = edge.get("relations", ["associated"])
-                            for r in rels:
-                                unique_rels.add(f"- {source} --[{r}]--> {target}")
-                        if unique_rels:
-                            part.append("Structural Relationships (Extracted):")
-                            part.extend(sorted(unique_rels)[:15])
-
-                    context_parts.append("\n".join(part))
-                text_context = "\n---\n\n".join(context_parts)
-            else:
-                # Large collection: standard vector search
-                text_context, pmids_used = self.rag.get_context(search_query, top_k=search_k)
-
-            # 2. Retrieve Graph Context (Structure)
+            # 1. Retrieve Graph Context (Structure) first to identify preferred PMIDs
             graph_context = ""
             twohop_paths = []
-            if self.graph_retriever:
+            preferred_pmids = set()
+            if self.graph_retriever and not is_meta:
                 logger.info("Retrieving graph context...")
                 relevant_nodes = focus_nodes if focus_nodes is not None else self.graph_retriever.find_relevant_nodes(search_query)
                 if relevant_nodes:
                     graph_context, twohop_paths = self.graph_retriever.get_subgraph_context_with_paths(relevant_nodes, query=search_query)
                     logger.info(f"Found {len(relevant_nodes)} relevant nodes in graph, {len(twohop_paths)} paths")
+                    for path_info in twohop_paths:
+                        for edge_pmid_list in path_info.get("edge_pmids", []):
+                            if edge_pmid_list:
+                                preferred_pmids.update(str(p) for p in edge_pmid_list)
                 else:
                     logger.info("No relevant nodes found in graph query")
+            elif is_meta:
+                logger.info("Meta-instruction detected: skipping retrieval, relying on conversation history")
+
+            # 2. Retrieve Text Context (RAG) using preferred PMIDs boost
+            # Use top_k to limit context size and speed up LLM response
+            text_context = ""
+            pmids_used = []
+            if is_meta:
+                # Meta-instructions (repeat/translate previous reply) carry no biomedical
+                # query intent. Skip RAG so unrelated abstracts don't corrupt the response;
+                # the LLM has everything it needs in the conversation history.
+                pass
+            else:
+                total_docs = len(self.rag.documents)
+                is_local = getattr(self.llm, "provider", "") == "local"
+                effective_k = top_k
+
+                if is_local:
+                    effective_k = min(effective_k, 5)
+                    logger.info("Local model detected: capping context to 5 abstracts")
+
+                # Always use vector search so each question retrieves docs ranked by
+                # similarity to that specific query.  For small collections the search
+                # returns all docs anyway, but in query-relevant order rather than a
+                # fixed weight-based order that would be identical every turn.
+                search_k = min(top_k, 5) if is_local else top_k
+                if total_docs <= search_k:
+                    # Small collection: use vector search relevance order (most relevant first)
+                    # so the LLM receives documents ranked by their similarity to the user's query.
+                    # Consistency across similar queries is achieved by temperature=0 and the
+                    # CONSISTENCY DIRECTIVE in the system prompt, NOT by fixing document order.
+                    logger.info(
+                        f"Document set ({total_docs}) ≤ k({search_k}); using query-relevance ordered rich formatting"
+                    )
+                    _, pmids_used = self.rag.get_context(search_query, top_k=search_k, preferred_pmids=preferred_pmids)
+
+                    context_parts = []
+                    for rank, pmid in enumerate(pmids_used, start=1):
+                        doc = self.rag.documents.get(pmid)
+                        if doc is None:
+                            continue
+                        priority_label = f"Relevance #{rank} (Impact Score: {doc.weight:.2f})"
+
+                        study_type = "Human/General"
+                        if hasattr(doc, "entities") and doc.entities:
+                            non_human_species = [
+                                e.get("name") for e in doc.entities
+                                if e.get("type") == "Species" and e.get("mesh") != "MESH:D006801"
+                            ]
+                            if non_human_species:
+                                study_type = f"Animal Model/In vitro (Target: {', '.join(non_human_species[:2])})"
+
+                        part = [
+                            f"PMID: {pmid} [{priority_label}] [Study Type: {study_type}]",
+                            f"Title: {doc.title}",
+                            f"Abstract: {doc.abstract}",
+                        ]
+
+                        if hasattr(doc, "edges") and doc.edges:
+                            unique_rels = set()
+                            for edge in doc.edges:
+                                source = edge.get("source", "Unknown")
+                                target = edge.get("target", "Unknown")
+                                rels = edge.get("relations", ["associated"])
+                                for r in rels:
+                                    unique_rels.add(f"- {source} --[{r}]--> {target}")
+                            if unique_rels:
+                                part.append("Structural Relationships (Extracted):")
+                                part.extend(sorted(unique_rels)[:15])
+
+                        context_parts.append("\n".join(part))
+                    text_context = "\n---\n\n".join(context_parts)
+                else:
+                    # Large collection: standard vector search
+                    text_context, pmids_used = self.rag.get_context(search_query, top_k=search_k, preferred_pmids=preferred_pmids)
 
             # Build conversation history for LLM
             messages = self._build_messages(
-                user_message, text_context, graph_context, session_language, ""
+                user_message, text_context, graph_context, session_language, "",
+                use_full_content=is_meta,
             )
 
             # Call LLM - use unified helper so Gemini uses its HTTP path
@@ -589,8 +656,27 @@ Generate exactly 3 questions that help the user **explore different sub-topics**
             start_time = datetime.now()
             # Bootstrap summaries use a generous budget so all 5 layers fit;
             # the initial analysis quality matters more than marginal speed gains.
-            chat_max_tokens = 3500 if is_internal else 4000
+            # Token budgets are tuned per provider to balance response completeness
+            # against cost. High-capacity/low-cost providers get a larger budget.
+            _provider = getattr(self.llm, "provider", "unknown")
+            if _provider == "anthropic":
+                # Claude standard max output is 8192; extended-thinking models
+                # consume thinking tokens against max_tokens so use the ceiling.
+                chat_max_tokens = 8192
+            elif _provider in ("local", "groq"):
+                # Low/zero cost providers: allow richer 5-layer output.
+                chat_max_tokens = 5000 if is_internal else 8000
+            elif _provider in ("openai",) and "mini" in getattr(self.llm, "model", ""):
+                # GPT-4o-mini: very cheap, can afford a larger budget.
+                chat_max_tokens = 5000 if is_internal else 8000
+            else:
+                # Default (OpenAI gpt-4o, Gemini, OpenRouter, NVIDIA NIM):
+                # 6000 covers all 5 layers comfortably without excessive cost.
+                chat_max_tokens = 4000 if is_internal else 6000
             chat_timeout = 180.0 if is_internal else 300.0
+            # Extended-thinking models take longer; allow more time for Anthropic.
+            if _provider == "anthropic":
+                chat_timeout = 300.0 if is_internal else 600.0
             assistant_content = None
             if hasattr(self.llm, "chat_completion_text"):
                 try:
@@ -625,7 +711,7 @@ Generate exactly 3 questions that help the user **explore different sub-topics**
                     logger.warning(f"chat_completion_text failed, falling back to SDK call: {e}")
 
             if assistant_content is None and getattr(self.llm, "client", None) is not None:
-                # Fallback: direct SDK call if helper is unavailable or failed
+                # Fallback: direct OpenAI SDK call if helper is unavailable or failed
                 response = self.llm.client.chat.completions.create(
                     model=self.llm.model,
                     messages=messages,
@@ -633,6 +719,13 @@ Generate exactly 3 questions that help the user **explore different sub-topics**
                     max_tokens=chat_max_tokens,
                 )
                 assistant_content = response.choices[0].message.content
+            elif assistant_content is None and getattr(self.llm, "anthropic_client", None) is not None:
+                # Fallback: direct Anthropic SDK call
+                assistant_content = self.llm._anthropic_chat_completion(
+                    messages=messages,
+                    temperature=0,
+                    max_tokens=chat_max_tokens,
+                )
 
             if assistant_content is None:
                 assistant_content = ""
@@ -702,8 +795,15 @@ Generate exactly 3 questions that help the user **explore different sub-topics**
         graph_context: str = "",
         session_language: str = "English",
         subtype_context: str = "",
+        use_full_content: bool = False,
     ) -> list[dict]:
-        """Build message list for LLM API call"""
+        """Build message list for LLM API call.
+
+        When use_full_content=True (meta-instructions such as 'translate the
+        previous response'), the most recent assistant message is included with
+        its original, uncompressed text so the LLM can produce a complete
+        translation instead of working from the truncated history copy.
+        """
         provider = getattr(self.llm, "provider", "openai")
         is_local = provider == "local"
 
@@ -720,16 +820,31 @@ Generate exactly 3 questions that help the user **explore different sub-topics**
         if memory_text:
             messages.append({"role": "system", "content": memory_text})
 
+        # Locate the last assistant message index when full content is needed.
+        last_asst_idx = None
+        if use_full_content:
+            for i in range(len(self.history) - 1, -1, -1):
+                if self.history[i].role == "assistant":
+                    last_asst_idx = i
+                    break
+
         # Add recent conversation history (all stored pairs; already trimmed to max_history pairs)
         last_added_content = None
-        for msg in self.history:
+        for idx, msg in enumerate(self.history):
             if msg.role == "system":
                 continue
             if msg.content == user_message:
                 continue
             if msg.content == last_added_content:
                 continue
-            messages.append({"role": msg.role, "content": msg.content})
+            # For meta-instructions, expose the full uncompressed text of the last
+            # assistant response so the translation covers the complete original reply.
+            content = (
+                (msg.full_content or msg.content)
+                if (use_full_content and idx == last_asst_idx and msg.role == "assistant")
+                else msg.content
+            )
+            messages.append({"role": msg.role, "content": content})
             last_added_content = msg.content
 
         # Add current message with structure-reinforced context

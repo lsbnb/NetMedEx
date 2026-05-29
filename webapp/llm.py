@@ -6,6 +6,12 @@ import os
 import requests
 from openai import OpenAI
 
+try:
+    import anthropic as _anthropic
+    HAS_ANTHROPIC = True
+except ImportError:
+    HAS_ANTHROPIC = False
+
 logger = logging.getLogger(__name__)
 
 OPENAI_BASE_URL = "https://api.openai.com/v1"
@@ -13,6 +19,17 @@ GEMINI_OPENAI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/opena
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 NVIDIA_NIM_BASE_URL = "https://integrate.api.nvidia.com/v1"
 GROQ_BASE_URL = "https://api.groq.com/openai/v1"
+ANTHROPIC_BASE_URL = "https://api.anthropic.com"
+
+ANTHROPIC_MODELS = [
+    "claude-opus-4-8",
+    "claude-sonnet-4-6",
+    "claude-haiku-4-5",
+    "claude-3-7-sonnet-20250219",
+    "claude-3-5-sonnet-20241022",
+    "claude-3-5-haiku-20241022",
+    "claude-3-opus-20240229",
+]
 
 COMMON_OPENAI_MODELS = {
     "gpt-4o",
@@ -45,6 +62,8 @@ def get_provider_api_key(provider: str | None, explicit_key: str | None = None) 
         return os.getenv("NVIDIA_API_KEY")
     if raw_provider == "groq":
         return os.getenv("GROQ_API_KEY")
+    if raw_provider == "anthropic":
+        return os.getenv("ANTHROPIC_API_KEY")
     return os.getenv("OPENAI_API_KEY")
 
 
@@ -74,6 +93,9 @@ def normalize_model_for_provider(provider: str | None, model: str | None) -> str
             return f"openai/{raw_model}"
         return raw_model
 
+    if raw_provider == "anthropic":
+        return raw_model or "claude-sonnet-4-6"
+
     return raw_model
 
 
@@ -98,6 +120,9 @@ def initialize_llm_client_from_settings(
     groq_api_key: str | None = None,
     groq_model: str | None = None,
     groq_custom_model: str | None = None,
+    anthropic_api_key: str | None = None,
+    anthropic_model: str | None = None,
+    anthropic_custom_model: str | None = None,
 ):
     """Initialize an LLMClient from the Advanced Settings UI state.
 
@@ -157,6 +182,18 @@ def initialize_llm_client_from_settings(
             model=model,
             base_url=GROQ_BASE_URL,
         )
+    elif selected == "anthropic":
+        model = (
+            anthropic_custom_model.strip()
+            if anthropic_model == "custom" and anthropic_custom_model
+            else anthropic_model
+        ) or "claude-sonnet-4-6"
+        client.initialize_client(
+            provider="anthropic",
+            api_key=anthropic_api_key,
+            model=model,
+            base_url=ANTHROPIC_BASE_URL,
+        )
     else:
         client.initialize_client(
             provider="local",
@@ -176,6 +213,7 @@ class LLMClient:
         self.embedding_model = os.getenv("EMBEDDING_MODEL", "text-embedding-3-small")
         self.safety_setting = os.getenv("GOOGLE_SAFETY_SETTING", "medium")
         self.client = None
+        self.anthropic_client = None
 
         # Provider-specific env resolution (with legacy fallbacks).
         if self.provider == "google":
@@ -202,6 +240,10 @@ class LLMClient:
             self.api_key = os.getenv("GROQ_API_KEY")
             self.base_url = os.getenv("GROQ_BASE_URL") or GROQ_BASE_URL
             self.model = os.getenv("GROQ_MODEL", self.model)
+        elif self.provider == "anthropic":
+            self.api_key = os.getenv("ANTHROPIC_API_KEY")
+            self.base_url = ANTHROPIC_BASE_URL
+            self.model = os.getenv("ANTHROPIC_MODEL", "claude-sonnet-4-6")
         else:
             self.api_key = os.getenv("OPENAI_API_KEY")
             self.base_url = self.base_url or OPENAI_BASE_URL
@@ -257,26 +299,52 @@ class LLMClient:
         self.model = normalize_model_for_provider(self.provider, self.model)
 
         if self.api_key:
-            # OpenRouter headers (optional but recommended for rate limiting/diagnostics)
-            extra_headers = {}
-            if self.provider == "openrouter":
-                extra_headers = {
-                    "HTTP-Referer": "https://github.com/NetMedEx/NetMedEx",
-                    "X-Title": "NetMedEx",
-                }
-            self.client = OpenAI(
-                api_key=self.api_key,
-                base_url=self.base_url,
-                default_headers=extra_headers,
-            )
-            logger.info(
-                f"LLM Client initialized with provider: {self.provider}, model: {self.model}, embedding: {self.embedding_model}"
-            )
+            if self.provider == "anthropic":
+                if not HAS_ANTHROPIC:
+                    logger.error("anthropic package not installed. Run: pip install 'anthropic>=0.26.0'")
+                    self.anthropic_client = None
+                    self.client = None
+                else:
+                    self.anthropic_client = _anthropic.Anthropic(api_key=self.api_key)
+                    self.client = None
+                    logger.info(
+                        f"Anthropic Client initialized with model: {self.model}"
+                    )
+            else:
+                self.anthropic_client = None
+                # OpenRouter headers (optional but recommended for rate limiting/diagnostics)
+                extra_headers = {}
+                if self.provider == "openrouter":
+                    extra_headers = {
+                        "HTTP-Referer": "https://github.com/NetMedEx/NetMedEx",
+                        "X-Title": "NetMedEx",
+                    }
+                self.client = OpenAI(
+                    api_key=self.api_key,
+                    base_url=self.base_url,
+                    default_headers=extra_headers,
+                )
+                logger.info(
+                    f"LLM Client initialized with provider: {self.provider}, model: {self.model}, embedding: {self.embedding_model}"
+                )
         else:
             self.client = None
+            self.anthropic_client = None
             logger.warning("LLM Client not initialized: No API Key provided")
 
     def test_connection(self) -> tuple[bool, str]:
+        if self.provider == "anthropic":
+            if not self.anthropic_client:
+                return False, "Anthropic client not initialized"
+            try:
+                models = self.anthropic_client.models.list()
+                model_ids = [m.id for m in models.data]
+                if self.model not in model_ids and model_ids:
+                    return False, f"Model '{self.model}' not found. Available: {', '.join(model_ids[:5])}"
+                return True, "Connection successful"
+            except Exception as e:
+                logger.error(f"Anthropic connection test failed: {e}")
+                return False, str(e)
         if not self.client:
             return False, "Client not initialized"
         try:
@@ -309,6 +377,52 @@ class LLMClient:
     def update_api_key(self, api_key):
         self.initialize_client(api_key=api_key)
 
+    def _anthropic_chat_completion(
+        self,
+        messages: list[dict[str, str]],
+        temperature: float,
+        max_tokens: int,
+    ) -> str:
+        """Route a completion request to the Anthropic messages API."""
+        system_parts = []
+        anthropic_messages = []
+        for msg in messages:
+            if msg.get("role") == "system":
+                system_parts.append(msg.get("content", ""))
+            else:
+                anthropic_messages.append({"role": msg["role"], "content": msg.get("content", "")})
+        if not anthropic_messages:
+            anthropic_messages = [{"role": "user", "content": "\n\n".join(system_parts)}]
+            system_parts = []
+        kwargs = {
+            "model": self.model,
+            "max_tokens": max_tokens,
+            "messages": anthropic_messages,
+            "temperature": min(max(float(temperature), 0.0), 1.0),
+        }
+        if system_parts:
+            kwargs["system"] = "\n\n".join(system_parts)
+        try:
+            response = self.anthropic_client.messages.create(**kwargs)
+        except Exception as e:
+            err_str = str(e)
+            logger.error(f"Anthropic API error: {err_str}")
+            # Some models (e.g. claude-opus-4-8 extended thinking) deprecate temperature.
+            if "temperature" in err_str.lower() and "deprecated" in err_str.lower():
+                kwargs.pop("temperature", None)
+                response = self.anthropic_client.messages.create(**kwargs)
+            else:
+                raise
+        stop_reason = getattr(response, "stop_reason", "unknown")
+        if stop_reason == "max_tokens":
+            logger.warning(
+                f"Anthropic response truncated by max_tokens={kwargs.get('max_tokens')}. "
+                "Consider increasing max_tokens for this call."
+            )
+        else:
+            logger.debug(f"Anthropic response stop_reason={stop_reason}")
+        return response.content[0].text.strip() if response.content else ""
+
     def chat_completion_text(
         self,
         messages: list[dict[str, str]],
@@ -321,9 +435,15 @@ class LLMClient:
         Unified chat completion helper.
         - All providers (OpenAI, Google/Gemini, and local LLMs) now use the OpenAI SDK
           via the initialized client for consistency and correct URL/header handling.
+        - Anthropic uses the native anthropic SDK via _anthropic_chat_completion.
         """
         if not self.api_key:
             raise ValueError("LLM API key is not configured")
+
+        if self.provider == "anthropic":
+            if not self.anthropic_client:
+                raise ValueError("Anthropic client not initialized")
+            return self._anthropic_chat_completion(messages, temperature, max_tokens)
 
         if not self.client:
             raise ValueError("LLM client not initialized")
@@ -368,12 +488,15 @@ class LLMClient:
             return ""
         return str(content).strip()
 
-    def get_embeddings(self, texts: list[str]) -> list[list[float]]:
+    def get_embeddings(self, texts: list[str], timeout: float = 60.0) -> list[list[float]]:
         """
         Fetch embeddings for a list of texts using the configured provider and embedding model.
         """
         if not self.api_key:
             raise ValueError("LLM API key is not configured")
+
+        if self.provider == "anthropic":
+            raise ValueError("Anthropic does not provide a native embeddings API. Use a different provider for KG Normalization.")
 
         if not self.client:
             raise ValueError("LLM client not initialized")
@@ -389,6 +512,7 @@ class LLMClient:
             response = self.client.embeddings.create(
                 input=batch,
                 model=self.embedding_model,
+                timeout=timeout,
             )
             embeddings.extend([item.embedding for item in response.data])
 
@@ -399,7 +523,7 @@ class LLMClient:
         Translates text to English unconditionally.
         Keeps original formatting / text if already in English or translation fails.
         """
-        if not self.client:
+        if not self.client and not self.anthropic_client:
             return text
 
         system_prompt = (
@@ -439,9 +563,15 @@ class LLMClient:
         Unified chat completion helper.
         - All providers (OpenAI, Google/Gemini, and local LLMs) now use the OpenAI SDK
           via the initialized client for consistency and correct URL/header handling.
+        - Anthropic uses the native anthropic SDK via _anthropic_chat_completion.
         """
         if not self.api_key:
             raise ValueError("LLM API key is not configured")
+
+        if self.provider == "anthropic":
+            if not self.anthropic_client:
+                raise ValueError("Anthropic client not initialized")
+            return self._anthropic_chat_completion(messages, temperature, max_tokens)
 
         if not self.client:
             raise ValueError("LLM client not initialized")
@@ -491,7 +621,7 @@ class LLMClient:
         Translates text to English unconditionally.
         Keeps original formatting / text if already in English or translation fails.
         """
-        if not self.client:
+        if not self.client and not self.anthropic_client:
             return text
 
         system_prompt = (
@@ -523,7 +653,7 @@ class LLMClient:
         """
         Translates a natural language query into a PubTator3 boolean query key.
         """
-        if not self.client:
+        if not self.client and not self.anthropic_client:
             return natural_query  # Fallback if no client
 
         system_prompt = (
@@ -927,6 +1057,21 @@ class LLMClient:
         except Exception as e:
             logger.error(f"Failed to fetch Groq models: {e}")
             return []
+
+    def get_anthropic_models(self, api_key: str) -> list[str]:
+        """Fetch available Claude models from Anthropic API."""
+        if not api_key:
+            return list(ANTHROPIC_MODELS)
+        try:
+            if not HAS_ANTHROPIC:
+                return list(ANTHROPIC_MODELS)
+            client = _anthropic.Anthropic(api_key=api_key)
+            models = client.models.list()
+            model_ids = [m.id for m in models.data]
+            return model_ids if model_ids else list(ANTHROPIC_MODELS)
+        except Exception as e:
+            logger.error(f"Failed to fetch Anthropic models: {e}")
+            return list(ANTHROPIC_MODELS)
 
     def get_openrouter_models(self, api_key: str) -> list[str]:
         """

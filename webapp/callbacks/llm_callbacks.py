@@ -10,6 +10,8 @@ import requests
 from dash import ClientsideFunction, Input, Output, State, html, no_update
 
 from webapp.llm import (
+    ANTHROPIC_BASE_URL,
+    ANTHROPIC_MODELS,
     GEMINI_OPENAI_BASE_URL,
     NVIDIA_NIM_BASE_URL,
     OPENAI_BASE_URL,
@@ -78,6 +80,9 @@ def _default_settings() -> dict:
         "groq_api_key": "",
         "groq_model": "llama-3.3-70b-versatile",
         "groq_custom_model": "",
+        "anthropic_api_key": "",
+        "anthropic_model": "claude-sonnet-4-6",
+        "anthropic_custom_model": "",
     }
 
 
@@ -146,6 +151,10 @@ def _settings_from_env() -> dict:
         settings["groq_api_key"] = ""
         settings["groq_model"] = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
         settings["groq_custom_model"] = ""
+    elif provider == "anthropic":
+        settings["anthropic_api_key"] = ""
+        settings["anthropic_model"] = os.getenv("ANTHROPIC_MODEL", "claude-sonnet-4-6")
+        settings["anthropic_custom_model"] = ""
     else:
         chosen_local_url = local_base_url or base_url
         chosen_local_model = local_model or model
@@ -192,6 +201,9 @@ def callbacks(app):
             Output("groq-api-key-input", "value"),
             Output("groq-model-selector", "value"),
             Output("groq-custom-model-input", "value"),
+            Output("anthropic-api-key-input", "value"),
+            Output("anthropic-model-selector", "value"),
+            Output("anthropic-custom-model-input", "value"),
         ],
         Input("main-container", "id"),
         State("llm-settings-store", "data"),
@@ -219,10 +231,13 @@ def callbacks(app):
                 settings["groq_api_key"],
                 settings["groq_model"],
                 settings["groq_custom_model"],
+                settings["anthropic_api_key"],
+                settings["anthropic_model"],
+                settings["anthropic_custom_model"],
             )
         except Exception as e:
             logger.error(f"Error loading LLM configuration: {e}")
-            return (dash.no_update,) * 19
+            return (dash.no_update,) * 22
 
     @app.callback(
         Output("llm-settings-store", "data"),
@@ -246,6 +261,9 @@ def callbacks(app):
             Input("groq-api-key-input", "value"),
             Input("groq-model-selector", "value"),
             Input("groq-custom-model-input", "value"),
+            Input("anthropic-api-key-input", "value"),
+            Input("anthropic-model-selector", "value"),
+            Input("anthropic-custom-model-input", "value"),
         ],
     )
     def persist_llm_settings(
@@ -268,6 +286,9 @@ def callbacks(app):
         _groq_api_key,
         groq_model,
         groq_custom_model,
+        _anthropic_api_key,
+        anthropic_model,
+        anthropic_custom_model,
     ):
         return {
             "provider": provider,
@@ -289,6 +310,9 @@ def callbacks(app):
             "groq_api_key": "",
             "groq_model": groq_model or "llama-3.3-70b-versatile",
             "groq_custom_model": groq_custom_model or "",
+            "anthropic_api_key": "",
+            "anthropic_model": anthropic_model or "claude-sonnet-4-6",
+            "anthropic_custom_model": anthropic_custom_model or "",
         }
 
     # Toggle provider-specific sections.
@@ -299,6 +323,7 @@ def callbacks(app):
             Output("openrouter-config", "style"),
             Output("nvidia-config", "style"),
             Output("groq-config", "style"),
+            Output("anthropic-config", "style"),
             Output("local-llm-config", "style"),
             Output("google-params-config", "style"),
         ],
@@ -308,17 +333,19 @@ def callbacks(app):
         none = {"display": "none"}
         block = {"display": "block"}
         if provider == "openai":
-            return block, none, none, none, none, none, none
+            return block, none, none, none, none, none, none, none
         if provider == "google":
-            return none, block, none, none, none, none, block
+            return none, block, none, none, none, none, none, block
         if provider == "openrouter":
-            return none, none, block, none, none, none, none
+            return none, none, block, none, none, none, none, none
         if provider == "nvidia":
-            return none, none, none, block, none, none, none
+            return none, none, none, block, none, none, none, none
         if provider == "groq":
-            return none, none, none, none, block, none, none
+            return none, none, none, none, block, none, none, none
+        if provider == "anthropic":
+            return none, none, none, none, none, block, none, none
         # local
-        return none, none, none, none, none, block, none
+        return none, none, none, none, none, none, block, none
 
     @app.callback(
         Output("openai-custom-model-div", "style"),
@@ -343,6 +370,15 @@ def callbacks(app):
         Input("groq-model-selector", "value"),
     )
     def toggle_groq_custom_model_input(selected_model):
+        if selected_model == "custom":
+            return {"display": "block", "marginTop": "10px"}
+        return {"display": "none"}
+
+    @app.callback(
+        Output("anthropic-custom-model-div", "style"),
+        Input("anthropic-model-selector", "value"),
+    )
+    def toggle_anthropic_custom_model_input(selected_model):
         if selected_model == "custom":
             return {"display": "block", "marginTop": "10px"}
         return {"display": "none"}
@@ -373,6 +409,9 @@ def callbacks(app):
             State("groq-api-key-input", "value"),
             State("groq-model-selector", "value"),
             State("groq-custom-model-input", "value"),
+            State("anthropic-api-key-input", "value"),
+            State("anthropic-model-selector", "value"),
+            State("anthropic-custom-model-input", "value"),
         ],
         prevent_initial_call=True,
     )
@@ -396,6 +435,9 @@ def callbacks(app):
         groq_api_key,
         groq_model,
         groq_custom_model,
+        anthropic_api_key,
+        anthropic_model,
+        anthropic_custom_model,
     ):
         if not n_clicks:
             raise dash.exceptions.PreventUpdate
@@ -507,12 +549,30 @@ def callbacks(app):
                     if groq_model == "custom" and groq_custom_model
                     else groq_model
                 )
-                from webapp.llm import GROQ_BASE_URL
                 llm_client.initialize_client(
                     provider="groq",
                     api_key=groq_api_key,
                     model=model,
                     base_url=GROQ_BASE_URL,
+                )
+            elif provider == "anthropic":
+                anthropic_api_key = anthropic_api_key or os.getenv("ANTHROPIC_API_KEY", "").strip()
+                if not anthropic_api_key:
+                    return (
+                        "⚠️ Anthropic API key is required",
+                        "status-indicator status-warning",
+                        "Enter a key for this session or set ANTHROPIC_API_KEY on the server",
+                    )
+                model = (
+                    anthropic_custom_model.strip()
+                    if anthropic_model == "custom" and anthropic_custom_model
+                    else anthropic_model
+                ) or "claude-sonnet-4-6"
+                llm_client.initialize_client(
+                    provider="anthropic",
+                    api_key=anthropic_api_key,
+                    model=model,
+                    base_url=ANTHROPIC_BASE_URL,
                 )
             else:
                 if not local_base_url or not local_model:
@@ -560,7 +620,7 @@ def callbacks(app):
         prevent_initial_call=False,
     )
     def show_active_llm_banner(_store, _verify_status, _save_status):
-        if llm_client.client:
+        if llm_client.client or llm_client.anthropic_client:
             return dbc.Alert(
                 [
                     html.Span("🟢 ", style={"fontSize": "0.9rem"}),
@@ -593,7 +653,7 @@ def callbacks(app):
     )
     def sync_ai_toggle_from_server(_store):
         """Enable AI Search on page load when the server LLM client is already configured."""
-        if llm_client.client:
+        if llm_client.client or llm_client.anthropic_client:
             return True, "semantic"
         return no_update, no_update
 
@@ -923,6 +983,9 @@ def callbacks(app):
             State("groq-api-key-input", "value"),
             State("groq-model-selector", "value"),
             State("groq-custom-model-input", "value"),
+            State("anthropic-api-key-input", "value"),
+            State("anthropic-model-selector", "value"),
+            State("anthropic-custom-model-input", "value"),
         ],
         prevent_initial_call=True,
     )
@@ -946,6 +1009,9 @@ def callbacks(app):
         groq_api_key,
         groq_model,
         groq_custom_model,
+        anthropic_api_key,
+        anthropic_model,
+        anthropic_custom_model,
     ):
         if not n_clicks:
             return ""
@@ -1029,9 +1095,22 @@ def callbacks(app):
                     else (groq_model or "llama-3.3-70b-versatile")
                 )
                 env_vars["GROQ_API_KEY"] = groq_api_key
+                env_vars["GROQ_MODEL"] = model
                 env_vars["OPENAI_BASE_URL"] = GROQ_BASE_URL
                 env_vars["OPENAI_MODEL"] = model
                 env_vars["EMBEDDING_MODEL"] = "text-embedding-3-small"
+            elif provider == "anthropic":
+                anthropic_api_key = anthropic_api_key or os.getenv("ANTHROPIC_API_KEY", "").strip()
+                if not anthropic_api_key:
+                    return "⚠️ Please enter an Anthropic API key before saving"
+                model = (
+                    anthropic_custom_model.strip()
+                    if anthropic_model == "custom" and anthropic_custom_model
+                    else (anthropic_model or "claude-sonnet-4-6")
+                )
+                env_vars["ANTHROPIC_API_KEY"] = anthropic_api_key
+                env_vars["ANTHROPIC_MODEL"] = model
+                env_vars["OPENAI_MODEL"] = model
             else:
                 if not local_base_url or not local_model:
                     return "⚠️ Please enter both base URL and model name before saving"
@@ -1048,10 +1127,12 @@ def callbacks(app):
                 "LLM_PROVIDER",
                 "OPENAI_API_KEY", "OPENROUTER_API_KEY", "GEMINI_API_KEY", "GROQ_API_KEY",
                 "NVIDIA_API_KEY", "NVIDIA_NIM_BASE_URL", "NVIDIA_NIM_MODEL",
+                "ANTHROPIC_API_KEY", "ANTHROPIC_MODEL",
                 "OPENAI_BASE_URL", "OPENAI_MODEL",
                 "OPENROUTER_MODEL", "GOOGLE_MODEL", "EMBEDDING_MODEL",
                 "GOOGLE_SAFETY_SETTING",
                 "LOCAL_LLM_API_KEY", "LOCAL_LLM_BASE_URL", "LOCAL_LLM_MODEL",
+                "GROQ_MODEL",
             }
             with open(env_path, "w") as f:
                 f.write("# NetMedEx LLM Configuration\n")
@@ -1061,6 +1142,9 @@ def callbacks(app):
                     "OPENROUTER_API_KEY",
                     "GEMINI_API_KEY",
                     "GROQ_API_KEY",
+                    "GROQ_MODEL",
+                    "ANTHROPIC_API_KEY",
+                    "ANTHROPIC_MODEL",
                     "NVIDIA_API_KEY",
                     "OPENAI_BASE_URL",
                     "OPENAI_MODEL",
@@ -1103,6 +1187,9 @@ def callbacks(app):
                 groq_api_key=groq_api_key,
                 groq_model=groq_model,
                 groq_custom_model=groq_custom_model,
+                anthropic_api_key=anthropic_api_key,
+                anthropic_model=anthropic_model,
+                anthropic_custom_model=anthropic_custom_model,
             )
 
             return f"✅ LLM settings saved to {env_path.name} ({provider})"
@@ -1138,3 +1225,32 @@ def callbacks(app):
         except Exception as e:
             logger.error(f"Error fetching Groq models: {e}")
             return dash.no_update, "❌ Error: Could not connect", dash.no_update
+
+    @app.callback(
+        [
+            Output("anthropic-model-selector", "options", allow_duplicate=True),
+            Output("anthropic-model-fetch-status", "children", allow_duplicate=True),
+            Output("anthropic-model-selector", "value", allow_duplicate=True),
+        ],
+        Input("refresh-anthropic-models-btn", "n_clicks"),
+        [
+            State("anthropic-api-key-input", "value"),
+            State("anthropic-model-selector", "value"),
+        ],
+        prevent_initial_call=True,
+    )
+    def fetch_anthropic_models(n_clicks, api_key, current_value):
+        api_key = api_key or os.getenv("ANTHROPIC_API_KEY", "").strip()
+        if not n_clicks:
+            raise dash.exceptions.PreventUpdate
+        try:
+            models = llm_client.get_anthropic_models(api_key)
+            if not models:
+                return dash.no_update, "❌ No models found", dash.no_update
+            new_options = [{"label": m, "value": m} for m in models]
+            new_options.append({"label": "Custom Model...", "value": "custom"})
+            new_value = current_value if any(m == current_value for m in models) else models[0]
+            return new_options, f"✅ Found {len(models)} models", new_value
+        except Exception as e:
+            logger.error(f"Error fetching Anthropic models: {e}")
+            return dash.no_update, f"❌ Error: {_sanitize_error_message(str(e))}", dash.no_update

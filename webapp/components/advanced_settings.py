@@ -94,6 +94,7 @@ llm_config = html.Div(
                 {"label": "OpenRouter", "value": "openrouter"},
                 {"label": "NVIDIA NIM", "value": "nvidia"},
                 {"label": "Groq", "value": "groq"},
+                {"label": "Anthropic Claude", "value": "anthropic"},
                 {"label": "Local Ollama", "value": "local"},
             ],
             value="openai",  # Default to OpenAI
@@ -199,6 +200,16 @@ llm_config = html.Div(
         # OpenRouter Configuration
         html.Div(
             [
+                dbc.Alert(
+                    [
+                        html.Strong("⚠️ KG Normalization unavailable: "),
+                        "OpenRouter does not provide a native embeddings API endpoint. "
+                        "The sapBERT KG Normalization feature will be disabled when using OpenRouter.",
+                    ],
+                    color="warning",
+                    className="py-2 px-3 mb-3",
+                    style={"fontSize": "0.82rem"},
+                ),
                 generate_param_title(
                     "OpenRouter API Key",
                     "Enter your OpenRouter API Key (starts with sk-or-...)",
@@ -325,6 +336,16 @@ llm_config = html.Div(
         # Groq Configuration (hidden by default)
         html.Div(
             [
+                dbc.Alert(
+                    [
+                        html.Strong("⚠️ KG Normalization unavailable: "),
+                        "Groq does not provide an embeddings API endpoint. "
+                        "The sapBERT KG Normalization feature will be disabled when using Groq.",
+                    ],
+                    color="warning",
+                    className="py-2 px-3 mb-3",
+                    style={"fontSize": "0.82rem"},
+                ),
                 generate_param_title(
                     "Groq API Key",
                     "Enter your Groq API Key (starts with gsk_...)",
@@ -380,6 +401,78 @@ llm_config = html.Div(
                 ),
             ],
             id="groq-config",
+            style={"display": "none"},
+        ),
+        # Anthropic Claude Configuration (hidden by default)
+        html.Div(
+            [
+                dbc.Alert(
+                    [
+                        html.Strong("⚠️ KG Normalization unavailable: "),
+                        "Anthropic does not provide a native embeddings API. "
+                        "The sapBERT KG Normalization feature will be disabled when using Claude.",
+                    ],
+                    color="warning",
+                    className="py-2 px-3 mb-3",
+                    style={"fontSize": "0.82rem"},
+                ),
+                generate_param_title(
+                    "Anthropic API Key",
+                    "Enter your Anthropic API Key (starts with sk-ant-...)",
+                ),
+                dbc.Input(
+                    id="anthropic-api-key-input",
+                    type="password",
+                    placeholder="sk-ant-...",
+                    debounce=True,
+                ),
+                html.Div(style={"height": "10px"}),
+                generate_param_title(
+                    "Model",
+                    "Select a Claude model.\n💡 Recommended: claude-sonnet-4-6 (balanced) or claude-opus-4-8 (most capable).",
+                ),
+                html.Div(
+                    [
+                        dcc.Dropdown(
+                            id="anthropic-model-selector",
+                            options=[
+                                {"label": "Claude Opus 4.8 (Most Capable)", "value": "claude-opus-4-8"},
+                                {"label": "Claude Sonnet 4.6 (Recommended)", "value": "claude-sonnet-4-6"},
+                                {"label": "Claude Haiku 4.5 (Fast)", "value": "claude-haiku-4-5"},
+                                {"label": "Claude 3.7 Sonnet", "value": "claude-3-7-sonnet-20250219"},
+                                {"label": "Claude 3.5 Sonnet", "value": "claude-3-5-sonnet-20241022"},
+                                {"label": "Claude 3.5 Haiku", "value": "claude-3-5-haiku-20241022"},
+                                {"label": "Custom...", "value": "custom"},
+                            ],
+                            value="claude-sonnet-4-6",
+                            clearable=False,
+                            style={"flex": "1"},
+                        ),
+                        dbc.Button(
+                            html.I(className="bi bi-arrow-clockwise"),
+                            id="refresh-anthropic-models-btn",
+                            color="secondary",
+                            outline=True,
+                            className="ms-2",
+                            title="Fetch models from Anthropic",
+                        ),
+                    ],
+                    className="d-flex align-items-center mb-2",
+                ),
+                html.Div(id="anthropic-model-fetch-status", className="small text-muted mb-2"),
+                html.Div(
+                    [
+                        dbc.Input(
+                            id="anthropic-custom-model-input",
+                            placeholder="e.g., claude-sonnet-4-6",
+                            debounce=True,
+                        ),
+                    ],
+                    id="anthropic-custom-model-div",
+                    style={"display": "none"},
+                ),
+            ],
+            id="anthropic-config",
             style={"display": "none"},
         ),
         # Local LLM Configuration (hidden by default)

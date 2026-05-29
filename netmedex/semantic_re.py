@@ -673,8 +673,8 @@ Title: {title}
         """Call the LLM API with the constructed prompt"""
         provider = self._get_provider()
         if not self.llm_client or not self.llm_client.client:
-            # Google provider may use direct HTTP helper without SDK client state.
-            if provider != "google":
+            # Google and Anthropic use a separate client object (not self.llm_client.client).
+            if provider not in ("google", "anthropic"):
                 raise ValueError("LLM client not initialized")
 
         system_instruction = (

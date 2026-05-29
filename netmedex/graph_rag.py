@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+from collections import Counter
 
 import networkx as nx
 
@@ -124,9 +125,29 @@ class GraphRetriever:
         # Support robust 2-hop contextual paths using hybrid scoring and filtering
         explored_paths = self._extract_top_k_paths(valid_nodes, query=query, max_hops=max_hops, top_k=20)
 
+        # Pre-scan all paths to determine if ANY directional (mechanistic) edges exist.
+        # This flag is passed to the LLM in the header so it knows whether Layer 3
+        # (Causal Biomedical Mechanism) can be triggered.
+        has_directional_edges = False
+        for path, _ in explored_paths:
+            for i in range(len(path) - 1):
+                u, v = path[i], path[i + 1]
+                if self.graph.has_edge(u, v):
+                    rel_sets = self.graph.edges[u, v].get("relations", {})
+                    all_rels = [r for rels in rel_sets.values() for r in rels]
+                    if any(is_directional_relation(r) for r in all_rels):
+                        has_directional_edges = True
+                        break
+            if has_directional_edges:
+                break
+
         if not explored_paths:
+            context_lines.append("[DIRECTIONAL MECHANISTIC EDGES: NO]")
             context_lines.append("No significant relational paths could be found for the queried entities.")
         else:
+            # Emit a clear header that the LLM uses to decide Layer 3 eligibility.
+            dir_flag = "YES" if has_directional_edges else "NO"
+            context_lines.append(f"[DIRECTIONAL MECHANISTIC EDGES: {dir_flag}]")
             context_lines.append(
                 f"Latent Network Mechanisms (Top {len(explored_paths)} 2-hop paths based on Confidence+Topology+Topic):"
             )
@@ -149,26 +170,30 @@ class GraphRetriever:
                 # Collect primary relation type and PMIDs for each edge in the path
                 edge_relations = []
                 edge_pmids = []
+                edge_is_directional = []
                 for i in range(len(path) - 1):
                     u, v = path[i], path[i + 1]
                     if self.graph.has_edge(u, v):
                         edata = self.graph.edges[u, v]
                         rel_sets = edata.get("relations", {})
                         all_rels = [r for rels in rel_sets.values() for r in rels]
-                        from collections import Counter
                         primary = Counter(all_rels).most_common(1)[0][0] if all_rels else "associated_with"
                         pmids = sorted(rel_sets.keys())[:3]
+                        directional = is_directional_relation(primary)
                     else:
                         primary = "associated_with"
                         pmids = []
+                        directional = False
                     edge_relations.append(primary)
                     edge_pmids.append(pmids)
+                    edge_is_directional.append(directional)
 
                 structured_paths.append({
                     "path": stable_ids,
                     "names": names,
                     "relations": edge_relations,
                     "edge_pmids": edge_pmids,
+                    "edge_is_directional": edge_is_directional,
                     "score": round(score, 3),
                     "hop_count": len(path) - 1,
                 })
@@ -337,7 +362,12 @@ class GraphRetriever:
         return all_paths[:top_k]
 
     def _format_path(self, path: list[str]) -> str:
-        """Format a node sequence path into a readable string."""
+        """Format a node sequence path into a readable string.
+
+        Edges are annotated with [DIRECTIONAL] or [SYMMETRIC] so the LLM
+        can immediately determine whether a path qualifies for Layer 3
+        (Causal Biomedical Mechanism) reasoning.
+        """
         descriptions = []
         for i in range(len(path) - 1):
             u, v = path[i], path[i + 1]
@@ -350,7 +380,12 @@ class GraphRetriever:
         return " | ".join(descriptions)
 
     def _summarize_relations(self, edge_data: dict) -> str:
-        """Summarize relation types in an edge with supporting PMIDs."""
+        """Summarize relation types in an edge with supporting PMIDs.
+
+        Appends [DIRECTIONAL] for mechanistic relations (inhibits, activates,
+        etc.) and [SYMMETRIC] for co-occurrence/association edges.  This gives
+        the downstream LLM an unambiguous signal for Layer 3 eligibility.
+        """
         all_types = set()
         pmids = set()
 
@@ -361,15 +396,19 @@ class GraphRetriever:
 
         if not all_types:
             type_str = "associated"
+            directionality = "[SYMMETRIC]"
         else:
             sorted_types = sorted(all_types)
             type_str = ", ".join(sorted_types[:3])
+            # Determine directionality based on primary relation type
+            primary = Counter(sorted_types).most_common(1)[0][0] if sorted_types else "associated"
+            directionality = "[DIRECTIONAL]" if is_directional_relation(primary) else "[SYMMETRIC]"
 
         # Add PMIDs
         if pmids:
             # Sort for deterministic output and limit to top 3
             sorted_pmids = sorted(pmids)[:3]
             pmid_str = ", ".join([f"PMID:{p}" for p in sorted_pmids])
-            return f"{type_str} [{pmid_str}]"
+            return f"{type_str} {directionality} [{pmid_str}]"
 
-        return type_str
+        return f"{type_str} {directionality}"

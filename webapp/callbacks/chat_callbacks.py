@@ -21,7 +21,12 @@ def _resolve_savepath(session_data):
     return resolve_session_savepath(session_data)
 
 
-def _abstract_documents_from_graph(G, *, limit: int | None = None):
+def _abstract_documents_from_graph(
+    G,
+    *,
+    limit: int | None = None,
+    pmid_filter: set[str] | None = None,
+):
     import datetime
 
     from netmedex.rag import AbstractDocument
@@ -35,6 +40,8 @@ def _abstract_documents_from_graph(G, *, limit: int | None = None):
     weighted_pmids = []
     for raw_pmid in pmid_abstracts:
         pmid = str(raw_pmid)
+        if pmid_filter is not None and pmid not in pmid_filter:
+            continue
         meta = pmid_metadata.get(raw_pmid, pmid_metadata.get(pmid, {}))
         if not isinstance(meta, dict):
             meta = {}
@@ -82,6 +89,9 @@ def _initialize_llm_from_callback_state(
     groq_api_key=None,
     groq_model=None,
     groq_custom_model=None,
+    anthropic_api_key=None,
+    anthropic_model=None,
+    anthropic_custom_model=None,
 ):
     from webapp.llm import initialize_llm_client_from_settings, llm_client
 
@@ -105,6 +115,9 @@ def _initialize_llm_from_callback_state(
         groq_api_key=groq_api_key,
         groq_model=groq_model,
         groq_custom_model=groq_custom_model,
+        anthropic_api_key=anthropic_api_key,
+        anthropic_model=anthropic_model,
+        anthropic_custom_model=anthropic_custom_model,
     )
 
 
@@ -473,6 +486,8 @@ def callbacks(app):
             State("is-new-graph", "data"),
         ],
         [
+            State("cy", "selectedNodeData"),
+            State("cy", "selectedEdgeData"),
             State("session-language", "data"),
             State("data-input", "value"),
             State("llm-provider-selector", "value"),
@@ -493,6 +508,9 @@ def callbacks(app):
             State("groq-api-key-input", "value"),
             State("groq-model-selector", "value"),
             State("groq-custom-model-input", "value"),
+            State("anthropic-api-key-input", "value"),
+            State("anthropic-model-selector", "value"),
+            State("anthropic-custom-model-input", "value"),
         ],
         prevent_initial_call=True,
     )
@@ -500,6 +518,8 @@ def callbacks(app):
         current_tab,
         session_data,
         is_new_graph,
+        selected_nodes,
+        selected_edges,
         session_language,
         search_query,
         llm_provider,
@@ -520,6 +540,9 @@ def callbacks(app):
         groq_api_key,
         groq_model,
         groq_custom_model,
+        anthropic_api_key,
+        anthropic_model,
+        anthropic_custom_model,
     ):
         """
         Automatically initialize chat with an overall summary when a new graph is loaded.
@@ -566,9 +589,12 @@ def callbacks(app):
             groq_api_key=groq_api_key,
             groq_model=groq_model,
             groq_custom_model=groq_custom_model,
+            anthropic_api_key=anthropic_api_key,
+            anthropic_model=anthropic_model,
+            anthropic_custom_model=anthropic_custom_model,
         )
 
-        if not llm_client.client:
+        if not llm_client.client and not llm_client.anthropic_client:
             return (
                 False,
                 "❌ Error: LLM not configured for auto-summary.",
@@ -621,7 +647,42 @@ def callbacks(app):
             else:
                 effective_language = "English"
 
-            documents = _abstract_documents_from_graph(G, limit=50)
+            # Determine whether a sub-network is selected in the Cytoscape graph.
+            # Filter community nodes (c0, c1, …) which carry no PMID data.
+            real_selected_nodes = [
+                n for n in (selected_nodes or [])
+                if not COMMUNITY_NODE_PATTERN.match(str(n.get("id", "")))
+            ]
+            has_selection = bool((selected_edges or []) or real_selected_nodes)
+
+            if has_selection:
+                # Use only the PMIDs from the selected sub-network.
+                selection_pmids: set[str] = set()
+                for edge in (selected_edges or []):
+                    ep = edge.get("pmids", [])
+                    if isinstance(ep, str):
+                        selection_pmids.add(ep)
+                    else:
+                        selection_pmids.update(str(p) for p in ep)
+                for node in real_selected_nodes:
+                    np_ = node.get("pmids", [])
+                    if isinstance(np_, str):
+                        selection_pmids.add(np_)
+                    else:
+                        selection_pmids.update(str(p) for p in np_)
+
+                documents = _abstract_documents_from_graph(G, pmid_filter=selection_pmids)
+                context_label = "Selected Sub-network"
+                logger.info(
+                    f"auto_initialize_chat: using selection ({len(selection_pmids)} PMIDs, "
+                    f"{len(documents)} documents)"
+                )
+            else:
+                documents = _abstract_documents_from_graph(G, limit=50)
+                context_label = "Full Dataset"
+                logger.info(
+                    f"auto_initialize_chat: no selection — using full graph ({len(documents)} documents)"
+                )
 
             if not documents:
                 raise ValueError("No abstracts available for summary")
@@ -684,15 +745,23 @@ def callbacks(app):
                 messages = [summary_component]
 
                 # Update context banner
+                if has_selection:
+                    banner_text = (
+                        f"Selected Sub-network · {effective_query}"
+                        if effective_query
+                        else "Selected Sub-network"
+                    )
+                else:
+                    banner_text = (
+                        f"Overall Findings for '{effective_query}'"
+                        if effective_query
+                        else "Full Dataset Summary"
+                    )
                 context_banner = [
                     html.Div(
                         [
                             html.Span("🔍 Research Context: ", className="fw-bold"),
-                            html.Span(
-                                f"Overall Findings for '{effective_query}'"
-                                if effective_query
-                                else "Full Dataset Summary"
-                            ),
+                            html.Span(banner_text),
                         ],
                         className="chat-context-query",
                     )
@@ -756,6 +825,9 @@ def callbacks(app):
             State("groq-api-key-input", "value"),
             State("groq-model-selector", "value"),
             State("groq-custom-model-input", "value"),
+            State("anthropic-api-key-input", "value"),
+            State("anthropic-model-selector", "value"),
+            State("anthropic-custom-model-input", "value"),
         ],
         running=[
             (
@@ -803,6 +875,9 @@ def callbacks(app):
         groq_api_key,
         groq_model,
         groq_custom_model,
+        anthropic_api_key,
+        anthropic_model,
+        anthropic_custom_model,
     ):
         logger.info("initialize_chat (MANUAL) triggered")
         global _sessions
@@ -822,6 +897,20 @@ def callbacks(app):
 
             t0 = time.time()
             logger.info("Starting Chat Analysis...")
+
+            # Compact the diskcache WAL before starting so accumulated writes
+            # from previous runs don't block set_progress() calls mid-callback.
+            try:
+                import sqlite3 as _sqlite3
+                from pathlib import Path as _Path
+                _wal_db = _Path(__file__).parent.parent / "cache" / "cache.db"
+                if _wal_db.exists():
+                    _wconn = _sqlite3.connect(str(_wal_db))
+                    _wconn.execute("PRAGMA wal_checkpoint(PASSIVE)")
+                    _wconn.close()
+                    logger.debug("WAL checkpoint completed before initialize_chat")
+            except Exception:
+                pass
 
             try:
                 savepath = _resolve_savepath(session_data)
@@ -860,9 +949,12 @@ def callbacks(app):
                 groq_api_key=groq_api_key,
                 groq_model=groq_model,
                 groq_custom_model=groq_custom_model,
+                anthropic_api_key=anthropic_api_key,
+                anthropic_model=anthropic_model,
+                anthropic_custom_model=anthropic_custom_model,
             )
 
-            if not llm_client.client:
+            if not llm_client.client and not llm_client.anthropic_client:
                 return (
                     False,
                     "❌ Error: LLM not configured. Please set your API key in Advanced Settings.",
@@ -1019,10 +1111,12 @@ def callbacks(app):
                             # Nodes don't have edge data, so we leave edges empty
                             pmid_data[pmid] = {"pmid": pmid, "edges": []}
 
-            # Get abstracts and metadata from graph
-            pmid_abstracts = G.graph.get("pmid_abstract", {})
-            pmid_titles = G.graph.get("pmid_title", {})
-            pmid_metadata = G.graph.get("pmid_metadata", {})
+            # Get abstracts and metadata from graph.
+            # Normalise all keys to str so lookups never fail due to int/str mismatch
+            # (the graph may store PMIDs as integers internally).
+            pmid_abstracts = {str(k): v for k, v in (G.graph.get("pmid_abstract", {}) or {}).items()}
+            pmid_titles    = {str(k): v for k, v in (G.graph.get("pmid_title", {}) or {}).items()}
+            pmid_metadata  = {str(k): v for k, v in (G.graph.get("pmid_metadata", {}) or {}).items()}
 
             # Shared weighting utility
             import datetime
@@ -1435,6 +1529,9 @@ def callbacks(app):
             State("groq-api-key-input", "value"),
             State("groq-model-selector", "value"),
             State("groq-custom-model-input", "value"),
+            State("anthropic-api-key-input", "value"),
+            State("anthropic-model-selector", "value"),
+            State("anthropic-custom-model-input", "value"),
         ],
         prevent_initial_call=True,
     )
@@ -1467,6 +1564,9 @@ def callbacks(app):
         groq_api_key,
         groq_model,
         groq_custom_model,
+        anthropic_api_key,
+        anthropic_model,
+        anthropic_custom_model,
     ):
         """
         Process user message and get AI response.
@@ -1522,8 +1622,11 @@ def callbacks(app):
                         groq_api_key=groq_api_key,
                         groq_model=groq_model,
                         groq_custom_model=groq_custom_model,
+                        anthropic_api_key=anthropic_api_key,
+                        anthropic_model=anthropic_model,
+                        anthropic_custom_model=anthropic_custom_model,
                     )
-                    if not llm_client.client:
+                    if not llm_client.client and not llm_client.anthropic_client:
                         logger.warning(
                             "Rebuilding chat session from graph, but LLM client is not fully initialized. "
                             "Provider: %s", llm_client.provider

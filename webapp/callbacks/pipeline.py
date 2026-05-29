@@ -111,6 +111,9 @@ def callbacks(app):
             State("groq-api-key-input", "value"),
             State("groq-model-selector", "value"),
             State("groq-custom-model-input", "value"),
+            State("anthropic-api-key-input", "value"),
+            State("anthropic-model-selector", "value"),
+            State("anthropic-custom-model-input", "value"),
             State("normalization-toggle", "value"),
         ],
         running=[
@@ -166,6 +169,9 @@ def callbacks(app):
         groq_api_key,
         groq_model,
         groq_custom_model,
+        anthropic_api_key,
+        anthropic_model,
+        anthropic_custom_model,
         normalization_toggle,
     ):
         try:
@@ -265,6 +271,9 @@ def callbacks(app):
                 groq_api_key=groq_api_key,
                 groq_model=groq_model,
                 groq_custom_model=groq_custom_model,
+                anthropic_api_key=anthropic_api_key,
+                anthropic_model=anthropic_model,
+                anthropic_custom_model=anthropic_custom_model,
             )
             logger.info(
                 f"LLM Client initialized in background process: provider={llm_provider}, model={llm_client.model}"
@@ -302,14 +311,14 @@ def callbacks(app):
                 if input_type == "query":
                     query = data_input
                     detected_lang = detect_query_language(query)
-                    if detected_lang != "English" and not llm_client.client:
+                    if detected_lang != "English" and not llm_client.client and not llm_client.anthropic_client:
                         raise ValueError(
                             f"{detected_lang} Search requires an active LLM configuration "
                             "so NetMedEx can translate the query to PubTator-compatible English."
                         )
 
                     if ai_search_toggle:
-                        if not llm_client.client:
+                        if not llm_client.client and not llm_client.anthropic_client:
                             set_progress(
                                 (
                                     0,
@@ -370,7 +379,7 @@ def callbacks(app):
                         # Use translate_to_english() (faithful, no boolean operators) so the
                         # resulting query is equivalent to the user typing the same concept in
                         # English — producing the same article count from PubTator3.
-                        if detected_lang != "English" and llm_client.client:
+                        if detected_lang != "English" and (llm_client.client or llm_client.anthropic_client):
                             set_progress(
                                 (
                                     0,
@@ -538,7 +547,7 @@ def callbacks(app):
             llm_for_graph = None
             # Check LLM configuration for semantic analysis
             if edge_method == "semantic":
-                if not llm_client.client:
+                if not llm_client.client and not llm_client.anthropic_client:
                     set_progress(
                         (
                             1,
