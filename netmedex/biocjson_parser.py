@@ -198,7 +198,7 @@ def extract_passage(content, name):
     try:
         content["passages"][0]["infons"]["section_type"]
         section_type = "section_type"
-    except KeyError:
+    except (KeyError, IndexError):
         section_type = "type"
         name = name.lower()
 

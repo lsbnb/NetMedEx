@@ -233,13 +233,14 @@ class AbstractRAG:
             logger.error(f"Error indexing abstracts: {e}", exc_info=True)
             raise
 
-    def search(self, query: str, top_k: int = 5) -> list[tuple[str, float]]:
+    def search(self, query: str, top_k: int = 5, preferred_pmids: set[str] | None = None) -> list[tuple[str, float]]:
         """
         Search for relevant abstracts.
 
         Args:
             query: Search query
             top_k: Number of results to return
+            preferred_pmids: Optional set of PMIDs to boost in the search results
 
         Returns:
             List of (pmid, relevance_score) tuples
@@ -249,7 +250,12 @@ class AbstractRAG:
             return []
 
         try:
-            results = self.collection.query(query_texts=[query], n_results=top_k)
+            # Query a larger candidate pool to allow preferred PMIDs to be boosted into top_k
+            candidate_k = min(len(self.documents), max(top_k * 4, 50))
+            if candidate_k <= 0:
+                return []
+
+            results = self.collection.query(query_texts=[query], n_results=candidate_k)
 
             # Extract PMIDs and scores
             pmid_scores = []
@@ -270,30 +276,37 @@ class AbstractRAG:
 
                     # Hybrid score: semantic similarity boosted by citation weight
                     hybrid_score = similarity * weight
+
+                    # Apply preferred PMID boost (e.g. 1.5x score boost)
+                    if preferred_pmids and pmid in preferred_pmids:
+                        hybrid_score *= 1.5
+
                     pmid_scores.append((pmid, hybrid_score))
 
             # Sort by hybrid score descending
             pmid_scores.sort(key=lambda x: x[1], reverse=True)
 
             logger.info(f"Found {len(pmid_scores)} relevant abstracts for query")
-            return pmid_scores
+            # Slice down to top_k only after re-ranking and boosting
+            return pmid_scores[:top_k]
 
         except Exception as e:
             logger.error(f"Error during search: {e}")
             return []
 
-    def get_context(self, query: str, top_k: int = 5) -> tuple[str, list[str]]:
+    def get_context(self, query: str, top_k: int = 5, preferred_pmids: set[str] | None = None) -> tuple[str, list[str]]:
         """
         Get formatted context for LLM prompt.
 
         Args:
             query: User query
             top_k: Number of abstracts to retrieve
+            preferred_pmids: Optional set of PMIDs to boost in retrieval
 
         Returns:
             Tuple of (formatted_context, list of PMIDs used)
         """
-        results = self.search(query, top_k=top_k)
+        results = self.search(query, top_k=top_k, preferred_pmids=preferred_pmids)
 
         if not results:
             return "No relevant abstracts found.", []

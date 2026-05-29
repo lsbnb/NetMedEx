@@ -1,5 +1,15 @@
 from __future__ import annotations
 
+import multiprocessing
+import sys
+
+# Set multiprocessing start method to 'spawn' on Linux/macOS to prevent deadlocks in background callbacks
+if sys.platform != "win32":
+    try:
+        multiprocessing.set_start_method("spawn", force=True)
+    except RuntimeError:
+        pass
+
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -23,7 +33,23 @@ logger = logging.getLogger(__name__)
 # Load external layout extensions (fCose, CoSE-Bilkent, etc.)
 cyto.load_extra_layouts()
 
-cache = diskcache.Cache(str(Path(__file__).parent / "cache"))
+_cache_path = Path(__file__).parent / "cache"
+cache = diskcache.Cache(str(_cache_path))
+
+# Checkpoint the SQLite WAL on startup so stale writes from previous sessions
+# don't accumulate into a multi-MB WAL that slows down set_progress() calls.
+try:
+    import sqlite3 as _sqlite3
+    _wal_path = _cache_path / "cache.db"
+    if _wal_path.exists():
+        _conn = _sqlite3.connect(str(_wal_path))
+        _conn.execute("PRAGMA wal_checkpoint(TRUNCATE)")
+        _conn.close()
+        del _conn
+    del _sqlite3, _wal_path
+except Exception:
+    pass
+
 background_callback_manager = DiskcacheManager(cache)
 
 app = Dash(
@@ -31,6 +57,7 @@ app = Dash(
     external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP],
     background_callback_manager=background_callback_manager,
     suppress_callback_exceptions=True,
+    update_title=None,
 )
 app.title = "NetMedEx"
 app._favicon = "NetMedEx_ico.ico"

@@ -1,3 +1,13 @@
+import multiprocessing
+import sys
+
+# Set multiprocessing start method to 'spawn' on Linux/macOS to prevent deadlocks in background callbacks
+if sys.platform != "win32":
+    try:
+        multiprocessing.set_start_method("spawn", force=True)
+    except RuntimeError:
+        pass
+
 from webapp.app import app
 from webapp.callbacks import collect_callbacks
 from dash import ClientsideFunction, Input, Output

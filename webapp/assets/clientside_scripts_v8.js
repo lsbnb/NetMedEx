@@ -274,10 +274,45 @@ window.dash_clientside.clientside = {
         return [{ "display": display, "zIndex": get_z_index(display) }, elements]
       }
 
-      elements.push({ props: { children: `Name: ${tap_node.label.trim()}` }, type: "P", namespace: "dash_html_components" })
+      // Node Name Header
+      elements.push({
+        type: "P",
+        namespace: "dash_html_components",
+        props: {
+          children: tap_node.label.trim(),
+          style: { fontWeight: "bold", fontSize: "1.1em", borderBottom: "1px solid #ddd", paddingBottom: "5px", marginBottom: "8px" }
+        }
+      })
+
+      // Type Field
+      const node_type = tap_node.node_type || "Unknown"
+      elements.push({
+        type: "P",
+        namespace: "dash_html_components",
+        props: {
+          children: [
+            { type: "Span", namespace: "dash_html_components", props: { children: "Type: ", style: { fontWeight: "bold" } } },
+            node_type
+          ],
+          style: { marginBottom: "4px" }
+        }
+      })
+
+      // Degree Field
+      const degree = tap_node.degree !== undefined ? tap_node.degree : 0
+      elements.push({
+        type: "P",
+        namespace: "dash_html_components",
+        props: {
+          children: [
+            { type: "Span", namespace: "dash_html_components", props: { children: "Degree: ", style: { fontWeight: "bold" } } },
+            String(degree)
+          ],
+          style: { marginBottom: "4px" }
+        }
+      })
 
       let identifier = tap_node.standardized_id
-      const node_type = tap_node.node_type
       let href = null
 
       const NCBI_TAXONOMY = "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id="
@@ -287,11 +322,9 @@ window.dash_clientside.clientside = {
       if (identifier !== "-" && identifier !== "") {
         if (node_type === "Species") {
           href = NCBI_TAXONOMY + identifier
-          // Prepend "NCBI Taxonomy:"
           identifier = "NCBI Taxonomy: " + identifier
         } else if (node_type === "Gene") {
           href = NCBI_GENE + identifier
-          // Prepend "NCBI Gene:"
           identifier = "NCBI Gene: " + identifier
         } else if (node_type === "Chemical" || node_type === "Disease") {
           if (identifier.startsWith("MESH:")) {
@@ -305,15 +338,29 @@ window.dash_clientside.clientside = {
           type: "P",
           namespace: "dash_html_components",
           props: {
-            children: ["Identifier: ", {
-              type: "A",
-              namespace: "dash_html_components",
-              props: { href: href, target: "_blank", children: identifier }
-            }]
+            children: [
+              { type: "Span", namespace: "dash_html_components", props: { children: "ID: ", style: { fontWeight: "bold" } } },
+              {
+                type: "A",
+                namespace: "dash_html_components",
+                props: { href: href, target: "_blank", children: identifier }
+              }
+            ],
+            style: { marginBottom: "8px" }
           }
         })
-      } else {
-        elements.push({ props: { children: `Identifier: ${identifier}` }, type: "P", namespace: "dash_html_components" })
+      } else if (identifier && identifier !== "-") {
+        elements.push({
+          type: "P",
+          namespace: "dash_html_components",
+          props: {
+            children: [
+              { type: "Span", namespace: "dash_html_components", props: { children: "ID: ", style: { fontWeight: "bold" } } },
+              identifier
+            ],
+            style: { marginBottom: "8px" }
+          }
+        })
       }
 
       const node_table = create_pmid_table(tap_node.pmids, pmid_title, pmid_citations)
@@ -322,10 +369,20 @@ window.dash_clientside.clientside = {
     }
 
     return [
+      {
+        display: display,
+        zIndex: get_z_index(display),
+      },
       elements,
     ]
   },
   sync_llm_toggles: function (provider, openai_api_key, google_api_key, google_model, local_url, local_model, openrouter_api_key, openrouter_model, groq_api_key, groq_model) {
+    // Check if the user has entered an API key in the browser UI.
+    // NOTE: When the API key lives only in the server .env (not in the browser input),
+    // all key inputs will be empty strings — in that case we must NOT fall back to
+    // co-occurrence, because the Python-side callback (sync_ai_toggle_from_server)
+    // will have already set "semantic" based on the live llm_client state.
+    // Using window.dash_clientside.no_update preserves the server-side value.
     if (provider === "openai") {
       if (openai_api_key && openai_api_key.trim().startsWith("sk-")) {
         return [true, "semantic"];
@@ -347,7 +404,10 @@ window.dash_clientside.clientside = {
         return [true, "semantic"];
       }
     }
-    return [false, "co-occurrence"];
+    // No key in the browser — do NOT override the server-side toggle state.
+    // The Python callback sync_ai_toggle_from_server handles the case where
+    // the API key is configured via .env on the server side.
+    return window.dash_clientside.no_update;
   },
   apply_graph_visual_filters: function (threshold, searchQuery, visibleNodeTypes, elements, twohopPaths, current_stylesheet) {
     const CHUNK_SIZE = 200;
