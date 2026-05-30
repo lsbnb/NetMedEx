@@ -29,11 +29,11 @@ fi
 export PORT="${PORT:-8050}"
 
 # Start the webapp using Gunicorn
-/home/cylin/miniconda3/envs/netmedex/bin/gunicorn \
+/home/cylin/NetMedEx/.venv/bin/gunicorn \
     --bind "${HOST}:${PORT}" \
     --workers 2 \
     --threads 4 \
-    --timeout 120 \
+    --timeout 300 \
     --keep-alive 5 \
     --access-logfile - \
     --error-logfile - \
