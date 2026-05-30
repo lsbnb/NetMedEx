@@ -1,4 +1,4 @@
-# NetMedEx v1.2.8: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.3.0: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
@@ -19,13 +19,13 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.2.8
+## 🆕 What's New in v1.3.0
 
-- **Groq API Provider**: Integration of Groq for semantic relationship extraction and Hybrid RAG chat (supports preset models like Llama 3.3 and Mixtral, custom models, and dynamic model list fetching).
-- **Search Query Filtering**: Automatically appends publication-type filters (e.g. `NOT "Editorial"[pt] NOT "News"[pt]`) to free-text queries, removing non-research literature noise.
-- **Suggested Questions Format**: Implemented structured prompts to cite specific biological concepts instead of abstract placeholders. Handles both bracketed `[Q1: ...]` and bare `Q1:` formats.
-- **Modal Collision Fix**: Added dynamic ID suffixing for suggested question components when rendering in Modal dialogs to prevent ID collisions.
-- **100% Test Coverage**: Restored missing test datasets from history and resolved legacy test mock and assertion errors.
+- **Anthropic API Integration**: Full native support for Anthropic Claude models (e.g., `claude-3-5-sonnet`, `claude-3-opus`) as a core LLM provider in both the web application (Advanced Settings UI) and CLI/API interfaces.
+- **Advanced LLM Settings & Customization**: Rewrote LLM initialization and configuration parsing (`llm.py` and `advanced_settings.py`) to support multi-provider environments, dynamic testing of connection status for Anthropic/OpenAI/Gemini/Groq/NVIDIA NIM, and direct environment configuration saving to `.env`.
+- **CJK / Universal Translation Robustness**: Strict universal language requirements inside prompts for non-English users, enforcing CJK output generation for all headers, labels, and structured segments.
+- **Token Usage & Cost Analysis**: Added complete documentation for cost calculation per pipeline stage (`docs/token_cost.md`), including strategies for cost minimization using lighter models or co-occurrence graphs.
+- **Biomedical RAG Platform Comparisons**: Published comparative analysis documentation against MRTKG (`docs/NetMedEx_vs_MRTKG_comparison.md`) describing architectural advantages.
 
 ---
 

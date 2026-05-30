@@ -51,7 +51,7 @@ CMD ["gunicorn", \
      "--bind", "0.0.0.0:8050", \
      "--workers", "2", \
      "--threads", "4", \
-     "--timeout", "120", \
+     "--timeout", "300", \
      "--keep-alive", "5", \
      "--log-level", "info", \
      "webapp.wsgi:application"]
