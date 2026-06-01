@@ -22,7 +22,7 @@ def config_logger(is_debug: bool, filename: str | None = None):
     if filename is not None:
         now = datetime.now().strftime("%y%m%d%H%M%S")
         logfile = f"{filename}_{now}.log"
-        handlers.append(logging.FileHandler(logfile, mode="w"))
+        handlers.append(logging.FileHandler(logfile, mode="w", encoding="utf-8"))
 
     if is_debug:
         logging.basicConfig(

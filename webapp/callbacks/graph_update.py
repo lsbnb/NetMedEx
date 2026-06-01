@@ -99,17 +99,39 @@ def get_layout_config(layout_name, node_repulsion=45000, node_count=0):
 def callbacks(app):
     @app.callback(
         Output("cy", "layout", allow_duplicate=True),
+        Output("node-degree", "value"),
+        Output("graph-cut-weight", "value", allow_duplicate=True),
+        Output("confidence-threshold", "value"),
+        Output("graph-node-search", "value"),
+        Output("graph-visible-node-types", "value"),
         Input("graph-reset-view-btn", "n_clicks"),
+        State("graph-layout", "value"),
+        State("fcose-node-repulsion", "value"),
+        State("weighting-method", "value"),
         prevent_initial_call=True,
     )
-    def reset_graph_view(n_clicks):
+    def reset_graph_view(n_clicks, layout_name, node_repulsion, weighting_method):
         if not n_clicks:
-            return no_update
+            return no_update, no_update, no_update, no_update, no_update, no_update
 
-        # Reset Graph View should restore the viewport/layout,
-        # not rebuild graph elements from backend.
-        # Use preset+fit to zoom/pan back to the full current graph state.
-        return {"name": "preset", "fit": True, "padding": 30, "animate": False}
+        # Default cut weight depends on weighting method
+        default_cut = [0.3, 1.0] if weighting_method == "npmi" else [0, 20]
+        
+        # Reset layout (run it again to recalculate positions and fit)
+        layout_config = get_layout_config(layout_name, node_repulsion)
+        layout_config["fit"] = True
+        
+        # Reset node types to all
+        default_node_types = ["Gene", "Disease", "Chemical", "Species", "CellLine", "DNAMutation", "ProteinMutation", "SNP", "Community"]
+        
+        return (
+            layout_config,
+            1,                  # node-degree
+            default_cut,        # graph-cut-weight
+            0.0,                # confidence-threshold
+            "",                 # graph-node-search
+            default_node_types, # graph-visible-node-types
+        )
 
     @app.callback(
         Output("progress", "value", allow_duplicate=True),

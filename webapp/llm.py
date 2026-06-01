@@ -543,7 +543,7 @@ class LLMClient:
                         "content": f"{system_prompt}\n\nTask: Translate the following text to English.\nText: {text}",
                     },
                 ],
-                temperature=0.1,
+                temperature=0.0,
                 max_tokens=200,
             )
             return translated
@@ -551,103 +551,9 @@ class LLMClient:
             logger.error(f"LLM Error during query translation to English: {e}")
             return text
 
-    def chat_completion_text(
-        self,
-        messages: list[dict[str, str]],
-        temperature: float = 0.1,
-        max_tokens: int = 200,
-        timeout: float = 180.0,
-        response_format: dict | None = None,
-    ) -> str:
-        """
-        Unified chat completion helper.
-        - All providers (OpenAI, Google/Gemini, and local LLMs) now use the OpenAI SDK
-          via the initialized client for consistency and correct URL/header handling.
-        - Anthropic uses the native anthropic SDK via _anthropic_chat_completion.
-        """
-        if not self.api_key:
-            raise ValueError("LLM API key is not configured")
 
-        if self.provider == "anthropic":
-            if not self.anthropic_client:
-                raise ValueError("Anthropic client not initialized")
-            return self._anthropic_chat_completion(messages, temperature, max_tokens)
 
-        if not self.client:
-            raise ValueError("LLM client not initialized")
 
-        # Use max_completion_tokens and fixed temperature for newer/restricted models
-        limit_param = "max_tokens"
-        actual_temp = temperature
-
-        model_lower = str(self.model).lower()
-        # Reasoning models (o1, o3) typically have fixed/restricted sampling parameters.
-        # gpt-4o, gpt-4o-mini, and most others support standard temperature (0-2).
-        is_reasoning_model = any(m in model_lower for m in ["o1", "o3"])
-        is_mini_nano = any(m in model_lower for m in ["nano", "mini"])
-
-        if is_reasoning_model:
-            limit_param = "max_completion_tokens"
-            actual_temp = 1.0
-        elif is_mini_nano or "gpt-4o" in model_lower:
-            # Note: Some OpenRouter/Local providers might not support max_completion_tokens
-            # We prefer max_tokens for OpenRouter/Local for better compatibility.
-            if self.provider in ["openrouter", "local"]:
-                limit_param = "max_tokens"
-            else:
-                limit_param = "max_completion_tokens"
-            # Support lower temperature for these models
-            actual_temp = temperature
-
-        kwargs = {
-            "model": self.model,
-            "messages": messages,
-            "temperature": actual_temp,
-            "timeout": timeout,
-        }
-        kwargs[limit_param] = max_tokens
-
-        if response_format:
-            kwargs["response_format"] = response_format
-
-        response = self.client.chat.completions.create(**kwargs)
-        content = response.choices[0].message.content
-        if content is None:
-            return ""
-        return str(content).strip()
-
-    def translate_to_english(self, text: str) -> str:
-        """
-        Translates text to English unconditionally.
-        Keeps original formatting / text if already in English or translation fails.
-        """
-        if not self.client and not self.anthropic_client:
-            return text
-
-        system_prompt = (
-            "You are a professional all-around expert in biomedical literature, specializing in finding information and precise translation. "
-            "Your task is to translate and restructure the user's query into precise English for scientific search. "
-            "If the query is already in English, return it exactly as is. "
-            "Optimize the terminology for biomedical databases (e.g., use 'Neoplasms' or 'Cancer' appropriately). "
-            "Do NOT add any explanations, boolean operators (AND/OR), or quotes unless they were in the original. "
-            "Just return the translated and restructured English text."
-        )
-
-        try:
-            translated = self.chat_completion_text(
-                messages=[
-                    {
-                        "role": "user",
-                        "content": f"{system_prompt}\n\nTask: Translate the following text to English.\nText: {text}",
-                    },
-                ],
-                temperature=0.1,
-                max_tokens=200,
-            )
-            return translated
-        except Exception as e:
-            logger.error(f"LLM Error during query translation to English: {e}")
-            return text
 
     def translate_query_to_boolean(self, natural_query: str) -> str:
         """
@@ -830,7 +736,7 @@ class LLMClient:
                         "content": f"{system_prompt}\n\nTask: Translate the following natural language query into a PubTator3 boolean query.\nQuery: {natural_query}",
                     },
                 ],
-                temperature=0.1,
+                temperature=0.0,
                 max_tokens=200,
             )
             logger.debug("Received boolean query candidate from provider.")
