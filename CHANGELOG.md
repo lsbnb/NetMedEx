@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] - 2026-06-01
+
+### Fixed
+
+- **Diskcache WAL Accumulation**: Added `PRAGMA wal_checkpoint(PASSIVE)` at the start of each `initialize_chat()` background callback to prevent SQLite WAL from growing across multiple analysis runs and blocking `set_progress()` calls. Complemented by the existing startup checkpoint in `app.py`.
+
+### Changed
+
+- **Chat Response Format — Adaptive Mode (Direction B)**: Refined the 5-layer system prompt to be context-sensitive rather than rigidly fixed:
+  - **Compact Mode**: Simple factual or listing questions (e.g., "Which PMIDs mention X?") now collapse into a `[Direct Answer]` with inline citations, skipping Layers 2–5.
+  - **Layer 2 Skip Conditions**: If no graph inference paths are relevant to the specific question, or if Layer 1 already covers all relevant entities, Layer 2 now emits a single explanatory line instead of empty structured blocks.
+  - **Adaptive Layer 5**: Initial/broad analyses generate 3 suggested questions; focused follow-up questions generate 1; Compact Mode omits Layer 5 entirely.
+
 ## [1.3.0] - 2026-05-30
 
 ### Added
