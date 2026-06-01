@@ -1,4 +1,4 @@
-# NetMedEx v1.3.0: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.3.1: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
@@ -19,7 +19,12 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.3.0
+## 🆕 What's New in v1.3.1
+
+- **WAL Hang Fix**: Resolves Chat panel permanently stuck at "Preparing abstracts..." — diskcache SQLite WAL is now checkpointed before each analysis run, preventing write-blocking from accumulated background callback writes.
+- **Adaptive Chat Response Modes**: The 5-layer system prompt now selects response format based on question type: Compact Mode for simple factual queries, Layer 2 skip conditions to avoid empty structured blocks, and adaptive Layer 5 question count (3 for broad analyses, 1 for focused follow-ups, none for Compact Mode).
+
+### Previous: v1.3.0
 
 - **Anthropic API Integration**: Full native support for Anthropic Claude models (e.g., `claude-3-5-sonnet`, `claude-3-opus`) as a core LLM provider in both the web application (Advanced Settings UI) and CLI/API interfaces.
 - **Advanced LLM Settings & Customization**: Rewrote LLM initialization and configuration parsing (`llm.py` and `advanced_settings.py`) to support multi-provider environments, dynamic testing of connection status for Anthropic/OpenAI/Gemini/Groq/NVIDIA NIM, and direct environment configuration saving to `.env`.
