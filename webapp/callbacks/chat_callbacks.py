@@ -126,6 +126,7 @@ def _rebuild_chat_session_from_graph(savepath, llm_client, topic: str | None = N
     from netmedex.graph import load_graph
     from netmedex.graph_rag import GraphRetriever
     from netmedex.rag import AbstractRAG
+    import pathlib as _pathlib
 
     G = load_graph(savepath["graph"])
     documents = _abstract_documents_from_graph(G)
@@ -141,6 +142,11 @@ def _rebuild_chat_session_from_graph(savepath, llm_client, topic: str | None = N
         graph_retriever=graph_retriever,
         topic=topic or "biomedical research",
     )
+
+    # Try to load chat history from disk
+    history_file = _pathlib.Path(savepath["graph"]).parent / "chat_history.json"
+    session.load_from_file(str(history_file))
+
     _sessions[savepath["graph"]] = {
         "session": session,
         "rag": rag_system,
@@ -283,10 +289,11 @@ def parse_suggestions(content):
     q1_match = re.search(q1_pattern, content, re.IGNORECASE)
 
     if not q1_match:
-        # No Q1 marker found at all
+        # No Q1 marker found at all — fall back to generic default questions
+        # so that pill buttons always appear even when the LLM omits the markers.
         if re.search(r"Suggested(?:\s+Follow-up)?\s+Questions?", content, re.IGNORECASE):
             return _default_questions(content), content
-        return [], content          # no explicit markers → no pills, full content
+        return _default_questions(content), content  # always show fallback pills
 
     cut = q1_match.start()
     
@@ -511,6 +518,7 @@ def callbacks(app):
             State("anthropic-api-key-input", "value"),
             State("anthropic-model-selector", "value"),
             State("anthropic-custom-model-input", "value"),
+            State("chat-messages", "children"),
         ],
         prevent_initial_call=True,
     )
@@ -543,15 +551,15 @@ def callbacks(app):
         anthropic_api_key,
         anthropic_model,
         anthropic_custom_model,
+        current_messages,
     ):
         """
         Automatically initialize chat with an overall summary when a new graph is loaded.
         """
         # Trigger conditions:
         # 1. User must be in the chat tab
-        # 2. Graph must be newly loaded (is_new_graph)
-        # 3. No existing history for this session yet
-        if current_tab != "chat" or not session_data or not is_new_graph:
+        # 2. Graph session path must be active
+        if current_tab != "chat" or not session_data:
             raise dash.exceptions.PreventUpdate
 
         global _sessions
@@ -560,8 +568,227 @@ def callbacks(app):
         except SessionPathError:
             raise dash.exceptions.PreventUpdate
         session_key = savepath["graph"]
-        if session_key in _sessions and _sessions[session_key].get("history"):
-            # Already initialized for this session
+
+        # Check if the UI is currently empty / showing welcome message
+        is_ui_empty = True
+        if current_messages:
+            if isinstance(current_messages, list):
+                for component in current_messages:
+                    if isinstance(component, dict):
+                        props = component.get("props", {})
+                        if props.get("id") != "chat-welcome-message":
+                            is_ui_empty = False
+                            break
+            elif isinstance(current_messages, dict):
+                props = current_messages.get("props", {})
+                if props.get("id") != "chat-welcome-message":
+                    is_ui_empty = False
+
+        import pathlib as _pathlib
+        history_file = _pathlib.Path(savepath["graph"]).parent / "chat_history.json"
+        
+        has_history_in_memory = (
+            session_key in _sessions 
+            and _sessions[session_key].get("session") 
+            and (_sessions[session_key]["session"].full_history or _sessions[session_key]["session"].history)
+        )
+        has_history_on_disk = history_file.exists()
+
+        if has_history_in_memory or has_history_on_disk:
+            if not is_ui_empty:
+                raise dash.exceptions.PreventUpdate
+                
+            logger.info("auto_initialize_chat: Restoring chat history to the UI")
+            try:
+                from netmedex.chat import ChatSession
+                from netmedex.graph import load_graph
+                from netmedex.rag import AbstractRAG
+                from netmedex.graph_rag import GraphRetriever
+                from webapp.components.chat import create_message_component
+                import re
+
+                G = load_graph(savepath["graph"])
+                effective_query = search_query or G.graph.get("query", "")
+                
+                _query_lang = detect_query_language(effective_query) if effective_query else None
+                if _query_lang and _query_lang != "English":
+                    effective_language = _query_lang
+                elif session_language and session_language != "English":
+                    effective_language = session_language
+                elif G.graph.get("language") and G.graph["language"] != "English":
+                    effective_language = G.graph["language"]
+                elif session_language:
+                    effective_language = session_language
+                else:
+                    effective_language = "English"
+
+                # Filter community nodes (c0, c1, …) which carry no PMID data.
+                real_selected_nodes = [
+                    n for n in (selected_nodes or [])
+                    if not COMMUNITY_NODE_PATTERN.match(str(n.get("id", "")))
+                ]
+                has_selection = bool((selected_edges or []) or real_selected_nodes)
+                if has_selection:
+                    selection_pmids = set()
+                    for edge in (selected_edges or []):
+                        ep = edge.get("pmids", [])
+                        if isinstance(ep, str):
+                            selection_pmids.add(ep)
+                        else:
+                            selection_pmids.update(str(p) for p in ep)
+                    for node in real_selected_nodes:
+                        np_ = node.get("pmids", [])
+                        if isinstance(np_, str):
+                            selection_pmids.add(np_)
+                        else:
+                            selection_pmids.update(str(p) for p in np_)
+                    documents = _abstract_documents_from_graph(G, pmid_filter=selection_pmids)
+                else:
+                    documents = _abstract_documents_from_graph(G, limit=50)
+
+                if not documents:
+                    raise ValueError("No abstracts available for summary")
+
+                llm_client = _initialize_llm_from_callback_state(
+                    llm_provider=llm_provider,
+                    openai_api_key=openai_api_key,
+                    openai_model=openai_model,
+                    openai_custom_model=openai_custom_model,
+                    google_api_key=google_api_key,
+                    google_model=google_model,
+                    google_safety_setting=google_safety_setting,
+                    llm_base_url=llm_base_url,
+                    llm_model=llm_model,
+                    openrouter_api_key=openrouter_api_key,
+                    openrouter_model=openrouter_model,
+                    openrouter_custom_model=openrouter_custom_model,
+                    nvidia_api_key=nvidia_api_key,
+                    nvidia_nim_base_url=nvidia_nim_base_url,
+                    nvidia_model=nvidia_model,
+                    groq_api_key=groq_api_key,
+                    groq_model=groq_model,
+                    groq_custom_model=groq_custom_model,
+                    anthropic_api_key=anthropic_api_key,
+                    anthropic_model=anthropic_model,
+                    anthropic_custom_model=anthropic_custom_model,
+                )
+
+                if not has_history_in_memory:
+                    rag_system = AbstractRAG(llm_client)
+                    rag_system.index_abstracts(documents)
+                    graph_retriever_auto = GraphRetriever(G, node_rag=None)
+
+                    session = ChatSession(
+                        rag_system,
+                        llm_client,
+                        graph_retriever=graph_retriever_auto,
+                        topic=effective_query if effective_query else "biomedical research overview",
+                    )
+                    session.load_from_file(str(history_file))
+                    _sessions[session_key] = {"session": session, "rag": rag_system}
+                else:
+                    session = _sessions[session_key]["session"]
+                    if has_history_on_disk:
+                        session.load_from_file(str(history_file))
+
+                # Render history messages to UI components
+                ui_messages = []
+                history_to_render = session.full_history if session.full_history else session.history
+                for msg in history_to_render:
+                    if msg.role == "system":
+                        continue
+                    if not msg.content or msg.content.strip() == "":
+                        continue
+                    
+                    is_user = msg.role == "user"
+                    if is_user:
+                        comp = create_message_component("user", msg.content, msg_id=msg.msg_id)
+                    else:
+                        display_text = getattr(msg, "full_content", None) or msg.content
+                        suggestions, clean_content = parse_suggestions(display_text)
+                        
+                        cited_in_msg = sorted(set(
+                            re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", display_text)
+                        ) | set(
+                            re.findall(r"\[(\d{7,10})\]", display_text)
+                        ) | set(msg.sources or []))
+                        
+                        comp = create_message_component(
+                            "assistant",
+                            clean_content,
+                            cited_in_msg or msg.sources,
+                            msg_id=msg.msg_id,
+                            suggestions=suggestions,
+                        )
+                    ui_messages.append(comp)
+
+                if ui_messages:
+                    # Strip pill suggestions from all messages except the very last
+                    # assistant message — only the newest reply should show pills.
+                    # Find index of last assistant message
+                    last_assistant_idx = None
+                    for i in range(len(ui_messages) - 1, -1, -1):
+                        m = ui_messages[i]
+                        # Dash serializes components as dicts; check if it's an assistant bubble
+                        # create_message_component uses className="chat-message-assistant mb-3"
+                        if isinstance(m, dict):
+                            cls = m.get("props", {}).get("className", "") or ""
+                            if "chat-message-assistant" in cls:
+                                last_assistant_idx = i
+                                break
+                        else:
+                            # Dash component object
+                            cls = getattr(m, "className", "") or ""
+                            if "chat-message-assistant" in cls:
+                                last_assistant_idx = i
+                                break
+                    if last_assistant_idx is not None:
+                        stripped_part = _strip_message_suggestions(ui_messages[:last_assistant_idx])
+                        ui_messages = stripped_part + ui_messages[last_assistant_idx:]
+                    else:
+                        ui_messages = _strip_message_suggestions(ui_messages)
+
+                # Context banner
+                if has_selection:
+                    banner_text = (
+                        f"Selected Sub-network · {effective_query}"
+                        if effective_query
+                        else "Selected Sub-network"
+                    )
+                else:
+                    banner_text = (
+                        f"Overall Findings for '{effective_query}'"
+                        if effective_query
+                        else "Full Dataset Summary"
+                    )
+                context_banner = [
+                    html.Div(
+                        [
+                            html.Span("🔍 Research Context: ", className="fw-bold"),
+                            html.Span(banner_text),
+                        ],
+                        className="chat-context-query",
+                    )
+                ]
+
+                return (
+                    True,   # session active
+                    "",     # status
+                    False,  # Input enabled
+                    False,  # Send enabled
+                    {"display": "block"},  # clear button style
+                    context_banner,
+                    {"display": "block"},  # banner style
+                    ui_messages,           # chat-messages children
+                    no_update,             # suggested-question-store
+                    False,                 # is-new-graph reset
+                )
+            except Exception as e:
+                logger.error(f"Error restoring chat history: {e}")
+                if not is_new_graph:
+                    raise dash.exceptions.PreventUpdate
+
+        if not has_history_in_memory and not has_history_on_disk and not is_new_graph:
             raise dash.exceptions.PreventUpdate
 
         logger.info(f"auto_initialize_chat STARTING for tab={current_tab}")
@@ -1397,8 +1624,11 @@ def callbacks(app):
             logger.info(f"Total Analyze Selection time: {t_sum - t0:.2f}s")
             set_progress((95, "🎉 Almost done..."))
             bootstrap_user = summary_result.get("user_msg")
-            if bootstrap_user is not None and bootstrap_user in session.history:
-                session.history.remove(bootstrap_user)
+            if bootstrap_user is not None:
+                if bootstrap_user in session.history:
+                    session.history.remove(bootstrap_user)
+                if bootstrap_user in session.full_history:
+                    session.full_history.remove(bootstrap_user)
 
             # Extract 2-hop paths from the initial summary for Graph highlighting
             twohop_paths = summary_result.get("twohop_paths", [])
@@ -1452,6 +1682,14 @@ def callbacks(app):
                 f"{_node_index_count} nodes ({_node_index_mode})"
             )
             logger.info("Indexing summary: %s", _index_summary)
+
+            # Save the initial chat session state to file
+            try:
+                import pathlib as _pathlib
+                history_file = _pathlib.Path(savepath["graph"]).parent / "chat_history.json"
+                session.save_to_file(str(history_file))
+            except Exception as _e:
+                logger.error(f"Failed to save initial chat history: {_e}")
 
             return (
                 True,
@@ -1721,6 +1959,15 @@ def callbacks(app):
             previous = _strip_message_suggestions(list(current_messages) if current_messages else [])
             messages = previous + [user_msg, ai_msg]
 
+            # Save the updated session history to file
+            if savepath:
+                try:
+                    import pathlib as _pathlib
+                    history_file = _pathlib.Path(savepath["graph"]).parent / "chat_history.json"
+                    session.save_to_file(str(history_file))
+                except Exception as _e:
+                    logger.error(f"Failed to save chat history: {_e}")
+
             logger.info(f"send_message SUCCESS for trigger: {trigger_id}")
             return messages, [rename_suggested_question_ids(m, suffix="-modal") for m in messages] if messages else [], "", "", "", "", None, False, False, twohop_paths
 
@@ -1770,6 +2017,16 @@ def callbacks(app):
             session_data["session"].clear()
             session_data["rag"].clear()
 
+        # Delete chat history file from disk
+        if savepath:
+            import pathlib as _pathlib
+            history_file = _pathlib.Path(savepath["graph"]).parent / "chat_history.json"
+            if history_file.exists():
+                try:
+                    history_file.unlink()
+                except Exception:
+                    pass
+
         messages = [
             html.Div(
                 [
@@ -1817,13 +2074,40 @@ def callbacks(app):
             savepath = _resolve_savepath(session_data)
         except SessionPathError:
             savepath = None
-        if not n_clicks or not savepath or savepath["graph"] not in _sessions:
+        if not n_clicks or not savepath:
             raise dash.exceptions.PreventUpdate
 
-        session_data = _sessions[savepath["graph"]]
-        session = session_data["session"]
-
-        if not session or not session.history:
+        import json
+        import pathlib as _pathlib
+        history_file = _pathlib.Path(savepath["graph"]).parent / "chat_history.json"
+        
+        export_history = []
+        if savepath["graph"] in _sessions:
+            session_data = _sessions[savepath["graph"]]
+            session = session_data.get("session")
+            if session:
+                export_history = getattr(session, "full_history", None) or session.history
+        
+        if not export_history and history_file.exists():
+            try:
+                with open(history_file, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                from netmedex.chat import ChatMessage
+                export_history = [
+                    ChatMessage(
+                        role=d["role"],
+                        content=d["content"],
+                        sources=d.get("sources"),
+                        timestamp=d.get("timestamp"),
+                        msg_id=d.get("msg_id"),
+                        full_content=d.get("full_content"),
+                    )
+                    for d in data.get("full_history", data.get("history", []))
+                ]
+            except Exception as e:
+                logger.error(f"Failed to read chat history for download: {e}")
+                
+        if not export_history:
             raise dash.exceptions.PreventUpdate
 
         import datetime
@@ -1844,7 +2128,8 @@ def callbacks(app):
         try:
             # Combine first few exchanges for context
             context_messages = []
-            for m in session.history[1:5]:  # Skip system, take first 4
+            messages_for_title = [m for m in export_history if m.role != "system"]
+            for m in messages_for_title[:4]:  # Take first 4 non-system messages
                 context_messages.append(f"{m.role}: {m.content[:200]}")
 
             context_text = "\n".join(context_messages)
@@ -2006,7 +2291,7 @@ def callbacks(app):
 
         # Resolve display query: prefer data-input value; fall back to first real user message
         if not initial_query:
-            for msg in session.history:
+            for msg in export_history:
                 if msg.role == "user" and msg.content and not any(
                     sp in msg.content for sp in skip_prompts
                 ):
@@ -2017,7 +2302,7 @@ def callbacks(app):
 
         skip_prompt = "Please provide a structured summary of the selected research based on the abstracts and graph structure."
         last_msg_content = None
-        for msg in session.history:
+        for msg in export_history:
             if msg.role == "system":
                 continue
             if not msg.content or msg.content.strip() == "":

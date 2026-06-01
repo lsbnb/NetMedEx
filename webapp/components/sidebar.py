@@ -616,12 +616,29 @@ graph_settings_panel = html.Div(
             [
                 generate_param_title(
                     "Search Nodes",
-                    "Find nodes by name or identifier. Separate multiple terms with commas to highlight all matches simultaneously. Supports case-insensitive, fuzzy matching, and common synonym aliases.",
+                    "🔍 Find nodes by name/ID (comma-separated).\n"
+                    "💡 Supports case-insensitive fuzzy match & synonyms.\n"
+                    "⚠️ Unmatched terms are skipped silently; paths are computed from found terms.\n"
+                    "\n"
+                    "🧬 @Type Syntax — Filter by biological type:\n"
+                    "  🟣 @Gene            Highlight all Gene nodes (No path/dimming)\n"
+                    "  🟠 @Gene:gut        Gene nodes with \"gut\" in name → Anchors\n"
+                    "  🛤️ gut, @Gene        Path: \"gut\" anchors + top-20 Gene anchors\n"
+                    "  🛤️ dementia, @Gene   If \"gut\" is absent, uses \"dementia\" + top-20 Genes\n"
+                    "\n"
+                    "🎨 Color Legend:\n"
+                    "  🟠 Orange border = Anchor nodes\n"
+                    "  🟢 Teal border = Path intermediate nodes\n"
+                    "  🟣 Purple border = Type-highlighted nodes\n"
+                    "\n"
+                    "📌 Supported Types:\n"
+                    "  Gene · Disease · Chemical · Species\n"
+                    "  CellLine · DNAMutation · ProteinMutation · SNP",
                 ),
                 dbc.Input(
                     id="graph-node-search",
                     type="text",
-                    placeholder="e.g. TP53, BRAF, EGFR",
+                    placeholder="e.g. TP53, BRAF  or  gut, @Gene  or  @Gene:gut",
                 ),
             ],
             className="param",
@@ -747,7 +764,7 @@ header_row = html.Div(
         sidebar_toggle,
         html.Div(
             [
-                html.Small("v1.3.1", className="text-muted", style={"fontSize": "0.7rem"}),
+                html.Small("v1.3.2", className="text-muted", style={"fontSize": "0.7rem"}),
                 advanced_settings,
             ],
             className="d-flex flex-column align-items-center ms-auto",
