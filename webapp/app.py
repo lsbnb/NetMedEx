@@ -18,6 +18,11 @@ if sys.platform != "win32":
         multiprocessing.set_start_method("spawn", force=True)
     except RuntimeError:
         pass
+    try:
+        import multiprocess
+        multiprocess.set_start_method("spawn", force=True)
+    except Exception:
+        pass
 
 from dotenv import load_dotenv
 from pathlib import Path

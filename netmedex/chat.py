@@ -43,6 +43,7 @@ class ChatMessage:
             "sources": self.sources,
             "timestamp": self.timestamp,
             "msg_id": self.msg_id,
+            "full_content": self.full_content,
         }
 
 
@@ -86,6 +87,9 @@ class ChatSession:
         # of the rolling window.  Injected as a system message on every turn so the
         # LLM retains long-term awareness without a growing token cost.
         self.memory_buffer: list[str] = []
+        # Full unbounded message log used exclusively for export (download history).
+        # Never trimmed — mirrors what the user sees in the UI chat panel.
+        self.full_history: list[ChatMessage] = []
 
         # system_prompt is the core ROLE, OPERATIONAL RULES and OUTPUT STRUCTURE.
         self.system_prompt = """### ROLE
@@ -96,14 +100,20 @@ You are a highly specialized biomedical evidence reasoning agent focusing on {TO
 - Do NOT provide a general overview or repeat previous general summaries of the topic unless specifically asked.
 - Every layer of your response (Layer 1, Layer 2, Layer 3, and Layer 4) must be customized and tailored to answer the user's specific question. Do not list findings or paths from the context that are unrelated to the query.
 
-**RESPONSE MODE SELECTION** — determine the mode before writing, then apply it throughout:
-- **Full Mode** (default): Use all applicable layers. For broad, multi-entity, mechanism, or pathway questions.
-- **Compact Mode**: When the question asks for a specific fact, list, count, or definition (e.g., "Which PMIDs mention X?", "List all miRNAs", "How many nodes?", "What does Y mean?"), write a direct answer using Layer 1 only with inline PMID citations. Skip Layers 2–5. Begin the response with **[Direct Answer]** instead of the Layer 1 header.
+**RESPONSE MODE SELECTION** — inside your `<thinking_english>` block, explicitly write "MODE: Full" or "MODE: Compact" and state the reason before writing the response:
+
+- **Full Mode** (default): Use all applicable layers. For "how/why" questions, mechanism questions, multi-entity questions, pathway questions, or broad research questions. **When in doubt, use Full Mode.**
+  - Examples: "What miRNAs are linked to ALF?", "How does miR-21 affect sorafenib resistance?", "What is the relationship between gene X and disease Y?"
+
+- **Compact Mode**: The question asks for exactly ONE of: a specific enumerated list, a count, a yes/no fact, a definition, or a PMID lookup — and the full answer fits in 1–3 sentences or a short list. Write a direct answer using Layer 1 only with inline PMID citations. Skip Layers 2–5. Begin the response with **[Direct Answer]** (translated per LANGUAGE RULE below) instead of the Layer 1 header.
+  - Examples: "Which PMIDs mention X?", "List all Chemical nodes", "How many edges?", "What does NPMI mean?", "Is miR-122 in the graph?"
+  - NOT Compact: "What is the role of miR-21?" → requires mechanism explanation → **Full Mode**
+  - NOT Compact: "Which genes are most important?" → requires evidence evaluation → **Full Mode**
 
 **CONSISTENCY DIRECTIVE**:
-- In Layer 1, you MUST process and cite ALL PMIDs provided in the CONTEXT, listed in ascending PMID order. Do NOT skip or omit any PMID that is relevant to the query.
+- In Layer 1, cite every PMID from the CONTEXT that is **directly relevant to the user's specific question**. Do NOT include PMIDs whose abstracts do not address the question asked. Do NOT omit relevant PMIDs to save space.
 - Maintain a fixed, reproducible analytical structure: always cover direct evidence first (Layer 1), then associations (Layer 2), then causal hypotheses (Layer 3), then summary (Layer 4).
-- Do NOT selectively choose which PMIDs to emphasize based on stylistic preference — cover ALL of them in Layer 1 before drawing inferences in Layers 2 and 3.
+- Do NOT selectively emphasize PMIDs based on stylistic preference — cover ALL relevant ones before drawing inferences in Layers 2 and 3.
 
 Synthesize relevant information from the context using a strict three-layer reasoning framework that cleanly separates direct evidence, association inference, and causal mechanism hypotheses.
 
@@ -144,6 +154,11 @@ Synthesize relevant information from the context using a strict three-layer reas
   - **Traditional Chinese**: "直接文獻證據", "關聯推論 / 推測假說", "因果生物機制假說", "整合摘要", "建議問題"
   - **Japanese**: "直接的文献エビデンス", "関連推論 / 推測仮説", "因果メカニズム仮説", "統合サマリー", "推奨フォローアップ質問"
   - **Korean**: "직접 문헌 증거", "연관 추론 / 추론 가설", "인과 메커니즘 가설", "통합 요약", "권장 후속 질문"
+
+**Compact Mode label translations (non-English only):**
+  - **Traditional Chinese**: `[直接回答]`
+  - **Japanese**: `[直接回答]`
+  - **Korean**: `[직접 답변]`
 
 **Sub-label translations (non-English only):**
   - **Traditional Chinese**: 假說、圖譜路徑、每條邊的證據、路徑信心度、推測原因、意義、機制主張、因果鏈、證據表、因果信心度、最弱環節、替代解釋、可測試預測、建議驗證方式、直接支持的內容？、推論的內容？、機制上合理的假說？
@@ -491,6 +506,7 @@ Each question MUST:
             # Add user message to history
             user_msg = ChatMessage(role="user", content=user_message)
             self.history.append(user_msg)
+            self.full_history.append(user_msg)
 
             entity_listing_kind = self._detect_entity_listing_request(user_message)
             if entity_listing_kind:
@@ -504,6 +520,7 @@ Each question MUST:
                         sources=listing_response["sources"],
                     )
                     self.history.append(assistant_msg)
+                    self.full_history.append(assistant_msg)
                     return {
                         "success": True,
                         "message": assistant_msg.content,
@@ -770,6 +787,7 @@ Each question MUST:
                 full_content=assistant_content,
             )
             self.history.append(assistant_msg)
+            self.full_history.append(assistant_msg)
             self._trim_history()
 
             logger.info("Chat response generated successfully")
@@ -1044,6 +1062,7 @@ Each question MUST:
         """Clear conversation history and memory buffer"""
         self.history.clear()
         self.memory_buffer.clear()
+        self.full_history.clear()
         logger.info("Chat history and memory buffer cleared")
 
     def get_stats(self) -> dict[str, Any]:
@@ -1054,3 +1073,57 @@ Each question MUST:
             "assistant_messages": sum(1 for msg in self.history if msg.role == "assistant"),
             "indexed_pmids": len(self.rag.get_all_pmids()) if self.rag else 0,
         }
+
+    def save_to_file(self, filepath: str) -> None:
+        """Save chat history and memory buffer to a JSON file."""
+        import json
+        try:
+            data = {
+                "history": [msg.to_dict() for msg in self.history],
+                "full_history": [msg.to_dict() for msg in self.full_history],
+                "memory_buffer": self.memory_buffer,
+            }
+            with open(filepath, "w", encoding="utf-8") as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+            logger.debug(f"Chat history saved to {filepath}")
+        except Exception as e:
+            logger.error(f"Failed to save chat history: {e}")
+
+    def load_from_file(self, filepath: str) -> bool:
+        """Load chat history and memory buffer from a JSON file."""
+        import json
+        import os
+        if not os.path.exists(filepath):
+            return False
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            
+            self.history = [
+                ChatMessage(
+                    role=d["role"],
+                    content=d["content"],
+                    sources=d.get("sources"),
+                    timestamp=d.get("timestamp"),
+                    msg_id=d.get("msg_id"),
+                    full_content=d.get("full_content"),
+                )
+                for d in data.get("history", [])
+            ]
+            self.full_history = [
+                ChatMessage(
+                    role=d["role"],
+                    content=d["content"],
+                    sources=d.get("sources"),
+                    timestamp=d.get("timestamp"),
+                    msg_id=d.get("msg_id"),
+                    full_content=d.get("full_content"),
+                )
+                for d in data.get("full_history", [])
+            ]
+            self.memory_buffer = data.get("memory_buffer", [])
+            logger.info(f"Chat history restored from {filepath}")
+            return True
+        except Exception as e:
+            logger.error(f"Failed to load chat history: {e}")
+            return False

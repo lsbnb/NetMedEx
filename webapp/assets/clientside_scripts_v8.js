@@ -115,9 +115,10 @@ window.dash_clientside.clientside = {
     return null
   },
   show_edge_info: function (selected_edges, tap_edge, pmid_title, pmid_citations) {
+    selected_edges = selected_edges || [];
     function check_if_selected(tap_edge) {
       for (let i = 0; i < selected_edges.length; i++) {
-        if (selected_edges[i].id === tap_edge.id) {
+        if (selected_edges[i] && selected_edges[i].id === tap_edge.id) {
           return true
         }
       }
@@ -247,9 +248,10 @@ window.dash_clientside.clientside = {
     ]
   },
   show_node_info: function (selected_nodes, tap_node, pmid_title, pmid_citations) {
+    selected_nodes = selected_nodes || [];
     function check_if_selected(tap_node) {
       for (let i = 0; i < selected_nodes.length; i++) {
-        if (selected_nodes[i].id === tap_node.id) {
+        if (selected_nodes[i] && selected_nodes[i].id === tap_node.id) {
           return true
         }
       }
@@ -608,8 +610,28 @@ window.dash_clientside.clientside = {
     };
 
     const rawTerms = String(searchQuery || "").split(",").map((t) => t.trim()).filter(Boolean);
-    const anchorNodeIds = new Set();
+    const TYPE_EXPAND_TOP_N = 20;
+
+    // Separate @Type tokens (e.g. @Gene, @Gene:gut) from regular keyword terms
+    const typeTerms = [];
+    const regularTerms = [];
     for (const term of rawTerms) {
+      if (term.startsWith("@")) {
+        const atPart = term.slice(1);
+        const colonIdx = atPart.indexOf(":");
+        typeTerms.push(colonIdx !== -1
+          ? { nodeType: atPart.slice(0, colonIdx).toLowerCase(), nameFilter: normalizeText(atPart.slice(colonIdx + 1)) }
+          : { nodeType: atPart.toLowerCase(), nameFilter: null }
+        );
+      } else {
+        regularTerms.push(term);
+      }
+    }
+
+    const anchorNodeIds = new Set();
+
+    // Anchor nodes from regular keyword terms (unchanged logic)
+    for (const term of regularTerms) {
       const candidates = buildQueryCandidates(term);
       if (candidates.length === 0) continue;
       for (const node of nodeElements) {
@@ -618,6 +640,42 @@ window.dash_clientside.clientside = {
         if (!nodeId || hideNodeIds.has(nodeId)) continue;
         if (candidates.some((q) => matchLabelCandidate(data.label || "", q) || matchLabelCandidate(data.standardized_id || "", q))) {
           anchorNodeIds.add(nodeId);
+        }
+      }
+    }
+
+    // Expansion mode: keyword terms exist OR any @Type has a name filter
+    const isExpansionMode = regularTerms.length > 0 || typeTerms.some((t) => t.nameFilter !== null);
+    // Pure-highlight set: only populated when @Type used alone (no keywords, no name filter)
+    const typeHighlightIds = new Set();
+
+    for (const { nodeType, nameFilter } of typeTerms) {
+      const typeCandidates = [];
+      for (const node of nodeElements) {
+        const data = node.data || {};
+        const nodeId = data.id;
+        if (!nodeId || hideNodeIds.has(nodeId)) continue;
+        if (String(data.node_type || "").toLowerCase() !== nodeType) continue;
+        if (nameFilter) {
+          const label = normalizeText(data.label || "");
+          const stdId = normalizeText(data.standardized_id || "");
+          if (!label.includes(nameFilter) && !stdId.includes(nameFilter)) continue;
+        }
+        typeCandidates.push({ nodeId, pmidCount: Array.isArray(data.pmids) ? data.pmids.length : 0 });
+      }
+      if (typeCandidates.length === 0) continue;
+      typeCandidates.sort((a, b) => b.pmidCount - a.pmidCount);
+
+      if (isExpansionMode) {
+        // Anchor mode: name-filtered → all matches; bare @Type → Top-N by PMID count
+        const limit = nameFilter !== null ? typeCandidates.length : TYPE_EXPAND_TOP_N;
+        for (const { nodeId } of typeCandidates.slice(0, limit)) {
+          anchorNodeIds.add(nodeId);
+        }
+      } else {
+        // Pure highlight mode: no dimming, purple border only
+        for (const { nodeId } of typeCandidates) {
+          typeHighlightIds.add(nodeId);
         }
       }
     }
@@ -684,7 +742,7 @@ window.dash_clientside.clientside = {
           }
           if (!dist.has(tgt)) return false;
           let cur = tgt;
-          while (prev.get(cur) !== null) {
+          while (prev.has(cur) && prev.get(cur) !== null) {
             allPathNodes.add(cur);
             const { prev: p, edgeId } = prev.get(cur);
             if (edgeId) allPathEdges.add(edgeId);
@@ -740,6 +798,15 @@ window.dash_clientside.clientside = {
         });
         addChunkedIdRules(Array.from(focusEdgeIds), "edge", { opacity: 0.95 });
       }
+    }
+
+    // 3b) @Type pure-highlight mode (no dimming — just purple border on type-matched nodes)
+    if (typeHighlightIds.size > 0 && anchorNodeIds.size === 0) {
+      addChunkedIdRules(Array.from(typeHighlightIds), "node", {
+        "border-width": 3,
+        "border-color": "#a855f7",
+        "border-opacity": 1,
+      });
     }
 
     // 4) 2-Hop Path Highlighting
@@ -1037,7 +1104,7 @@ document.addEventListener("click", function (e) {
         if (input.disabled) {
           button.disabled = true;
         } else {
-          button.disabled = input.value.trim().length === 0;
+          button.disabled = (input.value || "").trim().length === 0;
         }
         return;
       }
@@ -1048,7 +1115,7 @@ document.addEventListener("click", function (e) {
           button.disabled = true;
           return;
         }
-        button.disabled = input.value.trim().length === 0;
+        button.disabled = (input.value || "").trim().length === 0;
       };
 
       const autoResize = () => {

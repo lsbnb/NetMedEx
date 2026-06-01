@@ -325,9 +325,11 @@ a:hover {
     opacity: 0;
     transition: opacity .1s ease-out;
     visibility: hidden;
-    padding: 0 5px;
+    padding: 4px 8px;
     z-index: 3000;
     white-space: pre-wrap;
+    max-width: 380px;
+    line-height: 1.5;
 }
 
 [data-tooltip]:hover:before {

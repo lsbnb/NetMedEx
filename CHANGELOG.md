@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.2] - 2026-06-02
+
+### Added
+
+- **Search Nodes @Type Syntax**: New `@TypeName` token in the Search Nodes input for selecting nodes by biological type.
+  - `@Gene` — highlights all Gene nodes with a purple border (no dimming, no path search).
+  - `@Gene:gut` — selects Gene nodes whose name contains "gut" as anchor nodes (orange border, neighbor/path mode).
+  - `keyword, @Gene` — combines keyword anchors with the top-20 Gene nodes by literature count (PMID frequency) as anchors for Dijkstra shortest-path search.
+  - Multi-type: `dementia, @Gene, @Disease` runs path search across keyword + type-expanded anchors simultaneously.
+  - Unmatched keywords are silently skipped; paths are computed from the remaining found anchors.
+  - Supported types: Gene · Disease · Chemical · Species · CellLine · DNAMutation · ProteinMutation · SNP.
+
+### Fixed
+
+- **Chat Download History**: Added `full_history` (unbounded) to `ChatSession` so download includes all messages the user sees in the UI, not just the rolling 3-pair LLM context window.
+
+### Changed
+
+- **Search Nodes Tooltip**: Updated info tooltip with `@Type` syntax reference, anchor vs path-node color legend, and silent-skip behaviour note. Tooltip CSS: `max-width: 380px`, `line-height: 1.5` for readability.
+- **Chat System Prompt — Mode Selection**: Require explicit `MODE: Full / Compact` declaration inside the `<thinking_english>` block with positive/negative examples, eliminating ambiguous LLM judgment. Added `NOT Compact` boundary cases to prevent incorrect Compact Mode activation for mechanism or evaluation questions.
+- **Chat System Prompt — CONSISTENCY DIRECTIVE**: Changed "cite ALL PMIDs in ascending order" to "cite every PMID **directly relevant** to the user's question" — resolves conflict with CRITICAL ANSWER DIRECTIVE where irrelevant PMIDs padded Layer 1 for focused questions.
+- **Chat System Prompt — Compact Mode label**: Added `[Direct Answer]` translations for non-English responses: Traditional Chinese `[直接回答]`, Japanese `[直接回答]`, Korean `[직접 답변]`.
+
 ## [1.3.1] - 2026-06-01
 
 ### Fixed
