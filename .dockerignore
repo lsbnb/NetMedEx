@@ -7,7 +7,11 @@ manuscript*.docx
 start_pediatric.sh
 webapp/app_pediatric.py
 webapp/assets_pediatric/
+webapp/assets/pediatric_bridge_receiver.js
+webapp/cache_pediatric/
 netmedex/initialize_expert_session.py
+analyze_cns_results.py
+pubtator_to_shap_pipeline.py
 cache_pediatric/
 scripts/
 

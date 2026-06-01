@@ -73,16 +73,19 @@ In NetMedEx, the **Co-Mention Network** serves as a structural "scaffolding." Wh
 - **HOST Environment Fix**: Resolved Conda build-triplet variable conflict that prevented `HOST=0.0.0.0` from loading via `.env`; `dotenv override=True` now uses an explicit absolute path.
 
 ### v1.2.3 — 2026-04-29
+
 - **Collapsible Sidebar**: Toggle button collapses/expands the entire left sidebar; state persists via `localStorage`.
 - **Search History**: Query history chips appear below the search box for one-click re-execution of recent queries (up to 8 entries, stored locally).
 
 ### v1.2.2 — 2026-04-28
+
 - **Co-occurrence Edge Styling**: Dashed lines visually distinguish co-occurrence edges from solid semantic edges.
 - **LLM Settings Persistence**: Advanced Settings values (provider, model selection) survive page reload via `localStorage`.
 - **Save to .env**: Button to write LLM configuration back to the server `.env` file (requires `NETMEDEX_ALLOW_WEB_ENV_WRITE=true`).
 - **Graph Empty State**: Friendly placeholder shown in the Graph Panel before any search is run.
 
 ### v1.2.1 — 2026-04-27
+
 - Security hardening: HMAC-signed session tokens, path traversal prevention.
 - Rate-limit retry with exponential back-off for PubTator3 API calls.
 - Bug fixes: HTML export multi-node search, topological layout node overlap, CJK query translation pipeline.
@@ -111,26 +114,57 @@ docker run -d -p 8050:8050 --rm lsbnb/netmedex
 > [!IMPORTANT]
 > **Access URL**: [http://localhost:8050](http://localhost:8050)
 
-
 ## 📦 Installation
 
-Install the **latest version** directly from GitHub for local hosting or CLI access:
+> [!WARNING]
+> The PyPI release (`pip install netmedex`) is outdated and only supports up to version `0.3.0`. Please use one of the methods below to get the latest `v1.3.x` features.
+
+### Option A — Clone & install (recommended for local web app)
+
+```bash
+git clone https://github.com/lsbnb/NetMedEx.git
+cd NetMedEx
+
+python3 -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+
+pip install -e .
+```
+
+Requires Python ≥ 3.11.
+
+### Option B — pip install from GitHub (recommended for CLI / API use)
 
 ```bash
 pip install git+https://github.com/lsbnb/NetMedEx.git
 ```
-*Recommended: Python >= 3.11*
-
-> [!WARNING]
-> The PyPI release (`pip install netmedex`) is outdated and only supports up to version `0.3.0`. Please use the GitHub installation command above to get the latest `v1.3.x` features (including Hybrid RAG, Google Gemini/NVIDIA NIM support, collapsible UI panels, and performance optimizations).
 
 ## 💻 Web Application (Local)
 
-Launch the interactive dashboard locally:
+### 1. Configure API keys (first time only)
 
 ```bash
-netmedex run
+cp .env.example .env
+# Edit .env and fill in your LLM API key (OPENAI_API_KEY, GEMINI_API_KEY, etc.)
 ```
+
+### 2. Start the webapp
+
+```bash
+bash start_webapp.sh
+```
+
+The script auto-detects the Python environment in this order:
+
+1. `.venv/` inside the project directory (created by Option A above)
+2. The active `conda` / `virtualenv` environment
+3. System `python3` / `gunicorn`
+
+If none is found, it prints an install hint and exits.
+
+> [!IMPORTANT]
+> **Access URL**: [http://localhost:8050](http://localhost:8050)
+
 
 ---
 

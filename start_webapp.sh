@@ -28,15 +28,36 @@ if [[ "${HOST:-}" =~ [a-zA-Z] || -z "${HOST:-}" ]]; then
 fi
 export PORT="${PORT:-8050}"
 
+# Locate python3: prefer project .venv → activated env → PATH
+if [ -x "$SCRIPT_DIR/.venv/bin/python3" ]; then
+    PYTHON="$SCRIPT_DIR/.venv/bin/python3"
+elif command -v python3 &>/dev/null; then
+    PYTHON="$(command -v python3)"
+else
+    echo "Error: python3 not found. Install Python 3.11+ first."
+    exit 1
+fi
+
 # Generate a session secret shared across all gunicorn workers and background
 # callback subprocesses. Without this, each process generates its own random
 # secret at import time, causing HMAC verification failures (SessionPathError)
 # and breaking Search -> Graph data transfer in multi-worker deployments.
 # Users may override by setting NETMEDEX_SESSION_SECRET in .env.
-export NETMEDEX_SESSION_SECRET="${NETMEDEX_SESSION_SECRET:-$(python3 -c 'import secrets; print(secrets.token_hex(32))')}"
+export NETMEDEX_SESSION_SECRET="${NETMEDEX_SESSION_SECRET:-$("$PYTHON" -c 'import secrets; print(secrets.token_hex(32))')}"
+
+# Locate gunicorn: prefer project .venv → activated env → PATH
+if [ -x "$SCRIPT_DIR/.venv/bin/gunicorn" ]; then
+    GUNICORN="$SCRIPT_DIR/.venv/bin/gunicorn"
+elif command -v gunicorn &>/dev/null; then
+    GUNICORN="$(command -v gunicorn)"
+else
+    echo "Error: gunicorn not found. Install the project first:"
+    echo "  python3 -m venv .venv && source .venv/bin/activate && pip install -e ."
+    exit 1
+fi
 
 # Start the webapp using Gunicorn
-/home/cylin/NetMedEx/.venv/bin/gunicorn \
+"$GUNICORN" \
     --bind "${HOST}:${PORT}" \
     --workers 1 \
     --threads 4 \
