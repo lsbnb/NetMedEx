@@ -38,6 +38,9 @@ COPY --from=builder /root/.cache/chroma /home/appuser/.cache/chroma
 RUN mkdir -p /app/data /app/webapp/cache && \
     chown -R appuser:appuser /app /home/appuser/.cache
 
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 USER appuser
 
 EXPOSE 8050
@@ -47,9 +50,10 @@ ENV HOST=0.0.0.0 \
     MPLBACKEND=Agg \
     JUPYTER_PLATFORM_DIRS=0
 
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["gunicorn", \
      "--bind", "0.0.0.0:8050", \
-     "--workers", "2", \
+     "--workers", "1", \
      "--threads", "4", \
      "--timeout", "300", \
      "--keep-alive", "5", \

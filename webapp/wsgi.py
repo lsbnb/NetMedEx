@@ -1,5 +1,14 @@
-import multiprocessing
 import sys
+
+# Force UTF-8 encoding on Windows to prevent ascii codec errors with non-ASCII content
+# (e.g. Chinese MeSH terms in graph data, non-ASCII in API responses)
+if sys.platform == "win32":
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    if hasattr(sys.stderr, "reconfigure"):
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
+import multiprocessing
 
 # Set multiprocessing start method to 'spawn' on Linux/macOS to prevent deadlocks in background callbacks
 if sys.platform != "win32":

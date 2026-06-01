@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import dash_bootstrap_components as dbc
 from dash import dcc, html
 
 from webapp.components.utils import generate_param_title
@@ -59,14 +58,14 @@ minimal_degree = html.Div(
             "Minimal Degree",
             "Set the minimum node degree to filter the graph",
         ),
-        dbc.Input(
+        dcc.Slider(
             id="node-degree",
             min=1,
+            max=20,
             step=1,
             value=1,
-            type="number",
-            debounce=True,
-            style={"width": "200px"},
+            marks={1: "1", 5: "5", 10: "10", 15: "15", 20: "20"},
+            tooltip={"placement": "bottom", "always_visible": True},
         ),
     ],
     className="param",

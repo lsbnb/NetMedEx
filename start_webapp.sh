@@ -28,10 +28,17 @@ if [[ "${HOST:-}" =~ [a-zA-Z] || -z "${HOST:-}" ]]; then
 fi
 export PORT="${PORT:-8050}"
 
+# Generate a session secret shared across all gunicorn workers and background
+# callback subprocesses. Without this, each process generates its own random
+# secret at import time, causing HMAC verification failures (SessionPathError)
+# and breaking Search -> Graph data transfer in multi-worker deployments.
+# Users may override by setting NETMEDEX_SESSION_SECRET in .env.
+export NETMEDEX_SESSION_SECRET="${NETMEDEX_SESSION_SECRET:-$(python3 -c 'import secrets; print(secrets.token_hex(32))')}"
+
 # Start the webapp using Gunicorn
 /home/cylin/NetMedEx/.venv/bin/gunicorn \
     --bind "${HOST}:${PORT}" \
-    --workers 2 \
+    --workers 1 \
     --threads 4 \
     --timeout 300 \
     --keep-alive 5 \
