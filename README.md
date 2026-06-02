@@ -11,9 +11,7 @@
 NetMedEx follows a three-step discovery workflow — each step corresponds to a dedicated panel in the web interface:
 
 1. **Search & Build Networks** — Query 30M+ PubMed articles by keyword, gene list, disease, or chemical. NetMedEx extracts co-mentioned biological entities and constructs a weighted, interactive knowledge graph. Supports multilingual input (CJK auto-translated to PubTator3 syntax).
-
 2. **Explore the Graph** — Visualize entity relationships, detect communities (Louvain algorithm), adjust layout (fCose with node repulsion control), filter by entity type (`@Gene`, `@Disease`, …), and find the strongest-evidence path between nodes (Dijkstra weighted shortest path).
-
 3. **Chat & Discover Mechanisms** — Select any sub-network and ask natural-language questions. The **5-Layer Hybrid RAG** uncovers latent 2-hop pathways (A → B → C) and structures responses from direct PMID-grounded evidence through speculative inference, causal mechanism, integrated summary, to suggested follow-up questions — with every claim labelled `[Human]` or `[Animal/In vitro]`.
 
 **Supporting capabilities:**
@@ -112,11 +110,11 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 
 ## 🚀 Getting Started
 
-| Method | Best for | Install |
-| --- | --- | --- |
-| [🐳 Docker](#-web-application-via-docker) *(Recommended)* | Quickest setup — no Python needed | `docker run` |
-| [💻 Local Install](#-web-application-local) | Web UI + development | `git clone` + `pip install -e .` |
-| [🛠️ CLI](#-command-line-interface-cli) | Batch processing & automation | `pip install git+https://github.com/lsbnb/NetMedEx.git` *(no repo clone needed)* |
+| Method                                                   | Best for                           | Install                                                                              |
+| -------------------------------------------------------- | ---------------------------------- | ------------------------------------------------------------------------------------ |
+| [🐳 Docker](#-web-application-via-docker) *(Recommended)* | Quickest setup — no Python needed | `docker run`                                                                       |
+| [💻 Local Install](#-web-application-local)                 | Web UI + development               | `git clone` + `pip install -e .`                                                 |
+| [🛠️ CLI](#-command-line-interface-cli)                    | Batch processing & automation      | `pip install git+https://github.com/lsbnb/NetMedEx.git` *(no repo clone needed)* |
 
 ---
 
@@ -264,12 +262,28 @@ Click the ⚙️ gear icon in the sidebar to open **Advanced Settings** and conf
   <i>Figure 4: Selecting a specific model for local AI processing via the dropdown menu.</i>
 </p>
 
+Beyond the LLM provider selection, **Advanced Settings** also controls search scale and graph quality. The **Max Articles** slider can be raised up to 3,000 for comprehensive literature coverage, while **KG Normalization** (sapBERT + MeSH CUI) consolidates entity synonyms — merging abbreviations such as `"hcv"` ↔ `"hepatitis c virus"` — for a cleaner, deduplicated graph.
+
+<p align="center">
+  <img src="./docs/img/up2_3000lit.png" width="300" alt="Advanced Settings Max Articles">
+  <br>
+  <i>Figure 5: Advanced Settings — Max Articles scaled to 3,000 for large-scale literature mining. KG Normalization (sapBERT + MeSH CUI) merges entity synonyms; Max Edges limits co-mention edges per article to control graph density.</i>
+</p>
+
+NetMedEx also exposes a **FastAPI Bridge** (`netmedex_fastapi_server.py`) that wraps the full Search → Network → Chat pipeline as REST endpoints, allowing external applications to integrate biomedical literature discovery without embedding the full stack.
+
+<p align="center">
+  <img src="./docs/img/netmedex_search_api.png" width="300" alt="NetMedEx FastAPI Bridge">
+  <br>
+  <i>Figure 6: NetMedEx FastAPI Bridge — `POST /sessions` builds the search-to-network-to-chat pipeline from a gene list and returns a session ID; `POST /sessions/{session_id}/ask` performs multi-turn Hybrid RAG queries against the indexed graph. The bridge supports all six LLM providers and both co-occurrence and semantic edge methods.</i>
+</p>
+
 Users can also upload previously downloaded PubTator format files for re-analysis, or restore a previously exported **Graph File** (`.pkl`) to skip re-processing entirely.
 
 <p align="center">
   <img src="./docs/img/netmedex_search_Pubtator.png" width="300" alt="PubTator Search">
   <br>
-  <i>Figure 5: Uploading PubTator files for re-analysis, or a Graph File (.pkl) to instantly restore a saved session.</i>
+  <i>Figure 7: Uploading PubTator files for re-analysis, or a Graph File (.pkl) to instantly restore a saved session.</i>
 </p>
 
 > [!TIP]
@@ -282,7 +296,7 @@ The **Graph Panel** visualizes the co-mention or semantically analyzed network. 
 <p align="center">
   <img src="./docs/img/Figure%208_Graph_panel_network.png" width="800" alt="Graph Panel Network">
   <br>
-  <i>Figure 6: Case study: A disease-gene-chemical co-mention network visualized in NetMedEx, showing semantic-level relationships between genes, diseases, chemicals, and species.</i>
+  <i>Figure 8: Case study: A disease-gene-chemical co-mention network visualized in NetMedEx, showing semantic-level relationships between genes, diseases, chemicals, and species.</i>
 </p>
 
 The sidebar shows **Network Statistics** for the visible graph:
@@ -302,13 +316,13 @@ Each network element carries structured information:
 <p align="center">
   <img src="./docs/img/fCose_topology.png" width="800" alt="fCose Layout Topology">
   <br>
-  <i>Figure 7: The fCose force-directed layout with node repulsion control, providing dynamic spacing adjustment for optimal network readability.</i>
+  <i>Figure 9: The fCose force-directed layout with node repulsion control, providing dynamic spacing adjustment for optimal network readability.</i>
 </p>
 
 <p align="center">
   <img src="./docs/img/Show%20Communities.png" width="800" alt="Show Communities">
   <br>
-  <i>Figure 8: Automated community detection for functional clustering using the Louvain algorithm.</i>
+  <i>Figure 10: Automated community detection for functional clustering using the Louvain algorithm.</i>
 </p>
 
 > [!TIP]
@@ -317,7 +331,7 @@ Each network element carries structured information:
 <p align="center">
   <img src="./docs/img/Search_nodes.png" width="800" alt="Dijkstra Shortest Path in Search Nodes">
   <br>
-  <i>Figure 9: Dijkstra weighted shortest-path result in Search Nodes — anchor nodes highlighted in orange, bridge nodes in teal, path edges rendered as thicker orange lines against a dimmed background.</i>
+  <i>Figure 11: Dijkstra weighted shortest-path result in Search Nodes — anchor nodes highlighted in orange, bridge nodes in teal, path edges rendered as thicker orange lines against a dimmed background.</i>
 </p>
 
 Hold **Shift** and click to select nodes and edges, isolating a sub-network as the context for Hybrid RAG chat in the next step.
@@ -325,19 +339,19 @@ Hold **Shift** and click to select nodes and edges, isolating a sub-network as t
 <p align="center">
   <img src="./docs/img/Figure%2010%20Selecting%20a%20sub-network.png" width="800" alt="Selecting a Sub-network">
   <br>
-  <i>Figure 10: Selecting a sub-network by holding the Shift key to isolate relevant nodes and edges as the base for Hybrid RAG to chat with.</i>
+  <i>Figure 12: Selecting a sub-network by holding the Shift key to isolate relevant nodes and edges as the base for Hybrid RAG to chat with.</i>
 </p>
 
 The network can be exported in several formats:
 
-| Export Format | Description | Re-importable? |
-| --- | --- | --- |
-| **HTML** | Interactive visualization for browsers ([example](https://htmlpreview.github.io/?https://github.com/lsbnb/NetMedEx/blob/main/docs/demo_html.html)) | ❌ |
-| **XGMML** | Network file for Cytoscape Desktop ([example](docs/demo.xgmml)) | ❌ |
-| **PubTator / BioC-JSON** | Raw annotation file ([example](docs/demo_pubtator.biocjson)) | ✅ Re-upload in Search Panel |
-| **RIS (EndNote)** | Full bibliographic metadata for citation management ([example](docs/ENDNOTE_citations.ris)) | ❌ |
-| **Chat History** | Full chat session as a standalone HTML file ([example](https://htmlpreview.github.io/?https://github.com/lsbnb/NetMedEx/blob/main/docs/demo_chat_history.html)) | ❌ |
-| **Graph (.pkl)** | **Full graph state** including semantic analysis results and article abstracts | ✅ Restore in Search Panel → "Graph File" |
+| Export Format                  | Description                                                                                                                                                  | Re-importable?                             |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------ |
+| **HTML**                 | Interactive visualization for browsers ([example](https://htmlpreview.github.io/?https://github.com/lsbnb/NetMedEx/blob/main/docs/demo_html.html))              | ❌                                         |
+| **XGMML**                | Network file for Cytoscape Desktop ([example](docs/demo.xgmml))                                                                                                 | ❌                                         |
+| **PubTator / BioC-JSON** | Raw annotation file ([example](docs/demo_pubtator.biocjson))                                                                                                    | ✅ Re-upload in Search Panel               |
+| **RIS (EndNote)**        | Full bibliographic metadata for citation management ([example](docs/ENDNOTE_citations.ris))                                                                     | ❌                                         |
+| **Chat History**         | Full chat session as a standalone HTML file ([example](https://htmlpreview.github.io/?https://github.com/lsbnb/NetMedEx/blob/main/docs/demo_chat_history.html)) | ❌                                         |
+| **Graph (.pkl)**         | **Full graph state** including semantic analysis results and article abstracts                                                                         | ✅ Restore in Search Panel → "Graph File" |
 
 > [!NOTE]
 > **Cytoscape XGMML Export**: The topological graph structure, relation edge data, and structural directionality translate natively to Cytoscape Desktop for third-party graph analysis without information loss.
@@ -351,13 +365,13 @@ The **Chat Panel** lets you interrogate the selected sub-network in natural lang
 <p align="center">
   <img src="./docs/img/hybridchat.png" width="800" alt="Chat Panel with Analyze Selection">
   <br>
-  <i>Figure 11: Select nodes/edges in the Graph Panel, then press "Analyze Selection" — the Selection Summary shows the articles, nodes, and edges to be indexed.</i>
+  <i>Figure 13: Select nodes/edges in the Graph Panel, then press "Analyze Selection" — the Selection Summary shows the articles, nodes, and edges to be indexed.</i>
 </p>
 
 <p align="center">
   <img src="./docs/img/fig12B_indexing.png" width="800" alt="Chat Indexing Diagnostic">
   <br>
-  <i>Figure 12: Indexing diagnostics in the status bar — showing abstract count, indexed node count, and indexing mode.</i>
+  <i>Figure 14: Indexing diagnostics in the status bar — showing abstract count, indexed node count, and indexing mode.</i>
 </p>
 
 **Step 2 — Ask questions.** Type any natural-language question about the sub-network. Responses follow the **5-Layer Evidence Reasoning Framework**:
@@ -371,7 +385,7 @@ The **Chat Panel** lets you interrogate the selected sub-network in natural lang
 <p align="center">
   <img src="./docs/img/Fig11_hybrid_RAG%20CHAT.png" width="800" alt="Hybrid RAG Chat">
   <br>
-  <i>Figure 13: Hybrid RAG Chat Panel showing a 5-Layer Evidence Reasoning Framework response with inline PMID citations.</i>
+  <i>Figure 15: Hybrid RAG Chat Panel showing a 5-Layer Evidence Reasoning Framework response with inline PMID citations.</i>
 </p>
 
 **Chat→Graph Synchronization** *(v1.2.6)*: When 2-hop paths are identified in a response, the Graph Panel updates automatically — bridge nodes glow gold, endpoint nodes turn blue, and inferred path edges appear as dashed orange lines. Highlights clear when a new **Search Nodes** query is activated.
@@ -381,7 +395,7 @@ The **Chat Panel** lets you interrogate the selected sub-network in natural lang
 <p align="center">
   <img src="./docs/img/5Layer.png" width="800" alt="5-Layer Evidence Reasoning Framework">
   <br>
-  <i>Figure 14: The 5-Layer Evidence Reasoning Framework structure.</i>
+  <i>Figure 16: The 5-Layer Evidence Reasoning Framework structure.</i>
 </p>
 
 > [!TIP]
@@ -390,7 +404,7 @@ The **Chat Panel** lets you interrogate the selected sub-network in natural lang
 <p align="center">
   <img src="./docs/img/netmedex_chat_table_mirna.png" width="800" alt="miRNA Relationship Table">
   <br>
-  <i>Figure 15: Semantic analysis results rendered as a Markdown table (e.g., miRNA relationships).</i>
+  <i>Figure 17: Semantic analysis results rendered as a Markdown table (e.g., miRNA relationships).</i>
 </p>
 
 ## ⚙️ Batch Processing vs. Interactive Discovery
