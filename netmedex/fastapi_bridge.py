@@ -14,7 +14,7 @@ from netmedex.chat_bridge import BridgeConfig, NetMedExChatBridge
 
 
 class SessionConfigModel(BaseModel):
-    provider: str = Field(default="openai", pattern="^(openai|google|local)$")
+    provider: str = Field(default="openai", pattern="^(openai|google|local|anthropic|groq|nvidia|openrouter)$")
     api_key: str | None = None
     model: str | None = None
     base_url: str | None = None
