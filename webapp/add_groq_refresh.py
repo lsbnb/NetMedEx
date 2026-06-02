@@ -1,5 +1,3 @@
-import os
-
 code = """
     @app.callback(
         [
@@ -33,4 +31,3 @@ code = """
 
 with open("webapp/callbacks/llm_callbacks.py", "a") as f:
     f.write(code)
-

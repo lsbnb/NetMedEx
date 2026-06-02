@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import logging
+
 from dash import Input, Output, State, no_update
+
 from webapp.utils import display
 
 logger = logging.getLogger(__name__)
@@ -77,13 +79,13 @@ def callbacks(app):
 
             # Count selected articles (unique PMIDs from selected nodes + edges)
             pmids = set()
-            for node in (selected_nodes or []):
+            for node in selected_nodes or []:
                 node_pmids = node.get("pmids", [])
                 if isinstance(node_pmids, list):
                     pmids.update(node_pmids)
                 elif isinstance(node_pmids, str):
                     pmids.add(node_pmids)
-            for edge in (selected_edges or []):
+            for edge in selected_edges or []:
                 edge_pmids = edge.get("pmids", [])
                 if isinstance(edge_pmids, list):
                     pmids.update(edge_pmids)

@@ -16,10 +16,17 @@ if sys.platform != "win32":
         multiprocessing.set_start_method("spawn", force=True)
     except RuntimeError:
         pass
+    try:
+        import multiprocess
+
+        multiprocess.set_start_method("spawn", force=True)
+    except Exception:
+        pass
+
+from dash import ClientsideFunction, Input, Output
 
 from webapp.app import app
 from webapp.callbacks import collect_callbacks
-from dash import ClientsideFunction, Input, Output
 
 # Initialize all callbacks
 collect_callbacks(app)

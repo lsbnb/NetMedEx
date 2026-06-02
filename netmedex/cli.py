@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 # PYTHON_ARGCOMPLETE_OK
-
 import argparse
 import logging
 import os
@@ -15,6 +14,7 @@ logger = logging.getLogger(__name__)
 
 def _init_cli_llm_client(args, usage_context: str):
     from dotenv import load_dotenv
+
     from webapp.llm import LLMClient
 
     load_dotenv()
@@ -36,31 +36,43 @@ def _init_cli_llm_client(args, usage_context: str):
         api_key = api_key or os.getenv("OPENAI_API_KEY")
         base_url = base_url or os.getenv("OPENAI_BASE_URL") or "https://api.openai.com/v1"
         if not api_key:
-            logger.error(f"{usage_context} with OpenAI provider requires OPENAI_API_KEY (or --llm_api_key).")
+            logger.error(
+                f"{usage_context} with OpenAI provider requires OPENAI_API_KEY (or --llm_api_key)."
+            )
             sys.exit(1)
     elif provider == "google":
         api_key = api_key or os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
         base_url = base_url or "https://generativelanguage.googleapis.com/v1beta/openai/"
         if not api_key:
-            logger.error(f"{usage_context} with Google provider requires GEMINI_API_KEY or GOOGLE_API_KEY (or --llm_api_key).")
+            logger.error(
+                f"{usage_context} with Google provider requires GEMINI_API_KEY or GOOGLE_API_KEY (or --llm_api_key)."
+            )
             sys.exit(1)
     elif provider == "openrouter":
         api_key = api_key or os.getenv("OPENROUTER_API_KEY")
         base_url = base_url or "https://openrouter.ai/api/v1"
         if not api_key:
-            logger.error(f"{usage_context} with OpenRouter provider requires OPENROUTER_API_KEY (or --llm_api_key).")
+            logger.error(
+                f"{usage_context} with OpenRouter provider requires OPENROUTER_API_KEY (or --llm_api_key)."
+            )
             sys.exit(1)
     elif provider == "nvidia":
         api_key = api_key or os.getenv("NVIDIA_API_KEY")
-        base_url = base_url or os.getenv("NVIDIA_NIM_BASE_URL") or "https://integrate.api.nvidia.com/v1"
+        base_url = (
+            base_url or os.getenv("NVIDIA_NIM_BASE_URL") or "https://integrate.api.nvidia.com/v1"
+        )
         if not api_key:
-            logger.error(f"{usage_context} with NVIDIA provider requires NVIDIA_API_KEY (or --llm_api_key).")
+            logger.error(
+                f"{usage_context} with NVIDIA provider requires NVIDIA_API_KEY (or --llm_api_key)."
+            )
             sys.exit(1)
     elif provider == "groq":
         api_key = api_key or os.getenv("GROQ_API_KEY")
         base_url = base_url or "https://api.groq.com/openai/v1"
         if not api_key:
-            logger.error(f"{usage_context} with Groq provider requires GROQ_API_KEY (or --llm_api_key).")
+            logger.error(
+                f"{usage_context} with Groq provider requires GROQ_API_KEY (or --llm_api_key)."
+            )
             sys.exit(1)
     else:  # local
         api_key = api_key or os.getenv("LOCAL_LLM_API_KEY") or "local-dummy-key"
@@ -125,7 +137,9 @@ def pubtator_entry(args):
                     logger.info(f"AI search query translated: {translated_query}")
                     query = translated_query
                 else:
-                    logger.warning("AI search translation returned empty/invalid result. Using original query.")
+                    logger.warning(
+                        "AI search translation returned empty/invalid result. Using original query."
+                    )
             except ImportError as e:
                 logger.error(f"Failed to import required libraries for AI search: {e}")
                 logger.error("Please install: pip install openai python-dotenv requests")
@@ -202,7 +216,7 @@ def network_entry(args):
             logger.error(f"Failed to import required libraries for semantic analysis: {e}")
             logger.error("Please install: pip install openai python-dotenv requests")
             sys.exit(1)
-    
+
     graph_builder = PubTatorGraphBuilder(
         node_type=args.node_type,
         edge_method=args.edge_method,
@@ -229,7 +243,9 @@ def webapp_entry(args):
 
 
 def _sorted_pmids(pmids):
-    return sorted(pmids, key=lambda x: (not str(x).isdigit(), int(x) if str(x).isdigit() else str(x)))
+    return sorted(
+        pmids, key=lambda x: (not str(x).isdigit(), int(x) if str(x).isdigit() else str(x))
+    )
 
 
 def _collect_pmid_edges(G):
@@ -251,7 +267,9 @@ def _collect_pmid_edges(G):
                 {
                     "source": str(u),
                     "target": str(v),
-                    "relations": sorted(relations.get(pmid, [])) if isinstance(relations, dict) else [],
+                    "relations": sorted(relations.get(pmid, []))
+                    if isinstance(relations, dict)
+                    else [],
                 }
             )
     return pmid_edges
@@ -300,7 +318,9 @@ def chat_entry(args):
     pmid_abstracts = {str(k): v for k, v in G.graph.get("pmid_abstract", {}).items()}
     all_pmids = _sorted_pmids(set(pmid_titles.keys()) | set(pmid_abstracts.keys()))
     if not all_pmids:
-        logger.error("No PMID metadata found in graph. Rebuild graph from PubTator input before chat.")
+        logger.error(
+            "No PMID metadata found in graph. Rebuild graph from PubTator input before chat."
+        )
         sys.exit(1)
 
     selected_pmids = all_pmids
@@ -586,16 +606,16 @@ def get_network_parser():
         choices=["co-occurrence", "semantic", "relation"],
         default="co-occurrence",
         help="Method for edge construction: "
-             "co-occurrence (all co-mentions, fast), "
-             "semantic (LLM-analyzed relationships, balanced), "
-             "relation (BioREx annotations only, precise) (default: co-occurrence)",
+        "co-occurrence (all co-mentions, fast), "
+        "semantic (LLM-analyzed relationships, balanced), "
+        "relation (BioREx annotations only, precise) (default: co-occurrence)",
     )
     parser.add_argument(
         "--semantic_threshold",
         type=float,
         default=0.5,
         help="Minimum confidence score for semantic edges, range 0-1 (default: 0.5). "
-             "Only used when --edge_method=semantic",
+        "Only used when --edge_method=semantic",
     )
     _add_llm_parser_args(parser, help_context="semantic edge extraction")
 

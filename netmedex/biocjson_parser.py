@@ -127,7 +127,10 @@ def _biocjson_to_pubtator(
         doi = None
         try:
             # Abstract only biocjson file
-            if "journal" in infons and (match := DOI_PATTERN.search(infons["journal"])) is not None:
+            if (
+                "journal" in infons
+                and (match := DOI_PATTERN.search(infons["journal"])) is not None
+            ):
                 doi = match.group(1)
         except Exception:
             # Full-text biocjson file
@@ -151,7 +154,7 @@ def _biocjson_to_pubtator(
                 authors = infons.get("authors")
             except Exception:
                 pass
-        
+
         # If still not found, check all passages for an 'author' section
         if not authors:
             for passage in each_res_json.get("passages", []):

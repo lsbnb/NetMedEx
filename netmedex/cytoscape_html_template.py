@@ -215,6 +215,40 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   .filter-item input {{
       margin-right: 8px;
   }}
+  /* Tooltip Container */
+  .tooltip {{
+      position: relative;
+      display: inline-block;
+      cursor: help;
+      margin-left: 5px;
+      color: #007bff;
+  }}
+  /* Tooltip Text */
+  .tooltip .tooltiptext {{
+      visibility: hidden;
+      width: 360px;
+      background-color: #333;
+      color: #fff;
+      text-align: left;
+      border-radius: 6px;
+      padding: 8px 12px;
+      position: absolute;
+      z-index: 1000;
+      bottom: 125%; /* Position above the icon */
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.2s;
+      font-size: 11px;
+      line-height: 1.5;
+      white-space: pre-line;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }}
+  /* Show the tooltip text when hovering */
+  .tooltip:hover .tooltiptext {{
+      visibility: visible;
+      opacity: 1;
+  }}
   .highlighted {{
       overlay-color: #ffc107;
       overlay-opacity: 0.3;
@@ -268,8 +302,28 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   </div>
 
   <div class="search-container">
-    <label class="filter-title">Search Nodes</label>
-    <input type="text" id="search-input" placeholder="e.g. TP53, EGFR">
+    <label class="filter-title">
+      Search Nodes
+      <span class="tooltip">ⓘ<span class="tooltiptext">🔍 Find nodes by name/ID (comma-separated).
+💡 Supports case-insensitive fuzzy match &amp; synonyms.
+⚠️ Unmatched terms are skipped silently; paths are computed from found terms.
+
+🧬 @Type Syntax — Filter by biological type:
+  🟣 @Gene            Highlight all Gene nodes (No path/dimming)
+  🟠 @Gene:gut        Gene nodes with "gut" in name &rarr; Anchors
+  🛤️ gut, @Gene        Path: "gut" anchors + top-20 Gene anchors
+  🛤️ dementia, @Gene   If "gut" is absent, uses "dementia" + top-20 Genes
+
+🎨 Color Legend:
+  🟠 Orange border = Anchor nodes
+  🟢 Teal border = Path intermediate nodes
+  🟣 Purple border = Type-highlighted nodes
+
+📌 Supported Types:
+  Gene · Disease · Chemical · Species
+  CellLine · DNAMutation · ProteinMutation · SNP</span></span>
+    </label>
+    <input type="text" id="search-input" placeholder="e.g. TP53, BRAF  or  gut, @Gene  or  @Gene:gut">
   </div>
 
   <div class="filter-container">
@@ -485,6 +539,14 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             'source-arrow-color': '#ff8c00',
             'width': 3,
         }}
+    }},
+    {{
+        selector: '.type-highlight',
+        style: {{
+            'border-width': 3,
+            'border-color': '#a855f7',
+            'border-opacity': 1,
+        }}
     }}
   ]
   }});
@@ -592,32 +654,88 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       cy.batch(() => {{
           cy.elements()
               .removeClass('dimmed').removeClass('dimmed-edge').removeClass('highlighted')
-              .removeClass('path-anchor').removeClass('path-intermediate').removeClass('path-edge');
+              .removeClass('path-anchor').removeClass('path-intermediate').removeClass('path-edge')
+              .removeClass('type-highlight');
 
           if (!rawQuery) return;
 
           const rawTerms = rawQuery.split(',').map(t => t.trim()).filter(Boolean);
 
-          // Find anchor nodes via segment-aware matching
-          let anchorNodes = cy.collection();
+          const typeTerms = [];
+          const regularTerms = [];
           for (const term of rawTerms) {{
-              const candidates = _buildCandidates(term);
-              if (!candidates.length) continue;
-              anchorNodes = anchorNodes.union(
-                  cy.nodes().filter(n =>
-                      candidates.some(q =>
-                          _matchLabel(n.data('label') || '', q) ||
-                          _matchLabel(n.data('standardized_id') || '', q)
-                      )
-                  )
-              );
+              if (term.startsWith("@")) {{
+                  const atPart = term.slice(1);
+                  const colonIdx = atPart.indexOf(":");
+                  typeTerms.push(colonIdx !== -1
+                      ? {{ nodeType: atPart.slice(0, colonIdx).toLowerCase(), nameFilter: _normalizeText(atPart.slice(colonIdx + 1)) }}
+                      : {{ nodeType: atPart.toLowerCase(), nameFilter: null }}
+                  );
+              }} else {{
+                  regularTerms.push(term);
+              }}
           }}
 
-          if (anchorNodes.length === 0) {{
-              cy.elements().addClass('dimmed');
-              cy.edges().addClass('dimmed-edge');
+          const anchorNodeIds = new Set();
+
+          // Find anchor nodes via segment-aware matching for regular terms
+          for (const term of regularTerms) {{
+              const candidates = _buildCandidates(term);
+              if (!candidates.length) continue;
+              cy.nodes().forEach(n => {{
+                  if (n.hasClass('filtered')) return;
+                  const label = n.data('label') || '';
+                  const stdId = n.data('standardized_id') || '';
+                  if (candidates.some(q => _matchLabel(label, q) || _matchLabel(stdId, q))) {{
+                      anchorNodeIds.add(n.id());
+                  }}
+              }});
+          }}
+
+          // Expansion mode: regular terms exist OR any @Type has a name filter
+          const isExpansionMode = regularTerms.length > 0 || typeTerms.some(t => t.nameFilter !== null);
+          const typeHighlightIds = new Set();
+          const TYPE_EXPAND_TOP_N = 20;
+
+          for (const {{ nodeType, nameFilter }} of typeTerms) {{
+              const typeCandidates = [];
+              cy.nodes().forEach(n => {{
+                  if (n.hasClass('filtered')) return;
+                  const t = String(n.data('node_type') || n.data('type') || '').toLowerCase();
+                  if (t !== nodeType) return;
+                  if (nameFilter) {{
+                      const label = _normalizeText(n.data('label') || '');
+                      const stdId = _normalizeText(n.data('standardized_id') || '');
+                      if (!label.includes(nameFilter) && !stdId.includes(nameFilter)) return;
+                  }}
+                  const pmids = n.data('pmids') || [];
+                  const pmidCount = Array.isArray(pmids) ? pmids.length : 0;
+                  typeCandidates.push({{ id: n.id(), pmidCount }});
+              }});
+
+              if (typeCandidates.length === 0) continue;
+              typeCandidates.sort((a, b) => b.pmidCount - a.pmidCount);
+
+              if (isExpansionMode) {{
+                  const limit = nameFilter !== null ? typeCandidates.length : TYPE_EXPAND_TOP_N;
+                  typeCandidates.slice(0, limit).forEach(tc => anchorNodeIds.add(tc.id));
+              }} else {{
+                  typeCandidates.forEach(tc => typeHighlightIds.add(tc.id));
+              }}
+          }}
+
+          if (anchorNodeIds.size === 0) {{
+              if (typeHighlightIds.size > 0) {{
+                  typeHighlightIds.forEach(id => cy.$id(id).addClass('type-highlight'));
+              }} else if (rawQuery) {{
+                  cy.elements().addClass('dimmed');
+                  cy.edges().addClass('dimmed-edge');
+              }}
               return;
           }}
+
+          let anchorNodes = cy.collection();
+          anchorNodeIds.forEach(id => anchorNodes = anchorNodes.union(cy.$id(id)));
 
           // Dijkstra shortest paths between every pair of anchor nodes
           let pathMode = false;
@@ -701,6 +819,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
           const t = n.data('node_type') || n.data('type');
           if (t && t !== 'community') types.add(t);
       }});
+
 
       const filterList = document.getElementById('type-filter-list');
 	      Array.from(types).sort().forEach(type => {{

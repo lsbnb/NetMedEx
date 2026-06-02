@@ -22,13 +22,6 @@ from netmedex.pubtator import PubTatorAPI
 from netmedex.pubtator_parser import PubTatorIO
 from netmedex.utils_threading import run_thread_with_error_notification
 from webapp.llm import initialize_llm_client_from_settings, llm_client
-from webapp.utils import (
-    display,
-    generate_session_id,
-    get_data_savepath,
-    make_session_token,
-    visibility,
-)
 from webapp.upload_limits import (
     MAX_GRAPH_UPLOAD_BYTES,
     MAX_PMID_UPLOAD_BYTES,
@@ -36,8 +29,16 @@ from webapp.upload_limits import (
     decode_upload_bytes,
     decode_upload_text,
 )
+from webapp.utils import (
+    display,
+    generate_session_id,
+    get_data_savepath,
+    make_session_token,
+    visibility,
+)
 
 logger = logging.getLogger(__name__)
+
 
 def detect_query_language(text: str) -> str:
     """
@@ -311,7 +312,11 @@ def callbacks(app):
                 if input_type == "query":
                     query = data_input
                     detected_lang = detect_query_language(query)
-                    if detected_lang != "English" and not llm_client.client and not llm_client.anthropic_client:
+                    if (
+                        detected_lang != "English"
+                        and not llm_client.client
+                        and not llm_client.anthropic_client
+                    ):
                         raise ValueError(
                             f"{detected_lang} Search requires an active LLM configuration "
                             "so NetMedEx can translate the query to PubTator-compatible English."
@@ -379,7 +384,9 @@ def callbacks(app):
                         # Use translate_to_english() (faithful, no boolean operators) so the
                         # resulting query is equivalent to the user typing the same concept in
                         # English — producing the same article count from PubTator3.
-                        if detected_lang != "English" and (llm_client.client or llm_client.anthropic_client):
+                        if detected_lang != "English" and (
+                            llm_client.client or llm_client.anthropic_client
+                        ):
                             set_progress(
                                 (
                                     0,
@@ -390,11 +397,13 @@ def callbacks(app):
                             )
                             try:
                                 translated_query = llm_client.translate_to_english(query)
-                                if translated_query and translated_query.strip() and translated_query.strip() != query:
+                                if (
+                                    translated_query
+                                    and translated_query.strip()
+                                    and translated_query.strip() != query
+                                ):
                                     query = translated_query.strip()
-                                    set_progress(
-                                        (0, 1, "", f"Translated: {query}")
-                                    )
+                                    set_progress((0, 1, "", f"Translated: {query}"))
                             except Exception as e:
                                 logger.error(f"Error executing translation: {e}")
                                 set_progress(
@@ -416,14 +425,12 @@ def callbacks(app):
                         "Editorial",
                         "Letter",
                         "Published Erratum",
-                        "Congress",       # Conference proceedings / abstracts
+                        "Congress",  # Conference proceedings / abstracts
                         "News",
                         "Comment",
                         "Retraction of Publication",
                     ]
-                    exclusion_suffix = " ".join(
-                        f'NOT "{pt}"' for pt in EXCLUDED_PUB_TYPES
-                    )
+                    exclusion_suffix = " ".join(f'NOT "{pt}"' for pt in EXCLUDED_PUB_TYPES)
                     query = f"({query}) {exclusion_suffix}"
                     logger.info("Query after pub-type exclusion: %s", query)
 
@@ -779,7 +786,9 @@ def callbacks(app):
             G.graph["max_edges"] = max_edges
             G.graph["query"] = data_input
             G.graph["input_type"] = input_type
-            G.graph["language"] = detected_language  # Persist so Chat restores the correct reply language
+            G.graph["language"] = (
+                detected_language  # Persist so Chat restores the correct reply language
+            )
 
             save_graph(G, savepath["html"], "html")
             save_graph(G, savepath["graph"], "pickle")

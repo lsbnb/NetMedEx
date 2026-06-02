@@ -96,9 +96,7 @@ def _run_async_in_new_loop(
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
     try:
-        return loop.run_until_complete(
-            _fetch_citation_counts_async(pmid_list, progress_callback)
-        )
+        return loop.run_until_complete(_fetch_citation_counts_async(pmid_list, progress_callback))
     finally:
         loop.close()
         asyncio.set_event_loop(None)

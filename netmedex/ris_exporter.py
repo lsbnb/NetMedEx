@@ -111,7 +111,9 @@ def convert_to_ris(articles: list[PubTatorArticle]) -> str:
         record["urls"] = [f"https://pubmed.ncbi.nlm.nih.gov/{article.pmid}/"]
 
         if article.metadata and "citation_count" in article.metadata:
-            record["notes"] = [f"Cited by: {article.metadata['citation_count']} (source: OpenCitations)"]
+            record["notes"] = [
+                f"Cited by: {article.metadata['citation_count']} (source: OpenCitations)"
+            ]
 
         records.append(record)
 

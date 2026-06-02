@@ -2,18 +2,18 @@ from __future__ import annotations
 
 import json
 import logging
-from collections import defaultdict
-from pathlib import Path
 import re
 import time
+from collections import defaultdict
+from pathlib import Path
 from typing import Literal
 
 import networkx as nx
 
 from netmedex.cytoscape_html_template import HTML_TEMPLATE
 from netmedex.relation_types import (
-    is_directional_relation,
     get_relation_display_name,
+    is_directional_relation,
     normalize_relation_type,
 )
 

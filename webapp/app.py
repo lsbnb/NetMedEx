@@ -20,15 +20,18 @@ if sys.platform != "win32":
         pass
     try:
         import multiprocess
+
         multiprocess.set_start_method("spawn", force=True)
     except Exception:
         pass
 
-from dotenv import load_dotenv
 from pathlib import Path
+
+from dotenv import load_dotenv
 
 load_dotenv(Path(__file__).parent.parent / ".env", override=True)
 
+import logging
 import os
 
 import dash_bootstrap_components as dbc
@@ -36,7 +39,6 @@ import dash_cytoscape as cyto
 import diskcache
 from dash import ClientsideFunction, Dash, DiskcacheManager, Input, Output, dcc, html
 
-import logging
 from netmedex.utils import config_logger
 from webapp.callbacks import collect_callbacks
 from webapp.utils import cleanup_tempdir
@@ -54,6 +56,7 @@ cache = diskcache.Cache(str(_cache_path))
 # don't accumulate into a multi-MB WAL that slows down set_progress() calls.
 try:
     import sqlite3 as _sqlite3
+
     _wal_path = _cache_path / "cache.db"
     if _wal_path.exists():
         _conn = _sqlite3.connect(str(_wal_path))
@@ -104,6 +107,7 @@ def main():
         # Conda build environments set HOST to the build triplet (e.g. x86_64-conda-linux-gnu).
         # Fall back to 127.0.0.1 if the value doesn't look like an IP or "0.0.0.0".
         import re as _re
+
         host = _host_env if _re.match(r"^[\d.]+$", _host_env) else "127.0.0.1"
         # Write back the resolved host so Werkzeug reloader subprocesses inherit the correct value.
         os.environ["HOST"] = host

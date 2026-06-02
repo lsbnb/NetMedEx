@@ -13,7 +13,6 @@ from dash import dcc, html
 from webapp.utils import display
 
 
-
 def create_message_component(
     role: str,
     content: str,
@@ -70,22 +69,22 @@ def create_message_component(
     # doesn't treat them as reference links.  Match any [Human...] or [Animal...]
     # variant (including "unspecified", "In vitro", etc.) and CJK equivalents.
     _STUDY_TYPE_LABELS = re.compile(
-        r'\[((?:Human|Animal|人類|動物|ヒト|인간|동물)[^\]]{0,60})\]',
+        r"\[((?:Human|Animal|人類|動物|ヒト|인간|동물)[^\]]{0,60})\]",
         re.IGNORECASE,
     )
     content = _STUDY_TYPE_LABELS.sub(lambda m: f"**({m.group(1)})**", content)
 
     # Ensure markdown tables have a blank line before and after them so they parse correctly
-    lines = content.split('\n')
+    lines = content.split("\n")
     new_lines = []
     for idx, line in enumerate(lines):
-        if line.strip().startswith('|'):
-            if idx > 0 and new_lines[-1].strip() and not new_lines[-1].strip().startswith('|'):
-                new_lines.append('')
-        elif idx > 0 and new_lines[-1].strip().startswith('|') and line.strip():
-            new_lines.append('')
+        if line.strip().startswith("|"):
+            if idx > 0 and new_lines[-1].strip() and not new_lines[-1].strip().startswith("|"):
+                new_lines.append("")
+        elif idx > 0 and new_lines[-1].strip().startswith("|") and line.strip():
+            new_lines.append("")
         new_lines.append(line)
-    content = '\n'.join(new_lines)
+    content = "\n".join(new_lines)
 
     linked_content = re.sub(pmid_pattern, replace_pmid, content)
 

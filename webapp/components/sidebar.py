@@ -183,7 +183,10 @@ api_params = html.Div(
         html.Div(
             dbc.Button(
                 [
-                    html.I(className="bi bi-chevron-down collapse-chevron me-2", id="search-options-chevron"),
+                    html.I(
+                        className="bi bi-chevron-down collapse-chevron me-2",
+                        id="search-options-chevron",
+                    ),
                     "Search Options",
                 ],
                 id="search-options-toggle-btn",
@@ -253,7 +256,10 @@ network_params = html.Div(
         html.Div(
             dbc.Button(
                 [
-                    html.I(className="bi bi-chevron-down collapse-chevron me-2", id="network-options-chevron"),
+                    html.I(
+                        className="bi bi-chevron-down collapse-chevron me-2",
+                        id="network-options-chevron",
+                    ),
                     "Advanced Network Options",
                 ],
                 id="network-options-toggle-btn",
@@ -622,9 +628,9 @@ graph_settings_panel = html.Div(
                     "\n"
                     "🧬 @Type Syntax — Filter by biological type:\n"
                     "  🟣 @Gene            Highlight all Gene nodes (No path/dimming)\n"
-                    "  🟠 @Gene:gut        Gene nodes with \"gut\" in name → Anchors\n"
-                    "  🛤️ gut, @Gene        Path: \"gut\" anchors + top-20 Gene anchors\n"
-                    "  🛤️ dementia, @Gene   If \"gut\" is absent, uses \"dementia\" + top-20 Genes\n"
+                    '  🟠 @Gene:gut        Gene nodes with "gut" in name → Anchors\n'
+                    '  🛤️ gut, @Gene        Path: "gut" anchors + top-20 Gene anchors\n'
+                    '  🛤️ dementia, @Gene   If "gut" is absent, uses "dementia" + top-20 Genes\n'
                     "\n"
                     "🎨 Color Legend:\n"
                     "  🟠 Orange border = Anchor nodes\n"
@@ -658,7 +664,10 @@ graph_settings_panel = html.Div(
         html.Div(
             dbc.Button(
                 [
-                    html.I(className="bi bi-chevron-down collapse-chevron me-2", id="display-filters-chevron"),
+                    html.I(
+                        className="bi bi-chevron-down collapse-chevron me-2",
+                        id="display-filters-chevron",
+                    ),
                     "Display Filters",
                 ],
                 id="display-filters-toggle-btn",

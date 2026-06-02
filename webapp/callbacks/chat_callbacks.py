@@ -6,8 +6,8 @@ import re
 import dash
 from dash import ALL, Input, Output, State, dcc, html, no_update
 
-from webapp.utils import SessionPathError, resolve_session_savepath
 from webapp.callbacks.pipeline import detect_query_language
+from webapp.utils import SessionPathError, resolve_session_savepath
 
 logger = logging.getLogger(__name__)
 
@@ -59,7 +59,10 @@ def _abstract_documents_from_graph(
         documents.append(
             AbstractDocument(
                 pmid=pmid,
-                title=str(pmid_titles.get(raw_pmid, pmid_titles.get(pmid, f"PMID {pmid}")) or f"PMID {pmid}"),
+                title=str(
+                    pmid_titles.get(raw_pmid, pmid_titles.get(pmid, f"PMID {pmid}"))
+                    or f"PMID {pmid}"
+                ),
                 abstract=str(pmid_abstracts.get(raw_pmid, pmid_abstracts.get(pmid, "")) or ""),
                 entities=[],
                 edges=[],
@@ -122,11 +125,12 @@ def _initialize_llm_from_callback_state(
 
 
 def _rebuild_chat_session_from_graph(savepath, llm_client, topic: str | None = None):
+    import pathlib as _pathlib
+
     from netmedex.chat import ChatSession
     from netmedex.graph import load_graph
     from netmedex.graph_rag import GraphRetriever
     from netmedex.rag import AbstractRAG
-    import pathlib as _pathlib
 
     G = load_graph(savepath["graph"])
     documents = _abstract_documents_from_graph(G)
@@ -166,6 +170,7 @@ def _strip_message_suggestions(messages: list) -> list:
     removes any node whose className contains 'message-suggestions', so that
     only the *latest* assistant message shows its pill questions.
     """
+
     def _strip(node):
         if not isinstance(node, dict):
             return node
@@ -210,7 +215,7 @@ def rename_suggested_question_ids(node, suffix="-modal"):
                 new_id["index"] = idx + suffix
             node = {**node, "props": {**props, "id": new_id}}
             props = node["props"]
-            
+
         # Recurse through children
         children = props.get("children")
         if isinstance(children, list):
@@ -223,8 +228,9 @@ def rename_suggested_question_ids(node, suffix="-modal"):
 
     # Handle Dash component instance
     import copy
+
     node_copy = copy.copy(node)
-    
+
     # Check for id attribute
     comp_id = getattr(node_copy, "id", None)
     if isinstance(comp_id, dict) and comp_id.get("type") == "suggested-question":
@@ -233,7 +239,7 @@ def rename_suggested_question_ids(node, suffix="-modal"):
         if not idx.endswith(suffix):
             new_id["index"] = idx + suffix
         node_copy.id = new_id
-        
+
     # Recurse children
     if hasattr(node_copy, "children") and node_copy.children is not None:
         children = node_copy.children
@@ -241,7 +247,7 @@ def rename_suggested_question_ids(node, suffix="-modal"):
             node_copy.children = [rename_suggested_question_ids(c, suffix) for c in children]
         else:
             node_copy.children = rename_suggested_question_ids(children, suffix)
-            
+
     return node_copy
 
 
@@ -296,17 +302,17 @@ def parse_suggestions(content):
         return _default_questions(content), content  # always show fallback pills
 
     cut = q1_match.start()
-    
+
     # Check if bracketed format (brackets enclosing the entire question rather than just the marker)
     matched_text = q1_match.group(0)
     q1_idx = matched_text.lower().find("q1")
     has_leading_bracket = "[" in matched_text[:q1_idx]
-    
+
     # Find the position of the colon or dot
     colon_match = re.search(r"[:.]", matched_text)
     colon_idx = colon_match.start() if colon_match else len(matched_text)
     has_bracket_before_colon = "]" in matched_text[:colon_idx]
-    
+
     use_bracketed = has_leading_bracket and not has_bracket_before_colon
 
     before = content[:cut].rstrip()
@@ -585,31 +591,36 @@ def callbacks(app):
                     is_ui_empty = False
 
         import pathlib as _pathlib
+
         history_file = _pathlib.Path(savepath["graph"]).parent / "chat_history.json"
-        
+
         has_history_in_memory = (
-            session_key in _sessions 
-            and _sessions[session_key].get("session") 
-            and (_sessions[session_key]["session"].full_history or _sessions[session_key]["session"].history)
+            session_key in _sessions
+            and _sessions[session_key].get("session")
+            and (
+                _sessions[session_key]["session"].full_history
+                or _sessions[session_key]["session"].history
+            )
         )
         has_history_on_disk = history_file.exists()
 
         if has_history_in_memory or has_history_on_disk:
             if not is_ui_empty:
                 raise dash.exceptions.PreventUpdate
-                
+
             logger.info("auto_initialize_chat: Restoring chat history to the UI")
             try:
+                import re
+
                 from netmedex.chat import ChatSession
                 from netmedex.graph import load_graph
-                from netmedex.rag import AbstractRAG
                 from netmedex.graph_rag import GraphRetriever
+                from netmedex.rag import AbstractRAG
                 from webapp.components.chat import create_message_component
-                import re
 
                 G = load_graph(savepath["graph"])
                 effective_query = search_query or G.graph.get("query", "")
-                
+
                 _query_lang = detect_query_language(effective_query) if effective_query else None
                 if _query_lang and _query_lang != "English":
                     effective_language = _query_lang
@@ -624,13 +635,14 @@ def callbacks(app):
 
                 # Filter community nodes (c0, c1, …) which carry no PMID data.
                 real_selected_nodes = [
-                    n for n in (selected_nodes or [])
+                    n
+                    for n in (selected_nodes or [])
                     if not COMMUNITY_NODE_PATTERN.match(str(n.get("id", "")))
                 ]
                 has_selection = bool((selected_edges or []) or real_selected_nodes)
                 if has_selection:
                     selection_pmids = set()
-                    for edge in (selected_edges or []):
+                    for edge in selected_edges or []:
                         ep = edge.get("pmids", [])
                         if isinstance(ep, str):
                             selection_pmids.add(ep)
@@ -682,7 +694,9 @@ def callbacks(app):
                         rag_system,
                         llm_client,
                         graph_retriever=graph_retriever_auto,
-                        topic=effective_query if effective_query else "biomedical research overview",
+                        topic=effective_query
+                        if effective_query
+                        else "biomedical research overview",
                     )
                     session.load_from_file(str(history_file))
                     _sessions[session_key] = {"session": session, "rag": rag_system}
@@ -693,26 +707,28 @@ def callbacks(app):
 
                 # Render history messages to UI components
                 ui_messages = []
-                history_to_render = session.full_history if session.full_history else session.history
+                history_to_render = (
+                    session.full_history if session.full_history else session.history
+                )
                 for msg in history_to_render:
                     if msg.role == "system":
                         continue
                     if not msg.content or msg.content.strip() == "":
                         continue
-                    
+
                     is_user = msg.role == "user"
                     if is_user:
                         comp = create_message_component("user", msg.content, msg_id=msg.msg_id)
                     else:
                         display_text = getattr(msg, "full_content", None) or msg.content
                         suggestions, clean_content = parse_suggestions(display_text)
-                        
-                        cited_in_msg = sorted(set(
-                            re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", display_text)
-                        ) | set(
-                            re.findall(r"\[(\d{7,10})\]", display_text)
-                        ) | set(msg.sources or []))
-                        
+
+                        cited_in_msg = sorted(
+                            set(re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", display_text))
+                            | set(re.findall(r"\[(\d{7,10})\]", display_text))
+                            | set(msg.sources or [])
+                        )
+
                         comp = create_message_component(
                             "assistant",
                             clean_content,
@@ -743,7 +759,9 @@ def callbacks(app):
                                 last_assistant_idx = i
                                 break
                     if last_assistant_idx is not None:
-                        stripped_part = _strip_message_suggestions(ui_messages[:last_assistant_idx])
+                        stripped_part = _strip_message_suggestions(
+                            ui_messages[:last_assistant_idx]
+                        )
                         ui_messages = stripped_part + ui_messages[last_assistant_idx:]
                     else:
                         ui_messages = _strip_message_suggestions(ui_messages)
@@ -772,16 +790,16 @@ def callbacks(app):
                 ]
 
                 return (
-                    True,   # session active
-                    "",     # status
+                    True,  # session active
+                    "",  # status
                     False,  # Input enabled
                     False,  # Send enabled
                     {"display": "block"},  # clear button style
                     context_banner,
                     {"display": "block"},  # banner style
-                    ui_messages,           # chat-messages children
-                    no_update,             # suggested-question-store
-                    False,                 # is-new-graph reset
+                    ui_messages,  # chat-messages children
+                    no_update,  # suggested-question-store
+                    False,  # is-new-graph reset
                 )
             except Exception as e:
                 logger.error(f"Error restoring chat history: {e}")
@@ -877,7 +895,8 @@ def callbacks(app):
             # Determine whether a sub-network is selected in the Cytoscape graph.
             # Filter community nodes (c0, c1, …) which carry no PMID data.
             real_selected_nodes = [
-                n for n in (selected_nodes or [])
+                n
+                for n in (selected_nodes or [])
                 if not COMMUNITY_NODE_PATTERN.match(str(n.get("id", "")))
             ]
             has_selection = bool((selected_edges or []) or real_selected_nodes)
@@ -885,7 +904,7 @@ def callbacks(app):
             if has_selection:
                 # Use only the PMIDs from the selected sub-network.
                 selection_pmids: set[str] = set()
-                for edge in (selected_edges or []):
+                for edge in selected_edges or []:
                     ep = edge.get("pmids", [])
                     if isinstance(ep, str):
                         selection_pmids.add(ep)
@@ -923,6 +942,7 @@ def callbacks(app):
             # and it enables Layer 3 (Causal Mechanism) to populate when the graph has
             # directional edges (inhibits, activates, ameliorates, etc.).
             from netmedex.graph_rag import GraphRetriever
+
             graph_retriever_auto = GraphRetriever(G, node_rag=None)
 
             session = ChatSession(
@@ -960,7 +980,9 @@ def callbacks(app):
                 summary_msg = summary_result.get("assistant_msg")
                 from webapp.components.chat import create_message_component
 
-                summary_content = summary_result.get("message") or (summary_msg.content if summary_msg else "")
+                summary_content = summary_result.get("message") or (
+                    summary_msg.content if summary_msg else ""
+                )
                 suggestions, clean_content = parse_suggestions(summary_content)
                 summary_component = create_message_component(
                     "assistant",
@@ -1075,7 +1097,6 @@ def callbacks(app):
         background=True,
         prevent_initial_call=True,
     )
-
     def initialize_chat(
         set_progress,
         n_clicks,
@@ -1118,6 +1139,7 @@ def callbacks(app):
         try:
             import os
             import time
+
             from netmedex.chat import ChatSession
             from netmedex.graph import load_graph
             from netmedex.rag import AbstractDocument, AbstractRAG
@@ -1130,6 +1152,7 @@ def callbacks(app):
             try:
                 import sqlite3 as _sqlite3
                 from pathlib import Path as _Path
+
                 _wal_db = _Path(__file__).parent.parent / "cache" / "cache.db"
                 if _wal_db.exists():
                     _wconn = _sqlite3.connect(str(_wal_db))
@@ -1256,9 +1279,11 @@ def callbacks(app):
                         candidates.append(str(node_payload[key]))
                 if node_payload.get("id"):
                     candidates.append(cy_id_to_raw_id.get(str(node_payload["id"]), ""))
-                name_key = str(
-                    node_payload.get("label") or node_payload.get("name") or ""
-                ).lower().strip()
+                name_key = (
+                    str(node_payload.get("label") or node_payload.get("name") or "")
+                    .lower()
+                    .strip()
+                )
                 candidates.extend(label_to_raw_ids.get(name_key, []))
 
                 seen = set()
@@ -1287,11 +1312,7 @@ def callbacks(app):
 
                 source_node = raw_id_to_node.get(str(raw_source or ""))
                 target_node = raw_id_to_node.get(str(raw_target or ""))
-                if (
-                    source_node
-                    and target_node
-                    and G.has_edge(source_node[0], target_node[0])
-                ):
+                if source_node and target_node and G.has_edge(source_node[0], target_node[0]):
                     data = G.edges[source_node[0], target_node[0]]
                 else:
                     source_name = str(edge_payload.get("source_name", "")).lower().strip()
@@ -1341,9 +1362,13 @@ def callbacks(app):
             # Get abstracts and metadata from graph.
             # Normalise all keys to str so lookups never fail due to int/str mismatch
             # (the graph may store PMIDs as integers internally).
-            pmid_abstracts = {str(k): v for k, v in (G.graph.get("pmid_abstract", {}) or {}).items()}
-            pmid_titles    = {str(k): v for k, v in (G.graph.get("pmid_title", {}) or {}).items()}
-            pmid_metadata  = {str(k): v for k, v in (G.graph.get("pmid_metadata", {}) or {}).items()}
+            pmid_abstracts = {
+                str(k): v for k, v in (G.graph.get("pmid_abstract", {}) or {}).items()
+            }
+            pmid_titles = {str(k): v for k, v in (G.graph.get("pmid_title", {}) or {}).items()}
+            pmid_metadata = {
+                str(k): v for k, v in (G.graph.get("pmid_metadata", {}) or {}).items()
+            }
 
             # Shared weighting utility
             import datetime
@@ -1373,16 +1398,17 @@ def callbacks(app):
                 )
 
             # Build node ID → display name map so edge context uses readable names
-            node_name_map = {
-                str(nid): nd.get("name", str(nid))
-                for nid, nd in G.nodes(data=True)
-            }
+            node_name_map = {str(nid): nd.get("name", str(nid)) for nid, nd in G.nodes(data=True)}
 
             def _resolve_edge(edge: dict) -> dict:
                 """Replace raw node-hash source/target with human-readable names."""
                 resolved = dict(edge)
-                resolved["source"] = node_name_map.get(str(edge.get("source", "")), edge.get("source", "Unknown"))
-                resolved["target"] = node_name_map.get(str(edge.get("target", "")), edge.get("target", "Unknown"))
+                resolved["source"] = node_name_map.get(
+                    str(edge.get("source", "")), edge.get("source", "Unknown")
+                )
+                resolved["target"] = node_name_map.get(
+                    str(edge.get("target", "")), edge.get("target", "Unknown")
+                )
                 return resolved
 
             # Build AbstractDocument objects
@@ -1429,7 +1455,7 @@ def callbacks(app):
             import re as _re
 
             def _rag_progress(msg):
-                m = _re.search(r'batch (\d+)/(\d+)', msg)
+                m = _re.search(r"batch (\d+)/(\d+)", msg)
                 if m:
                     bi, bt = int(m.group(1)), int(m.group(2))
                     v = 15 + int((bi / bt) * 25)
@@ -1447,7 +1473,7 @@ def callbacks(app):
             set_progress((42, "🧬 Initializing node index..."))
 
             # Initialize Node RAG System with Persistent Cache (New in v1.1.0)
-            from netmedex.node_rag import NodeRAG, GraphNode
+            from netmedex.node_rag import GraphNode, NodeRAG
 
             # Determine persistent directory based on graph path
             # Example: data/graph.pickle -> data/graph.pickle_chroma
@@ -1556,7 +1582,9 @@ def callbacks(app):
                     _node_index_mode = "full"
             else:
                 logger.info("NodeRAG already indexed. Skipping re-scan.")
-                _node_index_count = node_rag.count() if hasattr(node_rag, "count") else len(G.nodes)
+                _node_index_count = (
+                    node_rag.count() if hasattr(node_rag, "count") else len(G.nodes)
+                )
                 _node_index_mode = "cached"
 
             t_node = time.time()
@@ -1640,13 +1668,14 @@ def callbacks(app):
 
             if summary_result.get("success"):
                 summary_msg = summary_result.get("assistant_msg")
-                summary_content = summary_result.get("message") or (summary_msg.content if summary_msg else "")
+                summary_content = summary_result.get("message") or (
+                    summary_msg.content if summary_msg else ""
+                )
                 suggestions, clean_content = parse_suggestions(summary_content)
-                cited_in_summary = sorted(set(
-                    re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", summary_content)
-                ) | set(
-                    re.findall(r"\[(\d{7,10})\]", summary_content)
-                ))
+                cited_in_summary = sorted(
+                    set(re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", summary_content))
+                    | set(re.findall(r"\[(\d{7,10})\]", summary_content))
+                )
                 summary_component = create_message_component(
                     "assistant",
                     clean_content,
@@ -1686,6 +1715,7 @@ def callbacks(app):
             # Save the initial chat session state to file
             try:
                 import pathlib as _pathlib
+
                 history_file = _pathlib.Path(savepath["graph"]).parent / "chat_history.json"
                 session.save_to_file(str(history_file))
             except Exception as _e:
@@ -1867,7 +1897,8 @@ def callbacks(app):
                     if not llm_client.client and not llm_client.anthropic_client:
                         logger.warning(
                             "Rebuilding chat session from graph, but LLM client is not fully initialized. "
-                            "Provider: %s", llm_client.provider
+                            "Provider: %s",
+                            llm_client.provider,
                         )
                     _rebuild_chat_session_from_graph(
                         savepath,
@@ -1879,12 +1910,24 @@ def callbacks(app):
 
         if not savepath or savepath["graph"] not in _sessions:
             from webapp.components.chat import create_message_component
+
             err_msg = create_message_component(
                 "assistant",
                 "⚠️ Session expired and the chat context could not be rebuilt. Please verify the LLM settings or run a new search.",
             )
             msgs = list(current_messages or []) + [err_msg]
-            return msgs, [rename_suggested_question_ids(m, suffix="-modal") for m in msgs] if msgs else [], "", "", "", "", None, False, False, []
+            return (
+                msgs,
+                [rename_suggested_question_ids(m, suffix="-modal") for m in msgs] if msgs else [],
+                "",
+                "",
+                "",
+                "",
+                None,
+                False,
+                False,
+                [],
+            )
 
         session_data = _sessions[savepath["graph"]]
         session = session_data["session"]
@@ -1921,15 +1964,17 @@ def callbacks(app):
                 user_msg = create_message_component(
                     "user", user_msg_obj.content, msg_id=user_msg_obj.msg_id
                 )
-                response_content = response.get("message") or (assistant_msg_obj.content if assistant_msg_obj else "")
+                response_content = response.get("message") or (
+                    assistant_msg_obj.content if assistant_msg_obj else ""
+                )
                 suggestions, clean_content = parse_suggestions(response_content)
 
                 # Sources = only show PMIDs actually cited/mentioned in the text
-                cited_in_response = sorted(set(
-                    re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", response_content)
-                ) | set(
-                    re.findall(r"\[(\d{7,10})\]", response_content)
-                ) | set(response.get("sources") or []))
+                cited_in_response = sorted(
+                    set(re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", response_content))
+                    | set(re.findall(r"\[(\d{7,10})\]", response_content))
+                    | set(response.get("sources") or [])
+                )
 
                 # Update 2-hop paths from the latest response
                 twohop_paths = response.get("twohop_paths", [])
@@ -1956,20 +2001,36 @@ def callbacks(app):
 
             # Strip suggestions from all previous messages — only the newest reply
             # should show pill questions, avoiding repeated rows of the same pills.
-            previous = _strip_message_suggestions(list(current_messages) if current_messages else [])
+            previous = _strip_message_suggestions(
+                list(current_messages) if current_messages else []
+            )
             messages = previous + [user_msg, ai_msg]
 
             # Save the updated session history to file
             if savepath:
                 try:
                     import pathlib as _pathlib
+
                     history_file = _pathlib.Path(savepath["graph"]).parent / "chat_history.json"
                     session.save_to_file(str(history_file))
                 except Exception as _e:
                     logger.error(f"Failed to save chat history: {_e}")
 
             logger.info(f"send_message SUCCESS for trigger: {trigger_id}")
-            return messages, [rename_suggested_question_ids(m, suffix="-modal") for m in messages] if messages else [], "", "", "", "", None, False, False, twohop_paths
+            return (
+                messages,
+                [rename_suggested_question_ids(m, suffix="-modal") for m in messages]
+                if messages
+                else [],
+                "",
+                "",
+                "",
+                "",
+                None,
+                False,
+                False,
+                twohop_paths,
+            )
 
         except Exception as e:
             logger.error(f"Error sending message: {e}")
@@ -1978,7 +2039,20 @@ def callbacks(app):
             error_msg = create_message_component("assistant", f"❌ Error: {str(e)}")
             messages = list(current_messages) if current_messages else []
             messages.append(error_msg)
-            return messages, [rename_suggested_question_ids(m, suffix="-modal") for m in messages] if messages else [], "", "", "", "", None, False, False, []
+            return (
+                messages,
+                [rename_suggested_question_ids(m, suffix="-modal") for m in messages]
+                if messages
+                else [],
+                "",
+                "",
+                "",
+                "",
+                None,
+                False,
+                False,
+                [],
+            )
 
     @app.callback(
         [
@@ -2011,7 +2085,9 @@ def callbacks(app):
 
         if savepath and savepath["graph"] in _sessions:
             session_data = _sessions.pop(savepath["graph"])
-            gr = getattr(getattr(session_data.get("session"), "graph_retriever", None), "node_rag", None)
+            gr = getattr(
+                getattr(session_data.get("session"), "graph_retriever", None), "node_rag", None
+            )
             if gr is not None:
                 gr.close()
             session_data["session"].clear()
@@ -2020,6 +2096,7 @@ def callbacks(app):
         # Delete chat history file from disk
         if savepath:
             import pathlib as _pathlib
+
             history_file = _pathlib.Path(savepath["graph"]).parent / "chat_history.json"
             if history_file.exists():
                 try:
@@ -2030,7 +2107,9 @@ def callbacks(app):
         messages = [
             html.Div(
                 [
-                    html.Div("💬 Welcome to AI Chat!", className="text-primary fw-bold text-center mb-2"),
+                    html.Div(
+                        "💬 Welcome to AI Chat!", className="text-primary fw-bold text-center mb-2"
+                    ),
                     html.Div(
                         "Select edges in the graph, then click 'Analyze Selection' to start chatting.",
                         className="text-muted text-center small",
@@ -2042,14 +2121,14 @@ def callbacks(app):
 
         return (
             messages,
-            False,   # Session not active
-            "",      # Clear status
-            True,    # Disable input
-            True,    # Disable send button
+            False,  # Session not active
+            "",  # Clear status
+            True,  # Disable input
+            True,  # Disable send button
             {"display": "none"},  # Hide clear button
             None,
             {"display": "none"},
-            [],      # ← Clear sub-network highlight paths (unlocks the graph)
+            [],  # ← Clear sub-network highlight paths (unlocks the graph)
         )
 
     @app.callback(
@@ -2079,20 +2158,22 @@ def callbacks(app):
 
         import json
         import pathlib as _pathlib
+
         history_file = _pathlib.Path(savepath["graph"]).parent / "chat_history.json"
-        
+
         export_history = []
         if savepath["graph"] in _sessions:
             session_data = _sessions[savepath["graph"]]
             session = session_data.get("session")
             if session:
                 export_history = getattr(session, "full_history", None) or session.history
-        
+
         if not export_history and history_file.exists():
             try:
-                with open(history_file, "r", encoding="utf-8") as f:
+                with open(history_file, encoding="utf-8") as f:
                     data = json.load(f)
                 from netmedex.chat import ChatMessage
+
                 export_history = [
                     ChatMessage(
                         role=d["role"],
@@ -2106,13 +2187,15 @@ def callbacks(app):
                 ]
             except Exception as e:
                 logger.error(f"Failed to read chat history for download: {e}")
-                
+
         if not export_history:
             raise dash.exceptions.PreventUpdate
 
         import datetime
         import html as html_lib
+
         import markdown
+
         from webapp.llm import llm_client
 
         # Determine the model name used
@@ -2165,7 +2248,7 @@ def callbacks(app):
                 return f'[<a href="{pubmed_base}/{pmid}/" target="_blank" style="{link_style}">{pmid}</a>]'
 
             # Split on existing <a>…</a> blocks to avoid double-wrapping
-            segments = re.split(r'(<a\s[^>]*>.*?</a>)', html_text, flags=re.DOTALL | re.IGNORECASE)
+            segments = re.split(r"(<a\s[^>]*>.*?</a>)", html_text, flags=re.DOTALL | re.IGNORECASE)
             result = []
             for i, seg in enumerate(segments):
                 if i % 2 == 1:  # inside existing <a> tag – skip
@@ -2292,8 +2375,10 @@ def callbacks(app):
         # Resolve display query: prefer data-input value; fall back to first real user message
         if not initial_query:
             for msg in export_history:
-                if msg.role == "user" and msg.content and not any(
-                    sp in msg.content for sp in skip_prompts
+                if (
+                    msg.role == "user"
+                    and msg.content
+                    and not any(sp in msg.content for sp in skip_prompts)
                 ):
                     initial_query = msg.content.strip()[:300]
                     if len(msg.content.strip()) > 300:
@@ -2341,20 +2426,18 @@ def callbacks(app):
             if suggestions:
                 html_content.append("<div class='suggestions-box'>")
                 for q in suggestions[:3]:
-                    html_content.append(
-                        f"<div class='suggested-pill'>{html_lib.escape(q)}</div>"
-                    )
+                    html_content.append(f"<div class='suggested-pill'>{html_lib.escape(q)}</div>")
                 html_content.append("</div>")
 
             if not is_user:
                 # Extract PMIDs from full_content for comprehensive References,
                 # matching the same logic used in the live chat Sources display.
                 full_text = getattr(msg, "full_content", None) or msg.content
-                export_pmids = sorted(set(
-                    re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", full_text)
-                ) | set(
-                    re.findall(r"\[(\d{7,10})\]", full_text)
-                ) | set(msg.sources or []))
+                export_pmids = sorted(
+                    set(re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", full_text))
+                    | set(re.findall(r"\[(\d{7,10})\]", full_text))
+                    | set(msg.sources or [])
+                )
                 if export_pmids:
                     source_links = [
                         f'<a href="https://pubmed.ncbi.nlm.nih.gov/{html_lib.escape(str(p))}/" target="_blank">[PMID:{html_lib.escape(str(p))}]</a>'
@@ -2428,17 +2511,29 @@ def callbacks(app):
         ctx = dash.callback_context
 
         if not ctx.triggered:
-            modal_content = [rename_suggested_question_ids(c, suffix="-modal") for c in current_content] if current_content else []
+            modal_content = (
+                [rename_suggested_question_ids(c, suffix="-modal") for c in current_content]
+                if current_content
+                else []
+            )
             return is_open, modal_content
 
         button_id = ctx.triggered[0]["prop_id"].split(".")[0]
         logger.info(f"Modal toggle triggered by: {button_id}")
 
         if button_id in ["expand-chat-btn", "close-modal-btn"]:
-            modal_content = [rename_suggested_question_ids(c, suffix="-modal") for c in current_content] if current_content else []
+            modal_content = (
+                [rename_suggested_question_ids(c, suffix="-modal") for c in current_content]
+                if current_content
+                else []
+            )
             return not is_open, modal_content
 
-        modal_content = [rename_suggested_question_ids(c, suffix="-modal") for c in current_content] if current_content else []
+        modal_content = (
+            [rename_suggested_question_ids(c, suffix="-modal") for c in current_content]
+            if current_content
+            else []
+        )
         return is_open, modal_content
 
     # Callback to handle suggested question clicks by populating the input box (Backported from Pediatric Portal)

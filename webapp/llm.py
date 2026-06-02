@@ -8,6 +8,7 @@ from openai import OpenAI
 
 try:
     import anthropic as _anthropic
+
     HAS_ANTHROPIC = True
 except ImportError:
     HAS_ANTHROPIC = False
@@ -301,15 +302,15 @@ class LLMClient:
         if self.api_key:
             if self.provider == "anthropic":
                 if not HAS_ANTHROPIC:
-                    logger.error("anthropic package not installed. Run: pip install 'anthropic>=0.26.0'")
+                    logger.error(
+                        "anthropic package not installed. Run: pip install 'anthropic>=0.26.0'"
+                    )
                     self.anthropic_client = None
                     self.client = None
                 else:
                     self.anthropic_client = _anthropic.Anthropic(api_key=self.api_key)
                     self.client = None
-                    logger.info(
-                        f"Anthropic Client initialized with model: {self.model}"
-                    )
+                    logger.info(f"Anthropic Client initialized with model: {self.model}")
             else:
                 self.anthropic_client = None
                 # OpenRouter headers (optional but recommended for rate limiting/diagnostics)
@@ -340,7 +341,10 @@ class LLMClient:
                 models = self.anthropic_client.models.list()
                 model_ids = [m.id for m in models.data]
                 if self.model not in model_ids and model_ids:
-                    return False, f"Model '{self.model}' not found. Available: {', '.join(model_ids[:5])}"
+                    return (
+                        False,
+                        f"Model '{self.model}' not found. Available: {', '.join(model_ids[:5])}",
+                    )
                 return True, "Connection successful"
             except Exception as e:
                 logger.error(f"Anthropic connection test failed: {e}")
@@ -496,7 +500,9 @@ class LLMClient:
             raise ValueError("LLM API key is not configured")
 
         if self.provider == "anthropic":
-            raise ValueError("Anthropic does not provide a native embeddings API. Use a different provider for KG Normalization.")
+            raise ValueError(
+                "Anthropic does not provide a native embeddings API. Use a different provider for KG Normalization."
+            )
 
         if not self.client:
             raise ValueError("LLM client not initialized")
@@ -551,10 +557,6 @@ class LLMClient:
             logger.error(f"LLM Error during query translation to English: {e}")
             return text
 
-
-
-
-
     def translate_query_to_boolean(self, natural_query: str) -> str:
         """
         Translates a natural language query into a PubTator3 boolean query key.
@@ -566,7 +568,7 @@ class LLMClient:
             "You are a professional all-around expert in biomedical literature, specializing in finding information and optimizing search queries. "
             "Your task is to translate, restructure, and optimize natural language queries into optimized boolean queries for PubTator3. "
             "PubTator3 supports entity types like @GENE, @DISEASE, @CHEMICAL, @SPECIES, etc., but also standard text search. "
-            "Use standard boolean operators: AND, OR, NOT. Use quotes for exact phrases representing established names (e.g., \"Helicobacter pylori\"). "
+            'Use standard boolean operators: AND, OR, NOT. Use quotes for exact phrases representing established names (e.g., "Helicobacter pylori"). '
             "IMPORTANT: If the user's query is in a language other than English (e.g., Traditional Chinese, Japanese, Korean), "
             "you MUST first translate and restructure the concepts into scientifically accurate English before building the boolean query. "
             "If the user's query is very broad (e.g., just 'Cancer', 'Gene', 'Protein'), you MUST add specific constraints "
@@ -579,7 +581,7 @@ class LLMClient:
             "A query with too many AND conditions returns zero results. Prefer a focused query over an exhaustive one. "
             "OR EXPANSION RULE: When adding a secondary concept, use OR to include common synonyms rather than a single exact phrase. "
             'For example, instead of AND "inflammatory regulation", write AND ("inflammation" OR "anti-inflammatory" OR "immune response"). '
-            "PHRASE QUOTING AVOIDANCE RULE: Do NOT wrap multi-word biological processes, functions, or mechanisms (e.g. \"osteoblast differentiation\", \"cell division\", \"gene regulation\") in quotes, as this over-constrains PubTator3 query matching and results in zero matches. Instead, simplify them to the core entity noun (e.g. \"osteoblast\") or connect the words with AND (e.g. osteoblast AND differentiation) or expand with OR (e.g. (\"osteoblast\" OR \"osteogenesis\")). "
+            'PHRASE QUOTING AVOIDANCE RULE: Do NOT wrap multi-word biological processes, functions, or mechanisms (e.g. "osteoblast differentiation", "cell division", "gene regulation") in quotes, as this over-constrains PubTator3 query matching and results in zero matches. Instead, simplify them to the core entity noun (e.g. "osteoblast") or connect the words with AND (e.g. osteoblast AND differentiation) or expand with OR (e.g. ("osteoblast" OR "osteogenesis")). '
             "RARE ENTITY RULE: If the query contains a highly specific entity (e.g., a rare microorganism species, uncommon gene), "
             "that entity name alone is often sufficient — adding secondary AND constraints may discard most relevant papers. "
             "In that case, return just the specific entity name without any AND conditions. "
@@ -590,8 +592,8 @@ class LLMClient:
             "'骨質疏鬆的基因' -> '\"Osteoporosis\" AND @GENE' "
             "'Lung cancer genes' -> '\"Lung Neoplasms\" AND @GENE' "
             "'胃癌與幽門螺旋桿菌的關係' -> '\"Stomach Neoplasms\" AND \"Helicobacter pylori\"' "
-            "'淫羊藿苷 (Icariin) 如何調控成骨細胞分化？' -> '\"Icariin\" AND (\"osteoblast\" OR \"osteogenesis\")' "
-            "'How does Icariin regulate osteoblast differentiation?' -> '\"Icariin\" AND (\"osteoblast\" OR \"osteogenesis\")' "
+            '\'淫羊藿苷 (Icariin) 如何調控成骨細胞分化？\' -> \'"Icariin" AND ("osteoblast" OR "osteogenesis")\' '
+            '\'How does Icariin regulate osteoblast differentiation?\' -> \'"Icariin" AND ("osteoblast" OR "osteogenesis")\' '
             '\'大腸直腸癌相關的菌相及其調控基因、miRNA\' -> \'"Colorectal Neoplasms" AND ("microbiota" OR "gut microbiome") AND (@GENE OR "miRNA" OR "microRNA")\' '
             '\'Anaerostipes hadrus inflammatory regulation\' -> \'"Anaerostipes hadrus" AND ("inflammation" OR "butyrate" OR "gut microbiota")\' '
             "'pathway linking Anaerostipes hadrus to inflammation' -> '\"Anaerostipes hadrus\"' "
@@ -950,12 +952,14 @@ class LLMClient:
             logger.error(f"Error fetching Gemini models: {e}")
             raise e
 
-
     def get_groq_models(self, api_key: str) -> list[str]:
         import requests
+
         try:
             headers = {"Authorization": f"Bearer {api_key}"}
-            response = requests.get("https://api.groq.com/openai/v1/models", headers=headers, timeout=10)
+            response = requests.get(
+                "https://api.groq.com/openai/v1/models", headers=headers, timeout=10
+            )
             if response.status_code == 200:
                 data = response.json().get("data", [])
                 return [m.get("id") for m in data if m.get("id")]

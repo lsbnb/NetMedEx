@@ -4,7 +4,6 @@ import base64
 import os
 from binascii import Error as Base64Error
 
-
 _MB = 1024 * 1024
 
 

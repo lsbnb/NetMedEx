@@ -173,7 +173,9 @@ class PubTatorAPI:
             )
 
         if self.return_pmid_only:
-            return PubTatorCollection(headers=[], articles=[], metadata={"pmid_list": pmid_list[:self.max_articles]})
+            return PubTatorCollection(
+                headers=[], articles=[], metadata={"pmid_list": pmid_list[: self.max_articles]}
+            )
 
         # --- Dynamic Batch Loading Loop ---
         articles: list[PubTatorArticle] = []
@@ -211,7 +213,7 @@ class PubTatorAPI:
 
             # Check if we have enough articles
             if len(articles) >= self.max_articles:
-                articles = articles[:self.max_articles]
+                articles = articles[: self.max_articles]
                 allowed_pmids = {a.pmid for a in articles}
                 all_records = [r for r in all_records if str(r.get("pmid")) in allowed_pmids]
                 break
@@ -241,7 +243,9 @@ class PubTatorAPI:
         return PubTatorCollection(
             headers=[],
             articles=articles,
-            metadata={"pmid_list": [a.pmid for a in articles] if self.query is not None else pmid_list},
+            metadata={
+                "pmid_list": [a.pmid for a in articles] if self.query is not None else pmid_list
+            },
             raw_biocjson=raw_biocjson,
         )
 
@@ -522,7 +526,7 @@ async def request_pubtator3(
                 msg = f"Failed to parse response: {res.url} Error: {e}"
                 logger.warning(f"{msg} Retrying.")
                 raise RetryableError(msg)
-    except asyncio.TimeoutError as exc:
+    except TimeoutError as exc:
         msg = "PubTator request timed out. Please retry later or use a more specific query."
         logger.warning(f"{msg} URL: {url}")
         raise RetryableError(msg) from exc

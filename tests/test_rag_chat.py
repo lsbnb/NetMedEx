@@ -100,6 +100,51 @@ class TestRAGChat(unittest.TestCase):
         # Deterministic listing path should bypass LLM chat completion.
         self.assertFalse(self.llm_client.client.chat.completions.create.called)
 
+    def test_history_save_and_load(self):
+        import tempfile
+        import os
+        from netmedex.chat import ChatMessage
+
+        session = ChatSession(self.rag, self.llm_client)
+        session.history = [
+            ChatMessage(role="user", content="Hello"),
+            ChatMessage(role="assistant", content="Hi there", full_content="Hi there full"),
+        ]
+        session.full_history = list(session.history)
+        session.memory_buffer = ["Turn 1 Q & A summary"]
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            filepath = os.path.join(tmpdir, "chat_history.json")
+            session.save_to_file(filepath)
+
+            # Recreate session and load
+            new_session = ChatSession(self.rag, self.llm_client)
+            success = new_session.load_from_file(filepath)
+            
+            self.assertTrue(success)
+            self.assertEqual(len(new_session.history), 2)
+            self.assertEqual(new_session.history[0].content, "Hello")
+            self.assertEqual(new_session.history[1].full_content, "Hi there full")
+            self.assertEqual(len(new_session.full_history), 2)
+            self.assertEqual(new_session.full_history[1].full_content, "Hi there full")
+            self.assertEqual(new_session.memory_buffer, ["Turn 1 Q & A summary"])
+
+    def test_entity_listing_added_to_full_history(self):
+        graph = nx.Graph()
+        graph.add_node("mir-1", name="miR-1", type="Gene", pmids={"100001"})
+        graph_retriever = MagicMock()
+        graph_retriever.graph = graph
+
+        session = ChatSession(self.rag, self.llm_client, graph_retriever=graph_retriever)
+        result = session.send_message("請列出所有 miRNA")
+
+        self.assertTrue(result["success"])
+        # Check that both history and full_history are populated
+        self.assertEqual(len(session.history), 2)
+        self.assertEqual(len(session.full_history), 2)
+        self.assertEqual(session.full_history[0].content, "請列出所有 miRNA")
+        self.assertIn("miR-1", session.full_history[1].content)
+
 
 if __name__ == "__main__":
     unittest.main()
