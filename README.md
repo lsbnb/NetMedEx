@@ -2,15 +2,31 @@
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
-[![Doc](https://img.shields.io/badge/Doc-online)](https://yehzx.github.io/NetMedEx/)  
+[![Doc](https://img.shields.io/badge/Doc-online)](https://yehzx.github.io/NetMedEx/)
 
-NetMedEx is an AI-powered knowledge discovery platform designed to transform biomedical literature into actionable insights. Unlike traditional tools that merely extract entities, NetMedEx leverages **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** and **Full-Text BioC-JSON Processing** to synthesize structured co-mention networks with unstructured text, providing a holistic understanding of biological relationships.
+**NetMedEx** is an AI-powered biomedical knowledge discovery platform. It searches over **30 million PubMed articles** via PubTator3, builds interactive co-mention networks of biological concepts (genes, diseases, chemicals, etc.), and lets you interrogate those networks through a **Hybrid RAG Chat** powered by large language models.
 
-In NetMedEx, the **Co-Mention Network** serves as a structural "scaffolding." While the network visualizes the landscape of bio-concepts (genes, diseases, chemicals, etc.), the **AI-driven Semantic Layer** breathes life into these connections by extracting evidence, identifying relationship types, and answering complex natural language queries. **v1.1.0** introduces **sapBERT-based KG Normalization**, ensuring semantic consistency by merging equivalent concept variants across the Knowledge Graph. **v1.3.2** adds `@Type` syntax to Search Nodes for type-based node selection and path search, fixes Chat download history to include all messages, and improves the Search Nodes tooltip. **v1.3.1** fixes diskcache WAL accumulation that caused Chat analysis to hang, and introduces adaptive chat response modes (Compact Mode, flexible Layer 2 skip, adaptive Layer 5 question count). **v1.3.0** introduces Anthropic Claude API support, advanced configuration UI updates, strict CJK language output directives, token usage guides, and platform comparison documentation. **v1.2.8** integrates the Groq API provider for high-speed semantic relationship extraction and Hybrid RAG chat, automatically filters publication-type noise (e.g. editorials, congress reports) from text queries, updates the suggested question framework to target specific cited concepts instead of generic placeholders, resolves modal component ID conflicts, and fixes all broken tests. **v1.2.7** delivers stability and performance improvements — graph lag fixes (preset layout fallback for large graphs), a loading spinner during graph rebuild, NVIDIA NIM wired into all Search/Chat callbacks, lazy ChatSession reconstruction after server restarts, and a preflight diagnostic for Chat indexing. **v1.2.6** advances the Chat Panel with a **5-Layer Evidence Reasoning Framework** that strictly separates direct literature evidence, association inference, causal mechanism hypotheses, and integrated summary—each with edge-level PMID citations—alongside **Dijkstra weighted shortest-path search** in the Graph Panel and **MeSH CUI-based entity deduplication** to prevent abbreviation/full-name fragmentation (e.g., `"hcv"` ↔ `"hepatitis c virus"`).
+## What NetMedEx Can Do
+
+NetMedEx follows a three-step discovery workflow — each step corresponds to a dedicated panel in the web interface:
+
+1. **Search & Build Networks** — Query 30M+ PubMed articles by keyword, gene list, disease, or chemical. NetMedEx extracts co-mentioned biological entities and constructs a weighted, interactive knowledge graph. Supports multilingual input (CJK auto-translated to PubTator3 syntax).
+
+2. **Explore the Graph** — Visualize entity relationships, detect communities (Louvain algorithm), adjust layout (fCose with node repulsion control), filter by entity type (`@Gene`, `@Disease`, …), and find the strongest-evidence path between nodes (Dijkstra weighted shortest path).
+
+3. **Chat & Discover Mechanisms** — Select any sub-network and ask natural-language questions. The **5-Layer Hybrid RAG** uncovers latent 2-hop pathways (A → B → C) and structures responses from direct PMID-grounded evidence through speculative inference, causal mechanism, integrated summary, to suggested follow-up questions — with every claim labelled `[Human]` or `[Animal/In vitro]`.
+
+**Supporting capabilities:**
+
+- **Flexible LLM providers** — OpenAI, Anthropic Claude, Google Gemini, Groq, NVIDIA NIM, and local Ollama; configurable from the web UI without restarting.
+- **Semantic entity normalization** — sapBERT + MeSH CUI deduplication merges abbreviations with full names (e.g. `"hcv"` ↔ `"hepatitis c virus"`) for a cleaner graph.
+- **Rich export formats** — HTML (interactive), XGMML (Cytoscape), PubTator/BioC-JSON, RIS (EndNote), Chat History, and full Graph state (`.pkl`) for session restore.
+- **Batch processing** — All search and network-building steps are also available via CLI for automated, high-throughput workflows.
 
 ---
 
-## 🆕 Recent Updates
+<details>
+<summary><h2>🆕 Recent Updates</h2></summary>
 
 ### v1.3.2 — 2026-06-01
 
@@ -90,36 +106,41 @@ In NetMedEx, the **Co-Mention Network** serves as a structural "scaffolding." Wh
 - Rate-limit retry with exponential back-off for PubTator3 API calls.
 - Bug fixes: HTML export multi-node search, topological layout node overlap, CJK query translation pipeline.
 
+</details>
+
 ---
 
 ## 🚀 Getting Started
 
-NetMedEx offers flexible ways to interact with the platform:
-
-1. [Web Application (via Docker)](#-web-application-via-docker) - **Recommended**
-2. [Web Application (Local)](#-web-application-local)
-3. [Command-Line Interface (CLI)](#-command-line-interface-cli)
-4. [Python API](#-package-api)
+| Method | Best for | Install |
+| --- | --- | --- |
+| [🐳 Docker](#-web-application-via-docker) *(Recommended)* | Quickest setup — no Python needed | `docker run` |
+| [💻 Local Install](#-web-application-local) | Web UI + development | `git clone` + `pip install -e .` |
+| [🛠️ CLI](#-command-line-interface-cli) | Batch processing & automation | `pip install git+https://github.com/lsbnb/NetMedEx.git` *(no repo clone needed)* |
 
 ---
 
 ## 🐳 Web Application (via Docker)
 
-The easiest way to start is using [Docker](https://www.docker.com/). Run the command below and visit the access URL:
+The easiest way to start. No Python installation required.
 
 ```bash
 docker run -d -p 8050:8050 --rm lsbnb/netmedex
 ```
 
 > [!IMPORTANT]
-> **Access URL**: [http://localhost:8050](http://localhost:8050)
+> Open **[http://localhost:8050](http://localhost:8050)** in your browser.
 
-## 📦 Installation
+---
+
+## 💻 Web Application (Local)
+
+Requires **Python ≥ 3.11**.
 
 > [!WARNING]
-> The PyPI release (`pip install netmedex`) is outdated and only supports up to version `0.3.0`. Please use one of the methods below to get the latest `v1.3.x` features.
+> The PyPI release (`pip install netmedex`) is outdated (≤ v0.3.0). Use the steps below to get the latest version.
 
-### Option A — Clone & install (recommended for local web app)
+### 1. Clone and install
 
 ```bash
 git clone https://github.com/lsbnb/NetMedEx.git
@@ -131,40 +152,35 @@ source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -e .
 ```
 
-Requires Python ≥ 3.11.
-
-### Option B — pip install from GitHub (recommended for CLI / API use)
-
-```bash
-pip install git+https://github.com/lsbnb/NetMedEx.git
-```
-
-## 💻 Web Application (Local)
-
-### 1. Configure API keys (first time only)
-
-```bash
-cp .env.example .env
-# Edit .env and fill in your LLM API key (OPENAI_API_KEY, GEMINI_API_KEY, etc.)
-```
-
 ### 2. Start the webapp
 
+**Linux / macOS:**
+
 ```bash
+pip install gunicorn
 bash start_webapp.sh
 ```
 
-The script auto-detects the Python environment in this order:
+**Windows:**
 
-1. `.venv/` inside the project directory (created by Option A above)
-2. The active `conda` / `virtualenv` environment
-3. System `python3` / `gunicorn`
+`start_webapp.sh` requires bash and gunicorn, which are not natively supported on Windows. Choose one of the following:
 
-If none is found, it prints an install hint and exits.
+- **Recommended — WSL (Windows Subsystem for Linux):** Install [WSL 2](https://learn.microsoft.com/windows/wsl/install), then follow the Linux steps above inside the WSL terminal.
+- **Alternative — `waitress` (runs natively on Windows):**
 
-> [!IMPORTANT]
-> **Access URL**: [http://localhost:8050](http://localhost:8050)
+  ```powershell
+  pip install waitress
+  $env:NETMEDEX_SESSION_SECRET = python -c "import secrets; print(secrets.token_hex(32))"
+  waitress-serve --host=0.0.0.0 --port=8050 webapp.wsgi:application
+  ```
 
+> [!NOTE]
+> If you encounter encoding errors with non-ASCII content (e.g. Chinese terms) on Windows, ensure your terminal is set to UTF-8: `chcp 65001`.
+
+Open **[http://localhost:8050](http://localhost:8050)** in your browser.
+
+> [!TIP]
+> No API key is needed to start. Once the app is running, go to **Advanced Settings** in the sidebar to enter your LLM provider key (OpenAI, Anthropic, Gemini, Groq, etc.). You can also save it permanently to `.env` from within the UI.
 
 ---
 
@@ -179,11 +195,12 @@ NetMedEx features an interactive **Chat Panel** driven by **Hybrid RAG**, which 
 </p>
 
 ### Key Capabilities
+
 - **Full-Text BioC-JSON Ingestion**: Retrieve and analyze the entire article (Methods, Results, Discussion) via PubTator3 API integration.
 - **PMID-Based De-duplication**: Automatically consolidates multiple mentions of entities and relations within the same paper to ensure accurate NPMI calculation and knowledge graph stability.
 - **Hybrid RAG Chat**: Synthesizes **unstructured text** (abstracts + full-text) and **structured graph knowledge** (paths and neighbors).
 - **🧠 Smart 2-Hop Graph RAG**: Deep mechanistic discovery using two-hop traversal with hybrid scoring (NPMI + Confidence + Semantic Relevance).
-- **🔬 Interactive Pathway Cards** *(v1.2.6)*: 2-hop mechanistic inferences are rendered as inline pathway cards — clickable PMID badges, gold-bordered bridge nodes, and directional edge labels. No more static SVG diagrams.
+- **🔬 2-Hop Mechanistic Path Reports** *(v1.2.6)*: When 2-hop paths (A → B → C) are identified, the chat response describes each path in Layer 2 (Speculative Inference) and Layer 3 (Causal Mechanism) — including the graph path, per-edge PMID citations, path confidence score, and directionality. The corresponding bridge nodes and path edges are simultaneously highlighted in the Graph Panel.
 - **🔗 Chat→Graph Synchronization** *(v1.2.6)*: 2-hop inference paths automatically highlight back in the Graph Panel — bridge nodes glow gold, inferred path edges render as dashed orange.
 - **🛤️ Dijkstra Weighted Shortest Path** *(v1.2.6)*: Enter 2+ node names (comma-separated) in **Search Nodes** to find the strongest-evidence route between them, weighted by NPMI. Available in both the webapp and exported HTML.
 - **🧬 sapBERT + CUI-based KG Normalization** *(v1.2.6)*: Two-pass normalization — MeSH CUI-based deduplication (merges abbreviations with their full names, e.g., `"hcv"` → `"hepatitis c virus"`) followed by sapBERT embedding similarity.
@@ -195,21 +212,23 @@ NetMedEx features an interactive **Chat Panel** driven by **Hybrid RAG**, which 
 - **Natural Language & Universal Translation**: Ask in English, Japanese, Chinese, or Korean! Automatic translation to optimized PubTator3 English syntax.
 
 ### Setup AI Engine
+
 1. Obtain an API key from your preferred provider or set up a local/on-premises LLM endpoint.
 2. Configure via **"Advanced Settings"** in the web interface or via `.env` file.
 
 Supported LLM providers:
 
-| Provider | Where to get key | Notes |
-|---|---|---|
-| **OpenAI** | [platform.openai.com](https://platform.openai.com/api-keys) | Recommended: `gpt-4o` |
-| **Google Gemini** | [aistudio.google.com](https://aistudio.google.com) | Recommended: `gemini-2.0-flash` |
-| **OpenRouter** | [openrouter.ai](https://openrouter.ai/keys) | Access 200+ models via single key |
-| **NVIDIA NIM** | [build.nvidia.com](https://build.nvidia.com) | Cloud or on-premises NIM (`nvapi-...`) |
-| **Local Ollama** | — | Self-hosted, no key required |
+| Provider                | Where to get key                                         | Notes                                    |
+| ----------------------- | -------------------------------------------------------- | ---------------------------------------- |
+| **OpenAI**        | [platform.openai.com](https://platform.openai.com/api-keys) | Recommended:`gpt-4o`                   |
+| **Google Gemini** | [aistudio.google.com](https://aistudio.google.com)          | Recommended:`gemini-2.0-flash`         |
+| **OpenRouter**    | [openrouter.ai](https://openrouter.ai/keys)                 | Access 200+ models via single key        |
+| **NVIDIA NIM**    | [build.nvidia.com](https://build.nvidia.com)                | Cloud or on-premises NIM (`nvapi-...`) |
+| **Local Ollama**  | —                                                       | Self-hosted, no key required             |
 
 > [!TIP]
 > **Connecting to Local / On-premises LLMs:**
+>
 > - **Linux/Docker**: Use your host IP (e.g., `http://192.168.1.100:11434`).
 > - **Windows/macOS (Docker)**: Use `http://host.docker.internal:[PORT]`.
 > - **NVIDIA NIM (cloud)**: Base URL `https://integrate.api.nvidia.com/v1`, key starts with `nvapi-`.
@@ -222,6 +241,7 @@ Supported LLM providers:
 The workspace follows a logical discovery workflow across three main operational panels.
 
 ### 1. Search & Configuration (The Entry Point)
+
 The **Search Panel** is where you define your research scope and configure the AI engine.
 
 <p align="center">
@@ -230,7 +250,7 @@ The **Search Panel** is where you define your research scope and configure the A
   <i>Figure 2: The Search Panel for keyword and natural language querying.</i>
 </p>
 
-Expand **Advanced Settings** to configure your LLM provider. This is a crucial first step for enabling semantic analysis.
+Click the ⚙️ gear icon in the sidebar to open **Advanced Settings** and configure your LLM provider. This is a crucial first step for enabling semantic analysis.
 
 <p align="center">
   <img src="./docs/img/netmedex_advanced_settings_openai.png" width="300" alt="Advanced Settings">
@@ -256,128 +276,144 @@ Users can also upload previously downloaded PubTator format files for re-analysi
 > **Graph File Restore**: After a time-consuming Semantic Analysis run, export the result as a **Graph (.pkl)** from the Graph Panel, then reload it later via **Search Panel → Source: Graph File (.pkl)**. The full graph state — including all semantic edges, node metadata, and article abstracts — is restored instantly, allowing you to continue adjusting the network and using the Chat Panel without re-running any analysis.
 
 ### 2. Graph & Scaffolding (Structural View)
-The **Graph Panel** visualizes the co-mention/semantic analyzed network, providing the visualization of search results for your research. Using the shift key to select sub-network, those selected nodes and edges will be highlighted as the base for chat in next step. Users can visualize the network using different layouts and community detection algorithms.
 
-> [!TIP]
-> **Search Nodes — Shortest Path** *(v1.2.6)*: Type two or more node names separated by commas in the **Search Nodes** field (e.g., `Piezo1, neoplasms`) to compute the **Dijkstra weighted shortest path** between them. The strongest-evidence route is highlighted: anchor nodes in orange, intermediate bridge nodes in teal, and path edges as thicker orange lines. If no path exists the panel falls back to standard neighbor highlighting. The same feature is available in the exported HTML file.
-
-Users also can export the network in several formats:
-
-| Export Format | Description | Re-importable? |
-|---|---|---|
-| **HTML** | Interactive visualization for browsers ([example](https://htmlpreview.github.io/?https://github.com/lsbnb/NetMedEx/blob/main/docs/Diabetes_miRNA.html)) | ❌ |
-| **XGMML** | Network file for Cytoscape Desktop | ❌ |
-| **PubTator** | Raw annotation file | ✅ Re-upload in Search Panel |
-| **RIS (EndNote)** | Full bibliographic metadata (authors, journal, DOI) for citation management | ❌ |
-| **Graph (.pkl)** | **Full graph state** including semantic analysis results and article abstracts | ✅ Restore in Search Panel → "Graph File" |
-
-> [!NOTE]
-> **Cytoscape XGMML Export**: When exporting an XGMML file, the topological Graph structure, relation edge data, and structural directionality translate natively to Cytoscape Desktop for sophisticated third-party graph analysis without information loss.
+The **Graph Panel** visualizes the co-mention or semantically analyzed network. Users can explore entity relationships using different layouts and community detection algorithms, then select a sub-network as the context for AI-powered chat in the next step.
 
 <p align="center">
-  <img src="./docs/img/netmedex_graph_panel_v2.jpg" width="300" alt="Graph Panel">
+  <img src="./docs/img/Figure%208_Graph_panel_network.png" width="800" alt="Graph Panel Network">
   <br>
-  <i>Figure 6: Interactive Knowledge Graph showing Bio-Concept connections.</i>
+  <i>Figure 6: Case study: A disease-gene-chemical co-mention network visualized in NetMedEx, showing semantic-level relationships between genes, diseases, chemicals, and species.</i>
 </p>
 
-<p align="center">
-  <img src="./docs/img/netmedex_graph_panel.png" width="800" alt="Full Graph Panel">
-  <br>
-  <i>Figure 7: High-resolution view of the Graph Panel interface. There are several options in the top right corner of the graph panel, including layout, community detection, and save.</i>
-</p>
+The sidebar shows **Network Statistics** for the visible graph:
 
-<p align="center">
-  <img src="./docs/img/netmedex_graph_sarcopenia.png" width="800" alt="Sarcopenia Graph">
-  <br>
-  <i>Figure 8: Case study: Visualizing the Sarcopenia-related network using NetMedEx to depict the relationships in semantic level between genes, diseases, chemicals, and species.</i>
-</p>
+- 📄 **Articles** — unique PubMed articles linked to at least one edge. May be lower than the Chat panel count, which also includes isolated nodes without edges.
+- 🔵 **Nodes** — number of biological entity nodes currently displayed.
+- 🔗 **Edges** — number of co-occurrence or semantic relationship edges.
+
+Each network element carries structured information:
 
 - **Nodes**: Genes, Diseases, Chemicals, and Species.
-- **Edges**: Literature co-occurrence or Semantic relations. Thicker edges indicate higher frequency/NPMI; **arrows** indicate directionality in semantic mode.
+- **Edges**: Literature co-occurrence or semantic relations. Thicker edges indicate higher frequency/NPMI; **arrows** indicate directionality in semantic mode.
 - **Confidence Heatmap**: Edge colors transition from cool to warm based on the extracted confidence score.
-- **fCose Node Repulsion**: Use the slider in the Graph Settings to adjust network spacing dynamically (10k to 100k units).
-- **Clusters**: Use the **Community Detection** feature to group related concepts automatically using the Louvain method.
+- **fCose Node Repulsion**: Use the slider in Graph Settings to adjust network spacing dynamically (10k–100k units).
+- **Clusters**: Use **Community Detection** to group related concepts automatically using the Louvain method.
 
 <p align="center">
-  <img src="./docs/img/netmedex_graph_community_clusters.png" width="800" alt="Community Clusters">
+  <img src="./docs/img/fCose_topology.png" width="800" alt="fCose Layout Topology">
   <br>
-  <i>Figure 9: Automated community detection for functional clustering.</i>
+  <i>Figure 7: The fCose force-directed layout with node repulsion control, providing dynamic spacing adjustment for optimal network readability.</i>
 </p>
 
 <p align="center">
-  <img src="./docs/img/netmedex_graph_selection.png" width="800" alt="Graph Selection">
+  <img src="./docs/img/Show%20Communities.png" width="800" alt="Show Communities">
+  <br>
+  <i>Figure 8: Automated community detection for functional clustering using the Louvain algorithm.</i>
+</p>
+
+> [!TIP]
+> **Search Nodes — Shortest Path** *(v1.2.6)*: Type two or more node names separated by commas in the **Search Nodes** field (e.g., `Piezo1, neoplasms`) to compute the **Dijkstra weighted shortest path** between them. The strongest-evidence route is highlighted: anchor nodes in orange, bridge nodes in teal, and path edges as thicker orange lines. If no path exists, the panel falls back to standard neighbor highlighting. The same feature is available in exported HTML files.
+
+<p align="center">
+  <img src="./docs/img/Search_nodes.png" width="800" alt="Dijkstra Shortest Path in Search Nodes">
+  <br>
+  <i>Figure 9: Dijkstra weighted shortest-path result in Search Nodes — anchor nodes highlighted in orange, bridge nodes in teal, path edges rendered as thicker orange lines against a dimmed background.</i>
+</p>
+
+Hold **Shift** and click to select nodes and edges, isolating a sub-network as the context for Hybrid RAG chat in the next step.
+
+<p align="center">
+  <img src="./docs/img/Figure%2010%20Selecting%20a%20sub-network.png" width="800" alt="Selecting a Sub-network">
   <br>
   <i>Figure 10: Selecting a sub-network by holding the Shift key to isolate relevant nodes and edges as the base for Hybrid RAG to chat with.</i>
 </p>
 
+The network can be exported in several formats:
+
+| Export Format | Description | Re-importable? |
+| --- | --- | --- |
+| **HTML** | Interactive visualization for browsers ([example](https://htmlpreview.github.io/?https://github.com/lsbnb/NetMedEx/blob/main/docs/demo_html.html)) | ❌ |
+| **XGMML** | Network file for Cytoscape Desktop ([example](docs/demo.xgmml)) | ❌ |
+| **PubTator / BioC-JSON** | Raw annotation file ([example](docs/demo_pubtator.biocjson)) | ✅ Re-upload in Search Panel |
+| **RIS (EndNote)** | Full bibliographic metadata for citation management ([example](docs/ENDNOTE_citations.ris)) | ❌ |
+| **Chat History** | Full chat session as a standalone HTML file ([example](https://htmlpreview.github.io/?https://github.com/lsbnb/NetMedEx/blob/main/docs/demo_chat_history.html)) | ❌ |
+| **Graph (.pkl)** | **Full graph state** including semantic analysis results and article abstracts | ✅ Restore in Search Panel → "Graph File" |
+
+> [!NOTE]
+> **Cytoscape XGMML Export**: The topological graph structure, relation edge data, and structural directionality translate natively to Cytoscape Desktop for third-party graph analysis without information loss.
 
 ### 3. Chat & Semantic Insights (Interpretation)
-The **Chat Panel** provides the deep semantic layer, interpreting the graph using LLMs. When the system identifies 2-hop mechanistic paths, each path is rendered as an **interactive pathway card** *(v1.2.6)* — nodes displayed as styled boxes (gold border for bridge/mediator nodes), edges annotated with relation type and clickable PMID badges.
 
-**Chat→Graph Synchronization** *(v1.2.6)*: Every time a Chat response is generated (either on "Analyze Selection" or any follow-up question), any 2-hop inference paths identified by the Graph RAG are automatically reflected back onto the Graph Panel **without any extra click**. The synchronization works as follows:
+The **Chat Panel** lets you interrogate the selected sub-network in natural language, powered by Hybrid RAG combining graph structure and article abstracts.
 
-| Element | Visual Change |
-|---|---|
-| Bridge / mediator node (the middle node B in A→B→C) | Gold border glow (4 px, `#ffd700`) |
-| Endpoint nodes (the queried entities A and C) | Blue border (3 px, `#4a90d9`) |
-| Edges connecting the inferred path | Dashed orange lines (width 3, `#e8a317`) |
-| All other nodes and edges | No change (remain at full opacity) |
-
-The highlights update automatically with each new Chat response and are cleared when the user activates a **Search Nodes** query (which takes visual priority). This bidirectional link lets researchers immediately locate the inferred mechanism within the full network topology, assess its position relative to other hubs, and verify whether it is a peripheral or central route through the knowledge graph.
+**Step 1 — Start the analysis.** After selecting nodes and edges in the Graph Panel, press **"Analyze Selection"** to index the sub-network. The status bar shows the number of articles and nodes being indexed.
 
 <p align="center">
-  <img src="./docs/img/netmedex_chat_panel_v2.jpg" width="300" alt="Chat Panel">
+  <img src="./docs/img/hybridchat.png" width="800" alt="Chat Panel with Analyze Selection">
   <br>
-  <i>Figure 11: Hybrid RAG Chat for natural language reasoning over the network.</i>
+  <i>Figure 11: Select nodes/edges in the Graph Panel, then press "Analyze Selection" — the Selection Summary shows the articles, nodes, and edges to be indexed.</i>
 </p>
 
 <p align="center">
-  <img src="./docs/img/netmedex_chat_layout_selection.png" width="300" alt="Chat Layout Selection">
+  <img src="./docs/img/fig12B_indexing.png" width="800" alt="Chat Indexing Diagnostic">
   <br>
-  <i>Figure 12(A): Press the "Analyze Selection" button to construct RAGs for communications with the selected sub-network.</i>
+  <i>Figure 12: Indexing diagnostics in the status bar — showing abstract count, indexed node count, and indexing mode.</i>
 </p>
 
-<p align="center">
-  <img src="./docs/img/netmedEx_chat_RAG.png" width="300" alt="RAG Processing">
-  <br>
-  <i>Figure 12(B): Generating RAG context to prepare for the chat session.</i>
-</p>
+**Step 2 — Ask questions.** Type any natural-language question about the sub-network. Responses follow the **5-Layer Evidence Reasoning Framework**:
+
+- **Layer 1**: Direct evidence — per-claim PMID citations, `[Human]` / `[Animal/In vitro]` labels
+- **Layer 2**: Speculative inference — 2-hop paths (A → B → C) with per-edge PMIDs and path confidence
+- **Layer 3**: Causal mechanism — directional chain, polarity, weakest-link evidence, testable prediction
+- **Layer 4**: Integrated summary with inline PMIDs
+- **Layer 5**: Suggested follow-up questions
 
 <p align="center">
-  <img src="./docs/img/netmedex_chat_history_panel.png" width="300" alt="Chat History Panel">
+  <img src="./docs/img/Fig11_hybrid_RAG%20CHAT.png" width="800" alt="Hybrid RAG Chat">
   <br>
-  <i>Figure 13: The Chat History panel for managing and reviewing previous discovery sessions.</i>
+  <i>Figure 13: Hybrid RAG Chat Panel showing a 5-Layer Evidence Reasoning Framework response with inline PMID citations.</i>
+</p>
+
+**Chat→Graph Synchronization** *(v1.2.6)*: When 2-hop paths are identified in a response, the Graph Panel updates automatically — bridge nodes glow gold, endpoint nodes turn blue, and inferred path edges appear as dashed orange lines. Highlights clear when a new **Search Nodes** query is activated.
+
+**Chat History**: All sessions are preserved in the **Chat History** panel (accessible via the **Expand Chat** button). Use the **Download History** button to export the full session as a self-contained HTML file — all 5-Layer responses, inline PMID citations, and Markdown tables are preserved with formatting intact. See a [live demo](https://htmlpreview.github.io/?https://github.com/lsbnb/NetMedEx/blob/main/docs/demo_chat_history.html).
+
+<p align="center">
+  <img src="./docs/img/5Layer.png" width="800" alt="5-Layer Evidence Reasoning Framework">
+  <br>
+  <i>Figure 14: The 5-Layer Evidence Reasoning Framework structure.</i>
 </p>
 
 > [!TIP]
-> **Semantic Markdown Tables**: You can request conversational output directly as semantic tables natively rendering within the chat interface, tracking interactions and PMIDs structurally. These tables are styled natively in HTML History file downloads.
+> Ask for results as a **Markdown table** — the Chat Panel renders them inline, and they are preserved in the HTML history export.
 
 <p align="center">
   <img src="./docs/img/netmedex_chat_table_mirna.png" width="800" alt="miRNA Relationship Table">
   <br>
-  <i>Figure 14: Tabular representation of semantic analysis results (e.g., miRNA relationships).</i>
+  <i>Figure 15: Semantic analysis results rendered as a Markdown table (e.g., miRNA relationships).</i>
 </p>
 
 ## ⚙️ Batch Processing vs. Interactive Discovery
 
-While the **Web Interface** provides a full "Interactive Discovery" workflow—including dynamic sub-network selection (Shift+Select) and real-time Hybrid RAG chat—the **CLI** and **API** are designed for automated batch processing and static graph construction. 
+While the **Web Interface** provides a full "Interactive Discovery" workflow—including dynamic sub-network selection (Shift+Select) and real-time Hybrid RAG chat—the **CLI** and **API** are designed for automated batch processing and static graph construction.
 
 - **Interactive Discovery (Web Only)**: Real-time interaction, dynamic graph filtering, and context-aware chat.
 - **Batch Processing (CLI/API)**: Static semantic analysis and high-throughput network generation.
 
 ---
 
-## 🛠️ Command-Line Interface (CLI)
-
-For high-throughput analysis, use the NetMedEx CLI.
+<details>
+<summary><h2>🛠️ Command-Line Interface (CLI)</h2></summary>
 
 #### Step 1: Search PubMed
+
 ```bash
 # Search articles by keywords
 netmedex search -q '"N-dimethylnitrosamine" AND "Metformin"' --sort score
 ```
 
 `netmedex search` key options:
+
 - `-q, --query`: Query string.
 - `-p, --pmids`: Comma-separated PMID list (alternative to `--query`).
 - `-f, --pmid_file`: Load PMIDs from file, one per line (alternative to `--query`).
@@ -425,6 +461,7 @@ netmedex search \
 ```
 
 #### Step 2: Build the Network
+
 ```bash
 # Generate HTML network for browser viewing
 netmedex network -i annotations.pubtator -o network.html -w 2 --community
@@ -438,6 +475,7 @@ netmedex network -i annotations.pubtator -o network.pickle -f pickle
 > Simply naming the output file `.pkl` is not enough — without `-f pickle`, it will still be written as HTML and `chat` will fail with `invalid load key`.
 
 #### Step 3 (Optional): Semantic Edge Extraction with LLM Providers
+
 Use `--edge_method semantic` to enable semantic relationship extraction.
 
 ```bash
@@ -476,10 +514,12 @@ netmedex network \
 You can also omit `--llm_*` flags and configure defaults via `.env` (e.g., `LLM_PROVIDER`, `OPENAI_API_KEY`, `GEMINI_API_KEY`, `LOCAL_LLM_BASE_URL`, `OPENAI_MODEL`, `GOOGLE_MODEL`, `LOCAL_LLM_MODEL`).
 
 Provider consistency note:
+
 - CLI supports five providers (`openai`, `google`, `openrouter`, `nvidia`, `local`) across `search`, `network`, and `chat`.
 - Provider settings are passed by CLI flags or `.env` values; they are not serialized into `.pubtator`/graph outputs automatically.
 
 #### Step 4 (Optional): Hybrid RAG CLI Chat (Search → Network → Chat)
+
 `netmedex chat` uses the pickled graph (`-f pickle`) as Hybrid RAG context and supports the same three providers.
 
 > [!NOTE]
@@ -505,29 +545,30 @@ netmedex chat \
 ```
 
 Tips:
+
 - Type `exit` or `quit` to leave interactive mode.
 - Use `/clear` to clear chat history.
 - Use `/stats` to inspect session statistics.
 
+</details>
+
 ---
 
-## 🐍 Package API
+<details>
+<summary><h2>🐍 Package API</h2></summary>
 
-NetMedEx can be integrated directly into your Python pipelines as a library.
-
-```python
-# Programmatic Access (API)
-from netmedex import search, network
-```
+NetMedEx exposes two programmatic interfaces for embedding into Python pipelines or external UIs.
 
 ### Embed NetMedEx in Your Own Chat App
 
 If your upstream pipeline finds candidate genes (e.g., top 5 DE genes), you can directly bridge into NetMedEx and keep a conversational session in your own UI.
 
 See example:
+
 - `examples/netmedex_chat_bridge.py`
 
 Minimal flow:
+
 ```python
 from netmedex.chat_bridge import BridgeConfig, NetMedExChatBridge
 
@@ -545,18 +586,21 @@ print(answer["message"])
 ### FastAPI Bridge (for external chat UIs)
 
 Install API extras and run:
+
 ```bash
 pip install -e ".[api]"
 python examples/netmedex_fastapi_server.py
 ```
 
 Endpoints:
+
 - `GET /health`: service health check.
 - `POST /sessions`: build Search -> Network -> Chat context and create a chat session.
 - `POST /sessions/{session_id}/ask`: send a question in that session.
 - `DELETE /sessions/{session_id}`: release session state.
 
 Create a session from genes:
+
 ```bash
 curl -X POST "http://127.0.0.1:8000/sessions" \
   -H "Content-Type: application/json" \
@@ -573,6 +617,7 @@ curl -X POST "http://127.0.0.1:8000/sessions" \
 ```
 
 Ask in-session:
+
 ```bash
 curl -X POST "http://127.0.0.1:8000/sessions/<SESSION_ID>/ask" \
   -H "Content-Type: application/json" \
@@ -580,6 +625,7 @@ curl -X POST "http://127.0.0.1:8000/sessions/<SESSION_ID>/ask" \
 ```
 
 Framework-agnostic Python client example:
+
 ```python
 from examples.netmedex_fastapi_client import NetMedExAPIClient
 
@@ -600,6 +646,7 @@ client.close()
 ```
 
 Reference client file:
+
 - `examples/netmedex_fastapi_client.py`
 
 Integration examples for your own app/chat platform:
@@ -649,6 +696,7 @@ Example C: recommended lifecycle for multi-turn chat
 ```
 
 Minimal Web Chat UI (no framework):
+
 ```bash
 # terminal 1: start FastAPI bridge
 python examples/netmedex_fastapi_server.py
@@ -658,9 +706,11 @@ python -m http.server 8080 --directory examples
 ```
 
 Then open:
+
 - `http://127.0.0.1:8080/minimal_chat_ui.html`
 
 Gradio Chat UI:
+
 ```bash
 # terminal 1: start FastAPI bridge
 python examples/netmedex_fastapi_server.py
@@ -671,11 +721,11 @@ python examples/gradio_chat_ui.py
 ```
 
 Then open:
+
 - `http://127.0.0.1:7860`
 - In the UI, click `Create Session` first, then ask questions.
 
----
-
+</details>
 
 ---
 
@@ -686,4 +736,5 @@ NetMedEx is an open-source research initiative. We welcome contributions to our 
 © 2026 NetMedEx Team. Prepared for submission to GitHub under **cylin2022**.
 
 ---
+
 © 2026 LSBNB Lab@ IIS, Academia Sinica, TAIWAN. Refer to [LICENSE](LICENSE) for details.

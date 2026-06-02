@@ -17,7 +17,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from netmedex.pubtator_data import PubTatorArticle
-from netmedex.pubtator_graph_data import PubTatorNode, PubTatorEdge
+from netmedex.pubtator_graph_data import PubTatorEdge, PubTatorNode
 from netmedex.relation_types import (
     DIRECTIONAL_RELATIONS,
     SYMMETRIC_RELATIONS,
@@ -305,7 +305,9 @@ class SemanticRelationshipExtractor:
             if provider in ("google", "openai", "openrouter"):
                 call_kwargs["response_format"] = {"type": "json_object"}
 
-            response = self._call_llm(prompt, **call_kwargs, pmid=article.pmid, current=article_num, total=0)
+            response = self._call_llm(
+                prompt, **call_kwargs, pmid=article.pmid, current=article_num, total=0
+            )
             relationships = self._parse_llm_response(response, article.pmid)
 
             initial_recall = len(relationships)
@@ -334,7 +336,13 @@ class SemanticRelationshipExtractor:
                     pass_name = "coverage-pass"
 
                 # Global recovery pass
-                coverage_response = self._call_llm(coverage_prompt, max_tokens=2000, pmid=article.pmid, current=article_num, total=0)
+                coverage_response = self._call_llm(
+                    coverage_prompt,
+                    max_tokens=2000,
+                    pmid=article.pmid,
+                    current=article_num,
+                    total=0,
+                )
                 coverage_rels = self._parse_llm_response(coverage_response, article.pmid)
 
                 # Merge results using robust sorted-pair deduplication
@@ -365,7 +373,9 @@ class SemanticRelationshipExtractor:
                 retry_prompt = self._build_compact_retry_prompt(
                     article.title, article.abstract, entity_list
                 )
-                response = self._call_llm(retry_prompt, max_tokens=1000, pmid=article.pmid, current=article_num, total=0)
+                response = self._call_llm(
+                    retry_prompt, max_tokens=1000, pmid=article.pmid, current=article_num, total=0
+                )
                 relationships = self._parse_llm_response(response, article.pmid)
 
         except Exception as e:
@@ -701,18 +711,32 @@ Title: {title}
                     timeout=LLM_TIMEOUT,
                     response_format=response_format,
                 )
-                preview = (response_text[:400] + "...") if len(response_text) > 400 else response_text
+                preview = (
+                    (response_text[:400] + "...") if len(response_text) > 400 else response_text
+                )
                 logger.info(f"DIAGNOSTIC: LLM Response preview: {preview}")
                 return response_text
             except Exception as e:
                 err = str(e).lower()
-                is_rate_limit = any(t in err for t in ("429", "rate limit", "quota", "resource exhausted", "too many requests"))
+                is_rate_limit = any(
+                    t in err
+                    for t in (
+                        "429",
+                        "rate limit",
+                        "quota",
+                        "resource exhausted",
+                        "too many requests",
+                    )
+                )
                 if is_rate_limit and attempt < max_retries - 1:
-                    wait = 15 * (2 ** attempt)  # 15s, 30s, 60s
-                    logger.warning(f"Rate limit hit (attempt {attempt + 1}/{max_retries}), waiting {wait}s before retry...")
+                    wait = 15 * (2**attempt)  # 15s, 30s, 60s
+                    logger.warning(
+                        f"Rate limit hit (attempt {attempt + 1}/{max_retries}), waiting {wait}s before retry..."
+                    )
                     if self.progress_callback and pmid and total:
                         self.progress_callback(
-                            current, total,
+                            current,
+                            total,
                             f"Rate limit — retrying PMID {pmid} (attempt {attempt + 2}/{max_retries}, wait {wait}s)",
                             None,
                         )

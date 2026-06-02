@@ -1,9 +1,9 @@
 from __future__ import annotations
 
+import os
 import threading
 import uuid
-import os
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import Any
 
 from fastapi import FastAPI, HTTPException
@@ -47,7 +47,7 @@ class _SessionStore:
 
     def create(self, bridge: NetMedExChatBridge, meta: dict[str, Any]) -> str:
         session_id = str(uuid.uuid4())
-        now = datetime.now(timezone.utc).isoformat()
+        now = datetime.now(UTC).isoformat()
         with self._lock:
             self._bridges[session_id] = bridge
             self._meta[session_id] = {"created_at": now, **meta}
@@ -119,7 +119,9 @@ def create_app() -> FastAPI:
             if request.query:
                 context = bridge.build_context_from_query(request.query)
             else:
-                context = bridge.build_context_from_genes(genes=request.genes or [], disease=request.disease)
+                context = bridge.build_context_from_genes(
+                    genes=request.genes or [], disease=request.disease
+                )
 
             session_id = store.create(
                 bridge=bridge,

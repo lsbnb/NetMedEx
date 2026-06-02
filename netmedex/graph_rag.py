@@ -88,7 +88,9 @@ class GraphRetriever:
         Extract textual context describing the subgraph relevant to the nodes.
         Thin wrapper around get_subgraph_context_with_paths() for backward compatibility.
         """
-        text, _ = self.get_subgraph_context_with_paths(relevant_nodes, query=query, max_hops=max_hops)
+        text, _ = self.get_subgraph_context_with_paths(
+            relevant_nodes, query=query, max_hops=max_hops
+        )
         return text
 
     def get_subgraph_context_with_paths(
@@ -123,7 +125,9 @@ class GraphRetriever:
         structured_paths = []
 
         # Support robust 2-hop contextual paths using hybrid scoring and filtering
-        explored_paths = self._extract_top_k_paths(valid_nodes, query=query, max_hops=max_hops, top_k=20)
+        explored_paths = self._extract_top_k_paths(
+            valid_nodes, query=query, max_hops=max_hops, top_k=20
+        )
 
         # Pre-scan all paths to determine if ANY directional (mechanistic) edges exist.
         # This flag is passed to the LLM in the header so it knows whether Layer 3
@@ -143,7 +147,9 @@ class GraphRetriever:
 
         if not explored_paths:
             context_lines.append("[DIRECTIONAL MECHANISTIC EDGES: NO]")
-            context_lines.append("No significant relational paths could be found for the queried entities.")
+            context_lines.append(
+                "No significant relational paths could be found for the queried entities."
+            )
         else:
             # Emit a clear header that the LLM uses to decide Layer 3 eligibility.
             dir_flag = "YES" if has_directional_edges else "NO"
@@ -161,12 +167,8 @@ class GraphRetriever:
                 # to the node attributes (e.g. community-suffix mismatch).
                 is_comm = self.graph.graph.get("num_communities", 0) > 0
                 suffix = "_comm" if is_comm else ""
-                names = [
-                    self.graph.nodes[node_id].get("name", node_id) for node_id in path
-                ]
-                stable_ids = [
-                    generate_stable_id(f"node_{node_id}{suffix}") for node_id in path
-                ]
+                names = [self.graph.nodes[node_id].get("name", node_id) for node_id in path]
+                stable_ids = [generate_stable_id(f"node_{node_id}{suffix}") for node_id in path]
                 # Collect primary relation type and PMIDs for each edge in the path
                 edge_relations = []
                 edge_pmids = []
@@ -177,7 +179,11 @@ class GraphRetriever:
                         edata = self.graph.edges[u, v]
                         rel_sets = edata.get("relations", {})
                         all_rels = [r for rels in rel_sets.values() for r in rels]
-                        primary = Counter(all_rels).most_common(1)[0][0] if all_rels else "associated_with"
+                        primary = (
+                            Counter(all_rels).most_common(1)[0][0]
+                            if all_rels
+                            else "associated_with"
+                        )
                         pmids = sorted(rel_sets.keys())[:3]
                         directional = is_directional_relation(primary)
                     else:
@@ -188,15 +194,17 @@ class GraphRetriever:
                     edge_pmids.append(pmids)
                     edge_is_directional.append(directional)
 
-                structured_paths.append({
-                    "path": stable_ids,
-                    "names": names,
-                    "relations": edge_relations,
-                    "edge_pmids": edge_pmids,
-                    "edge_is_directional": edge_is_directional,
-                    "score": round(score, 3),
-                    "hop_count": len(path) - 1,
-                })
+                structured_paths.append(
+                    {
+                        "path": stable_ids,
+                        "names": names,
+                        "relations": edge_relations,
+                        "edge_pmids": edge_pmids,
+                        "edge_is_directional": edge_is_directional,
+                        "score": round(score, 3),
+                        "hop_count": len(path) - 1,
+                    }
+                )
 
         return "\n".join(context_lines), structured_paths
 
@@ -268,12 +276,16 @@ class GraphRetriever:
             v_rel = semantic_relevance_map.get(v, 0.5)
             rel_score = max(u_rel, v_rel)
 
-            base_score = (float(npmi) * 0.3) + (float(calibrated_conf) * 0.4) + (float(rel_score) * 0.3)
+            base_score = (
+                (float(npmi) * 0.3) + (float(calibrated_conf) * 0.4) + (float(rel_score) * 0.3)
+            )
 
             # 4. Ontology Weighting (Gene/Disease Boost)
             u_type = str(self.graph.nodes[u].get("type", "")).lower()
             v_type = str(self.graph.nodes[v].get("type", "")).lower()
-            multiplier = max(self.TYPE_WEIGHTS.get(u_type, 1.0), self.TYPE_WEIGHTS.get(v_type, 1.0))
+            multiplier = max(
+                self.TYPE_WEIGHTS.get(u_type, 1.0), self.TYPE_WEIGHTS.get(v_type, 1.0)
+            )
 
             return base_score * multiplier
 
@@ -283,10 +295,11 @@ class GraphRetriever:
             # Sort start nodes by query relevance so the most query-relevant nodes are prioritized as start nodes
             if query:
                 query_lower = query.lower()
+
                 def get_start_node_priority(node_id):
                     node_data = self.graph.nodes.get(node_id, {})
                     name = str(node_data.get("name", "")).lower().strip()
-                    
+
                     # 1. Substring match of node name/label in query
                     in_query = 0.0
                     if name and name in query_lower:
@@ -295,20 +308,24 @@ class GraphRetriever:
                         words = [w for w in name.split() if len(w) > 2]
                         if words and any(w in query_lower for w in words):
                             in_query = 1.0
-                    
+
                     # 2. Semantic relevance score
                     sem_score = semantic_relevance_map.get(node_id, 0.0)
-                    
+
                     # 3. Graph degree (as a tie breaker)
                     deg = self.graph.degree(node_id) if self.graph.has_node(node_id) else 0
                     deg_score = min(0.1, deg / 1000.0)
-                    
+
                     return in_query + sem_score + deg_score
-                
+
                 start_nodes = sorted(start_nodes, key=get_start_node_priority, reverse=True)
             else:
                 # If no query, sort by degree descending
-                start_nodes = sorted(start_nodes, key=lambda n: self.graph.degree(n) if self.graph.has_node(n) else 0, reverse=True)
+                start_nodes = sorted(
+                    start_nodes,
+                    key=lambda n: self.graph.degree(n) if self.graph.has_node(n) else 0,
+                    reverse=True,
+                )
 
             # Keep only the top MAX_START_NODES that have edges
             start_nodes = [n for n in start_nodes if self.graph.degree(n) > 0][:MAX_START_NODES]

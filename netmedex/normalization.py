@@ -43,7 +43,9 @@ def normalize_knowledge_graph(
     logger.info("Preparing metadata for normalization...")
     node_ids = list(G.nodes())
     node_data_list = [G.nodes[node_id] for node_id in node_ids]
-    display_names = [data.get("name", node_id) for node_id, data in zip(node_ids, node_data_list)]
+    display_names = [
+        data.get("name", node_id) for node_id, data in zip(node_ids, node_data_list, strict=False)
+    ]
     node_types = [data.get("type", "unknown") for data in node_data_list]
     node_cuis = [data.get("mesh") for data in node_data_list]
     node_cuis = [c if c and str(c).strip() else None for c in node_cuis]
@@ -223,7 +225,8 @@ def normalize_knowledge_graph(
 
     # Log breakdown: case vs semantic merges
     case_merges = sum(
-        1 for src, tgt in merging_map.items()
+        1
+        for src, tgt in merging_map.items()
         if display_names[node_ids.index(src)].lower() == display_names[node_ids.index(tgt)].lower()
         if src in node_ids and tgt in node_ids
     )

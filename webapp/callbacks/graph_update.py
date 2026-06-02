@@ -1,6 +1,7 @@
-import os
 import logging
+import os
 import time
+
 from dash import (
     ClientsideFunction,
     Input,
@@ -116,21 +117,31 @@ def callbacks(app):
 
         # Default cut weight depends on weighting method
         default_cut = [0.3, 1.0] if weighting_method == "npmi" else [0, 20]
-        
+
         # Reset layout (run it again to recalculate positions and fit)
         layout_config = get_layout_config(layout_name, node_repulsion)
         layout_config["fit"] = True
-        
+
         # Reset node types to all
-        default_node_types = ["Gene", "Disease", "Chemical", "Species", "CellLine", "DNAMutation", "ProteinMutation", "SNP", "Community"]
-        
+        default_node_types = [
+            "Gene",
+            "Disease",
+            "Chemical",
+            "Species",
+            "CellLine",
+            "DNAMutation",
+            "ProteinMutation",
+            "SNP",
+            "Community",
+        ]
+
         return (
             layout_config,
-            1,                  # node-degree
-            default_cut,        # graph-cut-weight
-            0.0,                # confidence-threshold
-            "",                 # graph-node-search
-            default_node_types, # graph-visible-node-types
+            1,  # node-degree
+            default_cut,  # graph-cut-weight
+            0.0,  # confidence-threshold
+            "",  # graph-node-search
+            default_node_types,  # graph-visible-node-types
         )
 
     @app.callback(

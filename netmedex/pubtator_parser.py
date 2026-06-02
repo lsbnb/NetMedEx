@@ -25,6 +25,7 @@ class PubTatorIO:
     @staticmethod
     def parse(filepath: str | Path) -> PubTatorCollection:
         import json
+
         from netmedex.biocjson_parser import biocjson_to_pubtator
 
         articles: list[PubTatorArticle] = []
@@ -39,6 +40,7 @@ class PubTatorIO:
                     return PubTatorCollection(headers=[], articles=articles)
                 except Exception as e:
                     from netmedex.pubtator_parser import logger
+
                     logger.error(f"Failed to parse BioC-JSON file: {e}")
                     stream.seek(0)  # Try falling back to line-by-line
 

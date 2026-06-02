@@ -56,7 +56,7 @@ def _build_token_batches(
     cur_ids: list[str] = []
     cur_tokens = 0
 
-    for text, meta, doc_id in zip(documents_text, metadatas, ids):
+    for text, meta, doc_id in zip(documents_text, metadatas, ids, strict=False):
         tokens = _count_tokens(text)
         # Flush when either limit would be exceeded
         if (cur_tokens + tokens > max_tokens or len(cur_texts) >= max_docs) and cur_texts:
@@ -89,7 +89,12 @@ class AbstractDocument:
 class AbstractRAG:
     """RAG system for indexing and retrieving PubMed abstracts"""
 
-    def __init__(self, llm_client=None, collection_name: str = "abstracts", persist_directory: str | None = None):
+    def __init__(
+        self,
+        llm_client=None,
+        collection_name: str = "abstracts",
+        persist_directory: str | None = None,
+    ):
         """
         Initialize the RAG system.
 
@@ -107,20 +112,15 @@ class AbstractRAG:
 
         try:
             import chromadb
-            from chromadb.config import Settings
 
             if self.persist_directory:
                 logger.info(f"Using persistent ChromaDB at {self.persist_directory}")
                 self.client = chromadb.PersistentClient(path=self.persist_directory)
             else:
-                # Initialize ChromaDB with ephemeral storage (in-memory for now)
-                # Use a fresh client for each RAG instance to avoid cross-session pollution
-                self.client = chromadb.Client(
-                    Settings(
-                        anonymized_telemetry=False,
-                        allow_reset=True,
-                    )
-                )
+                # Initialize ChromaDB with ephemeral (in-memory) storage.
+                # chromadb.Client(Settings(...)) was removed in chromadb >=1.x;
+                # use EphemeralClient() instead.
+                self.client = chromadb.EphemeralClient()
 
             # Standardize to ChromaDB default embeddings for all providers.
             # This avoids provider-specific embedding endpoint compatibility issues.
@@ -233,7 +233,9 @@ class AbstractRAG:
             logger.error(f"Error indexing abstracts: {e}", exc_info=True)
             raise
 
-    def search(self, query: str, top_k: int = 5, preferred_pmids: set[str] | None = None) -> list[tuple[str, float]]:
+    def search(
+        self, query: str, top_k: int = 5, preferred_pmids: set[str] | None = None
+    ) -> list[tuple[str, float]]:
         """
         Search for relevant abstracts.
 
@@ -261,7 +263,7 @@ class AbstractRAG:
             pmid_scores = []
             if results["ids"] and results["distances"]:
                 for doc_id, distance in zip(
-                    results["ids"][0], results["distances"][0]
+                    results["ids"][0], results["distances"][0], strict=False
                 ):
                     pmid = doc_id.replace("pmid_", "")
                     # Convert distance to similarity score (lower distance = higher similarity)
@@ -294,7 +296,9 @@ class AbstractRAG:
             logger.error(f"Error during search: {e}")
             return []
 
-    def get_context(self, query: str, top_k: int = 5, preferred_pmids: set[str] | None = None) -> tuple[str, list[str]]:
+    def get_context(
+        self, query: str, top_k: int = 5, preferred_pmids: set[str] | None = None
+    ) -> tuple[str, list[str]]:
         """
         Get formatted context for LLM prompt.
 
@@ -334,7 +338,7 @@ class AbstractRAG:
                         rels = edge.get("relations", ["associated"])
                         for r in rels:
                             unique_rels.add(f"- {source} --[{r}]--> {target}")
-                    
+
                     if unique_rels:
                         part.append("Structural Relationships (Extracted):")
                         # Limit to top 15 edges to avoid context window pressure

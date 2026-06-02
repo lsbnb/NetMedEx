@@ -7,7 +7,6 @@ from dash import dcc, html
 from webapp.components.utils import generate_param_title
 from webapp.utils import display
 
-
 max_articles = html.Div(
     [
         generate_param_title(
@@ -306,12 +305,30 @@ llm_config = html.Div(
                         dcc.Dropdown(
                             id="nvidia-model-selector",
                             options=[
-                                {"label": "Llama 3.1 70B Instruct", "value": "meta/llama-3.1-70b-instruct"},
-                                {"label": "Llama 3.1 8B Instruct", "value": "meta/llama-3.1-8b-instruct"},
-                                {"label": "Llama 3.3 70B Instruct", "value": "meta/llama-3.3-70b-instruct"},
-                                {"label": "Nemotron 70B Instruct", "value": "nvidia/llama-3.1-nemotron-70b-instruct"},
-                                {"label": "Mixtral 8x22B Instruct", "value": "mistralai/mixtral-8x22b-instruct-v0.1"},
-                                {"label": "Mistral Large", "value": "mistralai/mistral-large-latest"},
+                                {
+                                    "label": "Llama 3.1 70B Instruct",
+                                    "value": "meta/llama-3.1-70b-instruct",
+                                },
+                                {
+                                    "label": "Llama 3.1 8B Instruct",
+                                    "value": "meta/llama-3.1-8b-instruct",
+                                },
+                                {
+                                    "label": "Llama 3.3 70B Instruct",
+                                    "value": "meta/llama-3.3-70b-instruct",
+                                },
+                                {
+                                    "label": "Nemotron 70B Instruct",
+                                    "value": "nvidia/llama-3.1-nemotron-70b-instruct",
+                                },
+                                {
+                                    "label": "Mixtral 8x22B Instruct",
+                                    "value": "mistralai/mixtral-8x22b-instruct-v0.1",
+                                },
+                                {
+                                    "label": "Mistral Large",
+                                    "value": "mistralai/mistral-large-latest",
+                                },
                             ],
                             value="meta/llama-3.1-70b-instruct",
                             clearable=False,
@@ -366,7 +383,10 @@ llm_config = html.Div(
                         dcc.Dropdown(
                             id="groq-model-selector",
                             options=[
-                                {"label": "Llama 3.3 70B Versatile", "value": "llama-3.3-70b-versatile"},
+                                {
+                                    "label": "Llama 3.3 70B Versatile",
+                                    "value": "llama-3.3-70b-versatile",
+                                },
                                 {"label": "Llama 3.1 8B Instant", "value": "llama-3.1-8b-instant"},
                                 {"label": "Mixtral 8x7B", "value": "mixtral-8x7b-32768"},
                                 {"label": "Gemma 2 9B", "value": "gemma2-9b-it"},
@@ -436,12 +456,27 @@ llm_config = html.Div(
                         dcc.Dropdown(
                             id="anthropic-model-selector",
                             options=[
-                                {"label": "Claude Opus 4.8 (Most Capable)", "value": "claude-opus-4-8"},
-                                {"label": "Claude Sonnet 4.6 (Recommended)", "value": "claude-sonnet-4-6"},
+                                {
+                                    "label": "Claude Opus 4.8 (Most Capable)",
+                                    "value": "claude-opus-4-8",
+                                },
+                                {
+                                    "label": "Claude Sonnet 4.6 (Recommended)",
+                                    "value": "claude-sonnet-4-6",
+                                },
                                 {"label": "Claude Haiku 4.5 (Fast)", "value": "claude-haiku-4-5"},
-                                {"label": "Claude 3.7 Sonnet", "value": "claude-3-7-sonnet-20250219"},
-                                {"label": "Claude 3.5 Sonnet", "value": "claude-3-5-sonnet-20241022"},
-                                {"label": "Claude 3.5 Haiku", "value": "claude-3-5-haiku-20241022"},
+                                {
+                                    "label": "Claude 3.7 Sonnet",
+                                    "value": "claude-3-7-sonnet-20250219",
+                                },
+                                {
+                                    "label": "Claude 3.5 Sonnet",
+                                    "value": "claude-3-5-sonnet-20241022",
+                                },
+                                {
+                                    "label": "Claude 3.5 Haiku",
+                                    "value": "claude-3-5-haiku-20241022",
+                                },
                                 {"label": "Custom...", "value": "custom"},
                             ],
                             value="claude-sonnet-4-6",

@@ -339,8 +339,17 @@ Each question MUST:
 
         # English signals
         repeat_words = {"repeat", "translate", "rephrase", "restate", "reword"}
-        prev_words = {"above", "previous", "prior", "last reply", "last response", "last answer",
-                      "the reply", "the response", "the answer"}
+        prev_words = {
+            "above",
+            "previous",
+            "prior",
+            "last reply",
+            "last response",
+            "last answer",
+            "the reply",
+            "the response",
+            "the answer",
+        }
         lang_words = {"chinese", "japanese", "korean", "english", "french", "spanish", "german"}
 
         has_en_repeat = any(w in msg_lower for w in repeat_words)
@@ -579,10 +588,20 @@ Each question MUST:
             preferred_pmids = set()
             if self.graph_retriever and not is_meta:
                 logger.info("Retrieving graph context...")
-                relevant_nodes = focus_nodes if focus_nodes is not None else self.graph_retriever.find_relevant_nodes(search_query)
+                relevant_nodes = (
+                    focus_nodes
+                    if focus_nodes is not None
+                    else self.graph_retriever.find_relevant_nodes(search_query)
+                )
                 if relevant_nodes:
-                    graph_context, twohop_paths = self.graph_retriever.get_subgraph_context_with_paths(relevant_nodes, query=search_query)
-                    logger.info(f"Found {len(relevant_nodes)} relevant nodes in graph, {len(twohop_paths)} paths")
+                    graph_context, twohop_paths = (
+                        self.graph_retriever.get_subgraph_context_with_paths(
+                            relevant_nodes, query=search_query
+                        )
+                    )
+                    logger.info(
+                        f"Found {len(relevant_nodes)} relevant nodes in graph, {len(twohop_paths)} paths"
+                    )
                     for path_info in twohop_paths:
                         for edge_pmid_list in path_info.get("edge_pmids", []):
                             if edge_pmid_list:
@@ -590,7 +609,9 @@ Each question MUST:
                 else:
                     logger.info("No relevant nodes found in graph query")
             elif is_meta:
-                logger.info("Meta-instruction detected: skipping retrieval, relying on conversation history")
+                logger.info(
+                    "Meta-instruction detected: skipping retrieval, relying on conversation history"
+                )
 
             # 2. Retrieve Text Context (RAG) using preferred PMIDs boost
             # Use top_k to limit context size and speed up LLM response
@@ -623,7 +644,9 @@ Each question MUST:
                     logger.info(
                         f"Document set ({total_docs}) ≤ k({search_k}); using query-relevance ordered rich formatting"
                     )
-                    _, pmids_used = self.rag.get_context(search_query, top_k=search_k, preferred_pmids=preferred_pmids)
+                    _, pmids_used = self.rag.get_context(
+                        search_query, top_k=search_k, preferred_pmids=preferred_pmids
+                    )
 
                     context_parts = []
                     for rank, pmid in enumerate(pmids_used, start=1):
@@ -635,7 +658,8 @@ Each question MUST:
                         study_type = "Human/General"
                         if hasattr(doc, "entities") and doc.entities:
                             non_human_species = [
-                                e.get("name") for e in doc.entities
+                                e.get("name")
+                                for e in doc.entities
                                 if e.get("type") == "Species" and e.get("mesh") != "MESH:D006801"
                             ]
                             if non_human_species:
@@ -663,11 +687,17 @@ Each question MUST:
                     text_context = "\n---\n\n".join(context_parts)
                 else:
                     # Large collection: standard vector search
-                    text_context, pmids_used = self.rag.get_context(search_query, top_k=search_k, preferred_pmids=preferred_pmids)
+                    text_context, pmids_used = self.rag.get_context(
+                        search_query, top_k=search_k, preferred_pmids=preferred_pmids
+                    )
 
             # Build conversation history for LLM
             messages = self._build_messages(
-                user_message, text_context, graph_context, session_language, "",
+                user_message,
+                text_context,
+                graph_context,
+                session_language,
+                "",
                 use_full_content=is_meta,
             )
 
@@ -741,7 +771,10 @@ Each question MUST:
                     max_tokens=chat_max_tokens,
                 )
                 assistant_content = response.choices[0].message.content
-            elif assistant_content is None and getattr(self.llm, "anthropic_client", None) is not None:
+            elif (
+                assistant_content is None
+                and getattr(self.llm, "anthropic_client", None) is not None
+            ):
                 # Fallback: direct Anthropic SDK call
                 assistant_content = self.llm._anthropic_chat_completion(
                     messages=messages,
@@ -769,9 +802,7 @@ Each question MUST:
             # Catch all formats the LLM uses:
             #   PMID:123456 / PMID: 123456 / PMID 123456
             #   [PMID:123456] / [123456] (bare 7-10 digit number in brackets)
-            cited_pmids = set(
-                re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", assistant_content)
-            ) | set(
+            cited_pmids = set(re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", assistant_content)) | set(
                 re.findall(r"\[(\d{7,10})\]", assistant_content)
             )
 
@@ -958,11 +989,10 @@ Each question MUST:
         text = re.sub(r" {2,}", " ", text).strip()
 
         # 8. Collect all PMIDs from original content before truncation
-        all_cited = sorted(set(
-            re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", content)
-        ) | set(
-            re.findall(r"\[(\d{7,10})\]", content)
-        ))
+        all_cited = sorted(
+            set(re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", content))
+            | set(re.findall(r"\[(\d{7,10})\]", content))
+        )
 
         # 9. Truncate at a sentence boundary within the char budget
         if len(text) > self._HISTORY_ASSISTANT_MAX_CHARS:
@@ -1031,9 +1061,7 @@ Each question MUST:
         """Render memory_buffer as a system message string, or empty string if empty."""
         if not self.memory_buffer:
             return ""
-        entries = "\n\n".join(
-            f"[Turn {i + 1}]\n{e}" for i, e in enumerate(self.memory_buffer)
-        )
+        entries = "\n\n".join(f"[Turn {i + 1}]\n{e}" for i, e in enumerate(self.memory_buffer))
         return f"### Long-term Conversation Memory (earlier turns, compressed)\n{entries}"
 
     def _trim_history(self):
@@ -1041,7 +1069,11 @@ Each question MUST:
         max_messages = self.max_history * 2  # each pair = 1 user + 1 assistant
         while len(self.history) > max_messages:
             # Pop the oldest pair (user then assistant)
-            if len(self.history) >= 2 and self.history[0].role == "user" and self.history[1].role == "assistant":
+            if (
+                len(self.history) >= 2
+                and self.history[0].role == "user"
+                and self.history[1].role == "assistant"
+            ):
                 old_user = self.history.pop(0)
                 old_asst = self.history.pop(0)
                 entry = self._pair_to_memory_entry(old_user, old_asst)
@@ -1077,6 +1109,7 @@ Each question MUST:
     def save_to_file(self, filepath: str) -> None:
         """Save chat history and memory buffer to a JSON file."""
         import json
+
         try:
             data = {
                 "history": [msg.to_dict() for msg in self.history],
@@ -1093,12 +1126,13 @@ Each question MUST:
         """Load chat history and memory buffer from a JSON file."""
         import json
         import os
+
         if not os.path.exists(filepath):
             return False
         try:
-            with open(filepath, "r", encoding="utf-8") as f:
+            with open(filepath, encoding="utf-8") as f:
                 data = json.load(f)
-            
+
             self.history = [
                 ChatMessage(
                     role=d["role"],

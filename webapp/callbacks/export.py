@@ -43,10 +43,9 @@ def callbacks(app):
             return dcc.send_file(biocjson_path, filename="output.biocjson")
 
         if not os.path.exists(savepath["pubtator"]):
-             return None # Silent failure or add alert if possible
+            return None  # Silent failure or add alert if possible
 
         return dcc.send_file(savepath["pubtator"], filename="output.pubtator")
-
 
     @app.callback(
         Output("export-html", "data"),

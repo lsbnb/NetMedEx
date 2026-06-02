@@ -11,12 +11,11 @@ from dash import ClientsideFunction, Input, Output, State, html, no_update
 
 from webapp.llm import (
     ANTHROPIC_BASE_URL,
-    ANTHROPIC_MODELS,
     GEMINI_OPENAI_BASE_URL,
+    GROQ_BASE_URL,
     NVIDIA_NIM_BASE_URL,
     OPENAI_BASE_URL,
     OPENROUTER_BASE_URL,
-    GROQ_BASE_URL,
     llm_client,
     normalize_model_for_provider,
 )
@@ -91,8 +90,7 @@ def _settings_from_env() -> dict:
     provider = os.getenv("LLM_PROVIDER", "").strip()
     openai_api_key = os.getenv("OPENAI_API_KEY", "").strip()
     google_api_key = (
-        os.getenv("GEMINI_API_KEY", "").strip()
-        or os.getenv("GOOGLE_API_KEY", "").strip()
+        os.getenv("GEMINI_API_KEY", "").strip() or os.getenv("GOOGLE_API_KEY", "").strip()
     )
     base_url = os.getenv("OPENAI_BASE_URL", "").strip()
     model = os.getenv("OPENAI_MODEL", "").strip()
@@ -161,7 +159,9 @@ def _settings_from_env() -> dict:
         settings["local_base_url"] = chosen_local_url or settings["local_base_url"]
         settings["local_model"] = chosen_local_model
         settings["local_model_options"] = (
-            [{"label": chosen_local_model, "value": chosen_local_model}] if chosen_local_model else []
+            [{"label": chosen_local_model, "value": chosen_local_model}]
+            if chosen_local_model
+            else []
         )
     return settings
 
@@ -172,9 +172,7 @@ def _merge_store_settings(store_data: dict | None) -> dict:
         return settings
     merged = settings.copy()
     secret_keys = {"openai_api_key", "google_api_key", "openrouter_api_key"}
-    merged.update(
-        {k: v for k, v in store_data.items() if v is not None and k not in secret_keys}
-    )
+    merged.update({k: v for k, v in store_data.items() if v is not None and k not in secret_keys})
     return merged
 
 
@@ -481,7 +479,9 @@ def callbacks(app):
                         "Gemini models API returned empty result",
                     )
                 selected_model = google_model or "gemini-1.5-pro"
-                matched = any(m == selected_model or m.startswith(f"{selected_model}-") for m in models)
+                matched = any(
+                    m == selected_model or m.startswith(f"{selected_model}-") for m in models
+                )
                 if not matched:
                     return (
                         f"❌ Google connection failed: model '{selected_model}' not found",
@@ -501,9 +501,9 @@ def callbacks(app):
                     f"Fetched {len(models)} Gemini models",
                 )
             elif provider == "openrouter":
-                openrouter_api_key = openrouter_api_key or os.getenv(
-                    "OPENROUTER_API_KEY", ""
-                ).strip()
+                openrouter_api_key = (
+                    openrouter_api_key or os.getenv("OPENROUTER_API_KEY", "").strip()
+                )
                 if not openrouter_api_key:
                     return (
                         "⚠️ OpenRouter API key is required",
@@ -726,7 +726,10 @@ def callbacks(app):
                 if options:
                     return options, f"✅ Found {len(options)} models"
 
-            return no_update, "❌ Could not fetch models. Try URL like http://<host>:11434 or .../v1"
+            return (
+                no_update,
+                "❌ Could not fetch models. Try URL like http://<host>:11434 or .../v1",
+            )
         except Exception as e:
             logger.error(f"Error fetching local models: {e}")
             return no_update, "❌ Error: Could not connect"
@@ -795,7 +798,11 @@ def callbacks(app):
             options = [{"label": m["id"], "value": m["id"]} for m in data if m.get("id")]
             if not options:
                 return no_update, "❌ No models returned", no_update
-            new_value = current_value if any(o["value"] == current_value for o in options) else options[0]["value"]
+            new_value = (
+                current_value
+                if any(o["value"] == current_value for o in options)
+                else options[0]["value"]
+            )
             return options, f"✅ Found {len(options)} models", new_value
         except Exception as e:
             logger.error(f"Error fetching NVIDIA NIM models: {e}")
@@ -1125,13 +1132,24 @@ def callbacks(app):
 
             _LLM_KEYS = {
                 "LLM_PROVIDER",
-                "OPENAI_API_KEY", "OPENROUTER_API_KEY", "GEMINI_API_KEY", "GROQ_API_KEY",
-                "NVIDIA_API_KEY", "NVIDIA_NIM_BASE_URL", "NVIDIA_NIM_MODEL",
-                "ANTHROPIC_API_KEY", "ANTHROPIC_MODEL",
-                "OPENAI_BASE_URL", "OPENAI_MODEL",
-                "OPENROUTER_MODEL", "GOOGLE_MODEL", "EMBEDDING_MODEL",
+                "OPENAI_API_KEY",
+                "OPENROUTER_API_KEY",
+                "GEMINI_API_KEY",
+                "GROQ_API_KEY",
+                "NVIDIA_API_KEY",
+                "NVIDIA_NIM_BASE_URL",
+                "NVIDIA_NIM_MODEL",
+                "ANTHROPIC_API_KEY",
+                "ANTHROPIC_MODEL",
+                "OPENAI_BASE_URL",
+                "OPENAI_MODEL",
+                "OPENROUTER_MODEL",
+                "GOOGLE_MODEL",
+                "EMBEDDING_MODEL",
                 "GOOGLE_SAFETY_SETTING",
-                "LOCAL_LLM_API_KEY", "LOCAL_LLM_BASE_URL", "LOCAL_LLM_MODEL",
+                "LOCAL_LLM_API_KEY",
+                "LOCAL_LLM_BASE_URL",
+                "LOCAL_LLM_MODEL",
                 "GROQ_MODEL",
             }
             with open(env_path, "w") as f:
@@ -1167,6 +1185,7 @@ def callbacks(app):
                         f.write(f"{key}={value}\n")
 
             from webapp.llm import initialize_llm_client_from_settings
+
             initialize_llm_client_from_settings(
                 llm_client,
                 provider=provider,

@@ -65,13 +65,10 @@ class NodeRAG:
                 )
                 logger.info(f"NodeRAG: Persistent ChromaDB initialized at {persist_directory}")
             else:
-                # Initialize ChromaDB with ephemeral storage
-                self.client = chromadb.Client(
-                    Settings(
-                        anonymized_telemetry=False,
-                        allow_reset=True,
-                    )
-                )
+                # Initialize ChromaDB with ephemeral (in-memory) storage.
+                # chromadb.Client(Settings(...)) was removed in chromadb >=1.x;
+                # use EphemeralClient() instead.
+                self.client = chromadb.EphemeralClient()
                 logger.info("NodeRAG: Ephemeral ChromaDB client initialized")
 
             # Standardize to ChromaDB default embeddings
@@ -193,7 +190,7 @@ class NodeRAG:
                 metadatas = results["metadatas"][0]
 
                 # Safe zip handling
-                for doc_id, distance, meta in zip(ids, distances, metadatas):
+                for doc_id, distance, meta in zip(ids, distances, metadatas, strict=False):
                     node_id = doc_id.replace("node_", "")
                     # Invert distance to score
                     similarity = 1.0 / (1.0 + distance)
@@ -210,7 +207,7 @@ class NodeRAG:
         """Check if the vector collection is already populated"""
         if not self.persist_directory:
             return self._initialized
-        
+
         try:
             # Re-initialize collection if needed
             if self.collection is None:
@@ -219,7 +216,7 @@ class NodeRAG:
                     metadata={"description": "Graph nodes for semantic search"},
                     embedding_function=self.embedding_fn,
                 )
-            
+
             count = self.collection.count()
             return count > 0
         except Exception:

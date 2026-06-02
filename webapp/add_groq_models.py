@@ -1,6 +1,4 @@
-import re
-
-with open("webapp/llm.py", "r") as f:
+with open("webapp/llm.py") as f:
     content = f.read()
 
 # Add get_groq_models method to LLMClient class
@@ -20,8 +18,9 @@ method = """
 """
 
 # Insert before get_openrouter_models
-content = content.replace("    def get_openrouter_models", method + "\n    def get_openrouter_models")
+content = content.replace(
+    "    def get_openrouter_models", method + "\n    def get_openrouter_models"
+)
 
 with open("webapp/llm.py", "w") as f:
     f.write(content)
-
