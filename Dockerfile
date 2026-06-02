@@ -19,6 +19,12 @@ RUN pip install --no-cache-dir ".[api]" gunicorn
 RUN python -c "from chromadb.utils.embedding_functions import ONNXMiniLM_L6_V2; ef = ONNXMiniLM_L6_V2(); ef(['warmup'])" && \
     ls -la /root/.cache/chroma/onnx_models/
 
+# Pre-download tiktoken BPE encoding (~1 MB).
+# Required for RAG indexing; without this the first request in an air-gapped
+# container would fail trying to fetch cl100k_base from the internet.
+RUN python -c "import tiktoken; tiktoken.get_encoding('cl100k_base')" && \
+    ls -la /root/.tiktoken/
+
 # ── Runtime stage ──────────────────────────────────────────────────────────────
 FROM python:3.11-slim-bookworm
 WORKDIR /app
@@ -31,12 +37,13 @@ COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/pytho
 COPY --from=builder /usr/local/bin /usr/local/bin
 COPY --from=builder /app /app
 
-# Copy pre-downloaded ONNX model cache into appuser home
+# Copy pre-downloaded model caches into appuser home
 COPY --from=builder /root/.cache/chroma /home/appuser/.cache/chroma
+COPY --from=builder /root/.tiktoken /home/appuser/.tiktoken
 
 # Create writable data directory and cache directory; set ownership
 RUN mkdir -p /app/data /app/webapp/cache && \
-    chown -R appuser:appuser /app /home/appuser/.cache
+    chown -R appuser:appuser /app /home/appuser/.cache /home/appuser/.tiktoken
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
