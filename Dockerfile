@@ -22,8 +22,10 @@ RUN python -c "from chromadb.utils.embedding_functions import ONNXMiniLM_L6_V2; 
 # Pre-download tiktoken BPE encoding (~1 MB).
 # Required for RAG indexing; without this the first request in an air-gapped
 # container would fail trying to fetch cl100k_base from the internet.
+ENV TIKTOKEN_CACHE_DIR=/root/.tiktoken
 RUN python -c "import tiktoken; tiktoken.get_encoding('cl100k_base')" && \
     ls -la /root/.tiktoken/
+
 
 # ── Runtime stage ──────────────────────────────────────────────────────────────
 FROM python:3.11-slim-bookworm
@@ -55,7 +57,8 @@ ENV HOST=0.0.0.0 \
     PORT=8050 \
     PYTHONUNBUFFERED=1 \
     MPLBACKEND=Agg \
-    JUPYTER_PLATFORM_DIRS=0
+    JUPYTER_PLATFORM_DIRS=0 \
+    TIKTOKEN_CACHE_DIR=/home/appuser/.tiktoken
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["gunicorn", \
