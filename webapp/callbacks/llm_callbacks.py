@@ -657,6 +657,27 @@ def callbacks(app):
             return True, "semantic"
         return no_update, no_update
 
+    @app.callback(
+        Output("normalization-toggle", "value"),
+        [
+            Input("llm-settings-store", "data"),
+            Input("llm-config-status", "children"),
+        ],
+        prevent_initial_call=False,
+    )
+    def sync_normalization_toggle(_store, verify_status):
+        """Enable KG Normalization only when an LLM client is available.
+
+        Fires on page load (via llm-settings-store) and after each LLM
+        verification attempt (via llm-config-status), so the toggle
+        accurately reflects whether normalization can actually run.
+        """
+        if llm_client.client or llm_client.anthropic_client:
+            return ["enabled"]
+        if isinstance(verify_status, str) and verify_status.startswith("✅"):
+            return ["enabled"]
+        return []
+
     app.clientside_callback(
         ClientsideFunction(namespace="clientside", function_name="sync_llm_toggles"),
         [
