@@ -1,0 +1,16 @@
+services:
+  netmedex:
+    image: lsbnb/netmedex:latest
+    ports:
+      - "${PORT:-8050}:8050"
+    env_file:
+      - .env
+    environment:
+      HOST: "0.0.0.0"
+      PORT: "8050"
+    restart: unless-stopped
+    volumes:
+      - netmedex_cache:/app/webapp/cache
+
+volumes:
+  netmedex_cache:
