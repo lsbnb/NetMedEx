@@ -67,7 +67,7 @@ normalization_toggle = html.Div(
                 },
             ],
             id="normalization-toggle",
-            value=["enabled"],
+            value=[],
             switch=True,
             inline=True,
             className="mt-1",
