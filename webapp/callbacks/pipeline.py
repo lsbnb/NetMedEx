@@ -73,6 +73,7 @@ def callbacks(app):
         Output("output", "children", allow_duplicate=True),
         Output("data-input", "value", allow_duplicate=True),
         Output("input-type-selection", "value", allow_duplicate=True),
+        Output("twohop-highlight-paths", "data", allow_duplicate=True),
         Input("submit-button", "n_clicks"),
         [
             State("api-toggle-items", "value"),
@@ -249,6 +250,7 @@ def callbacks(app):
                     "",  # Clear any previous error
                     G.graph.get("query", ""),
                     G.graph.get("input_type", "query"),
+                    [],  # clear twohop highlights from previous session
                 )
             # ----------------------------------------------------------------
 
@@ -434,6 +436,39 @@ def callbacks(app):
                     query = f"({query}) {exclusion_suffix}"
                     logger.info("Query after pub-type exclusion: %s", query)
 
+                elif input_type == "gene_list":
+                    if not data_input or not data_input.strip():
+                        raise EmptyInput("No genes provided")
+                    
+                    import re as _re
+                    raw_genes = data_input.replace(',', '\n').split('\n')
+                    terms = []
+                    for g in raw_genes:
+                        g = g.strip()
+                        if not g:
+                            continue
+                        # Remove existing quotes to avoid double quoting
+                        g = _re.sub(r'^["\']|["\']$', '', g)
+                        terms.append(f'"{g}"')
+                        
+                    if not terms:
+                        raise EmptyInput("No valid genes provided")
+                        
+                    query = f"({' OR '.join(terms)}) AND @GENE"
+                    
+                    EXCLUDED_PUB_TYPES = [
+                        "Editorial",
+                        "Letter",
+                        "Published Erratum",
+                        "Congress",
+                        "News",
+                        "Comment",
+                        "Retraction of Publication",
+                    ]
+                    exclusion_suffix = " ".join(f'NOT "{pt}"' for pt in EXCLUDED_PUB_TYPES)
+                    query = f"({query}) {exclusion_suffix}"
+                    logger.info("Gene list query after pub-type exclusion: %s", query)
+
                 elif input_type == "pmids":
                     pmid_list = load_pmids(data_input, load_from="string")
                 elif input_type == "pmid_file":
@@ -521,6 +556,7 @@ def callbacks(app):
                         ),
                         no_update,
                         no_update,
+                        no_update,  # twohop-highlight-paths
                     )
 
                 job.join()
@@ -583,6 +619,7 @@ def callbacks(app):
                         ),
                         no_update,
                         no_update,
+                        no_update,  # twohop-highlight-paths
                     )
 
             # Semantic Analysis: Parse collection first to get article count
@@ -611,6 +648,7 @@ def callbacks(app):
                         ),
                         no_update,
                         no_update,
+                        no_update,  # twohop-highlight-paths
                     )
 
                 # Parse early to show accurate progress
@@ -709,6 +747,7 @@ def callbacks(app):
                         ),
                         no_update,
                         no_update,
+                        no_update,  # twohop-highlight-paths
                     )
 
                 if os.path.exists(savepath.get("biocjson", "")):
@@ -915,6 +954,7 @@ def callbacks(app):
                 warning_output,
                 no_update,
                 no_update,
+                [],  # clear twohop highlights from previous session
             )
 
         except Exception as e:
@@ -940,4 +980,5 @@ def callbacks(app):
                 ),
                 no_update,
                 no_update,
+                no_update,  # twohop-highlight-paths
             )

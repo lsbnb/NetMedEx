@@ -900,10 +900,6 @@ class LLMClient:
             return []
 
         try:
-            if not api_key.startswith("AIza"):
-                raise ValueError(
-                    "Invalid Gemini API key format. Use an API key from Google AI Studio (starts with 'AIza')."
-                )
             url = "https://generativelanguage.googleapis.com/v1beta/models"
             response = requests.get(url, params={"key": api_key}, timeout=8)
             if response.status_code == 401:

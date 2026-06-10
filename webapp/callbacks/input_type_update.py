@@ -61,6 +61,21 @@ def generate_pmid_file_component(hidden=False):
     )
 
 
+def generate_gene_list_component(hidden=False):
+    return html.Div(
+        [
+            html.H5("Gene List"),
+            dbc.Textarea(
+                placeholder="ex:\nTP53\nBRCA1\nEGFR\nor paste a list of genes separated by commas or newlines...",
+                id="data-input",
+                style={"width": "100%", "minHeight": "120px", "resize": "vertical"},
+                className="form-control",
+            ),
+        ],
+        hidden=hidden,
+    )
+
+
 def callbacks(app):
     @app.callback(
         Output("api-wrapper", "style"),
@@ -88,6 +103,11 @@ def callbacks(app):
         if input_type == "query":
             return [
                 generate_query_component(hidden=False, ai_enabled=ai_enabled),
+                generate_pmid_file_component(hidden=True),
+            ]
+        elif input_type == "gene_list":
+            return [
+                generate_gene_list_component(hidden=False),
                 generate_pmid_file_component(hidden=True),
             ]
         elif input_type == "pmids":

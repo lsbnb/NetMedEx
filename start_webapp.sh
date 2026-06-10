@@ -28,9 +28,12 @@ if [[ "${HOST:-}" =~ [a-zA-Z] || -z "${HOST:-}" ]]; then
 fi
 export PORT="${PORT:-8050}"
 
-# Locate python3: prefer project .venv → activated env → PATH
+# Locate python3: prefer project .venv → conda netmedex env → activated env → PATH
+CONDA_NETMEDEX_PYTHON="${HOME}/miniconda3/envs/netmedex/bin/python"
 if [ -x "$SCRIPT_DIR/.venv/bin/python3" ]; then
     PYTHON="$SCRIPT_DIR/.venv/bin/python3"
+elif [ -x "$CONDA_NETMEDEX_PYTHON" ]; then
+    PYTHON="$CONDA_NETMEDEX_PYTHON"
 elif command -v python3 &>/dev/null; then
     PYTHON="$(command -v python3)"
 else
@@ -46,8 +49,11 @@ fi
 export NETMEDEX_SESSION_SECRET="${NETMEDEX_SESSION_SECRET:-$("$PYTHON" -c 'import secrets; print(secrets.token_hex(32))')}"
 
 # Locate gunicorn: prefer project .venv → activated env → PATH
+CONDA_NETMEDEX_GUNICORN="${HOME}/miniconda3/envs/netmedex/bin/gunicorn"
 if [ -x "$SCRIPT_DIR/.venv/bin/gunicorn" ]; then
     GUNICORN="$SCRIPT_DIR/.venv/bin/gunicorn"
+elif [ -x "$CONDA_NETMEDEX_GUNICORN" ]; then
+    GUNICORN="$CONDA_NETMEDEX_GUNICORN"
 elif command -v gunicorn &>/dev/null; then
     GUNICORN="$(command -v gunicorn)"
 else
