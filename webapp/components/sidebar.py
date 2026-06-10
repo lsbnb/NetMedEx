@@ -118,6 +118,7 @@ api_params = html.Div(
                     "Search Type",
                     (
                         "Text Search: Use keywords to retrieve relevant articles (use double quotes to match whole words and AND/OR to combine keywords)\n"
+                        "Gene List (OR Query): Paste a list of genes to retrieve articles mentioning ANY of them (automatically formatted)\n"
                         "PMID: Retrieve articles by PubMed Identifier (PMID)\n"
                         "PMID File: Retrieve articles by a text file of PMIDs (one per line)"
                     ),
@@ -126,6 +127,7 @@ api_params = html.Div(
                     id="input-type-selection",
                     options=[
                         {"label": "Text Search", "value": "query"},
+                        {"label": "Gene List (OR Query)", "value": "gene_list"},
                         {"label": "PMID", "value": "pmids"},
                         {"label": "PMID File", "value": "pmid_file"},
                     ],

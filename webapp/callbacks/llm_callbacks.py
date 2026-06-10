@@ -387,7 +387,16 @@ def callbacks(app):
             Output("llm-status-light", "className"),
             Output("llm-status-light", "title"),
         ],
-        Input("verify-llm-connection-btn", "n_clicks"),
+        [
+            Input("verify-llm-connection-btn", "n_clicks"),
+            Input("openai-key-submit-btn", "n_clicks"),
+            Input("google-key-submit-btn", "n_clicks"),
+            Input("openrouter-key-submit-btn", "n_clicks"),
+            Input("nvidia-key-submit-btn", "n_clicks"),
+            Input("groq-key-submit-btn", "n_clicks"),
+            Input("anthropic-key-submit-btn", "n_clicks"),
+            Input("local-key-submit-btn", "n_clicks"),
+        ],
         [
             State("llm-provider-selector", "value"),
             State("openai-api-key-input", "value"),
@@ -415,6 +424,13 @@ def callbacks(app):
     )
     def verify_llm_connection(
         n_clicks,
+        openai_submit,
+        google_submit_clicks,
+        openrouter_submit,
+        nvidia_submit,
+        groq_submit,
+        anthropic_submit,
+        local_submit,
         provider,
         openai_api_key,
         openai_model,
@@ -437,7 +453,7 @@ def callbacks(app):
         anthropic_model,
         anthropic_custom_model,
     ):
-        if not n_clicks:
+        if not any([n_clicks, openai_submit, google_submit_clicks, openrouter_submit, nvidia_submit, groq_submit, anthropic_submit, local_submit]):
             raise dash.exceptions.PreventUpdate
         try:
             if provider == "openai":
@@ -611,23 +627,136 @@ def callbacks(app):
             )
 
     @app.callback(
+        [
+            Output("openai-api-key-input", "value", allow_duplicate=True),
+            Output("google-api-key-input", "value", allow_duplicate=True),
+            Output("openrouter-api-key-input", "value", allow_duplicate=True),
+            Output("nvidia-api-key-input", "value", allow_duplicate=True),
+            Output("groq-api-key-input", "value", allow_duplicate=True),
+            Output("anthropic-api-key-input", "value", allow_duplicate=True),
+            Output("llm-config-status", "children", allow_duplicate=True),
+            Output("llm-status-light", "className", allow_duplicate=True),
+            Output("llm-status-light", "title", allow_duplicate=True),
+        ],
+        [
+            Input("openai-key-reset-btn", "n_clicks"),
+            Input("google-key-reset-btn", "n_clicks"),
+            Input("openrouter-key-reset-btn", "n_clicks"),
+            Input("nvidia-key-reset-btn", "n_clicks"),
+            Input("groq-key-reset-btn", "n_clicks"),
+            Input("anthropic-key-reset-btn", "n_clicks"),
+            Input("local-key-reset-btn", "n_clicks"),
+        ],
+        prevent_initial_call=True,
+    )
+    def reset_llm_key(
+        openai_reset, google_reset, openrouter_reset, nvidia_reset, groq_reset, anthropic_reset, local_reset,
+    ):
+        ctx = dash.callback_context
+        if not ctx.triggered:
+            raise dash.exceptions.PreventUpdate
+        triggered_id = ctx.triggered[0]["prop_id"].split(".")[0]
+        provider_key_index = {
+            "openai-key-reset-btn": 0,
+            "google-key-reset-btn": 1,
+            "openrouter-key-reset-btn": 2,
+            "nvidia-key-reset-btn": 3,
+            "groq-key-reset-btn": 4,
+            "anthropic-key-reset-btn": 5,
+        }
+        key_idx = provider_key_index.get(triggered_id)
+        llm_client.client = None
+        llm_client.anthropic_client = None
+        llm_client.provider = None
+        llm_client.model = None
+        keys_output = [no_update] * 6
+        if key_idx is not None:
+            keys_output[key_idx] = ""
+        return (
+            *keys_output,
+            "No model loaded — enter API key and click Submit",
+            "status-indicator status-offline",
+            "API key cleared",
+        )
+
+    @app.callback(
+        [
+            Output("llm-config-status", "children", allow_duplicate=True),
+            Output("llm-status-light", "className", allow_duplicate=True),
+            Output("llm-status-light", "title", allow_duplicate=True),
+        ],
+        Input("llm-settings-store", "data"),
+        prevent_initial_call="initial_duplicate",
+    )
+    def initialize_status_light(settings_data):
+        if settings_data is not None:
+            raise dash.exceptions.PreventUpdate
+        if llm_client.client or llm_client.anthropic_client:
+            provider = llm_client.provider or "unknown"
+            model = llm_client.model or "unknown"
+            return (
+                f"✅ {provider.title()} active ({model}) — from server environment",
+                "status-indicator status-online",
+                "Auto-initialized from server environment",
+            )
+        return (
+            "No model configured — enter API key and click Submit",
+            "status-indicator status-offline",
+            "No LLM client loaded",
+        )
+
+    @app.callback(
         Output("active-llm-banner", "children"),
         [
             Input("llm-settings-store", "data"),
             Input("llm-config-status", "children"),
             Input("llm-save-status", "children"),
+            Input("llm-provider-selector", "value"),
         ],
         prevent_initial_call=False,
     )
-    def show_active_llm_banner(_store, _verify_status, _save_status):
-        if llm_client.client or llm_client.anthropic_client:
+    def show_active_llm_banner(_store, verify_status, _save_status, selected_provider):
+        is_active = llm_client.client or llm_client.anthropic_client
+        active_provider = llm_client.provider if is_active else None
+
+        if is_active:
+            is_ui_verified = isinstance(verify_status, str) and verify_status.startswith("✅")
+            source_text = "Verified via UI" if is_ui_verified else "Loaded from server environment"
+
+            # Selected provider differs from active → show pending warning
+            if selected_provider and selected_provider != active_provider:
+                provider_label = {
+                    "google": "Google Gemini",
+                    "openai": "OpenAI",
+                    "openrouter": "OpenRouter",
+                    "nvidia": "NVIDIA NIM",
+                    "groq": "Groq",
+                    "anthropic": "Anthropic Claude",
+                    "local": "Local Ollama",
+                }.get(selected_provider, selected_provider.title())
+                return dbc.Alert(
+                    [
+                        html.Span("🟡 ", style={"fontSize": "0.9rem"}),
+                        html.Strong("Active: "),
+                        html.Span(f"{active_provider.title()} / {llm_client.model}"),
+                        html.Br(),
+                        html.Small(
+                            f"{provider_label} selected — click Submit or Verify Connection to activate",
+                            className="text-muted",
+                        ),
+                    ],
+                    color="warning",
+                    className="py-2 px-3 mb-0",
+                    style={"fontSize": "0.85rem"},
+                )
+
             return dbc.Alert(
                 [
                     html.Span("🟢 ", style={"fontSize": "0.9rem"}),
                     html.Strong("Active: "),
-                    html.Span(f"{llm_client.provider.title()} / {llm_client.model}"),
+                    html.Span(f"{active_provider.title()} / {llm_client.model}"),
                     html.Br(),
-                    html.Small("Loaded from server environment", className="text-muted"),
+                    html.Small(source_text, className="text-muted"),
                 ],
                 color="success",
                 className="py-2 px-3 mb-0",
@@ -869,12 +998,6 @@ def callbacks(app):
         )
         if not api_key:
             return no_update, "⚠️ Enter Gemini API key first", no_update
-        if not api_key.startswith("AIza"):
-            return (
-                no_update,
-                "⚠️ Invalid Gemini API key format (expected prefix 'AIza')",
-                no_update,
-            )
 
         models = llm_client.get_gemini_models(api_key)
         if not models:

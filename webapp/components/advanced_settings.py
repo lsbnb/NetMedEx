@@ -114,6 +114,25 @@ llm_config = html.Div(
                     placeholder="sk-...",
                     debounce=True,
                 ),
+                html.Div(
+                    [
+                        dbc.Button(
+                            "Submit",
+                            id="openai-key-submit-btn",
+                            color="primary",
+                            size="sm",
+                            className="me-2",
+                        ),
+                        dbc.Button(
+                            "Reset",
+                            id="openai-key-reset-btn",
+                            color="secondary",
+                            size="sm",
+                            outline=True,
+                        ),
+                    ],
+                    className="d-flex mt-2",
+                ),
                 html.Div(style={"height": "15px"}),  # Spacer
                 generate_param_title(
                     "Model",
@@ -184,13 +203,32 @@ llm_config = html.Div(
                 dbc.Input(
                     id="google-api-key-input",
                     type="password",
-                    placeholder="AIza...",
+                    placeholder="AIza... or AQ.A...",
                     debounce=True,
                 ),
                 html.Small(
                     "Use an API key from Google AI Studio.",
                     className="text-muted d-block mt-1",
                     style={"fontSize": "0.8rem"},
+                ),
+                html.Div(
+                    [
+                        dbc.Button(
+                            "Submit",
+                            id="google-key-submit-btn",
+                            color="primary",
+                            size="sm",
+                            className="me-2",
+                        ),
+                        dbc.Button(
+                            "Reset",
+                            id="google-key-reset-btn",
+                            color="secondary",
+                            size="sm",
+                            outline=True,
+                        ),
+                    ],
+                    className="d-flex mt-2",
                 ),
             ],
             id="google-config",
@@ -218,6 +256,25 @@ llm_config = html.Div(
                     type="password",
                     placeholder="sk-or-...",
                     debounce=True,
+                ),
+                html.Div(
+                    [
+                        dbc.Button(
+                            "Submit",
+                            id="openrouter-key-submit-btn",
+                            color="primary",
+                            size="sm",
+                            className="me-2",
+                        ),
+                        dbc.Button(
+                            "Reset",
+                            id="openrouter-key-reset-btn",
+                            color="secondary",
+                            size="sm",
+                            outline=True,
+                        ),
+                    ],
+                    className="d-flex mt-2",
                 ),
                 html.Div(style={"height": "15px"}),
                 generate_param_title(
@@ -283,6 +340,25 @@ llm_config = html.Div(
                     type="password",
                     placeholder="nvapi-...",
                     debounce=True,
+                ),
+                html.Div(
+                    [
+                        dbc.Button(
+                            "Submit",
+                            id="nvidia-key-submit-btn",
+                            color="primary",
+                            size="sm",
+                            className="me-2",
+                        ),
+                        dbc.Button(
+                            "Reset",
+                            id="nvidia-key-reset-btn",
+                            color="secondary",
+                            size="sm",
+                            outline=True,
+                        ),
+                    ],
+                    className="d-flex mt-2",
                 ),
                 html.Div(style={"height": "10px"}),
                 generate_param_title(
@@ -373,6 +449,25 @@ llm_config = html.Div(
                     placeholder="gsk_...",
                     debounce=True,
                 ),
+                html.Div(
+                    [
+                        dbc.Button(
+                            "Submit",
+                            id="groq-key-submit-btn",
+                            color="primary",
+                            size="sm",
+                            className="me-2",
+                        ),
+                        dbc.Button(
+                            "Reset",
+                            id="groq-key-reset-btn",
+                            color="secondary",
+                            size="sm",
+                            outline=True,
+                        ),
+                    ],
+                    className="d-flex mt-2",
+                ),
                 html.Div(style={"height": "10px"}),
                 generate_param_title(
                     "Model",
@@ -445,6 +540,25 @@ llm_config = html.Div(
                     type="password",
                     placeholder="sk-ant-...",
                     debounce=True,
+                ),
+                html.Div(
+                    [
+                        dbc.Button(
+                            "Submit",
+                            id="anthropic-key-submit-btn",
+                            color="primary",
+                            size="sm",
+                            className="me-2",
+                        ),
+                        dbc.Button(
+                            "Reset",
+                            id="anthropic-key-reset-btn",
+                            color="secondary",
+                            size="sm",
+                            outline=True,
+                        ),
+                    ],
+                    className="d-flex mt-2",
                 ),
                 html.Div(style={"height": "10px"}),
                 generate_param_title(
@@ -522,6 +636,25 @@ llm_config = html.Div(
                     placeholder="http://localhost:11434/v1",
                     value="http://localhost:11434/v1",
                     debounce=True,
+                ),
+                html.Div(
+                    [
+                        dbc.Button(
+                            "Submit",
+                            id="local-key-submit-btn",
+                            color="primary",
+                            size="sm",
+                            className="me-2",
+                        ),
+                        dbc.Button(
+                            "Reset",
+                            id="local-key-reset-btn",
+                            color="secondary",
+                            size="sm",
+                            outline=True,
+                        ),
+                    ],
+                    className="d-flex mt-2",
                 ),
                 generate_param_title(
                     "Model Name",
@@ -627,7 +760,7 @@ llm_config = html.Div(
             [
                 html.Span(
                     id="llm-status-light",
-                    className="status-indicator status-unknown",
+                    className="status-indicator status-offline",
                     style={"marginTop": "0"},
                 ),
                 html.Span(id="llm-config-status", className="small ms-1"),
