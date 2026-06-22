@@ -1,4 +1,4 @@
-# NetMedEx v1.3.2
+# NetMedEx v1.3.4
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -25,6 +25,17 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 
 <details>
 <summary><h2>🆕 Recent Updates</h2></summary>
+
+### v1.3.4 — 2026-06-22
+
+- **Version Alignment**: Corrected remaining version strings in `README.md`, `DEPLOYMENT.md`, `DOCKERHUB_OVERVIEW.md`, and the sidebar UI to align with release `v1.3.4`.
+
+### v1.3.3 — 2026-06-22
+
+- **LLM Provider UI & Local Models**: Support for local model configuration and provider UI improvements with session isolation.
+- **Offline Cache Support**: Pre-downloads tiktoken BPE cache in the builder stage to support air-gapped container environments.
+- **Defensive Safeguards**: Normalization toggle is automatically disabled when no LLM is configured.
+- **Config & Data Cleanups**: Redacted internal development variables, expanded `.env.example` to templates for all 7 providers, and excluded Pediatric CNS data from GitHub and Docker builds.
 
 ### v1.3.2 — 2026-06-01
 

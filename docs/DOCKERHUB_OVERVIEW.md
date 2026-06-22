@@ -1,4 +1,4 @@
-# NetMedEx v1.3.2: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.3.4: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
@@ -19,13 +19,22 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.3.2
+## 🆕 What's New in v1.3.4
+
+- **Version Alignment**: Corrected remaining version strings across `README.md`, `DEPLOYMENT.md`, `DOCKERHUB_OVERVIEW.md`, and the web application sidebar UI to align with release `v1.3.4`.
+
+### Previous: v1.3.3
+
+- **LLM Provider UI & Local Models**: Support for local model configuration and provider UI improvements with session isolation.
+- **Offline Cache Support**: Pre-downloads tiktoken BPE cache in the builder stage to support air-gapped container environments.
+- **Defensive Safeguards**: Normalization toggle is automatically disabled when no LLM is configured.
+- **Config & Data Cleanups**: Redacted internal development variables, expanded `.env.example` to templates for all 7 providers, and excluded Pediatric CNS data from GitHub and Docker builds.
+
+### Previous: v1.3.2
 
 - **Search Nodes @Type Syntax**: Type `@Gene`, `@Disease`, `@Gene:gut`, or `keyword, @Gene` in the Search Nodes field to highlight, filter, or path-search by biological entity type. Top-20 anchor selection uses PMID literature count as the importance criterion.
 - **Chat Download History Fix**: Download now exports the full unbounded message log, matching what the user sees in the UI chat panel.
 - **Search Nodes Tooltip**: Improved info tooltip with @Type usage examples, anchor/path-node color legend, and silent-skip behaviour note.
-
-### Previous: v1.3.1
 
 - **WAL Hang Fix**: Resolves Chat panel permanently stuck at "Preparing abstracts..." — diskcache SQLite WAL is now checkpointed before each analysis run, preventing write-blocking from accumulated background callback writes.
 - **Adaptive Chat Response Modes**: The 5-layer system prompt now selects response format based on question type: Compact Mode for simple factual queries, Layer 2 skip conditions to avoid empty structured blocks, and adaptive Layer 5 question count (3 for broad analyses, 1 for focused follow-ups, none for Compact Mode).

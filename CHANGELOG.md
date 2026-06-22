@@ -5,6 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.4] - 2026-06-22
+
+### Changed
+
+- **Version Alignment**: Corrected remaining version references in `README.md`, `DEPLOYMENT.md`, `DOCKERHUB_OVERVIEW.md`, and the web application sidebar UI to align with release v1.3.4.
+
+## [1.3.3] - 2026-06-22
+
+### Added
+
+- **LLM Provider UI, Session Isolation, and Local Model Support**: Enhanced session isolation on the server side and support for local model configuration dynamically via the web UI.
+
+### Fixed
+
+- **Offline Cache Support**: Configured `TIKTOKEN_CACHE_DIR` in the Dockerfile to pre-download tiktoken BPE cache in the builder stage for offline/air-gapped deployment.
+- **Normalization Safeguard**: Disabled the sapBERT normalization toggle button when no active LLM client is configured.
+- **Code Quality**: Addressed and resolved several P1–P4 code review issues.
+
+### Changed
+
+- **Webapp Controls & Performance**: Updated webapp UI, callbacks, and startup script to use stable parameters, and added defensive logging/checking.
+- **Configuration Redaction**: Redacted internal/development `.env` values, and expanded `.env.example` to provide templates for all 7 supported LLM providers.
+- **Data Exclusions**: Excluded Pediatric CNS tumor demo/cache directories from GitHub tracking and the final production Docker image.
+
 ## [1.3.2] - 2026-06-02
 
 ### Added
