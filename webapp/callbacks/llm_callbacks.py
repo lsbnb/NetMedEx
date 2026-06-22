@@ -634,6 +634,7 @@ def callbacks(app):
             Output("nvidia-api-key-input", "value", allow_duplicate=True),
             Output("groq-api-key-input", "value", allow_duplicate=True),
             Output("anthropic-api-key-input", "value", allow_duplicate=True),
+            Output("llm-base-url-input", "value", allow_duplicate=True),
             Output("llm-config-status", "children", allow_duplicate=True),
             Output("llm-status-light", "className", allow_duplicate=True),
             Output("llm-status-light", "title", allow_duplicate=True),
@@ -663,15 +664,19 @@ def callbacks(app):
             "nvidia-key-reset-btn": 3,
             "groq-key-reset-btn": 4,
             "anthropic-key-reset-btn": 5,
+            "local-key-reset-btn": 6,
         }
         key_idx = provider_key_index.get(triggered_id)
         llm_client.client = None
         llm_client.anthropic_client = None
         llm_client.provider = None
         llm_client.model = None
-        keys_output = [no_update] * 6
+        keys_output = [no_update] * 7
         if key_idx is not None:
-            keys_output[key_idx] = ""
+            if key_idx == 6:
+                keys_output[6] = "http://localhost:11434/v1"
+            else:
+                keys_output[key_idx] = ""
         return (
             *keys_output,
             "No model loaded — enter API key and click Submit",
