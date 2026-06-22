@@ -1025,14 +1025,26 @@ def callbacks(app):
                     context_banner,
                     {"display": "block"},
                     messages,
-                    no_update,
+                    suggestions,  # replace Search A's stale suggestions with Search B's
                     False,  # Reset is-new-graph so this doesn't re-trigger
                 )
             raise ValueError("LLM Summary failed")
 
         except Exception as e:
             logger.error(f"Error in auto_initialize_chat: {e}")
-            raise dash.exceptions.PreventUpdate
+            # Reset all chat outputs to avoid stale data from previous search leaking through
+            return (
+                False,
+                f"⚠️ Chat initialization failed: {str(e)[:120]}",
+                True,
+                True,
+                {"display": "none"},
+                [],
+                {"display": "none"},
+                [],
+                [],  # clear suggested questions from previous search
+                False,
+            )
 
     @app.callback(
         [

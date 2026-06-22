@@ -281,6 +281,12 @@ class LLMClient:
         self.api_key = get_provider_api_key(self.provider, api_key)
         if base_url:
             self.base_url = base_url
+        if self.provider == "local" and self.base_url:
+            raw_url = self.base_url.strip().rstrip("/")
+            if raw_url and not raw_url.endswith("/v1"):
+                self.base_url = f"{raw_url}/v1"
+            elif not raw_url:
+                self.base_url = "http://localhost:11434/v1"
         if model:
             self.model = model
         if embedding_model:

@@ -301,8 +301,8 @@ class SemanticRelationshipExtractor:
             # Use a large max_tokens by default for all providers to prevent truncation
             call_kwargs = {"max_tokens": 3000}
 
-            # Enable JSON mode for all providers that support it (including OpenRouter)
-            if provider in ("google", "openai", "openrouter"):
+            # Enable JSON mode for all providers that support it (including OpenRouter and local)
+            if provider in ("google", "openai", "openrouter", "local"):
                 call_kwargs["response_format"] = {"type": "json_object"}
 
             response = self._call_llm(
@@ -320,7 +320,8 @@ class SemanticRelationshipExtractor:
             # --- Provider-specific recovery and enhancement ---
 
             # 1. Global Recovery Strategy (only when first pass is meaningfully below threshold)
-            if initial_recall < RECOVERY_THRESHOLD and entity_count >= 2:
+            # Skip for local models to prioritize speed and prevent excessive execution time.
+            if initial_recall < RECOVERY_THRESHOLD and entity_count >= 2 and provider != "local":
                 # Decide if we need a second pass or just a compact retry
                 if initial_recall == 0:
                     self._update_stats(compact_retries=1)

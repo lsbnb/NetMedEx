@@ -20,7 +20,7 @@ class TestRAGChat(unittest.TestCase):
         self.llm_client.client = MagicMock()
 
         # Mock ChromaDB
-        with patch("chromadb.Client") as mock_chroma:
+        with patch("chromadb.EphemeralClient") as mock_chroma:
             self.mock_collection = MagicMock()
             mock_chroma.return_value.get_or_create_collection.return_value = self.mock_collection
             self.rag = AbstractRAG(self.llm_client)
