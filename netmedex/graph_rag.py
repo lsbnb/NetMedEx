@@ -333,8 +333,8 @@ class GraphRetriever:
         visited_paths = set()
 
         for start_node in start_nodes:
-            # 1-hop
-            for neighbor in self.graph.neighbors(start_node):
+            # 1-hop — sorted() ensures deterministic traversal order
+            for neighbor in sorted(self.graph.neighbors(start_node)):
                 if neighbor == start_node:
                     continue
                 if not self._is_valid_node(neighbor):
@@ -353,8 +353,8 @@ class GraphRetriever:
                     visited_paths.add(path_sig_1)
 
                 if max_hops >= 2:
-                    # 2-hop
-                    for n2 in self.graph.neighbors(neighbor):
+                    # 2-hop — sorted() ensures deterministic traversal order
+                    for n2 in sorted(self.graph.neighbors(neighbor)):
                         if n2 == start_node or n2 == neighbor:
                             continue
                         if not self._is_valid_node(n2):
@@ -374,8 +374,8 @@ class GraphRetriever:
                             all_paths.append((list(path_sig_2), path_score))
                             visited_paths.add(path_sig_2)
 
-        # Sort paths by score descending
-        all_paths.sort(key=lambda x: x[1], reverse=True)
+        # Sort paths by score descending; use path tuple as tie-breaker for determinism
+        all_paths.sort(key=lambda x: (-x[1], tuple(x[0])))
         return all_paths[:top_k]
 
     def _format_path(self, path: list[str]) -> str:
