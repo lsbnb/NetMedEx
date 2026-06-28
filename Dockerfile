@@ -1,5 +1,5 @@
 FROM python:3.11-slim-bookworm AS builder
-LABEL version="v1.3.4"
+LABEL version="v1.3.5"
 WORKDIR /app
 
 # Install build deps
