@@ -153,10 +153,10 @@ class AbstractRAG:
             if self._initialized:
                 self.client.reset()
 
-            # Create new collection
+            # Create new collection; hnsw_random_seed fixes HNSW index randomness for reproducibility
             self.collection = self.client.get_or_create_collection(
                 name=self.collection_name,
-                metadata={"description": "PubMed abstracts for RAG"},
+                metadata={"description": "PubMed abstracts for RAG", "hnsw_random_seed": 42},
                 embedding_function=self.embedding_fn,
             )
 
@@ -285,8 +285,8 @@ class AbstractRAG:
 
                     pmid_scores.append((pmid, hybrid_score))
 
-            # Sort by hybrid score descending
-            pmid_scores.sort(key=lambda x: x[1], reverse=True)
+            # Sort by hybrid score descending; PMID as tie-breaker ensures deterministic order
+            pmid_scores.sort(key=lambda x: (-x[1], x[0]))
 
             logger.info(f"Found {len(pmid_scores)} relevant abstracts for query")
             # Slice down to top_k only after re-ranking and boosting

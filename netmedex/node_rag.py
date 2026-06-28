@@ -93,10 +93,10 @@ class NodeRAG:
             return 0
 
         try:
-            # Create or get collection
+            # Create or get collection; hnsw_random_seed fixes HNSW index randomness for reproducibility
             self.collection = self.client.get_or_create_collection(
                 name=self.collection_name,
-                metadata={"description": "Graph nodes for semantic search"},
+                metadata={"description": "Graph nodes for semantic search", "hnsw_random_seed": 42},
                 embedding_function=self.embedding_fn,
             )
 
