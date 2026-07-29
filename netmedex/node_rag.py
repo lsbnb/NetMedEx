@@ -190,7 +190,7 @@ class NodeRAG:
                 metadatas = results["metadatas"][0]
 
                 # Safe zip handling
-                for doc_id, distance, meta in zip(ids, distances, metadatas, strict=False):
+                for doc_id, distance, meta in zip(ids, distances, metadatas):
                     node_id = doc_id.replace("node_", "")
                     # Invert distance to score
                     similarity = 1.0 / (1.0 + distance)

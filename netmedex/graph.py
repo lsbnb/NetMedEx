@@ -4,6 +4,7 @@ import importlib
 import io
 import logging
 import math
+import os
 import pickle
 from collections import defaultdict
 from collections.abc import Mapping, Sequence
@@ -206,6 +207,9 @@ class PubTatorGraphBuilder:
                 max_workers = 4
             else:
                 max_workers = 5
+            configured_workers = os.getenv("NETMEDEX_SEMANTIC_WORKERS")
+            if configured_workers:
+                max_workers = max(1, int(configured_workers))
             logger.info(
                 f"Starting parallel semantic analysis for {len(collection.articles)} articles "
                 f"(provider={provider or 'unknown'}, model={model_name or 'unknown'}, workers={max_workers})..."

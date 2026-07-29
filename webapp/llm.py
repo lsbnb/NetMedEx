@@ -463,12 +463,14 @@ class LLMClient:
         actual_temp = temperature
 
         model_lower = str(self.model).lower()
-        # Reasoning models (o1, o3) typically have fixed/restricted sampling parameters.
+        # Reasoning and GPT-5 family models use max_completion_tokens and may
+        # restrict sampling parameters to their defaults.
         # gpt-4o, gpt-4o-mini, and most others support standard temperature (0-2).
         is_reasoning_model = any(m in model_lower for m in ["o1", "o3"])
+        is_gpt5_model = model_lower.startswith("gpt-5")
         is_mini_nano = any(m in model_lower for m in ["nano", "mini"])
 
-        if is_reasoning_model:
+        if is_reasoning_model or is_gpt5_model:
             limit_param = "max_completion_tokens"
             actual_temp = 1.0
         elif is_mini_nano or "gpt-4o" in model_lower:

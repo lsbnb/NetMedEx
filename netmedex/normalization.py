@@ -44,7 +44,7 @@ def normalize_knowledge_graph(
     node_ids = list(G.nodes())
     node_data_list = [G.nodes[node_id] for node_id in node_ids]
     display_names = [
-        data.get("name", node_id) for node_id, data in zip(node_ids, node_data_list, strict=False)
+        data.get("name", node_id) for node_id, data in zip(node_ids, node_data_list)
     ]
     node_types = [data.get("type", "unknown") for data in node_data_list]
     node_cuis = [data.get("mesh") for data in node_data_list]

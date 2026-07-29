@@ -1,4 +1,4 @@
-# NetMedEx v1.3.4
+# NetMedEx v1.3.6
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -25,6 +25,14 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 
 <details>
 <summary><h2>🆕 Recent Updates</h2></summary>
+
+### v1.3.6 — 2026-06-29
+
+- **Deterministic ChromaDB Retrieval**: Stabilized vector retrieval result ordering for reproducible RAG outputs when candidate scores tie.
+
+### v1.3.5 — 2026-06-28
+
+- **Deterministic 2-Hop Traversal**: Stabilized 2-hop path traversal ordering for reproducible graph reasoning results.
 
 ### v1.3.4 — 2026-06-22
 
@@ -757,6 +765,12 @@ Then open:
 ## 🛠️ Contribution & Development
 
 NetMedEx is an open-source research initiative. We welcome contributions to our semantic extraction pipeline and UI visualization modules.
+
+### 👥 Authors & Contributors
+
+- **Zheng-Xiang Ye** ([@yehzx](https://github.com/yehzx))
+- **Chung-Yen Lin** ([@cylin2022](https://github.com/cylin2022) / [LSBNB](https://github.com/lsbnb))
+- **Shu-Hwa Chen** ([@HMSophia](https://github.com/HMSophia))
 
 © 2026 NetMedEx Team. Prepared for submission to GitHub under **cylin2022**.
 

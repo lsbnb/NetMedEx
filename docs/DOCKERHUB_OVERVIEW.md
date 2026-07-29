@@ -1,4 +1,4 @@
-# NetMedEx v1.3.4: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.3.6: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
@@ -19,7 +19,15 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.3.4
+## 🆕 What's New in v1.3.6
+
+- **Deterministic ChromaDB Retrieval**: Stabilized vector retrieval result ordering for reproducible RAG outputs when candidate scores tie.
+
+### Previous: v1.3.5
+
+- **Deterministic 2-Hop Traversal**: Stabilized 2-hop path traversal ordering for reproducible graph reasoning results.
+
+### Previous: v1.3.4
 
 - **Version Alignment**: Corrected remaining version strings across `README.md`, `DEPLOYMENT.md`, `DOCKERHUB_OVERVIEW.md`, and the web application sidebar UI to align with release `v1.3.4`.
 
