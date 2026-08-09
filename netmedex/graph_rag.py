@@ -173,6 +173,8 @@ class GraphRetriever:
                 edge_relations = []
                 edge_pmids = []
                 edge_is_directional = []
+                edge_evidence_quotes = []
+                edge_evidence_complete = []
                 for i in range(len(path) - 1):
                     u, v = path[i], path[i + 1]
                     if self.graph.has_edge(u, v):
@@ -186,21 +188,38 @@ class GraphRetriever:
                         )
                         pmids = sorted(rel_sets.keys())[:3]
                         directional = is_directional_relation(primary)
+                        evidence_map = edata.get("evidences", {}) or {}
+                        quotes = []
+                        for pmid in pmids:
+                            by_relation = evidence_map.get(pmid, {}) or {}
+                            quote = by_relation.get(primary)
+                            if quote:
+                                quotes.append(str(quote))
                     else:
                         primary = "associated_with"
                         pmids = []
                         directional = False
+                        quotes = []
                     edge_relations.append(primary)
                     edge_pmids.append(pmids)
                     edge_is_directional.append(directional)
+                    edge_evidence_quotes.append(quotes)
+                    edge_evidence_complete.append(bool(quotes))
 
                 structured_paths.append(
                     {
                         "path": stable_ids,
+                        # Preserve the graph-native identifiers for evaluation/audit consumers.
+                        # `path` above remains the Cytoscape-facing stable ID list for backwards
+                        # compatibility, while `node_ids` lets callers recover exact edge
+                        # evidence without ambiguously reverse-matching display names.
+                        "node_ids": list(path),
                         "names": names,
                         "relations": edge_relations,
                         "edge_pmids": edge_pmids,
                         "edge_is_directional": edge_is_directional,
+                        "edge_evidence_quotes": edge_evidence_quotes,
+                        "edge_evidence_complete": edge_evidence_complete,
                         "score": round(score, 3),
                         "hop_count": len(path) - 1,
                     }
@@ -221,6 +240,94 @@ class GraphRetriever:
             return False
 
         return True
+
+    def score_edge_components(
+        self,
+        u: str,
+        v: str,
+        edge_data: dict,
+        max_edge_weight: float,
+        semantic_relevance_map: dict[str, float],
+    ) -> dict[str, float]:
+        """Score a single edge and expose the raw sub-components (npmi, calibrated confidence,
+        query relevance) alongside the final blended score, instead of only the final float.
+
+        This is the single source of truth for edge scoring -- `_extract_top_k_paths`'s
+        `calculate_score` closure calls this and keeps only `final_score`, so there is no
+        duplicated scoring logic to drift out of sync. Exposed as a public method (rather than
+        staying a private closure) so calibration tooling can call it directly on arbitrary
+        (u, v, edge_data) triples without re-deriving max_edge_weight/semantic_relevance_map
+        traversal state itself.
+        """
+        # 1. Topological Evidence (NPMI) - 30%
+        npmi = edge_data.get("edge_weight", 0) / max_edge_weight
+
+        # 2. Semantic Extraction Confidence - 40%
+        # Calibrate confidence based on relation strength and evidence frequency
+        confidence_values = []
+        for by_relation in (edge_data.get("confidences", {}) or {}).values():
+            if not isinstance(by_relation, dict):
+                continue
+            for value in by_relation.values():
+                try:
+                    confidence_values.append(float(value))
+                except (TypeError, ValueError):
+                    continue
+        # Semantic graph edges store confidence as
+        # {pmid: {relation_type: score}}, not as a scalar `confidence` attribute.
+        # Falling back to 0.5 preserves co-mention/BioREx behavior when no semantic score
+        # exists, while semantic edges now use their actual mean extraction confidence.
+        raw_conf = (
+            sum(confidence_values) / len(confidence_values)
+            if confidence_values
+            else float(edge_data.get("confidence", 0.5))
+        )
+
+        # Relation Strength: Directional/Mechanistic relations are more valuable than generic associations
+        rel_types = set()
+        pmid_count = 0
+        if "relations" in edge_data:
+            pmid_count = len(edge_data["relations"])
+            for pmid_rels in edge_data["relations"].values():
+                rel_types.update(pmid_rels)
+
+        strength_mult = 1.0
+        if any(is_directional_relation(t) for t in rel_types):
+            strength_mult = 1.1  # Mechanistic boost
+        elif any(t in ("associated_with", "related_to", "co_occurs_with") for t in rel_types):
+            strength_mult = 0.9  # Weak association penalty
+
+        # Evidence Frequency: More papers supporting the edge increases its trustworthiness
+        evidence_boost = min(1.2, 1.0 + (max(0, pmid_count - 1) * 0.05))
+
+        calibrated_conf = float(raw_conf) * strength_mult * evidence_boost
+        calibrated_conf = min(1.0, calibrated_conf)  # Cap at 1.0
+
+        # 3. Query Relevance (Semantic proximity to user question) - 30%
+        u_rel = semantic_relevance_map.get(u, 0.5)
+        v_rel = semantic_relevance_map.get(v, 0.5)
+        rel_score = max(u_rel, v_rel)
+
+        base_score = (float(npmi) * 0.3) + (float(calibrated_conf) * 0.4) + (float(rel_score) * 0.3)
+
+        # 4. Ontology Weighting (Gene/Disease Boost)
+        u_type = str(self.graph.nodes[u].get("type", "")).lower()
+        v_type = str(self.graph.nodes[v].get("type", "")).lower()
+        ontology_multiplier = max(
+            self.TYPE_WEIGHTS.get(u_type, 1.0), self.TYPE_WEIGHTS.get(v_type, 1.0)
+        )
+
+        return {
+            "npmi": float(npmi),
+            "raw_conf": float(raw_conf),
+            "strength_mult": strength_mult,
+            "evidence_boost": evidence_boost,
+            "calibrated_conf": calibrated_conf,
+            "rel_score": float(rel_score),
+            "base_score": base_score,
+            "ontology_multiplier": ontology_multiplier,
+            "final_score": base_score * ontology_multiplier,
+        }
 
     def _extract_top_k_paths(
         self, start_nodes: list[str], query: str | None, max_hops: int, top_k: int
@@ -244,50 +351,9 @@ class GraphRetriever:
             semantic_relevance_map = {node_id: score for node_id, score, _ in hits}
 
         def calculate_score(u, v, edge_data):
-            # 1. Topological Evidence (NPMI) - 30%
-            npmi = edge_data.get("edge_weight", 0) / max_edge_weight
-
-            # 2. Semantic Extraction Confidence - 40%
-            # Calibrate confidence based on relation strength and evidence frequency
-            raw_conf = edge_data.get("confidence", 0.5)
-
-            # Relation Strength: Directional/Mechanistic relations are more valuable than generic associations
-            rel_types = set()
-            pmid_count = 0
-            if "relations" in edge_data:
-                pmid_count = len(edge_data["relations"])
-                for pmid_rels in edge_data["relations"].values():
-                    rel_types.update(pmid_rels)
-
-            strength_mult = 1.0
-            if any(is_directional_relation(t) for t in rel_types):
-                strength_mult = 1.1  # Mechanistic boost
-            elif any(t in ("associated_with", "related_to", "co_occurs_with") for t in rel_types):
-                strength_mult = 0.9  # Weak association penalty
-
-            # Evidence Frequency: More papers supporting the edge increases its trustworthiness
-            evidence_boost = min(1.2, 1.0 + (max(0, pmid_count - 1) * 0.05))
-
-            calibrated_conf = float(raw_conf) * strength_mult * evidence_boost
-            calibrated_conf = min(1.0, calibrated_conf)  # Cap at 1.0
-
-            # 3. Query Relevance (Semantic proximity to user question) - 30%
-            u_rel = semantic_relevance_map.get(u, 0.5)
-            v_rel = semantic_relevance_map.get(v, 0.5)
-            rel_score = max(u_rel, v_rel)
-
-            base_score = (
-                (float(npmi) * 0.3) + (float(calibrated_conf) * 0.4) + (float(rel_score) * 0.3)
-            )
-
-            # 4. Ontology Weighting (Gene/Disease Boost)
-            u_type = str(self.graph.nodes[u].get("type", "")).lower()
-            v_type = str(self.graph.nodes[v].get("type", "")).lower()
-            multiplier = max(
-                self.TYPE_WEIGHTS.get(u_type, 1.0), self.TYPE_WEIGHTS.get(v_type, 1.0)
-            )
-
-            return base_score * multiplier
+            return self.score_edge_components(
+                u, v, edge_data, max_edge_weight, semantic_relevance_map
+            )["final_score"]
 
         # Cap start nodes to prevent O(n²) traversal on large graphs
         MAX_START_NODES = 50
@@ -383,7 +449,9 @@ class GraphRetriever:
 
         Edges are annotated with [DIRECTIONAL] or [SYMMETRIC] so the LLM
         can immediately determine whether a path qualifies for Layer 3
-        (Causal Biomedical Mechanism) reasoning.
+        (Causal Biomedical Mechanism) reasoning. Stored evidence quotes are
+        included so downstream generation can validate the relation instead
+        of receiving an unauditable edge label alone.
         """
         descriptions = []
         for i in range(len(path) - 1):
@@ -392,9 +460,30 @@ class GraphRetriever:
             v_name = self.graph.nodes[v].get("name", v)
             edge_data = self.graph[u][v]
             relations = self._summarize_relations(edge_data)
-            descriptions.append(f"{u_name} --[{relations}]--> {v_name}")
+            description = f"{u_name} --[{relations}]--> {v_name}"
+            evidence = self._format_edge_evidence(edge_data)
+            if evidence:
+                description += f' {{EVIDENCE: "{evidence}"}}'
+            descriptions.append(description)
 
         return " | ".join(descriptions)
+
+    @staticmethod
+    def _format_edge_evidence(edge_data: dict, max_chars: int = 320) -> str:
+        """Return one deterministic PMID-linked quote for an edge prompt payload."""
+        evidence_map = edge_data.get("evidences", {}) or {}
+        candidates = []
+        for pmid, by_relation in evidence_map.items():
+            if not isinstance(by_relation, dict):
+                continue
+            for relation, quote in by_relation.items():
+                compact = " ".join(str(quote or "").split())
+                if compact:
+                    candidates.append((str(pmid), str(relation), compact))
+        if not candidates:
+            return ""
+        pmid, relation, quote = sorted(candidates)[0]
+        return f"PMID:{pmid}; relation={relation}; quote={quote[:max_chars]}"
 
     def _summarize_relations(self, edge_data: dict) -> str:
         """Summarize relation types in an edge with supporting PMIDs.

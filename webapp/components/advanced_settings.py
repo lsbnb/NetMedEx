@@ -76,6 +76,70 @@ normalization_toggle = html.Div(
     className="param",
 )
 
+relation_verification_toggle = html.Div(
+    [
+        generate_param_title(
+            "Relation-Direction Verification (v1.4)",
+            (
+                "Adds a second LLM pass that checks each directional semantic edge "
+                "(e.g. inhibits, upregulates, treats) against its supporting evidence quote, "
+                "to catch direction-reversal errors (e.g. mistaking passive-voice text for an "
+                "active relation) that the first extraction pass can still make.\n\n"
+                "💡 An edge that fails verification is downgraded to a neutral 'associated_with' "
+                "relation, not dropped -- the evidence likely still supports some relationship, "
+                "just not confidently in the claimed direction.\n\n"
+                "🔎 Pick a verifier provider different from your main LLM provider when possible: "
+                "verifying a candidate edge is an easier task than the original extraction, so an "
+                "independent second model is more likely to catch an error than the same model "
+                "re-asked. Uses whichever API key you already configured for that provider.\n\n"
+                "⚠️ Only edges with a directional relation type are re-checked (one extra LLM call "
+                "per article with at least one such edge), so this adds graph-build time and cost. "
+                "Symmetric relations (associated_with, etc.) are never re-checked."
+            ),
+        ),
+        dbc.Checklist(
+            options=[
+                {
+                    "label": "🔍 Enable relation-direction verification",
+                    "value": "enabled",
+                },
+            ],
+            id="relation-verification-toggle",
+            value=[],
+            switch=True,
+            inline=True,
+            className="mt-1 mb-2",
+        ),
+        html.Div(
+            [
+                generate_param_title(
+                    "Verifier Provider",
+                    "LLM provider used for the verification pass. Defaults to your main "
+                    "provider if left unset; only shown once verification is enabled above.",
+                ),
+                dcc.Dropdown(
+                    id="relation-verifier-provider",
+                    options=[
+                        {"label": "Same as main provider", "value": ""},
+                        {"label": "OpenAI", "value": "openai"},
+                        {"label": "Google Gemini", "value": "google"},
+                        {"label": "OpenRouter", "value": "openrouter"},
+                        {"label": "NVIDIA NIM", "value": "nvidia"},
+                        {"label": "Groq", "value": "groq"},
+                        {"label": "Anthropic Claude", "value": "anthropic"},
+                        {"label": "Local Ollama", "value": "local"},
+                    ],
+                    value="",
+                    clearable=False,
+                ),
+            ],
+            id="relation-verifier-provider-container",
+            style=display.none,
+        ),
+    ],
+    className="param",
+)
+
 
 llm_config = html.Div(
     [
@@ -824,6 +888,7 @@ advanced_settings = html.Div(
                 max_articles,
                 max_edges,
                 normalization_toggle,
+                relation_verification_toggle,
             ],
             id="advanced-settings-collapse",
             className="settings-collapse",

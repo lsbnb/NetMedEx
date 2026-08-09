@@ -68,7 +68,9 @@ class NodeRAG:
                 # Initialize ChromaDB with ephemeral (in-memory) storage.
                 # chromadb.Client(Settings(...)) was removed in chromadb >=1.x;
                 # use EphemeralClient() instead.
-                self.client = chromadb.EphemeralClient()
+                self.client = chromadb.EphemeralClient(
+                    settings=Settings(anonymized_telemetry=False, allow_reset=True)
+                )
                 logger.info("NodeRAG: Ephemeral ChromaDB client initialized")
 
             # Standardize to ChromaDB default embeddings

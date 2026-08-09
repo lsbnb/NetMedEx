@@ -43,7 +43,14 @@ class SemanticEdge:
 class SemanticRelationshipExtractor:
     """Extract relationships using LLM semantic analysis"""
 
-    def __init__(self, llm_client, confidence_threshold: float = 0.5, progress_callback=None):
+    def __init__(
+        self,
+        llm_client,
+        confidence_threshold: float = 0.5,
+        progress_callback=None,
+        verify_relations: bool = False,
+        verifier_llm_client=None,
+    ):
         """
         Initialize the semantic relationship extractor.
 
@@ -51,10 +58,24 @@ class SemanticRelationshipExtractor:
             llm_client: LLM client instance (e.g., from webapp.llm)
             confidence_threshold: Minimum confidence score to accept edges (0-1)
             progress_callback: Optional callback function(current, total, message) for progress updates
+            verify_relations: If True, run a second-pass verification of directional relation
+                types (e.g. "inhibits", "upregulates") against their supporting evidence quote,
+                using a second/verifier LLM. Directional relations are the ones susceptible to
+                direction-reversal errors (e.g. mistaking passive voice for an active relation);
+                symmetric relations (associated_with, etc.) are not re-checked. An edge that fails
+                verification is downgraded to "associated_with" rather than dropped, since some
+                relationship is still evidenced -- just not confidently in the stated direction.
+            verifier_llm_client: LLM client used for verification when verify_relations is True.
+                Ideally a different model/provider than llm_client (verifying a candidate edge
+                against its evidence quote is a smaller, easier task than the original extraction,
+                so a second independent model is more likely to catch an error than the same model
+                re-asked). Falls back to llm_client if not given.
         """
         self.llm_client = llm_client
         self.confidence_threshold = confidence_threshold
         self.progress_callback = progress_callback
+        self.verify_relations = verify_relations
+        self.verifier_llm_client = verifier_llm_client or llm_client
         self.cache: dict[str, list[SemanticEdge]] = {}  # Cache results by PMID
         self.last_article_errors: dict[str, str] = {}
         self._stats_lock = threading.RLock()
@@ -71,16 +92,20 @@ class SemanticRelationshipExtractor:
             "coverage_expansions": 0,
             "dropped_by_threshold": 0,
             "dropped_invalid_nodes": 0,
+            "verified_directional_edges": 0,
+            "verification_downgrades": 0,
+            "verification_errors": 0,
             "provider": "unknown",
             "model": "unknown",
         }
 
-    def _get_provider(self) -> str:
+    def _get_provider(self, client=None) -> str:
         """Centralized helper for robust provider detection."""
-        if not self.llm_client:
+        client = client or self.llm_client
+        if not client:
             return "unknown"
-        provider = str(getattr(self.llm_client, "provider", "unknown")).lower()
-        base_url = str(getattr(self.llm_client, "base_url", "unknown")).lower()
+        provider = str(getattr(client, "provider", "unknown")).lower()
+        base_url = str(getattr(client, "base_url", "unknown")).lower()
 
         if (
             provider == "local"
@@ -461,6 +486,9 @@ class SemanticRelationshipExtractor:
                     f"PMID {article.pmid}: Skipping edge with invalid nodes: {node1}, {node2}"
                 )
 
+        if self.verify_relations:
+            semantic_edges = self._verify_directional_edges(semantic_edges, article, nodes)
+
         # Cache results
         self.cache[article.pmid] = semantic_edges
         self.last_article_errors.pop(article.pmid, None)
@@ -477,6 +505,118 @@ class SemanticRelationshipExtractor:
         )
 
         return semantic_edges
+
+    def _verify_directional_edges(
+        self,
+        edges: list[SemanticEdge],
+        article: PubTatorArticle,
+        nodes: dict[str, PubTatorNode],
+    ) -> list[SemanticEdge]:
+        """Verify directional relation types against their supporting evidence quote.
+
+        Only edges whose relation_type is directional (e.g. "inhibits", "upregulates") are
+        checked -- that's the failure mode this guards against: the extractor mistaking passive
+        voice or observational evidence for an active, directional claim, despite the extraction
+        prompt's own Directionality/Passive-Voice rules. Symmetric relations (associated_with,
+        etc.) are left alone. An edge that fails verification is downgraded to "associated_with"
+        rather than dropped, since the evidence likely still supports *some* relationship -- just
+        not confidently in the claimed direction.
+
+        Verifying a candidate edge against its evidence quote is a smaller, easier task than the
+        original full-abstract extraction, so this is intentionally allowed to use a different
+        (ideally independent) verifier_llm_client -- verification catching a generation error is
+        the same asymmetry a second reviewer relies on when checking a first draft.
+        """
+        directional = [e for e in edges if e.relation_type in DIRECTIONAL_RELATIONS]
+        if not directional:
+            return edges
+
+        records = [
+            {
+                "index": i,
+                "source": nodes[e.node1_id].name if e.node1_id in nodes else e.node1_id,
+                "relation_type": e.relation_type,
+                "target": nodes[e.node2_id].name if e.node2_id in nodes else e.node2_id,
+                "evidence": e.evidence,
+            }
+            for i, e in enumerate(directional)
+        ]
+
+        prompt = f"""You are independently verifying relation edges another model extracted from this article.
+
+Title: {article.title}
+
+For each edge below, the extractor claimed the relation runs FROM source TO target (source is the
+active effector/regulator, target is what's affected), based on the quoted evidence. Check ONLY
+whether the evidence actually supports that direction -- not whether some relationship exists.
+
+Set direction_correct=0 if: the evidence describes the reverse direction (target acts on source);
+the evidence is passive-voice or purely observational and doesn't establish who acts on whom; or
+the evidence doesn't support a directional claim at all. Set direction_correct=1 only when the
+evidence clearly shows source actively causing/regulating/affecting target.
+
+Edges:
+{json.dumps(records, ensure_ascii=False)}
+
+Return ONLY a JSON object: {{"verifications": [{{"index": <int>, "direction_correct": <0 or 1>}}, ...]}}
+with exactly one entry per edge index above."""
+
+        provider = self._get_provider(self.verifier_llm_client)
+        response_format = (
+            {"type": "json_object"} if provider in ("google", "openai", "openrouter", "local") else None
+        )
+
+        try:
+            response = self._call_llm(
+                prompt,
+                max_tokens=1500,
+                response_format=response_format,
+                pmid=article.pmid,
+                client=self.verifier_llm_client,
+            )
+            try:
+                payload = self._loads_lenient(self._clean_json_text(response))
+                verifications = {int(v["index"]): v for v in payload.get("verifications", [])}
+            except Exception:
+                # Last resort: regex-extract {"index": N, "direction_correct": M} pairs directly,
+                # tolerating a malformed array (missing comma, stray token) around otherwise-valid
+                # individual entries -- mirrors _parse_llm_response_relaxed's fallback for the
+                # extraction pass.
+                pairs = re.findall(
+                    r'"index"\s*:\s*(\d+)\s*,\s*"direction_correct"\s*:\s*(\d+)', response
+                )
+                if not pairs:
+                    raise
+                verifications = {
+                    int(idx): {"direction_correct": int(correct)} for idx, correct in pairs
+                }
+        except Exception as e:
+            logger.warning(
+                f"PMID {article.pmid}: relation-direction verification failed, "
+                f"keeping edges as extracted: {e}"
+            )
+            self._update_stats(verification_errors=1)
+            return edges
+
+        downgrades = 0
+        for i, edge in enumerate(directional):
+            verdict = verifications.get(i)
+            if verdict is None:
+                continue  # no verdict returned for this edge -- leave it as extracted, don't guess
+            if not verdict.get("direction_correct", 1):
+                edge.relation_type = "associated_with"
+                downgrades += 1
+
+        self._update_stats(
+            verified_directional_edges=len(directional),
+            verification_downgrades=downgrades,
+        )
+        if downgrades:
+            logger.info(
+                f"PMID {article.pmid}: verification downgraded {downgrades}/{len(directional)} "
+                "directional edges to associated_with"
+            )
+        return edges
 
     def _build_entity_list(self, nodes: dict[str, PubTatorNode]) -> list[dict[str, str]]:
         """Build a structured entity list for the LLM prompt"""
@@ -680,11 +820,17 @@ Title: {title}
         pmid: str = "",
         current: int = 0,
         total: int = 0,
+        client=None,
     ) -> str:
-        """Call the LLM API with the constructed prompt"""
-        provider = self._get_provider()
-        if not self.llm_client or not self.llm_client.client:
-            # Google and Anthropic use a separate client object (not self.llm_client.client).
+        """Call the LLM API with the constructed prompt.
+
+        `client` overrides self.llm_client for this call (used by the verification pass to call
+        verifier_llm_client instead of the primary extraction client).
+        """
+        client = client or self.llm_client
+        provider = self._get_provider(client)
+        if not client or not client.client:
+            # Google and Anthropic use a separate client object (not client.client).
             if provider not in ("google", "anthropic"):
                 raise ValueError("LLM client not initialized")
 
@@ -702,7 +848,7 @@ Title: {title}
                 logger.info(
                     f"DIAGNOSTIC: Initiating LLM call (provider={provider}, max_tokens={max_tokens})"
                 )
-                response_text = self.llm_client.chat_completion_text(
+                response_text = client.chat_completion_text(
                     messages=[
                         {"role": "system", "content": system_instruction},
                         {"role": "user", "content": prompt},
@@ -746,6 +892,55 @@ Title: {title}
                     logger.error(f"LLM call failed: {e}")
                     raise
 
+    @staticmethod
+    def _loads_lenient(text: str):
+        """json.loads that tolerates trailing garbage after a complete JSON value.
+
+        Some providers (observed with Gemini via the OpenAI-compatible endpoint, even with
+        response_format={"type": "json_object"}) reliably append a stray extra character (e.g. one
+        extra closing brace) after an otherwise well-formed object. A plain json.loads rejects the
+        whole response for one trailing character; raw_decode parses the first complete JSON value
+        and simply ignores whatever follows it.
+        """
+        text = text.strip()
+        try:
+            return json.loads(text)
+        except json.JSONDecodeError:
+            value, _end_index = json.JSONDecoder().raw_decode(text)
+            return value
+
+    @staticmethod
+    def _clean_json_text(text: str) -> str:
+        """Strip markdown code fences and extract the most encompassing JSON array/object.
+
+        Shared by the extraction parser and the relation-direction verification pass -- both
+        call an LLM expecting pure JSON back, and both need to tolerate the same wrapper noise
+        (markdown fences, a trailing sentence after the JSON, etc.).
+        """
+        if not text:
+            return text
+        text = text.strip()
+        if "```" in text:
+            json_match = re.search(r"```(?:json)?\s*([\s\S]*?)\s*```", text)
+            if json_match:
+                text = json_match.group(1).strip()
+
+        # If no code fences, or regex failed, find the most encompassing [] or {} block.
+        array_match = re.search(r"\[[\s\S]*\]", text)
+        object_match = re.search(r"\{[\s\S]*\}", text)
+
+        if array_match and object_match:
+            if array_match.start() < object_match.start():
+                text = array_match.group(0)
+            else:
+                text = object_match.group(0)
+        elif array_match:
+            text = array_match.group(0)
+        elif object_match:
+            text = object_match.group(0)
+
+        return text
+
     def _parse_llm_response(self, response: str, pmid: str) -> list[dict[str, Any]]:
         """
         Parse LLM response into structured relationship data.
@@ -758,35 +953,10 @@ Title: {title}
             logger.debug(f"PMID {pmid}: Empty LLM response (no relationships found)")
             return []
 
-        # Clean up markdown code blocks if present
-        text = response.strip()
-        if "```" in text:
-            # Try to extract content between code fences
-            json_match = re.search(r"```(?:json)?\s*([\s\S]*?)\s*```", text)
-            if json_match:
-                text = json_match.group(1).strip()
-
-        # If no code fences, or regex failed, try to find the first significant JSON structure
-        # We look for the most encompassing [] or {} block
-
-        # Priority 1: Find the first '[' and last ']'
-        array_match = re.search(r"\[[\s\S]*\]", text)
-        # Priority 2: Find the first '{' and last '}'
-        object_match = re.search(r"\{[\s\S]*\}", text)
-
-        if array_match and object_match:
-            # Use whichever comes first and ends last (most encompassing)
-            if array_match.start() < object_match.start():
-                text = array_match.group(0)
-            else:
-                text = object_match.group(0)
-        elif array_match:
-            text = array_match.group(0)
-        elif object_match:
-            text = object_match.group(0)
+        text = self._clean_json_text(response)
 
         try:
-            data = json.loads(text)
+            data = self._loads_lenient(text)
 
             # Handle potential object wrapping (e.g., {"relationships": [...]})
             if isinstance(data, dict):

@@ -21,7 +21,7 @@ from netmedex.normalization import normalize_knowledge_graph
 from netmedex.pubtator import PubTatorAPI
 from netmedex.pubtator_parser import PubTatorIO
 from netmedex.utils_threading import run_thread_with_error_notification
-from webapp.llm import initialize_llm_client_from_settings, llm_client
+from webapp.llm import LLMClient, initialize_llm_client_from_settings, llm_client
 from webapp.upload_limits import (
     MAX_GRAPH_UPLOAD_BYTES,
     MAX_PMID_UPLOAD_BYTES,
@@ -117,6 +117,8 @@ def callbacks(app):
             State("anthropic-model-selector", "value"),
             State("anthropic-custom-model-input", "value"),
             State("normalization-toggle", "value"),
+            State("relation-verification-toggle", "value"),
+            State("relation-verifier-provider", "value"),
         ],
         running=[
             (Output("submit-button", "disabled"), True, False),
@@ -175,6 +177,8 @@ def callbacks(app):
         anthropic_model,
         anthropic_custom_model,
         normalization_toggle,
+        relation_verification_toggle,
+        relation_verifier_provider,
     ):
         try:
             # Initialize progress bar to empty/start
@@ -625,6 +629,29 @@ def callbacks(app):
             # Semantic Analysis: Parse collection first to get article count
             llm_for_graph = llm_client if edge_method == "semantic" else None
 
+            # Relation-direction verification (v1.4): an optional second LLM pass that checks
+            # directional semantic edges against their evidence quote, catching direction-reversal
+            # errors the first extraction pass can still make. Only meaningful for semantic edges.
+            verify_relations = "enabled" in (relation_verification_toggle or [])
+            verifier_llm_for_graph = None
+            if verify_relations and edge_method == "semantic":
+                verifier_provider = (relation_verifier_provider or "").strip().lower()
+                if not verifier_provider or verifier_provider == (llm_provider or "openai").strip().lower():
+                    # No distinct provider requested -- reuse the already-initialized main client.
+                    verifier_llm_for_graph = llm_for_graph
+                else:
+                    candidate_verifier = LLMClient()
+                    initialize_llm_client_from_settings(candidate_verifier, provider=verifier_provider)
+                    if candidate_verifier.client or candidate_verifier.anthropic_client:
+                        verifier_llm_for_graph = candidate_verifier
+                    else:
+                        logger.warning(
+                            f"Relation verification requested provider '{verifier_provider}' but "
+                            "no API key is configured for it in the environment -- falling back "
+                            "to the main LLM client as the verifier."
+                        )
+                        verifier_llm_for_graph = llm_for_graph
+
             if edge_method == "semantic":
                 # Ensure session directory exists
                 if not os.path.exists(savepath["pubtator"]):
@@ -718,6 +745,8 @@ def callbacks(app):
                 semantic_threshold=semantic_threshold,
                 progress_callback=progress_callback,
                 fetch_citations=fetch_citations,
+                verify_relations=verify_relations,
+                verifier_llm_client=verifier_llm_for_graph,
             )
             graph_builder._citation_summary = None  # initialize
 

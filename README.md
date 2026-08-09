@@ -1,4 +1,4 @@
-# NetMedEx v1.3.6
+# NetMedEx v1.4.0
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -25,6 +25,11 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 
 <details>
 <summary><h2>🆕 Recent Updates</h2></summary>
+
+### v1.4.0 — 2026-07-31
+
+- **Relation-Direction Verification (optional 2nd LLM)**: New opt-in Advanced Settings toggle adds a second verification pass over directional semantic edges (e.g. `inhibits`, `upregulates`), checking each against its supporting evidence quote and downgrading unconfirmed directions to a neutral `associated_with` rather than dropping them. Pick a verifier provider independent from your main LLM for the best error-catching odds.
+- **Numeric-Artifact Node Filter**: Defensively rejects graph nodes whose resolved display name is purely numeric (an occasional PubTator3 upstream NER artifact), preventing garbage entities from surfacing as node/edge endpoints.
 
 ### v1.3.6 — 2026-06-29
 

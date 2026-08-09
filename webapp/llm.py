@@ -215,6 +215,8 @@ class LLMClient:
         self.safety_setting = os.getenv("GOOGLE_SAFETY_SETTING", "medium")
         self.client = None
         self.anthropic_client = None
+        self.last_completion_usage: dict[str, int] = {}
+        self.completion_usage_totals: dict[str, int] = {}
 
         # Provider-specific env resolution (with legacy fallbacks).
         if self.provider == "google":
@@ -423,6 +425,20 @@ class LLMClient:
                 response = self.anthropic_client.messages.create(**kwargs)
             else:
                 raise
+        usage = getattr(response, "usage", None)
+        usage_record = {
+            "input_tokens": int(getattr(usage, "input_tokens", 0) or 0),
+            "output_tokens": int(getattr(usage, "output_tokens", 0) or 0),
+            "cache_creation_input_tokens": int(
+                getattr(usage, "cache_creation_input_tokens", 0) or 0
+            ),
+            "cache_read_input_tokens": int(getattr(usage, "cache_read_input_tokens", 0) or 0),
+        }
+        usage_record["total_tokens"] = (
+            usage_record["input_tokens"]
+            + usage_record["output_tokens"]
+        )
+        self._record_completion_usage(usage_record)
         stop_reason = getattr(response, "stop_reason", "unknown")
         if stop_reason == "max_tokens":
             logger.warning(
@@ -495,10 +511,24 @@ class LLMClient:
             kwargs["response_format"] = response_format
 
         response = self.client.chat.completions.create(**kwargs)
+        usage = getattr(response, "usage", None)
+        self._record_completion_usage({
+            "input_tokens": int(getattr(usage, "prompt_tokens", 0) or 0),
+            "output_tokens": int(getattr(usage, "completion_tokens", 0) or 0),
+            "total_tokens": int(getattr(usage, "total_tokens", 0) or 0),
+        })
         content = response.choices[0].message.content
         if content is None:
             return ""
         return str(content).strip()
+
+    def _record_completion_usage(self, usage: dict[str, int]) -> None:
+        """Record the last call and accumulate provider-reported chat token usage."""
+        self.last_completion_usage = dict(usage)
+        for field, value in usage.items():
+            self.completion_usage_totals[field] = (
+                self.completion_usage_totals.get(field, 0) + int(value)
+            )
 
     def get_embeddings(self, texts: list[str], timeout: float = 60.0) -> list[list[float]]:
         """

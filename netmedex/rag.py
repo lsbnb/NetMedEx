@@ -112,15 +112,21 @@ class AbstractRAG:
 
         try:
             import chromadb
+            from chromadb.config import Settings
 
             if self.persist_directory:
                 logger.info(f"Using persistent ChromaDB at {self.persist_directory}")
-                self.client = chromadb.PersistentClient(path=self.persist_directory)
+                self.client = chromadb.PersistentClient(
+                    path=self.persist_directory,
+                    settings=Settings(anonymized_telemetry=False, allow_reset=True),
+                )
             else:
                 # Initialize ChromaDB with ephemeral (in-memory) storage.
                 # chromadb.Client(Settings(...)) was removed in chromadb >=1.x;
                 # use EphemeralClient() instead.
-                self.client = chromadb.EphemeralClient()
+                self.client = chromadb.EphemeralClient(
+                    settings=Settings(anonymized_telemetry=False, allow_reset=True)
+                )
 
             # Standardize to ChromaDB default embeddings for all providers.
             # This avoids provider-specific embedding endpoint compatibility issues.
@@ -293,6 +299,44 @@ class AbstractRAG:
         except Exception as e:
             logger.error(f"Error during search: {e}")
             return []
+
+    def search_with_components(
+        self, query: str, top_k: int = 5, preferred_pmids: set[str] | None = None
+    ) -> list[dict[str, Any]]:
+        """Like search(), but returns the raw scoring components instead of just the final
+        (pmid, hybrid_score) tuple, so a caller can recompute hybrid_score under a different
+        preferred_pmid boost multiplier without re-querying ChromaDB.
+
+        This is a separate method rather than a parameter on search() so search()'s return type
+        and existing call sites are completely unaffected -- added for
+        evaluation/calibrate_hybrid_boost.py, not used by the live search()/get_context() path.
+        """
+        if not self._initialized or self.collection is None:
+            logger.warning("RAG system not initialized")
+            return []
+
+        candidate_k = min(len(self.documents), max(top_k * 4, 50))
+        if candidate_k <= 0:
+            return []
+
+        results = self.collection.query(query_texts=[query], n_results=candidate_k)
+        components: list[dict[str, Any]] = []
+        if results["ids"] and results["distances"]:
+            for doc_id, distance in zip(results["ids"][0], results["distances"][0]):
+                pmid = doc_id.replace("pmid_", "")
+                similarity = 1.0 / (1.0 + distance)
+                doc = self.documents.get(pmid)
+                weight = doc.weight if doc else 1.0
+                is_preferred = bool(preferred_pmids and pmid in preferred_pmids)
+                components.append(
+                    {
+                        "pmid": pmid,
+                        "similarity": similarity,
+                        "weight": weight,
+                        "is_preferred": is_preferred,
+                    }
+                )
+        return components
 
     def get_context(
         self, query: str, top_k: int = 5, preferred_pmids: set[str] | None = None

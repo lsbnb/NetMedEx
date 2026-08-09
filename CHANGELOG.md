@@ -5,6 +5,54 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2026-07-31
+
+### Added
+
+- **Relation-Direction Verification (2nd LLM, opt-in)**: `SemanticRelationshipExtractor` and
+  `PubTatorGraphBuilder` gained `verify_relations`/`verifier_llm_client` parameters. When enabled,
+  every directional semantic edge (e.g. `inhibits`, `upregulates`, `treats`) is checked against its
+  supporting evidence quote by a second LLM pass before being added to the graph; an edge that
+  fails verification is downgraded to `associated_with` rather than dropped, since the evidence
+  likely still supports some relationship, just not confidently in the claimed direction. Exposed
+  as a new "Relation-Direction Verification" toggle in Advanced Settings, with an independent
+  verifier-provider dropdown (falls back to the main LLM client if no distinct provider is
+  configured). Motivated by an internal evaluation audit that found only ~33% of extracted
+  directional relations had the correct direction even with the extraction prompt's existing
+  Directionality/Passive-Voice rules — verifying a candidate edge against its evidence is a
+  smaller, easier task than the original extraction, so an independent second model is more likely
+  to catch a direction-reversal error than the same model re-asked.
+- **Adaptive Evidence-Gated Hybrid Evaluation**: the formal runner now includes an auditable
+  `F_adaptive` profile that routes direct retrieval questions to text-only retrieval, association
+  questions to 1-hop graph retrieval, and mechanism/hypothesis questions to evidence-gated 2-hop
+  retrieval. Every exposed multi-hop path must carry stored extraction evidence on every hop.
+- **Token-Budgeted Multi-model AI Panel**: reproducibly blinded answer worksheets, enriched frozen
+  edge evidence, resumable OpenAI/Gemini/Anthropic judges, disagreement-first sampling, dry-run
+  token estimates, multi-rater reliability, paired bootstrap comparisons, and checksum manifests
+  are available under `evaluation/`.
+- **Evidence-Margin Graph Reranking**: adaptive evaluation no longer gives every graph-linked PMID
+  an unconditional 1.5x multiplier. A PMID is boosted only when a fully evidenced, query-ranked
+  path exceeds its text score by a configured margin, and the two scores are conservatively
+  blended. The runner can replay frozen query-specific graph exposures and skip answer generation
+  for deterministic, completion-token-free retrieval comparisons.
+
+### Fixed
+
+- **Numeric-Only Node Names**: `PubTatorGraphBuilder._add_nodes` now rejects nodes whose resolved
+  display name is purely numeric (e.g. a bare `"0409"`), which can occur when PubTator3's upstream
+  NER annotates a truncated identifier or figure as an entity mention. Prevents these artifacts
+  from surfacing as graph node/edge endpoints.
+- **Graph Confidence Ranking**: `GraphRetriever` now reads the actual nested semantic confidence
+  mapping (`{pmid: {relation: score}}`) when ranking paths instead of silently assigning every
+  semantic edge the same fallback confidence of `0.5`.
+- **Chroma Collection Isolation and Telemetry**: AbstractRAG and NodeRAG use distinct collections
+  during formal runs so node IDs cannot replace PMID results; anonymized Chroma telemetry is also
+  disabled for both ephemeral and persistent clients.
+- **Graph Evidence Prompt Payload**: production Hybrid RAG now passes a deterministic PMID-linked
+  evidence quote with each graph edge into the final ChatSession prompt. The system prompt rejects
+  graph-derived claims whose hop quote is absent or does not support the stated relation/direction,
+  fixing the prior gap where the generator received graph labels and PMIDs without their evidence.
+
 ## [1.3.6] - 2026-06-29
 
 ### Fixed

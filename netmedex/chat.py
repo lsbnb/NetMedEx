@@ -123,6 +123,9 @@ Synthesize relevant information from the context using a strict three-layer reas
 1. **Never hallucinate PMIDs.** Only cite PMIDs that appear explicitly in the CONTEXT.
 2. **Never convert co-occurrence into regulation.** Entities appearing in the same paper are NOT necessarily causal.
 3. **Edge-level citation.** Attach the supporting PMID at the edge/claim level: `[PMID]`, not only at the end of a paragraph.
+   For graph-derived claims, inspect the supplied `EVIDENCE` quote for every hop. If a hop has no
+   quote or the quote does not support the stated relation and direction, omit that path or explicitly
+   label it unsupported; a graph edge label alone is not sufficient evidence.
 4. **Strict layer separation.** Direct literature evidence, graph-based association, and causal hypotheses must NEVER be mixed within the same section.
 5. **Causal language restriction.** Words such as *causes / drives / prevents / inhibits / activates / upregulates / downregulates* are ONLY permitted in **Layer 3**, and only when the edge polarity is supported by the CONTEXT.
 6. **Speculative language mandate.** Layers 2 and 3 must use: *may / might / potentially / is consistent with / suggests*.

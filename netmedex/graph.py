@@ -114,6 +114,8 @@ class PubTatorGraphBuilder:
         semantic_threshold: float = 0.5,
         progress_callback=None,
         fetch_citations: bool = False,
+        verify_relations: bool = False,
+        verifier_llm_client=None,
     ) -> None:
         self.node_type = node_type
         self.edge_method = edge_method
@@ -133,9 +135,12 @@ class PubTatorGraphBuilder:
                 llm_client,
                 confidence_threshold=semantic_threshold,
                 progress_callback=progress_callback,
+                verify_relations=verify_relations,
+                verifier_llm_client=verifier_llm_client,
             )
             logger.info(
-                f"Semantic relationship extractor initialized (threshold: {semantic_threshold})"
+                f"Semantic relationship extractor initialized (threshold: {semantic_threshold}, "
+                f"verify_relations: {verify_relations})"
             )
 
         self._init_graph_attributes()
@@ -674,6 +679,17 @@ class PubTatorGraphBuilder:
             # Source validation: ensure node has required basic attributes
             if not hasattr(data, "name") or not data.name:
                 logger.warning(f"Skipping invalid node {node_id}: missing name")
+                continue
+
+            # PubTator3's upstream NER occasionally annotates a bare numeric fragment (e.g. a
+            # truncated identifier or dosage figure) as an entity mention. A purely numeric string
+            # is never a valid biomedical entity display name, so drop it defensively here rather
+            # than let it surface as a node/edge endpoint downstream.
+            if data.name.strip().isdigit():
+                logger.warning(
+                    f"Skipping invalid node {node_id}: numeric-only name {data.name!r} "
+                    "(likely an upstream NER annotation artifact)"
+                )
                 continue
 
             if not hasattr(data, "type") or not data.type:

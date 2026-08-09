@@ -21,3 +21,13 @@ def callbacks(app):
         if edge_method == "semantic":
             return display.block
         return display.none
+
+    @app.callback(
+        Output("relation-verifier-provider-container", "style"),
+        Input("relation-verification-toggle", "value"),
+    )
+    def toggle_relation_verifier_provider(verification_toggle):
+        """Show the verifier-provider dropdown only when relation verification is enabled"""
+        if "enabled" in (verification_toggle or []):
+            return display.block
+        return display.none
