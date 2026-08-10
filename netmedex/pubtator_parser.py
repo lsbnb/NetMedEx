@@ -122,6 +122,19 @@ class PubTatorIterator:
         # The first line of the next article
         self._line = line
 
+        # Column 4 of PubTator is the source mention.  Some NetMedEx frozen
+        # corpora were serialized with identifier names instead (for example,
+        # source ``miR-21-5p`` became NCBI label ``Mir215``).  Offsets span
+        # ``title + ' ' + abstract`` and are the authoritative, deterministic
+        # way to restore the mention without changing its ontology/Gene ID.
+        article_text = f"{title or ''} {abstract or ''}"
+        for annotation in annotations:
+            start = max(0, int(annotation.start))
+            end = min(len(article_text), max(start, int(annotation.end)))
+            recovered_name = article_text[start:end].strip()
+            if recovered_name:
+                annotation.name = recovered_name
+
         return PubTatorArticle(
             pmid=pmid,
             date=None,

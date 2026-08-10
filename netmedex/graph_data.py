@@ -12,6 +12,9 @@ NODE_COLOR_MAP = {
     "ProteinMutation": "#FA9FB5",
     "CellLine": "#BDBDBD",
     "SNP": "#FFFFB3",
+    "BiologicalProcess": "#E6AB02",
+    "Phenotype": "#B15928",
+    "Pathway": "#1B9E77",
 }
 NODE_SHAPE_MAP = {
     "Chemical": "ELLIPSE",
@@ -22,6 +25,9 @@ NODE_SHAPE_MAP = {
     "ProteinMutation": "HEXAGON",
     "CellLine": "VEE",
     "SNP": "OCTAGON",
+    "BiologicalProcess": "ROUNDRECTANGLE",
+    "Phenotype": "ROUNDRECTANGLE",
+    "Pathway": "PENTAGON",
 }
 
 
@@ -55,6 +61,7 @@ class GraphEdge:
     # Semantic analysis metadata (optional, only for LLM-extracted edges)
     confidences: dict[str, dict[str, float]] | None = None  # {pmid: {relation: confidence}}
     evidences: dict[str, dict[str, str]] | None = None  # {pmid: {relation: evidence}}
+    mechanism_events: dict[str, dict[str, dict]] | None = None
     source_id: str | None = None  # Explicit source node ID for directed relationships
 
 

@@ -23,6 +23,12 @@ from netmedex.graph_data import (
     GraphNode,
 )
 from netmedex.headers import HEADERS
+from netmedex.graph_schema import (
+    CURRENT_GRAPH_SCHEMA_VERSION,
+    CURRENT_NER_SCHEMA_VERSION,
+    graph_schema_status,
+)
+from netmedex.mechanism_event import build_mechanism_event
 from netmedex.npmi import normalized_pointwise_mutual_information
 from netmedex.pubtator_data import (
     PubTatorArticle,
@@ -35,6 +41,8 @@ from netmedex.pubtator_graph_data import (
     PubTatorNode,
     PubTatorNodeCollection,
 )
+from netmedex.phenotype_ner import find_phenotype_annotations
+from netmedex.pathway_ner import find_pathway_annotations
 
 try:
     from netmedex.semantic_re import SemanticRelationshipExtractor
@@ -259,6 +267,17 @@ class PubTatorGraphBuilder:
         for annotation in article.annotations:
             node_collection.add_node(annotation)
 
+        # PubTator3's own NER has no biological_process/phenotype category, so mechanism and
+        # phenotype endpoints (e.g. "osteoblast differentiation") never become nodes without this
+        # step -- see netmedex/phenotype_ner.py.
+        for annotation in find_phenotype_annotations(article.pmid, article.title, article.abstract):
+            node_collection.add_node(annotation)
+
+        # Likewise, PubTator3 has no named-pathway category (e.g. "PI3K/AKT signaling pathway") --
+        # see netmedex/pathway_ner.py.
+        for annotation in find_pathway_annotations(article.pmid, article.title, article.abstract):
+            node_collection.add_node(annotation)
+
         edges = []
 
         # Edge creation based on selected method
@@ -285,6 +304,7 @@ class PubTatorGraphBuilder:
 
         self._add_attributes(article)
         self._add_nodes(node_collection.nodes)
+        self._add_study_species_context(article, node_collection.nodes)
         self._add_edges(edges)
 
         return node_collection.nodes
@@ -698,6 +718,8 @@ class PubTatorGraphBuilder:
 
             if self.graph.has_node(node_id):
                 self.graph.nodes[node_id]["pmids"].add(data.pmid)
+                aliases = self.graph.nodes[node_id].setdefault("aliases", set())
+                aliases.update(data.aliases or {data.name})
             else:
                 node_data = GraphNode(
                     _id=generate_stable_id(f"node_{node_id}"),
@@ -715,9 +737,46 @@ class PubTatorGraphBuilder:
                     pos=None,
                 )
                 self.graph.add_node(node_id, **asdict(node_data))
+                self.graph.nodes[node_id]["aliases"] = set(data.aliases or {data.name})
+
+    def _add_study_species_context(
+        self, article: PubTatorArticle, nodes: Mapping[str, PubTatorNode]
+    ) -> None:
+        """Record PMID-level species context without changing node identity."""
+        species = sorted(
+            {
+                (str(annotation.mesh), str(annotation.name))
+                for annotation in article.annotations
+                if str(annotation.type).casefold() == "species"
+            }
+        )
+        if not species:
+            return
+        context = [
+            {"taxon_id": taxon_id, "name": name}
+            for taxon_id, name in species
+        ]
+        for node_id in nodes:
+            if self.graph.has_node(node_id):
+                self.graph.nodes[node_id].setdefault(
+                    "study_species_by_pmid", {}
+                )[str(article.pmid)] = context
 
     def _add_edges(self, edges: Sequence[PubTatorEdge]):
         for edge in edges:
+            mechanism_event = build_mechanism_event(
+                source_id=edge.source_id,
+                target_id=(
+                    edge.node2_id
+                    if edge.source_id == edge.node1_id
+                    else edge.node1_id
+                ),
+                pmid=edge.pmid,
+                relation=edge.relation,
+                evidence=edge.evidence,
+                confidence=edge.confidence,
+                study_type=edge.study_type,
+            )
             if self.graph.has_edge(edge.node1_id, edge.node2_id):
                 # Edge exists - update relations and metadata
                 edge_data = self.graph.edges[edge.node1_id, edge.node2_id]
@@ -743,6 +802,13 @@ class PubTatorGraphBuilder:
                         edge_data["evidences"][edge.pmid] = {}
                     edge_data["evidences"][edge.pmid][edge.relation] = edge.evidence
 
+                if mechanism_event is not None:
+                    events = edge_data.get("mechanism_events")
+                    if not isinstance(events, dict):
+                        events = {}
+                        edge_data["mechanism_events"] = events
+                    events.setdefault(edge.pmid, {})[edge.relation] = mechanism_event
+
                 # Set source_id if present in PubTatorEdge and not already set
                 if edge.source_id is not None and edge_data.get("source_id") is None:
                     edge_data["source_id"] = edge.source_id
@@ -750,12 +816,18 @@ class PubTatorGraphBuilder:
                 # Create new edge with metadata
                 confidences = None
                 evidences = None
+                mechanism_events = None
 
                 if edge.confidence is not None:
                     confidences = {edge.pmid: {edge.relation: edge.confidence}}
 
                 if edge.evidence is not None:
                     evidences = {edge.pmid: {edge.relation: edge.evidence}}
+
+                if mechanism_event is not None:
+                    mechanism_events = {
+                        edge.pmid: {edge.relation: mechanism_event}
+                    }
 
                 edge_data = GraphEdge(
                     _id=generate_stable_id(f"edge_{edge.node1_id}_{edge.node2_id}"),
@@ -768,6 +840,7 @@ class PubTatorGraphBuilder:
                     edge_width=None,
                     confidences=confidences,
                     evidences=evidences,
+                    mechanism_events=mechanism_events,
                     source_id=edge.source_id,
                 )
                 self.graph.add_edge(edge.node1_id, edge.node2_id, **asdict(edge_data))
@@ -795,6 +868,8 @@ class PubTatorGraphBuilder:
         self.graph.graph["pmid_title"] = {}
         self.graph.graph["pmid_abstract"] = {}  # NEW: Store abstracts for RAG
         self.graph.graph["pmid_metadata"] = {}  # NEW: Store full bibliography metadata
+        self.graph.graph["graph_schema_version"] = CURRENT_GRAPH_SCHEMA_VERSION
+        self.graph.graph["ner_schema_version"] = CURRENT_NER_SCHEMA_VERSION
 
     def calculate_citation_weights(self) -> dict[str, float]:
         """Calculate time-normalized citation weights for articles.
@@ -920,4 +995,12 @@ def unsafe_load_graph(graph_pickle_path: str):
 
 def load_graph(graph_pickle_path: str):
     with open(graph_pickle_path, "rb") as f:
-        return safe_load_graph_pickle(f.read())
+        graph = safe_load_graph_pickle(f.read())
+    status = graph_schema_status(graph)
+    if status["rebuild_required"]:
+        logger.warning(
+            "Frozen graph predates the current ontology-NER schema and must be "
+            "rebuilt to include BiologicalProcess, Phenotype, and Pathway nodes: %s",
+            ", ".join(status["reasons"]),
+        )
+    return graph

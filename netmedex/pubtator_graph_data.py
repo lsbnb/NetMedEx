@@ -5,7 +5,7 @@ from __future__ import annotations
 import logging
 from abc import ABC, abstractmethod
 from collections import defaultdict
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from typing_extensions import override
 
@@ -28,6 +28,7 @@ class PubTatorNode:
     type: str
     name: str
     pmid: str
+    aliases: set[str] = field(default_factory=set)
 
 
 @dataclass
@@ -82,6 +83,7 @@ class NonMeshNodeCollection(NodeCollection):
                 type=annotation.type,
                 name=name,
                 pmid=annotation.pmid,
+                aliases={name},
             )
 
     @override
@@ -157,6 +159,7 @@ class MeshNodeCollection(NodeCollection):
                 type=node_data.type,
                 name=name,
                 pmid=node_data.pmid,
+                aliases=set(node_data.name),
             )
 
         return nodes

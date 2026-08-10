@@ -64,14 +64,18 @@ def normalize_knowledge_graph(
         if len(indices) < 2:
             continue
 
-        # Group by type for protected nodes; merge freely for non-protected.
+        # Protected biomedical identifiers are identity-bearing.  The same
+        # symbol can denote different species (or paralogs), so name equality
+        # is not sufficient to merge Gene/variant nodes.
         protected_in_group = [idx for idx in indices if node_types[idx] in _PROTECTED_TYPES]
         unprotected_in_group = [idx for idx in indices if node_types[idx] not in _PROTECTED_TYPES]
 
-        # Merge protected-type duplicates only within the same subtype
+        # Merge protected-type duplicates only within the same subtype *and*
+        # the same explicit identifier.  Missing identifiers remain separate.
         type_buckets = defaultdict(list)
         for idx in protected_in_group:
-            type_buckets[node_types[idx]].append(idx)
+            if node_cuis[idx] is not None:
+                type_buckets[(node_types[idx], node_cuis[idx])].append(idx)
         for bucket in type_buckets.values():
             if len(bucket) > 1:
                 canonical_idx = bucket[0]
@@ -184,6 +188,24 @@ def normalize_knowledge_graph(
         similar_indices = np.array(
             [idx for idx in similar_indices if _types_compatible(type_i, node_types[idx])]
         )
+
+        if is_protected_i:
+            # Embedding similarity must never override a Gene/variant
+            # identifier boundary.  This prevents symbols such as Mir21/PTEN
+            # from collapsing across species.  An ungrounded protected node is
+            # also kept separate because its identity cannot be proven.
+            source_cui = node_cuis[i]
+            similar_indices = np.array(
+                [
+                    idx
+                    for idx in similar_indices
+                    if node_ids[idx] not in merging_map
+                    and source_cui is not None
+                    and node_cuis[idx] is not None
+                    and node_cuis[idx] == source_cui
+                    and node_types[idx] == type_i
+                ]
+            )
 
         if len(similar_indices) > 1:
             # --- CONFLICT RESOLUTION LOGIC ---

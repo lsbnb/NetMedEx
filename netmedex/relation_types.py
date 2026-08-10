@@ -24,6 +24,7 @@ DIRECTIONAL_RELATIONS = {
     "promotes",
     "stimulates",
     "blocks",
+    "targets",
     # Modification relationships
     "phosphorylates",
     "methylates",
@@ -101,6 +102,9 @@ RELATION_NORMALIZATIONS = {
     "association": "associated_with",
     "bind": "binds_to",
     "binding": "binds_to",
+    "target": "targets",
+    "targeting": "targets",
+    "targeted": "targets",
 }
 
 

@@ -24,13 +24,15 @@ MUTATION_PATTERNS = {
 ANNOTATION_TYPES = {
     "Chemical",
     "Gene",
-    "miRNA",  # Added "miRNA" to support miRNA extraction
     "Species",
     "Disease",
     "DNAMutation",
     "ProteinMutation",
     "CellLine",
     "SNP",
+    "BiologicalProcess",  # GO biological_process matches, see netmedex/phenotype_ner.py
+    "Phenotype",  # HPO phenotype matches, see netmedex/phenotype_ner.py
+    "Pathway",  # KEGG/Reactome named-pathway matches, see netmedex/pathway_ner.py
 }
 
 logger = logging.getLogger(__name__)
@@ -136,12 +138,18 @@ class PubTatorArticle:
     ):
         title_str = f"{self.pmid}|t|{self.title}\n"
         abstract_str = f"{self.pmid}|a|{self.abstract}\n"
+
+        def annotation_display_name(annotation: PubTatorAnnotation) -> str:
+            if annotation_use_identifier_name:
+                return annotation.identifier_name or annotation.name
+            return annotation.name
+
         annotation_str = [
             (
                 f"{self.pmid}\t"
                 f"{annotation.start}\t"
                 f"{annotation.end}\t"
-                f"{annotation.identifier_name if annotation_use_identifier_name else annotation.name}\t"
+                f"{annotation_display_name(annotation)}\t"
                 f"{annotation.type}\t"
                 f"{annotation.mesh}"
             )

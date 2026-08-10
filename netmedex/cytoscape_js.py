@@ -297,6 +297,7 @@ def create_cytoscape_edge(edge, G, with_id=True):
         "target_raw_id": target_raw_id,
         "confidences": edge_attr.get("confidences", None),
         "evidences": edge_attr.get("evidences", None),
+        "mechanism_events": edge_attr.get("mechanism_events", None),
     }
 
     if is_directional:

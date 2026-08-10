@@ -279,7 +279,21 @@ class LLMClient:
         safety_setting=None,
     ):
         if provider:
+            previous_provider = self.provider
             self.provider = provider
+            # Switching providers must also switch the endpoint unless the
+            # caller explicitly supplied one.  Reusing Anthropic's URL for an
+            # OpenAI client (or vice versa) yields misleading 404 responses.
+            if base_url is None and self.provider != previous_provider:
+                provider_defaults = {
+                    "openai": OPENAI_BASE_URL,
+                    "google": GEMINI_OPENAI_BASE_URL,
+                    "openrouter": OPENROUTER_BASE_URL,
+                    "nvidia": NVIDIA_NIM_BASE_URL,
+                    "groq": GROQ_BASE_URL,
+                    "anthropic": ANTHROPIC_BASE_URL,
+                }
+                self.base_url = provider_defaults.get(self.provider, self.base_url)
         self.api_key = get_provider_api_key(self.provider, api_key)
         if base_url:
             self.base_url = base_url

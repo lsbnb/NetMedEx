@@ -1,0 +1,4421 @@
+{
+  "criterion": {
+    "source": "Icariin",
+    "targets": [
+      "osteoblast differentiation",
+      "osteogenesis"
+    ],
+    "allowed_hops": [
+      3,
+      4
+    ],
+    "requirements": [
+      "Tier-A claim-safe path",
+      "PMID and evidence quote on every hop",
+      "distinct Gene identifiers are never merged across species"
+    ]
+  },
+  "graph": {
+    "nodes": 56,
+    "edges": 90,
+    "schema": {
+      "current": true,
+      "rebuild_required": false,
+      "graph_schema_version": 2,
+      "ner_schema_version": "pubtator-go-hpo-kegg-reactome-v1",
+      "expected_graph_schema_version": 2,
+      "expected_ner_schema_version": "pubtator-go-hpo-kegg-reactome-v1",
+      "reasons": []
+    },
+    "semantic_stats": {
+      "total_articles": 6,
+      "processed_articles": 6,
+      "succeeded_articles": 6,
+      "failed_articles": 0,
+      "api_errors": 0,
+      "parse_failures": 0,
+      "relaxed_recoveries": 0,
+      "compact_retries": 0,
+      "coverage_passes": 0,
+      "coverage_expansions": 0,
+      "dropped_by_threshold": 0,
+      "dropped_invalid_nodes": 1,
+      "verified_directional_edges": 0,
+      "verification_downgrades": 0,
+      "verification_errors": 0,
+      "provider": "openai",
+      "model": "gpt-4.1"
+    }
+  },
+  "gene_identity_context": [
+    {
+      "node_id": "100314000_Gene",
+      "name": "mir-21",
+      "pmids": [
+        "35593324"
+      ],
+      "study_species_by_pmid": {
+        "35593324": [
+          {
+            "taxon_id": "10116",
+            "name": "Rat"
+          },
+          {
+            "taxon_id": "10116",
+            "name": "rat"
+          },
+          {
+            "taxon_id": "10116",
+            "name": "rats"
+          }
+        ]
+      }
+    },
+    {
+      "node_id": "19211_Gene",
+      "name": "pten",
+      "pmids": [
+        "34854397"
+      ],
+      "study_species_by_pmid": {
+        "34854397": [
+          {
+            "taxon_id": "10090",
+            "name": "mice"
+          },
+          {
+            "taxon_id": "10090",
+            "name": "mouse"
+          }
+        ]
+      }
+    },
+    {
+      "node_id": "387140_Gene",
+      "name": "mir-21",
+      "pmids": [
+        "34854397"
+      ],
+      "study_species_by_pmid": {
+        "34854397": [
+          {
+            "taxon_id": "10090",
+            "name": "mice"
+          },
+          {
+            "taxon_id": "10090",
+            "name": "mouse"
+          }
+        ]
+      }
+    },
+    {
+      "node_id": "387211_Gene",
+      "name": "mir-21-5p",
+      "pmids": [
+        "29500883"
+      ],
+      "study_species_by_pmid": {}
+    },
+    {
+      "node_id": "406991_Gene",
+      "name": "mirna-21",
+      "pmids": [
+        "30795815"
+      ],
+      "study_species_by_pmid": {
+        "30795815": [
+          {
+            "taxon_id": "10116",
+            "name": "rat"
+          },
+          {
+            "taxon_id": "9606",
+            "name": "human"
+          },
+          {
+            "taxon_id": "9615",
+            "name": "canine"
+          }
+        ]
+      }
+    },
+    {
+      "node_id": "50557_Gene",
+      "name": "pten",
+      "pmids": [
+        "30795815",
+        "35593324"
+      ],
+      "study_species_by_pmid": {
+        "30795815": [
+          {
+            "taxon_id": "10116",
+            "name": "rat"
+          },
+          {
+            "taxon_id": "9606",
+            "name": "human"
+          },
+          {
+            "taxon_id": "9615",
+            "name": "canine"
+          }
+        ],
+        "35593324": [
+          {
+            "taxon_id": "10116",
+            "name": "Rat"
+          },
+          {
+            "taxon_id": "10116",
+            "name": "rat"
+          },
+          {
+            "taxon_id": "10116",
+            "name": "rats"
+          }
+        ]
+      }
+    }
+  ],
+  "accepted_endpoint_paths": [],
+  "all_exposed_endpoint_paths": [],
+  "shorter_claim_safe_endpoint_paths": [
+    {
+      "target": "osteogenic differentiation",
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 1,
+      "gate_tier": "A",
+      "claim_safe": true,
+      "gate_reasons": [
+        "query_endpoint_alignment",
+        "complete_hop_evidence"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "35002378",
+          "evidence": "icariin treatment/miR-23a knockdown promoted BMSC viability and osteogenic differentiation",
+          "confidence": 0.98,
+          "support_tier": "A"
+        }
+      ]
+    }
+  ],
+  "all_bounded_endpoint_candidates": [
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "GO:0001649_BiologicalProcess",
+        "morinda officinalis polysaccharide_chemical",
+        "map04151_Pathway",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "osteogenic differentiation",
+        "morinda officinalis polysaccharide",
+        "pten/pi3k/akt/hif-1alpha pathway",
+        "osteogenesis"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_4",
+        "unresolved_path_polarity",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "35002378",
+          "evidence": "icariin treatment/miR-23a knockdown promoted BMSC viability and osteogenic differentiation",
+          "confidence": 0.98,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "GO:0001649_BiologicalProcess",
+          "source_name": "osteogenic differentiation",
+          "target_id": "morinda officinalis polysaccharide_chemical",
+          "target_name": "morinda officinalis polysaccharide",
+          "relation": "inhibits",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP, the OD of rBMSCs was increased and AD was inhibited",
+          "confidence": 0.95,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "morinda officinalis polysaccharide_chemical",
+          "source_name": "morinda officinalis polysaccharide",
+          "target_id": "map04151_Pathway",
+          "target_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "relation": "activates",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP, PI3K, and AKT phosphorylation were increased and the PI3K/AKT pathway was activated",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "map04151_Pathway",
+          "source_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "GO:0001649_BiologicalProcess",
+        "406991_Gene",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "osteogenic differentiation",
+        "mirna-21",
+        "osteogenesis"
+      ],
+      "hop_count": 3,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_3",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "35002378",
+          "evidence": "icariin treatment/miR-23a knockdown promoted BMSC viability and osteogenic differentiation",
+          "confidence": 0.98,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "GO:0001649_BiologicalProcess",
+          "source_name": "osteogenic differentiation",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "In the present study, we found that miRNA-21 promotes the migration and osteogenic differentiation of bone marrow-derived stem cells (BMSCs) in vitro.",
+          "confidence": 0.95,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.98,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "GO:0001649_BiologicalProcess",
+        "406991_Gene",
+        "map04151_Pathway",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "osteogenic differentiation",
+        "mirna-21",
+        "pten/pi3k/akt/hif-1alpha pathway",
+        "osteogenesis"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_3",
+        "incomplete_evidence_hop_4",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "35002378",
+          "evidence": "icariin treatment/miR-23a knockdown promoted BMSC viability and osteogenic differentiation",
+          "confidence": 0.98,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "GO:0001649_BiologicalProcess",
+          "source_name": "osteogenic differentiation",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "In the present study, we found that miRNA-21 promotes the migration and osteogenic differentiation of bone marrow-derived stem cells (BMSCs) in vitro.",
+          "confidence": 0.95,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "map04151_Pathway",
+          "target_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "relation": "activates",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "map04151_Pathway",
+          "source_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "GO:0001649_BiologicalProcess",
+        "406991_Gene",
+        "MESH:C485817_Chemical",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "osteogenic differentiation",
+        "mirna-21",
+        "beta-tricalcium phosphate",
+        "osteogenesis"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_4",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "35002378",
+          "evidence": "icariin treatment/miR-23a knockdown promoted BMSC viability and osteogenic differentiation",
+          "confidence": 0.98,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "GO:0001649_BiologicalProcess",
+          "source_name": "osteogenic differentiation",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "In the present study, we found that miRNA-21 promotes the migration and osteogenic differentiation of bone marrow-derived stem cells (BMSCs) in vitro.",
+          "confidence": 0.95,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "MESH:C485817_Chemical",
+          "target_name": "beta-tricalcium phosphate",
+          "relation": "modifies",
+          "pmid": "30795815",
+          "evidence": "we verified the essential role of miRNA-21 in osteogenesis by implanting a miRNA-21-modified BMSCs/beta-tricalcium phosphate (beta-TCP) composite into critical size defects.",
+          "confidence": 0.85,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "MESH:C485817_Chemical",
+          "source_name": "beta-tricalcium phosphate",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "enhances",
+          "pmid": "30795815",
+          "evidence": "Radiography, micro-CT, and histology revealed significantly greater volume of new bone formation in the miRNA-21 group than in the control group.",
+          "confidence": 0.8,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "GO:0001649_BiologicalProcess",
+        "406991_Gene",
+        "beta-tcp_chemical",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "osteogenic differentiation",
+        "mirna-21",
+        "beta-tcp",
+        "osteogenesis"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_4",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "35002378",
+          "evidence": "icariin treatment/miR-23a knockdown promoted BMSC viability and osteogenic differentiation",
+          "confidence": 0.98,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "GO:0001649_BiologicalProcess",
+          "source_name": "osteogenic differentiation",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "In the present study, we found that miRNA-21 promotes the migration and osteogenic differentiation of bone marrow-derived stem cells (BMSCs) in vitro.",
+          "confidence": 0.95,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "beta-tcp_chemical",
+          "target_name": "beta-tcp",
+          "relation": "modifies",
+          "pmid": "30795815",
+          "evidence": "we verified the essential role of miRNA-21 in osteogenesis by implanting a miRNA-21-modified BMSCs/beta-tricalcium phosphate (beta-TCP) composite into critical size defects.",
+          "confidence": 0.85,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "beta-tcp_chemical",
+          "source_name": "beta-tcp",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "enhances",
+          "pmid": "30795815",
+          "evidence": "Radiography, micro-CT, and histology revealed significantly greater volume of new bone formation in the miRNA-21 group than in the control group.",
+          "confidence": 0.8,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "387211_Gene",
+        "GO:0001649_BiologicalProcess",
+        "406991_Gene",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "mir-21-5p",
+        "osteogenic differentiation",
+        "mirna-21",
+        "osteogenesis"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_3",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_2",
+        "incomplete_evidence_hop_4",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "387211_Gene",
+          "target_name": "mir-21-5p",
+          "relation": "upregulates",
+          "pmid": "29500883",
+          "evidence": "icariin stimulation alone ... upregulated the levels of ... miR-21-5p",
+          "confidence": 0.85,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "387211_Gene",
+          "source_name": "mir-21-5p",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "29500883",
+          "evidence": "miR-21-5p may be a potential pro-osteogenesis regulator",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "GO:0001649_BiologicalProcess",
+          "source_name": "osteogenic differentiation",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "In the present study, we found that miRNA-21 promotes the migration and osteogenic differentiation of bone marrow-derived stem cells (BMSCs) in vitro.",
+          "confidence": 0.95,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.98,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "GO:1990523_BiologicalProcess",
+        "406991_Gene",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "bone regeneration",
+        "mirna-21",
+        "osteogenesis"
+      ],
+      "hop_count": 3,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_3",
+        "unresolved_path_polarity",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "GO:1990523_BiologicalProcess",
+          "target_name": "bone regeneration",
+          "relation": "ameliorates",
+          "pmid": "29500883",
+          "evidence": "icariin may protect against Ti particle-induced inhibition of osteogenic differentiation and mineralization through upregulation of miR-21-5p",
+          "confidence": 0.8,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "GO:1990523_BiologicalProcess",
+          "source_name": "bone regeneration",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "enhances",
+          "pmid": "30795815",
+          "evidence": "miRNA-21 promotes osteogenesis via the PTEN/PI3K/Akt/HIF-1alpha pathway and enhances bone regeneration in critical size defects.",
+          "confidence": 0.95,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.98,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "GO:1990523_BiologicalProcess",
+        "406991_Gene",
+        "map04151_Pathway",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "bone regeneration",
+        "mirna-21",
+        "pten/pi3k/akt/hif-1alpha pathway",
+        "osteogenesis"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_3",
+        "incomplete_evidence_hop_4",
+        "unresolved_path_polarity",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "GO:1990523_BiologicalProcess",
+          "target_name": "bone regeneration",
+          "relation": "ameliorates",
+          "pmid": "29500883",
+          "evidence": "icariin may protect against Ti particle-induced inhibition of osteogenic differentiation and mineralization through upregulation of miR-21-5p",
+          "confidence": 0.8,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "GO:1990523_BiologicalProcess",
+          "source_name": "bone regeneration",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "enhances",
+          "pmid": "30795815",
+          "evidence": "miRNA-21 promotes osteogenesis via the PTEN/PI3K/Akt/HIF-1alpha pathway and enhances bone regeneration in critical size defects.",
+          "confidence": 0.95,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "map04151_Pathway",
+          "target_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "relation": "activates",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "map04151_Pathway",
+          "source_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "GO:1990523_BiologicalProcess",
+        "406991_Gene",
+        "MESH:C485817_Chemical",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "bone regeneration",
+        "mirna-21",
+        "beta-tricalcium phosphate",
+        "osteogenesis"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_4",
+        "unresolved_path_polarity",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "GO:1990523_BiologicalProcess",
+          "target_name": "bone regeneration",
+          "relation": "ameliorates",
+          "pmid": "29500883",
+          "evidence": "icariin may protect against Ti particle-induced inhibition of osteogenic differentiation and mineralization through upregulation of miR-21-5p",
+          "confidence": 0.8,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "GO:1990523_BiologicalProcess",
+          "source_name": "bone regeneration",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "enhances",
+          "pmid": "30795815",
+          "evidence": "miRNA-21 promotes osteogenesis via the PTEN/PI3K/Akt/HIF-1alpha pathway and enhances bone regeneration in critical size defects.",
+          "confidence": 0.95,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "MESH:C485817_Chemical",
+          "target_name": "beta-tricalcium phosphate",
+          "relation": "modifies",
+          "pmid": "30795815",
+          "evidence": "we verified the essential role of miRNA-21 in osteogenesis by implanting a miRNA-21-modified BMSCs/beta-tricalcium phosphate (beta-TCP) composite into critical size defects.",
+          "confidence": 0.85,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "MESH:C485817_Chemical",
+          "source_name": "beta-tricalcium phosphate",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "enhances",
+          "pmid": "30795815",
+          "evidence": "Radiography, micro-CT, and histology revealed significantly greater volume of new bone formation in the miRNA-21 group than in the control group.",
+          "confidence": 0.8,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "GO:1990523_BiologicalProcess",
+        "406991_Gene",
+        "beta-tcp_chemical",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "bone regeneration",
+        "mirna-21",
+        "beta-tcp",
+        "osteogenesis"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_4",
+        "unresolved_path_polarity",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "GO:1990523_BiologicalProcess",
+          "target_name": "bone regeneration",
+          "relation": "ameliorates",
+          "pmid": "29500883",
+          "evidence": "icariin may protect against Ti particle-induced inhibition of osteogenic differentiation and mineralization through upregulation of miR-21-5p",
+          "confidence": 0.8,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "GO:1990523_BiologicalProcess",
+          "source_name": "bone regeneration",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "enhances",
+          "pmid": "30795815",
+          "evidence": "miRNA-21 promotes osteogenesis via the PTEN/PI3K/Akt/HIF-1alpha pathway and enhances bone regeneration in critical size defects.",
+          "confidence": 0.95,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "beta-tcp_chemical",
+          "target_name": "beta-tcp",
+          "relation": "modifies",
+          "pmid": "30795815",
+          "evidence": "we verified the essential role of miRNA-21 in osteogenesis by implanting a miRNA-21-modified BMSCs/beta-tricalcium phosphate (beta-TCP) composite into critical size defects.",
+          "confidence": 0.85,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "beta-tcp_chemical",
+          "source_name": "beta-tcp",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "enhances",
+          "pmid": "30795815",
+          "evidence": "Radiography, micro-CT, and histology revealed significantly greater volume of new bone formation in the miRNA-21 group than in the control group.",
+          "confidence": 0.8,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "24482_Gene",
+        "24185_Gene",
+        "map04151_Pathway",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "igf-1",
+        "akt",
+        "pten/pi3k/akt/hif-1alpha pathway",
+        "osteogenesis"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_3",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "incomplete_evidence_hop_2",
+        "incomplete_evidence_hop_4",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "24482_Gene",
+          "target_name": "igf-1",
+          "relation": "enhances",
+          "pmid": "33339654",
+          "evidence": "Icariin ameliorates estrogen-deficiency induced bone loss by enhancing IGF-I signaling via its crosstalk with non-genomic ERalpha signaling.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "24482_Gene",
+          "source_name": "igf-1",
+          "target_id": "24185_Gene",
+          "target_name": "akt",
+          "relation": "activates",
+          "pmid": "33339654",
+          "evidence": "Our results demonstrated for the first time the rapid induction of interactions between IGF-IR and ERalpha as well as IGF-IR signaling and the downstream Akt phosphorylation by icariin in MC3T3-E1 cells.",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "24185_Gene",
+          "source_name": "akt",
+          "target_id": "map04151_Pathway",
+          "target_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "relation": "activates",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP, PI3K, and AKT phosphorylation were increased and the PI3K/AKT pathway was activated",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "map04151_Pathway",
+          "source_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "24482_Gene",
+        "24185_Gene",
+        "406991_Gene",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "igf-1",
+        "akt",
+        "mirna-21",
+        "osteogenesis"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_3",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "incomplete_evidence_hop_2",
+        "incomplete_evidence_hop_3",
+        "incomplete_evidence_hop_4",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "24482_Gene",
+          "target_name": "igf-1",
+          "relation": "enhances",
+          "pmid": "33339654",
+          "evidence": "Icariin ameliorates estrogen-deficiency induced bone loss by enhancing IGF-I signaling via its crosstalk with non-genomic ERalpha signaling.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "24482_Gene",
+          "source_name": "igf-1",
+          "target_id": "24185_Gene",
+          "target_name": "akt",
+          "relation": "activates",
+          "pmid": "33339654",
+          "evidence": "Our results demonstrated for the first time the rapid induction of interactions between IGF-IR and ERalpha as well as IGF-IR signaling and the downstream Akt phosphorylation by icariin in MC3T3-E1 cells.",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "24185_Gene",
+          "source_name": "akt",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "increases",
+          "pmid": "30795815",
+          "evidence": "miRNA-21 promoted the osteogenic ability of BMSCs by increasing P-Akt and HIF-1alpha activation.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.98,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "24890_Gene",
+        "24185_Gene",
+        "map04151_Pathway",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "eralpha",
+        "akt",
+        "pten/pi3k/akt/hif-1alpha pathway",
+        "osteogenesis"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_3",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_4",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "24890_Gene",
+          "target_name": "eralpha",
+          "relation": "activates",
+          "pmid": "33339654",
+          "evidence": "Icariin, a bone bioactive flavonoid, has been reported to selectively activate non-genomic ERalpha signaling in in vitro and in vivo studies.",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "24890_Gene",
+          "source_name": "eralpha",
+          "target_id": "24185_Gene",
+          "target_name": "akt",
+          "relation": "activates",
+          "pmid": "33339654",
+          "evidence": "The activation of ERalpha and Akt phosphorylation by icariin in MC3T3-E1 cells and the osteogenic effects of icariin on ALP activity in mature osteoblasts were shown to be IGF-IR-dependent.",
+          "confidence": 0.75,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "24185_Gene",
+          "source_name": "akt",
+          "target_id": "map04151_Pathway",
+          "target_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "relation": "activates",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP, PI3K, and AKT phosphorylation were increased and the PI3K/AKT pathway was activated",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "map04151_Pathway",
+          "source_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "24890_Gene",
+        "24185_Gene",
+        "406991_Gene",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "eralpha",
+        "akt",
+        "mirna-21",
+        "osteogenesis"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_3",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_3",
+        "incomplete_evidence_hop_4",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "24890_Gene",
+          "target_name": "eralpha",
+          "relation": "activates",
+          "pmid": "33339654",
+          "evidence": "Icariin, a bone bioactive flavonoid, has been reported to selectively activate non-genomic ERalpha signaling in in vitro and in vivo studies.",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "24890_Gene",
+          "source_name": "eralpha",
+          "target_id": "24185_Gene",
+          "target_name": "akt",
+          "relation": "activates",
+          "pmid": "33339654",
+          "evidence": "The activation of ERalpha and Akt phosphorylation by icariin in MC3T3-E1 cells and the osteogenic effects of icariin on ALP activity in mature osteoblasts were shown to be IGF-IR-dependent.",
+          "confidence": 0.75,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "24185_Gene",
+          "source_name": "akt",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "increases",
+          "pmid": "30795815",
+          "evidence": "miRNA-21 promoted the osteogenic ability of BMSCs by increasing P-Akt and HIF-1alpha activation.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.98,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "24185_Gene",
+        "map04151_Pathway",
+        "406991_Gene",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "akt",
+        "pten/pi3k/akt/hif-1alpha pathway",
+        "mirna-21",
+        "osteogenesis"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "direction_contradicted_hop_3",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_3",
+        "incomplete_evidence_hop_4",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "24185_Gene",
+          "target_name": "akt",
+          "relation": "activates",
+          "pmid": "33339654",
+          "evidence": "Our findings reveal that icariin activates both ERalpha and Akt via enhancing rapid induction of IGF-1 signaling in osteoblastic cells for osteogenesis",
+          "confidence": 0.85,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "24185_Gene",
+          "source_name": "akt",
+          "target_id": "map04151_Pathway",
+          "target_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "relation": "activates",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP, PI3K, and AKT phosphorylation were increased and the PI3K/AKT pathway was activated",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "map04151_Pathway",
+          "source_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "activates",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.98,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "24185_Gene",
+        "map04151_Pathway",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "akt",
+        "pten/pi3k/akt/hif-1alpha pathway",
+        "osteogenesis"
+      ],
+      "hop_count": 3,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_3",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "24185_Gene",
+          "target_name": "akt",
+          "relation": "activates",
+          "pmid": "33339654",
+          "evidence": "Our findings reveal that icariin activates both ERalpha and Akt via enhancing rapid induction of IGF-1 signaling in osteoblastic cells for osteogenesis",
+          "confidence": 0.85,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "24185_Gene",
+          "source_name": "akt",
+          "target_id": "map04151_Pathway",
+          "target_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "relation": "activates",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP, PI3K, and AKT phosphorylation were increased and the PI3K/AKT pathway was activated",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "map04151_Pathway",
+          "source_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "24185_Gene",
+        "406991_Gene",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "akt",
+        "mirna-21",
+        "osteogenesis"
+      ],
+      "hop_count": 3,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_2",
+        "incomplete_evidence_hop_3",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "24185_Gene",
+          "target_name": "akt",
+          "relation": "activates",
+          "pmid": "33339654",
+          "evidence": "Our findings reveal that icariin activates both ERalpha and Akt via enhancing rapid induction of IGF-1 signaling in osteoblastic cells for osteogenesis",
+          "confidence": 0.85,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "24185_Gene",
+          "source_name": "akt",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "increases",
+          "pmid": "30795815",
+          "evidence": "miRNA-21 promoted the osteogenic ability of BMSCs by increasing P-Akt and HIF-1alpha activation.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.98,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "24185_Gene",
+        "406991_Gene",
+        "map04151_Pathway",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "akt",
+        "mirna-21",
+        "pten/pi3k/akt/hif-1alpha pathway",
+        "osteogenesis"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_2",
+        "incomplete_evidence_hop_3",
+        "incomplete_evidence_hop_4",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "24185_Gene",
+          "target_name": "akt",
+          "relation": "activates",
+          "pmid": "33339654",
+          "evidence": "Our findings reveal that icariin activates both ERalpha and Akt via enhancing rapid induction of IGF-1 signaling in osteoblastic cells for osteogenesis",
+          "confidence": 0.85,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "24185_Gene",
+          "source_name": "akt",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "increases",
+          "pmid": "30795815",
+          "evidence": "miRNA-21 promoted the osteogenic ability of BMSCs by increasing P-Akt and HIF-1alpha activation.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "map04151_Pathway",
+          "target_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "relation": "activates",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "map04151_Pathway",
+          "source_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "24185_Gene",
+        "406991_Gene",
+        "MESH:C485817_Chemical",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "akt",
+        "mirna-21",
+        "beta-tricalcium phosphate",
+        "osteogenesis"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_2",
+        "incomplete_evidence_hop_4",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "24185_Gene",
+          "target_name": "akt",
+          "relation": "activates",
+          "pmid": "33339654",
+          "evidence": "Our findings reveal that icariin activates both ERalpha and Akt via enhancing rapid induction of IGF-1 signaling in osteoblastic cells for osteogenesis",
+          "confidence": 0.85,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "24185_Gene",
+          "source_name": "akt",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "increases",
+          "pmid": "30795815",
+          "evidence": "miRNA-21 promoted the osteogenic ability of BMSCs by increasing P-Akt and HIF-1alpha activation.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "MESH:C485817_Chemical",
+          "target_name": "beta-tricalcium phosphate",
+          "relation": "modifies",
+          "pmid": "30795815",
+          "evidence": "we verified the essential role of miRNA-21 in osteogenesis by implanting a miRNA-21-modified BMSCs/beta-tricalcium phosphate (beta-TCP) composite into critical size defects.",
+          "confidence": 0.85,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "MESH:C485817_Chemical",
+          "source_name": "beta-tricalcium phosphate",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "enhances",
+          "pmid": "30795815",
+          "evidence": "Radiography, micro-CT, and histology revealed significantly greater volume of new bone formation in the miRNA-21 group than in the control group.",
+          "confidence": 0.8,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "24185_Gene",
+        "406991_Gene",
+        "beta-tcp_chemical",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "akt",
+        "mirna-21",
+        "beta-tcp",
+        "osteogenesis"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_2",
+        "incomplete_evidence_hop_4",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "24185_Gene",
+          "target_name": "akt",
+          "relation": "activates",
+          "pmid": "33339654",
+          "evidence": "Our findings reveal that icariin activates both ERalpha and Akt via enhancing rapid induction of IGF-1 signaling in osteoblastic cells for osteogenesis",
+          "confidence": 0.85,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "24185_Gene",
+          "source_name": "akt",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "increases",
+          "pmid": "30795815",
+          "evidence": "miRNA-21 promoted the osteogenic ability of BMSCs by increasing P-Akt and HIF-1alpha activation.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "beta-tcp_chemical",
+          "target_name": "beta-tcp",
+          "relation": "modifies",
+          "pmid": "30795815",
+          "evidence": "we verified the essential role of miRNA-21 in osteogenesis by implanting a miRNA-21-modified BMSCs/beta-tricalcium phosphate (beta-TCP) composite into critical size defects.",
+          "confidence": 0.85,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "beta-tcp_chemical",
+          "source_name": "beta-tcp",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "enhances",
+          "pmid": "30795815",
+          "evidence": "Radiography, micro-CT, and histology revealed significantly greater volume of new bone formation in the miRNA-21 group than in the control group.",
+          "confidence": 0.8,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "GO:0016310_BiologicalProcess",
+        "24185_Gene",
+        "map04151_Pathway",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "phosphorylation",
+        "akt",
+        "pten/pi3k/akt/hif-1alpha pathway",
+        "osteogenesis"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "direction_contradicted_hop_3",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "incomplete_evidence_hop_2",
+        "incomplete_evidence_hop_4",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "GO:0016310_BiologicalProcess",
+          "target_name": "phosphorylation",
+          "relation": "induces",
+          "pmid": "33339654",
+          "evidence": "Our results demonstrated for the first time the rapid induction of interactions between IGF-IR and ERalpha as well as IGF-IR signaling and the downstream Akt phosphorylation by icariin in MC3T3-E1 cells.",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "GO:0016310_BiologicalProcess",
+          "source_name": "phosphorylation",
+          "target_id": "24185_Gene",
+          "target_name": "akt",
+          "relation": "phosphorylates",
+          "pmid": "33339654",
+          "evidence": "Our results demonstrated for the first time the rapid induction of interactions between IGF-IR and ERalpha as well as IGF-IR signaling and the downstream Akt phosphorylation by icariin in MC3T3-E1 cells.",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "24185_Gene",
+          "source_name": "akt",
+          "target_id": "map04151_Pathway",
+          "target_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "relation": "activates",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP, PI3K, and AKT phosphorylation were increased and the PI3K/AKT pathway was activated",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "map04151_Pathway",
+          "source_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "GO:0016310_BiologicalProcess",
+        "24185_Gene",
+        "406991_Gene",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "phosphorylation",
+        "akt",
+        "mirna-21",
+        "osteogenesis"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "direction_contradicted_hop_3",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "incomplete_evidence_hop_2",
+        "incomplete_evidence_hop_3",
+        "incomplete_evidence_hop_4",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "GO:0016310_BiologicalProcess",
+          "target_name": "phosphorylation",
+          "relation": "induces",
+          "pmid": "33339654",
+          "evidence": "Our results demonstrated for the first time the rapid induction of interactions between IGF-IR and ERalpha as well as IGF-IR signaling and the downstream Akt phosphorylation by icariin in MC3T3-E1 cells.",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "GO:0016310_BiologicalProcess",
+          "source_name": "phosphorylation",
+          "target_id": "24185_Gene",
+          "target_name": "akt",
+          "relation": "phosphorylates",
+          "pmid": "33339654",
+          "evidence": "Our results demonstrated for the first time the rapid induction of interactions between IGF-IR and ERalpha as well as IGF-IR signaling and the downstream Akt phosphorylation by icariin in MC3T3-E1 cells.",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "24185_Gene",
+          "source_name": "akt",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "increases",
+          "pmid": "30795815",
+          "evidence": "miRNA-21 promoted the osteogenic ability of BMSCs by increasing P-Akt and HIF-1alpha activation.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.98,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "MESH:D010024_Disease",
+        "morinda officinalis polysaccharide_chemical",
+        "map04151_Pathway",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "osteoporosis",
+        "morinda officinalis polysaccharide",
+        "pten/pi3k/akt/hif-1alpha pathway",
+        "osteogenesis"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "incomplete_evidence_hop_4",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "MESH:D010024_Disease",
+          "target_name": "osteoporosis",
+          "relation": "ameliorates",
+          "pmid": "33339654",
+          "evidence": "Our findings reveal that icariin activates both ERalpha and Akt via enhancing rapid induction of IGF-1 signaling in osteoblastic cells for osteogenesis and might be regarded as a novel pathway-selective phytoestrogen for management of postmenopausal osteoporosis.",
+          "confidence": 0.85,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "MESH:D010024_Disease",
+          "source_name": "osteoporosis",
+          "target_id": "morinda officinalis polysaccharide_chemical",
+          "target_name": "morinda officinalis polysaccharide",
+          "relation": "ameliorates",
+          "pmid": "35593324",
+          "evidence": "MOP partially alleviated OP in OVX rats",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "morinda officinalis polysaccharide_chemical",
+          "source_name": "morinda officinalis polysaccharide",
+          "target_id": "map04151_Pathway",
+          "target_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "relation": "activates",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP, PI3K, and AKT phosphorylation were increased and the PI3K/AKT pathway was activated",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "map04151_Pathway",
+          "source_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "HP:0000939_Phenotype",
+        "morinda officinalis polysaccharide_chemical",
+        "map04151_Pathway",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "osteoporosis",
+        "morinda officinalis polysaccharide",
+        "pten/pi3k/akt/hif-1alpha pathway",
+        "osteogenesis"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "incomplete_evidence_hop_4",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "HP:0000939_Phenotype",
+          "target_name": "osteoporosis",
+          "relation": "ameliorates",
+          "pmid": "33339654",
+          "evidence": "Our findings reveal that icariin activates both ERalpha and Akt via enhancing rapid induction of IGF-1 signaling in osteoblastic cells for osteogenesis and might be regarded as a novel pathway-selective phytoestrogen for management of postmenopausal osteoporosis.",
+          "confidence": 0.85,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "HP:0000939_Phenotype",
+          "source_name": "osteoporosis",
+          "target_id": "morinda officinalis polysaccharide_chemical",
+          "target_name": "morinda officinalis polysaccharide",
+          "relation": "ameliorates",
+          "pmid": "35593324",
+          "evidence": "MOP partially alleviated OP in OVX rats",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "morinda officinalis polysaccharide_chemical",
+          "source_name": "morinda officinalis polysaccharide",
+          "target_id": "map04151_Pathway",
+          "target_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "relation": "activates",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP, PI3K, and AKT phosphorylation were increased and the PI3K/AKT pathway was activated",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "map04151_Pathway",
+          "source_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "10116_Species",
+        "morinda officinalis polysaccharide_chemical",
+        "map04151_Pathway",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "rat",
+        "morinda officinalis polysaccharide",
+        "pten/pi3k/akt/hif-1alpha pathway",
+        "osteogenesis"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "incomplete_evidence_hop_4",
+        "non_composable_intervention_hop_1",
+        "non_composable_intervention_hop_2",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "10116_Species",
+          "target_name": "rat",
+          "relation": "treats",
+          "pmid": "33339654",
+          "evidence": "Icariin at 3 different dosages (50, 500 and 3000 ppm) were orally administrated to rats for 3 months through daily intake of phytoestrogen-free animal diets containing icariin.",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "10116_Species",
+          "source_name": "rat",
+          "target_id": "morinda officinalis polysaccharide_chemical",
+          "target_name": "morinda officinalis polysaccharide",
+          "relation": "treats",
+          "pmid": "35593324",
+          "evidence": "OVX-induced OP rats were treated with MOP",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "morinda officinalis polysaccharide_chemical",
+          "source_name": "morinda officinalis polysaccharide",
+          "target_id": "map04151_Pathway",
+          "target_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "relation": "activates",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP, PI3K, and AKT phosphorylation were increased and the PI3K/AKT pathway was activated",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "map04151_Pathway",
+          "source_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "100314228_Gene",
+        "GO:0001649_BiologicalProcess",
+        "406991_Gene",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "mir-23a",
+        "osteogenic differentiation",
+        "mirna-21",
+        "osteogenesis"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_3",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "incomplete_evidence_hop_2",
+        "incomplete_evidence_hop_4",
+        "unresolved_path_polarity",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "100314228_Gene",
+          "target_name": "mir-23a",
+          "relation": "downregulates",
+          "pmid": "35002378",
+          "evidence": "icariin promotes BMSC viability and osteogenic differentiation as well as improves ONFH by decreasing miR-23a-3p levels",
+          "confidence": 0.95,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "100314228_Gene",
+          "source_name": "mir-23a",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "regulates",
+          "pmid": "35002378",
+          "evidence": "miR-23a-3p plays a vital role in regulating the osteogenic differentiation of bone marrow-derived mesenchymal stem cells (BMSCs)",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "GO:0001649_BiologicalProcess",
+          "source_name": "osteogenic differentiation",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "In the present study, we found that miRNA-21 promotes the migration and osteogenic differentiation of bone marrow-derived stem cells (BMSCs) in vitro.",
+          "confidence": 0.95,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.98,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "29373_Gene",
+        "morinda officinalis polysaccharide_chemical",
+        "map04151_Pathway",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "bmp-2",
+        "morinda officinalis polysaccharide",
+        "pten/pi3k/akt/hif-1alpha pathway",
+        "osteogenesis"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_4",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "29373_Gene",
+          "target_name": "bmp-2",
+          "relation": "upregulates",
+          "pmid": "35002378",
+          "evidence": "icariin treatment/miR-23a knockdown ... increased the mRNA and protein expression of BMP-2",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "29373_Gene",
+          "source_name": "bmp-2",
+          "target_id": "morinda officinalis polysaccharide_chemical",
+          "target_name": "morinda officinalis polysaccharide",
+          "relation": "upregulates",
+          "pmid": "35593324",
+          "evidence": "The protein markers of OD (RUNX2 and BMP2) ... were detected ... After treatment with low/high concentrations of MOP, the OD of rBMSCs was increased",
+          "confidence": 0.8,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "morinda officinalis polysaccharide_chemical",
+          "source_name": "morinda officinalis polysaccharide",
+          "target_id": "map04151_Pathway",
+          "target_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "relation": "activates",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP, PI3K, and AKT phosphorylation were increased and the PI3K/AKT pathway was activated",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "map04151_Pathway",
+          "source_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "367218_Gene",
+        "morinda officinalis polysaccharide_chemical",
+        "map04151_Pathway",
+        "GO:0001503_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "runx2",
+        "morinda officinalis polysaccharide",
+        "pten/pi3k/akt/hif-1alpha pathway",
+        "osteogenesis"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_4",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "367218_Gene",
+          "target_name": "runx2",
+          "relation": "upregulates",
+          "pmid": "35002378",
+          "evidence": "icariin treatment/miR-23a knockdown ... increased the mRNA and protein expression of ... Runx2",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "367218_Gene",
+          "source_name": "runx2",
+          "target_id": "morinda officinalis polysaccharide_chemical",
+          "target_name": "morinda officinalis polysaccharide",
+          "relation": "upregulates",
+          "pmid": "35593324",
+          "evidence": "The protein markers of OD (RUNX2 and BMP2) ... were detected ... After treatment with low/high concentrations of MOP, the OD of rBMSCs was increased",
+          "confidence": 0.8,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "morinda officinalis polysaccharide_chemical",
+          "source_name": "morinda officinalis polysaccharide",
+          "target_id": "map04151_Pathway",
+          "target_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "relation": "activates",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP, PI3K, and AKT phosphorylation were increased and the PI3K/AKT pathway was activated",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "map04151_Pathway",
+          "source_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "MESH:D014025_Chemical",
+        "387211_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "ti",
+        "mir-21-5p",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 3,
+      "gate_tier": "B",
+      "claim_safe": false,
+      "gate_reasons": [
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_2",
+        "incomplete_evidence_hop_3",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "MESH:D014025_Chemical",
+          "target_name": "ti",
+          "relation": "blocks",
+          "pmid": "29500883",
+          "evidence": "icariin pretreatment blocked the effect of Ti particles",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "MESH:D014025_Chemical",
+          "source_name": "ti",
+          "target_id": "387211_Gene",
+          "target_name": "mir-21-5p",
+          "relation": "downregulates",
+          "pmid": "29500883",
+          "evidence": "Ti particles alone exerted the opposite effects",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "387211_Gene",
+          "source_name": "mir-21-5p",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "29500883",
+          "evidence": "miR-21-5p may be a potential pro-osteogenesis regulator",
+          "confidence": 0.8,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "GO:0008283_BiologicalProcess",
+        "MESH:D014025_Chemical",
+        "387211_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "cell proliferation",
+        "ti",
+        "mir-21-5p",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "incomplete_evidence_hop_3",
+        "incomplete_evidence_hop_4",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "GO:0008283_BiologicalProcess",
+          "target_name": "cell proliferation",
+          "relation": "promotes",
+          "pmid": "29500883",
+          "evidence": "icariin stimulation alone increased ALP activity, accelerated matrix mineralization and upregulated the levels of bone morphogenetic protein 2 (BMP2), Runt-related transcription factor 2 (Runx2), osteocalcin (OCN) and miR-21-5p",
+          "confidence": 0.85,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "GO:0008283_BiologicalProcess",
+          "source_name": "cell proliferation",
+          "target_id": "MESH:D014025_Chemical",
+          "target_name": "ti",
+          "relation": "inhibits",
+          "pmid": "29500883",
+          "evidence": "The results showed that Ti particles inhibited cell proliferation and promoted cell apoptosis of MC3T3-E1 cells",
+          "confidence": 0.95,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "MESH:D014025_Chemical",
+          "source_name": "ti",
+          "target_id": "387211_Gene",
+          "target_name": "mir-21-5p",
+          "relation": "downregulates",
+          "pmid": "29500883",
+          "evidence": "Ti particles alone exerted the opposite effects",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "387211_Gene",
+          "source_name": "mir-21-5p",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "29500883",
+          "evidence": "miR-21-5p may be a potential pro-osteogenesis regulator",
+          "confidence": 0.8,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "GO:0030154_BiologicalProcess",
+        "387211_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "cell differentiation",
+        "mir-21-5p",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 3,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "incomplete_evidence_hop_3",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "GO:0030154_BiologicalProcess",
+          "target_name": "cell differentiation",
+          "relation": "promotes",
+          "pmid": "29500883",
+          "evidence": "icariin stimulation alone increased ALP activity, accelerated matrix mineralization and upregulated the levels of bone morphogenetic protein 2 (BMP2), Runt-related transcription factor 2 (Runx2), osteocalcin (OCN) and miR-21-5p",
+          "confidence": 0.85,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "GO:0030154_BiologicalProcess",
+          "source_name": "cell differentiation",
+          "target_id": "387211_Gene",
+          "target_name": "mir-21-5p",
+          "relation": "promotes",
+          "pmid": "29500883",
+          "evidence": "partial knockdown of miR-21-5p abolished the promotion effect of icariin on osteoblast differentiation and matrix mineralization in Ti particle-stimulated MC3T3-E1 cells",
+          "confidence": 0.8,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "387211_Gene",
+          "source_name": "mir-21-5p",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "29500883",
+          "evidence": "miR-21-5p may be a potential pro-osteogenesis regulator",
+          "confidence": 0.8,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "11691_Gene",
+        "MESH:D014025_Chemical",
+        "387211_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "alp",
+        "ti",
+        "mir-21-5p",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_2",
+        "incomplete_evidence_hop_3",
+        "incomplete_evidence_hop_4",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "11691_Gene",
+          "target_name": "alp",
+          "relation": "upregulates",
+          "pmid": "29500883",
+          "evidence": "icariin stimulation alone increased ALP activity",
+          "confidence": 0.85,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "11691_Gene",
+          "source_name": "alp",
+          "target_id": "MESH:D014025_Chemical",
+          "target_name": "ti",
+          "relation": "downregulates",
+          "pmid": "29500883",
+          "evidence": "Ti particles alone exerted the opposite effects",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "MESH:D014025_Chemical",
+          "source_name": "ti",
+          "target_id": "387211_Gene",
+          "target_name": "mir-21-5p",
+          "relation": "downregulates",
+          "pmid": "29500883",
+          "evidence": "Ti particles alone exerted the opposite effects",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "387211_Gene",
+          "source_name": "mir-21-5p",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "29500883",
+          "evidence": "miR-21-5p may be a potential pro-osteogenesis regulator",
+          "confidence": 0.8,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "12156_Gene",
+        "MESH:D014025_Chemical",
+        "387211_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "bone morphogenetic protein 2",
+        "ti",
+        "mir-21-5p",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_2",
+        "incomplete_evidence_hop_3",
+        "incomplete_evidence_hop_4",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "12156_Gene",
+          "target_name": "bone morphogenetic protein 2",
+          "relation": "upregulates",
+          "pmid": "29500883",
+          "evidence": "icariin stimulation alone ... upregulated the levels of bone morphogenetic protein 2 (BMP2)",
+          "confidence": 0.85,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "12156_Gene",
+          "source_name": "bone morphogenetic protein 2",
+          "target_id": "MESH:D014025_Chemical",
+          "target_name": "ti",
+          "relation": "downregulates",
+          "pmid": "29500883",
+          "evidence": "Ti particles alone exerted the opposite effects",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "MESH:D014025_Chemical",
+          "source_name": "ti",
+          "target_id": "387211_Gene",
+          "target_name": "mir-21-5p",
+          "relation": "downregulates",
+          "pmid": "29500883",
+          "evidence": "Ti particles alone exerted the opposite effects",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "387211_Gene",
+          "source_name": "mir-21-5p",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "29500883",
+          "evidence": "miR-21-5p may be a potential pro-osteogenesis regulator",
+          "confidence": 0.8,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "12393_Gene",
+        "MESH:D014025_Chemical",
+        "387211_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "runt-related transcription factor 2",
+        "ti",
+        "mir-21-5p",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_2",
+        "incomplete_evidence_hop_3",
+        "incomplete_evidence_hop_4",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "12393_Gene",
+          "target_name": "runt-related transcription factor 2",
+          "relation": "upregulates",
+          "pmid": "29500883",
+          "evidence": "icariin stimulation alone ... upregulated the levels of ... Runt-related transcription factor 2 (Runx2)",
+          "confidence": 0.85,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "12393_Gene",
+          "source_name": "runt-related transcription factor 2",
+          "target_id": "MESH:D014025_Chemical",
+          "target_name": "ti",
+          "relation": "downregulates",
+          "pmid": "29500883",
+          "evidence": "Ti particles alone exerted the opposite effects",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "MESH:D014025_Chemical",
+          "source_name": "ti",
+          "target_id": "387211_Gene",
+          "target_name": "mir-21-5p",
+          "relation": "downregulates",
+          "pmid": "29500883",
+          "evidence": "Ti particles alone exerted the opposite effects",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "387211_Gene",
+          "source_name": "mir-21-5p",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "29500883",
+          "evidence": "miR-21-5p may be a potential pro-osteogenesis regulator",
+          "confidence": 0.8,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "12097_Gene",
+        "MESH:D014025_Chemical",
+        "387211_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "osteocalcin",
+        "ti",
+        "mir-21-5p",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_2",
+        "incomplete_evidence_hop_3",
+        "incomplete_evidence_hop_4",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "12097_Gene",
+          "target_name": "osteocalcin",
+          "relation": "upregulates",
+          "pmid": "29500883",
+          "evidence": "icariin stimulation alone ... upregulated the levels of ... osteocalcin (OCN)",
+          "confidence": 0.85,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "12097_Gene",
+          "source_name": "osteocalcin",
+          "target_id": "MESH:D014025_Chemical",
+          "target_name": "ti",
+          "relation": "downregulates",
+          "pmid": "29500883",
+          "evidence": "Ti particles alone exerted the opposite effects",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "MESH:D014025_Chemical",
+          "source_name": "ti",
+          "target_id": "387211_Gene",
+          "target_name": "mir-21-5p",
+          "relation": "downregulates",
+          "pmid": "29500883",
+          "evidence": "Ti particles alone exerted the opposite effects",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "387211_Gene",
+          "source_name": "mir-21-5p",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "29500883",
+          "evidence": "miR-21-5p may be a potential pro-osteogenesis regulator",
+          "confidence": 0.8,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "GO:1990523_BiologicalProcess",
+        "406991_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "bone regeneration",
+        "mirna-21",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 3,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "complete_hop_evidence",
+        "unresolved_path_polarity",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "GO:1990523_BiologicalProcess",
+          "target_name": "bone regeneration",
+          "relation": "ameliorates",
+          "pmid": "29500883",
+          "evidence": "icariin may protect against Ti particle-induced inhibition of osteogenic differentiation and mineralization through upregulation of miR-21-5p",
+          "confidence": 0.8,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "GO:1990523_BiologicalProcess",
+          "source_name": "bone regeneration",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "enhances",
+          "pmid": "30795815",
+          "evidence": "miRNA-21 promotes osteogenesis via the PTEN/PI3K/Akt/HIF-1alpha pathway and enhances bone regeneration in critical size defects.",
+          "confidence": 0.95,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "In the present study, we found that miRNA-21 promotes the migration and osteogenic differentiation of bone marrow-derived stem cells (BMSCs) in vitro.",
+          "confidence": 0.95,
+          "support_tier": "A"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "MESH:D010014_Disease",
+        "MESH:D014025_Chemical",
+        "387211_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "osteolysis",
+        "ti",
+        "mir-21-5p",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_3",
+        "incomplete_evidence_hop_4",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "MESH:D010014_Disease",
+          "target_name": "osteolysis",
+          "relation": "ameliorates",
+          "pmid": "29500883",
+          "evidence": "icariin may protect against Ti particle-induced inhibition of osteogenic differentiation and mineralization",
+          "confidence": 0.8,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "MESH:D010014_Disease",
+          "source_name": "osteolysis",
+          "target_id": "MESH:D014025_Chemical",
+          "target_name": "ti",
+          "relation": "causes",
+          "pmid": "29500883",
+          "evidence": "Inhibition of bone regeneration by wear debris is the main cause of peri-prosthetic osteolysis",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "MESH:D014025_Chemical",
+          "source_name": "ti",
+          "target_id": "387211_Gene",
+          "target_name": "mir-21-5p",
+          "relation": "downregulates",
+          "pmid": "29500883",
+          "evidence": "Ti particles alone exerted the opposite effects",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "387211_Gene",
+          "source_name": "mir-21-5p",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "29500883",
+          "evidence": "miR-21-5p may be a potential pro-osteogenesis regulator",
+          "confidence": 0.8,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "24482_Gene",
+        "24185_Gene",
+        "406991_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "igf-1",
+        "akt",
+        "mirna-21",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_3",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "incomplete_evidence_hop_2",
+        "incomplete_evidence_hop_3",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "24482_Gene",
+          "target_name": "igf-1",
+          "relation": "enhances",
+          "pmid": "33339654",
+          "evidence": "Icariin ameliorates estrogen-deficiency induced bone loss by enhancing IGF-I signaling via its crosstalk with non-genomic ERalpha signaling.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "24482_Gene",
+          "source_name": "igf-1",
+          "target_id": "24185_Gene",
+          "target_name": "akt",
+          "relation": "activates",
+          "pmid": "33339654",
+          "evidence": "Our results demonstrated for the first time the rapid induction of interactions between IGF-IR and ERalpha as well as IGF-IR signaling and the downstream Akt phosphorylation by icariin in MC3T3-E1 cells.",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "24185_Gene",
+          "source_name": "akt",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "increases",
+          "pmid": "30795815",
+          "evidence": "miRNA-21 promoted the osteogenic ability of BMSCs by increasing P-Akt and HIF-1alpha activation.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "In the present study, we found that miRNA-21 promotes the migration and osteogenic differentiation of bone marrow-derived stem cells (BMSCs) in vitro.",
+          "confidence": 0.95,
+          "support_tier": "A"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "24890_Gene",
+        "24185_Gene",
+        "406991_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "eralpha",
+        "akt",
+        "mirna-21",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_3",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_3",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "24890_Gene",
+          "target_name": "eralpha",
+          "relation": "activates",
+          "pmid": "33339654",
+          "evidence": "Icariin, a bone bioactive flavonoid, has been reported to selectively activate non-genomic ERalpha signaling in in vitro and in vivo studies.",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "24890_Gene",
+          "source_name": "eralpha",
+          "target_id": "24185_Gene",
+          "target_name": "akt",
+          "relation": "activates",
+          "pmid": "33339654",
+          "evidence": "The activation of ERalpha and Akt phosphorylation by icariin in MC3T3-E1 cells and the osteogenic effects of icariin on ALP activity in mature osteoblasts were shown to be IGF-IR-dependent.",
+          "confidence": 0.75,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "24185_Gene",
+          "source_name": "akt",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "increases",
+          "pmid": "30795815",
+          "evidence": "miRNA-21 promoted the osteogenic ability of BMSCs by increasing P-Akt and HIF-1alpha activation.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "In the present study, we found that miRNA-21 promotes the migration and osteogenic differentiation of bone marrow-derived stem cells (BMSCs) in vitro.",
+          "confidence": 0.95,
+          "support_tier": "A"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "24185_Gene",
+        "map04151_Pathway",
+        "morinda officinalis polysaccharide_chemical",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "akt",
+        "pten/pi3k/akt/hif-1alpha pathway",
+        "morinda officinalis polysaccharide",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "direction_contradicted_hop_3",
+        "query_endpoint_alignment",
+        "complete_hop_evidence",
+        "unresolved_path_polarity",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "24185_Gene",
+          "target_name": "akt",
+          "relation": "activates",
+          "pmid": "33339654",
+          "evidence": "Our findings reveal that icariin activates both ERalpha and Akt via enhancing rapid induction of IGF-1 signaling in osteoblastic cells for osteogenesis",
+          "confidence": 0.85,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "24185_Gene",
+          "source_name": "akt",
+          "target_id": "map04151_Pathway",
+          "target_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "relation": "activates",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP, PI3K, and AKT phosphorylation were increased and the PI3K/AKT pathway was activated",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "map04151_Pathway",
+          "source_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "target_id": "morinda officinalis polysaccharide_chemical",
+          "target_name": "morinda officinalis polysaccharide",
+          "relation": "activates",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP, PI3K, and AKT phosphorylation were increased and the PI3K/AKT pathway was activated",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "morinda officinalis polysaccharide_chemical",
+          "source_name": "morinda officinalis polysaccharide",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "inhibits",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP, the OD of rBMSCs was increased and AD was inhibited",
+          "confidence": 0.95,
+          "support_tier": "A"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "24185_Gene",
+        "map04151_Pathway",
+        "406991_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "akt",
+        "pten/pi3k/akt/hif-1alpha pathway",
+        "mirna-21",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "direction_contradicted_hop_3",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_3",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "24185_Gene",
+          "target_name": "akt",
+          "relation": "activates",
+          "pmid": "33339654",
+          "evidence": "Our findings reveal that icariin activates both ERalpha and Akt via enhancing rapid induction of IGF-1 signaling in osteoblastic cells for osteogenesis",
+          "confidence": 0.85,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "24185_Gene",
+          "source_name": "akt",
+          "target_id": "map04151_Pathway",
+          "target_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "relation": "activates",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP, PI3K, and AKT phosphorylation were increased and the PI3K/AKT pathway was activated",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "map04151_Pathway",
+          "source_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "activates",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "In the present study, we found that miRNA-21 promotes the migration and osteogenic differentiation of bone marrow-derived stem cells (BMSCs) in vitro.",
+          "confidence": 0.95,
+          "support_tier": "A"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "24185_Gene",
+        "406991_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "akt",
+        "mirna-21",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 3,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_2",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "24185_Gene",
+          "target_name": "akt",
+          "relation": "activates",
+          "pmid": "33339654",
+          "evidence": "Our findings reveal that icariin activates both ERalpha and Akt via enhancing rapid induction of IGF-1 signaling in osteoblastic cells for osteogenesis",
+          "confidence": 0.85,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "24185_Gene",
+          "source_name": "akt",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "increases",
+          "pmid": "30795815",
+          "evidence": "miRNA-21 promoted the osteogenic ability of BMSCs by increasing P-Akt and HIF-1alpha activation.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "In the present study, we found that miRNA-21 promotes the migration and osteogenic differentiation of bone marrow-derived stem cells (BMSCs) in vitro.",
+          "confidence": 0.95,
+          "support_tier": "A"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "GO:0001503_BiologicalProcess",
+        "406991_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "osteogenesis",
+        "mirna-21",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 3,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "incomplete_evidence_hop_2",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "33339654",
+          "evidence": "Our findings reveal that icariin activates both ERalpha and Akt via enhancing rapid induction of IGF-1 signaling in osteoblastic cells for osteogenesis",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "GO:0001503_BiologicalProcess",
+          "source_name": "osteogenesis",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.98,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "In the present study, we found that miRNA-21 promotes the migration and osteogenic differentiation of bone marrow-derived stem cells (BMSCs) in vitro.",
+          "confidence": 0.95,
+          "support_tier": "A"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "GO:0001503_BiologicalProcess",
+        "MESH:C485817_Chemical",
+        "406991_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "osteogenesis",
+        "beta-tricalcium phosphate",
+        "mirna-21",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "direction_contradicted_hop_3",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "incomplete_evidence_hop_2",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "33339654",
+          "evidence": "Our findings reveal that icariin activates both ERalpha and Akt via enhancing rapid induction of IGF-1 signaling in osteoblastic cells for osteogenesis",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "GO:0001503_BiologicalProcess",
+          "source_name": "osteogenesis",
+          "target_id": "MESH:C485817_Chemical",
+          "target_name": "beta-tricalcium phosphate",
+          "relation": "enhances",
+          "pmid": "30795815",
+          "evidence": "Radiography, micro-CT, and histology revealed significantly greater volume of new bone formation in the miRNA-21 group than in the control group.",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "MESH:C485817_Chemical",
+          "source_name": "beta-tricalcium phosphate",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "modifies",
+          "pmid": "30795815",
+          "evidence": "we verified the essential role of miRNA-21 in osteogenesis by implanting a miRNA-21-modified BMSCs/beta-tricalcium phosphate (beta-TCP) composite into critical size defects.",
+          "confidence": 0.85,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "In the present study, we found that miRNA-21 promotes the migration and osteogenic differentiation of bone marrow-derived stem cells (BMSCs) in vitro.",
+          "confidence": 0.95,
+          "support_tier": "A"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "GO:0001503_BiologicalProcess",
+        "beta-tcp_chemical",
+        "406991_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "osteogenesis",
+        "beta-tcp",
+        "mirna-21",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "direction_contradicted_hop_3",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "incomplete_evidence_hop_2",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "33339654",
+          "evidence": "Our findings reveal that icariin activates both ERalpha and Akt via enhancing rapid induction of IGF-1 signaling in osteoblastic cells for osteogenesis",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "GO:0001503_BiologicalProcess",
+          "source_name": "osteogenesis",
+          "target_id": "beta-tcp_chemical",
+          "target_name": "beta-tcp",
+          "relation": "enhances",
+          "pmid": "30795815",
+          "evidence": "Radiography, micro-CT, and histology revealed significantly greater volume of new bone formation in the miRNA-21 group than in the control group.",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "beta-tcp_chemical",
+          "source_name": "beta-tcp",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "modifies",
+          "pmid": "30795815",
+          "evidence": "we verified the essential role of miRNA-21 in osteogenesis by implanting a miRNA-21-modified BMSCs/beta-tricalcium phosphate (beta-TCP) composite into critical size defects.",
+          "confidence": 0.85,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "In the present study, we found that miRNA-21 promotes the migration and osteogenic differentiation of bone marrow-derived stem cells (BMSCs) in vitro.",
+          "confidence": 0.95,
+          "support_tier": "A"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "GO:0001503_BiologicalProcess",
+        "map04151_Pathway",
+        "morinda officinalis polysaccharide_chemical",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "osteogenesis",
+        "pten/pi3k/akt/hif-1alpha pathway",
+        "morinda officinalis polysaccharide",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "direction_contradicted_hop_3",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "incomplete_evidence_hop_2",
+        "unresolved_path_polarity",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "33339654",
+          "evidence": "Our findings reveal that icariin activates both ERalpha and Akt via enhancing rapid induction of IGF-1 signaling in osteoblastic cells for osteogenesis",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "GO:0001503_BiologicalProcess",
+          "source_name": "osteogenesis",
+          "target_id": "map04151_Pathway",
+          "target_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "map04151_Pathway",
+          "source_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "target_id": "morinda officinalis polysaccharide_chemical",
+          "target_name": "morinda officinalis polysaccharide",
+          "relation": "activates",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP, PI3K, and AKT phosphorylation were increased and the PI3K/AKT pathway was activated",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "morinda officinalis polysaccharide_chemical",
+          "source_name": "morinda officinalis polysaccharide",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "inhibits",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP, the OD of rBMSCs was increased and AD was inhibited",
+          "confidence": 0.95,
+          "support_tier": "A"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "GO:0001503_BiologicalProcess",
+        "map04151_Pathway",
+        "406991_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "osteogenesis",
+        "pten/pi3k/akt/hif-1alpha pathway",
+        "mirna-21",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "direction_contradicted_hop_3",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "incomplete_evidence_hop_2",
+        "incomplete_evidence_hop_3",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "GO:0001503_BiologicalProcess",
+          "target_name": "osteogenesis",
+          "relation": "promotes",
+          "pmid": "33339654",
+          "evidence": "Our findings reveal that icariin activates both ERalpha and Akt via enhancing rapid induction of IGF-1 signaling in osteoblastic cells for osteogenesis",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "GO:0001503_BiologicalProcess",
+          "source_name": "osteogenesis",
+          "target_id": "map04151_Pathway",
+          "target_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "map04151_Pathway",
+          "source_name": "pten/pi3k/akt/hif-1alpha pathway",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "activates",
+          "pmid": "30795815",
+          "evidence": "our study demonstrated an essential role of miRNA-21 in promoting maxillofacial bone regeneration via the PTEN/PI3K/Akt/HIF-1alpha pathway.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "In the present study, we found that miRNA-21 promotes the migration and osteogenic differentiation of bone marrow-derived stem cells (BMSCs) in vitro.",
+          "confidence": 0.95,
+          "support_tier": "A"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "GO:0016310_BiologicalProcess",
+        "24185_Gene",
+        "406991_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "phosphorylation",
+        "akt",
+        "mirna-21",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "direction_contradicted_hop_3",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "incomplete_evidence_hop_2",
+        "incomplete_evidence_hop_3",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "GO:0016310_BiologicalProcess",
+          "target_name": "phosphorylation",
+          "relation": "induces",
+          "pmid": "33339654",
+          "evidence": "Our results demonstrated for the first time the rapid induction of interactions between IGF-IR and ERalpha as well as IGF-IR signaling and the downstream Akt phosphorylation by icariin in MC3T3-E1 cells.",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "GO:0016310_BiologicalProcess",
+          "source_name": "phosphorylation",
+          "target_id": "24185_Gene",
+          "target_name": "akt",
+          "relation": "phosphorylates",
+          "pmid": "33339654",
+          "evidence": "Our results demonstrated for the first time the rapid induction of interactions between IGF-IR and ERalpha as well as IGF-IR signaling and the downstream Akt phosphorylation by icariin in MC3T3-E1 cells.",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "24185_Gene",
+          "source_name": "akt",
+          "target_id": "406991_Gene",
+          "target_name": "mirna-21",
+          "relation": "increases",
+          "pmid": "30795815",
+          "evidence": "miRNA-21 promoted the osteogenic ability of BMSCs by increasing P-Akt and HIF-1alpha activation.",
+          "confidence": 0.9,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "406991_Gene",
+          "source_name": "mirna-21",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "30795815",
+          "evidence": "In the present study, we found that miRNA-21 promotes the migration and osteogenic differentiation of bone marrow-derived stem cells (BMSCs) in vitro.",
+          "confidence": 0.95,
+          "support_tier": "A"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "MESH:D010024_Disease",
+        "387140_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "osteoporosis",
+        "mir-21",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 3,
+      "gate_tier": "B",
+      "claim_safe": false,
+      "gate_reasons": [
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "incomplete_evidence_hop_2",
+        "unresolved_path_polarity",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "MESH:D010024_Disease",
+          "target_name": "osteoporosis",
+          "relation": "ameliorates",
+          "pmid": "33339654",
+          "evidence": "Our findings reveal that icariin activates both ERalpha and Akt via enhancing rapid induction of IGF-1 signaling in osteoblastic cells for osteogenesis and might be regarded as a novel pathway-selective phytoestrogen for management of postmenopausal osteoporosis.",
+          "confidence": 0.85,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "MESH:D010024_Disease",
+          "source_name": "osteoporosis",
+          "target_id": "387140_Gene",
+          "target_name": "mir-21",
+          "relation": "associated_with",
+          "pmid": "34854397",
+          "evidence": "miR-21 was significantly down-regulated in osteoporotic mice.",
+          "confidence": 0.95,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "387140_Gene",
+          "source_name": "mir-21",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "promotes",
+          "pmid": "34854397",
+          "evidence": "Overexpression of miR-21 significantly promoted the osteogenic differentiation of BMSCs",
+          "confidence": 1.0,
+          "support_tier": "A"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "MESH:D010024_Disease",
+        "morinda officinalis polysaccharide_chemical",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "osteoporosis",
+        "morinda officinalis polysaccharide",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 3,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "unresolved_path_polarity",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "MESH:D010024_Disease",
+          "target_name": "osteoporosis",
+          "relation": "ameliorates",
+          "pmid": "33339654",
+          "evidence": "Our findings reveal that icariin activates both ERalpha and Akt via enhancing rapid induction of IGF-1 signaling in osteoblastic cells for osteogenesis and might be regarded as a novel pathway-selective phytoestrogen for management of postmenopausal osteoporosis.",
+          "confidence": 0.85,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "MESH:D010024_Disease",
+          "source_name": "osteoporosis",
+          "target_id": "morinda officinalis polysaccharide_chemical",
+          "target_name": "morinda officinalis polysaccharide",
+          "relation": "ameliorates",
+          "pmid": "35593324",
+          "evidence": "MOP partially alleviated OP in OVX rats",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "morinda officinalis polysaccharide_chemical",
+          "source_name": "morinda officinalis polysaccharide",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "inhibits",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP, the OD of rBMSCs was increased and AD was inhibited",
+          "confidence": 0.95,
+          "support_tier": "A"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "MESH:D010024_Disease",
+        "morinda officinalis polysaccharide_chemical",
+        "100314000_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "osteoporosis",
+        "morinda officinalis polysaccharide",
+        "mir-21",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "MESH:D010024_Disease",
+          "target_name": "osteoporosis",
+          "relation": "ameliorates",
+          "pmid": "33339654",
+          "evidence": "Our findings reveal that icariin activates both ERalpha and Akt via enhancing rapid induction of IGF-1 signaling in osteoblastic cells for osteogenesis and might be regarded as a novel pathway-selective phytoestrogen for management of postmenopausal osteoporosis.",
+          "confidence": 0.85,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "MESH:D010024_Disease",
+          "source_name": "osteoporosis",
+          "target_id": "morinda officinalis polysaccharide_chemical",
+          "target_name": "morinda officinalis polysaccharide",
+          "relation": "ameliorates",
+          "pmid": "35593324",
+          "evidence": "MOP partially alleviated OP in OVX rats",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "morinda officinalis polysaccharide_chemical",
+          "source_name": "morinda officinalis polysaccharide",
+          "target_id": "100314000_Gene",
+          "target_name": "mir-21",
+          "relation": "upregulates",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP ... miR-21 was upregulated",
+          "confidence": 0.95,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "100314000_Gene",
+          "source_name": "mir-21",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "enhances",
+          "pmid": "35593324",
+          "evidence": "miR-21 overexpression enhanced the OD of rBMSCs",
+          "confidence": 0.95,
+          "support_tier": "A"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "HP:0000939_Phenotype",
+        "morinda officinalis polysaccharide_chemical",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "osteoporosis",
+        "morinda officinalis polysaccharide",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 3,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "unresolved_path_polarity",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "HP:0000939_Phenotype",
+          "target_name": "osteoporosis",
+          "relation": "ameliorates",
+          "pmid": "33339654",
+          "evidence": "Our findings reveal that icariin activates both ERalpha and Akt via enhancing rapid induction of IGF-1 signaling in osteoblastic cells for osteogenesis and might be regarded as a novel pathway-selective phytoestrogen for management of postmenopausal osteoporosis.",
+          "confidence": 0.85,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "HP:0000939_Phenotype",
+          "source_name": "osteoporosis",
+          "target_id": "morinda officinalis polysaccharide_chemical",
+          "target_name": "morinda officinalis polysaccharide",
+          "relation": "ameliorates",
+          "pmid": "35593324",
+          "evidence": "MOP partially alleviated OP in OVX rats",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "morinda officinalis polysaccharide_chemical",
+          "source_name": "morinda officinalis polysaccharide",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "inhibits",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP, the OD of rBMSCs was increased and AD was inhibited",
+          "confidence": 0.95,
+          "support_tier": "A"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "HP:0000939_Phenotype",
+        "morinda officinalis polysaccharide_chemical",
+        "100314000_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "osteoporosis",
+        "morinda officinalis polysaccharide",
+        "mir-21",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "HP:0000939_Phenotype",
+          "target_name": "osteoporosis",
+          "relation": "ameliorates",
+          "pmid": "33339654",
+          "evidence": "Our findings reveal that icariin activates both ERalpha and Akt via enhancing rapid induction of IGF-1 signaling in osteoblastic cells for osteogenesis and might be regarded as a novel pathway-selective phytoestrogen for management of postmenopausal osteoporosis.",
+          "confidence": 0.85,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "HP:0000939_Phenotype",
+          "source_name": "osteoporosis",
+          "target_id": "morinda officinalis polysaccharide_chemical",
+          "target_name": "morinda officinalis polysaccharide",
+          "relation": "ameliorates",
+          "pmid": "35593324",
+          "evidence": "MOP partially alleviated OP in OVX rats",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "morinda officinalis polysaccharide_chemical",
+          "source_name": "morinda officinalis polysaccharide",
+          "target_id": "100314000_Gene",
+          "target_name": "mir-21",
+          "relation": "upregulates",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP ... miR-21 was upregulated",
+          "confidence": 0.95,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "100314000_Gene",
+          "source_name": "mir-21",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "enhances",
+          "pmid": "35593324",
+          "evidence": "miR-21 overexpression enhanced the OD of rBMSCs",
+          "confidence": 0.95,
+          "support_tier": "A"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "10116_Species",
+        "morinda officinalis polysaccharide_chemical",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "rat",
+        "morinda officinalis polysaccharide",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 3,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "non_composable_intervention_hop_1",
+        "non_composable_intervention_hop_2",
+        "unresolved_path_polarity",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "10116_Species",
+          "target_name": "rat",
+          "relation": "treats",
+          "pmid": "33339654",
+          "evidence": "Icariin at 3 different dosages (50, 500 and 3000 ppm) were orally administrated to rats for 3 months through daily intake of phytoestrogen-free animal diets containing icariin.",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "10116_Species",
+          "source_name": "rat",
+          "target_id": "morinda officinalis polysaccharide_chemical",
+          "target_name": "morinda officinalis polysaccharide",
+          "relation": "treats",
+          "pmid": "35593324",
+          "evidence": "OVX-induced OP rats were treated with MOP",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "morinda officinalis polysaccharide_chemical",
+          "source_name": "morinda officinalis polysaccharide",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "inhibits",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP, the OD of rBMSCs was increased and AD was inhibited",
+          "confidence": 0.95,
+          "support_tier": "A"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "10116_Species",
+        "morinda officinalis polysaccharide_chemical",
+        "100314000_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "rat",
+        "morinda officinalis polysaccharide",
+        "mir-21",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "non_composable_intervention_hop_1",
+        "non_composable_intervention_hop_2",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "10116_Species",
+          "target_name": "rat",
+          "relation": "treats",
+          "pmid": "33339654",
+          "evidence": "Icariin at 3 different dosages (50, 500 and 3000 ppm) were orally administrated to rats for 3 months through daily intake of phytoestrogen-free animal diets containing icariin.",
+          "confidence": 0.8,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "10116_Species",
+          "source_name": "rat",
+          "target_id": "morinda officinalis polysaccharide_chemical",
+          "target_name": "morinda officinalis polysaccharide",
+          "relation": "treats",
+          "pmid": "35593324",
+          "evidence": "OVX-induced OP rats were treated with MOP",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "morinda officinalis polysaccharide_chemical",
+          "source_name": "morinda officinalis polysaccharide",
+          "target_id": "100314000_Gene",
+          "target_name": "mir-21",
+          "relation": "upregulates",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP ... miR-21 was upregulated",
+          "confidence": 0.95,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "100314000_Gene",
+          "source_name": "mir-21",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "enhances",
+          "pmid": "35593324",
+          "evidence": "miR-21 overexpression enhanced the OD of rBMSCs",
+          "confidence": 0.95,
+          "support_tier": "A"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "100314228_Gene",
+        "367218_Gene",
+        "morinda officinalis polysaccharide_chemical",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "mir-23a",
+        "runx2",
+        "morinda officinalis polysaccharide",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_3",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_1",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "100314228_Gene",
+          "target_name": "mir-23a",
+          "relation": "downregulates",
+          "pmid": "35002378",
+          "evidence": "icariin promotes BMSC viability and osteogenic differentiation as well as improves ONFH by decreasing miR-23a-3p levels",
+          "confidence": 0.95,
+          "support_tier": "B"
+        },
+        {
+          "source_id": "100314228_Gene",
+          "source_name": "mir-23a",
+          "target_id": "367218_Gene",
+          "target_name": "runx2",
+          "relation": "targets",
+          "pmid": "35002378",
+          "evidence": "a dual-luciferase reporter assay verified that Runx2 was a direct target of miR-23a-3p",
+          "confidence": 1.0,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "367218_Gene",
+          "source_name": "runx2",
+          "target_id": "morinda officinalis polysaccharide_chemical",
+          "target_name": "morinda officinalis polysaccharide",
+          "relation": "upregulates",
+          "pmid": "35593324",
+          "evidence": "The protein markers of OD (RUNX2 and BMP2) ... were detected ... After treatment with low/high concentrations of MOP, the OD of rBMSCs was increased",
+          "confidence": 0.8,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "morinda officinalis polysaccharide_chemical",
+          "source_name": "morinda officinalis polysaccharide",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "inhibits",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP, the OD of rBMSCs was increased and AD was inhibited",
+          "confidence": 0.95,
+          "support_tier": "A"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "29373_Gene",
+        "morinda officinalis polysaccharide_chemical",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "bmp-2",
+        "morinda officinalis polysaccharide",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 3,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "complete_hop_evidence",
+        "unresolved_path_polarity",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "29373_Gene",
+          "target_name": "bmp-2",
+          "relation": "upregulates",
+          "pmid": "35002378",
+          "evidence": "icariin treatment/miR-23a knockdown ... increased the mRNA and protein expression of BMP-2",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "29373_Gene",
+          "source_name": "bmp-2",
+          "target_id": "morinda officinalis polysaccharide_chemical",
+          "target_name": "morinda officinalis polysaccharide",
+          "relation": "upregulates",
+          "pmid": "35593324",
+          "evidence": "The protein markers of OD (RUNX2 and BMP2) ... were detected ... After treatment with low/high concentrations of MOP, the OD of rBMSCs was increased",
+          "confidence": 0.8,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "morinda officinalis polysaccharide_chemical",
+          "source_name": "morinda officinalis polysaccharide",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "inhibits",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP, the OD of rBMSCs was increased and AD was inhibited",
+          "confidence": 0.95,
+          "support_tier": "A"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "29373_Gene",
+        "morinda officinalis polysaccharide_chemical",
+        "100314000_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "bmp-2",
+        "morinda officinalis polysaccharide",
+        "mir-21",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "complete_hop_evidence",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "29373_Gene",
+          "target_name": "bmp-2",
+          "relation": "upregulates",
+          "pmid": "35002378",
+          "evidence": "icariin treatment/miR-23a knockdown ... increased the mRNA and protein expression of BMP-2",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "29373_Gene",
+          "source_name": "bmp-2",
+          "target_id": "morinda officinalis polysaccharide_chemical",
+          "target_name": "morinda officinalis polysaccharide",
+          "relation": "upregulates",
+          "pmid": "35593324",
+          "evidence": "The protein markers of OD (RUNX2 and BMP2) ... were detected ... After treatment with low/high concentrations of MOP, the OD of rBMSCs was increased",
+          "confidence": 0.8,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "morinda officinalis polysaccharide_chemical",
+          "source_name": "morinda officinalis polysaccharide",
+          "target_id": "100314000_Gene",
+          "target_name": "mir-21",
+          "relation": "upregulates",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP ... miR-21 was upregulated",
+          "confidence": 0.95,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "100314000_Gene",
+          "source_name": "mir-21",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "enhances",
+          "pmid": "35593324",
+          "evidence": "miR-21 overexpression enhanced the OD of rBMSCs",
+          "confidence": 0.95,
+          "support_tier": "A"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "367218_Gene",
+        "100314228_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "runx2",
+        "mir-23a",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 3,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "incomplete_evidence_hop_3",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "367218_Gene",
+          "target_name": "runx2",
+          "relation": "upregulates",
+          "pmid": "35002378",
+          "evidence": "icariin treatment/miR-23a knockdown ... increased the mRNA and protein expression of ... Runx2",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "367218_Gene",
+          "source_name": "runx2",
+          "target_id": "100314228_Gene",
+          "target_name": "mir-23a",
+          "relation": "targets",
+          "pmid": "35002378",
+          "evidence": "a dual-luciferase reporter assay verified that Runx2 was a direct target of miR-23a-3p",
+          "confidence": 1.0,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "100314228_Gene",
+          "source_name": "mir-23a",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "regulates",
+          "pmid": "35002378",
+          "evidence": "miR-23a-3p plays a vital role in regulating the osteogenic differentiation of bone marrow-derived mesenchymal stem cells (BMSCs)",
+          "confidence": 0.9,
+          "support_tier": "B"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "367218_Gene",
+        "morinda officinalis polysaccharide_chemical",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "runx2",
+        "morinda officinalis polysaccharide",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 3,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "complete_hop_evidence",
+        "unresolved_path_polarity",
+        "weak_long_path_mechanism"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "367218_Gene",
+          "target_name": "runx2",
+          "relation": "upregulates",
+          "pmid": "35002378",
+          "evidence": "icariin treatment/miR-23a knockdown ... increased the mRNA and protein expression of ... Runx2",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "367218_Gene",
+          "source_name": "runx2",
+          "target_id": "morinda officinalis polysaccharide_chemical",
+          "target_name": "morinda officinalis polysaccharide",
+          "relation": "upregulates",
+          "pmid": "35593324",
+          "evidence": "The protein markers of OD (RUNX2 and BMP2) ... were detected ... After treatment with low/high concentrations of MOP, the OD of rBMSCs was increased",
+          "confidence": 0.8,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "morinda officinalis polysaccharide_chemical",
+          "source_name": "morinda officinalis polysaccharide",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "inhibits",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP, the OD of rBMSCs was increased and AD was inhibited",
+          "confidence": 0.95,
+          "support_tier": "A"
+        }
+      ]
+    },
+    {
+      "node_ids": [
+        "MESH:C056599_Chemical",
+        "367218_Gene",
+        "morinda officinalis polysaccharide_chemical",
+        "100314000_Gene",
+        "GO:0001649_BiologicalProcess"
+      ],
+      "node_names": [
+        "icariin",
+        "runx2",
+        "morinda officinalis polysaccharide",
+        "mir-21",
+        "osteogenic differentiation"
+      ],
+      "hop_count": 4,
+      "gate_tier": "C",
+      "claim_safe": false,
+      "gate_reasons": [
+        "direction_contradicted_hop_2",
+        "query_endpoint_alignment",
+        "complete_hop_evidence",
+        "bounded_mechanistic_multi_hop"
+      ],
+      "hops": [
+        {
+          "source_id": "MESH:C056599_Chemical",
+          "source_name": "icariin",
+          "target_id": "367218_Gene",
+          "target_name": "runx2",
+          "relation": "upregulates",
+          "pmid": "35002378",
+          "evidence": "icariin treatment/miR-23a knockdown ... increased the mRNA and protein expression of ... Runx2",
+          "confidence": 0.9,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "367218_Gene",
+          "source_name": "runx2",
+          "target_id": "morinda officinalis polysaccharide_chemical",
+          "target_name": "morinda officinalis polysaccharide",
+          "relation": "upregulates",
+          "pmid": "35593324",
+          "evidence": "The protein markers of OD (RUNX2 and BMP2) ... were detected ... After treatment with low/high concentrations of MOP, the OD of rBMSCs was increased",
+          "confidence": 0.8,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "morinda officinalis polysaccharide_chemical",
+          "source_name": "morinda officinalis polysaccharide",
+          "target_id": "100314000_Gene",
+          "target_name": "mir-21",
+          "relation": "upregulates",
+          "pmid": "35593324",
+          "evidence": "After treatment with low/high concentrations of MOP ... miR-21 was upregulated",
+          "confidence": 0.95,
+          "support_tier": "A"
+        },
+        {
+          "source_id": "100314000_Gene",
+          "source_name": "mir-21",
+          "target_id": "GO:0001649_BiologicalProcess",
+          "target_name": "osteogenic differentiation",
+          "relation": "enhances",
+          "pmid": "35593324",
+          "evidence": "miR-21 overexpression enhanced the OD of rBMSCs",
+          "confidence": 0.95,
+          "support_tier": "A"
+        }
+      ]
+    }
+  ],
+  "verdict": "no_strict_3_or_4_hop_path"
+}
