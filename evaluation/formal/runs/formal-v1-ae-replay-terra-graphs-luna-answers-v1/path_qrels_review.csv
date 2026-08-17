@@ -1,0 +1,55 @@
+question_id,path_id,source,bridge,target,relation_1,relation_2,direction_1,direction_2,pmids,relevance,path_type,is_negative_control,evidence_level_1,evidence_level_2,bridge_valid,direction_verified,notes
+Q001,Q001-P01,icariin,,osteogenic differentiation,promotes,,forward,undirected,29904399,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q001,Q001-P02,icariin,runt-related transcription factor 2,osteogenic differentiation,upregulates,regulates,forward,forward,29904399;38045146,,two_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q001,Q001-P03,icariin,jmjd3,osteogenic differentiation,upregulates,correlates_with,forward,undirected,38045146,,two_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q001,Q001-P04,icariin,mir-153,osteogenic differentiation,increases,regulates,forward,forward,29904399,,two_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q002,Q002-P01,osteoporosis,,bone formation,associated_with,,undirected,undirected,37215980,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q002,Q002-P01,osteoporosis,osteoporosis,bone formation,associated_with,associated_with,undirected,undirected,23605904;34502371,,two_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q002,Q002-P03,osteoporosis,osteoporosis,osteogenesis,associated_with,related_to,undirected,undirected,23605904;34502371,,two_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q003,Q003-P01,insulin resistance,pcos,inflammation,associated_with,associated_with,undirected,undirected,33439300,,two_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q004,Q004-P01,curcumin,,apoptosis,induces,,forward,undirected,32519340,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q005,Q005-P01,amyloid-beta,,mitochondrial toxicity,related_to,,undirected,undirected,33476985,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q005,Q005-P02,amyloid-beta,ad,mitochondrial dysfunction,causes,associated_with,forward,undirected,33476985;35522844,,two_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q006,Q006-P01,endothelial dysfunction,,atherosclerosis,associated_with,,undirected,undirected,15861315,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q006,Q006-P02,endothelial dysfunction,,inflammation,promotes,,forward,undirected,24928320,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q006,Q006-P04,endothelial dysfunction,,atherosclerosis,promotes,,forward,undirected,24928320,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q006,Q006-P05,endothelial dysfunction,,coronary death,correlates_with,,undirected,undirected,15861315,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q006,Q006-P06,endothelial dysfunction,,myocardial infarction,correlates_with,,undirected,undirected,15861315,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q006,Q006-P07,endothelial dysfunction,,essential hypertension,associated_with,,undirected,undirected,22112351,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q006,Q006-P08,endothelial dysfunction,,metabolic diseases,associated_with,,undirected,undirected,39684569,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q006,Q006-P09,endothelial dysfunction,,hypertensive,associated_with,,undirected,undirected,22112351,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q006,Q006-P10,endothelial dysfunction,,acute coronary syndromes,associated_with,,undirected,undirected,17430168,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q006,Q006-P11,endothelial dysfunction,,thrombosis,associated_with,,undirected,undirected,17430168,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q006,Q006-P12,endothelial dysfunction,,reactive oxygen species,associated_with,,undirected,undirected,17430168,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q006,Q006-P13,endothelial dysfunction,,peripheral,associated_with,,undirected,undirected,22112351,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q006,Q006-P14,endothelial dysfunction,,cardiovascular death,associated_with,,undirected,undirected,17430168,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q006,Q006-P15,endothelial dysfunction,inflammation,atherosclerosis,promotes,promotes,forward,forward,24928320,,two_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q007,Q007-P01,il-17,,autoimmune disease,promotes,,forward,undirected,27576555,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q007,Q007-P02,il-17,,inflammation,promotes,,forward,undirected,27576555,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q007,Q007-P04,il-17b,,il-17,related_to,,undirected,undirected,39875232,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q007,Q007-P05,il-17,,il-17b,related_to,,undirected,undirected,39875232,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q007,Q007-P06,il-17,,il-23,associated_with,,undirected,undirected,25145755,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q007,Q007-P07,il-17,,signaling,associated_with,,undirected,undirected,25145755,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q007,Q007-P08,il-17f.,,il-17,related_to,,undirected,undirected,37670700,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q007,Q007-P09,il-17,,il-17f.,related_to,,undirected,undirected,37670700,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q007,Q007-P10,il-17,,gm-csf,co_occurs_with,,undirected,undirected,30891627,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q007,Q007-P11,il-17,,immune-mediated inflammatory diseases,associated_with,,undirected,undirected,25145755,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q007,Q007-P12,il-17,,t-bet,co_occurs_with,,undirected,undirected,30502718,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q007,Q007-P13,il-17,,immune disorders,associated_with,,undirected,undirected,27576555,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q007,Q007-P14,il-17,,cd4,co_occurs_with,,undirected,undirected,27576555,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q007,Q007-P15,il-17b,il-17,inflammation,related_to,promotes,undirected,forward,27576555;39875232,,two_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q007,Q007-P16,il-17b,il-17,autoimmune disease,related_to,promotes,undirected,forward,27576555;39875232,,two_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q007,Q007-P18,il-17b,il-17,il-23,related_to,associated_with,undirected,undirected,25145755;39875232,,two_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q007,Q007-P19,il-17b,il-17,signaling,related_to,associated_with,undirected,undirected,25145755;39875232,,two_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q007,Q007-P20,il-17f.,il-17,il-17b,related_to,related_to,undirected,undirected,37670700;39875232,,two_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q008,Q008-P01,cftr,cf,inflammation,causes,associated_with,forward,undirected,28155088;37546931,,two_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q008,Q008-P02,cftr,cf,intestinal inflammation,causes,associated_with,forward,undirected,30546102;37546931,,two_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q009,Q009-P01,jak/stat pathway,,homeostasis,regulates,,forward,undirected,26972840,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q009,Q009-P02,jak/stat pathway,,diabetes,promotes,,forward,undirected,26972840,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q009,Q009-P03,jak/stat pathway,,obesity,promotes,,forward,undirected,26972840,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q009,Q009-P04,jak/stat pathway,,signaling,related_to,,undirected,undirected,26972840,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q009,Q009-P05,jak/stat pathway,,behavior,regulates,,forward,undirected,29897957,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q009,Q009-P06,jak/stat pathway,,diabetes mellitus,associated_with,,undirected,undirected,26972840,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q009,Q009-P07,jak/stat pathway,,obesity,associated_with,,undirected,undirected,26972840,,one_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q009,Q009-P06,jak/stat pathway,diabetes,hyperglycemia,promotes,associated_with,forward,undirected,26972840,,two_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.
+Q009,Q009-P07,jak/stat pathway,obesity,il-6,promotes,associated_with,forward,undirected,26972840;32885495,,two_hop,,,,,,Candidate surfaced by replay; adjudicate against frozen corpus before scoring.

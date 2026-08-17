@@ -1,0 +1,26 @@
+{
+  "reviewer_type": "AI",
+  "human_expert_review_claimed": false,
+  "blinded": true,
+  "task": "hidden_claim",
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_file": "evaluation/formal/runs/controlled-bridge-pilot-v3-text-answer/path_candidates_blinded.csv",
+  "input_sha256": "40e39da3a83e75669a34d61bbebc9369a159fbd8f47a944e6faebfa3b409e9e1",
+  "output_file": "evaluation/formal/runs/controlled-bridge-pilot-v3-text-answer/path_candidates_selector_anthropic.csv",
+  "question_count": 1,
+  "row_count": 1,
+  "estimated_prompt_chars": 9344,
+  "estimated_input_tokens_rough": 2336,
+  "actual_api_usage_from_checkpoints": {
+    "input_tokens": 2807,
+    "output_tokens": 221,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 3028
+  },
+  "completed_batches": 1,
+  "started_at": "2026-08-09T18:05:11.090190+00:00",
+  "completed_at": "2026-08-09T18:05:17.921865+00:00",
+  "status": "complete"
+}

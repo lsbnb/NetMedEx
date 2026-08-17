@@ -1,0 +1,26 @@
+{
+  "task": "edge",
+  "question_id": "Q016",
+  "batch": 2,
+  "provider": "anthropic",
+  "model": "claude-haiku-4-5-20251001",
+  "input_sha256": "b307fe20145241b6be01f9feefd5f092993a6958e92712d5a6bd4ba1f6a2d5e4",
+  "raw_response_sha256": "636b96a4d3feed76acf9e90bd186747746ad4c15be846a8ed397511561811bda",
+  "rated_at": "2026-08-02T19:08:24.548235+00:00",
+  "result": {
+    "ratings": [
+      {
+        "edge_id": "Q016-E03",
+        "entity_valid": 1,
+        "relation_exists": 1,
+        "relation_type_correct": 1,
+        "direction_correct": 1,
+        "evidence_support": 1,
+        "confidence": 3,
+        "notes": "SMA is explicitly defined as neuromuscular disease. Both abstracts confirm SMA is characterized by motor neuron loss and muscle atrophy, establishing clear association with neuromuscular diseases category."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

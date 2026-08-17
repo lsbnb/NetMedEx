@@ -1,0 +1,45 @@
+{
+  "task": "hidden_claim",
+  "question_id": "BW003",
+  "batch": 1,
+  "provider": "google",
+  "model": "gemini-3.1-pro-preview",
+  "input_sha256": "1686b004cfc787f78ceaa9df3b80f3956873ab37f0c942da37e933322e143b5d",
+  "raw_response_sha256": "dcc2524200398d67ae16694b420b9245c866ced846606d58426e8e2a99560cbe",
+  "usage": {
+    "input_tokens": 3251,
+    "output_tokens": 293,
+    "total_tokens": 4413
+  },
+  "rated_at": "2026-08-09T11:29:17.277449+00:00",
+  "result": {
+    "ratings": [
+      {
+        "hidden_claim_id": "BW003-HC01",
+        "hybrid_only": 0,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 1,
+        "non_obviousness": 3,
+        "research_utility": 4,
+        "unsupported_novelty": 0,
+        "notes": "The claim accurately reflects the evidence and is explicitly covered in the comparison answer as a key intermediate pathway."
+      },
+      {
+        "hidden_claim_id": "BW003-HC02",
+        "hybrid_only": 1,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 1,
+        "non_obviousness": 1,
+        "research_utility": 1,
+        "unsupported_novelty": 0,
+        "notes": "This is a trivial background fact rather than a specific mechanistic intermediate. It is not listed as an intermediate in the comparison answer."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

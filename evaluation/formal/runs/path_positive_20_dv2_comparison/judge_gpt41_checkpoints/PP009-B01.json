@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP009",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "e065f4541ef1bae9a6b5c504a07bc9f6c45f4992957042b50ed24bbd7885dfb5",
+  "raw_response_sha256": "3fe89ee3b0834522f4dcb88ef60ba72103c68c6ef43abfa1804ab82bb65af1ce",
+  "usage": {
+    "input_tokens": 2246,
+    "output_tokens": 470,
+    "total_tokens": 2716
+  },
+  "rated_at": "2026-08-13T07:09:57.289513+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP009-A",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Strong mechanistic and experimental evidence for each hop; clear distinction of animal and cell data. Slightly less explicit about the overall inference."
+      },
+      {
+        "answer_id": "PP009-B",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Well-grounded, mechanistically coherent, and distinguishes animal/human evidence. Slightly less explicit about each hop's evidence than others."
+      },
+      {
+        "answer_id": "PP009-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Explicitly distinguishes evidence for each hop, integrates animal/human/cell data, and provides a clear mechanistic chain. Excellent research value."
+      },
+      {
+        "answer_id": "PP009-D",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Systematically addresses each hop and notes missing evidence. Slightly less mechanistic detail and research value than C."
+      }
+    ],
+    "preferred_item_id": "PP009-C",
+    "pairwise_reason": "PP009-C most clearly distinguishes evidence for each mechanistic hop, integrates animal, human, and cell data, and provides a coherent mechanistic narrative. Others are strong but less explicit or detailed."
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "task": "answer",
+  "question_id": "PP006",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "ca3e21059dfd095d227e2445e22c98ad987c78f3cb419d2d7ae7db1021bd804f",
+  "raw_response_sha256": "73bd4710d5956f96616bf681cb419686fd44cade6eddfac614daab84fc184a0c",
+  "usage": {
+    "input_tokens": 2559,
+    "output_tokens": 502,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 3061
+  },
+  "rated_at": "2026-08-13T10:32:06.842559+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP006-A",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Accurately describes each hop with correct PMID. Clearly distinguishes direct evidence from inference. Testable hypothesis is well-formed. Slightly less detail on Ti→miR-21-5p suppression hop."
+      },
+      {
+        "answer_id": "PP006-B",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Correct evidence per hop; graph-path annotations add transparency. Speculative icariin-Ti particle binding hypothesis is unsupported. Minor cell line typo (MC3T₁ vs MC3T3). PMID 38045146 unverified."
+      },
+      {
+        "answer_id": "PP006-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Most thorough hop-by-hop breakdown; clearly separates direct evidence, association, and inference. Testable hypothesis is specific and mechanistically grounded. Best structured response overall."
+      }
+    ],
+    "preferred_item_id": "PP006-C",
+    "pairwise_reason": "PP006-C provides the clearest hop-by-hop evidence separation, includes icariin's standalone osteogenic effect, correctly attributes miR-21-5p necessity via antagomiR, and offers the most mechanistically specific testable hypothesis, making it the most complete and rigorous answer."
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "Q011",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "3ad97ef6313cbb55cba45150a3b07a58a11e325229b5a90cce6fccd1964af8e9",
+  "raw_response_sha256": "002ca6792d506304a27321fe72f675563cb060895a99204e09442724d49345d4",
+  "usage": {
+    "input_tokens": 2970,
+    "output_tokens": 494,
+    "total_tokens": 3464
+  },
+  "rated_at": "2026-08-13T04:37:56.730998+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q011-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, mechanistically detailed, distinguishes in vitro/in vivo/human data, notes limitations. Lacks explicit PMIDs but describes evidence accurately."
+      },
+      {
+        "answer_id": "Q011-B",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Cites specific studies (with PMIDs), covers in vitro, in vivo, and epidemiology. Mechanistic link clear. Slightly less detail on pathway nuances than A."
+      },
+      {
+        "answer_id": "Q011-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Strong, well-cited, covers human/animal/in vitro, mechanistic and context-dependent effects, and testable hypotheses. Clearly distinguishes evidence types."
+      },
+      {
+        "answer_id": "Q011-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Well-cited, covers direct and associative evidence, mechanistic detail, and testable hypotheses. Clearly distinguishes evidence types and experimental models."
+      }
+    ],
+    "preferred_item_id": "Q011-C",
+    "pairwise_reason": "Q011-C provides the most balanced, well-cited, and mechanistically coherent synthesis, clearly distinguishing between evidence types, models, and generating testable hypotheses. Q011-D is nearly equivalent but slightly less nuanced in hypothesis generation."
+  }
+}

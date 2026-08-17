@@ -1,0 +1,57 @@
+{
+  "run_id": "formal-v1-gpt-5.6-terra-A_text_only",
+  "benchmark_version": "formal-v1",
+  "status": "complete",
+  "provider": "openai",
+  "model": "gpt-5.6-terra",
+  "api": "chat_completions",
+  "sampling": {
+    "temperature": 1,
+    "note": "GPT-5.6 supports only its default temperature in Chat Completions."
+  },
+  "max_articles_per_question": 18,
+  "top_k": 10,
+  "edge_method": "semantic",
+  "semantic_threshold": 0.5,
+  "edge_weight_cutoff": 1,
+  "hybrid_profile": "A_text_only",
+  "query_file": "evaluation/formal/controlled_bridge_pilot_v1/queries.csv",
+  "query_file_sha256": "60fbf24662a45e7b2805da07235e0cab07c4898ad473a706a5777d06cb3ae7c7",
+  "expected_question_count": 1,
+  "questions_metadata_file": "evaluation/formal/controlled_bridge_pilot_v1/questions_metadata.csv",
+  "questions_metadata_sha256": "2899303761eb22c14505aba545b1ff3058b737dca20d681b5738ac6aecc2b76e",
+  "gold_qrels_read_during_run": false,
+  "systems": [
+    "netmedex_hybrid_rag",
+    "traditional_rag"
+  ],
+  "reuse_corpora_dir": "evaluation/formal/controlled_bridge_pilot_v1/questions",
+  "reuse_exposures_dir": null,
+  "reuse_graphs_dir": null,
+  "persist_graph": false,
+  "answer_generation": false,
+  "max_total_tokens_per_process": null,
+  "started_at": "2026-08-09T17:47:04.047813+00:00",
+  "attempts": [
+    {
+      "attempt_id": "attempt-001",
+      "started_at": "2026-08-09T17:47:04.048190+00:00",
+      "selected_questions": [
+        "BW008"
+      ],
+      "force": true,
+      "status": "complete",
+      "completed_at": "2026-08-09T17:47:08.982696+00:00",
+      "completed_questions_after_attempt": 1,
+      "failed_questions_after_attempt": 0
+    }
+  ],
+  "question_scope": [
+    "BW008"
+  ],
+  "last_resumed_at": "2026-08-09T17:47:04.048190+00:00",
+  "completed_questions": 1,
+  "failed_questions": 0,
+  "last_checkpoint_at": "2026-08-09T17:47:08.980341+00:00",
+  "completed_at": "2026-08-09T17:47:08.982677+00:00"
+}

@@ -1,0 +1,129 @@
+{
+  "status": "complete",
+  "question_id": "Q025",
+  "domain": "neuromuscular disease",
+  "question": "What candidate mechanisms connect Duchenne muscular dystrophy to chronic inflammation?",
+  "question_type": "hypothesis",
+  "pubmed_query": "Duchenne muscular dystrophy dystrophin inflammation NF-kB macrophage fibrosis",
+  "effective_pubmed_query": "Duchenne muscular dystrophy dystrophin inflammation NF-kB macrophage fibrosis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "17380205",
+    "19897286",
+    "26803842",
+    "28192862"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What candidate mechanisms connect Duchenne muscular dystrophy to chronic inflammation?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "17380205",
+        "score": 0.5491803187463465
+      },
+      {
+        "pmid": "26803842",
+        "score": 0.5264143025210111
+      },
+      {
+        "pmid": "19897286",
+        "score": 0.47683829782202786
+      },
+      {
+        "pmid": "28192862",
+        "score": 0.46053301790096274
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "17380205",
+        "score": 0.5491803187463465
+      },
+      {
+        "pmid": "26803842",
+        "score": 0.5264143025210111
+      },
+      {
+        "pmid": "19897286",
+        "score": 0.47683829782202786
+      },
+      {
+        "pmid": "28192862",
+        "score": 0.46053301790096274
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Direct mechanistic evidence (animal studies)**  \n\n- **IKK/NF‑κB hyper‑activation in both macrophages and regenerating myofibers drives chronic inflammation and impairs muscle regeneration.** In mdx mice, NF‑κB signaling is persistently elevated in immune cells and in newly formed fibers; conditional deletion of IKKβ in macrophages reduces necrosis, while loss of one p65 allele improves overall pathology【PMID:17380205】.  \n\n- **Aberrant connexin (Cx 43/45) hemichannels increase sarcolemmal permeability, intracellular Ca²⁺ and trigger NF‑κB‑dependent apoptosis, which in turn sustains inflammatory signaling.** Fast fibers of mdx mice express Cx 39, 43, 45 and show high Ca²⁺, p‑p65, eNOS, and caspase‑3 activation; muscle‑specific Cx43/45 knockout normalises Ca²⁺, reduces NF‑κB activation and apoptotic markers, and partially lowers necrosis despite unchanged macrophage infiltration【PMID:26803842】. Human DMD biopsies also contain these connexins, supporting translational relevance.  \n\n- **Dietary polyphenols that dampen NF‑κB activity ameliorate inflammatory pathology, indicating that NF‑κB is a downstream effector of upstream DMD‑related stressors.** Prenatal/early green‑tea extract (rich in EGCG) reduces serum creatine kinase, regenerating‑fiber area, and NF‑κB staining in mdx muscle【PMID:19897286】. Long‑term quercetin supplementation lowers cardiac NF‑κB, phosphorylated IκBα, COX‑2, TGF‑β1 and macrophage marker F4/80, while boosting mitochondrial biogenesis proteins【PMID:28192862】.  \n\n**Associative observations (human & animal)**  \n\n- **Persistent macrophage infiltration** is a hallmark of DMD muscle and correlates with NF‑κB activation in both patient biopsies and mdx mice【PMID:17380205】.  \n\n- **Connexin hemichannel expression** detected in fast fibers of DMD patient biopsies mirrors the mouse findings, suggesting a common pathway linking membrane leakiness to inflammatory cascades【PMID:26803842】.  \n\n**Testable hypotheses derived from the evidence**  \n\n1. **Targeting IKKβ/NF‑κB in muscle‑resident macrophages will attenuate chronic inflammation and improve regeneration in DMD patients.** The mouse data show that macrophage‑specific IKKβ loss curtails necrosis; clinical trials with selective IKK inhibitors could test this.  \n\n2. **Pharmacological blockade of connexin hemichannels will reduce Ca²⁺‑mediated NF‑κB activation and downstream apoptosis, thereby breaking the feed‑forward inflammation loop.** Mouse Cx43/45 muscle‑KO improves pathology without altering immune cell numbers, indicating a muscle‑intrinsic trigger that can be targeted.  \n\n3. **Enhancing mitochondrial biogenesis (e.g., via PGC‑1α activation) may indirectly suppress NF‑κB–driven inflammation in DMD hearts and skeletal muscle.** Quercetin‑induced up‑regulation of mitochondrial proteins accompanies lowered NF‑κB and cytokine markers, suggesting a mechanistic link worth probing in vivo.  \n\n**Overall conclusion** – Dystrophin loss initiates membrane instability and connexin‑hemichannel leak, leading to Ca²⁺ influx and IKK/NF‑κB hyper‑activation in both myofibers and infiltrating macrophages; this creates a self‑sustaining inflammatory milieu that impairs regeneration."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 5.362182855606079e-05,
+    "vector_index": 1.073613628745079,
+    "kg_expansion": 2.1949410438537598e-05,
+    "answer_traditional_rag": 30.29067112505436,
+    "total": 31.86858844012022
+  },
+  "token_usage": {
+    "input_tokens": 1996,
+    "output_tokens": 1169,
+    "total_tokens": 3165
+  },
+  "completed_at": "2026-08-13T03:45:59.969291+00:00"
+}

@@ -1,0 +1,156 @@
+{
+  "question_id": "Q043",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-30T10:01:56.500031+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q043-C001",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Provides evidence from mouse and in vitro models that a pharmacological agent (Ciliatoside A) inhibits NLRP3 inflammasome activation in AD. Rated 1 as it is an intervention study where NLRP3 is a downstream marker rather than a primary investigation establishing fundamental claims about NLRP3's role."
+    },
+    {
+      "candidate_id": "Q043-C002",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Directly addresses the question by providing mouse model evidence (5xFAD mice) supporting the mechanistic claim that HSV-1 infection accelerates AD progression via NLRP3 inflammasome activation."
+    },
+    {
+      "candidate_id": "Q043-C003",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "off_topic",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Off-topic. Discusses microglia in cardiovascular diseases, not Alzheimer's disease or the NLRP3 inflammasome."
+    },
+    {
+      "candidate_id": "Q043-C004",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Directly addresses the question by providing human post-mortem evidence. Notably, it contrasts with many mouse studies by finding no evidence for specific involvement of the NLRP3 inflammasome in human AD temporal cortex, directly answering the 'human versus mouse' aspect."
+    },
+    {
+      "candidate_id": "Q043-C005",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Provides mouse model evidence that beta-hydroxybutyrate reduces AD pathology by inhibiting NLRP3. Rated 1 as an intervention study providing adjacent evidence for NLRP3's role in mouse models."
+    },
+    {
+      "candidate_id": "Q043-C006",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Directly addresses the question by providing mouse model evidence supporting the claim that glutamine metabolism regulates microglial NLRP3 inflammasome activity in AD."
+    },
+    {
+      "candidate_id": "Q043-C007",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Directly addresses the question by providing both human (AD patient brains) and mouse (APP/PS1) evidence regarding neuroinflammation, noting NLRP3 assembly around amyloid beta in the mouse model."
+    },
+    {
+      "candidate_id": "Q043-C008",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Directly addresses the question by providing mouse model evidence (APP/PS1 and NLRP3 knockout) supporting the claim that systemic inflammation impairs microglial clearance via the NLRP3 inflammasome."
+    },
+    {
+      "candidate_id": "Q043-C009",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Review article summarizing mechanisms of NLRP3 inflammasome activation in AD. Provides useful review-level context for the claims, but is not a primary study."
+    },
+    {
+      "candidate_id": "Q043-C010",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Review article discussing the activation mechanisms of the NLRP3 inflammasome in microglia and its role in AD. Provides useful review-level context."
+    },
+    {
+      "candidate_id": "Q043-C011",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Directly addresses the question by providing both human (AD retina and brain) and mouse model evidence supporting the claim that Chlamydia pneumoniae infection activates the NLRP3 inflammasome in AD."
+    },
+    {
+      "candidate_id": "Q043-C012",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Directly addresses the question by providing human post-mortem evidence characterizing the cell-type specific expression of NLRP3 inflammasome proteins in early and intermediate stages of AD."
+    },
+    {
+      "candidate_id": "Q043-C013",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Provides mouse model evidence that a GPCR19 ligand inhibits NLRP3 activation. Rated 1 as an intervention study providing adjacent evidence for NLRP3's role in AD mice."
+    },
+    {
+      "candidate_id": "Q043-C014",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Directly addresses the question by providing mouse model evidence (5XFAD/NLRP3-KO) supporting the mechanistic claim that p62-dependent autophagy degrades NLRP3 to improve cognitive function in AD."
+    },
+    {
+      "candidate_id": "Q043-C015",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Provides mouse model evidence that semaglutide attenuates AD progression by targeting NLRP3. Rated 1 as a pharmacological intervention study rather than a primary investigation of fundamental NLRP3 claims."
+    },
+    {
+      "candidate_id": "Q043-C016",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Directly addresses the question by providing mouse model evidence (APP/PS1) supporting the novel claim that NLRP3 modulates mitochondrial and metabolic function (glutaminolysis) in AD."
+    },
+    {
+      "candidate_id": "Q043-C017",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Provides mouse model evidence that stem cell-derived extracellular vesicles reduce NLRP3 expression in AD. Rated 1 as an intervention study providing adjacent evidence."
+    },
+    {
+      "candidate_id": "Q043-C018",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Directly addresses the question by providing human evidence (patient monocytes) supporting the claim that the NLRP3 and NLRP1 inflammasomes are activated in severe and mild AD."
+    },
+    {
+      "candidate_id": "Q043-C019",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Directly addresses the question by providing mouse model evidence supporting the claim that NLRP3 inflammasome activation drives tau pathology, linking amyloid and tau cascades."
+    },
+    {
+      "candidate_id": "Q043-C020",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Directly addresses the question by providing both human evidence (MCI and AD brains) and mouse model evidence (APP/PS1) supporting the claim that NLRP3 is activated and contributes to AD pathology."
+    },
+    {
+      "candidate_id": "Q043-C021",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Provides mouse model evidence that NAD+ supplementation reduces NLRP3 expression in AD. Rated 1 as an intervention study providing adjacent evidence."
+    }
+  ],
+  "raw_response_sha256": "7ab9c7a8362630879284b9cb3bc9a2ef4d0224b69e3d4356dd1316baf69cdf3b"
+}

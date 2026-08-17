@@ -1,0 +1,159 @@
+{
+  "status": "complete",
+  "question_id": "Q041",
+  "domain": "multilingual",
+  "question": "請找出 SGLT2 抑制劑可能保護腎臟的抗發炎或抗纖維化機制。",
+  "question_type": "multilingual_mechanism",
+  "pubmed_query": "SGLT2 inhibitor kidney inflammation fibrosis empagliflozin dapagliflozin",
+  "effective_pubmed_query": "SGLT2 inhibitor kidney inflammation fibrosis empagliflozin dapagliflozin",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "Traditional Chinese",
+  "corpus_pmids": [
+    "31936266",
+    "36513134",
+    "36534320",
+    "36768138",
+    "38634653",
+    "39676197",
+    "40279256",
+    "40429921",
+    "40829258",
+    "41285328"
+  ],
+  "graph": {
+    "node_count": 64,
+    "edge_count": 136,
+    "path_count": 0,
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": true,
+    "max_hops": 2,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "gate_evidence_paths": true,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "exposure_signature": "4f8698ecdef6d9b5",
+    "routed_profile": "G_evidence_gated_two_hop",
+    "route_reason": "question_type=multilingual_mechanism: evidence-gated multi-hop task",
+    "question_type": "multilingual_mechanism",
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "40279256",
+        "score": 0.3635939813000195
+      },
+      {
+        "pmid": "40429921",
+        "score": 0.3632049640302472
+      },
+      {
+        "pmid": "36534320",
+        "score": 0.3592406063548774
+      },
+      {
+        "pmid": "31936266",
+        "score": 0.3555295760689145
+      },
+      {
+        "pmid": "36513134",
+        "score": 0.35450527573634594
+      },
+      {
+        "pmid": "36768138",
+        "score": 0.3543307971315985
+      },
+      {
+        "pmid": "38634653",
+        "score": 0.34996440742800267
+      },
+      {
+        "pmid": "41285328",
+        "score": 0.341458198438695
+      },
+      {
+        "pmid": "39676197",
+        "score": 0.341148711024714
+      },
+      {
+        "pmid": "40829258",
+        "score": 0.3350578561997407
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "40279256",
+        "score": 0.3635939813000195
+      },
+      {
+        "pmid": "40429921",
+        "score": 0.3632049640302472
+      },
+      {
+        "pmid": "36534320",
+        "score": 0.3592406063548774
+      },
+      {
+        "pmid": "31936266",
+        "score": 0.3555295760689145
+      },
+      {
+        "pmid": "36513134",
+        "score": 0.35450527573634594
+      },
+      {
+        "pmid": "36768138",
+        "score": 0.3543307971315985
+      },
+      {
+        "pmid": "38634653",
+        "score": 0.34996440742800267
+      },
+      {
+        "pmid": "41285328",
+        "score": 0.341458198438695
+      },
+      {
+        "pmid": "39676197",
+        "score": 0.341148711024714
+      },
+      {
+        "pmid": "40829258",
+        "score": 0.3350578561997407
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "根據提供的文獻，SGLT2 抑制劑（如 empagliflozin、dapagliflozin 等）具備多重抗發炎與抗纖維化機制，可能因此而保護腎臟功能。相關機制及直接或間接證據整理如下：\n\n**直接證據**\n\n- SGLT2 抑制劑可減少腎臟中的發炎反應及纖維化。其作用包括下調發炎細胞激素（如 IL-1β、IL-6、TNF-α、MCP-1）以及減少 NLRP3 inflammasome 的活化，並且調節 MyD88 相關訊號傳導，有助於減少腎臟纖維化形成【PMID: 40429921】【PMID: 36534320】【PMID: 40829258】。\n- SGLT2 抑制劑能調節巨噬細胞極化，抑制前發炎型 M1 巨噬細胞、促進抗發炎型 M2 巨噬細胞的表現，進而減少腎臟的發炎反應與纖維化病程進展【PMID: 41285328】。\n- 以原代人類腎近曲小管上皮細胞（PTCs）體外模型發現，empagliflozin 與 dapagliflozin 能顯著抑制促發炎黏附分子 ICAM-1 的表現，發揮抗發炎效果且無明顯細胞毒性或誘發細胞損傷的情形【PMID: 36768138】【PMID: 31936266】。\n- 有實驗指出 SGLT2 抑制劑除降低葡萄糖與血流動力外，還能減輕缺氧、氧化壓力、活化腎素-血管收縮素系統（RAS）等因素，這些皆與腎纖維化及進一步的腎損傷密切相關【PMID: 36534320】。\n\n**關聯性證據**\n\n- SGLT2 抑制劑抗發炎、抗纖維化效應不僅見於糖尿病腎臟病變，同樣適用於非糖尿病腎病的動物模型與人類研究，且這些藥物於多項臨床試驗中顯示能持續減緩腎功能惡化與蛋白尿進展，此總體保護效益被視為一項類效應【PMID: 40279256】【PMID: 36513134】【PMID: 38634653】。\n\n---\n\n### Graph-derived candidate insights\n\n- SGLT2 抑制劑藉由下調 NLRP3 inflammasome 與降低 IL-1β、IL-6、TGF-β 與 MCP-1，抑制腎臟局部發炎並減少纖維化（PATH: SG2I→NLRP3→cytokines→fibrosis/inflammation）【PATH: 000229】【PMID: 40429921】【PMID: 40829258】（多跳推論）。\n- SGLT2 抑制劑調節巨噬細胞由 M1 向 M2 型態極化，減少腎臟慢性發炎與纖維化進展（PATH: SG2I→macrophage polarization→CKD inflammation/fibrosis）【PATH: 000212】【PMID: 41285328】（多跳推論）。\n- SGLT2 抑制劑能顯著抑制近曲小管細胞促發炎因子 ICAM-1 的蛋白與基因表現，显示直接抗發炎效果（PATH: SG2I→ICAM-1↓→inflammation↓）【PATH: 000310】【PMID: 36768138】（直接證據）。\n- SGLT2 抑制劑減少氧化壓力與缺氧相關訊號、間接改善腎小管-間質纖維化情形（PATH: SG2I→oxidative stress↓/hypoxia↓→fibrosis↓）【PATH: 000253】【PMID: 36534320】（多跳推論）。\n- SGLT2 抑制劑同時降低 RAS 活化，這機制間接抑制腎臟纖維化病程（PATH: SG2I→RAS activation↓→fibrosis↓）【PATH: 000486】【PMID: 36534320】（多跳推論）。\n\n---\n\n**結論**：現有人體、動物與體外細胞證據均支持 SGLT2 抑制劑可透過抗發炎、抗纖維化相關訊號（尤其影響 cytokine、NLRP3 inflammasome、巨噬細胞極化、ICAM-1、氧化壓力及腎素-血管收縮素系統）來達到腎臟保護效果。",
+    "traditional_rag": "【直接證據】  \n根據多項文獻，SGLT2抑制劑（如empagliflozin、dapagliflozin、canagliflozin等）具有腎臟保護作用，其抗發炎與抗纖維化機制主要包括：\n\n1. 抑制炎症反應：  \n　- SGLT2抑制劑可顯著減少腎臟及其他組織中促炎細胞激素（如IL-1β、IL-6、TNF-α、MCP-1）的表達，並減少白細胞介素相關通路活化，例如透過抑制NF-κB與NLRP3 inflammasome途徑。[PMID: 40829258, 40429921, 41285328]  \n　- 在人類腎臟近曲小管上皮細胞體外實驗中，empagliflozin及dapagliflozin可顯著降低細胞黏附分子ICAM-1表達，並略為減弱多種促炎性細胞激素的上升。[PMID: 36768138]\n\n2. 減緩或逆轉腎臟纖維化：\n　- SGLT2抑制劑可透過抑制TGF-β的上調與活化，減弱其下游纖維化訊號（如Smad通路）來抑制腎臟組織中的纖維化過程。[PMID: 40829258, 36534320]\n　- 此類藥物可減少氧化壓力、缺氧和腎素-血管張力素系統（RAS）的活化，進而減少腎臟間質纖維細胞活化與膠原蛋白沉積，同樣有助於抑制纖維化。[PMID: 36534320]\n\n3. 影響巨噬細胞極化：\n　- SGLT2抑制劑可調控巨噬細胞極化，抑制促炎性M1型巨噬細胞，並促進抗炎性M2型巨噬細胞增多，減少巨噬細胞介導的炎症與纖維化反應。[PMID: 41285328]\n\n4. 其他分子機制：\n　- 近曲小管細胞減少活性氧生成（尤其dapagliflozin顯著），間接抑制纖維化與發炎通路。[PMID: 31936266]\n　- 抑制JAK/STAT、AMPK/mTOR等訊號通路參與炎症、代謝及纖維化調控。[PMID: 41285328, 40829258]\n\n【關聯性與補充說明】\n- 這些機轉不只侷限於糖尿病相關腎病變，在非糖尿病性的慢性腎病中同樣具有抗發炎與抗纖維化作用。[PMID: 40279256, 36513134, 38634653]\n- SGLT2抑制劑具有多重器官保護效應，並不限於腎臟，亦可見於心臟、肝臟等，顯示其全身性抗發炎及抗纖維化潛力。[PMID: 40829258, 41285328]\n\n【可驗證假說】\n- 不同SGLT2抑制劑間的抗發炎及抗纖維化效果可能存在差異，目前某些體外或動物實驗報告未能一致證實其對腎臟纖維化的幫助，需進一步以大規模臨床或轉譯研究作佐證。[PMID: 36534320]\n\n【動物/體外 versus 人體臨床證據】\n- 多數細胞與分子研究來自體外（in vitro）及動物（rat）模型，但部分成果已在大型臨床試驗（如CREDENCE, DAPA-CKD）中證實SGLT2抑制劑可明顯減緩腎功能惡化及蛋白尿惡化。[PMID: 36513134, 40279256, 38634653]\n- 人體內腎臟組織層級的直接抗發炎、抗纖維化分子路徑研究仍偏少，未來需要更多組織層級及分子生物標記的實驗或臨床研究來佐證。\n\n【總結】\nSGLT2抑制劑具抗發炎及抗纖維化之腎保護機制，已被細胞、動物實驗與部分臨床試驗支持，其主要機轉包括調控免疫反應（減少促炎因子、調節巨噬細胞極化）、抑制TGF-β／Smad途徑和氧化壓力、影響腎素-血管張力素系統等。[PMID: 40829258, 41285328, 36534320, 36768138, 31936266, 40279256]"
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 36.382227413356304,
+    "vector_index": 1.4302931800484657,
+    "answer_netmedex_hybrid_rag": 7.85542120039463,
+    "answer_traditional_rag": 13.360907524824142,
+    "total": 64.10185368359089
+  },
+  "token_usage": {
+    "input_tokens": 23126,
+    "total_tokens": 45104,
+    "output_tokens": 21978
+  },
+  "completed_at": "2026-08-05T02:34:06.083250+00:00"
+}

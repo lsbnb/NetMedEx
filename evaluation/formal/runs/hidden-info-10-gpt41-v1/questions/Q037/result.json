@@ -1,0 +1,1131 @@
+{
+  "status": "complete",
+  "question_id": "Q037",
+  "domain": "infectious disease",
+  "question": "What mechanisms connect chronic hepatitis B infection to hepatocellular carcinoma?",
+  "question_type": "mechanism",
+  "pubmed_query": "HBV hepatocellular carcinoma inflammation HBx integration fibrosis",
+  "effective_pubmed_query": "HBV hepatocellular carcinoma inflammation HBx integration fibrosis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "16461228",
+    "20413301",
+    "20485626",
+    "25646384",
+    "28097530",
+    "29052129",
+    "30611768",
+    "32839523",
+    "38064540",
+    "39290403",
+    "40544269"
+  ],
+  "graph": {
+    "node_count": 38,
+    "edge_count": 63,
+    "path_count": 20,
+    "preferred_pmids": [
+      "20413301",
+      "20485626",
+      "25646384",
+      "29052129",
+      "30611768",
+      "32839523",
+      "39290403"
+    ],
+    "paths": [
+      {
+        "path_id": "Q037-P01",
+        "path_signature": "72dc2c4fd775dea6",
+        "path_text": "hepatitis b ->[causes] carcinoma hepatocellular",
+        "node_ids": [
+          "MESH:D006509_Disease",
+          "MESH:D006528_Disease"
+        ],
+        "names": [
+          "hepatitis b",
+          "carcinoma hepatocellular"
+        ],
+        "relations": [
+          "causes"
+        ],
+        "edge_pmids": [
+          [
+            "20413301",
+            "20485626",
+            "29052129"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "hepatitis B virus (HBV) plays an important role in the development of hepatocellular carcinoma (HCC)",
+            "Epidemiological studies have clearly demonstrated that chronic hepatitis B virus (HBV) infection is a major etiological factor in the development of HCC."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.848,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q037-P02",
+        "path_signature": "f37b4612912952d7",
+        "path_text": "hepatitis b chronic ->[leads_to] liver cirrhosis",
+        "node_ids": [
+          "MESH:D019694_Disease",
+          "MESH:D008103_Disease"
+        ],
+        "names": [
+          "hepatitis b chronic",
+          "liver cirrhosis"
+        ],
+        "relations": [
+          "leads_to"
+        ],
+        "edge_pmids": [
+          [
+            "29052129",
+            "32839523"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Recurrent liver inflammation caused by host immune responses during chronic HBV infection can lead to liver fibrosis and cirrhosis"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.78,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q037-P03",
+        "path_signature": "a90baa2fe4c6b0e2",
+        "path_text": "hepatitis b chronic ->[leads_to] fibrosis",
+        "node_ids": [
+          "MESH:D019694_Disease",
+          "MESH:D005355_Disease"
+        ],
+        "names": [
+          "hepatitis b chronic",
+          "fibrosis"
+        ],
+        "relations": [
+          "leads_to"
+        ],
+        "edge_pmids": [
+          [
+            "29052129"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Recurrent liver inflammation caused by host immune responses during chronic HBV infection can lead to liver fibrosis and cirrhosis"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.744,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q037-P04",
+        "path_signature": "73a6a3c63d02cb48",
+        "path_text": "hepatitis b chronic ->[causes] carcinoma hepatocellular",
+        "node_ids": [
+          "MESH:D019694_Disease",
+          "MESH:D006528_Disease"
+        ],
+        "names": [
+          "hepatitis b chronic",
+          "carcinoma hepatocellular"
+        ],
+        "relations": [
+          "causes"
+        ],
+        "edge_pmids": [
+          [
+            "29052129"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Chronic hepatitis B virus (HBV) infection accounts for at least 50% cases of HCC worldwide."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.744,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q037-P05",
+        "path_signature": "44e688956fc718e1",
+        "path_text": "hepatitis b chronic ->[induces] inflammation",
+        "node_ids": [
+          "MESH:D019694_Disease",
+          "MESH:D007249_Disease"
+        ],
+        "names": [
+          "hepatitis b chronic",
+          "inflammation"
+        ],
+        "relations": [
+          "induces"
+        ],
+        "edge_pmids": [
+          [
+            "29052129"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Recurrent liver inflammation caused by host immune responses during chronic HBV infection"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.74,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q037-P06",
+        "path_signature": "b915749af213e141",
+        "path_text": "hepatitis b --[associated_with] hepatitis b chronic",
+        "node_ids": [
+          "MESH:D006509_Disease",
+          "MESH:D019694_Disease"
+        ],
+        "names": [
+          "hepatitis b",
+          "hepatitis b chronic"
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "29052129"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "About 350 million people globally are chronically infected with HBV."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.696,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q037-P07",
+        "path_signature": "5a1ea75a5db7fe4f",
+        "path_text": "hepatitis b chronic --[associated_with] hepatitis b",
+        "node_ids": [
+          "MESH:D019694_Disease",
+          "MESH:D006509_Disease"
+        ],
+        "names": [
+          "hepatitis b chronic",
+          "hepatitis b"
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "29052129"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "About 350 million people globally are chronically infected with HBV."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.696,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q037-P08",
+        "path_signature": "d81794cf66d3039a",
+        "path_text": "hepatitis b ->[causes] carcinoma hepatocellular | carcinoma hepatocellular ->[promotes] x",
+        "node_ids": [
+          "MESH:D006509_Disease",
+          "MESH:D006528_Disease",
+          "944566_Gene"
+        ],
+        "names": [
+          "hepatitis b",
+          "carcinoma hepatocellular",
+          "x"
+        ],
+        "relations": [
+          "causes",
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "20413301",
+            "20485626",
+            "29052129"
+          ],
+          [
+            "20485626",
+            "25646384",
+            "29052129"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "hepatitis B virus (HBV) plays an important role in the development of hepatocellular carcinoma (HCC)",
+            "Epidemiological studies have clearly demonstrated that chronic hepatitis B virus (HBV) infection is a major etiological factor in the development of HCC."
+          ],
+          [
+            "Especially, HBx protein is a transactivating protein that promotes cell growth, survival, and the development of HCC.",
+            "The viral transactivator HBx may also participate in transformation by deregulating diverse cellular machineries.",
+            "HCC-promoting HBV factors include ... HBV-encoded oncoproteins (e.g., HBx and truncated preS2/S proteins)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "score": 0.678,
+        "hop_count": 2
+      },
+      {
+        "path_id": "Q037-P09",
+        "path_signature": "31ad1609a196df2b",
+        "path_text": "hepatitis b chronic --[associated_with] hypoxia",
+        "node_ids": [
+          "MESH:D019694_Disease",
+          "MESH:D000860_Disease"
+        ],
+        "names": [
+          "hepatitis b chronic",
+          "hypoxia"
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "32839523"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "We discovered a significant upregulation of hypoxia regulated gene transcripts in patients with chronic hepatitis B (CHB) in the absence of liver cirrhosis."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.675,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q037-P10",
+        "path_signature": "f155d3bcab98aff5",
+        "path_text": "hepatitis b --[associated_with] inflammation",
+        "node_ids": [
+          "MESH:D006509_Disease",
+          "MESH:D007249_Disease"
+        ],
+        "names": [
+          "hepatitis b",
+          "inflammation"
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "30611768"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Transformation of the liver to HBV-associated HCC usually accompanies long-run symptoms i.e. inflammation and cirrhosis of the liver"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.627,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q037-P11",
+        "path_signature": "55da9a24d32070d6",
+        "path_text": "hepatitis b --[associated_with] liver cirrhosis",
+        "node_ids": [
+          "MESH:D006509_Disease",
+          "MESH:D008103_Disease"
+        ],
+        "names": [
+          "hepatitis b",
+          "liver cirrhosis"
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "30611768"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Transformation of the liver to HBV-associated HCC usually accompanies long-run symptoms i.e. inflammation and cirrhosis of the liver"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.627,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q037-P12",
+        "path_signature": "d5e866c18668ba4e",
+        "path_text": "hepatitis b ->[causes] carcinoma hepatocellular | carcinoma hepatocellular ->[causes] hepatitis b chronic",
+        "node_ids": [
+          "MESH:D006509_Disease",
+          "MESH:D006528_Disease",
+          "MESH:D019694_Disease"
+        ],
+        "names": [
+          "hepatitis b",
+          "carcinoma hepatocellular",
+          "hepatitis b chronic"
+        ],
+        "relations": [
+          "causes",
+          "causes"
+        ],
+        "edge_pmids": [
+          [
+            "20413301",
+            "20485626",
+            "29052129"
+          ],
+          [
+            "29052129"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "hepatitis B virus (HBV) plays an important role in the development of hepatocellular carcinoma (HCC)",
+            "Epidemiological studies have clearly demonstrated that chronic hepatitis B virus (HBV) infection is a major etiological factor in the development of HCC."
+          ],
+          [
+            "Chronic hepatitis B virus (HBV) infection accounts for at least 50% cases of HCC worldwide."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "score": 0.595,
+        "hop_count": 2
+      },
+      {
+        "path_id": "Q037-P13",
+        "path_signature": "792ba15c1b0cb11f",
+        "path_text": "hepatitis b chronic ->[causes] carcinoma hepatocellular | carcinoma hepatocellular ->[promotes] x",
+        "node_ids": [
+          "MESH:D019694_Disease",
+          "MESH:D006528_Disease",
+          "944566_Gene"
+        ],
+        "names": [
+          "hepatitis b chronic",
+          "carcinoma hepatocellular",
+          "x"
+        ],
+        "relations": [
+          "causes",
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "29052129"
+          ],
+          [
+            "20485626",
+            "25646384",
+            "29052129"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Chronic hepatitis B virus (HBV) infection accounts for at least 50% cases of HCC worldwide."
+          ],
+          [
+            "Especially, HBx protein is a transactivating protein that promotes cell growth, survival, and the development of HCC.",
+            "The viral transactivator HBx may also participate in transformation by deregulating diverse cellular machineries.",
+            "HCC-promoting HBV factors include ... HBV-encoded oncoproteins (e.g., HBx and truncated preS2/S proteins)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "score": 0.595,
+        "hop_count": 2
+      },
+      {
+        "path_id": "Q037-P14",
+        "path_signature": "94670d4f205019ba",
+        "path_text": "hepatitis b chronic ->[causes] carcinoma hepatocellular | carcinoma hepatocellular ->[causes] hepatitis b",
+        "node_ids": [
+          "MESH:D019694_Disease",
+          "MESH:D006528_Disease",
+          "MESH:D006509_Disease"
+        ],
+        "names": [
+          "hepatitis b chronic",
+          "carcinoma hepatocellular",
+          "hepatitis b"
+        ],
+        "relations": [
+          "causes",
+          "causes"
+        ],
+        "edge_pmids": [
+          [
+            "29052129"
+          ],
+          [
+            "20413301",
+            "20485626",
+            "29052129"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Chronic hepatitis B virus (HBV) infection accounts for at least 50% cases of HCC worldwide."
+          ],
+          [
+            "hepatitis B virus (HBV) plays an important role in the development of hepatocellular carcinoma (HCC)",
+            "Epidemiological studies have clearly demonstrated that chronic hepatitis B virus (HBV) infection is a major etiological factor in the development of HCC."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "score": 0.595,
+        "hop_count": 2
+      },
+      {
+        "path_id": "Q037-P15",
+        "path_signature": "58cd1ca556d78916",
+        "path_text": "hepatitis b ->[causes] carcinoma hepatocellular | carcinoma hepatocellular ->[promotes] stat3",
+        "node_ids": [
+          "MESH:D006509_Disease",
+          "MESH:D006528_Disease",
+          "20848_Gene"
+        ],
+        "names": [
+          "hepatitis b",
+          "carcinoma hepatocellular",
+          "stat3"
+        ],
+        "relations": [
+          "causes",
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "20413301",
+            "20485626",
+            "29052129"
+          ],
+          [
+            "39290403"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "hepatitis B virus (HBV) plays an important role in the development of hepatocellular carcinoma (HCC)",
+            "Epidemiological studies have clearly demonstrated that chronic hepatitis B virus (HBV) infection is a major etiological factor in the development of HCC."
+          ],
+          [
+            "In our model, HBV-driven HCC was STAT3 dependent."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "score": 0.56,
+        "hop_count": 2
+      },
+      {
+        "path_id": "Q037-P16",
+        "path_signature": "86a33736b2f9f267",
+        "path_text": "hepatitis b ->[causes] carcinoma hepatocellular | carcinoma hepatocellular ->[promotes] hbx",
+        "node_ids": [
+          "MESH:D006509_Disease",
+          "MESH:D006528_Disease",
+          "hbx_gene"
+        ],
+        "names": [
+          "hepatitis b",
+          "carcinoma hepatocellular",
+          "hbx"
+        ],
+        "relations": [
+          "causes",
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "20413301",
+            "20485626",
+            "29052129"
+          ],
+          [
+            "39290403"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "hepatitis B virus (HBV) plays an important role in the development of hepatocellular carcinoma (HCC)",
+            "Epidemiological studies have clearly demonstrated that chronic hepatitis B virus (HBV) infection is a major etiological factor in the development of HCC."
+          ],
+          [
+            "This indicates the oncogenic potential of HBV and in particular HBx."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "score": 0.56,
+        "hop_count": 2
+      },
+      {
+        "path_id": "Q037-P17",
+        "path_signature": "065f334e5fb758ce",
+        "path_text": "hepatitis b chronic ->[causes] carcinoma hepatocellular | carcinoma hepatocellular ->[promotes] stat3",
+        "node_ids": [
+          "MESH:D019694_Disease",
+          "MESH:D006528_Disease",
+          "20848_Gene"
+        ],
+        "names": [
+          "hepatitis b chronic",
+          "carcinoma hepatocellular",
+          "stat3"
+        ],
+        "relations": [
+          "causes",
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "29052129"
+          ],
+          [
+            "39290403"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Chronic hepatitis B virus (HBV) infection accounts for at least 50% cases of HCC worldwide."
+          ],
+          [
+            "In our model, HBV-driven HCC was STAT3 dependent."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "score": 0.56,
+        "hop_count": 2
+      },
+      {
+        "path_id": "Q037-P18",
+        "path_signature": "9661380241bb66b6",
+        "path_text": "hepatitis b chronic ->[causes] carcinoma hepatocellular | carcinoma hepatocellular ->[promotes] hbx",
+        "node_ids": [
+          "MESH:D019694_Disease",
+          "MESH:D006528_Disease",
+          "hbx_gene"
+        ],
+        "names": [
+          "hepatitis b chronic",
+          "carcinoma hepatocellular",
+          "hbx"
+        ],
+        "relations": [
+          "causes",
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "29052129"
+          ],
+          [
+            "39290403"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Chronic hepatitis B virus (HBV) infection accounts for at least 50% cases of HCC worldwide."
+          ],
+          [
+            "This indicates the oncogenic potential of HBV and in particular HBx."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "score": 0.56,
+        "hop_count": 2
+      },
+      {
+        "path_id": "Q037-P19",
+        "path_signature": "8dee63dbfd583d27",
+        "path_text": "hepatitis b --[associated_with] hepatitis b chronic | hepatitis b chronic ->[leads_to] fibrosis",
+        "node_ids": [
+          "MESH:D006509_Disease",
+          "MESH:D019694_Disease",
+          "MESH:D005355_Disease"
+        ],
+        "names": [
+          "hepatitis b",
+          "hepatitis b chronic",
+          "fibrosis"
+        ],
+        "relations": [
+          "associated_with",
+          "leads_to"
+        ],
+        "edge_pmids": [
+          [
+            "29052129"
+          ],
+          [
+            "29052129"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "About 350 million people globally are chronically infected with HBV."
+          ],
+          [
+            "Recurrent liver inflammation caused by host immune responses during chronic HBV infection can lead to liver fibrosis and cirrhosis"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "score": 0.557,
+        "hop_count": 2
+      },
+      {
+        "path_id": "Q037-P20",
+        "path_signature": "912728345f6921ae",
+        "path_text": "hepatitis b --[associated_with] hepatitis b chronic | hepatitis b chronic ->[causes] carcinoma hepatocellular",
+        "node_ids": [
+          "MESH:D006509_Disease",
+          "MESH:D019694_Disease",
+          "MESH:D006528_Disease"
+        ],
+        "names": [
+          "hepatitis b",
+          "hepatitis b chronic",
+          "carcinoma hepatocellular"
+        ],
+        "relations": [
+          "associated_with",
+          "causes"
+        ],
+        "edge_pmids": [
+          [
+            "29052129"
+          ],
+          [
+            "29052129"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "About 350 million people globally are chronically infected with HBV."
+          ],
+          [
+            "Chronic hepatitis B virus (HBV) infection accounts for at least 50% cases of HCC worldwide."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "score": 0.557,
+        "hop_count": 2
+      }
+    ]
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": true,
+    "max_hops": 2,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "gate_evidence_paths": true,
+    "node_ids": [
+      "MESH:D019694_Disease",
+      "MESH:D006509_Disease",
+      "944569_Gene"
+    ],
+    "exposed_pmids": [
+      "20413301",
+      "20485626",
+      "25646384",
+      "29052129",
+      "30611768",
+      "32839523",
+      "39290403"
+    ],
+    "exposed_paths": [
+      [
+        "hepatitis b",
+        "carcinoma hepatocellular"
+      ],
+      [
+        "hepatitis b chronic",
+        "liver cirrhosis"
+      ],
+      [
+        "hepatitis b chronic",
+        "fibrosis"
+      ],
+      [
+        "hepatitis b chronic",
+        "carcinoma hepatocellular"
+      ],
+      [
+        "hepatitis b chronic",
+        "inflammation"
+      ],
+      [
+        "hepatitis b",
+        "hepatitis b chronic"
+      ],
+      [
+        "hepatitis b chronic",
+        "hepatitis b"
+      ],
+      [
+        "hepatitis b",
+        "carcinoma hepatocellular",
+        "x"
+      ],
+      [
+        "hepatitis b chronic",
+        "hypoxia"
+      ],
+      [
+        "hepatitis b",
+        "inflammation"
+      ],
+      [
+        "hepatitis b",
+        "liver cirrhosis"
+      ],
+      [
+        "hepatitis b",
+        "carcinoma hepatocellular",
+        "hepatitis b chronic"
+      ],
+      [
+        "hepatitis b chronic",
+        "carcinoma hepatocellular",
+        "x"
+      ],
+      [
+        "hepatitis b chronic",
+        "carcinoma hepatocellular",
+        "hepatitis b"
+      ],
+      [
+        "hepatitis b",
+        "carcinoma hepatocellular",
+        "stat3"
+      ],
+      [
+        "hepatitis b",
+        "carcinoma hepatocellular",
+        "hbx"
+      ],
+      [
+        "hepatitis b chronic",
+        "carcinoma hepatocellular",
+        "stat3"
+      ],
+      [
+        "hepatitis b chronic",
+        "carcinoma hepatocellular",
+        "hbx"
+      ],
+      [
+        "hepatitis b",
+        "hepatitis b chronic",
+        "fibrosis"
+      ],
+      [
+        "hepatitis b",
+        "hepatitis b chronic",
+        "carcinoma hepatocellular"
+      ]
+    ],
+    "exposed_edges": [
+      "hepatitis b ->[causes] carcinoma hepatocellular",
+      "hepatitis b chronic ->[leads_to] liver cirrhosis",
+      "hepatitis b chronic ->[leads_to] fibrosis",
+      "hepatitis b chronic ->[causes] carcinoma hepatocellular",
+      "hepatitis b chronic ->[induces] inflammation",
+      "hepatitis b --[associated_with] hepatitis b chronic",
+      "hepatitis b chronic --[associated_with] hepatitis b",
+      "hepatitis b ->[causes] carcinoma hepatocellular | carcinoma hepatocellular ->[promotes] x",
+      "hepatitis b chronic --[associated_with] hypoxia",
+      "hepatitis b --[associated_with] inflammation",
+      "hepatitis b --[associated_with] liver cirrhosis",
+      "hepatitis b ->[causes] carcinoma hepatocellular | carcinoma hepatocellular ->[causes] hepatitis b chronic",
+      "hepatitis b chronic ->[causes] carcinoma hepatocellular | carcinoma hepatocellular ->[promotes] x",
+      "hepatitis b chronic ->[causes] carcinoma hepatocellular | carcinoma hepatocellular ->[causes] hepatitis b",
+      "hepatitis b ->[causes] carcinoma hepatocellular | carcinoma hepatocellular ->[promotes] stat3",
+      "hepatitis b ->[causes] carcinoma hepatocellular | carcinoma hepatocellular ->[promotes] hbx",
+      "hepatitis b chronic ->[causes] carcinoma hepatocellular | carcinoma hepatocellular ->[promotes] stat3",
+      "hepatitis b chronic ->[causes] carcinoma hepatocellular | carcinoma hepatocellular ->[promotes] hbx",
+      "hepatitis b --[associated_with] hepatitis b chronic | hepatitis b chronic ->[leads_to] fibrosis",
+      "hepatitis b --[associated_with] hepatitis b chronic | hepatitis b chronic ->[causes] carcinoma hepatocellular"
+    ],
+    "exposure_signature": "3a16afad8b5e4ab7",
+    "routed_profile": "G_evidence_gated_two_hop",
+    "route_reason": "question_type=mechanism: evidence-gated multi-hop task",
+    "question_type": "mechanism",
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {
+        "29052129": {
+          "text_score": 0.664031,
+          "graph_score": 0.848,
+          "reranked_score": 0.72842
+        },
+        "20485626": {
+          "text_score": 0.656756,
+          "graph_score": 0.848,
+          "reranked_score": 0.723691
+        },
+        "20413301": {
+          "text_score": 0.626674,
+          "graph_score": 0.848,
+          "reranked_score": 0.704138
+        },
+        "32839523": {
+          "text_score": 0.554642,
+          "graph_score": 0.78,
+          "reranked_score": 0.633517
+        }
+      }
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "29052129",
+        "score": 0.728419961953988
+      },
+      {
+        "pmid": "20485626",
+        "score": 0.7236911771022154
+      },
+      {
+        "pmid": "20413301",
+        "score": 0.7041382354759373
+      },
+      {
+        "pmid": "30611768",
+        "score": 0.6451303246839866
+      },
+      {
+        "pmid": "32839523",
+        "score": 0.6335171785667767
+      },
+      {
+        "pmid": "16461228",
+        "score": 0.6079774661672162
+      },
+      {
+        "pmid": "25646384",
+        "score": 0.586565163099866
+      },
+      {
+        "pmid": "28097530",
+        "score": 0.583534778409373
+      },
+      {
+        "pmid": "38064540",
+        "score": 0.5486900288244154
+      },
+      {
+        "pmid": "39290403",
+        "score": 0.5455492475666515
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "29052129",
+        "score": 0.6640307106984431
+      },
+      {
+        "pmid": "20485626",
+        "score": 0.6567556570803315
+      },
+      {
+        "pmid": "30611768",
+        "score": 0.6451303246839866
+      },
+      {
+        "pmid": "20413301",
+        "score": 0.626674208424519
+      },
+      {
+        "pmid": "16461228",
+        "score": 0.6079774661672162
+      },
+      {
+        "pmid": "25646384",
+        "score": 0.586565163099866
+      },
+      {
+        "pmid": "28097530",
+        "score": 0.583534778409373
+      },
+      {
+        "pmid": "32839523",
+        "score": 0.5546418131796564
+      },
+      {
+        "pmid": "38064540",
+        "score": 0.5486900288244154
+      },
+      {
+        "pmid": "39290403",
+        "score": 0.5455492475666515
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "**Direct Evidence**\n\n- Chronic hepatitis B virus (HBV) infection promotes hepatocellular carcinoma (HCC) through both direct and indirect mechanisms:\n  - **Indirect (inflammation-mediated) mechanisms:** Chronic HBV leads to recurrent liver inflammation via immune responses, which results in liver fibrosis and cirrhosis; the associated cycles of injury and regeneration increase hepatocyte turnover and favor the accumulation of genetic mutations that promote carcinogenesis [PMID: 29052129, 20485626, 30611768].\n  - **Direct (viral component-mediated) mechanisms:** HBV DNA can integrate into the host hepatocyte genome, causing genetic instability through insertional mutagenesis, upregulation of oncogenes, or disruption of tumor suppressor genes. Viral oncoproteins, particularly HBx (and truncated preS2/S proteins), directly alter pathways regulating cell growth, apoptosis, and transcriptional control, further contributing to malignant transformation [PMID: 20413301, 20485626, 29052129, 30611768, 25646384, 39290403].\n  - **HBx-specific effects:** HBx protein acts as a transactivator, promoting cell proliferation and survival, and is implicated in STAT3-dependent oncogenic signaling in animal models independent of inflammation [PMID: 20485626, 30611768, 25646384, 39290403, 39290403].\n  - **HBV-induced changes in microRNA regulation:** HBV and especially HBx modulate hepatic microRNA expression, affecting genetic stability and apoptosis, and disruption of specific miRNAs (e.g., hsa-miR-15a-5p downregulation) has been linked with HCC progression [PMID: 38064540].\n  - **HBV-induced hypoxia signaling:** Chronic HBV infection is associated with increased expression of hypoxia-regulated genes in patient livers, likely mediated by inflammatory processes rather than direct viral action [PMID: 32839523].\n\n**Association**\n\n- Integration events and persistent expression of viral proteins have been associated with increased genomic instability and are observed more frequently in HBV-related tumors compared to HCCs from other etiologies [PMID: 25646384, 16461228, 28097530].\n\n**Testable Hypothesis**\n\n- Targeting HBx or its downstream effectors (such as STAT3 and miRNA regulatory networks) could theoretically decrease HCC development or progression in chronic HBV-infected individuals—this is supported by animal model evidence but remains to be tested in large-scale clinical settings [PMID: 39290403, 38064540].\n\n---\n\n### Graph-derived candidate insights\n\n- Chronic hepatitis B infection leads to recurrent liver inflammation and fibrosis, laying the groundwork for HCC development.  \n  - **PATH:** a90baa2fe4c6b0e2  \n  - **PMIDs:** 29052129  \n  - **Evidence type:** Direct evidence\n\n- HBV DNA integrates into the host genome, contributing to carcinogenesis by genetic instability and insertional mutagenesis.  \n  - **PATH:** d81794cf66d3039a  \n  - **PMIDs:** 20413301, 20485626, 29052129  \n  - **Evidence type:** Multi-hop inference (integration → cellular disruption → HCC)\n\n- HBx oncoprotein directly promotes cell proliferation and survival, acting as a key driver for hepatocarcinogenesis.  \n  - **PATH:** d81794cf66d3039a  \n  - **PMIDs:** 20485626, 25646384, 29052129  \n  - **Evidence type:** Multi-hop inference (HBV → HBx production → cell growth/proliferation → HCC)\n\n- Chronic HBV infection results in upregulation of hypoxia-regulated genes in human livers, likely via inflammatory mediators rather than direct viral activity.  \n  - **PATH:** 31ad1609a196df2b  \n  - **PMIDs:** 32839523  \n  - **Evidence type:** Direct evidence\n\n- HBV/HBx-mediated alteration of host hepatic microRNAs modulates processes linked to inflammation and carcinogenesis, supporting a role in HCC progression.  \n  - **PATH:** 73a6a3c63d02cb48  \n  - **PMIDs:** 38064540  \n  - **Evidence type:** Multi-hop inference (HBV → miRNA modulation → dysregulation of growth/apoptosis → HCC)",
+    "traditional_rag": "Direct Evidence (Human and Animal Data):\n\n1. Indirect (immune-mediated) mechanisms:\n   - Chronic hepatitis B virus (HBV) infection triggers recurrent liver inflammation due to persistent immune response. This leads to liver fibrosis and cirrhosis, which increases hepatocyte turnover and accumulation of genetic mutations, predisposing to malignant transformation and hepatocellular carcinoma (HCC) [PMID: 29052129, 20485626, 30611768, 20413301, 16461228, 25646384, 28097530].\n   - Chronic inflammation promotes cytokine release, fibrosis, regeneration signals, and a deficient immune microenvironment, all of which contribute to HCC pathogenesis [PMID: 20485626, 28097530].\n   - HBV infection is associated with activation of hypoxia and inflammation-related signalling pathways in human patients, suggesting an indirect link between liver inflammation and carcinogenesis [PMID: 32839523 – human data].\n\n2. Direct mechanisms:\n   - HBV integration into host DNA occurs early in infection and can disrupt or activate host genes important for cell growth and differentiation, enhancing genomic instability and promoting carcinogenesis via insertional mutagenesis [PMID: 20485626, 20413301, 16461228, 25646384, 28097530].\n   - HBV-encoded proteins, especially HBx and truncated preS2/S proteins, can act as oncoproteins. HBx in particular has transactivating and transforming activity, promoting cell proliferation, survival, and interfering with multiple cellular processes (transcription, apoptosis, signal transduction, and epigenetic regulation) [PMID: 29052129, 20485626, 30611768, 20413301, 16461228, 25646384, 28097530, 39290403, 38064540].\n   - Animal studies show that expression of all HBV proteins (including HBx) suffices to induce HCC in mice even in the absence of measurable inflammation or fibrosis, indicating an inherent oncogenic potential of HBV, particularly through a STAT3-dependent pathway. Knockout of hepatic STAT3 abrogated HCC in this model, highlighting the requirement of this pathway [PMID: 39290403 – mouse model].\n   - HBV infection and especially HBx protein are associated with specific downregulation or dysregulation of microRNAs (e.g., miR-15a-5p), which can further alter cellular proliferation and apoptosis pathways implicated in HCC [PMID: 38064540].\n\n3. Additional direct mechanisms:\n   - HBV integration may result in the production of fusion proteins with carcinogenic potential [PMID: 28097530].\n   - Prolonged expression of viral proteins causes deregulation of cellular transcription and sensitizes liver cells to other carcinogenic factors [PMID: 16461228].\n   - HBV-related HCC tumors have higher rates of chromosomal alterations and p53 inactivation compared with non-HBV HCC [PMID: 16461228].\n   - Different HBV genotypes and specific mutants (e.g., basal core promoter, preS/S deletions) may have varying oncogenic potencies, but human data on this are still developing [PMID: 29052129, 20413301, 16461228].\n\nAssociation:\n\n- Epidemiological studies robustly link chronic HBV infection with increased HCC risk; at least 50% of HCC worldwide is attributed to chronic HBV [PMID: 29052129, 20485626].\n- The risk of HCC correlates with high viral load, longer duration of infection, presence of cirrhosis, and host/environmental co-factors (alcohol use, aflatoxin exposure, etc.) [PMID: 30611768, 16461228].\n\nTestable Hypotheses:\n\n- Inhibiting HBx or its critical downstream pathways (such as STAT3) may reduce HBV-related oncogenesis, even in the absence of evident inflammation or cirrhosis [PMID: 39290403].\n- Targeting miRNA dysregulation might serve as a preventative or therapeutic strategy for HBV-associated HCC [PMID: 38064540].\n\nSummary Table of Mechanisms (human/animal evidence integrated):\n\n| Mechanism                                         | Evidence Type           | Key Molecules/Events                        | Supporting PMID(s)             |\n|---------------------------------------------------|------------------------|---------------------------------------------|-------------------------------|\n| Chronic inflammation, fibrosis, cirrhosis         | Human                  | Immune mediators, cytokines                 | 29052129, 20485626, 16461228  |\n| Genomic integration/insertional mutagenesis       | Human, Animal          | HBV DNA, host oncogenes/tumor suppressors   | 20485626, 16461228, 20413301  |\n| HBx oncoprotein function                          | Human, Animal, In vitro| HBx, cellular pathways                      | 20485626, 30611768, 39290403  |\n| Chromosomal instability, p53 inactivation         | Human                  | Chromosomal alteration, TP53 mutations      | 16461228                      |\n| miRNA dysregulation                              | Human, In vitro        | miR-15a-5p, others                         | 38064540                      |\n| STAT3-dependent transformation                    | Animal                 | STAT3 pathway, HBx                          | 39290403                      |\n\nIn conclusion, chronic hepatitis B leads to HCC through a combination of indirect (immune-mediated inflammation, fibrosis/cirrhosis) and direct (genomic integration, viral oncoprotein—especially HBx—activity, and related molecular disruptions) oncogenic mechanisms [PMID: 29052129, 20485626, 39290403, et al.]."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 15.544341392815113,
+    "vector_index": 1.3886102512478828,
+    "answer_netmedex_hybrid_rag": 7.71425574272871,
+    "answer_traditional_rag": 24.28513254970312,
+    "total": 53.56177919358015
+  },
+  "token_usage": {
+    "input_tokens": 21280,
+    "total_tokens": 34034,
+    "output_tokens": 12754
+  },
+  "completed_at": "2026-08-05T02:33:01.942136+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "task": "edge",
+  "question_id": "Q037",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-haiku-4-5-20251001",
+  "input_sha256": "053bfb95bacb22319abf4e6dbadb48e277ad6a37ab414e5f4996560d6185ca4b",
+  "raw_response_sha256": "6d3df66b2cc325a495da15a87747c24443101744721c1d7b32a3002c6de3c797",
+  "rated_at": "2026-08-02T19:08:40.362195+00:00",
+  "result": {
+    "ratings": [
+      {
+        "edge_id": "Q037-E03",
+        "entity_valid": 1,
+        "relation_exists": 1,
+        "relation_type_correct": 0,
+        "direction_correct": 1,
+        "evidence_support": 1,
+        "confidence": 2,
+        "notes": "Hepatitis B is associated with HCC, not generic 'infections'. Relation type should be 'causes' or 'leads_to' rather than 'associated_with' given mechanistic context."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

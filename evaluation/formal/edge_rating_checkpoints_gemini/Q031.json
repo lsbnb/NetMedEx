@@ -1,0 +1,57 @@
+{
+  "question_id": "Q031",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-31T19:31:14.603760+00:00",
+  "ratings": [
+    {
+      "edge_id": "Q031-E01",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Atopic dermatitis is a specific type of dermatitis, making them inherently related, which is consistent with the mention of atopic dermatitis in the title."
+    },
+    {
+      "edge_id": "Q031-E02",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title links the IL-24 pathway to allergic skin inflammation, which is a hallmark and often used synonymously with atopic dermatitis in these contexts."
+    },
+    {
+      "edge_id": "Q031-E03",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The second title explicitly states that IL-4 has a distinct role in atopic dermatitis, supporting the association."
+    },
+    {
+      "edge_id": "Q031-E04",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title links the IL-13 pathway to allergic skin inflammation, which is a core component of atopic dermatitis."
+    },
+    {
+      "edge_id": "Q031-E05",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The entities are meaningfully related, but the direction of the relation is incorrect. The title states that 2,4-Dinitrochlorobenzene induces the model of atopic dermatitis, not that atopic dermatitis induces dinitrochlorobenzene."
+    },
+    {
+      "edge_id": "Q031-E06",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The third title explicitly mentions the 'epigenetic control of inflammation in Atopic Dermatitis', supporting the association."
+    },
+    {
+      "edge_id": "Q031-E07",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The term 'pruritus' (itching) is not mentioned in any of the provided supporting titles, making this edge unsupported by the text."
+    },
+    {
+      "edge_id": "Q031-E08",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The term 'acylceramide' is completely absent from the provided supporting title, meaning the relationship is unsupported by the text."
+    }
+  ],
+  "raw_response_sha256": "e5d08773eb12d23bcde22a558a5110d33fe732a119ded5bf849c51ac2f4ed9a1"
+}

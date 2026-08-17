@@ -1,0 +1,173 @@
+{
+  "status": "complete",
+  "question_id": "Q018",
+  "domain": "immuno-oncology",
+  "question": "What mechanisms link PD-1 blockade to immune-related adverse events?",
+  "question_type": "hypothesis",
+  "pubmed_query": "PD-1 immune checkpoint inhibitor adverse events T cells autoimmunity cytokines",
+  "effective_pubmed_query": "PD-1 immune checkpoint inhibitor adverse events T cells autoimmunity cytokines",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "24872026",
+    "31043740",
+    "34123476",
+    "34183838",
+    "35592732",
+    "36776862",
+    "37823709",
+    "38996350",
+    "39023770",
+    "39039301",
+    "39214611",
+    "40198121",
+    "40594755",
+    "41718716",
+    "42162235"
+  ],
+  "graph": {
+    "node_count": 89,
+    "edge_count": 200,
+    "path_count": 0,
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": true,
+    "max_hops": 2,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "gate_evidence_paths": true,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "exposure_signature": "4f8698ecdef6d9b5",
+    "routed_profile": "G_evidence_gated_two_hop",
+    "route_reason": "question_type=hypothesis: evidence-gated multi-hop task",
+    "question_type": "hypothesis",
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "34123476",
+        "score": 0.5713066828230039
+      },
+      {
+        "pmid": "24872026",
+        "score": 0.5604478500920015
+      },
+      {
+        "pmid": "31043740",
+        "score": 0.5273657228386653
+      },
+      {
+        "pmid": "40594755",
+        "score": 0.5206625130268692
+      },
+      {
+        "pmid": "34183838",
+        "score": 0.5203561886386464
+      },
+      {
+        "pmid": "40198121",
+        "score": 0.5184955940649291
+      },
+      {
+        "pmid": "35592732",
+        "score": 0.5170207562501479
+      },
+      {
+        "pmid": "42162235",
+        "score": 0.5130626227116568
+      },
+      {
+        "pmid": "38996350",
+        "score": 0.5130327978987484
+      },
+      {
+        "pmid": "39023770",
+        "score": 0.5093354240397335
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "34123476",
+        "score": 0.5713066828230039
+      },
+      {
+        "pmid": "24872026",
+        "score": 0.5604478500920015
+      },
+      {
+        "pmid": "31043740",
+        "score": 0.5273657228386653
+      },
+      {
+        "pmid": "40594755",
+        "score": 0.5206625130268692
+      },
+      {
+        "pmid": "34183838",
+        "score": 0.5203561886386464
+      },
+      {
+        "pmid": "40198121",
+        "score": 0.5184955940649291
+      },
+      {
+        "pmid": "35592732",
+        "score": 0.5170207562501479
+      },
+      {
+        "pmid": "42162235",
+        "score": 0.5130626227116568
+      },
+      {
+        "pmid": "38996350",
+        "score": 0.5130327978987484
+      },
+      {
+        "pmid": "39023770",
+        "score": 0.5093354240397335
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "Direct Evidence\n\n- PD-1 is a critical immune checkpoint maintaining self-tolerance and limiting autoimmunity by modulating T cell activity. Blockade of PD-1 (by monoclonal antibodies such as nivolumab) removes this suppression, leading to excessive activation of T cells that are not necessarily tumor-antigen specific, which may then attack normal tissues and trigger immune-related adverse events (irAEs). These can include rash, colitis, endocrinopathies, hematologic conditions (e.g., autoimmune hemolytic anemia, thrombocytopenia), and rarely, cardiovascular toxicities such as myocarditis [PMID: 34123476, 42162235].\n\n- Mechanistically, PD-1 blockade induces autoimmune reactions via:\n  - Activation of cytotoxic T cells [PMID: 35592732, 35592732, 38996350].\n  - Inhibition or functional impairment of regulatory T cells (Tregs), which normally restrain immune responses and prevent autoimmunity [PMID: 40594755, 35592732].\n  - Cytokine imbalances, with increased production of inflammatory cytokines (e.g., TNF-α, IFN-γ, IL-1β, IL-6, IL-17), which can drive systemic and organ-specific inflammation, such as within the cardiovascular system and skin [PMID: 31043740, 39023770, 35592732, 42162235, 38996350].\n  - Cross-reactive T cells that may recognize and damage healthy host tissues due to shared antigens with tumor cells [PMID: 42162235, 39023770].\n \n- Animal (mouse) and clinical studies support these mechanisms. For instance, anti-PD-1 treatment in mice exaggerates or triggers pathologies like colitis, myocarditis, and autoimmune encephalomyelitis by excessive activation of various T cell subsets, including IL-17-secreting γδ T cells [PMID: 31043740, 38996350, 40594755].\n\n- In humans, inherited or therapeutic loss of PD-1 function can trigger unchecked T cell activation, leading to multi-organ autoimmunity and enhanced STAT3-dependent pathways involving cytokines such as IL-6 and IL-23, and the expansion of pathogenic T cell populations [PMID: 34183838].\n\nAssociations\n\n- Older age and pre-existing immune environment can exacerbate irAE risk due to disturbances in the regulation and activation of specialized T cell subsets (e.g., ICOS+CD4 T cells) [PMID: 40198121].\n- Gut microbiota alterations may modulate Treg function and impact susceptibility to organ-specific irAEs, particularly myocarditis [PMID: 40594755].\n\nTestable Hypotheses\n\n- Modulating specific cytokines (such as TNF) may ameliorate irAEs without diminishing anti-tumor efficacy, supporting the strategy of prophylactic cytokine blockade during immunotherapy [PMID: 31043740].\n- Manipulation of Treg numbers or function, or targeting downstream pathways (e.g., STAT3 signaling) disrupted by PD-1 blockade, may prevent or mitigate irAEs [PMID: 34183838, 40594755].\n- Monitoring specific T cell populations (e.g., ICOS+CD4 T cells) or cytokine profiles could help predict or prevent irAEs [PMID: 40198121].\n\nSummary Table:\n\n| Mechanism                                            | Supporting Evidence                |\n|------------------------------------------------------|------------------------------------|\n| Excessive T-cell activation (non-specific)           | [PMID: 34123476, 42162235]         |\n| Loss/inhibition of regulatory T cell function        | [PMID: 35592732, 40594755, 34183838] |\n| Inflammatory cytokine upregulation                   | [PMID: 31043740, 39023770, 42162235] |\n| Cross-reactive T cells to self-antigens              | [PMID: 42162235, 39023770]        |\n| Disturbed homeostasis of immune cell subsets         | [PMID: 40198121, 38996350]        |\n| Gut microbiota modulation of Treg and irAE risk      | [PMID: 40594755]                  |\n\nIf further mechanistic detail is required for a specific irAE (e.g., myocarditis, skin, or hematologic toxicity), please specify.",
+    "traditional_rag": "Direct Evidence:\n- PD-1 blockade leads to the activation of T cells that are not strictly antigen-specific, resulting in the development of autoimmune adverse events. The loss of immune checkpoint function removes constraints on T-cell activity, promoting a break in self-tolerance and giving rise to immune-related adverse events (irAEs), including rash, colitis, endocrinopathies, and various hematologic conditions (e.g., autoimmune hemolytic anemia, immune thrombocytopenia) [PMID: 34123476].\n- The mechanism of irAEs after PD-1 blockade is attributed to \"loss of immune tolerance, which involves excessive activation of T cells, triggering autoimmune responses; cross-reactive T cells targeting shared cardiac antigens; and cytokine release storms that promote systemic inflammation\" [PMID: 42162235].\n- Blocking PD-1/PD-L1 can \"lead to the induction of autoimmune reaction, via activation of cytotoxic T cells, inhibition of regulatory T cell function, and alteration of cytokine balance\" [PMID: 35592732; PMID: 34183838].\n- Studies show that PD-1 inhibitors can cause organ-specific inflammation (e.g., myocarditis) through mechanisms including a reduction of regulatory T cells (Tregs), which normally suppress autoimmunity. In animal models, PD-1 inhibitor administration led to myocarditis and a significant intracardiac Treg reduction [animal evidence: PMID: 40594755].\n- PD-1 regulates TCR-activated pathogenic gammadelta T cells and suppresses IL-17A production; anti-PD-1 therapy augments IL-17A-producing gammadelta T cells and worsens autoimmune disease severity in mice, linking checkpoint blockade with increased pro-inflammatory responses [animal evidence: PMID: 38996350].\n- In models of anti-PD-(L)1 induced lung toxicity, pathogenic ICOS+CD4 T cells are elicited after checkpoint inhibition, especially in aged environments, promoting ectopic immune cell infiltration and tissue damage [animal evidence: PMID: 40198121].\n- Molecular mimicry, where activated T cells target shared autoantigens between tumor and self-tissue (e.g., cardiac tissue), is also noted as a mechanism, with ensuing cytokine storms contributing to a pro-inflammatory state [PMID: 39023770].\n\nAssociation:\n- Patients with inherited PD-1 deficiency experience both increased susceptibility to infection (e.g., tuberculosis) and severe lymphoproliferative autoimmunity, demonstrating PD-1’s role in self-tolerance and immune regulation. The mechanism appears to involve excessive cytokine signaling (IL-6, IL-23) and STAT3 activation upon PD-1 loss [human evidence: PMID: 34183838].\n- Upregulation of inflammatory cytokines (TNF-alpha, IFN-gamma, IL-1beta, IL-6, IL-17) is frequently observed in ICI-induced toxicities and thought to mediate both local and systemic inflammation [PMID: 31043740; PMID: 39023770].\n\nTestable Hypothesis:\n- Altered gut microbiota composition may facilitate the development of irAEs (e.g., myocarditis) by suppressing regulatory T cells after PD-1 blockade [animal evidence, testable in humans: PMID: 40594755].\n- Interventions targeting key cytokines (e.g., TNF blockade) may reduce irAEs while preserving antitumor efficacy of combination PD-1 and CTLA-4 blockade [animal evidence, clinical strategy: PMID: 31043740].\n- The presence and activation state of specific T cell subsets (e.g., ICOS+CD4 T cells, IL-17-secreting gammadelta T cells) could be predictive biomarkers for susceptibility to PD-1-related irAEs [animal and early human evidence: PMID: 40198121; PMID: 38996350].\n\nSummary Statement:\nMechanistically, PD-1 blockade removes inhibitory control over effector T cells, resulting in increased activation and proliferation of T cells—including autoreactive populations. This loss of immune tolerance (via direct activation and impaired regulatory T cell function), molecular mimicry, and enhanced pro-inflammatory cytokine release are the primary mechanisms linking PD-1 blockade to immune-related adverse events. Additional factors, such as the patient's immune milieu, presence of particular T cell subsets, alterations in the gut microbiome, and advanced age, modulate susceptibility and organ specificity of irAEs. These mechanisms are supported by clinical, genetic, and animal model data [PMID: 34123476; PMID: 42162235; PMID: 35592732; PMID: 39023770; PMID: 40198121; PMID: 38996350; PMID: 34183838; PMID: 40594755]."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 30.7150165066123,
+    "vector_index": 1.7422784715890884,
+    "answer_netmedex_hybrid_rag": 7.470690838992596,
+    "answer_traditional_rag": 15.634050510823727,
+    "total": 62.35867100208998
+  },
+  "token_usage": {
+    "total_tokens": 59961,
+    "output_tokens": 25860,
+    "input_tokens": 34101
+  },
+  "completed_at": "2026-08-05T02:30:02.272954+00:00",
+  "zero_path_answer_repair": {
+    "reason": "Prevent fabricated graph-derived claims when evidence gate exposed no paths",
+    "model": "gpt-4.1",
+    "token_usage": {
+      "total_tokens": 9329,
+      "output_tokens": 1921,
+      "input_tokens": 7408
+    }
+  }
+}

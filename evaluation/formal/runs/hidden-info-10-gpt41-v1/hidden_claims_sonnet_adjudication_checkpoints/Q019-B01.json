@@ -1,0 +1,83 @@
+{
+  "task": "hidden_claim",
+  "question_id": "Q019",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "8ce45eba432b2746b0a8424fcfb502e275089802fe0d723c2589c45cbaa7e17c",
+  "raw_response_sha256": "45cdde955ad0c3d164360a5123f03b0c3d49f1a35799f2780bbba044914d3b05",
+  "usage": {
+    "input_tokens": 3850,
+    "output_tokens": 787,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 4637
+  },
+  "rated_at": "2026-08-05T02:48:36.094349+00:00",
+  "result": {
+    "ratings": [
+      {
+        "hidden_claim_id": "Q019-HC01",
+        "hybrid_only": 0,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 0,
+        "non_obviousness": 2,
+        "research_utility": 3,
+        "unsupported_novelty": 0,
+        "notes": "Claim well-supported by explicit quote and PMIDs. Single hop, undirected association. Adiponectin-NAFLD link is well-established."
+      },
+      {
+        "hidden_claim_id": "Q019-HC02",
+        "hybrid_only": 0,
+        "path_traceable": 0,
+        "evidence_support": 0,
+        "relation_direction_correct": 0,
+        "multi_document_or_hop": 0,
+        "non_obviousness": 2,
+        "research_utility": 3,
+        "unsupported_novelty": 1,
+        "notes": "Path covers adiponectin-NAFLD only; leptin and resistin elevation claim not directly supported by supplied path evidence or quotes."
+      },
+      {
+        "hidden_claim_id": "Q019-HC03",
+        "hybrid_only": 0,
+        "path_traceable": 0,
+        "evidence_support": 0,
+        "relation_direction_correct": 0,
+        "multi_document_or_hop": 0,
+        "non_obviousness": 2,
+        "research_utility": 3,
+        "unsupported_novelty": 1,
+        "notes": "TNF-α and IL-6 as adipose-derived cytokines not supported by supplied path or quotes; path only covers adiponectin-NAFLD association."
+      },
+      {
+        "hidden_claim_id": "Q019-HC04",
+        "hybrid_only": 0,
+        "path_traceable": 0,
+        "evidence_support": 0,
+        "relation_direction_correct": 0,
+        "multi_document_or_hop": 0,
+        "non_obviousness": 3,
+        "research_utility": 3,
+        "unsupported_novelty": 1,
+        "notes": "Visfatin elevation and weight-loss decrease not supported by supplied path evidence; PMID 19664840 not in path. Path only covers adiponectin."
+      },
+      {
+        "hidden_claim_id": "Q019-HC05",
+        "hybrid_only": 0,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 0,
+        "non_obviousness": 2,
+        "research_utility": 3,
+        "unsupported_novelty": 0,
+        "notes": "Path and quotes directly support obesity-NAFLD association via adipokines. Single hop, undirected. Well-known relationship, limited novelty."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

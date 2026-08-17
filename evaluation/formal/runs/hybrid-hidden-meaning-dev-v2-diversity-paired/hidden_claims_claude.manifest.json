@@ -1,0 +1,26 @@
+{
+  "reviewer_type": "AI",
+  "human_expert_review_claimed": false,
+  "blinded": true,
+  "task": "hidden_claim",
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_file": "evaluation/formal/runs/hybrid-hidden-meaning-dev-v2-diversity-paired/hidden_claims_worksheet.csv",
+  "input_sha256": "353fbfb5612b455e56f87d690e0e70fa947a7b0330710bb086c7c0b407297756",
+  "output_file": "evaluation/formal/runs/hybrid-hidden-meaning-dev-v2-diversity-paired/hidden_claims_claude.csv",
+  "question_count": 3,
+  "row_count": 9,
+  "estimated_prompt_chars": 40468,
+  "estimated_input_tokens_rough": 10117,
+  "actual_api_usage_from_checkpoints": {
+    "input_tokens": 12111,
+    "output_tokens": 1455,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 13566
+  },
+  "completed_batches": 3,
+  "started_at": "2026-08-09T10:33:37.596716+00:00",
+  "completed_at": "2026-08-09T10:34:05.455285+00:00",
+  "status": "complete"
+}

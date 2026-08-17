@@ -1,0 +1,63 @@
+{
+  "task": "answer",
+  "question_id": "PP006",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "bc4ac27d8511a5a5d0a602beed1d7ae1c3f7417e06671fe8b24902b82be08bcd",
+  "raw_response_sha256": "ffb3116a20353a82b03e0b261d38bd4a05c8d261c3a1499d5f0d9456da677fb3",
+  "usage": {
+    "input_tokens": 2976,
+    "output_tokens": 613,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 3589
+  },
+  "rated_at": "2026-08-13T07:10:26.315945+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP006-A",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Accurately distinguishes each hop with direct evidence. miR-21-5p mechanism well-supported. Testable hypothesis adds value. Missing downstream target of miR-21-5p detail."
+      },
+      {
+        "answer_id": "PP006-B",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Typo 'MC3T₁-E1' minor issue. Speculative icariin-Ti particle physical interaction hypothesis is unsupported. Graph-derived paths add transparency. PMID 38045146 not verified."
+      },
+      {
+        "answer_id": "PP006-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Best structured response. Clearly separates each hop, distinguishes direct from associative evidence, provides mechanistically grounded hypothesis about miR-21-5p target. Comprehensive and well-grounded."
+      },
+      {
+        "answer_id": "PP006-D",
+        "correctness": 4,
+        "completeness": 2,
+        "relevance": 4,
+        "grounding": 4,
+        "mechanistic_coherence": 3,
+        "research_value": 2,
+        "notes": "Incorrectly labels MC3T3-E1 as human cells. Omits miR-21-5p mechanism entirely. Very brief; misses key mechanistic detail that distinguishes this pathway."
+      }
+    ],
+    "preferred_item_id": "PP006-C",
+    "pairwise_reason": "PP006-C most completely and accurately distinguishes evidence for each hop, includes the miR-21-5p necessity experiment, separates direct from associative evidence, and provides a mechanistically grounded testable hypothesis, outperforming all other responses."
+  }
+}

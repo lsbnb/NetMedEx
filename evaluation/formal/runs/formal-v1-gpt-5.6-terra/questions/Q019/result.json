@@ -1,0 +1,132 @@
+{
+  "status": "complete",
+  "question_id": "Q019",
+  "domain": "metabolism",
+  "question": "Which adipokines connect obesity to nonalcoholic fatty liver disease?",
+  "pubmed_query": "obesity NAFLD adiponectin leptin resistin inflammation",
+  "language": "English",
+  "corpus_pmids": [
+    "19355912",
+    "19664840",
+    "20370672",
+    "20498498",
+    "23108307",
+    "24249635",
+    "26464753",
+    "26654761",
+    "29416297",
+    "30005625",
+    "30293065",
+    "33671547",
+    "36009862",
+    "36753306",
+    "37801761"
+  ],
+  "graph": {
+    "node_count": 25,
+    "edge_count": 38,
+    "path_count": 0,
+    "preferred_pmids": []
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "20498498",
+        "score": 0.6627147618296538
+      },
+      {
+        "pmid": "29416297",
+        "score": 0.6350360675554306
+      },
+      {
+        "pmid": "36009862",
+        "score": 0.6228381183752142
+      },
+      {
+        "pmid": "26654761",
+        "score": 0.6114904564505909
+      },
+      {
+        "pmid": "33671547",
+        "score": 0.6016493090607284
+      },
+      {
+        "pmid": "19355912",
+        "score": 0.586632722572275
+      },
+      {
+        "pmid": "23108307",
+        "score": 0.5844446504390525
+      },
+      {
+        "pmid": "37801761",
+        "score": 0.5648691912182001
+      },
+      {
+        "pmid": "19664840",
+        "score": 0.5600007156381216
+      },
+      {
+        "pmid": "26464753",
+        "score": 0.5547084726602867
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "20498498",
+        "score": 0.6627147618296538
+      },
+      {
+        "pmid": "29416297",
+        "score": 0.6350360675554306
+      },
+      {
+        "pmid": "36009862",
+        "score": 0.6228381183752142
+      },
+      {
+        "pmid": "26654761",
+        "score": 0.6114904564505909
+      },
+      {
+        "pmid": "33671547",
+        "score": 0.6016493090607284
+      },
+      {
+        "pmid": "19355912",
+        "score": 0.586632722572275
+      },
+      {
+        "pmid": "23108307",
+        "score": 0.5844446504390525
+      },
+      {
+        "pmid": "37801761",
+        "score": 0.5648691912182001
+      },
+      {
+        "pmid": "19664840",
+        "score": 0.5600007156381216
+      },
+      {
+        "pmid": "26464753",
+        "score": 0.5547084726602867
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "Obesity-related adipose-tissue dysfunction can link to NAFLD through altered adipokine secretion, promoting hepatic insulin resistance, lipid accumulation, inflammation, and potentially progression from steatosis to NASH/fibrosis.\n\n### Direct evidence from the supplied context\n- **Adiponectin:** Reduced adiponectin is the most consistently implicated protective adipokine deficit. Low adiponectin is associated with augmented hepatic inflammation; its lack is described as driving hepatic steatosis and inflammation. [PMID: 20498498] [PMID: 23108307]  \n  - **Human clinical evidence:** In severely obese people undergoing bariatric surgery, weight loss improved liver histology and insulin resistance while increasing circulating adiponectin and hepatic adiponectin expression. [PMID: 19664840]  \n  - **Human randomized-trial evidence:** In adults with NAFLD, adiponectin increased within the Mediterranean-diet arm over 12 weeks, although the trial was not designed to establish that this change caused liver improvement. [PMID: 37801761]\n\n- **TNF-α and IL-6:** Increased TNF-α and IL-6 are linked to greater insulin resistance and liver inflammation in NAFLD. [PMID: 20498498] [PMID: 19355912]\n\n- **Resistin:** Higher resistin is described as enhancing insulin resistance and liver inflammation. [PMID: 20498498] [PMID: 19355912]  \n  - **Human clinical evidence:** After bariatric surgery, hepatic resistin mRNA decreased with weight loss and improvement in liver histology, although serum resistin changed nonlinearly over time. [PMID: 19664840]\n\n- **Leptin:** Leptin is repeatedly identified as a candidate adipokine in NAFLD and obesity-related hepatic inflammation, but its precise role in NAFLD remains unclear. [PMID: 29416297] [PMID: 23108307]  \n  - **Human clinical evidence:** Weight loss after bariatric surgery decreased circulating leptin, while hepatic leptin mRNA did not change. [PMID: 19664840]\n\n- **Visfatin/PBEF/Nampt:** This adipokine is considered predominantly pro-inflammatory and is implicated in NAFLD-related adipocytokine dysregulation. [PMID: 19664840]  \n  - **Human clinical evidence:** Bariatric weight loss reduced circulating visfatin and hepatic visfatin mRNA/protein expression in severely obese patients, alongside improved liver histology. [PMID: 19664840]\n\n### Association evidence\nAdditional adipokines associated with NAFLD pathogenesis or progression include:\n\n- **Ghrelin and irisin** [PMID: 29416297]\n- **Retinol-binding protein 4 (RBP4)** [PMID: 20498498] [PMID: 36009862]\n- **Chemerin** and **adipocyte fatty-acid-binding protein (AFABP)** [PMID: 36009862]\n- **Omentin** and **vaspin** [PMID: 20498498]\n\nFor these factors, the supplied reviews identify biological relevance and/or association with NAFLD, but do not provide conclusive causal evidence in the abstracts. Evidence type (human versus animal/in-vitro) is not individually specified in the supplied text for most of these adipokines. [PMID: 20498498] [PMID: 36009862]\n\n### Integrated interpretation\nThe core obesity-to-NAFLD adipokine pattern is:\n\n- **Lower anti-inflammatory, insulin-sensitizing adiponectin**\n- **Higher pro-inflammatory/insulin-resistance–promoting TNF-α, IL-6, and resistin**\n- Likely contributions from **leptin** and **visfatin**, with less certain roles for **RBP4, ghrelin, irisin, chemerin, AFABP, omentin, and vaspin**. [PMID: 20498498] [PMID: 19355912] [PMID: 29416297]\n\n### Testable hypothesis\nIn obesity-associated NAFLD, restoring a favorable adipokine balance—particularly raising adiponectin while reducing TNF-α, IL-6, resistin, leptin signaling, and/or visfatin—will improve hepatic insulin resistance and reduce steatosis, inflammation, and fibrosis. This remains a hypothesis because the supplied intervention literature shows parallel changes in adipokines and liver-related outcomes but does not establish that adipokine changes mediate histologic improvement. [PMID: 29416297] [PMID: 19664840]",
+    "traditional_rag": "## Direct evidence\n\nAdipokines implicated in linking obesity, insulin resistance, and NAFLD include:\n\n- **Adiponectin** — decreased in obesity/NAFLD; lower levels are associated with greater hepatic steatosis and inflammation. It is described as predominantly anti-inflammatory and insulin-sensitizing. [PMID: 20498498] [PMID: 19355912]  \n- **TNF-α** — increased levels augment liver inflammation and promote insulin resistance, providing a pathway from dysfunctional adipose tissue to NAFLD. [PMID: 20498498] [PMID: 19355912]  \n- **IL-6** — increased in obesity and implicated in insulin resistance and hepatic inflammatory injury. [PMID: 20498498] [PMID: 19355912]  \n- **Resistin** — increased levels are linked to insulin resistance and liver inflammation in NAFLD. [PMID: 20498498] [PMID: 19355912]  \n- **Leptin** — considered an important candidate adipokine in NAFLD; its role is less definitive, though it is generally characterized as pro-inflammatory and is included among adipokines that modulate steatosis and progression to steatohepatitis/cirrhosis. [PMID: 29416297] [PMID: 23108307]  \n- **Visfatin/PBEF/Nampt** — implicated as a mainly pro-inflammatory adipokine; its circulating and hepatic expression decreased following bariatric-surgery-induced weight loss accompanied by improved insulin resistance and liver histology. **Human evidence.** [PMID: 19664840]  \n- **RBP4 (retinol-binding protein 4)**, **ghrelin**, **irisin**, **chemerin**, and **adipocyte fatty-acid-binding protein (AFABP)** — are also discussed as adipokines potentially involved in NAFLD pathogenesis/progression, but the supplied context does not establish equally strong causal roles for each. [PMID: 29416297] [PMID: 36009862]  \n- **Omentin** and **vaspin** — proposed as possible contributors, but their roles required further clarification. [PMID: 20498498]  \n\n## Association evidence\n\nIn obesity, inflamed and metabolically dysfunctional white adipose tissue is associated with abnormal adipose tissue–liver communication, hepatic insulin resistance, lipid accumulation, NASH, and fibrosis. [PMID: 36009862] The characteristic adipokine pattern is:\n\n- higher **TNF-α, IL-6, resistin**, and often **leptin/visfatin**;\n- lower **adiponectin**. [PMID: 20498498] [PMID: 19355912]\n\nIn a prospective bariatric-surgery study in severely obese patients, weight loss improved insulin resistance, liver tests, and liver histology while increasing serum adiponectin and decreasing leptin and visfatin/PBEF/Nampt; hepatic resistin and visfatin expression also decreased. **Human evidence.** [PMID: 19664840]\n\n## Testable hypothesis\n\nObesity may drive NAFLD by shifting adipose secretion away from protective, insulin-sensitizing **adiponectin** toward pro-inflammatory/insulin-resistance-associated mediators—particularly **TNF-α, IL-6, resistin, leptin, and visfatin**—thereby promoting hepatic fat accumulation, inflammation, and fibrosis. This is biologically supported by the supplied reviews, but the relative causal contribution of individual adipokines, especially leptin, RBP4, omentin, vaspin, and newer candidates, remains uncertain. [PMID: 20498498] [PMID: 29416297] [PMID: 36009862]",
+    "general_llm": "Obesity promotes nonalcoholic fatty liver disease (now often termed **MASLD**, metabolic dysfunction–associated steatotic liver disease) partly through altered secretion of adipose-tissue–derived signaling molecules, or **adipokines**. In obesity, enlarged and inflamed visceral fat shifts toward a more pro-inflammatory, insulin-resistance–promoting adipokine profile.\n\nKey adipokines include:\n\n| Adipokine | Typical change in obesity/NAFLD | Proposed link to fatty liver disease |\n|---|---|---|\n| **Adiponectin** | **Decreased** | The best-established protective adipokine. It improves hepatic insulin sensitivity, promotes fatty-acid oxidation, reduces liver fat synthesis, and has anti-inflammatory/anti-fibrotic effects. Low adiponectin is strongly associated with liver steatosis and more severe steatohepatitis. |\n| **Leptin** | **Increased**, but with leptin resistance | Can promote inflammation and, particularly in advanced disease, activation of hepatic stellate cells and fibrosis. Its role in simple steatosis is complex because leptin also normally limits ectopic lipid accumulation; obesity-associated leptin resistance changes this balance. |\n| **Resistin** | Often increased, especially with visceral adiposity/inflammation | Associated with insulin resistance, inflammatory signaling, and potentially hepatic fat accumulation. In humans, much resistin comes from macrophages rather than adipocytes, so its role may reflect adipose inflammation more than a direct fat-cell effect. |\n| **Chemerin** | Often increased | Linked to visceral adiposity, insulin resistance, macrophage recruitment, and hepatic inflammation. Associations with NAFLD severity are common, but whether chemerin is causally harmful or sometimes compensatory remains uncertain. |\n| **Retinol-binding protein 4 (RBP4)** | Often increased | May worsen systemic and hepatic insulin resistance and promote inflammatory pathways. Human studies show associations with NAFLD, but results are not fully consistent. |\n| **Fatty acid–binding protein 4 (FABP4/A-FABP)** | Increased | Correlates with obesity, insulin resistance, and fatty liver. Experimental data suggest effects on lipid handling and inflammatory responses; it is a candidate mediator and biomarker. |\n| **Visfatin / NAMPT** | Frequently increased | Has links to inflammation, insulin resistance, and lipid metabolism, but its specific causal role in NAFLD is still less certain than that of adiponectin. |\n| **Apelin** | Often increased | May affect insulin sensitivity, vascular function, inflammation, and hepatic lipid metabolism. Studies are mixed; its actions may vary by disease stage and tissue context. |\n| **Omentin-1** | Usually decreased | Generally considered insulin-sensitizing and anti-inflammatory. Lower levels have been associated with obesity and NAFLD, although evidence is less definitive than for adiponectin. |\n| **Vaspin and progranulin** | Often altered/increased in metabolic disease | Have been associated with insulin resistance and inflammation, but their precise contributions to NAFLD progression remain under investigation. |\n\nIn addition, adipose tissue in obesity releases inflammatory mediators often grouped with adipokines or called **adipocytokines**, notably:\n\n- **Tumor necrosis factor alpha (TNF-α):** promotes insulin resistance, lipolysis, liver inflammation, and hepatocyte injury.\n- **Interleukin-6 (IL-6):** contributes to systemic inflammation and insulin resistance; its liver effects can be context-dependent.\n- **Monocyte chemoattractant protein-1 (MCP-1/CCL2):** recruits macrophages to adipose tissue and liver, linking obesity to inflammatory progression toward steatohepatitis.\n- **Plasminogen activator inhibitor-1 (PAI-1):** associated with metabolic dysfunction, inflammation, and fibrotic risk.\n\n### Overall pattern\n\nThe most established adipokine pattern connecting obesity to NAFLD is:\n\n- **Low adiponectin** → less fatty-acid oxidation, less insulin sensitivity, less anti-inflammatory and anti-fibrotic protection.\n- **High leptin, TNF-α, IL-6, resistin, and related inflammatory mediators** → more insulin resistance, increased release of fatty acids from adipose tissue, liver fat accumulation, inflammation, and potentially fibrosis.\n\nThese molecules act alongside other obesity-related processes—especially increased delivery of free fatty acids to the liver, hyperinsulinemia, altered gut-derived signals, and genetic susceptibility. Thus, adipokines are important mediators, but no single adipokine alone explains why an individual develops steatosis, steatohepatitis, or fibrosis."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 1.109392635524273,
+    "semantic_graph": 69.17739243805408,
+    "vector_index": 1.7256743982434273,
+    "answer_netmedex_hybrid_rag": 8.912688679993153,
+    "answer_traditional_rag": 7.468674995005131,
+    "answer_general_llm": 14.771559752523899,
+    "total": 105.0166611969471
+  },
+  "completed_at": "2026-07-27T18:21:37.704444+00:00"
+}

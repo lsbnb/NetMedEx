@@ -1,0 +1,86 @@
+{
+  "question_id": "Q046",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-30T10:03:40.799029+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q046-C001",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "wrong_entity",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The study focuses on telomerase-independent alternative lengthening of telomeres (ALT) and uses caffeine as a kinase inhibitor. It does not address telomerase activation."
+    },
+    {
+      "candidate_id": "Q046-C002",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "wrong_entity",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The study investigates caffeic acid undecyl ester (CAUE), which is a different chemical entity from caffeine."
+    },
+    {
+      "candidate_id": "Q046-C003",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "wrong_context",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The study uses caffeine as an ATR inhibitor and telomerase-immortalized fibroblasts as a model, but does not investigate a link between caffeine and telomerase activation."
+    },
+    {
+      "candidate_id": "Q046-C004",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Provides useful adjacent evidence by investigating the epidemiological association between caffeine consumption and leukocyte (human immune cell) telomere length, though it does not directly test telomerase activation."
+    },
+    {
+      "candidate_id": "Q046-C005",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "wrong_entity",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The study investigates the effects of caffeine on human immune cells (myeloid lineage) but does not measure or mention telomerase activation."
+    },
+    {
+      "candidate_id": "Q046-C006",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "wrong_entity",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The review focuses on the green tea polyphenol EGCG, not caffeine, and its effects on glioma cells rather than immune cells."
+    },
+    {
+      "candidate_id": "Q046-C007",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "wrong_context",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The study focuses on vascular endothelial cells, not immune cells. Caffeine is merely used as an ATM blocker to study L5-induced senescence."
+    },
+    {
+      "candidate_id": "Q046-C008",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "wrong_context",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The study uses caffeine to reverse G2 delay and telomerase to prevent chromosomal destabilization in fibroblasts, but does not link caffeine to telomerase activation."
+    },
+    {
+      "candidate_id": "Q046-C009",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "wrong_entity",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The study investigates unique polyphenols from a low-caffeine tea species, not caffeine itself, and focuses on cancer cell lines rather than immune cells."
+    },
+    {
+      "candidate_id": "Q046-C010",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "wrong_entity",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract discusses the cancer-preventive activities of tea constituents like caffeine and EGCG but does not mention telomerase activation."
+    },
+    {
+      "candidate_id": "Q046-C011",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Provides direct evidence of a causal link between caffeine and telomerase (TERT) activation, but serves as a different yet informative model since the in vivo immune system evidence is derived from mouse thymus and spleen rather than human immune cells."
+    }
+  ],
+  "raw_response_sha256": "3170b95719e9188f319c807a9b8cf9c8a94f84cfa9b5f731f3e17e88a3ab5bf7"
+}

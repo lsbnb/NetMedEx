@@ -1,0 +1,92 @@
+{
+  "question_id": "Q014",
+  "model": "gpt-5.6-sol",
+  "rated_at": "2026-07-29T10:04:29.860682+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q014-C001",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "no_usable_evidence",
+      "reviewer_notes": "Evaluates clinical efficacy of baricitinib and upadacitinib and separately the IL-6 receptor inhibitor sarilumab; it does not show that either JAK inhibitor modulates IL-6 or interferon signaling."
+    },
+    {
+      "candidate_id": "Q014-C002",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "no_usable_evidence",
+      "reviewer_notes": "RA clinical trial establishes baricitinib efficacy but reports no IL-6 or interferon signaling measurements."
+    },
+    {
+      "candidate_id": "Q014-C003",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "In RA fibroblast-like synoviocytes, peficitinib inhibited STAT3 phosphorylation induced by IL-6, IFN-alpha, and IFN-gamma; effects were compared with tofacitinib and baricitinib."
+    },
+    {
+      "candidate_id": "Q014-C004",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Directly demonstrates that tofacitinib suppresses IFN-alpha production by plasmacytoid dendritic cells and IFN-alpha-driven arthrogenic responses in synovial fibroblasts."
+    },
+    {
+      "candidate_id": "Q014-C005",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Baricitinib, upadacitinib, and tofacitinib directly inhibited IL-6-, IFN-gamma-, and IFN-alpha-dependent STAT signaling, but experiments used leukocytes from healthy donors rather than an RA population."
+    },
+    {
+      "candidate_id": "Q014-C006",
+      "relevance": 1,
+      "confidence": 2,
+      "exclusion_reason": "",
+      "reviewer_notes": "Shows in vivo suppression of multiple cytokine-induced JAK-STAT pathways by tofacitinib in RA patients, but the abstract does not explicitly identify IL-6 or interferon among the tested pathways."
+    },
+    {
+      "candidate_id": "Q014-C007",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "RA-focused review directly states that all approved JAK inhibitors suppress IL-6 signaling and identifies interferon suppression by filgotinib, baricitinib, and upadacitinib, with broader cytokine suppression by tofacitinib."
+    },
+    {
+      "candidate_id": "Q014-C008",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Baricitinib and tofacitinib directly inhibited IFN-alpha-, IFN-gamma-, and IL-6-induced STAT phosphorylation in human immune cells, but the experiments were not performed in RA-derived cells."
+    },
+    {
+      "candidate_id": "Q014-C009",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "too_broad",
+      "reviewer_notes": "General review of tofacitinib clinical utility and JAK biology in RA without specific evidence concerning IL-6 or interferon signaling."
+    },
+    {
+      "candidate_id": "Q014-C010",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Directly compares filgotinib, upadacitinib, tofacitinib, and baricitinib in healthy and RA blood, showing inhibition of IFN-alpha- and IL-6-dependent STAT signaling."
+    },
+    {
+      "candidate_id": "Q014-C011",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "In RA fibroblast-like synoviocytes, tofacitinib reduced transcriptional markers of myofibroblast differentiation induced by combined IL-6 and TGF-beta, although protein-level confirmation was lacking."
+    },
+    {
+      "candidate_id": "Q014-C012",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Tofacitinib, baricitinib, and filgotinib inhibited IFN-gamma-induced CEACAM1 expression in healthy-donor neutrophils; the model was motivated by RA but did not use RA patient cells, and IL-6 did not induce the measured response."
+    }
+  ],
+  "raw_response_sha256": "6667331d2e5ffc75a1fb7d9311df69dd520447eb5dcfbe164da7f57861a89bb6"
+}

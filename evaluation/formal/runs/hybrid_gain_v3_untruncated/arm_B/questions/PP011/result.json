@@ -1,0 +1,222 @@
+{
+  "status": "complete",
+  "question_id": "PP011",
+  "domain": "infectious disease",
+  "question": "What evidence supports a mechanistic path from chronic hepatitis b virus (hbv) infection to hcc through liver fibrosis, hbv, chronic liver inflammation? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "HBV hepatocellular carcinoma inflammation HBx integration fibrosis",
+  "effective_pubmed_query": "HBV hepatocellular carcinoma inflammation HBx integration fibrosis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "16461228",
+    "20413301",
+    "20485626",
+    "25646384",
+    "28097530",
+    "29052129",
+    "30611768",
+    "32839523",
+    "38064540",
+    "39290403",
+    "40544269"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports a mechanistic path from chronic hepatitis b virus (hbv) infection to hcc through liver fibrosis, hbv, chronic liver inflammation? Distinguish evidence for each hop from overall inference.",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [
+        "liver fibrosis",
+        "hbv",
+        "chronic liver inflammation"
+      ],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "pre_gate_incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [
+        "liver fibrosis",
+        "hbv",
+        "chronic liver inflammation"
+      ],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "integration_decision": {
+      "method": "three_stage_incremental_utility_router_v1",
+      "mode": "traditional_fallback",
+      "reason": "no_claim_safe_path",
+      "claim_safe_path_count": 0,
+      "incremental_path_count": 0,
+      "confirmatory_path_count": 0,
+      "citation_validation_pmids": [],
+      "policy": "three_stage"
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "disabled",
+      "reason": "integration_mode=traditional_fallback",
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "29052129",
+        "score": 0.6353372954966955
+      },
+      {
+        "pmid": "30611768",
+        "score": 0.5983343644247671
+      },
+      {
+        "pmid": "39290403",
+        "score": 0.5768435685847411
+      },
+      {
+        "pmid": "20413301",
+        "score": 0.5693310919186567
+      },
+      {
+        "pmid": "20485626",
+        "score": 0.5693294690328732
+      },
+      {
+        "pmid": "16461228",
+        "score": 0.5625305117825105
+      },
+      {
+        "pmid": "32839523",
+        "score": 0.5456156201265928
+      },
+      {
+        "pmid": "28097530",
+        "score": 0.543117985416578
+      },
+      {
+        "pmid": "25646384",
+        "score": 0.5413345226169859
+      },
+      {
+        "pmid": "38064540",
+        "score": 0.5307733705345512
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "29052129",
+        "score": 0.6353372954966955
+      },
+      {
+        "pmid": "30611768",
+        "score": 0.5983343644247671
+      },
+      {
+        "pmid": "39290403",
+        "score": 0.5768435685847411
+      },
+      {
+        "pmid": "20413301",
+        "score": 0.5693310919186567
+      },
+      {
+        "pmid": "20485626",
+        "score": 0.5693294690328732
+      },
+      {
+        "pmid": "16461228",
+        "score": 0.5625305117825105
+      },
+      {
+        "pmid": "32839523",
+        "score": 0.5456156201265928
+      },
+      {
+        "pmid": "28097530",
+        "score": 0.543117985416578
+      },
+      {
+        "pmid": "25646384",
+        "score": 0.5413345226169859
+      },
+      {
+        "pmid": "38064540",
+        "score": 0.5307733705345512
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Evidence linking chronic HBV infection to HCC through sequential “inflammation → fibrosis → cancer” steps, with the contribution of direct viral oncogenic mechanisms**\n\n* **Chronic HBV → Persistent liver inflammation** – Human studies repeatedly cite the host immune response to HBV as the source of ongoing hepatic inflammation. The review of 350 million chronically infected individuals notes that “recurrent liver inflammation caused by host immune responses during chronic HBV infection can lead to liver fibrosis” [PMID: 29052129] (human). Similarly, CHB patients display up‑regulation of hypoxia‑responsive genes that are absent in acute infection models, implicating inflammatory mediators in the transcriptional response [PMID: 32839523] (human).  \n\n* **Persistent inflammation → Fibrosis/cirrhosis** – Cytokine‑driven wound‑healing pathways are highlighted as the bridge from inflammation to extracellular‑matrix deposition. One review explicitly states that “chronic inflammation… promotes fibrosis and cirrhosis” and that cytokines are central to this process [PMID: 20485626] (human). The mechanistic overview of HBV‑related carcinogenesis adds that “immune reactions lead to repeated hepatic inflammation, fibrosis and a deficient immune micro‑environment” [PMID: 28097530] (human).  \n\n* **Fibrosis/cirrhosis → HCC (indirect route)** – Fibrotic livers exhibit accelerated hepatocyte turnover, providing a fertile ground for mutagenesis. The same HBV‑HCC review links fibrosis to increased mutation accumulation and tumor development [PMID: 29052129] (human). Another comprehensive analysis emphasizes that “chronic liver inflammation and hepatic regeneration… favour the accumulation of genetic alterations… leading to cancer onset” [PMID: 16461228] (human).  \n\n* **Direct HBV oncogenic actions (HBx, integration) → HCC, independent of fibrosis** – In HBV‑transgenic mice expressing the full viral genome, ~38 % develop HCC without histologic hepatitis or fibrosis; tumor formation is abolished by hepatocyte‑specific STAT3 knockout, demonstrating that viral proteins (especially HBx) can drive oncogenesis autonomously [PMID: 39290403] (animal). Human data corroborate that HBV DNA integration and HBx‑mediated transactivation of growth‑control pathways are sufficient to induce genomic instability and malignant transformation even before advanced cirrhosis [PMID: 20413301] (human).  \n\n* **Testable hypothesis** – Early antiviral suppression of HBV replication (including HBx expression) should reduce STAT3 activation and prevent HCC emergence in patients who are still in the immune‑tolerant phase, i.e., before overt fibrosis develops. This can be evaluated in longitudinal cohorts with serial liver biopsies and in STAT3‑targeted mouse models.\n\n**Conclusion:** Human and animal studies collectively substantiate a stepwise mechanistic chain—HBV‑induced chronic inflammation → cytokine‑mediated fibrosis → mutagenic proliferation → HCC—while also demonstrating a parallel, fibrosis‑independent route driven by viral integration and HBx oncogenic signaling."
+  },
+  "answer_finish_reasons": {
+    "traditional_rag": "stop"
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 5.813688039779663e-05,
+    "vector_index": 1.7782031148672104,
+    "kg_expansion": 1.656264066696167e-05,
+    "answer_traditional_rag": 39.2125209197402,
+    "total": 41.48448625206947
+  },
+  "token_usage": {
+    "output_tokens": 1478,
+    "input_tokens": 3592,
+    "total_tokens": 5070
+  },
+  "completed_at": "2026-08-16T20:27:37.016600+00:00"
+}

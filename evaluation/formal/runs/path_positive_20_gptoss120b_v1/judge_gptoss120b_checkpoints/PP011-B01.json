@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP011",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "08dd4d039a3e5cbbdbd60fe8c9f1dad64d43dcedf49b079c896982ba92b8c869",
+  "raw_response_sha256": "e23809271786a2927f51f7feeeb076d346b4af0be53e8d9674df826c26b29993",
+  "usage": {
+    "input_tokens": 3978,
+    "output_tokens": 418,
+    "total_tokens": 4396
+  },
+  "rated_at": "2026-08-13T06:34:59.577674+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP011-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive hop‑by‑hop evidence with citations; minor truncation of molecular section."
+      },
+      {
+        "answer_id": "PP011-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Detailed multi‑level evidence; lacks explicit PMID citations, reducing grounding."
+      },
+      {
+        "answer_id": "PP011-C",
+        "correctness": 2,
+        "completeness": 2,
+        "relevance": 3,
+        "grounding": 2,
+        "mechanistic_coherence": 2,
+        "research_value": 2,
+        "notes": "Sparse coverage; missing evidence for key hops; incomplete citations."
+      },
+      {
+        "answer_id": "PP011-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Thorough, well‑cited evidence across human, animal, in‑vitro; clear hop distinction and hypotheses."
+      }
+    ],
+    "preferred_item_id": "PP011-D",
+    "pairwise_reason": "PP011-D provides the most complete, well‑grounded, and mechanistically coherent overview, covering each hop with human, animal, and molecular data and offering testable hypotheses, surpassing the other answers."
+  }
+}

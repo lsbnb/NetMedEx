@@ -1,0 +1,47 @@
+{
+  "task": "hidden_claim",
+  "question_id": "Q012",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-haiku-4-5-20251001",
+  "input_sha256": "1fa2a93a4ab5ce89bea89bc474c67483c15166922215ed252453549605d6fa57",
+  "raw_response_sha256": "9b3cc090f0c8417088e65a72bbf1abbbadeb729b8709eae983c0e943a3f6e1f2",
+  "usage": {
+    "input_tokens": 2295,
+    "output_tokens": 428,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 2723
+  },
+  "rated_at": "2026-08-05T02:42:23.753085+00:00",
+  "result": {
+    "ratings": [
+      {
+        "hidden_claim_id": "Q012-HC01",
+        "hybrid_only": 0,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 0,
+        "non_obviousness": 3,
+        "research_utility": 4,
+        "unsupported_novelty": 0,
+        "notes": "Direct evidence from PMID 40640358 supports Abeta1-42 upregulation of IL-6, IL-1β, TNF-α. Single-hop path. Claim adds 'mitochondrial and oxidative stress' association; quote confirms ROS/MDA/LPO elevation alongside cytokine upregulation, supporting multi-step pathway framing."
+      },
+      {
+        "hidden_claim_id": "Q012-HC02",
+        "hybrid_only": 1,
+        "path_traceable": 0,
+        "evidence_support": 0,
+        "relation_direction_correct": 0,
+        "multi_document_or_hop": 0,
+        "non_obviousness": 4,
+        "research_utility": 3,
+        "unsupported_novelty": 1,
+        "notes": "Path signature shows 'microglia ->[inhibits] dihydrotestosterone' but claim states 'DHT inhibits microglial release.' Relation direction reversed in path. Quote confirms DHT inhibits LPS-induced proinflammatory factors in microglia, but comparison answer lacks DHT as mediator of microglial activation. Claim introduces regulatory mechanism absent from comparison."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

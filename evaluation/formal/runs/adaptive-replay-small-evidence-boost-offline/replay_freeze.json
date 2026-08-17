@@ -1,0 +1,29 @@
+{
+  "benchmark": "netmedex-evidence-margin-adaptive-replay-v1",
+  "status": "frozen-development-result",
+  "frozen_at": "2026-08-03T18:12:04Z",
+  "completion_tokens": 0,
+  "independent_holdout": false,
+  "files": [
+    {"path": "evaluation/formal/runs/adaptive-replay-small-evidence-boost-offline/run_manifest.json", "sha256": "2f55f88f665295315dc98b657a28e1ce12030dc5a83b4d2eb91b7b1f6a759605", "size_bytes": 2228},
+    {"path": "evaluation/formal/runs/adaptive-replay-small-evidence-boost-offline/retrieval_runs.csv", "sha256": "cdd9d94cb1fbc5591d75fa72dedbc4bcc5da98abba43bdd6ed17fd642ed1e4f3", "size_bytes": 2708},
+    {"path": "evaluation/formal/runs/adaptive-replay-small-evidence-boost-offline/path_runs.csv", "sha256": "9391d75fff0b9cc06f99f95c17088642098c35ad9894d5a60447b923a98980c7", "size_bytes": 8121},
+    {"path": "evaluation/formal/runs/adaptive-replay-small-evidence-boost-offline/evidence_exposure.csv", "sha256": "074f793375f87f52ee3b55f67791293788667b92f4df99f97aff0f25fb91fa5d", "size_bytes": 3047},
+    {"path": "evaluation/formal/runs/adaptive-replay-small-evidence-boost-offline/run_metrics.csv", "sha256": "539fe922f91100d6bfd4c92596bc147ba1bbf3552c81b592c77ce0bd29d2898f", "size_bytes": 747},
+    {"path": "evaluation/formal/runs/adaptive-replay-small-evidence-boost-offline/summary_formal_v2.json", "sha256": "0c39d6290a2caa84ba9593efa58dd8be45498e269a8ba59c24b011491fb937c0", "size_bytes": 709},
+    {"path": "evaluation/formal/runs/adaptive-replay-small-evidence-boost-offline/evidence_boost_report.md", "sha256": "918a5584478b308a620327a48710b0c667f9b085d733034ff1468afa5895f043", "size_bytes": 2087},
+    {"path": "evaluation/formal_v2/qrels.csv", "sha256": "1967169d9ac7e57199e2eefc18f648abad12b899b3f2b78bb95cd6e589d60e18", "size_bytes": 14934},
+    {"path": "evaluation/run_formal_50.py", "sha256": "56cb951f91bba949925a77780496e382b7adba1e263262861bc4fba31e5ca4fe", "size_bytes": 50320},
+    {"path": "netmedex/rag.py", "sha256": "9b6ce307d457980d37aed00ce615a01fb0630248a380067bb0646d8e43cd148d", "size_bytes": 13772},
+    {"path": "netmedex/node_rag.py", "sha256": "b07bcf3c71a6b5c5de8f3181d379869d3ba1d8e2560700c2d46c4917fc2e0d25", "size_bytes": 8881},
+    {"path": "evaluation/formal/runs/adaptive-replay-small-evidence-boost-offline/questions/Q001/corpus.pubtator", "sha256": "defd02c39b605f847f09cf3da3cb73587cf8098996ca7417561f18cd1615760e", "size_bytes": 33154},
+    {"path": "evaluation/formal/runs/adaptive-replay-small-evidence-boost-offline/questions/Q001/result.json", "sha256": "602e5ce43c0d0bebdc01164e8dbfb14b647080978261b182a917edf582c4e3d5", "size_bytes": 23121},
+    {"path": "evaluation/formal/runs/adaptive-replay-small-gpt41/questions/Q001/result.json", "sha256": "3449e9fa4e26036ad9dcc786e9bf9b804945b50137b48846e5fc15aa1d50fd08", "size_bytes": 31476},
+    {"path": "evaluation/formal/runs/adaptive-replay-small-evidence-boost-offline/questions/Q002/corpus.pubtator", "sha256": "8f8078077da742dd6d3d7b42d63e1378b2212e31538dbf089adc694e01555866", "size_bytes": 37035},
+    {"path": "evaluation/formal/runs/adaptive-replay-small-evidence-boost-offline/questions/Q002/result.json", "sha256": "3fa0832fa2f4889a97e8d5531ecae4e85bee4ae225d640cebf1455ec4eaafc20", "size_bytes": 3479},
+    {"path": "evaluation/formal/runs/adaptive-replay-small-gpt41/questions/Q002/result.json", "sha256": "98831167088e2861840a64fa4bb0c8cef1f068f99783298dd5ff2aece78aea08", "size_bytes": 10957},
+    {"path": "evaluation/formal/runs/adaptive-replay-small-evidence-boost-offline/questions/Q007/corpus.pubtator", "sha256": "8652a085b07793ce501d39f26689d07fc68747603b5b7a38f7dc81ac1fe4f3cb", "size_bytes": 36990},
+    {"path": "evaluation/formal/runs/adaptive-replay-small-evidence-boost-offline/questions/Q007/result.json", "sha256": "c7f08e2e018ddd4701096b8b6a1b11c3bc417f707aa1fa768ec46ca732830eb7", "size_bytes": 26928},
+    {"path": "evaluation/formal/runs/adaptive-replay-small-gpt41/questions/Q007/result.json", "sha256": "cffeb02cf908446eff1aeae1f84b1e349478f193f7fabf20aaecb115f03228ba", "size_bytes": 32288}
+  ]
+}

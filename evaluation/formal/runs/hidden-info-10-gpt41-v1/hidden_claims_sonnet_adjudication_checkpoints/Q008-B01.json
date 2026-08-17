@@ -1,0 +1,71 @@
+{
+  "task": "hidden_claim",
+  "question_id": "Q008",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "6e75833aaee21bf48e21c8011a353dc304c8e0354ea8ef764270fa5f7227968f",
+  "raw_response_sha256": "91167f56ed6df0ef21e490b0e117fe3db0c0f4b602c76a11dfe55070b9ff6d4e",
+  "usage": {
+    "input_tokens": 3080,
+    "output_tokens": 646,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 3726
+  },
+  "rated_at": "2026-08-05T02:48:04.737775+00:00",
+  "result": {
+    "ratings": [
+      {
+        "hidden_claim_id": "Q008-HC01",
+        "hybrid_only": 0,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 0,
+        "non_obviousness": 3,
+        "research_utility": 4,
+        "unsupported_novelty": 0,
+        "notes": "Single-hop claim well-supported by two PMIDs with explicit quotes. Comparison answer covers same mechanism. Direction correct."
+      },
+      {
+        "hidden_claim_id": "Q008-HC02",
+        "hybrid_only": 0,
+        "path_traceable": 0,
+        "evidence_support": 0,
+        "relation_direction_correct": 0,
+        "multi_document_or_hop": 0,
+        "non_obviousness": 3,
+        "research_utility": 4,
+        "unsupported_novelty": 1,
+        "notes": "NF-κB mechanism claimed but path evidence quotes only mention dysbiosis/inflammation, not NF-κB. Specific mechanistic claim unsupported by supplied path evidence."
+      },
+      {
+        "hidden_claim_id": "Q008-HC04",
+        "hybrid_only": 1,
+        "path_traceable": 0,
+        "evidence_support": 0,
+        "relation_direction_correct": 0,
+        "multi_document_or_hop": 1,
+        "non_obviousness": 4,
+        "research_utility": 4,
+        "unsupported_novelty": 1,
+        "notes": "SCFA/propionate/Bacteroides claim not in path evidence or comparison answer. Path only shows CFTR→dysbiosis; propionate depletion mechanism is unsupported novelty."
+      },
+      {
+        "hidden_claim_id": "Q008-HC05",
+        "hybrid_only": 0,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 0,
+        "non_obviousness": 4,
+        "research_utility": 5,
+        "unsupported_novelty": 0,
+        "notes": "Sufficiency claim directly supported by iCftr KO quotes. 'Necessary' aspect slightly overstated but 'sufficient' is explicitly quoted. Comparison answer corroborates."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

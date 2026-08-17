@@ -1,0 +1,36 @@
+{
+  "task": "edge",
+  "question_id": "Q037",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "3707a822be7e28ffef8bc4f4f6456069cbf11fb2559e5578c108e87187d1a3e8",
+  "raw_response_sha256": "906a9053d59b5ad775833601421559f9b266e710c06e5f9fa11bdc17d2116af0",
+  "rated_at": "2026-08-02T18:54:59.843904+00:00",
+  "result": {
+    "ratings": [
+      {
+        "edge_id": "Q037-E03",
+        "entity_valid": 1,
+        "relation_exists": 1,
+        "relation_type_correct": 1,
+        "direction_correct": 1,
+        "evidence_support": 0,
+        "confidence": 2,
+        "notes": ""
+      },
+      {
+        "edge_id": "Q037-E05",
+        "entity_valid": 1,
+        "relation_exists": 1,
+        "relation_type_correct": 0,
+        "direction_correct": 0,
+        "evidence_support": 0,
+        "confidence": 2,
+        "notes": ""
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

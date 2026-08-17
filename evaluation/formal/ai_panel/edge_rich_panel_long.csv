@@ -1,0 +1,67 @@
+edge_id,question_id,system,judge,rater_id,entity_valid,relation_exists,relation_type_correct,direction_correct,evidence_support,confidence,notes
+Q001-E01,Q001,netmedex_hybrid_rag,openai_gpt41,openai:gpt-4.1,1,1,1,1,1,3,"Both abstracts (PMID 29904399, 38045146) provide direct evidence that icariin upregulates RUNX2 expression in osteoblasts via miRNA-related mechanisms (miR-153 and mmu-miR-138-5p pathways). The direction and relation type are correct and well-supported."
+Q001-E05,Q001,netmedex_hybrid_rag,openai_gpt41,openai:gpt-4.1,1,1,1,1,1,3,"PMID 38045146 provides clear evidence that icariin upregulates JMJD3 (KDM6B) expression via a circRNA/miRNA axis in osteogenic differentiation. The relation, direction, and type are correct and directly supported."
+Q004-E15,Q004,netmedex_hybrid_rag,openai_gpt41,openai:gpt-4.1,1,1,0,1,0,1,
+Q008-E03,Q008,netmedex_hybrid_rag,openai_gpt41,openai:gpt-4.1,1,1,1,1,1,3,
+Q008-E05,Q008,netmedex_hybrid_rag,openai_gpt41,openai:gpt-4.1,1,1,1,1,1,2,
+Q011-E07,Q011,netmedex_hybrid_rag,openai_gpt41,openai:gpt-4.1,1,1,1,1,1,3,
+Q011-E08,Q011,netmedex_hybrid_rag,openai_gpt41,openai:gpt-4.1,1,1,1,1,1,3,
+Q018-E01,Q018,netmedex_hybrid_rag,openai_gpt41,openai:gpt-4.1,1,1,1,1,1,2,
+Q018-E02,Q018,netmedex_hybrid_rag,openai_gpt41,openai:gpt-4.1,1,1,1,1,1,2,
+Q023-E02,Q023,netmedex_hybrid_rag,openai_gpt41,openai:gpt-4.1,1,1,1,1,1,3,
+Q023-E07,Q023,netmedex_hybrid_rag,openai_gpt41,openai:gpt-4.1,1,1,1,1,1,2,
+Q025-E04,Q025,netmedex_hybrid_rag,openai_gpt41,openai:gpt-4.1,1,1,1,1,1,3,
+Q025-E05,Q025,netmedex_hybrid_rag,openai_gpt41,openai:gpt-4.1,1,1,1,1,1,3,
+Q029-E07,Q029,netmedex_hybrid_rag,openai_gpt41,openai:gpt-4.1,1,1,1,1,1,3,
+Q029-E17,Q029,netmedex_hybrid_rag,openai_gpt41,openai:gpt-4.1,1,1,1,0,1,2,
+Q037-E03,Q037,netmedex_hybrid_rag,openai_gpt41,openai:gpt-4.1,1,1,1,1,0,2,
+Q037-E05,Q037,netmedex_hybrid_rag,openai_gpt41,openai:gpt-4.1,1,1,0,0,0,2,
+Q048-E01,Q048,netmedex_hybrid_rag,openai_gpt41,openai:gpt-4.1,1,1,1,1,0,2,
+Q048-E05,Q048,netmedex_hybrid_rag,openai_gpt41,openai:gpt-4.1,1,1,1,1,0,2,
+Q015-E01,Q015,netmedex_hybrid_rag,openai_gpt41,openai:gpt-4.1,1,1,1,1,1,3,
+Q015-E03,Q015,netmedex_hybrid_rag,openai_gpt41,openai:gpt-4.1,1,1,1,1,1,3,
+Q016-E02,Q016,netmedex_hybrid_rag,openai_gpt41,openai:gpt-4.1,1,0,0,0,0,3,
+Q016-E03,Q016,netmedex_hybrid_rag,openai_gpt41,openai:gpt-4.1,1,1,1,1,1,3,
+Q001-E01,Q001,netmedex_hybrid_rag,claude_haiku,anthropic:claude-haiku-4-5-20251001,1,1,1,1,1,3,Both PMIDs confirm icariin upregulates RUNX2 expression through miRNA pathways (miR-153 and miR-138-5p). Western blot and qPCR data directly support upregulation.
+Q001-E05,Q001,netmedex_hybrid_rag,claude_haiku,anthropic:claude-haiku-4-5-20251001,1,1,1,1,1,3,Abstract confirms icariin increases JMJD3 (kdm6b) expression levels in dose/time-dependent manner. Dual luciferase and qPCR/Western blotting validate upregulation through miRNA-related mechanism.
+Q004-E15,Q004,netmedex_hybrid_rag,claude_haiku,anthropic:claude-haiku-4-5-20251001,1,1,1,1,1,3,Abstract explicitly states curcumin can 'inhibit gastric cancer' and 'suppress multiple signaling pathways.' Treats relation appropriate for therapeutic agent.
+Q008-E03,Q008,netmedex_hybrid_rag,claude_haiku,anthropic:claude-haiku-4-5-20251001,1,1,1,1,1,3,CFTR loss causes cystic fibrosis. Both abstracts explicitly state CF is caused by loss of CFTR anion channel function. Direct causal relationship well-established.
+Q008-E05,Q008,netmedex_hybrid_rag,claude_haiku,anthropic:claude-haiku-4-5-20251001,1,1,0,1,1,2,"CFTR may function as tumor suppressor per murine studies, but relation to intestinal inflammation mechanism unclear. Evidence supports CFTR-malignancy link, not direct suppression."
+Q011-E07,Q011,netmedex_hybrid_rag,claude_haiku,anthropic:claude-haiku-4-5-20251001,1,1,1,1,1,3,PMID 29662316 explicitly states metformin activated AMPK and suppressed mTOR. PMID 35072253 confirms AMPK/mTOR pathway involvement in metformin's antitumor mechanism.
+Q011-E08,Q011,netmedex_hybrid_rag,claude_haiku,anthropic:claude-haiku-4-5-20251001,1,1,1,1,1,3,Both abstracts explicitly state metformin activates AMPK. PMID 34062070 directly describes AMPK activation as one of metformin's mechanisms. PMID 40140842 confirms metformin as AMPK activator with downstream mTOR inhibition in cancer cells.
+Q018-E01,Q018,netmedex_hybrid_rag,claude_haiku,anthropic:claude-haiku-4-5-20251001,1,1,1,1,1,3,"Both entities (immune, CTLA-4) are valid. Abstract explicitly states ICI therapy targets CTLA-4 and generates immune-related adverse events (irAEs). Association is clearly supported."
+Q018-E02,Q018,netmedex_hybrid_rag,claude_haiku,anthropic:claude-haiku-4-5-20251001,1,1,1,1,1,3,PD-1 blockade (PDCD1) clearly associated with immune-related adverse events (irAEs). Abstract explicitly states ICI therapy targeting PD-1 generates distinctive irAEs including cardiovascular toxicity.
+Q023-E02,Q023,netmedex_hybrid_rag,claude_haiku,anthropic:claude-haiku-4-5-20251001,1,1,1,1,1,3,Both abstracts explicitly state hypoxia promotes metastasis through EMT and HIF-1alpha mechanisms. Direct textual support for causal relationship.
+Q023-E07,Q023,netmedex_hybrid_rag,claude_haiku,anthropic:claude-haiku-4-5-20251001,1,1,1,1,1,3,Hypoxia and oxygen are clearly associated; hypoxia defined as inadequate oxygen supply. Direct textual support in abstract.
+Q025-E04,Q025,netmedex_hybrid_rag,claude_haiku,anthropic:claude-haiku-4-5-20251001,1,1,0,1,1,2,"DMD causes muscle degeneration/inflammation, not 'muscular dystrophy duchenne'. Relation type should be 'causes_pathology' or similar, not generic 'causes'."
+Q025-E05,Q025,netmedex_hybrid_rag,claude_haiku,anthropic:claude-haiku-4-5-20251001,1,1,1,1,1,3,PMID 19897286 explicitly demonstrates epigallocatechin gallate (green tea extract) decreases NF-kappaB staining in mdx mice muscle fibers. Direct evidence supports the decreases relation.
+Q029-E07,Q029,netmedex_hybrid_rag,claude_haiku,anthropic:claude-haiku-4-5-20251001,1,1,1,1,1,3,Atherosclerosis clearly related to cardiovascular diseases. Abstract explicitly states atherosclerosis contributes to cardiovascular disease and discusses shared mechanisms promoting AS progression.
+Q029-E17,Q029,netmedex_hybrid_rag,claude_haiku,anthropic:claude-haiku-4-5-20251001,1,0,0,0,0,3,"Evidence shows ethanol induces senescence/inflammation in endothelial cells, not inflammation inducing ethanol. Relation direction is reversed."
+Q037-E03,Q037,netmedex_hybrid_rag,claude_haiku,anthropic:claude-haiku-4-5-20251001,1,1,0,1,1,2,"Hepatitis B is associated with HCC, not generic 'infections'. Relation type should be 'causes' or 'leads_to' rather than 'associated_with' given mechanistic context."
+Q037-E05,Q037,netmedex_hybrid_rag,claude_haiku,anthropic:claude-haiku-4-5-20251001,0,1,0,0,0,3,"Direction reversed: inflammation causes HCC, not vice versa. Evidence shows chronic HBV infection → inflammation → HCC pathway, not carcinoma causing inflammation."
+Q048-E01,Q048,netmedex_hybrid_rag,claude_haiku,anthropic:claude-haiku-4-5-20251001,1,1,1,1,0,3,"Melatonin prevents bone diseases is supported. However, the specific causal pathway through miR-21 is NOT evidenced. Evidence shows miR-335-5p, not miR-21."
+Q048-E05,Q048,netmedex_hybrid_rag,claude_haiku,anthropic:claude-haiku-4-5-20251001,1,1,1,1,1,3,"Abstract clearly states melatonin increased BMAL1 expression in RAW264.7 cells. However, question asks about miR-21 pathway; this edge involves BMAL1/ROS/MAPK-p38 instead."
+Q015-E01,Q015,netmedex_hybrid_rag,claude_haiku,anthropic:claude-haiku-4-5-20251001,1,1,1,1,1,3,Abstract explicitly states SARS-CoV2 causes COVID-19 and describes resulting coagulopathy. Direct causal relationship clearly established.
+Q015-E03,Q015,netmedex_hybrid_rag,claude_haiku,anthropic:claude-haiku-4-5-20251001,1,1,1,1,1,3,"Direct association clearly established. Abstract explicitly states SARS-CoV-2 causes COVID-associated coagulopathy with hypercoagulability, microthrombi, and macrothrombi. Strong mechanistic evidence provided."
+Q016-E02,Q016,netmedex_hybrid_rag,claude_haiku,anthropic:claude-haiku-4-5-20251001,0,0,0,0,0,3,"Edge direction reversed: SMA is caused by SMN deficiency, not vice versa. Source and target entities are inverted relative to the question's causal pathway."
+Q016-E03,Q016,netmedex_hybrid_rag,claude_haiku,anthropic:claude-haiku-4-5-20251001,1,1,1,1,1,3,"SMA is explicitly defined as neuromuscular disease. Both abstracts confirm SMA is characterized by motor neuron loss and muscle atrophy, establishing clear association with neuromuscular diseases category."
+Q001-E01,Q001,netmedex_hybrid_rag,gemini_pro,google:gemini-3.1-pro-preview,1,1,1,1,1,3,Both abstracts explicitly state that icariin treatment increases the expression levels of Runx2.
+Q001-E02,Q001,netmedex_hybrid_rag,gemini_pro,google:gemini-3.1-pro-preview,1,1,1,1,1,3,The abstracts clearly state that icariin improves osteoporosis (OP) and is an effective candidate for its management.
+Q001-E03,Q001,netmedex_hybrid_rag,gemini_pro,google:gemini-3.1-pro-preview,0,0,0,0,0,3,The target entity '0409' is invalid and does not correspond to any entity mentioned in the provided text.
+Q001-E04,Q001,netmedex_hybrid_rag,gemini_pro,google:gemini-3.1-pro-preview,1,1,1,1,1,3,The abstract explicitly states that icariin (ICA) regulates the expression of miRNA-335.
+Q001-E05,Q001,netmedex_hybrid_rag,gemini_pro,google:gemini-3.1-pro-preview,1,1,1,1,1,3,"The abstract states that icariin treatment increased the expression levels of JMJD3 (which is an alias for KDM6B), supporting the upregulation relationship."
+Q001-E06,Q001,netmedex_hybrid_rag,gemini_pro,google:gemini-3.1-pro-preview,1,1,1,1,1,3,"The text explicitly mentions that icariin acts through the modulation of the MITF/Rab27A signaling pathway, supporting the 'regulates' relationship."
+Q001-E07,Q001,netmedex_hybrid_rag,gemini_pro,google:gemini-3.1-pro-preview,1,1,1,1,1,3,"The abstract clearly states that miR-153 expression levels were increased following treatment with icariin, confirming the upregulation."
+Q001-E08,Q001,netmedex_hybrid_rag,gemini_pro,google:gemini-3.1-pro-preview,1,1,1,1,1,3,"The conclusion explicitly states that ICA (icariin) exerts its effect by downregulating Mmp3 expression, supporting the extracted relationship."
+Q001-E09,Q001,netmedex_hybrid_rag,gemini_pro,google:gemini-3.1-pro-preview,1,1,1,1,1,3,The abstract explicitly states that ICA (icariin) improves osteoporosis by up-regulating miR-335-5p to inhibit PTEN.
+Q001-E10,Q001,netmedex_hybrid_rag,gemini_pro,google:gemini-3.1-pro-preview,1,1,1,1,1,3,"The abstract mentions that icariin modulates the MITF/Rab27A signaling pathway, supporting the regulation of Rab27A."
+Q001-E11,Q001,netmedex_hybrid_rag,gemini_pro,google:gemini-3.1-pro-preview,1,1,1,1,1,3,The abstract clearly states that ICA (icariin) reduces the amount of VEGF (VEGFA) in serum induced by glucocorticoids.
+Q001-E12,Q001,netmedex_hybrid_rag,gemini_pro,google:gemini-3.1-pro-preview,1,1,1,1,1,3,"The abstract demonstrates that icariin-treated exosomes promote the repair of infected bone defects, supporting the amelioration of bone diseases."
+Q001-E13,Q001,netmedex_hybrid_rag,gemini_pro,google:gemini-3.1-pro-preview,1,0,0,1,0,3,The abstract mentions icariin has an 'anti-osteoporotic effect' but does not explicitly mention the amelioration of 'osteoporotic fractures'.
+Q001-E14,Q001,netmedex_hybrid_rag,gemini_pro,google:gemini-3.1-pro-preview,1,1,1,1,1,3,The abstract explicitly states that 'ICA can prevent the occurrence of steroid-associated ONFH in rats'.
+Q001-E15,Q001,netmedex_hybrid_rag,gemini_pro,google:gemini-3.1-pro-preview,1,1,1,1,1,3,"The abstract explicitly states that 'Icariin, has been shown to regulate the balance between OC and OB' and affects OC-derived exosomes."
+Q001-E16,Q001,netmedex_hybrid_rag,gemini_pro,google:gemini-3.1-pro-preview,1,1,1,1,1,3,"The abstract states that 'Icariin (ICA) is a bioactive compound isolated from epimedium-derived flavonoids', supporting an association."
+Q001-E17,Q001,netmedex_hybrid_rag,gemini_pro,google:gemini-3.1-pro-preview,1,1,1,0,0,3,"The abstract states that glucocorticoids (steroids) induce the overexpression of miRNA-335, not the other way around. The direction of the relationship is incorrect."
+Q001-E18,Q001,netmedex_hybrid_rag,gemini_pro,google:gemini-3.1-pro-preview,1,1,1,0,0,3,"The text indicates that miR-153 upregulates Runx2 (via luciferase activity), which is the opposite direction of the proposed edge."
+Q001-E19,Q001,netmedex_hybrid_rag,gemini_pro,google:gemini-3.1-pro-preview,0,0,0,0,0,3,The target entity '0409' is not mentioned in the text and appears to be an invalid or incorrectly extracted entity (possibly a mis-extraction of mmu_circ_0000349).
+Q001-E20,Q001,netmedex_hybrid_rag,gemini_pro,google:gemini-3.1-pro-preview,0,0,0,0,0,3,"The target entity '0409' is invalid and not found in the provided text. While KDM6B (JMJD3) is mentioned, the relationship cannot be validated with an ungrounded entity."

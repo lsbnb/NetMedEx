@@ -1,0 +1,218 @@
+{
+  "status": "complete",
+  "question_id": "PP005",
+  "domain": "oncology",
+  "question": "What evidence supports the claim that metformin associated_with malignancy, and what are the important study-context limitations?",
+  "question_type": "mechanism",
+  "pubmed_query": "metformin AMPK mTOR cancer apoptosis proliferation",
+  "effective_pubmed_query": "metformin AMPK mTOR cancer apoptosis proliferation",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "24009772",
+    "24750786",
+    "25710562",
+    "26277279",
+    "29167573",
+    "29662316",
+    "30445633",
+    "31205529",
+    "33886150",
+    "34062070",
+    "34576192",
+    "35072253",
+    "35731713",
+    "37371530",
+    "40140842"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports the claim that metformin associated_with malignancy, and what are the important study-context limitations?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "pre_gate_incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "integration_decision": {
+      "method": "three_stage_incremental_utility_router_v1",
+      "mode": "traditional_fallback",
+      "reason": "no_claim_safe_path",
+      "claim_safe_path_count": 0,
+      "incremental_path_count": 0,
+      "confirmatory_path_count": 0,
+      "citation_validation_pmids": [],
+      "policy": "three_stage"
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "disabled",
+      "reason": "integration_mode=traditional_fallback",
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "35072253",
+        "score": 0.5901113219754985
+      },
+      {
+        "pmid": "29167573",
+        "score": 0.5661660653669234
+      },
+      {
+        "pmid": "26277279",
+        "score": 0.5421098967371007
+      },
+      {
+        "pmid": "31205529",
+        "score": 0.5130344451545963
+      },
+      {
+        "pmid": "33886150",
+        "score": 0.512666992774535
+      },
+      {
+        "pmid": "37371530",
+        "score": 0.506625927746597
+      },
+      {
+        "pmid": "29662316",
+        "score": 0.4940480302617234
+      },
+      {
+        "pmid": "30445633",
+        "score": 0.49352324168319467
+      },
+      {
+        "pmid": "34062070",
+        "score": 0.49342381604366425
+      },
+      {
+        "pmid": "24009772",
+        "score": 0.49075455708165183
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "35072253",
+        "score": 0.5901113219754985
+      },
+      {
+        "pmid": "29167573",
+        "score": 0.5661660653669234
+      },
+      {
+        "pmid": "26277279",
+        "score": 0.5421098967371007
+      },
+      {
+        "pmid": "31205529",
+        "score": 0.5130344451545963
+      },
+      {
+        "pmid": "33886150",
+        "score": 0.512666992774535
+      },
+      {
+        "pmid": "37371530",
+        "score": 0.506625927746597
+      },
+      {
+        "pmid": "29662316",
+        "score": 0.4940480302617234
+      },
+      {
+        "pmid": "30445633",
+        "score": 0.49352324168319467
+      },
+      {
+        "pmid": "34062070",
+        "score": 0.49342381604366425
+      },
+      {
+        "pmid": "24009772",
+        "score": 0.49075455708165183
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Direct evidence (human)**  \n- Retrospective cohort and case‑control analyses repeatedly report a lower incidence of several solid tumours and reduced cancer‑related mortality among patients with type‑2 diabetes who are prescribed metformin [PMID: 26277279]. The review summarises these epidemiological studies and notes consistent findings across gynecologic, breast, colorectal and pancreatic cancers [PMID: 35072253].\n\n**Association (human‑clinical)**  \n- Large‑scale meta‑analyses of observational data, as highlighted in the review, link metformin use to decreased morbidity and mortality in gynecologic malignancies, and to a favourable disease course in breast and endometrial cancer [PMID: 35072253].\n\n**Direct evidence (in‑vitro/animal)**  \n- Metformin inhibits proliferation, induces cell‑cycle arrest and apoptosis in colorectal cancer cell lines via AMPK activation and ROS generation, suggesting a mechanistic basis for the epidemiologic association [PMID: 29167573].  \n- In a rat model of esophageal squamous cell carcinoma, chronic metformin treatment reduced tumour incidence and precancerous lesions, supporting chemopreventive activity in vivo [PMID: 30445633].\n\n**Key study‑context limitations**  \n- **Observational design** – most human data are retrospective; confounding by indication, lifestyle, and co‑medication (e.g., other antidiabetics) can bias the apparent protective effect.  \n- **Dose and exposure mismatch** – in‑vitro experiments often use millimolar concentrations far above therapeutic plasma levels, limiting translational relevance [PMID: 26277279].  \n- **Cancer‑type heterogeneity** – protective associations are not uniform across all malignancies; evidence is strongest for hormone‑dependent tumours and weaker or absent for others.  \n- **Lack of randomized controlled trials** – definitive causality cannot be established until adequately powered RCTs evaluate metformin as primary or adjuvant therapy.  \n- **Animal model translatability** – rodent carcinogen models (e.g., NMBzA‑induced esophageal cancer) may not recapitulate human tumour biology or metabolic context [PMID: 30445633].\n\n**Testable hypothesis**  \n- In diabetic patients without prior malignancy, prospective randomisation to metformin versus alternative glucose‑lowering therapy will reduce the incidence of hormone‑responsive cancers over a ≥5‑year follow‑up, mediated by AMPK‑dependent inhibition of mTOR signaling.\n\n**Conclusion**  \nHuman observational studies and mechanistic preclinical data support an inverse association between metformin use and malignancy, but confounding, dose disparities, tumour heterogeneity and the paucity of randomised trials limit causal interpretation."
+  },
+  "answer_finish_reasons": {
+    "traditional_rag": "stop"
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 7.331371307373047e-05,
+    "vector_index": 1.8031626716256142,
+    "kg_expansion": 2.5875866413116455e-05,
+    "answer_traditional_rag": 27.470005862414837,
+    "total": 30.001726046204567
+  },
+  "token_usage": {
+    "output_tokens": 985,
+    "input_tokens": 3955,
+    "total_tokens": 4940
+  },
+  "completed_at": "2026-08-16T20:24:03.090669+00:00"
+}

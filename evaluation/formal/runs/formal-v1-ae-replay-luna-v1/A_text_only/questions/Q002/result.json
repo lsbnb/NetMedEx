@@ -1,0 +1,183 @@
+{
+  "status": "complete",
+  "question_id": "Q002",
+  "domain": "osteoporosis",
+  "question": "Which miRNAs are most frequently linked to osteoporosis-related osteogenesis in the retrieved literature?",
+  "question_type": "retrieval",
+  "pubmed_query": "osteoporosis AND (osteogenesis OR osteoblast) AND (microRNA OR miRNA)",
+  "effective_pubmed_query": "osteoporosis AND (osteogenesis OR osteoblast) AND (microRNA OR miRNA)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "23223004",
+    "23605904",
+    "27904930",
+    "33255179",
+    "33434305",
+    "34311172",
+    "34502371",
+    "35285389",
+    "35831436",
+    "36319624",
+    "36835184",
+    "37215980",
+    "38106447",
+    "39343927",
+    "41369394"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "23605904",
+        "score": 0.6878191953775143
+      },
+      {
+        "pmid": "23223004",
+        "score": 0.673443956361859
+      },
+      {
+        "pmid": "33434305",
+        "score": 0.6728323793075085
+      },
+      {
+        "pmid": "33255179",
+        "score": 0.6696897919625486
+      },
+      {
+        "pmid": "27904930",
+        "score": 0.6549998012811549
+      },
+      {
+        "pmid": "34311172",
+        "score": 0.6521114659752776
+      },
+      {
+        "pmid": "35831436",
+        "score": 0.6478742683656301
+      },
+      {
+        "pmid": "41369394",
+        "score": 0.6446218588584857
+      },
+      {
+        "pmid": "36835184",
+        "score": 0.6365394674050232
+      },
+      {
+        "pmid": "35285389",
+        "score": 0.6333969364853043
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "23605904",
+        "score": 0.6878191953775143
+      },
+      {
+        "pmid": "23223004",
+        "score": 0.673443956361859
+      },
+      {
+        "pmid": "33434305",
+        "score": 0.6728323793075085
+      },
+      {
+        "pmid": "33255179",
+        "score": 0.6696897919625486
+      },
+      {
+        "pmid": "27904930",
+        "score": 0.6549998012811549
+      },
+      {
+        "pmid": "34311172",
+        "score": 0.6521114659752776
+      },
+      {
+        "pmid": "35831436",
+        "score": 0.6478742683656301
+      },
+      {
+        "pmid": "41369394",
+        "score": 0.6446218588584857
+      },
+      {
+        "pmid": "36835184",
+        "score": 0.6365394674050232
+      },
+      {
+        "pmid": "35285389",
+        "score": 0.6333969364853043
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "## Direct evidence\n\n- **miR-214 is the most frequently linked miRNA** in the retrieved literature: it appears in **two records** and is mentioned in multiple osteogenesis-related interactions in one review. In aged human fracture bone specimens, elevated miR-214 correlated with reduced bone formation; in mouse osteoporosis models, miR-214 inhibited osteoblast activity and bone formation by targeting **ATF4** [PMID: 23223004]. It is also discussed in osteogenesis-related lncRNA–miRNA interactions, including **MALAT1/miR-214** and **KCNQ1OT1/miR-214** [PMID: 34311172].\n- **miR-15b** is directly linked to impaired osteoblast differentiation in an ovariectomized mouse osteoporosis model. Silencing miR-15b improved bone-related measures, while miR-15b inhibited osteoblast differentiation and autophagy through **USP7/KDM6B** [PMID: 33434305].\n- **miR-1224-5p** promoted osteoblast differentiation, reduced osteoclast differentiation, and ameliorated estrogen-deficiency- and aging-related osteoporosis in mice; its effects involved **ADCY2/Rap1 signaling** [PMID: 35831436].\n- **miR-582-3p** was upregulated in osteoporosis tissues and inhibited osteoblast markers by targeting **HOXA10**; the supporting cell experiments used osteogenic-differentiated C2C12 cells [PMID: 35285389].\n\n## Association-level evidence\n\nThe review literature additionally highlights:\n\n- **miR-218** as temporally upregulated during osteoblastogenesis [PMID: 23605904].\n- **miR-148a** as temporally upregulated during osteoclastogenesis, relevant to bone remodeling rather than osteoblastogenesis specifically [PMID: 23605904].\n- **miR-30, miR-24-3p, miR-33a, and miR-140-5p** in lncRNA–miRNA regulatory interactions related to osteogenesis [PMID: 34311172].\n\nThus, by **record-level recurrence**, **miR-214 is the clear leader**. The other named miRNAs occur primarily in single retrieved records or review examples.\n\n## Testable hypothesis\n\nThe retrieved evidence supports testing **miR-214 inhibition**, potentially alongside modulation of miR-15b or miR-1224-5p, as an anabolic strategy for osteoporosis. However, the context does not establish comparative clinical efficacy or confirm that these are the most important miRNAs across the broader literature.",
+    "traditional_rag": "## Most frequently linked miRNAs\n\nWithin the 10 retrieved records, **miR-214 is the most frequently linked miRNA**, appearing in two records and in two osteogenesis-related lncRNA interactions in one review:\n\n1. **miR-214** — most frequent  \n   - Elevated miR-214 correlated with reduced bone formation in bone specimens from aged patients with fractures; inhibition promoted osteoblast activity and mineralization in vitro and improved bone formation in osteoporotic mouse models by relieving ATF4 suppression [PMID: 23223004].  \n   - Also cited in osteogenesis-related lncRNA/miRNA interactions, including MALAT1/miR-214 and KCNQ1OT1/miR-214 [PMID: 34311172].\n\n2. **miR-218**  \n   - Identified in a review as temporally upregulated during osteoblastogenesis and associated with osteoblast differentiation [PMID: 23605904].\n\n3. **miR-15b**  \n   - Reported as elevated in osteoporotic mice; silencing improved bone mineral density and mechanical measures. In osteoblasts, miR-15b inhibited differentiation and autophagy through the USP7/KDM6B axis [PMID: 33434305].\n\n4. **miR-1224-5p**  \n   - In vitro and mouse studies showed promotion of osteoblast differentiation, inhibition of osteoclast differentiation, and amelioration of estrogen-deficiency- and aging-related osteoporosis [PMID: 35831436].\n\n5. **miR-582-3p**  \n   - Increased in osteoporosis-associated tissue and decreased during osteogenic differentiation of C2C12 cells; overexpression reduced osteoblast markers through HOXA10 targeting [PMID: 35285389].\n\n### Evidence classification\n\n- **Direct experimental evidence:** miR-214, miR-15b, miR-1224-5p, and miR-582-3p. The evidence is primarily from mouse osteoporosis models and in-vitro osteoblast or precursor-cell studies; miR-214 additionally has evidence from aged human fracture bone specimens [PMID: 23223004].  \n- **Review-level association:** miR-218 and miR-148a are highlighted as osteoblastogenic and osteoclastogenic examples, respectively, but the supplied context does not provide a primary osteoporosis experiment for them [PMID: 23605904].  \n- **Testable therapeutic hypothesis:** miR-214 inhibition, miR-15b inhibition, or miR-1224-5p augmentation could potentially enhance bone formation or restore bone homeostasis, but clinical efficacy and safety are not established in the retrieved literature.",
+    "general_llm": "Without the specific retrieved corpus, an exact frequency ranking cannot be established. In the osteoporosis/osteogenic-differentiation literature, the miRNAs most repeatedly discussed are generally:\n\n| miRNA | Common association with osteogenesis/osteoporosis |\n|---|---|\n| **miR-21** | Usually promotes osteogenic differentiation and bone formation; frequently studied in mesenchymal stem cells and bone-repair models. |\n| **miR-29 family, especially miR-29a/29b** | Promotes osteoblast differentiation and extracellular-matrix mineralization; often linked to collagen regulation and Wnt-related pathways. |\n| **miR-133a** | Commonly described as an inhibitor of osteoblast differentiation, partly through repression of **RUNX2**. |\n| **miR-204/miR-211** | Generally anti-osteogenic; associated with suppression of RUNX2 and reduced osteoblast differentiation. |\n| **miR-214** | Frequently linked to osteoporosis and impaired bone formation; generally inhibits osteoblast activity, although its effects can be cell- and context-dependent. |\n| **miR-218** | Often promotes osteogenesis, particularly through activation or enhancement of Wnt signaling. |\n| **miR-34a** | Commonly associated with reduced osteoblast proliferation/differentiation and altered bone remodeling; effects may differ between osteoblasts and osteoclasts. |\n| **miR-138** | Usually reported as anti-osteogenic by suppressing osteogenic differentiation of progenitor cells. |\n| **miR-146a** | Recurrently studied in inflammatory bone loss and osteoporosis; its effects on osteogenesis are context-dependent but often involve modulation of inflammatory signaling. |\n| **miR-26a** | Frequently associated with enhanced osteogenic differentiation and bone regeneration. |\n| **miR-335-5p** | Generally pro-osteogenic and linked to RUNX2/Wnt-related regulation. |\n| **miR-2861** | A well-known osteogenic miRNA that supports osteoblast differentiation, partly through regulation of **HDAC5**. |\n| **miR-3960** | Often discussed together with miR-2861 in osteoblast differentiation and bone formation. |\n| **miR-31** | Usually anti-osteogenic and implicated in altered osteoblast–osteoclast balance. |\n| **miR-17-5p/miR-20a** | Frequently reported as regulators of RUNX2, BMP, and Wnt signaling, with predominantly pro-osteogenic effects in many models. |\n\nA reasonable qualitative “most frequently recurring” group would therefore be:\n\n**miR-21, miR-29a/29b, miR-133a, miR-204/211, miR-214, miR-218, miR-34a, miR-138, miR-146a, miR-26a, miR-335-5p, and miR-2861/miR-3960.**\n\nThe strongest and most consistent associations are probably for **miR-21, miR-29, miR-133a, miR-204/211, miR-214, miR-218, and miR-2861**. However, reported directionality is not always consistent because it depends on the cell type, disease model, differentiation stage, and whether the study measures osteoblast formation, osteoclast activity, or overall bone remodeling."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 8.568912744522095e-05,
+    "vector_index": 1.7280294448137283,
+    "answer_netmedex_hybrid_rag": 7.722041741013527,
+    "answer_traditional_rag": 6.111929975450039,
+    "answer_general_llm": 8.74725528806448,
+    "total": 24.894063092768192
+  },
+  "token_usage": {
+    "input_tokens": 6851,
+    "total_tokens": 9956,
+    "output_tokens": 3105
+  },
+  "completed_at": "2026-08-11T05:03:49.605719+00:00"
+}

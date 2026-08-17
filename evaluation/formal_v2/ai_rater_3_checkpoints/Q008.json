@@ -1,0 +1,142 @@
+{
+  "question_id": "Q008",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-30T09:04:44.875474+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q008-C001",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Review-level context discussing how CFTR dysfunction leads to low pH, thick mucus, and reduced motility, which drive dysbiosis and subsequent GI inflammation."
+    },
+    {
+      "candidate_id": "Q008-C002",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Provides useful adjacent evidence in a celiac disease model, demonstrating that inflammation and ER stress can downregulate CFTR expression, though it does not directly test CFTR variants causing inflammation."
+    },
+    {
+      "candidate_id": "Q008-C003",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Review-level context comparing intestinal physiology and microbiota dysbiosis between cystic fibrosis and inflammatory bowel disease."
+    },
+    {
+      "candidate_id": "Q008-C004",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Directly tests a candidate mechanism, finding that increased IL-1beta production in CF is not due to an intrinsic increase in NF-kappaB activity from CFTR loss in hematopoietic cells."
+    },
+    {
+      "candidate_id": "Q008-C005",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Directly addresses the requested mechanism, showing that defective CFTR-beta-catenin interaction in CF models leads to beta-catenin degradation and subsequent NF-kappaB nuclear translocation and inflammation."
+    },
+    {
+      "candidate_id": "Q008-C006",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Review-level context discussing mechanisms linking CFTR deficiency to GI cancers, including microbial dysbiosis, inflammation, and Wnt/beta-catenin and NF-kappaB signaling dysregulation."
+    },
+    {
+      "candidate_id": "Q008-C007",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Directly addresses the relationship by showing that CFTR modulation with ivacaftor alters the gut microbiome (e.g., increasing Akkermansia) and reduces intestinal inflammation (calprotectin)."
+    },
+    {
+      "candidate_id": "Q008-C008",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Review-level context discussing the links between CFTR dysfunction, bacterial dysbiosis, reduced short-chain fatty acids, and intestinal inflammation."
+    },
+    {
+      "candidate_id": "Q008-C009",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Review-level context summarizing the multifactorial etiology of CF intestinal inflammation, including CFTR dysfunction, diet, antibiotics, and microbiome alterations."
+    },
+    {
+      "candidate_id": "Q008-C010",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Directly addresses the mechanism using an intestinal-specific Cftr knockout mouse model, demonstrating that epithelial CFTR loss is a primary driver of dysbiosis and elevated fecal calprotectin."
+    },
+    {
+      "candidate_id": "Q008-C011",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Directly addresses mechanisms linking CFTR defects to intestinal disease, highlighting how dehydrated mucus and luminal acidification promote dysbiosis and alter intestinal epithelial cell proliferation and differentiation."
+    },
+    {
+      "candidate_id": "Q008-C012",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Review-level context on ion channels in GI cancer, briefly noting that CFTR deficiency leads to mucus blockage, dysbiosis, and inflammation."
+    },
+    {
+      "candidate_id": "Q008-C013",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Systematic review providing context on CF-related gut dysbiosis and its potential links to local and systemic inflammation."
+    },
+    {
+      "candidate_id": "Q008-C014",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Directly addresses a candidate mechanism, showing that a lack of Bacteroides-derived propionate in CFTR-defective models exacerbates IL-1beta-induced inflammatory responses."
+    },
+    {
+      "candidate_id": "Q008-C015",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Review-level context describing the pathophysiologic triad of obstruction, infection, and inflammation resulting from CFTR dysfunction in the gastrointestinal tract."
+    },
+    {
+      "candidate_id": "Q008-C016",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Directly addresses the mechanism, demonstrating that defective intestinal CFTR causes gut dysbiosis and increased intestinal permeability, which in turn drive mucosal and liver inflammation."
+    },
+    {
+      "candidate_id": "Q008-C017",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "duplicate",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This record is a duplicate of candidate Q008-C010, reporting the exact same study on intestinal-specific Cftr knockout mice."
+    },
+    {
+      "candidate_id": "Q008-C018",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Review-level context discussing mechanisms of CFTR as a tumor suppressor, including dysregulation of Wnt/beta-catenin, dysbiosis, and intestinal inflammation."
+    },
+    {
+      "candidate_id": "Q008-C019",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Directly addresses the mechanism in vitro, showing that CFTR knockdown in intestinal epithelial cells increases IL-8 secretion via enhanced activation of ERK1/2 MAPK, IkappaBalpha, and NF-kappaB pathways."
+    }
+  ],
+  "raw_response_sha256": "d4f0cff9c81868cbe344cf88431caf234b029b78f50c4004f8b20d4ce8cc0734"
+}

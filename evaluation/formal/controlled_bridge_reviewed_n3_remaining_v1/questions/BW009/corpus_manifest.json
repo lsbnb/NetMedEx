@@ -1,0 +1,360 @@
+{
+  "question_id": "BW009",
+  "status": "eligible",
+  "corpus_strategy": "controlled_endpoint_isolated_shared_bridge",
+  "same_corpus_for_text_and_hybrid": true,
+  "mediators_withheld_from_system_query": true,
+  "source_patterns": [
+    "\\bSGLT2\\s+inhibitor\\b",
+    "\\bSGLT2i\\b",
+    "\\bempagliflozin\\b",
+    "\\bdapagliflozin\\b",
+    "\\bcanagliflozin\\b",
+    "\\bSodium.glucose\\s+cotransporter.?2\\b"
+  ],
+  "target_patterns": [
+    "\\brenal\\s+protection\\b",
+    "\\bnephroprotection\\b",
+    "\\bkidney\\s+protection\\b",
+    "\\brenoprotection\\b",
+    "\\brenoprotective\\b"
+  ],
+  "source_identifiers": [],
+  "target_identifiers": [],
+  "target_side_forbidden_source_patterns": [
+    "\\bSGLT2\\b",
+    "\\bempagliflozin\\b",
+    "\\bdapagliflozin\\b",
+    "\\bcanagliflozin\\b"
+  ],
+  "target_side_forbidden_source_identifiers": [],
+  "eligible_mediators": [
+    "AMPK"
+  ],
+  "mediator_audit": [
+    {
+      "name": "tubuloglomerular feedback",
+      "queries": {
+        "source": "SGLT2 inhibitor[Title/Abstract] AND (tubuloglomerular feedback[Title/Abstract] OR afferent arteriole[Title/Abstract] OR glomerular hyperfiltration[Title/Abstract])",
+        "target": "(tubuloglomerular feedback[Title/Abstract] OR glomerular hyperfiltration[Title/Abstract]) AND renal protection[Title/Abstract]"
+      },
+      "candidate_pmids": {
+        "source": [
+          "32665641",
+          "35113333",
+          "36216484",
+          "38453269",
+          "39397109",
+          "27440829",
+          "33860925",
+          "39604709",
+          "37373108",
+          "32067179",
+          "34195526",
+          "28395981",
+          "36171965",
+          "37957121",
+          "35962863",
+          "33117442",
+          "39831941",
+          "35414444",
+          "41665872",
+          "24673844",
+          "24746173",
+          "28381459",
+          "27878313",
+          "35000230",
+          "33645318",
+          "28759755",
+          "35373074",
+          "24226524",
+          "36380914",
+          "38801992"
+        ],
+        "target": [
+          "35113333",
+          "40053507",
+          "39397109",
+          "28395981",
+          "25470017",
+          "33677441",
+          "35453626",
+          "37273240",
+          "34150796",
+          "25192954",
+          "33922546",
+          "15631326",
+          "37957121",
+          "36300389",
+          "39088648",
+          "24746173",
+          "42392584",
+          "41479818",
+          "29792136",
+          "36082669",
+          "30560277",
+          "28760224",
+          "36114995",
+          "42411232"
+        ]
+      },
+      "accepted_pmids": {
+        "source": [
+          "38453269",
+          "34195526",
+          "35962863"
+        ],
+        "target": [
+          "37273240"
+        ]
+      },
+      "annotation_identifiers": {
+        "source": [],
+        "target": []
+      },
+      "shared_mediator_identifiers": [],
+      "rejected_pmids": {
+        "source": {
+          "32665641": [
+            "mediator_absent"
+          ],
+          "35113333": [
+            "target_leak"
+          ],
+          "36216484": [
+            "mediator_absent",
+            "source_absent",
+            "target_leak"
+          ],
+          "39397109": [
+            "mediator_absent",
+            "target_leak"
+          ],
+          "27440829": [
+            "target_leak"
+          ],
+          "33860925": [
+            "mediator_absent",
+            "target_leak"
+          ],
+          "39604709": [
+            "mediator_absent"
+          ],
+          "37373108": [
+            "mediator_absent",
+            "source_absent"
+          ],
+          "32067179": [
+            "mediator_absent",
+            "target_leak"
+          ],
+          "28395981": [
+            "target_leak"
+          ],
+          "36171965": [
+            "target_leak"
+          ],
+          "37957121": [
+            "source_absent",
+            "target_leak"
+          ]
+        },
+        "target": {
+          "35113333": [
+            "source_leak"
+          ],
+          "40053507": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "39397109": [
+            "mediator_absent"
+          ],
+          "28395981": [
+            "source_leak"
+          ],
+          "25470017": [
+            "source_leak"
+          ],
+          "33677441": [
+            "mediator_absent"
+          ],
+          "35453626": [
+            "mediator_absent"
+          ],
+          "34150796": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "25192954": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "33922546": [
+            "mediator_absent",
+            "target_absent"
+          ],
+          "15631326": [
+            "mediator_absent"
+          ],
+          "37957121": [
+            "source_leak"
+          ],
+          "36300389": [
+            "mediator_absent"
+          ],
+          "39088648": [
+            "mediator_absent"
+          ],
+          "24746173": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "42392584": [
+            "source_leak"
+          ],
+          "41479818": [
+            "target_absent",
+            "source_leak"
+          ],
+          "29792136": [
+            "mediator_absent"
+          ],
+          "36082669": [
+            "mediator_absent"
+          ],
+          "30560277": [
+            "mediator_absent"
+          ],
+          "28760224": [
+            "target_absent",
+            "source_leak"
+          ],
+          "36114995": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "42411232": [
+            "target_absent",
+            "source_leak"
+          ]
+        }
+      },
+      "bridge_eligible": false
+    },
+    {
+      "name": "AMPK",
+      "queries": {
+        "source": "SGLT2 inhibitor[Title/Abstract] AND (AMPK[Title/Abstract] OR AMP-activated protein kinase[Title/Abstract])",
+        "target": "(AMPK[Title/Abstract] OR AMP-activated protein kinase[Title/Abstract]) AND renal protection[Title/Abstract]"
+      },
+      "candidate_pmids": {
+        "source": [
+          "40767292",
+          "41122918",
+          "25812364",
+          "39511548",
+          "41835945",
+          "40001588",
+          "37681811",
+          "41545323",
+          "41392217",
+          "40214461",
+          "41064453",
+          "38010034",
+          "35435536",
+          "27391020",
+          "37684337",
+          "40451567",
+          "29588466",
+          "37126209",
+          "32510137",
+          "41525029",
+          "40346951",
+          "37792168",
+          "41081789",
+          "36686683",
+          "34660744",
+          "40285818",
+          "41525198",
+          "39922424",
+          "40373594",
+          "37211324"
+        ],
+        "target": [
+          "40578033",
+          "30401006",
+          "38757723",
+          "32364526",
+          "41285328",
+          "41835945",
+          "40846098",
+          "25087994",
+          "41797844",
+          "41519764",
+          "38583729",
+          "35641586",
+          "41338293",
+          "42412527",
+          "32025205",
+          "37723077",
+          "39737132",
+          "34046744",
+          "41847307",
+          "35480869",
+          "38145344",
+          "37425219",
+          "35129424",
+          "42332771",
+          "36832842",
+          "40257493",
+          "42022570",
+          "42381412",
+          "34621173",
+          "31401495"
+        ]
+      },
+      "accepted_pmids": {
+        "source": [
+          "40767292",
+          "41122918",
+          "25812364"
+        ],
+        "target": [
+          "40578033",
+          "30401006",
+          "38757723"
+        ]
+      },
+      "annotation_identifiers": {
+        "source": [
+          "5563"
+        ],
+        "target": [
+          "5563"
+        ]
+      },
+      "shared_mediator_identifiers": [
+        "5563"
+      ],
+      "rejected_pmids": {
+        "source": {},
+        "target": {}
+      },
+      "bridge_eligible": true
+    }
+  ],
+  "distractor_audit": null,
+  "fetched_pmids": [
+    "38453269",
+    "34195526",
+    "35962863",
+    "37273240",
+    "40767292",
+    "41122918",
+    "25812364",
+    "40578033",
+    "30401006",
+    "38757723"
+  ]
+}

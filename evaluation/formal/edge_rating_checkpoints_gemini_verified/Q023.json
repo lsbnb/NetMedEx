@@ -1,0 +1,129 @@
+{
+  "question_id": "Q023",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-08-01T05:04:17.425212+00:00",
+  "ratings": [
+    {
+      "edge_id": "Q023-E01",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Metastasis is not explicitly mentioned in the supporting titles, making the edge unsupported by the provided text."
+    },
+    {
+      "edge_id": "Q023-E02",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles explicitly mention hypoxia-induced changes in cancers (neoplasms), supporting the association."
+    },
+    {
+      "edge_id": "Q023-E03",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles explicitly link hypoxia and the HIF-1alpha network."
+    },
+    {
+      "edge_id": "Q023-E04",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] TGFB1 is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q023-E05",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly states 'Hypoxia-induced up-regulation of VASP'."
+    },
+    {
+      "edge_id": "Q023-E06",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title mentions 'TET-Mediated Epigenetic Changes' alongside hypoxia, supporting a meaningful relationship with TET1, but does not specify that hypoxia 'activates' it."
+    },
+    {
+      "edge_id": "Q023-E07",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] miR-204 is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q023-E08",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Neither hypoxia nor deferoxamine is mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q023-E09",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Oxygen is not explicitly mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q023-E10",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Hypoxia is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q023-E11",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly states HIF-1alpha promotes metastasis of gastric cancer."
+    },
+    {
+      "edge_id": "Q023-E12",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly states HIF-1alpha promotes metastasis of gastric cancer."
+    },
+    {
+      "edge_id": "Q023-E13",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Metastasis is not mentioned in the supporting titles."
+    },
+    {
+      "edge_id": "Q023-E14",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Metastasis is not mentioned in the supporting titles."
+    },
+    {
+      "edge_id": "Q023-E15",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] EGLN3 is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q023-E16",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] miR-210 is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q023-E17",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] SNAI1 is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q023-E18",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly states HIF-1alpha promotes EMT and metastasis through direct regulation of ZEB1, implying upregulation."
+    },
+    {
+      "edge_id": "Q023-E19",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] TWIST1 is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q023-E20",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] HIF-1alpha is not mentioned in the supporting title."
+    }
+  ],
+  "raw_response_sha256": "eb232158448a7f063141ca9d366a8ba0eaef35569f154a4e6c9b954c1039ca30"
+}

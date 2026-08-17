@@ -1,0 +1,53 @@
+{
+  "task": "answer",
+  "question_id": "Q041",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "e271640da1fbe44290b3de26894c7d0c687246f9ba921db07463b28aaad0df2f",
+  "raw_response_sha256": "892fdccee927a81a7b8a232d71237866a3b3e24187a1d741ec5d249fa10c0aa4",
+  "usage": {
+    "input_tokens": 4617,
+    "output_tokens": 466,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 5083
+  },
+  "rated_at": "2026-08-12T19:23:40.942376+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q041-A",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive mechanistic coverage with PMID citations. Evidence levels clearly distinguished. Minor risk of unverified PMID accuracy, but mechanistic claims are well-supported and coherent."
+      },
+      {
+        "answer_id": "Q041-B",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 2,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Accurate mechanistic summary but lacks citations. No PMIDs provided, limiting verifiability. Good overview but insufficient grounding for research use."
+      },
+      {
+        "answer_id": "Q041-C",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Well-structured with direct/associative/hypothesis tiers. Evidence levels labeled. PMID citations provided. Slightly redundant in places but thorough and research-ready."
+      }
+    ],
+    "preferred_item_id": "Q041-A",
+    "pairwise_reason": "Q041-A and Q041-C are both high quality with citations and mechanistic depth. Q041-A edges out with slightly cleaner organization, explicit human/animal/in-vitro labeling, and a concise conclusion synthesizing all pathways. Q041-B lacks citations and is less complete."
+  }
+}

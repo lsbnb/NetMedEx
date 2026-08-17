@@ -1,0 +1,362 @@
+##USE-MESH-VOCABULARY
+16461228|t|HBV induced carcinogenesis.
+16461228|a|Hepatocellular carcinoma (HCC) is one of the rare human neoplasms associated with viral infections. Hepatitis B virus (HBV) and hepatitis C virus (HCV) are the most important etiological factors of HCC, accounting for more than 70% of cases worldwide. The risk of HCC development is greatly increased in chronic viral carriers exposed to other recognized risk factors, including exposure to aflatoxin B1, alcoholic cirrhosis and diabetes. The importance of HBV genotypes and precore or core promoter mutants remains incompletely understood. The role of HBV in tumour formation appears to be complex and may involve both direct and indirect mechanisms. Integration of HBV DNA into the host genome occurs at early steps of clonal tumour expansion, and it has been shown to induce direct insertional mutagenesis of diverse cancer-related genes in a number of cases. Chronic liver inflammation and hepatic regeneration induced by cellular immune responses may favour the accumulation of genetic alterations in infected hepatocytes. Prolonged expression of the viral regulatory protein HBx and the large envelope protein LHBs may contribute in deregulating the cellular transcription program and proliferation control, and sensitize liver cells to carcinogenic factors. Recent genetic studies have provided insight into the mechanisms underlying viral-associated hepatocarcinogenesis. It has been shown that the rate of chromosomal alterations is significantly increased in HBV-related tumours compared with tumours associated with other risk factors. HBV might therefore play a role in enhancing genomic instability. Inactivation of p53 by mutations and regional allelic deletions is found more frequently in tumours associated with HBV infection. By contrast, HBV related tumours harbour a low rate of beta-catenin mutations. Together, these data strongly support the notion that chronic HBV infection might trigger specific oncogenic pathways, thus playing a role beyond stimulation of host immune responses and chronic necro-inflammatory liver disease.
+16461228	0	3	HBV	Species	10407
+16461228	12	26	Carcinogenesis	Disease	MESH:D063646
+16461228	28	52	Carcinoma Hepatocellular	Disease	MESH:D006528
+16461228	54	57	Carcinoma Hepatocellular	Disease	MESH:D006528
+16461228	78	83	human	Species	9606
+16461228	84	93	Neoplasms	Disease	MESH:D009369
+16461228	110	126	Virus Diseases	Disease	MESH:D014777
+16461228	128	145	Hepatitis B virus	Species	10407
+16461228	147	150	HBV	Species	10407
+16461228	156	173	hepatitis C virus	Species	11103
+16461228	175	178	HCV	Species	11103
+16461228	226	229	Carcinoma Hepatocellular	Disease	MESH:D006528
+16461228	292	295	Carcinoma Hepatocellular	Disease	MESH:D006528
+16461228	419	431	Aflatoxin B1	Chemical	MESH:D016604
+16461228	433	452	Liver Cirrhosis Alcoholic	Disease	MESH:D008104
+16461228	457	465	Diabetes Mellitus	Disease	MESH:D003920
+16461228	485	488	HBV	Species	10407
+16461228	581	584	HBV	Species	10407
+16461228	588	594	Neoplasms	Disease	MESH:D009369
+16461228	695	698	HBV	Species	10407
+16461228	756	762	Neoplasms	Disease	MESH:D009369
+16461228	848	854	Neoplasms	Disease	MESH:D009369
+16461228	891	917	Inflammation	Disease	MESH:D007249
+16461228	1109	1112	X	Gene	944566
+16461228	1144	1148	S	Gene	944569
+16461228	1271	1283	Precancerous Conditions	Disease	MESH:D011230
+16461228	1386	1406	hepatocarcinogenesis	Disease	-
+16461228	1497	1500	HBV	Species	10407
+16461228	1509	1516	Neoplasms	Disease	MESH:D009369
+16461228	1531	1538	Neoplasms	Disease	MESH:D009369
+16461228	1575	1578	HBV	Species	10407
+16461228	1657	1660	TP53	Gene	7157
+16461228	1733	1740	Neoplasms	Disease	MESH:D009369
+16461228	1757	1770	Hepatitis B	Disease	MESH:D006509
+16461228	1785	1788	HBV	Species	10407
+16461228	1797	1804	Neoplasms	Disease	MESH:D009369
+16461228	1827	1839	CTNNB1	Gene	1499
+16461228	1913	1926	Hepatitis B	Disease	MESH:D006509
+16461228	2046	2078	Liver Diseases	Disease	MESH:D008107
+16461228	Positive_Correlation	MESH:D011230	944566
+16461228	Negative_Correlation	MESH:D009369	7157
+16461228	Association	MESH:D006509	7157
+16461228	Positive_Correlation	MESH:D011230	944569
+16461228	Positive_Correlation	MESH:D016604	MESH:D006528
+
+20413301|t|Hepatitis B virus-related hepatocarcinogenesis: molecular oncogenic potential of clear or occult infections.
+20413301|a|Chronic viral infection is the most important oncogenetic factor, and hepatitis B virus (HBV) plays an important role in the development of hepatocellular carcinoma (HCC). HBV-related carcinogenesis is a multi-step process, encompassing the combination of different, not mutually exclusive effects such as the induction of chronic liver inflammation and regeneration, its integration into the hepatocyte genome and the transactivating and transforming activity of several viral proteins (HBx and truncated Pre-S2/S) that may stimulate cellular oncogenes or suppress growth-regulating genes. Data related to the influence of different hepatitis B virus genotypes and the emergence of selective variants as biomarkers of HCC development still remain controversial. At last, recent studies on occult HBV infection, as defined by serologically undetectable hepatitis B surface antigen (HBsAg-), despite the presence of circulating HBV DNA, suggest that the occult viral strains, maintaining the transcriptional activity and the pro-oncogenetic assets of the clear HBV infection (HBsAg+), may harbour a potential risk for liver cancer development.
+20413301	0	17	Hepatitis B virus	Species	10407
+20413301	109	132	Virus Diseases	Disease	MESH:D014777
+20413301	179	196	hepatitis B virus	Species	10407
+20413301	198	201	HBV	Species	10407
+20413301	249	273	Carcinoma Hepatocellular	Disease	MESH:D006528
+20413301	275	278	Carcinoma Hepatocellular	Disease	MESH:D006528
+20413301	281	284	HBV	Species	10407
+20413301	293	307	Carcinogenesis	Disease	MESH:D063646
+20413301	432	458	Inflammation	Disease	MESH:D007249
+20413301	597	600	X	Gene	944566
+20413301	615	623	Pre-S2/S	Gene	-
+20413301	743	760	hepatitis B virus	Species	10407
+20413301	828	831	Carcinoma Hepatocellular	Disease	MESH:D006528
+20413301	906	919	Hepatitis B	Disease	MESH:D006509
+20413301	962	989	hepatitis B surface antigen	Species	-
+20413301	991	997	HBsAg-	Species	-
+20413301	1036	1039	HBV	Species	10407
+20413301	1169	1182	HBV infection	Species	-
+20413301	1226	1238	Carcinoma Hepatocellular	Disease	MESH:D006528
+
+20485626|t|Molecular Pathogenesis of Hepatitis-B-virus-associated Hepatocellular Carcinoma.
+20485626|a|Hepatocellular carcinoma (HCC) is one of the most frequent and malignant diseases worldwide. Epidemiological studies have clearly demonstrated that chronic hepatitis B virus (HBV) infection is a major etiological factor in the development of HCC. The pathogenesis of HBV-associated HCC has been studied extensively, and the molecular changes associated with malignant transformation have been identified. The predominant carcinogenic mechanisms of HBV-associated HCC are chronic inflammation and the effects of cytokines in the development of fibrosis and liver cell proliferation. An important role is also played by the integration of HBV DNA into host cellular DNA, which disrupts or promotes the expression of cellular genes that are important in cell growth and differentiation. Especially, HBx protein is a transactivating protein that promotes cell growth, survival, and the development of HCC. Continued investigation of the mechanisms underlying hepatocarcinogenesis will refine our current understanding of the molecular and cellular basis for neoplastic transformation in the liver. Prevention of HBV infections and effective treatments for chronic hepatitis B are still needed for the global control of HBV-associated HCC. This review summarizes the current knowledge on the mechanisms involved in HBV-associated hepatocarcinogenesis.
+20485626	26	43	Hepatitis-B-virus	Species	10407
+20485626	55	79	Carcinoma Hepatocellular	Disease	MESH:D006528
+20485626	81	105	Carcinoma Hepatocellular	Disease	MESH:D006528
+20485626	107	110	Carcinoma Hepatocellular	Disease	MESH:D006528
+20485626	144	162	Neoplasms	Disease	MESH:D009369
+20485626	237	270	Hepatitis B	Disease	MESH:D006509
+20485626	323	326	Carcinoma Hepatocellular	Disease	MESH:D006528
+20485626	363	366	Carcinoma Hepatocellular	Disease	MESH:D006528
+20485626	544	547	Carcinoma Hepatocellular	Disease	MESH:D006528
+20485626	552	572	Inflammation	Disease	MESH:D007249
+20485626	624	632	Fibrosis	Disease	MESH:D005355
+20485626	877	880	X	Gene	944566
+20485626	978	981	Carcinoma Hepatocellular	Disease	MESH:D006528
+20485626	1036	1056	hepatocarcinogenesis	Disease	-
+20485626	1189	1203	Hepatitis B	Disease	MESH:D006509
+20485626	1241	1252	Hepatitis B	Disease	MESH:D006509
+20485626	1311	1314	Carcinoma Hepatocellular	Disease	MESH:D006528
+20485626	1406	1426	hepatocarcinogenesis	Disease	-
+20485626	Association	MESH:D006528	944566
+
+25646384|t|Hepatocellular carcinoma.
+25646384|a|The hepatitis B virus (HBV) is a widespread human pathogen that causes liver inflammation, cirrhosis, and hepatocellular carcinoma (HCC). Recent sequencing technologies have refined our knowledge of the genomic landscape and pathogenesis of HCC, but the mechanisms by which HBV exerts its oncogenic role remain controversial. In a prevailing view, inflammation, liver damage, and regeneration may foster the accumulation of genetic and epigenetic defects leading to cancer onset. However, a more direct and specific contribution of the virus is supported by clinical and biological observations. Among genetically heterogeneous HCCs, HBV-related tumors display high genomic instability, which may be attributed to the ability of HBV to integrate its DNA into the host cell genome, provoking chromosomal alterations and insertional mutagenesis of cancer genes. The viral transactivator HBx may also participate in transformation by deregulating diverse cellular machineries. A better understanding of the complex mechanisms linking HBV to HCC will improve prevention and treatment strategies. 
+25646384	0	24	Carcinoma Hepatocellular	Disease	MESH:D006528
+25646384	30	47	hepatitis B virus	Species	10407
+25646384	49	52	HBV	Species	10407
+25646384	70	75	human	Species	9606
+25646384	97	115	Inflammation	Disease	MESH:D007249
+25646384	117	126	Fibrosis	Disease	MESH:D005355
+25646384	132	156	Carcinoma Hepatocellular	Disease	MESH:D006528
+25646384	158	161	Carcinoma Hepatocellular	Disease	MESH:D006528
+25646384	267	270	Carcinoma Hepatocellular	Disease	MESH:D006528
+25646384	300	303	HBV	Species	10407
+25646384	374	386	Inflammation	Disease	MESH:D007249
+25646384	388	400	Chemical and Drug Induced Liver Injury	Disease	MESH:D056486
+25646384	450	480	Genetic Diseases Inborn	Disease	MESH:D030342
+25646384	492	498	Neoplasms	Disease	MESH:D009369
+25646384	654	658	HCCs	Disease	-
+25646384	660	663	HBV	Species	10407
+25646384	672	678	Neoplasms	Disease	MESH:D009369
+25646384	755	758	HBV	Species	10407
+25646384	872	878	Neoplasms	Disease	MESH:D009369
+25646384	911	914	X	Gene	944566
+25646384	1057	1060	HBV	Species	10407
+25646384	1064	1067	Carcinoma Hepatocellular	Disease	MESH:D006528
+
+28097530|t|Virus-induced hepatocellular carcinoma with special emphasis on HBV.
+28097530|a|Hepatocellular carcinoma (HCC) is a common malignant tumor with high lethality, and the hepatitis B virus (HBV) is a chief cause. HBV can accelerate HCC via multiple mechanisms. First, HBV induces immune reactions that lead to repeated hepatic inflammation, fibrosis and a deficient immune microenvironment. Subsequently, HBV can modify host genes near the insertion point through DNA integration to cause host cell genome instability and to generate carcinogenic fusion proteins. Additionally, HBV expresses diverse active proteins, especially HBx and HBs, which have a range of transactivation functions such as regulation of apoptosis, interference with intracellular signaling pathways, and alteration of epigenetics. Currently, primary prevention measures for HBV-induced HCC focus on vaccination and antiviral treatment. Here, we report the epidemiology, the molecular mechanism and the progress in therapeutic strategies for controlling HBV-induced HCC.
+28097530	14	38	Carcinoma Hepatocellular	Disease	MESH:D006528
+28097530	64	67	HBV	Species	10407
+28097530	69	93	Carcinoma Hepatocellular	Disease	MESH:D006528
+28097530	95	98	Carcinoma Hepatocellular	Disease	MESH:D006528
+28097530	112	127	Neoplasms	Disease	MESH:D009369
+28097530	157	174	hepatitis B virus	Species	10407
+28097530	176	179	HBV	Species	10407
+28097530	199	202	HBV	Species	10407
+28097530	218	221	Carcinoma Hepatocellular	Disease	MESH:D006528
+28097530	254	257	HBV	Species	10407
+28097530	305	325	Inflammation	Disease	MESH:D007249
+28097530	327	335	Fibrosis	Disease	MESH:D005355
+28097530	391	394	HBV	Species	10407
+28097530	564	567	HBV	Species	10407
+28097530	614	617	X	Gene	944566
+28097530	622	625	HBs	Gene	-
+28097530	834	837	HBV	Species	10407
+28097530	846	849	Carcinoma Hepatocellular	Disease	MESH:D006528
+28097530	1013	1016	HBV	Species	10407
+28097530	1025	1028	Carcinoma Hepatocellular	Disease	MESH:D006528
+
+29052129|t|Hepatitis B Virus-Associated Hepatocellular Carcinoma.
+29052129|a|Liver cancer is the fifth most common cancer worldwide in men and the ninth in women. It is also the second most common cause of cancer mortality. Hepatocellular carcinoma (HCC) is the most common type of liver cancer. About 350 million people globally are chronically infected with HBV. Chronic hepatitis B virus (HBV) infection accounts for at least 50% cases of HCC worldwide. Other non-HBV factors may increase HCC risk among persons with chronic HBV infection. Both indirect and direct mechanisms are involved in HCC oncogenesis by HBV. HCC-promoting HBV factors include long-lasting infection, high levels of HBV replication, HBV genotype, HBV integration, specific HBV mutants, and HBV-encoded oncoproteins (e.g., HBx and truncated preS2/S proteins). Recurrent liver inflammation caused by host immune responses during chronic HBV infection can lead to liver fibrosis and cirrhosis and accelerate hepatocyte turnover rate and promote accumulation of mutations. Major breakthroughs have been achieved in the prevention of HBV-associated HCC with HBV vaccines and antiviral therapies.
+29052129	0	17	Hepatitis B	Disease	MESH:D006509
+29052129	29	53	Carcinoma Hepatocellular	Disease	MESH:D006528
+29052129	55	67	Carcinoma Hepatocellular	Disease	MESH:D006528
+29052129	93	99	Neoplasms	Disease	MESH:D009369
+29052129	113	116	men	Species	9606
+29052129	134	139	women	Species	9606
+29052129	184	190	Neoplasms	Disease	MESH:D009369
+29052129	202	226	Carcinoma Hepatocellular	Disease	MESH:D006528
+29052129	228	231	Carcinoma Hepatocellular	Disease	MESH:D006528
+29052129	260	272	Carcinoma Hepatocellular	Disease	MESH:D006528
+29052129	343	384	Hepatitis B Chronic	Disease	MESH:D019694
+29052129	420	423	Carcinoma Hepatocellular	Disease	MESH:D006528
+29052129	470	473	Carcinoma Hepatocellular	Disease	MESH:D006528
+29052129	506	519	Hepatitis B	Disease	MESH:D006509
+29052129	573	576	Carcinoma Hepatocellular	Disease	MESH:D006528
+29052129	597	600	Carcinoma Hepatocellular	Disease	MESH:D006528
+29052129	644	653	Infections	Disease	MESH:D007239
+29052129	776	779	X	Gene	944566
+29052129	794	801	preS2/S	Gene	-
+29052129	823	841	Inflammation	Disease	MESH:D007249
+29052129	889	902	Hepatitis B	Disease	MESH:D006509
+29052129	915	929	Liver Cirrhosis	Disease	MESH:D008103
+29052129	934	943	Fibrosis	Disease	MESH:D005355
+29052129	1098	1101	Carcinoma Hepatocellular	Disease	MESH:D006528
+29052129	Positive_Correlation	MESH:D006528	944566
+
+30611768|t|Molecular mechanistic insight of hepatitis B virus mediated hepatocellular carcinoma.
+30611768|a|Hepatocellular carcinoma (HCC) is a cancer which occurs in liver and severity of this cancer makes it the sixth most prevalent cancer and second leading cause of death among all cancers. The load of hepatitis-B virus (HBV) in serum is one of the important risk factors for the HCC. Several other factors also contribute to the HBV associated malignant hepatoma (HCC) i.e. HBV mutation, integration and condition of the host. Transformation of the liver to HBV-associated HCC usually accompanies long-run symptoms i.e. inflammation and cirrhosis of the liver and infective agent load could be a vigorous prognosticator for each incidence and progression of this carcinoma. One of the prominent factors i.e. HBV X supermolecule (HBx) interferes with many signal pathways that are related to the proliferation and apoptosis of hepatic cells. Besides, HBx C-terminal truncation is also responsible for HCC. Longtime HBV infection causes risk of HCC; thus most of the study related to HBV (85%) is limited to HBV endemic regions. In this review, we have outlined the molecular mechanisms that come from other than HBV endemic places which can be innovative approaches to treat HCC.
+30611768	33	50	hepatitis B virus	Species	10407
+30611768	60	84	Carcinoma Hepatocellular	Disease	MESH:D006528
+30611768	86	110	Carcinoma Hepatocellular	Disease	MESH:D006528
+30611768	112	115	Carcinoma Hepatocellular	Disease	MESH:D006528
+30611768	122	128	Neoplasms	Disease	MESH:D009369
+30611768	172	178	Neoplasms	Disease	MESH:D009369
+30611768	213	219	Neoplasms	Disease	MESH:D009369
+30611768	248	253	Death	Disease	MESH:D003643
+30611768	264	271	Neoplasms	Disease	MESH:D009369
+30611768	285	302	hepatitis-B virus	Species	10407
+30611768	304	307	HBV	Species	10407
+30611768	363	366	Carcinoma Hepatocellular	Disease	MESH:D006528
+30611768	413	416	HBV	Species	10407
+30611768	438	446	Carcinoma Hepatocellular	Disease	MESH:D006528
+30611768	448	451	Carcinoma Hepatocellular	Disease	MESH:D006528
+30611768	458	461	HBV	Species	10407
+30611768	542	545	HBV	Species	10407
+30611768	557	560	Carcinoma Hepatocellular	Disease	MESH:D006528
+30611768	604	616	Inflammation	Disease	MESH:D007249
+30611768	621	643	Liver Cirrhosis	Disease	MESH:D008103
+30611768	747	756	Neoplasms	Disease	MESH:D009369
+30611768	792	811	X	Gene	944566
+30611768	813	816	X	Gene	944566
+30611768	934	937	X	Gene	944566
+30611768	984	987	Carcinoma Hepatocellular	Disease	MESH:D006528
+30611768	998	1011	Hepatitis B	Disease	MESH:D006509
+30611768	1027	1030	Carcinoma Hepatocellular	Disease	MESH:D006528
+30611768	1066	1069	HBV	Species	10407
+30611768	1090	1093	HBV	Species	10407
+30611768	1195	1198	HBV	Species	10407
+30611768	1258	1261	Carcinoma Hepatocellular	Disease	MESH:D006528
+30611768	Association	MESH:D006528	944566
+
+32839523|t|Hypoxic gene expression in chronic hepatitis B virus infected patients is not observed in state-of-the-art in vitro and mouse infection models.
+32839523|a|Hepatitis B virus (HBV) is the leading cause of hepatocellular carcinoma (HCC) worldwide. The prolyl hydroxylase domain (PHD)-hypoxia inducible factor (HIF) pathway is a key mammalian oxygen sensing pathway and is frequently perturbed by pathological states including infection and inflammation. We discovered a significant upregulation of hypoxia regulated gene transcripts in patients with chronic hepatitis B (CHB) in the absence of liver cirrhosis. We used state-of-the-art in vitro and in vivo HBV infection models to evaluate a role for HBV infection and the viral regulatory protein HBx to drive HIF-signalling. HBx had no significant impact on HIF expression or associated transcriptional activity under normoxic or hypoxic conditions. Furthermore, we found no evidence of hypoxia gene expression in HBV de novo infection, HBV infected human liver chimeric mice or transgenic mice with integrated HBV genome. Collectively, our data show clear evidence of hypoxia gene induction in CHB that is not recapitulated in existing models for acute HBV infection, suggesting a role for inflammatory mediators in promoting hypoxia gene expression.
+32839523	0	7	Hypoxia Brain	Disease	MESH:D002534
+32839523	27	61	Hepatitis B Chronic	Disease	MESH:D019694
+32839523	62	70	patients	Species	9606
+32839523	120	125	mouse	Species	10090
+32839523	126	135	Infections	Disease	MESH:D007239
+32839523	144	161	Hepatitis B virus	Species	10407
+32839523	163	166	HBV	Species	-
+32839523	192	216	Carcinoma Hepatocellular	Disease	MESH:D006528
+32839523	218	221	Carcinoma Hepatocellular	Disease	MESH:D006528
+32839523	328	334	Oxygen	Chemical	MESH:D010100
+32839523	412	421	Infections	Disease	MESH:D007239
+32839523	426	438	Inflammation	Disease	MESH:D007249
+32839523	484	491	Hypoxia	Disease	MESH:D000860
+32839523	522	530	patients	Species	9606
+32839523	536	555	Hepatitis B Chronic	Disease	MESH:D019694
+32839523	557	560	Hepatitis B Chronic	Disease	MESH:D019694
+32839523	580	595	Liver Cirrhosis	Disease	MESH:D008103
+32839523	643	656	Hepatitis B	Disease	MESH:D006509
+32839523	687	700	Hepatitis B	Disease	MESH:D006509
+32839523	868	875	Hypoxia Brain	Disease	MESH:D002534
+32839523	925	932	Hypoxia	Disease	MESH:D000860
+32839523	952	955	HBV	Species	-
+32839523	964	973	Infections	Disease	MESH:D007239
+32839523	975	987	Hepatitis B	Disease	MESH:D006509
+32839523	988	993	human	Species	9606
+32839523	1009	1013	mice	Species	10090
+32839523	1028	1032	mice	Species	10090
+32839523	1049	1052	HBV	Species	-
+32839523	1107	1114	Hypoxia	Disease	MESH:D000860
+32839523	1133	1136	Hepatitis B Chronic	Disease	MESH:D019694
+32839523	1192	1205	Hepatitis B	Disease	MESH:D006509
+32839523	1229	1241	Inflammation	Disease	MESH:D007249
+32839523	1265	1272	Hypoxia	Disease	MESH:D000860
+
+38064540|t|Hepatitis B Virus Modulated Transcriptional Regulatory Map of Hepatic Cellular MicroRNAs.
+38064540|a|Hepatitis B virus (HBV) is an enveloped, hepatotropic, noncytopathic virus with a partially double-stranded DNA genome. It infects hepatocytes and is associated with progression to liver fibrosis and cirrhosis, culminating in hepatocellular carcinoma (HCC), accounting for 55% of total HCC cases. MicroRNAs (miRNAs) regulated by HBV play an important role in these pathologies. Mapping the miRNAs responsive to HBV and HBV-specific proteins, including HBV X protein (HBx) that harbor the majority of HBV-human protein interactions, could aid accelerate the diagnostics and therapeutics innovation against the infection and associated diseases. With this in mind, we used a unique annotation strategy whereby we first amassed 362 mature HBV responsive-human Differentially Expressed miRNAs (HBV-hDEmiRs). The core experimentally-validated messenger RNA targets of the HBV-hDEmiRs were mostly associated with viral infections and hepatic inflammation processes. Moreover, our annotation strategy enabled the characterization of HBx-dependent/independent HBV-hDEmiRs as a tool for evaluation of the impact of HBx as a therapeutic target. Bioinformatics analysis of the HBV-human protein-protein interactome revealed new insights into the transcriptional regulatory network of the HBV-hDEmiRs. We performed a comparative analysis of data on miRNAs gathered from HBV infected cell line studies and from tissue studies of fibrosis, cirrhosis, and HCC. Accordingly, we propose hsa-miR-15a-5p that is downregulated by multiple HBV proteins, including HBx, as a potential biomarker of HBV infection, and its progression to HCC. In all, this study underscores (1) the complexity of miRNA regulation in response to HBV infection and its progression into other liver pathologies and (2) provides a regulatory map of HBV-hDEmiRs and the underlying mechanisms modulating their expression through a cross talk between HBV viral proteins and human transcription factors.
+38064540	0	17	Hepatitis B Virus	Species	10407
+38064540	90	107	Hepatitis B virus	Species	10407
+38064540	271	285	Liver Cirrhosis	Disease	MESH:D008103
+38064540	290	299	Fibrosis	Disease	MESH:D005355
+38064540	316	340	Carcinoma Hepatocellular	Disease	MESH:D006528
+38064540	342	345	Carcinoma Hepatocellular	Disease	MESH:D006528
+38064540	376	379	Carcinoma Hepatocellular	Disease	MESH:D006528
+38064540	594	599	human	Species	9606
+38064540	699	708	Infections	Disease	MESH:D007239
+38064540	841	846	human	Species	9606
+38064540	997	1013	Virus Diseases	Disease	MESH:D014777
+38064540	1018	1038	Inflammation	Disease	MESH:D007249
+38064540	1260	1265	human	Species	9606
+38064540	1448	1460	Hepatitis B	Disease	MESH:D006509
+38064540	1506	1514	Fibrosis	Disease	MESH:D005355
+38064540	1516	1525	Fibrosis	Disease	MESH:D005355
+38064540	1531	1534	Carcinoma Hepatocellular	Disease	MESH:D006528
+38064540	1666	1679	Hepatitis B	Disease	MESH:D006509
+38064540	1704	1707	Carcinoma Hepatocellular	Disease	MESH:D006528
+38064540	1839	1856	Liver Failure	Disease	MESH:D017093
+38064540	2016	2021	human	Species	9606
+
+39290403|t|HBV-related HCC development in mice is STAT3 dependent and indicates an oncogenic effect of HBx.
+39290403|a|Background & Aims: Although most hepatocellular carcinoma (HCC) cases are driven by hepatitis and cirrhosis, a subset of patients with chronic hepatitis B develop HCC in the absence of advanced liver disease, indicating the oncogenic potential of hepatitis B virus (HBV). We investigated the role of HBV transcripts and proteins on HCC development in the absence of inflammation in HBV-transgenic mice. Methods: HBV-transgenic mice replicating HBV and expressing all HBV proteins from a single integrated 1.3-fold HBV genome in the presence or absence of wild-type HBx (HBV1.3/HBVxfs) were analyzed. Flow cytometry, molecular, histological and in vitro analyses using human cell lines were performed. Hepatocyte-specific Stat3- and Socs3-knockout was analyzed in HBV1.3 mice. Results: Approximately 38% of HBV1.3 mice developed liver tumors. Protein expression patterns, histology, and mutational landscape analyses indicated that tumors resembled human HCC. HBV1.3 mice showed no signs of active hepatitis, except STAT3 activation, up to the time point of HCC development. HBV-RNAs covering HBx sequence, 3.5-kb HBV RNA and HBx-protein were detected in HCC tissue. Interestingly, HBVxfs mice expressing all HBV proteins except a C-terminally truncated HBx (without the ability to bind DNA damage binding protein 1) showed reduced signs of DNA damage response and had a significantly reduced HCC incidence. Importantly, intercrossing HBV1.3 mice with a hepatocyte-specific STAT3-knockout abrogated HCC development. Conclusions: Expression of HBV-proteins is sufficient to cause HCC in the absence of detectable inflammation. This indicates the oncogenic potential of HBV and in particular HBx. In our model, HBV-driven HCC was STAT3 dependent. Our study highlights the immediate oncogenic potential of HBV, challenging the idea of a benign highly replicative phase of HBV infection and indicating the necessity for an HBV 'cure'. Impact and implications: Although most HCC cases in patients with chronic HBV infection occur after a sequence of liver damage and fibrosis, a subset of patients develops HCC without any signs of advanced liver damage. We demonstrate that the expression of all viral transcripts in HBV-transgenic mice suffices to induce HCC development independent of inflammation and fibrosis. These data indicate the direct oncogenic effects of HBV and emphasize the idea of early antiviral treatment in the 'immune-tolerant' phase (HBeAg-positive chronic HBV infection).
+39290403	0	3	HBV	Species	10407
+39290403	12	15	Carcinoma Hepatocellular	Disease	MESH:D006528
+39290403	31	35	mice	Species	10090
+39290403	39	44	Stat3	Gene	20848
+39290403	130	154	Carcinoma Hepatocellular	Disease	MESH:D006528
+39290403	156	159	Carcinoma Hepatocellular	Disease	MESH:D006528
+39290403	181	190	Chemical and Drug Induced Liver Injury	Disease	MESH:D056486
+39290403	195	204	Fibrosis	Disease	MESH:D005355
+39290403	218	226	patients	Species	9606
+39290403	232	251	Hepatitis B Chronic	Disease	MESH:D019694
+39290403	260	263	Carcinoma Hepatocellular	Disease	MESH:D006528
+39290403	291	304	Liver Diseases	Disease	MESH:D008107
+39290403	344	361	hepatitis B virus	Species	10407
+39290403	363	366	HBV	Species	10407
+39290403	397	400	HBV	Species	10407
+39290403	429	432	Carcinoma Hepatocellular	Disease	MESH:D006528
+39290403	463	475	Inflammation	Disease	MESH:D007249
+39290403	479	482	HBV	Species	10407
+39290403	494	498	mice	Species	10090
+39290403	509	512	HBV	Species	10407
+39290403	524	528	mice	Species	10090
+39290403	541	544	HBV	Species	10407
+39290403	564	567	HBV	Species	10407
+39290403	611	614	HBV	Species	10407
+39290403	667	673	HBV1.3	Species	1283972
+39290403	765	770	human	Species	9606
+39290403	818	823	Stat3	Gene	20848
+39290403	829	834	Socs3	Gene	12702
+39290403	860	866	A9QX	CellLine	CVCL:A9QX
+39290403	867	871	mice	Species	10090
+39290403	903	909	HBV1.3	Species	1283972
+39290403	910	914	mice	Species	10090
+39290403	925	937	Liver Neoplasms	Disease	MESH:D008113
+39290403	1028	1034	Neoplasms	Disease	MESH:D009369
+39290403	1045	1050	human	Species	9606
+39290403	1051	1054	Carcinoma Hepatocellular	Disease	MESH:D006528
+39290403	1056	1062	HBV1.3	Species	1283972
+39290403	1063	1067	mice	Species	10090
+39290403	1094	1103	Chemical and Drug Induced Liver Injury	Disease	MESH:D056486
+39290403	1112	1117	Stat3	Gene	20848
+39290403	1154	1157	Carcinoma Hepatocellular	Disease	MESH:D006528
+39290403	1171	1174	HBV	Species	10407
+39290403	1189	1192	HBx	Gene	-
+39290403	1210	1213	HBV	Species	10407
+39290403	1222	1225	HBx	Gene	-
+39290403	1251	1254	Carcinoma Hepatocellular	Disease	MESH:D006528
+39290403	1285	1289	mice	Species	10090
+39290403	1305	1308	HBV	Species	10407
+39290403	1350	1353	HBx	Gene	-
+39290403	1383	1411	Ddb1	Gene	13194
+39290403	1489	1492	Carcinoma Hepatocellular	Disease	MESH:D006528
+39290403	1531	1537	HBV1.3	Species	1283972
+39290403	1538	1542	mice	Species	10090
+39290403	1570	1575	Stat3	Gene	20848
+39290403	1595	1598	Carcinoma Hepatocellular	Disease	MESH:D006528
+39290403	1639	1642	HBV	Species	10407
+39290403	1675	1678	Carcinoma Hepatocellular	Disease	MESH:D006528
+39290403	1708	1720	Inflammation	Disease	MESH:D007249
+39290403	1764	1767	HBV	Species	10407
+39290403	1786	1789	HBx	Gene	-
+39290403	1805	1808	HBV	Species	10407
+39290403	1816	1819	Carcinoma Hepatocellular	Disease	MESH:D006528
+39290403	1824	1829	Stat3	Gene	20848
+39290403	1899	1902	HBV	Species	10407
+39290403	1965	1978	Hepatitis B	Disease	MESH:D006509
+39290403	2015	2018	HBV	Species	10407
+39290403	2066	2069	Carcinoma Hepatocellular	Disease	MESH:D006528
+39290403	2079	2087	patients	Species	9606
+39290403	2101	2114	Hepatitis B	Disease	MESH:D006509
+39290403	2141	2153	Chemical and Drug Induced Liver Injury	Disease	MESH:D056486
+39290403	2158	2166	Fibrosis	Disease	MESH:D005355
+39290403	2180	2188	patients	Species	9606
+39290403	2198	2201	Carcinoma Hepatocellular	Disease	MESH:D006528
+39290403	2232	2244	Chemical and Drug Induced Liver Injury	Disease	MESH:D056486
+39290403	2309	2312	HBV	Species	10407
+39290403	2324	2328	mice	Species	10090
+39290403	2348	2351	Carcinoma Hepatocellular	Disease	MESH:D006528
+39290403	2379	2391	Inflammation	Disease	MESH:D007249
+39290403	2396	2404	Fibrosis	Disease	MESH:D005355
+39290403	2458	2461	HBV	Species	10407
+39290403	2569	2582	Hepatitis B	Disease	MESH:D006509
+39290403	Association	MESH:D006528	20848
+
+40544269|t|Perspectives on NcRNAs in HBV/cccDNA-driven HCC progression.
+40544269|a|Hepatitis B virus (HBV) integration, the HBx protein (and its mutants), and covalently closed circular DNA (cccDNA) are critical for HBV replication, packaging, and transmission to new host cells. Although nucleos(t)ide analogs (NAs) are a class of antiviral drugs that effectively suppress HBV replication, they do not eliminate cccDNA. This persistent cccDNA, often referred to as an "invisible bullet", plays a pivotal role not only in the horizontal transmission of HBV but also within the context of hepatocellular carcinoma (HCC). Growing evidence reveals that noncoding RNAs (ncRNAs) are deeply involved in cancer progression, as well as the HBV life cycle and related pathogenesis, including liver inflammation, fibrosis, and HCC. This involvement occurs through various mechanisms, as ncRNAs regulate gene transcription, act as miRNA sponges, modulate signaling pathways, and influence downstream effects. These functions depend on the proper formation of RNA structures, which are critical for maintaining the biological activity of ncRNAs. The structure of RNAs appears to play a pivotal role in their functional capacity. Moreover, both ncRNAs and viral nucleotides contribute to G-quadruplex structure formation, which is essential for the HBV life cycle and cancer progression. In this review, we provide an updated overview of the mechanisms by which key ncRNAs mediate HBV/cccDNA actions in HCC progression and focus on their roles in gene expression and structural formation/modification.
+40544269	44	47	Carcinoma Hepatocellular	Disease	MESH:D006528
+40544269	61	78	Hepatitis B virus	Species	10407
+40544269	102	105	X	Gene	944566
+40544269	267	280	nucleos(t)ide	Chemical	-
+40544269	566	590	Carcinoma Hepatocellular	Disease	MESH:D006528
+40544269	592	595	Carcinoma Hepatocellular	Disease	MESH:D006528
+40544269	675	681	Neoplasms	Disease	MESH:D009369
+40544269	761	779	Inflammation	Disease	MESH:D007249
+40544269	781	789	Fibrosis	Disease	MESH:D005355
+40544269	795	798	Carcinoma Hepatocellular	Disease	MESH:D006528
+40544269	1333	1339	Neoplasms	Disease	MESH:D009369
+40544269	1468	1471	Carcinoma Hepatocellular	Disease	MESH:D006528

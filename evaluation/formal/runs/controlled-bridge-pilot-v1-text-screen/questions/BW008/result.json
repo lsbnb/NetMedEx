@@ -1,0 +1,168 @@
+{
+  "status": "complete",
+  "question_id": "BW008",
+  "domain": "infectious disease",
+  "question": "Which evidence-supported intermediates connect chronic hepatitis B infection to hepatocellular carcinoma?",
+  "question_type": "mechanism",
+  "pubmed_query": "HBV hepatocellular carcinoma inflammation HBx integration fibrosis",
+  "effective_pubmed_query": "HBV hepatocellular carcinoma inflammation HBx integration fibrosis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "38311121",
+    "40512786",
+    "41443982",
+    "37159932",
+    "23981576",
+    "38962270",
+    "37879404",
+    "40928246",
+    "39633459",
+    "39256398",
+    "38351096",
+    "39260826",
+    "38906440",
+    "28928275",
+    "36519342",
+    "36671526",
+    "25086932",
+    "34842182"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "two_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "23981576",
+        "score": 0.5817870303353453
+      },
+      {
+        "pmid": "38962270",
+        "score": 0.5481845105773874
+      },
+      {
+        "pmid": "39633459",
+        "score": 0.5468177455180719
+      },
+      {
+        "pmid": "37879404",
+        "score": 0.5229731474498459
+      },
+      {
+        "pmid": "28928275",
+        "score": 0.5226843065442148
+      },
+      {
+        "pmid": "36519342",
+        "score": 0.517733909366225
+      },
+      {
+        "pmid": "41443982",
+        "score": 0.5041998886248596
+      },
+      {
+        "pmid": "40928246",
+        "score": 0.49845752600564747
+      },
+      {
+        "pmid": "34842182",
+        "score": 0.49426475256854097
+      },
+      {
+        "pmid": "38311121",
+        "score": 0.48448646770509135
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "23981576",
+        "score": 0.5817870303353453
+      },
+      {
+        "pmid": "38962270",
+        "score": 0.5481845105773874
+      },
+      {
+        "pmid": "39633459",
+        "score": 0.5468177455180719
+      },
+      {
+        "pmid": "37879404",
+        "score": 0.5229731474498459
+      },
+      {
+        "pmid": "28928275",
+        "score": 0.5226843065442148
+      },
+      {
+        "pmid": "36519342",
+        "score": 0.517733909366225
+      },
+      {
+        "pmid": "41443982",
+        "score": 0.5041998886248596
+      },
+      {
+        "pmid": "40928246",
+        "score": 0.49845752600564747
+      },
+      {
+        "pmid": "34842182",
+        "score": 0.49426475256854097
+      },
+      {
+        "pmid": "38311121",
+        "score": 0.48448646770509135
+      }
+    ]
+  },
+  "answers": {},
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 2.594292163848877e-05,
+    "vector_index": 4.322604738175869,
+    "total": 4.840922325849533
+  },
+  "token_usage": {},
+  "completed_at": "2026-08-09T17:47:08.970834+00:00"
+}

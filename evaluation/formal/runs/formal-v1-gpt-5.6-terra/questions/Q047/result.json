@@ -1,0 +1,51 @@
+{
+  "status": "complete",
+  "question_id": "Q047",
+  "domain": "method stress test",
+  "question": "Is there direct evidence that quercetin upregulates CFTR in cystic fibrosis intestinal epithelium?",
+  "pubmed_query": "quercetin CFTR cystic fibrosis intestinal epithelium upregulation",
+  "effective_pubmed_query": "quercetin CFTR cystic fibrosis intestinal epithelium",
+  "query_attempts": [
+    "quercetin CFTR cystic fibrosis intestinal epithelium upregulation",
+    "quercetin CFTR cystic fibrosis intestinal epithelium"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "16177189"
+  ],
+  "graph": {
+    "node_count": 2,
+    "edge_count": 1,
+    "path_count": 0,
+    "preferred_pmids": []
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "16177189",
+        "score": 0.5324384513422357
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "16177189",
+        "score": 0.5324384513422357
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "No. The supplied context provides no direct evidence that quercetin upregulates CFTR in cystic fibrosis intestinal epithelium.\n\n**Direct evidence (human intestinal epithelial cell line, not cystic fibrosis epithelium):** In T84 human colonic epithelia, quercetin **completely blocked** forskolin-stimulated CFTR-mediated chloride currents, with an inhibitory concentration in the same range as cocoa flavanols (~100 µmol/L). Thus, the reported functional effect is CFTR inhibition, not upregulation [PMID: 16177189].\n\n**Association:** The study identifies quercetin as a flavonoid that targets intestinal CFTR chloride transport, but does not report increased CFTR expression, protein abundance, trafficking, or activity [PMID: 16177189].\n\n**Testable hypothesis:** Quercetin could have different effects on CFTR abundance or function in cystic-fibrosis-derived intestinal epithelium under distinct doses or exposure durations, but this is not supported by the provided record.",
+    "traditional_rag": "No. The supplied context provides no direct evidence that quercetin upregulates CFTR in cystic fibrosis intestinal epithelium.\n\n- **Direct evidence (human intestinal epithelial cell line, not cystic-fibrosis epithelium):** In T84 human colonic epithelia, quercetin **totally blocked** forskolin-stimulated CFTR-mediated chloride currents, with an inhibitory concentration similar to cocoa flavanols. Thus, the reported effect is CFTR inhibition, not upregulation [PMID: 16177189].\n\n- **Association:** The study supports that quercetin can interact with/target intestinal CFTR-mediated chloride transport, but it does not show increased CFTR expression, trafficking, channel activity, or rescue of mutant CFTR [PMID: 16177189].\n\n- **Evidence absent:** No evidence in the provided record addresses quercetin treatment in cystic fibrosis intestinal epithelium, CFTR-mutant cells, or CFTR upregulation.\n\n- **Testable hypothesis:** Quercetin’s effect could differ by CFTR genotype, epithelial model, dose, and exposure duration, but this is not tested in the supplied context.",
+    "general_llm": "There is no strong, well-established direct evidence that quercetin *upregulates CFTR expression* in primary cystic-fibrosis intestinal epithelium—for example, CF patient intestinal biopsies, primary intestinal monolayers, or CF intestinal organoids—shown by increased CFTR mRNA and/or mature apical CFTR protein together with restored channel function.\n\nWhat has been reported more broadly is different:\n\n- **CFTR functional modulation:** Quercetin and related flavonoids can modulate CFTR channel activity in experimental systems. Depending on concentration and model, quercetin has been described as a CFTR activator/potentiator or as affecting CFTR-dependent chloride secretion.\n- **Model-dependent effects on mutant CFTR:** Some preclinical cell-line or heterologous-expression studies suggest flavonoids may influence processing, trafficking, or function of F508del-CFTR. These findings are not equivalent to demonstrating CFTR upregulation in CF intestinal epithelium.\n- **Non-CF intestinal models:** Stimulation of chloride secretion in intestinal epithelial models with residual or wild-type CFTR does not establish correction of the CF epithelial defect.\n\nImportantly, “upregulation” should be separated from “activation.” An acute increase in chloride transport after quercetin could reflect opening of CFTR channels already present at the membrane, altered signaling pathways, or effects on other ion channels; it does not by itself show increased CFTR gene expression or protein abundance.\n\nThus, quercetin is best regarded as an experimental CFTR-modulating compound with limited and model-dependent preclinical evidence, not as a proven CFTR-upregulating intervention in cystic-fibrosis intestinal epithelium. Any potential effect would also be mutation-specific: it would not restore CFTR in people with mutations that produce little or no CFTR protein."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.7787056416273117,
+    "semantic_graph": 34.20283120125532,
+    "vector_index": 0.7291781231760979,
+    "answer_netmedex_hybrid_rag": 2.9612253233790398,
+    "answer_traditional_rag": 3.095228895545006,
+    "answer_general_llm": 12.330505192279816,
+    "total": 56.41474101692438
+  },
+  "completed_at": "2026-07-28T04:28:33.280852+00:00"
+}

@@ -1,0 +1,92 @@
+{
+  "question_id": "Q044",
+  "model": "gpt-5.6-sol",
+  "rated_at": "2026-07-29T10:20:50.676506+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q044-C001",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Randomized double-blind crossover trial in 24 hypertensive humans directly measured FMD after acute resveratrol; improvement occurred particularly in women and participants with higher LDL cholesterol."
+    },
+    {
+      "candidate_id": "Q044-C002",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "wrong_context",
+      "reviewer_notes": "Review focuses on estrogen receptors and coronary artery disease; resveratrol is only listed among possible GPER ligands without specific evidence on human endothelial function."
+    },
+    {
+      "candidate_id": "Q044-C003",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Human randomized crossover study directly found a dose-related acute increase in brachial artery FMD after resveratrol in overweight or obese adults with borderline hypertension."
+    },
+    {
+      "candidate_id": "Q044-C004",
+      "relevance": 1,
+      "confidence": 2,
+      "exclusion_reason": "",
+      "reviewer_notes": "Broad review of cardiovascular supplements discusses resveratrol-related endothelial benefits from preclinical studies and supporting clinical trials, but the abstract does not critically characterize the human endothelial evidence."
+    },
+    {
+      "candidate_id": "Q044-C005",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Preclinical HUVEC study provides mechanistic evidence that resveratrol attenuates oxidant-induced SIRT1 loss and eNOS acetylation, but it does not test endothelial function in people."
+    },
+    {
+      "candidate_id": "Q044-C006",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Randomized double-blind placebo-controlled crossover trial directly showed improved FMD after six weeks of resveratrol in adults with stage 3 CKD and diabetes."
+    },
+    {
+      "candidate_id": "Q044-C007",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Preclinical rat blood-brain barrier coculture study found resveratrol protected endothelial barrier permeability and inhibited inflammatory NF-kappaB translocation; no human intervention was tested."
+    },
+    {
+      "candidate_id": "Q044-C008",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Focused review summarizes vascular mechanisms of resveratrol, including eNOS/NO, oxidative stress, remodeling, and arterial stiffness, but the abstract does not establish the extent or consistency of human clinical evidence."
+    },
+    {
+      "candidate_id": "Q044-C009",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "too_broad",
+      "reviewer_notes": "Narrative review covers numerous phytocompounds and cardiovascular outcomes; it does not provide identifiable resveratrol-specific human endothelial-function evidence."
+    },
+    {
+      "candidate_id": "Q044-C010",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Focused mechanistic review explains how resveratrol may enhance endothelial NO through eNOS, SIRT1, AMPK, Nrf2, and reduced oxidative stress, but does not specify human clinical endothelial outcomes."
+    },
+    {
+      "candidate_id": "Q044-C011",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Cell-culture study found repeated low-dose resveratrol upregulated eNOS, SIRT1, and related genes in HUVECs, providing preclinical mechanistic rather than in-human evidence."
+    },
+    {
+      "candidate_id": "Q044-C012",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Human randomized placebo-controlled crossover trial directly assessed fasting and postprandial FMD; 150 mg/day resveratrol for four weeks produced no significant benefit, documenting conflicting/null clinical evidence."
+    }
+  ],
+  "raw_response_sha256": "ecadd9d7af0d5cac34e5c434184d60340c647cb6722878b8563aab13fea5ae1e"
+}

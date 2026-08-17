@@ -1,0 +1,91 @@
+{
+  "task": "answer",
+  "question_id": "PP003",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "b66d8d60fb3d7d88a8bf9ce21bcb91fbb37657d26af2297100329be25e2c3648",
+  "raw_response_sha256": "d8391057d1cf8a63d9cd7f7fac446188db801018aea26f109880d93e2c25193a",
+  "usage": {
+    "input_tokens": 5697,
+    "output_tokens": 626,
+    "total_tokens": 6323
+  },
+  "rated_at": "2026-08-16T18:39:47.633230+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP003-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate synthesis, cites primary and review sources, acknowledges limitations."
+      },
+      {
+        "answer_id": "PP003-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate synthesis, cites primary and review sources, acknowledges limitations."
+      },
+      {
+        "answer_id": "PP003-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate synthesis, cites primary and review sources, acknowledges limitations."
+      },
+      {
+        "answer_id": "PP003-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate synthesis, cites primary and review sources, acknowledges limitations."
+      },
+      {
+        "answer_id": "PP003-E",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate synthesis, cites primary and review sources, acknowledges limitations."
+      },
+      {
+        "answer_id": "PP003-F",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate synthesis, cites primary and review sources, acknowledges limitations."
+      },
+      {
+        "answer_id": "PP003-G",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate synthesis, cites primary and review sources, acknowledges limitations."
+      }
+    ],
+    "preferred_item_id": "tie",
+    "pairwise_reason": "All answers are identical in content, quality, and coverage; therefore no single answer is superior."
+  }
+}

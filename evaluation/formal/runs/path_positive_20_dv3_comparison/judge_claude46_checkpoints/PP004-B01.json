@@ -1,0 +1,53 @@
+{
+  "task": "answer",
+  "question_id": "PP004",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "f9400a6b9fc71fe65ed712431c2c0769f1f4a6596a57a9fbb7cc6e06b84f1385",
+  "raw_response_sha256": "34d600613224bdf2cfc50cc781b8c0b7563aaa1d3a4e1ff851a36448a6c789b6",
+  "usage": {
+    "input_tokens": 2913,
+    "output_tokens": 505,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 3418
+  },
+  "rated_at": "2026-08-13T10:31:47.420456+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP004-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "PMID 39875232 appears fabricated (future date). Otherwise well-structured. Limitations section is thorough. Testable hypothesis adds value but is generic."
+      },
+      {
+        "answer_id": "PP004-B",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Best mechanistic depth; includes innate sources (γδ-T, ILC3, NKT). PMID 34635393 unverified but plausible. PMID 39875232 suspect. Graph-derived insight adds transparency."
+      },
+      {
+        "answer_id": "PP004-C",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Includes Th17 plasticity (PMID 30502718) and cellular heterogeneity limitation not in others. PMID 39875232 suspect. PMID 30891627 plausible. Limitations section is most complete."
+      }
+    ],
+    "preferred_item_id": "PP004-C",
+    "pairwise_reason": "PP004-C provides the most complete coverage including Th17 plasticity, innate IL-17 sources, and the most thorough limitations section, with slightly better grounding than PP004-A and comparable depth to PP004-B, while avoiding the graph-annotation artifact."
+  }
+}

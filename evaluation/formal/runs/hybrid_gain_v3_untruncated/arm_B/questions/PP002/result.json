@@ -1,0 +1,218 @@
+{
+  "status": "complete",
+  "question_id": "PP002",
+  "domain": "cancer",
+  "question": "What evidence supports the claim that curcumin induces apoptosis, and what are the important study-context limitations?",
+  "question_type": "mechanism",
+  "pubmed_query": "curcumin AND apoptosis AND cancer AND (gene OR pathway)",
+  "effective_pubmed_query": "curcumin AND apoptosis AND cancer AND (gene OR pathway)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "15810876",
+    "29693253",
+    "30623450",
+    "30725357",
+    "31590362",
+    "32519340",
+    "35722665",
+    "37776274",
+    "38031951",
+    "38166505",
+    "38269517",
+    "38699926",
+    "39219410",
+    "41109942",
+    "41252742"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports the claim that curcumin induces apoptosis, and what are the important study-context limitations?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "pre_gate_incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "integration_decision": {
+      "method": "three_stage_incremental_utility_router_v1",
+      "mode": "traditional_fallback",
+      "reason": "no_claim_safe_path",
+      "claim_safe_path_count": 0,
+      "incremental_path_count": 0,
+      "confirmatory_path_count": 0,
+      "citation_validation_pmids": [],
+      "policy": "three_stage"
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "disabled",
+      "reason": "integration_mode=traditional_fallback",
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "15810876",
+        "score": 0.6819409667113281
+      },
+      {
+        "pmid": "38031951",
+        "score": 0.6672144061734017
+      },
+      {
+        "pmid": "30623450",
+        "score": 0.6438216842967363
+      },
+      {
+        "pmid": "31590362",
+        "score": 0.6295679299065796
+      },
+      {
+        "pmid": "32519340",
+        "score": 0.6137963262181754
+      },
+      {
+        "pmid": "29693253",
+        "score": 0.6068561235251908
+      },
+      {
+        "pmid": "30725357",
+        "score": 0.6066284468306069
+      },
+      {
+        "pmid": "38699926",
+        "score": 0.5987253527248808
+      },
+      {
+        "pmid": "38269517",
+        "score": 0.5708767910828811
+      },
+      {
+        "pmid": "41252742",
+        "score": 0.5701333103157901
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "15810876",
+        "score": 0.6819409667113281
+      },
+      {
+        "pmid": "38031951",
+        "score": 0.6672144061734017
+      },
+      {
+        "pmid": "30623450",
+        "score": 0.6438216842967363
+      },
+      {
+        "pmid": "31590362",
+        "score": 0.6295679299065796
+      },
+      {
+        "pmid": "32519340",
+        "score": 0.6137963262181754
+      },
+      {
+        "pmid": "29693253",
+        "score": 0.6068561235251908
+      },
+      {
+        "pmid": "30725357",
+        "score": 0.6066284468306069
+      },
+      {
+        "pmid": "38699926",
+        "score": 0.5987253527248808
+      },
+      {
+        "pmid": "38269517",
+        "score": 0.5708767910828811
+      },
+      {
+        "pmid": "41252742",
+        "score": 0.5701333103157901
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Direct experimental evidence (in‑vitro / animal)**  \n- In four human colorectal‑cancer cell lines (SW480, HCT116, LoVo, HT‑29), curcumin at the IC₅₀ dose caused a dose‑ and time‑dependent loss of viability and a rise in the Sub‑G1 fraction, a hallmark of apoptotic DNA fragmentation【PMID: 38031951】(in‑vitro).  \n- Curcumin‑loaded Pluronic F‑127 nanoparticles killed CT26 murine colon‑cancer cells, reduced mitochondrial membrane potential, raised ROS, and activated caspase‑dependent cell death; the effect was reproduced in a syngeneic mouse tumour model, showing apoptosis in vivo【PMID: 41252742】(in‑vitro + mouse).\n\n**Associative evidence from mechanistic reviews**  \n- Multiple studies across diverse tumour types report that curcumin engages the intrinsic (mitochondrial) apoptosis pathway, down‑regulates anti‑apoptotic Bcl‑2 family members, inhibits NF‑κB and PI3K/AKT signalling, and up‑regulates p53 and death‑receptor expression【PMID: 15810876】【PMID: 30623450】(human/animal cell‑line data aggregated).  \n\n**Testable hypothesis generated by the literature**  \n- Because curcumin‑induced ROS appears pivotal for apoptosis in CT26 cells, a hypothesis is that co‑administration of ROS‑scavengers (e.g., N‑acetyl‑cysteine) will blunt curcumin‑mediated tumour regression in vivo, providing a mechanistic link between oxidative stress and death‑receptor activation.  \n\n**Key study‑context limitations**  \n- **Concentration & exposure** – Most in‑vitro work uses micromolar curcumin concentrations far above plasma levels achievable after oral dosing.  \n- **Model fidelity** – Cell‑line studies lack tumour‑microenvironment cues; mouse CT26 tumours are syngeneic but still differ from human disease.  \n- **Bioavailability** – Curcumin’s poor absorption and rapid metabolism limit translational relevance; nanoparticle formulations improve delivery but introduce formulation‑specific effects.  \n- **Selectivity uncertainty** – While many tumour cells undergo apoptosis, normal primary cells often show growth arrest without death, and curcumin can protect against other apoptotic insults, complicating predictions of therapeutic windows.  \n- **Absence of clinical trial data** – No cited human interventional studies directly demonstrate curcumin‑induced apoptosis in patients.  \n\n**Conclusion**  \nCurcumin reliably triggers apoptotic pathways in cancer cell models, but the evidence is limited to high‑dose in‑vitro and animal contexts, leaving its clinical relevance uncertain."
+  },
+  "answer_finish_reasons": {
+    "traditional_rag": "stop"
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 4.320591688156128e-05,
+    "vector_index": 1.8093432560563087,
+    "kg_expansion": 1.6652047634124756e-05,
+    "answer_traditional_rag": 24.812846340239048,
+    "total": 27.118287339806557
+  },
+  "token_usage": {
+    "output_tokens": 888,
+    "input_tokens": 3626,
+    "total_tokens": 4514
+  },
+  "completed_at": "2026-08-16T20:22:21.579659+00:00"
+}

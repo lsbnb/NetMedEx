@@ -1,0 +1,51 @@
+{
+  "task": "answer",
+  "question_id": "PP014",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "09304387d8df3f85171b55c45ad5d4c1aee72d6bdfa787db63c68d761326d82f",
+  "raw_response_sha256": "bbef0063e60d4b8352e52fcba381f5fc3677bfa93492d5b5d68e07c42c3dc923",
+  "usage": {
+    "input_tokens": 1997,
+    "output_tokens": 380,
+    "total_tokens": 2377
+  },
+  "rated_at": "2026-08-13T10:33:00.167408+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP014-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Clearly distinguishes each mechanistic hop, cites animal and human evidence, and provides mechanistic and associative links with strong grounding."
+      },
+      {
+        "answer_id": "PP014-B",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurately details each mechanistic step and evidence, but less explicit about human vs animal evidence and omits some associative data."
+      },
+      {
+        "answer_id": "PP014-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Well-structured, distinguishes evidence for each hop, clearly separates animal and human data, and summarizes the mechanistic chain."
+      }
+    ],
+    "preferred_item_id": "PP014-C",
+    "pairwise_reason": "PP014-C is preferred for its clear structure, explicit distinction between animal and human evidence, and concise mechanistic summary. PP014-A is also strong but slightly less clear in separating evidence types. PP014-B is accurate but less explicit about evidence sources and associative data."
+  }
+}

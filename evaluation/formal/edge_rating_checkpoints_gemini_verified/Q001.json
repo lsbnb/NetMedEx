@@ -1,0 +1,129 @@
+{
+  "question_id": "Q001",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-08-01T05:00:41.859787+00:00",
+  "ratings": [
+    {
+      "edge_id": "Q001-E01",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title states that icariin regulates differentiation through miR-153 targeting RUNX2, establishing a relationship, but it does not explicitly state that icariin 'upregulates' RUNX2."
+    },
+    {
+      "edge_id": "Q001-E02",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Osteoporosis is not mentioned in the supporting titles."
+    },
+    {
+      "edge_id": "Q001-E03",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly states that icariin regulates the abnormal expression of miRNA-335."
+    },
+    {
+      "edge_id": "Q001-E04",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title mentions icariin acts 'through microRNA-153' but does not specify that it 'upregulates' it."
+    },
+    {
+      "edge_id": "Q001-E05",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Jumonji domain-containing protein-3 is an alias for KDM6B, and the title states icariin acts through this axis, implying regulation."
+    },
+    {
+      "edge_id": "Q001-E06",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] MITF is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q001-E07",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title states icariin's effect is mediated by miR-376c-3p targeting (which typically means downregulating) Mmp3."
+    },
+    {
+      "edge_id": "Q001-E08",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] PTEN is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q001-E09",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] RAB27A is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q001-E10",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] VEGFA is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q001-E11",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly mentions icariin indicating 'prevention of steroid-induced osteonecrosis of femoral head' (ONFH)."
+    },
+    {
+      "edge_id": "Q001-E12",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Flavonoids are not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q001-E13",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title mentions steroid-induced osteonecrosis and abnormal miRNA-335 expression, but does not imply miR-335 induces steroids."
+    },
+    {
+      "edge_id": "Q001-E14",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title states miR-153 targets RUNX2, not that RUNX2 upregulates miR-153."
+    },
+    {
+      "edge_id": "Q001-E15",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title states miR-153 targets RUNX2. MicroRNA targeting typically results in downregulation, making 'upregulates' incorrect."
+    },
+    {
+      "edge_id": "Q001-E16",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] VEGFA is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q001-E17",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title says 'steroid-induced osteonecrosis of femoral head', meaning steroids cause ONFH, not the reverse."
+    },
+    {
+      "edge_id": "Q001-E18",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title associates abnormal expression of miRNA-335 with steroid-induced osteonecrosis of the femoral head (ONFH)."
+    },
+    {
+      "edge_id": "Q001-E19",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title associates steroid-induced osteonecrosis of the femoral head (ONFH) with abnormal expression of miRNA-335."
+    },
+    {
+      "edge_id": "Q001-E20",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Neither PTEN nor osteoporosis is mentioned in the supporting title."
+    }
+  ],
+  "raw_response_sha256": "71dc075f6d5a1b6f22a621c3188cb362de646f05db217e8b2d8e24288d6dcdd1"
+}

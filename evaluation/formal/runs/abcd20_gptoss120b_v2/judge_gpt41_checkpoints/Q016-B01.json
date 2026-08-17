@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "Q016",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "d42d3702321ae749a0b8cafe878ba8a8d2dd97defa9247502ba365a90cf90123",
+  "raw_response_sha256": "193d2aa1ac4b907fe65d769da49fdae20baf47b1eb28652792cec9b4c6eb5bc9",
+  "usage": {
+    "input_tokens": 3073,
+    "output_tokens": 474,
+    "total_tokens": 3547
+  },
+  "rated_at": "2026-08-13T04:38:08.805607+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q016-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Mechanistically detailed, well-grounded in primary literature, distinguishes model systems, and proposes testable hypotheses. Excellent research value and completeness."
+      },
+      {
+        "answer_id": "Q016-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive and mechanistically rich, covers diverse pathways. Lacks specific citations and some details on experimental models, but otherwise highly informative and relevant."
+      },
+      {
+        "answer_id": "Q016-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Highly detailed, well-cited, distinguishes evidence types, and proposes clear hypotheses. Mechanistically coherent and research-oriented."
+      },
+      {
+        "answer_id": "Q016-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Well-grounded, mechanistically clear, with explicit links to evidence and testable hypotheses. Distinguishes evidence sources and disease context."
+      }
+    ],
+    "preferred_item_id": "Q016-C",
+    "pairwise_reason": "All answers are strong, but Q016-C stands out for its clarity in distinguishing evidence types, explicit mechanistic links, comprehensive citation, and well-articulated, testable hypotheses, maximizing research value."
+  }
+}

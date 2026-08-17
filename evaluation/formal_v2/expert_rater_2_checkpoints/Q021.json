@@ -1,0 +1,134 @@
+{
+  "question_id": "Q021",
+  "model": "gpt-5.6-sol",
+  "rated_at": "2026-07-29T10:08:12.774094+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q021-C001",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "wrong_context",
+      "reviewer_notes": "Discusses NLRP3/MyD88-mediated inflammation and fibrosis primarily in cardiac cells and cardio-oncology, not reduction of kidney inflammation or fibrosis."
+    },
+    {
+      "candidate_id": "Q021-C002",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Direct rat UUO and HK-2 cell evidence that dapagliflozin reduces renal fibrosis and necroinflammation through RIP1-RIP3-MLKL, NLRP3, and Wnt/β-catenin signaling."
+    },
+    {
+      "candidate_id": "Q021-C003",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Direct human proximal tubular-cell evidence that empagliflozin suppresses basal and IL-1β-induced MCP-1/CCL2 and endothelin-1 expression, supporting a renal anti-inflammatory mechanism."
+    },
+    {
+      "candidate_id": "Q021-C004",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Provides DKD treatment context and renal benefits of SGLT2 inhibitors, but attributes pathway-dependent anti-inflammatory and antifibrotic action primarily to finerenone rather than directly demonstrating it for SGLT2 inhibitors."
+    },
+    {
+      "candidate_id": "Q021-C005",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Large randomized-trial meta-analysis demonstrates reduced CKD progression and eGFR decline, but does not assess renal inflammation, fibrosis, or corresponding biomarkers."
+    },
+    {
+      "candidate_id": "Q021-C006",
+      "relevance": 1,
+      "confidence": 2,
+      "exclusion_reason": "",
+      "reviewer_notes": "Review of non-diabetic experimental cardiovascular and renal disease models notes reductions in inflammation and fibrosis, but the abstract does not clearly isolate kidney-specific mechanistic findings."
+    },
+    {
+      "candidate_id": "Q021-C007",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Systematic review shows albuminuria reduction and long-term eGFR preservation in diabetic CKD, providing adjacent renal-benefit evidence without measuring inflammation or fibrosis."
+    },
+    {
+      "candidate_id": "Q021-C008",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Direct renal proximal tubular-cell study provides informative negative evidence: dapagliflozin lowered oxidative stress, but neither dapagliflozin nor empagliflozin altered IL-6 expression under hyperglycemic conditions."
+    },
+    {
+      "candidate_id": "Q021-C009",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Review directly links SGLT2 inhibitors to reduced macrophage-driven renal inflammation and fibrosis through altered macrophage polarization and inflammatory signaling."
+    },
+    {
+      "candidate_id": "Q021-C010",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Direct diabetic mouse and HK-2 cell evidence that dapagliflozin attenuates renal tubulointerstitial fibrosis and EMT, associated with inhibition of STAT1/TGF-β1 signaling."
+    },
+    {
+      "candidate_id": "Q021-C011",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Focused review synthesizes evidence that SGLT2 inhibitors ameliorate kidney fibrosis through reductions in inflammation, hypoxia, oxidative stress, and RAS activation, while noting conflicting studies."
+    },
+    {
+      "candidate_id": "Q021-C012",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Direct patient, mouse, and HK-2 cell evidence that dapagliflozin reduces renal tubulointerstitial fibrosis in hyperuricemic nephropathy via activation of the ERRα-OAT1 axis."
+    },
+    {
+      "candidate_id": "Q021-C013",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Broad multi-drug, multi-organ immunomodulation review reports that SGLT2 inhibitors reduce renal inflammatory mediators such as IL-1β, IL-6, TGF-β, and MCP-1, but kidney fibrosis is not its specific focus."
+    },
+    {
+      "candidate_id": "Q021-C014",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Direct type 2 diabetic mouse evidence that dapagliflozin reduces renal inflammation, tubulointerstitial fibrosis, and glomerulosclerosis through attenuation of ROS and CYP4A-induced 20-HETE signaling."
+    },
+    {
+      "candidate_id": "Q021-C015",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Direct primary human proximal tubular-cell evidence that empagliflozin and dapagliflozin reduce inflammatory responses, most clearly cytokine-induced ICAM-1 protein expression."
+    },
+    {
+      "candidate_id": "Q021-C016",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "EMPA-KIDNEY provides strong clinical evidence for reduced CKD progression with empagliflozin, but it does not measure kidney inflammation, fibrosis, or mechanistic biomarkers."
+    },
+    {
+      "candidate_id": "Q021-C017",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "CKD-focused review explicitly addresses inflammation and fibrosis among the renal mechanisms through which SGLT2 inhibitors may provide end-organ protection."
+    },
+    {
+      "candidate_id": "Q021-C018",
+      "relevance": 2,
+      "confidence": 2,
+      "exclusion_reason": "",
+      "reviewer_notes": "Kidney-disease review explicitly states that SGLT2 inhibitors suppress renal inflammation and fibrosis and includes translational mechanistic studies, although much of the abstract emphasizes clinical kidney outcomes."
+    }
+  ],
+  "raw_response_sha256": "b00325c997cbea0c5001aecc620bd9080cf09418ba95ab84a1a3ff1788ca8398"
+}

@@ -1,0 +1,91 @@
+{
+  "task": "answer",
+  "question_id": "PP019",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "2df7009fd32811a0d6dbf133e6f11a67e4d02fb439ff4eaceaeeea18c44c5bc4",
+  "raw_response_sha256": "802f8b8209639eaa7a3e3605a61f5d09c32a8a4a7aa95a67bc0941225a864684",
+  "usage": {
+    "input_tokens": 6378,
+    "output_tokens": 694,
+    "total_tokens": 7072
+  },
+  "rated_at": "2026-08-16T19:18:58.030711+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP019-A",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 4,
+        "grounding": 3,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Provides key dysbiosis‑inflammation evidence but lacks detailed bone loss‑osteoporosis link; citation truncated."
+      },
+      {
+        "answer_id": "PP019-B",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 4,
+        "grounding": 3,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Covers early hops and feedback loop; missing explicit bone loss‑osteoporosis evidence; incomplete."
+      },
+      {
+        "answer_id": "PP019-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive human and animal data for all hops; includes gut and oral; well‑cited."
+      },
+      {
+        "answer_id": "PP019-D",
+        "correctness": 4,
+        "completeness": 2,
+        "relevance": 3,
+        "grounding": 3,
+        "mechanistic_coherence": 3,
+        "research_value": 2,
+        "notes": "Partial coverage; truncates after inflammation‑osteoporosis; missing bone loss‑osteoporosis step."
+      },
+      {
+        "answer_id": "PP019-E",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Thorough evidence for each hop; integrates gut and oral studies; strong citations."
+      },
+      {
+        "answer_id": "PP019-F",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Extensive human and animal evidence; clear mechanistic chain; includes intervention and epidemiology; fully cited."
+      },
+      {
+        "answer_id": "PP019-G",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Robust coverage of dysbiosis‑inflammation‑osteoporosis; clear mechanistic links; well‑grounded."
+      }
+    ],
+    "preferred_item_id": "PP019-F",
+    "pairwise_reason": "PP019-F offers the most complete, well‑grounded mechanistic pathway with human and animal evidence, intervention studies, and epidemiologic data, without truncation or gaps."
+  }
+}

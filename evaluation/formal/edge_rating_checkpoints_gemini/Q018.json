@@ -1,0 +1,39 @@
+{
+  "question_id": "Q018",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-31T19:29:05.638043+00:00",
+  "ratings": [
+    {
+      "edge_id": "Q018-E01",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The term 'immune' is extracted as a standalone entity but is merely an adjective from 'immune checkpoint inhibitor'. CTLA4 is not explicitly mentioned in the title, making this a spurious extraction artifact."
+    },
+    {
+      "edge_id": "Q018-E02",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Similar to Q018-E01, 'immune' is not a valid standalone biological entity here, and PDCD1 (PD-1) is not explicitly mentioned in the title. This is a co-occurrence artifact."
+    },
+    {
+      "edge_id": "Q018-E03",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The entity 'inhibitor' is too generic. Furthermore, the relation direction is backwards and nonsensical: CTLA4 does not inhibit an 'inhibitor'; rather, an inhibitor would inhibit CTLA4."
+    },
+    {
+      "edge_id": "Q018-E04",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] There is a clear biological link between the PD-1 pathway and lung pathogenesis. However, the relation 'causes' is incorrect for PDCD1 itself, as the title specifies that it is the 'anti-PD-1 therapy' (blockade of PD-1) that induces the lung pathogenesis, not the PD-1 receptor."
+    },
+    {
+      "edge_id": "Q018-E05",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The entity 'inhibitor' is generic, and the relation direction is incorrect. PDCD1 does not inhibit an 'inhibitor'."
+    }
+  ],
+  "raw_response_sha256": "6791f42820588ca6659517301ecc5d213cbb0ba80b26c473889784289d28b6cf"
+}

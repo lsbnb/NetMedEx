@@ -1,0 +1,95 @@
+{
+  "name": "netmedex-controlled-bridge-latent-consensus-v2.1",
+  "proposal_provider": "openai",
+  "review_provider": "anthropic",
+  "correction": "PubMed field syntax and endpoint-isolation aliases only; mediator hypotheses unchanged",
+  "questions": {
+    "BW003": {
+      "source_patterns": [
+        "\\bCFTR\\b",
+        "\\bcystic\\s+fibrosis\\s+transmembrane\\b"
+      ],
+      "target_patterns": [
+        "\\bintestinal\\s+inflammation\\b",
+        "\\bgut\\s+inflammation\\b",
+        "\\bintestinal\\s+inflammatory\\b"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "\\bCFTR\\b",
+        "\\bcystic\\s+fibrosis\\b"
+      ],
+      "source_side_forbidden_target_patterns": [
+        "\\bintestinal\\s+inflammation\\b",
+        "\\bgut\\s+inflammation\\b",
+        "\\bcolitis\\b"
+      ],
+      "max_candidates_per_query": 30,
+      "max_articles_per_side": 3,
+      "mediators": [
+        {
+          "name": "DUOX2",
+          "patterns": ["\\bDUOX2\\b", "\\bdual\\s+oxidase\\s*2\\b"],
+          "source_query": "(CFTR[Title/Abstract] OR cystic fibrosis[Title/Abstract]) AND (DUOX2[Title/Abstract] OR dual oxidase 2[Title/Abstract])",
+          "target_query": "(DUOX2[Title/Abstract] OR dual oxidase 2[Title/Abstract]) AND (intestinal inflammation[Title/Abstract] OR gut inflammation[Title/Abstract] OR colitis[Title/Abstract])",
+          "rationale": "DUOX2 is a specific, non-hub oxidase.",
+          "relation_1": "CFTR dysfunction upregulates DUOX2",
+          "relation_2": "DUOX2 promotes intestinal inflammation",
+          "why_text_rag_may_miss": "DUOX2 is rarely linked to CFTR in general reviews.",
+          "falsifiable_hypothesis": "DUOX2 inhibition reduces inflammation in CFTR-deficient intestine."
+        }
+      ]
+    },
+    "BW006": {
+      "source_patterns": [
+        "\\bdystrophin\\s+deficiency\\b",
+        "\\bdystrophin.deficient\\b",
+        "\\bDMD\\b(?=.*dystrophin|.*muscular)",
+        "\\bDuchenne\\b",
+        "\\bmdx\\b"
+      ],
+      "target_patterns": [
+        "\\bchronic\\s+inflammation\\b",
+        "\\bskeletal\\s+muscle\\s+inflammation\\b",
+        "\\bmuscle\\s+inflammatory\\b"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "\\bdystrophin\\b",
+        "\\bDuchenne\\b",
+        "\\bDMD\\b",
+        "\\bmdx\\b"
+      ],
+      "source_side_forbidden_target_patterns": [
+        "\\bchronic\\s+inflammation\\b",
+        "\\bpersistent\\s+inflammation\\b",
+        "\\bmuscle\\s+inflammation\\b",
+        "\\bskeletal\\s+muscle\\s+inflammation\\b"
+      ],
+      "max_candidates_per_query": 30,
+      "max_articles_per_side": 3,
+      "mediators": [
+        {
+          "name": "HMGB1",
+          "patterns": ["\\bHMGB1\\b", "\\bhigh.mobility\\s+group\\s+box\\s*1\\b"],
+          "source_query": "(dystrophin[Title/Abstract] OR Duchenne[Title/Abstract] OR mdx[Title/Abstract]) AND (HMGB1[Title/Abstract] OR high mobility group box 1[Title/Abstract])",
+          "target_query": "(HMGB1[Title/Abstract] OR high mobility group box 1[Title/Abstract]) AND (chronic inflammation[Title/Abstract] OR inflammatory signaling[Title/Abstract])",
+          "rationale": "HMGB1 is a specific DAMP protein.",
+          "relation_1": "dystrophin deficiency increases HMGB1 release",
+          "relation_2": "HMGB1 sustains chronic inflammation",
+          "why_text_rag_may_miss": "HMGB1 is not a standard dystrophin-inflammation link.",
+          "falsifiable_hypothesis": "HMGB1 blockade reduces inflammation in dystrophin-deficient muscle."
+        },
+        {
+          "name": "Galectin-3",
+          "patterns": ["\\bGalectin.?3\\b", "\\bLGALS3\\b"],
+          "source_query": "(dystrophin[Title/Abstract] OR Duchenne[Title/Abstract] OR mdx[Title/Abstract]) AND (Galectin-3[Title/Abstract] OR LGALS3[Title/Abstract])",
+          "target_query": "(Galectin-3[Title/Abstract] OR LGALS3[Title/Abstract]) AND (chronic inflammation[Title/Abstract] OR inflammatory signaling[Title/Abstract])",
+          "rationale": "Galectin-3 is a specific lectin.",
+          "relation_1": "dystrophin deficiency upregulates Galectin-3",
+          "relation_2": "Galectin-3 promotes chronic inflammation",
+          "why_text_rag_may_miss": "Galectin-3 is rarely retrieved in top-k muscle inflammation answers.",
+          "falsifiable_hypothesis": "Galectin-3 inhibition reduces chronic inflammation in dystrophin-deficient models."
+        }
+      ]
+    }
+  }
+}

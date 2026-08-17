@@ -1,0 +1,49 @@
+{
+  "status": "feasibility_complete",
+  "cutoff": "2015-12-31",
+  "validation_window": "2016-01-01/2025-12-31",
+  "date_audit": {
+    "included_documents": 124,
+    "maximum_included_publication_year": 2015,
+    "excluded_2016_documents": 7,
+    "leaked_first_run_excluded_from_results": true
+  },
+  "candidate_freeze_sha256": "0eed160e446f71241ec04dad1b736c1d47d7f704b1ecc3e802481ff3556817c9",
+  "candidates_screened": 3,
+  "eligible_candidates": 2,
+  "excluded_candidates": [
+    {
+      "candidate_id": "TC002",
+      "pair": "KRAS--PD-1",
+      "reason": "Seven direct PubMed title/abstract records existed by 2015."
+    }
+  ],
+  "eligible_results": [
+    {
+      "candidate_id": "TC001",
+      "pair": "KRAS--CTLA-4",
+      "pre_2016_direct_records": 0,
+      "future_direct_records": 55,
+      "strict_experimental_support": "partial",
+      "key_validation_pmid": "28807001",
+      "validation_year": 2017,
+      "assessment": "A KRAS-mutant CT26 mouse colorectal cancer model experimentally tested MEK inhibition with anti-CTLA-4 and found sequence-dependent enhancement. This supports treatment-response relevance, but does not prove that KRAS status itself causally controls CTLA-4 response."
+    },
+    {
+      "candidate_id": "TC003",
+      "pair": "celiac disease--periodontitis",
+      "pre_2016_direct_records": 0,
+      "future_direct_records": 6,
+      "strict_experimental_support": "no",
+      "key_validation_pmids": ["38756445", "39257416"],
+      "validation_year": 2024,
+      "assessment": "Later human observational studies directly examined the pair, but did not test the proposed dysbiosis chain; one large cross-sectional study found less, not more, moderate periodontal bone loss in celiac disease."
+    }
+  ],
+  "metrics": {
+    "future_direct_link_recovery": 1.0,
+    "strict_or_partial_experimental_corroboration": 0.5,
+    "full_mediator_chain_validation": 0.0
+  },
+  "interpretation": "The workflow is technically feasible and generated temporally novel links, but this two-candidate feasibility sample does not meet a 70-80% strict experimental-validation target and cannot establish superiority over Traditional RAG."
+}

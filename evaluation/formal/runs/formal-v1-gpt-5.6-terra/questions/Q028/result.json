@@ -1,0 +1,121 @@
+{
+  "status": "complete",
+  "question_id": "Q028",
+  "domain": "oncology",
+  "question": "Which genes mediate a 2-hop path between EGFR activation and resistance to apoptosis?",
+  "pubmed_query": "EGFR apoptosis resistance PI3K AKT BCL2 ERK cancer",
+  "language": "English",
+  "corpus_pmids": [
+    "16854453",
+    "21511051",
+    "26202948",
+    "28938696",
+    "29108234",
+    "29115423",
+    "36938944",
+    "40603821",
+    "42191394"
+  ],
+  "graph": {
+    "node_count": 28,
+    "edge_count": 23,
+    "path_count": 11,
+    "preferred_pmids": [
+      "28938696",
+      "42191394"
+    ]
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "28938696",
+        "score": 0.8116791270572805
+      },
+      {
+        "pmid": "42191394",
+        "score": 0.6783292896366107
+      },
+      {
+        "pmid": "16854453",
+        "score": 0.5388080692542995
+      },
+      {
+        "pmid": "29108234",
+        "score": 0.49456609245227634
+      },
+      {
+        "pmid": "36938944",
+        "score": 0.4807177556348582
+      },
+      {
+        "pmid": "21511051",
+        "score": 0.47886433577259774
+      },
+      {
+        "pmid": "40603821",
+        "score": 0.46724870227848553
+      },
+      {
+        "pmid": "29115423",
+        "score": 0.451690204762154
+      },
+      {
+        "pmid": "26202948",
+        "score": 0.4383274411443844
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "28938696",
+        "score": 0.541119418038187
+      },
+      {
+        "pmid": "16854453",
+        "score": 0.5388080692542995
+      },
+      {
+        "pmid": "29108234",
+        "score": 0.49456609245227634
+      },
+      {
+        "pmid": "36938944",
+        "score": 0.4807177556348582
+      },
+      {
+        "pmid": "21511051",
+        "score": 0.47886433577259774
+      },
+      {
+        "pmid": "40603821",
+        "score": 0.46724870227848553
+      },
+      {
+        "pmid": "42191394",
+        "score": 0.4522195264244071
+      },
+      {
+        "pmid": "29115423",
+        "score": 0.451690204762154
+      },
+      {
+        "pmid": "26202948",
+        "score": 0.4383274411443844
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "## Direct evidence\n\nThe best-supported 2-hop anti-apoptotic route is:\n\n**EGFR → AKT → NF-κB → BCL2 / BCL2L1 (BCL-XL) / BIRC5 (survivin)**\n\nThus, the principal mediating genes between EGFR activation and resistance to apoptosis are:\n\n- **AKT** (the context does not specify an AKT isoform)\n- **NFKB** (NF-κB family; no specific subunit specified)\n\nThese mediators link EGFR signaling to transcriptional upregulation of anti-apoptotic effectors:\n\n- **BCL2**\n- **BCL2L1** (*BCL-XL*)\n- **BIRC5** (*survivin*)\n\nThe review explicitly describes regulatory cross-talk of the **EGFR–Akt–NF-κB pathway** on transcription of **Bcl-2, Bcl-xL, and survivin**, consistent with apoptosis resistance. [PMID: 28938696]\n\n**Evidence type:** cancer-focused review; the supplied abstract does not identify a single species/model for this specific EGFR–AKT–NF-κB route.\n\n## Association / supporting evidence\n\n- **PI3K** is a plausible upstream mediator of AKT in an **EGFR → PI3K → AKT** survival pathway. EGFR, PI3K/AKT, and ERK signaling are described as pathways that transmit growth-factor-receptor signals and prevent apoptosis. [PMID: 16854453]\n- In NSCLC cell lines, reducing EGFR-mediated PI3K/AKT signaling was accompanied by reduced **BCL2** and activation of caspase-3/PARP apoptotic markers. **In-vitro human NSCLC evidence**, with supportive mouse xenograft data for tumor growth/EGFR expression. [PMID: 29108234]\n- In prostate cancer models, inhibition of Notch signaling decreased EGFR, PI3K/AKT, MEK/ERK, NF-κB, BCL-2, and BCL-XL survival signals while increasing apoptotic markers. This supports network-level association but does not establish a uniquely directional EGFR-to-apoptosis 2-hop route. **In-vitro and murine evidence.** [PMID: 26202948]\n\n## Testable hypothesis\n\nA concise, experimentally testable pathway is:\n\n**EGFR activation → PI3K/AKT activation → NF-κB activation → increased BCL2, BCL2L1, and BIRC5 expression → resistance to apoptosis.**\n\nAccordingly, **AKT and NF-κB** are the strongest inferred 2-hop mediators, with **PI3K** as an upstream candidate mediator. Testing EGFR activation followed by selective AKT, PI3K, or NF-κB inhibition and measurement of BCL2/BCL2L1/BIRC5 expression and apoptosis would distinguish the required nodes. [PMID: 28938696; PMID: 16854453]",
+    "traditional_rag": "**Direct evidence (human cancer cell/xenograft context where specified):**\n\n- **AKT** mediates an EGFR-to-anti-apoptosis route: EGFR signaling through the **PI3K/AKT** pathway is linked to reduced apoptosis; inhibiting this axis decreased BCL-2 and activated caspase-3/PARP in NSCLC cell lines, with xenograft confirmation of EGFR suppression [PMID: 29108234]. Thus, a supported 2-hop path is **EGFR → AKT → resistance to apoptosis**.\n- **ERK** is another candidate mediator: EGFR-associated RAF/MEK/ERK signaling is described as transmitting growth-factor-receptor signals that prevent apoptosis, and RAF activity is associated with prevention of apoptosis and induction of anti-apoptotic BCL-2 in breast cancer cells [PMID: 16854453]. Thus: **EGFR → ERK-pathway activity → resistance to apoptosis**.\n\n**Association / extended pathway evidence:**\n\n- **NF-κB** is implicated downstream of the EGFR–AKT axis. The reported **EGFR–AKT–NF-κB** pathway regulates transcription of the anti-apoptotic genes **BCL2, BCL2L1 (BCL-xL), and BIRC5 (survivin)** [PMID: 28938696]. This supports the longer path:  \n  **EGFR → AKT → NF-κB → BCL2/BCL2L1/BIRC5 → apoptosis resistance**.\n- The anti-apoptotic effector genes **BCL2**, **BCL2L1**, and **BIRC5** are therefore associated with EGFR-pathway-mediated apoptosis resistance, but the supplied context does not establish each as a single-intermediate, strict 2-hop mediator from EGFR [PMID: 28938696; PMID: 21511051].\n\n**Testable hypothesis:**\n\n- In a strict network interpretation requiring exactly one gene between EGFR activation and the apoptosis-resistance phenotype, **AKT** is the best-supported mediator; **ERK** is a parallel candidate. Testing EGFR activation/inhibition together with AKT or ERK genetic perturbation and apoptosis assays would distinguish their causal roles.",
+    "general_llm": "There is no single universal “2-hop” gene set, because this depends on whether a hop means a physical protein interaction, phosphorylation event, transcriptional regulation, or a pathway-level association. In cancer biology, the most established EGFR-to-apoptosis-resistance routes are:\n\n| EGFR-driven route | Key mediating genes | Anti-apoptotic outputs |\n|---|---|---|\n| **EGFR → PI3K–AKT** | **PIK3CA, PIK3CB, PIK3R1, AKT1, AKT2** | Inactivation of **BAD**, suppression of **FOXO3**-dependent pro-apoptotic genes, inhibition of caspase-9, increased survival signaling |\n| **EGFR → RAS–MAPK/ERK** | **GRB2, SHC1, SOS1, KRAS, BRAF, MAP2K1/2, MAPK1/3** | Reduced **BCL2L11 (BIM)** activity/expression and increased survival factors such as **MCL1** |\n| **EGFR → STAT3** | **STAT3**, often with **SRC**, **JAK1**, or **JAK2** depending on cell type | Transcriptional induction of **BCL2L1 (BCL-XL)**, **MCL1**, **BCL2**, and **BIRC5 (survivin)** |\n| **EGFR → NF-κB** | **IKBKB, RELA**, sometimes **SRC** or **AKT1** upstream | Increased expression of **BCL2**, **BCL2L1**, **BIRC5**, and other survival genes |\n\nIf “2-hop” means one intermediate gene between EGFR and an anti-apoptotic effector, the most plausible compact examples are:\n\n- **EGFR → STAT3 → BCL2L1**\n- **EGFR → STAT3 → MCL1**\n- **EGFR → STAT3 → BIRC5**\n- **EGFR → AKT1 → BAD**  \n  Here AKT-mediated inhibition of BAD promotes survival.\n- **EGFR → MAPK1/3 → BCL2L11**  \n  ERK signaling can suppress the pro-apoptotic BIM pathway.\n- **EGFR → RELA → BCL2L1/BIRC5**\n\nThus, the strongest candidate mediators are usually **STAT3, AKT1/AKT2, PIK3CA/PIK3R1, MAPK1/MAPK3, KRAS, SRC, and RELA**. The downstream genes most directly associated with the apoptosis-resistant state are **BCL2L1, MCL1, BCL2, BIRC5**, together with repression or inhibition of pro-apoptotic genes/proteins such as **BAD** and **BCL2L11**.\n\nA strict graph-based answer would require the particular network and edge definitions, since many biologically real EGFR-to-AKT or EGFR-to-STAT3 connections involve lipids, complexes, or additional adaptor proteins rather than exactly two direct gene–gene edges."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 1.077692650258541,
+    "semantic_graph": 61.800136387348175,
+    "vector_index": 1.3873389586806297,
+    "answer_netmedex_hybrid_rag": 9.978939138352871,
+    "answer_traditional_rag": 7.388497665524483,
+    "answer_general_llm": 19.06273405253887,
+    "total": 102.65062648057938
+  },
+  "completed_at": "2026-07-27T18:34:59.221248+00:00"
+}

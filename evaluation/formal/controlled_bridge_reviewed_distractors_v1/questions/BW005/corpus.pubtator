@@ -1,0 +1,858 @@
+##USE-MESH-VOCABULARY
+36356191|t|Characterization of immune checkpoint inhibitor-induced cardiotoxicity reveals interleukin-17A as a driver of cardiac dysfunction after anti-PD-1 treatment.
+36356191|a|BACKGROUND AND PURPOSE: Immune checkpoint inhibitors (ICI), such as anti-PD-1 monoclonal antibodies, have revolutionized cancer therapy by enhancing the cytotoxic effects of T-cells against tumours. However, enhanced T-cell activity also may cause myocarditis and cardiotoxicity. Our understanding of the mechanisms of ICI-induced cardiotoxicity is limited. Here, we aimed to investigate the effect of PD-1 inhibition on cardiac function and explore the molecular mechanisms of ICI-induced cardiotoxicity. EXPERIMENTAL APPROACH: C57BL6/J and BALB/c mice were treated with isotype control or anti-PD-1 antibody. Echocardiography was used to assess cardiac function. Cardiac transcriptomic changes were investigated by bulk RNA sequencing. Inflammatory changes were assessed by qRT-PCR and immunohistochemistry in heart, thymus, and spleen of the animals. In follow-up experiments, anti-CD4 and anti-IL-17A antibodies were used along with PD-1 blockade in C57BL/6J mice. KEY RESULTS: Anti-PD-1 treatment led to cardiac dysfunction and left ventricular dilation in C57BL/6J mice, with increased nitrosative stress. Only mild inflammation was observed in the heart. However, PD-1 inhibition resulted in enhanced thymic inflammatory signalling, where Il17a increased most prominently. In BALB/c mice, cardiac dysfunction was not evident, and thymic inflammatory activation was more balanced. Inhibition of IL-17A prevented anti-PD-1-induced cardiac dysfunction in C57BL6/J mice. Comparing myocardial transcriptomic changes in C57BL/6J and BALB/c mice, differentially regulated genes (Dmd, Ass1, Chrm2, Nfkbia, Stat3, Gsk3b, Cxcl9, Fxyd2, and Ldb3) were revealed, related to cardiac structure, signalling, and inflammation. CONCLUSIONS: PD-1 blockade induces cardiac dysfunction in mice with increased IL-17 signalling in the thymus. Pharmacological inhibition of IL-17A treatment prevents ICI-induced cardiac dysfunction.
+36356191	20	26	immune	Chemical	-
+36356191	56	70	Cardiotoxicity	Disease	MESH:D066126
+36356191	79	94	Il17a	Gene	16171
+36356191	110	129	Heart Diseases	Disease	MESH:D006331
+36356191	141	145	Pdcd1	Gene	18566
+36356191	181	187	Immune	Chemical	-
+36356191	230	234	Pdcd1	Gene	18566
+36356191	278	284	Neoplasms	Disease	MESH:D009369
+36356191	347	354	Neoplasms	Disease	MESH:D009369
+36356191	405	416	Myocarditis	Disease	MESH:D009205
+36356191	421	435	Cardiotoxicity	Disease	MESH:D066126
+36356191	488	502	Cardiotoxicity	Disease	MESH:D066126
+36356191	559	563	Pdcd1	Gene	18566
+36356191	647	661	Cardiotoxicity	Disease	MESH:D066126
+36356191	699	705	0184	CellLine	CVCL:0184
+36356191	706	710	mice	Species	10090
+36356191	753	757	Pdcd1	Gene	18566
+36356191	895	907	Inflammation	Disease	MESH:D007249
+36356191	1042	1045	Cd4	Gene	12504
+36356191	1055	1061	Il17a	Gene	16171
+36356191	1094	1098	Pdcd1	Gene	18566
+36356191	1111	1119	C0MW	CellLine	CVCL:C0MW
+36356191	1120	1124	mice	Species	10090
+36356191	1144	1148	Pdcd1	Gene	18566
+36356191	1166	1185	Heart Diseases	Disease	MESH:D006331
+36356191	1190	1194	Ventricular Dysfunction Left	Disease	MESH:D018487
+36356191	1195	1215	Cardiomyopathy Right Ventricular Dilated	Disease	MESH:C566255
+36356191	1219	1227	C0MW	CellLine	CVCL:C0MW
+36356191	1228	1232	mice	Species	10090
+36356191	1279	1291	Inflammation	Disease	MESH:D007249
+36356191	1328	1332	Pdcd1	Gene	18566
+36356191	1365	1384	Thymus Neoplasms	Disease	MESH:D013953
+36356191	1403	1408	Il17a	Gene	16171
+36356191	1440	1446	0184	CellLine	CVCL:0184
+36356191	1447	1451	mice	Species	10090
+36356191	1453	1472	Heart Diseases	Disease	MESH:D006331
+36356191	1494	1513	Thymus Neoplasms	Disease	MESH:D013953
+36356191	1558	1564	Il17a	Gene	16171
+36356191	1580	1584	Pdcd1	Gene	18566
+36356191	1593	1612	Heart Diseases	Disease	MESH:D006331
+36356191	1625	1629	mice	Species	10090
+36356191	1678	1686	C0MW	CellLine	CVCL:C0MW
+36356191	1691	1697	0184	CellLine	CVCL:0184
+36356191	1698	1702	mice	Species	10090
+36356191	1736	1739	Dmd	Gene	13405
+36356191	1741	1745	Ass1	Gene	11898
+36356191	1747	1752	Chrm2	Gene	243764
+36356191	1754	1760	Nfkbia	Gene	18035
+36356191	1762	1767	Stat3	Gene	20848
+36356191	1769	1774	Gsk3b	Gene	56637
+36356191	1776	1781	Cxcl9	Gene	17329
+36356191	1783	1788	Fxyd2	Gene	11936
+36356191	1794	1798	Ldb3	Gene	24131
+36356191	1861	1873	Inflammation	Disease	MESH:D007249
+36356191	1888	1892	Pdcd1	Gene	18566
+36356191	1910	1929	Heart Diseases	Disease	MESH:D006331
+36356191	1933	1937	mice	Species	10090
+36356191	1953	1958	Il17a	Gene	16171
+36356191	2015	2021	Il17a	Gene	16171
+36356191	2053	2072	Heart Diseases	Disease	MESH:D006331
+36356191	Association	MESH:D007249	11936
+36356191	Association	MESH:D006331	16171
+36356191	Association	MESH:D007249	56637
+36356191	Association	16171	18566
+36356191	Positive_Correlation	MESH:D006331	18566
+36356191	Association	MESH:D013953	18566
+36356191	Association	MESH:D018487	18566
+36356191	Association	MESH:D007249	18035
+36356191	Association	MESH:D013953	16171
+36356191	Association	MESH:C566255	18566
+36356191	Association	MESH:D007249	11898
+36356191	Association	MESH:D007249	243764
+36356191	Association	MESH:D007249	24131
+36356191	Association	MESH:D007249	17329
+36356191	Association	MESH:D007249	13405
+
+37359545|t|PD-1 blockade attenuates surgery-mediated immunosuppression and boosts Th1 immunity perioperatively in oesophagogastric junctional adenocarcinoma.
+37359545|a|Introduction: This timely study assesses the immunosuppressive effects of surgery on cytotoxic Th1-like immunity and investigates if immune checkpoint blockade (ICB) can boost Th1-like immunity in the perioperative window in upper gastrointestinal cancer (UGI) patients. Methods: PBMCs were isolated from 11 UGI patients undergoing tumour resection on post-operative days (POD) 0, 1, 7 and 42 and expanded ex vivo using anti-CD3/28 and IL-2 for 5 days in the absence/presence of nivolumab or ipilimumab. T cells were subsequently immunophenotyped via flow cytometry to determine the frequency of T helper (Th)1-like, Th1/17-like, Th17-like and regulatory T cell (Tregs) subsets and their immune checkpoint expression profile. Lymphocyte secretions were also assessed via multiplex ELISA (IFN-gamma, granzyme B, IL-17 and IL-10). The 48h cytotoxic ability of vehicle-, nivolumab- and ipilimumab-expanded PBMCs isolated on POD 0, 1, 7 and 42 against radiosensitive and radioresistant oesophageal adenocarcinoma tumour cells (OE33 P and OE33 R) was also examined using a cell counting kit-8 (CCK-8) assay to determine if surgery affected the killing ability of lymphocytes and whether the use of ICB could enhance cytotoxicity. Results: Th1-like immunity was suppressed in expanded PBMCs in the immediate post-operative setting. The frequency of expanded circulating Th1-like cells was significantly decreased post-operatively accompanied by a decrease in IFN-gamma production and a concomitant increase in the frequency of expanded regulatory T cells with an increase in circulating levels of IL-10. Interestingly, PD-L1 and CTLA-4 immune checkpoint proteins were also upregulated on expanded Th1-like cells post-operatively. Additionally, the cytotoxic ability of expanded lymphocytes against oesophageal adenocarcinoma tumour cells was abrogated post-surgery. Of note, the addition of nivolumab or ipilimumab attenuated the surgery-mediated suppression of lymphocyte cytotoxicity, demonstrated by a significant increase in tumour cell killing and an increase in the frequency of Th1-like cells and Th1 cytokine production. Conclusion: These findings support the hypothesis of a surgery-mediated suppression in Th1-like cytotoxic immunity and highlights a rationale for the use of ICB within the perioperative setting to abrogate tumour-promoting effects of surgery and ameliorate the risk of recurrence.
+37359545	0	4	PDCD1	Gene	5133
+37359545	103	145	Adenocarcinoma	Disease	MESH:D000230
+37359545	372	401	Gastrointestinal Neoplasms	Disease	MESH:D005770
+37359545	403	406	Gastrointestinal Neoplasms	Disease	MESH:D005770
+37359545	455	458	Gastrointestinal Neoplasms	Disease	MESH:D005770
+37359545	479	485	Neoplasms	Disease	MESH:D009369
+37359545	583	587	IL2	Gene	3558
+37359545	626	635	Nivolumab	Chemical	MESH:D000077594
+37359545	639	649	Ipilimumab	Chemical	MESH:D000074324
+37359545	935	944	IFNG	Gene	3458
+37359545	946	956	GZMB	Gene	3002
+37359545	958	963	IL17A	Gene	3605
+37359545	968	973	IL10	Gene	3586
+37359545	1015	1024	Nivolumab	Chemical	MESH:D000077594
+37359545	1030	1040	Ipilimumab	Chemical	MESH:D000074324
+37359545	1129	1162	Neoplasms	Disease	MESH:D009369
+37359545	1170	1174	0471	CellLine	CVCL:0471
+37359545	1181	1185	0471	CellLine	CVCL:0471
+37359545	1358	1370	Drug-Related Side Effects and Adverse Reactions	Disease	MESH:D064420
+37359545	1600	1609	IFNG	Gene	3458
+37359545	1738	1743	IL10	Gene	3586
+37359545	1760	1765	CD274	Gene	29126
+37359545	1770	1776	CTLA4	Gene	1493
+37359545	1939	1972	Neoplasms	Disease	MESH:D009369
+37359545	2032	2041	Nivolumab	Chemical	MESH:D000077594
+37359545	2045	2055	Ipilimumab	Chemical	MESH:D000074324
+37359545	2114	2126	Drug-Related Side Effects and Adverse Reactions	Disease	MESH:D064420
+37359545	2170	2176	Neoplasms	Disease	MESH:D009369
+37359545	2476	2482	Neoplasms	Disease	MESH:D009369
+37359545	Negative_Correlation	MESH:D000074324	MESH:D009369
+37359545	Negative_Correlation	MESH:D000077594	MESH:D009369
+37359545	Association	MESH:D000230	5133
+37359545	Negative_Correlation	MESH:D000077594	MESH:D064420
+37359545	Negative_Correlation	MESH:D000077594	MESH:D005770
+37359545	Negative_Correlation	MESH:D000074324	MESH:D064420
+37359545	Negative_Correlation	MESH:D000074324	MESH:D005770
+
+38774604|t|An On-Treatment Decreased Trend of Serum IL-6 and IL-8 as Predictive Markers Quickly Reflects Short-Term Efficacy of PD-1 Blockade Immunochemotherapy in Patients with Advanced Gastric Cancer.
+38774604|a|Objective: Immunotherapy has proven effective in treating advanced gastric cancer (AGC), yet its benefits are limited to a subset of patients. Our aim is to swiftly identify prognostic biomarkers using cytokines to improve the precision of clinical guidance and decision-making for PD-1 inhibitor-based cancer immunotherapy in AGC. Materials and Methods: The retrospective study compared 36 patients with AGC who received combined anti-PD-1 immunotherapy and chemotherapy (immunochemotherapy) with a control group of 20 patients who received chemotherapy alone. The concentrations of TNF-alpha, IL-1beta, IL-2R, IL-6, IL-8, IL-10, and IL-17 in the serum were assessed using chemiluminescence immunoassay at three distinct time intervals following the commencement of immunochemotherapy. Results: When compared to controls, patients undergoing immunochemotherapy demonstrated a generalized rise in cytokine levels after the start of treatment. However, patients who benefited from immunochemotherapy showed a decrease in IL-6 or IL-8 concentrations throughout treatment (with varied trends observed for IL-1beta, IL-2R, IL-10, IL-17, and TNF-alpha) was evident in patients benefiting from immunochemotherapy but not in those who did not benefit. Among these markers, the combination of IL-6, IL-8, and CEA showed optimal predictive performance for short-term efficacy of immunochemotherapy in AGC patients. Conclusion: Reductions in IL-6/IL-8 levels observed during immunochemotherapy correlated with increased responsiveness to treatment effectiveness. These easily accessible blood-based biomarkers are predictive and rapid and may play a crucial role in identifying individuals likely to derive benefits from PD-1 blockade immunotherapy.
+38774604	41	45	IL6	Gene	3569
+38774604	50	54	CXCL8	Gene	3576
+38774604	117	121	SPATA2	Gene	9825
+38774604	153	161	Patients	Species	9606
+38774604	325	333	patients	Species	9606
+38774604	583	591	patients	Species	9606
+38774604	628	632	SPATA2	Gene	9825
+38774604	712	720	patients	Species	9606
+38774604	776	785	TNF	Gene	7124
+38774604	787	795	IL1B	Gene	3553
+38774604	797	802	IL2RA	Gene	3559
+38774604	804	808	IL6	Gene	3569
+38774604	810	814	CXCL8	Gene	3576
+38774604	816	821	IL10	Gene	3586
+38774604	827	832	IL17A	Gene	3605
+38774604	1015	1023	patients	Species	9606
+38774604	1144	1152	patients	Species	9606
+38774604	1212	1216	IL6	Gene	3569
+38774604	1220	1224	CXCL8	Gene	3576
+38774604	1294	1302	IL1B	Gene	3553
+38774604	1304	1309	IL2RA	Gene	3559
+38774604	1311	1316	IL10	Gene	3586
+38774604	1318	1323	IL17A	Gene	3605
+38774604	1329	1338	TNF	Gene	7124
+38774604	1355	1363	patients	Species	9606
+38774604	1477	1481	IL6	Gene	3569
+38774604	1483	1487	CXCL8	Gene	3576
+38774604	1493	1496	PSG2	Gene	5670
+38774604	1588	1596	patients	Species	9606
+38774604	1624	1628	IL6	Gene	3569
+38774604	1629	1633	CXCL8	Gene	3576
+38774604	1903	1907	SPATA2	Gene	9825
+38774604	Association	3576	9825
+
+36422998|t|Biologic treatment of psoriasis in oncologic patients.
+36422998|a|INTRODUCTION: There is a complex interplay between psoriasis and cancer, with therapeutic implications. Patients with psoriasis have an increased risk of developing several types of cancer, and safety concerns have arisen regarding biologic therapies and cancer. On the other hand, biologics can provide adequate control of psoriasis that appears or worsens as an immune-related adverse event following immune enhancing checkpoint inhibitor therapy for cancer, thus allowing prosecution of oncologic treatment without impairing its efficacy. PATIENTS AND METHODS: We performed a retrospective observational study of patients with moderate-to-severe psoriasis under biological treatment and cancer who were treated at our Department between January 2009 and June 2022. RESULTS: We included 31 adult patients with psoriasis and cancer; in 16 the diagnosis of cancer preceded the inception of biological treatment, and 9 of those patients were in remission. Most malignancies arose in the genitourinary system, followed by breast, hematologic, colorectal, thyroid, and others. Anti-IL23p19 biologics were most frequently used (36%), followed by anti-TNF (32%), anti-IL-17 (16%) and anti-IL-12/23 (16%) agents. All patients showed improvement of psoriasis after biologic initiation. CONCLUSIONS: Biologic treatment for moderate-severe psoriasis should be considered in oncologic patients since it is not formally contraindicated and is safe. Moreover, the efficacy and safety profile of IL-23 and IL-17 inhibitors may be advantageous for those patients.
+36422998	22	31	Psoriasis	Disease	MESH:D011565
+36422998	35	44	Cancer Pain	Disease	MESH:D000072716
+36422998	45	53	patients	Species	9606
+36422998	106	115	Psoriasis	Disease	MESH:D011565
+36422998	120	126	Neoplasms	Disease	MESH:D009369
+36422998	159	167	Patients	Species	9606
+36422998	173	182	Psoriasis	Disease	MESH:D011565
+36422998	237	243	Neoplasms	Disease	MESH:D009369
+36422998	310	316	Neoplasms	Disease	MESH:D009369
+36422998	379	388	Psoriasis	Disease	MESH:D011565
+36422998	508	514	Neoplasms	Disease	MESH:D009369
+36422998	545	554	Cancer Pain	Disease	MESH:D000072716
+36422998	597	605	PATIENTS	Species	9606
+36422998	671	679	patients	Species	9606
+36422998	704	713	Psoriasis	Disease	MESH:D011565
+36422998	745	751	Neoplasms	Disease	MESH:D009369
+36422998	853	861	patients	Species	9606
+36422998	867	876	Psoriasis	Disease	MESH:D011565
+36422998	881	887	Neoplasms	Disease	MESH:D009369
+36422998	912	918	Neoplasms	Disease	MESH:D009369
+36422998	982	990	patients	Species	9606
+36422998	1015	1027	Neoplasms	Disease	MESH:D009369
+36422998	1075	1081	Hereditary Breast and Ovarian Cancer Syndrome	Disease	MESH:D061325
+36422998	1083	1094	Hematologic Diseases	Disease	MESH:D006402
+36422998	1096	1106	Colorectal Neoplasms	Disease	MESH:D015179
+36422998	1134	1141	IL23A	Gene	51561
+36422998	1202	1205	TNF	Gene	7124
+36422998	1218	1223	IL17A	Gene	3605
+36422998	1239	1244	IL12B	Gene	3593
+36422998	1266	1274	patients	Species	9606
+36422998	1297	1306	Psoriasis	Disease	MESH:D011565
+36422998	1386	1395	Psoriasis	Disease	MESH:D011565
+36422998	1420	1429	Cancer Pain	Disease	MESH:D000072716
+36422998	1430	1438	patients	Species	9606
+36422998	1538	1543	IL23A	Gene	51561
+36422998	1548	1553	IL17A	Gene	3605
+36422998	1595	1603	patients	Species	9606
+36422998	Association	MESH:D011565	51561
+36422998	Association	MESH:D011565	3605
+
+28650338|t|IFN-gamma-related mRNA profile predicts clinical response to PD-1 blockade.
+28650338|a|Programmed death-1-directed (PD-1-directed) immune checkpoint blockade results in durable antitumor activity in many advanced malignancies. Recent studies suggest that IFN-gamma is a critical driver of programmed death ligand-1 (PD-L1) expression in cancer and host cells, and baseline intratumoral T cell infiltration may improve response likelihood to anti-PD-1 therapies, including pembrolizumab. However, whether quantifying T cell-inflamed microenvironment is a useful pan-tumor determinant of PD-1-directed therapy response has not been rigorously evaluated. Here, we analyzed gene expression profiles (GEPs) using RNA from baseline tumor samples of pembrolizumab-treated patients. We identified immune-related signatures correlating with clinical benefit using a learn-and-confirm paradigm based on data from different clinical studies of pembrolizumab, starting with a small pilot of 19 melanoma patients and eventually defining a pan-tumor T cell-inflamed GEP in 220 patients with 9 cancers. Predictive value was independently confirmed and compared with that of PD-L1 immunohistochemistry in 96 patients with head and neck squamous cell carcinoma. The T cell-inflamed GEP contained IFN-gamma-responsive genes related to antigen presentation, chemokine expression, cytotoxic activity, and adaptive immune resistance, and these features were necessary, but not always sufficient, for clinical benefit. The T cell-inflamed GEP has been developed into a clinical-grade assay that is currently being evaluated in ongoing pembrolizumab trials.
+28650338	0	9	IFNG	Gene	3458
+28650338	61	65	PDCD1	Gene	5133
+28650338	105	109	PDCD1	Gene	5133
+28650338	202	214	Neoplasms	Disease	MESH:D009369
+28650338	244	253	IFNG	Gene	3458
+28650338	278	303	CD274	Gene	29126
+28650338	305	310	CD274	Gene	29126
+28650338	326	332	Neoplasms	Disease	MESH:D009369
+28650338	435	439	PDCD1	Gene	5133
+28650338	461	474	pembrolizumab	Chemical	MESH:C582435
+28650338	554	559	Neoplasms	Disease	MESH:D009369
+28650338	575	579	PDCD1	Gene	5133
+28650338	715	720	Neoplasms	Disease	MESH:D009369
+28650338	732	745	pembrolizumab	Chemical	MESH:C582435
+28650338	754	762	patients	Species	9606
+28650338	922	935	pembrolizumab	Chemical	MESH:C582435
+28650338	971	979	Melanoma	Disease	MESH:D008545
+28650338	980	988	patients	Species	9606
+28650338	1019	1024	Neoplasms	Disease	MESH:D009369
+28650338	1052	1060	patients	Species	9606
+28650338	1068	1075	Neoplasms	Disease	MESH:D009369
+28650338	1148	1153	CD274	Gene	29126
+28650338	1181	1189	patients	Species	9606
+28650338	1195	1232	Squamous Cell Carcinoma of Head and Neck	Disease	MESH:D000077195
+28650338	1268	1277	IFNG	Gene	3458
+28650338	1602	1615	pembrolizumab	Chemical	MESH:C582435
+28650338	Negative_Correlation	MESH:C582435	5133
+28650338	Association	MESH:D009369	5133
+28650338	Association	MESH:D009369	29126
+28650338	Negative_Correlation	MESH:C582435	MESH:D009369
+28650338	Association	MESH:D000077195	29126
+28650338	Association	29126	3458
+28650338	Association	MESH:D009369	3458
+
+35107396|t|Adverse cutaneous toxicities by PD-1/PD-L1 immune checkpoint inhibitors: pathogenesis, treatment, and surveillance.
+35107396|a|INTRODUCTION: The therapeutic use of humanised monoclonal programmed cell death 1 (PD-1) (pembrolizumab, and nivolumab) and programmed cell death ligand-1 (PD-L1) (atezolizumab, avelumab, durvalumab) immune checkpoint inhibitors (ICPi) as potent anticancer therapies is rapidly increasing. The mechanism of signalling of anti-PD-1/PD-L1 involves triggering cytotoxic CD4+/CD8 + T cell activation and subsequent abolition of cancer cells which induces specific immunologic adverse events that are specific to these therapies. These drugs can cause numerous cutaneous reactions and are characterized as the most frequent immune-related adverse events (irAEs). Majority of cutaneous irAEs range from non-specific eruptions to detectible skin manifestations, which may be self-limiting and present acceptable skin toxicity profiles, while some may produce life-threatening complications. OBJECTIVE: This review aims to illuminate the associated cutaneous irAEs related to drugs used in oncology along with the relevant mechanism(s) and management. AREAS COVERED: Literature was searched using various databases including Pub-Med, Google Scholar, and Medline. The search mainly involved research articles, retrospective studies, case reports, and clinicopathological findings. With this review article, an overview of the cutaneous irAEs with anti-PD-1/PD-L1 therapy, as well as suggestions, have been provided, so that their recognition at early stages could help in better management and would prevent treatment discontinuation.HIGHLIGHTSCutaneous adverse effects are the most prevalent immune-related adverse events induced by anti-PD-1/PD-L1 immune-checkpoint antibodies.Cutaneous toxicities mainly manifest in the form of maculopapular rash and pruritus.More specific cutaneous complications can also occur, including vitiligo, worsened psoriasis, lichenoid dermatitis, mucosal involvement (e.g. oral lichenoid reaction), dermatomyositis, lupus erythematosus.Cutaneous manifestations can be life-threatening including Stevens-Johnson syndrome/toxic epidermal necrolysis (TEN).Dermatologic toxicities are usually mild, readily manageable, and rarely result in significant morbidity.Adequate management of the cutaneous adverse event and recognition in early stages could lead to the prevention of worsening of the lesions and limit treatment disruption.
+35107396	8	28	Stevens-Johnson Syndrome	Disease	MESH:D013262
+35107396	32	36	PDCD1	Gene	5133
+35107396	37	42	CD274	Gene	29126
+35107396	50	71	checkpoint inhibitors	Chemical	-
+35107396	174	197	PDCD1	Gene	5133
+35107396	199	203	PDCD1	Gene	5133
+35107396	206	219	pembrolizumab	Chemical	MESH:C582435
+35107396	225	234	Nivolumab	Chemical	MESH:D000077594
+35107396	240	270	CD274	Gene	29126
+35107396	272	277	CD274	Gene	29126
+35107396	280	292	atezolizumab	Chemical	MESH:C000594389
+35107396	294	302	avelumab	Chemical	MESH:C000609138
+35107396	304	314	durvalumab	Chemical	MESH:C000613593
+35107396	323	344	checkpoint inhibitors	Chemical	-
+35107396	442	446	PDCD1	Gene	5133
+35107396	447	452	CD274	Gene	29126
+35107396	483	486	CD4	Gene	920
+35107396	488	491	CD8A	Gene	925
+35107396	540	546	Neoplasms	Disease	MESH:D009369
+35107396	735	764	Cardiovascular Diseases	Disease	MESH:D002318
+35107396	766	771	Cardiovascular Diseases	Disease	MESH:D002318
+35107396	786	801	Cardiovascular Diseases	Disease	MESH:D002318
+35107396	826	835	Drug Eruptions	Disease	MESH:D003875
+35107396	850	869	Skin Manifestations	Disease	MESH:D012877
+35107396	921	934	Skin Diseases	Disease	MESH:D012871
+35107396	1057	1072	Cardiovascular Diseases	Disease	MESH:D002318
+35107396	1433	1448	Cardiovascular Diseases	Disease	MESH:D002318
+35107396	1459	1463	PDCD1	Gene	5133
+35107396	1464	1469	CD274	Gene	29126
+35107396	1641	1676	Drug-Related Side Effects and Adverse Reactions	Disease	MESH:D064420
+35107396	1700	1729	Cardiovascular Diseases	Disease	MESH:D002318
+35107396	1746	1750	PDCD1	Gene	5133
+35107396	1751	1756	CD274	Gene	29126
+35107396	1786	1806	Stevens-Johnson Syndrome	Disease	MESH:D013262
+35107396	1838	1856	Exanthema	Disease	MESH:D005076
+35107396	1861	1869	Pruritus	Disease	MESH:D011537
+35107396	1934	1942	Vitiligo	Disease	MESH:D014820
+35107396	1953	1962	Psoriasis	Disease	MESH:D011565
+35107396	1964	1984	Dermatitis	Disease	MESH:D003872
+35107396	1986	2005	Mucositis	Disease	MESH:D052016
+35107396	2012	2035	Lichenoid Eruptions	Disease	MESH:D017512
+35107396	2038	2053	Dermatomyositis	Disease	MESH:D003882
+35107396	2055	2074	Lupus Erythematosus Systemic	Disease	MESH:D008180
+35107396	2134	2158	Stevens-Johnson Syndrome	Disease	MESH:D013262
+35107396	2159	2185	Stevens-Johnson Syndrome	Disease	MESH:D013262
+35107396	2187	2190	Stevens-Johnson Syndrome	Disease	MESH:D013262
+35107396	2205	2215	Drug-Related Side Effects and Adverse Reactions	Disease	MESH:D064420
+35107396	2324	2347	Cardiovascular Diseases	Disease	MESH:D002318
+35107396	Positive_Correlation	29126	925
+35107396	Negative_Correlation	MESH:C582435	5133
+35107396	Association	MESH:D064420	29126
+35107396	Positive_Correlation	5133	925
+35107396	Association	MESH:D002318	29126
+35107396	Negative_Correlation	MESH:D000077594	5133
+35107396	Positive_Correlation	5133	920
+35107396	Positive_Correlation	MESH:D011537	5133
+35107396	Negative_Correlation	MESH:C000613593	29126
+35107396	Association	MESH:D009369	29126
+35107396	Negative_Correlation	MESH:C000609138	29126
+35107396	Association	MESH:D002318	5133
+35107396	Positive_Correlation	29126	920
+35107396	Association	MESH:D009369	5133
+35107396	Negative_Correlation	MESH:C000594389	29126
+
+25428505|t|PD-1 blockade induces responses by inhibiting adaptive immune resistance.
+25428505|a|Therapies that target the programmed death-1 (PD-1) receptor have shown unprecedented rates of durable clinical responses in patients with various cancer types. One mechanism by which cancer tissues limit the host immune response is via upregulation of PD-1 ligand (PD-L1) and its ligation to PD-1 on antigen-specific CD8(+) T cells (termed adaptive immune resistance). Here we show that pre-existing CD8(+) T cells distinctly located at the invasive tumour margin are associated with expression of the PD-1/PD-L1 immune inhibitory axis and may predict response to therapy. We analysed samples from 46 patients with metastatic melanoma obtained before and during anti-PD-1 therapy (pembrolizumab) using quantitative immunohistochemistry, quantitative multiplex immunofluorescence, and next-generation sequencing for T-cell antigen receptors (TCRs). In serially sampled tumours, patients responding to treatment showed proliferation of intratumoral CD8(+) T cells that directly correlated with radiographic reduction in tumour size. Pre-treatment samples obtained from responding patients showed higher numbers of CD8-, PD-1- and PD-L1-expressing cells at the invasive tumour margin and inside tumours, with close proximity between PD-1 and PD-L1, and a more clonal TCR repertoire. Using multivariate analysis, we established a predictive model based on CD8 expression at the invasive margin and validated the model in an independent cohort of 15 patients. Our findings indicate that tumour regression after therapeutic PD-1 blockade requires pre-existing CD8(+) T cells that are negatively regulated by PD-1/PD-L1-mediated adaptive immune resistance. 
+25428505	199	207	patients	Species	9606
+25428505	221	227	Neoplasms	Disease	MESH:D009369
+25428505	258	264	Neoplasms	Disease	MESH:D009369
+25428505	340	345	CD274	Gene	29126
+25428505	392	395	CD8A	Gene	925
+25428505	475	478	CD8A	Gene	925
+25428505	516	524	Neoplasm Invasiveness	Disease	MESH:D009361
+25428505	525	531	Neoplasms	Disease	MESH:D009369
+25428505	582	587	CD274	Gene	29126
+25428505	676	684	patients	Species	9606
+25428505	690	709	Melanoma	Disease	MESH:D008545
+25428505	756	769	pembrolizumab	Chemical	MESH:C582435
+25428505	943	950	Neoplasms	Disease	MESH:D009369
+25428505	952	960	patients	Species	9606
+25428505	1022	1025	CD8A	Gene	925
+25428505	1093	1099	Neoplasms	Disease	MESH:D009369
+25428505	1153	1161	patients	Species	9606
+25428505	1187	1190	CD8A	Gene	925
+25428505	1203	1208	CD274	Gene	29126
+25428505	1233	1241	Neoplasm Invasiveness	Disease	MESH:D009361
+25428505	1242	1248	Neoplasms	Disease	MESH:D009369
+25428505	1267	1274	Neoplasms	Disease	MESH:D009369
+25428505	1314	1319	CD274	Gene	29126
+25428505	1339	1342	TRBV20OR9-2	Gene	6962
+25428505	1427	1430	CD8A	Gene	925
+25428505	1449	1457	Neoplasm Invasiveness	Disease	MESH:D009361
+25428505	1520	1528	patients	Species	9606
+25428505	1557	1563	Neoplasms	Disease	MESH:D009369
+25428505	1629	1632	CD8A	Gene	925
+25428505	1682	1687	CD274	Gene	29126
+25428505	Association	MESH:D009369	29126
+25428505	Association	29126	925
+25428505	Association	MESH:D009361	29126
+25428505	Association	MESH:D009369	925
+25428505	Negative_Correlation	MESH:C582435	MESH:D008545
+25428505	Association	MESH:D009361	925
+
+32484460|t|PD-1 blockade inhibits osteoclast formation and murine bone cancer pain.
+32484460|a|Emerging immune therapy, such as with the anti-programmed cell death-1 (anti-PD-1) monoclonal antibody nivolumab, has shown efficacy in tumor suppression. Patients with terminal cancer suffer from cancer pain as a result of bone metastasis and bone destruction, but how PD-1 blockade affects bone cancer pain remains unknown. Here, we report that mice lacking Pdcd1 (Pd1-/-) demonstrated remarkable protection against bone destruction induced by femoral inoculation of Lewis lung cancer cells. Compared with WT mice, Pd1-/- mice exhibited increased baseline pain sensitivity, but the development of bone cancer pain was compromised in Pd1-/- mice. Consistently, these beneficial effects in Pd1-/- mice were recapitulated by repeated i.v. applications of nivolumab in WT mice, even though nivolumab initially increased mechanical and thermal pain. Notably, PD-1 deficiency or nivolumab treatment inhibited osteoclastogenesis without altering tumor burden. PD-L1 and CCL2 are upregulated within the local tumor microenvironment, and PD-L1 promoted RANKL-induced osteoclastogenesis through JNK activation and CCL2 secretion. Bone cancer upregulated CCR2 in primary sensory neurons, and CCR2 antagonism effectively reduced bone cancer pain. Our findings suggest that, despite a transient increase in pain sensitivity following each treatment, anti-PD-1 immunotherapy could produce long-term benefits in preventing bone destruction and alleviating bone cancer pain by suppressing osteoclastogenesis.
+32484460	0	4	Pdcd1	Gene	18566
+32484460	48	54	murine	Species	10090
+32484460	55	71	Bone Neoplasms	Disease	MESH:D001859
+32484460	120	143	PDCD1	Gene	5133
+32484460	150	154	PDCD1	Gene	5133
+32484460	176	185	Nivolumab	Chemical	MESH:D000077594
+32484460	209	214	Neoplasms	Disease	MESH:D009369
+32484460	228	236	Patients	Species	9606
+32484460	242	250	Immunologic Deficiency Syndromes	Disease	MESH:D007153
+32484460	251	257	Neoplasms	Disease	MESH:D009369
+32484460	270	281	Cancer Pain	Disease	MESH:D000072716
+32484460	297	312	Neoplasm Metastasis	Disease	MESH:D009362
+32484460	317	333	Bone Diseases	Disease	MESH:D001847
+32484460	343	347	Pdcd1	Gene	18566
+32484460	365	381	Bone Neoplasms	Disease	MESH:D001859
+32484460	420	424	mice	Species	10090
+32484460	433	438	Pdcd1	Gene	18566
+32484460	440	443	Pdcd1	Gene	18566
+32484460	491	507	Bone Diseases	Disease	MESH:D001847
+32484460	542	559	Lung Neoplasms	Disease	MESH:D008175
+32484460	584	588	mice	Species	10090
+32484460	590	593	Pdcd1	Gene	18566
+32484460	597	601	mice	Species	10090
+32484460	631	635	Pain	Disease	MESH:D010146
+32484460	672	688	Bone Neoplasms	Disease	MESH:D001859
+32484460	708	711	Pdcd1	Gene	18566
+32484460	715	719	mice	Species	10090
+32484460	763	766	Pdcd1	Gene	18566
+32484460	770	774	mice	Species	10090
+32484460	827	836	Nivolumab	Chemical	MESH:D000077594
+32484460	843	847	mice	Species	10090
+32484460	861	870	Nivolumab	Chemical	MESH:D000077594
+32484460	914	918	Pain	Disease	MESH:D010146
+32484460	929	933	Pdcd1	Gene	18566
+32484460	948	957	Nivolumab	Chemical	MESH:D000077594
+32484460	1014	1019	Neoplasms	Disease	MESH:D009369
+32484460	1028	1033	Cd274	Gene	60533
+32484460	1038	1042	Ccl2	Gene	20296
+32484460	1076	1081	Neoplasms	Disease	MESH:D009369
+32484460	1104	1109	Cd274	Gene	60533
+32484460	1119	1124	Tnfsf11	Gene	21943
+32484460	1160	1163	Mapk8	Gene	26419
+32484460	1179	1183	Ccl2	Gene	20296
+32484460	1195	1206	Bone Neoplasms	Disease	MESH:D001859
+32484460	1219	1223	Ccr2	Gene	12772
+32484460	1256	1260	Ccr2	Gene	12772
+32484460	1292	1308	Bone Neoplasms	Disease	MESH:D001859
+32484460	1369	1373	Pain	Disease	MESH:D010146
+32484460	1417	1421	Pdcd1	Gene	18566
+32484460	1483	1499	Bone Diseases	Disease	MESH:D001847
+32484460	1516	1532	Bone Neoplasms	Disease	MESH:D001859
+32484460	Association	MESH:D009369	60533
+32484460	Positive_Correlation	26419	60533
+32484460	Negative_Correlation	MESH:D000077594	5133
+32484460	Positive_Correlation	MESH:D000077594	MESH:D010146
+32484460	Negative_Correlation	MESH:D000077594	MESH:D009369
+32484460	Association	MESH:D010146	18566
+32484460	Positive_Correlation	21943	26419
+32484460	Association	MESH:D001847	18566
+32484460	Positive_Correlation	20296	60533
+32484460	Association	MESH:D001859	18566
+32484460	Positive_Correlation	21943	60533
+32484460	Association	MESH:D009369	20296
+32484460	Association	MESH:D001859	12772
+
+24872026|t|In vitro characterization of the anti-PD-1 antibody nivolumab, BMS-936558, and in vivo toxicology in non-human primates.
+24872026|a|The programmed death-1 (PD-1) receptor serves as an immunologic checkpoint, limiting bystander tissue damage and preventing the development of autoimmunity during inflammatory responses. PD-1 is expressed by activated T cells and downmodulates T-cell effector functions upon binding to its ligands, PD-L1 and PD-L2, on antigen-presenting cells. In patients with cancer, the expression of PD-1 on tumor-infiltrating lymphocytes and its interaction with the ligands on tumor and immune cells in the tumor microenvironment undermine antitumor immunity and support its rationale for PD-1 blockade in cancer immunotherapy. This report details the development and characterization of nivolumab, a fully human IgG4 (S228P) anti-PD-1 receptor-blocking monoclonal antibody. Nivolumab binds to PD-1 with high affinity and specificity, and effectively inhibits the interaction between PD-1 and its ligands. In vitro assays demonstrated the ability of nivolumab to potently enhance T-cell responses and cytokine production in the mixed lymphocyte reaction and superantigen or cytomegalovirus stimulation assays. No in vitro antibody-dependent cell-mediated or complement-dependent cytotoxicity was observed with the use of nivolumab and activated T cells as targets. Nivolumab treatment did not induce adverse immune-related events when given to cynomolgus macaques at high concentrations, independent of circulating anti-nivolumab antibodies where observed. These data provide a comprehensive preclinical characterization of nivolumab, for which antitumor activity and safety have been demonstrated in human clinical trials in various solid tumors.
+24872026	52	61	Nivolumab	Chemical	MESH:D000077594
+24872026	63	73	Nivolumab	Chemical	MESH:D000077594
+24872026	105	110	human	Species	9606
+24872026	125	143	PDCD1	Gene	5133
+24872026	264	276	Autoimmune Diseases	Disease	MESH:D001327
+24872026	284	296	Inflammation	Disease	MESH:D007249
+24872026	420	425	CD274	Gene	29126
+24872026	430	435	PDCD1LG2	Gene	80380
+24872026	469	477	patients	Species	9606
+24872026	483	489	Neoplasms	Disease	MESH:D009369
+24872026	517	522	Neoplasms	Disease	MESH:D009369
+24872026	588	593	Neoplasms	Disease	MESH:D009369
+24872026	618	623	Neoplasms	Disease	MESH:D009369
+24872026	717	723	Neoplasms	Disease	MESH:D009369
+24872026	799	808	Nivolumab	Chemical	MESH:D000077594
+24872026	818	823	human	Species	9606
+24872026	830	835	p.S228P	ProteinMutation	tmVar:p|SUB|S|228|P;HGVS:p.S228P;VariantGroup:0;CorrespondingGene:80380;RS#:1273466474;CorrespondingSpecies:9606
+24872026	886	895	Nivolumab	Chemical	MESH:D000077594
+24872026	1061	1070	Nivolumab	Chemical	MESH:D000077594
+24872026	1185	1200	Cytomegalovirus Infections	Disease	MESH:D003586
+24872026	1290	1302	Drug-Related Side Effects and Adverse Reactions	Disease	MESH:D064420
+24872026	1332	1341	Nivolumab	Chemical	MESH:D000077594
+24872026	1376	1385	Nivolumab	Chemical	MESH:D000077594
+24872026	1466	1474	macaques	Species	9539
+24872026	1531	1540	Nivolumab	Chemical	MESH:D000077594
+24872026	1635	1644	Nivolumab	Chemical	MESH:D000077594
+24872026	1712	1717	human	Species	9606
+24872026	1751	1757	Neoplasms	Disease	MESH:D009369
+24872026	Negative_Correlation	MESH:D001327	5133
+24872026	Association	MESH:D007249	5133
+24872026	Positive_Correlation	MESH:D000077594	MESH:D003586
+24872026	Negative_Correlation	MESH:D000077594	MESH:D009369
+
+27433843|t|Mutations Associated with Acquired Resistance to PD-1 Blockade in Melanoma.
+27433843|a|BACKGROUND: Approximately 75% of objective responses to anti-programmed death 1 (PD-1) therapy in patients with melanoma are durable, lasting for years, but delayed relapses have been noted long after initial objective tumor regression despite continuous therapy. Mechanisms of immune escape in this context are unknown. METHODS: We analyzed biopsy samples from paired baseline and relapsing lesions in four patients with metastatic melanoma who had had an initial objective tumor regression in response to anti-PD-1 therapy (pembrolizumab) followed by disease progression months to years later. RESULTS: Whole-exome sequencing detected clonal selection and outgrowth of the acquired resistant tumors and, in two of the four patients, revealed resistance-associated loss-of-function mutations in the genes encoding interferon-receptor-associated Janus kinase 1 (JAK1) or Janus kinase 2 (JAK2), concurrent with deletion of the wild-type allele. A truncating mutation in the gene encoding the antigen-presenting protein beta-2-microglobulin (B2M) was identified in a third patient. JAK1 and JAK2 truncating mutations resulted in a lack of response to interferon gamma, including insensitivity to its antiproliferative effects on cancer cells. The B2M truncating mutation led to loss of surface expression of major histocompatibility complex class I. CONCLUSIONS: In this study, acquired resistance to PD-1 blockade immunotherapy in patients with melanoma was associated with defects in the pathways involved in interferon-receptor signaling and in antigen presentation. (Funded by the National Institutes of Health and others.).
+27433843	49	53	PDCD1	Gene	5133
+27433843	66	74	Melanoma	Disease	MESH:D008545
+27433843	157	161	PDCD1	Gene	5133
+27433843	174	182	patients	Species	9606
+27433843	188	196	Melanoma	Disease	MESH:D008545
+27433843	295	300	Neoplasms	Disease	MESH:D009369
+27433843	484	492	patients	Species	9606
+27433843	498	517	Melanoma	Disease	MESH:D008545
+27433843	551	556	Neoplasms	Disease	MESH:D009369
+27433843	588	592	PDCD1	Gene	5133
+27433843	602	615	pembrolizumab	Chemical	MESH:C582435
+27433843	770	776	Neoplasms	Disease	MESH:D009369
+27433843	801	809	patients	Species	9606
+27433843	938	942	JAK1	Gene	3716
+27433843	947	961	JAK2	Gene	3717
+27433843	963	967	JAK2	Gene	3717
+27433843	1094	1114	HLA-G	Gene	3135
+27433843	1116	1119	B2M	Gene	567
+27433843	1147	1154	patient	Species	9606
+27433843	1156	1160	JAK1	Gene	3716
+27433843	1165	1169	JAK2	Gene	3717
+27433843	1225	1241	IFNG	Gene	3458
+27433843	1303	1309	Neoplasms	Disease	MESH:D009369
+27433843	1321	1324	B2M	Gene	567
+27433843	1475	1479	PDCD1	Gene	5133
+27433843	1506	1514	patients	Species	9606
+27433843	1520	1528	Melanoma	Disease	MESH:D008545
+27433843	Association	MESH:D009369	3716
+27433843	Negative_Correlation	MESH:C582435	5133
+27433843	Association	3458	3717
+27433843	Negative_Correlation	MESH:C582435	MESH:D008545
+27433843	Negative_Correlation	MESH:C582435	MESH:D009369
+27433843	Association	3458	3716
+27433843	Association	MESH:D009369	3717
+27433843	Association	MESH:D008545	5133
+27433843	Association	MESH:D009369	3458
+
+30595199|t|L'arrivee de l'immunotherapie dans le lymphome de Hodgkin.
+30595199|a|IMMUNOTHERAPY OF HODGKIN LYMPHOMA: Classical Hodgkin lymphoma (HL) is a rare hematological cancer, affecting preferentially young adults. Using a risk-adapted approach, HL has become highly curable (>80%) with front-line chemotherapy in addition with radiotherapy, despite long term significant toxicity. Some patients are primary refractory or relapse after first-line chemotherapy, requiring high dose chemotherapy with serious side effects. Studies of the microenvironment from HL tissue reveal ineffective inflammatory and immune cell infiltrate surrounding Reed-Sternberg cells, involving the Programmed cell Death 1 (PD-1)/PD-ligand-1 checkpoint pathways. Recently, immune checkpoint inhibitors demonstrated high efficacy for relapsed and refractory patients, with a favorable safety profile but indeterminate long term outcome. Guidelines for nivolumab or pembrolizumab treatment in HL remain to be established.
+30595199	38	57	Hodgkin Disease	Disease	MESH:D006689
+30595199	94	120	Hodgkin Disease	Disease	MESH:D006689
+30595199	122	124	Hodgkin Disease	Disease	MESH:D006689
+30595199	136	156	Neoplasms	Disease	MESH:D009369
+30595199	228	230	Hodgkin Disease	Disease	MESH:D006689
+30595199	354	362	Drug-Related Side Effects and Adverse Reactions	Disease	MESH:D064420
+30595199	369	377	patients	Species	9606
+30595199	540	542	Hodgkin Disease	Disease	MESH:D006689
+30595199	569	581	Inflammation	Disease	MESH:D007249
+30595199	657	680	PDCD1	Gene	5133
+30595199	682	686	PDCD1	Gene	5133
+30595199	815	823	patients	Species	9606
+30595199	909	918	Nivolumab	Chemical	MESH:D000077594
+30595199	922	935	pembrolizumab	Chemical	MESH:C582435
+30595199	949	951	Hodgkin Disease	Disease	MESH:D006689
+30595199	Negative_Correlation	MESH:D000077594	MESH:D006689
+30595199	Association	MESH:D006689	5133
+30595199	Negative_Correlation	MESH:C582435	MESH:D006689
+
+30742119|t|Immune and genomic correlates of response to anti-PD-1 immunotherapy in glioblastoma.
+30742119|a|Immune checkpoint inhibitors have been successful across several tumor types; however, their efficacy has been uncommon and unpredictable in glioblastomas (GBM), where <10% of patients show long-term responses. To understand the molecular determinants of immunotherapeutic response in GBM, we longitudinally profiled 66 patients, including 17 long-term responders, during standard therapy and after treatment with PD-1 inhibitors (nivolumab or pembrolizumab). Genomic and transcriptomic analysis revealed a significant enrichment of PTEN mutations associated with immunosuppressive expression signatures in non-responders, and an enrichment of MAPK pathway alterations (PTPN11, BRAF) in responders. Responsive tumors were also associated with branched patterns of evolution from the elimination of neoepitopes as well as with differences in T cell clonal diversity and tumor microenvironment profiles. Our study shows that clinical response to anti-PD-1 immunotherapy in GBM is associated with specific molecular alterations, immune expression signatures, and immune infiltration that reflect the tumor's clonal evolution during treatment.
+30742119	50	54	PDCD1	Gene	5133
+30742119	72	84	Glioblastoma	Disease	MESH:D005909
+30742119	151	156	Neoplasms	Disease	MESH:D009369
+30742119	227	240	Glioblastoma	Disease	MESH:D005909
+30742119	242	245	Glioblastoma	Disease	MESH:D005909
+30742119	262	270	patients	Species	9606
+30742119	371	374	Glioblastoma	Disease	MESH:D005909
+30742119	406	414	patients	Species	9606
+30742119	500	504	PDCD1	Gene	5133
+30742119	517	526	Nivolumab	Chemical	MESH:D000077594
+30742119	530	543	pembrolizumab	Chemical	MESH:C582435
+30742119	619	623	PTEN	Gene	5728
+30742119	756	762	PTPN11	Gene	5781
+30742119	764	768	BRAF	Gene	673
+30742119	796	802	Neoplasms	Disease	MESH:D009369
+30742119	955	960	Neoplasms	Disease	MESH:D009369
+30742119	1035	1039	PDCD1	Gene	5133
+30742119	1057	1060	Glioblastoma	Disease	MESH:D005909
+30742119	1183	1188	Neoplasms	Disease	MESH:D009369
+30742119	Association	MESH:D009369	5133
+30742119	Association	MESH:D005909	5133
+30742119	Negative_Correlation	MESH:D000077594	5133
+30742119	Negative_Correlation	MESH:C582435	5133
+30742119	Association	MESH:D000077594	MESH:D009369
+30742119	Negative_Correlation	MESH:D000077594	MESH:D005909
+30742119	Negative_Correlation	MESH:C582435	MESH:D005909
+
+36526399|t|Treatment for Radiation-Recall Mucositis Induced by Anti-PD-1 Blockade.
+36526399|a|
+36526399	31	40	Mucositis	Disease	MESH:D052016
+36526399	57	61	PDCD1	Gene	5133
+36526399	Association	MESH:D052016	5133
+
+26843495|t|Pembrolizumab and nivolumab: PD-1 inhibitors for advanced melanoma.
+26843495|a|PURPOSE: The immunology of programmed cell death protein 1 (PD-1) inhibitors, as well as the clinical efficacy of pembrolizumab and nivolumab in the treatment of metastatic melanoma, is reviewed. SUMMARY: PD-1 inhibitors pembrolizumab and nivolumab are novel immunotherapies that were recently approved by the Food and Drug Administration for the treatment of unresectable or metastatic melanoma in treatment-refractory patients. Pembrolizumab and nivolumab are monoclonal antibodies that bind to the PD-1 receptor and prevent its interaction with its ligands programmed cell death receptor ligands 1 and 2. Inhibition of the PD-1 receptor allows for increased immune response and potentially increased anticancer immune activity. Clinical trials with pembrolizumab and nivolumab in patients with unresectable melanoma refractory to ipilimumab or targeted agents demonstrated objective response rates of 26-38% and 31-40%, respectively, and acceptable toxicity profiles. While most patients experienced some form of treatment-related adverse event, most of these effects were mild (grade 1 or 2) and were managed with treatment interruption or supportive care. Pembrolizumab is administered via continuous i.v. infusion over 30 minutes at a dose of 2 mg/kg of actual body weight every three weeks. Nivolumab is administered as a continuous i.v. infusion over 60 minutes. The recommended dose of nivolumab is 3 mg/kg of actual body weight administered every two weeks until disease progression or the development of intolerable toxicities. CONCLUSION: Pembrolizumab and nivolumab monotherapies are effective therapies in ipilimumab-refractory metastatic melanoma and present an overall favorable toxicity profile.
+26843495	0	13	pembrolizumab	Chemical	MESH:C582435
+26843495	18	27	Nivolumab	Chemical	MESH:D000077594
+26843495	29	33	PDCD1	Gene	5133
+26843495	58	66	Melanoma	Disease	MESH:D008545
+26843495	95	126	PDCD1	Gene	5133
+26843495	128	132	PDCD1	Gene	5133
+26843495	182	195	pembrolizumab	Chemical	MESH:C582435
+26843495	200	209	Nivolumab	Chemical	MESH:D000077594
+26843495	230	249	Melanoma	Disease	MESH:D008545
+26843495	273	277	PDCD1	Gene	5133
+26843495	289	302	pembrolizumab	Chemical	MESH:C582435
+26843495	307	316	Nivolumab	Chemical	MESH:D000077594
+26843495	444	463	Melanoma	Disease	MESH:D008545
+26843495	488	496	patients	Species	9606
+26843495	498	511	pembrolizumab	Chemical	MESH:C582435
+26843495	516	525	Nivolumab	Chemical	MESH:D000077594
+26843495	820	833	pembrolizumab	Chemical	MESH:C582435
+26843495	838	847	Nivolumab	Chemical	MESH:D000077594
+26843495	851	859	patients	Species	9606
+26843495	878	886	Melanoma	Disease	MESH:D008545
+26843495	901	911	Ipilimumab	Chemical	MESH:D000074324
+26843495	1020	1028	Drug-Related Side Effects and Adverse Reactions	Disease	MESH:D064420
+26843495	1050	1058	patients	Species	9606
+26843495	1229	1242	pembrolizumab	Chemical	MESH:C582435
+26843495	1366	1375	Nivolumab	Chemical	MESH:D000077594
+26843495	1463	1472	Nivolumab	Chemical	MESH:D000077594
+26843495	1595	1605	Drug-Related Side Effects and Adverse Reactions	Disease	MESH:D064420
+26843495	1619	1632	pembrolizumab	Chemical	MESH:C582435
+26843495	1637	1646	Nivolumab	Chemical	MESH:D000077594
+26843495	1688	1698	Ipilimumab	Chemical	MESH:D000074324
+26843495	1710	1729	Melanoma	Disease	MESH:D008545
+26843495	1763	1771	Drug-Related Side Effects and Adverse Reactions	Disease	MESH:D064420
+26843495	Negative_Correlation	MESH:D000077594	MESH:D064420
+26843495	Negative_Correlation	MESH:D000074324	MESH:D008545
+26843495	Comparison	MESH:C582435	MESH:D000077594
+26843495	Negative_Correlation	MESH:C582435	MESH:D008545
+26843495	Negative_Correlation	MESH:D000077594	MESH:D008545
+26843495	Association	MESH:D008545	5133
+26843495	Negative_Correlation	MESH:C582435	5133
+26843495	Negative_Correlation	MESH:D000077594	5133
+
+32200442|t|Immune-Related Adverse Events (irAEs): Diagnosis, Management, and Clinical Pearls.
+32200442|a|PURPOSE OF REVIEW: While immune checkpoint inhibitor (ICI) therapy has improved melanoma patient outcomes, it has also resulted in the rise of unique immune-related adverse events (irAEs). Here, we review and synthesize irAE management recommendations from several oncological societies into a streamlined format to aid in diagnosis and management. We also include clinical pearls highlighting several recent research studies in this field. RECENT FINDINGS: Knowledge of immunotherapy toxicity has continually evolved, and several major oncologic societies have recently released new or updated guidelines. Keeping up with the evolving field of immunotherapy and related toxicities is crucial, because ICI use, in combination with other agents, will only continue to increase and likely result in new and different patterns of irAEs. Providing clear and concise references for clinicians will help ensure proper irAE evaluation and management going forward. We present one such reference here, covering management of common and/or serious irAEs.
+32200442	0	29	Cardiovascular Diseases	Disease	MESH:D002318
+32200442	31	36	Cardiovascular Diseases	Disease	MESH:D002318
+32200442	163	171	Melanoma	Disease	MESH:D008545
+32200442	172	179	patient	Species	9606
+32200442	233	262	Cardiovascular Diseases	Disease	MESH:D002318
+32200442	264	269	Cardiovascular Diseases	Disease	MESH:D002318
+32200442	303	307	irAE	Disease	-
+32200442	568	576	Drug-Related Side Effects and Adverse Reactions	Disease	MESH:D064420
+32200442	620	629	Cancer Pain	Disease	MESH:D000072716
+32200442	754	764	Drug-Related Side Effects and Adverse Reactions	Disease	MESH:D064420
+32200442	910	915	Cardiovascular Diseases	Disease	MESH:D002318
+32200442	995	999	irAE	Disease	-
+32200442	1122	1127	Cardiovascular Diseases	Disease	MESH:D002318
+
+32297899|t|Immune Checkpoint Inhibitor Rechallenge After Immune-Related Adverse Events in Patients With Cancer.
+32297899|a|Importance: Limited information is available on the safety of a rechallenge with an immune checkpoint inhibitor (ICI) after an immune-related adverse event (irAE). Objective: To identify the recurrence rate of the same irAE that prompted discontinuation of ICI therapy after an ICI rechallenge in patients with cancer and to identify the clinical features associated with such recurrences. Design, Setting, and Participants: This observational, cross-sectional, pharmacovigilance cohort study examined individual case safety reports from the World Health Organization database VigiBase, which contains case reports from more than 130 countries. Case reports were extracted from database inception (1967) to September 1, 2019. All consecutive ICI cases with at least 1 associated irAE were included. Main Outcomes and Measures: The primary outcome was the rate of recurrence of the initial irAE after an ICI rechallenge. Secondary outcomes included the factors associated with the recurrence after a rechallenge among informative rechallenges, the recurrence rate according to the ICI regimen (anti-programmed cell death 1 or anti-programmed cell death ligand 1 monotherapy, anti-cytotoxic T-lymphocyte antigen-4 monotherapy, or combination therapy), and the rate of occurrence of a different irAE after a rechallenge. Results: A total of 24 079 irAE cases associated with at least 1 ICI were identified. Among the irAEs, 452 of 6123 irAEs associated with ICI rechallenges (7.4%) were informative rechallenges. One hundred thirty recurrences (28.8%; 95% CI, 24.8-33.1) of the initial irAE were observed. In a rechallenge, colitis (reporting odds ratio [OR], 1.77; 95% CI, 1.14-2.75; P = .01), hepatitis (reporting OR, 3.38; 95% CI, 1.31-8.74; P = .01), and pneumonitis (reporting OR, 2.26; 95% CI, 1.18-4.32; P = .01) were associated with a higher recurrence rate, whereas adrenal events were associated with a lower recurrence rate (reporting OR, 0.33; 95% CI, 0.13-0.86; P = .03) compared with other irAEs. Conclusions and Relevance: This cohort study found a 28.8% recurrence rate of the same irAE associated with the discontinuation of ICI therapy after a rechallenge with the same ICI. Resuming ICI therapy could be considered for select patients, with appropriate monitoring and use of standard treatment algorithms to identify and treat toxic effects.
+32297899	46	75	Cardiovascular Diseases	Disease	MESH:D002318
+32297899	79	87	Patients	Species	9606
+32297899	93	99	Neoplasms	Disease	MESH:D009369
+32297899	228	256	Cardiovascular Diseases	Disease	MESH:D002318
+32297899	258	262	Cardiovascular Diseases	Disease	MESH:D002318
+32297899	320	324	Cardiovascular Diseases	Disease	MESH:D002318
+32297899	398	406	patients	Species	9606
+32297899	412	418	Neoplasms	Disease	MESH:D009369
+32297899	512	524	Participants	Species	9606
+32297899	880	884	Cardiovascular Diseases	Disease	MESH:D002318
+32297899	990	994	Cardiovascular Diseases	Disease	MESH:D002318
+32297899	1199	1222	PDCD1	Gene	5133
+32297899	1393	1397	Cardiovascular Diseases	Disease	MESH:D002318
+32297899	1446	1450	Cardiovascular Diseases	Disease	MESH:D002318
+32297899	1515	1520	irAEs	Disease	-
+32297899	1534	1539	irAEs	Disease	-
+32297899	1684	1688	Cardiovascular Diseases	Disease	MESH:D002318
+32297899	1722	1729	Colitis	Disease	MESH:D003092
+32297899	1793	1802	Chemical and Drug Induced Liver Injury	Disease	MESH:D056486
+32297899	1857	1868	Pneumonia	Disease	MESH:D011014
+32297899	2102	2107	irAEs	Disease	-
+32297899	2196	2200	Cardiovascular Diseases	Disease	MESH:D002318
+32297899	2343	2351	patients	Species	9606
+
+40404203|t|Single-cell RNA sequencing of baseline PBMCs predicts ICI efficacy and irAE severity in patients with NSCLC.
+40404203|a|BACKGROUND: Immune checkpoint inhibitors (ICIs) have transformed treatment and have provided significant clinical benefits and durable responses for patients with advanced non-small cell lung cancer (NSCLC). However, only a small percentage of patients respond to ICI treatment, and immune-related adverse events (irAEs) leading to treatment discontinuation remain challenging. Despite the recognized need for biomarkers to predict both the efficacy of ICIs and the risk of irAEs, such biomarkers are yet to be clearly identified. METHODS: In this study, we performed single-cell RNA sequencing (scRNA-seq) of peripheral blood mononuclear cells (PBMCs) from 33 patients with NSCLC before ICIs treatment. To validate our findings, we reanalyzed public scRNA-seq data, conducted a cytometric bead array (CBA), and supported our findings with T-cell receptor sequencing. RESULTS: While the immune response was more pronounced in patients with a favorable prognosis, the hypoxic pathway was more prominent in patients with primary resistance. Lymphocytes such as CD8 T cells, CD4 T cells, and natural killer cells were primarily involved in these pathways, with <i>PRF1</i> and <i>GZMB</i> expression showing strong associations with favorable prognosis. In contrast, irAEs were mainly linked to myeloid cells, such as monocytes and macrophages. As irAE severity increased, inflammation and the TNF-NFKB1 pathway were more prominent. Specifically, increased expression of <i>IL1B</i>, <i>CXCL8</i>, and <i>CXCL2</i> in monocytes and <i>TNF</i> in macrophages was closely associated with severe irAE through involvement in these pathways.Notably, the increase of <i>PRF1</i> and <i>GZMB</i> expression showed a close association with both a favorable prognosis and a reduced severity of irAE, which was validated through CBA analysis. Moreover, the expression of these key markers varied according to prognosis and irAE severity regardless of patient background, such as programmed death-ligand 1 expression levels, tumor histology, or prior treatment regimens. CONCLUSIONS: This study identified biological pathways and key biomarkers associated with ICI prognosis and irAE severity using PBMC samples before treatment. These findings provide a foundation for improved therapeutic strategies that enhance clinical outcomes while minimizing ICI treatment-associated risks.
+40404203	88	96	patients	Species	9606
+40404203	102	107	Carcinoma Non-Small-Cell Lung	Disease	MESH:D002289
+40404203	258	266	patients	Species	9606
+40404203	281	307	Carcinoma Non-Small-Cell Lung	Disease	MESH:D002289
+40404203	309	314	Carcinoma Non-Small-Cell Lung	Disease	MESH:D002289
+40404203	353	361	patients	Species	9606
+40404203	770	778	patients	Species	9606
+40404203	784	789	Carcinoma Non-Small-Cell Lung	Disease	MESH:D002289
+40404203	1035	1043	patients	Species	9606
+40404203	1076	1083	Hypoxia Brain	Disease	MESH:D002534
+40404203	1114	1122	patients	Species	9606
+40404203	1168	1171	CD8A	Gene	925
+40404203	1181	1184	CD4	Gene	920
+40404203	1270	1274	PRF1	Gene	5551
+40404203	1286	1290	GZMB	Gene	3002
+40404203	1479	1491	Inflammation	Disease	MESH:D007249
+40404203	1500	1503	TNF	Gene	7124
+40404203	1504	1509	NFKB1	Gene	4790
+40404203	1580	1584	IL1B	Gene	3553
+40404203	1593	1598	CXCL8	Gene	3576
+40404203	1611	1616	CXCL2	Gene	2920
+40404203	1641	1644	TNF	Gene	7124
+40404203	1770	1774	PRF1	Gene	5551
+40404203	1786	1790	GZMB	Gene	3002
+40404203	1891	1895	irAE	Disease	-
+40404203	2047	2054	patient	Species	9606
+40404203	2120	2125	Neoplasms	Disease	MESH:D009369
+40404203	Association	4790	7124
+
+40930749|t|Innate and adaptive immune features associated with immune-related adverse events.
+40930749|a|BACKGROUND: While highly efficacious for numerous cancers, immune checkpoint inhibitors (ICIs) can cause unpredictable and potentially severe immune-related adverse events (irAEs), underscoring the need to understand irAE biology. METHODS: We used a multidimensional approach incorporating single-cell RNA sequencing, mass cytometry, multiplex cytokine assay, and antinuclear antibody (ANA) profiling to characterize the peripheral immune landscape of patients receiving ICI therapy according to irAE development. RESULTS: Analysis of 162 patients revealed that individuals who developed clinically significant irAEs exhibited a baseline proinflammatory, autoimmune-like state characterized by a significantly higher abundance of CD57+ T and natural killer (NK) T cells, plasmablasts, proliferating and activated CXCR3+ lymphocytes, CD8+ effector and terminal effector memory T cells, along with reduced NK cells and elevated plasma ANA levels. In irAE cases, we identified distinct baseline proinflammatory gene signatures, including markedly higher expression of IL1B and CXCL8 in monocytes and CXCR3, TNF, and IFNG in T/NK cells. TNF signaling was the most enriched pathway, while immunosuppressive genes SIGLEC7 and CXCR4 were downregulated. Following ICI initiation, these patients exhibited an enhanced shift toward an activated and inflammatory immune phenotype, including monocyte reprogramming characterized by upregulation of IL18 and elevated gene expression levels of CXCL10. Conversely, post-treatment levels of CXCL8 were decreased in irAE patients. Notably, in patients who did not develop clinically significant irAE, we identified increased baseline abundance of a TGFBIhigh myeloid cluster enriched in immunosuppressive markers such as STAB1. In addition, patients without irAE exhibited upregulation of TNF and AIRE, accompanied by distinct myeloid protumorigenic reprogramming. CONCLUSIONS: A pre-existing activated, autoimmune-like proinflammatory state drives the development of irAE during ICI therapy through three key axes: increased plasmablast/ANA, heightened interferon-gamma/CXCL10/CXCR3 axis, and amplified TNF signaling. These findings may serve as potential peripheral immune biomarkers for predicting irAE and provide biological insights into the mechanisms governing and mitigating irAE.
+40930749	133	140	Neoplasms	Disease	MESH:D009369
+40930749	300	304	irAE	Disease	-
+40930749	535	543	patients	Species	9606
+40930749	579	583	irAE	Disease	-
+40930749	622	630	patients	Species	9606
+40930749	721	736	proinflammatory	Disease	-
+40930749	738	748	Autoimmune Diseases	Disease	MESH:D001327
+40930749	813	817	B3GAT1	Gene	27087
+40930749	896	901	CXCR3	Gene	2833
+40930749	916	919	CD8A	Gene	925
+40930749	1031	1035	irAE	Disease	-
+40930749	1075	1090	proinflammatory	Disease	-
+40930749	1148	1152	IL1B	Gene	3553
+40930749	1157	1162	CXCL8	Gene	3576
+40930749	1180	1185	CXCR3	Gene	2833
+40930749	1187	1190	TNF	Gene	7124
+40930749	1196	1200	IFNG	Gene	3458
+40930749	1216	1219	TNF	Gene	7124
+40930749	1291	1298	SIGLEC7	Gene	27036
+40930749	1303	1308	CXCR4	Gene	7852
+40930749	1361	1369	patients	Species	9606
+40930749	1422	1434	Inflammation	Disease	MESH:D007249
+40930749	1519	1523	IL18	Gene	3606
+40930749	1563	1569	CXCL10	Gene	3627
+40930749	1608	1613	CXCL8	Gene	3576
+40930749	1632	1636	irAE	Disease	-
+40930749	1637	1645	patients	Species	9606
+40930749	1659	1667	patients	Species	9606
+40930749	1711	1715	irAE	Disease	-
+40930749	1837	1842	STAB1	Gene	23166
+40930749	1857	1865	patients	Species	9606
+40930749	1874	1878	irAE	Disease	-
+40930749	1905	1908	TNF	Gene	7124
+40930749	1913	1917	AIRE	Gene	326
+40930749	2020	2030	Autoimmune Diseases	Disease	MESH:D001327
+40930749	2036	2051	proinflammatory	Disease	-
+40930749	2084	2088	irAE	Disease	-
+40930749	2170	2186	IFNG	Gene	3458
+40930749	2187	2193	CXCL10	Gene	3627
+40930749	2194	2199	CXCR3	Gene	2833
+40930749	2220	2223	TNF	Gene	7124
+40930749	2317	2321	irAE	Disease	-
+40930749	2399	2403	irAE	Disease	-
+40930749	Association	MESH:D001327	27087
+40930749	Association	2833	3458
+40930749	Association	MESH:D001327	3458
+40930749	Association	MESH:D001327	2833
+40930749	Association	MESH:D001327	7124
+
+31427055|t|Checkpoint inhibitor-associated autoimmunity.
+31427055|a|Checkpoint inhibitors (CI) have revolutionized the management of many cancers but can result in immune-related adverse events (IRAE). In this chapter, we review the clinical manifestations and management of the most common IRAE, plus less common IRAE, such as inflammatory arthritis, of particular interest to rheumatologists. We review the mechanism of action of CI, predictors of IRAE, and the impact of IRAE on cancer outcomes. The study of IRAE is in its infancy; there are very few prospective studies and virtually no treatment trials. Where possible, we have drawn estimates of IRAE incidence from meta-analyses of randomized controlled trials. Clinical descriptions are derived from case series and case reports. Readers are encouraged to refer to consensus guidelines for IRAE management published by the American Society of Clinical Oncology and the Society for Immunotherapy of Cancer.
+31427055	0	20	Checkpoint inhibitor	Chemical	-
+31427055	32	44	Autoimmune Diseases	Disease	MESH:D001327
+31427055	116	123	Neoplasms	Disease	MESH:D009369
+31427055	148	164	Cardiovascular Diseases	Disease	MESH:D002318
+31427055	306	328	Arthritis	Disease	MESH:D001168
+31427055	460	466	Neoplasms	Disease	MESH:D009369
+31427055	935	941	Neoplasms	Disease	MESH:D009369
+
+39489880|t|Cancer and treatment specific incidence rates of immune-related adverse events induced by immune checkpoint inhibitors: a systematic review.
+39489880|a|BACKGROUND: Immune-related adverse events (irAE) induced by immune checkpoint inhibitors (ICI) are a treatment-limiting barrier. There are few large-scale studies that estimate irAE prevalence. This paper presents a systematic review that reports the prevalence of irAE by cancer type and ICI. METHODS: A systematic review was undertaken in MEDLINE OVID, EMBASE and Web of Science databases from 2017-2021. A total of 293 studies were identified for analysis and, of these, event rate was calculated for 272 studies, which involved 58,291 patients with irAE among 305,879 total patients on ICI. Event rate was calculated by irAE and ICI type. RESULTS: Mean event rate for general irAE occurrence across any grade was 40.0% (37.3-42.7%) and high grade was 19.7% (15.8-23.7%). Mean event rates for six specific types of irAE are reported. Mean event rate for ICI monotherapy was 29.7% (27.7-33.2%), 45.7% (29.6-61.7%) for ICI combination therapy, and 30.3% (27.3-35.0%) for both ICI monotherapy and combination therapy. CONCLUSION: This systematic review characterises irAE prevalence across current research that examines irAE risk factors across cancers and ICI. The findings confirms that irAE occurrence is very common in the real-world setting, both high grade and irAE across any grade.
+39489880	0	6	Neoplasms	Disease	MESH:D009369
+39489880	49	78	Cardiovascular Diseases	Disease	MESH:D002318
+39489880	153	182	Cardiovascular Diseases	Disease	MESH:D002318
+39489880	184	188	Cardiovascular Diseases	Disease	MESH:D002318
+39489880	318	322	Cardiovascular Diseases	Disease	MESH:D002318
+39489880	406	410	Cardiovascular Diseases	Disease	MESH:D002318
+39489880	414	420	Neoplasms	Disease	MESH:D009369
+39489880	680	688	patients	Species	9606
+39489880	694	698	Cardiovascular Diseases	Disease	MESH:D002318
+39489880	719	727	patients	Species	9606
+39489880	765	769	Cardiovascular Diseases	Disease	MESH:D002318
+39489880	821	825	Cardiovascular Diseases	Disease	MESH:D002318
+39489880	959	963	Cardiovascular Diseases	Disease	MESH:D002318
+39489880	1208	1212	Cardiovascular Diseases	Disease	MESH:D002318
+39489880	1262	1266	Cardiovascular Diseases	Disease	MESH:D002318
+39489880	1287	1294	Neoplasms	Disease	MESH:D009369
+39489880	1331	1335	Cardiovascular Diseases	Disease	MESH:D002318
+39489880	1409	1413	Cardiovascular Diseases	Disease	MESH:D002318
+
+39961795|t|Validation of Immune-Related Adverse Event (irAE) Case Definitions in a Real-World Lung Cancer Population.
+39961795|a|BACKGROUND: The use of real-world data is increasing to examine immune-related adverse event (irAE) incidence and risk factors in immune checkpoint inhibitor (ICI) users. We aimed to validate five case definition algorithms for irAE in a Johns Hopkins lung cancer registry. METHODS: We conducted a retrospective cohort study using linked electronic health record (EHR) and cancer registry data from a large academic healthcare system. The Lung Immunotherapy irAE Monitoring Registry assesses irAEs in a group of patients treated for lung cancer at Johns Hopkins Medicine from 2013 to 2020. We used data from inpatient, outpatient, and emergency department encounters, including International Classification of Disease (ICD)-10 codes and medication administration records to classify the presence or absence of irAEs using five distinct algorithms. These algorithms included three that used both diagnosis (Dx) and medication (Rx) codes, one that used Rx codes only, and one that used Dx codes only, ranging from most numerous criteria (most stringent) to least numerous criteria (least stringent). We compared all five algorithms' performances against chart review-ascertained irAE status and reported sensitivity (Se), specificity (Sp), positive predictive value (PPV), negative predictive value (NPV), and C-statistic (C-stat), with 95% confidence intervals (CI). We also explored algorithm performance by specific organ system toxicities and by Common Terminology Criteria for Adverse Events (CTCAE) severity. RESULTS: The study cohort included 354 patients with ICI exposure for whom chart review-ascertained irAE status was available. A total of 89 (25.1%) experienced at least one irAE (38 pneumonitis, 12 arthritis, 12 colitis, 7 thyroiditis, and others). Across algorithm versions, Se ranged from 59.3% to 93.2% in descending order of algorithm stringency; Sp ranged from 21.0% to 77.6% in ascending order of algorithm stringency, and PPV ranged from 19.1% to 34.7%. The C-stat ranged from 0.57 (95% CI, 0.53-0.61) (Dx codes only) to 0.71 (0.64-0.77) (Rx codes only). For severe irAE (CTCAE Grade 3-5), all algorithms performed better than in the primary analysis, and four exceeded the threshold for usefulness as a measurement tool (maximum C-stat: 0.78 [0.71-0.85] [Rx codes only]). For severe tissue-specific toxicities, algorithmic detection of irAE pneumonitis, colitis, and hepatitis performed better than for the overall group of severe toxicities. Generally, the algorithm versions depicted a Se-Sp tradeoff depending on algorithm stringency. CONCLUSION: In this validation study of five irAE case definition algorithms, a combination of ICD-10 codes and medication administration codes generally perform well to identify more severe irAE (CTCAE Grade 3-5), and severe pneumonitis, hepatitis, and colitis (common irAEs) among all possible irAE severity levels and sites. Medication codes alone perform well at identifying severe irAE, while the most stringent algorithm (mirroring guideline-recommended irAE treatment) has the highest Sp and PPV. Algorithms have utility for comparing the relative risk of irAE between regimens or patient subgroups.
+39961795	14	42	Cardiovascular Diseases	Disease	MESH:D002318
+39961795	44	48	Cardiovascular Diseases	Disease	MESH:D002318
+39961795	83	94	Lung Neoplasms	Disease	MESH:D008175
+39961795	171	199	Cardiovascular Diseases	Disease	MESH:D002318
+39961795	201	205	Cardiovascular Diseases	Disease	MESH:D002318
+39961795	335	339	Cardiovascular Diseases	Disease	MESH:D002318
+39961795	359	370	Lung Neoplasms	Disease	MESH:D008175
+39961795	480	486	Neoplasms	Disease	MESH:D009369
+39961795	565	569	Cardiovascular Diseases	Disease	MESH:D002318
+39961795	599	604	irAEs	Disease	-
+39961795	619	627	patients	Species	9606
+39961795	640	651	Lung Neoplasms	Disease	MESH:D008175
+39961795	726	736	outpatient	Species	9606
+39961795	917	922	irAEs	Disease	-
+39961795	1284	1288	Cardiovascular Diseases	Disease	MESH:D002318
+39961795	1537	1547	Drug-Related Side Effects and Adverse Reactions	Disease	MESH:D064420
+39961795	1659	1667	patients	Species	9606
+39961795	1720	1724	Cardiovascular Diseases	Disease	MESH:D002318
+39961795	1794	1798	Cardiovascular Diseases	Disease	MESH:D002318
+39961795	1803	1814	Pneumonia	Disease	MESH:D011014
+39961795	1819	1828	Arthritis	Disease	MESH:D001168
+39961795	1833	1840	Colitis	Disease	MESH:D003092
+39961795	1844	1855	Thyroiditis	Disease	MESH:D013966
+39961795	2194	2198	Cardiovascular Diseases	Disease	MESH:D002318
+39961795	2428	2438	Drug-Related Side Effects and Adverse Reactions	Disease	MESH:D064420
+39961795	2465	2469	Cardiovascular Diseases	Disease	MESH:D002318
+39961795	2470	2481	Pneumonia	Disease	MESH:D011014
+39961795	2483	2490	Colitis	Disease	MESH:D003092
+39961795	2496	2505	Chemical and Drug Induced Liver Injury	Disease	MESH:D056486
+39961795	2560	2570	Drug-Related Side Effects and Adverse Reactions	Disease	MESH:D064420
+39961795	2712	2716	Cardiovascular Diseases	Disease	MESH:D002318
+39961795	2858	2862	Cardiovascular Diseases	Disease	MESH:D002318
+39961795	2893	2904	Pneumonia	Disease	MESH:D011014
+39961795	2906	2915	Chemical and Drug Induced Liver Injury	Disease	MESH:D056486
+39961795	2921	2928	Colitis	Disease	MESH:D003092
+39961795	2937	2942	irAEs	Disease	-
+39961795	2963	2967	Cardiovascular Diseases	Disease	MESH:D002318
+39961795	3053	3057	Cardiovascular Diseases	Disease	MESH:D002318
+39961795	3127	3131	Cardiovascular Diseases	Disease	MESH:D002318
+39961795	3230	3234	Cardiovascular Diseases	Disease	MESH:D002318
+39961795	3255	3262	patient	Species	9606
+
+32363387|t|Investigational Biomarkers for Checkpoint Inhibitor Immune-Related Adverse Event Prediction and Diagnosis.
+32363387|a|BACKGROUND: Immune checkpoint inhibitors (ICIs) have revolutionized the treatment of multiple cancers. However, these promising therapies may also cause immune-related adverse events (irAEs) in a substantial proportion of patients. These autoimmune phenomena may affect almost any organ system and may occur at almost any point in therapy. In some instances, these toxicities are life-threatening and potentially permanent. Diverse clinical presentation and unpredictable timing further complicate their anticipation and diagnosis. CONTENT: To improve patient safety and selection for ICI use, biomarkers for irAE diagnosis and prediction are under development. Clinicians may use traditional laboratory markers such as routine chemistries, creatinine clearance, thyroid function tests, and serum cortisol/adrenocorticotrophic hormone to monitor for specific irAEs, but noted aberrations may not necessarily represent an immune-mediated etiology. Novel biomarkers have the potential to be more specific to assist in the diagnosis of irAEs. The prediction of irAEs is more challenging. Apart from a history of autoimmune disease, no other clinical parameters are routinely used to project risk. Biomarker candidates under investigation for irAE diagnosis and prediction include blood cell analysis, chemokines/cytokines, autoantibodies, and genetic predisposition, such as human leukocyte antigen haplotype. Among other emerging candidates are immune-cell subsets, T-cell repertoire, fecal microbiome, tumor genomics, and radiomic characterization. SUMMARY: Several conventional laboratory indexes of end-organ dysfunction are currently in routine clinical use for irAE monitoring and diagnosis. Novel biomarkers for the prediction and diagnosis of these irAEs, which primarily characterize patient immune function, represent an area of active investigation.
+32363387	201	208	Neoplasms	Disease	MESH:D009369
+32363387	260	289	Cardiovascular Diseases	Disease	MESH:D002318
+32363387	291	296	Cardiovascular Diseases	Disease	MESH:D002318
+32363387	329	337	patients	Species	9606
+32363387	345	365	Autoimmune Diseases	Disease	MESH:D001327
+32363387	472	482	Drug-Related Side Effects and Adverse Reactions	Disease	MESH:D064420
+32363387	659	666	patient	Species	9606
+32363387	716	720	irAE	Disease	-
+32363387	848	858	Creatinine	Chemical	MESH:D003404
+32363387	904	912	Hydrocortisone	Chemical	MESH:D006854
+32363387	966	971	Cardiovascular Diseases	Disease	MESH:D002318
+32363387	1140	1145	Cardiovascular Diseases	Disease	MESH:D002318
+32363387	1165	1170	Cardiovascular Diseases	Disease	MESH:D002318
+32363387	1216	1234	Autoimmune Diseases	Disease	MESH:D001327
+32363387	1346	1350	irAE	Disease	-
+32363387	1479	1484	human	Species	9606
+32363387	1608	1613	Neoplasms	Disease	MESH:D009369
+32363387	1707	1728	Multiple Organ Failure	Disease	MESH:D009102
+32363387	1771	1775	irAE	Disease	-
+32363387	1861	1866	Cardiovascular Diseases	Disease	MESH:D002318
+32363387	1897	1904	patient	Species	9606
+32363387	Association	MESH:D003404	MESH:D002318
+32363387	Association	MESH:D006854	MESH:D002318
+
+40380233|t|Single-cell transcriptomic analysis deciphers the inflammatory microenvironment characterized by CXCL9+ fibroblasts and ACKR1+ endothelial cells in immune-related myocarditis.
+40380233|a|BACKGROUND: Immune-related myocarditis induced by immune checkpoint inhibitors (ICIs) is a rare immune-related adverse event (irAE) but is characterized by a high mortality rate. However, the specific pathological mechanisms underlying immune-related myocarditis remain largely unclear. In this study, we aimed to elucidate the inflammatory microenvironment within cardiac tissues affected by immune-related myocarditis at the single-cell level to identify potential therapeutic targets. METHODS: We performed single-cell RNA sequencing (scRNA-seq) on an endomyocardial biopsy specimen obtained from a patient with pancreatic neuroendocrine carcinoma who developed immune-related myocarditis following treatment with ICIs. Additionally, the scRNA-seq data of heart specimens from deceased donors without cardiovascular diseases were collected and applied as normal control. To validate our findings and assess their specificity to ICI-related pathology, we analyzed mouse scRNA-seq data, including controls, ICI-related myocarditis, viral myocarditis, and autoimmune myocarditis. RESULTS: We found elevated proportions of lymphocytes, myeloid cells, and fibroblasts in the irAE group, suggesting an intensified inflammatory microenvironment in human immune-related myocarditis. Within the lymphocyte compartment, increased proportions of CD8 + T exhausted cells and CD8 + T proliferative cells were observed in the irAE group. The upregulated differentially expressed genes in myeloid cells in the irAE group were enriched in pro-inflammatory pathways, consistent with the observed metabolic shift from oxidative phosphorylation to glycolysis. CXCL9 + fibroblasts, characterized by the production of multiple pro-inflammatory cytokines and enriched in the JAK-STAT and TNFa signaling pathways, were predominantly found in the irAE group. Venous endothelial cells specifically expressing atypical chemokine receptor-1 (ACKR1) interacted with myeloid cells and CXCL9 + fibroblasts through the CXCL signaling pathway, facilitating chemokine transcytosis and leukocyte recruitment. Analysis of murine scRNA-seq data further supported these findings, revealing that exhausted CD8 + T cells and pro-inflammatory fibroblasts were uniquely enriched in ICI-related myocarditis, reflecting its distinct inflammatory microenvironment. CONCLUSIONS: We elucidated the unique inflammatory microenvironment of immune-related myocarditis at the single-cell level. Our work revealed key cell subpopulations that were significantly implicated in inflammation, thus offering potential therapeutic targets.
+40380233	50	62	Inflammation	Disease	MESH:D007249
+40380233	97	102	CXCL9	Gene	4283
+40380233	120	125	ACKR1	Gene	2532
+40380233	163	174	Myocarditis	Disease	MESH:D009205
+40380233	203	214	Myocarditis	Disease	MESH:D009205
+40380233	427	438	Myocarditis	Disease	MESH:D009205
+40380233	504	516	Inflammation	Disease	MESH:D007249
+40380233	584	595	Myocarditis	Disease	MESH:D009205
+40380233	778	785	patient	Species	9606
+40380233	791	826	Pancreatic Neoplasms	Disease	MESH:D010190
+40380233	856	867	Myocarditis	Disease	MESH:D009205
+40380233	980	1003	Cardiovascular Diseases	Disease	MESH:D002318
+40380233	1142	1147	mouse	Species	10090
+40380233	1196	1207	Myocarditis	Disease	MESH:D009205
+40380233	1209	1226	Virus Diseases	Disease	MESH:D014777
+40380233	1232	1254	Myocarditis	Disease	MESH:D009205
+40380233	1387	1399	Inflammation	Disease	MESH:D007249
+40380233	1420	1425	human	Species	9606
+40380233	1441	1452	Myocarditis	Disease	MESH:D009205
+40380233	1706	1718	Inflammation	Disease	MESH:D007249
+40380233	1820	1825	CXCL9	Gene	4283
+40380233	1889	1901	Inflammation	Disease	MESH:D007249
+40380233	2063	2092	ACKR1	Gene	2532
+40380233	2094	2099	ACKR1	Gene	2532
+40380233	2135	2140	CXCL9	Gene	4283
+40380233	2266	2272	murine	Species	10090
+40380233	2369	2381	Inflammation	Disease	MESH:D007249
+40380233	2432	2443	Myocarditis	Disease	MESH:D009205
+40380233	2469	2481	Inflammation	Disease	MESH:D007249
+40380233	2538	2550	Inflammation	Disease	MESH:D007249
+40380233	2586	2597	Myocarditis	Disease	MESH:D009205
+40380233	2704	2716	Inflammation	Disease	MESH:D007249
+40380233	Association	MESH:D009205	2532
+40380233	Association	MESH:D009205	4283
+40380233	Association	MESH:D007249	2532
+40380233	Association	2532	4283
+40380233	Association	MESH:D007249	4283
+
+31668277|t|Testing Immune-Related Adverse Events in Cancer Immunotherapy.
+31668277|a|Immune-targeted therapeutics are being used in cancer. Immune "checkpoint inhibition" provides promise for prolonged disease-free patient survival. Use of immune checkpoint inhibitors in cancer has coincided with the onset of immune-related adverse events (irAEs). irAEs are caused by a break in host self-tolerance, which can be deadly. Acute management of irAEs is complicated by difficulty making a prompt clinical diagnosis. The goal is to maximize anticancer benefit while minimizing irAE risk. We currently lack diagnostic tools to assess pretreatment irAE risk and facilitate diagnosis. Current immunologic understanding of irAEs is discussed with an emphasis on how patients with congenital syndromes of T-cell activation may inform this understanding. The prospects of improving diagnostics for and treatment of irAEs are discussed.
+31668277	8	37	Cardiovascular Diseases	Disease	MESH:D002318
+31668277	41	47	Neoplasms	Disease	MESH:D009369
+31668277	110	116	Neoplasms	Disease	MESH:D009369
+31668277	193	200	patient	Species	9606
+31668277	250	256	Neoplasms	Disease	MESH:D009369
+31668277	289	318	Cardiovascular Diseases	Disease	MESH:D002318
+31668277	320	325	Cardiovascular Diseases	Disease	MESH:D002318
+31668277	328	333	Cardiovascular Diseases	Disease	MESH:D002318
+31668277	421	426	Cardiovascular Diseases	Disease	MESH:D002318
+31668277	552	556	irAE	Disease	-
+31668277	621	625	irAE	Disease	-
+31668277	694	699	Cardiovascular Diseases	Disease	MESH:D002318
+31668277	737	745	patients	Species	9606
+31668277	884	889	Cardiovascular Diseases	Disease	MESH:D002318

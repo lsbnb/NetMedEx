@@ -1,0 +1,91 @@
+{
+  "question_id": "BW004",
+  "status": "ineligible",
+  "corpus_strategy": "controlled_endpoint_isolated_shared_bridge",
+  "same_corpus_for_text_and_hybrid": true,
+  "mediators_withheld_from_system_query": true,
+  "source_patterns": [
+    "\\bSMN\\b(?!.*unrelated)",
+    "\\bsurvival\\s+motor\\s+neuron\\b",
+    "\\bSMN1\\b",
+    "\\bSMN2\\b"
+  ],
+  "target_patterns": [
+    "\\bmitochondrial\\s+dysfunction\\b",
+    "\\bmitochondrial\\s+impairment\\b",
+    "\\bmitochondria\\b.*\\bdysfunction\\b"
+  ],
+  "source_identifiers": [],
+  "target_identifiers": [],
+  "target_side_forbidden_source_patterns": [
+    "\\bSMN\\b",
+    "\\bsurvival\\s+motor\\s+neuron\\b"
+  ],
+  "target_side_forbidden_source_identifiers": [],
+  "eligible_mediators": [],
+  "mediator_audit": [
+    {
+      "name": "Plastin 3",
+      "queries": {
+        "source": "SMN[Title/Abstract] AND (Plastin 3[Title/Abstract] OR PLS3[Title/Abstract])",
+        "target": "(Plastin 3[Title/Abstract] OR PLS3[Title/Abstract]) AND mitochondrial dysfunction[Title/Abstract]"
+      },
+      "candidate_pmids": {
+        "source": [
+          "34023917",
+          "39666039",
+          "24271012",
+          "30188931",
+          "36607273",
+          "28635376",
+          "19497369",
+          "28684086",
+          "28289706",
+          "23263861",
+          "38249130",
+          "22701806",
+          "32938453",
+          "26134627",
+          "27499521",
+          "29552580",
+          "22496553",
+          "26573968",
+          "26114395",
+          "35724821",
+          "29961886",
+          "18440926",
+          "28172892",
+          "30788592",
+          "28132687"
+        ],
+        "target": []
+      },
+      "accepted_pmids": {
+        "source": [
+          "34023917",
+          "39666039",
+          "24271012"
+        ],
+        "target": []
+      },
+      "annotation_identifiers": {
+        "source": [
+          "436598",
+          "5358"
+        ],
+        "target": []
+      },
+      "shared_mediator_identifiers": [],
+      "rejected_pmids": {
+        "source": {},
+        "target": {}
+      },
+      "bridge_eligible": false
+    }
+  ],
+  "fetched_pmids": [
+    "34023917",
+    "39666039",
+    "24271012"
+  ]
+}

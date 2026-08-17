@@ -1,0 +1,13 @@
+{
+  "reviewer_type": "AI",
+  "role": "supplementary_edge_quality_rater",
+  "provider": "openai",
+  "model": "gpt-5.6-sol",
+  "input_file": "evaluation/formal/edge_ratings_worksheet_verified_openai.csv",
+  "started_at": "2026-08-01T05:08:07.990406+00:00",
+  "completed_at": "2026-08-01T05:15:09.093530+00:00",
+  "row_count": 224,
+  "question_count": 14,
+  "status": "complete",
+  "notes": "Second, independent blinded AI rater for NetMedEx graph-edge quality (cross-check against the Gemini 3.1 Pro pass). Supplementary AI rating, not a human expert review."
+}

@@ -1,0 +1,342 @@
+##USE-MESH-VOCABULARY
+40943481|t|Hormetic Effects of Curcumin in RPE Cells: SIRT1 and Caspase-3 Inactivation with Implications for AMD.
+40943481|a|Retinal Pigment Epithelium (RPE), a component of the blood-retinal barrier, plays a pivotal role in maintaining retinal homeostasis and visual function. Dysfunction of the RPE is an early event that triggers photoreceptor death, in Age-related Macular Degeneration (AMD), a multifactorial disorder primarily caused by an imbalance between endogenous antioxidant defenses and reactive oxygen species production. Our in vitro study investigated the hormetic effects of curcumin in human RPE cells (ARPE-19), focusing on its capability to modulate two enzymes related to the onset of AMD: Sirtuin 1 (SIRT1), a NAD+-dependent deacetylase enzyme involved in cellular metabolism, aging, and stress response, and caspase-3, a crucial enzyme in programmed cell death. Curcumin exhibited classic hormetic doseresponses, with low concentrations (5-10 muM) providing cytoprotection while at high doses (>=20 muM) inducing toxicity. Under moderate oxidative stress, acetylated p53 was significantly reduced, indicating SIRT1 activation; curcumin 10 muM restored basal SIRT1 activity, while 5 microM did not. Both concentrations significantly decreased cleaved caspase-3 levels, demonstrating the anti-apoptotic effects of curcumin. Our results reveal curcumin's hormetic mechanisms of RPE protection and emphasize the critical importance of dose optimization within the hormetic window for AMD therapeutic development.
+40943481	20	28	Curcumin	Chemical	MESH:D003474
+40943481	32	35	IQ82	CellLine	CVCL:IQ82
+40943481	43	48	SIRT1	Gene	23411
+40943481	53	62	CASP3	Gene	836
+40943481	98	101	Macular Degeneration	Disease	MESH:D008268
+40943481	131	134	IQ82	CellLine	CVCL:IQ82
+40943481	256	278	Patterned dystrophy of retinal pigment epithelium	Disease	MESH:C536309
+40943481	335	367	Macular Degeneration	Disease	MESH:D008268
+40943481	369	372	Macular Degeneration	Disease	MESH:D008268
+40943481	478	501	Reactive Oxygen Species	Chemical	MESH:D017382
+40943481	570	578	Curcumin	Chemical	MESH:D003474
+40943481	582	587	human	Species	9606
+40943481	588	591	IQ82	CellLine	CVCL:IQ82
+40943481	599	606	0145	CellLine	CVCL:0145
+40943481	684	687	Macular Degeneration	Disease	MESH:D008268
+40943481	689	698	SIRT1	Gene	23411
+40943481	700	705	SIRT1	Gene	23411
+40943481	809	818	CASP3	Gene	836
+40943481	863	871	Curcumin	Chemical	MESH:D003474
+40943481	1014	1022	Drug-Related Side Effects and Adverse Reactions	Disease	MESH:D064420
+40943481	1068	1071	TP53	Gene	7157
+40943481	1110	1115	SIRT1	Gene	23411
+40943481	1128	1136	Curcumin	Chemical	MESH:D003474
+40943481	1159	1164	SIRT1	Gene	23411
+40943481	1251	1260	CASP3	Gene	836
+40943481	1313	1321	Curcumin	Chemical	MESH:D003474
+40943481	1342	1350	Curcumin	Chemical	MESH:D003474
+40943481	1376	1379	IQ82	CellLine	CVCL:IQ82
+40943481	1481	1484	Macular Degeneration	Disease	MESH:D008268
+40943481	Positive_Correlation	MESH:D003474	23411
+40943481	Negative_Correlation	23411	7157
+40943481	Association	MESH:D017382	MESH:D008268
+40943481	Association	MESH:D003474	MESH:D008268
+40943481	Association	MESH:D008268	836
+40943481	Negative_Correlation	MESH:D003474	836
+40943481	Negative_Correlation	MESH:D003474	7157
+40943481	Association	MESH:D008268	23411
+
+37258140|t|Mono-Carbonyl Curcumin Analogs for Cancer Therapy.
+37258140|a|Curcumin has long been recognized for its anti-inflammatory properties. An antitumor effect has been recently reported in curcumin and clinical trials are being conducted. However, a large amount of required intake to obtain the antitumor effect of curcumin has been regarded as a problem. Therefore, curcumin analogs have been created by many researchers to enhance the effects of curcumin. We have synthesized >50 curcumin analogs and revealed greater growth suppression of various tumor cells with mono-carbonyl analogs than curcumin. Mechanistically, mono-carbonyl analogs inhibited transcriptional activity (e.g., nuclear factor kappa B, signal transducer, and activator of transcription 3) or activated caspase-3. Additionally, mono-carbonyl analogs of curcumin control tumor cell metabolism. Herein, we summarize the current knowledge about mono-carbonyl curcumin analogs and discuss their potential clinical applications.
+37258140	0	22	Mono-Carbonyl Curcumin	Chemical	-
+37258140	35	41	Neoplasms	Disease	MESH:D009369
+37258140	51	59	Curcumin	Chemical	MESH:D003474
+37258140	98	110	Inflammation	Disease	MESH:D007249
+37258140	173	181	Curcumin	Chemical	MESH:D003474
+37258140	300	308	Curcumin	Chemical	MESH:D003474
+37258140	352	360	Curcumin	Chemical	MESH:D003474
+37258140	433	441	Curcumin	Chemical	MESH:D003474
+37258140	467	475	Curcumin	Chemical	MESH:D003474
+37258140	535	540	Neoplasms	Disease	MESH:D009369
+37258140	579	587	Curcumin	Chemical	MESH:D003474
+37258140	694	745	STAT3	Gene	6774
+37258140	760	769	CASP3	Gene	836
+37258140	810	818	Curcumin	Chemical	MESH:D003474
+37258140	827	832	Neoplasms	Disease	MESH:D009369
+37258140	899	921	mono-carbonyl curcumin	Chemical	-
+37258140	Negative_Correlation	MESH:D003474	MESH:D007249
+37258140	Negative_Correlation	MESH:D003474	MESH:D009369
+
+16646663|t|Curcumin-induced histone hypoacetylation enhances caspase-3-dependent glioma cell death and neurogenesis of neural progenitor cells.
+16646663|a|Acetylation of histones and nonhistone proteins is an important post-translational modification involved in the regulation of gene expression in mammalian cells. Dysfunction of histone acetyltransferase (HAT) is often associated with the manifestation of several diseases. In this report, HATs are new targets for the development of therapeutics. Our studies first proved that curcumin induces histone hypoacetylation in brain cancer cells and finally induces apoptotic cell death through a (PARP)- and caspase 3-mediated manner. In addition, curcumin induces recontrolling of neural stem cell fates. It induces effective neurogenesis, synaptogenesis, and migration of neural progenitor cells in vitro in brain-derived adult neural stem cells. We also confirmed the neurogenic effect of curcumin in our in vivo experiments. Curcumin actively suppressed differentiation in astrocytes while promoting differentiation into the neurons associated with decrease of histone H3 and H4 acetylation. We suggest that histone hypoacetylation plays an important role in determine stem cell fate through controlling the simultaneous expression of many genes. Thus, the present finding that curcumin, a nontoxic dietary compound, is a histone acetyltransferase inhibitor would supply a new window to understand further the molecular mechanism of histone acetylase inhibitors (HAI) in cancer and neural stem cells and provide a new target molecule for treating central nervous system disorders.
+16646663	0	8	Curcumin	Chemical	MESH:D003474
+16646663	50	59	CASP3	Gene	836
+16646663	70	76	Glioma	Disease	MESH:D005910
+16646663	295	335	N acetyltransferase deficiency	Disease	MESH:C536107
+16646663	337	340	N acetyltransferase deficiency	Disease	MESH:C536107
+16646663	510	518	Curcumin	Chemical	MESH:D003474
+16646663	554	566	Brain Neoplasms	Disease	MESH:D001932
+16646663	625	629	PARP1	Gene	142
+16646663	636	645	CASP3	Gene	836
+16646663	676	684	Curcumin	Chemical	MESH:D003474
+16646663	920	928	Curcumin	Chemical	MESH:D003474
+16646663	957	965	Curcumin	Chemical	MESH:D003474
+16646663	1310	1318	Curcumin	Chemical	MESH:D003474
+16646663	1465	1482	histone acetylase	Disease	-
+16646663	1503	1509	Neoplasms	Disease	MESH:D009369
+16646663	1579	1611	Central Nervous System Diseases	Disease	MESH:D002493
+16646663	Negative_Correlation	MESH:D003474	MESH:D009369
+16646663	Positive_Correlation	MESH:D003474	836
+16646663	Negative_Correlation	MESH:D003474	MESH:D002493
+16646663	Association	MESH:D005910	836
+16646663	Negative_Correlation	MESH:D003474	MESH:D001932
+16646663	Negative_Correlation	MESH:D003474	MESH:D005910
+
+34342377|t|Caspase-3: Structure, function, and biotechnological aspects.
+34342377|a|Caspase-3, a cysteine-aspartic acid protease, has recently attracted much attention because of its incredible roles in tissue differentiation, regeneration, and neural development. This enzyme is a key zymogen in cell apoptosis and is not activated until it is cleaved by initiator caspases during apoptotic flux. Since caspase-3 has represented valuable capabilities in the field of medical research, biotechnological aspects of this enzyme, including the production of recombinant type, protein engineering, and designing delivery systems, have been considered as emerging therapeutic strategies in treating the apoptosis-related disorders. To date, several advances have been made in the therapeutic use of caspase-3 in the management of some diseases such as cancers, heart failure, and neurodegenerative disorders. In the current review, we intend to discuss the caspase-3's structure, functions, therapeutic applications, as well as its molecular cloning, protein engineering, and relevant delivery systems.
+34342377	0	9	CASP3	Gene	836
+34342377	62	71	CASP3	Gene	836
+34342377	75	97	#836#	ProteinMutation	tmVar:p|SUB|C||D;VariantGroup:0;CorrespondingGene:836;CorrespondingSpecies:9606
+34342377	382	391	CASP3	Gene	836
+34342377	676	703	Malformations of Cortical Development Group I	Disease	MESH:D065703
+34342377	772	781	CASP3	Gene	836
+34342377	825	832	Neoplasms	Disease	MESH:D009369
+34342377	834	847	Heart Failure	Disease	MESH:D006333
+34342377	853	880	Neurodegenerative Diseases	Disease	MESH:D019636
+34342377	930	939	CASP3	Gene	836
+34342377	Association	MESH:D009369	836
+34342377	Association	MESH:D006333	836
+34342377	Association	MESH:D019636	836
+34342377	Association	MESH:D065703	836
+
+33920463|t|Molecular Imaging of Apoptosis: The Case of Caspase-3 Radiotracers.
+33920463|a|The molecular imaging of apoptosis remains an important method for the diagnosis and monitoring of the progression of certain diseases and the evaluation of the efficacy of anticancer apoptosis-inducing therapies. Among the multiple biomarkers involved in apoptosis, activated caspase-3 is an attractive target, as it is the most abundant of the executioner caspases. Nuclear imaging is a good candidate, as it combines a high depth of tissue penetration and high sensitivity, features necessary to detect small changes in levels of apoptosis. However, designing a caspase-3 radiotracer comes with challenges, such as selectivity, cell permeability and transient caspase-3 activation. In this review, we discuss the different caspase-3 radiotracers for the imaging of apoptosis together with the challenges of the translation of various apoptosis-imaging strategies in clinical trials.
+33920463	44	53	CASP3	Gene	836
+33920463	345	354	CASP3	Gene	836
+33920463	633	642	CASP3	Gene	836
+33920463	731	740	CASP3	Gene	836
+33920463	794	803	CASP3	Gene	836
+
+39878157|t|Caspase 3-specific cleavage of ubiquitin-specific peptidase 48 enhances drug-induced apoptosis in AML.
+39878157|a|Dysfunction or dysregulation of deubiquitination is closely related to the initiation and development of multiple cancers. Targeted regulation of deubiquitination has been recognized as an important strategy in tumor therapy. However, the mechanism by which drugs regulate deubiquitinase is not clear. Here, we identified ubiquitin-specific peptidase 48 (USP48), a member of the ubiquitin-specific protease family highly expressed in various tumors, as a specific substrate for the activated caspase-3. During drug induced apoptosis of AML cells, activated caspase-3 cleaves USP48 through recognizing the conservative motif DEQD located at 611-614 sites of human USP48. Subsequent analysis showed that the cleavage USP48 N-terminal fragment which contains catalytic active domain is easily degraded by ubiquitination. Meanwhile knockdown experiment showed that inhibiting the expression of USP48 could also promotes apoptosis and enhance the efficacy of chemotherapy drugs. Altogether, these results suggest that targeting USP48 may represent a novel therapeutic strategy in AML.
+39878157	0	9	CASP3	Gene	836
+39878157	31	62	USP48	Gene	84196
+39878157	98	101	Leukemia Myeloid Acute	Disease	MESH:D015470
+39878157	217	224	Neoplasms	Disease	MESH:D009369
+39878157	314	319	Neoplasms	Disease	MESH:D009369
+39878157	425	456	USP48	Gene	84196
+39878157	458	463	USP48	Gene	84196
+39878157	545	551	Neoplasms	Disease	MESH:D009369
+39878157	595	604	CASP3	Gene	836
+39878157	639	642	Leukemia Myeloid Acute	Disease	MESH:D015470
+39878157	660	669	CASP3	Gene	836
+39878157	678	683	USP48	Gene	84196
+39878157	760	765	human	Species	9606
+39878157	766	771	USP48	Gene	84196
+39878157	818	823	USP48	Gene	84196
+39878157	993	998	USP48	Gene	84196
+39878157	1126	1131	USP48	Gene	84196
+39878157	1178	1181	Leukemia Myeloid Acute	Disease	MESH:D015470
+39878157	Association	MESH:D009369	836
+39878157	Positive_Correlation	836	84196
+39878157	Association	MESH:D015470	84196
+39878157	Association	MESH:D015470	836
+
+40302522|t|Reactive Oxygen Species-Responsive Polymer Drug Delivery System Targeted Oxidative Stressed Colon Cells to Ameliorate Colitis.
+40302522|a|Ulcerative colitis (UC) is a chronic inflammatory condition that imposes a huge healthcare burden globally. The inflamed colon is marked by an abundance of positively charged proteins, increased reactive oxygen species (ROS), a disrupted intestinal barrier, and an imbalanced gut microbiome. Leveraging these features, we designed a negatively charged ROS-responsive nanocarrier using diselenide-bond-modified carboxymethyl cellulose (CMC) for the targeted delivery of curcumin, a natural ROS-scavenging antioxidant, to treat UC. The design rationale encompasses three key aspects: (1) the biocompatible and biodegradable CMC matrix stabilizes curcumin during digestion; (2) the diselenide bonds enable redox-triggered curcumin release at inflammatory sites, ensuring precise therapeutic action; and (3) the negative charge of the nanoparticles enhances interactions with positively charged proteins in inflamed colon tissues, improving site-specific accumulation. Experimental validation confirmed these design principles, demonstrating that the resulting nanoparticles effectively preserve curcumin during digestion and enable the ROS-responsive release of curcumin at inflamed sites. Additionally, these nanoparticles interact effectively with folic acid receptors (positively charged proteins) that are overexpressed on oxidatively stressed cell membranes, leading to specific accumulation in colitis tissue. Subsequently, the nanoparticles scavenge excessive ROS, restore intestinal barrier function, and modulate the gut microbiota. These synergistic actions collectively contribute to significant mitigation of colitis symptoms in both preventive and therapeutic regimens, suggesting a promising alternative therapeutic approach for UC.
+40302522	0	23	Reactive Oxygen Species	Chemical	MESH:D017382
+40302522	35	42	Polymers	Chemical	MESH:D011108
+40302522	118	125	Colitis	Disease	MESH:D003092
+40302522	127	145	Colitis Ulcerative	Disease	MESH:D003093
+40302522	147	149	Colitis Ulcerative	Disease	MESH:D003093
+40302522	164	176	Inflammation	Disease	MESH:D007249
+40302522	322	345	Reactive Oxygen Species	Chemical	MESH:D017382
+40302522	347	350	Reactive Oxygen Species	Chemical	MESH:D017382
+40302522	403	417	gut microbiome	Species	749906
+40302522	479	482	Reactive Oxygen Species	Chemical	MESH:D017382
+40302522	512	522	diselenide	Chemical	-
+40302522	537	560	Carboxymethylcellulose Sodium	Chemical	MESH:D002266
+40302522	562	565	Carboxymethylcellulose Sodium	Chemical	MESH:D002266
+40302522	596	604	Curcumin	Chemical	MESH:D003474
+40302522	616	619	Reactive Oxygen Species	Chemical	MESH:D017382
+40302522	653	655	Colitis Ulcerative	Disease	MESH:D003093
+40302522	749	752	Carboxymethylcellulose Sodium	Chemical	MESH:D002266
+40302522	771	779	Curcumin	Chemical	MESH:D003474
+40302522	806	816	diselenide	Chemical	-
+40302522	846	854	Curcumin	Chemical	MESH:D003474
+40302522	866	878	Inflammation	Disease	MESH:D007249
+40302522	1219	1227	Curcumin	Chemical	MESH:D003474
+40302522	1260	1263	Reactive Oxygen Species	Chemical	MESH:D017382
+40302522	1286	1294	Curcumin	Chemical	MESH:D003474
+40302522	1524	1531	Colitis	Disease	MESH:D003092
+40302522	1591	1594	Reactive Oxygen Species	Chemical	MESH:D017382
+40302522	1745	1752	Colitis	Disease	MESH:D003092
+40302522	1867	1869	Colitis Ulcerative	Disease	MESH:D003093
+40302522	Association	MESH:D002266	MESH:D017382
+40302522	Negative_Correlation	MESH:D011108	MESH:D003092
+40302522	Negative_Correlation	MESH:D002266	MESH:D003093
+40302522	Association	MESH:D003474	MESH:D017382
+40302522	Association	MESH:D002266	MESH:D003474
+40302522	Negative_Correlation	MESH:D017382	MESH:D003093
+40302522	Negative_Correlation	MESH:D003474	MESH:D003093
+40302522	Negative_Correlation	MESH:D017382	MESH:D003092
+
+23325575|t|Curcumin and aging.
+23325575|a|Turmeric has been used commonly as a spice, food additive, and an herbal medicine worldwide. Known as a bioactive polyphenolic extract of Turmeric, curcumin has a broad range of health benefit properties for humans. Recently, active research on curcumin with respect to aging and related traits in model organisms has demonstrated that curcumin and its metabolite, tetrahydrocurcumin (THC), increase mean lifespan of at least three model organisms: nematode roundworm, fruit fly Drosophila, and mouse. Nematodes grown on media containing curcumin showed a significantly increased lifespan by reducing the production of reactive oxygen species. Genes osr-1, sek-1, mek-1, skn-1, unc-43, sir-2.1, and age-1 are required for curcumin-mediated lifespan extension. The lifespan extension of Drosophila by curcumin supplementation was associated with increased superoxide dismutase (SOD) activity, and decreased lipofuscin and malondialdehyde levels. Curcumin up-regulated expression of SOD genes and down-regulated expression of several age-related genes, such as dInR, ATTD, Def, CecB, and DptB. In addition, THC extended lifespan in Drosophila and inhibited the oxidative stress response by regulating FOXO and Sir2. Mice fed diets containing THC starting at the age of 13 months had significantly increased mean lifespan. In summary, the positive effects of curcumin on lifespan extension likely arise from beneficial regulation of common oxidative stress responses and age-related genes. Understanding the molecular mechanism(s) of curcumin action has provided base knowledge and rationale for future human clinical trials, and for nutritional intervention in aging and age-associated disorders in humans.
+23325575	0	8	Curcumin	Chemical	MESH:D003474
+23325575	147	154	extract	Chemical	-
+23325575	168	176	Curcumin	Chemical	MESH:D003474
+23325575	228	234	humans	Species	9606
+23325575	265	273	Curcumin	Chemical	MESH:D003474
+23325575	356	364	Curcumin	Chemical	MESH:D003474
+23325575	385	403	tetrahydrocurcumin	Chemical	MESH:C096277
+23325575	405	408	tetrahydrocurcumin	Chemical	MESH:C096277
+23325575	478	487	roundworm	Species	6239
+23325575	489	498	fruit fly	Species	7227
+23325575	499	509	Drosophila	Species	7227
+23325575	515	520	mouse	Species	10090
+23325575	522	531	Nematode Infections	Disease	MESH:D009349
+23325575	558	566	Curcumin	Chemical	MESH:D003474
+23325575	639	662	Reactive Oxygen Species	Chemical	MESH:D017382
+23325575	670	675	fray	Gene	44233
+23325575	742	750	Curcumin	Chemical	MESH:D003474
+23325575	806	816	Drosophila	Species	7227
+23325575	820	828	Curcumin	Chemical	MESH:D003474
+23325575	875	895	Sod1	Gene	39251
+23325575	897	900	Sod1	Gene	39251
+23325575	926	936	Lipofuscin	Chemical	MESH:D008062
+23325575	941	956	Malondialdehyde	Chemical	MESH:D008315
+23325575	965	973	Curcumin	Chemical	MESH:D003474
+23325575	1001	1004	Sod1	Gene	39251
+23325575	1079	1083	InR	Gene	42549
+23325575	1085	1089	AttD	Gene	42122
+23325575	1091	1094	Def	Gene	36047
+23325575	1096	1100	CecB	Gene	43598
+23325575	1106	1111	DptB	Gene	37184
+23325575	1125	1128	tetrahydrocurcumin	Chemical	MESH:C096277
+23325575	1150	1160	Drosophila	Species	7227
+23325575	1219	1223	foxo	Gene	41709
+23325575	1228	1232	Sirt1	Gene	34708
+23325575	1234	1238	Mice	Species	10090
+23325575	1260	1263	tetrahydrocurcumin	Chemical	MESH:C096277
+23325575	1376	1384	Curcumin	Chemical	MESH:D003474
+23325575	1551	1559	Curcumin	Chemical	MESH:D003474
+23325575	1620	1625	human	Species	9606
+23325575	1689	1713	Memory Disorders	Disease	MESH:D008569
+23325575	1717	1723	humans	Species	9606
+23325575	Negative_Correlation	MESH:D003474	MESH:D017382
+23325575	Association	MESH:C096277	34708
+23325575	Negative_Correlation	MESH:D003474	36047
+23325575	Association	MESH:D003474	44233
+23325575	Negative_Correlation	MESH:D003474	MESH:D008315
+23325575	Negative_Correlation	MESH:D003474	MESH:D008062
+23325575	Negative_Correlation	MESH:D003474	42122
+23325575	Positive_Correlation	MESH:C096277	41709
+23325575	Negative_Correlation	MESH:D003474	37184
+23325575	Negative_Correlation	MESH:D003474	43598
+23325575	Negative_Correlation	MESH:D003474	MESH:D009349
+23325575	Positive_Correlation	MESH:D003474	39251
+23325575	Negative_Correlation	MESH:D003474	42549
+23325575	Association	MESH:D017382	MESH:D009349
+23325575	Negative_Correlation	MESH:D003474	MESH:D008569
+
+37411033|t|Reactive Oxygen Species-Triggered Curcumin Release from Hollow Mesoporous Silica Nanoparticles for PM2.5-Induced Acute Lung Injury Treatment.
+37411033|a|Exposure to fine particulate matter with a diameter <=2.5 mum (PM2.5) can result in serious inflammation and oxidative stress in lung tissue. However, there is presently very few effective treatments for PM2.5-induced many pulmonary diseases, such as acute lung injury (ALI). Herein, curcumin-loaded reactive oxygen species (ROS)-responsive hollow mesoporous silica nanoparticles (Cur@HMSN-BSA) are proposed for scavenging the intracellular ROS and suppressing inflammatory responses against PM2.5-induced ALI. The prepared nanoparticles were coated with bovine serum albumin (BSA) via an ROS-sensitive thioketal (TK)-containing linker, in which the TK-containing linker would be cleaved by the excessive amounts of ROS in inflammatory sites to induce the detachment of BSA from the nanoparticles surface and thus triggering release of loaded curcumin. The Cur@HMSN-BSA nanoparticles could be used as ROS scavengers because of their excellent ROS-responsiveness, which were able to efficiently consume high concentrations of intracellular ROS. Furthermore, it was also found that Cur@HMSN-BSA downregulated the secretion of several important pro-inflammatory cytokines and promoted the polarization from M1 phenotypic macrophages to M2 phenotypic macrophages for eliminating PM2.5-induced inflammatory activation. Therefore, this work provided a promising strategy to synergistically scavenge intracellular ROS and suppress the inflammation responses, which may serve as an ideal therapeutic platform for pneumonia treatment.
+37411033	0	23	Reactive Oxygen Species	Chemical	MESH:D017382
+37411033	34	42	Curcumin	Chemical	MESH:D003474
+37411033	74	80	Silicon Dioxide	Chemical	MESH:D012822
+37411033	113	130	Acute Lung Injury	Disease	MESH:D055371
+37411033	234	246	Inflammation	Disease	MESH:D007249
+37411033	365	383	Lung Diseases	Disease	MESH:D008171
+37411033	393	410	Acute Lung Injury	Disease	MESH:D055371
+37411033	412	415	Acute Lung Injury	Disease	MESH:D055371
+37411033	426	434	Curcumin	Chemical	MESH:D003474
+37411033	442	465	Reactive Oxygen Species	Chemical	MESH:D017382
+37411033	467	470	Reactive Oxygen Species	Chemical	MESH:D017382
+37411033	501	507	Silicon Dioxide	Chemical	MESH:D012822
+37411033	523	535	Cur@HMSN-BSA	Chemical	-
+37411033	583	586	Reactive Oxygen Species	Chemical	MESH:D017382
+37411033	603	615	Inflammation	Disease	MESH:D007249
+37411033	648	651	Acute Lung Injury	Disease	MESH:D055371
+37411033	731	734	Reactive Oxygen Species	Chemical	MESH:D017382
+37411033	745	754	thioketal	Chemical	-
+37411033	756	758	TK	Chemical	-
+37411033	792	794	TK	Chemical	-
+37411033	858	861	Reactive Oxygen Species	Chemical	MESH:D017382
+37411033	865	877	Inflammation	Disease	MESH:D007249
+37411033	985	993	Curcumin	Chemical	MESH:D003474
+37411033	999	1011	Cur@HMSN-BSA	Chemical	-
+37411033	1043	1046	Reactive Oxygen Species	Chemical	MESH:D017382
+37411033	1085	1088	Reactive Oxygen Species	Chemical	MESH:D017382
+37411033	1181	1184	Reactive Oxygen Species	Chemical	MESH:D017382
+37411033	1222	1234	Cur@HMSN-BSA	Chemical	-
+37411033	1288	1300	Inflammation	Disease	MESH:D007249
+37411033	1431	1443	Inflammation	Disease	MESH:D007249
+37411033	1549	1552	Reactive Oxygen Species	Chemical	MESH:D017382
+37411033	1570	1582	Inflammation	Disease	MESH:D007249
+37411033	1647	1656	Pneumonia	Disease	MESH:D011014
+37411033	Negative_Correlation	MESH:D012822	MESH:D055371
+37411033	Negative_Correlation	MESH:D003474	MESH:D055371
+37411033	Negative_Correlation	MESH:D003474	MESH:D007249
+37411033	Negative_Correlation	MESH:D017382	MESH:D011014
+37411033	Negative_Correlation	MESH:D017382	MESH:D055371
+37411033	Association	MESH:D003474	MESH:D017382
+37411033	Association	MESH:D003474	MESH:D012822
+
+31070466|t|Metabolic Stress.
+31070466|a|Mitochondria regulate major aspects of cell function by producing ATP, contributing to Ca2+ signaling, influencing redox potential, and controlling levels of reactive oxygen species. In this review, we will discuss recent findings that illustrate how mitochondrial respiration, Ca2+ handling, and production of reactive oxygen species affect vascular smooth muscle cell function during neointima formation. We will review mitochondrial fission/fusion as fundamental mechanisms for smooth muscle proliferation, migration, and metabolism and examine the role of mitochondrial mobility in cell migration. In addition, we will summarize novel aspects by which mitochondria regulate apoptosis.
+31070466	0	16	Psychological Distress	Disease	MESH:D000079225
+31070466	84	87	Adenosine Triphosphate	Chemical	MESH:D000255
+31070466	105	109	Ca2+	Chemical	-
+31070466	176	199	Reactive Oxygen Species	Chemical	MESH:D017382
+31070466	296	300	Ca2+	Chemical	-
+31070466	329	352	Reactive Oxygen Species	Chemical	MESH:D017382
+
+32423322|t|Reactive oxygen species and immune regulation.
+32423322|a|Reactive oxygen species (ROS) is a kind of single electron reduction product of oxygen in vivo. Because they contain unpaired electrons, ROS has high chemical reactivity. Various researches of ROS are focused on DNA damage, cell apoptosis, oxidative stress. Actually, ROS is also closed related to immune regulation. Based on this, we review the research in immune regulated ROS production, regulation of ROS on inflammatory factors and inflammatory response, antigen presentation and macrophage polarization for better understanding of its role.
+32423322	0	23	Reactive Oxygen Species	Chemical	MESH:D017382
+32423322	47	70	Reactive Oxygen Species	Chemical	MESH:D017382
+32423322	72	75	Reactive Oxygen Species	Chemical	MESH:D017382
+32423322	127	133	Oxygen	Chemical	MESH:D010100
+32423322	184	187	Reactive Oxygen Species	Chemical	MESH:D017382
+32423322	240	243	Reactive Oxygen Species	Chemical	MESH:D017382
+32423322	315	318	Reactive Oxygen Species	Chemical	MESH:D017382
+32423322	422	425	Reactive Oxygen Species	Chemical	MESH:D017382
+32423322	452	455	Reactive Oxygen Species	Chemical	MESH:D017382
+32423322	459	471	Inflammation	Disease	MESH:D007249
+32423322	484	496	Inflammation	Disease	MESH:D007249
+32423322	Association	MESH:D017382	MESH:D007249
+
+27051644|t|Downregulation of Reactive Oxygen Species in Apoptosis.
+27051644|a|Generation of reactive oxygen species (ROS) by diverse anti-cancer drugs or phytochemicals has been closely related with the induction of apoptosis in cancers. Also, the downregulation of ROS by these chemicals has been found to block initiation of carcinogenesis. Therefore, modulation of ROS by phytochemicals emerges as a crucial mechanism to regulate apoptosis in cancer prevention or therapy. This review summarizes the current understanding of the selected chemical compounds and related cellular components that modulate ROS during apoptotic process. Metformin, quercetin, curcumin, vitamin C, and other compounds have been shown to downregulate ROS in the cellular apoptotic process, and some of them even induce apoptosis in cancer cells. The cellular components mediating the downregulation of ROS include nuclear factor erythroid 2-related factor 2 antioxidant signaling pathway, thioredoxin, catalase, glutathione, heme oxygenase-1, and uncoupling proteins. The present review provides information on the relationship between these compounds and the cellular components in modulating ROS in apoptotic cancer cells. 
+27051644	18	41	Reactive Oxygen Species	Chemical	MESH:D017382
+27051644	70	93	Reactive Oxygen Species	Chemical	MESH:D017382
+27051644	95	98	Reactive Oxygen Species	Chemical	MESH:D017382
+27051644	116	122	Neoplasms	Disease	MESH:D009369
+27051644	207	214	Neoplasms	Disease	MESH:D009369
+27051644	244	247	Reactive Oxygen Species	Chemical	MESH:D017382
+27051644	302	319	Carcinogenesis	Disease	MESH:D063646
+27051644	346	349	Reactive Oxygen Species	Chemical	MESH:D017382
+27051644	424	430	Neoplasms	Disease	MESH:D009369
+27051644	584	587	Reactive Oxygen Species	Chemical	MESH:D017382
+27051644	614	623	Metformin	Chemical	MESH:D008687
+27051644	625	634	Quercetin	Chemical	MESH:D011794
+27051644	636	644	Curcumin	Chemical	MESH:D003474
+27051644	646	655	Ascorbic Acid	Chemical	MESH:D001205
+27051644	709	712	Reactive Oxygen Species	Chemical	MESH:D017382
+27051644	790	796	Neoplasms	Disease	MESH:D009369
+27051644	860	863	Reactive Oxygen Species	Chemical	MESH:D017382
+27051644	872	915	NFE2L2	Gene	4780
+27051644	947	958	TXN	Gene	7295
+27051644	960	968	CAT	Gene	847
+27051644	970	981	Glutathione	Chemical	MESH:D005978
+27051644	983	999	HMOX1	Gene	3162
+27051644	1152	1155	Reactive Oxygen Species	Chemical	MESH:D017382
+27051644	1169	1175	Neoplasms	Disease	MESH:D009369
+27051644	Negative_Correlation	MESH:D001205	MESH:D017382
+27051644	Association	MESH:D017382	7295
+27051644	Negative_Correlation	MESH:D003474	MESH:D017382
+27051644	Negative_Correlation	MESH:D011794	MESH:D017382
+27051644	Negative_Correlation	MESH:D008687	MESH:D017382
+27051644	Negative_Correlation	MESH:D017382	MESH:D009369
+27051644	Negative_Correlation	MESH:D008687	MESH:D009369
+27051644	Association	MESH:D005978	MESH:D017382
+27051644	Negative_Correlation	MESH:D003474	MESH:D009369
+27051644	Association	MESH:D017382	3162
+27051644	Negative_Correlation	MESH:D017382	MESH:D063646
+27051644	Negative_Correlation	MESH:D001205	MESH:D009369
+27051644	Negative_Correlation	MESH:D011794	MESH:D009369
+27051644	Association	MESH:D017382	847

@@ -1,0 +1,26 @@
+{
+  "task": "edge",
+  "question_id": "Q015",
+  "batch": 2,
+  "provider": "anthropic",
+  "model": "claude-haiku-4-5-20251001",
+  "input_sha256": "11ea8eddddafb601911ea643820c32686826cd85a081a461912df90ff2a2e0dd",
+  "raw_response_sha256": "3423672eb7d886d74958c862e96a2635c25da7b5719fb3af21823ca8ef098ff5",
+  "rated_at": "2026-08-02T19:08:20.225200+00:00",
+  "result": {
+    "ratings": [
+      {
+        "edge_id": "Q015-E03",
+        "entity_valid": 1,
+        "relation_exists": 1,
+        "relation_type_correct": 1,
+        "direction_correct": 1,
+        "evidence_support": 1,
+        "confidence": 3,
+        "notes": "Direct association clearly established. Abstract explicitly states SARS-CoV-2 causes COVID-associated coagulopathy with hypercoagulability, microthrombi, and macrothrombi. Strong mechanistic evidence provided."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

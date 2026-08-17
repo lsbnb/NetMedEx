@@ -1,0 +1,19 @@
+{
+  "netmedex_hybrid_rag": {
+    "supported_path_precision_at_5": 0.0,
+    "exact_path_precision_at_5": 0.2889,
+    "supported_path_recall": 0.0,
+    "exact_path_recall": 0.2429,
+    "partial_path_recall": 0.0,
+    "negative_control_false_positive_rate": 0.0,
+    "supported_discovery_gain_at_5": -0.4444,
+    "bridge_entity_precision": 0.0,
+    "bridge_entity_recall": 0.0,
+    "bridge_entity_f1": 0.0,
+    "relation_alignment_rate": 0.7778,
+    "direction_accuracy": 0.7778,
+    "evidence_completeness": 0.7222,
+    "cross_document_synthesis_rate": 0.0,
+    "question_count": 9
+  }
+}

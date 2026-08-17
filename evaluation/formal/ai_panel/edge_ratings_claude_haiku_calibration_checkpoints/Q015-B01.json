@@ -1,0 +1,26 @@
+{
+  "task": "edge",
+  "question_id": "Q015",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-haiku-4-5-20251001",
+  "input_sha256": "48c4a789ae59b81d599317fe9ef8e9e027e8299346be859f14be9091cc1c2335",
+  "raw_response_sha256": "36e347402f78cd415442c128265078f792ee65f8019b0fe55b496ee93ac6730e",
+  "rated_at": "2026-08-02T19:07:46.211680+00:00",
+  "result": {
+    "ratings": [
+      {
+        "edge_id": "Q015-E01",
+        "entity_valid": 1,
+        "relation_exists": 1,
+        "relation_type_correct": 1,
+        "direction_correct": 1,
+        "evidence_support": 1,
+        "confidence": 3,
+        "notes": "Abstract explicitly states SARS-CoV2 causes COVID-19 and describes resulting coagulopathy. Direct causal relationship clearly established."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

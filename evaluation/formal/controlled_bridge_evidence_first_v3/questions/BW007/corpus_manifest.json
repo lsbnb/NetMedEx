@@ -1,0 +1,225 @@
+{
+  "question_id": "BW007",
+  "status": "eligible",
+  "corpus_strategy": "controlled_endpoint_isolated_shared_bridge",
+  "same_corpus_for_text_and_hybrid": true,
+  "mediators_withheld_from_system_query": true,
+  "source_patterns": [
+    "endothelial senescence"
+  ],
+  "target_patterns": [
+    "atherosclerosis"
+  ],
+  "source_identifiers": [],
+  "target_identifiers": [],
+  "source_side_forbidden_target_patterns": [],
+  "source_side_forbidden_target_identifiers": [],
+  "target_side_forbidden_source_patterns": [
+    "vascular disease",
+    "arterial disease"
+  ],
+  "target_side_forbidden_source_identifiers": [],
+  "eligible_mediators": [
+    "ICAM-1",
+    "PAI-1"
+  ],
+  "mediator_audit": [
+    {
+      "name": "ICAM-1",
+      "queries": {
+        "source": "endothelial senescence[Title/Abstract] AND ICAM-1 [Title/Abstract]",
+        "target": "ICAM-1[Title/Abstract] AND atherosclerosis [Title/Abstract]"
+      },
+      "candidate_pmids": {
+        "source": [
+          "32520423",
+          "28153047",
+          "42109254",
+          "21698300",
+          "29992759",
+          "10722838",
+          "32172204",
+          "34592427",
+          "31811867"
+        ],
+        "target": [
+          "37442359",
+          "37890359",
+          "37771765",
+          "39077184",
+          "31349600",
+          "36053470",
+          "28089144",
+          "37374202",
+          "35714558",
+          "14612198",
+          "30100749",
+          "18220701",
+          "19307690",
+          "31349950",
+          "17673705",
+          "25483717",
+          "34966995",
+          "37071373",
+          "9951802",
+          "22390643",
+          "36263184",
+          "34389762",
+          "37029659",
+          "35830780",
+          "35630678",
+          "32151395",
+          "9598845",
+          "39224974",
+          "35071362",
+          "41470139"
+        ]
+      },
+      "accepted_pmids": {
+        "source": [
+          "32520423",
+          "28153047",
+          "42109254"
+        ],
+        "target": [
+          "37442359",
+          "37890359",
+          "31349600"
+        ]
+      },
+      "annotation_identifiers": {
+        "source": [
+          "25464",
+          "3383"
+        ],
+        "target": [
+          "15894",
+          "3383"
+        ]
+      },
+      "shared_mediator_identifiers": [
+        "3383"
+      ],
+      "rejected_pmids": {
+        "source": {},
+        "target": {
+          "37771765": [
+            "source_leak"
+          ],
+          "39077184": [
+            "source_leak"
+          ]
+        }
+      },
+      "bridge_eligible": true
+    },
+    {
+      "name": "PAI-1",
+      "queries": {
+        "source": "endothelial senescence[Title/Abstract] AND PAI-1 [Title/Abstract]",
+        "target": "PAI-1[Title/Abstract] AND atherosclerosis [Title/Abstract]"
+      },
+      "candidate_pmids": {
+        "source": [
+          "40050610",
+          "31472244",
+          "19520256",
+          "25040736",
+          "7628547",
+          "10722838",
+          "41783362",
+          "34719845",
+          "33376857",
+          "33041998",
+          "41917842",
+          "25386949",
+          "16786104",
+          "18556572",
+          "24334406"
+        ],
+        "target": [
+          "16102055",
+          "32377712",
+          "17334498",
+          "36469488",
+          "12914731",
+          "29908999",
+          "15820196",
+          "20626406",
+          "10798271",
+          "16218490",
+          "17161777",
+          "17628188",
+          "36093806",
+          "25386620",
+          "28822973",
+          "10798278",
+          "38971127",
+          "24338998",
+          "12028454",
+          "16918367",
+          "12728597",
+          "35628326",
+          "31349950",
+          "33410782",
+          "39344315",
+          "23844818",
+          "15634264",
+          "16011463",
+          "22011808",
+          "10708958"
+        ]
+      },
+      "accepted_pmids": {
+        "source": [
+          "40050610",
+          "31472244",
+          "19520256"
+        ],
+        "target": [
+          "17334498",
+          "36469488",
+          "12914731"
+        ]
+      },
+      "annotation_identifiers": {
+        "source": [
+          "5054"
+        ],
+        "target": [
+          "5054"
+        ]
+      },
+      "shared_mediator_identifiers": [
+        "5054"
+      ],
+      "rejected_pmids": {
+        "source": {},
+        "target": {
+          "16102055": [
+            "source_leak"
+          ],
+          "32377712": [
+            "source_leak"
+          ]
+        }
+      },
+      "bridge_eligible": true
+    }
+  ],
+  "distractor_audit": null,
+  "fetched_pmids": [
+    "32520423",
+    "28153047",
+    "42109254",
+    "37442359",
+    "37890359",
+    "31349600",
+    "40050610",
+    "31472244",
+    "19520256",
+    "17334498",
+    "36469488",
+    "12914731"
+  ]
+}

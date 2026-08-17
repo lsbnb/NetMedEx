@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "Q010",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "96218b10c99b773ad75a217d6102af06ab1cf66482d9fe9420a265d9ccf35b23",
+  "raw_response_sha256": "5a40e5b7429c9156e593ca61ea894786c3f01bb147ba1858f4995f393fd85e73",
+  "usage": {
+    "input_tokens": 3337,
+    "output_tokens": 555,
+    "total_tokens": 3892
+  },
+  "rated_at": "2026-08-13T04:37:49.156555+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q010-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "機制描述詳盡且有邏輯，但缺乏具體文獻與PMID支持，部分推論未明確區分動物/體外/臨床。"
+      },
+      {
+        "answer_id": "Q010-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "具體列舉多項動物/體外/臨床證據，機制明確，引用PMID，假說具研究價值。"
+      },
+      {
+        "answer_id": "Q010-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "明確分辨動物/體外/臨床證據，機制與文獻對應，假說具體，研究價值高。"
+      },
+      {
+        "answer_id": "Q010-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "明確標示動物/體外證據，機制清楚，假說具體且具研究價值，引用充分。"
+      }
+    ],
+    "preferred_item_id": "Q010-C",
+    "pairwise_reason": "Q010-C最完整，明確區分人/動物/體外證據，機制與文獻對應，假說具體且具研究價值。Q010-B與Q010-D也很優秀，但C在組織性與細節上略勝一籌。Q010-A缺乏具體文獻支持。"
+  }
+}

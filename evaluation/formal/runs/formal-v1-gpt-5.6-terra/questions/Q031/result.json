@@ -1,0 +1,147 @@
+{
+  "status": "complete",
+  "question_id": "Q031",
+  "domain": "dermatology",
+  "question": "What pathways connect atopic dermatitis to skin barrier dysfunction?",
+  "pubmed_query": "atopic dermatitis filaggrin IL-4 IL-13 skin barrier inflammation",
+  "language": "English",
+  "corpus_pmids": [
+    "29528494",
+    "30194992",
+    "31182684",
+    "31509236",
+    "31902917",
+    "32610574",
+    "33233866",
+    "33368555",
+    "35216228",
+    "37120405",
+    "38590314",
+    "40484710",
+    "40649943",
+    "40985485",
+    "41155460"
+  ],
+  "graph": {
+    "node_count": 19,
+    "edge_count": 19,
+    "path_count": 16,
+    "preferred_pmids": [
+      "31182684",
+      "31902917",
+      "33233866",
+      "35216228",
+      "38590314",
+      "40484710",
+      "40985485"
+    ]
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "31902917",
+        "score": 0.9080848333111777
+      },
+      {
+        "pmid": "33233866",
+        "score": 0.8920256475295119
+      },
+      {
+        "pmid": "38590314",
+        "score": 0.8656469760585674
+      },
+      {
+        "pmid": "40985485",
+        "score": 0.8619926603719686
+      },
+      {
+        "pmid": "31182684",
+        "score": 0.842295146152417
+      },
+      {
+        "pmid": "35216228",
+        "score": 0.8233446774398873
+      },
+      {
+        "pmid": "40484710",
+        "score": 0.7858827661817847
+      },
+      {
+        "pmid": "37120405",
+        "score": 0.5950148491124615
+      },
+      {
+        "pmid": "29528494",
+        "score": 0.576301002428629
+      },
+      {
+        "pmid": "40649943",
+        "score": 0.5546968267266729
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "31902917",
+        "score": 0.6053898888741185
+      },
+      {
+        "pmid": "37120405",
+        "score": 0.5950148491124615
+      },
+      {
+        "pmid": "33233866",
+        "score": 0.5946837650196746
+      },
+      {
+        "pmid": "38590314",
+        "score": 0.577097984039045
+      },
+      {
+        "pmid": "29528494",
+        "score": 0.576301002428629
+      },
+      {
+        "pmid": "40985485",
+        "score": 0.5746617735813124
+      },
+      {
+        "pmid": "31182684",
+        "score": 0.5615300974349446
+      },
+      {
+        "pmid": "40649943",
+        "score": 0.5546968267266729
+      },
+      {
+        "pmid": "35216228",
+        "score": 0.5488964516265915
+      },
+      {
+        "pmid": "41155460",
+        "score": 0.5430292107890426
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "## Direct evidence\n\n### 1. Structural epidermal-barrier pathway\n**Human AD lesions** show reduced expression of key barrier constituents: **filaggrin (FLG/FLG2), claudin-1 (CLDN1), acylceramides, and cornified-envelope precursors**. These changes impair cornification, tight-junction integrity, and epidermal permeability control. [PMID: 31902917] Spatial transcriptomics likewise found reduced **CLDN1, FLG, and FLG2** in human AD lesions. [PMID: 40985485] Lesional-versus-perilesional human skin transcriptomics additionally found downregulation of **FLG2** and **CGNL1**, with enrichment of keratinization and cornified-envelope pathways. [PMID: 40649943]\n\n### 2. Type-2 cytokine → barrier-suppression pathway\nThe central inflammatory route is:\n**IL-4/IL-13 → IL-4Rα-associated JAK–STAT6/STAT3 signaling → reduced epidermal barrier-gene/protein expression → barrier dysfunction.**\n\nIL-4 and IL-13 downregulate filaggrin in keratinocytes and worsen epidermal barrier dysfunction. [PMID: 31182684] The IL-4/IL-13–JAK–STAT6/STAT3 axis is described as antagonizing the barrier-promoting AHR axis and as inducing oxidative stress, thereby worsening inflammation. [PMID: 33233866]\n\n**Human ex-vivo evidence:** IL-4, IL-13, and IL-22 each disrupted barrier integrity in bio-stabilized human skin, with reductions in key barrier proteins, especially filaggrin and claudin-1. [PMID: 40985485]\n\n**Human skin-equivalent in-vitro evidence:** IL-4/IL-13 stimulation through IL-4Rα reduced expression of **filaggrin, loricrin, and involucrin**, while producing AD-like epidermal and spongiotic features. [PMID: 35216228]\n\n### 3. IL-13 → periostin → IL-24 → STAT3 → filaggrin-loss pathway\nA more specific barrier-disrupting cascade is:\n**IL-13 → STAT6-dependent, periostin-dependent IL-24 production by keratinocytes → STAT3 activation → decreased filaggrin → barrier dysfunction.**\n\nThis mechanism was supported by keratinocyte experiments, mite-treated mice, and enhanced epidermal IL-24 expression in AD patient skin. [PMID: 29528494]  \n- **Human/in-vitro:** IL-13 induced keratinocyte IL-24, and IL-24 reduced filaggrin through STAT3.  \n- **Animal:** epidermal IL-24 and STAT3 activation in mite-treated mice depended on STAT6 and periostin. [PMID: 29528494]\n\n### 4. Keratinocyte alarmin → type-2 inflammation → further barrier injury loop\nWhen the barrier is disrupted, keratinocytes produce **TSLP, IL-25, and IL-33**. These epithelial alarmins promote type-2 immune deviation, including OX40L/OX40-associated signaling, and amplify IL-4/IL-13-driven inflammation. [PMID: 31182684] Keratinocyte-derived TSLP and IL-33, together with type-2 immune-cell cytokines, amplify Th2 inflammation in AD. [PMID: 31902917; PMID: 38590314]\n\nThus, the pathway is bidirectional:\n**initial barrier damage → epithelial alarmins → type-2 inflammation → IL-4/IL-13-mediated suppression of barrier proteins → worsening barrier damage.** [PMID: 31182684; PMID: 31902917]\n\n### 5. IL-22-related barrier and keratinization pathway\nIn chronic/severe AD, **Th22 and Th17 cells** increase. IL-22, together with IL-4 and IL-13, can suppress filaggrin and aggravate barrier dysfunction. [PMID: 38590314] In ex-vivo human skin, IL-22 alone downregulated genes needed for barrier function and keratinization and reduced filaggrin and claudin-1 protein expression. [PMID: 40985485]\n\nIL-4/IL-13 and IL-22 also exhibit receptor-level cross-regulation: IL-4/IL-13 reduce IL-22Rα1, whereas IL-22 increases IL-4Rα, indicating interacting rather than wholly independent cytokine circuits. **Human ex-vivo evidence.** [PMID: 40985485]\n\n### 6. AHR versus IL-4/IL-13 signaling balance\nThe **aryl hydrocarbon receptor (AHR) axis** promotes barrier function, whereas the **IL-13/IL-4–JAK–STAT6/STAT3 axis** suppresses it. Therefore, AD-associated barrier dysfunction can reflect a shift from AHR-mediated barrier reinforcement toward cytokine-mediated barrier repression. [PMID: 33233866]\n\n### 7. Pruritus/scratch amplification pathway\nIL-31, TSLP, IL-4, and IL-13 can directly activate sensory neurons, and IL-4/IL-13 amplify IL-31-mediated nerve signaling. [PMID: 31902917; PMID: 31182684] This provides a mechanistic bridge from type-2 inflammation to itch and likely scratching. The supplied evidence identifies a positive-feedback system among **barrier dysfunction, immune abnormalities, and pruritus**, which maintains AD. [PMID: 31902917]\n\n## Association evidence\n\n- AD lesions are associated with increased IL-4, IL-13 and type-2 chemokines **CCL17, CCL22, and CCL26**, alongside barrier dysfunction. [PMID: 31182684]  \n- Lesional AD skin is associated with inflammatory activation, epidermal remodeling/barrier-disrupting genes (**MMP1, GJB2**), altered antimicrobial-response pathways, and vitamin-D-pathway gene upregulation (**CYP27B1, CYP24A1**). The context does not establish that vitamin-D-pathway activation directly causes barrier failure. **Human transcriptomic association.** [PMID: 40649943]  \n- Epigenetic changes have been associated with reduced filaggrin and human β-defensins, altered microbiome-related processes, and inflammatory cytokine programs in AD. Most reversal evidence cited is from experimental models. [PMID: 37120405]  \n- IL-4/IL-13 suppress antimicrobial peptides, whereas IL-22 increases them; both settings can coexist with barrier-protein loss, showing that barrier disruption and antimicrobial regulation are related but not identical programs. **Human ex-vivo evidence.** [PMID: 40985485]\n\n## Testable hypothesis\n\nA coherent, testable model is that AD severity is driven by a self-reinforcing network:\n\n1. Reduced FLG/FLG2, CLDN1, lipid, and cornified-envelope programs create a leaky barrier.  \n2. Barrier injury induces keratinocyte TSLP/IL-25/IL-33.  \n3. Alarmins expand/amplify type-2 immunity and increase IL-4/IL-13.  \n4. IL-4/IL-13 activate JAK–STAT signaling, directly suppress barrier differentiation and may route through **periostin–IL-24–STAT3** to further reduce filaggrin.  \n5. IL-31 and type-2 cytokines drive itch; scratching may then add further barrier injury.  \n6. Insufficient AHR signaling and/or excess oxidative stress may bias the system toward persistent barrier failure. [PMID: 31902917; PMID: 33233866; PMID: 29528494; PMID: 31182684]\n\nThis model predicts that combined restoration of barrier differentiation/AHR activity plus blockade of IL-4/IL-13 signaling—and, in selected severe disease, IL-22-associated activity—would more completely normalize barrier function than targeting a single downstream marker. The context supports the component mechanisms, but does not provide direct comparative clinical proof for this specific combination strategy.",
+    "traditional_rag": "Atopic dermatitis (AD) is linked to skin-barrier dysfunction through interacting structural, immune, itch, and possibly epigenetic/microbial pathways.\n\n## Direct evidence\n\n### 1. Loss of epidermal structural/barrier components\n**Human evidence:** AD lesional skin has reduced expression of key barrier genes/proteins, including **filaggrin (FLG), filaggrin-2 (FLG2), claudin-1 (CLDN1)**, cornified-envelope components, and acylceramides. These defects impair epidermal integrity and keratinization. [PMID: 31902917] [PMID: 40985485] [PMID: 40649943]\n\n**Human ex-vivo evidence:** IL-4, IL-13, and IL-22 each disrupted barrier integrity in bio-stabilized human skin and reduced barrier proteins, particularly filaggrin and claudin-1. [PMID: 40985485]\n\n### 2. Type-2 cytokine pathway: IL-4/IL-13 → JAK–STAT signaling → barrier suppression\n**Human, ex-vivo, and in-vitro evidence:** IL-4 and IL-13 suppress keratinocyte expression of filaggrin and other differentiation/barrier genes. Their downstream **JAK–STAT6/STAT3** signaling is described as a barrier-downregulating pathway. [PMID: 31182684] [PMID: 33233866] [PMID: 35216228]\n\nIn a human skin-equivalent model, IL-4/IL-13 signaling through IL-4Rα reduced **filaggrin, loricrin, and involucrin** expression. [PMID: 35216228]\n\n**Human therapeutic evidence:** Dupilumab, which blocks IL-4Rα and thereby inhibits IL-4/IL-13 signaling, restored IL-4/IL-13-dysregulated genes after 3 months in AD patients. [PMID: 40985485]\n\n### 3. IL-13 → periostin → IL-24 → STAT3 → filaggrin reduction\n**In-vitro, animal, and human tissue evidence:** IL-13 induces keratinocyte IL-24 production through a **periostin-dependent, STAT6-dependent** mechanism. IL-24 then reduces filaggrin expression through **STAT3**, contributing to barrier dysfunction. [PMID: 29528494]\n\nThis pathway was supported by mite-treated mice: epidermal IL-24 expression and STAT3 activation were absent in STAT6-deficient and periostin-deficient mice. IL-24 was also increased in epidermis from AD patient skin. [PMID: 29528494]\n\n### 4. Keratinocyte alarmins amplify type-2 inflammation\n**Human/pathophysiologic evidence:** Barrier-disrupted keratinocytes produce **TSLP, IL-25, and IL-33**, which promote type-2 immune deviation and amplify Th2 inflammation. Th2 cells, ILC2s, and basophils then produce IL-4, IL-5, IL-13, and IL-31. [PMID: 31182684] [PMID: 38590314]\n\nThus, barrier injury can initiate immune signaling, while type-2 cytokines further suppress barrier components—forming a self-reinforcing loop. [PMID: 31902917] [PMID: 31182684]\n\n### 5. IL-22-associated barrier dysfunction\n**Human and ex-vivo evidence:** IL-22 is increased in chronic/severe AD and, together with IL-4 and IL-13, can suppress filaggrin expression. In ex-vivo human skin, IL-22 alone disrupted barrier function and reduced barrier/keratinization genes and proteins. [PMID: 38590314] [PMID: 40985485]\n\nIL-22 differs from IL-4/IL-13 in its antimicrobial effects: IL-22 upregulated antimicrobial peptides, whereas IL-4/IL-13 downregulated them. [PMID: 40985485]\n\n### 6. AHR versus IL-4/IL-13 signaling\n**Mechanistic evidence:** The **aryl hydrocarbon receptor (AHR)** axis promotes epidermal barrier function, whereas the **IL-13/IL-4–JAK–STAT6/STAT3** axis suppresses it. Type-2 cytokine signaling also induces oxidative stress, which may worsen inflammation and barrier damage. [PMID: 33233866]\n\n## Association evidence\n\n### 1. Pruritus and the itch–scratch–barrier cycle\n**Human/pathophysiologic association:** IL-31, TSLP, IL-4, and IL-13 can activate sensory neurons and promote itch. IL-31 is a major pruritogenic cytokine, while IL-4/IL-13 amplify IL-31-related nerve signaling. Scratching plausibly causes further mechanical barrier injury, creating an itch–scratch cycle. [PMID: 31902917] [PMID: 31182684]\n\n**Human clinical evidence:** Blocking IL-31RA with nemolizumab reduces pruritus in AD patients, supporting the clinical relevance of the IL-31 itch pathway. [PMID: 38590314] [PMID: 41155460]\n\n### 2. IL-33/IL-31 axis\n**Human and animal association:** Damaged keratinocytes release IL-33, which promotes type-2 cytokine production; this may increase IL-31, impair keratinocyte differentiation, and intensify itch, scratching, inflammation, and barrier disruption. IL-31 and IL-33 levels correlate with AD severity. [PMID: 41155460]\n\nHowever, IL-33-targeted treatments have shown insufficient or variable clinical efficacy despite strong animal-model and biomarker signals. [PMID: 38590314] [PMID: 41155460]\n\n### 3. Microbiome, antimicrobial defense, and barrier impairment\n**Association evidence:** Altered microbiome and reduced filaggrin/human beta-defensins are described as barrier-related features with epigenetic regulation in AD. IL-4/IL-13 also reduce antimicrobial peptides in human skin. [PMID: 37120405] [PMID: 40985485]\n\n### 4. Epigenetic regulation\n**Association and experimental-model evidence:** Differential promoter methylation and non-coding RNAs have been linked to reduced filaggrin/defensins, altered microbiome-related processes, Fc-receptor changes, eosinophilia, and cytokine production in AD. Reversal of some epigenetic changes reduced inflammatory cytokines and AD progression in experimental models. [PMID: 37120405]\n\n## Testable integrated hypothesis\n\nA coherent model is:\n\n1. **Primary or acquired barrier defects**—reduced filaggrin, claudin-1, lipids, and cornified-envelope proteins—permit barrier leakage.  \n2. Barrier-stressed keratinocytes release **TSLP, IL-25, and IL-33**, driving type-2 immune activation.  \n3. Immune-cell-derived **IL-4 and IL-13** activate JAK–STAT signaling, suppressing keratinocyte differentiation and barrier proteins; the **IL-13 → periostin → IL-24 → STAT3** branch specifically reduces filaggrin.  \n4. **IL-22** adds a chronic/severe-disease barrier-disruptive program.  \n5. **IL-31 and other pruritogens** provoke scratching, producing additional mechanical barrier injury.  \n6. Reduced antimicrobial defenses and dysbiosis may further sustain inflammation.  \n7. Failure of protective **AHR-mediated** barrier signaling to counterbalance IL-4/IL-13 signaling may favor persistent disease. [PMID: 31902917] [PMID: 33233866] [PMID: 29528494] [PMID: 40985485]\n\nOverall, the available context supports a **positive feedback loop** rather than a single linear cause: barrier dysfunction promotes inflammation and itch, while cytokine-driven inflammation and scratching further damage the barrier. [PMID: 31902917]",
+    "general_llm": "Atopic dermatitis (AD) and skin barrier dysfunction reinforce each other through several interconnected pathways. The relationship is bidirectional: a weak barrier promotes inflammation and allergen/microbial entry, while inflammation further damages the barrier.\n\n## 1. Structural protein and cornified-envelope defects\n\nThe outer epidermis, especially the stratum corneum, normally limits water loss and blocks irritants, allergens, and microbes.\n\n- **Filaggrin deficiency** is one of the best-established links. Loss-of-function variants in the *FLG* gene increase risk of AD, particularly persistent or early-onset disease.\n- Filaggrin is broken down into components of the “natural moisturizing factor,” which helps retain water and maintain an acidic skin surface.\n- Reduced filaggrin can lead to:\n  - increased transepidermal water loss,\n  - dry, cracked skin,\n  - higher skin pH,\n  - easier penetration of allergens and irritants,\n  - altered microbial growth.\n\nOther epidermal differentiation and cornified-envelope proteins may also be abnormal in AD, although their contribution varies among patients.\n\n## 2. Abnormal epidermal lipids\n\nBarrier function depends on an organized extracellular lipid matrix containing ceramides, cholesterol, and free fatty acids.\n\nIn AD, studies commonly show:\n\n- reduced total ceramides or altered ceramide species,\n- disturbed lipid-chain length and organization,\n- impaired lamellar lipid structures,\n- reduced ability to retain water and prevent penetration of external substances.\n\nInflammatory cytokines, especially type 2 cytokines, can suppress enzymes involved in lipid production and processing. Thus, inflammation can directly worsen the lipid barrier.\n\n## 3. Type 2 immune inflammation suppresses barrier repair\n\nAD is often dominated by **type 2 inflammation**, involving cytokines such as:\n\n- **IL-4**\n- **IL-13**\n- **IL-31**\n- **IL-5**\n\nIL-4 and IL-13 can reduce expression of key barrier-related molecules, including filaggrin and other epidermal differentiation proteins. They can also impair lipid synthesis and weaken tight-junction function.\n\nThis creates a self-amplifying loop:\n\n1. Barrier disruption permits entry of allergens, irritants, and microbes.\n2. These exposures stimulate keratinocytes and immune cells.\n3. Type 2 inflammation develops.\n4. IL-4/IL-13 further impair barrier proteins and lipids.\n5. The barrier becomes even more permeable.\n\nThis loop helps explain why treatments that inhibit IL-4/IL-13 signaling can improve both inflammation and clinical measures of skin barrier function.\n\n## 4. Keratinocyte-derived “alarmins” link injury to immune activation\n\nWhen the epidermis is injured or exposed to allergens, keratinocytes release signaling molecules often called alarmins, including:\n\n- **TSLP** (thymic stromal lymphopoietin),\n- **IL-33**\n- **IL-25**\n\nThese signals activate dendritic cells, innate lymphoid cells, and other immune cells, favoring a type 2 immune response. They therefore connect physical barrier injury to allergic inflammation.\n\n## 5. Tight-junction abnormalities\n\nTight junctions form a seal between epidermal cells below the stratum corneum. Proteins such as claudins are important in this process.\n\nIn some people with AD, tight-junction integrity is reduced, which may allow increased movement of water, allergens, and microbes through the epidermis. This is considered an important contributor, although its relative importance differs between disease subtypes and body sites.\n\n## 6. Skin pH changes and protease activity\n\nHealthy skin is mildly acidic. In AD, the skin surface may become less acidic because of impaired filaggrin breakdown products, altered lipids, inflammation, or cleansing practices.\n\nA higher pH can increase the activity of epidermal and microbial proteases. Excess protease activity can:\n\n- degrade corneodesmosomes and barrier proteins,\n- disturb lipid-processing enzymes,\n- increase desquamation and scaling,\n- activate inflammatory signaling,\n- worsen itch.\n\nProtease-antiprotease imbalance is therefore another pathway connecting dry, damaged skin with inflammation.\n\n## 7. Microbiome disruption, especially *Staphylococcus aureus*\n\nAD skin often has reduced microbial diversity and increased colonization with **Staphylococcus aureus**.\n\n*S. aureus* can worsen barrier dysfunction through:\n\n- proteases that damage barrier structures,\n- toxins and superantigens that stimulate inflammation,\n- biofilm formation,\n- induction of keratinocyte cytokines,\n- interference with normal repair processes.\n\nConversely, a damaged barrier and type 2 inflammation reduce production of certain antimicrobial peptides, making *S. aureus* overgrowth more likely. This is another reciprocal cycle rather than a one-way cause.\n\n## 8. Itch–scratch cycle\n\nItch is central to AD and is driven by inflammatory mediators, neural sensitization, dry skin, and signals such as IL-31.\n\nScratching causes mechanical injury that:\n\n- disrupts the stratum corneum,\n- increases water loss,\n- releases alarmins,\n- facilitates microbial/allergen entry,\n- promotes further inflammation and itch.\n\nThus, scratching is not merely a symptom; it is a biologically important cause of ongoing barrier damage.\n\n## 9. Allergen and irritant penetration, including sensitization\n\nOnce the barrier is impaired, environmental proteins, contact allergens, pollutants, detergents, and irritants can enter the skin more easily. Antigen-presenting cells can then promote allergic sensitization.\n\nThis “outside-in” model is particularly relevant to:\n\n- food allergen sensitization in infancy,\n- aeroallergen exposure,\n- irritant contact reactions,\n- allergic contact dermatitis superimposed on AD.\n\nNot every person with AD has the same triggers, but barrier disruption plausibly increases vulnerability to these exposures.\n\n## Overall model\n\nAD is best understood as a feedback network rather than a single defect:\n\n**genetic/structural barrier susceptibility + altered lipids + environmental injury → increased permeability → keratinocyte alarmins and immune activation → type 2 inflammation, itch, and microbial imbalance → further barrier damage.**\n\nThe relative contribution of filaggrin mutations, immune dysregulation, microbial factors, and environmental exposures differs among individuals. In some patients barrier abnormalities may be an early driver; in others, inflammation may be the dominant force that secondarily damages an initially near-normal barrier."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 1.2938143610954285,
+    "semantic_graph": 92.64153990149498,
+    "vector_index": 1.9508989676833153,
+    "answer_netmedex_hybrid_rag": 16.87153646349907,
+    "answer_traditional_rag": 17.084324970841408,
+    "answer_general_llm": 17.31515423953533,
+    "total": 154.93904547393322
+  },
+  "completed_at": "2026-07-27T18:40:53.848664+00:00",
+  "answer_repair_history": [
+    {
+      "system": "general_llm",
+      "model": "gpt-5.6-terra",
+      "repaired_at": "2026-07-30T11:10:12.662353+00:00"
+    }
+  ]
+}

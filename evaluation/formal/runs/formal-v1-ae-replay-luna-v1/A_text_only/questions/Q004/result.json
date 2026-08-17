@@ -1,0 +1,183 @@
+{
+  "status": "complete",
+  "question_id": "Q004",
+  "domain": "cancer",
+  "question": "Which genes mediate a possible 2-hop path between curcumin and apoptosis?",
+  "question_type": "two_hop_path",
+  "pubmed_query": "curcumin AND apoptosis AND cancer AND (gene OR pathway)",
+  "effective_pubmed_query": "curcumin AND apoptosis AND cancer AND (gene OR pathway)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "15810876",
+    "29693253",
+    "30623450",
+    "30725357",
+    "31590362",
+    "32519340",
+    "35722665",
+    "37776274",
+    "38031951",
+    "38166505",
+    "38269517",
+    "38699926",
+    "39219410",
+    "41109942",
+    "41252742"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "15810876",
+        "score": 0.6283762240060298
+      },
+      {
+        "pmid": "30623450",
+        "score": 0.5989199374620973
+      },
+      {
+        "pmid": "38699926",
+        "score": 0.5920934711462523
+      },
+      {
+        "pmid": "31590362",
+        "score": 0.5889506597903633
+      },
+      {
+        "pmid": "38031951",
+        "score": 0.5878472991607736
+      },
+      {
+        "pmid": "32519340",
+        "score": 0.5681490536801325
+      },
+      {
+        "pmid": "29693253",
+        "score": 0.5629028543574971
+      },
+      {
+        "pmid": "38166505",
+        "score": 0.5339987675885987
+      },
+      {
+        "pmid": "30725357",
+        "score": 0.5255523475601428
+      },
+      {
+        "pmid": "41109942",
+        "score": 0.5241625285947177
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "15810876",
+        "score": 0.6283762240060298
+      },
+      {
+        "pmid": "30623450",
+        "score": 0.5989199374620973
+      },
+      {
+        "pmid": "38699926",
+        "score": 0.5920934711462523
+      },
+      {
+        "pmid": "31590362",
+        "score": 0.5889506597903633
+      },
+      {
+        "pmid": "38031951",
+        "score": 0.5878472991607736
+      },
+      {
+        "pmid": "32519340",
+        "score": 0.5681490536801325
+      },
+      {
+        "pmid": "29693253",
+        "score": 0.5629028543574971
+      },
+      {
+        "pmid": "38166505",
+        "score": 0.5339987675885987
+      },
+      {
+        "pmid": "30725357",
+        "score": 0.5255523475601428
+      },
+      {
+        "pmid": "41109942",
+        "score": 0.5241625285947177
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "No graph paths were supplied, so the following are **possible curcumin → intermediate → apoptosis** candidates inferred from the PubMed abstracts, not confirmed 2-hop graph paths.\n\n### Direct evidence for a curcumin–gene/protein–apoptosis relationship\n\n- **p53** — Curcumin upregulates p53 expression and activity, which inhibits proliferation and increases apoptosis. This is described in cancer-cell studies/reviews; the supplied context does not establish a human clinical effect. [PMID: 30623450]\n- **Bcl-2** — Curcumin inhibits NF-κB and COX-2, which are associated with overexpression of antiapoptotic genes such as **Bcl-2**; curcumin-induced apoptosis is therefore linked to reduced antiapoptotic signaling. [PMID: 30623450]\n- **Nrf2 and GPX4** — In **in-vitro osteosarcoma cells and an in-vivo xenograft mouse model**, curcumin altered Nrf2/GPX4-related protein levels while increasing apoptosis; Nrf2 activation reversed curcumin’s effects. [PMID: 38166505]\n\n### Associated candidates\n\n- **NF-κB** and **COX-2** — Curcumin inhibits these factors, and they are associated with antiapoptotic gene overexpression, including Bcl-2. The supplied abstract supports an association but does not establish each as a direct apoptosis-mediating gene. [PMID: 30623450]\n- **PI3K/AKT signaling** — Curcumin attenuates antiapoptotic PI3K signaling, while PI3K/AKT is repeatedly identified as a curcumin-sensitive cancer pathway linked to cell survival and apoptosis. Specific PI3K or AKT gene members are not provided. [PMID: 30623450; PMID: 29693253]\n- **MAPKs** — Curcumin increases MAPK expression and endogenous ROS production in the context of apoptosis modulation, but the specific MAPK genes are not identified. [PMID: 30623450]\n\n### Testable hypothesis\n\nThe strongest candidate intermediates for a 2-hop path are **p53, Bcl-2, Nrf2, and GPX4**, with **NF-κB, COX-2, PI3K/AKT, and MAPKs** as additional pathway-level candidates. A testable hypothesis is that curcumin induces apoptosis by increasing p53 and/or altering Nrf2–GPX4 signaling while suppressing Bcl-2-associated, NF-κB/COX-2, and PI3K/AKT survival signaling. Evidence in the supplied records is primarily from reviews, cancer cell lines, and one xenograft model—not from human mechanistic studies.",
+    "traditional_rag": "A possible **2-hop path** is *curcumin → gene/protein → apoptosis*. The supplied records support the following candidate mediators:\n\n### Direct evidence\n\n- **TP53 (p53):** Curcumin can increase p53 expression/activity, and p53 inhibits proliferation while promoting apoptosis. Thus, **curcumin → TP53/p53 → apoptosis** is the clearest proposed path. This evidence is from a review of cancer-cell studies, not a human mechanistic study [PMID: 30623450].\n\n- **BCL2 (Bcl-2):** Curcumin inhibits NF-κB and COX-2, pathways associated with overexpression of the antiapoptotic Bcl-2 protein. This supports the candidate path **curcumin → reduced BCL2 activity/expression → apoptosis**, although the abstract describes this relationship indirectly rather than demonstrating a specific BCL2 perturbation experiment [PMID: 30623450].\n\n- **NFE2L2 (Nrf2) and GPX4:** In osteosarcoma cells and a mouse xenograft model, curcumin altered the Nrf2/GPX4 pathway and increased apoptosis; pharmacologic modulation of ferroptosis or Nrf2 reversed curcumin’s effects. These findings support **curcumin → NFE2L2/GPX4 signaling → cell death including apoptosis**, but the study primarily links this pathway to ferroptosis as well as apoptosis [PMID: 38166505].  \n  **Evidence type:** in vitro cancer cells and animal xenograft; not human clinical evidence.\n\n### Association-level candidates\n\n- **PI3K/AKT pathway genes/proteins**—including **PIK3CA** and **AKT1**—are plausible mediators because curcumin attenuates antiapoptotic PI3K signaling, and PI3K/AKT is described as a key cancer-survival pathway. However, the supplied abstracts do not establish a direct gene-specific 2-hop path to apoptosis [PMID: 30623450; PMID: 29693253].\n\n- **MAPK-family genes/proteins** are also candidates: curcumin reportedly increases MAPK signaling and ROS production, which can promote apoptosis. The context does not identify a specific MAPK gene or prove mediation [PMID: 30623450].\n\n### Testable hypothesis\n\nThe strongest testable gene-level hypotheses are:\n\n1. **Curcumin → TP53 upregulation → apoptosis**\n2. **Curcumin → BCL2 downregulation → apoptosis**\n3. **Curcumin → NFE2L2/Nrf2–GPX4 pathway alteration → apoptosis and/or ferroptosis**\n\nThe supplied context contains **no direct human evidence** proving any of these genes mediates a curcumin-to-apoptosis pathway.",
+    "general_llm": "A plausible **2-hop path** can be represented as:\n\n**curcumin → gene/protein → apoptosis**\n\nThe most plausible bridging genes are:\n\n| Gene | Example path | Evidence interpretation |\n|---|---|---|\n| **BCL2** | curcumin → ↓BCL2 → mitochondrial apoptosis | Frequently reported; curcumin can reduce anti-apoptotic BCL-2 expression or activity. |\n| **BAX** | curcumin → ↑BAX → mitochondrial apoptosis | Commonly observed increase in pro-apoptotic BAX and mitochondrial membrane permeabilization. |\n| **TP53** | curcumin → TP53 → apoptotic transcriptional program | Curcumin can activate p53-dependent apoptosis, although p53-independent effects also occur. |\n| **CASP3** | curcumin → CASP3 activation → executioner apoptosis | Caspase-3 cleavage is a frequent downstream readout, but it may be an effector rather than a primary direct target. |\n| **CASP8** | curcumin → CASP8 → extrinsic apoptosis | Reported in some cell types, particularly where death-receptor signaling is involved. |\n| **CASP9** | curcumin → CASP9 → intrinsic apoptosis | Fits the mitochondrial pathway involving cytochrome c and apoptosome activation. |\n| **AKT1** | curcumin → inhibition of AKT1 signaling → apoptosis | Curcumin often suppresses PI3K–AKT survival signaling. |\n| **RELA** / **NFKB1** | curcumin → inhibition of NF-κB signaling → apoptosis | A well-described mechanism in inflammatory and cancer models. |\n| **STAT3** | curcumin → inhibition of STAT3 → apoptosis | Supported in several tumor-model systems, but highly context-dependent. |\n| **MAPK8** | curcumin → MAPK8/JNK activation → apoptosis | JNK activation is reported in some models. |\n| **MAPK14** | curcumin → p38/MAPK14 modulation → apoptosis | Can contribute to stress-induced apoptosis, though the direction of regulation varies by context. |\n| **XIAP** (**BIRC4**) | curcumin → ↓XIAP → caspase-mediated apoptosis | Loss of an inhibitor of apoptosis can facilitate caspase activation. |\n| **MCL1** | curcumin → ↓MCL1 → mitochondrial apoptosis | A plausible bridge in models where curcumin suppresses this BCL-2-family survival protein. |\n| **BIRC5** (survivin) | curcumin → ↓BIRC5 → apoptosis | Frequently associated with reduced tumor-cell survival. |\n\nIf a **small, high-confidence candidate set** is required, I would prioritize:\n\n**BCL2, BAX, TP53, CASP3, AKT1, RELA, STAT3, and MAPK8.**\n\nThe strongest canonical paths are:\n\n1. **curcumin → BCL2/BAX → mitochondrial apoptosis**\n2. **curcumin → TP53 → apoptosis**\n3. **curcumin → AKT1 → apoptosis**\n4. **curcumin → RELA/NF-κB → apoptosis**\n5. **curcumin → CASP3 → execution of apoptosis**\n\nThese should be interpreted as **possible mechanistic or knowledge-graph paths**, not proof that curcumin directly binds each gene product. Curcumin has many reported molecular effects, and the relevant bridge depends on cell type, concentration, exposure time, and whether apoptosis is intrinsic, extrinsic, or stress-induced."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 5.064159631729126e-05,
+    "vector_index": 1.805416852235794,
+    "answer_netmedex_hybrid_rag": 6.708967261016369,
+    "answer_traditional_rag": 7.779021754860878,
+    "answer_general_llm": 7.878259524703026,
+    "total": 24.72313365340233
+  },
+  "token_usage": {
+    "input_tokens": 7323,
+    "total_tokens": 10508,
+    "output_tokens": 3185
+  },
+  "completed_at": "2026-08-11T05:04:37.515311+00:00"
+}

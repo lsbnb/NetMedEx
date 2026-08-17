@@ -1,0 +1,246 @@
+{
+  "status": "complete",
+  "question_id": "PP018",
+  "domain": "osteoimmunology",
+  "question": "What evidence supports a mechanistic path from dysbiosis to bone loss through periodontitis? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "(\"gut microbiome\"[Title/Abstract] OR dysbiosis[Title/Abstract]) AND (inflammation[Title/Abstract] OR cytokine*[Title/Abstract] OR immune[Title/Abstract]) AND (\"1900\"[Date - Publication] : \"2015\"[Date - Publication])",
+  "effective_pubmed_query": "(\"gut microbiome\"[Title/Abstract] OR dysbiosis[Title/Abstract]) AND (inflammation[Title/Abstract] OR cytokine*[Title/Abstract] OR immune[Title/Abstract]) AND (\"1900\"[Date - Publication] : \"2015\"[Date - Publication])",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "15133327",
+    "16313350",
+    "17191007",
+    "18240539",
+    "19803549",
+    "20485900",
+    "20599675",
+    "21996023",
+    "22179898",
+    "22863002",
+    "23134607",
+    "23238181",
+    "24176761",
+    "24231662",
+    "24269668",
+    "24407713",
+    "24629344",
+    "24646638",
+    "24798552",
+    "24808362",
+    "24829482",
+    "24976068",
+    "25019175",
+    "25163502",
+    "25447398",
+    "25574929",
+    "25883837",
+    "25918553",
+    "25946408",
+    "26102296",
+    "26155460",
+    "26210164",
+    "26215995",
+    "26252398",
+    "26357876",
+    "26387645",
+    "26424567",
+    "26449893",
+    "26509049",
+    "26604935",
+    "26605783",
+    "26707036"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports a mechanistic path from dysbiosis to bone loss through periodontitis? Distinguish evidence for each hop from overall inference.",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [
+        "periodontitis"
+      ],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "pre_gate_incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [
+        "periodontitis"
+      ],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "integration_decision": {
+      "method": "three_stage_incremental_utility_router_v1",
+      "mode": "traditional_fallback",
+      "reason": "no_claim_safe_path",
+      "claim_safe_path_count": 0,
+      "incremental_path_count": 0,
+      "confirmatory_path_count": 0,
+      "citation_validation_pmids": [],
+      "policy": "three_stage"
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "disabled",
+      "reason": "integration_mode=traditional_fallback",
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "24646638",
+        "score": 0.629480955979298
+      },
+      {
+        "pmid": "25574929",
+        "score": 0.6090435246514426
+      },
+      {
+        "pmid": "24269668",
+        "score": 0.5866541791395076
+      },
+      {
+        "pmid": "26252398",
+        "score": 0.5769019638965872
+      },
+      {
+        "pmid": "26707036",
+        "score": 0.5652435707867071
+      },
+      {
+        "pmid": "25447398",
+        "score": 0.5589229160708941
+      },
+      {
+        "pmid": "25918553",
+        "score": 0.5413152051053913
+      },
+      {
+        "pmid": "24976068",
+        "score": 0.5305874995738467
+      },
+      {
+        "pmid": "25946408",
+        "score": 0.5285808195716998
+      },
+      {
+        "pmid": "23134607",
+        "score": 0.5226471818380682
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "24646638",
+        "score": 0.629480955979298
+      },
+      {
+        "pmid": "25574929",
+        "score": 0.6090435246514426
+      },
+      {
+        "pmid": "24269668",
+        "score": 0.5866541791395076
+      },
+      {
+        "pmid": "26252398",
+        "score": 0.5769019638965872
+      },
+      {
+        "pmid": "26707036",
+        "score": 0.5652435707867071
+      },
+      {
+        "pmid": "25447398",
+        "score": 0.5589229160708941
+      },
+      {
+        "pmid": "25918553",
+        "score": 0.5413152051053913
+      },
+      {
+        "pmid": "24976068",
+        "score": 0.5305874995738467
+      },
+      {
+        "pmid": "25946408",
+        "score": 0.5285808195716998
+      },
+      {
+        "pmid": "23134607",
+        "score": 0.5226471818380682
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Mechanistic chain from dysbiosis → periodontal inflammation → alveolar bone loss**\n\n* **Dysbiosis precedes disease** – Metatranscriptomic profiling of sub‑gingival plaque from progressing versus stable sites showed a shift toward genes for motility, lipid A and peptidoglycan synthesis, iron and amino‑acid transport, and the emergence of “inflammo‑philic” taxa (e.g., *P. gingivalis*, *T. forsythia*, *Streptococcus* spp.) that correlated with clinical progression [PMID: 25918553] (human, association).  Review of oral pathobionts likewise describes how cooperative/competitive interactions reshape the biofilm into a dysbiotic community that is the hallmark of periodontitis [PMID: 24646638] (human, conceptual).  \n\n* **Dysbiosis fuels a non‑resolving inflammatory response** – Animal studies demonstrated that bacteria‑driven dysbiosis triggers elevated IL‑1, TNF‑α, prostaglandins, complement and RANKL, which are necessary for bone loss; knockout of these mediators blunts disease, establishing causality [PMID: 25574929] (mouse, direct).  The “inflammo‑philic” nature of the dysbiotic microbiota is supported by experiments in which anti‑inflammatory treatment reduced both bacterial load and bone loss, indicating that inflammation actively sustains dysbiosis [PMID: 24976068] (mouse, direct).  At the cellular level, *P. gingivalis* suppresses LXRα/β in macrophages, amplifying a TRIF‑dependent cytokine surge that promotes osteoclastogenic signaling and oral bone loss; LXR agonism rescues this phenotype [PMID: 25946408] (in‑vitro macrophages + mouse, direct).  \n\n* **Inflammation drives osteoclastogenesis and bone resorption** – The PSD model posits that keystone pathogens remodel host immunity, leading to RANKL‑mediated osteoclast activation and irreversible bone loss; experimental validation comes from mouse models where deletion of IL‑1 or TNF‑α prevents alveolar bone erosion despite dysbiotic challenge [PMID: 25574929] (mouse, direct).  Human biopsy data link elevated RANKL/OPG ratios with dysbiotic signatures and deep periodontal pockets, aligning clinical bone loss with the inflammatory milieu generated by the altered microbiome [PMID: 24269668] (human, association).  \n\n**Summary of evidence per hop**\n\n1. **Dysbiosis formation** – Human metatranscriptome & review evidence; association, not yet causal.  \n2. **Inflammatory activation** – Mouse knockout/anti‑inflammatory studies and macrophage LXR experiments; direct causal links.  \n3. **Bone loss** – Mouse cytokine‑deficient models and human RANKL/OPG correlations; direct (animal) and associative (human).  \n\n**Conclusion:** Multiple animal experiments and human molecular studies collectively trace a mechanistic pathway in which dysbiotic oral communities provoke a dysregulated immune response that, via cytokine"
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 1.8827617168426514e-05,
+    "vector_index": 3.1570678278803825,
+    "kg_expansion": 8.277595043182373e-06,
+    "answer_traditional_rag": 32.64654943346977,
+    "total": 36.3114677593112
+  },
+  "token_usage": {
+    "input_tokens": 3849,
+    "total_tokens": 5049,
+    "output_tokens": 1200
+  },
+  "completed_at": "2026-08-16T19:41:49.863997+00:00"
+}

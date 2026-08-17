@@ -1,0 +1,217 @@
+{
+  "top_k": 10,
+  "question_count": 5,
+  "graph_build_eligible_question_count": 2,
+  "questions": [
+    {
+      "question_id": "BW003",
+      "document_count": 26,
+      "endpoint_leaks": [],
+      "eligible_mediators": [],
+      "graph_build_eligible": false,
+      "mediators": [
+        {
+          "mediator": "IL-8",
+          "bridge_eligible": true,
+          "source_pmids": [
+            "21148790",
+            "34799298",
+            "37414422"
+          ],
+          "target_pmids": [
+            "26202676",
+            "33634990",
+            "33653893"
+          ],
+          "source_in_text_top_k": [
+            "37414422"
+          ],
+          "target_in_text_top_k": [
+            "26202676",
+            "33653893"
+          ],
+          "source_outside_text_top_k": [
+            "21148790",
+            "34799298"
+          ],
+          "target_outside_text_top_k": [
+            "33634990"
+          ],
+          "both_sides_exposed": true,
+          "graph_build_eligible": false,
+          "reasons": [
+            "complete_bridge_visible_in_text_top_k"
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "BW005",
+      "document_count": 24,
+      "endpoint_leaks": [],
+      "eligible_mediators": [
+        "IL-17"
+      ],
+      "graph_build_eligible": true,
+      "mediators": [
+        {
+          "mediator": "IL-17",
+          "bridge_eligible": true,
+          "source_pmids": [
+            "36356191",
+            "37359545",
+            "38774604"
+          ],
+          "target_pmids": [
+            "36422998"
+          ],
+          "source_in_text_top_k": [
+            "37359545",
+            "38774604"
+          ],
+          "target_in_text_top_k": [],
+          "source_outside_text_top_k": [
+            "36356191"
+          ],
+          "target_outside_text_top_k": [
+            "36422998"
+          ],
+          "both_sides_exposed": false,
+          "graph_build_eligible": true,
+          "reasons": [
+            "exactly_one_bridge_side_withheld_from_text_top_k"
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "BW007",
+      "document_count": 26,
+      "endpoint_leaks": [
+        "40418230"
+      ],
+      "eligible_mediators": [],
+      "graph_build_eligible": false,
+      "mediators": [
+        {
+          "mediator": "p16INK4a",
+          "bridge_eligible": true,
+          "source_pmids": [
+            "32246301",
+            "40167015",
+            "42389866"
+          ],
+          "target_pmids": [
+            "37385572",
+            "40418230",
+            "40660002"
+          ],
+          "source_in_text_top_k": [
+            "32246301"
+          ],
+          "target_in_text_top_k": [
+            "40418230",
+            "40660002"
+          ],
+          "source_outside_text_top_k": [
+            "40167015",
+            "42389866"
+          ],
+          "target_outside_text_top_k": [
+            "37385572"
+          ],
+          "both_sides_exposed": true,
+          "graph_build_eligible": false,
+          "reasons": [
+            "complete_bridge_visible_in_text_top_k"
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "BW009",
+      "document_count": 26,
+      "endpoint_leaks": [],
+      "eligible_mediators": [],
+      "graph_build_eligible": false,
+      "mediators": [
+        {
+          "mediator": "AMPK",
+          "bridge_eligible": true,
+          "source_pmids": [
+            "25812364",
+            "40767292",
+            "41122918"
+          ],
+          "target_pmids": [
+            "30401006",
+            "38757723",
+            "40578033"
+          ],
+          "source_in_text_top_k": [
+            "25812364",
+            "41122918"
+          ],
+          "target_in_text_top_k": [
+            "40578033"
+          ],
+          "source_outside_text_top_k": [
+            "40767292"
+          ],
+          "target_outside_text_top_k": [
+            "30401006",
+            "38757723"
+          ],
+          "both_sides_exposed": true,
+          "graph_build_eligible": false,
+          "reasons": [
+            "complete_bridge_visible_in_text_top_k"
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "BW010",
+      "document_count": 26,
+      "endpoint_leaks": [],
+      "eligible_mediators": [
+        "short-chain fatty acids"
+      ],
+      "graph_build_eligible": true,
+      "mediators": [
+        {
+          "mediator": "short-chain fatty acids",
+          "bridge_eligible": true,
+          "source_pmids": [
+            "33074224",
+            "35430804",
+            "35950704"
+          ],
+          "target_pmids": [
+            "29302038",
+            "30446387",
+            "39738035"
+          ],
+          "source_in_text_top_k": [],
+          "target_in_text_top_k": [
+            "29302038",
+            "30446387"
+          ],
+          "source_outside_text_top_k": [
+            "33074224",
+            "35430804",
+            "35950704"
+          ],
+          "target_outside_text_top_k": [
+            "39738035"
+          ],
+          "both_sides_exposed": false,
+          "graph_build_eligible": true,
+          "reasons": [
+            "exactly_one_bridge_side_withheld_from_text_top_k"
+          ]
+        }
+      ]
+    }
+  ]
+}

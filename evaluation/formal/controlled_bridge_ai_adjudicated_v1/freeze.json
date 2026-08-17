@@ -1,0 +1,37 @@
+{
+  "name": "netmedex-controlled-bridge-ai-adjudicated-v1",
+  "status": "frozen_before_semantic_graph_generation",
+  "frozen_at": "2026-08-09T18:20:29.690558+00:00",
+  "independent_holdout": false,
+  "same_corpus_for_text_and_hybrid": true,
+  "mediators_used_only_for_corpus_construction": true,
+  "endpoint_co_mention_forbidden_per_article": true,
+  "query_spec": "evaluation/formal/controlled_bridge_query_spec_ai_adjudicated_v1.json",
+  "query_spec_sha256": "155591f4db9c474b76d61e3de022b096b39f5fb0b8bcdb40eb9656c1d4a38284",
+  "questions": [
+    {
+      "question_id": "BW004",
+      "document_count": 3,
+      "eligible_mediators": [],
+      "graph_build_eligible": false,
+      "corpus_sha256": "f9169337b016e2736bbe3d53c9e03e6f4b03b7ca2b87489d65e7cbdc12c97992"
+    },
+    {
+      "question_id": "BW010",
+      "document_count": 6,
+      "eligible_mediators": [
+        "serotonin"
+      ],
+      "graph_build_eligible": true,
+      "corpus_sha256": "a724da5f0fb465651adfa65eb416f03756104aae1494f1f2b996b1ec37eb0b7c"
+    }
+  ],
+  "checksums": {
+    "queries.csv": "68d6289efb849f05023510e235acc75b8c2c5c1fe5fa14c696907db276df77c0",
+    "questions_metadata.csv": "fbd2b41c459ad08ab7028d61c60a39c9fad70d26cdd3d87c8fbdecba94b09db1",
+    "questions/BW004/corpus.pubtator": "f9169337b016e2736bbe3d53c9e03e6f4b03b7ca2b87489d65e7cbdc12c97992",
+    "questions/BW004/corpus_manifest.json": "53dd58a99e00bdbb51a13eaa7d82bbfacc424e61c301b26036e3a0bbb3c70a6e",
+    "questions/BW010/corpus.pubtator": "a724da5f0fb465651adfa65eb416f03756104aae1494f1f2b996b1ec37eb0b7c",
+    "questions/BW010/corpus_manifest.json": "95f62ed942b5a5390767bfcc5ea331fd10a8ea57bf9b5af13180b5b270729e9e"
+  }
+}

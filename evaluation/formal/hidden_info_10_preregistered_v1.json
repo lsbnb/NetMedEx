@@ -1,0 +1,45 @@
+{
+  "name": "netmedex-hidden-information-10-v1",
+  "status": "preregistered-before-generation",
+  "registered_at": "2026-08-05T10:18:55+08:00",
+  "hypothesis": "With the same frozen PubMed corpus and generator, Hybrid RAG yields more evidence-grounded, non-obvious, useful cross-document or multi-hop claims than Traditional Text-RAG without increasing unsupported novelty.",
+  "development_questions_excluded": ["Q001", "Q002", "Q007", "Q014", "Q022", "Q032"],
+  "selection_used_qrels": false,
+  "selection_rule": "Untouched graph-oriented questions with frozen corpora of at least 10 articles; stratified across association, mechanism, hypothesis, and multilingual mechanism tasks.",
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4.1",
+    "same_model_both_arms": true,
+    "systems": ["netmedex_hybrid_rag", "traditional_rag"],
+    "hybrid_profile": "F_adaptive",
+    "top_k": 10,
+    "general_llm_arm": false
+  },
+  "judging": {
+    "blinded": true,
+    "evidence_judge_provider": "anthropic",
+    "novelty_utility_judge_provider": "google",
+    "adjudication": "disagreements_only",
+    "generator_must_not_be_primary_judge": true
+  },
+  "primary_endpoint": "validated_hidden_claims_per_question_hybrid_minus_text",
+  "success_thresholds": {
+    "mean_validated_hidden_claim_difference_min": 0.5,
+    "questions_with_at_least_one_hybrid_only_valid_claim_min_fraction": 0.3,
+    "validated_hidden_claim_precision_min": 0.7,
+    "unsupported_novelty_excess_max": 0.05,
+    "judge_krippendorff_alpha_target": 0.6
+  },
+  "questions": [
+    {"question_id": "Q005", "question_type": "mechanism", "corpus_articles": 15},
+    {"question_id": "Q008", "question_type": "hypothesis", "corpus_articles": 15},
+    {"question_id": "Q010", "question_type": "multilingual_mechanism", "corpus_articles": 12},
+    {"question_id": "Q011", "question_type": "mechanism", "corpus_articles": 15},
+    {"question_id": "Q012", "question_type": "association", "corpus_articles": 15},
+    {"question_id": "Q018", "question_type": "hypothesis", "corpus_articles": 15},
+    {"question_id": "Q019", "question_type": "association", "corpus_articles": 15},
+    {"question_id": "Q026", "question_type": "association", "corpus_articles": 15},
+    {"question_id": "Q037", "question_type": "mechanism", "corpus_articles": 11},
+    {"question_id": "Q041", "question_type": "multilingual_mechanism", "corpus_articles": 10}
+  ]
+}

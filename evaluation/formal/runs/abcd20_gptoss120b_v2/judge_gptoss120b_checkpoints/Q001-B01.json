@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "Q001",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "e3a8959155961fe81762d73fca750c7b345db2c1d533869ed35f1882abd89298",
+  "raw_response_sha256": "45a8a977b1d8049474e968ed85a5d7916fe79799b6d285746c65a6d84f3dfe9d",
+  "usage": {
+    "input_tokens": 5662,
+    "output_tokens": 420,
+    "total_tokens": 6082
+  },
+  "rated_at": "2026-08-13T04:44:07.256497+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q001-A",
+        "correctness": 3,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 3,
+        "research_value": 4,
+        "notes": "Cites many studies, but some miRNA effects (e.g., miR‑153) are described inconsistently."
+      },
+      {
+        "answer_id": "Q001-B",
+        "correctness": 3,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Accurate summary of key miRNAs; concise but still well‑referenced."
+      },
+      {
+        "answer_id": "Q001-C",
+        "correctness": 2,
+        "completeness": 4,
+        "relevance": 4,
+        "grounding": 2,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Broad overview with many miRNAs, but lacks specific citations and includes speculative claims."
+      },
+      {
+        "answer_id": "Q001-D",
+        "correctness": 3,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 3,
+        "research_value": 4,
+        "notes": "Extensive with exosome data; contradictory statement on miR‑23a direction reduces coherence."
+      }
+    ],
+    "preferred_item_id": "Q001-A",
+    "pairwise_reason": "Answer A provides the most comprehensive, citation‑backed list of miRNA mechanisms linking icariin to osteoblast differentiation, despite minor inconsistencies, making it the most useful synthesis."
+  }
+}

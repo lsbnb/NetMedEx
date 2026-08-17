@@ -1,0 +1,63 @@
+{
+  "task": "answer",
+  "question_id": "Q001",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "e3a8959155961fe81762d73fca750c7b345db2c1d533869ed35f1882abd89298",
+  "raw_response_sha256": "32f3d8ea9eb473f44c2328d2151134cf5c375ddc512c27d4a7f4a23ec8369fc0",
+  "usage": {
+    "input_tokens": 5225,
+    "output_tokens": 622,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 5847
+  },
+  "rated_at": "2026-08-13T04:39:11.645709+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q001-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "miR-153 claim (PMID:29904399) appears directionally inconsistent—miR-153 targeting Runx2 3'UTR would suppress, not boost it. miR-23a direction also unclear."
+      },
+      {
+        "answer_id": "Q001-B",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Well-structured with species labels. miR-153 binding Runx2 3'UTR yet activating it is mechanistically ambiguous. miR-23a direction noted as uncertain."
+      },
+      {
+        "answer_id": "Q001-C",
+        "correctness": 2,
+        "completeness": 3,
+        "relevance": 4,
+        "grounding": 2,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Many claims (miR-29b/DUSP2, miR-146a/TRAF6, miR-133a/135/214) lack cited PMIDs; appear fabricated or unsupported. Overstates evidence significantly."
+      },
+      {
+        "answer_id": "Q001-D",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 5,
+        "notes": "Most comprehensive; includes exosome/miR-331-3p angle with PMID. miR-23a direction inconsistency noted. Testable hypotheses and clinical translation add strong research value."
+      }
+    ],
+    "preferred_item_id": "Q001-D",
+    "pairwise_reason": "Q001-D covers the broadest mechanistic scope with species labels, PMIDs, novel exosome angle, and actionable hypotheses, making it most complete and research-valuable despite shared miR-23a ambiguity."
+  }
+}

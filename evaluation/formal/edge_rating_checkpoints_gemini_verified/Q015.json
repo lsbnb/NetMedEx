@@ -1,0 +1,21 @@
+{
+  "question_id": "Q015",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-08-01T05:03:02.208503+00:00",
+  "ratings": [
+    {
+      "edge_id": "Q015-E01",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The supporting title mentions COVID-19, coagulopathy, and immunothrombosis, but does not mention or imply 'vascular system injuries', making this specific node and relation unsupported by the text."
+    },
+    {
+      "edge_id": "Q015-E02",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The supporting title discusses COVID-19-associated coagulopathy and immunothrombosis, but lacks any mention of 'vascular system injuries' to support an association with blood coagulation disorders."
+    }
+  ],
+  "raw_response_sha256": "ebe4e787b1e20c5646db44c4297e520854a81ec0031b0cd9936a4c9441e89f82"
+}

@@ -1,0 +1,105 @@
+{
+  "question_id": "Q008",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-31T19:27:10.929732+00:00",
+  "ratings": [
+    {
+      "edge_id": "Q008-E01",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The supporting titles explicitly link intestinal inflammation with cystic fibrosis."
+    },
+    {
+      "edge_id": "Q008-E02",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The supporting titles explicitly link inflammation and dysbiosis in the context of cystic fibrosis."
+    },
+    {
+      "edge_id": "Q008-E03",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Cystic fibrosis is not mentioned in the supporting titles, making the edge unsupported by the provided text."
+    },
+    {
+      "edge_id": "Q008-E04",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title indicates that Cftr knockout (loss of function) is associated with inflammation, meaning CFTR itself does not cause inflammation."
+    },
+    {
+      "edge_id": "Q008-E05",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] CFTR is not mentioned in the supporting title, making the relationship unsupported by the text."
+    },
+    {
+      "edge_id": "Q008-E06",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title indicates that Cftr knockout is associated with dysbiosis, meaning the loss of CFTR causes dysbiosis, not CFTR itself."
+    },
+    {
+      "edge_id": "Q008-E07",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles discuss inflammation in Cftr knockout mice and CF, but do not suggest that inflammation causes CFTR."
+    },
+    {
+      "edge_id": "Q008-E08",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title suggests Ivacaftor impacts (likely decreases) inflammation, not that inflammation decreases Ivacaftor. The direction is reversed."
+    },
+    {
+      "edge_id": "Q008-E09",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Volatile fatty acids are not mentioned in the supporting title, making the edge unsupported."
+    },
+    {
+      "edge_id": "Q008-E10",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Neither inflammation nor lipopolysaccharides are explicitly mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q008-E11",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly mentions a CFTR-beta-catenin (CTNNB1) interaction."
+    },
+    {
+      "edge_id": "Q008-E12",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title mentions pro-inflammatory cytokines but does not specifically mention IFNG, making the specific edge unsupported."
+    },
+    {
+      "edge_id": "Q008-E13",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles mention both CF and CFTR, but cystic fibrosis does not cause CFTR (mutations in the CFTR gene cause CF)."
+    },
+    {
+      "edge_id": "Q008-E14",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The supporting titles explicitly link cystic fibrosis and gut dysbiosis."
+    },
+    {
+      "edge_id": "Q008-E15",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The supporting titles explicitly link gut dysbiosis and cystic fibrosis."
+    },
+    {
+      "edge_id": "Q008-E16",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The supporting titles explicitly link cystic fibrosis and intestinal inflammation."
+    }
+  ],
+  "raw_response_sha256": "b530f85efc638db8bc4ac0d2ec6ae1ec8519293af351a0a31a11a94d8e3d4653"
+}

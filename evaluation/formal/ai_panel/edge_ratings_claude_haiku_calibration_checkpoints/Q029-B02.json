@@ -1,0 +1,26 @@
+{
+  "task": "edge",
+  "question_id": "Q029",
+  "batch": 2,
+  "provider": "anthropic",
+  "model": "claude-haiku-4-5-20251001",
+  "input_sha256": "6978084755726ebb2d27defd1d6e78b16bb1f87bd2e1500792d58072805d1b65",
+  "raw_response_sha256": "9440a161cbe806b130a723465cb0a53a37c227136dacda002eda41b0e576eeba",
+  "rated_at": "2026-08-02T19:08:38.493955+00:00",
+  "result": {
+    "ratings": [
+      {
+        "edge_id": "Q029-E17",
+        "entity_valid": 1,
+        "relation_exists": 0,
+        "relation_type_correct": 0,
+        "direction_correct": 0,
+        "evidence_support": 0,
+        "confidence": 3,
+        "notes": "Evidence shows ethanol induces senescence/inflammation in endothelial cells, not inflammation inducing ethanol. Relation direction is reversed."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

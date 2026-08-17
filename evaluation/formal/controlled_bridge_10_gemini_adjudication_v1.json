@@ -1,0 +1,28 @@
+{
+  "provider": "google",
+  "model": "gemini-3.1-pro-preview",
+  "reviewer_type": "AI corpus-spec adjudicator",
+  "human_expert_review_claimed": false,
+  "adjudicated_at": "2026-08-09T18:19:03.902279+00:00",
+  "proposal_sha256": "3005b992ee8a7e6e3c54c88766193f03d24558efbdbf47c304aa3ac2fb522f88",
+  "review_sha256": "a1ab6a69d74c2d30ba29a3a2219e60f5c49b8a3ff810eea3955f91df1f93e8e8",
+  "usage": {
+    "input_tokens": 1056,
+    "output_tokens": 167,
+    "total_tokens": 1733
+  },
+  "adjudications": [
+    {
+      "question_id": "BW004",
+      "mediator": "Plastin 3",
+      "final_accept": 1,
+      "reason": "Sparse literature is not a definitive reason to reject before preflight; a two-sided corpus may still exist for PLS3 and mitochondrial dysfunction."
+    },
+    {
+      "question_id": "BW010",
+      "mediator": "serotonin",
+      "final_accept": 1,
+      "reason": "The prior reviewer rated non-obviousness as passing (4) but rejected it for being too established. This contradiction warrants an automated preflight."
+    }
+  ]
+}

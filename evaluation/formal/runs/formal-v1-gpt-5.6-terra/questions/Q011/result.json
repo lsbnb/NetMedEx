@@ -1,0 +1,145 @@
+{
+  "status": "complete",
+  "question_id": "Q011",
+  "domain": "oncology",
+  "question": "What evidence links metformin to AMPK-mediated inhibition of mTOR signaling in cancer cells?",
+  "pubmed_query": "metformin AMPK mTOR cancer apoptosis proliferation",
+  "language": "English",
+  "corpus_pmids": [
+    "24009772",
+    "24750786",
+    "25710562",
+    "26277279",
+    "29167573",
+    "29662316",
+    "30445633",
+    "31205529",
+    "33886150",
+    "34062070",
+    "34576192",
+    "35072253",
+    "35731713",
+    "37371530",
+    "40140842"
+  ],
+  "graph": {
+    "node_count": 20,
+    "edge_count": 19,
+    "path_count": 20,
+    "preferred_pmids": [
+      "24009772",
+      "26277279",
+      "29167573",
+      "29662316",
+      "30445633",
+      "31205529",
+      "33886150",
+      "34576192",
+      "35072253",
+      "35731713",
+      "37371530",
+      "40140842"
+    ]
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "35072253",
+        "score": 1.0324769949072221
+      },
+      {
+        "pmid": "29167573",
+        "score": 0.9649211183163523
+      },
+      {
+        "pmid": "26277279",
+        "score": 0.936387562233409
+      },
+      {
+        "pmid": "35731713",
+        "score": 0.9345059584919153
+      },
+      {
+        "pmid": "24009772",
+        "score": 0.8838292671260063
+      },
+      {
+        "pmid": "34576192",
+        "score": 0.8589576019576424
+      },
+      {
+        "pmid": "30445633",
+        "score": 0.8478155693460276
+      },
+      {
+        "pmid": "31205529",
+        "score": 0.822681856344935
+      },
+      {
+        "pmid": "37371530",
+        "score": 0.813088181299707
+      },
+      {
+        "pmid": "40140842",
+        "score": 0.7992146896979471
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "34062070",
+        "score": 0.6901986390545787
+      },
+      {
+        "pmid": "35072253",
+        "score": 0.6883179966048147
+      },
+      {
+        "pmid": "29167573",
+        "score": 0.6432807455442349
+      },
+      {
+        "pmid": "26277279",
+        "score": 0.6242583748222726
+      },
+      {
+        "pmid": "35731713",
+        "score": 0.6230039723279436
+      },
+      {
+        "pmid": "24009772",
+        "score": 0.5892195114173375
+      },
+      {
+        "pmid": "34576192",
+        "score": 0.5726384013050949
+      },
+      {
+        "pmid": "25710562",
+        "score": 0.5720513955153412
+      },
+      {
+        "pmid": "30445633",
+        "score": 0.5652103795640184
+      },
+      {
+        "pmid": "31205529",
+        "score": 0.5484545708966233
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "## Direct evidence\n\n- **Human colorectal cancer cell lines (in vitro):** In HT29, HCT116, and HCT116 p53-null cells, metformin reduced proliferation and migration, caused G0/G1 arrest, and activated AMPK. The study reports that AMPK activation—along with increased ROS—suppressed mTOR signaling and its downstream effectors **S6** and **4E-BP1**. The growth inhibition was transient and was not accompanied by apoptosis, autophagy, or senescence. [PMID: 29167573]\n\n- **Human bile-duct cancer cells (in vitro):** In SNU-245 and SNU-1196 cells, metformin activated AMPK at **Thr172**, which activated **TSC2** and inhibited mTOR. Metformin concomitantly suppressed proliferation and induced apoptosis. This provides a defined AMPK→TSC2→mTOR mechanistic route. Hyperglycemia reduced metformin-induced AMPK-Thr172 activation and weakened these effects. [PMID: 31205529]\n\n- **Esophageal squamous-cell carcinoma (human cells in vitro and rat carcinogenesis model):** Metformin activated AMPK and reduced phosphorylation/signaling of **mTOR**, **p70S6K**, and expression of **cyclin D1**. In rats exposed to the esophageal carcinogen NMBzA, metformin reduced ESCC incidence and precancerous lesions, inhibited epithelial proliferation, and promoted apoptosis; corresponding AMPK activation and attenuation of mTOR-pathway markers were seen in vivo and in cultured human ESCC cells. [PMID: 30445633]\n\n- **Liver cancer models (human and murine cells in vitro; murine xenograft):** Metformin inhibited mTOR complex 1 signaling and contributed to apoptosis and reduced liver-cancer growth. However, this study specifically attributes mTORC1 inhibition to increased **REDD1 in an AMPK-independent manner**, rather than establishing AMPK as the mediator. Combination metformin plus dichloroacetate suppressed xenograft growth. [PMID: 34576192]\n\n## Association / supporting evidence\n\n- A review summarizes reported cancer-cell evidence in which metformin-induced energetic/mitochondrial stress activates **AMPK** and **REDD1**, leading to mTOR-pathway inhibition and outcomes including cell-cycle arrest, autophagy, apoptosis, and cell death. It also cautions that metformin’s anticancer mechanism remains controversial and that in-vitro exposure conditions may not reflect clinically achievable plasma concentrations. [PMID: 26277279]\n\n- A review of malignancies in women identifies AMPK/mTOR among the pleiotropic pathways implicated in metformin’s anticancer activity and describes generally favorable findings in breast and endometrial cancer. This is broad supporting evidence, not direct proof of an AMPK-dependent mTOR mechanism in a particular human tumor. [PMID: 35072253]\n\n- In colorectal carcinoma cells, metformin combined with the mTOR inhibitor PP242 enhanced suppression of proliferation and colony formation and increased apoptosis. The combination affected AMPK phosphorylation and achieved more complete functional blockade of mTORC1/mTORC2-related signaling; this supports therapeutic interaction between AMPK activation by metformin and mTOR targeting, although it does not by itself prove that metformin alone directly inhibits mTOR through AMPK. [PMID: 35731713]\n\n## Interpretation\n\nAcross several cancer models, the strongest direct mechanistic pattern is:\n\n**metformin → AMPK activation (often AMPK-Thr172) → TSC2 and/or downstream mTOR suppression → reduced p70S6K/S6/4E-BP1 signaling → reduced proliferation and, in some models, apoptosis.**\n\nThis is directly supported in human colorectal, bile-duct, and esophageal cancer cell systems, with rat in-vivo corroboration in esophageal carcinogenesis. [PMID: 29167573] [PMID: 31205529] [PMID: 30445633]\n\nImportantly, the pathway is **not universal or exclusively AMPK dependent**: in liver cancer models, metformin-associated mTORC1 inhibition was reported as REDD1-mediated and AMPK-independent. [PMID: 34576192]\n\n## Testable hypothesis\n\nIn tumors with intact AMPK–TSC2 signaling, metformin sensitivity may be predicted by induction of AMPK-Thr172 phosphorylation and early reductions in phospho-mTOR, phospho-p70S6K/S6, and phospho-4E-BP1. Hyperglycemia, or defects in AMPK/TSC2 signaling, may attenuate this response; this is supported by the bile-duct cell findings but requires validation in clinical tumor samples. [PMID: 31205529]\n\n## Human clinical evidence\n\nThe supplied context contains epidemiologic and review-level statements associating metformin use with lower cancer incidence, better disease course, or lower mortality, but **does not provide direct human tumor pharmacodynamic evidence** demonstrating that clinical metformin exposure activates AMPK and inhibits mTOR in cancer tissue. [PMID: 35072253] [PMID: 26277279]",
+    "traditional_rag": "## Direct evidence\n\n- **Human colorectal cancer cell lines (in vitro):** In HT29, HCT116, and HCT116 p53-null colorectal cancer cells, metformin reduced proliferation and migration and caused G0/G1 arrest. This coincided with AMPK activation and suppression of mTOR signaling and its downstream targets S6 and 4EBP1. The study describes AMPK activation as one of two mechanisms—alongside increased ROS—mediating mTOR-pathway suppression. [PMID: 29167573]\n\n- **Human bile-duct cancer cells (in vitro):** In SNU-245 and SNU-1196 cells, metformin activated AMPK at Thr172, which activated TSC2 and inhibited mTOR. Metformin-induced growth suppression was accompanied by apoptosis. Hyperglycemia impaired AMPK-Thr172 activation and weakened the antitumor effects, supporting a functional AMPK–TSC2–mTOR connection in these cells. [PMID: 31205529]\n\n- **Rat esophageal carcinogenesis model plus human ESCC cells (animal and in vitro):** Metformin reduced ESCC incidence and precancerous lesions in carcinogen-treated rats, inhibited epithelial proliferation, and promoted apoptosis. In both rat tissue and human ESCC cells, metformin increased AMPK activation and reduced phosphorylated mTOR and p70S6K, with reduced cyclin D1. These results directly link metformin exposure to AMPK activation and lower mTOR-pathway output. [PMID: 30445633]\n\n- **Liver cancer models (in vitro and mouse xenograft):** Metformin, alone or with dichloroacetate, inhibited mTORC1 signaling and promoted apoptosis in human and murine liver-cancer cell lines; the combination also suppressed xenograft growth. However, this report specifically attributes mTORC1 inhibition to increased **AMPK-independent REDD1**, rather than AMPK-mediated signaling. [PMID: 34576192]\n\n## Association-level evidence\n\n- Reviews summarize broader preclinical evidence that metformin has anticancer effects associated with AMPK activation and mTOR inhibition, including reduced proliferation, tumor growth, and increased apoptosis in in-vitro and in-vivo models. [PMID: 34062070; PMID: 26277279]\n\n- Clinical/epidemiologic literature associates metformin use, particularly in people with type 2 diabetes, with lower cancer incidence, better disease course, or lower mortality in some malignancies. However, these human associations do **not** demonstrate that AMPK-mediated mTOR inhibition is the causal mechanism in tumors. [PMID: 35072253; PMID: 26277279]\n\n- In colorectal carcinoma cell lines, metformin enhanced the activity of the mTOR inhibitor PP242. The combination suppressed proliferation and colony formation and increased apoptosis; metformin-associated AMPK signaling was linked to IRS-1 Ser789 phosphorylation and blockade of compensatory AKT signaling, helping achieve inhibition of both mTORC1 and mTORC2. This supports mechanistic interaction between metformin/AMPK and mTOR-pathway control, but the design evaluates combination treatment rather than proving that metformin alone inhibits mTOR through AMPK. [PMID: 35731713]\n\n## Testable hypothesis\n\n- A coherent mechanistic hypothesis is that metformin-induced energetic stress activates AMPK, which inhibits mTOR signaling through mediators such as **TSC2**, thereby reducing phosphorylation of mTOR effectors such as p70S6K/S6 and 4EBP1 and ultimately limiting protein synthesis, cell-cycle progression, and cancer-cell survival. This is directly supported in bile-duct cancer cells and is consistent with findings in colorectal and ESCC models. [PMID: 31205529; PMID: 29167573; PMID: 30445633]\n\n- The mechanism is likely **context-dependent**, because mTOR inhibition can occur through AMPK-independent pathways such as REDD1 in liver cancer cells, and metformin’s antiproliferative effects may also involve ROS, IGF1R/IRS-1 signaling, mitochondrial effects, or altered folate/nucleotide metabolism. [PMID: 34576192; PMID: 29167573; PMID: 26277279]\n\n## Evidence gap\n\n- The supplied context contains **no direct human tumor pharmacodynamic evidence** showing that metformin treatment activates AMPK and inhibits mTOR in cancer tissue in patients. The strongest mechanistic evidence is from cancer-cell culture and animal models.",
+    "general_llm": "Metformin has been linked to suppression of mTOR signaling in cancer cells through an energy-stress pathway centered on AMPK, although the strength and mechanism of the effect depend heavily on cell type, nutrient conditions, drug exposure, and tumor genetics.\n\n## Core mechanistic model\n\n1. **Metformin inhibits mitochondrial respiration**\n   - Metformin can inhibit mitochondrial complex I, particularly at sufficiently high intracellular concentrations.\n   - This lowers ATP production and raises cellular AMP and ADP relative to ATP.\n\n2. **Energy stress activates AMPK**\n   - Increased AMP/ADP favors activation of AMP-activated protein kinase (AMPK), principally through phosphorylation by the upstream kinase **LKB1/STK11**.\n   - AMPK activation is commonly measured by increased phosphorylation of AMPK at Thr172 and of its substrate acetyl-CoA carboxylase (ACC).\n\n3. **AMPK inhibits mTORC1**\n   AMPK can restrain mammalian target of rapamycin complex 1 (mTORC1) through at least two established routes:\n   - **TSC2 activation:** AMPK phosphorylates and activates the TSC1–TSC2 complex, which suppresses Rheb, a small GTPase required for mTORC1 activation.\n   - **Raptor phosphorylation:** AMPK can phosphorylate Raptor, an mTORC1 component, promoting inhibitory regulation of the complex.\n\n   The expected downstream result is reduced phosphorylation of mTORC1 substrates, particularly:\n   - **S6 kinase 1 (S6K1)**\n   - **ribosomal protein S6**\n   - **4E-BP1**\n\n   These changes reduce cap-dependent translation, biosynthetic activity, and, in many models, cell growth and proliferation.\n\n## Types of experimental evidence\n\n### Cell-culture studies\nMany cancer cell-line experiments report that metformin treatment is associated with:\n\n- increased phospho-AMPK and phospho-ACC;\n- decreased phospho-S6K, phospho-S6, and/or phospho-4E-BP1;\n- reduced protein synthesis, proliferation, clonogenic growth, or anchorage-independent growth;\n- sometimes increased autophagy or cell-cycle arrest.\n\nThese observations are especially common under conditions where cells have limited glucose or other metabolic stressors, because energy stress makes AMPK activation more likely.\n\n### Genetic and pharmacologic pathway evidence\nThe AMPK-to-mTORC1 model is supported when investigators find that:\n\n- depletion or mutation of **LKB1** reduces AMPK activation by metformin;\n- loss or inhibition of **AMPK** diminishes some metformin-associated mTORC1 suppression;\n- disruption of **TSC1/TSC2** can weaken the ability of energy stress to inhibit mTORC1;\n- expression of constitutively active mTORC1-pathway components can partially oppose the growth effects of metformin.\n\nHowever, these experiments do not always show complete reversal. That is important: metformin’s effects are not uniformly explained by AMPK alone.\n\n### Animal tumor models\nIn xenograft and genetically engineered mouse tumor models, metformin has sometimes been associated with lower tumor growth and reduced tumor mTORC1 signaling markers. In vivo, though, two mechanisms may coexist:\n\n- a **tumor-cell-autonomous** effect: metabolic stress, AMPK activation, and mTORC1 inhibition within cancer cells;\n- a **systemic** effect: lower circulating insulin and insulin-like growth factor signaling, which reduces PI3K–AKT–mTOR pathway stimulation in insulin-responsive tumors.\n\nThe systemic mechanism is particularly plausible in obesity, hyperinsulinemia, diabetes, or tumors driven by insulin/IGF signaling. Therefore, reduced mTOR activity in tumors from metformin-treated animals does not by itself prove that direct AMPK activation in tumor cells is the sole cause.\n\n## Important limitations and exceptions\n\n### AMPK-independent mTORC1 inhibition\nMetformin can inhibit mTORC1 even when canonical AMPK signaling is impaired in some experimental settings. Energy depletion can affect mTORC1 through AMPK-independent mechanisms, including altered regulation of the Rag GTPase/lysosomal nutrient-sensing machinery. Thus, the more accurate statement is:\n\n> Metformin often inhibits mTORC1 through energy stress and AMPK, but AMPK is not invariably required.\n\n### LKB1-deficient cancers\nBecause LKB1 is a major AMPK activator, LKB1-deficient cells may show blunted canonical AMPK signaling. Yet they can still be vulnerable to severe energetic stress from mitochondrial inhibition, especially if they cannot compensate metabolically. This has led to the hypothesis that some LKB1-deficient tumors may be sensitive to biguanides through metabolic collapse rather than through a simple AMPK-mediated cytostatic effect.\n\n### Drug concentrations in culture\nA major caveat is that many in-vitro studies use millimolar metformin concentrations, often higher than typical plasma concentrations in patients. Intracellular accumulation can occur, especially in cells expressing organic cation transporters such as OCT1, but laboratory exposure conditions may still overstate direct tumor-cell effects. Results from cell culture should therefore not automatically be translated to clinical antitumor activity.\n\n### mTORC1 versus mTORC2\nThe strongest evidence concerns **mTORC1**. Effects on **mTORC2**, AKT Ser473 phosphorylation, and related signaling are less consistent and may be indirect, context-dependent, or secondary to feedback loops.\n\n## Bottom line\n\nThe best-supported evidence is that metformin can create mitochondrial energy stress, activate the LKB1–AMPK axis, and suppress mTORC1 via TSC2 and Raptor, with reduced phosphorylation of S6K, S6, and 4E-BP1 in many cancer models. Genetic and signaling experiments support this pathway, but the effect is context dependent. Metformin can also suppress mTORC1 through AMPK-independent energy- and nutrient-sensing mechanisms, and in vivo anticancer effects may be driven substantially by systemic reductions in insulin signaling rather than direct action within tumor cells."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 1.0892223790287971,
+    "semantic_graph": 115.4038443788886,
+    "vector_index": 2.0024591237306595,
+    "answer_netmedex_hybrid_rag": 11.555527038872242,
+    "answer_traditional_rag": 10.34329678863287,
+    "answer_general_llm": 17.390317134559155,
+    "total": 159.48660220950842
+  },
+  "completed_at": "2026-07-27T18:08:36.557787+00:00"
+}

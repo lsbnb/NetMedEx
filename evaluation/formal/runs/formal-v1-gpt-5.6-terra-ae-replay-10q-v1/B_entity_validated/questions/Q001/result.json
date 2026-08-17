@@ -1,0 +1,190 @@
+{
+  "status": "complete",
+  "question_id": "Q001",
+  "domain": "osteoporosis",
+  "question": "How may icariin influence osteoblast differentiation through miRNA-related mechanisms?",
+  "question_type": "mechanism",
+  "pubmed_query": "icariin AND (osteoblast OR osteogenesis) AND (microRNA OR miRNA)",
+  "effective_pubmed_query": "icariin AND (osteoblast OR osteogenesis) AND (microRNA OR miRNA)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "27492554",
+    "29500883",
+    "29904399",
+    "32911026",
+    "33743412",
+    "35292240",
+    "38045146",
+    "39588260",
+    "41484919"
+  ],
+  "graph": {
+    "node_count": 33,
+    "edge_count": 47,
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [
+      "29500883",
+      "29904399",
+      "32911026",
+      "33743412",
+      "35292240",
+      "38045146",
+      "39588260",
+      "41484919"
+    ],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "B_entity_validated",
+    "label": "B. Text + normalized entities",
+    "use_node_rag": true,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [
+      "MESH:D014025_Chemical",
+      "MESH:C056599_Chemical"
+    ],
+    "exposed_pmids": [
+      "29500883",
+      "29904399",
+      "32911026",
+      "33743412",
+      "35292240",
+      "38045146",
+      "39588260",
+      "41484919"
+    ],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "27492554",
+        "score": 0.690733273900378
+      },
+      {
+        "pmid": "29904399",
+        "score": 0.6860488826332767
+      },
+      {
+        "pmid": "38045146",
+        "score": 0.6651203026855061
+      },
+      {
+        "pmid": "41484919",
+        "score": 0.663339298051586
+      },
+      {
+        "pmid": "35292240",
+        "score": 0.6476181800144599
+      },
+      {
+        "pmid": "29500883",
+        "score": 0.6447472338616872
+      },
+      {
+        "pmid": "33743412",
+        "score": 0.6089881898756954
+      },
+      {
+        "pmid": "32911026",
+        "score": 0.5752733636260333
+      },
+      {
+        "pmid": "39588260",
+        "score": 0.5660805984201639
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "27492554",
+        "score": 0.690733273900378
+      },
+      {
+        "pmid": "29904399",
+        "score": 0.6860488826332767
+      },
+      {
+        "pmid": "38045146",
+        "score": 0.6651203026855061
+      },
+      {
+        "pmid": "41484919",
+        "score": 0.663339298051586
+      },
+      {
+        "pmid": "35292240",
+        "score": 0.6476181800144599
+      },
+      {
+        "pmid": "29500883",
+        "score": 0.6447472338616872
+      },
+      {
+        "pmid": "33743412",
+        "score": 0.6089881898756954
+      },
+      {
+        "pmid": "32911026",
+        "score": 0.5752733636260333
+      },
+      {
+        "pmid": "39588260",
+        "score": 0.5660805984201639
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "Icariin may promote osteoblast differentiation by altering several miRNA-centered regulatory axes that converge on osteogenic transcription, mineralization, and pro-osteogenic signaling.\n\n### Direct evidence\n\n- **miR-34c suppression under inflammatory stress (in-vitro osteogenic model):** LPS increased miR-34c, while icariin preincubation reduced this increase. Icariin restored Runx2 protein (without changing Runx2 mRNA), and miR-34c overexpression suppressed ALP, Runx2, OPN, BMP2, ALP activity, and mineral-nodule formation. miR-34c overexpression also reversed icariin-induced osteogenic differentiation and mineralization. Thus, icariin may counter inflammatory inhibition of osteogenesis by downregulating miR-34c, with concurrent suppression of JNK, p38, and NF-κB signaling. **Evidence: in vitro** [PMID: 27492554].\n\n- **miR-153/Runx2 axis (mouse MC3T3-E1 preosteoblasts):** Icariin increased proliferation, ALP activity, mineral content, miR-153 expression, and Runx2 expression. Reporter experiments supported an interaction involving miR-153 and the Runx2 3′-UTR, and icariin counteracted the inhibitory effects associated with miR-153 inhibition. These data support a miR-153-associated increase in Runx2 and osteoblast differentiation in this cell model. **Evidence: mouse in vitro** [PMID: 29904399].\n\n- **miR-138-5p sequestration through a circRNA/JMJD3 pathway (mouse MC3T3-E1 cells):** Icariin increased mmu_circ_0000349, JMJD3, ALP, and RUNX2 while decreasing mmu-miR-138-5p in a concentration- and time-dependent manner. The circRNA was experimentally shown to sponge miR-138-5p, and miR-138-5p targeted JMJD3. Therefore, icariin may relieve miR-138-5p–mediated repression of JMJD3 via induction of mmu_circ_0000349, enhancing osteogenic markers and mineralization. **Evidence: mouse in vitro** [PMID: 38045146].\n\n- **miR-335-5p/PTEN pathway (BMSCs and osteoporosis rat model):** Icariin reversed the anti-mineralization effect of a miR-335-5p inhibitor in BMSCs. PTEN was validated as a downstream effector of miR-335-5p, and PTEN overexpression reversed the pro-osteogenic effect of miR-335-5p mimics during icariin induction. Icariin treatment or miR-335-5p overexpression improved osteoporosis-related pathology in rats. **Evidence: in vitro BMSCs and rat in vivo; human evidence limited to observational finding of low miR-335-5p in osteoporosis bone tissue** [PMID: 35292240].\n\n- **miR-21-5p induction during titanium-particle injury (mouse MC3T3-E1 cells):** Icariin increased miR-21-5p, BMP2, Runx2, osteocalcin, ALP activity, and mineralization, and partially overcame titanium particle–induced inhibition of these outcomes. Knockdown of miR-21-5p partially abolished icariin’s protective effects, supporting miR-21-5p as a required contributor to icariin-mediated osteogenic rescue in this model. **Evidence: mouse in vitro** [PMID: 29500883].\n\n- **miR-23a and Wnt/β-catenin signaling (human BMSCs):** Icariin promoted osteogenesis, reflected by increased ALP activity, BSPII, and Runx2, while activating β-catenin, LRP5, and TCF1. Upregulation of miR-23a attenuated icariin-associated Wnt/β-catenin activation, whereas miR-23a downregulation produced effects resembling icariin. This supports a model in which icariin promotes human BMSC osteogenesis at least partly by reducing the inhibitory influence of miR-23a on Wnt/β-catenin signaling. **Evidence: human cells in vitro** [PMID: 33743412].\n\n- **Osteoclast-to-osteoblast exosomal miR-331-3p signaling (rat infected bone-defect model plus cellular experiments):** Icariin increased osteoclast-derived exosome production and exosomal miR-331-3p. These exosomes promoted osteoblast function through a proposed miR-331-3p/FGF23/DKK1 pathway, with reduced DKK1 and increased ALP, and improved bone repair in infected rat bone defects. This is an indirect, intercellular route by which icariin may support osteoblast differentiation. **Evidence: cell-based experiments and rat in vivo** [PMID: 39588260].\n\n### Association\n\nAcross these studies, icariin-associated osteogenesis is repeatedly accompanied by increased osteogenic outputs—ALP activity, Runx2, BMP2, osteocalcin/OPN, and matrix mineralization—while miRNA changes appear context-dependent. Icariin upregulated miR-153, miR-335-5p, and miR-21-5p in particular models, but downregulated miR-34c, miR-138-5p, and functionally miR-23a-associated inhibitory signaling in others [PMID: 27492554; PMID: 29500883; PMID: 29904399; PMID: 33743412; PMID: 35292240; PMID: 38045146].\n\n### Testable hypothesis\n\nIcariin does not appear to act through one universal miRNA. Rather, it may **reprogram miRNA networks according to the osteogenic stress context**: suppressing miRNAs that restrain Runx2/JMJD3/Wnt-related osteogenesis (for example, miR-34c, miR-138-5p, or miR-23a-related inhibition), while increasing miRNAs that favor osteogenesis by limiting inhibitory targets such as PTEN or by supporting protective responses to particle-induced injury (miR-335-5p and miR-21-5p) [PMID: 27492554; PMID: 29500883; PMID: 33743412; PMID: 35292240; PMID: 38045146].\n\nNo supplied context establishes that these mechanisms are clinically validated in humans; the direct human evidence is limited to in-vitro hBMSCs and an observational osteoporosis-tissue finding [PMID: 33743412; PMID: 35292240].",
+    "traditional_rag": "Icariin may promote osteoblast differentiation by altering several miRNA-centered regulatory networks:\n\n### Direct evidence\n\n- **miR-34c downregulation preserves osteogenic proteins under inflammatory stress.** In an LPS-exposed osteogenic in-vitro model, icariin reduced the LPS-induced increase in miR-34c. miR-34c overexpression suppressed ALP, RUNX2, osteopontin, and BMP2, and reversed icariin-associated osteogenic differentiation and mineral-nodule formation. Icariin also restored RUNX2 protein, without changing RUNX2 mRNA, consistent with post-transcriptional miRNA-related regulation. **In-vitro evidence.** [PMID: 27492554]\n\n- **miR-153/RUNX2 pathway.** In mouse MC3T3-E1 osteoblast-like cells, icariin increased proliferation, ALP activity, mineralization, and expression of miR-153 and RUNX2. Reporter and mimic/inhibitor experiments supported involvement of miR-153 in regulating RUNX2 and in the osteogenic response to icariin. **In-vitro evidence.** [PMID: 29904399]\n\n- **miR-21-5p upregulation counters titanium-particle-mediated osteogenic inhibition.** In MC3T3-E1 cells, icariin increased miR-21-5p along with BMP2, RUNX2, osteocalcin, ALP activity, and matrix mineralization. Inhibition of miR-21-5p partially abolished icariin’s protection against titanium particle-induced impairment of differentiation and mineralization. **In-vitro evidence.** [PMID: 29500883]\n\n- **miR-335-5p/PTEN axis in bone-marrow stromal cells.** Icariin reversed the anti-mineralization effect of a miR-335-5p inhibitor in osteogenic BMSCs. PTEN was identified as a downstream effector, and PTEN overexpression reversed the pro-osteogenic effect of miR-335-5p mimics during icariin induction. Icariin and miR-335-5p overexpression also improved osteoporosis-associated changes in rats. **In-vitro and rat evidence.** [PMID: 35292240]\n\n- **circRNA/miRNA relay: circ_0000349–miR-138-5p–JMJD3.** In MC3T3-E1 cells, icariin increased mmu_circ_0000349, JMJD3, ALP, and RUNX2 while decreasing miR-138-5p. The circRNA promoted differentiation and mineralization, and mechanistic assays supported that it sponges miR-138-5p, thereby regulating JMJD3. **In-vitro evidence.** [PMID: 38045146]\n\n- **Osteoclast-to-osteoblast exosomal miR-331-3p signaling.** Icariin increased osteoclast-derived exosome production and exosomal miR-331-3p. These exosomes promoted osteoblast function through a proposed miR-331-3p/FGF23/DKK1 pathway, with increased ALP; they also enhanced repair in an infected bone-defect rat model. This is an indirect mechanism in which icariin first alters osteoclast exosomal miRNA cargo, which then affects osteoblasts. **In-vitro and rat evidence.** [PMID: 39588260]\n\n### Association / pathway-level evidence\n\n- In **human bone-marrow mesenchymal stem cells**, icariin increased osteogenic markers including ALP, bone sialoprotein II, and RUNX2, while activating Wnt/β-catenin signaling. Increasing miR-23a attenuated icariin-induced Wnt/β-catenin activation, whereas miR-23a downregulation resembled icariin treatment. Thus, the available findings associate icariin’s pro-osteogenic action with reduced miR-23a activity and Wnt/β-catenin activation. **Human cell in-vitro evidence; not clinical human evidence.** [PMID: 33743412]\n\n- Icariin regulated glucocorticoid-induced miR-335 dysregulation in rat bone microvascular endothelial cells and prevented steroid-associated osteonecrosis. However, this study concerns endothelial-cell function and vascular protection rather than direct osteoblast differentiation. **Rat/in-vitro evidence.** [PMID: 32911026]\n\n### Testable integrated hypothesis\n\nIcariin may shift osteoblast lineage commitment toward differentiation and mineralization by a convergent post-transcriptional program: suppressing miRNAs that restrain osteogenic factors or pathways (such as miR-34c and miR-138-5p), increasing miRNAs that support osteogenesis in particular contexts (miR-21-5p, miR-335-5p, and possibly miR-153), and modifying miRNA-containing osteoclast exosomes. These changes could converge on RUNX2, BMP2, PTEN, JMJD3, Wnt/β-catenin signaling, and DKK1 regulation. This broad integrated model is a synthesis across separate experimental systems rather than a single directly proven pathway. [PMID: 27492554; PMID: 29500883; PMID: 29904399; PMID: 35292240; PMID: 38045146; PMID: 39588260]\n\nNo supplied record demonstrates that these miRNA-mediated osteoblast mechanisms have been confirmed in human clinical trials.",
+    "general_llm": "Icariin, a prenylated flavonoid from *Epimedium* species, may promote osteoblast differentiation partly by changing the expression of microRNAs (miRNAs). miRNAs are short non-coding RNAs that suppress translation or promote degradation of specific mRNAs; thus, changing a miRNA can shift whole osteogenic signaling networks.\n\n### Reported miRNA-related mechanisms\n\n- **miR-335-5p–DKK1–Wnt/β-catenin axis**\n  - This is among the better-described proposed mechanisms.\n  - Icariin has been reported to increase miR-335-5p in bone-marrow-derived mesenchymal stem cells in some experimental systems.\n  - miR-335-5p can repress **DKK1**, an extracellular inhibitor of canonical Wnt signaling.\n  - Lower DKK1 activity may permit greater **Wnt/β-catenin** signaling, increasing osteogenic transcriptional programs, including expression of markers such as **RUNX2, alkaline phosphatase (ALP), collagen type I, osteopontin, and osteocalcin**.\n\n- **Relief of miRNA-mediated inhibition of osteogenic genes**\n  - Several miRNAs can restrain osteoblast differentiation by targeting components of the BMP, Wnt, IGF, and PI3K–Akt pathways, or osteogenic transcription factors such as RUNX2 and SATB2.\n  - In cell-based studies, icariin has been associated with altered levels of miRNAs in this category, potentially reducing repression of pro-osteogenic targets. For example, modulation of miRNAs linked to **Wnt signaling, BMP/Smad signaling, and PTEN/PI3K–Akt signaling** has been proposed.\n\n- **miR-21-associated signaling**\n  - Some experimental literature suggests that icariin may increase miR-21-related osteogenic signaling. miR-21 can favor osteogenesis in certain contexts by suppressing inhibitory molecules such as **PTEN, Sprouty-family proteins, or Smad7**, depending on the cell type and model.\n  - This could enhance survival/proliferation of osteoprogenitors and support differentiation signaling. However, miR-21 is highly context dependent and is not universally osteogenic.\n\n- **Possible effects on miRNAs that inhibit RUNX2/SATB2 pathways**\n  - miRNAs such as members of the miR-34 family and others can inhibit osteoblast maturation by directly or indirectly reducing RUNX2, SATB2, or related osteogenic regulators.\n  - Icariin-associated suppression of anti-osteogenic miRNA activity has been suggested in preclinical models, but the precise miRNA target pairs and their reproducibility vary across studies.\n\n### Functional consequence\n\nThe overall proposed sequence is:\n\n**Icariin exposure → altered miRNA profile → reduced expression of anti-osteogenic target genes or inhibitors of Wnt/BMP/PI3K signaling → increased RUNX2-centered osteogenic transcription → greater ALP activity, matrix production, and mineralized nodule formation.**\n\n### Important limitations\n\nThese mechanisms are supported mainly by **cultured cell and animal-model studies**, often using mesenchymal stem cells or osteoblast-like cells. miRNA effects are cell-state-, dose-, timing-, and species-dependent. Icariin has not been established as a direct, selective regulator of a particular miRNA-processing enzyme or as a clinically validated miRNA-targeted osteoporosis therapy. The miR-335-5p/DKK1/Wnt model is a useful mechanistic example, but it should not be viewed as the only pathway through which icariin may act."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 47.925136372447014,
+    "vector_index": 3.0774452686309814,
+    "answer_netmedex_hybrid_rag": 13.793380737304688,
+    "answer_traditional_rag": 11.746823869645596,
+    "answer_general_llm": 14.878094524145126,
+    "total": 95.24422945082188
+  },
+  "token_usage": {
+    "output_tokens": 30349,
+    "total_tokens": 62269,
+    "input_tokens": 31920
+  },
+  "completed_at": "2026-08-11T04:21:06.572607+00:00"
+}

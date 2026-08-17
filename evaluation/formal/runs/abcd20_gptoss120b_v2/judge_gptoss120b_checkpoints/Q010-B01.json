@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "Q010",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "96218b10c99b773ad75a217d6102af06ab1cf66482d9fe9420a265d9ccf35b23",
+  "raw_response_sha256": "c0750b456d03d4826661f46dbb289564ebdb82e3f0b06d032e744dc7455525e6",
+  "usage": {
+    "input_tokens": 4306,
+    "output_tokens": 397,
+    "total_tokens": 4703
+  },
+  "rated_at": "2026-08-13T04:47:36.620182+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q010-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Broad mechanisms, plausible but lacks specific citations; moderate grounding."
+      },
+      {
+        "answer_id": "Q010-B",
+        "correctness": 5,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Specific miRNA–pathway links with PMIDs; focused but less breadth."
+      },
+      {
+        "answer_id": "Q010-C",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Extensive cited evidence across miRNAs, pathways, and compounds; high completeness."
+      },
+      {
+        "answer_id": "Q010-D",
+        "correctness": 5,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Cited evidence similar to C but slightly less breadth."
+      }
+    ],
+    "preferred_item_id": "Q010-C",
+    "pairwise_reason": "Answer C combines strong citation support, broad coverage of miRNA‑mediated mechanisms, and clear mechanistic links, offering the most comprehensive and well‑grounded response."
+  }
+}

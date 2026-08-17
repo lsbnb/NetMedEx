@@ -1,0 +1,188 @@
+{
+  "top_k": 10,
+  "question_count": 2,
+  "graph_build_eligible_question_count": 0,
+  "questions": [
+    {
+      "question_id": "BW003",
+      "document_count": 6,
+      "endpoint_leaks": [],
+      "eligible_mediators": [],
+      "graph_build_eligible": false,
+      "mediators": [
+        {
+          "mediator": "DUOX2",
+          "bridge_eligible": true,
+          "source_pmids": [
+            "19358684",
+            "31992345",
+            "35081328"
+          ],
+          "target_pmids": [
+            "37891968",
+            "39298837",
+            "41897439"
+          ],
+          "source_in_text_top_k": [
+            "31992345"
+          ],
+          "target_in_text_top_k": [],
+          "source_outside_text_top_k": [
+            "19358684",
+            "35081328"
+          ],
+          "target_outside_text_top_k": [
+            "37891968",
+            "39298837",
+            "41897439"
+          ],
+          "both_sides_exposed": false,
+          "retrieval_eligible": true,
+          "evidence_audit": {
+            "source_relation_supported": false,
+            "target_relation_supported": true,
+            "signed_composition_valid": false,
+            "endpoint_semantically_isolated": true,
+            "decision": "reject",
+            "source_pmids_reviewed": [
+              "19358684",
+              "35081328",
+              "31992345"
+            ],
+            "target_pmids_reviewed": [
+              "41897439",
+              "39298837",
+              "37891968"
+            ],
+            "reason": "The source abstracts show CFTR dependence, treatment-mediated DUOX2 reduction, or correlation; they do not establish that CFTR dysfunction upregulates DUOX2."
+          },
+          "evidence_eligible": false,
+          "graph_build_eligible": false,
+          "reasons": [
+            "exactly_one_bridge_side_withheld_from_text_top_k",
+            "signed_hop_evidence_gate_failed"
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "BW006",
+      "document_count": 12,
+      "endpoint_leaks": [],
+      "eligible_mediators": [],
+      "graph_build_eligible": false,
+      "mediators": [
+        {
+          "mediator": "HMGB1",
+          "bridge_eligible": true,
+          "source_pmids": [
+            "27229112",
+            "29238012",
+            "32508664"
+          ],
+          "target_pmids": [
+            "28706906",
+            "37284446",
+            "37364421"
+          ],
+          "source_in_text_top_k": [
+            "32508664"
+          ],
+          "target_in_text_top_k": [],
+          "source_outside_text_top_k": [
+            "27229112",
+            "29238012"
+          ],
+          "target_outside_text_top_k": [
+            "28706906",
+            "37284446",
+            "37364421"
+          ],
+          "both_sides_exposed": false,
+          "retrieval_eligible": true,
+          "evidence_audit": {
+            "source_relation_supported": false,
+            "target_relation_supported": true,
+            "signed_composition_valid": false,
+            "endpoint_semantically_isolated": true,
+            "decision": "reject",
+            "source_pmids_reviewed": [
+              "32508664",
+              "27229112",
+              "29238012"
+            ],
+            "source_pmids_rejected_as_target_leaks": [
+              "35149132",
+              "34078746"
+            ],
+            "target_pmids_reviewed": [
+              "37284446",
+              "28706906",
+              "37364421"
+            ],
+            "reason": "The retained source abstracts show modulation, a burn-confounded increase, or an award announcement; they do not establish dystrophin deficiency causing HMGB1 release."
+          },
+          "evidence_eligible": false,
+          "graph_build_eligible": false,
+          "reasons": [
+            "exactly_one_bridge_side_withheld_from_text_top_k",
+            "signed_hop_evidence_gate_failed"
+          ]
+        },
+        {
+          "mediator": "Galectin-3",
+          "bridge_eligible": true,
+          "source_pmids": [
+            "29894670",
+            "40948348",
+            "41124255"
+          ],
+          "target_pmids": [
+            "38278025",
+            "40244022",
+            "41235339"
+          ],
+          "source_in_text_top_k": [
+            "29894670",
+            "41124255"
+          ],
+          "target_in_text_top_k": [],
+          "source_outside_text_top_k": [
+            "40948348"
+          ],
+          "target_outside_text_top_k": [
+            "38278025",
+            "40244022",
+            "41235339"
+          ],
+          "both_sides_exposed": false,
+          "retrieval_eligible": true,
+          "evidence_audit": {
+            "source_relation_supported": true,
+            "target_relation_supported": false,
+            "signed_composition_valid": false,
+            "endpoint_semantically_isolated": true,
+            "decision": "reject",
+            "source_pmids_reviewed": [
+              "41124255",
+              "29894670",
+              "40948348"
+            ],
+            "target_pmids_reviewed": [
+              "40244022",
+              "41235339",
+              "38278025"
+            ],
+            "reason": "DMD evidence includes Galectin-3 recruitment/upregulation but also a beneficial regenerative role; target papers are cross-disease biomarker/pathway evidence and do not establish the proposed chronic muscle-inflammation direction."
+          },
+          "evidence_eligible": false,
+          "graph_build_eligible": false,
+          "reasons": [
+            "exactly_one_bridge_side_withheld_from_text_top_k",
+            "signed_hop_evidence_gate_failed"
+          ]
+        }
+      ]
+    }
+  ]
+}

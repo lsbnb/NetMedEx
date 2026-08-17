@@ -1,0 +1,117 @@
+{
+  "question_id": "Q011",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-31T19:27:47.523965+00:00",
+  "ratings": [
+    {
+      "edge_id": "Q011-E01",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Diabetes mellitus type 2 is not mentioned in the supporting titles, which focus entirely on cancer."
+    },
+    {
+      "edge_id": "Q011-E02",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles support an anticancer/suppressive role ('anticancer activity', 'Suppress Proliferation'), but 'prevents' implies prophylaxis which is not supported by the titles."
+    },
+    {
+      "edge_id": "Q011-E03",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles explicitly mention the 'AMPK/mTOR signaling pathway in anticancer activity of metformin', supporting an association."
+    },
+    {
+      "edge_id": "Q011-E04",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles explicitly mention the 'AMPK/mTOR signaling pathway in anticancer activity of metformin', supporting an association."
+    },
+    {
+      "edge_id": "Q011-E05",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] PRKAA2 is a catalytic subunit of AMPK. The titles explicitly mention the 'AMPK/mTOR pathway', supporting the association."
+    },
+    {
+      "edge_id": "Q011-E06",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] HIF1A is not mentioned in any of the supporting titles."
+    },
+    {
+      "edge_id": "Q011-E07",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] PRKAA1 is a catalytic subunit of AMPK. The titles state metformin acts 'via AMPK pathway', implying activation of the kinase."
+    },
+    {
+      "edge_id": "Q011-E08",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] PRKAA2 is a catalytic subunit of AMPK. The titles state metformin acts 'via the AMPK/mTOR pathway', implying activation of AMPK."
+    },
+    {
+      "edge_id": "Q011-E09",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title states PP242 is an 'mTOR inhibitor'. The relation direction is backwards (PP242 inhibits mTOR, not the other way around)."
+    },
+    {
+      "edge_id": "Q011-E10",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] AKT1 is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q011-E11",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] DDIT4 is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q011-E12",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly mentions the 'anti-tumor effects of metformin' on 'esophageal squamous cell carcinoma growth'."
+    },
+    {
+      "edge_id": "Q011-E13",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly states that metformin 'Inhibits Proliferation... in the Bile Duct Cancer Cells'."
+    },
+    {
+      "edge_id": "Q011-E14",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Hepatocellular carcinoma refers to liver cancer. The title explicitly states metformin and dichloroacetate 'Suppress Proliferation of Liver Cancer Cells'."
+    },
+    {
+      "edge_id": "Q011-E15",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Hyperglycemia is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q011-E16",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] While ovarian neoplasms are malignancies in women, they are not explicitly mentioned or supported by the provided title."
+    },
+    {
+      "edge_id": "Q011-E17",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Polycystic ovary syndrome (PCOS) is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q011-E18",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title refers to a 'novel dual AMPK activator/mTOR inhibitor', which does not support metformin (an established, non-novel drug) as the subject."
+    }
+  ],
+  "raw_response_sha256": "69ae267a9ddb62d274189e759cd5c661b96eadcc7a18fdb4cc7a0bc0678d1944"
+}

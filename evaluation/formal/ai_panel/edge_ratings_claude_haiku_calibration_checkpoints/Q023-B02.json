@@ -1,0 +1,26 @@
+{
+  "task": "edge",
+  "question_id": "Q023",
+  "batch": 2,
+  "provider": "anthropic",
+  "model": "claude-haiku-4-5-20251001",
+  "input_sha256": "5b7b92a10903b198c145468f2a071ff557f9f56a541542a596fb9bfde6f4a7ca",
+  "raw_response_sha256": "aaba5a996f17aa67f3775e01a13207c5bbadcedeaa1e17ded1d22fe8cd512951",
+  "rated_at": "2026-08-02T19:08:32.382333+00:00",
+  "result": {
+    "ratings": [
+      {
+        "edge_id": "Q023-E07",
+        "entity_valid": 1,
+        "relation_exists": 1,
+        "relation_type_correct": 1,
+        "direction_correct": 1,
+        "evidence_support": 1,
+        "confidence": 3,
+        "notes": "Hypoxia and oxygen are clearly associated; hypoxia defined as inadequate oxygen supply. Direct textual support in abstract."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

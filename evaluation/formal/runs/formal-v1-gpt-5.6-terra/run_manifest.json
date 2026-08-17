@@ -1,0 +1,79 @@
+{
+  "run_id": "formal-v1-gpt-5.6-terra",
+  "benchmark_version": "formal-v1",
+  "status": "complete",
+  "provider": "openai",
+  "model": "gpt-5.6-terra",
+  "api": "chat_completions",
+  "sampling": {
+    "temperature": 1,
+    "note": "GPT-5.6 supports only its default temperature in Chat Completions."
+  },
+  "max_articles_per_question": 15,
+  "top_k": 10,
+  "edge_method": "semantic",
+  "semantic_threshold": 0.5,
+  "edge_weight_cutoff": 1,
+  "query_file": "evaluation/formal/formal_run_queries.csv",
+  "query_file_sha256": "ecd43d77f2092e9a0ae61d52f93bd9d9d816ef3010fef766898cea1dacce70e7",
+  "gold_qrels_read_during_run": false,
+  "started_at": "2026-07-27T17:46:45.607174+00:00",
+  "completed_questions": 50,
+  "failed_questions": 0,
+  "last_checkpoint_at": "2026-07-30T11:11:58.585529+00:00",
+  "completed_at": "2026-07-30T11:11:58.683297+00:00",
+  "attempts": [
+    {
+      "attempt_id": "attempt-001",
+      "started_at": "2026-07-30T10:44:15.303316+00:00",
+      "selected_questions": [
+        "Q010",
+        "Q041"
+      ],
+      "force": true,
+      "status": "complete_with_failures",
+      "completed_at": "2026-07-30T10:56:34.265506+00:00",
+      "completed_questions_after_attempt": 35,
+      "failed_questions_after_attempt": 15
+    },
+    {
+      "attempt_id": "attempt-002",
+      "started_at": "2026-07-30T10:57:04.878276+00:00",
+      "selected_questions": [
+        "Q010",
+        "Q041"
+      ],
+      "force": true,
+      "status": "complete_with_failures",
+      "completed_at": "2026-07-30T11:05:59.937134+00:00",
+      "completed_questions_after_attempt": 37,
+      "failed_questions_after_attempt": 13
+    },
+    {
+      "attempt_id": "attempt-003",
+      "type": "answer-only-repair",
+      "system": "general_llm",
+      "started_at": "2026-07-30T11:07:25.904046+00:00",
+      "selected_questions": [
+        "Q009",
+        "Q015",
+        "Q016",
+        "Q020",
+        "Q022",
+        "Q023",
+        "Q024",
+        "Q031",
+        "Q036",
+        "Q039",
+        "Q040",
+        "Q043",
+        "Q045"
+      ],
+      "status": "complete",
+      "completed_at": "2026-07-30T11:11:58.683297+00:00",
+      "completed_questions_after_attempt": 50,
+      "failed_questions_after_attempt": 0
+    }
+  ],
+  "last_resumed_at": "2026-07-30T11:07:25.904046+00:00"
+}

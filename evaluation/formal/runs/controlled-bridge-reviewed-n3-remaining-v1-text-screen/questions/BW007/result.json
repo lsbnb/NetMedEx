@@ -1,0 +1,168 @@
+{
+  "status": "complete",
+  "question_id": "BW007",
+  "domain": "vascular biology",
+  "question": "Which evidence-supported intermediates connect endothelial senescence to atherosclerosis?",
+  "question_type": "mechanism",
+  "pubmed_query": "endothelial senescence atherosclerosis oxidative stress inflammation SASP",
+  "effective_pubmed_query": "endothelial senescence atherosclerosis oxidative stress inflammation SASP",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "39180980",
+    "40355758",
+    "36978029",
+    "39088352",
+    "38583577",
+    "40418230",
+    "40167015",
+    "42389866",
+    "32246301",
+    "37385572",
+    "40660002",
+    "31816893",
+    "40049100",
+    "33274583",
+    "41296931",
+    "23395155",
+    "21261471",
+    "17581829"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "40418230",
+        "score": 0.6070141669790281
+      },
+      {
+        "pmid": "40660002",
+        "score": 0.5945013391433571
+      },
+      {
+        "pmid": "39180980",
+        "score": 0.5863186845829912
+      },
+      {
+        "pmid": "41296931",
+        "score": 0.5827016153932663
+      },
+      {
+        "pmid": "39088352",
+        "score": 0.579718550042954
+      },
+      {
+        "pmid": "32246301",
+        "score": 0.557144055965142
+      },
+      {
+        "pmid": "40049100",
+        "score": 0.5558444350043438
+      },
+      {
+        "pmid": "38583577",
+        "score": 0.5335589875784157
+      },
+      {
+        "pmid": "17581829",
+        "score": 0.5310643646977823
+      },
+      {
+        "pmid": "36978029",
+        "score": 0.5279660756661281
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "40418230",
+        "score": 0.6070141669790281
+      },
+      {
+        "pmid": "40660002",
+        "score": 0.5945013391433571
+      },
+      {
+        "pmid": "39180980",
+        "score": 0.5863186845829912
+      },
+      {
+        "pmid": "41296931",
+        "score": 0.5827016153932663
+      },
+      {
+        "pmid": "39088352",
+        "score": 0.579718550042954
+      },
+      {
+        "pmid": "32246301",
+        "score": 0.557144055965142
+      },
+      {
+        "pmid": "40049100",
+        "score": 0.5558444350043438
+      },
+      {
+        "pmid": "38583577",
+        "score": 0.5335589875784157
+      },
+      {
+        "pmid": "17581829",
+        "score": 0.5310643646977823
+      },
+      {
+        "pmid": "36978029",
+        "score": 0.5279660756661281
+      }
+    ]
+  },
+  "answers": {},
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 1.5154480934143066e-05,
+    "vector_index": 1.7385185807943344,
+    "total": 2.264766737818718
+  },
+  "token_usage": {},
+  "completed_at": "2026-08-09T18:44:32.327022+00:00"
+}

@@ -1,0 +1,63 @@
+{
+  "task": "answer",
+  "question_id": "PP004",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "81af7d34ab0f1656e516f77d61f1639567a7853501a713f6287efa8d867aba1f",
+  "raw_response_sha256": "2dcfca43c2adecbed0d5d5c9cf97f175de07aff4a9c4989334741019318213e0",
+  "usage": {
+    "input_tokens": 3517,
+    "output_tokens": 606,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 4123
+  },
+  "rated_at": "2026-08-13T06:28:19.012681+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP004-A",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 4,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Solid structure but lacks clinical trial evidence and disease-specificity nuance. Graph-derived section adds little. Limitations well-stated but incomplete on trial heterogeneity."
+      },
+      {
+        "answer_id": "PP004-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Best overall: covers animal, human, clinical trial, and mechanistic evidence. Includes disease-specificity of IL-17 blockade failure (lupus, IBD). Limitations comprehensive and nuanced."
+      },
+      {
+        "answer_id": "PP004-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Excellent breadth: genetics, animal, clinical, mechanistic. No PMIDs cited, reducing grounding score. Mentions IL-17F redundancy and microbiome—valuable nuances absent elsewhere."
+      },
+      {
+        "answer_id": "PP004-D",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Strong evidence hierarchy with PMIDs. Includes Th17 plasticity point. Limitations section cut off mid-sentence. Slightly less complete than B/C on disease-specificity of blockade failures."
+      }
+    ],
+    "preferred_item_id": "PP004-B",
+    "pairwise_reason": "PP004-B provides the most complete and well-grounded response, integrating animal mechanistic data, human associative evidence, clinical trial validation, and nuanced limitations including disease-specific failures of IL-17 blockade and patient selection bias, all with PMID citations."
+  }
+}

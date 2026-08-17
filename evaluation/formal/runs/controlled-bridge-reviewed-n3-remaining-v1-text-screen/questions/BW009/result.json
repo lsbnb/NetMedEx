@@ -1,0 +1,160 @@
+{
+  "status": "complete",
+  "question_id": "BW009",
+  "domain": "multilingual",
+  "question": "哪些具有文獻證據的中介機制可連結 SGLT2 抑制劑與腎臟保護？",
+  "question_type": "mechanism",
+  "pubmed_query": "SGLT2 inhibitor kidney inflammation fibrosis empagliflozin dapagliflozin",
+  "effective_pubmed_query": "SGLT2 inhibitor kidney inflammation fibrosis empagliflozin dapagliflozin",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "Traditional Chinese",
+  "corpus_pmids": [
+    "38453269",
+    "34195526",
+    "35962863",
+    "37273240",
+    "40767292",
+    "41122918",
+    "25812364",
+    "40578033",
+    "30401006",
+    "38757723"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "34195526",
+        "score": 0.3677159019288431
+      },
+      {
+        "pmid": "35962863",
+        "score": 0.3645621075933939
+      },
+      {
+        "pmid": "41122918",
+        "score": 0.3505830716758353
+      },
+      {
+        "pmid": "37273240",
+        "score": 0.3486461929040763
+      },
+      {
+        "pmid": "25812364",
+        "score": 0.3486273274423963
+      },
+      {
+        "pmid": "38453269",
+        "score": 0.3466833245546043
+      },
+      {
+        "pmid": "40578033",
+        "score": 0.3461002674037281
+      },
+      {
+        "pmid": "30401006",
+        "score": 0.34141361610056337
+      },
+      {
+        "pmid": "40767292",
+        "score": 0.33534654602101865
+      },
+      {
+        "pmid": "38757723",
+        "score": 0.335252944960476
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "34195526",
+        "score": 0.3677159019288431
+      },
+      {
+        "pmid": "35962863",
+        "score": 0.3645621075933939
+      },
+      {
+        "pmid": "41122918",
+        "score": 0.3505830716758353
+      },
+      {
+        "pmid": "37273240",
+        "score": 0.3486461929040763
+      },
+      {
+        "pmid": "25812364",
+        "score": 0.3486273274423963
+      },
+      {
+        "pmid": "38453269",
+        "score": 0.3466833245546043
+      },
+      {
+        "pmid": "40578033",
+        "score": 0.3461002674037281
+      },
+      {
+        "pmid": "30401006",
+        "score": 0.34141361610056337
+      },
+      {
+        "pmid": "40767292",
+        "score": 0.33534654602101865
+      },
+      {
+        "pmid": "38757723",
+        "score": 0.335252944960476
+      }
+    ]
+  },
+  "answers": {},
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 1.4640390872955322e-05,
+    "vector_index": 0.9306516572833061,
+    "total": 1.4210052490234375
+  },
+  "token_usage": {},
+  "completed_at": "2026-08-09T18:44:33.753073+00:00"
+}

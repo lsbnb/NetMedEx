@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP018",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "6b09c836c0113bee75247de51606d1f9463f02f459ac0ccf36d952e2d7a56853",
+  "raw_response_sha256": "de047fa3749fbd09e991396738c2a5af0bac6236e2e82ce19de9822e0acf9f5b",
+  "usage": {
+    "input_tokens": 3690,
+    "output_tokens": 401,
+    "total_tokens": 4091
+  },
+  "rated_at": "2026-08-13T06:39:58.295722+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP018-A",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Covers all hops with human and animal data, clear citations, strong mechanistic links."
+      },
+      {
+        "answer_id": "PP018-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 2,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Comprehensive but lacks explicit citations, reducing verifiability."
+      },
+      {
+        "answer_id": "PP018-C",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Well‑cited and coherent, but slightly less detail on dysbiosis generation than A."
+      },
+      {
+        "answer_id": "PP018-D",
+        "correctness": 4,
+        "completeness": 2,
+        "relevance": 3,
+        "grounding": 4,
+        "mechanistic_coherence": 2,
+        "research_value": 2,
+        "notes": "Very brief, missing inflammation step, limited mechanistic depth."
+      }
+    ],
+    "preferred_item_id": "PP018-A",
+    "pairwise_reason": "PP018-A provides a well‑structured, citation‑backed description of each mechanistic hop, balancing completeness, relevance, and grounding better than the others."
+  }
+}

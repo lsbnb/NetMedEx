@@ -1,0 +1,174 @@
+{
+  "status": "complete",
+  "question_id": "BW005",
+  "domain": "immuno-oncology",
+  "question": "Which evidence-supported intermediates connect PD-1 blockade to immune-related adverse events?",
+  "question_type": "mechanism",
+  "pubmed_query": "PD-1 immune checkpoint inhibitor adverse events T cells autoimmunity cytokines",
+  "effective_pubmed_query": "PD-1 immune checkpoint inhibitor adverse events T cells autoimmunity cytokines",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "36356191",
+    "37359545",
+    "38774604",
+    "36422998",
+    "28650338",
+    "35107396",
+    "25428505",
+    "32484460",
+    "24872026",
+    "27433843",
+    "30595199",
+    "30742119",
+    "36526399",
+    "26843495",
+    "32200442",
+    "32297899",
+    "40404203",
+    "40930749",
+    "31427055",
+    "39489880",
+    "39961795",
+    "32363387",
+    "40380233",
+    "31668277"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "24872026",
+        "score": 0.5490595598410107
+      },
+      {
+        "pmid": "25428505",
+        "score": 0.5283314360526122
+      },
+      {
+        "pmid": "28650338",
+        "score": 0.5185771368691573
+      },
+      {
+        "pmid": "26843495",
+        "score": 0.5132551004393985
+      },
+      {
+        "pmid": "36526399",
+        "score": 0.5078031544590972
+      },
+      {
+        "pmid": "35107396",
+        "score": 0.5028420686219379
+      },
+      {
+        "pmid": "32200442",
+        "score": 0.4986375840394278
+      },
+      {
+        "pmid": "38774604",
+        "score": 0.4974782739680209
+      },
+      {
+        "pmid": "37359545",
+        "score": 0.4956571104977625
+      },
+      {
+        "pmid": "32363387",
+        "score": 0.4949153610345884
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "24872026",
+        "score": 0.5490595598410107
+      },
+      {
+        "pmid": "25428505",
+        "score": 0.5283314360526122
+      },
+      {
+        "pmid": "28650338",
+        "score": 0.5185771368691573
+      },
+      {
+        "pmid": "26843495",
+        "score": 0.5132551004393985
+      },
+      {
+        "pmid": "36526399",
+        "score": 0.5078031544590972
+      },
+      {
+        "pmid": "35107396",
+        "score": 0.5028420686219379
+      },
+      {
+        "pmid": "32200442",
+        "score": 0.4986375840394278
+      },
+      {
+        "pmid": "38774604",
+        "score": 0.4974782739680209
+      },
+      {
+        "pmid": "37359545",
+        "score": 0.4956571104977625
+      },
+      {
+        "pmid": "32363387",
+        "score": 0.4949153610345884
+      }
+    ]
+  },
+  "answers": {},
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 2.927333116531372e-05,
+    "vector_index": 2.4900554567575455,
+    "total": 3.090140476822853
+  },
+  "token_usage": {},
+  "completed_at": "2026-08-09T18:46:59.819874+00:00"
+}

@@ -1,0 +1,129 @@
+{
+  "question_id": "Q011",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-08-01T05:02:49.186383+00:00",
+  "ratings": [
+    {
+      "edge_id": "Q011-E01",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Diabetes mellitus type 2 is not mentioned in the supporting titles, which focus entirely on cancer and carcinogenesis."
+    },
+    {
+      "edge_id": "Q011-E02",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles explicitly mention metformin acting via the AMPK pathway. PRKAA1 is a catalytic subunit of AMPK, supporting the 'activates' relationship."
+    },
+    {
+      "edge_id": "Q011-E03",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles explicitly mention the 'anticancer activity of metformin' and its use in 'malignancies', supporting that it treats neoplasms."
+    },
+    {
+      "edge_id": "Q011-E04",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] mTOR is not mentioned in the provided supporting titles for this edge."
+    },
+    {
+      "edge_id": "Q011-E05",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] HIF1A is not mentioned in the supporting titles."
+    },
+    {
+      "edge_id": "Q011-E06",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles describe metformin as an 'AMPK activator'. PRKAA2 is a catalytic subunit of AMPK, making this relation correct."
+    },
+    {
+      "edge_id": "Q011-E07",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] AKT1 is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q011-E08",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly states that metformin inhibits proliferation in bile duct cancer cells."
+    },
+    {
+      "edge_id": "Q011-E09",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Diabetes mellitus is not mentioned in the supporting title, which focuses on colorectal cancer."
+    },
+    {
+      "edge_id": "Q011-E10",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Hyperglycemia is not mentioned in the supporting title, which focuses on pancreatic cancer."
+    },
+    {
+      "edge_id": "Q011-E11",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Ovarian neoplasms are not explicitly mentioned in the supporting title; it only broadly mentions 'selected malignancies in women'."
+    },
+    {
+      "edge_id": "Q011-E12",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Polycystic ovary syndrome is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q011-E13",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Metformin is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q011-E14",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Tuberculosis is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q011-E15",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Metabolic syndrome is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q011-E16",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] OSU-53 is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q011-E17",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title mentions metformin and dichloroacetate together suppress proliferation, but does not state that metformin 'enhances' dichloroacetate."
+    },
+    {
+      "edge_id": "Q011-E18",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] IGF1 is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q011-E19",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] STAT3 is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q011-E20",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title mentions metformin induces apoptosis in HeLa cells, which are a well-known uterine cervical cancer cell line."
+    }
+  ],
+  "raw_response_sha256": "96b7df94890aec2c3066162932e2470f0363d2a28209e0ac0f615ba1d46550f2"
+}

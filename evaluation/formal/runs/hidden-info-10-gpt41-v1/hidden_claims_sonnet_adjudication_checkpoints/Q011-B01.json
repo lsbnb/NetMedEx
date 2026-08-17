@@ -1,0 +1,83 @@
+{
+  "task": "hidden_claim",
+  "question_id": "Q011",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "6e43129c6d6eabf21f07065803607fd67c5c14aca1bc5277f6dd8d7baa0ed3d1",
+  "raw_response_sha256": "520e0b61b90c17a28d7c3ff5c764fe5786a3fb14892d74f6781056a491508e21",
+  "usage": {
+    "input_tokens": 3620,
+    "output_tokens": 852,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 4472
+  },
+  "rated_at": "2026-08-05T02:48:17.763514+00:00",
+  "result": {
+    "ratings": [
+      {
+        "hidden_claim_id": "Q011-HC01",
+        "hybrid_only": 0,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 0,
+        "non_obviousness": 2,
+        "research_utility": 3,
+        "unsupported_novelty": 0,
+        "notes": "Single-hop path supported by quotes and PMIDs. AMPK activation by metformin is well-established; PRKAA1 isoform specificity adds minor granularity."
+      },
+      {
+        "hidden_claim_id": "Q011-HC02",
+        "hybrid_only": 0,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 0,
+        "non_obviousness": 3,
+        "research_utility": 4,
+        "unsupported_novelty": 0,
+        "notes": "TSC2 phosphorylation mechanism explicitly quoted from PMID:31205529. Mechanistic detail on AMPK-TSC2-mTOR axis adds useful specificity beyond general claim."
+      },
+      {
+        "hidden_claim_id": "Q011-HC03",
+        "hybrid_only": 0,
+        "path_traceable": 0,
+        "evidence_support": 0,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 0,
+        "non_obviousness": 2,
+        "research_utility": 2,
+        "unsupported_novelty": 1,
+        "notes": "Quotes only mention AMPK generally, not PRKAA2 specifically. Isoform-specific claim for AMPKα2 is unsupported by the provided evidence quotes."
+      },
+      {
+        "hidden_claim_id": "Q011-HC04",
+        "hybrid_only": 0,
+        "path_traceable": 0,
+        "evidence_support": 0,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 0,
+        "non_obviousness": 2,
+        "research_utility": 3,
+        "unsupported_novelty": 1,
+        "notes": "Path traces metformin->DDIT4 (Redd1), not directly AMPK->mTOR. Claim about cell cycle arrest/autophagy/apoptosis via AMPK-mTOR not fully traceable from this path alone."
+      },
+      {
+        "hidden_claim_id": "Q011-HC05",
+        "hybrid_only": 0,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 1,
+        "non_obviousness": 3,
+        "research_utility": 4,
+        "unsupported_novelty": 0,
+        "notes": "Two paths across colorectal and esophageal cancers with distinct PMIDs. ESCC quote explicitly names AMPK/mTOR; colorectal quote lacks explicit AMPK mention but is supported by comparison answer."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

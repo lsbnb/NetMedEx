@@ -1,0 +1,176 @@
+{
+  "question_id": "Q012",
+  "model": "gpt-5.6-sol",
+  "rated_at": "2026-07-29T10:03:20.039619+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q012-C001",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "LPS activates BV2 microglia and induces IL-18, IL-1β, TNF-α, and IL-6, but these cytokines are measured as downstream products in an LPS neuroinflammation model rather than tested as mediators of microglial activation in an AD model."
+    },
+    {
+      "candidate_id": "Q012-C002",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "AD-derived human microglia and Aβ-treated cultures produce IL-1β, IL-6, TNF-α, and M-CSF; useful AD-specific context, but the cytokines are primarily reported as products of activated microglia rather than upstream activators."
+    },
+    {
+      "candidate_id": "Q012-C003",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "AD-focused review links activated microglia with IL-1β, IL-6, and TNF-α production and discusses inflammatory signaling, but does not directly test these cytokines as causes of microglial activation."
+    },
+    {
+      "candidate_id": "Q012-C004",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "In 5xFAD and Tg2576 mice, hearing loss increases microglial markers alongside IL-1β, IL-6, and TNF-α. This is associative AD-model evidence, not a test of cytokine-mediated activation."
+    },
+    {
+      "candidate_id": "Q012-C005",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "LPS-activated microglia release TNF-α, IL-1β, and IL-6, with DHT suppressing this response. It is a non-AD LPS model and treats cytokines mainly as activation outputs."
+    },
+    {
+      "candidate_id": "Q012-C006",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Directly tests IFN-γ plus TNF-α as pro-inflammatory microglial stimuli and IL-4/IL-10 as resolving cytokines, but uses primary rat microglia without an AD model."
+    },
+    {
+      "candidate_id": "Q012-C007",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "too_broad",
+      "reviewer_notes": "Broad review of inflammatory mediators across AD, Parkinson disease, and multiple sclerosis; it does not identify cytokines that specifically mediate microglial activation in AD models."
+    },
+    {
+      "candidate_id": "Q012-C008",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "In an STZ-induced AD-like mouse model, exosomes reduce microglial hyperactivation together with IL-1β, IL-6, and TNF-α. The cytokines are correlated downstream inflammatory markers rather than tested activators."
+    },
+    {
+      "candidate_id": "Q012-C009",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Remimazolam reduces LPS-induced microglial activation and IL-6, IL-1β, and TNF-α, but the study is a general LPS cognitive-impairment model rather than an AD model and does not test cytokines as upstream mediators."
+    },
+    {
+      "candidate_id": "Q012-C010",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "In an Aβ oligomer AD model, activated microglia release a factor acting through TNF-α signaling to induce neuronal necroptosis. This directly supports TNF-α as a downstream effector of activated microglia, not as the trigger of activation."
+    },
+    {
+      "candidate_id": "Q012-C011",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Directly tests sustained IL-1β expression in APP/PS1 mice and shows microglial proliferation, extensive transcriptional reprogramming, and expansion of plaque-associated microglia that facilitates Aβ clearance."
+    },
+    {
+      "candidate_id": "Q012-C012",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "AD-associated TOMM40 variants activate BV2 microglia and the NLRP3 inflammasome, causing release of TNF-α, IL-1β, and IL-6. These cytokines are downstream products rather than tested mediators of activation."
+    },
+    {
+      "candidate_id": "Q012-C013",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "In LPS-treated mice and BV2 cells, galantamine lowers microglial markers and IL-1β, IL-6, and TNF-α. This is an endotoxin model relevant to AD inflammation, but cytokines are measured as activation outputs."
+    },
+    {
+      "candidate_id": "Q012-C014",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "AD neuroinflammation review discusses TNF-α, IL-6, IL-1β and pathways controlling cytokine release from microglia, providing contextual evidence but not direct tests of cytokines as microglial activators."
+    },
+    {
+      "candidate_id": "Q012-C015",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "P. gingivalis LPS induces IL-1β, IL-6, and TNF-α in human microglial cells in a proposed AD-related mechanism. The cytokines are downstream inflammatory products, and no AD animal model is used."
+    },
+    {
+      "candidate_id": "Q012-C016",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Directly demonstrates in APP/PS1 mice and BV2 cells that IL-17A promotes microglial activation through TLR4/NF-κB and stimulates microglial TNF-α secretion; IL-17A neutralization improves pathology and cognition."
+    },
+    {
+      "candidate_id": "Q012-C017",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "AD-focused review identifies IL-1β, IL-6, and TNF-α as cytokines elicited by Aβ-activated microglia. It focuses on cytokines released after activation rather than direct cytokine induction of activation."
+    },
+    {
+      "candidate_id": "Q012-C018",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "no_usable_evidence",
+      "reviewer_notes": "Tests TREM2-bearing M2 microglial exosomes as a treatment for neuronal ferroptosis and inflammation; IL-6, IL-1β, and TNF-α are inflammatory readouts, not mediators tested for microglial activation."
+    },
+    {
+      "candidate_id": "Q012-C019",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "AD review describes microglial activation states and production of TNF-α, IL-1β, and IL-6 after Aβ stimulation. It provides useful context but no direct cytokine-to-microglial-activation experiment."
+    },
+    {
+      "candidate_id": "Q012-C020",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "In LPS-treated BV2 cells, the intervention shifts microglial phenotype and changes IL-1β, TNF-α, IL-6, IL-10, IL-4, and TGF-β. This is an in vitro LPS model, with cytokines used mainly as phenotype readouts."
+    },
+    {
+      "candidate_id": "Q012-C021",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "AD review links NF-κB, MAPK, and TLR4 signaling to microglial release of IL-1β, TNF-α, and IL-6. It supplies review-level context but treats these cytokines mainly as consequences and amplifiers of inflammation."
+    },
+    {
+      "candidate_id": "Q012-C022",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "The GFAP-IL6 transgenic mouse directly links chronic IL-6 expression to early microglial activation and elevated TNF-α, but it is a general cerebellar neuroinflammation model rather than an AD model."
+    },
+    {
+      "candidate_id": "Q012-C023",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Different Aβ conformations activate rat microglia and selectively induce IL-1α, IL-1β, or IFN-γ release, while IL-6 and TNF-α are unchanged. Strong AD-related model evidence, but cytokines are activation outputs rather than upstream mediators."
+    },
+    {
+      "candidate_id": "Q012-C024",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "AD neuroinflammation review covers interleukins, TNF-α, chemokines, inflammasomes, and microglia, offering relevant overview-level context without directly testing which cytokines cause microglial activation."
+    }
+  ],
+  "raw_response_sha256": "07028559834963986552ca4661379baa1271b2814f8f1cc70c1fb44a0db69a1f"
+}

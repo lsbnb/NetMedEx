@@ -1,0 +1,220 @@
+{
+  "status": "complete",
+  "question_id": "Q005",
+  "domain": "neurodegeneration",
+  "question": "Does oxidative stress directly support a mechanistic link between amyloid beta and mitochondrial dysfunction?",
+  "question_type": "mechanism",
+  "pubmed_query": "amyloid beta AND oxidative stress AND mitochondrial dysfunction",
+  "effective_pubmed_query": "amyloid beta AND oxidative stress AND mitochondrial dysfunction",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "22697066",
+    "27766447",
+    "27809706",
+    "32967303",
+    "33476985",
+    "35269827",
+    "35522844",
+    "35660451",
+    "37227619",
+    "37597424",
+    "37956598",
+    "40023293",
+    "40864415",
+    "40902587",
+    "40931065"
+  ],
+  "graph": {
+    "node_count": 26,
+    "edge_count": 28,
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [
+      "22697066",
+      "27766447",
+      "27809706",
+      "32967303",
+      "33476985",
+      "35269827",
+      "35522844",
+      "35660451",
+      "37227619",
+      "37597424",
+      "37956598",
+      "40023293",
+      "40864415",
+      "40902587",
+      "40931065"
+    ],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "B_entity_validated",
+    "label": "B. Text + normalized entities",
+    "use_node_rag": true,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [
+      "MESH:C564971_Disease",
+      "HP:0001427_Phenotype",
+      "HP:0003287_Phenotype",
+      "351_Gene"
+    ],
+    "exposed_pmids": [
+      "22697066",
+      "27766447",
+      "27809706",
+      "32967303",
+      "33476985",
+      "35269827",
+      "35522844",
+      "35660451",
+      "37227619",
+      "37597424",
+      "37956598",
+      "40023293",
+      "40864415",
+      "40902587",
+      "40931065"
+    ],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "22697066",
+        "score": 0.6518603248807963
+      },
+      {
+        "pmid": "27766447",
+        "score": 0.6284797728166837
+      },
+      {
+        "pmid": "35522844",
+        "score": 0.6255463626160976
+      },
+      {
+        "pmid": "40864415",
+        "score": 0.6222238804425763
+      },
+      {
+        "pmid": "27809706",
+        "score": 0.6024005227894552
+      },
+      {
+        "pmid": "33476985",
+        "score": 0.5980470914403906
+      },
+      {
+        "pmid": "40023293",
+        "score": 0.588403187878819
+      },
+      {
+        "pmid": "37956598",
+        "score": 0.5670294003848598
+      },
+      {
+        "pmid": "37597424",
+        "score": 0.5659019729543693
+      },
+      {
+        "pmid": "32967303",
+        "score": 0.550660436103534
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "22697066",
+        "score": 0.6518603248807963
+      },
+      {
+        "pmid": "27766447",
+        "score": 0.6284797728166837
+      },
+      {
+        "pmid": "35522844",
+        "score": 0.6255463626160976
+      },
+      {
+        "pmid": "40864415",
+        "score": 0.6222238804425763
+      },
+      {
+        "pmid": "27809706",
+        "score": 0.6024005227894552
+      },
+      {
+        "pmid": "33476985",
+        "score": 0.5980470914403906
+      },
+      {
+        "pmid": "40023293",
+        "score": 0.588403187878819
+      },
+      {
+        "pmid": "37956598",
+        "score": 0.5670294003848598
+      },
+      {
+        "pmid": "37597424",
+        "score": 0.5659019729543693
+      },
+      {
+        "pmid": "32967303",
+        "score": 0.550660436103534
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "**Answer:** Yes—oxidative stress supports a plausible mechanistic link between amyloid-β (Aβ) and mitochondrial dysfunction, but the supplied context primarily provides review-level and preclinical support rather than definitive proof of a unidirectional causal mechanism in humans.\n\n### Direct evidence\n\n- **Animal and primary-neuron evidence:** In triple-transgenic AD mice and hippocampus-derived primary neurons, luteolin reduced **Aβ-induced oxidative stress**, mitochondrial dysfunction, and neuronal apoptosis. Blocking or knocking down PPARγ eliminated luteolin’s protective effects, supporting a pathway in which Aβ-associated oxidative stress and mitochondrial impairment are mechanistically connected through PPARγ-dependent signaling [PMID: 37597424].\n\n- **Mechanistic synthesis (evidence type not specified in abstract):** Aβ is reported to produce mitochondrial toxicity through increased mitochondrial membrane permeability, disrupted calcium homeostasis, and altered oxidative phosphorylation, with consequent ROS overproduction [PMID: 22697066]. These are direct mechanistic routes by which Aβ could impair mitochondrial function while amplifying oxidative stress.\n\n### Association / convergent evidence\n\n- Dysfunctional mitochondria generate ROS, and the resulting oxidative macromolecular damage is linked to progression of amyloid pathology; thus, the relationship is potentially **bidirectional**: mitochondrial dysfunction promotes oxidative stress and amyloid pathology, while Aβ can worsen mitochondrial defects [PMID: 22697066].\n\n- Reviews describe a feed-forward cycle in which Aβ interacts with mitochondrial membranes and proteins, causing fragmentation and impaired mitochondrial transport; these changes increase ROS generation, which then exacerbates oxidative damage [PMID: 40864415].\n\n- Oxidative stress and mitochondrial dysfunction can increase Aβ pathology, whereas Aβ can itself induce redox imbalance, again supporting reciprocal reinforcement rather than a simple linear sequence [PMID: 37956598].\n\n- Mitochondrial damage is associated with Aβ pathology, and elevated ROS/RNS production may be both a cause and a consequence of AD-related pathology [PMID: 33476985]. Disturbed mitochondrial dynamics can likewise lead to impaired energy production and ROS generation in AD-relevant settings [PMID: 27766447].\n\n- Aβ-related oxidative stress, mitochondrial dysfunction, and disturbed calcium handling are discussed together as contributors to neuronal loss; mitochondrial calcium overload and permeability-transition-pore opening provide a biologically coherent downstream injury mechanism [PMID: 32967303].\n\n### Testable hypothesis\n\nA testable model is: **Aβ exposure → mitochondrial membrane/oxidative-phosphorylation and calcium-handling abnormalities → increased mitochondrial ROS → oxidative damage to mitochondrial proteins, lipids, and DNA → further mitochondrial failure and enhanced amyloid pathology.** This predicts that selectively lowering mitochondrial ROS, while holding Aβ burden constant, should preserve mitochondrial bioenergetics, calcium handling, and neuronal survival; conversely, increasing mitochondrial oxidative stress should intensify Aβ-associated mitochondrial injury [PMID: 22697066; PMID: 40864415; PMID: 32967303].\n\n### Human evidence\n\nThe supplied context discusses AD brains and clinical relevance, but it does **not** provide a human interventional study demonstrating that oxidative stress directly mediates Aβ-induced mitochondrial dysfunction. Therefore, direct causal confirmation in humans is absent from the provided records.",
+    "traditional_rag": "**Direct evidence**\n\n- **Animal and in-vitro evidence:** In triple-transgenic AD mice and hippocampal primary neurons, luteolin reduced **amyloid-beta–induced oxidative stress**, mitochondrial dysfunction, and neuronal apoptosis. Blocking or knocking down PPARγ eliminated these protective effects, supporting a mechanistic pathway in which amyloid-beta is linked to oxidative stress and mitochondrial impairment. [PMID: 37597424]\n\n- **Mechanistic evidence summarized in reviews:** Beta-amyloid mitochondrial toxicity is reported to potentially involve altered oxidative phosphorylation, increased mitochondrial-membrane permeability, and calcium-homeostasis disruption, with consequent excess reactive oxygen species (ROS) production. Thus, oxidative stress is plausibly both a product of amyloid-beta mitochondrial toxicity and a contributor to its downstream damage. [PMID: 22697066]\n\n**Association**\n\n- In AD, mitochondrial dysfunction can increase ROS, producing oxidative macromolecular damage and promoting amyloid pathology; conversely, amyloid-beta accumulation can impair mitochondrial membranes/proteins, increase ROS, and establish a self-amplifying cycle. [PMID: 22697066; PMID: 40864415; PMID: 37956598]\n\n- Oxidative stress, mitochondrial dysfunction, and disrupted mitochondrial calcium handling are closely associated with beta-amyloid-related neuronal loss. [PMID: 32967303] Mitochondrial damage has also been linked to amyloid-beta pathology, although the direction of causality remains unresolved. [PMID: 33476985]\n\n**Testable hypothesis**\n\n- A supported model is: **amyloid-beta → mitochondrial respiratory/membrane and calcium disturbances → increased ROS → oxidative damage to mitochondrial components → worsening mitochondrial dysfunction and amyloid pathology**. Antioxidant or mitochondria-targeted interventions should interrupt this feedback loop and reduce amyloid-beta-associated neuronal injury. This remains a hypothesis requiring rigorous causal testing, especially in humans. [PMID: 22697066; PMID: 40864415]\n\n**Human evidence**\n\n- The supplied context describes AD brain mitochondrial abnormalities and oxidative stress, but it does **not** provide direct human intervention or causal evidence demonstrating that oxidative stress mediates amyloid-beta-induced mitochondrial dysfunction. Therefore, the strongest direct support in this context is preclinical rather than human.",
+    "general_llm": "Yes. Oxidative stress provides a plausible and experimentally supported mechanistic bridge between amyloid-β (Aβ) and mitochondrial dysfunction, particularly in cellular and animal models of Alzheimer disease. The relationship appears bidirectional: Aβ can impair mitochondria and increase reactive oxygen species (ROS), while ROS can favor processes that increase Aβ production and toxicity.\n\n**How Aβ may cause mitochondrial oxidative stress**\n\n- **Mitochondrial accumulation/interactions:** Aβ has been reported to associate with mitochondria and mitochondrial proteins, including components involved in protein import and metabolic regulation. These interactions can impair mitochondrial function.\n- **Electron-transport-chain disruption:** Aβ can reduce activity of respiratory-chain complexes—often especially complex IV in experimental systems—leading to less efficient electron transfer and greater electron leakage. Leaked electrons can generate superoxide and other ROS.\n- **Membrane and calcium effects:** Aβ-associated membrane damage, altered calcium handling, and opening of permeability-transition pathways can depolarize mitochondria, impair ATP generation, and enhance ROS production.\n- **Oxidative damage to mitochondrial targets:** The resulting ROS can damage mitochondrial DNA, lipids such as cardiolipin, and respiratory proteins. Mitochondrial DNA is particularly vulnerable because of its proximity to ROS generation and relatively limited protective mechanisms.\n\n**How oxidative stress may promote Aβ pathology**\n\n- Oxidative stress can increase expression or activity of pathways involved in amyloidogenic processing of amyloid precursor protein, including β-secretase-related mechanisms in some models.\n- Lipid peroxidation products and oxidative modification of proteins may promote Aβ aggregation or increase neuronal vulnerability to Aβ.\n- ROS can impair mitochondrial quality control—mitophagy, fission/fusion balance, and biogenesis—creating a cycle in which damaged mitochondria produce more ROS and become increasingly susceptible to Aβ-related injury.\n\nThus, a commonly proposed sequence is:\n\n**Aβ accumulation → mitochondrial impairment → ROS increase → oxidative mitochondrial and neuronal damage → enhanced amyloidogenic signaling and impaired clearance/quality control → further Aβ-related injury.**\n\nHowever, several cautions are important:\n\n1. **The strongest causal evidence comes from experimental models.** Cell culture and transgenic animal studies can show that Aβ exposure or expression precedes mitochondrial ROS increases and that reducing ROS can lessen some downstream injury.\n2. **Human evidence is less definitive about directionality.** Oxidative damage, mitochondrial abnormalities, and Aβ pathology coexist in Alzheimer brains, but this does not by itself establish which abnormality occurs first in every patient.\n3. **Oxidative stress is unlikely to be the sole mechanism.** Tau pathology, neuroinflammation, vascular injury, calcium dysregulation, impaired proteostasis, metabolic disease, and aging all contribute to mitochondrial dysfunction and dementia risk.\n4. **Antioxidant treatment results have been mixed.** This does not negate oxidative mechanisms, but it suggests that nonspecific antioxidants may be poorly targeted, given too late, or unable to correct the underlying mitochondrial and protein-aggregation processes.\n\nOverall, oxidative stress strongly supports a mechanistic link between Aβ and mitochondrial dysfunction, best viewed as a self-reinforcing pathological loop rather than a simple one-way pathway."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 87.81224027276039,
+    "vector_index": 1.8198976442217827,
+    "answer_netmedex_hybrid_rag": 7.152398608624935,
+    "answer_traditional_rag": 5.5947673842310905,
+    "answer_general_llm": 10.430310063064098,
+    "total": 115.84129998832941
+  },
+  "token_usage": {
+    "output_tokens": 53164,
+    "total_tokens": 95348,
+    "input_tokens": 42184
+  },
+  "completed_at": "2026-08-11T04:29:20.091172+00:00"
+}

@@ -1,0 +1,1079 @@
+##USE-MESH-VOCABULARY
+28127589|t|Neuroinflammation Induces Neurodegeneration.
+28127589|a|Neurodegenerative diseases such as Alzheimer's disease (AD), Parkinson's disease (PD), and Multiple Sclerosis (MS) are characterized by neuronal degeneration and neuronal death in specific regions of the central nervous system (CNS). In AD, neurons of the hippocampus and entorhinal cortex are the first to degenerate, whereas in PD, dopaminergic neurons in the substantia nigra degenerate. MS patients show destruction of the myelin sheath. Once the CNS neurons are damaged, they are unable to regenerate unlike any other tissue in the body. Neurodegeneration is mediated by inflammatory and neurotoxic mediators such as interleukin-1beta (IL-1beta), IL-6, IL-8, IL-33, tumor necrosis factor-alpha (TNF-alpha), chemokine (C-C motif) ligand 2 (CCL2), CCL5, matrix metalloproteinase (MMPs), granulocyte macrophage colony-stimulating factor (GM-CSF), glia maturation factor (GMF), substance P, reactive oxygen species (ROS), reactive nitrogen species (RNS), mast cells-mediated histamine and proteases, protease activated receptor-2 (PAR-2), CD40, CD40L, CD88, intracellular Ca+ elevation, and activation of mitogen-activated protein kinases (MAPKs) and nuclear factor kappa-B (NF-kB). Activated microglia, astrocytes, neurons, T-cells and mast cells release these inflammatory mediators and mediate neuroinflammation and neurodegeneration in a vicious manner. Further, immune and inflammatory cells and inflammatory mediators from the periphery cross the defective blood-brain-barrier (BBB) and augment neuroinflammation. Though inflammation is crucial in the onset and the progression of neurodegenerative diseases, anti-inflammatory drugs do not provide significant therapeutic effects in these patients till date, as the disease pathogenesis is not yet clearly understood. In this review, we discuss the possible factors involved in neuroinflammation-mediated neurodegeneration.
+28127589	0	17	Neuroinflammation	Disease	MESH:D000090862
+28127589	26	43	Neurodegeneration	Disease	MESH:D019636
+28127589	45	71	Neurodegenerative diseases	Disease	MESH:D019636
+28127589	80	99	Alzheimer's disease	Disease	MESH:D000544
+28127589	101	103	AD	Disease	MESH:D000544
+28127589	106	125	Parkinson's disease	Disease	MESH:D010300
+28127589	127	129	PD	Disease	MESH:D010300
+28127589	136	154	Multiple Sclerosis	Disease	MESH:D009103
+28127589	156	158	MS	Disease	MESH:D009103
+28127589	181	202	neuronal degeneration	Disease	MESH:D009410
+28127589	207	221	neuronal death	Disease	MESH:D009410
+28127589	282	284	AD	Disease	MESH:D000544
+28127589	375	377	PD	Disease	MESH:D010300
+28127589	436	438	MS	Disease	MESH:D009103
+28127589	439	447	patients	Species	9606
+28127589	588	605	Neurodegeneration	Disease	MESH:D019636
+28127589	621	633	inflammatory	Disease	MESH:D007249
+28127589	638	648	neurotoxic	Disease	MESH:D020258
+28127589	667	684	interleukin-1beta	Gene	3553
+28127589	686	694	IL-1beta	Gene	3553
+28127589	697	701	IL-6	Gene	3569
+28127589	703	707	IL-8	Gene	3576
+28127589	709	714	IL-33	Gene	90865
+28127589	716	743	tumor necrosis factor-alpha	Gene	7124
+28127589	745	754	TNF-alpha	Gene	7124
+28127589	757	787	chemokine (C-C motif) ligand 2	Gene	6347
+28127589	789	793	CCL2	Gene	6347
+28127589	796	800	CCL5	Gene	6352
+28127589	835	883	granulocyte macrophage colony-stimulating factor	Gene	1437
+28127589	885	891	GM-CSF	Gene	1437
+28127589	894	916	glia maturation factor	Gene	2764
+28127589	918	921	GMF	Gene	2764
+28127589	924	935	substance P	Gene	6863
+28127589	937	960	reactive oxygen species	Chemical	MESH:D017382
+28127589	962	965	ROS	Chemical	MESH:D017382
+28127589	968	993	reactive nitrogen species	Chemical	MESH:D026361
+28127589	995	998	RNS	Chemical	MESH:D026361
+28127589	1021	1030	histamine	Chemical	MESH:D006632
+28127589	1046	1075	protease activated receptor-2	Gene	2150
+28127589	1077	1082	PAR-2	Gene	2150
+28127589	1085	1089	CD40	Gene	958
+28127589	1091	1096	CD40L	Gene	959
+28127589	1098	1102	CD88	Gene	728
+28127589	1308	1320	inflammatory	Disease	MESH:D007249
+28127589	1343	1360	neuroinflammation	Disease	MESH:D000090862
+28127589	1365	1382	neurodegeneration	Disease	MESH:D019636
+28127589	1424	1436	inflammatory	Disease	MESH:D007249
+28127589	1447	1459	inflammatory	Disease	MESH:D007249
+28127589	1547	1564	neuroinflammation	Disease	MESH:D000090862
+28127589	1573	1585	inflammation	Disease	MESH:D007249
+28127589	1633	1659	neurodegenerative diseases	Disease	MESH:D019636
+28127589	1666	1678	inflammatory	Disease	MESH:D007249
+28127589	1741	1749	patients	Species	9606
+28127589	1880	1897	neuroinflammation	Disease	MESH:D000090862
+28127589	1907	1924	neurodegeneration	Disease	MESH:D019636
+28127589	Association	MESH:D019636	3553
+28127589	Association	MESH:D020258	7124
+28127589	Association	MESH:D019636	90865
+28127589	Association	MESH:D019636	1437
+28127589	Association	MESH:D020258	90865
+28127589	Association	MESH:D019636	3569
+28127589	Association	MESH:D019636	7124
+
+29669582|t|Galantamine improves cognition, hippocampal inflammation, and synaptic plasticity impairments induced by lipopolysaccharide in mice.
+29669582|a|BACKGROUND: Neuroinflammation plays an important role in the onset and progression of neurodegenerative diseases such as Alzheimer's disease. Lipopolysaccharide (LPS, endotoxin) levels are higher in the brains of Alzheimer's disease patients and are associated with neuroinflammation and cognitive decline, while neural cholinergic signaling controls inflammation. This study aimed to examine the efficacy of galantamine, a clinically approved cholinergic agent, in alleviating LPS-induced neuroinflammation and cognitive decline as well as the associated mechanism. METHODS: Mice were treated with galantamine (4 mg/kg, intraperitoneal injection) for 14 days prior to LPS exposure (intracerebroventricular injection). Cognitive tests were performed, including the Morris water maze and step-through tests. mRNA expression of the microglial marker (CD11b), astrocytic marker (GFAP), and pro-inflammatory cytokines (IL-1beta, IL-6, and TNF-alpha) were examined in the hippocampus by quantitative RT-PCR. The inflammatory signaling molecule, nuclear factor-kappa B (NF-kappaB p65), and synapse-associated proteins (synaptophysin, SYN, and postsynaptic density protein 95, PSD-95) were examined in the hippocampus by western blotting. Furthermore, NF-kappaB p65 levels in microglial cells and hippocampal neurons were examined in response to LPS and galantamine. RESULTS: Galantamine treatment prevented LPS-induced deficits in spatial learning and memory as well as memory acquisition of the passive avoidance response. Galantamine decreased the expression of microglia and astrocyte markers (CD11b and GFAP), pro-inflammatory cytokines (IL-1beta, IL-6, and TNF-alpha), and NF-kappaB p65 in the hippocampus of LPS-exposed mice. Furthermore, galantamine ameliorated LPS-induced loss of synapse-associated proteins (SYN and PSD-95) in the hippocampus. In the in vitro study, LPS increased NF-kappaB p65 levels in microglia (BV-2 cells); the supernatant of LPS-stimulated microglia (Mi-sup), but not LPS, decreased the viability of hippocampal neuronal cells (HT-22 cells) and increased NF-kappaB p65 levels as well as expression of pro-inflammatory cytokines (IL-1beta, IL-6) in HT-22 cells. Importantly, galantamine reduced the inflammatory response not only in the BV-2 microglia cell line, but also in the HT-22 hippocampal neuronal cell line. CONCLUSIONS: These findings indicate that galantamine could be a promising treatment to improve endotoxin-induced cognitive decline and neuroinflammation in neurodegenerative diseases.
+29669582	0	11	Galantamine	Chemical	MESH:D005702
+29669582	44	56	inflammation	Disease	MESH:D007249
+29669582	62	81	synaptic plasticity	Disease	MESH:D010411
+29669582	105	123	lipopolysaccharide	Chemical	MESH:D008070
+29669582	127	131	mice	Species	10090
+29669582	145	162	Neuroinflammation	Disease	MESH:D000090862
+29669582	219	245	neurodegenerative diseases	Disease	MESH:D019636
+29669582	254	273	Alzheimer's disease	Disease	MESH:D000544
+29669582	275	293	Lipopolysaccharide	Chemical	MESH:D008070
+29669582	295	298	LPS	Chemical	MESH:D008070
+29669582	346	365	Alzheimer's disease	Disease	MESH:D000544
+29669582	366	374	patients	Species	9606
+29669582	399	416	neuroinflammation	Disease	MESH:D000090862
+29669582	421	438	cognitive decline	Disease	MESH:D003072
+29669582	484	496	inflammation	Disease	MESH:D007249
+29669582	542	553	galantamine	Chemical	MESH:D005702
+29669582	611	614	LPS	Chemical	MESH:D008070
+29669582	623	640	neuroinflammation	Disease	MESH:D000090862
+29669582	645	662	cognitive decline	Disease	MESH:D003072
+29669582	709	713	Mice	Species	10090
+29669582	732	743	galantamine	Chemical	MESH:D005702
+29669582	802	805	LPS	Chemical	MESH:D008070
+29669582	982	987	CD11b	Gene	16409
+29669582	1009	1013	GFAP	Gene	14580
+29669582	1024	1036	inflammatory	Disease	MESH:D007249
+29669582	1048	1056	IL-1beta	Gene	16176
+29669582	1058	1062	IL-6	Gene	16193
+29669582	1068	1077	TNF-alpha	Gene	21926
+29669582	1140	1152	inflammatory	Disease	MESH:D007249
+29669582	1246	1259	synaptophysin	Gene	20977
+29669582	1261	1264	SYN	Gene	20977
+29669582	1270	1301	postsynaptic density protein 95	Gene	13385
+29669582	1303	1309	PSD-95	Gene	13385
+29669582	1472	1475	LPS	Chemical	MESH:D008070
+29669582	1480	1491	galantamine	Chemical	MESH:D005702
+29669582	1502	1513	Galantamine	Chemical	MESH:D005702
+29669582	1534	1537	LPS	Chemical	MESH:D008070
+29669582	1546	1585	deficits in spatial learning and memory	Disease	MESH:D008569
+29669582	1651	1662	Galantamine	Chemical	MESH:D005702
+29669582	1724	1729	CD11b	Gene	16409
+29669582	1734	1738	GFAP	Gene	14580
+29669582	1745	1757	inflammatory	Disease	MESH:D007249
+29669582	1769	1777	IL-1beta	Gene	16176
+29669582	1779	1783	IL-6	Gene	16193
+29669582	1789	1798	TNF-alpha	Gene	21926
+29669582	1841	1844	LPS	Chemical	MESH:D008070
+29669582	1853	1857	mice	Species	10090
+29669582	1872	1883	galantamine	Chemical	MESH:D005702
+29669582	1896	1899	LPS	Chemical	MESH:D008070
+29669582	1945	1948	SYN	Gene	20977
+29669582	1953	1959	PSD-95	Gene	13385
+29669582	2004	2007	LPS	Chemical	MESH:D008070
+29669582	2053	2057	BV-2	CellLine	CVCL:0182
+29669582	2085	2088	LPS	Chemical	MESH:D008070
+29669582	2111	2113	Mi	CellLine	CVCL:0C76
+29669582	2128	2131	LPS	Chemical	MESH:D008070
+29669582	2188	2193	HT-22	CellLine	CVCL:0321
+29669582	2265	2277	inflammatory	Disease	MESH:D007249
+29669582	2289	2297	IL-1beta	Gene	16176
+29669582	2299	2303	IL-6	Gene	16193
+29669582	2308	2313	HT-22	CellLine	CVCL:0321
+29669582	2334	2345	galantamine	Chemical	MESH:D005702
+29669582	2358	2370	inflammatory	Disease	MESH:D007249
+29669582	2396	2400	BV-2	CellLine	CVCL:0182
+29669582	2438	2443	HT-22	CellLine	CVCL:0321
+29669582	2518	2529	galantamine	Chemical	MESH:D005702
+29669582	2590	2607	cognitive decline	Disease	MESH:D003072
+29669582	2612	2629	neuroinflammation	Disease	MESH:D000090862
+29669582	2633	2659	neurodegenerative diseases	Disease	MESH:D019636
+29669582	Association	MESH:D007249	21926
+29669582	Negative_Correlation	MESH:D005702	MESH:D000090862
+29669582	Negative_Correlation	MESH:D005702	MESH:D007249
+29669582	Association	MESH:D007249	16176
+29669582	Negative_Correlation	MESH:D005702	16193
+29669582	Positive_Correlation	MESH:D008070	MESH:D000544
+29669582	Association	MESH:D007249	16193
+29669582	Negative_Correlation	MESH:D008070	MESH:D010411
+29669582	Positive_Correlation	MESH:D008070	MESH:D000090862
+29669582	Negative_Correlation	MESH:D005702	14580
+29669582	Negative_Correlation	MESH:D005702	MESH:D008569
+29669582	Negative_Correlation	MESH:D005702	MESH:D010411
+29669582	Negative_Correlation	MESH:D005702	21926
+29669582	Negative_Correlation	MESH:D008070	13385
+29669582	Negative_Correlation	MESH:D005702	13385
+29669582	Negative_Correlation	MESH:D005702	16409
+29669582	Negative_Correlation	MESH:D005702	20977
+29669582	Negative_Correlation	MESH:D005702	16176
+29669582	Positive_Correlation	MESH:D008070	MESH:D003072
+29669582	Association	MESH:D008070	MESH:D007249
+29669582	Negative_Correlation	MESH:D005702	MESH:D003072
+29669582	Positive_Correlation	MESH:D008070	MESH:D008569
+29669582	Negative_Correlation	MESH:D005702	MESH:D008070
+29669582	Negative_Correlation	MESH:D008070	20977
+
+30874945|t|Activation of microglia and astrocytes: a roadway to neuroinflammation and Alzheimer's disease.
+30874945|a|Alzheimer's disease (AD) is a neurodegenerative disease that is of high importance to the neuroscience world, yet the complex pathogenicity is not fully understood. Inflammation is usually observed in AD and could implicate both beneficial or detrimental effects depending on the severity of the disease. During initial AD pathology, microglia and astrocyte activation is beneficial since they are involved in amyloid-beta clearance. However, with the progression of the disease, activated microglia elicit detrimental effects by the overexpression of pro-inflammatory cytokines such as interleukin (IL)-1beta, IL-6, and tumor necrosis factor-alpha (TNF-alpha) bringing forth neurodegeneration in the surrounding brain regions. This results in decline in Abeta clearance by microglia; Abeta accumulation thus increases in the brain resulting in neuroinflammation. Thus, Abeta accumulation is the effect of increased release of pro-inflammatory molecules. Reactive astrocytes acquire gain of toxic function and exhibits neurotoxic effects with loss of neurotrophic functions. Astrocyte dysfunctioning results in increased release of cytokines and inflammatory mediators, neurodegeneration, decreased glutamate uptake, loss of neuronal synapses, and ultimately cognitive deficits in AD. We discuss the role of intracellular signaling pathways in the inflammatory responses produced by astrocytes and microglial activation, including the glycogen synthase kinase-3beta, nuclear factor kappa B cascade, mitogen-activated protein kinase pathways and c-Jun N-terminal kinase. In this review, we describe the role of neuroinflammation in the chronicity of AD pathogenesis and an overview of the recent research towards the development of new therapies to treat this disorder.
+30874945	53	70	neuroinflammation	Disease	MESH:D000090862
+30874945	75	94	Alzheimer's disease	Disease	MESH:D000544
+30874945	96	115	Alzheimer's disease	Disease	MESH:D000544
+30874945	117	119	AD	Disease	MESH:D000544
+30874945	126	151	neurodegenerative disease	Disease	MESH:D019636
+30874945	261	273	Inflammation	Disease	MESH:D007249
+30874945	297	299	AD	Disease	MESH:D000544
+30874945	416	418	AD	Disease	MESH:D000544
+30874945	506	518	amyloid-beta	Gene	351
+30874945	652	664	inflammatory	Disease	MESH:D007249
+30874945	683	705	interleukin (IL)-1beta	Gene	3553
+30874945	707	711	IL-6	Gene	3569
+30874945	717	744	tumor necrosis factor-alpha	Gene	7124
+30874945	746	755	TNF-alpha	Gene	7124
+30874945	772	789	neurodegeneration	Disease	MESH:D019636
+30874945	851	856	Abeta	Gene	351
+30874945	881	886	Abeta	Gene	351
+30874945	941	958	neuroinflammation	Disease	MESH:D000090862
+30874945	966	971	Abeta	Gene	351
+30874945	1027	1039	inflammatory	Disease	MESH:D007249
+30874945	1115	1125	neurotoxic	Disease	MESH:D020258
+30874945	1242	1254	inflammatory	Disease	MESH:D007249
+30874945	1266	1283	neurodegeneration	Disease	MESH:D019636
+30874945	1295	1304	glutamate	Chemical	MESH:D018698
+30874945	1355	1373	cognitive deficits	Disease	MESH:D003072
+30874945	1377	1379	AD	Disease	MESH:D000544
+30874945	1444	1456	inflammatory	Disease	MESH:D007249
+30874945	1531	1561	glycogen synthase kinase-3beta	Gene	2932
+30874945	1706	1723	neuroinflammation	Disease	MESH:D000090862
+30874945	1745	1747	AD	Disease	MESH:D000544
+30874945	Positive_Correlation	MESH:D007249	3553
+30874945	Association	MESH:D019636	3569
+30874945	Association	MESH:D019636	7124
+30874945	Positive_Correlation	MESH:D000090862	351
+30874945	Positive_Correlation	MESH:D007249	351
+30874945	Association	MESH:D018698	MESH:D000544
+30874945	Association	MESH:D007249	2932
+30874945	Positive_Correlation	MESH:D007249	3569
+30874945	Association	MESH:D018698	MESH:D019636
+30874945	Association	MESH:D007249	7124
+
+32087283|t|Neuroprotection by dihydrotestosterone in LPS-induced neuroinflammation.
+32087283|a|Microglia-induced neuroinflammation plays a vital role in the etiology and progression of neurodegenerative diseases, including Alzheimer's disease, Parkinson's disease and multiple sclerosis. The neuroprotective role of androgens, including testosterone and its metabolite dihydrotestosterone (DHT), has been increasingly demonstrated in these diseases, but few studies investigated the effects of androgen on neuroinflammation. This study investigated the role of DHT in lipopolysaccharide (LPS)-induced neuroinflammation, neuronal damage and behavioral dysfunction, as well as underlying mechanisms. We showed that DHT inhibited LPS-induced release of proinflammatory factors, including TNF-alpha, IL-1beta, IL-6; iNOS, COX-2, NO, and PGE2 in BV2 cells and primary microglia by suppressing the TLR4-mediated NF-kappaB and MAPK p38 signaling pathways, thus protecting SH-SY5Y neurons from inflammatory damage induced by activated microglia. In an LPS-induced neuroinflammation mouse model, endogenous DHT depletion by castration exacerbated inflammatory responses by upregulating the levels of TNF-alpha, IL-1beta, IL-6, iNOS, and COX-2 in the serum and brain by increasing the LR4-mediated NF-kappaB and MAPK pathway activation, but these effects were restored by exogenous DHT supplementation. Moreover, DHT also regulated the mRNA levels of the anti-inflammatory cytokines IL-10 and IL-13 in the brain. In addition, DHT modulated the expression of Abeta, the apoptotic proteins caspase-3, Bcl-2, and Bax, and synaptophysin, as well as neuronal damage in LPS-treated mouse brains. Further behavioral tests revealed that DHT ameliorated LPS-induced spatial and learning impairment and motor incoordination, and partly improved the locomotor activity in LPS-injected mice. Therefore, this study suggests that DHT exerts anti-neuroinflammatory and neuroprotective effects; thus, androgen replacement therapy is a potential therapeutic strategy for improving cognitive and behavioral function in neuroinflammation-related diseases.
+32087283	19	38	dihydrotestosterone	Chemical	MESH:D013196
+32087283	42	45	LPS	Chemical	MESH:D008070
+32087283	54	71	neuroinflammation	Disease	MESH:D000090862
+32087283	73	82	Microglia	Disease	-
+32087283	91	108	neuroinflammation	Disease	MESH:D000090862
+32087283	163	189	neurodegenerative diseases	Disease	MESH:D019636
+32087283	201	220	Alzheimer's disease	Disease	MESH:D000544
+32087283	222	241	Parkinson's disease	Disease	MESH:D010300
+32087283	246	264	multiple sclerosis	Disease	MESH:D009103
+32087283	315	327	testosterone	Chemical	MESH:D013739
+32087283	347	366	dihydrotestosterone	Chemical	MESH:D013196
+32087283	368	371	DHT	Chemical	MESH:D013196
+32087283	484	501	neuroinflammation	Disease	MESH:D000090862
+32087283	539	542	DHT	Chemical	MESH:D013196
+32087283	546	564	lipopolysaccharide	Chemical	MESH:D008070
+32087283	566	569	LPS	Chemical	MESH:D008070
+32087283	579	596	neuroinflammation	Disease	MESH:D000090862
+32087283	598	613	neuronal damage	Disease	MESH:D009410
+32087283	618	640	behavioral dysfunction	Disease	MESH:D001523
+32087283	691	694	DHT	Chemical	MESH:D013196
+32087283	705	708	LPS	Chemical	MESH:D008070
+32087283	763	772	TNF-alpha	Gene	21926
+32087283	774	782	IL-1beta	Gene	16176
+32087283	784	788	IL-6	Gene	16193
+32087283	790	794	iNOS	Gene	18126
+32087283	796	801	COX-2	Gene	17709
+32087283	811	815	PGE2	Chemical	MESH:D015232
+32087283	819	822	BV2	CellLine	CVCL:0182
+32087283	841	850	microglia	Disease	-
+32087283	870	874	TLR4	Gene	21898
+32087283	884	893	NF-kappaB	Gene	18033
+32087283	943	958	SH-SY5Y neurons	CellLine	CVCL:0019
+32087283	964	983	inflammatory damage	Disease	MESH:D018746
+32087283	1005	1014	microglia	Disease	-
+32087283	1022	1025	LPS	Chemical	MESH:D008070
+32087283	1034	1051	neuroinflammation	Disease	MESH:D000090862
+32087283	1052	1057	mouse	Species	10090
+32087283	1076	1079	DHT	Chemical	MESH:D013196
+32087283	1116	1128	inflammatory	Disease	MESH:D007249
+32087283	1169	1178	TNF-alpha	Gene	21926
+32087283	1180	1188	IL-1beta	Gene	16176
+32087283	1190	1194	IL-6	Gene	16193
+32087283	1196	1200	iNOS	Gene	18126
+32087283	1206	1211	COX-2	Gene	17709
+32087283	1266	1275	NF-kappaB	Gene	18033
+32087283	1350	1353	DHT	Chemical	MESH:D013196
+32087283	1381	1384	DHT	Chemical	MESH:D013196
+32087283	1428	1440	inflammatory	Disease	MESH:D007249
+32087283	1451	1456	IL-10	Gene	16153
+32087283	1461	1466	IL-13	Gene	16163
+32087283	1494	1497	DHT	Chemical	MESH:D013196
+32087283	1526	1531	Abeta	Gene	11820
+32087283	1556	1565	caspase-3	Gene	12367
+32087283	1567	1572	Bcl-2	Gene	12043
+32087283	1578	1581	Bax	Gene	12028
+32087283	1587	1600	synaptophysin	Gene	20977
+32087283	1613	1628	neuronal damage	Disease	MESH:D009410
+32087283	1632	1635	LPS	Chemical	MESH:D008070
+32087283	1644	1649	mouse	Species	10090
+32087283	1697	1700	DHT	Chemical	MESH:D013196
+32087283	1713	1716	LPS	Chemical	MESH:D008070
+32087283	1733	1756	and learning impairment	Disease	MESH:D007859
+32087283	1761	1781	motor incoordination	Disease	MESH:D002524
+32087283	1829	1832	LPS	Chemical	MESH:D008070
+32087283	1842	1846	mice	Species	10090
+32087283	1884	1887	DHT	Chemical	MESH:D013196
+32087283	1900	1917	neuroinflammatory	Disease	MESH:D000090862
+32087283	2069	2086	neuroinflammation	Disease	MESH:D000090862
+32087283	Negative_Correlation	MESH:D013196	MESH:D001523
+32087283	Negative_Correlation	MESH:D013196	MESH:D018746
+32087283	Positive_Correlation	MESH:D013196	16193
+32087283	Negative_Correlation	MESH:D013196	18126
+32087283	Positive_Correlation	MESH:D008070	MESH:D001523
+32087283	Negative_Correlation	MESH:D013196	MESH:D002524
+32087283	Negative_Correlation	MESH:D013196	21898
+32087283	Association	MESH:D013196	12043
+32087283	Positive_Correlation	MESH:D007249	16193
+32087283	Positive_Correlation	MESH:D008070	16193
+32087283	Positive_Correlation	MESH:D008070	MESH:D009410
+32087283	Negative_Correlation	MESH:D013196	MESH:D007859
+32087283	Association	MESH:D013196	12367
+32087283	Positive_Correlation	MESH:D008070	17709
+32087283	Positive_Correlation	MESH:D013196	16153
+32087283	Positive_Correlation	MESH:D008070	16176
+32087283	Negative_Correlation	MESH:D008070	MESH:D013196
+32087283	Negative_Correlation	MESH:D013196	MESH:D000090862
+32087283	Positive_Correlation	MESH:D007249	16176
+32087283	Positive_Correlation	MESH:D013196	16176
+32087283	Positive_Correlation	MESH:D008070	21926
+32087283	Association	MESH:D013196	11820
+32087283	Positive_Correlation	MESH:D008070	MESH:D000090862
+32087283	Positive_Correlation	MESH:D013196	17709
+32087283	Negative_Correlation	MESH:D013196	18033
+32087283	Association	MESH:D013196	20977
+32087283	Association	MESH:D013196	MESH:D009410
+32087283	Association	17709	18033
+32087283	Association	MESH:D013196	12028
+32087283	Positive_Correlation	MESH:D008070	MESH:D015232
+32087283	Association	18033	21898
+32087283	Positive_Correlation	MESH:D008070	MESH:D007859
+32087283	Association	MESH:D007249	17709
+32087283	Positive_Correlation	MESH:D013196	21926
+32087283	Positive_Correlation	MESH:D013196	16163
+32087283	Positive_Correlation	MESH:D013196	MESH:D007249
+32087283	Negative_Correlation	MESH:D013196	MESH:D015232
+32087283	Positive_Correlation	MESH:D007249	18126
+32087283	Positive_Correlation	MESH:D008070	18126
+
+34813026|t|Recent advances in molecular pathways and therapeutic implications targeting neuroinflammation for Alzheimer's disease.
+34813026|a|Alzheimer's disease (AD) is a major contributor of dementia leading to the degeneration of neurons in the brain with major symptoms like loss of memory and learning. Many evidences suggest the involvement of neuroinflammation in the pathology of AD. Cytokines including TNF-alpha and IL-6 are also found increasing the BACE1 activity and expression of NFkappaB resulting in generation of Abeta in AD brain. Following the interaction of Abeta with microglia and astrocytes, other inflammatory molecules also get translocated to the site of inflammation by chemotaxis and exaggerate neuroinflammation. Various pathways like NFkappaB, p38 MAPK, Akt/mTOR, caspase, nitric oxide and COX trigger microglia to release inflammatory cytokines. PPARgamma agonists like pioglitazone increases the phagocytosis of Abeta and reduces inflammatory cytokine IL-1beta. Celecoxib and roficoxib like selective COX-2 inhibitors also ameliorate neuroinflammation. Non-selective COX inhibitor indomethacin is also potent inhibitor of inflammatory mediators released from microglia. Mitophagy process is considered quite helpful in reducing inflammation due to microglia as it promotes the phagocytosis of over activated microglial cells and other inflammatory cells. Mitophagy induction is also beneficial in the removal of damaged mitochondria and reduction of infiltration of inflammatory molecules at the site of accumulation of the damaged mitochondria. Targeting these pathways and eventually ameliorating the activation of microglia can mitigate neuroinflammation and come out as a better therapeutic option for the treatment of Alzheimer's disease.
+34813026	77	94	neuroinflammation	Disease	MESH:D000090862
+34813026	99	118	Alzheimer's disease	Disease	MESH:D000544
+34813026	120	139	Alzheimer's disease	Disease	MESH:D000544
+34813026	141	143	AD	Disease	MESH:D000544
+34813026	171	179	dementia	Disease	MESH:D003704
+34813026	257	284	loss of memory and learning	Disease	MESH:D007859
+34813026	328	345	neuroinflammation	Disease	MESH:D000090862
+34813026	366	368	AD	Disease	MESH:D000544
+34813026	390	399	TNF-alpha	Gene	7124
+34813026	404	408	IL-6	Gene	3569
+34813026	439	444	BACE1	Gene	23621
+34813026	472	480	NFkappaB	Gene	4790
+34813026	508	513	Abeta	Gene	351
+34813026	517	519	AD	Disease	MESH:D000544
+34813026	556	561	Abeta	Gene	351
+34813026	599	611	inflammatory	Disease	MESH:D007249
+34813026	659	671	inflammation	Disease	MESH:D007249
+34813026	701	718	neuroinflammation	Disease	MESH:D000090862
+34813026	742	750	NFkappaB	Gene	4790
+34813026	762	765	Akt	Gene	207
+34813026	766	770	mTOR	Gene	2475
+34813026	781	793	nitric oxide	Chemical	MESH:D009569
+34813026	798	801	COX	Gene	1351
+34813026	831	843	inflammatory	Disease	MESH:D007249
+34813026	879	891	pioglitazone	Chemical	MESH:D000077205
+34813026	922	927	Abeta	Gene	351
+34813026	940	952	inflammatory	Disease	MESH:D007249
+34813026	962	970	IL-1beta	Gene	3553
+34813026	972	981	Celecoxib	Chemical	MESH:D000068579
+34813026	986	995	roficoxib	Chemical	-
+34813026	1044	1061	neuroinflammation	Disease	MESH:D000090862
+34813026	1077	1080	COX	Gene	1351
+34813026	1091	1103	indomethacin	Chemical	MESH:D007213
+34813026	1132	1144	inflammatory	Disease	MESH:D007249
+34813026	1238	1250	inflammation	Disease	MESH:D007249
+34813026	1345	1357	inflammatory	Disease	MESH:D007249
+34813026	1476	1488	inflammatory	Disease	MESH:D007249
+34813026	1650	1667	neuroinflammation	Disease	MESH:D000090862
+34813026	1733	1752	Alzheimer's disease	Disease	MESH:D000544
+34813026	Association	MESH:D000544	3569
+34813026	Positive_Correlation	351	7124
+34813026	Positive_Correlation	MESH:D009569	MESH:D007249
+34813026	Association	MESH:D007249	1351
+34813026	Negative_Correlation	MESH:D007213	1351
+34813026	Association	MESH:D000077205	351
+34813026	Positive_Correlation	4790	7124
+34813026	Negative_Correlation	MESH:D000077205	3553
+34813026	Association	MESH:D000544	7124
+34813026	Negative_Correlation	MESH:D000068579	MESH:D000090862
+34813026	Negative_Correlation	MESH:D000077205	MESH:D007249
+34813026	Negative_Correlation	MESH:D007213	MESH:D007249
+34813026	Association	MESH:D007249	207
+34813026	Association	MESH:D000544	4790
+34813026	Association	MESH:D007249	3553
+34813026	Positive_Correlation	23621	3569
+34813026	Positive_Correlation	351	3569
+34813026	Positive_Correlation	23621	7124
+34813026	Positive_Correlation	3569	4790
+34813026	Association	MESH:D000544	351
+
+35130907|t|Exosomes derived from bone-marrow mesenchymal stem cells alleviate cognitive decline in AD-like mice by improving BDNF-related neuropathology.
+35130907|a|BACKGROUND: Alzheimer's disease (AD) is a neurodegenerative disease characterized by a progressive decline in cognitive ability. Exosomes derived from bone-marrow mesenchymal stem cells (BMSC-exos) are extracellular vesicles that can execute the function of bone-marrow mesenchymal stem cells (BMSCs). Given the versatile therapeutic potential of BMSC and BMSC-exos, especially their neuroprotective effect, the aim of this study was to investigate the potential effect of BMSC-exos on AD-like behavioral dysfunction in mice and explore the possible molecular mechanism. METHODS: BMSC-exos were extracted from the supernatant of cultured mouse BMSCs, which were isolated from the femur and tibia of adult C57BL/6 mice, purified and sorted via flow cytometry, and cultured in vitro. BMSC-exos were identified via transmission electron microscopy, and typical marker proteins of exosomes were also detected via Western blot. A sporadic AD mouse model was established by intracerebroventricular injection of streptozotocin (STZ). Six weeks later, BMSC-exos were administered via lateral ventricle injection or caudal vein injection lasting five consecutive days, and the control mice were intracerebroventricularly administered an equal volume of solvent. Behavioral performance was observed via the open field test (OFT), elevated plus maze test (EPM), novel object recognition test (NOR), Y maze test (Y-maze), and tail suspension test (TST). The mRNA and protein expression levels of IL-1beta, IL-6, and TNF-alpha in the hippocampus were measured via quantitative polymerase chain reaction (qPCR) and Western blot, respectively. Moreover, the protein expression of Abeta1-42, BACE, IL-1beta, IL-6, TNF-alpha, GFAP, p-Tau (Ser396), Tau5, synaptotagmin-1 (Syt-1), synapsin-1, and brain-derived neurotrophic factor (BDNF) in the hippocampus was detected using Western blot, and the expression of GFAP, IBA1, Abeta1-42 and DCX in the hippocampus was measured via immunofluorescence staining. RESULTS: Lateral ventricle administration, but not caudal vein injection of BMSC-exos improved AD-like behaviors in the STZ-injected mouse model, as indicated by the increased number of rearing, increased frequency to the central area, and increased duration and distance traveled in the central area in the OFT, and improved preference index of the novel object in the NOR. Moreover, the hyperactivation of microglia and astrocytes in the hippocampus of the model mice was inhibited after treatment with BMSC-exos via lateral ventricle administration, accompanied by the reduced expression of IL-1beta, IL-6, TNF-alpha, Abeta1-42, and p-Tau and upregulated protein expression of synapse-related proteins and BDNF. Furthermore, the results of the Pearson test showed that the preference index of the novel object in the NOR was positively correlated with the hippocampal expression of BDNF, but negatively correlated with the expression of GFAP, IBA1, and IL-1beta. Apart from a positive correlation between the hippocampal expression of BDNF and Syt-1, BDNF abundance was found to be negatively correlated with markers of glial activation and the expression of the inflammatory cytokines, Abeta1-42, and p-Tau, which are characteristic neuropathological features of AD. CONCLUSIONS: Lateral ventricle administration, but not caudal vein injection of BMSC-exos, can improve AD-like behavioral performance in STZ-injected mice, the mechanism of which might be involved in the regulation of glial activation and its associated neuroinflammation and BDNF-related neuropathological changes in the hippocampus.
+35130907	67	84	cognitive decline	Disease	MESH:D003072
+35130907	88	90	AD	Disease	MESH:D000544
+35130907	96	100	mice	Species	10090
+35130907	114	118	BDNF	Gene	12064
+35130907	155	174	Alzheimer's disease	Disease	MESH:D000544
+35130907	176	178	AD	Disease	MESH:D000544
+35130907	185	210	neurodegenerative disease	Disease	MESH:D019636
+35130907	242	270	decline in cognitive ability	Disease	MESH:D003072
+35130907	330	334	BMSC	CellLine	CVCL:B6BB
+35130907	490	494	BMSC	CellLine	CVCL:B6BB
+35130907	499	503	BMSC	CellLine	CVCL:B6BB
+35130907	616	620	BMSC	CellLine	CVCL:B6BB
+35130907	629	631	AD	Disease	MESH:D000544
+35130907	637	659	behavioral dysfunction	Disease	MESH:D001523
+35130907	663	667	mice	Species	10090
+35130907	723	727	BMSC	CellLine	CVCL:B6BB
+35130907	781	786	mouse	Species	10090
+35130907	848	855	C57BL/6	CellLine	CVCL:C0MU
+35130907	856	860	mice	Species	10090
+35130907	925	929	BMSC	CellLine	CVCL:B6BB
+35130907	1077	1079	AD	Disease	MESH:D000544
+35130907	1080	1085	mouse	Species	10090
+35130907	1148	1162	streptozotocin	Chemical	MESH:D013311
+35130907	1164	1167	STZ	Chemical	MESH:D013311
+35130907	1187	1191	BMSC	CellLine	CVCL:B6BB
+35130907	1319	1323	mice	Species	10090
+35130907	1627	1635	IL-1beta	Gene	16176
+35130907	1637	1641	IL-6	Gene	16193
+35130907	1647	1656	TNF-alpha	Gene	21926
+35130907	1819	1823	BACE	Gene	23821
+35130907	1825	1833	IL-1beta	Gene	16176
+35130907	1835	1839	IL-6	Gene	16193
+35130907	1841	1850	TNF-alpha	Gene	21926
+35130907	1852	1856	GFAP	Gene	14580
+35130907	1880	1895	synaptotagmin-1	Gene	20979
+35130907	1897	1902	Syt-1	Gene	20979
+35130907	1905	1915	synapsin-1	Gene	20964
+35130907	1921	1954	brain-derived neurotrophic factor	Gene	12064
+35130907	1956	1960	BDNF	Gene	12064
+35130907	2036	2040	GFAP	Gene	14580
+35130907	2042	2046	IBA1	Gene	114737
+35130907	2062	2065	DCX	Gene	13193
+35130907	2207	2211	BMSC	CellLine	CVCL:B6BB
+35130907	2226	2228	AD	Disease	MESH:D000544
+35130907	2251	2254	STZ	Chemical	MESH:D013311
+35130907	2264	2269	mouse	Species	10090
+35130907	2596	2600	mice	Species	10090
+35130907	2636	2640	BMSC	CellLine	CVCL:B6BB
+35130907	2725	2733	IL-1beta	Gene	16176
+35130907	2735	2739	IL-6	Gene	16193
+35130907	2741	2750	TNF-alpha	Gene	21926
+35130907	2840	2844	BDNF	Gene	12064
+35130907	3016	3020	BDNF	Gene	12064
+35130907	3071	3075	GFAP	Gene	14580
+35130907	3077	3081	IBA1	Gene	114737
+35130907	3087	3095	IL-1beta	Gene	16176
+35130907	3169	3173	BDNF	Gene	12064
+35130907	3178	3183	Syt-1	Gene	20979
+35130907	3185	3189	BDNF	Gene	12064
+35130907	3297	3309	inflammatory	Disease	MESH:D007249
+35130907	3398	3400	AD	Disease	MESH:D000544
+35130907	3482	3486	BMSC	CellLine	CVCL:B6BB
+35130907	3505	3507	AD	Disease	MESH:D000544
+35130907	3539	3542	STZ	Chemical	MESH:D013311
+35130907	3552	3556	mice	Species	10090
+35130907	3656	3673	neuroinflammation	Disease	MESH:D000090862
+35130907	3678	3682	BDNF	Gene	12064
+35130907	3691	3716	neuropathological changes	Disease	MESH:C000723354
+35130907	Association	MESH:D003072	12064
+35130907	Positive_Correlation	MESH:D013311	MESH:D000544
+
+36835494|t|TOMM40 Genetic Variants Cause Neuroinflammation in Alzheimer's Disease.
+36835494|a|Translocase of outer mitochondrial membrane 40 (TOMM40) is located in the outer membrane of mitochondria. TOMM40 is essential for protein import into mitochondria. TOMM40 genetic variants are believed to increase the risk of Alzheimer's disease (AD) in different populations. In this study, three exonic variants (rs772262361, rs157581, and rs11556505) and three intronic variants (rs157582, rs184017, and rs2075650) of the TOMM40 gene were identified from Taiwanese AD patients using next-generation sequencing. Associations between the three TOMM40 exonic variants and AD susceptibility were further evaluated in another AD cohort. Our results showed that rs157581 (c.339T > C, p.Phe113Leu, F113L) and rs11556505 (c.393C > T, p.Phe131Leu, F131L) were associated with an increased risk of AD. We further utilized cell models to examine the role of TOMM40 variation in mitochondrial dysfunction that causes microglial activation and neuroinflammation. When expressed in BV2 microglial cells, the AD-associated mutant (F113L) or (F131L) TOMM40 induced mitochondrial dysfunction and oxidative stress-induced activation of microglia and NLRP3 inflammasome. Pro-inflammatory TNF-alpha, IL-1beta, and IL-6 released by mutant (F113L) or (F131L) TOMM40-activated BV2 microglial cells caused cell death of hippocampal neurons. Taiwanese AD patients carrying TOMM40 missense (F113L) or (F131L) variants displayed an increased plasma level of inflammatory cytokines IL-6, IL-18, IL-33, and COX-2. Our results provide evidence that TOMM40 exonic variants, including rs157581 (F113L) and rs11556505 (F131L), increase the AD risk of the Taiwanese population. Further studies suggest that AD-associated mutant (F113L) or (F131L) TOMM40 cause the neurotoxicity of hippocampal neurons by inducing the activation of microglia and NLRP3 inflammasome and the release of pro-inflammatory cytokines.
+36835494	0	6	TOMM40	Gene	10452
+36835494	30	47	Neuroinflammation	Disease	MESH:D000090862
+36835494	51	70	Alzheimer's Disease	Disease	MESH:D000544
+36835494	72	118	Translocase of outer mitochondrial membrane 40	Gene	10452
+36835494	120	126	TOMM40	Gene	10452
+36835494	178	184	TOMM40	Gene	10452
+36835494	236	242	TOMM40	Gene	10452
+36835494	297	316	Alzheimer's disease	Disease	MESH:D000544
+36835494	318	320	AD	Disease	MESH:D000544
+36835494	386	397	rs772262361	SNP	tmVar:rs772262361;VariantGroup:2;CorrespondingGene:10452;RS#:772262361;CorrespondingSpecies:9606
+36835494	399	407	rs157581	SNP	tmVar:rs157581;VariantGroup:3;CorrespondingGene:10452;RS#:157581;CorrespondingSpecies:9606
+36835494	413	423	rs11556505	SNP	tmVar:rs11556505;VariantGroup:1;CorrespondingGene:10452;RS#:11556505;CorrespondingSpecies:9606
+36835494	454	462	rs157582	SNP	tmVar:rs157582;VariantGroup:5;CorrespondingGene:10452;RS#:157582;CorrespondingSpecies:9606
+36835494	464	472	rs184017	SNP	tmVar:rs184017;VariantGroup:4;CorrespondingGene:10452;RS#:184017;CorrespondingSpecies:9606
+36835494	478	487	rs2075650	SNP	tmVar:rs2075650;VariantGroup:0;CorrespondingGene:10452;RS#:2075650;CorrespondingSpecies:9606
+36835494	496	502	TOMM40	Gene	10452
+36835494	539	541	AD	Disease	MESH:D000544
+36835494	542	550	patients	Species	9606
+36835494	616	622	TOMM40	Gene	10452
+36835494	643	645	AD	Disease	MESH:D000544
+36835494	695	697	AD	Disease	MESH:D000544
+36835494	730	738	rs157581	SNP	tmVar:rs157581;VariantGroup:3;CorrespondingGene:10452;RS#:157581;CorrespondingSpecies:9606
+36835494	740	750	c.339T > C	DNAMutation	tmVar:c|SUB|T|339|C;HGVS:c.339T>C;VariantGroup:3;CorrespondingGene:10452;RS#:157581;CorrespondingSpecies:9606;CA#:9505600
+36835494	752	763	p.Phe113Leu	ProteinMutation	tmVar:p|SUB|F|113|L;HGVS:p.F113L;VariantGroup:3;CorrespondingGene:10452;RS#:157581;CorrespondingSpecies:9606
+36835494	765	770	F113L	ProteinMutation	tmVar:p|SUB|F|113|L;HGVS:p.F113L;VariantGroup:3;CorrespondingGene:10452;RS#:157581;CorrespondingSpecies:9606
+36835494	776	786	rs11556505	SNP	tmVar:rs11556505;VariantGroup:1;CorrespondingGene:10452;RS#:11556505;CorrespondingSpecies:9606
+36835494	788	798	c.393C > T	DNAMutation	tmVar:c|SUB|C|393|T;HGVS:c.393C>T;VariantGroup:1;CorrespondingGene:10452;RS#:11556505;CorrespondingSpecies:9606;CA#:9505634
+36835494	800	811	p.Phe131Leu	ProteinMutation	tmVar:p|SUB|F|131|L;HGVS:p.F131L;VariantGroup:1;CorrespondingGene:10452;RS#:11556505;CorrespondingSpecies:9606
+36835494	813	818	F131L	ProteinMutation	tmVar:p|SUB|F|131|L;HGVS:p.F131L;VariantGroup:1;CorrespondingGene:10452;RS#:11556505;CorrespondingSpecies:9606
+36835494	862	864	AD	Disease	MESH:D000544
+36835494	921	927	TOMM40	Gene	10452
+36835494	941	966	mitochondrial dysfunction	Disease	MESH:D028361
+36835494	1005	1022	neuroinflammation	Disease	MESH:D000090862
+36835494	1042	1045	BV2	CellLine	CVCL:0182
+36835494	1068	1070	AD	Disease	MESH:D000544
+36835494	1090	1095	F113L	ProteinMutation	tmVar:p|SUB|F|113|L;HGVS:p.F113L;VariantGroup:3;CorrespondingGene:10452;RS#:157581;CorrespondingSpecies:9606
+36835494	1101	1106	F131L	ProteinMutation	tmVar:p|SUB|F|131|L;HGVS:p.F131L;VariantGroup:1;CorrespondingGene:10452;RS#:11556505;CorrespondingSpecies:9606
+36835494	1108	1114	TOMM40	Gene	10452
+36835494	1123	1148	mitochondrial dysfunction	Disease	MESH:D028361
+36835494	1206	1211	NLRP3	Gene	216799
+36835494	1230	1242	inflammatory	Disease	MESH:D007249
+36835494	1243	1252	TNF-alpha	Gene	21926
+36835494	1254	1262	IL-1beta	Gene	16176
+36835494	1268	1272	IL-6	Gene	16193
+36835494	1293	1298	F113L	ProteinMutation	tmVar:p|SUB|F|113|L;HGVS:p.F113L;VariantGroup:3;CorrespondingGene:10452;RS#:157581;CorrespondingSpecies:9606
+36835494	1304	1309	F131L	ProteinMutation	tmVar:p|SUB|F|131|L;HGVS:p.F131L;VariantGroup:1;CorrespondingGene:10452;RS#:11556505;CorrespondingSpecies:9606
+36835494	1311	1317	TOMM40	Gene	10452
+36835494	1328	1331	BV2	CellLine	CVCL:0182
+36835494	1401	1403	AD	Disease	MESH:D000544
+36835494	1404	1412	patients	Species	9606
+36835494	1422	1428	TOMM40	Gene	10452
+36835494	1439	1444	F113L	ProteinMutation	tmVar:p|SUB|F|113|L;HGVS:p.F113L;VariantGroup:3;CorrespondingGene:10452;RS#:157581;CorrespondingSpecies:9606
+36835494	1450	1455	F131L	ProteinMutation	tmVar:p|SUB|F|131|L;HGVS:p.F131L;VariantGroup:1;CorrespondingGene:10452;RS#:11556505;CorrespondingSpecies:9606
+36835494	1505	1517	inflammatory	Disease	MESH:D007249
+36835494	1528	1532	IL-6	Gene	3569
+36835494	1534	1539	IL-18	Gene	3606
+36835494	1541	1546	IL-33	Gene	90865
+36835494	1552	1557	COX-2	Gene	4513
+36835494	1593	1599	TOMM40	Gene	10452
+36835494	1627	1635	rs157581	SNP	tmVar:rs157581;VariantGroup:3;CorrespondingGene:10452;RS#:157581;CorrespondingSpecies:9606
+36835494	1637	1642	F113L	ProteinMutation	tmVar:p|SUB|F|113|L;HGVS:p.F113L;VariantGroup:3;CorrespondingGene:10452;RS#:157581;CorrespondingSpecies:9606
+36835494	1648	1658	rs11556505	SNP	tmVar:rs11556505;VariantGroup:1;CorrespondingGene:10452;RS#:11556505;CorrespondingSpecies:9606
+36835494	1660	1665	F131L	ProteinMutation	tmVar:p|SUB|F|131|L;HGVS:p.F131L;VariantGroup:1;CorrespondingGene:10452;RS#:11556505;CorrespondingSpecies:9606
+36835494	1681	1683	AD	Disease	MESH:D000544
+36835494	1747	1749	AD	Disease	MESH:D000544
+36835494	1769	1774	F113L	ProteinMutation	tmVar:p|SUB|F|113|L;HGVS:p.F113L;VariantGroup:3;CorrespondingGene:10452;RS#:157581;CorrespondingSpecies:9606
+36835494	1780	1785	F131L	ProteinMutation	tmVar:p|SUB|F|131|L;HGVS:p.F131L;VariantGroup:1;CorrespondingGene:10452;RS#:11556505;CorrespondingSpecies:9606
+36835494	1787	1793	TOMM40	Gene	10452
+36835494	1804	1817	neurotoxicity	Disease	MESH:D020258
+36835494	1885	1890	NLRP3	Gene	216799
+36835494	1927	1939	inflammatory	Disease	MESH:D007249
+36835494	Positive_Correlation	10452	16193
+36835494	Association	MESH:D000544	RS#:2075650
+36835494	Positive_Correlation	MESH:D000544	RS#:157581
+36835494	Association	MESH:D007249	10452
+36835494	Positive_Correlation	MESH:D007249	RS#:157581
+36835494	Positive_Correlation	MESH:D028361	RS#:157581
+36835494	Positive_Correlation	RS#:157581;HGVS:c.339T>C;CorrespondingGene:10452	MESH:D000544
+36835494	Positive_Correlation	MESH:D007249	RS#:157581
+36835494	Positive_Correlation	MESH:D007249	RS#:11556505
+36835494	Positive_Correlation	MESH:D028361	RS#:772262361
+36835494	Positive_Correlation	MESH:D000544	RS#:157581
+36835494	Positive_Correlation	MESH:D000544	RS#:772262361
+36835494	Positive_Correlation	MESH:D028361	RS#:157581
+36835494	Association	10452	90865
+36835494	Positive_Correlation	RS#:11556505;HGVS:c.393C>T;CorrespondingGene:10452	MESH:D000544
+36835494	Positive_Correlation	MESH:D000544	RS#:11556505
+36835494	Association	MESH:D000544	90865
+36835494	Association	MESH:D000090862	RS#:11556505
+36835494	Association	MESH:D028361	10452
+36835494	Association	MESH:D000544	RS#:184017
+36835494	Positive_Correlation	MESH:D000544	RS#:157581
+36835494	Positive_Correlation	MESH:D007249	RS#:11556505
+36835494	Positive_Correlation	MESH:D000544	RS#:772262361
+36835494	Positive_Correlation	MESH:D028361	RS#:11556505
+36835494	Association	10452	4513
+36835494	Association	MESH:D007249	3606
+36835494	Association	10452	3569
+36835494	Positive_Correlation	MESH:D028361	RS#:11556505
+36835494	Association	MESH:D020258	RS#:772262361
+36835494	Association	MESH:D000544	216799
+36835494	Association	MESH:D000544	RS#:157582
+36835494	Association	MESH:D000544	3606
+36835494	Association	MESH:D007249	90865
+36835494	Positive_Correlation	10452	21926
+36835494	Association	MESH:D000544	10452
+36835494	Positive_Correlation	MESH:D000544	RS#:11556505
+36835494	Positive_Correlation	10452	216799
+36835494	Association	MESH:D000090862	10452
+36835494	Positive_Correlation	10452	16176
+36835494	Association	MESH:D000544	3569
+36835494	Association	MESH:D000544	4513
+36835494	Association	MESH:D007249	RS#:772262361
+36835494	Positive_Correlation	MESH:D000544	RS#:11556505
+36835494	Association	10452	3606
+36835494	Association	MESH:D007249	3569
+36835494	Association	MESH:D007249	4513
+36835494	Association	MESH:D000544	10452
+36835494	Association	MESH:D007249	10452
+36835494	Association	MESH:D028361	10452
+36835494	Association	MESH:D000090862	10452
+36835494	Association	MESH:D020258	10452
+
+38507186|t|Proteomic analysis of P. gingivalis-Lipopolysaccharide induced neuroinflammation in SH-SY5Y and HMC3 cells.
+38507186|a|Chronic periodontitis and its keystone pathogen, Porphyromonas gingivalis, have increasingly been linked with Alzheimer's disease (AD). However, P.gingivalis-lipopolysaccharide (LPS) mediated release of neuroinflammatory proteins contributes to AD remains underexplored. In this study, we utilized data-independent acquisition mass spectrometry to characterize P.gingivalis-LPS induced profile of differentially expressed proteins associated with the neuroinflammatory response in human neuroblastoma (SH-SY5Y) and human microglial (HMC3) cells. We reported a set of 124 proteins in SH-SY5Y cells and 96 proteins in HMC3 cells whose levels were significantly upregulated or downregulated by exposure to P. gingivalis-LPS. Our findings demonstrate that P. gingivalis-LPS contributed to the elevated expressions of dementia biomarkers and pro-inflammatory cytokines that include APP, Abeta1-42, Abeta1-40, T-Tau, p-Tau, VEGF, TGF-beta, IL-1beta, IL-6 and TNF-alpha through 2 distinct pathways of extracellular sensing by cell surface receptors and intracellular cytosolic receptors. Interestingly, intracellular signaling proteins activated with P. gingivalis-LPS transfection using Lipofectamine  2000 had significantly higher fold change protein expression compared to the extracellular signaling with P. gingivalis-LPS treatment. Additionally, we also explored P. gingivalis-LPS mediated activation of caspase-4 dependent non canonical inflammasome pathway in both SH-SY5Y and HMC3 cells. In summary, P. gingivalis-LPS induced neuroinflammatory protein expression in SH-SY5Y and HMC3 cells, provided insights into the specific inflammatory pathways underlying the potential link between P. gingivalis-LPS infection and the pathogenesis of Alzheimer's disease and related dementias.
+38507186	22	35	P. gingivalis	Species	837
+38507186	36	54	Lipopolysaccharide	Chemical	MESH:D008070
+38507186	63	80	neuroinflammation	Disease	MESH:D000090862
+38507186	84	91	SH-SY5Y	CellLine	CVCL:0019
+38507186	96	100	HMC3	CellLine	CVCL:II76
+38507186	108	129	Chronic periodontitis	Disease	MESH:D055113
+38507186	157	181	Porphyromonas gingivalis	Species	837
+38507186	218	237	Alzheimer's disease	Disease	MESH:D000544
+38507186	239	241	AD	Disease	MESH:D000544
+38507186	253	265	P.gingivalis	Species	837
+38507186	266	284	lipopolysaccharide	Chemical	MESH:D008070
+38507186	286	289	LPS	Chemical	-
+38507186	353	355	AD	Disease	MESH:D000544
+38507186	469	481	P.gingivalis	Species	837
+38507186	482	485	LPS	Chemical	-
+38507186	559	576	neuroinflammatory	Disease	MESH:D000090862
+38507186	589	594	human	Species	9606
+38507186	595	608	neuroblastoma	Disease	MESH:D009447
+38507186	610	617	SH-SY5Y	CellLine	CVCL:0019
+38507186	623	628	human	Species	9606
+38507186	641	645	HMC3	CellLine	CVCL:II76
+38507186	691	698	SH-SY5Y	CellLine	CVCL:0019
+38507186	724	728	HMC3	CellLine	CVCL:II76
+38507186	811	824	P. gingivalis	Species	837
+38507186	825	828	LPS	Chemical	-
+38507186	860	873	P. gingivalis	Species	837
+38507186	874	877	LPS	Chemical	-
+38507186	921	929	dementia	Disease	MESH:D003704
+38507186	949	961	inflammatory	Disease	MESH:D007249
+38507186	985	988	APP	Gene	351
+38507186	1021	1024	Tau	Gene	4137
+38507186	1026	1030	VEGF	Gene	7422
+38507186	1032	1040	TGF-beta	Gene	7040
+38507186	1042	1050	IL-1beta	Gene	3553
+38507186	1052	1056	IL-6	Gene	3569
+38507186	1061	1070	TNF-alpha	Gene	7124
+38507186	1252	1265	P. gingivalis	Species	837
+38507186	1266	1269	LPS	Chemical	-
+38507186	1289	1308	Lipofectamine  2000	Chemical	MESH:C086724
+38507186	1410	1423	P. gingivalis	Species	837
+38507186	1424	1427	LPS	Chemical	-
+38507186	1470	1483	P. gingivalis	Species	837
+38507186	1484	1487	LPS	Chemical	-
+38507186	1511	1520	caspase-4	Gene	837
+38507186	1574	1581	SH-SY5Y	CellLine	CVCL:0019
+38507186	1586	1590	HMC3	CellLine	CVCL:II76
+38507186	1610	1623	P. gingivalis	Species	837
+38507186	1624	1627	LPS	Chemical	-
+38507186	1636	1661	neuroinflammatory protein	Disease	MESH:D000090862
+38507186	1676	1683	SH-SY5Y	CellLine	CVCL:0019
+38507186	1688	1692	HMC3	CellLine	CVCL:II76
+38507186	1736	1748	inflammatory	Disease	MESH:D007249
+38507186	1796	1809	P. gingivalis	Species	837
+38507186	1810	1813	LPS	Chemical	-
+38507186	1814	1823	infection	Disease	MESH:D007239
+38507186	1848	1867	Alzheimer's disease	Disease	MESH:D000544
+38507186	1880	1889	dementias	Disease	MESH:D003704
+38507186	Association	MESH:D007249	7040
+38507186	Positive_Correlation	MESH:D008070	MESH:D000090862
+38507186	Association	MESH:D007249	7422
+38507186	Association	MESH:D008070	MESH:D000544
+38507186	Association	MESH:D007249	3553
+38507186	Association	MESH:D007249	3569
+38507186	Association	MESH:D007249	4137
+38507186	Association	MESH:D007249	7124
+
+38695373|t|Pomegranate polyphenol punicalin ameliorates lipopolysaccharide-induced memory impairment, behavioral disorders, oxidative stress, and neuroinflammation via inhibition of TLR4-NF-kB pathway.
+38695373|a|Neuroinflammation may play an important role in the development of Alzheimer's disease (AD). Previous studies have reported that lipopolysaccharide (LPS)-induced neuroinflammation causes memory impairments and behavioral disorders. We investigated the potential preventive effects of punicalin (PUN), a polyphenolic component of pomegranate, on LPS-induced memory deficiency and anxiety- and depression-like behaviors, along with the underlying mechanisms. LPS-treated cultured microglial BV2 cells and BV2 cell/Neuro-2a (N2a) cell coculture system were investigated for anti-neuroinflammatory effects of PUN in vitro. The in vivo experiments involved mice administered a 4-week course of oral gavage with 1500 mg/kg/d PUN before intraperitoneal LPS (250 mg/kg daily 7 times) injections. The in vitro results demonstrated that PUN inhibited the LPS-induced inflammatory cytokine (IL-18, IL-1beta, TNF-alpha, and IL-6) production in BV2 cells and protected N2a cells from synaptic damage mediated by BV2 microglia-induced neuroinflammation. In in vivo studies, it was observed that PUN improved memory impairment and anxiety- and depression-like behaviors caused by LPS and reduced the expression of inflammatory proteins such as iNOS, COX-2, IL-1beta, IL-2, IL-6, and TNF-alpha. Furthermore, PUN inhibited the LPS-induced production of MDA; increased the activities of CAT, SOD, and GSH-Px, and inhibited LPS-induced Abeta1-42 generation through down-regulation of APP and BACE1 expression. Moreover, PUN also suppressed the expression of TLR4, IRAK4, TRAF6, IKK-beta, NF-kappaB, p65, and HMGB1 in LPS-treated mouse brain and cultured microglial BV-2 cells. These results suggest that PUN inhibits LPS-induced memory impairment via anti-inflammatory and anti-amylogenic mechanisms through inhibition of TLR4-NF-kB activation.
+38695373	0	22	Pomegranate polyphenol	Chemical	-
+38695373	23	32	punicalin	Chemical	MESH:C115643
+38695373	45	63	lipopolysaccharide	Chemical	MESH:D008070
+38695373	171	175	TLR4	Gene	21898
+38695373	320	338	lipopolysaccharide	Chemical	MESH:D008070
+38695373	340	343	LPS	Chemical	MESH:D008070
+38695373	475	484	punicalin	Chemical	MESH:C115643
+38695373	486	489	PUN	Chemical	MESH:C115643
+38695373	536	539	LPS	Chemical	MESH:D008070
+38695373	648	651	LPS	Chemical	MESH:D008070
+38695373	796	799	PUN	Chemical	MESH:C115643
+38695373	843	847	mice	Species	10090
+38695373	910	913	PUN	Chemical	MESH:C115643
+38695373	937	940	LPS	Chemical	MESH:D008070
+38695373	1018	1021	PUN	Chemical	MESH:C115643
+38695373	1036	1039	LPS	Chemical	MESH:D008070
+38695373	1071	1076	IL-18	Gene	16173
+38695373	1078	1086	IL-1beta	Gene	16176
+38695373	1088	1097	TNF-alpha	Gene	21926
+38695373	1103	1107	IL-6	Gene	16193
+38695373	1272	1275	PUN	Chemical	MESH:C115643
+38695373	1356	1359	LPS	Chemical	MESH:D008070
+38695373	1420	1424	iNOS	Gene	18126
+38695373	1426	1431	COX-2	Gene	17709
+38695373	1433	1441	IL-1beta	Gene	16176
+38695373	1443	1447	IL-2	Gene	16183
+38695373	1449	1453	IL-6	Gene	16193
+38695373	1459	1468	TNF-alpha	Gene	21926
+38695373	1483	1486	PUN	Chemical	MESH:C115643
+38695373	1501	1504	LPS	Chemical	MESH:D008070
+38695373	1527	1530	MDA	Chemical	MESH:D015104
+38695373	1560	1563	CAT	Gene	12359
+38695373	1596	1599	LPS	Chemical	MESH:D008070
+38695373	1664	1669	BACE1	Gene	23821
+38695373	1692	1695	PUN	Chemical	MESH:C115643
+38695373	1730	1734	TLR4	Gene	21898
+38695373	1736	1741	IRAK4	Gene	266632
+38695373	1743	1748	TRAF6	Gene	22034
+38695373	1750	1758	IKK-beta	Gene	16150
+38695373	1760	1769	NF-kappaB	Gene	18033
+38695373	1771	1774	p65	Gene	19697
+38695373	1780	1785	HMGB1	Gene	15289
+38695373	1789	1792	LPS	Chemical	MESH:D008070
+38695373	1801	1806	mouse	Species	10090
+38695373	1876	1879	PUN	Chemical	MESH:C115643
+38695373	1889	1892	LPS	Chemical	MESH:D008070
+38695373	1994	1998	TLR4	Gene	21898
+38695373	Negative_Correlation	MESH:C115643	266632
+38695373	Negative_Correlation	MESH:C115643	19697
+38695373	Negative_Correlation	MESH:C115643	17709
+38695373	Negative_Correlation	MESH:C115643	18126
+38695373	Positive_Correlation	MESH:C115643	12359
+38695373	Negative_Correlation	MESH:C115643	16173
+38695373	Association	MESH:D008070	21898
+38695373	Negative_Correlation	MESH:C115643	16176
+38695373	Association	MESH:D008070	22034
+38695373	Positive_Correlation	MESH:D008070	16176
+38695373	Negative_Correlation	MESH:C115643	16193
+38695373	Positive_Correlation	MESH:D008070	MESH:D015104
+38695373	Negative_Correlation	MESH:C115643	16150
+38695373	Positive_Correlation	MESH:D008070	16173
+38695373	Negative_Correlation	MESH:C115643	22034
+38695373	Negative_Correlation	MESH:C115643	23821
+38695373	Association	MESH:D008070	266632
+38695373	Negative_Correlation	MESH:C115643	MESH:D015104
+38695373	Negative_Correlation	MESH:C115643	21926
+38695373	Association	MESH:D008070	18033
+38695373	Negative_Correlation	MESH:C115643	15289
+38695373	Positive_Correlation	MESH:D008070	16193
+38695373	Association	MESH:D008070	16150
+38695373	Negative_Correlation	MESH:C115643	MESH:D008070
+38695373	Positive_Correlation	MESH:D008070	21926
+38695373	Negative_Correlation	MESH:C115643	18033
+38695373	Association	MESH:D008070	23821
+38695373	Negative_Correlation	MESH:C115643	21898
+38695373	Negative_Correlation	MESH:C115643	16183
+
+38824976|t|Erjingpill bionic cerebrospinal fluid alleviates LPS-induced inflammatory response in BV2 cells by inhibiting glycolysis via mTOR.
+38824976|a|ETHNOPHARMACOLOGICAL RELEVANCE: Erjingpill, a well-known prescription documented in the classic Chinese medical text "Shengji Zonglu," has been proven to have effective alleviating effects on neuroinflammation in Alzheimer's disease (AD). Although the alterations in microglial cell glycolysis are known to play a crucial role in the development of neuroinflammation, it remains unclear whether the anti-neuroinflammatory effects of Erjingpill are associated with its impact on microglial cell glycolysis. AIM OF THE STUDY: This study aims to determine whether Erjingpill exerts anti-neuroinflammatory effects by influencing microglial cell glycolysis. MATERIALS AND METHODS: Firstly, Erjingpill decoction was prepared into an Erjingpill bionic cerebrospinal fluid (EBCF) through a process of in vitro intestinal absorption, hepatocyte incubation, and blood-brain barrier (BBB) transcytosis. Subsequently, UPLC/Q-TOF-MS/MS technology was used to analyze the compounds in Erjingpill and EBCF. Next, an in vitro neuroinflammation model was established by LPS-induced BV2 cells. The impact of EBCF on BV2 cell proliferation activity was evaluated using the CCK-8 assay, while the NO release was assessed using the Griess assay. Additionally, mRNA levels of pro-inflammatory factors (IL-1beta, IL-6, TNF-alpha, and COX-2), anti-inflammatory factors (IL-10, IL-4, Arg-1, and TGF-beta), M1 microglial markers (iNOS, CD86), M2 microglial markers (CD36, CD206), and glycolytic enzymes (HK2, GLUT1, PKM, and LDHA) were measured using qPCR. Furthermore, protein expression of microglial activation marker Iba-1, M1 marker iNOS, and M2 marker CD206 were identified through immunofluorescence, while concentrations of pro-inflammatory cytokines IL-1beta and TNF-alpha were measured using ELISA. Enzymatic activity of glycolytic enzymes (HK, PK, and LDH) was assessed using assay kits, and the protein levels of pro-inflammatory factors (IL-1beta, iNOS, and COX-2), anti-inflammatory factors (IL-10 and Arg-1), and key glycolytic proteins GLUT1 and PI3K/AKT/mTOR were detected by Western blot. RESULTS: Through the analysis of Erjingpill and EBCF, 144 compounds were identified in Erjingpill and 40 compounds were identified in EBCF. The results demonstrated that EBCF effectively inhibited the elevation of inflammatory factors and glycolysis levels in LPS-induced BV2 cells, promoted polarization of M1 microglial cells towards the M2 phenotype, and suppressed the PI3K/AKT/mTOR inflammatory pathway. Moreover, EBCF alleviated LPS-induced BV2 cell inflammatory response by modulating mTOR to inhibit glycolysis. CONCLUSIONS: EBCF exhibits significant anti-neuroinflammatory effects, likely attributed to its modulation of mTOR to inhibit microglial cell glycolysis. This study furnishes experimental evidence supporting the clinical utilization of Erjingpill for preventing and treating AD.
+38824976	0	10	Erjingpill	Chemical	-
+38824976	49	52	LPS	Chemical	MESH:D008070
+38824976	125	129	mTOR	Gene	56717
+38824976	163	173	Erjingpill	Chemical	-
+38824976	249	263	Shengji Zonglu	Chemical	-
+38824976	564	574	Erjingpill	Chemical	-
+38824976	692	702	Erjingpill	Chemical	-
+38824976	816	826	Erjingpill	Chemical	-
+38824976	858	868	Erjingpill	Chemical	-
+38824976	1102	1112	Erjingpill	Chemical	-
+38824976	1184	1187	LPS	Chemical	MESH:D008070
+38824976	1308	1310	NO	Chemical	MESH:D009614
+38824976	1411	1419	IL-1beta	Gene	16176
+38824976	1421	1425	IL-6	Gene	16193
+38824976	1427	1436	TNF-alpha	Gene	21926
+38824976	1442	1447	COX-2	Gene	17709
+38824976	1477	1482	IL-10	Gene	16153
+38824976	1484	1488	IL-4	Gene	16189
+38824976	1490	1495	Arg-1	Gene	11846
+38824976	1501	1509	TGF-beta	Gene	21803
+38824976	1535	1539	iNOS	Gene	18126
+38824976	1541	1545	CD86	Gene	12524
+38824976	1577	1582	CD206	Gene	17533
+38824976	1609	1612	HK2	Gene	15277
+38824976	1614	1619	GLUT1	Gene	20525
+38824976	1621	1624	PKM	Gene	18746
+38824976	1630	1634	LDHA	Gene	16828
+38824976	1726	1731	Iba-1	Gene	114737
+38824976	1743	1747	iNOS	Gene	18126
+38824976	1763	1768	CD206	Gene	17533
+38824976	1864	1872	IL-1beta	Gene	16176
+38824976	1877	1886	TNF-alpha	Gene	21926
+38824976	2056	2064	IL-1beta	Gene	16176
+38824976	2066	2070	iNOS	Gene	18126
+38824976	2076	2081	COX-2	Gene	17709
+38824976	2111	2116	IL-10	Gene	16153
+38824976	2121	2126	Arg-1	Gene	11846
+38824976	2157	2162	GLUT1	Gene	20525
+38824976	2167	2171	PI3K	Gene	18708
+38824976	2172	2175	AKT	Gene	11651
+38824976	2176	2180	mTOR	Gene	56717
+38824976	2245	2255	Erjingpill	Chemical	-
+38824976	2299	2309	Erjingpill	Chemical	-
+38824976	2472	2475	LPS	Chemical	MESH:D008070
+38824976	2585	2589	PI3K	Gene	18708
+38824976	2590	2593	AKT	Gene	11651
+38824976	2594	2598	mTOR	Gene	56717
+38824976	2647	2650	LPS	Chemical	MESH:D008070
+38824976	2704	2708	mTOR	Gene	56717
+38824976	2842	2846	mTOR	Gene	56717
+38824976	2968	2978	Erjingpill	Chemical	-
+
+39322063|t|Remimazolam attenuates lipopolysaccharide-induced neuroinflammation and cognitive dysfunction.
+39322063|a|OBJECTIVE: Remimazolam, a novel benzodiazepine, is widely used as an anesthetic in endoscopic procedures; however, its effects on cognitive function remain unclear, limiting its broader application in general anaesthesia. Neuroinflammation is a well-established key factor in the etiology and progression of cognitive dysfunction, including conditions such as Alzheimer's disease, Parkinson's disease, postoperative delirium, and postoperative cognitive dysfunction. Preclinical studies have demonstrated that remimazolam exerts anti-inflammatory and neuroprotective effects, and clinical reports indicate a reduced incidence of postoperative delirium in patients treated with remimazolam. Nevertheless, whether remimazolam improves cognitive function through its anti-inflammatory properties remains uncertain. This study aimed to investigate the neuroprotective effects of remimazolam and its underlying mechanism in a lipopolysaccharide (LPS)-induced model of neuroinflammation, neuronal injury, and cognitive dysfunction METHODS: C57BL/6J male mice were administered LPS intraperitoneally to establish a model of neuroinflammation-induced cognitive impairment. A subset of mice received remimazolam via intraperitoneal injection 30minutes prior to LPS administration. Cognitive performance was evaluated using behavioural tests, including the Morris Water Maze (MWM), Novel Object Recognition (NOR) test, and Open Field Test (OFT). Hippocampal tissues were analyzed by haematoxylin-eosin (HE) staining to assess structural changes. Inflammatory markers, including Interleukin (IL)-6, IL-1beta, and tumor necrosis factor-alpha, were quantified using enzyme-linked immunosorbent assay (ELISA) and real-time quantitative PCR. Immunofluorescence was used to detect translocator protein (TSPO) and markers of microglia activation (IBA-1, CD16/32, and CD206). RESULTS: (1) Remimazolam reversed LPS-induced cognitive deficits, as evidenced by shorter spatial exploration latency and increased platform crossings in the MWM, and an elevated recognition index in the NOR test. (2) Remimazolam improved hippocampal morphology, reducing LPS-induced neuronal damage. (3) Remimazolam significantly decreased levels of hippocampal inflammatory cytokines, inhibited microglial activation, promoted M2-type microglia polarization, and increased TSPO expression. CONCLUSION: Remimazolam demonstrated neuroprotective and anti-neuroinflammatory effects in a mouse model of LPS-induced cognitive impairment. These effects are likely mediated through the regulation of TSPO, which inhibits microglial activation and promotes the polarization of microglia from the pro-inflammatory M1 phenotype to the anti-inflammatory M2 phenotype.
+39322063	0	11	Remimazolam	Chemical	MESH:C522201
+39322063	23	41	lipopolysaccharide	Chemical	MESH:D008070
+39322063	50	67	neuroinflammation	Disease	MESH:D000090862
+39322063	72	93	cognitive dysfunction	Disease	MESH:D003072
+39322063	106	117	Remimazolam	Chemical	MESH:C522201
+39322063	127	141	benzodiazepine	Chemical	MESH:D001569
+39322063	317	334	Neuroinflammation	Disease	MESH:D000090862
+39322063	403	424	cognitive dysfunction	Disease	MESH:D003072
+39322063	455	474	Alzheimer's disease	Disease	MESH:D000544
+39322063	476	495	Parkinson's disease	Disease	MESH:D010300
+39322063	497	519	postoperative delirium	Disease	MESH:D000071257
+39322063	525	560	postoperative cognitive dysfunction	Disease	MESH:D000079690
+39322063	605	616	remimazolam	Chemical	MESH:C522201
+39322063	629	641	inflammatory	Disease	MESH:D007249
+39322063	724	746	postoperative delirium	Disease	MESH:D000071257
+39322063	750	758	patients	Species	9606
+39322063	772	783	remimazolam	Chemical	MESH:C522201
+39322063	807	818	remimazolam	Chemical	MESH:C522201
+39322063	864	876	inflammatory	Disease	MESH:D007249
+39322063	970	981	remimazolam	Chemical	MESH:C522201
+39322063	1016	1034	lipopolysaccharide	Chemical	MESH:D008070
+39322063	1036	1039	LPS	Chemical	MESH:D008070
+39322063	1058	1075	neuroinflammation	Disease	MESH:D000090862
+39322063	1077	1092	neuronal injury	Disease	MESH:D009410
+39322063	1098	1119	cognitive dysfunction	Disease	MESH:D003072
+39322063	1129	1135	C57BL/	CellLine	CVCL:C152
+39322063	1143	1147	mice	Species	10090
+39322063	1166	1169	LPS	Chemical	MESH:D008070
+39322063	1212	1229	neuroinflammation	Disease	MESH:D000090862
+39322063	1238	1258	cognitive impairment	Disease	MESH:D003072
+39322063	1272	1276	mice	Species	10090
+39322063	1286	1297	remimazolam	Chemical	MESH:C522201
+39322063	1347	1350	LPS	Chemical	MESH:D008070
+39322063	1568	1580	haematoxylin	Chemical	MESH:D006416
+39322063	1631	1643	Inflammatory	Disease	MESH:D007249
+39322063	1683	1691	IL-1beta	Gene	16176
+39322063	1697	1724	tumor necrosis factor-alpha	Gene	21926
+39322063	1925	1930	IBA-1	Gene	114737
+39322063	1945	1950	CD206	Gene	17533
+39322063	1966	1977	Remimazolam	Chemical	MESH:C522201
+39322063	1987	1990	LPS	Chemical	MESH:D008070
+39322063	1999	2017	cognitive deficits	Disease	MESH:D003072
+39322063	2171	2182	Remimazolam	Chemical	MESH:C522201
+39322063	2225	2228	LPS	Chemical	MESH:D008070
+39322063	2237	2252	neuronal damage	Disease	MESH:D009410
+39322063	2258	2269	Remimazolam	Chemical	MESH:C522201
+39322063	2316	2328	inflammatory	Disease	MESH:D007249
+39322063	2457	2468	Remimazolam	Chemical	MESH:C522201
+39322063	2507	2524	neuroinflammatory	Disease	MESH:D000090862
+39322063	2538	2543	mouse	Species	10090
+39322063	2553	2556	LPS	Chemical	MESH:D008070
+39322063	2565	2585	cognitive impairment	Disease	MESH:D003072
+39322063	2746	2758	inflammatory	Disease	MESH:D007249
+39322063	2784	2796	inflammatory	Disease	MESH:D007249
+39322063	Association	MESH:D007249	21926
+39322063	Negative_Correlation	MESH:C522201	MESH:D000090862
+39322063	Negative_Correlation	MESH:C522201	MESH:D009410
+39322063	Positive_Correlation	MESH:D008070	MESH:D003072
+39322063	Negative_Correlation	MESH:C522201	MESH:D007249
+39322063	Positive_Correlation	MESH:D008070	MESH:D000090862
+39322063	Negative_Correlation	MESH:C522201	MESH:D000071257
+39322063	Association	MESH:D007249	16176
+39322063	Negative_Correlation	MESH:C522201	MESH:D008070
+39322063	Negative_Correlation	MESH:C522201	MESH:D003072
+39322063	Positive_Correlation	MESH:D008070	MESH:D009410
+
+39725872|t|Hearing modulation affects Alzheimer's disease progression linked to brain inflammation: a study in mouse models.
+39725872|a|BACKGROUND: Recent studies have identified hearing loss (HL) as a primary risk factor for Alzheimer's disease (AD) onset. However, the mechanisms linking HL to AD are not fully understood. This study explored the effects of drug-induced hearing loss (DIHL) on the expression of proteins associated with AD progression in mouse models. METHODS: DIHL was induced in 5xFAD and Tg2576 mice aged 3 to 3.5 weeks using kanamycin (700 mg/kg, subcutaneous) and furosemide (600 mg/kg, intraperitoneal). The accumulation and expression of beta-amyloid (Abeta), ionized calcium-binding adaptor molecule 1 (Iba1), and glial fibrillary acidic protein (GFAP) were measured through immunohistochemistry and immunoblotting. Additionally, the expression of proteins involved in the mammalian target of rapamycin (mTOR) pathway, including downstream effectors p70 ribosomal S6 kinase (p70S6K) and S6, as well as proinflammatory cytokines, was analyzed. RESULTS: Compared to control conditions, HL led to a significant increase in the accumulation of Abeta in the hippocampus and cortex. Elevated levels of neuroinflammatory markers, including Iba1 and GFAP, as well as proinflammatory cytokines such as interleukin-1beta (IL-1beta), IL-6, and tumor necrosis factor-alpha (TNF-alpha), were observed. Moreover, DIHL enhanced phosphorylation of mTOR, p70S6K, and S6, indicating activation of the mTOR pathway. CONCLUSIONS: HL significantly increases Abeta accumulation in the brain. Furthermore, HL activates astrocytes and microglia, leading to increased neuroinflammation and thereby accelerating AD progression. These findings strongly suggest that HL contributes autonomously to neuroinflammation, highlighting the potential for early intervention in HL to reduce AD risk.
+39725872	27	46	Alzheimer's disease	Disease	MESH:D000544
+39725872	69	87	brain inflammation	Disease	MESH:D004660
+39725872	100	105	mouse	Species	10090
+39725872	157	169	hearing loss	Disease	MESH:D034381
+39725872	171	173	HL	Disease	MESH:D034381
+39725872	204	223	Alzheimer's disease	Disease	MESH:D000544
+39725872	225	227	AD	Disease	MESH:D000544
+39725872	268	270	HL	Disease	MESH:D034381
+39725872	274	276	AD	Disease	MESH:D000544
+39725872	351	363	hearing loss	Disease	MESH:D034381
+39725872	365	369	DIHL	Disease	MESH:D000081015
+39725872	417	419	AD	Disease	MESH:D000544
+39725872	435	440	mouse	Species	10090
+39725872	458	462	DIHL	Disease	MESH:D000081015
+39725872	478	483	5xFAD	CellLine	CVCL:5U93
+39725872	495	499	mice	Species	10090
+39725872	526	535	kanamycin	Chemical	MESH:D007612
+39725872	566	576	furosemide	Chemical	MESH:D005665
+39725872	656	661	Abeta	Gene	11820
+39725872	719	750	glial fibrillary acidic protein	Gene	14580
+39725872	752	756	GFAP	Gene	14580
+39725872	878	907	mammalian target of rapamycin	Gene	56717
+39725872	909	913	mTOR	Gene	56717
+39725872	955	978	p70 ribosomal S6 kinase	Gene	72508
+39725872	980	986	p70S6K	Gene	72508
+39725872	1089	1091	HL	Disease	MESH:D034381
+39725872	1145	1150	Abeta	Gene	11820
+39725872	1201	1218	neuroinflammatory	Disease	MESH:D000090862
+39725872	1247	1251	GFAP	Gene	14580
+39725872	1298	1315	interleukin-1beta	Gene	16176
+39725872	1317	1325	IL-1beta	Gene	16176
+39725872	1328	1332	IL-6	Gene	16193
+39725872	1338	1365	tumor necrosis factor-alpha	Gene	21926
+39725872	1367	1376	TNF-alpha	Gene	21926
+39725872	1404	1408	DIHL	Disease	MESH:D000081015
+39725872	1437	1441	mTOR	Gene	56717
+39725872	1443	1449	p70S6K	Gene	72508
+39725872	1488	1492	mTOR	Gene	56717
+39725872	1515	1517	HL	Disease	MESH:D034381
+39725872	1542	1547	Abeta	Gene	11820
+39725872	1588	1590	HL	Disease	MESH:D034381
+39725872	1648	1665	neuroinflammation	Disease	MESH:D000090862
+39725872	1691	1693	AD	Disease	MESH:D000544
+39725872	1744	1746	HL	Disease	MESH:D034381
+39725872	1775	1792	neuroinflammation	Disease	MESH:D000090862
+39725872	1847	1849	HL	Disease	MESH:D034381
+39725872	1860	1862	AD	Disease	MESH:D000544
+39725872	Positive_Correlation	MESH:D034381	21926
+39725872	Positive_Correlation	MESH:D007612	MESH:D000081015
+39725872	Positive_Correlation	MESH:D034381	16176
+39725872	Positive_Correlation	MESH:D000081015	72508
+39725872	Positive_Correlation	MESH:D034381	11820
+39725872	Association	MESH:D000544	56717
+39725872	Positive_Correlation	MESH:D005665	MESH:D000081015
+39725872	Association	MESH:D000090862	14580
+39725872	Positive_Correlation	MESH:D034381	14580
+39725872	Association	MESH:D000090862	21926
+39725872	Positive_Correlation	MESH:D000081015	56717
+
+39800461|t|Microglial activation states and their implications for Alzheimer's Disease.
+39800461|a|Alzheimer's Disease (AD) is a chronic neurodegenerative disorder characterized by the accumulation of toxic amyloid-beta (Abeta) plaques and neurofibrillary tangles (NFTs) of tau protein in the brain. Microglia, key immune cells of the central nervous system, play an important role in AD development and progression, primarily through their responses to Abeta and NFTs. Initially, microglia can clear Abeta, but in AD, chronic activation overwhelms protective mechanisms, leading to sustained neuroinflammation that enhances plaque toxicity, setting off a damaging cycle that affects neurons, astrocytes, cerebral vasculature, and other microglia. Current AD treatments have been largely ineffective, though emerging immunotherapies focusing on plaque removal show promise, but often overlook the role of neuroinflammation. Activated microglia display a complex range of phenotypes that can be broadly broken into pro- or anti-inflammatory states, although this dichotomy does not describe the significant overlap between states. Abeta can strongly induce inflammatory activity, triggering the production of reactive oxygen species, inflammatory cytokines (e.g., TNF-alpha, IL-1beta, IL-6), synapse engulfment, blood-brain barrier compromise, and impaired Abeta clearance. These processes contribute to neural tissue loss, manifesting as cognitive decline such as impaired executive function and memory. Conversely, anti-inflammatory activation exerts neuroprotective effects by suppressing inflammatory pathways and releasing neurotrophic factors that aid neuron repair and protection. Induction of anti-inflammatory states may offer a dual therapeutic approach to address both neuroinflammation and plaque accumulation in AD. This approach suggests potential strategies to modulate microglial phenotypes, aiming to restore neuroprotective functions and mitigate disease progression by simultaneously targeting inflammation and plaque pathology.
+39800461	56	75	Alzheimer's Disease	Disease	MESH:D000544
+39800461	77	96	Alzheimer's Disease	Disease	MESH:D000544
+39800461	98	100	AD	Disease	MESH:D000544
+39800461	115	141	neurodegenerative disorder	Disease	MESH:D019636
+39800461	185	197	amyloid-beta	Gene	351
+39800461	199	204	Abeta	Gene	351
+39800461	218	241	neurofibrillary tangles	Disease	MESH:D055956
+39800461	243	247	NFTs	Disease	MESH:D055956
+39800461	252	255	tau	Gene	4137
+39800461	363	365	AD	Disease	MESH:D000544
+39800461	432	437	Abeta	Gene	351
+39800461	442	446	NFTs	Disease	MESH:D055956
+39800461	479	484	Abeta	Gene	351
+39800461	493	495	AD	Disease	MESH:D000544
+39800461	571	588	neuroinflammation	Disease	MESH:D000090862
+39800461	610	618	toxicity	Disease	MESH:D064420
+39800461	734	736	AD	Disease	MESH:D000544
+39800461	883	900	neuroinflammation	Disease	MESH:D000090862
+39800461	1005	1017	inflammatory	Disease	MESH:D007249
+39800461	1108	1113	Abeta	Gene	351
+39800461	1134	1146	inflammatory	Disease	MESH:D007249
+39800461	1186	1209	reactive oxygen species	Chemical	MESH:D017382
+39800461	1211	1223	inflammatory	Disease	MESH:D007249
+39800461	1241	1250	TNF-alpha	Gene	7124
+39800461	1252	1260	IL-1beta	Gene	3553
+39800461	1262	1266	IL-6	Gene	3569
+39800461	1334	1339	Abeta	Gene	351
+39800461	1416	1433	cognitive decline	Disease	MESH:D003072
+39800461	1442	1480	impaired executive function and memory	Disease	MESH:D008569
+39800461	1499	1511	inflammatory	Disease	MESH:D007249
+39800461	1569	1581	inflammatory	Disease	MESH:D007249
+39800461	1683	1695	inflammatory	Disease	MESH:D007249
+39800461	1757	1774	neuroinflammation	Disease	MESH:D000090862
+39800461	1802	1804	AD	Disease	MESH:D000544
+39800461	1990	2002	inflammation	Disease	MESH:D007249
+39800461	Association	351	7124
+39800461	Association	MESH:D017382	351
+39800461	Positive_Correlation	MESH:D007249	351
+39800461	Association	351	3553
+39800461	Association	MESH:D000544	351
+39800461	Association	MESH:D003072	351
+39800461	Association	MESH:D007249	3569
+39800461	Association	MESH:D055956	4137
+39800461	Association	351	3569
+39800461	Association	MESH:D000544	4137
+39800461	Association	MESH:D008569	351
+
+40640358|t|Microglial exosome TREM2 ameliorates ferroptosis and neuroinflammation in alzheimer's disease by activating the Wnt/beta-catenin signaling.
+40640358|a|Microglia and exosomes are intimately connected with the pathogenesis of Alzheimer's disease (AD). We aim to investigate the role and potential mechanisms of M2-like (anti-inflammatory) microglia-derived exosomes (M2-Exos) in AD. We utilized an Abeta1-42-induced AD model in HT-22 neurons and mouse. The effects of M2-Exo on mitochondrial damage, ferroptosis, oxidative stress, and inflammation levels in the AD cell/animal models were evaluated using transmission electron microscopy, immunoblotting, and biochemical assay kits. Cognitive function in mouse was assessed through behavioral tests. In the AD cell/animal models, the effects of M2-Exo on the Wnt/beta-catenin pathway were investigated through immunofluorescence and immunoblotting. AD cells were treated with HLY78 (Wnt/beta-catenin pathway activator) to explore the modulation of the pathway. After knocking down TREM2 in M2-Exo, mitochondrial damage, ferroptosis, oxidative stress, and inflammation markers were reevaluated in AD cell and animal models. Abeta1-42 induced mitochondrial shrinkage and deformation in neurons, upregulated ACSL4, PTGS2, Fe2+/Fe, lipid peroxide (LPO), ROS, MDA, IL-6, IL-1beta, and TNF-alpha, while it downregulated GPX4, FTH1, and GSH-PX. M2-Exo reversed the effects induced by Abeta1-42 both in vitro and in vivo, and M2-Exo improved cognitive function in AD mouse. HLY78 also reversed the effects induced by Abeta1-42. M2-Exo increased the levels of beta-catenin. BV2 cells converting to M2-like type increased TREM2 levels. Knocking down TREM2 in M2-Exos resulted in decreased neuronal beta-catenin levels, reversing the beneficial effects of M2-Exo on AD cell and mouse models. M2-Exo TREM2 alleviates neuronal ferroptosis, inflammation, and oxidative stress in AD by activating the Wnt/beta-catenin signaling pathway.
+40640358	19	24	TREM2	Gene	83433
+40640358	53	70	neuroinflammation	Disease	MESH:D000090862
+40640358	74	93	alzheimer's disease	Disease	MESH:D000544
+40640358	116	128	beta-catenin	Gene	12387
+40640358	213	232	Alzheimer's disease	Disease	MESH:D000544
+40640358	234	236	AD	Disease	MESH:D000544
+40640358	298	300	M2	Chemical	MESH:C034584
+40640358	312	324	inflammatory	Disease	MESH:D007249
+40640358	354	356	M2	Chemical	MESH:C034584
+40640358	366	368	AD	Disease	MESH:D000544
+40640358	403	405	AD	Disease	MESH:D000544
+40640358	415	420	HT-22	CellLine	CVCL:0321
+40640358	433	438	mouse	Species	10090
+40640358	455	457	M2	Chemical	MESH:C034584
+40640358	465	485	mitochondrial damage	Disease	MESH:D028361
+40640358	522	534	inflammation	Disease	MESH:D007249
+40640358	549	551	AD	Disease	MESH:D000544
+40640358	692	697	mouse	Species	10090
+40640358	744	746	AD	Disease	MESH:D000544
+40640358	782	784	M2	Chemical	MESH:C034584
+40640358	800	812	beta-catenin	Gene	12387
+40640358	886	888	AD	Disease	MESH:D000544
+40640358	913	918	HLY78	Chemical	MESH:C584141
+40640358	924	936	beta-catenin	Gene	12387
+40640358	1018	1023	TREM2	Gene	83433
+40640358	1035	1055	mitochondrial damage	Disease	MESH:D028361
+40640358	1092	1104	inflammation	Disease	MESH:D007249
+40640358	1133	1135	AD	Disease	MESH:D000544
+40640358	1242	1247	ACSL4	Gene	50790
+40640358	1249	1254	PTGS2	Gene	19225
+40640358	1256	1260	Fe2+	Chemical	-
+40640358	1261	1263	Fe	Chemical	MESH:D007501
+40640358	1265	1279	lipid peroxide	Chemical	MESH:D008054
+40640358	1281	1284	LPO	Chemical	MESH:D008054
+40640358	1287	1290	ROS	Chemical	-
+40640358	1292	1295	MDA	Chemical	MESH:D015104
+40640358	1297	1301	IL-6	Gene	16193
+40640358	1303	1311	IL-1beta	Gene	16176
+40640358	1317	1326	TNF-alpha	Gene	21926
+40640358	1351	1355	GPX4	Gene	625249
+40640358	1357	1361	FTH1	Gene	14319
+40640358	1367	1373	GSH-PX	Chemical	-
+40640358	1375	1377	M2	Chemical	MESH:C034584
+40640358	1455	1457	M2	Chemical	MESH:C034584
+40640358	1493	1495	AD	Disease	MESH:D000544
+40640358	1496	1501	mouse	Species	10090
+40640358	1503	1508	HLY78	Chemical	MESH:C584141
+40640358	1557	1559	M2	Chemical	MESH:C034584
+40640358	1588	1600	beta-catenin	Gene	12387
+40640358	1602	1605	BV2	CellLine	CVCL:0182
+40640358	1626	1628	M2	Chemical	MESH:C034584
+40640358	1649	1654	TREM2	Gene	83433
+40640358	1677	1682	TREM2	Gene	83433
+40640358	1686	1688	M2	Chemical	MESH:C034584
+40640358	1725	1737	beta-catenin	Gene	12387
+40640358	1782	1784	M2	Chemical	MESH:C034584
+40640358	1792	1794	AD	Disease	MESH:D000544
+40640358	1804	1809	mouse	Species	10090
+40640358	1818	1820	M2	Chemical	MESH:C034584
+40640358	1825	1830	TREM2	Gene	83433
+40640358	1864	1876	inflammation	Disease	MESH:D007249
+40640358	1902	1904	AD	Disease	MESH:D000544
+40640358	1927	1939	beta-catenin	Gene	12387
+40640358	Positive_Correlation	MESH:C034584	12387
+40640358	Association	MESH:C034584	MESH:D000544
+40640358	Association	MESH:D000544	12387
+40640358	Association	MESH:D000090862	12387
+40640358	Association	MESH:C034584	MESH:D028361
+40640358	Association	MESH:D028361	83433
+40640358	Positive_Correlation	MESH:C034584	83433
+40640358	Positive_Correlation	12387	83433
+40640358	Association	MESH:D007249	83433
+40640358	Association	MESH:D000090862	83433
+40640358	Association	MESH:D000544	83433
+40640358	Association	MESH:C584141	MESH:D000544
+40640358	Negative_Correlation	MESH:C034584	MESH:D007249
+
+40651688|t|Microglial dysfunction in Alzheimer's disease: Mechanisms, emerging therapies, and future directions.
+40651688|a|Alzheimer's disease (AD) is a severe neurodegenerative condition characterized by progressive cognitive decline and behavioral changes. These symptoms are primarily driven by the accumulation of amyloid-beta (Abeta) plaques, tau tangles, and persistent neuroinflammation. Microglia, the brain's resident immune cells, play a crucial role in the disease's progression. Initially, these cells protectively respond to Abeta deposits, working to clear plaques and support neuronal health. However, prolonged activation of microglia leads to a transition from a neuroprotective state to a pro-inflammatory one, ultimately contributing to neuronal damage and worsening disease progression. This review explores the molecular mechanisms responsible for microglial dysfunction in AD, with a particular emphasis on key inflammatory pathways, including NF-kappaB, MAPK, and TLR4 signaling. These pathways drive the release of pro-inflammatory cytokines such as IL-1beta, TNF-alpha, and IL-6, which further amplify neuroinflammation, disrupt synaptic plasticity, and contribute to neuronal loss. Additionally, emerging therapeutic strategies aimed at modulating microglial activity to reduce neuroinflammation and enhance Abeta clearance are examined. A key focus is placed on the future of AD research, emphasizing the importance of longitudinal studies to gain a deeper understanding of how microglia contribute to disease progression over time. The review also highlights the potential of personalized medicine, which seeks to tailor treatments based on an individual's unique genetic and environmental risk factors. Notably, genetic predispositions such as the APOE4 allele, along with environmental influences like air pollution and chronic infections, are identified as significant modulators of microglial activity. Given the complexity of AD, a comprehensive, multi-faceted approach will be essential for advancing research and developing more effective therapeutic interventions.
+40651688	0	22	Microglial dysfunction	Disease	MESH:D006331
+40651688	26	45	Alzheimer's disease	Disease	MESH:D000544
+40651688	102	121	Alzheimer's disease	Disease	MESH:D000544
+40651688	123	125	AD	Disease	MESH:D000544
+40651688	139	166	neurodegenerative condition	Disease	MESH:D019636
+40651688	196	213	cognitive decline	Disease	MESH:D003072
+40651688	297	309	amyloid-beta	Gene	351
+40651688	311	316	Abeta	Gene	351
+40651688	327	330	tau	Gene	4137
+40651688	355	372	neuroinflammation	Disease	MESH:D000090862
+40651688	517	522	Abeta	Gene	351
+40651688	690	702	inflammatory	Disease	MESH:D007249
+40651688	735	750	neuronal damage	Disease	MESH:D009410
+40651688	848	870	microglial dysfunction	Disease	MESH:D006331
+40651688	874	876	AD	Disease	MESH:D000544
+40651688	912	924	inflammatory	Disease	MESH:D007249
+40651688	945	954	NF-kappaB	Gene	4790
+40651688	966	970	TLR4	Gene	7099
+40651688	1022	1034	inflammatory	Disease	MESH:D007249
+40651688	1053	1061	IL-1beta	Gene	3553
+40651688	1063	1072	TNF-alpha	Gene	7124
+40651688	1078	1082	IL-6	Gene	3569
+40651688	1106	1123	neuroinflammation	Disease	MESH:D000090862
+40651688	1172	1185	neuronal loss	Disease	MESH:D009410
+40651688	1283	1300	neuroinflammation	Disease	MESH:D000090862
+40651688	1313	1318	Abeta	Gene	351
+40651688	1382	1384	AD	Disease	MESH:D000544
+40651688	1756	1761	APOE4	Gene	348
+40651688	1837	1847	infections	Disease	MESH:D007239
+40651688	1938	1940	AD	Disease	MESH:D000544
+40651688	Positive_Correlation	MESH:D007249	3553
+40651688	Positive_Correlation	MESH:D000090862	3569
+40651688	Association	MESH:D007249	7099
+40651688	Positive_Correlation	MESH:D009410	3569
+40651688	Association	MESH:D006331	7099
+40651688	Positive_Correlation	MESH:D009410	7124
+40651688	Positive_Correlation	MESH:D000090862	3553
+40651688	Positive_Correlation	MESH:D007249	7124
+40651688	Association	MESH:D006331	4790
+40651688	Positive_Correlation	MESH:D000090862	7124
+40651688	Positive_Correlation	MESH:D007249	3569
+40651688	Association	MESH:D000544	7099
+40651688	Association	MESH:D007249	4790
+40651688	Positive_Correlation	MESH:D009410	3553

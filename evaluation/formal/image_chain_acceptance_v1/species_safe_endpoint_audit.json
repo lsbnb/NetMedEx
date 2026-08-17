@@ -1,0 +1,185 @@
+{
+  "criterion": {
+    "source": "Icariin",
+    "targets": [
+      "osteoblast differentiation",
+      "osteogenesis"
+    ],
+    "allowed_hops": [
+      3,
+      4
+    ],
+    "requirements": [
+      "Tier-A claim-safe path",
+      "PMID and evidence quote on every hop",
+      "distinct Gene identifiers are never merged across species"
+    ]
+  },
+  "graph": {
+    "nodes": 52,
+    "edges": 85,
+    "schema": {
+      "current": true,
+      "rebuild_required": false,
+      "graph_schema_version": 2,
+      "ner_schema_version": "pubtator-go-hpo-kegg-reactome-v1",
+      "expected_graph_schema_version": 2,
+      "expected_ner_schema_version": "pubtator-go-hpo-kegg-reactome-v1",
+      "reasons": []
+    },
+    "semantic_stats": {
+      "total_articles": 6,
+      "processed_articles": 6,
+      "succeeded_articles": 6,
+      "failed_articles": 0,
+      "api_errors": 0,
+      "parse_failures": 0,
+      "relaxed_recoveries": 0,
+      "compact_retries": 0,
+      "coverage_passes": 0,
+      "coverage_expansions": 0,
+      "dropped_by_threshold": 0,
+      "dropped_invalid_nodes": 0,
+      "verified_directional_edges": 0,
+      "verification_downgrades": 0,
+      "verification_errors": 0,
+      "provider": "openai",
+      "model": "gpt-4.1"
+    }
+  },
+  "gene_identity_context": [
+    {
+      "node_id": "100314000_Gene",
+      "name": "mir21",
+      "pmids": [
+        "35593324"
+      ],
+      "study_species_by_pmid": {
+        "35593324": [
+          {
+            "taxon_id": "10116",
+            "name": "Rat"
+          },
+          {
+            "taxon_id": "10116",
+            "name": "rat"
+          },
+          {
+            "taxon_id": "10116",
+            "name": "rats"
+          }
+        ]
+      }
+    },
+    {
+      "node_id": "19211_Gene",
+      "name": "pten",
+      "pmids": [
+        "34854397"
+      ],
+      "study_species_by_pmid": {
+        "34854397": [
+          {
+            "taxon_id": "10090",
+            "name": "mice"
+          },
+          {
+            "taxon_id": "10090",
+            "name": "mouse"
+          }
+        ]
+      }
+    },
+    {
+      "node_id": "387140_Gene",
+      "name": "mir21a",
+      "pmids": [
+        "34854397"
+      ],
+      "study_species_by_pmid": {
+        "34854397": [
+          {
+            "taxon_id": "10090",
+            "name": "mice"
+          },
+          {
+            "taxon_id": "10090",
+            "name": "mouse"
+          }
+        ]
+      }
+    },
+    {
+      "node_id": "387211_Gene",
+      "name": "mir215",
+      "pmids": [
+        "29500883"
+      ],
+      "study_species_by_pmid": {}
+    },
+    {
+      "node_id": "406991_Gene",
+      "name": "mir21",
+      "pmids": [
+        "30795815"
+      ],
+      "study_species_by_pmid": {
+        "30795815": [
+          {
+            "taxon_id": "10116",
+            "name": "rat"
+          },
+          {
+            "taxon_id": "9606",
+            "name": "human"
+          },
+          {
+            "taxon_id": "9615",
+            "name": "canine"
+          }
+        ]
+      }
+    },
+    {
+      "node_id": "50557_Gene",
+      "name": "pten",
+      "pmids": [
+        "30795815",
+        "35593324"
+      ],
+      "study_species_by_pmid": {
+        "30795815": [
+          {
+            "taxon_id": "10116",
+            "name": "rat"
+          },
+          {
+            "taxon_id": "9606",
+            "name": "human"
+          },
+          {
+            "taxon_id": "9615",
+            "name": "canine"
+          }
+        ],
+        "35593324": [
+          {
+            "taxon_id": "10116",
+            "name": "Rat"
+          },
+          {
+            "taxon_id": "10116",
+            "name": "rat"
+          },
+          {
+            "taxon_id": "10116",
+            "name": "rats"
+          }
+        ]
+      }
+    }
+  ],
+  "accepted_endpoint_paths": [],
+  "all_exposed_endpoint_paths": [],
+  "verdict": "no_strict_3_or_4_hop_path"
+}

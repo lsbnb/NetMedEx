@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "Q043",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "c0debbafadbafb2f9f41da8571cad6d08dbb7f7e3894b7b12a5343d57d74e64d",
+  "raw_response_sha256": "96317a341dcd3388f90bc719ac1ac7924c8489a44526f41c2c66e26c1fc369b6",
+  "usage": {
+    "input_tokens": 2954,
+    "output_tokens": 508,
+    "total_tokens": 3462
+  },
+  "rated_at": "2026-08-13T04:38:35.469603+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q043-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurately distinguishes human vs. mouse evidence, cites studies, and details mechanistic and therapeutic findings. Clearly separates correlative and causal claims."
+      },
+      {
+        "answer_id": "Q043-B",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Correctly distinguishes evidence types and limitations. Lacks specific citations and some mechanistic/metabolic details, but overall accurate and well-structured."
+      },
+      {
+        "answer_id": "Q043-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Thorough, well-cited, and clearly separates human and mouse evidence. Mechanistic and translational implications are well explained, with a testable hypothesis."
+      },
+      {
+        "answer_id": "Q043-D",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Accurate and well-cited, clearly distinguishes evidence types. Slightly less detail on metabolic and translational aspects compared to A and C."
+      }
+    ],
+    "preferred_item_id": "Q043-C",
+    "pairwise_reason": "Q043-C is preferred for its thoroughness, clear distinction between human and mouse evidence, strong mechanistic detail, explicit citations, and inclusion of a testable translational hypothesis. Q043-A is nearly equivalent but lacks the explicit translational hypothesis. Q043-B and Q043-D are accurate but less comprehensive and detailed."
+  }
+}

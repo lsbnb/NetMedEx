@@ -1,0 +1,173 @@
+system,question_id,run_id,output_source,answer
+netmedex_hybrid_rag,Q001,formal-v1-gpt-4.1-F_adaptive,fixed_formal_system_run,"Direct evidence (in vitro and in vivo):
+
+- miR-153/Runx2 pathway: Icariin promotes osteoblast differentiation and proliferation in MC3T3-E1 cells via upregulation of miR-153, which subsequently increases Runt-related transcription factor 2 (Runx2) expression. The effect is strengthened when both icariin and miR-153 mimics are used, and icariin can counteract the inhibitory effects of miR-153 inhibitors. This demonstrates a direct, miRNA-mediated mechanism for icariin's pro-osteogenic action involving the miR-153/Runx2 axis [PMID: 29904399, human cell line evidence].
+
+- mmu_circ_0000349/miR-138-5p/JMJD3 axis: In MC3T3-E1 cells, icariin upregulates mmu_circ_0000349 (a circular RNA) and downregulates miR-138-5p, thereby increasing JMJD3 expression and promoting osteogenic differentiation markers (ALP, RUNX2). Overexpression of mmu_circ_0000349 or treatment with icariin enhances osteoblast differentiation, with miR-138-5p acting as a negative modulator in this pathway. Icariin thus supports osteogenesis by manipulating a circRNA/miRNA network [PMID: 38045146, murine cell line evidence].
+
+- miR-335-5p/PTEN pathway: In bone marrow stem cells (BMSCs), icariin upregulates miR-335-5p, which suppresses PTEN, promoting osteogenic differentiation and improving osteoporosis (OP) pathology in rats. Overexpression of miR-335-5p or icariin treatment can ameliorate OP in vivo, confirming the functional significance of this miRNA-mediated mechanism [PMID: 35292240, animal and in vitro evidence].
+
+- miR-21-5p/BMP2, Runx2 pathway: Icariin counters inhibition of osteogenic differentiation caused by titanium particles via upregulation of miR-21-5p in MC3T3-E1 cells. miR-21-5p promotes expression of osteogenic genes (BMP2, Runx2, OCN) and increases ALP activity and mineralization. Importantly, knockdown of miR-21-5p reduces the osteogenic effect of icariin, confirming its necessity in this pathway [PMID: 29500883, in vitro].
+
+- miR-23a/Wnt/β-catenin pathway: Icariin stimulates osteogenesis and suppresses adipogenesis in human bone mesenchymal stem cells (hBMSCs), in part, via miR-23a-mediated activation of the Wnt/β-catenin signaling pathway. Inhibition of miR-23a or icariin treatment activates Wnt signaling, promoting osteogenesis and inhibiting adipogenesis [PMID: 33743412, human cell line evidence].
+
+- miR-34c/Runx2 pathway: In a model of LPS-induced bone loss, icariin restores bone formation and decreases miR-34c expression. Overexpression of miR-34c inhibits osteogenic genes (ALP, Runx2, OPN, BMP2), but icariin downregulates miR-34c, rescuing osteogenic differentiation and mineralization [PMID: 27492554, in vitro].
+
+- miR-331-3p/FGF23/DKK1 pathway (exosome-mediated): Icariin increases miR-331-3p content in osteoclast-derived exosomes, which then stimulates osteoblast differentiation and function by targeting FGF23, decreasing DKK1, and upregulating ALP. This effect is demonstrated both in vitro and in rat models of infected bone defects [PMID: 39588260, animal and cellular evidence].
+
+Association and Testable Hypothesis:
+- The diversity of miRNA targets regulated by icariin suggests a broad scope for its epigenetic modulation in bone biology. The close association between specific miRNAs (e.g., miR-21-5p, miR-153, miR-335-5p, miR-23a, miR-138-5p, miR-34c, miR-331-3p) and enhanced osteogenic markers (ALP, Runx2, BMP2, OCN) or signaling pathways (Wnt/β-catenin, PI3K/PTEN) indicates that icariin’s pro-osteogenic effects are mediated mainly via miRNA-controlled regulatory networks.
+
+- Testable hypothesis: Pharmacological modulation of these miRNAs (e.g., via mimics or inhibitors), in combination with icariin, could synergistically enhance or inhibit osteoblast differentiation, providing a basis for future therapeutic approaches in osteoporosis or defect healing.
+
+Summary:
+Direct human, animal, and in-vitro evidence demonstrates that icariin influences osteoblast differentiation via multiple miRNA-related mechanisms, mostly by upregulating pro-osteogenic miRNAs or downregulating anti-osteogenic ones, affecting key targets such as Runx2, PTEN, BMP2, and modulating signaling pathways (Wnt/β-catenin, PI3K/PTEN)[PMID: 29904399, 38045146, 35292240, 29500883, 33743412, 27492554, 39588260]."
+traditional_rag,Q001,formal-v1-gpt-4.1-F_adaptive,fixed_formal_system_run,"Direct evidence (in-vitro/human/animal):
+- Icariin promotes osteoblast differentiation through various miRNA-related mechanisms:
+    1. Downregulation of miR-34c: In an in vitro osteogenic model, icariin reverses LPS-induced upregulation of miR-34c. Overexpression of miR-34c inhibits key osteogenic markers (ALP, Runx2, OPN, BMP2), and icariin-induced osteogenic differentiation and mineral nodule formation are negated by miR-34c overexpression. Icariin, therefore, restores osteoblast function partly by downregulating miR-34c, which relieves the inhibition on osteogenic factors, even though icariin does not alter Runx2 mRNA but does restore its protein level [PMID: 27492554]. (In vitro evidence)
+    2. Upregulation of miR-153: In MC3T3-E1 cells, icariin increases both miR-153 and Runx2 expression. miR-153 enhances Runx2 levels, and inhibition of miR-153 suppresses icariin’s osteogenic effects, which can be rescued by icariin. Thus, icariin induces osteoblast differentiation via enhancing the miR-153/Runx2 axis [PMID: 29904399]. (In vitro evidence)
+    3. Regulation via the mmu_circ_0000349/mmu-miR-138-5p/JMJD3 axis: In MC3T3-E1 cells, icariin increases expression of a particular circRNA (mmu_circ_0000349), which acts as a sponge for mmu-miR-138-5p, leading to increased JMJD3, ALP, and RUNX2. Icariin lowers miR-138-5p expression, thereby promoting osteogenic differentiation through this pathway [PMID: 38045146]. (In vitro, mouse cell line)
+    4. Upregulation of miR-335-5p: In bone marrow-derived mesenchymal stem cells (BMSCs) and in an osteoporosis rat model, icariin increases miR-335-5p. miR-335-5p inhibits PTEN, allowing osteogenic differentiation. Overexpression of PTEN reverses the effect, confirming the regulatory axis [PMID: 35292240]. (In vitro and in vivo, rat data)
+    5. Upregulation of miR-21-5p: In MC3T3-E1 cells under titanium particle-induced osteolysis stress, icariin increases miR-21-5p, which reverses inhibitory effects on ALP activity, matrix mineralization, and expression of osteogenic markers. Knockdown of miR-21-5p blocks icariin’s positive effect on osteogenic differentiation [PMID: 29500883]. (In vitro evidence)
+    6. Downregulation of miR-23a: In human bone mesenchymal stem cells, icariin promotes osteogenesis and suppresses adipogenesis by downregulating miR-23a, leading to activation of the Wnt/β-catenin pathway, upregulation of osteogenic markers, and downregulation of adipogenic factors [PMID: 33743412]. (In vitro, human cells)
+
+Associations (animal/human observational/correlative):
+- miR-335: Icariin regulates abnormal overexpression of miRNA-335 in rat bone microvascular endothelial cells (BMECs) following steroid-induced osteonecrosis, supporting improved migration, angiogenesis, and survival of BMECs. While this is more focused on bone vascular health, miR-335 is also involved in osteogenic regulation [PMID: 32911026]. (Animal model)
+- Osteoclast-derived exosomal miR-331-3p: Icariin increases miR-331-3p levels in osteoclast exosomes, which stimulates osteoblast function by affecting FGF23 and DKK1, ultimately increasing ALP and bone healing in vivo [PMID: 39588260]. (Animal and in vitro evidence)
+
+Testable hypotheses:
+- Icariin may generally promote osteogenic differentiation through modulation of multiple miRNAs, targeting suppressive (e.g., miR-34c, miR-138-5p, miR-23a) and stimulatory (e.g., miR-153, miR-335-5p, miR-21-5p, miR-331-3p) pathways, thus coordinating transcription factor expression and signal transduction relevant to osteoblast maturation and function.
+
+Summary Table:
+
+| miRNA           | Direction by Icariin | Cellular Outcome (Mechanism)                      | Supporting Evidence             |
+|-----------------|---------------------|---------------------------------------------------|---------------------------------|
+| miR-34c         | Downregulated       | Restores Runx2 protein, ALP, OPN, BMP2            | [PMID: 27492554] (in vitro)     |
+| miR-153         | Upregulated         | Increases Runx2, enhances differentiation         | [PMID: 29904399] (in vitro)     |
+| miR-138-5p      | Downregulated       | Increases JMJD3, ALP, RUNX2 via circRNA sponge    | [PMID: 38045146] (in vitro)     |
+| miR-335-5p      | Upregulated         | Inhibits PTEN, promotes osteogenic differentiation| [PMID: 35292240], [PMID: 32911026] (in vitro and in vivo animal) |
+| miR-21-5p       | Upregulated         | Enhances BMP2, Runx2, OCN; opposes osteolysis     | [PMID: 29500883] (in vitro)     |
+| miR-23a         | Downregulated       | Activates Wnt/β-catenin, promotes osteogenesis    | [PMID: 33743412] (in vitro, human cells)|
+| miR-331-3p (exosomal) | Upregulated   | Stimulates osteoblast via FGF23/DKK1 axis         | [PMID: 39588260] (in vivo/in vitro)|
+
+Evidence is primarily in vitro and in animal models; human direct evidence is currently lacking.
+
+No evidence from the context was found regarding icariin’s effects on osteoblast differentiation via miRNA mechanisms in human in vivo studies."
+netmedex_hybrid_rag,Q002,formal-v1-gpt-4.1-F_adaptive,fixed_formal_system_run,"Direct Evidence:
+The retrieved literature identifies several miRNAs most frequently and directly linked to osteoporosis-related osteogenesis:
+
+1. miR-214: Elevated miR-214 levels are correlated with reduced bone formation in aged human osteoporosis patients. In mouse and in vitro models, miR-214 inhibits osteoblast activity by targeting ATF4, while inhibition of miR-214 promotes osteogenesis, suggesting miR-214 acts as a suppressor of osteogenesis in osteoporosis contexts [PMID: 23223004]. Several lncRNA/miR-214 interactions (e.g., MALAT1/miR-214, KCNQ1OT1/miR-214) are also relevant in osteogenic regulation [PMID: 34311172].
+
+2. miR-15b: Upregulated in osteoporotic mouse tissues, miR-15b inhibits osteoblast differentiation and autophagy by targeting USP7, leading to decreased KDM6B expression—both critical regulators of osteoblast function. Suppressing miR-15b ameliorates osteoporosis and enhances bone mineral density and osteoblast differentiation [PMID: 33434305].
+
+3. miR-1224-5p: Overexpression of miR-1224-5p promotes osteoblast differentiation and inhibits osteoclast differentiation via the Rap1 pathway (targeting ADCY2), enhancing bone healing and counteracting osteoporosis in both cell and animal models. Loss of miR-1224-5p accelerates osteoporosis progression [PMID: 35831436].
+
+4. miR-582-3p: Overexpressed in osteoporotic tissues and suppresses osteoblast marker genes by targeting HOXA10, inhibiting osteogenic differentiation. Thus, miR-582-3p negatively regulates bone formation relevant to osteoporosis [PMID: 35285389].
+
+5. miR-218: Temporally upregulated during osteoblastogenesis, miR-218 has prominent effects on osteogenic differentiation and is linked to osteogenesis in various studies, though the specific mechanism in osteoporosis is less extensively detailed in the retrieved context [PMID: 23605904].
+
+Associated/Review Evidence:
+Additional miRNAs (e.g., miR-30, miR-24-3p, miR-33a, miR-140-5p) are mentioned in interactions with lncRNAs influencing osteogenesis, but direct links to osteoporosis are less emphasized compared to those listed above [PMID: 34311172]. General reviews also highlight the broad role of miRNAs in osteogenesis and bone homeostasis, underscoring their potential as therapeutic targets and biomarkers, though without prioritizing one specific miRNA over another in osteoporosis [PMID: 27904930, PMID: 41369394, PMID: 33255179].
+
+Testable Hypothesis:
+The manipulation of miR-214, miR-15b, or miR-1224-5p levels may serve as potential therapeutic avenues for promoting osteogenesis and counteracting osteoporosis. Testing approaches involving inhibitors (antagomirs) for miR-214 and miR-15b or mimics for miR-1224-5p in clinical models of osteoporosis offer translational potential.
+
+Summary:
+- Frequently and directly linked miRNAs: miR-214, miR-15b, miR-1224-5p, miR-582-3p, and miR-218.
+- Mechanistic studies support their roles in either suppressing or promoting osteogenesis in osteoporosis contexts.
+- miR-214 and miR-15b act as suppressors of bone formation; miR-1224-5p promotes osteogenesis.
+- Additional miRNA-lncRNA regulatory axes (e.g., involving miR-30, miR-214, others) are also reported in osteogenesis.
+
+Human vs. Animal Evidence:
+- Direct human evidence exists for miR-214 (osteoporotic bone specimens).
+- Most mechanistic and interventional studies occur in animal models or in vitro systems."
+traditional_rag,Q002,formal-v1-gpt-4.1-F_adaptive,fixed_formal_system_run,"Direct Evidence:
+Several miRNAs are directly linked to osteoporosis-related osteogenesis in the retrieved literature:
+
+- miR-214: Elevated levels of miR-214 are associated with reduced bone formation in both human osteoporotic bone specimens and multiple animal models. It inhibits osteoblast activity and osteogenesis by targeting ATF4. Suppression of miR-214 promotes osteoblast activity and bone formation, suggesting it as a negative regulator in osteoporosis-related osteogenesis [PMID: 23223004]. Additionally, interactions between lncRNAs and miR-214 (e.g., MALAT1/miR-214, KCNQ1OT1/miR-214) are specifically cited as being relevant in osteogenesis and related disorders [PMID: 34311172].
+
+- miR-15b: miR-15b is upregulated in osteoporotic mouse models. Overexpression of miR-15b suppresses osteoblast differentiation and autophagy, exacerbating osteoporosis. miR-15b acts by directly targeting USP7, which influences KDM6B expression; both are important for osteoblast function [PMID: 33434305].
+
+- miR-582-3p: Increased expression of miR-582-3p is observed in osteoporotic tissues. Overexpression reduces osteoblast markers (OC, ALP, COL1A1) and inhibits osteoblast differentiation through repression of HOXA10, indicating miR-582-3p as a negative regulator of osteogenic differentiation in osteoporosis [PMID: 35285389].
+
+- miR-1224-5p: Overexpression of miR-1224-5p promotes osteoblast differentiation, enhances bone regeneration, and reduces osteoclast differentiation in both in vitro and in vivo models of osteogenesis and osteoporosis. Downregulation accelerates progression of osteoporosis. Its mechanism involves the Rap1 signaling pathway via targeting ADCY2 [PMID: 35831436].
+
+- miR-218: Temporally upregulated during osteoblastogenesis and acts to promote osteogenic differentiation by suppressing inhibitory signaling pathways in bone formation. Dysregulation correlates with osteoporosis pathogenesis [PMID: 23605904].
+
+Other Candidates (Associations or Mentioned in Reviews):
+- miR-148a is noted as important during osteoclastogenesis rather than osteogenesis and serves as an example of miRNAs involved in bone remodeling rather than specifically in osteoblastogenesis [PMID: 23605904].
+- Several miRNA/lncRNA pairs linked to osteogenesis are cited, including MALAT1/miR-30, LEF1-AS1/miR-24-3p, MCF2L-AS1/miR-33a, and MSC-AS1/miR-140-5p, but details for these specific miRNAs regarding frequency in osteoporosis-related osteogenesis are less direct in the supplied context [PMID: 34311172].
+
+Summary Table of Frequently Linked miRNAs:
+| miRNA        | Osteogenic Effect in Osteoporosis      | Evidence Type                | PMID           |
+|--------------|---------------------------------------|------------------------------|----------------|
+| miR-214      | Inhibits osteogenesis (negative)       | Human, animal, in vitro      | 23223004, 34311172 |
+| miR-15b      | Inhibits osteogenesis (negative)       | Animal, in vitro             | 33434305       |
+| miR-582-3p   | Inhibits osteogenesis (negative)       | In vitro, animal             | 35285389       |
+| miR-1224-5p  | Promotes osteogenesis (positive)       | Animal, in vitro             | 35831436       |
+| miR-218      | Promotes osteogenesis (positive)       | Review, general, animal      | 23605904       |
+
+Association and Testable Hypothesis:
+- The reviews highlight the centrality of miR-214, miR-15b, miR-582-3p, miR-1224-5p, and miR-218 in the regulation of osteogenesis in osteoporosis, suggesting that modulation of these miRNAs may be a therapeutic avenue [PMID: 23605904, 33434305, 35285389, 35831436, 23223004]. These associations are testable in experimental and translational studies.
+
+Absence of Evidence:
+- No mention was found of some commonly studied miRNAs in osteogenesis (e.g., miR-21, miR-29 family, miR-206) in the provided context; thus, conclusions should be limited to the above miRNAs as frequent links in the supplied literature."
+netmedex_hybrid_rag,Q007,formal-v1-gpt-4.1-F_adaptive,fixed_formal_system_run,"Direct Evidence:
+The immune cell types most directly associated with IL-17 in autoimmune disease networks are:
+
+- T helper 17 (Th17) cells: Th17 cells are the primary source of IL-17 (especially IL-17A and IL-17F) and play a pivotal role in the pathogenesis of autoimmune diseases, including multiple sclerosis, Hashimoto's thyroiditis, systemic lupus erythematosus, rheumatoid arthritis, psoriasis, psoriatic arthritis, ankylosing spondylitis, and inflammatory bowel diseases [PMID: 37670700, PMID: 30891627, PMID: 31295952, PMID: 27576555, PMID: 34875227].
+
+- Other T cell subsets: Besides conventional Th17 cells, additional T cell populations produce IL-17, such as CD8+ T cells, γδ (gamma-delta) T cells, and NKT (natural killer T) cells [PMID: 37579542, PMID: 27576555, PMID: 34635393, PMID: 31866067].
+
+- Innate lymphoid cells (ILCs), specifically type 3 innate lymphoid cells (ILC3s): These cells also produce IL-17 and have been implicated in autoimmune and inflammatory diseases [PMID: 27576555, PMID: 34635393].
+
+- Double negative T cells (CD4−CD8−): In systemic lupus erythematosus and rheumatic conditions, CD8+ T cells can lose CD8 expression and become IL-17+ CD4−CD8− double negative T (DNT) cells with tissue-infiltrating potential [PMID: 35872102].
+
+Evidence type: All above evidence is from human studies and/or animal models, as explicitly stated in the respective sources (see PMIDs referenced).
+
+Association:
+- The common theme is that IL-17-producing cells are central drivers of inflammation and tissue pathology in diverse autoimmune diseases. Th17-related immune pathways interface with other cytokines (notably IL-23) and innate immune responses to shape disease outcomes [PMID: 39875232, PMID: 31295952, PMID: 37670700].
+- The RORγt (encoded by RORC, also called RORgammat) transcription factor is a key regulator of the IL-17 program in T cells and ILC3s [PMID: 34635393, PMID: 34875227].
+
+Testable Hypothesis:
+
+- Modulation of the specific differentiation or effector functions of IL-17-producing Th17 cells, γδ T cells, NKT cells, or ILC3s could alter the course or severity of autoimmune diseases. Targeted therapies blocking IL-17 (e.g., secukinumab, ixekizumab) or its receptor have shown efficacy in several autoimmune conditions [PMID: 37670700, PMID: 39875232].
+
+Summary Table of Immune Cell Types Associated with IL-17 in Autoimmune Disease:
+| Immune Cell Type         | Evidence/Notes                                                | Source(s)                      |
+|-------------------------|--------------------------------------------------------------|--------------------------------|
+| Th17 cells (CD4+)       | Primary IL-17 producers in autoimmunity                     | PMID: 37670700, 30891627, 27576555, 31295952, 34875227 |
+| γδ T cells              | Innate-like; IL-17 production contributing to inflammation   | PMID: 27576555, 37579542, 34635393, 34875227|
+| NKT cells               | Additional T cell source of IL-17                            | PMID: 27576555, 37579542, 34635393 |
+| ILC3 (type 3 ILC)       | Innate cells, part of mucosal immunity and inflammation      | PMID: 27576555, 34635393 |
+| CD8+ T cells            | Can produce IL-17 in some diseases                           | PMID: 37579542, 35872102 |
+| Double negative T cells | IL-17+ CD4−CD8− T cells in SLE and rheumatic diseases        | PMID: 35872102          |"
+traditional_rag,Q007,formal-v1-gpt-4.1-F_adaptive,fixed_formal_system_run,"Direct Evidence:
+- The predominant immune cell type associated with IL-17 in autoimmune disease networks is the CD4+ T helper 17 (Th17) cell. These cells are defined by their production of IL-17 and their role has been directly implicated in the pathogenesis of autoimmune diseases such as multiple sclerosis, rheumatoid arthritis, psoriasis, and inflammatory bowel diseases [PMID: 37670700, PMID: 27576555, PMID: 31295952, PMID: 30891627].
+- Other immune cell types that produce IL-17 and are implicated in autoimmune responses include:
+    - γδ T cells (gamma-delta T cells) [PMID: 27576555, PMID: 34635393]
+    - CD8+ T cells [PMID: 37579542]
+    - Natural killer T (NKT) cells [PMID: 27576555, PMID: 37579542]
+    - Innate lymphoid cells, specifically type 3 innate lymphoid cells (ILC3s) [PMID: 27576555, PMID: 34635393]
+- A more specialized subset, Th1-like Th17 cells (co-expressing RORγt and T-bet and producing both IL-17 and IFN-γ), are implicated in the pathogenesis of autoimmune diseases such as inflammatory bowel disease, multiple sclerosis, and rheumatoid arthritis [PMID: 30502718, PMID: 34875227].
+
+Associations:
+- The pathogenic Th17 phenotype (sometimes distinguished by production of both IL-17 and other cytokines such as GM-CSF and IFN-γ) is associated with more severe or tissue-destructive autoimmune inflammation [PMID: 30891627, PMID: 34875227].
+- The IL-17/IL-23 “axis” is central to several immune-mediated inflammatory diseases, with both cell types and their cytokines forming key nodes in pathogenic networks [PMID: 25145755, PMID: 31295952].
+
+Testable Hypotheses:
+- Other immune cells that may modulate or respond to IL-17 in autoimmune tissue networks could include neutrophils and barrier epithelial or mesenchymal cells (via cytokine/chemokine recruitment downstream of IL-17), but these are effectors rather than primary IL-17 producers [PMID: 37670700, PMID: 31295952].
+
+Summary Table (derived from human and animal studies):
+| Immune Cell Type          | Evidence type                | Role with IL-17           | PMID(s)        |
+|---------------------------|------------------------------|---------------------------|----------------|
+| Th17 (CD4+ T cells)       | Human, animal, in vitro      | Major IL-17 producer      | 37670700, 27576555, 30891627, 31295952 |
+| γδ T cells                | Human, animal                | IL-17 production          | 27576555, 34635393   |
+| Th1-like Th17 (CD4+ T)    | Human, animal                | IL-17/IFN-γ production     | 30502718, 34875227   |
+| CD8+ T cells              | Human, animal                | IL-17 production          | 37579542             |
+| Natural Killer T cells    | Human, animal                | IL-17 production          | 27576555, 37579542   |
+| ILC3s                     | Human, animal                | IL-17 production          | 27576555, 34635393   |
+
+If additional secondary cell types or variations are implicated in specific diseases, this is often context- or tissue-dependent.
+
+In summary, Th17 cells are the primary IL-17-producing immune cell type within autoimmune disease networks, with important contributions from γδ T cells, Th1-like Th17 cells, NKT cells, CD8+ T cells, and ILC3s [PMID: 27576555, 30502718, 34635393, 37579542]."

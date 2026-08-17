@@ -1,0 +1,215 @@
+{
+  "status": "complete",
+  "question_id": "PP002",
+  "domain": "cancer",
+  "question": "What evidence supports the claim that curcumin induces apoptosis, and what are the important study-context limitations?",
+  "question_type": "mechanism",
+  "pubmed_query": "curcumin AND apoptosis AND cancer AND (gene OR pathway)",
+  "effective_pubmed_query": "curcumin AND apoptosis AND cancer AND (gene OR pathway)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "15810876",
+    "29693253",
+    "30623450",
+    "30725357",
+    "31590362",
+    "32519340",
+    "35722665",
+    "37776274",
+    "38031951",
+    "38166505",
+    "38269517",
+    "38699926",
+    "39219410",
+    "41109942",
+    "41252742"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports the claim that curcumin induces apoptosis, and what are the important study-context limitations?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "pre_gate_incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "integration_decision": {
+      "method": "three_stage_incremental_utility_router_v1",
+      "mode": "traditional_fallback",
+      "reason": "no_claim_safe_path",
+      "claim_safe_path_count": 0,
+      "incremental_path_count": 0,
+      "confirmatory_path_count": 0,
+      "citation_validation_pmids": [],
+      "policy": "three_stage"
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "disabled",
+      "reason": "integration_mode=traditional_fallback",
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "15810876",
+        "score": 0.6819409667113281
+      },
+      {
+        "pmid": "38031951",
+        "score": 0.6672144061734017
+      },
+      {
+        "pmid": "30623450",
+        "score": 0.6438216842967363
+      },
+      {
+        "pmid": "31590362",
+        "score": 0.6295679299065796
+      },
+      {
+        "pmid": "32519340",
+        "score": 0.6137963262181754
+      },
+      {
+        "pmid": "29693253",
+        "score": 0.6068561235251908
+      },
+      {
+        "pmid": "30725357",
+        "score": 0.6066284468306069
+      },
+      {
+        "pmid": "38699926",
+        "score": 0.5987253527248808
+      },
+      {
+        "pmid": "38269517",
+        "score": 0.5708767910828811
+      },
+      {
+        "pmid": "41252742",
+        "score": 0.5701333103157901
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "15810876",
+        "score": 0.6819409667113281
+      },
+      {
+        "pmid": "38031951",
+        "score": 0.6672144061734017
+      },
+      {
+        "pmid": "30623450",
+        "score": 0.6438216842967363
+      },
+      {
+        "pmid": "31590362",
+        "score": 0.6295679299065796
+      },
+      {
+        "pmid": "32519340",
+        "score": 0.6137963262181754
+      },
+      {
+        "pmid": "29693253",
+        "score": 0.6068561235251908
+      },
+      {
+        "pmid": "30725357",
+        "score": 0.6066284468306069
+      },
+      {
+        "pmid": "38699926",
+        "score": 0.5987253527248808
+      },
+      {
+        "pmid": "38269517",
+        "score": 0.5708767910828811
+      },
+      {
+        "pmid": "41252742",
+        "score": 0.5701333103157901
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Direct experimental evidence**  \n- In human colorectal‑cancer cell lines (SW480, HCT116, LoVo, HT‑29) curcumin reduced viability and increased the Sub‑G1 population, a hallmark of apoptosis, after 24–72 h exposure at IC₅₀ concentrations【PMID: 38031951】 (in‑vitro human cancer cells).  \n- Multiple primary studies summarized in a review document that curcumin activates the mitochondrial (intrinsic) apoptosis pathway across a variety of cancer cell types, leading to cytochrome‑c release, caspase activation and DNA fragmentation【PMID: 15810876】 (in‑vitro and animal tumor models, as compiled).  \n\n**Associative/Correlative observations**  \n- Reviews of mechanistic literature link curcumin‑induced reactive‑oxygen‑species (ROS) generation, p53 up‑regulation, NF‑κB inhibition and down‑regulation of anti‑apoptotic Bcl‑2 to increased apoptotic markers in diverse tumor cell lines【PMID: 30623450】【PMID: 31590362】 (in‑vitro and pre‑clinical).  \n- In lung‑cancer models, curcumin‑mediated sensitisation to chemotherapy is attributed to enhanced apoptotic signaling, though the underlying data are drawn from multiple independent studies rather than a single experiment【PMID: 32519340】 (in‑vitro and animal).  \n\n**Testable hypotheses / mechanistic proposals**  \n- Curcumin may promote apoptosis by ROS‑mediated activation of the AMPK/mTOR/ULK1 axis, leading to autophagy‑dependent cell death, a pathway that can be blocked by antioxidants (e.g., N‑acetyl‑L‑cysteine)【PMID: 41252742】 (in‑vitro mouse CT26 colon‑cancer cells).  \n- The selective induction of apoptosis in tumor versus normal cells could involve differential modulation of the NLRP3 inflammasome, as suggested by variable inflammasome activation in CRC lines after curcumin treatment【PMID: 38031951】 (in‑vitro).  \n\n**Key study‑context limitations**  \n- **In‑vitro dominance**: Most data derive from cultured human cancer cell lines; concentrations required to trigger apoptosis often exceed physiologic levels achievable after oral dosing.  \n- **Bioavailability constraints**: Reviews repeatedly note curcumin’s poor absorption, rapid metabolism and short half‑life, limiting translation of in‑vitro potency to in‑vivo efficacy.  \n- **Cell‑type specificity**: While many cancer cells undergo apoptosis, certain normal or primary cells (e.g., thymocytes) show only apoptosis‑like changes or resistance, indicating a context‑dependent response【PMID: 15810876】.  \n- **Lack of robust clinical trials**: No cited human interventional studies directly confirm apoptotic outcomes in patients; existing clinical work focuses on prevention or combination therapy rather than mechanistic apoptosis endpoints.  \n- **Potential protective effects**: Curcumin can also inhibit apoptosis triggered by other agents in some cell types, complicating its role as a pure pro‑apoptotic agent【PMID: 15810876】.  \n\n**Conclusion**: In‑vitro and pre‑clinical studies consistently demonstrate that curcumin can trigger apoptosis in cancer cells, but poor bioavailability, high experimental doses, cell‑type variability and scant clinical validation limit the strength of the claim."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 4.622340202331543e-05,
+    "vector_index": 1.9235921204090118,
+    "kg_expansion": 1.1868774890899658e-05,
+    "answer_traditional_rag": 29.870561510324478,
+    "total": 32.29307197034359
+  },
+  "token_usage": {
+    "input_tokens": 3626,
+    "total_tokens": 4724,
+    "output_tokens": 1098
+  },
+  "completed_at": "2026-08-16T19:32:02.993818+00:00"
+}

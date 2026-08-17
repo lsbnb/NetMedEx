@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP006",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "bee088c49563fd889538cb84e580cba8a94df0c65aaa87408d524f1a7b6e60d4",
+  "raw_response_sha256": "1cc573ee1d11e475d3c8a9a05700f1a88ff333f8898da3760b01990829530208",
+  "usage": {
+    "input_tokens": 2557,
+    "output_tokens": 486,
+    "total_tokens": 3043
+  },
+  "rated_at": "2026-08-13T06:27:58.142304+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP006-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Strong mechanistic detail, but 'ti' is ambiguously defined and not clearly linked to titanium. Evidence is mostly in vitro/animal, but lacks explicit citation support."
+      },
+      {
+        "answer_id": "PP006-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Clear, stepwise mechanistic evidence for each hop, well-grounded in cited in vitro data. Distinguishes each step and provides a testable hypothesis."
+      },
+      {
+        "answer_id": "PP006-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Detailed, well-cited mechanistic chain with explicit evidence for each hop. Clearly distinguishes steps and links to experimental data."
+      },
+      {
+        "answer_id": "PP006-D",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 4,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Correct but less detailed. Each hop is supported, but lacks mechanistic depth and omits the miR-21-5p link present in other answers."
+      }
+    ],
+    "preferred_item_id": "PP006-C",
+    "pairwise_reason": "PP006-C provides the most complete, well-grounded, and mechanistically coherent answer, with explicit evidence for each hop and clear distinction of steps, closely followed by PP006-B."
+  }
+}

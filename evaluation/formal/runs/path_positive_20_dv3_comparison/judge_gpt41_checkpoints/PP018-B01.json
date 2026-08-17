@@ -1,0 +1,51 @@
+{
+  "task": "answer",
+  "question_id": "PP018",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "4668b25d26206f90d523cc43377775fda0d0837a3a7007c9929887342209a41f",
+  "raw_response_sha256": "890c434e976bad1bbe3dcde99db7a117f480d613c8ea3fbe83ccbb6e25960a9d",
+  "usage": {
+    "input_tokens": 2190,
+    "output_tokens": 402,
+    "total_tokens": 2592
+  },
+  "rated_at": "2026-08-13T10:33:35.309695+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP018-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Stepwise, well-cited, distinguishes human/animal data, details each mechanistic hop, and highlights experimental evidence for each stage."
+      },
+      {
+        "answer_id": "PP018-B",
+        "correctness": 3,
+        "completeness": 3,
+        "relevance": 4,
+        "grounding": 3,
+        "mechanistic_coherence": 2,
+        "research_value": 3,
+        "notes": "Lists evidence but lacks detail for each mechanistic hop; graph paths are associative, not mechanistic, and some claims are not well-supported."
+      },
+      {
+        "answer_id": "PP018-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Clearly distinguishes evidence for each hop, integrates human/animal/in vitro data, and proposes testable hypotheses; highly mechanistic and well-grounded."
+      }
+    ],
+    "preferred_item_id": "PP018-C",
+    "pairwise_reason": "PP018-C is preferred for its explicit distinction of evidence at each mechanistic step, integration of human/animal/in vitro data, and clear, testable mechanistic pathways. PP018-A is also strong but less explicit about testability and hypothesis generation. PP018-B is less detailed, with weaker mechanistic coherence and grounding."
+  }
+}

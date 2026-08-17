@@ -1,0 +1,257 @@
+##USE-MESH-VOCABULARY
+34092564|t|[Chemotherapy for Glioma].
+34092564|a|Chemotherapeutic treatment of malignant gliomas is extremely challenging. Tumor accumulation of systemically-administrated chemotherapy is always hindered by the blood-brain barrier(BBB). Although temozolomide administered orally or intravenously represents the standard of care for malignant gliomas, its efficacy is unsatisfactory. Local chemotherapy bypasses the BBB and, therefore, achieves a high drug concentration at the site the drug is administered. Carmustine wafers are clinically available local chemotherapeutic agents. However, their efficacy is limited because of limited drug penetration into the tumor. Combined with the highly chemoresistant features of glioma itself, ongoing chemotherapy is far from satisfactory in terms of efficacy. This review covers several important issues regarding temozolomide chemotherapy, including the reactivation of hepatitis B virus, assessment of MGMT promoter methylation, and pseudo-progression. Local chemotherapy for newly diagnosed resectable glioblastoma cases using carmustine wafers is currently under investigation with a randomized phase 3 trial (JCOG 1703), which will also be discussed. In addition, recent progress in convection-enhanced delivery of chemotherapeutics against gliomas has also been reported. Development of an alternative strategy to effectively deliver drugs to the tumor site may improve the efficacy of chemotherapy against gliomas in the near future.
+34092564	18	24	Glioma	Disease	MESH:D005910
+34092564	57	74	Glioma	Disease	MESH:D005910
+34092564	101	106	Neoplasms	Disease	MESH:D009369
+34092564	224	236	Temozolomide	Chemical	MESH:D000077204
+34092564	310	327	Glioma	Disease	MESH:D005910
+34092564	486	496	Carmustine	Chemical	MESH:D002330
+34092564	640	645	Neoplasms	Disease	MESH:D009369
+34092564	699	705	Glioma	Disease	MESH:D005910
+34092564	836	848	Temozolomide	Chemical	MESH:D000077204
+34092564	893	910	hepatitis B virus	Species	10407
+34092564	926	930	MGMT	Gene	4255
+34092564	1027	1039	Glioblastoma	Disease	MESH:D005909
+34092564	1052	1062	Carmustine	Chemical	MESH:D002330
+34092564	1268	1275	Glioma	Disease	MESH:D005910
+34092564	1375	1380	Neoplasms	Disease	MESH:D009369
+34092564	1435	1442	Glioma	Disease	MESH:D005910
+34092564	Negative_Correlation	MESH:D000077204	MESH:D005910
+34092564	Negative_Correlation	MESH:D002330	MESH:D005910
+34092564	Negative_Correlation	MESH:D002330	MESH:D005909
+34092564	Negative_Correlation	MESH:D002330	MESH:D009369
+
+24133502|t|Regulation of hepatitis B virus replication by epigenetic mechanisms and microRNAs.
+24133502|a|The hepatitis B virus (HBV) genome forms a covalently closed circular DNA (cccDNA) minichromosome that persists in the nucleus of virus-infected hepatocytes. HBV cccDNA serves as the template for viral mRNA synthesis and is subject to epigenetic regulation by several mechanisms, including DNA methylation and histone acetylation. Recently, microRNAs (miRNAs), a class of small non-coding RNAs, were also directly connected to the epigenetic machinery through a regulatory loop. Epigenetic modifications have been shown to affect miRNA expression, and a sub-group of miRNAs (defined as epi-miRNAs) can directly target effectors of the epigenetic machinery. In this review, we will summarize recent findings on the epigenetic mechanisms controlling HBV cccDNA function, primarily focusing on the epi-miRNA functions operating in HBV replication. Investigation of the epigenetic regulation of HBV replication may help to discover novel potential therapeutic targets for drug development with the goal to eradicate the HBV cccDNA pool in hepatocytes. 
+24133502	14	31	hepatitis B virus	Species	10407
+24133502	88	105	hepatitis B virus	Species	10407
+24133502	107	110	HBV	Species	10407
+24133502	242	245	HBV	Species	10407
+24133502	832	835	HBV	Species	10407
+24133502	912	915	HBV	Species	10407
+24133502	975	978	HBV	Species	10407
+24133502	1100	1103	HBV	Species	10407
+
+36482819|t|Hepatitis B virus X protein induces p16 gene promoter methylation through upregulation of DNA methylation transferases DNMT1 and DNMT3A.
+36482819|a|BACKGROUND: As a tumor suppressor, p16 can competitively block the cyclin D1-CDK4/6 complex to arrest the cell cycle in the G1 phase. Lack of p16 gene expression can lead to infinite cell proliferation and malignant transformation. OBJECTIVES: To determine whether the hepatitis B virus X protein (HBx) regulates the methylation and expression of the p16 gene. MATERIAL AND METHODS: We constructed a eukaryotic expression vector carrying the HBx gene and green fluorescent protein (GFP), and transfected it into HepG2 cells to build cell lines stably expressing GFP and GFP-HBx. The p16 protein level and p16 gene methylation were measured in these cell lines. We further detected the mRNA expression of DNA methyltransferases (DNMTs) 1, 3A and 3B. The DNMT1, DNMT3A and DNMT3B gene promoter sequences were inserted into a reporter vector (pGL3-Basic) to build recombinant vectors, which were then transiently transfected into different cell lines. After 48 h, the luciferase activity was measured. RESULTS: The level of p16 protein in GFP-HBx/HepG2 cells was significantly lower than in HepG2 and GFP/HepG2 cells. The CpG methylation was present in the p16 gene promoter region of GFP-HBx/HepG2 cells. The DNMT1 and DNMT3A mRNA levels in GFP-HBx/HepG2 cells were significantly elevated compared to that in the HepG2 cells (p = 0.0495). The luciferase activity in GFP-HBx/HepG2 cells transfected with the pGL3-DNMT1/3A pro plasmid was significantly higher than in HepG2 and GFP/HepG2 cells (both p < 0.05). CONCLUSIONS: The HBx can induce p16 gene promoter methylation and inhibit the expression of p16 in HepG2 cells. This occurs due to HBx activation of DNMT1 and DNMT3A promoters and the induction of p16 promoter methylation, which downregulates the expression of p16 protein.
+36482819	36	39	CDKN2A	Gene	1029
+36482819	119	124	DNMT1	Gene	1786
+36482819	129	135	DNMT3A	Gene	1788
+36482819	154	159	Neoplasms	Disease	MESH:D009369
+36482819	172	175	CDKN2A	Gene	1029
+36482819	204	213	CCND1	Gene	595
+36482819	214	220	CDK4	Gene	1019;1021
+36482819	279	282	CDKN2A	Gene	1029
+36482819	488	491	CDKN2A	Gene	1029
+36482819	649	654	0027	CellLine	CVCL:0027
+36482819	720	723	CDKN2A	Gene	1029
+36482819	742	745	CDKN2A	Gene	1029
+36482819	841	885	DNMT1	Gene	1786;1789;1788
+36482819	890	895	DNMT1	Gene	1786
+36482819	897	903	DNMT3A	Gene	1788
+36482819	908	914	DNMT3B	Gene	1789
+36482819	1158	1161	CDKN2A	Gene	1029
+36482819	1181	1186	0027	CellLine	CVCL:0027
+36482819	1225	1230	0027	CellLine	CVCL:0027
+36482819	1239	1244	0027	CellLine	CVCL:0027
+36482819	1291	1294	CDKN2A	Gene	1029
+36482819	1327	1332	0027	CellLine	CVCL:0027
+36482819	1344	1349	DNMT1	Gene	1786
+36482819	1354	1360	DNMT3A	Gene	1788
+36482819	1384	1389	0027	CellLine	CVCL:0027
+36482819	1448	1453	0027	CellLine	CVCL:0027
+36482819	1509	1514	0027	CellLine	CVCL:0027
+36482819	1547	1555	DNMT1	Gene	1786;1788
+36482819	1601	1606	0027	CellLine	CVCL:0027
+36482819	1615	1620	0027	CellLine	CVCL:0027
+36482819	1676	1679	CDKN2A	Gene	1029
+36482819	1736	1739	CDKN2A	Gene	1029
+36482819	1743	1748	0027	CellLine	CVCL:0027
+36482819	1793	1798	DNMT1	Gene	1786
+36482819	1803	1809	DNMT3A	Gene	1788
+36482819	1841	1844	CDKN2A	Gene	1029
+36482819	1905	1908	CDKN2A	Gene	1029
+36482819	Association	1019	1029
+36482819	Association	1021	1029
+36482819	Association	1019	595
+36482819	Negative_Correlation	MESH:D009369	1029
+36482819	Association	1029	1786
+36482819	Association	1029	1788
+36482819	Bind	1029	595
+36482819	Association	1021	595
+
+28622513|t|Comprehensive and Integrative Genomic Characterization of Hepatocellular Carcinoma.
+28622513|a|Liver cancer has the second highest worldwide cancer mortality rate and has limited therapeutic options. We analyzed 363 hepatocellular carcinoma (HCC) cases by whole-exome sequencing and DNA copy number analyses, and we analyzed 196 HCC cases by DNA methylation, RNA, miRNA, and proteomic expression also. DNA sequencing and mutation analysis identified significantly mutated genes, including LZTR1, EEF1A1, SF3B1, and SMARCA4. Significant alterations by mutation or downregulation by hypermethylation in genes likely to result in HCC metabolic reprogramming (ALB, APOB, and CPS1) were observed. Integrative molecular HCC subtyping incorporating unsupervised clustering of five data platforms identified three subtypes, one of which was associated with poorer prognosis in three HCC cohorts. Integrated analyses enabled development of a p53 target gene expression signature correlating with poor survival. Potential therapeutic targets for which inhibitors exist include WNT signaling, MDM4, MET, VEGFA, MCL1, IDH1, TERT, and immune checkpoint proteins CTLA-4, PD-1, and PD-L1.
+28622513	58	82	Carcinoma Hepatocellular	Disease	MESH:D006528
+28622513	84	96	Carcinoma Hepatocellular	Disease	MESH:D006528
+28622513	130	136	Neoplasms	Disease	MESH:D009369
+28622513	205	229	Carcinoma Hepatocellular	Disease	MESH:D006528
+28622513	231	234	Carcinoma Hepatocellular	Disease	MESH:D006528
+28622513	318	321	Carcinoma Hepatocellular	Disease	MESH:D006528
+28622513	478	483	LZTR1	Gene	8216
+28622513	485	491	EEF1A1	Gene	1915
+28622513	493	498	SF3B1	Gene	23451
+28622513	504	511	SMARCA4	Gene	6597
+28622513	616	619	Carcinoma Hepatocellular	Disease	MESH:D006528
+28622513	645	648	ALB	Gene	213
+28622513	650	654	APOB	Gene	338
+28622513	660	664	CPS1	Gene	1373
+28622513	703	706	Carcinoma Hepatocellular	Disease	MESH:D006528
+28622513	864	867	Carcinoma Hepatocellular	Disease	MESH:D006528
+28622513	922	925	TP53	Gene	7157
+28622513	1071	1075	MDM4	Gene	4194
+28622513	1077	1080	SLTM	Gene	79811
+28622513	1082	1087	VEGFA	Gene	7422
+28622513	1089	1093	MCL1	Gene	4170
+28622513	1095	1099	IDH1	Gene	3417
+28622513	1101	1105	TERT	Gene	7015
+28622513	1138	1144	CTLA4	Gene	1493
+28622513	1146	1150	PDCD1	Gene	5133
+28622513	1156	1161	CD274	Gene	29126
+28622513	Association	MESH:D006528	1373
+28622513	Association	MESH:D006528	7157
+28622513	Association	MESH:D006528	6597
+28622513	Association	MESH:D006528	338
+28622513	Association	MESH:D006528	213
+28622513	Association	MESH:D006528	23451
+28622513	Association	MESH:D006528	1915
+28622513	Association	MESH:D006528	8216
+
+34324953|t|Epigenetics in hepatocellular carcinoma.
+34324953|a|Hepatocellular carcinoma (HCC) is the most common primary malignancy of the liver and has a high fatality rate. Genetic and epigenetic aberrations are commonly observed in HCC. The epigenetic processes include chromatin remodelling, histone alterations, DNA methylation, and noncoding RNA (ncRNA) expression and are connected with the progression and metastasis of HCC. Due to their potential reversibility, these epigenetic alterations are widely targeted for the development of biomarkers. In-depth understanding of the epigenetics of HCC is critical for developing rational clinical strategies that can provide a meaningful improvement in overall survival and prediction of therapeutic outcomes. In this article, we have summarised the epigenetic modifications involved in HCC progression and highlighted the potential biomarkers for diagnosis and drug development.
+34324953	15	39	Carcinoma Hepatocellular	Disease	MESH:D006528
+34324953	41	65	Carcinoma Hepatocellular	Disease	MESH:D006528
+34324953	67	70	Carcinoma Hepatocellular	Disease	MESH:D006528
+34324953	91	122	primary malignancy of the liver	Disease	-
+34324953	213	216	Carcinoma Hepatocellular	Disease	MESH:D006528
+34324953	392	409	Neoplasm Metastasis	Disease	MESH:D009362
+34324953	578	581	Carcinoma Hepatocellular	Disease	MESH:D006528
+34324953	817	820	Carcinoma Hepatocellular	Disease	MESH:D006528
+
+33917049|t|Sex and Race-Related DNA Methylation Changes in Hepatocellular Carcinoma.
+33917049|a|Hepatocellular carcinoma (HCC) is the sixth most common cancer and fourth leading cause of cancer-related death worldwide. The number of HCC cases continues to rise despite advances in screening and therapeutic inventions. More importantly, HCC poses two major health disparity issues. First, HCC occurs more commonly in men than women. Second, with the global increase in non-alcoholic fatty liver diseases (NAFLD), it has also become evident that HCC is more prevalent in some races and/or ethnic groups compared to others, depending on its predisposing etiology. Most studies on HCC in the past have been focused on genetic factors as the driving force for HCC development, and the results revealed that genetic mutations associated with HCC are often heterogeneous and involve multiple pathogenic pathways. An emerging new research field is epigenetics, in which gene expression is modified without altering DNA sequences. In this article, we focus on reviewing current knowledge on HCC-related DNA methylation changes that show disparities among different sexes or different racial/ethnic groups, in an effort to establish a point of departure for resolving the broader issue of health disparities in gastrointestinal malignancies using cutting-edge epigenetic approaches.
+33917049	48	72	Carcinoma Hepatocellular	Disease	MESH:D006528
+33917049	74	98	Carcinoma Hepatocellular	Disease	MESH:D006528
+33917049	100	103	Carcinoma Hepatocellular	Disease	MESH:D006528
+33917049	130	136	Neoplasms	Disease	MESH:D009369
+33917049	165	171	Neoplasms	Disease	MESH:D009369
+33917049	211	214	Carcinoma Hepatocellular	Disease	MESH:D006528
+33917049	315	318	Carcinoma Hepatocellular	Disease	MESH:D006528
+33917049	367	370	Carcinoma Hepatocellular	Disease	MESH:D006528
+33917049	395	398	men	Species	9606
+33917049	404	409	women	Species	9606
+33917049	447	481	Non-alcoholic Fatty Liver Disease	Disease	MESH:D065626
+33917049	483	488	Non-alcoholic Fatty Liver Disease	Disease	MESH:D065626
+33917049	523	526	Carcinoma Hepatocellular	Disease	MESH:D006528
+33917049	656	659	Carcinoma Hepatocellular	Disease	MESH:D006528
+33917049	734	737	Carcinoma Hepatocellular	Disease	MESH:D006528
+33917049	815	818	Carcinoma Hepatocellular	Disease	MESH:D006528
+33917049	1061	1064	Carcinoma Hepatocellular	Disease	MESH:D006528
+33917049	1280	1309	Gastrointestinal Neoplasms	Disease	MESH:D005770
+
+37041599|t|Insights into the impact of hepatitis B virus on hepatic stellate cell activation.
+37041599|a|During chronic hepatitis B virus (HBV) infection, hepatic fibrosis is a serious pathological condition caused by virus-induced liver damage. The activation of hepatic stellate cells (HSCs) is a central event in the occurrence and progression of liver fibrosis. Although accumulating evidence has shown that HBV directly stimulates HSC activation, whether the virus infects and replicates in HSCs remains controversial. Inflammation is one of the obvious characteristics of chronic HBV infection, and it has been demonstrated that persistent inflammation has a predominant role in triggering and maintaining liver fibrosis. In particular, the regulation of HSC activation by HBV-related hepatocytes via various inflammatory modulators, including TGF-beta and CTGF, in a paracrine manner has been reported. In addition to these inflammation-related molecules, several inflammatory cells are essential for the progression of HBV-associated liver fibrosis. Monocytes, macrophages, Th17 cells, NK cells, as well as NKT cells, participate in the modulation of HBV-related liver fibrosis by interacting with HSCs. This review summarizes current findings on the effects of HBV and the relevant molecular mechanisms involved in HSC activation. Because HSC activation is essential for liver fibrosis, targeting HSCs is an attractive therapeutic strategy to prevent and reverse hepatic fibrosis induced by HBV infection. Video abstract.
+37041599	28	45	hepatitis B virus	Species	10407
+37041599	49	65	Chemical and Drug Induced Liver Injury	Disease	MESH:D056486
+37041599	90	131	Hepatitis B Chronic	Disease	MESH:D019694
+37041599	133	149	Liver Cirrhosis	Disease	MESH:D008103
+37041599	210	222	Chemical and Drug Induced Liver Injury	Disease	MESH:D056486
+37041599	242	258	Chemical and Drug Induced Liver Injury	Disease	MESH:D056486
+37041599	328	342	Liver Cirrhosis	Disease	MESH:D008103
+37041599	502	514	Inflammation	Disease	MESH:D007249
+37041599	564	577	Hepatitis B	Disease	MESH:D006509
+37041599	624	636	Inflammation	Disease	MESH:D007249
+37041599	690	704	Liver Cirrhosis	Disease	MESH:D008103
+37041599	793	805	Inflammation	Disease	MESH:D007249
+37041599	828	836	TGFB1	Gene	7040
+37041599	841	845	CCN2	Gene	1490
+37041599	909	921	Inflammation	Disease	MESH:D007249
+37041599	949	961	Inflammation	Disease	MESH:D007249
+37041599	1020	1034	Liver Cirrhosis	Disease	MESH:D008103
+37041599	1149	1163	Liver Cirrhosis	Disease	MESH:D008103
+37041599	1358	1372	Liver Cirrhosis	Disease	MESH:D008103
+37041599	1450	1466	Liver Cirrhosis	Disease	MESH:D008103
+37041599	1478	1491	Hepatitis B	Disease	MESH:D006509
+37041599	Association	MESH:D007249	7040
+37041599	Association	MESH:D007249	1490
+
+33989548|t|Mechanisms and disease consequences of nonalcoholic fatty liver disease.
+33989548|a|Nonalcoholic fatty liver disease (NAFLD) is the leading chronic liver disease worldwide. Its more advanced subtype, nonalcoholic steatohepatitis (NASH), connotes progressive liver injury that can lead to cirrhosis and hepatocellular carcinoma. Here we provide an in-depth discussion of the underlying pathogenetic mechanisms that lead to progressive liver injury, including the metabolic origins of NAFLD, the effect of NAFLD on hepatic glucose and lipid metabolism, bile acid toxicity, macrophage dysfunction, and hepatic stellate cell activation, and consider the role of genetic, epigenetic, and environmental factors that promote fibrosis progression and risk of hepatocellular carcinoma in NASH.
+33989548	39	71	Non-alcoholic Fatty Liver Disease	Disease	MESH:D065626
+33989548	73	105	Non-alcoholic Fatty Liver Disease	Disease	MESH:D065626
+33989548	107	112	Non-alcoholic Fatty Liver Disease	Disease	MESH:D065626
+33989548	137	150	Liver Diseases	Disease	MESH:D008107
+33989548	189	217	Non-alcoholic Fatty Liver Disease	Disease	MESH:D065626
+33989548	219	223	Non-alcoholic Fatty Liver Disease	Disease	MESH:D065626
+33989548	247	259	Liver Failure	Disease	MESH:D017093
+33989548	277	286	Fibrosis	Disease	MESH:D005355
+33989548	291	315	Carcinoma Hepatocellular	Disease	MESH:D006528
+33989548	423	435	Liver Failure	Disease	MESH:D017093
+33989548	472	477	Non-alcoholic Fatty Liver Disease	Disease	MESH:D065626
+33989548	493	498	Non-alcoholic Fatty Liver Disease	Disease	MESH:D065626
+33989548	510	517	Glucose	Chemical	MESH:D005947
+33989548	522	527	Lipids	Chemical	MESH:D008055
+33989548	540	558	bile acid toxicity	Chemical	-
+33989548	707	715	Fibrosis	Disease	MESH:D005355
+33989548	740	764	Carcinoma Hepatocellular	Disease	MESH:D006528
+33989548	768	772	Non-alcoholic Fatty Liver Disease	Disease	MESH:D065626
+
+31718044|t|TGF-beta in Hepatic Stellate Cell Activation and Liver Fibrogenesis-Updated 2019.
+31718044|a|Liver fibrosis is an advanced liver disease condition, which could progress to cirrhosis and hepatocellular carcinoma. To date, there is no direct approved antifibrotic therapy, and current treatment is mainly the removal of the causative factor. Transforming growth factor (TGF)-beta is a master profibrogenic cytokine and a promising target to treat fibrosis. However, TGF-beta has broad biological functions and its inhibition induces non-desirable side effects, which override therapeutic benefits. Therefore, understanding the pleiotropic effects of TGF-beta and its upstream and downstream regulatory mechanisms will help to design better TGF-beta based therapeutics. Here, we summarize recent discoveries and milestones on the TGF-beta signaling pathway related to liver fibrosis and hepatic stellate cell (HSC) activation, emphasizing research of the last five years. This comprises impact of TGF-beta on liver fibrogenesis related biological processes, such as senescence, metabolism, reactive oxygen species generation, epigenetics, circadian rhythm, epithelial mesenchymal transition, and endothelial-mesenchymal transition. We also describe the influence of the microenvironment on the response of HSC to TGF-beta. Finally, we discuss new approaches to target the TGF-beta pathway, name current clinical trials, and explain promises and drawbacks that deserve to be adequately addressed.
+31718044	0	8	TGFB1	Gene	7040
+31718044	49	67	Liver Failure	Disease	MESH:D017093
+31718044	82	96	Liver Cirrhosis	Disease	MESH:D008103
+31718044	112	125	Liver Diseases	Disease	MESH:D008107
+31718044	161	170	Fibrosis	Disease	MESH:D005355
+31718044	175	199	Carcinoma Hepatocellular	Disease	MESH:D006528
+31718044	329	366	TGFB1	Gene	7040
+31718044	434	442	Fibrosis	Disease	MESH:D005355
+31718044	453	461	TGFB1	Gene	7040
+31718044	637	645	TGFB1	Gene	7040
+31718044	727	735	TGFB1	Gene	7040
+31718044	816	824	TGFB1	Gene	7040
+31718044	854	868	Liver Cirrhosis	Disease	MESH:D008103
+31718044	983	991	TGFB1	Gene	7040
+31718044	995	1013	Liver Failure	Disease	MESH:D017093
+31718044	1076	1099	Reactive Oxygen Species	Chemical	MESH:D017382
+31718044	1299	1307	TGFB1	Gene	7040
+31718044	1358	1366	TGFB1	Gene	7040
+31718044	Association	MESH:D005355	7040
+31718044	Association	MESH:D017093	7040
+31718044	Association	MESH:D008103	7040
+31718044	Association	MESH:D017382	7040
+
+35963848|t|Targeted therapeutics and novel signaling pathways in non-alcohol-associated fatty liver/steatohepatitis (NAFL/NASH).
+35963848|a|Non-alcohol-associated fatty liver/steatohepatitis (NAFL/NASH) has become the leading cause of liver disease worldwide. NASH, an advanced form of NAFL, can be progressive and more susceptible to developing cirrhosis and hepatocellular carcinoma. Currently, lifestyle interventions are the most essential and effective strategies for preventing and controlling NAFL without the development of fibrosis. While there are still limited appropriate drugs specifically to treat NAFL/NASH, growing progress is being seen in elucidating the pathogenesis and identifying therapeutic targets. In this review, we discussed recent developments in etiology and prospective therapeutic targets, as well as pharmacological candidates in pre/clinical trials and patents, with a focus on diabetes, hepatic lipid metabolism, inflammation, and fibrosis. Importantly, growing evidence elucidates that the disruption of the gut-liver axis and microbe-derived metabolites drive the pathogenesis of NAFL/NASH. Extracellular vesicles (EVs) act as a signaling mediator, resulting in lipid accumulation, macrophage and hepatic stellate cell activation, further promoting inflammation and liver fibrosis progression during the development of NAFL/NASH. Targeting gut microbiota or EVs may serve as new strategies for the treatment of NAFL/NASH. Finally, other mechanisms, such as cell therapy and genetic approaches, also have enormous therapeutic potential. Incorporating drugs with different mechanisms and personalized medicine may improve the efficacy to better benefit patients with NAFL/NASH.
+35963848	54	104	Fatty Liver Alcoholic	Disease	MESH:D005235
+35963848	106	110	NAFL	Disease	-
+35963848	111	115	NASH	Disease	-
+35963848	118	168	Fatty Liver Alcoholic	Disease	MESH:D005235
+35963848	170	174	NAFL	Disease	-
+35963848	175	179	NASH	Disease	-
+35963848	213	226	Liver Diseases	Disease	MESH:D008107
+35963848	238	242	NASH	Disease	-
+35963848	264	268	NAFL	Disease	-
+35963848	324	333	Fibrosis	Disease	MESH:D005355
+35963848	338	362	Carcinoma Hepatocellular	Disease	MESH:D006528
+35963848	478	482	NAFL	Disease	-
+35963848	510	518	Fibrosis	Disease	MESH:D005355
+35963848	590	594	NAFL	Disease	-
+35963848	595	599	NASH	Disease	-
+35963848	889	897	Diabetes Mellitus	Disease	MESH:D003920
+35963848	907	912	Lipids	Chemical	MESH:D008055
+35963848	925	937	Inflammation	Disease	MESH:D007249
+35963848	943	951	Fibrosis	Disease	MESH:D005355
+35963848	1094	1098	NAFL	Disease	-
+35963848	1099	1103	NASH	Disease	-
+35963848	1176	1181	Lipids	Chemical	MESH:D008055
+35963848	1263	1275	Inflammation	Disease	MESH:D007249
+35963848	1280	1294	Liver Cirrhosis	Disease	MESH:D008103
+35963848	1333	1337	NAFL	Disease	-
+35963848	1338	1342	NASH	Disease	-
+35963848	1425	1429	NAFL	Disease	-
+35963848	1430	1434	NASH	Disease	-
+35963848	1665	1673	patients	Species	9606
+35963848	1679	1683	NAFL	Disease	-
+35963848	1684	1688	NASH	Disease	-

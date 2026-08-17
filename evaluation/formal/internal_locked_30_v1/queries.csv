@@ -1,0 +1,31 @@
+question_id,domain,question,pubmed_query,language
+Q003,metabolic disease,What evidence links insulin resistance to inflammatory cytokines in human studies?,insulin resistance AND inflammatory cytokines AND humans,English
+Q013,cardiometabolic,How does PCSK9 inhibition affect inflammatory markers and endothelial function?,PCSK9 inhibition inflammation endothelial function CRP evolocumab alirocumab,English
+Q021,nephrology,What evidence links SGLT2 inhibitors to reduced kidney inflammation or fibrosis?,SGLT2 inhibitor empagliflozin dapagliflozin kidney inflammation fibrosis,English
+Q027,endocrinology,What evidence links vitamin D signaling to immune regulation in autoimmune thyroid disease?,vitamin D VDR autoimmune thyroid disease Hashimoto T cells cytokines,English
+Q033,hepatology,What evidence supports a link between ferroptosis and liver fibrosis?,ferroptosis liver fibrosis hepatic stellate cell iron lipid peroxidation,English
+Q046,method stress test,Find evidence for a direct causal link between caffeine and telomerase activation in human immune cells.,caffeine telomerase activation human immune cells,English
+Q016,rare disease,What pathways connect SMN deficiency to mitochondrial dysfunction in spinal muscular atrophy?,SMN1 spinal muscular atrophy mitochondria oxidative stress motor neuron,English
+Q022,cardiology,Which inflammatory pathways connect atrial fibrillation and fibrosis?,atrial fibrillation fibrosis TGF-beta IL-6 NLRP3 inflammation,English
+Q023,cancer biology,What is the evidence that hypoxia induces epithelial-mesenchymal transition through HIF-1alpha?,hypoxia HIF-1alpha epithelial mesenchymal transition cancer metastasis,English
+Q029,vascular biology,What mechanisms connect endothelial senescence to atherosclerosis?,endothelial senescence atherosclerosis oxidative stress inflammation SASP,English
+Q031,dermatology,What pathways connect atopic dermatitis to skin barrier dysfunction?,atopic dermatitis filaggrin IL-4 IL-13 skin barrier inflammation,English
+Q002,osteoporosis,Which miRNAs are most frequently linked to osteoporosis-related osteogenesis in the retrieved literature?,osteoporosis AND (osteogenesis OR osteoblast) AND (microRNA OR miRNA),English
+Q009,pharmacology,Which chemicals have evidence for modulating the JAK/STAT pathway in skeletal muscle contexts?,JAK STAT AND skeletal muscle AND (inhibitor OR compound OR chemical),English
+Q014,autoimmune disease,Which JAK inhibitors have evidence for modulating IL-6 or interferon signaling in rheumatoid arthritis?,rheumatoid arthritis JAK inhibitor tofacitinib baricitinib IL-6 interferon,English
+Q017,pharmacogenomics,Which genes are associated with clopidogrel response or resistance?,clopidogrel CYP2C19 ABCB1 PON1 platelet reactivity,English
+Q049,systematic retrieval,Which PMIDs directly study the relationship between TGF-beta signaling and cardiac fibrosis in humans?,TGF-beta signaling cardiac fibrosis human myocardium,English
+Q012,neuroinflammation,Which cytokines mediate microglial activation in Alzheimer's disease models?,microglia Alzheimer's disease IL-1beta TNF-alpha IL-6 neuroinflammation,English
+Q019,metabolism,Which adipokines connect obesity to nonalcoholic fatty liver disease?,obesity NAFLD adiponectin leptin resistin inflammation,English
+Q026,gastroenterology,Which microbiome metabolites are linked to intestinal barrier integrity?,microbiome short-chain fatty acids butyrate intestinal barrier tight junction,English
+Q032,pulmonology,Which cytokines link asthma exacerbation to airway remodeling?,asthma airway remodeling IL-13 IL-17 TGF-beta eosinophils,English
+Q018,immuno-oncology,What mechanisms link PD-1 blockade to immune-related adverse events?,PD-1 immune checkpoint inhibitor adverse events T cells autoimmunity cytokines,English
+Q025,neuromuscular disease,What candidate mechanisms connect Duchenne muscular dystrophy to chronic inflammation?,Duchenne muscular dystrophy dystrophin inflammation NF-kB macrophage fibrosis,English
+Q040,cancer metabolism,Which metabolic pathways connect KRAS mutation to immune evasion?,KRAS mutation immune evasion metabolism lactate PD-L1 tumor microenvironment,English
+Q015,infectious disease,What host genes form a plausible 2-hop path between SARS-CoV-2 infection and coagulation abnormalities?,SARS-CoV-2 coagulation endothelial injury tissue factor complement cytokines,English
+Q028,oncology,Which genes mediate a 2-hop path between EGFR activation and resistance to apoptosis?,EGFR apoptosis resistance PI3K AKT BCL2 ERK cancer,English
+Q035,aging biology,What candidate 2-hop paths connect senolytics to improved tissue regeneration?,senolytic senescence regeneration SASP stem cell inflammation,English
+Q043,cross-species,Which claims about NLRP3 inflammasome activation in Alzheimer's disease are supported by human evidence versus mouse models?,NLRP3 inflammasome Alzheimer's disease microglia human mouse,English
+Q044,cross-species,"Does resveratrol improve endothelial function in humans, or is the evidence mainly preclinical?",resveratrol endothelial function human trial nitric oxide preclinical,English
+Q010,multilingual,請找出與骨質疏鬆、miRNA、天然物治療相關的可能機制。,osteoporosis AND microRNA AND (natural product OR phytochemical) AND osteogenesis,Traditional Chinese
+Q041,multilingual,請找出 SGLT2 抑制劑可能保護腎臟的抗發炎或抗纖維化機制。,SGLT2 inhibitor kidney inflammation fibrosis empagliflozin dapagliflozin,Traditional Chinese

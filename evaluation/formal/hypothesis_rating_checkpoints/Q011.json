@@ -1,0 +1,25 @@
+{
+  "question_id": "Q011",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-31T18:13:08.496806+00:00",
+  "ratings": [
+    {
+      "hypothesis_id": "Q011-A",
+      "novelty": 1,
+      "plausibility": 5,
+      "testability": 5,
+      "research_value": 2,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded hypothesis/2-hop quality pass, not a human expert review.] The proposed hypothesis merely restates the established AMPK-TSC2-mTOR mechanism and its context-dependence as described in the text, without offering a new conceptual leap."
+    },
+    {
+      "hypothesis_id": "Q011-B",
+      "novelty": 2,
+      "plausibility": 5,
+      "testability": 5,
+      "research_value": 3,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded hypothesis/2-hop quality pass, not a human expert review.] While heavily reliant on the provided text, the hypothesis frames the pathway components as predictive biomarkers for metformin sensitivity and highlights hyperglycemia as a specific resistance factor, offering a slightly more translational angle."
+    }
+  ],
+  "raw_response_sha256": "64e79e85042587f9a97ee970ca56cc54277bef58c60f10d6bd6817a900503dd6"
+}

@@ -1,0 +1,91 @@
+{
+  "task": "answer",
+  "question_id": "PP011",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "9c7a9fc0150e53e58779de2022e4e407c75ac4f4298da409abcb801d005c9fde",
+  "raw_response_sha256": "070f5deb8530d6ca79da59f310df4c338e42efc12d953a0bd1e2a2ae0d81fb65",
+  "usage": {
+    "input_tokens": 3704,
+    "output_tokens": 612,
+    "total_tokens": 4316
+  },
+  "rated_at": "2026-08-16T18:44:05.030824+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP011-A",
+        "correctness": 4,
+        "completeness": 2,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Plausible human evidence, but answer truncated and lacks depth; citations plausible but not verified."
+      },
+      {
+        "answer_id": "PP011-B",
+        "correctness": 4,
+        "completeness": 2,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Same as A – plausible but incomplete and missing full discussion."
+      },
+      {
+        "answer_id": "PP011-C",
+        "correctness": 4,
+        "completeness": 2,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Identical to A/B; evidence plausible yet answer ends abruptly."
+      },
+      {
+        "answer_id": "PP011-D",
+        "correctness": 4,
+        "completeness": 2,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Same content; limited detail and truncated."
+      },
+      {
+        "answer_id": "PP011-E",
+        "correctness": 4,
+        "completeness": 2,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Duplicate of others; plausible citations but incomplete."
+      },
+      {
+        "answer_id": "PP011-F",
+        "correctness": 4,
+        "completeness": 2,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Same as above; missing full explanation."
+      },
+      {
+        "answer_id": "PP011-G",
+        "correctness": 4,
+        "completeness": 2,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Identical to other items; incomplete and truncated."
+      }
+    ],
+    "preferred_item_id": "tie",
+    "pairwise_reason": "All items are identical copies; none offers more completeness or better grounding than the others."
+  }
+}

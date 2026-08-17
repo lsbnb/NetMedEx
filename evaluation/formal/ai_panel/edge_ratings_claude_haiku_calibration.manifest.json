@@ -1,0 +1,19 @@
+{
+  "reviewer_type": "AI",
+  "human_expert_review_claimed": false,
+  "blinded": true,
+  "task": "edge",
+  "provider": "anthropic",
+  "model": "claude-haiku-4-5-20251001",
+  "input_file": "evaluation/formal/edge_ratings_worksheet_enriched.csv",
+  "input_sha256": "ee3eb2ad27d438b38e9274b48593f7a29328e9a0116784a9b77f400cd7ade4fe",
+  "output_file": "evaluation/formal/ai_panel/edge_ratings_claude_haiku_calibration.csv",
+  "question_count": 12,
+  "row_count": 23,
+  "estimated_prompt_chars": 85004,
+  "estimated_input_tokens_rough": 21251,
+  "completed_batches": 23,
+  "started_at": "2026-08-02T19:08:04.570248+00:00",
+  "completed_at": "2026-08-02T19:08:46.023169+00:00",
+  "status": "complete"
+}

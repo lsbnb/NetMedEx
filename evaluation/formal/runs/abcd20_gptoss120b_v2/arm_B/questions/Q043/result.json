@@ -1,0 +1,188 @@
+{
+  "status": "complete",
+  "question_id": "Q043",
+  "domain": "cross-species",
+  "question": "Which claims about NLRP3 inflammasome activation in Alzheimer's disease are supported by human evidence versus mouse models?",
+  "question_type": "cross_species",
+  "pubmed_query": "NLRP3 inflammasome Alzheimer's disease microglia human mouse",
+  "effective_pubmed_query": "NLRP3 inflammasome Alzheimer's disease microglia human mouse",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "23254930",
+    "23686772",
+    "31748742",
+    "32958021",
+    "34080771",
+    "34497121",
+    "35642214",
+    "37072933",
+    "39026249",
+    "39407211",
+    "39499013",
+    "39904338",
+    "40541122",
+    "41173224",
+    "41571675"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "Which claims about NLRP3 inflammasome activation in Alzheimer's disease are supported by human evidence versus mouse models?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "23254930",
+        "score": 0.6927663807698423
+      },
+      {
+        "pmid": "23686772",
+        "score": 0.681174145265246
+      },
+      {
+        "pmid": "31748742",
+        "score": 0.6363481060381933
+      },
+      {
+        "pmid": "39904338",
+        "score": 0.6190593739555329
+      },
+      {
+        "pmid": "37072933",
+        "score": 0.6169762675523571
+      },
+      {
+        "pmid": "32958021",
+        "score": 0.6087947630027373
+      },
+      {
+        "pmid": "39407211",
+        "score": 0.585346336039736
+      },
+      {
+        "pmid": "40541122",
+        "score": 0.5647707496885924
+      },
+      {
+        "pmid": "34080771",
+        "score": 0.5540925700832043
+      },
+      {
+        "pmid": "41571675",
+        "score": 0.5516667011926593
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "23254930",
+        "score": 0.6927663807698423
+      },
+      {
+        "pmid": "23686772",
+        "score": 0.681174145265246
+      },
+      {
+        "pmid": "31748742",
+        "score": 0.6363481060381933
+      },
+      {
+        "pmid": "39904338",
+        "score": 0.6190593739555329
+      },
+      {
+        "pmid": "37072933",
+        "score": 0.6169762675523571
+      },
+      {
+        "pmid": "32958021",
+        "score": 0.6087947630027373
+      },
+      {
+        "pmid": "39407211",
+        "score": 0.585346336039736
+      },
+      {
+        "pmid": "40541122",
+        "score": 0.5647707496885924
+      },
+      {
+        "pmid": "34080771",
+        "score": 0.5540925700832043
+      },
+      {
+        "pmid": "41571675",
+        "score": 0.5516667011926593
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Human‑derived evidence**  \n- Active NLRP3 inflammasome signaling (elevated caspase‑1, cleaved IL‑1β and gasdermin‑D) is present in brains of patients with mild‑cognitive impairment and Alzheimer’s disease, indicating that the inflammasome is engaged in human disease [PMID: 23254930].  \n- In AD patients, NLRP3‑containing ASC specks and inflammasome‑related proteins are assembled around amyloid‑β plaques, and peripheral infection or systemic inflammation raises IL‑1β and IL‑6 levels, demonstrating that NLRP3 activation amplifies neuroinflammation in the human brain [PMID: 34080771].  \n- Retinal samples from AD subjects show marked up‑regulation and activation of NLRP3 (caspase‑1, IL‑1β, gasdermin‑D), and lower β‑hydroxybutyrate concentrations are reported in blood and brain, linking metabolic deficits to inflammasome activation in patients [PMID: 41571675; PMID: 32958021].\n\n**Mouse‑model evidence**  \n- Deletion of Nlrp3 or Casp1 in APP/PS1 or 5XFAD transgenic mice protects against spatial‑memory loss, reduces amyloid‑β deposition, and shifts microglia toward an anti‑inflammatory M2 phenotype, establishing a causal role for NLRP3 in AD‑like pathology [PMID: 23254930; PMID: 37072933].  \n- Pharmacologic or genetic inhibition of NLRP3 in AD mice lowers IL‑1β release, diminishes tau hyperphosphorylation/aggregation, and improves clearance of amyloid‑β, showing that the inflammasome drives both amyloid and tau pathologies [PMID: 31748742; PMID: 39904338].  \n- Chronic NLRP3 inhibition restores glutamine‑derived α‑ketoglutarate metabolism, enhances microglial phagocytosis, and ameliorates cognitive deficits; similar metabolic pathways are conserved in human microglial cultures, but the functional rescue was demonstrated primarily in mice [PMID: 39904338; PMID: 39407211].\n\n**Conclusion**  \nHuman studies confirm that NLRP3 is activated in Alzheimer’s disease brains and peripheral tissues, whereas mouse experiments provide mechanistic proof that NLRP3 drives amyloid, tau and metabolic pathology and that its inhibition can rescue cognitive and inflammatory deficits."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 2.4199485778808594e-05,
+    "vector_index": 2.0580296963453293,
+    "kg_expansion": 2.1398067474365234e-05,
+    "answer_traditional_rag": 26.734398618340492,
+    "total": 29.289549320936203
+  },
+  "token_usage": {
+    "input_tokens": 3725,
+    "total_tokens": 4673,
+    "output_tokens": 948
+  },
+  "completed_at": "2026-08-13T04:25:19.536543+00:00"
+}

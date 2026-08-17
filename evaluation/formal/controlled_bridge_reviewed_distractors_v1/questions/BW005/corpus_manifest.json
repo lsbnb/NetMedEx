@@ -1,0 +1,291 @@
+{
+  "question_id": "BW005",
+  "status": "eligible",
+  "corpus_strategy": "controlled_endpoint_isolated_shared_bridge",
+  "same_corpus_for_text_and_hybrid": true,
+  "mediators_withheld_from_system_query": true,
+  "source_patterns": [
+    "\\bPD.?1\\s+blockade\\b",
+    "\\banti.PD.?1\\b",
+    "\\bpembrolizumab\\b",
+    "\\bnivolumab\\b",
+    "\\bPDCD1\\s+block\\b"
+  ],
+  "target_patterns": [
+    "\\bimmune.related\\s+adverse\\s+event\\b",
+    "\\birAE\\b",
+    "\\bimmune\\s+toxicity\\b",
+    "\\bautoimmune\\s+toxicity\\b"
+  ],
+  "source_identifiers": [],
+  "target_identifiers": [],
+  "target_side_forbidden_source_patterns": [
+    "\\bPD.?1\\b",
+    "\\banti.PD.?1\\b",
+    "\\bpembrolizumab\\b",
+    "\\bnivolumab\\b"
+  ],
+  "target_side_forbidden_source_identifiers": [],
+  "eligible_mediators": [
+    "IL-17"
+  ],
+  "mediator_audit": [
+    {
+      "name": "IL-17",
+      "queries": {
+        "source": "PD-1 blockade[Title/Abstract] AND (IL-17[Title/Abstract] OR interleukin-17[Title/Abstract])",
+        "target": "(IL-17[Title/Abstract] OR interleukin-17[Title/Abstract]) AND immune-related adverse event[Title/Abstract]"
+      },
+      "candidate_pmids": {
+        "source": [
+          "36356191",
+          "37359545",
+          "38774604",
+          "41953027",
+          "28483607",
+          "31478975",
+          "32106386",
+          "42463423",
+          "28115719",
+          "33896829",
+          "28890543",
+          "22306905",
+          "42279452",
+          "30713791",
+          "41256134",
+          "33972557",
+          "19505258",
+          "33294000"
+        ],
+        "target": [
+          "39023770",
+          "33186857",
+          "36422998",
+          "41148453",
+          "38742650",
+          "36134105",
+          "39450178",
+          "33552049"
+        ]
+      },
+      "accepted_pmids": {
+        "source": [
+          "36356191",
+          "37359545",
+          "38774604"
+        ],
+        "target": [
+          "36422998"
+        ]
+      },
+      "annotation_identifiers": {
+        "source": [
+          "16171",
+          "3605"
+        ],
+        "target": [
+          "3605"
+        ]
+      },
+      "shared_mediator_identifiers": [
+        "3605"
+      ],
+      "rejected_pmids": {
+        "source": {},
+        "target": {
+          "39023770": [
+            "target_absent",
+            "source_leak"
+          ],
+          "33186857": [
+            "target_absent",
+            "source_leak"
+          ],
+          "41148453": [
+            "mediator_absent",
+            "target_absent"
+          ],
+          "38742650": [
+            "mediator_absent"
+          ],
+          "36134105": [
+            "mediator_absent",
+            "target_absent",
+            "source_leak"
+          ],
+          "39450178": [
+            "source_leak"
+          ],
+          "33552049": [
+            "target_absent"
+          ]
+        }
+      },
+      "bridge_eligible": true
+    }
+  ],
+  "distractor_audit": {
+    "queries": {
+      "source": "(PD-1 blockade[Title/Abstract] OR anti-PD-1[Title/Abstract] OR pembrolizumab[Title/Abstract] OR nivolumab[Title/Abstract])",
+      "target": "(immune-related adverse event[Title/Abstract] OR irAE[Title/Abstract] OR immune toxicity[Title/Abstract])"
+    },
+    "candidate_pmids": {
+      "source": [
+        "28650338",
+        "35107396",
+        "25428505",
+        "26874776",
+        "37579248",
+        "32484460",
+        "24872026",
+        "31969335",
+        "27433843",
+        "30595199",
+        "30742119",
+        "36526399",
+        "26843495",
+        "29156447",
+        "41478278",
+        "28057176",
+        "28057180",
+        "30539511",
+        "30190923",
+        "28064556",
+        "30355264",
+        "32406293",
+        "37373192",
+        "27669318",
+        "38846982",
+        "30231333",
+        "39777725",
+        "28923211",
+        "40588371",
+        "32408314"
+      ],
+      "target": [
+        "32200442",
+        "38964785",
+        "33783228",
+        "31730012",
+        "32297899",
+        "40404203",
+        "40930749",
+        "31427055",
+        "39489880",
+        "40242710",
+        "36709596",
+        "39961795",
+        "35003896",
+        "38696920",
+        "32363387",
+        "40380233",
+        "32519444",
+        "31668277",
+        "33673446",
+        "37143949",
+        "37258166",
+        "32799412",
+        "35876957",
+        "38501053",
+        "41238219",
+        "34972974",
+        "38963257",
+        "37194222",
+        "40578989",
+        "36636436"
+      ]
+    },
+    "accepted_pmids": {
+      "source": [
+        "28650338",
+        "35107396",
+        "25428505",
+        "32484460",
+        "24872026",
+        "27433843",
+        "30595199",
+        "30742119",
+        "36526399",
+        "26843495"
+      ],
+      "target": [
+        "32200442",
+        "32297899",
+        "40404203",
+        "40930749",
+        "31427055",
+        "39489880",
+        "39961795",
+        "32363387",
+        "40380233",
+        "31668277"
+      ]
+    },
+    "rejected_pmids": {
+      "source": {
+        "26874776": [
+          "target_leak"
+        ],
+        "37579248": [
+          "source_absent"
+        ],
+        "31969335": [
+          "target_leak"
+        ]
+      },
+      "target": {
+        "38964785": [
+          "target_absent"
+        ],
+        "33783228": [
+          "source_leak"
+        ],
+        "31730012": [
+          "source_leak"
+        ],
+        "40242710": [
+          "target_absent",
+          "source_leak"
+        ],
+        "36709596": [
+          "source_leak"
+        ],
+        "35003896": [
+          "source_leak"
+        ],
+        "38696920": [
+          "source_leak"
+        ],
+        "32519444": [
+          "source_leak"
+        ]
+      }
+    }
+  },
+  "fetched_pmids": [
+    "36356191",
+    "37359545",
+    "38774604",
+    "36422998",
+    "28650338",
+    "35107396",
+    "25428505",
+    "32484460",
+    "24872026",
+    "27433843",
+    "30595199",
+    "30742119",
+    "36526399",
+    "26843495",
+    "32200442",
+    "32297899",
+    "40404203",
+    "40930749",
+    "31427055",
+    "39489880",
+    "39961795",
+    "32363387",
+    "40380233",
+    "31668277"
+  ]
+}

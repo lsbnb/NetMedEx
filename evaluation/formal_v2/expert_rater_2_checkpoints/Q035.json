@@ -1,0 +1,85 @@
+{
+  "question_id": "Q035",
+  "model": "gpt-5.6-sol",
+  "rated_at": "2026-07-29T10:16:06.690942+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q035-C001",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Review-level context linking senescence/SASP to regeneration and describing senolytic clearance, but it does not establish a specific senolytic-to-regeneration mechanistic path."
+    },
+    {
+      "candidate_id": "Q035-C002",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Provides an intermediate link between SASP and wound healing/tissue regeneration, including context-dependent harmful inflammation, but does not test senolytics."
+    },
+    {
+      "candidate_id": "Q035-C003",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Review discusses senescent-cell clearance and SASP modulation as strategies relevant to tissue repair, but supplies review-level rather than direct experimental evidence."
+    },
+    {
+      "candidate_id": "Q035-C004",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Direct mouse evidence that dasatinib plus quercetin improves aged muscle regeneration; candidate intermediates include removal of persistent SA-β-Gal+/CD11b+ cells and direct enhancement of myogenic progenitor proliferation."
+    },
+    {
+      "candidate_id": "Q035-C005",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Direct mechanistic path: dasatinib/quercetin eliminates senescent chondrogenic progenitors, decreases SASP formation, and promotes surviving progenitor proliferation and chondrogenic cartilage regeneration."
+    },
+    {
+      "candidate_id": "Q035-C006",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Conceptual periodontitis review suggests senescence/SASP can impair stem-cell regeneration and mentions senolytics as a potential strategy, while explicitly noting limited direct evidence."
+    },
+    {
+      "candidate_id": "Q035-C007",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Human OA cell evidence that ABT-263 selectively removes senescent synovial MSCs, lowers senescence/SASP features, and improves colony formation and chondrogenic capacity relevant to cartilage regeneration."
+    },
+    {
+      "candidate_id": "Q035-C008",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Direct path in myotonic dystrophy: a BCL-XL senolytic clears senescent myoblasts, reduces SASP expression, restores proliferation and differentiation, and enhances in vivo engraftment/myogenesis."
+    },
+    {
+      "candidate_id": "Q035-C009",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Mechanistically informative counterpoint: transient SASP exposure induces plasticity, stemness, and regeneration, whereas prolonged exposure causes senescence. Senolytic treatment itself is not tested."
+    },
+    {
+      "candidate_id": "Q035-C010",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Highly focused review proposing that senolytics remove senescent sources of anti-regenerative secretory factors and thereby restore progenitor function, but the abstract presents synthesis and a proposed mechanism rather than a direct test."
+    },
+    {
+      "candidate_id": "Q035-C011",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Review supports pathway segments in which stem-cell senescence reduces regeneration and SASP causes inflammation/tissue dysfunction, while discussing senolytic clearance as an intervention."
+    }
+  ],
+  "raw_response_sha256": "e0205784eb55aed36e8c0d803150963e8f735c015e217ec6d37a9f496cab79e2"
+}

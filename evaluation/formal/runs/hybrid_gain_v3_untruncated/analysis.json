@@ -1,0 +1,839 @@
+{
+  "design": {
+    "questions": 20,
+    "intervention_questions": [
+      "PP014",
+      "PP018",
+      "PP019",
+      "PP020"
+    ],
+    "intervention_question_count": 4,
+    "intervention_cluster_count": 2,
+    "judges": [
+      "local:gpt-oss:120b pass1",
+      "local:gpt-oss:120b pass2"
+    ],
+    "human_expert_review_claimed": false,
+    "nonintervention_question_count": 16,
+    "nonintervention_answers_identical_to_B_by_integrity_audit": true,
+    "absolute_itt_scores_available": false,
+    "itt_contrasts_use_exact_zero_for_identical_nonintervention_answers": true,
+    "oracle_and_judge_same_model_non_independence": true
+  },
+  "system_scores": {
+    "B_traditional_rag": {
+      "itt20": null,
+      "intervention": {
+        "correctness": 4.625,
+        "completeness": 4.5,
+        "relevance": 5.0,
+        "grounding": 4.75,
+        "mechanistic_coherence": 4.75,
+        "research_value": 4.625,
+        "overall": 4.7083
+      }
+    },
+    "C1_kg_reranking": {
+      "itt20": null,
+      "intervention": {
+        "correctness": 4.75,
+        "completeness": 4.75,
+        "relevance": 5.0,
+        "grounding": 4.625,
+        "mechanistic_coherence": 4.75,
+        "research_value": 4.625,
+        "overall": 4.75
+      }
+    },
+    "C2_kg_expansion": {
+      "itt20": null,
+      "intervention": {
+        "correctness": 4.75,
+        "completeness": 4.75,
+        "relevance": 5.0,
+        "grounding": 4.625,
+        "mechanistic_coherence": 4.875,
+        "research_value": 4.875,
+        "overall": 4.8125
+      }
+    },
+    "D1_all_safe_paths": {
+      "itt20": null,
+      "intervention": {
+        "correctness": 4.375,
+        "completeness": 4.375,
+        "relevance": 4.625,
+        "grounding": 4.125,
+        "mechanistic_coherence": 4.125,
+        "research_value": 4.125,
+        "overall": 4.2917
+      }
+    },
+    "D2_incremental_paths": {
+      "itt20": null,
+      "intervention": {
+        "correctness": 4.5,
+        "completeness": 4.375,
+        "relevance": 4.75,
+        "grounding": 4.375,
+        "mechanistic_coherence": 4.5,
+        "research_value": 4.25,
+        "overall": 4.4583
+      }
+    },
+    "D3_incremental_natural_fusion": {
+      "itt20": null,
+      "intervention": {
+        "correctness": 4.75,
+        "completeness": 4.75,
+        "relevance": 4.875,
+        "grounding": 4.5,
+        "mechanistic_coherence": 4.875,
+        "research_value": 4.75,
+        "overall": 4.75
+      }
+    },
+    "Oracle_local_path_selection": {
+      "itt20": null,
+      "intervention": {
+        "correctness": 4.5,
+        "completeness": 4.625,
+        "relevance": 4.75,
+        "grounding": 4.5,
+        "mechanistic_coherence": 4.5,
+        "research_value": 4.5,
+        "overall": 4.5625
+      }
+    }
+  },
+  "contrasts": {
+    "C1-B": {
+      "itt20": {
+        "left": "C1_kg_reranking",
+        "right": "B_traditional_rag",
+        "question_level": {
+          "n": 20,
+          "mean_diff": 0.0083,
+          "bootstrap_95ci": [
+            0.0,
+            0.0208
+          ],
+          "wins": 2,
+          "losses": 0,
+          "ties": 18,
+          "sign_test_p": 0.5
+        },
+        "cluster_level": {
+          "n": 12,
+          "mean_diff": 0.0093,
+          "bootstrap_95ci": [
+            0.0,
+            0.0231
+          ],
+          "wins": 2,
+          "losses": 0,
+          "ties": 10,
+          "sign_test_p": 0.5
+        },
+        "per_question": {
+          "PP001": 0.0,
+          "PP002": 0.0,
+          "PP003": 0.0,
+          "PP004": 0.0,
+          "PP005": 0.0,
+          "PP006": 0.0,
+          "PP007": 0.0,
+          "PP008": 0.0,
+          "PP009": 0.0,
+          "PP010": 0.0,
+          "PP011": 0.0,
+          "PP012": 0.0,
+          "PP013": 0.0,
+          "PP014": 0.0833,
+          "PP015": 0.0,
+          "PP016": 0.0,
+          "PP017": 0.0,
+          "PP018": 0.0,
+          "PP019": 0.0,
+          "PP020": 0.0833
+        },
+        "nonintervention_differences_set_to_zero_because_answers_are_identical": true
+      },
+      "intervention": {
+        "left": "C1_kg_reranking",
+        "right": "B_traditional_rag",
+        "question_level": {
+          "n": 4,
+          "mean_diff": 0.0417,
+          "bootstrap_95ci": [
+            0.0,
+            0.0833
+          ],
+          "wins": 2,
+          "losses": 0,
+          "ties": 2,
+          "sign_test_p": 0.5
+        },
+        "cluster_level": {
+          "n": 2,
+          "mean_diff": 0.0556,
+          "bootstrap_95ci": [
+            0.0278,
+            0.0833
+          ],
+          "wins": 2,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p": 0.5
+        },
+        "per_question": {
+          "PP014": 0.0833,
+          "PP018": 0.0,
+          "PP019": 0.0,
+          "PP020": 0.0833
+        }
+      },
+      "pass_sensitivity_intervention_mean": {
+        "pass1": 0.0,
+        "pass2": 0.0833
+      }
+    },
+    "C2-B": {
+      "itt20": {
+        "left": "C2_kg_expansion",
+        "right": "B_traditional_rag",
+        "question_level": {
+          "n": 20,
+          "mean_diff": 0.0208,
+          "bootstrap_95ci": [
+            0.0,
+            0.05
+          ],
+          "wins": 2,
+          "losses": 0,
+          "ties": 18,
+          "sign_test_p": 0.5
+        },
+        "cluster_level": {
+          "n": 12,
+          "mean_diff": 0.0255,
+          "bootstrap_95ci": [
+            0.0,
+            0.0671
+          ],
+          "wins": 2,
+          "losses": 0,
+          "ties": 10,
+          "sign_test_p": 0.5
+        },
+        "per_question": {
+          "PP001": 0.0,
+          "PP002": 0.0,
+          "PP003": 0.0,
+          "PP004": 0.0,
+          "PP005": 0.0,
+          "PP006": 0.0,
+          "PP007": 0.0,
+          "PP008": 0.0,
+          "PP009": 0.0,
+          "PP010": 0.0,
+          "PP011": 0.0,
+          "PP012": 0.0,
+          "PP013": 0.0,
+          "PP014": 0.25,
+          "PP015": 0.0,
+          "PP016": 0.0,
+          "PP017": 0.0,
+          "PP018": 0.0,
+          "PP019": 0.1667,
+          "PP020": 0.0
+        },
+        "nonintervention_differences_set_to_zero_because_answers_are_identical": true
+      },
+      "intervention": {
+        "left": "C2_kg_expansion",
+        "right": "B_traditional_rag",
+        "question_level": {
+          "n": 4,
+          "mean_diff": 0.1042,
+          "bootstrap_95ci": [
+            0.0,
+            0.2083
+          ],
+          "wins": 2,
+          "losses": 0,
+          "ties": 2,
+          "sign_test_p": 0.5
+        },
+        "cluster_level": {
+          "n": 2,
+          "mean_diff": 0.1528,
+          "bootstrap_95ci": [
+            0.0556,
+            0.25
+          ],
+          "wins": 2,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p": 0.5
+        },
+        "per_question": {
+          "PP014": 0.25,
+          "PP018": 0.0,
+          "PP019": 0.1667,
+          "PP020": 0.0
+        }
+      },
+      "pass_sensitivity_intervention_mean": {
+        "pass1": 0.0833,
+        "pass2": 0.125
+      }
+    },
+    "D1-B": {
+      "itt20": {
+        "left": "D1_all_safe_paths",
+        "right": "B_traditional_rag",
+        "question_level": {
+          "n": 20,
+          "mean_diff": -0.0833,
+          "bootstrap_95ci": [
+            -0.2333,
+            0.0167
+          ],
+          "wins": 1,
+          "losses": 3,
+          "ties": 16,
+          "sign_test_p": 0.625
+        },
+        "cluster_level": {
+          "n": 12,
+          "mean_diff": -0.0324,
+          "bootstrap_95ci": [
+            -0.1597,
+            0.0625
+          ],
+          "wins": 1,
+          "losses": 1,
+          "ties": 10,
+          "sign_test_p": 1.0
+        },
+        "per_question": {
+          "PP001": 0.0,
+          "PP002": 0.0,
+          "PP003": 0.0,
+          "PP004": 0.0,
+          "PP005": 0.0,
+          "PP006": 0.0,
+          "PP007": 0.0,
+          "PP008": 0.0,
+          "PP009": 0.0,
+          "PP010": 0.0,
+          "PP011": 0.0,
+          "PP012": 0.0,
+          "PP013": 0.0,
+          "PP014": 0.25,
+          "PP015": 0.0,
+          "PP016": 0.0,
+          "PP017": 0.0,
+          "PP018": -1.25,
+          "PP019": -0.5,
+          "PP020": -0.1667
+        },
+        "nonintervention_differences_set_to_zero_because_answers_are_identical": true
+      },
+      "intervention": {
+        "left": "D1_all_safe_paths",
+        "right": "B_traditional_rag",
+        "question_level": {
+          "n": 4,
+          "mean_diff": -0.4167,
+          "bootstrap_95ci": [
+            -0.9792,
+            0.0625
+          ],
+          "wins": 1,
+          "losses": 3,
+          "ties": 0,
+          "sign_test_p": 0.625
+        },
+        "cluster_level": {
+          "n": 2,
+          "mean_diff": -0.1944,
+          "bootstrap_95ci": [
+            -0.6389,
+            0.25
+          ],
+          "wins": 1,
+          "losses": 1,
+          "ties": 0,
+          "sign_test_p": 1.0
+        },
+        "per_question": {
+          "PP014": 0.25,
+          "PP018": -1.25,
+          "PP019": -0.5,
+          "PP020": -0.1667
+        }
+      },
+      "pass_sensitivity_intervention_mean": {
+        "pass1": -0.125,
+        "pass2": -0.7083
+      }
+    },
+    "D2-B": {
+      "itt20": {
+        "left": "D2_incremental_paths",
+        "right": "B_traditional_rag",
+        "question_level": {
+          "n": 20,
+          "mean_diff": -0.05,
+          "bootstrap_95ci": [
+            -0.1542,
+            0.0292
+          ],
+          "wins": 2,
+          "losses": 2,
+          "ties": 16,
+          "sign_test_p": 1.0
+        },
+        "cluster_level": {
+          "n": 12,
+          "mean_diff": -0.0139,
+          "bootstrap_95ci": [
+            -0.1042,
+            0.0625
+          ],
+          "wins": 1,
+          "losses": 1,
+          "ties": 10,
+          "sign_test_p": 1.0
+        },
+        "per_question": {
+          "PP001": 0.0,
+          "PP002": 0.0,
+          "PP003": 0.0,
+          "PP004": 0.0,
+          "PP005": 0.0,
+          "PP006": 0.0,
+          "PP007": 0.0,
+          "PP008": 0.0,
+          "PP009": 0.0,
+          "PP010": 0.0,
+          "PP011": 0.0,
+          "PP012": 0.0,
+          "PP013": 0.0,
+          "PP014": 0.25,
+          "PP015": 0.0,
+          "PP016": 0.0,
+          "PP017": 0.0,
+          "PP018": -0.75,
+          "PP019": 0.0833,
+          "PP020": -0.5833
+        },
+        "nonintervention_differences_set_to_zero_because_answers_are_identical": true
+      },
+      "intervention": {
+        "left": "D2_incremental_paths",
+        "right": "B_traditional_rag",
+        "question_level": {
+          "n": 4,
+          "mean_diff": -0.25,
+          "bootstrap_95ci": [
+            -0.6667,
+            0.1667
+          ],
+          "wins": 2,
+          "losses": 2,
+          "ties": 0,
+          "sign_test_p": 1.0
+        },
+        "cluster_level": {
+          "n": 2,
+          "mean_diff": -0.0833,
+          "bootstrap_95ci": [
+            -0.4167,
+            0.25
+          ],
+          "wins": 1,
+          "losses": 1,
+          "ties": 0,
+          "sign_test_p": 1.0
+        },
+        "per_question": {
+          "PP014": 0.25,
+          "PP018": -0.75,
+          "PP019": 0.0833,
+          "PP020": -0.5833
+        }
+      },
+      "pass_sensitivity_intervention_mean": {
+        "pass1": -0.1667,
+        "pass2": -0.3333
+      }
+    },
+    "D3-B": {
+      "itt20": {
+        "left": "D3_incremental_natural_fusion",
+        "right": "B_traditional_rag",
+        "question_level": {
+          "n": 20,
+          "mean_diff": 0.0083,
+          "bootstrap_95ci": [
+            -0.0625,
+            0.075
+          ],
+          "wins": 2,
+          "losses": 1,
+          "ties": 17,
+          "sign_test_p": 1.0
+        },
+        "cluster_level": {
+          "n": 12,
+          "mean_diff": 0.0185,
+          "bootstrap_95ci": [
+            -0.0069,
+            0.0625
+          ],
+          "wins": 1,
+          "losses": 1,
+          "ties": 10,
+          "sign_test_p": 1.0
+        },
+        "per_question": {
+          "PP001": 0.0,
+          "PP002": 0.0,
+          "PP003": 0.0,
+          "PP004": 0.0,
+          "PP005": 0.0,
+          "PP006": 0.0,
+          "PP007": 0.0,
+          "PP008": 0.0,
+          "PP009": 0.0,
+          "PP010": 0.0,
+          "PP011": 0.0,
+          "PP012": 0.0,
+          "PP013": 0.0,
+          "PP014": 0.25,
+          "PP015": 0.0,
+          "PP016": 0.0,
+          "PP017": 0.0,
+          "PP018": -0.5,
+          "PP019": 0.4167,
+          "PP020": 0.0
+        },
+        "nonintervention_differences_set_to_zero_because_answers_are_identical": true
+      },
+      "intervention": {
+        "left": "D3_incremental_natural_fusion",
+        "right": "B_traditional_rag",
+        "question_level": {
+          "n": 4,
+          "mean_diff": 0.0417,
+          "bootstrap_95ci": [
+            -0.3125,
+            0.3333
+          ],
+          "wins": 2,
+          "losses": 1,
+          "ties": 1,
+          "sign_test_p": 1.0
+        },
+        "cluster_level": {
+          "n": 2,
+          "mean_diff": 0.1111,
+          "bootstrap_95ci": [
+            -0.0278,
+            0.25
+          ],
+          "wins": 1,
+          "losses": 1,
+          "ties": 0,
+          "sign_test_p": 1.0
+        },
+        "per_question": {
+          "PP014": 0.25,
+          "PP018": -0.5,
+          "PP019": 0.4167,
+          "PP020": 0.0
+        }
+      },
+      "pass_sensitivity_intervention_mean": {
+        "pass1": 0.0417,
+        "pass2": 0.0417
+      }
+    },
+    "D2-D1": {
+      "itt20": {
+        "left": "D2_incremental_paths",
+        "right": "D1_all_safe_paths",
+        "question_level": {
+          "n": 20,
+          "mean_diff": 0.0333,
+          "bootstrap_95ci": [
+            -0.0417,
+            0.1167
+          ],
+          "wins": 2,
+          "losses": 1,
+          "ties": 17,
+          "sign_test_p": 1.0
+        },
+        "cluster_level": {
+          "n": 12,
+          "mean_diff": 0.0185,
+          "bootstrap_95ci": [
+            0.0,
+            0.0556
+          ],
+          "wins": 1,
+          "losses": 0,
+          "ties": 11,
+          "sign_test_p": 1.0
+        },
+        "per_question": {
+          "PP001": 0.0,
+          "PP002": 0.0,
+          "PP003": 0.0,
+          "PP004": 0.0,
+          "PP005": 0.0,
+          "PP006": 0.0,
+          "PP007": 0.0,
+          "PP008": 0.0,
+          "PP009": 0.0,
+          "PP010": 0.0,
+          "PP011": 0.0,
+          "PP012": 0.0,
+          "PP013": 0.0,
+          "PP014": 0.0,
+          "PP015": 0.0,
+          "PP016": 0.0,
+          "PP017": 0.0,
+          "PP018": 0.5,
+          "PP019": 0.5833,
+          "PP020": -0.4167
+        },
+        "nonintervention_differences_set_to_zero_because_answers_are_identical": true
+      },
+      "intervention": {
+        "left": "D2_incremental_paths",
+        "right": "D1_all_safe_paths",
+        "question_level": {
+          "n": 4,
+          "mean_diff": 0.1667,
+          "bootstrap_95ci": [
+            -0.2083,
+            0.5417
+          ],
+          "wins": 2,
+          "losses": 1,
+          "ties": 1,
+          "sign_test_p": 1.0
+        },
+        "cluster_level": {
+          "n": 2,
+          "mean_diff": 0.1111,
+          "bootstrap_95ci": [
+            0.0,
+            0.2222
+          ],
+          "wins": 1,
+          "losses": 0,
+          "ties": 1,
+          "sign_test_p": 1.0
+        },
+        "per_question": {
+          "PP014": 0.0,
+          "PP018": 0.5,
+          "PP019": 0.5833,
+          "PP020": -0.4167
+        }
+      },
+      "pass_sensitivity_intervention_mean": {
+        "pass1": -0.0417,
+        "pass2": 0.375
+      }
+    },
+    "D3-D2": {
+      "itt20": {
+        "left": "D3_incremental_natural_fusion",
+        "right": "D2_incremental_paths",
+        "question_level": {
+          "n": 20,
+          "mean_diff": 0.0583,
+          "bootstrap_95ci": [
+            0.0,
+            0.1292
+          ],
+          "wins": 3,
+          "losses": 0,
+          "ties": 17,
+          "sign_test_p": 0.25
+        },
+        "cluster_level": {
+          "n": 12,
+          "mean_diff": 0.0324,
+          "bootstrap_95ci": [
+            0.0,
+            0.0972
+          ],
+          "wins": 1,
+          "losses": 0,
+          "ties": 11,
+          "sign_test_p": 1.0
+        },
+        "per_question": {
+          "PP001": 0.0,
+          "PP002": 0.0,
+          "PP003": 0.0,
+          "PP004": 0.0,
+          "PP005": 0.0,
+          "PP006": 0.0,
+          "PP007": 0.0,
+          "PP008": 0.0,
+          "PP009": 0.0,
+          "PP010": 0.0,
+          "PP011": 0.0,
+          "PP012": 0.0,
+          "PP013": 0.0,
+          "PP014": 0.0,
+          "PP015": 0.0,
+          "PP016": 0.0,
+          "PP017": 0.0,
+          "PP018": 0.25,
+          "PP019": 0.3333,
+          "PP020": 0.5833
+        },
+        "nonintervention_differences_set_to_zero_because_answers_are_identical": true
+      },
+      "intervention": {
+        "left": "D3_incremental_natural_fusion",
+        "right": "D2_incremental_paths",
+        "question_level": {
+          "n": 4,
+          "mean_diff": 0.2917,
+          "bootstrap_95ci": [
+            0.0833,
+            0.5
+          ],
+          "wins": 3,
+          "losses": 0,
+          "ties": 1,
+          "sign_test_p": 0.25
+        },
+        "cluster_level": {
+          "n": 2,
+          "mean_diff": 0.1944,
+          "bootstrap_95ci": [
+            0.0,
+            0.3889
+          ],
+          "wins": 1,
+          "losses": 0,
+          "ties": 1,
+          "sign_test_p": 1.0
+        },
+        "per_question": {
+          "PP014": 0.0,
+          "PP018": 0.25,
+          "PP019": 0.3333,
+          "PP020": 0.5833
+        }
+      },
+      "pass_sensitivity_intervention_mean": {
+        "pass1": 0.2083,
+        "pass2": 0.375
+      }
+    },
+    "Oracle-D3": {
+      "itt20": {
+        "left": "Oracle_local_path_selection",
+        "right": "D3_incremental_natural_fusion",
+        "question_level": {
+          "n": 20,
+          "mean_diff": -0.0375,
+          "bootstrap_95ci": [
+            -0.125,
+            0.0125
+          ],
+          "wins": 1,
+          "losses": 1,
+          "ties": 18,
+          "sign_test_p": 1.0
+        },
+        "cluster_level": {
+          "n": 12,
+          "mean_diff": -0.0208,
+          "bootstrap_95ci": [
+            -0.0625,
+            0.0
+          ],
+          "wins": 0,
+          "losses": 1,
+          "ties": 11,
+          "sign_test_p": 1.0
+        },
+        "per_question": {
+          "PP001": 0.0,
+          "PP002": 0.0,
+          "PP003": 0.0,
+          "PP004": 0.0,
+          "PP005": 0.0,
+          "PP006": 0.0,
+          "PP007": 0.0,
+          "PP008": 0.0,
+          "PP009": 0.0,
+          "PP010": 0.0,
+          "PP011": 0.0,
+          "PP012": 0.0,
+          "PP013": 0.0,
+          "PP014": 0.0,
+          "PP015": 0.0,
+          "PP016": 0.0,
+          "PP017": 0.0,
+          "PP018": 0.0,
+          "PP019": -0.8333,
+          "PP020": 0.0833
+        },
+        "nonintervention_differences_set_to_zero_because_answers_are_identical": true
+      },
+      "intervention": {
+        "left": "Oracle_local_path_selection",
+        "right": "D3_incremental_natural_fusion",
+        "question_level": {
+          "n": 4,
+          "mean_diff": -0.1875,
+          "bootstrap_95ci": [
+            -0.625,
+            0.0625
+          ],
+          "wins": 1,
+          "losses": 1,
+          "ties": 2,
+          "sign_test_p": 1.0
+        },
+        "cluster_level": {
+          "n": 2,
+          "mean_diff": -0.125,
+          "bootstrap_95ci": [
+            -0.25,
+            0.0
+          ],
+          "wins": 0,
+          "losses": 1,
+          "ties": 1,
+          "sign_test_p": 1.0
+        },
+        "per_question": {
+          "PP014": 0.0,
+          "PP018": 0.0,
+          "PP019": -0.8333,
+          "PP020": 0.0833
+        }
+      },
+      "pass_sensitivity_intervention_mean": {
+        "pass1": -0.25,
+        "pass2": -0.125
+      }
+    }
+  }
+}

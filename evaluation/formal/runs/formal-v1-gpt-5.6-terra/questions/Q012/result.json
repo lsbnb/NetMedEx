@@ -1,0 +1,132 @@
+{
+  "status": "complete",
+  "question_id": "Q012",
+  "domain": "neuroinflammation",
+  "question": "Which cytokines mediate microglial activation in Alzheimer's disease models?",
+  "pubmed_query": "microglia Alzheimer's disease IL-1beta TNF-alpha IL-6 neuroinflammation",
+  "language": "English",
+  "corpus_pmids": [
+    "28127589",
+    "29669582",
+    "30874945",
+    "32087283",
+    "34813026",
+    "35130907",
+    "36835494",
+    "38507186",
+    "38695373",
+    "38824976",
+    "39322063",
+    "39725872",
+    "39800461",
+    "40640358",
+    "40651688"
+  ],
+  "graph": {
+    "node_count": 18,
+    "edge_count": 14,
+    "path_count": 0,
+    "preferred_pmids": []
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "30874945",
+        "score": 0.6471248309597628
+      },
+      {
+        "pmid": "40651688",
+        "score": 0.6395060455928359
+      },
+      {
+        "pmid": "39800461",
+        "score": 0.6077169826329277
+      },
+      {
+        "pmid": "34813026",
+        "score": 0.5770305585629981
+      },
+      {
+        "pmid": "28127589",
+        "score": 0.5637749565160938
+      },
+      {
+        "pmid": "40640358",
+        "score": 0.5578997885614624
+      },
+      {
+        "pmid": "29669582",
+        "score": 0.5291301693920131
+      },
+      {
+        "pmid": "38824976",
+        "score": 0.5136022484204875
+      },
+      {
+        "pmid": "39725872",
+        "score": 0.5119010972336857
+      },
+      {
+        "pmid": "32087283",
+        "score": 0.5088700331063056
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "30874945",
+        "score": 0.6471248309597628
+      },
+      {
+        "pmid": "40651688",
+        "score": 0.6395060455928359
+      },
+      {
+        "pmid": "39800461",
+        "score": 0.6077169826329277
+      },
+      {
+        "pmid": "34813026",
+        "score": 0.5770305585629981
+      },
+      {
+        "pmid": "28127589",
+        "score": 0.5637749565160938
+      },
+      {
+        "pmid": "40640358",
+        "score": 0.5578997885614624
+      },
+      {
+        "pmid": "29669582",
+        "score": 0.5291301693920131
+      },
+      {
+        "pmid": "38824976",
+        "score": 0.5136022484204875
+      },
+      {
+        "pmid": "39725872",
+        "score": 0.5119010972336857
+      },
+      {
+        "pmid": "32087283",
+        "score": 0.5088700331063056
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "**Direct evidence in Alzheimer’s disease models**\n\nThe cytokines most consistently linked to activated, pro-inflammatory microglia are:\n\n- **Interleukin-1β (IL-1β)**\n- **Interleukin-6 (IL-6)**\n- **Tumor necrosis factor-α (TNF-α)**\n\nIn AD, prolonged microglial activation is described as driving release/overexpression of IL-1β, IL-6, and TNF-α, amplifying neuroinflammation, impairing amyloid-β clearance, and contributing to neuronal injury. This is reported in AD-focused reviews [PMID: 30874945; PMID: 40651688; PMID: 39800461].\n\n**Animal and in-vitro AD-model evidence**\n\n- In **Aβ1–42-induced mouse and neuronal-cell AD models**, Aβ increased **IL-6, IL-1β, and TNF-α**; anti-inflammatory M2-like microglial exosomes reduced these cytokines alongside inflammatory and oxidative-stress markers [PMID: 40640358].  \n- In **5xFAD and Tg2576 mouse models**, experimental hearing loss increased microglial/astrocytic activation markers together with **IL-1β, IL-6, and TNF-α**, consistent with cytokine-associated neuroinflammation in AD-model brains [PMID: 39725872].\n\n**Association rather than proof of direct mediation**\n\n- **IL-8, IL-33, CCL2, CCL5, and GM-CSF** are listed among inflammatory mediators released by activated CNS immune cells and associated with neuroinflammation/neurodegeneration, including in AD-related contexts. However, the supplied context does not establish them as specific, primary mediators of microglial activation in AD models [PMID: 28127589].\n- **IL-10, IL-4, IL-13, and TGF-β** are anti-inflammatory cytokines associated with anti-inflammatory/M2-like microglial states in non-AD or general neuroinflammation models; they may restrain rather than mediate pro-inflammatory microglial activation [PMID: 38824976; PMID: 32087283].\n\n**Testable hypothesis**\n\nIn AD models, blocking the **IL-1β/TNF-α/IL-6 inflammatory axis**—or enhancing anti-inflammatory cytokine signaling such as IL-10, IL-4, IL-13, or TGF-β—could shift microglia away from sustained neurotoxic activation and improve amyloid-β clearance. The supplied records support this as a plausible hypothesis, but do not provide definitive causal comparison of each cytokine’s individual contribution.",
+    "traditional_rag": "**Direct evidence in Alzheimer’s disease (AD) models/reviews:**  \nThe cytokines most consistently linked to activated, pro-inflammatory microglia are:\n\n- **Interleukin-1β (IL-1β)**\n- **Tumor necrosis factor-α (TNF-α)**\n- **Interleukin-6 (IL-6)**\n\nIn AD, prolonged microglial activation is described as driving release/overexpression of IL-1β, TNF-α, and IL-6, amplifying neuroinflammation, impairing amyloid-β clearance, and contributing to neuronal injury. [PMID: 30874945] [PMID: 40651688] [PMID: 39800461]\n\n**Animal and in-vitro AD-model evidence:**  \nIn amyloid-β1–42-treated neuronal and mouse AD models, IL-6, IL-1β, and TNF-α were increased; anti-inflammatory M2-like microglial exosomes reduced these inflammatory markers. [PMID: 40640358] In transgenic AD mouse models (5xFAD and Tg2576), increased microglial/astrocyte activation was accompanied by elevated IL-1β, IL-6, and TNF-α. [PMID: 39725872]\n\n**Association rather than direct mediation:**  \nOther inflammatory mediators associated with neuroinflammation and activated glia in neurodegenerative disease include **IL-8, IL-33, CCL2, CCL5, and GM-CSF**. However, the supplied context does not establish these as direct mediators of microglial activation specifically in AD models. [PMID: 28127589]\n\n**Anti-inflammatory cytokines/modulators:**  \n**IL-10, IL-13, IL-4, and TGF-β** are described in non-AD or LPS-based microglial models as anti-inflammatory factors associated with reduced inflammatory activation or M2-like polarization. Their direct role in mediating microglial activation in AD models is not established by the supplied context. [PMID: 32087283] [PMID: 38824976]\n\n**Testable hypothesis:**  \nTargeting the IL-1β–TNF-α–IL-6 inflammatory axis—potentially through NF-κB, MAPK, TLR4, or mTOR-related signaling—may shift microglia away from chronic pro-inflammatory activation and improve amyloid-β clearance in AD models. This is mechanistically plausible from the supplied studies but requires direct causal testing for each cytokine. [PMID: 40651688] [PMID: 34813026]",
+    "general_llm": "In Alzheimer’s disease (AD) models, microglial activation is shaped by a network of pro-inflammatory and regulatory cytokines rather than by a single mediator. The dominant cytokines vary with the model (amyloid-, tau-, or mixed-pathology), disease stage, sex, and whether “activation” means inflammatory gene expression, proliferation, phagocytosis, or neurotoxicity.\n\n### Cytokines most consistently associated with pro-inflammatory microglial activation\n\n- **Interleukin-1β (IL-1β)**  \n  A major mediator in amyloid models. Amyloid-β can prime microglia through pattern-recognition receptors and promote inflammasome activation, particularly the **NLRP3 inflammasome**, resulting in IL-1β release. IL-1β can amplify inflammatory signaling, alter microglial phagocytic behavior, promote astrocyte reactivity, and contribute to synaptic dysfunction. Its net effect can be context-dependent; some early inflammatory responses may influence plaque containment or clearance.\n\n- **Tumor necrosis factor-α (TNF-α)**  \n  TNF-α is commonly increased in activated microglia in AD models and can reinforce inflammatory activation through TNF receptors and NF-κB-related pathways. Sustained TNF-α signaling is associated with synaptic injury, neuronal stress, and impaired microglial homeostatic functions. TNF signaling can nevertheless have both damaging and protective effects depending on receptor subtype, timing, and cellular source.\n\n- **Interleukin-6 (IL-6)**  \n  IL-6 is induced in many amyloid and neuroinflammation models and contributes to inflammatory transcriptional programs. Chronic IL-6 signaling can promote gliosis and may worsen neurodegenerative changes, although it also participates in acute injury and repair responses.\n\n- **Interleukin-18 (IL-18)**  \n  Like IL-1β, IL-18 can be generated downstream of inflammasome activation. It has been linked to inflammatory microglial phenotypes, enhanced cytokine production, and neuronal injury in experimental settings. Its role is less uniformly established than IL-1β or TNF-α.\n\n- **Interferon-γ (IFN-γ)**  \n  IFN-γ can drive a strongly inflammatory, antigen-presentation-associated microglial state, including increased MHC-related gene expression. In AD models it may be produced by infiltrating or resident immune cells rather than microglia alone. Depending on context, it can enhance amyloid uptake but also intensify neuroinflammation.\n\n- **Type I interferons (especially IFN-α and IFN-β)**  \n  Type I interferon signaling is increasingly recognized in amyloid and tau models. It promotes an interferon-responsive microglial program, often involving genes related to antigen presentation, antiviral-like responses, complement, and synapse-associated pathology. Experimental reduction of excessive type I interferon signaling has improved some pathological and cognitive outcomes in certain models, but this pathway is not uniformly detrimental.\n\n- **IL-12 and IL-23**  \n  These cytokines, particularly pathways involving their shared p40 subunit, have been implicated in amyloid-associated neuroinflammation. They can influence microglial inflammatory activity indirectly through T-cell and innate immune interactions. Experimental manipulation of this axis has altered pathology in some mouse models, though the mechanisms are complex.\n\n- **Granulocyte-macrophage colony-stimulating factor (GM-CSF/CSF2)**  \n  GM-CSF can promote microglial proliferation, survival, and inflammatory activation. Its effects in AD models are mixed: it may worsen inflammatory activation under some conditions, while other experiments suggest effects on myeloid-cell function that could support amyloid clearance.\n\n### Cytokines that restrain or reshape microglial activation\n\n- **Transforming growth factor-β (TGF-β)**  \n  TGF-β is important for maintenance of a homeostatic microglial phenotype. Disrupted TGF-β signaling can lead to heightened inflammatory activation. However, excessive or altered TGF-β signaling may also affect vascular pathology, extracellular matrix biology, and amyloid handling, so its role is not simply “anti-inflammatory.”\n\n- **Interleukin-10 (IL-10)**  \n  IL-10 suppresses production of cytokines such as IL-1β, TNF-α, and IL-6. In principle, this limits damaging neuroinflammation. Yet in some amyloid models, excessive IL-10 signaling can reduce microglial amyloid uptake and thereby increase plaque burden. Thus, lowering inflammation does not necessarily improve amyloid clearance.\n\n- **Interleukin-4 (IL-4) and IL-13**  \n  These cytokines can shift microglia toward repair-, lipid-metabolism-, and phagocytosis-associated programs. They are often described as promoting “alternative activation,” although the older M1/M2 terminology is an oversimplification for microglia in vivo. Their impact on plaque clearance and neuroprotection is model- and timing-dependent.\n\n- **Interleukin-33 (IL-33)**  \n  IL-33 has shown potentially beneficial effects in several experimental AD settings, including enhancement of microglial phagocytic responses and reduction of amyloid-related pathology. These findings are promising but should not be interpreted as proof that IL-33 therapy is effective in human AD.\n\n### Important context\n\nMicroglial activation in AD is also driven directly by non-cytokine signals, including aggregated **amyloid-β**, tau species, complement components, extracellular ATP, damaged myelin/lipids, and neuronal danger signals. Key microglial pathways include **TREM2–APOE**, **TLR/NF-κB**, **NLRP3 inflammasome**, **complement**, and **interferon signaling**. Cytokines both act downstream of these pathways and feed back to reinforce or restrain them.\n\nOverall, **IL-1β, TNF-α, IL-6, IL-18, IFN-γ, and type I interferons** are the best-supported cytokine mediators of inflammatory microglial activation in AD models, while **TGF-β, IL-10, IL-4/IL-13, and IL-33** mainly regulate or redirect microglial responses. Their effects are not uniformly harmful or beneficial, because microglial inflammation can initially aid debris/plaque containment but become maladaptive when chronic or dysregulated."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 1.31162828207016,
+    "semantic_graph": 88.1022475361824,
+    "vector_index": 1.8758432865142822,
+    "answer_netmedex_hybrid_rag": 5.870376773178577,
+    "answer_traditional_rag": 5.624280534684658,
+    "answer_general_llm": 18.30793719738722,
+    "total": 123.56863436102867
+  },
+  "completed_at": "2026-07-27T18:10:40.144441+00:00"
+}

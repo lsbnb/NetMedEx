@@ -1,0 +1,47 @@
+{
+  "task": "hidden_claim",
+  "question_id": "BW008",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "0f66c4ceac9fc6b0c0546dcdb70fd40ab6989a6174c33774b3238ccd02a22709",
+  "raw_response_sha256": "13d3c3b22671e19017b8560811888e2e4a49ab4e371fcc20839d57526198897e",
+  "usage": {
+    "input_tokens": 3401,
+    "output_tokens": 339,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 3740
+  },
+  "rated_at": "2026-08-09T17:38:58.195206+00:00",
+  "result": {
+    "ratings": [
+      {
+        "hidden_claim_id": "BW008-PC01",
+        "hybrid_only": 0,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 1,
+        "non_obviousness": 2,
+        "research_utility": 3,
+        "unsupported_novelty": 0,
+        "notes": "Well-established two-hop path (chronic HBV→cirrhosis→HCC) with strong quotes and PMIDs. Matches comparison answer. Low novelty as widely known."
+      },
+      {
+        "hidden_claim_id": "BW008-PC02",
+        "hybrid_only": 0,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 1,
+        "non_obviousness": 2,
+        "research_utility": 2,
+        "unsupported_novelty": 0,
+        "notes": "Chronic HBV→chronic hepatitis→HCC path is valid but largely redundant with PC01; chronic hepatitis is a near-tautological intermediate. Low added utility."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

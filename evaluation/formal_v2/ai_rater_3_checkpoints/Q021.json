@@ -1,0 +1,135 @@
+{
+  "question_id": "Q021",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-30T09:26:16.473947+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q021-C001",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "wrong_context",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract discusses the effects of SGLT2 inhibitors on cardiac inflammation and fibrosis in the context of cardio-oncology, but does not provide evidence for reduced kidney inflammation or fibrosis."
+    },
+    {
+      "candidate_id": "Q021-C002",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This study provides direct evidence that the SGLT2 inhibitor dapagliflozin alleviates renal fibrosis by inhibiting necroinflammation in a rat model of unilateral ureteral obstruction."
+    },
+    {
+      "candidate_id": "Q021-C003",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This in vitro study directly addresses the question by demonstrating that empagliflozin inhibits the expression of inflammatory markers (MCP-1/CCL2 and ET-1) in human proximal tubular cells."
+    },
+    {
+      "candidate_id": "Q021-C004",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "no_usable_evidence",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract discusses combination therapy for diabetic kidney disease but attributes the inhibition of inflammation and fibrosis primarily to finerenone, not SGLT2 inhibitors."
+    },
+    {
+      "candidate_id": "Q021-C005",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "no_usable_evidence",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This meta-analysis evaluates the effects of SGLT2 inhibitors on clinical kidney outcomes (eGFR and albuminuria) but does not mention or evaluate inflammation or fibrosis."
+    },
+    {
+      "candidate_id": "Q021-C006",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This review article provides useful context by discussing the pleiotropic effects of SGLT2 inhibitors, including the reduction of fibrosis and inflammation in experimental models of chronic kidney disease."
+    },
+    {
+      "candidate_id": "Q021-C007",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "no_usable_evidence",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This systematic review and meta-analysis focuses on clinical markers of renal function (eGFR and albuminuria) and does not address kidney inflammation or fibrosis."
+    },
+    {
+      "candidate_id": "Q021-C008",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This in vitro study provides adjacent evidence by investigating the inflammatory effects of SGLT2 inhibitors on renal proximal tubular epithelial cells, although it primarily concludes they do not induce inflammation rather than proving they reduce it."
+    },
+    {
+      "candidate_id": "Q021-C009",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This review provides relevant context by summarizing how SGLT2 inhibitors mediate renal protection via reduced macrophage-driven inflammation and fibrosis."
+    },
+    {
+      "candidate_id": "Q021-C010",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This study directly answers the question by showing that dapagliflozin attenuates renal tubulointerstitial fibrosis in diabetic mice and cells by regulating STAT1/TGFbeta1 signaling."
+    },
+    {
+      "candidate_id": "Q021-C011",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This is a highly relevant review article that specifically summarizes the current evidence and mechanisms regarding SGLT2 inhibitors and the amelioration of kidney fibrosis."
+    },
+    {
+      "candidate_id": "Q021-C012",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This study provides direct evidence that dapagliflozin ameliorates renal fibrosis in hyperuricemic nephropathy models via the ERRalpha-OAT1 axis."
+    },
+    {
+      "candidate_id": "Q021-C013",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This review provides useful context on the immunomodulatory effects of anti-diabetic therapies, noting that SGLT2 inhibitors reduce inflammatory cytokines in renal tissues."
+    },
+    {
+      "candidate_id": "Q021-C014",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This study directly addresses the prompt by demonstrating that dapagliflozin decreases tubulointerstitial fibrosis and inflammation in diabetic mice through a specific signaling mechanism."
+    },
+    {
+      "candidate_id": "Q021-C015",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This in vitro study provides direct evidence that SGLT2 inhibitors (empa- and dapagliflozin) exert anti-inflammatory effects on human renal proximal tubular epithelial cells by reducing ICAM-1 expression."
+    },
+    {
+      "candidate_id": "Q021-C016",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "no_usable_evidence",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The EMPA-KIDNEY trial abstract reports on clinical outcomes (disease progression, cardiovascular death) but does not provide evidence regarding kidney inflammation or fibrosis."
+    },
+    {
+      "candidate_id": "Q021-C017",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This review article provides relevant background context, noting that the beneficial effects of SGLT2 inhibitors in CKD include effects on fibrosis and inflammation."
+    },
+    {
+      "candidate_id": "Q021-C018",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This review provides useful context by discussing how SGLT2 inhibitors exert renal protection by suppressing inflammation and fibrosis in kidney disease."
+    }
+  ],
+  "raw_response_sha256": "f296ef454df27c5120b22c593c4845455421203428586ba24166d355c877187b"
+}

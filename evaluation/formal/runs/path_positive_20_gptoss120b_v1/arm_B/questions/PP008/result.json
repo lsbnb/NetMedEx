@@ -1,0 +1,199 @@
+{
+  "status": "complete",
+  "question_id": "PP008",
+  "domain": "hypothesis generation",
+  "question": "What evidence supports a mechanistic path from dysbiosis to bone diseases through serotonin? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "gut microbiome dysbiosis IL-17 bone loss osteoporosis",
+  "effective_pubmed_query": "gut microbiome dysbiosis IL-17 bone loss osteoporosis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "36608535",
+    "38474387",
+    "40903540",
+    "37904311",
+    "36982891",
+    "21320797",
+    "33968085",
+    "35177222",
+    "38321650",
+    "33651651",
+    "36421397",
+    "33670115",
+    "38218095",
+    "37224131",
+    "40013938",
+    "28765474",
+    "12748652",
+    "37188819",
+    "38316760",
+    "38569557",
+    "38034017",
+    "41372218",
+    "37118283",
+    "39880362",
+    "39539387",
+    "40193598"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports a mechanistic path from dysbiosis to bone diseases through serotonin? Distinguish evidence for each hop from overall inference.",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "21320797",
+        "score": 0.5501487386026042
+      },
+      {
+        "pmid": "38474387",
+        "score": 0.4442288538455314
+      },
+      {
+        "pmid": "12748652",
+        "score": 0.43399148707828133
+      },
+      {
+        "pmid": "37904311",
+        "score": 0.4333818949701638
+      },
+      {
+        "pmid": "36608535",
+        "score": 0.4259267195113307
+      },
+      {
+        "pmid": "39880362",
+        "score": 0.42345192291189426
+      },
+      {
+        "pmid": "41372218",
+        "score": 0.42235085054379773
+      },
+      {
+        "pmid": "36982891",
+        "score": 0.42117733830495435
+      },
+      {
+        "pmid": "33651651",
+        "score": 0.4205072138478609
+      },
+      {
+        "pmid": "36421397",
+        "score": 0.4194283028584857
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "21320797",
+        "score": 0.5501487386026042
+      },
+      {
+        "pmid": "38474387",
+        "score": 0.4442288538455314
+      },
+      {
+        "pmid": "12748652",
+        "score": 0.43399148707828133
+      },
+      {
+        "pmid": "37904311",
+        "score": 0.4333818949701638
+      },
+      {
+        "pmid": "36608535",
+        "score": 0.4259267195113307
+      },
+      {
+        "pmid": "39880362",
+        "score": 0.42345192291189426
+      },
+      {
+        "pmid": "41372218",
+        "score": 0.42235085054379773
+      },
+      {
+        "pmid": "36982891",
+        "score": 0.42117733830495435
+      },
+      {
+        "pmid": "33651651",
+        "score": 0.4205072138478609
+      },
+      {
+        "pmid": "36421397",
+        "score": 0.4194283028584857
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Hop 1 – Dysbiosis → altered serotonin production or signaling**  \n- Human/clinical evidence: gut‑microbiota dysbiosis in depression is linked to disturbed tryptophan metabolism and reduced peripheral serotonin synthesis, implicating microbiota‑derived regulation of 5‑HT levels【38474387】.  \n- Animal evidence: acute sleep‑deprivation in mice produces marked gut‑microbiota dysbiosis together with a significant down‑regulation of the central 5‑HT1A receptor in hippocampus, demonstrating that dysbiosis can suppress serotonergic signaling【36608535】.  \n\n**Hop 2 – Peripheral (gut‑derived) serotonin → inhibition of bone formation**  \n- In vivo mouse data show that gut‑derived serotonin acts as a circulating hormone that directly suppresses osteoblast proliferation and bone formation; genetic or pharmacologic reduction of intestinal serotonin increases bone mass, establishing a causal link between peripheral 5‑HT and bone loss【21320797】.  \n\n**Hop 3 – Central (brain‑derived) serotonin → promotion of bone accrual**  \n- Experimental studies in rodents indicate that brain‑derived serotonin positively regulates bone mass, opposing the peripheral effect; thus a shift toward reduced central 5‑HT (as occurs with dysbiosis‑induced tryptophan depletion) could diminish this anabolic stimulus【21320797】.  \n\n**Hop 4 – Clinical correlation: serotonergic drugs and bone health**  \n- Observational data from implant dentistry note that use of selective serotonin reuptake inhibitors (SSRIs) is associated with impaired osseointegration and bone loss, supporting the relevance of serotonergic pathways for human bone metabolism【37904311】.  \n\n**Overall mechanistic path**  \nDysbiosis → ↓ tryptophan‑derived serotonin (both peripheral synthesis and central receptor expression) → loss of serotonin’s bone‑protective actions (reduced central anabolic signaling and unchecked peripheral inhibitory signaling) → increased bone resorption or decreased formation → bone disease (osteoporosis, implant failure).  \n\n*Conclusion: multiple human and animal studies provide a stepwise mechanistic chain linking gut dysbiosis, serotonergic disruption, and bone pathology.*"
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 1.735985279083252e-05,
+    "vector_index": 4.325034938752651,
+    "kg_expansion": 3.248453140258789e-05,
+    "answer_traditional_rag": 29.60379146784544,
+    "total": 34.41798869520426
+  },
+  "token_usage": {
+    "input_tokens": 3968,
+    "output_tokens": 1043,
+    "total_tokens": 5011
+  },
+  "completed_at": "2026-08-13T06:23:14.680256+00:00"
+}

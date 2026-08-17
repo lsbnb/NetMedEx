@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP017",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "56a22f11f20e36bbd98c327554e7c345af418567e780a9d4d7e1fa4baa60cb7d",
+  "raw_response_sha256": "7e2dd70786a5d35439407705a4c6eb95e76b24c350943f7033c65513ba949aa5",
+  "usage": {
+    "input_tokens": 2755,
+    "output_tokens": 479,
+    "total_tokens": 3234
+  },
+  "rated_at": "2026-08-13T06:28:49.105587+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP017-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Mechanistically detailed, distinguishes each hop, cites human/animal/in vitro evidence, but lacks explicit PMIDs. Excellent mechanistic and research value."
+      },
+      {
+        "answer_id": "PP017-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Strong human cohort evidence, clear hop distinction, mechanistic interpretation, and explicit PMIDs. Highly grounded and research-relevant."
+      },
+      {
+        "answer_id": "PP017-C",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Well-grounded with PMIDs, clear hop distinction, but less mechanistic detail. Focuses on association more than mechanism."
+      },
+      {
+        "answer_id": "PP017-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Explicit evidence for each hop, mechanistic bridge, PMIDs, and a testable hypothesis. Excellent research value and mechanistic clarity."
+      }
+    ],
+    "preferred_item_id": "PP017-D",
+    "pairwise_reason": "PP017-D provides the most comprehensive, well-grounded, and mechanistically coherent answer, with explicit evidence for each hop, mechanistic links, PMIDs, and a testable hypothesis, making it the most valuable for research."
+  }
+}

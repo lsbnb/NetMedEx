@@ -1,0 +1,164 @@
+{
+  "status": "complete",
+  "question_id": "Q026",
+  "domain": "gastroenterology",
+  "question": "Which microbiome metabolites are linked to intestinal barrier integrity?",
+  "question_type": "association",
+  "pubmed_query": "microbiome short-chain fatty acids butyrate intestinal barrier tight junction",
+  "effective_pubmed_query": "microbiome short-chain fatty acids butyrate intestinal barrier tight junction",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "35953929",
+    "36326134",
+    "36709599",
+    "36810115",
+    "36831324",
+    "38061697",
+    "39286812",
+    "39461239",
+    "40469511",
+    "40510181",
+    "40674913",
+    "40885307",
+    "40917749",
+    "41300111",
+    "41651593"
+  ],
+  "graph": {
+    "node_count": 93,
+    "edge_count": 181,
+    "path_count": 0,
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": true,
+    "max_hops": 1,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "gate_evidence_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "exposure_signature": "fe46638f9e83fcc9",
+    "routed_profile": "C_one_hop",
+    "route_reason": "question_type=association: graph association task",
+    "question_type": "association",
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "40917749",
+        "score": 0.6155453712405877
+      },
+      {
+        "pmid": "41651593",
+        "score": 0.5840765995614451
+      },
+      {
+        "pmid": "35953929",
+        "score": 0.567365970519128
+      },
+      {
+        "pmid": "36326134",
+        "score": 0.5640532993079014
+      },
+      {
+        "pmid": "40885307",
+        "score": 0.5560570879694718
+      },
+      {
+        "pmid": "39286812",
+        "score": 0.5504903064160809
+      },
+      {
+        "pmid": "41300111",
+        "score": 0.5491936218285107
+      },
+      {
+        "pmid": "40510181",
+        "score": 0.5431698397085226
+      },
+      {
+        "pmid": "36831324",
+        "score": 0.5276323481733642
+      },
+      {
+        "pmid": "38061697",
+        "score": 0.5273105771853375
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "40917749",
+        "score": 0.6155453712405877
+      },
+      {
+        "pmid": "41651593",
+        "score": 0.5840765995614451
+      },
+      {
+        "pmid": "35953929",
+        "score": 0.567365970519128
+      },
+      {
+        "pmid": "36326134",
+        "score": 0.5640532993079014
+      },
+      {
+        "pmid": "40885307",
+        "score": 0.5560570879694718
+      },
+      {
+        "pmid": "39286812",
+        "score": 0.5504903064160809
+      },
+      {
+        "pmid": "41300111",
+        "score": 0.5491936218285107
+      },
+      {
+        "pmid": "40510181",
+        "score": 0.5431698397085226
+      },
+      {
+        "pmid": "36831324",
+        "score": 0.5276323481733642
+      },
+      {
+        "pmid": "38061697",
+        "score": 0.5273105771853375
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "**Direct Evidence**\n\n- Short-chain fatty acids (SCFAs)—primarily acetate, propionate, and butyrate—are microbiome-derived metabolites directly linked to the integrity of the intestinal barrier. They enhance tight junction protein expression (such as ZO-1, occludin, claudin-1) and stimulate mucus production, thereby preserving the intestinal structure and barrier function [PMID: 40917749][PMID: 41651593][PMID: 35953929][PMID: 36326134][PMID: 40885307][PMID: 39286812][PMID: 41300111][PMID: 40510181][PMID: 38061697].\n\n**Association**\n\n- In animal studies (mice, chickens, pigs), interventions that increase SCFA production (such as supplementation with specific probiotics or prebiotics, and dietary modifications) correspond with restored or enhanced intestinal barrier integrity, as measured by increased tight junction protein expression and improved gut permeability [PMID: 35953929 (chickens)][PMID: 36326134, 40885307, 41300111, 40510181 (mice)][PMID: 39286812 (pigs)].\n\n**Testable Hypothesis**\n\n- Boosting colonic SCFA levels (via probiotics, prebiotics, or direct supplementation) in humans may enhance gut barrier function by upregulating tight junction protein expression, reducing intestinal permeability, and mitigating inflammation.\n\n---\n\n### Graph-derived candidate insights\n\n- Acetate, propionate, and butyrate are the principal SCFAs produced by the gut microbiota that directly enhance intestinal barrier integrity; mechanistically, they upregulate tight junction proteins and reduce permeability (PATH: SCFA→TightJunctionUpregulation→BarrierIntegrity, direct evidence, [PMID: 40917749, 41651593, 36326134, 40885307, 41300111, 40510181, 38061697]).\n- Microbial or dietary interventions that increase SCFA-producing bacteria (e.g., Lachnospiraceae, Muribaculaceae, Bifidobacterium) are associated with elevated SCFA levels and improved intestinal barrier function (PATH: Probiotic/Diet→↑SCFAbacteria→↑SCFAs→↑BarrierIntegrity, multi-hop inference, [PMID: 36326134, 40885307, 41300111, 38061697]).\n- Butyrate specifically acts as an energy source for colonocytes and serves as a potent barrier stabilizer among SCFAs (PATH: Butyrate→ColonocyteMetabolism/BarrierStabilization, direct evidence, [PMID: 41651593, 39286812]).\n- SCFA-mediated protection of the intestinal barrier involves activation of signaling pathways such as AMPK, suppression of MLCK, and subsequent increase of tight junction expression, especially in aging models (PATH: SCFAs→AMPK→MLCK↓→TightJunctions↑→BarrierIntegrity, direct evidence, [PMID: 40885307]).\n- In stress and inflammation models, exogenous or preserved SCFA levels prevent or reverse intestinal barrier dysfunction via restoration of tight-junction abundance and morphology (PATH: SCFAs→TightJunctionRestoration→BarrierProtection, direct evidence, [PMID: 40510181, 41300111, 38061697]).\n\n---\n\n**Summary Table**  \n| Metabolite        | Barrier Effect                      | Evidence Type      | Supporting PMIDs                    |\n|-------------------|-------------------------------------|-------------------|-------------------------------------|\n| Acetate           | Tight junctions, barrier integrity  | Direct            | 40917749, 41651593, 40885307, etc. |\n| Propionate        | Tight junctions, anti-inflammation  | Direct            | 40917749, 41651593, 36326134        |\n| Butyrate          | Tight junctions, colonocyte energy, barrier stabilization | Direct | 41651593, 35953929, 40885307        |\n\nIf further detail or a visualization is required, please specify.",
+    "traditional_rag": "Direct Evidence:\n- Short-chain fatty acids (SCFAs)—specifically acetate, propionate, and butyrate—are repeatedly cited as microbial metabolites that influence and support intestinal barrier integrity. These SCFAs regulate tight junction proteins (such as ZO-1, claudin-1, and occludin), which are crucial to maintaining the physical barrier of the gut epithelium [PMID: 40917749, 41651593, 35953929, 36326134, 40885307, 39286812, 41300111, 40510181, 38061697].\n  - Evidence from animal models (mouse and chicken) and in vitro studies demonstrates that increased levels of SCFAs—through dietary intervention, probiotics, or supplementation—enhance tight junction protein expression and reduce disruption of the barrier under stress or disease conditions [PMID: 35953929, 36326134, 40885307, 41300111, 40510181].\n  - Specific studies show that butyrate, in particular, serves as a fuel for colonocytes and is highlighted as a \"barrier stabilizer,\" while propionate and acetate also play significant roles [PMID: 41651593, 38061697, 39286812].\n  - In aged-mouse models, boosting SCFA-producing bacteria and increasing SCFA levels via probiotics ameliorates intestinal barrier dysfunction through upregulation of tight junction proteins and activation of protective signaling pathways (e.g., AMPK) [PMID: 40885307].\n  - Microbiome-targeted interventions (e.g., Lycium barbarum polysaccharides) that increase SCFA production also protect against colitis-induced barrier dysfunction by increasing tight junction protein expression and promoting beneficial microbes [PMID: 38061697].\n\nAssociations:\n- Multiple studies report a positive correlation between the abundance of SCFA-producing microbiota or probiotic supplementation and higher levels of SCFAs, with improved markers of intestinal barrier function (i.e., higher expression of tight junction proteins and lower permeability) [PMID: 41300111, 40510181].\n- Restoration of SCFA-producing bacteria in models of disease (including colitis and food allergy) is linked to reduced inflammation and improved gut barrier integrity [PMID: 41300111, 36326134, 38061697].\n\nTestable Hypothesis:\n- Therapeutic strategies aimed at increasing colonic SCFA concentrations (via prebiotics, probiotics, or direct SCFA administration) will improve intestinal barrier integrity, especially in states of increased permeability or inflammation, by upregulating tight junction protein expression and reducing inflammation [PMID: 41651593, 39286812, 40885307].\n\nSummary:\n- There is strong and consistent evidence (largely from animal models, with some supporting in vitro and human data) that the microbiome metabolites acetate, propionate, and butyrate (all SCFAs) are linked to and play a protective role in maintaining intestinal barrier integrity, primarily by modulating the expression of tight junction proteins. No contradictory evidence was found in the supplied context."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 35.64785806834698,
+    "vector_index": 1.777834877371788,
+    "answer_netmedex_hybrid_rag": 6.734325163066387,
+    "answer_traditional_rag": 10.923764623701572,
+    "total": 62.37705008685589
+  },
+  "token_usage": {
+    "input_tokens": 27593,
+    "total_tokens": 48936,
+    "output_tokens": 21343
+  },
+  "completed_at": "2026-08-05T02:32:08.351660+00:00"
+}

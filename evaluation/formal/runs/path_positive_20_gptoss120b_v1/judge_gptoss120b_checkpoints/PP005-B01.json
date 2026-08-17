@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP005",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "f3ba592447b3e09970c6ec1ba3e6b214ea2eff9914235793ac97b382afed75d8",
+  "raw_response_sha256": "045b81852382e59737464fec2c370a358d58975e3d92ded3e8618ada2206a0c8",
+  "usage": {
+    "input_tokens": 3964,
+    "output_tokens": 399,
+    "total_tokens": 4363
+  },
+  "rated_at": "2026-08-13T06:30:42.178033+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP005-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, well‑cited protective evidence; limitations clearly outlined."
+      },
+      {
+        "answer_id": "PP005-B",
+        "correctness": 3,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 2,
+        "mechanistic_coherence": 2,
+        "research_value": 3,
+        "notes": "Claims increased risk with limited citations; lacks mechanistic detail."
+      },
+      {
+        "answer_id": "PP005-C",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Accurate protective evidence; slightly less comprehensive than A."
+      },
+      {
+        "answer_id": "PP005-D",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Accurate but includes extraneous graph note; less detail than A."
+      }
+    ],
+    "preferred_item_id": "PP005-A",
+    "pairwise_reason": "Answer A offers the most complete, well‑grounded synthesis of human, animal, and in‑vitro evidence, clearly articulates mechanistic pathways and study limitations, surpassing the other responses."
+  }
+}

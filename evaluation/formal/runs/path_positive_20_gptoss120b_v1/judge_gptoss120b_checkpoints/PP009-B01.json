@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP009",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "369803db924c681e8839cd13d38f0b84a96cda350a790a9c80444b40e0533446",
+  "raw_response_sha256": "040b11408e88e1620f1195f58c16ce8e8daadfbf784264929889e40f81661393",
+  "usage": {
+    "input_tokens": 3579,
+    "output_tokens": 416,
+    "total_tokens": 3995
+  },
+  "rated_at": "2026-08-13T06:33:43.049225+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP009-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Comprehensive hop‑by‑hop chain, distinguishes direct vs inferential evidence; lacks specific citations."
+      },
+      {
+        "answer_id": "PP009-B",
+        "correctness": 4,
+        "completeness": 2,
+        "relevance": 4,
+        "grounding": 5,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Strong citations for early hops; truncated, missing later steps and full chain."
+      },
+      {
+        "answer_id": "PP009-C",
+        "correctness": 3,
+        "completeness": 3,
+        "relevance": 3,
+        "grounding": 4,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Table format, cites abstracts; limited hops and missing key inflammation‑CF link."
+      },
+      {
+        "answer_id": "PP009-D",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Clear bullet points with citations; ends abruptly, omits some mechanistic detail."
+      }
+    ],
+    "preferred_item_id": "PP009-A",
+    "pairwise_reason": "PP009-A best satisfies the request by explicitly outlining each mechanistic hop from CFTR loss to intestinal inflammation and clearly indicating which evidence is direct versus inferential, matching the ask to distinguish evidence per step."
+  }
+}

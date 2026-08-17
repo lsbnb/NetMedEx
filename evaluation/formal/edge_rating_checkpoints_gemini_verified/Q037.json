@@ -1,0 +1,99 @@
+{
+  "question_id": "Q037",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-08-01T05:07:14.042551+00:00",
+  "ratings": [
+    {
+      "edge_id": "Q037-E01",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles explicitly mention 'Hepatitis-B-virus-associated Hepatocellular Carcinoma' and its pathogenesis, supporting a causal relationship where HBV leads to HCC."
+    },
+    {
+      "edge_id": "Q037-E02",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly mentions 'Hypoxic gene expression in chronic hepatitis B virus infected patients', supporting an association."
+    },
+    {
+      "edge_id": "Q037-E03",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title mentions hypoxic gene expression, but there is no mention of the 'brain'. This is an unsupported target."
+    },
+    {
+      "edge_id": "Q037-E04",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title mentions 'HBV-related HCC development', supporting an association between chronic hepatitis B and hepatocellular carcinoma."
+    },
+    {
+      "edge_id": "Q037-E05",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title mentions the 'Pathogenesis of Hepatitis-B-virus-associated Hepatocellular Carcinoma', which is synonymous with hepatocarcinogenesis associated with HBV."
+    },
+    {
+      "edge_id": "Q037-E06",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The target 'x' is a spurious extraction and is not mentioned in the supporting titles."
+    },
+    {
+      "edge_id": "Q037-E07",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Inflammation is not mentioned in any of the supporting titles."
+    },
+    {
+      "edge_id": "Q037-E08",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The term 'neoplasms' is not mentioned in the supporting titles, making this an unsupported extraction (even if HCC is biologically a neoplasm)."
+    },
+    {
+      "edge_id": "Q037-E09",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Fibrosis is not mentioned in any of the supporting titles."
+    },
+    {
+      "edge_id": "Q037-E10",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Liver cirrhosis is not mentioned in the supporting titles."
+    },
+    {
+      "edge_id": "Q037-E11",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title states 'HCC development... is STAT3 dependent', meaning STAT3 promotes HCC, not the other way around."
+    },
+    {
+      "edge_id": "Q037-E12",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Death is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q037-E13",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title mentions an 'oncogenic effect of HBx', meaning HBx promotes HCC. The extracted relation incorrectly states that HCC promotes HBx."
+    },
+    {
+      "edge_id": "Q037-E14",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title mentions 'HBV-related HCC', supporting an association between the two entities."
+    },
+    {
+      "edge_id": "Q037-E15",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The entities are related, but the direction of causality is reversed. Hepatitis B causes hepatocellular carcinoma, not the other way around."
+    }
+  ],
+  "raw_response_sha256": "9e116b7af730175bc0b59a1a0943095ad8abf776f94eff33d098531e896a9069"
+}

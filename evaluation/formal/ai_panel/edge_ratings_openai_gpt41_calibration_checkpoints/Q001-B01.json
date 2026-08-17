@@ -1,0 +1,36 @@
+{
+  "task": "edge",
+  "question_id": "Q001",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "b0b1bc36e81b2f1052a0aa0b4c059df893ef2fe02ca7eef333a39034f2688399",
+  "raw_response_sha256": "bf308d6ab163207517516b7106bfb8cf2de33b14d4e8f8315443e658bf67e98a",
+  "rated_at": "2026-08-02T18:54:21.860806+00:00",
+  "result": {
+    "ratings": [
+      {
+        "edge_id": "Q001-E01",
+        "entity_valid": 1,
+        "relation_exists": 1,
+        "relation_type_correct": 1,
+        "direction_correct": 1,
+        "evidence_support": 1,
+        "confidence": 3,
+        "notes": "Both abstracts (PMID 29904399, 38045146) provide direct evidence that icariin upregulates RUNX2 expression in osteoblasts via miRNA-related mechanisms (miR-153 and mmu-miR-138-5p pathways). The direction and relation type are correct and well-supported."
+      },
+      {
+        "edge_id": "Q001-E05",
+        "entity_valid": 1,
+        "relation_exists": 1,
+        "relation_type_correct": 1,
+        "direction_correct": 1,
+        "evidence_support": 1,
+        "confidence": 3,
+        "notes": "PMID 38045146 provides clear evidence that icariin upregulates JMJD3 (KDM6B) expression via a circRNA/miRNA axis in osteogenic differentiation. The relation, direction, and type are correct and directly supported."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

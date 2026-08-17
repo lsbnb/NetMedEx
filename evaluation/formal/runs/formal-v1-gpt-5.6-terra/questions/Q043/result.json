@@ -1,0 +1,149 @@
+{
+  "status": "complete",
+  "question_id": "Q043",
+  "domain": "cross-species",
+  "question": "Which claims about NLRP3 inflammasome activation in Alzheimer's disease are supported by human evidence versus mouse models?",
+  "pubmed_query": "NLRP3 inflammasome Alzheimer's disease microglia human mouse",
+  "language": "English",
+  "corpus_pmids": [
+    "23254930",
+    "23686772",
+    "31748742",
+    "32958021",
+    "34080771",
+    "34497121",
+    "35642214",
+    "37072933",
+    "39026249",
+    "39407211",
+    "39499013",
+    "39904338",
+    "40541122",
+    "41173224",
+    "41571675"
+  ],
+  "graph": {
+    "node_count": 42,
+    "edge_count": 54,
+    "path_count": 20,
+    "preferred_pmids": [
+      "23254930",
+      "23686772",
+      "31748742",
+      "32958021",
+      "39026249",
+      "39407211",
+      "39904338",
+      "40541122",
+      "41173224"
+    ]
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "23254930",
+        "score": 1.0391495711547636
+      },
+      {
+        "pmid": "23686772",
+        "score": 1.021761217897869
+      },
+      {
+        "pmid": "31748742",
+        "score": 0.9545221590572899
+      },
+      {
+        "pmid": "39904338",
+        "score": 0.9285890609332994
+      },
+      {
+        "pmid": "32958021",
+        "score": 0.9131921445041059
+      },
+      {
+        "pmid": "39407211",
+        "score": 0.8780195040596039
+      },
+      {
+        "pmid": "40541122",
+        "score": 0.8471561245328887
+      },
+      {
+        "pmid": "41173224",
+        "score": 0.8236794002383274
+      },
+      {
+        "pmid": "39026249",
+        "score": 0.8124689381648249
+      },
+      {
+        "pmid": "37072933",
+        "score": 0.6169762675523571
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "23254930",
+        "score": 0.6927663807698423
+      },
+      {
+        "pmid": "23686772",
+        "score": 0.681174145265246
+      },
+      {
+        "pmid": "31748742",
+        "score": 0.6363481060381933
+      },
+      {
+        "pmid": "39904338",
+        "score": 0.6190593739555329
+      },
+      {
+        "pmid": "37072933",
+        "score": 0.6169762675523571
+      },
+      {
+        "pmid": "32958021",
+        "score": 0.6087947630027373
+      },
+      {
+        "pmid": "39407211",
+        "score": 0.585346336039736
+      },
+      {
+        "pmid": "40541122",
+        "score": 0.5647707496885924
+      },
+      {
+        "pmid": "34080771",
+        "score": 0.5540925700832043
+      },
+      {
+        "pmid": "41571675",
+        "score": 0.5516667011926593
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "## Human evidence\n\n### Direct evidence\n- **Human mild cognitive impairment (MCI) and Alzheimer’s disease (AD) brains show strongly increased active caspase-1 expression.** Because caspase-1 is an inflammasome effector, this is consistent with inflammasome activation in human disease. However, the reported human measurement is **active caspase-1**, not direct demonstration of NLRP3 assembly or NLRP3-specific causality. [PMID: 23254930]\n\n### Association\n- **Lower β-hydroxybutyrate (BHB) concentrations were found in red blood cells and brain parenchyma of AD patients versus non-AD controls.** This is a human metabolic association; it does not establish that low BHB causes NLRP3 activation or AD pathology in humans. [PMID: 32958021]\n- A glutaminolysis/metabolic pathway linked to NLRP3 was reported to be **conserved between murine and human cells**. This supports cellular cross-species conservation, but the supplied context does not state that it was validated in AD patient brain tissue or that it establishes clinical causality in humans. [PMID: 39904338]\n\n### Testable hypothesis\n- In humans, **NLRP3 activation may contribute to AD neuroinflammation and disease progression**, based on increased active caspase-1 in MCI/AD brains plus mechanistic findings from models. Direct human interventional evidence that inhibiting NLRP3 improves AD outcomes is absent from the supplied records. [PMID: 23254930]\n\n---\n\n## Mouse-model evidence\n\n### Direct evidence\n- **Nlrp3 or Casp1 deletion in familial-AD APP/PS1 mice protected against spatial-memory loss and other AD-like sequelae.** Knockout also reduced brain caspase-1 and IL-1β activation, enhanced amyloid-β clearance, shifted microglia toward an M2 phenotype, and reduced amyloid-β deposition. These findings support a causal, disease-promoting role of the NLRP3/caspase-1 axis in this mouse model. [PMID: 23254930]\n- **NLRP3 loss reduced tau hyperphosphorylation and aggregation** in experimental tauopathy/AD-related models; tau activated NLRP3, and fibrillar amyloid-β-containing brain homogenates induced tau pathology in an NLRP3-dependent manner. This supports a model in which amyloid-β–driven microglial NLRP3 activation contributes to downstream tau pathology. [PMID: 31748742]\n- In **APP/PS1 mice**, amyloid-β deposition directly triggered NLRP3 activation. NLRP3 loss increased glutamine/glutamate-related metabolism and microglial Slc1a3 expression, with greater metabolic activity and amyloid-β clearance. [PMID: 39904338]\n- In **5XFAD mice**, NLRP3 deficiency improved cognition, reduced pro-inflammatory microglial activity, and maintained microglial phagocytic/amyloid-clearance function. [PMID: 37072933]\n- In **5XFAD mice infected with HSV-1**, NLRP3-pathway blockade reduced amyloid-β deposition and improved cognitive decline, supporting a role for NLRP3 in HSV-1–associated worsening of AD-like pathology. [PMID: 39026249]\n\n### Intervention evidence in mice\n- **Exogenous BHB in 5XFAD mice** reduced plaque formation, microgliosis, ASC-speck formation, and caspase-1 activation; the authors interpret these effects as attenuation of AD pathology through NLRP3 inhibition. [PMID: 32958021]\n- **Chronic pharmacologic NLRP3 inhibition** reproduced beneficial metabolic/phagocytic effects in the APP/PS1 setting. [PMID: 39904338]\n- **Glutaminase suppression** attenuated microglial NLRP3 activation in AD mice; the proposed mechanism involves AMPK activation, reduced mTORC1 signaling, increased mitophagy, lower reactive oxygen species, and thereby reduced NLRP3 activation. [PMID: 39407211]\n- In **APP/PS1 mice**, semaglutide inhibited microglial NLRP3 activation, reduced amyloid-β aggregation and tau hyperphosphorylation, and improved cognition. Microglia-specific NLRP3 knockdown likewise reduced amyloid deposition and neuroinflammation. [PMID: 41173224]\n- In **3xTg-AD mice**, Ciliatoside A improved cognition and reduced amyloid plaques and neuroinflammation while inhibiting NLRP3-related signaling and promoting mitophagy. [PMID: 40541122]\n\n### Testable hypothesis\n- **NLRP3 inhibition could be an AD treatment.** Mouse genetic and pharmacologic studies support this as a preclinical hypothesis, but the supplied context contains no human trial evidence showing that NLRP3 inhibition slows AD, improves cognition, or reduces amyloid/tau pathology in patients. [PMID: 23254930; PMID: 39904338; PMID: 41173224]\n\n---\n\n## In-vitro evidence\n\n- In **cultured inflammatory microglia**, glutaminase inhibition reduced NLRP3 activation through a proposed AMPK–mTORC1–mitophagy–reactive-oxygen-species pathway. [PMID: 39407211]\n- In **BV2 microglial cells**—a murine microglial cell line—Ciliatoside A inhibited NLRP3 activation, pyroptosis, and oxidative stress while promoting mitophagy. [PMID: 40541122]\n- In **LPS/ATP-stimulated BV2 cells**, semaglutide suppressed microglial NLRP3 activation and related inflammatory/ferroptosis pathways. [PMID: 41173224]\n- In **BV2 cells treated with LPS plus amyloid-β oligomers**, p62-dependent autophagy was reported to degrade ubiquitinated NLRP3 and reduce inflammatory/pyroptotic microglial states. [PMID: 37072933]\n\n## Bottom line\n\n**Supported in humans:** AD/MCI brain tissue has increased active caspase-1, consistent with inflammasome activity, and AD patients show lower BHB levels. These are primarily observational associations. [PMID: 23254930; PMID: 32958021]\n\n**Supported causally in mice:** Genetic loss, knockdown, or pharmacologic inhibition of NLRP3/caspase-1 generally reduces AD-like inflammation, amyloid pathology, microglial dysfunction, cognitive impairment, and—in experimental models—tau pathology. [PMID: 23254930; PMID: 31748742; PMID: 37072933; PMID: 39904338; PMID: 41173224]\n\n**Not established by the supplied human evidence:** that NLRP3 activation is a causal driver of human AD, that it directly causes human amyloid or tau pathology, or that NLRP3-targeted treatment benefits patients.",
+    "traditional_rag": "## Human evidence\n\n### Direct evidence\n- **Human AD and mild cognitive impairment (MCI) brains show increased active caspase-1**, a downstream marker consistent with inflammasome activation. This supports the presence of inflammasome-related activity in human disease, but the abstract does not directly establish that the signal specifically originates from NLRP3. [PMID: 23254930]\n- **Human retina data provide more NLRP3-specific evidence:** retinal NLRP3 was elevated in MCI and considered activated in AD dementia, accompanied by increased caspase-1, cleaved IL-1β, and cleaved gasdermin-D, consistent with inflammasome activation and pyroptosis. [PMID: 41571675]\n\n### Association\n- In AD patients with infection, brain IL-1β and IL-6 were elevated. This supports an association between infection and amplified neuroinflammatory cytokine production in human AD, but does **not** by itself prove NLRP3 activation caused these elevations. [PMID: 34080771]\n- Lower β-hydroxybutyrate (BHB) concentrations were reported in red blood cells and brain parenchyma from AD patients versus non-AD controls. This is a human metabolic association, not evidence that BHB treatment inhibits NLRP3 or improves AD in humans. [PMID: 32958021]\n- In AD retina and brain, *Chlamydia pneumoniae* burden was associated with APOEε4, disease stage, cognitive deficit, amyloid-β42, inflammatory/pyroptotic markers, and AD status. These findings associate infection with NLRP3-related pathways, but do not establish that infection is a causal driver of human AD. [PMID: 41571675]\n\n### Human-cell / in-vitro evidence\n- A glutaminolysis-related NLRP3 pathway was reported as conserved between murine and human cells. This supports mechanistic relevance in cultured human cells, but it is not equivalent to demonstrating this pathway in living patients with AD. [PMID: 39904338]\n\n## Mouse-model evidence\n\n### Direct evidence\n- In APP/PS1 mice, genetic deletion of **Nlrp3** or **Casp1** reduced brain caspase-1 and IL-1β activation, decreased amyloid-β deposition, enhanced amyloid-β clearance, shifted microglia toward an M2 phenotype, and protected against spatial-memory loss and other AD-like outcomes. Thus, the NLRP3/caspase-1 axis is causally implicated in pathology in this familial-AD mouse model. [PMID: 23254930]\n- In mouse models, loss of NLRP3 inflammasome function reduced tau hyperphosphorylation and aggregation. Tau activated NLRP3, and fibrillar amyloid-β-containing brain homogenates induced tau pathology in an NLRP3-dependent manner. This supports a mouse-model mechanism in which amyloid-β–induced microglial NLRP3 activation promotes downstream tau pathology. [PMID: 31748742]\n- In APP/PS1 mice, amyloid-β deposition directly triggered NLRP3 activation; NLRP3 loss altered glutamine/glutamate metabolism, increased microglial metabolic activity and amyloid-β clearance, and chronic pharmacologic NLRP3 inhibition reproduced these effects. [PMID: 39904338]\n- In 5XFAD/NLRP3-knockout mice, NLRP3 reduction improved cognition, reduced pro-inflammatory microglial responses, and preserved microglial phagocytic clearance of amyloid-β plaques. [PMID: 37072933]\n- In AD-model mice, suppression of glutaminase attenuated microglial NLRP3 activation. The proposed mouse mechanism was reduced glutamine flux, AMPK/mTORC1-related induction of mitophagy, lower reactive oxygen species, and reduced NLRP3 activation. [PMID: 39407211]\n- In 5XFAD mice, exogenous BHB reduced plaque formation, microgliosis, ASC specks, and caspase-1 activation. These findings support NLRP3 inhibition as a plausible mechanism for BHB’s benefits in this mouse model. [PMID: 32958021]\n- In APP/PS1 mice, amyloid-associated NLRP3 inflammasome assembly primed microglia for exaggerated IL-1β responses to systemic LPS; LPS then induced neuroinflammation and acute cognitive dysfunction selectively in APP/PS1 mice. [PMID: 34080771]\n- In APPSWE/PS1ΔE9 mice, *C. pneumoniae* infection induced amyloid-β, inflammasome activation, neuroinflammation, neurotoxicity, and—during chronic infection—worse cognition. [PMID: 41571675]\n- In 3xTg-AD mice, ciliatoside A improved cognition and reduced amyloid plaque deposition and neuroinflammation; the study attributes these effects in part to inhibition of NLRP3 inflammasome activation and promotion of mitophagy. [PMID: 40541122]\n\n### Mouse/in-vitro evidence\n- In BV2 microglial cells—an immortalized murine microglial cell line—NLRP3 expression regulated inflammatory activity and pyroptosis, while p62-mediated autophagy/lysosomal degradation of ubiquitinated NLRP3 reduced these responses. [PMID: 37072933]\n- In cultured inflammatory microglia, glutaminase inhibition reduced NLRP3 activation, supporting a mechanistic link between glutamine metabolism, mitophagy, reactive oxygen species, and NLRP3 activity. [PMID: 39407211]\n- In LPS/nigericin-stimulated BV-2 cells, ciliatoside A inhibited NLRP3 activation and pyroptosis and improved mitochondrial/mitophagy-related measures. [PMID: 40541122]\n\n## Claims supported only as hypotheses for human AD\n\n- **NLRP3 inhibition will prevent or slow Alzheimer’s disease in humans.** Mouse genetic and pharmacologic studies support this as a testable therapeutic hypothesis, but the supplied context contains no human clinical trial evidence of efficacy. [PMID: 23254930; PMID: 39904338; PMID: 32958021]\n- **NLRP3 activation causally drives amyloid accumulation, tau pathology, cognitive decline, or microglial phagocytic failure in human AD.** These causal claims are supported in mouse models, whereas the human evidence is principally observational—elevated NLRP3-related markers in retina or elevated caspase-1/cytokines in brain. [PMID: 23254930; PMID: 31748742; PMID: 41571675]\n- **BHB, glutaminase inhibition, autophagy enhancement, mitophagy activation, or anti-*Chlamydia* therapy will benefit human AD by suppressing NLRP3.** These are testable translational hypotheses. The provided studies demonstrate relevant effects in mice and/or cultured cells, not therapeutic benefit in human AD patients. [PMID: 32958021; PMID: 37072933; PMID: 39407211; PMID: 40541122; PMID: 41571675]",
+    "general_llm": "## Bottom line\n\n**Human studies support that the NLRP3 inflammasome pathway is altered and may be activated in Alzheimer’s disease (AD), especially in plaque-associated microglia.** They do **not** yet prove that NLRP3 activation is a primary cause of AD progression or that inhibiting it improves clinical outcomes.\n\n**Mouse and other experimental models provide much stronger causal evidence:** genetic deletion or pharmacologic inhibition of NLRP3-pathway components often reduces amyloid-associated inflammation and improves pathology and behavior. However, these findings have not yet been conclusively translated to human AD.\n\n---\n\n## Claims with relatively strong human support\n\n| Claim | Human evidence | Important limitations |\n|---|---|---|\n| **NLRP3-pathway molecules are increased in AD brain tissue.** | Postmortem studies have reported increased expression of **NLRP3**, **ASC/PYCARD**, **caspase-1**, and inflammatory cytokine-related genes/proteins, including **IL-1β**, in AD-affected brain regions. | Expression alone is not equivalent to inflammasome activation. Postmortem delay, terminal illness, mixed pathology, and cell-composition changes can affect results. |\n| **Inflammasome-related signals occur in microglia near amyloid plaques.** | Histologic and transcriptomic studies support enrichment of inflammatory microglial states around plaques, and some studies identify NLRP3/ASC/caspase-1-related signals in these regions. | Microglial inflammatory states are heterogeneous. Not every activated microglial state is NLRP3-dependent, and detection of NLRP3 protein in human tissue can vary by method. |\n| **Caspase-1 activation and mature IL-1β are detectable in at least some AD brain samples.** | Reports of cleaved/active caspase-1, ASC assemblies, and mature IL-1β in AD tissue are compatible with inflammasome activity. | These markers are technically challenging in archived human tissue. IL-1β can arise from pathways other than NLRP3, and caspase-1 activity does not prove that NLRP3 was the initiating sensor. |\n| **Peripheral inflammasome-related biomarkers may differ in AD.** | Some studies find altered NLRP3-related transcripts, cytokines, ASC-related measures, or inflammasome activity in blood-derived cells from people with AD or mild cognitive impairment. | Findings are inconsistent and nonspecific. Aging, obesity, diabetes, vascular disease, infection, and medications can affect these measures. They are not validated diagnostic biomarkers for AD. |\n| **The human AD brain has an inflammatory environment capable of priming NLRP3.** | AD pathology is associated with microglial activation, cytokine signaling, oxidative stress, lysosomal stress, and extracellular aggregates—conditions that can provide “priming” and activation signals for NLRP3. | This establishes biological plausibility, not direct proof that NLRP3 drives clinical decline in an individual patient. |\n\n---\n\n## Claims mainly supported by mouse models and experimental systems\n\n| Claim | Strength of experimental evidence | Status in humans |\n|---|---|---|\n| **Amyloid-β directly activates the NLRP3 inflammasome in microglia.** | Supported in cultured microglia and many amyloid mouse models. Fibrillar/aggregated amyloid-β can promote lysosomal damage, ionic disturbances, and inflammasome-associated cytokine release, usually after inflammatory priming. | Plausible in human microglia and supported by ex vivo/iPSC-based work, but direct demonstration in the living human brain is limited. |\n| **NLRP3 promotes amyloid plaque burden.** | In several amyloid transgenic mice, deletion of **Nlrp3** or **Asc/Pycard** reduces plaque-associated pathology or changes plaque structure and improves microglial handling of amyloid. | Human observations show association, not proof that NLRP3 causes plaque accumulation. |\n| **ASC specks seed or accelerate amyloid-β aggregation.** | A prominent mechanistic finding in mice is that extracellular ASC can interact with amyloid-β and enhance its aggregation/cross-seeding. | ASC-containing aggregates have been reported in human AD tissue, but whether this mechanism materially drives plaque growth in people remains unproven. |\n| **NLRP3 activation worsens cognition.** | Nlrp3-, Asc-, or caspase-1-pathway deficiency and NLRP3 inhibitors often improve learning/memory performance in AD-like mice. | No convincing human evidence yet that NLRP3 activity predicts cognitive decline independently, or that NLRP3 inhibition improves cognition in AD. |\n| **NLRP3 drives tau pathology and tau spreading.** | Several tau and amyloid-plus-tau mouse studies suggest inflammasome signaling can increase tau phosphorylation, aggregation, or propagation. | Human AD studies support an association between inflammation and tau pathology, but do not establish that NLRP3 is a causal driver of tau spread. |\n| **NLRP3 inhibition is disease-modifying for AD.** | Small-molecule NLRP3 inhibitors, including widely used experimental compounds such as MCC950, have shown benefits in some mouse models. | This remains unproven clinically. Experimental compounds may have pharmacology, dosing, and blood–brain-barrier limitations, and mouse-model benefits do not guarantee human efficacy. |\n\n---\n\n## What is likely true, but not yet definitively established in humans\n\nA cautious synthesis is:\n\n1. **NLRP3 inflammasome signaling is probably one component of AD-associated neuroinflammation.**\n2. **Microglia are the most strongly supported relevant cell type**, although reports involving astrocytes, infiltrating myeloid cells, and other CNS cells exist.\n3. **Amyloid plaques, damaged cells, lipid dysregulation, oxidative stress, and possibly tau pathology can create conditions favorable to NLRP3 activation.**\n4. NLRP3 signaling may contribute to a feedback loop:  \n   **protein aggregation/tissue injury → microglial inflammatory activation → IL-1-family signaling and ASC release → altered plaque handling and possibly further aggregation/injury.**\n5. The size of that contribution likely varies between patients and disease stages.\n\nThis is a biologically coherent model, but it should not be confused with proof that NLRP3 is the dominant cause of sporadic AD.\n\n---\n\n## Claims that should be considered overstated\n\nThe following statements go beyond current human evidence:\n\n- “NLRP3 activation causes Alzheimer’s disease in humans.”\n- “Amyloid plaques in every patient activate NLRP3.”\n- “NLRP3 is the main source of IL-1β in AD brain.”\n- “ASC specks are a validated clinical biomarker for AD.”\n- “Blocking NLRP3 will treat or prevent AD in people.”\n- “Elevated blood NLRP3 or IL-1β proves brain inflammasome activation.”\n\n---\n\n## Why translation from mice to humans is uncertain\n\nAD mouse models usually represent selected aspects of disease—often aggressive amyloid overproduction or engineered tau pathology—rather than typical late-onset human AD. Human AD also commonly includes vascular injury, α-synuclein pathology, TDP-43 pathology, systemic metabolic disease, immune aging, and long preclinical phases. Therefore, NLRP3 may be more important in some biological subtypes or disease stages than in others.\n\n## Practical conclusion\n\n- **Established in humans:** NLRP3-related inflammatory changes are present in AD brains and are associated with microglial activation and AD pathology.  \n- **Established largely in mice:** NLRP3 can causally amplify amyloid/tau-associated pathology and cognitive impairment, and its inhibition can be beneficial.  \n- **Not established in humans:** that NLRP3 is a necessary driver of AD, that it is a validated biomarker, or that NLRP3 inhibition is an effective AD treatment."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 1.0978506058454514,
+    "semantic_graph": 88.60863819718361,
+    "vector_index": 1.7067345902323723,
+    "answer_netmedex_hybrid_rag": 13.648595988750458,
+    "answer_traditional_rag": 14.416124127805233,
+    "answer_general_llm": 24.63455221056938,
+    "total": 142.51230167597532
+  },
+  "completed_at": "2026-07-27T19:01:07.270563+00:00",
+  "answer_repair_history": [
+    {
+      "system": "general_llm",
+      "model": "gpt-5.6-terra",
+      "repaired_at": "2026-07-30T11:11:41.187958+00:00"
+    }
+  ]
+}

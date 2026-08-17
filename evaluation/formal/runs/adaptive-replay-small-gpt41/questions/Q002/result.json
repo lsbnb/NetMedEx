@@ -1,0 +1,156 @@
+{
+  "status": "complete",
+  "question_id": "Q002",
+  "domain": "osteoporosis",
+  "question": "Which miRNAs are most frequently linked to osteoporosis-related osteogenesis in the retrieved literature?",
+  "question_type": "retrieval",
+  "pubmed_query": "osteoporosis AND (osteogenesis OR osteoblast) AND (microRNA OR miRNA)",
+  "effective_pubmed_query": "osteoporosis AND (osteogenesis OR osteoblast) AND (microRNA OR miRNA)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "23223004",
+    "23605904",
+    "27904930",
+    "33255179",
+    "33434305",
+    "34311172",
+    "34502371",
+    "35285389",
+    "35831436",
+    "36319624",
+    "36835184",
+    "37215980",
+    "38106447",
+    "39343927",
+    "41369394"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "path_count": 0,
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "routed_profile": "A_text_only",
+    "route_reason": "question_type=retrieval: text retrieval task",
+    "question_type": "retrieval"
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "23605904",
+        "score": 0.6878191953775143
+      },
+      {
+        "pmid": "23223004",
+        "score": 0.673443956361859
+      },
+      {
+        "pmid": "33434305",
+        "score": 0.6728323793075085
+      },
+      {
+        "pmid": "33255179",
+        "score": 0.6696897919625486
+      },
+      {
+        "pmid": "27904930",
+        "score": 0.6549998012811549
+      },
+      {
+        "pmid": "34311172",
+        "score": 0.6521114659752776
+      },
+      {
+        "pmid": "35831436",
+        "score": 0.6478742683656301
+      },
+      {
+        "pmid": "41369394",
+        "score": 0.6446218588584857
+      },
+      {
+        "pmid": "36835184",
+        "score": 0.6365394674050232
+      },
+      {
+        "pmid": "35285389",
+        "score": 0.6333969364853043
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "23605904",
+        "score": 0.6878191953775143
+      },
+      {
+        "pmid": "23223004",
+        "score": 0.673443956361859
+      },
+      {
+        "pmid": "33434305",
+        "score": 0.6728323793075085
+      },
+      {
+        "pmid": "33255179",
+        "score": 0.6696897919625486
+      },
+      {
+        "pmid": "27904930",
+        "score": 0.6549998012811549
+      },
+      {
+        "pmid": "34311172",
+        "score": 0.6521114659752776
+      },
+      {
+        "pmid": "35831436",
+        "score": 0.6478742683656301
+      },
+      {
+        "pmid": "41369394",
+        "score": 0.6446218588584857
+      },
+      {
+        "pmid": "36835184",
+        "score": 0.6365394674050232
+      },
+      {
+        "pmid": "35285389",
+        "score": 0.6333969364853043
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "Direct Evidence:\nThe retrieved literature identifies several miRNAs most frequently and directly linked to osteoporosis-related osteogenesis:\n\n1. miR-214: Elevated miR-214 levels are correlated with reduced bone formation in aged human osteoporosis patients. In mouse and in vitro models, miR-214 inhibits osteoblast activity by targeting ATF4, while inhibition of miR-214 promotes osteogenesis, suggesting miR-214 acts as a suppressor of osteogenesis in osteoporosis contexts [PMID: 23223004]. Several lncRNA/miR-214 interactions (e.g., MALAT1/miR-214, KCNQ1OT1/miR-214) are also relevant in osteogenic regulation [PMID: 34311172].\n\n2. miR-15b: Upregulated in osteoporotic mouse tissues, miR-15b inhibits osteoblast differentiation and autophagy by targeting USP7, leading to decreased KDM6B expression—both critical regulators of osteoblast function. Suppressing miR-15b ameliorates osteoporosis and enhances bone mineral density and osteoblast differentiation [PMID: 33434305].\n\n3. miR-1224-5p: Overexpression of miR-1224-5p promotes osteoblast differentiation and inhibits osteoclast differentiation via the Rap1 pathway (targeting ADCY2), enhancing bone healing and counteracting osteoporosis in both cell and animal models. Loss of miR-1224-5p accelerates osteoporosis progression [PMID: 35831436].\n\n4. miR-582-3p: Overexpressed in osteoporotic tissues and suppresses osteoblast marker genes by targeting HOXA10, inhibiting osteogenic differentiation. Thus, miR-582-3p negatively regulates bone formation relevant to osteoporosis [PMID: 35285389].\n\n5. miR-218: Temporally upregulated during osteoblastogenesis, miR-218 has prominent effects on osteogenic differentiation and is linked to osteogenesis in various studies, though the specific mechanism in osteoporosis is less extensively detailed in the retrieved context [PMID: 23605904].\n\nAssociated/Review Evidence:\nAdditional miRNAs (e.g., miR-30, miR-24-3p, miR-33a, miR-140-5p) are mentioned in interactions with lncRNAs influencing osteogenesis, but direct links to osteoporosis are less emphasized compared to those listed above [PMID: 34311172]. General reviews also highlight the broad role of miRNAs in osteogenesis and bone homeostasis, underscoring their potential as therapeutic targets and biomarkers, though without prioritizing one specific miRNA over another in osteoporosis [PMID: 27904930, PMID: 41369394, PMID: 33255179].\n\nTestable Hypothesis:\nThe manipulation of miR-214, miR-15b, or miR-1224-5p levels may serve as potential therapeutic avenues for promoting osteogenesis and counteracting osteoporosis. Testing approaches involving inhibitors (antagomirs) for miR-214 and miR-15b or mimics for miR-1224-5p in clinical models of osteoporosis offer translational potential.\n\nSummary:\n- Frequently and directly linked miRNAs: miR-214, miR-15b, miR-1224-5p, miR-582-3p, and miR-218.\n- Mechanistic studies support their roles in either suppressing or promoting osteogenesis in osteoporosis contexts.\n- miR-214 and miR-15b act as suppressors of bone formation; miR-1224-5p promotes osteogenesis.\n- Additional miRNA-lncRNA regulatory axes (e.g., involving miR-30, miR-214, others) are also reported in osteogenesis.\n\nHuman vs. Animal Evidence:\n- Direct human evidence exists for miR-214 (osteoporotic bone specimens).\n- Most mechanistic and interventional studies occur in animal models or in vitro systems.",
+    "traditional_rag": "Direct Evidence:\nSeveral miRNAs are directly linked to osteoporosis-related osteogenesis in the retrieved literature:\n\n- miR-214: Elevated levels of miR-214 are associated with reduced bone formation in both human osteoporotic bone specimens and multiple animal models. It inhibits osteoblast activity and osteogenesis by targeting ATF4. Suppression of miR-214 promotes osteoblast activity and bone formation, suggesting it as a negative regulator in osteoporosis-related osteogenesis [PMID: 23223004]. Additionally, interactions between lncRNAs and miR-214 (e.g., MALAT1/miR-214, KCNQ1OT1/miR-214) are specifically cited as being relevant in osteogenesis and related disorders [PMID: 34311172].\n\n- miR-15b: miR-15b is upregulated in osteoporotic mouse models. Overexpression of miR-15b suppresses osteoblast differentiation and autophagy, exacerbating osteoporosis. miR-15b acts by directly targeting USP7, which influences KDM6B expression; both are important for osteoblast function [PMID: 33434305].\n\n- miR-582-3p: Increased expression of miR-582-3p is observed in osteoporotic tissues. Overexpression reduces osteoblast markers (OC, ALP, COL1A1) and inhibits osteoblast differentiation through repression of HOXA10, indicating miR-582-3p as a negative regulator of osteogenic differentiation in osteoporosis [PMID: 35285389].\n\n- miR-1224-5p: Overexpression of miR-1224-5p promotes osteoblast differentiation, enhances bone regeneration, and reduces osteoclast differentiation in both in vitro and in vivo models of osteogenesis and osteoporosis. Downregulation accelerates progression of osteoporosis. Its mechanism involves the Rap1 signaling pathway via targeting ADCY2 [PMID: 35831436].\n\n- miR-218: Temporally upregulated during osteoblastogenesis and acts to promote osteogenic differentiation by suppressing inhibitory signaling pathways in bone formation. Dysregulation correlates with osteoporosis pathogenesis [PMID: 23605904].\n\nOther Candidates (Associations or Mentioned in Reviews):\n- miR-148a is noted as important during osteoclastogenesis rather than osteogenesis and serves as an example of miRNAs involved in bone remodeling rather than specifically in osteoblastogenesis [PMID: 23605904].\n- Several miRNA/lncRNA pairs linked to osteogenesis are cited, including MALAT1/miR-30, LEF1-AS1/miR-24-3p, MCF2L-AS1/miR-33a, and MSC-AS1/miR-140-5p, but details for these specific miRNAs regarding frequency in osteoporosis-related osteogenesis are less direct in the supplied context [PMID: 34311172].\n\nSummary Table of Frequently Linked miRNAs:\n| miRNA        | Osteogenic Effect in Osteoporosis      | Evidence Type                | PMID           |\n|--------------|---------------------------------------|------------------------------|----------------|\n| miR-214      | Inhibits osteogenesis (negative)       | Human, animal, in vitro      | 23223004, 34311172 |\n| miR-15b      | Inhibits osteogenesis (negative)       | Animal, in vitro             | 33434305       |\n| miR-582-3p   | Inhibits osteogenesis (negative)       | In vitro, animal             | 35285389       |\n| miR-1224-5p  | Promotes osteogenesis (positive)       | Animal, in vitro             | 35831436       |\n| miR-218      | Promotes osteogenesis (positive)       | Review, general, animal      | 23605904       |\n\nAssociation and Testable Hypothesis:\n- The reviews highlight the centrality of miR-214, miR-15b, miR-582-3p, miR-1224-5p, and miR-218 in the regulation of osteogenesis in osteoporosis, suggesting that modulation of these miRNAs may be a therapeutic avenue [PMID: 23605904, 33434305, 35285389, 35831436, 23223004]. These associations are testable in experimental and translational studies.\n\nAbsence of Evidence:\n- No mention was found of some commonly studied miRNAs in osteogenesis (e.g., miR-21, miR-29 family, miR-206) in the provided context; thus, conclusions should be limited to the above miRNAs as frequent links in the supplied literature."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 1.9840896129608154e-05,
+    "vector_index": 4.599382445216179,
+    "answer_netmedex_hybrid_rag": 10.6370729804039,
+    "answer_traditional_rag": 9.041761249303818,
+    "total": 25.715105146169662
+  },
+  "token_usage": {
+    "input_tokens": 6756,
+    "output_tokens": 1804,
+    "total_tokens": 8560
+  },
+  "completed_at": "2026-08-03T09:55:55.525933+00:00"
+}

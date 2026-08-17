@@ -1,0 +1,13 @@
+{
+  "reviewer_type": "AI",
+  "role": "supplementary_edge_quality_rater",
+  "provider": "google",
+  "model": "gemini-3.1-pro-preview",
+  "input_file": "evaluation/formal/edge_ratings_worksheet_gemini.csv",
+  "started_at": "2026-07-31T19:25:20.900173+00:00",
+  "completed_at": "2026-07-31T19:33:27.010347+00:00",
+  "row_count": 224,
+  "question_count": 14,
+  "status": "complete",
+  "notes": "Blinded AI audit of NetMedEx graph edges (biologically_meaningful, relation_type_correct). Supplementary AI rating, not a human expert review."
+}

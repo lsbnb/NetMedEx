@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "Q014",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "e15614fd602fc1e71712eedb19ad291d782eebd0ee6b98ede26ea0411e870bba",
+  "raw_response_sha256": "02830dab4e436a10756bf3fd480666975d0b5e22e55a9bec56f7dbfd4873883e",
+  "usage": {
+    "input_tokens": 4856,
+    "output_tokens": 430,
+    "total_tokens": 5286
+  },
+  "rated_at": "2026-08-13T04:49:03.421438+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q014-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive overview of JAKi with IL‑6/IFN evidence; accurate but lacks explicit citations."
+      },
+      {
+        "answer_id": "Q014-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate, fully cited human in‑vitro/ex‑vivo evidence for five JAKi; concise and well‑referenced."
+      },
+      {
+        "answer_id": "Q014-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Similar to B with citations; adds hypothesis; clear and well‑supported."
+      },
+      {
+        "answer_id": "Q014-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Well‑cited, includes clinical‑trial context; thorough and mechanistically coherent."
+      }
+    ],
+    "preferred_item_id": "tie",
+    "pairwise_reason": "Answers B, C, and D are equally strong: all provide accurate, fully cited evidence for the same set of JAK inhibitors with clear mechanistic explanation. No single answer clearly outperforms the others."
+  }
+}

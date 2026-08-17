@@ -1,0 +1,557 @@
+{
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "reviewer_type": "AI-assisted provisional path adjudicator",
+  "human_expert_review_claimed": false,
+  "created_at": "2026-08-11T09:19:26.769749+00:00",
+  "input_rows": 54,
+  "decisions": [
+    {
+      "path_id": "Q001-P01",
+      "relevance": 2,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 29904399 directly states that icariin promoted osteoblast differentiation and cell proliferation in MC3T3-E1 cells, with ALP activity and alizarin red S assays confirming osteogenic differentiation.",
+      "evidence_level_2": "",
+      "bridge_valid": 1,
+      "direction_verified": 1,
+      "rationale": "The single PMID directly and completely supports the one-hop path: icariin promotes osteogenic (osteoblast) differentiation. The evidence is experimental and mechanistic, confirming the forward direction."
+    },
+    {
+      "path_id": "Q001-P02",
+      "relevance": 2,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 29904399 shows icariin acts through miR-153 targeting Runx2 to regulate osteoblast differentiation, implying icariin upregulates Runx2 (by suppressing miR-153).",
+      "evidence_level_2": "PMID 38045146 confirms icariin promotes osteogenic differentiation and validates RUNX2 as an osteogenic differentiation marker in the same cell model.",
+      "bridge_valid": 1,
+      "direction_verified": 1,
+      "rationale": "Both PMIDs together support the two-hop path: icariin upregulates Runx2 (bridge), and Runx2 regulates osteogenic differentiation in the forward direction. The bridge (Runx2) is explicitly named in both papers as central to the mechanism."
+    },
+    {
+      "path_id": "Q001-P03",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 38045146 shows icariin promotes osteogenic differentiation through a circRNA/miRNA/JMJD3 axis, indicating icariin influences JMJD3 indirectly via the axis.",
+      "evidence_level_2": "The same PMID links JMJD3 to osteogenic differentiation markers (ALP, RUNX2), but the direct upregulation of JMJD3 by icariin and the precise direction of JMJD3's role are not fully detailed in the excerpt.",
+      "bridge_valid": 1,
+      "direction_verified": 0,
+      "rationale": "The evidence supports icariin promoting osteogenic differentiation via a JMJD3-containing axis, but the excerpt does not fully clarify whether icariin directly upregulates JMJD3 or whether JMJD3 is upregulated or downregulated in this context. The relation_2 is listed as 'correlates_with' (undirected), which is only partially supported. Relevance is 1 due to incomplete directional evidence for the bridge."
+    },
+    {
+      "path_id": "Q001-P04",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 29904399 shows icariin acts through miR-153 to regulate osteoblast differentiation. The mechanism involves icariin suppressing miR-153 (not increasing it), which then de-represses Runx2.",
+      "evidence_level_2": "",
+      "bridge_valid": 1,
+      "direction_verified": 0,
+      "rationale": "The path claims icariin 'increases' miR-153, but the evidence from PMID 29904399 suggests icariin suppresses miR-153 to promote osteoblast differentiation (miR-153 targets Runx2, so increasing miR-153 would inhibit differentiation). The bridge (miR-153) is valid, but the direction of relation_1 ('increases') appears inconsistent with the described mechanism, reducing relevance to 1."
+    },
+    {
+      "path_id": "Q002-P01",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 37215980 discusses osteoporosis in the context of inadequate osteogenesis and bone-fat imbalance, linking osteoporosis to reduced bone formation indirectly.",
+      "evidence_level_2": "",
+      "bridge_valid": 0,
+      "direction_verified": 0,
+      "rationale": "The one-hop path (osteoporosis associated_with bone formation) is partially supported: PMID 37215980 mentions inadequate osteogenesis as a key factor in osteoporosis pathogenesis, implying an inverse association. However, the evidence is indirect and contextual rather than a direct statement of the association. Relevance is 1."
+    },
+    {
+      "path_id": "Q002-P01",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 23605904 discusses miRNA roles in osteogenesis and osteoporosis, linking osteoblast-mediated bone formation to osteoporosis pathology.",
+      "evidence_level_2": "PMID 34502371 discusses gut microbiota roles in both osteoporosis and osteogenesis/bone healing, supporting an association between osteoporosis and bone formation processes.",
+      "bridge_valid": 0,
+      "direction_verified": 0,
+      "rationale": "The two-hop path uses 'osteoporosis' as both source and bridge, which is circular and not a valid two-hop structure. The evidence supports a general association between osteoporosis and bone formation but does not validate a meaningful bridge entity. Relevance is 1 due to partial thematic support but invalid bridge structure."
+    },
+    {
+      "path_id": "Q002-P03",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 23605904 explicitly links osteogenesis and osteoporosis through miRNA regulation of osteoblast differentiation.",
+      "evidence_level_2": "PMID 34502371 discusses osteoporosis and osteogenesis together in the context of gut microbiota and bone metabolism.",
+      "bridge_valid": 0,
+      "direction_verified": 0,
+      "rationale": "Similar to Q002-P01 two-hop, the bridge is 'osteoporosis' itself (same as source), making this a circular/degenerate two-hop path. The evidence supports a relationship between osteoporosis and osteogenesis but does not validate a proper bridge. Relevance is 1 for partial thematic support."
+    },
+    {
+      "path_id": "Q003-P01",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 33439300 states that PCOS women are prone to insulin resistance and discusses the association of inflammatory markers with PCOS, supporting both hops of the path.",
+      "evidence_level_2": "",
+      "bridge_valid": 1,
+      "direction_verified": 0,
+      "rationale": "The evidence from PMID 33439300 supports that insulin resistance is associated with PCOS and that PCOS is associated with inflammation (inflammatory markers). The bridge (PCOS) is valid. However, the excerpt does not provide direct mechanistic evidence linking insulin resistance to inflammation via PCOS in a directional manner; both relations are described as undirected associations. Relevance is 1 due to partial support from a single paper with limited mechanistic detail in the excerpt."
+    },
+    {
+      "path_id": "Q004-P01",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 32519340 describes curcumin's antitumor activity in lung cancer and mentions it affects molecular pathways, but does not explicitly state curcumin induces apoptosis in the supplied excerpt.",
+      "evidence_level_2": "",
+      "bridge_valid": 0,
+      "direction_verified": 0,
+      "rationale": "The excerpt confirms curcumin has antitumor activity and affects relevant signaling pathways (NF-κB, PI3/Akt, mTOR), which are commonly linked to apoptosis, but the word 'apoptosis' is not mentioned in the supplied text. The path is partially supported by implication but not directly confirmed by the frozen corpus excerpt."
+    },
+    {
+      "path_id": "Q005-P01",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 33476985 states mitochondrial damage has been related to amyloid-beta pathology, supporting an association between amyloid-beta and mitochondrial dysfunction/damage.",
+      "evidence_level_2": "",
+      "bridge_valid": 0,
+      "direction_verified": 0,
+      "rationale": "The evidence supports a relationship between amyloid-beta and mitochondrial damage (dysfunction), but the target in this path is 'mitochondrial toxicity' specifically, which is not the exact term used. The relation is undirected and the evidence is partial. Relevance is 1 due to terminological mismatch and lack of direct causal directionality."
+    },
+    {
+      "path_id": "Q005-P02",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 33476985 states mitochondrial damage has been related to amyloid-beta pathology, and that AD is characterized by mitochondrial dysfunction.",
+      "evidence_level_2": "PMID 35522844 states mitochondrial dysfunction is closely linked to AD pathology and that conventional thinking holds amyloid beta drives AD, but the mechanism linking amyloid beta to cognitive decline (via mitochondrial dysfunction) remains unclear.",
+      "bridge_valid": 1,
+      "direction_verified": 0,
+      "rationale": "Both PMIDs support the bridge through AD: amyloid-beta is a hallmark of AD, and mitochondrial dysfunction is associated with AD. However, the direct causal chain 'amyloid-beta causes AD' is implied rather than explicitly stated, and the link from AD to mitochondrial dysfunction is associative rather than strictly directional. The path is partially supported but not fully verified as a complete forward causal chain."
+    },
+    {
+      "path_id": "Q006-P01",
+      "relevance": 2,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 15861315 explicitly states 'Endothelial dysfunction is associated with atherosclerosis and its risk factors.'",
+      "evidence_level_2": "",
+      "bridge_valid": 0,
+      "direction_verified": 0,
+      "rationale": "The evidence directly and explicitly supports the association between endothelial dysfunction and atherosclerosis. The relation is undirected (associated_with), which matches the evidence. Path is fully supported for a one-hop association."
+    },
+    {
+      "path_id": "Q006-P02",
+      "relevance": 2,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 24928320 explicitly states endothelial dysfunction 'promotes inflammation contributing therefore to the development of atherosclerosis.'",
+      "evidence_level_2": "",
+      "bridge_valid": 0,
+      "direction_verified": 1,
+      "rationale": "The evidence directly states that endothelial dysfunction promotes inflammation, fully supporting the forward directional relation proposed in this path. Relevance is 2 as the path is directly and completely supported."
+    },
+    {
+      "path_id": "Q006-P04",
+      "relevance": 2,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 24928320 explicitly states endothelial dysfunction promotes inflammation 'contributing therefore to the development of atherosclerosis,' directly supporting endothelial dysfunction promoting atherosclerosis.",
+      "evidence_level_2": "",
+      "bridge_valid": 0,
+      "direction_verified": 1,
+      "rationale": "The evidence directly supports the forward relation that endothelial dysfunction promotes atherosclerosis. The path is completely and directly supported by the supplied excerpt."
+    },
+    {
+      "path_id": "Q006-P05",
+      "relevance": 2,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 15861315 states endothelial dysfunction 'is independently correlated to adverse cardiovascular events, including myocardial infarction, coronary death, and the need for revascularization.'",
+      "evidence_level_2": "",
+      "bridge_valid": 0,
+      "direction_verified": 1,
+      "rationale": "The evidence explicitly states that endothelial dysfunction is independently correlated with coronary death, directly supporting this one-hop correlates_with path. Fully supported."
+    },
+    {
+      "path_id": "Q006-P06",
+      "relevance": 2,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 15861315 states endothelial dysfunction 'is independently correlated to adverse cardiovascular events, including myocardial infarction, coronary death, and the need for revascularization.'",
+      "evidence_level_2": "",
+      "bridge_valid": 0,
+      "direction_verified": 1,
+      "rationale": "The evidence explicitly states that endothelial dysfunction is independently correlated with myocardial infarction, directly and completely supporting this one-hop correlates_with path."
+    },
+    {
+      "path_id": "Q006-P07",
+      "relevance": 2,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 22112351 directly states that patients with essential hypertension are characterized by endothelial dysfunction, establishing a clear association between endothelial dysfunction and essential hypertension.",
+      "evidence_level_2": "",
+      "bridge_valid": 1,
+      "direction_verified": 1,
+      "rationale": "The evidence from PMID 22112351 explicitly links endothelial dysfunction to essential hypertension, describing it as a characteristic feature of hypertensive patients. The path is a one-hop association and is directly and completely supported."
+    },
+    {
+      "path_id": "Q006-P08",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 39684569 states that endothelial dysfunction is 'in the background of multiple metabolic diseases,' supporting a general association, but the evidence is broad and non-specific regarding which metabolic diseases.",
+      "evidence_level_2": "",
+      "bridge_valid": 1,
+      "direction_verified": 0,
+      "rationale": "The evidence partially supports the association between endothelial dysfunction and metabolic diseases, but the claim is general and the target 'metabolic diseases' is vague. The evidence does not specify a direct, complete mechanistic or epidemiological link beyond a broad statement, warranting a partial support rating."
+    },
+    {
+      "path_id": "Q006-P09",
+      "relevance": 2,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 22112351 explicitly discusses endothelial dysfunction in hypertensive patients, directly supporting the association between endothelial dysfunction and hypertensive status.",
+      "evidence_level_2": "",
+      "bridge_valid": 1,
+      "direction_verified": 1,
+      "rationale": "The evidence from PMID 22112351 directly and completely supports the association between endothelial dysfunction and hypertensive patients. The path is a one-hop association and is well-supported."
+    },
+    {
+      "path_id": "Q006-P10",
+      "relevance": 2,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 17430168 explicitly states that 'acute coronary syndromes (ACS) may involve a complex interplay between endothelial dysfunction, inflammation and thrombosis,' directly supporting the association between endothelial dysfunction and acute coronary syndromes.",
+      "evidence_level_2": "",
+      "bridge_valid": 1,
+      "direction_verified": 1,
+      "rationale": "The evidence directly and explicitly links endothelial dysfunction to acute coronary syndromes, making this a fully supported one-hop path."
+    },
+    {
+      "path_id": "Q006-P11",
+      "relevance": 2,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 17430168 explicitly states that acute coronary syndromes involve a 'complex interplay between endothelial dysfunction, inflammation and thrombosis,' directly supporting the association between endothelial dysfunction and thrombosis.",
+      "evidence_level_2": "",
+      "bridge_valid": 1,
+      "direction_verified": 1,
+      "rationale": "The evidence directly links endothelial dysfunction and thrombosis as co-participants in ACS pathophysiology, fully supporting this one-hop association path."
+    },
+    {
+      "path_id": "Q006-P12",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 17430168 mentions 'regulation of vascular sources of oxygen radicals' in the context of endothelial dysfunction mechanisms, implying an association with reactive oxygen species, but does not explicitly state a direct association between endothelial dysfunction and ROS as a primary claim.",
+      "evidence_level_2": "",
+      "bridge_valid": 1,
+      "direction_verified": 0,
+      "rationale": "The evidence implies a relationship between endothelial dysfunction and reactive oxygen species through mention of oxygen radicals, but the association is not explicitly stated as a primary finding in the excerpt. This warrants partial support."
+    },
+    {
+      "path_id": "Q006-P13",
+      "relevance": 0,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 22112351 mentions 'peripheral vascular districts' in the context of studying endothelial function, but 'peripheral' as a standalone target is too vague and not directly supported as a meaningful association with endothelial dysfunction.",
+      "evidence_level_2": "",
+      "bridge_valid": 0,
+      "direction_verified": 0,
+      "rationale": "The target 'peripheral' is not a well-defined biomedical entity, and the evidence only mentions peripheral vascular districts as a study location rather than establishing an association between endothelial dysfunction and 'peripheral' as a concept. The path is not meaningfully supported."
+    },
+    {
+      "path_id": "Q006-P14",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 17430168 states that endothelial dysfunction is associated with cardiovascular events and mentions reducing mortality from acute cardiovascular events, but does not explicitly mention 'cardiovascular death' as a direct target of endothelial dysfunction.",
+      "evidence_level_2": "",
+      "bridge_valid": 1,
+      "direction_verified": 0,
+      "rationale": "The evidence supports an association between endothelial dysfunction and cardiovascular events broadly, which could encompass cardiovascular death, but the specific target 'cardiovascular death' is not explicitly stated. This warrants partial support."
+    },
+    {
+      "path_id": "Q006-P15",
+      "relevance": 2,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 24928320 directly states endothelial dysfunction 'promotes inflammation contributing therefore to the development of atherosclerosis', supporting both hops of the path.",
+      "evidence_level_2": "The same excerpt explicitly links the full chain: endothelial dysfunction → inflammation → atherosclerosis, with the bridge (inflammation) named as the intermediate mechanism.",
+      "bridge_valid": 1,
+      "direction_verified": 1,
+      "rationale": "PMID 24928320 provides direct, complete support for the two-hop path. The text states endothelial dysfunction 'promotes inflammation contributing therefore to the development of atherosclerosis,' confirming both forward relations and the inflammation bridge. Relevance is 2 (directly supported complete path)."
+    },
+    {
+      "path_id": "Q007-P01",
+      "relevance": 2,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 27576555 explicitly states that IL-17-expressing Th17 cells 'promotes autoimmune tissue inflammation,' directly supporting IL-17 → autoimmune disease.",
+      "evidence_level_2": "PMID 39875232 corroborates that IL-17 is implicated in inflammatory disorders and autoimmunity, reinforcing the one-hop relation.",
+      "bridge_valid": 1,
+      "direction_verified": 1,
+      "rationale": "PMID 27576555 directly supports the one-hop forward relation IL-17 promotes autoimmune disease. The evidence is explicit and unambiguous. Relevance is 2."
+    },
+    {
+      "path_id": "Q007-P02",
+      "relevance": 2,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 27576555 states IL-17-expressing Th17 cells 'promotes autoimmune tissue inflammation,' directly supporting IL-17 → inflammation.",
+      "evidence_level_2": "PMID 39875232 further confirms IL-17 as a pro-inflammatory cytokine implicated in inflammatory disorders, reinforcing the forward direction.",
+      "bridge_valid": 1,
+      "direction_verified": 1,
+      "rationale": "PMID 27576555 directly supports the one-hop forward relation IL-17 promotes inflammation. The evidence is explicit. Relevance is 2."
+    },
+    {
+      "path_id": "Q007-P04",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 39875232 states IL-17A is the founding member of a family including IL-17B, establishing a family relationship between IL-17B and IL-17.",
+      "evidence_level_2": "No additional PMID provided; the relation is structural/taxonomic (family membership) rather than a functional directional interaction.",
+      "bridge_valid": 1,
+      "direction_verified": 0,
+      "rationale": "PMID 39875232 supports that IL-17B is related to IL-17 as a family member, but the relation is undirected and taxonomic. The path is one-hop with weak/partial support (family membership, not a functional promotes/inhibits relation). Relevance is 1."
+    },
+    {
+      "path_id": "Q007-P05",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 39875232 states IL-17A is the founding member of a family including IL-17B, establishing a family relationship between IL-17 and IL-17B.",
+      "evidence_level_2": "No additional PMID provided; the relation is structural/taxonomic rather than a functional directional interaction.",
+      "bridge_valid": 1,
+      "direction_verified": 0,
+      "rationale": "Same as Q007-P04 but in the reverse nominal direction (IL-17 → IL-17B). The evidence supports a family/related_to relationship but not a directed functional relation. Relevance is 1."
+    },
+    {
+      "path_id": "Q007-P06",
+      "relevance": 2,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 25145755 is explicitly titled 'The IL-23-IL-17 immune axis' and discusses the IL-23–IL-17 relationship in depth, directly supporting an association between IL-17 and IL-23.",
+      "evidence_level_2": "PMID 39875232 states IL-17 is 'stimulated by IL-23's activation of Th17 cells,' further confirming the IL-23–IL-17 association.",
+      "bridge_valid": 1,
+      "direction_verified": 1,
+      "rationale": "PMID 25145755 directly supports the IL-17 associated_with IL-23 one-hop relation. The evidence is explicit and the association is well-documented. Relevance is 2 for the undirected association claim."
+    },
+    {
+      "path_id": "Q007-P07",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 25145755 discusses 'the mechanisms of IL-17 signalling in mesenchymal and barrier epithelial tissues,' supporting an association between IL-17 and signaling.",
+      "evidence_level_2": "No second PMID provided; the evidence is partial—signaling is mentioned as a mechanism of IL-17 action but 'signaling' as a standalone target node is vague.",
+      "bridge_valid": 1,
+      "direction_verified": 0,
+      "rationale": "PMID 25145755 supports that IL-17 is associated with signaling mechanisms, but 'signaling' is a broad/vague target and the relation is only weakly supported as a discrete path endpoint. Relevance is 1."
+    },
+    {
+      "path_id": "Q007-P08",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 37670700 states the IL-17 family consists of IL-17A to IL-17F, establishing that IL-17F is related to IL-17 as a family member.",
+      "evidence_level_2": "PMID 39875232 also notes IL-17 can form a heterodimer with IL-17F, providing a functional basis for the relationship.",
+      "bridge_valid": 1,
+      "direction_verified": 0,
+      "rationale": "Both PMIDs support a family/structural relationship between IL-17F and IL-17, and PMID 39875232 adds a functional heterodimer interaction. However, the relation is undirected and primarily taxonomic/structural. Relevance is 1."
+    },
+    {
+      "path_id": "Q007-P09",
+      "relevance": 2,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 37670700 directly states that the IL-17 family consists of six structurally related pro-inflammatory cytokines, IL-17A to IL-17F, establishing IL-17 and IL-17F as related members of the same cytokine family.",
+      "evidence_level_2": "",
+      "bridge_valid": 1,
+      "direction_verified": 1,
+      "rationale": "The evidence from PMID 37670700 explicitly names IL-17F as a member of the IL-17 cytokine family alongside IL-17 (IL-17A), directly supporting the 'related_to' undirected one-hop path between IL-17 and IL-17F. The relationship is fully supported as a structural and functional family relationship."
+    },
+    {
+      "path_id": "Q007-P10",
+      "relevance": 2,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 30891627 explicitly states that 'targeting the effector cytokines IL-17 and GM-CSF secreted by autoimmune Th17 cells has been shown to be effective,' directly co-locating IL-17 and GM-CSF as co-occurring effector cytokines of Th17 cells.",
+      "evidence_level_2": "",
+      "bridge_valid": 1,
+      "direction_verified": 1,
+      "rationale": "The evidence directly and explicitly supports co-occurrence of IL-17 and GM-CSF as effector cytokines secreted by the same Th17 cell population in autoimmune disease contexts. The undirected co_occurs_with relation is fully supported."
+    },
+    {
+      "path_id": "Q007-P11",
+      "relevance": 2,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 25145755 explicitly states that 'IL-17-specific and IL-23-specific antibody treatments are remarkably effective for treating many immune-mediated inflammatory diseases,' directly associating IL-17 with immune-mediated inflammatory diseases.",
+      "evidence_level_2": "",
+      "bridge_valid": 1,
+      "direction_verified": 1,
+      "rationale": "The evidence from PMID 25145755 directly supports the association between IL-17 and immune-mediated inflammatory diseases, including mechanistic discussion of IL-17 signalling and clinical data on IL-17-targeted therapies. The path is fully supported."
+    },
+    {
+      "path_id": "Q007-P12",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 30502718 states that Th1-like Th17 cells co-express RORγt and T-bet and produce both IL-17 and IFN-γ, placing IL-17 and T-bet in the same cellular context, but the relationship is indirect (both are features of the same cell subset rather than a direct molecular interaction).",
+      "evidence_level_2": "",
+      "bridge_valid": 1,
+      "direction_verified": 0,
+      "rationale": "The evidence supports co-occurrence of IL-17 production and T-bet expression within Th1-like Th17 cells, but the relationship is indirect and cell-context-dependent rather than a direct molecular co-occurrence between IL-17 cytokine and T-bet transcription factor. Relevance is partial (1) as the co-occurrence is real but weak/indirect."
+    },
+    {
+      "path_id": "Q007-P13",
+      "relevance": 2,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 27576555 explicitly discusses IL-17 in the context of autoimmunity and inflammation, describing IL-17-expressing T cell populations that 'promote autoimmune tissue inflammation,' directly associating IL-17 with immune disorders.",
+      "evidence_level_2": "",
+      "bridge_valid": 1,
+      "direction_verified": 1,
+      "rationale": "The evidence from PMID 27576555 directly and comprehensively supports the association between IL-17 and immune disorders, including autoimmune and inflammatory diseases. The path is fully supported."
+    },
+    {
+      "path_id": "Q007-P14",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 27576555 identifies 'IL-17-expressing RORγt+CD4+ T cell population' as a distinct helper T cell subset, placing IL-17 and CD4 in the same cellular context, but the co-occurrence is at the cell-surface marker/cytokine level rather than a direct molecular interaction.",
+      "evidence_level_2": "",
+      "bridge_valid": 1,
+      "direction_verified": 0,
+      "rationale": "The evidence supports that IL-17 and CD4 co-occur as features of the same T cell subset (Th17 cells), but this is an indirect association via cell identity rather than a direct molecular co-occurrence between IL-17 cytokine and CD4 molecule. Relevance is partial (1)."
+    },
+    {
+      "path_id": "Q007-P15",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 39875232 lists IL-17B as a member of the IL-17 family, establishing a 'related_to' link between IL-17B and IL-17 (IL-17A) as family members.",
+      "evidence_level_2": "PMID 27576555 and PMID 39875232 both support that IL-17 promotes inflammation, with PMID 39875232 explicitly stating IL-17 leads to 'inflammation and autoimmunity.'",
+      "bridge_valid": 1,
+      "direction_verified": 1,
+      "rationale": "The bridge (IL-17B → IL-17 → inflammation) is partially supported: IL-17B is related to IL-17 as a family member (PMID 39875232), and IL-17 promotes inflammation (both PMIDs). However, the IL-17B-to-IL-17 link is only a family membership relation, not a direct functional or mechanistic bridge showing IL-17B acting through IL-17 to cause inflammation. The path is plausible but only partially supported, warranting relevance of 1."
+    },
+    {
+      "path_id": "Q007-P16",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 39875232 lists IL-17B as a member of the IL-17 family, establishing a 'related_to' link between IL-17B and IL-17 (IL-17A).",
+      "evidence_level_2": "PMID 27576555 and PMID 39875232 both support that IL-17 promotes autoimmune disease, with PMID 39875232 explicitly stating IL-17 leads to 'inflammation and autoimmunity.'",
+      "bridge_valid": 1,
+      "direction_verified": 1,
+      "rationale": "Similar to P15, the bridge (IL-17B → IL-17 → autoimmune disease) is partially supported: IL-17B is related to IL-17 as a family member, and IL-17 promotes autoimmune disease. However, the IL-17B-to-IL-17 link is only a family membership relation without direct mechanistic evidence that IL-17B acts through IL-17 to cause autoimmune disease. Relevance is 1 (partial support)."
+    },
+    {
+      "path_id": "Q007-P18",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 39875232 establishes IL-17B as a member of the IL-17 cytokine family (related_to IL-17), providing the first hop.",
+      "evidence_level_2": "PMID 25145755 and PMID 39875232 both describe the IL-23–IL-17 axis, supporting IL-17 associated_with IL-23 as the second hop.",
+      "bridge_valid": 1,
+      "direction_verified": 0,
+      "rationale": "The bridge (IL-17) is valid: IL-17B is explicitly listed as a family member of IL-17 (PMID 39875232), and IL-17 is clearly linked to IL-23 via the IL-23–IL-17 immune axis (PMID 25145755; PMID 39875232). However, the first hop is a family-membership relation rather than a direct functional link between IL-17B and IL-17, making the path only partially supported. Directions are undirected and not specifically verified for IL-17B→IL-17→IL-23."
+    },
+    {
+      "path_id": "Q007-P19",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 39875232 places IL-17B in the IL-17 family, supporting the IL-17B related_to IL-17 hop.",
+      "evidence_level_2": "PMID 25145755 explicitly discusses IL-17 signalling mechanisms in mesenchymal and barrier epithelial tissues, supporting IL-17 associated_with signaling.",
+      "bridge_valid": 1,
+      "direction_verified": 0,
+      "rationale": "IL-17B is connected to IL-17 through family membership (PMID 39875232), and IL-17 signalling is a central topic of PMID 25145755. The path is plausible but the first hop is weak (family relation, not a direct functional interaction between IL-17B and IL-17 signaling per se). 'Signaling' as a target node is generic, reducing specificity. Partial support only."
+    },
+    {
+      "path_id": "Q007-P20",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 37670700 and PMID 39875232 both describe IL-17F as a member of the IL-17 cytokine family (IL-17A–IL-17F), supporting IL-17F related_to IL-17.",
+      "evidence_level_2": "PMID 39875232 lists IL-17B as a member of the same IL-17 family, supporting IL-17 related_to IL-17B.",
+      "bridge_valid": 1,
+      "direction_verified": 0,
+      "rationale": "Both hops are supported by family-membership evidence: IL-17F and IL-17B are both members of the IL-17 cytokine family (PMID 37670700; PMID 39875232). The bridge (IL-17/IL-17A) is valid as the founding/reference member. However, the connections are based on structural family relatedness rather than direct functional interactions between IL-17F and IL-17B specifically, limiting relevance to partial support."
+    },
+    {
+      "path_id": "Q008-P01",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 37546931 directly states that CFTR loss (iCftr KO) leads to dysbiosis and inflammation, supporting CFTR causes CF-related pathology.",
+      "evidence_level_2": "PMID 28155088 and PMID 37546931 both associate CF with intestinal and systemic inflammation, supporting CF associated_with inflammation.",
+      "bridge_valid": 1,
+      "direction_verified": 1,
+      "rationale": "The evidence supports that CFTR dysfunction underlies CF (PMID 37546931: 'Chronic intestinal inflammation is a poorly understood manifestation of Cystic Fibrosis (CF)'; PMID 30546102 context), and CF is associated with inflammation (PMID 28155088; PMID 37546931). The forward direction CFTR→CF→inflammation is directionally consistent. However, the first hop 'CFTR causes CF' is implied rather than explicitly stated in the supplied excerpts (the excerpts describe CF mouse models and CFTR mutations but do not explicitly state 'CFTR causes CF' as a causal statement in the text provided), reducing to partial support."
+    },
+    {
+      "path_id": "Q008-P02",
+      "relevance": 2,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 30546102 explicitly states 'Cystic fibrosis (CF) is caused by mutations in the cystic fibrosis transmembrane conductance regulator (CFTR) gene,' directly supporting CFTR causes CF.",
+      "evidence_level_2": "PMID 30546102 and PMID 37546931 both directly associate CF with intestinal inflammation, supporting CF associated_with intestinal inflammation.",
+      "bridge_valid": 1,
+      "direction_verified": 1,
+      "rationale": "PMID 30546102 explicitly establishes that CF is caused by CFTR mutations and that CF is associated with intestinal inflammation. PMID 37546931 corroborates that intestinal inflammation is a manifestation of CF and that CFTR loss contributes to it. Both hops are directly and completely supported, the bridge (CF) is valid, and the forward direction CFTR→CF→intestinal inflammation is verified."
+    },
+    {
+      "path_id": "Q009-P01",
+      "relevance": 2,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 26972840 explicitly states 'the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis,' directly supporting JAK/STAT pathway regulates homeostasis.",
+      "evidence_level_2": "N/A (one-hop path)",
+      "bridge_valid": 0,
+      "direction_verified": 1,
+      "rationale": "This is a one-hop path. PMID 26972840 directly and explicitly states that the JAK/STAT pathway is required for normal homeostasis, fully supporting the proposed relation. Direction (forward: JAK/STAT regulates homeostasis) is verified."
+    },
+    {
+      "path_id": "Q009-P02",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 26972840 states that when dysregulated, the JAK/STAT pathway 'contributes to the development of obesity and diabetes,' supporting a promotes/contributes-to relation with diabetes.",
+      "evidence_level_2": "N/A (one-hop path)",
+      "bridge_valid": 0,
+      "direction_verified": 1,
+      "rationale": "This is a one-hop path. PMID 26972840 supports that dysregulated JAK/STAT contributes to diabetes development. However, the relation is conditional on dysregulation (not a straightforward 'promotes' under normal conditions), and the paper frames it as 'contributes to' rather than a direct causal promotion, making this partial rather than complete support. Direction is forward and consistent."
+    },
+    {
+      "path_id": "Q009-P03",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 26972840 states that dysregulated JAK/STAT 'contributes to the development of obesity and diabetes,' supporting a promotes/contributes-to relation with obesity.",
+      "evidence_level_2": "N/A (one-hop path)",
+      "bridge_valid": 0,
+      "direction_verified": 1,
+      "rationale": "This is a one-hop path. PMID 26972840 supports that dysregulated JAK/STAT contributes to obesity. As with P02, the relation is conditional on dysregulation rather than a constitutive 'promotes' relationship, and the evidence is from a review framing it as contributory. Partial support; direction is forward and consistent."
+    },
+    {
+      "path_id": "Q009-P04",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 26972840 describes the JAK/STAT pathway as a 'potent JAK/STAT signaling pathway', directly linking the pathway to signaling in the context of obesity and diabetes.",
+      "evidence_level_2": "",
+      "bridge_valid": 0,
+      "direction_verified": 0,
+      "rationale": "The evidence confirms that JAK/STAT is a signaling pathway and is related to signaling broadly, but the path is trivially self-referential (JAK/STAT pathway related_to signaling). The evidence supports the association but the relation is weak/tautological. One-hop, partially supported."
+    },
+    {
+      "path_id": "Q009-P05",
+      "relevance": 2,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 29897957 explicitly states 'the JAK/STAT signaling pathway in the regulation of muscle satellite cell behavior', directly supporting the forward relation 'JAK/STAT pathway regulates behavior' (satellite cell behavior).",
+      "evidence_level_2": "",
+      "bridge_valid": 0,
+      "direction_verified": 1,
+      "rationale": "The evidence directly and explicitly states that the JAK/STAT pathway regulates satellite cell behavior, fully supporting the proposed path. Direction (forward: JAK/STAT → behavior) is verified by the evidence."
+    },
+    {
+      "path_id": "Q009-P06",
+      "relevance": 2,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 26972840 explicitly states that dysregulated JAK/STAT signaling 'contributes to the development of obesity and diabetes', directly supporting the association between JAK/STAT pathway and diabetes mellitus.",
+      "evidence_level_2": "",
+      "bridge_valid": 0,
+      "direction_verified": 1,
+      "rationale": "The evidence directly supports the association of JAK/STAT pathway with diabetes mellitus. The path is a one-hop undirected association, fully supported by the supplied evidence."
+    },
+    {
+      "path_id": "Q009-P07",
+      "relevance": 2,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 26972840 explicitly states that dysregulated JAK/STAT signaling 'contributes to the development of obesity and diabetes', directly supporting the association between JAK/STAT pathway and obesity.",
+      "evidence_level_2": "",
+      "bridge_valid": 0,
+      "direction_verified": 1,
+      "rationale": "The evidence directly supports the association of JAK/STAT pathway with obesity. The one-hop undirected association is fully supported."
+    },
+    {
+      "path_id": "Q009-P06",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 26972840 supports that dysregulated JAK/STAT contributes to diabetes development (relation_1: promotes diabetes).",
+      "evidence_level_2": "PMID 26972840 states diabetes mellitus is 'characterized by hyperglycemia', supporting the bridge diabetes → hyperglycemia association, but this is definitional rather than a mechanistic causal claim.",
+      "bridge_valid": 1,
+      "direction_verified": 1,
+      "rationale": "The two-hop path (JAK/STAT promotes diabetes → diabetes associated_with hyperglycemia) is partially supported. The first hop (JAK/STAT → diabetes) is well supported. The second hop (diabetes associated_with hyperglycemia) is supported only definitionally from the same PMID. Bridge is valid but the second relation is weak/definitional, so overall relevance is 1."
+    },
+    {
+      "path_id": "Q009-P07",
+      "relevance": 1,
+      "is_negative_control": 0,
+      "evidence_level_1": "PMID 26972840 supports JAK/STAT pathway promotes obesity (first hop).",
+      "evidence_level_2": "PMID 32885495 states IL-6 is 'chronically elevated with obesity', supporting obesity associated_with IL-6, but the direction is IL-6 elevated in obesity, not obesity producing IL-6 per se. The bridge (obesity → IL-6) is partially supported.",
+      "bridge_valid": 1,
+      "direction_verified": 0,
+      "rationale": "The two-hop path (JAK/STAT promotes obesity → obesity associated_with IL-6) is partially supported. First hop is well supported. Second hop is supported by PMID 32885495 showing IL-6 is chronically elevated with obesity, but the directionality of the second relation is not clearly verified as obesity causing IL-6 elevation (correlation only). Overall relevance is 1."
+    }
+  ],
+  "usage": {
+    "input_tokens": 21278,
+    "output_tokens": 12070,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 33348
+  }
+}

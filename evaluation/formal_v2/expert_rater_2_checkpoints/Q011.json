@@ -1,0 +1,162 @@
+{
+  "question_id": "Q011",
+  "model": "gpt-5.6-sol",
+  "rated_at": "2026-07-29T10:02:32.743839+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q011-C001",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Review-level discussion stating that metformin blocks the LKB1/AMPK/mTOR/S6K1 growth pathway in glioblastoma stem cells; no primary mechanistic experiment is described."
+    },
+    {
+      "candidate_id": "Q011-C002",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Shows metformin increases phospho-AMPK in HeLa cells through reduced AMPK O-GlcNAcylation, but does not assess mTOR signaling."
+    },
+    {
+      "candidate_id": "Q011-C003",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "In colorectal cancer cells, metformin activated AMPK and suppressed the mTOR pathway and its S6 and 4EBP1 downstream targets, alongside reduced proliferation."
+    },
+    {
+      "candidate_id": "Q011-C004",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Direct mechanistic evidence in gastric cancer cells: AMPK knockdown and forced expression of the mTOR effector p70S6K1 attenuated metformin-induced survivin inhibition and apoptosis; xenografts supported the pathway."
+    },
+    {
+      "candidate_id": "Q011-C005",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Metformin activated AMPK and reduced phosphorylation of mTOR, p70S6K, and 4E-BP1 in HeLa cancer cells, with cell-line-specific effects linked to LKB1 status."
+    },
+    {
+      "candidate_id": "Q011-C006",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Tests OSU-53 rather than metformin, but provides an informative cancer-cell model of AMPK activation with mTOR suppression; metformin is mentioned only as a related AMPK-activating agent."
+    },
+    {
+      "candidate_id": "Q011-C007",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "wrong_context",
+      "reviewer_notes": "Studies engineered CAR T cells rather than cancer cells and concludes that metformin's AMPK-dependent functional effects are mTOR/HIF1alpha-independent."
+    },
+    {
+      "candidate_id": "Q011-C008",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Directly evaluates metformin in liver cancer cells but finds mTORC1 inhibition occurs through AMPK-independent REDD1, providing relevant evidence for an alternative mechanism."
+    },
+    {
+      "candidate_id": "Q011-C009",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "In MCF-7 breast cancer cells, metformin increased phospho-AMPK and decreased phosphorylation of the mTOR downstream target p70S6K; antiproliferative effects were described as AMPK-mediated."
+    },
+    {
+      "candidate_id": "Q011-C010",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Metformin plus pitavastatin activated AMPK and inhibited PI3K/mTOR signaling in pancreatic cancer cells, but the combination design does not establish metformin-specific AMPK-mediated mTOR inhibition."
+    },
+    {
+      "candidate_id": "Q011-C011",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Metformin altered genes associated with AMPK and mTOR pathways in HeLa cells, but pathway activity and an AMPK-to-mTOR causal link were not directly demonstrated."
+    },
+    {
+      "candidate_id": "Q011-C012",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Strong direct evidence in myeloma: metformin activated AMPK, induced TSC2 phosphorylation, repressed mTORC1/2 and downstream 4EBP1/AKT signaling, and inhibited growth in an AMPK-dependent manner in vitro and in xenografts."
+    },
+    {
+      "candidate_id": "Q011-C013",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Shows that 6PGD inhibition or physcion activates AMPK and suppresses mTOR in esophageal cancer, with metformin used in an effective combination; metformin-specific pathway mediation is not clearly tested."
+    },
+    {
+      "candidate_id": "Q011-C014",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Direct breast cancer-cell study stating that metformin inhibits mTOR through AMPK signaling and using AMPK siRNA to support AMPK-dependent effects on IRS-1 and AKT."
+    },
+    {
+      "candidate_id": "Q011-C015",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "In human esophageal cancer cells and a rat carcinogenesis model, metformin activated AMPK while reducing p-mTOR, p-p70S6K, and cyclin D1, alongside antiproliferative and proapoptotic effects."
+    },
+    {
+      "candidate_id": "Q011-C016",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Review summarizing evidence that metformin-induced AMPK and REDD1 activation can inhibit mTOR in cancer cells, while also discussing alternative bioenergetic and antifolate mechanisms."
+    },
+    {
+      "candidate_id": "Q011-C017",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Broad review of metformin in malignancies affecting women that identifies AMPK/mTOR as one of several proposed antitumor pathways."
+    },
+    {
+      "candidate_id": "Q011-C018",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Demonstrates AMPK-dependent metformin-induced apoptosis and UPR inhibition in ALL cells; rapamycin implicates mTOR-regulated protein synthesis, but metformin-mediated mTOR inhibition is not directly shown."
+    },
+    {
+      "candidate_id": "Q011-C019",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "A review specifically focused on the role of AMPK/mTOR signaling in metformin's anticancer activity, providing synthesis rather than new primary evidence."
+    },
+    {
+      "candidate_id": "Q011-C020",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Direct evidence in bile duct cancer cells: metformin phosphorylated AMPK at Thr172, activated TSC2, and inhibited mTOR; hyperglycemia impaired these effects."
+    },
+    {
+      "candidate_id": "Q011-C021",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "The metformin–PP242 combination activated AMPK and blocked mTORC1/2 in colorectal cancer cells, but direct mTOR inhibition by PP242 confounds attribution of mTOR suppression to metformin-mediated AMPK activation."
+    },
+    {
+      "candidate_id": "Q011-C022",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "wrong_study_type",
+      "reviewer_notes": "Epidemiologic cohort associating metformin use with reduced cancer incidence; it contains no cancer-cell or AMPK/mTOR mechanistic evidence."
+    }
+  ],
+  "raw_response_sha256": "bd6a644471eabfd0bfc655c9c0fef69805448b8bf08bd4a946ed2e0f55886e11"
+}

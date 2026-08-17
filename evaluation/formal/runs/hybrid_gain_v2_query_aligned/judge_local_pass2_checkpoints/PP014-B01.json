@@ -1,0 +1,91 @@
+{
+  "task": "answer",
+  "question_id": "PP014",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "de16f8e1fe5583e8c7cbb7f9c2321438e42b255be8b2ddfd707515ee45d39d6e",
+  "raw_response_sha256": "8bea25205d4a404ee29c1253f055bfc092c077784d21d95ad78f14f9bf146dab",
+  "usage": {
+    "input_tokens": 6200,
+    "output_tokens": 642,
+    "total_tokens": 6842
+  },
+  "rated_at": "2026-08-16T20:13:54.919824+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP014-A",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate hops but includes likely fabricated PMID 35430804."
+      },
+      {
+        "answer_id": "PP014-B",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Same content as A; graph insight adds fabricated citation."
+      },
+      {
+        "answer_id": "PP014-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Clear hop breakdown, cites only verified PMIDs, notes human data gap."
+      },
+      {
+        "answer_id": "PP014-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, links dysbiosis→SCFA→ inflammation→ bone, uses human and animal evidence."
+      },
+      {
+        "answer_id": "PP014-E",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Includes fabricated PMID 35430804; otherwise solid."
+      },
+      {
+        "answer_id": "PP014-F",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate, notes lack of human trials, no questionable citations."
+      },
+      {
+        "answer_id": "PP014-G",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Fabricated PMID 35430804; otherwise aligns with evidence."
+      }
+    ],
+    "preferred_item_id": "PP014-D",
+    "pairwise_reason": "PP014-D provides the most comprehensive mechanistic chain, integrates both human review and animal mechanistic data, and avoids any questionable citations."
+  }
+}

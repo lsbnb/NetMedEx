@@ -1,0 +1,21 @@
+{
+  "reviewer_type": "AI",
+  "provider": "openai",
+  "model": "gpt-5.6-sol",
+  "input_file": "evaluation/formal_v2/expert_rater_2.csv",
+  "system_prompt_sha256": "7e4f7f3c357b1e09dcdac0df58711b76d614e56091685ae63923f4d78b0bd018",
+  "blinded_fields": [
+    "system",
+    "rank",
+    "score",
+    "prior_relevance",
+    "provenance"
+  ],
+  "started_at": "2026-07-29T09:54:38.784973+00:00",
+  "status": "complete",
+  "completed_questions": 50,
+  "completed_candidates": 877,
+  "first_checkpoint_at": "2026-07-29T09:54:38.784973+00:00",
+  "last_checkpoint_at": "2026-07-29T10:23:40.298481+00:00",
+  "completed_at": "2026-07-29T10:23:40.298481+00:00"
+}

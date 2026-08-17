@@ -1,0 +1,46 @@
+{
+  "name": "netmedex-controlled-bridge-n3-preflight-v1",
+  "status": "frozen_before_semantic_graph_generation",
+  "frozen_at": "2026-08-09T18:31:20.736086+00:00",
+  "independent_holdout": false,
+  "same_corpus_for_text_and_hybrid": true,
+  "mediators_used_only_for_corpus_construction": true,
+  "endpoint_co_mention_forbidden_per_article": true,
+  "query_spec": "evaluation/formal/controlled_bridge_query_spec_n3_preflight_v1.json",
+  "query_spec_sha256": "c6d901d9439c5693d19b8ba3ff8d9e4dfc5e59d4280c58404e945bfcb6ef477c",
+  "questions": [
+    {
+      "question_id": "BW003",
+      "document_count": 6,
+      "eligible_mediators": [],
+      "graph_build_eligible": false,
+      "corpus_sha256": "b938168f1e92c786835a5d2313c0407ff73b8cfe989a1cc0b520ee12adf3e72c"
+    },
+    {
+      "question_id": "BW006",
+      "document_count": 3,
+      "eligible_mediators": [],
+      "graph_build_eligible": false,
+      "corpus_sha256": "837bfb9ed3888dc1d6084aab44df98708d69a808b02b6f2290584f3bcde17b04"
+    },
+    {
+      "question_id": "BW009",
+      "document_count": 6,
+      "eligible_mediators": [
+        "ketone bodies"
+      ],
+      "graph_build_eligible": true,
+      "corpus_sha256": "bc0fa02a388d73a66cadb936e1171b0bbe1a9fb6652bc5cf6b1953176e0deceb"
+    }
+  ],
+  "checksums": {
+    "queries.csv": "7105dcc6f4816938c85a71ad88a60a825b516e2628160f795a12239e54aa79f8",
+    "questions_metadata.csv": "9199aa0fdd31921c31d9fc9b29825c2277898b7579e171adff19be2ba6c16430",
+    "questions/BW003/corpus.pubtator": "b938168f1e92c786835a5d2313c0407ff73b8cfe989a1cc0b520ee12adf3e72c",
+    "questions/BW003/corpus_manifest.json": "048a2bedfee434221eb4c549d15848ab9d55407e429c691cd5c592ae25edf7ab",
+    "questions/BW006/corpus.pubtator": "837bfb9ed3888dc1d6084aab44df98708d69a808b02b6f2290584f3bcde17b04",
+    "questions/BW006/corpus_manifest.json": "0f4161cb09c084b76b084f8335a5cb876eb623cfbb2c1763c65181ca691ab5e1",
+    "questions/BW009/corpus.pubtator": "bc0fa02a388d73a66cadb936e1171b0bbe1a9fb6652bc5cf6b1953176e0deceb",
+    "questions/BW009/corpus_manifest.json": "6e33cf44965b34211c04e4504b3828f330b0690e48954f909d5c33346f92b75d"
+  }
+}

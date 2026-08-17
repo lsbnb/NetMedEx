@@ -1,0 +1,174 @@
+{
+  "status": "complete",
+  "question_id": "PP006",
+  "domain": "osteoporosis",
+  "question": "What evidence supports a mechanistic path from icariin to osteogenic differentiation through ti? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "icariin AND (osteoblast OR osteogenesis) AND (microRNA OR miRNA)",
+  "effective_pubmed_query": "icariin AND (osteoblast OR osteogenesis) AND (microRNA OR miRNA)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "27492554",
+    "29500883",
+    "29904399",
+    "32911026",
+    "33743412",
+    "35292240",
+    "38045146",
+    "39588260",
+    "41484919"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports a mechanistic path from icariin to osteogenic differentiation through ti? Distinguish evidence for each hop from overall inference.",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "29500883",
+        "score": 0.5339813806905945
+      },
+      {
+        "pmid": "27492554",
+        "score": 0.5220707329676655
+      },
+      {
+        "pmid": "33743412",
+        "score": 0.5050193192913662
+      },
+      {
+        "pmid": "35292240",
+        "score": 0.5030552786076885
+      },
+      {
+        "pmid": "29904399",
+        "score": 0.49748842302381296
+      },
+      {
+        "pmid": "38045146",
+        "score": 0.4908023070717158
+      },
+      {
+        "pmid": "39588260",
+        "score": 0.4750307009094355
+      },
+      {
+        "pmid": "41484919",
+        "score": 0.4604743936771809
+      },
+      {
+        "pmid": "32911026",
+        "score": 0.43688423084106204
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "29500883",
+        "score": 0.5339813806905945
+      },
+      {
+        "pmid": "27492554",
+        "score": 0.5220707329676655
+      },
+      {
+        "pmid": "33743412",
+        "score": 0.5050193192913662
+      },
+      {
+        "pmid": "35292240",
+        "score": 0.5030552786076885
+      },
+      {
+        "pmid": "29904399",
+        "score": 0.49748842302381296
+      },
+      {
+        "pmid": "38045146",
+        "score": 0.4908023070717158
+      },
+      {
+        "pmid": "39588260",
+        "score": 0.4750307009094355
+      },
+      {
+        "pmid": "41484919",
+        "score": 0.4604743936771809
+      },
+      {
+        "pmid": "32911026",
+        "score": 0.43688423084106204
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Direct experimental evidence (in‑vitro, mouse MC3T3‑E1 cells)**  \n\n- **Ti particles suppress osteogenesis.** Exposure to 0.1 mg/mL Ti particles reduced cell proliferation, increased apoptosis, and lowered alkaline‑phosphatase (ALP) activity, BMP2, Runx2 and osteocalcin (OCN) expression compared with untreated controls【PMID:29500883】.  \n\n- **Icariin alone stimulates osteogenesis via miR‑21‑5p.** Pretreatment with 10⁻⁸ M icariin for 4 h increased ALP activity, accelerated matrix mineralization, and up‑regulated BMP2, Runx2, OCN and miR‑21‑5p levels relative to untreated cells【PMID:29500883】.  \n\n- **Icariin reverses Ti‑induced inhibition.** When icariin‑pretreated cells were subsequently challenged with Ti particles, the decline in proliferation, the rise in apoptosis, and the suppression of ALP, BMP2, Runx2 and OCN were partially restored toward baseline levels【PMID:29500883】.  \n\n- **miR‑21‑5p is necessary for icariin’s rescue.** Transfection with antagomiR‑21‑5p (knocking down miR‑21‑5p) abolished the protective effect of icariin on ALP activity and mineralization in Ti‑exposed cells, whereas a non‑targeting control antagomiR had no effect【PMID:29500883】.  \n\n**Association (interpretive links)**  \n\n- The parallel rise of miR‑21‑5p with osteogenic markers after icariin treatment, and its loss when miR‑21‑5p is inhibited, suggests a causal chain: icariin → miR‑21‑5p up‑regulation → activation of BMP2/Runx2‑driven osteogenesis.  \n\n- The fact that Ti particles suppress both miR‑21‑5p and osteogenic genes, and icariin restores both, supports the notion that miR‑21‑5p mediates resistance to Ti‑induced toxicity.  \n\n**Testable hypothesis derived from the data**  \n\n- *If* miR‑21‑5p directly targets a negative regulator of BMP2/Runx2 signaling, *then* overexpressing that regulator should mimic Ti‑particle inhibition and block icariin‑induced differentiation even when miR‑21‑5p is present. This can be examined by rescuing the regulator in icariin‑treated, Ti‑exposed cells.  \n\n**Overall inference**  \n\nThe study provides a step‑by‑step mechanistic pathway:  \n1. Ti particles → inhibition of osteogenic differentiation (↓ALP, BMP2, Runx2, OCN).  \n2. Icariin → up‑regulation of miR‑21‑5p (demonstrated in the absence of Ti).  \n3. miR‑21‑5p up‑regulation → restoration of BMP2/Runx2 signaling and mineralization, counteracting Ti‑particle suppression."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 2.4549663066864014e-05,
+    "vector_index": 1.5596738755702972,
+    "kg_expansion": 8.285045623779297e-06,
+    "answer_traditional_rag": 33.73454311490059,
+    "total": 35.78270906955004
+  },
+  "token_usage": {
+    "total_tokens": 5797,
+    "output_tokens": 1200,
+    "input_tokens": 4597
+  },
+  "completed_at": "2026-08-13T05:50:21.898437+00:00"
+}

@@ -1,0 +1,510 @@
+##USE-MESH-VOCABULARY
+16854453|t|Roles of the RAF/MEK/ERK and PI3K/PTEN/AKT pathways in malignant transformation and drug resistance.
+16854453|a|The Ras/Raf/MEK/ERK and PI3K/PTEN/AKT signaling cascades play critical roles in the transmission of signals from growth factor receptors to regulate gene expression and prevent apoptosis. Components of these pathways are mutated or aberrantly expressed in human cancer (e.g., Ras, B-Raf, PI3K, PTEN, Akt). Also, mutations occur at genes encoding upstream receptors (e.g., EGFR and Flt-3) and chimeric chromosomal translocations (e.g., BCR-ABL) which transmit their signals through these cascades. These pathways interact with each other to regulate growth and in some cases tumorigenesis. For example, in some cells, PTEN mutation may contribute to suppression of the Raf/MEK/ERK cascade due to the ability of elevated activated Akt levels to phosphorylate and inactivate Raf-1. We have investigated the genetic structures and functional roles of these two signaling pathways in the malignant transformation and drug resistance of hematopoietic, breast and prostate cancer cells. Although both of these pathways are commonly thought to have anti-apoptotic and drug resistance effects on cells, they display different cell-lineage-specific effects. Induced Raf expression can abrogate the cytokine dependence of certain hematopoietic cell lines (FDC-P1 and TF-1), a trait associated with tumorigenesis. In contrast, expression of activated PI3K or Akt does not abrogate the cytokine dependence of these hematopoietic cell lines, but does have positive effects on cell survival. However, activated PI3K and Akt can synergize with activated Raf to abrogate the cytokine dependence of another hematopoietic cell line (FL5.12) which is not transformed by activated Raf expression by itself. Activated Raf and Akt also confer a drug-resistant phenotype to these cells. Raf is more associated with proliferation and the prevention of apoptosis while Akt is more associated with the long-term clonogenicity. In breast cancer cells, activated Raf conferred resistance to the chemotherapeutic drugs doxorubicin and paclitaxel. Raf induced the expression of the drug pump Mdr-1 (a.k.a., Pgp) and the Bcl-2 anti-apoptotic protein. Raf did not appear to induce drug resistance by altering p53/p21Cip-1 expression, whose expression is often linked to regulation of cell cycle progression and drug resistance. Deregulation of the PI3K/PTEN/Akt pathway was associated with resistance to doxorubicin and 4-hydroxyl tamoxifen, a chemotherapeutic drug and estrogen receptor antagonist used in breast cancer therapy. In contrast to the drug-resistant breast cancer cells obtained after overexpression of activated Raf, cells expressing activated Akt displayed altered (decreased) levels of p53/p21Cip-1. Deregulated expression of the central phosphatase in the PI3K/PTEN/Akt pathway led to breast cancer drug resistance. Introduction of mutated forms of PTEN, which lacked lipid phosphatase activity, increased the resistance of the MCF-7 cells to doxorubicin, suggesting that these lipid phosphatase deficient PTEN mutants acted as dominant negative mutants to suppress wild-type PTEN activity. Finally, the PI3K/PTEN/Akt pathway appears to be more prominently involved in prostate cancer drug resistance than the Raf/MEK/ERK pathway. Some advanced prostate cancer cells express elevated levels of activated Akt which may suppress Raf activation. Introduction of activated forms of Akt increased the drug resistance of advanced prostate cancer cells. In contrast, introduction of activated forms of Raf did not increase the drug resistance of the prostate cancer cells. In contrast to the results observed in hematopoietic cells, Raf may normally promote differentiation in prostate cells which is suppressed in advanced prostate cancer due to increased expression of activated Akt arising from PTEN mutation. Thus in advanced prostate cancer it may be advantageous to induce Raf expression to promote differentiation, while in hematopoietic cancers it may be beneficial to inhibit Raf/MEK/ERK-induced proliferation. These signaling and anti-apoptotic pathways can have different effects on growth, prevention of apoptosis and induction of drug resistance in cells of various lineages which may be due to the expression of lineage-specific factors.
+16854453	13	16	ZHX2	Gene	22882
+16854453	17	20	MAP2K7	Gene	5609
+16854453	21	24	MAPK1	Gene	5594
+16854453	34	38	PTEN	Gene	5728
+16854453	39	42	AKT1	Gene	207
+16854453	109	112	ZHX2	Gene	22882
+16854453	113	116	MAP2K7	Gene	5609
+16854453	117	120	MAPK1	Gene	5594
+16854453	130	134	PTEN	Gene	5728
+16854453	135	138	AKT1	Gene	207
+16854453	357	362	human	Species	9606
+16854453	363	369	Neoplasms	Disease	MESH:D009369
+16854453	382	387	BRAF	Gene	673
+16854453	395	399	PTEN	Gene	5728
+16854453	401	404	AKT1	Gene	207
+16854453	473	477	EGFR	Gene	1956
+16854453	482	487	FLT3	Gene	2322
+16854453	536	543	ABL1	Gene	25
+16854453	675	688	Carcinogenesis	Disease	MESH:D063646
+16854453	718	722	PTEN	Gene	5728
+16854453	769	772	ZHX2	Gene	22882
+16854453	773	776	MAP2K7	Gene	5609
+16854453	777	780	MAPK1	Gene	5594
+16854453	830	833	AKT1	Gene	207
+16854453	873	878	RAF1	Gene	5894
+16854453	1047	1073	Breast Neoplasms	Disease	MESH:D001943
+16854453	1257	1260	ZHX2	Gene	22882
+16854453	1346	1352	2039	CellLine	CVCL:2039
+16854453	1357	1361	3608	CellLine	CVCL:3608
+16854453	1388	1401	Carcinogenesis	Disease	MESH:D063646
+16854453	1448	1451	AKT1	Gene	207
+16854453	1606	1609	AKT1	Gene	207
+16854453	1639	1642	ZHX2	Gene	22882
+16854453	1715	1721	0262	CellLine	CVCL:0262
+16854453	1761	1764	ZHX2	Gene	22882
+16854453	1797	1800	ZHX2	Gene	22882
+16854453	1805	1808	AKT1	Gene	207
+16854453	1864	1867	ZHX2	Gene	22882
+16854453	1944	1947	AKT1	Gene	207
+16854453	2004	2017	Breast Neoplasms	Disease	MESH:D001943
+16854453	2035	2038	ZHX2	Gene	22882
+16854453	2090	2101	Doxorubicin	Chemical	MESH:D004317
+16854453	2106	2116	Paclitaxel	Chemical	MESH:D017239
+16854453	2118	2121	ZHX2	Gene	22882
+16854453	2162	2167	ABCB1	Gene	5243
+16854453	2177	2180	PGP	Gene	283871
+16854453	2220	2223	ZHX2	Gene	22882
+16854453	2277	2280	TP53	Gene	7157
+16854453	2281	2289	CDKN1A	Gene	1026
+16854453	2421	2425	PTEN	Gene	5728
+16854453	2426	2429	AKT1	Gene	207
+16854453	2472	2483	Doxorubicin	Chemical	MESH:D004317
+16854453	2488	2508	4-hydroxyl tamoxifen	Chemical	-
+16854453	2538	2555	ESR1	Gene	2099
+16854453	2575	2588	Breast Neoplasms	Disease	MESH:D001943
+16854453	2632	2645	Breast Neoplasms	Disease	MESH:D001943
+16854453	2695	2698	ZHX2	Gene	22882
+16854453	2727	2730	AKT1	Gene	207
+16854453	2771	2774	TP53	Gene	7157
+16854453	2775	2783	CDKN1A	Gene	1026
+16854453	2847	2851	PTEN	Gene	5728
+16854453	2852	2855	AKT1	Gene	207
+16854453	2871	2884	Breast Neoplasms	Disease	MESH:D001943
+16854453	2935	2939	PTEN	Gene	5728
+16854453	3014	3019	0031	CellLine	CVCL:0031
+16854453	3029	3040	Doxorubicin	Chemical	MESH:D004317
+16854453	3092	3096	PTEN	Gene	5728
+16854453	3162	3166	PTEN	Gene	5728
+16854453	3195	3199	PTEN	Gene	5728
+16854453	3200	3203	AKT1	Gene	207
+16854453	3255	3270	Prostatic Neoplasms	Disease	MESH:D011471
+16854453	3296	3299	ZHX2	Gene	22882
+16854453	3300	3303	MAP2K7	Gene	5609
+16854453	3304	3307	MAPK1	Gene	5594
+16854453	3322	3346	Prostatic Neoplasms	Disease	MESH:D011471
+16854453	3390	3393	AKT1	Gene	207
+16854453	3413	3416	ZHX2	Gene	22882
+16854453	3464	3467	AKT1	Gene	207
+16854453	3501	3525	Prostatic Neoplasms	Disease	MESH:D011471
+16854453	3581	3584	ZHX2	Gene	22882
+16854453	3629	3644	Prostatic Neoplasms	Disease	MESH:D011471
+16854453	3712	3715	ZHX2	Gene	22882
+16854453	3794	3818	Prostatic Neoplasms	Disease	MESH:D011471
+16854453	3860	3863	AKT1	Gene	207
+16854453	3877	3881	PTEN	Gene	5728
+16854453	3900	3924	Prostatic Neoplasms	Disease	MESH:D011471
+16854453	3958	3961	ZHX2	Gene	22882
+16854453	4010	4031	Neoplasms	Disease	MESH:D009369
+16854453	4064	4067	ZHX2	Gene	22882
+16854453	4068	4071	MAP2K7	Gene	5609
+16854453	4072	4075	MAPK1	Gene	5594
+16854453	Association	1026	22882
+16854453	Negative_Correlation	MESH:D017239	MESH:D001943
+16854453	Negative_Correlation	MESH:D004317	MESH:D001943
+16854453	Association	MESH:D011471	2099
+16854453	Association	MESH:D009369	207
+16854453	Association	MESH:D004317	22882
+16854453	Negative_Correlation	207	5894
+16854453	Association	1026	207
+16854453	Association	5594	5609
+16854453	Association	MESH:D063646	22882
+16854453	Association	MESH:D009369	5728
+16854453	Association	207	5728
+
+21511051|t|Targeting survivin in cancer: the cell-signalling perspective.
+21511051|a|Survivin, a prominent anticancer target, is ubiquitously expressed in a plethora of cancers and the evolving complexity in functional regulation of survivin is yet to be deciphered. However, pertaining to the recent studies, therapeutic modulation of survivin is critically regulated by interaction with prominent cell-signalling pathways [HIF-1alpha, HSP90, PI3K/AKT, mTOR, ERK, tumour suppressor genes (p53, PTEN), oncogenes (Bcl-2, Ras)] and a wide range of growth factors (EGFR, VEGF, among others). In our article we discuss, in detail, an overview of the recent developments in the pharmacological modulation of survivin via cell-signalling paradigms and antisurvivin therapeutics, along with an outlook on therapeutic management of survivin in drug-resistant cancers.
+21511051	22	28	Neoplasms	Disease	MESH:D009369
+21511051	147	154	Neoplasms	Disease	MESH:D009369
+21511051	403	413	HIF1A	Gene	3091
+21511051	415	420	HSP90AA1	Gene	3320
+21511051	427	430	AKT1	Gene	207
+21511051	432	436	MTOR	Gene	2475
+21511051	438	441	MAPK1	Gene	5594
+21511051	468	471	TP53	Gene	7157
+21511051	473	477	PTEN	Gene	5728
+21511051	491	496	BCL2	Gene	596
+21511051	540	544	EGFR	Gene	1956
+21511051	546	550	VEGFA	Gene	7422
+21511051	829	836	Neoplasms	Disease	MESH:D009369
+
+26202948|t|Notch Pathway Inhibition Using PF-03084014, a gamma-Secretase Inhibitor (GSI), Enhances the Antitumor Effect of Docetaxel in Prostate Cancer.
+26202948|a|PURPOSE: To investigate the efficacy and mechanisms of Notch signaling inhibition as an adjuvant to docetaxel in castration-resistant prostate cancer (CRPC) using a gamma-secretase inhibitor (GSI), PF-03084014. EXPERIMENTAL DESIGN: The effect of PF-03084014 on response to docetaxel was evaluated in docetaxel-sensitive and docetaxel-resistant CRPC cell lines in vitro and in murine models. Both soft tissue and bone sites were evaluated in vivo. Impacts on cell proliferation, apoptosis, cancer stem cells, and angiogenesis were evaluated. RESULTS: The combination of PF-03084014 plus docetaxel reduced both docetaxel-sensitive and docetaxel-resistant CRPC tumor growth in soft tissue and bone greater than either agent alone. Antitumor activity was associated with PF-03084014-induced inhibition of Notch pathway signaling; decreased survival signals (cyclin E; MEK/ERK, PI3K/AKT, EGFR and NF-kappaB pathway; BCL-2, BCL-XL); increased apoptotic signals (BAK, BAX; cleaved caspase-3); reduced microvessel density; reduced epithelial-mesenchymal transition; and reduced cancer stem-like cells in the tumor. CONCLUSIONS: These results reveal that PF-03084014 enhances docetaxel-mediated tumor response and provides a rationale to explore GSIs as adjunct therapy in conjunction with docetaxel for men with CRPC.
+26202948	31	42	nirogacestat	Chemical	MESH:C550722
+26202948	112	121	Docetaxel	Chemical	MESH:D000077143
+26202948	125	140	Prostatic Neoplasms	Disease	MESH:D011471
+26202948	242	251	Docetaxel	Chemical	MESH:D000077143
+26202948	276	291	Prostatic Neoplasms	Disease	MESH:D011471
+26202948	293	297	Prostatic Neoplasms Castration-Resistant	Disease	MESH:D064129
+26202948	340	351	nirogacestat	Chemical	MESH:C550722
+26202948	388	399	nirogacestat	Chemical	MESH:C550722
+26202948	415	424	Docetaxel	Chemical	MESH:D000077143
+26202948	442	451	Docetaxel	Chemical	MESH:D000077143
+26202948	466	475	Docetaxel	Chemical	MESH:D000077143
+26202948	486	490	Prostatic Neoplasms Castration-Resistant	Disease	MESH:D064129
+26202948	518	524	murine	Species	10090
+26202948	631	637	Neoplasms	Disease	MESH:D009369
+26202948	711	722	nirogacestat	Chemical	MESH:C550722
+26202948	728	737	Docetaxel	Chemical	MESH:D000077143
+26202948	751	760	Docetaxel	Chemical	MESH:D000077143
+26202948	775	784	Docetaxel	Chemical	MESH:D000077143
+26202948	795	799	Prostatic Neoplasms Castration-Resistant	Disease	MESH:D064129
+26202948	800	805	Neoplasms	Disease	MESH:D009369
+26202948	909	920	nirogacestat	Chemical	MESH:C550722
+26202948	1006	1009	Mdk	Gene	17242
+26202948	1010	1013	Mapk1	Gene	26413
+26202948	1020	1023	Akt1	Gene	11651
+26202948	1025	1029	Egfr	Gene	13649
+26202948	1034	1043	Nfkb1	Gene	18033
+26202948	1053	1058	Bcl2	Gene	12043
+26202948	1060	1066	Bcl2l1	Gene	12048
+26202948	1098	1101	Bak1	Gene	12018
+26202948	1103	1106	Bax	Gene	12028
+26202948	1116	1125	Casp3	Gene	12367
+26202948	1212	1218	Neoplasms	Disease	MESH:D009369
+26202948	1242	1247	Neoplasms	Disease	MESH:D009369
+26202948	1288	1299	nirogacestat	Chemical	MESH:C550722
+26202948	1309	1318	Docetaxel	Chemical	MESH:D000077143
+26202948	1328	1333	Neoplasms	Disease	MESH:D009369
+26202948	1423	1432	Docetaxel	Chemical	MESH:D000077143
+26202948	1437	1440	men	Species	9606
+26202948	1446	1450	Prostatic Neoplasms Castration-Resistant	Disease	MESH:D064129
+26202948	Positive_Correlation	MESH:C550722	12367
+26202948	Negative_Correlation	MESH:C550722	12043
+26202948	Negative_Correlation	MESH:C550722	MESH:D000077143
+26202948	Positive_Correlation	MESH:C550722	12028
+26202948	Positive_Correlation	MESH:C550722	12018
+26202948	Negative_Correlation	MESH:C550722	MESH:D064129
+26202948	Negative_Correlation	MESH:D000077143	MESH:D009369
+26202948	Negative_Correlation	MESH:C550722	11651
+26202948	Negative_Correlation	MESH:C550722	13649
+26202948	Negative_Correlation	MESH:C550722	18033
+26202948	Negative_Correlation	MESH:C550722	17242
+26202948	Negative_Correlation	MESH:D000077143	MESH:D064129
+26202948	Negative_Correlation	MESH:C550722	MESH:D011471
+26202948	Negative_Correlation	MESH:D000077143	MESH:D011471
+26202948	Negative_Correlation	MESH:C550722	12048
+26202948	Negative_Correlation	MESH:C550722	MESH:D009369
+26202948	Negative_Correlation	MESH:C550722	26413
+
+28938696|t|The molecular mechanisms of chemoresistance in cancers.
+28938696|a|Overcoming intrinsic and acquired drug resistance is a major challenge in treating cancer patients because chemoresistance causes recurrence, cancer dissemination and death. This review summarizes numerous molecular aspects of multi-resistance, including transporter pumps, oncogenes (EGFR, PI3K/Akt, Erk and NF-kappaB), tumor suppressor gene (p53), mitochondrial alteration, DNA repair, autophagy, epithelial-mesenchymal transition (EMT), cancer stemness, and exosome. The chemoresistance-related proteins are localized to extracellular ligand, membrane receptor, cytosolic signal messenger, and nuclear transcription factors for various events, including proliferation, apoptosis, EMT, autophagy and exosome. Their cross-talk frequently appears, such as the regulatory effects of EGFR-Akt-NF-kappaB signal pathway on the transcription of Bcl-2, Bcl-xL and survivin or EMT-related stemness. It is essential for the realization of the target, individualized and combine therapy to clarify these molecular mechanisms, explore the therapy target, screen chemosensitive population, and determine the efficacy of chemoreagents by cell culture and orthotopic model.
+28938696	47	54	Neoplasms	Disease	MESH:D009369
+28938696	139	145	Neoplasms	Disease	MESH:D009369
+28938696	146	154	patients	Species	9606
+28938696	198	204	Neoplasms	Disease	MESH:D009369
+28938696	341	345	EGFR	Gene	1956
+28938696	352	355	AKT1	Gene	207
+28938696	357	360	MAPK1	Gene	5594
+28938696	365	374	NFKB1	Gene	4790
+28938696	377	393	tumor suppressor	Disease	OMIM:601308
+28938696	400	403	TP53	Gene	7157
+28938696	496	502	Neoplasms	Disease	MESH:D009369
+28938696	838	842	EGFR	Gene	1956
+28938696	843	846	AKT1	Gene	207
+28938696	847	856	NFKB1	Gene	4790
+28938696	896	901	BCL2	Gene	596
+28938696	903	909	BCL2L1	Gene	598
+28938696	Positive_Correlation	4790	596
+28938696	Positive_Correlation	4790	598
+28938696	Positive_Correlation	207	596
+28938696	Association	1956	596
+28938696	Association	1956	207
+28938696	Association	1956	598
+28938696	Positive_Correlation	207	598
+28938696	Association	1956	4790
+28938696	Association	207	4790
+
+29108234|t|Metapristone (RU486 metabolite) suppresses NSCLC by targeting EGFR-mediated PI3K/AKT pathway.
+29108234|a|Therapies targeting epidermal growth factor receptor (EGFR) can effectively treat with non-small cell lung cancer (NSCLC), but NSCLC's drug resistance makes it intractable. Herein, we showed that RU486 metabolite metapristone inhibited the proliferation of various NSCLC cell lines with either wild (A549, H1299, H520) or mutated EGFR (H1975, HCC827). The suppression was resulted from inhibition by metapristone of EGFR signaling pathways through down-regulating the EGFR, PTEN, as well as AKT and ERK proteins. In addition, metapristone inhibited anti-apoptotic marker Bcl-2, and activated pro-apoptotic key signaling proteins caspase-3, and poly (ADP-ribose) polymerase. Metapristone induced A549 and H1975 cell cycle via arrest at the G0-G1 stage. What's more, metapristone inhibited the growth of NSCLC xenografts in BALB/c nude mice through decreasing the expression of tumor growth biomarkers PCNA and EGFR. Taken together, the present study demonstrated that metapristone suppressed NSCLC proliferation by promoting apoptosis via decrease the cellular EGFR-mediated PI3K/AKT pathways. The results suggest metapristone a new treatment for EGFR-overexpressed NSCLC.
+29108234	0	12	metapristone	Chemical	MESH:C000592521
+29108234	14	19	Mifepristone	Chemical	MESH:D015735
+29108234	43	48	Carcinoma Non-Small-Cell Lung	Disease	MESH:D002289
+29108234	62	66	EGFR	Gene	1956
+29108234	81	84	AKT1	Gene	207
+29108234	114	146	EGFR	Gene	1956
+29108234	148	152	EGFR	Gene	1956
+29108234	181	207	Carcinoma Non-Small-Cell Lung	Disease	MESH:D002289
+29108234	209	214	Carcinoma Non-Small-Cell Lung	Disease	MESH:D002289
+29108234	221	226	Carcinoma Non-Small-Cell Lung	Disease	MESH:D002289
+29108234	290	295	Mifepristone	Chemical	MESH:D015735
+29108234	307	319	metapristone	Chemical	MESH:C000592521
+29108234	359	364	Carcinoma Non-Small-Cell Lung	Disease	MESH:D002289
+29108234	394	398	0023	CellLine	CVCL:0023
+29108234	400	405	0060	CellLine	CVCL:0060
+29108234	407	411	1566	CellLine	CVCL:1566
+29108234	424	428	EGFR	Gene	1956
+29108234	430	435	1511	CellLine	CVCL:1511
+29108234	437	443	2063	CellLine	CVCL:2063
+29108234	494	506	metapristone	Chemical	MESH:C000592521
+29108234	510	514	EGFR	Gene	1956
+29108234	562	566	EGFR	Gene	1956
+29108234	568	572	PTEN	Gene	5728
+29108234	585	588	AKT1	Gene	207
+29108234	593	596	MAPK1	Gene	5594
+29108234	620	632	metapristone	Chemical	MESH:C000592521
+29108234	665	670	BCL2	Gene	596
+29108234	723	732	CASP3	Gene	836
+29108234	738	766	PARP1	Gene	142
+29108234	768	780	metapristone	Chemical	MESH:C000592521
+29108234	789	793	0023	CellLine	CVCL:0023
+29108234	798	803	1511	CellLine	CVCL:1511
+29108234	859	871	metapristone	Chemical	MESH:C000592521
+29108234	896	901	Carcinoma Non-Small-Cell Lung	Disease	MESH:D002289
+29108234	916	922	0184	CellLine	CVCL:0184
+29108234	928	932	mice	Species	10090
+29108234	970	975	Neoplasms	Disease	MESH:D009369
+29108234	994	998	PCNA	Gene	5111
+29108234	1003	1007	EGFR	Gene	1956
+29108234	1061	1073	metapristone	Chemical	MESH:C000592521
+29108234	1085	1090	Carcinoma Non-Small-Cell Lung	Disease	MESH:D002289
+29108234	1154	1158	EGFR	Gene	1956
+29108234	1173	1176	AKT1	Gene	207
+29108234	1207	1219	metapristone	Chemical	MESH:C000592521
+29108234	1240	1244	EGFR	Gene	1956
+29108234	1259	1264	Carcinoma Non-Small-Cell Lung	Disease	MESH:D002289
+29108234	Negative_Correlation	MESH:C000592521	207
+29108234	Positive_Correlation	MESH:C000592521	142
+29108234	Association	MESH:D009369	5111
+29108234	Association	1956	207
+29108234	Negative_Correlation	MESH:C000592521	5728
+29108234	Association	MESH:D009369	1956
+29108234	Association	MESH:D002289	207
+29108234	Negative_Correlation	MESH:C000592521	5594
+29108234	Negative_Correlation	MESH:C000592521	5111
+29108234	Negative_Correlation	MESH:D015735	MESH:D002289
+29108234	Negative_Correlation	MESH:C000592521	596
+29108234	Negative_Correlation	MESH:C000592521	MESH:D002289
+29108234	Negative_Correlation	MESH:C000592521	1956
+29108234	Association	MESH:D002289	5111
+29108234	Negative_Correlation	MESH:C000592521	MESH:D009369
+29108234	Positive_Correlation	MESH:C000592521	836
+29108234	Association	MESH:D002289	1956
+29108234	Comparison	MESH:C000592521	MESH:D015735
+
+29115423|t|Apoptosis in human liver carcinoma caused by gold nanoparticles in combination with carvedilol is mediated via modulation of MAPK/Akt/mTOR pathway and EGFR/FAAD proteins.
+29115423|a|In cancers, apoptosis signaling pathways and cell survival and growth pathways responsible for resistance to conventional treatments, such as Pi3K/Akt/mTOR and mitogen-activated protein kinase (MAPK) become dysregulated. Recently, alternative treatments to promote tumor cell death have become important. The present study reports on the antitumor and cytoprotective action of gold nanoparticles (GNPs) and carvedilol in combination and in isolated application. Apoptosis was analyzed by FITC/propidium iodide staining flow cytometry; caspase-3, caspase-8, Bcl-2 and MAPK/ERK activity by immunofluorescence microscopy; gene expression of proteins related to cell death as Akt, mTOR, EGFR, MDR1, survivin, FADD and Apaf, by the real-time PCR; and western blot analysis for MAPK/ERK, Akt and mTOR. Oxidative stress evaluation was performed by reduced glutathione (GSH) and malondialdehyde (MDA) levels. Intracellular GNPs targets were identified by transmission electron microscopy. After exposure to a combination of GNPs (6.25 microg/ml) and carvedilol (3 microM), death as promoted by apoptosis was detected using flow cytometry, for expression of pro-apoptotic proteins FADD, caspase-3, caspase-8 and sub-regulation of anti-apoptotic MAPK/ERK, Akt, mTOR, EGFR and MDR1 resistance. Non-tumor cell cytoprotection with GSH elevation and MDA reduction levels was detected. GNPs were identified within the cell near to the nucleus when combined with carvedilol. The combination of GNP and carvedilol promoted downregulation of anti-apoptotic and drug resistance genes, over-regulation of pro-apoptotic proteins in tumor cells, as well as cytoprotection of non-tumor cells with reduction of apoptosis and oxidative stress.
+29115423	13	18	human	Species	9606
+29115423	19	34	Carcinoma Hepatocellular	Disease	MESH:D006528
+29115423	45	63	gold nanoparticles	Chemical	-
+29115423	84	94	Carvedilol	Chemical	MESH:D000077261
+29115423	130	133	AKT1	Gene	207
+29115423	134	138	MTOR	Gene	2475
+29115423	151	155	EGFR	Gene	1956
+29115423	174	181	Neoplasms	Disease	MESH:D009369
+29115423	318	321	AKT1	Gene	207
+29115423	322	326	MTOR	Gene	2475
+29115423	436	441	Neoplasms	Disease	MESH:D009369
+29115423	548	566	gold nanoparticles	Chemical	-
+29115423	568	572	GNPs	Chemical	-
+29115423	578	588	Carvedilol	Chemical	MESH:D000077261
+29115423	659	663	Fluorescein-5-isothiocyanate	Chemical	MESH:D016650
+29115423	664	680	Propidium	Chemical	MESH:D011419
+29115423	706	715	CASP3	Gene	836
+29115423	717	726	CASP8	Gene	841
+29115423	728	733	BCL2	Gene	596
+29115423	743	746	MAPK1	Gene	5594
+29115423	843	846	AKT1	Gene	207
+29115423	848	852	MTOR	Gene	2475
+29115423	854	858	EGFR	Gene	1956
+29115423	860	864	ABCB1	Gene	5243
+29115423	876	880	FADD	Gene	8772
+29115423	948	951	MAPK1	Gene	5594
+29115423	953	956	AKT1	Gene	207
+29115423	961	965	MTOR	Gene	2475
+29115423	1020	1031	Glutathione	Chemical	MESH:D005978
+29115423	1033	1036	Glutathione	Chemical	MESH:D005978
+29115423	1042	1057	Malondialdehyde	Chemical	MESH:D008315
+29115423	1059	1062	Malondialdehyde	Chemical	MESH:D008315
+29115423	1086	1090	GNPs	Chemical	-
+29115423	1187	1191	GNPs	Chemical	-
+29115423	1213	1223	Carvedilol	Chemical	MESH:D000077261
+29115423	1343	1347	FADD	Gene	8772
+29115423	1349	1358	CASP3	Gene	836
+29115423	1360	1369	CASP8	Gene	841
+29115423	1412	1415	MAPK1	Gene	5594
+29115423	1417	1420	AKT1	Gene	207
+29115423	1422	1426	MTOR	Gene	2475
+29115423	1428	1432	EGFR	Gene	1956
+29115423	1437	1441	ABCB1	Gene	5243
+29115423	1458	1463	Neoplasms	Disease	MESH:D009369
+29115423	1489	1492	Glutathione	Chemical	MESH:D005978
+29115423	1507	1510	Malondialdehyde	Chemical	MESH:D008315
+29115423	1542	1546	GNPs	Chemical	-
+29115423	1618	1628	Carvedilol	Chemical	MESH:D000077261
+29115423	1657	1667	Carvedilol	Chemical	MESH:D000077261
+29115423	1782	1787	Neoplasms	Disease	MESH:D009369
+29115423	1828	1833	Neoplasms	Disease	MESH:D009369
+29115423	Association	MESH:D000077261	1956
+29115423	Association	MESH:D000077261	207
+29115423	Negative_Correlation	MESH:D000077261	MESH:D006528
+29115423	Negative_Correlation	MESH:D000077261	8772
+29115423	Negative_Correlation	MESH:D000077261	MESH:D009369
+29115423	Association	MESH:D008315	MESH:D009369
+29115423	Association	MESH:D000077261	5243
+29115423	Association	MESH:D009369	207
+29115423	Association	MESH:D009369	2475
+29115423	Positive_Correlation	MESH:D000077261	841
+29115423	Association	MESH:D000077261	2475
+29115423	Association	MESH:D006528	2475
+29115423	Negative_Correlation	MESH:D005978	MESH:D009369
+29115423	Association	MESH:D006528	207
+29115423	Association	MESH:D006528	1956
+29115423	Negative_Correlation	MESH:D000077261	MESH:D008315
+29115423	Positive_Correlation	MESH:D000077261	836
+
+36938944|t|Role of identified proteins in the proteome profiles of CDK4/6 inhibitor-resistant breast cancer cell lines.
+36938944|a|Abemaciclib (Ab) and palbociclib (Pb) are CDK4/6 inhibitors used to cure advanced breast cancer (BC). However, acquired resistance is a major challenge. The molecular mechanisms and signature proteins of therapy resistance for Ab and Pb drugs need to be explored. Here we developed resistant cells for Ab and Pb drugs in MCF-7 cell lines and explored the mechanisms and signature proteins of therapy resistance in BC. Proteome profiling was performed using the label-free proteome-orbitrap-fusion-MS-MS technique. Gene ontology (GO)-terms, KEGG pathways and network analysis were performed for the proteome data. Drug-resistant cells showed increased drug tolerance, enhanced colony formation potential and an increased gap-healing tendency for the respective drug. Up-regulation of survival genes (BCL-2 and MCL-1) and down-regulation of apoptosis inducers were observed. Drug-resistance markers (MDR-1 and ABCG2 (BCRP)) along with ESR-1, CDK4, CDK6, and cyclin-D1 genes were up-regulated in resistant cells. A total of 237 and 239 proteins were found to be differentially expressed in the Ab and Pb-resistant cells, respectively. Down-regulated proteins induce apoptosis signalling and nucleotide metabolisms and restrict EGFR signalling; however, up-regulated proteins induce Erk, wnt-beta-catenin, VEGFR-PI3K-AKT, glucose transportation, and hypoxia signalling pathways and regulate hydrogen peroxide signalling pathways. The panel of identified proteins associated with these pathways might have characteristics of molecular signature and new drug targets for overcoming drug resistance in breast cancer.
+36938944	56	62	CDK4	Gene	1019;1021
+36938944	83	96	Breast Neoplasms	Disease	MESH:D001943
+36938944	109	120	abemaciclib	Chemical	MESH:C000590451
+36938944	122	124	abemaciclib	Chemical	MESH:C000590451
+36938944	130	141	palbociclib	Chemical	MESH:C500026
+36938944	143	145	palbociclib	Chemical	MESH:C500026
+36938944	151	157	CDK4	Gene	1019;1021
+36938944	191	204	Breast Neoplasms	Disease	MESH:D001943
+36938944	206	208	Breast Neoplasms	Disease	MESH:D001943
+36938944	336	338	abemaciclib	Chemical	MESH:C000590451
+36938944	343	345	palbociclib	Chemical	MESH:C500026
+36938944	411	413	abemaciclib	Chemical	MESH:C000590451
+36938944	418	420	palbociclib	Chemical	MESH:C500026
+36938944	430	435	0031	CellLine	CVCL:0031
+36938944	523	525	Breast Neoplasms	Disease	MESH:D001943
+36938944	908	913	BCL2	Gene	596
+36938944	918	923	MCL1	Gene	4170
+36938944	1007	1012	ABCB1	Gene	5243
+36938944	1017	1022	ABCG2	Gene	9429
+36938944	1024	1028	ABCG2	Gene	9429
+36938944	1042	1047	ESR1	Gene	2099
+36938944	1049	1053	CDK4	Gene	1019
+36938944	1055	1059	CDK6	Gene	1021
+36938944	1065	1074	CCND1	Gene	595
+36938944	1200	1202	abemaciclib	Chemical	MESH:C000590451
+36938944	1207	1209	palbociclib	Chemical	MESH:C500026
+36938944	1333	1337	EGFR	Gene	1956
+36938944	1388	1391	MAPK1	Gene	5594
+36938944	1397	1409	CTNNB1	Gene	1499
+36938944	1411	1416	KDR	Gene	3791
+36938944	1422	1425	AKT1	Gene	207
+36938944	1427	1434	Glucose	Chemical	MESH:D005947
+36938944	1455	1462	Hypoxia	Disease	MESH:D000860
+36938944	1496	1513	Hydrogen Peroxide	Chemical	MESH:D006861
+36938944	1704	1717	Breast Neoplasms	Disease	MESH:D001943
+36938944	Association	MESH:D001943	1021
+36938944	Association	MESH:D001943	1019
+36938944	Comparison	MESH:C000590451	MESH:C500026
+36938944	Negative_Correlation	MESH:C000590451	1021
+36938944	Negative_Correlation	MESH:C000590451	1019
+36938944	Negative_Correlation	MESH:C000590451	MESH:D001943
+36938944	Negative_Correlation	MESH:C500026	1021
+36938944	Negative_Correlation	MESH:C500026	1019
+36938944	Negative_Correlation	MESH:C500026	MESH:D001943
+
+40603821|t|KDM3A Modulates Trastuzumab Resistance in HER2- Positive Breast Cancer Cells via the PI3K/AKT/ERK Pathway.
+40603821|a|Trastuzumab (TRA) is a key therapeutic agent for HER2-positive breast cancer (HER2+BC), effectively suppressing tumor progression. However, its prolonged use has led to the development of TRA resistance in many patients, worsening their clinical outcomes. Lysine-specific histone demethylase 3A (KDM3A) is known to be overexpressed in BC cells, contributing to enhanced proliferation, invasion, and migration. However, its involvement in TRA resistance in HER2+BC remains poorly understood. This study demonstrated TRA-resistant HER2+BC cell models and knocked down the expression of KDM3A to investigate its role and underlying mechanisms. The findings revealed that KDM3A expression was markedly upregulated in TRA-resistant cells and was associated with increased levels of AKT, ERK1/2, HER2, and their phosphorylated forms (p-AKT, p-ERK1/2, and p-HER2). KDM3A silencing suppressed cell survival, invasion, and migration, induced apoptosis, and arrested the cell cycle in the G0/G1 phase. Further analysis revealed that KDM3A silencing decreased mRNA and protein levels of PI3K, AKT, ERK1/2, HER2, and BCL-2 while increasing BAX expression. Protein phosphorylation levels of AKT, ERK1/2, and HER2 were also reduced. These results indicate that KDM3A contributes to TRA resistance in HER2+BC cells via the PI3K/AKT/ERK pathway, suggesting its potential as a therapeutic target for overcoming TRA resistance in HER2+BC.
+40603821	0	5	KDM3A	Gene	55818
+40603821	16	27	Trastuzumab	Chemical	MESH:D000068878
+40603821	42	46	ERBB2	Gene	2064
+40603821	57	70	Breast Neoplasms	Disease	MESH:D001943
+40603821	85	89	PIK3CB	Gene	5291
+40603821	90	93	AKT1	Gene	207
+40603821	94	97	MAPK1	Gene	5594
+40603821	107	118	Trastuzumab	Chemical	MESH:D000068878
+40603821	120	123	Trastuzumab	Chemical	MESH:D000068878
+40603821	156	160	ERBB2	Gene	2064
+40603821	170	183	Breast Neoplasms	Disease	MESH:D001943
+40603821	185	189	ERBB2	Gene	2064
+40603821	190	192	BC	Disease	-
+40603821	219	224	Neoplasms	Disease	MESH:D009369
+40603821	295	298	Trastuzumab	Chemical	MESH:D000068878
+40603821	318	326	patients	Species	9606
+40603821	403	408	KDM3A	Gene	55818
+40603821	442	444	BC	Disease	-
+40603821	545	548	Trastuzumab	Chemical	MESH:D000068878
+40603821	563	567	ERBB2	Gene	2064
+40603821	568	570	BC	Disease	-
+40603821	622	625	Trastuzumab	Chemical	MESH:D000068878
+40603821	636	640	ERBB2	Gene	2064
+40603821	641	643	BC	Disease	-
+40603821	691	696	KDM3A	Gene	55818
+40603821	775	780	KDM3A	Gene	55818
+40603821	820	823	Trastuzumab	Chemical	MESH:D000068878
+40603821	884	887	AKT1	Gene	207
+40603821	897	901	ERBB2	Gene	2064
+40603821	937	940	AKT1	Gene	207
+40603821	958	962	ERBB2	Gene	2064
+40603821	965	970	KDM3A	Gene	55818
+40603821	1130	1135	KDM3A	Gene	55818
+40603821	1183	1187	PIK3CB	Gene	5291
+40603821	1189	1192	AKT1	Gene	207
+40603821	1202	1206	ERBB2	Gene	2064
+40603821	1212	1217	BCL2	Gene	596
+40603821	1235	1238	BAX	Gene	581
+40603821	1285	1288	AKT1	Gene	207
+40603821	1302	1306	ERBB2	Gene	2064
+40603821	1354	1359	KDM3A	Gene	55818
+40603821	1375	1378	Trastuzumab	Chemical	MESH:D000068878
+40603821	1393	1397	ERBB2	Gene	2064
+40603821	1398	1400	BC	Disease	-
+40603821	1415	1419	PIK3CB	Gene	5291
+40603821	1420	1423	AKT1	Gene	207
+40603821	1424	1427	MAPK1	Gene	5594
+40603821	1501	1504	Trastuzumab	Chemical	MESH:D000068878
+40603821	1519	1523	ERBB2	Gene	2064
+40603821	1524	1526	BC	Disease	-
+40603821	Positive_Correlation	MESH:D000068878	55818
+40603821	Positive_Correlation	55818	596
+40603821	Association	55818	5594
+40603821	Negative_Correlation	MESH:D000068878	MESH:D009369
+40603821	Positive_Correlation	2064	55818
+40603821	Positive_Correlation	207	55818
+40603821	Negative_Correlation	55818	581
+40603821	Positive_Correlation	5291	55818
+40603821	Association	MESH:D001943	55818
+40603821	Negative_Correlation	MESH:D000068878	MESH:D001943
+40603821	Association	5291	5594
+40603821	Association	MESH:D001943	2064
+
+42191394|t|MLH1 silencing reprograms PI3K/AKT and JAK/STAT signaling to enhance 5-Fluorouracil sensitivity in colorectal cancer cells.
+42191394|a|BACKGROUND/AIM: This study aimed to evaluate the anticancer efficacy of 5-Fluorouracil (5-FU) in Caco-2 human colorectal adenocarcinoma cells treated with siRNA-mediated MLH1 gene inhibition, in terms of cell viability, apoptosis, and related gene/protein expression. MATERIALS AND METHODS: Caco-2 cells were treated with a dose of 10 microM 5-FU. Cell viability was assessed by CVDK-8 analysis, and apoptosis was determined by flow cytometry using Annexin V-FITC/PI staining. Expression levels of MLH1, CDK2, CDK4, CDK5, CDK6, PTEN, EGFR, mTOR, PI3K, AKT3, ERK, PARP1, and GAPDH genes were examined by RT-qPCR analysis. Protein expression levels were analyzed using Western blot for PI3K, p-AKT, AKT1, mTOR, MAPK-p38, Caspase-3, Bcl-2, STAT3, JAK2, MLH1, MDR1, p53, and proteins; beta-Actin was used as an internal control. RESULTS: CVDK-8 analysis showed that application of 10 microM 5-FU significantly reduced cell viability in Caco-2 cells. Flow cytometry results revealed a significant increase in both early- and late-apoptotic cell populations following 5-FU treatment. DISCUSSION: Gene and protein expression analyses showed significant changes in signaling pathways associated with apoptosis and cell proliferation. In this study, the effects of combining MLH1 gene silencing with 5-FU on colorectal cancer cells were comprehensively evaluated using Cell viability, RT-qPCR, flow cytometry, and Western blot analyses. It was determined that the combined application significantly reduced cell viability and increased apoptosis. Molecular-level findings on gene and protein expression support this effect. The results suggest that MLH1 gene silencing may increase sensitivity to 5-FU, offering a potential combination therapy approach in colorectal cancer.
+42191394	26	30	PIK3CB	Gene	5291
+42191394	31	34	AKT1	Gene	207
+42191394	69	83	Fluorouracil	Chemical	MESH:D005472
+42191394	99	116	Colorectal Neoplasms	Disease	MESH:D015179
+42191394	196	210	Fluorouracil	Chemical	MESH:D005472
+42191394	212	216	Fluorouracil	Chemical	MESH:D005472
+42191394	228	233	human	Species	9606
+42191394	234	259	Colonic Neoplasms	Disease	MESH:D003110
+42191394	466	470	Fluorouracil	Chemical	MESH:D005472
+42191394	503	509	CVDK-8	Chemical	-
+42191394	588	590	Phosphatidylinositols	Chemical	MESH:D010716
+42191394	628	632	CDK2	Gene	1017
+42191394	634	638	CDK4	Gene	1019
+42191394	640	644	CDK5	Gene	1020
+42191394	646	650	CDK6	Gene	1021
+42191394	652	656	PTEN	Gene	5728
+42191394	658	662	EGFR	Gene	1956
+42191394	664	668	MTOR	Gene	2475
+42191394	670	674	PIK3CB	Gene	5291
+42191394	676	680	AKT3	Gene	10000
+42191394	682	685	MAPK1	Gene	5594
+42191394	687	692	PARP1	Gene	142
+42191394	698	703	GAPDH	Gene	2597
+42191394	808	812	PIK3CB	Gene	5291
+42191394	816	819	AKT1	Gene	207
+42191394	821	825	AKT1	Gene	207
+42191394	827	831	MTOR	Gene	2475
+42191394	838	841	MAPK14	Gene	1432
+42191394	843	852	CASP3	Gene	836
+42191394	854	859	BCL2	Gene	596
+42191394	861	866	STAT3	Gene	6774
+42191394	868	872	JAK2	Gene	3717
+42191394	880	884	ABCB1	Gene	5243
+42191394	886	889	TP53	Gene	7157
+42191394	905	915	POTEF	Gene	728378
+42191394	958	964	CVDK-8	Chemical	-
+42191394	1011	1015	Fluorouracil	Chemical	MESH:D005472
+42191394	1186	1190	Fluorouracil	Chemical	MESH:D005472
+42191394	1415	1419	Fluorouracil	Chemical	MESH:D005472
+42191394	1423	1440	Colorectal Neoplasms	Disease	MESH:D015179
+42191394	1812	1816	Fluorouracil	Chemical	MESH:D005472
+42191394	1871	1888	Colorectal Neoplasms	Disease	MESH:D015179
+42191394	Association	MESH:D005472	5291
+42191394	Negative_Correlation	MESH:D005472	MESH:D003110
+42191394	Association	MESH:D015179	207
+42191394	Negative_Correlation	MESH:D005472	MESH:D015179
+42191394	Association	MESH:D005472	207
+42191394	Association	MESH:D015179	5291

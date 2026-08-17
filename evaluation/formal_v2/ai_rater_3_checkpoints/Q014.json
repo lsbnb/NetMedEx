@@ -1,0 +1,93 @@
+{
+  "question_id": "Q014",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-30T09:21:25.008632+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q014-C001",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "wrong_context",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract describes a meta-analysis comparing the clinical efficacy and safety of JAK inhibitors and IL-6 inhibitors in RA. It does not provide evidence on whether JAK inhibitors modulate IL-6 or interferon signaling."
+    },
+    {
+      "candidate_id": "Q014-C002",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "no_usable_evidence",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract reports on a phase 3 clinical trial of baricitinib in RA but does not mention its effect on IL-6 or interferon signaling."
+    },
+    {
+      "candidate_id": "Q014-C003",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract provides direct in vitro evidence that peficitinib, tofacitinib, and baricitinib inhibit STAT3 phosphorylation induced by IL-6 and interferons in RA fibroblast-like synoviocytes."
+    },
+    {
+      "candidate_id": "Q014-C004",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract directly addresses the question, showing that tofacitinib suppresses interferon-alpha production and its arthrogenic effects, with explicit context linking these mechanisms to rheumatoid arthritis."
+    },
+    {
+      "candidate_id": "Q014-C005",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract provides useful adjacent evidence showing that baricitinib, upadacitinib, and tofacitinib inhibit IL-6 and interferon signaling in human leukocytes, though it does not explicitly specify an RA patient context in the abstract."
+    },
+    {
+      "candidate_id": "Q014-C006",
+      "relevance": 1,
+      "confidence": 2,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract shows that tofacitinib suppresses multiple cytokine-induced JAK-STAT pathways in RA patients in vivo. While IL-6 and interferon are not explicitly named (only IL-10 is), it provides highly relevant adjacent evidence of broad cytokine signaling modulation."
+    },
+    {
+      "candidate_id": "Q014-C007",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This is a review article summarizing that IL-6 signaling is suppressed by all JAK inhibitors and that filgotinib, baricitinib, and upadacitinib suppress interferon signaling in the context of RA. It provides excellent review-level context."
+    },
+    {
+      "candidate_id": "Q014-C008",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract provides direct evidence that baricitinib and tofacitinib inhibit IL-6 and interferon-induced STAT phosphorylation and production, explicitly linking these findings to clinical efficacy in RA."
+    },
+    {
+      "candidate_id": "Q014-C009",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "no_usable_evidence",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract discusses the clinical utility of tofacitinib in RA but does not mention IL-6 or interferon signaling modulation."
+    },
+    {
+      "candidate_id": "Q014-C010",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract directly addresses the question, demonstrating that filgotinib, baricitinib, tofacitinib, and upadacitinib potently inhibit IL-6 and interferon-alpha signaling pathways in blood from RA patients."
+    },
+    {
+      "candidate_id": "Q014-C011",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract provides direct evidence that tofacitinib modulates the effects of IL-6 (and TGF-beta) stimulation on myofibroblast differentiation in RA fibroblast-like synoviocytes."
+    },
+    {
+      "candidate_id": "Q014-C012",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract provides adjacent evidence that JAK inhibitors (tofacitinib, baricitinib, filgotinib) inhibit interferon-gamma-induced CEACAM1 expression in healthy human neutrophils, with RA mentioned as the disease background."
+    }
+  ],
+  "raw_response_sha256": "f32c53fe07e9f5d581b63fbe42851b8a437628ef76110742a7c61efcfc9c06c7"
+}

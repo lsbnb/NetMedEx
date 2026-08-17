@@ -1,0 +1,791 @@
+{
+  "status": "complete",
+  "question_id": "PP010",
+  "domain": "rare disease",
+  "question": "What evidence supports a mechanistic path from cftr to inflammation through dysbiosis? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "CFTR AND intestinal inflammation AND (NF-kB OR dysbiosis OR cytokines)",
+  "effective_pubmed_query": "CFTR AND intestinal inflammation AND (NF-kB OR dysbiosis OR cytokines)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "23788646",
+    "27588407",
+    "28155088",
+    "30546102",
+    "31636470",
+    "32326161",
+    "35160099",
+    "35743652",
+    "36600119",
+    "37546931",
+    "38073491",
+    "38179971",
+    "38554847",
+    "40247380",
+    "40824057"
+  ],
+  "graph": {
+    "node_count": 105,
+    "edge_count": 163,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 2,
+    "pre_gate_candidate_count": 2,
+    "pre_gate_candidates": [
+      {
+        "path_id": "Q008-P02",
+        "path_signature": "3a03360fb323a847",
+        "path_text": "cftr ->[induces] dysbiosis | dysbiosis --[associated_with] inflammation",
+        "node_ids": [
+          "12638_Gene",
+          "MESH:D064806_Disease",
+          "MESH:D007249_Disease"
+        ],
+        "names": [
+          "cftr",
+          "dysbiosis",
+          "inflammation"
+        ],
+        "node_aliases": [
+          [
+            "CF transmembrane conductance regulator",
+            "CFTR",
+            "Cftr",
+            "cystic fibrosis transmembrane conductance regulator"
+          ],
+          [
+            "Dysbiosis",
+            "Fecal Dysbiosis",
+            "Fecal dysbiosis",
+            "Gut Dysbiosis",
+            "bacterial dysbiosis",
+            "dysbiosis",
+            "gut dysbiosis",
+            "intestinal dysbiosis",
+            "microbiome dysbiosis"
+          ],
+          [
+            "Chronic intestinal inflammation",
+            "Inflammation",
+            "Intestinal Inflammation",
+            "Intestinal inflammation",
+            "airway inflammation",
+            "gut inflammation",
+            "inflammation",
+            "inflammatory",
+            "intestinal and systemic inflammation",
+            "intestinal inflammation",
+            "liver inflammation"
+          ]
+        ],
+        "relations": [
+          "induces",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "37546931"
+          ],
+          [
+            "38554847"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis"
+          ],
+          [
+            "CFTR-KO mice exhibited gut dysbiosis with enrichment of Enterobacteriaceae and Enterococcus spp., which was associated with increased intestinal permeability and mucosal inflammation"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "induces",
+            "selected_pmid": "37546931",
+            "selected_quote": "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "2d31ad5ae6fc45d85f16eb5a5979f73daac3ad0b",
+              "schema_version": 1,
+              "pmid": "37546931",
+              "source_id": "12638_Gene",
+              "target_id": "MESH:D064806_Disease",
+              "relation": "induces",
+              "evidence": "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis",
+              "confidence": 0.95,
+              "study_type": "Animal",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "38554847",
+            "selected_quote": "CFTR-KO mice exhibited gut dysbiosis with enrichment of Enterobacteriaceae and Enterococcus spp., which was associated with increased intestinal permeability and mucosal inflammation",
+            "selected_confidence": 0.9,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 20,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "two_hop",
+          "all_support_in_text_top_k",
+          "bridge_visible_in_text",
+          "query_path_aligned"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.734,
+        "hop_count": 2,
+        "path_relevance_score": 0.867,
+        "graph_relevance_score": 0.734,
+        "query_endpoint_coverage": 1.0,
+        "requested_bridge_coverage": 1.0,
+        "query_bridge_precision": 1.0,
+        "query_path_alignment_score": 1.0,
+        "incremental_mechanism_score": 0.3,
+        "mechanism_utility_score": 0.61185
+      },
+      {
+        "path_id": "Q008-P03",
+        "path_signature": "daf58598d61d93bf",
+        "path_text": "cftr ->[induces] inflammation",
+        "node_ids": [
+          "12638_Gene",
+          "MESH:D007249_Disease"
+        ],
+        "names": [
+          "cftr",
+          "inflammation"
+        ],
+        "node_aliases": [
+          [
+            "CF transmembrane conductance regulator",
+            "CFTR",
+            "Cftr",
+            "cystic fibrosis transmembrane conductance regulator"
+          ],
+          [
+            "Chronic intestinal inflammation",
+            "Inflammation",
+            "Intestinal Inflammation",
+            "Intestinal inflammation",
+            "airway inflammation",
+            "gut inflammation",
+            "inflammation",
+            "inflammatory",
+            "intestinal and systemic inflammation",
+            "intestinal inflammation",
+            "liver inflammation"
+          ]
+        ],
+        "relations": [
+          "induces"
+        ],
+        "edge_pmids": [
+          [
+            "37546931"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis and inflammation"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "induces",
+            "selected_pmid": "37546931",
+            "selected_quote": "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis and inflammation",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "846bef7c26343d41171c18943eec44753c2edd3c",
+              "schema_version": 1,
+              "pmid": "37546931",
+              "source_id": "12638_Gene",
+              "target_id": "MESH:D007249_Disease",
+              "relation": "induces",
+              "evidence": "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis and inflammation",
+              "confidence": 0.95,
+              "study_type": "Animal",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 4,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text",
+          "query_path_misaligned"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.938,
+        "hop_count": 1,
+        "path_relevance_score": 0.769,
+        "graph_relevance_score": 0.938,
+        "query_endpoint_coverage": 1.0,
+        "requested_bridge_coverage": 0.0,
+        "query_bridge_precision": 1.0,
+        "query_path_alignment_score": 0.6,
+        "incremental_mechanism_score": 0.25,
+        "mechanism_utility_score": 0.53545
+      }
+    ],
+    "preferred_pmids": [
+      "37546931",
+      "38554847"
+    ],
+    "paths": [
+      {
+        "path_id": "PP010-P01",
+        "path_signature": "3a03360fb323a847",
+        "path_text": "cftr ->[induces] dysbiosis | dysbiosis --[associated_with] inflammation",
+        "node_ids": [
+          "12638_Gene",
+          "MESH:D064806_Disease",
+          "MESH:D007249_Disease"
+        ],
+        "names": [
+          "cftr",
+          "dysbiosis",
+          "inflammation"
+        ],
+        "node_aliases": [
+          [
+            "CF transmembrane conductance regulator",
+            "CFTR",
+            "Cftr",
+            "cystic fibrosis transmembrane conductance regulator"
+          ],
+          [
+            "Dysbiosis",
+            "Fecal Dysbiosis",
+            "Fecal dysbiosis",
+            "Gut Dysbiosis",
+            "bacterial dysbiosis",
+            "dysbiosis",
+            "gut dysbiosis",
+            "intestinal dysbiosis",
+            "microbiome dysbiosis"
+          ],
+          [
+            "Chronic intestinal inflammation",
+            "Inflammation",
+            "Intestinal Inflammation",
+            "Intestinal inflammation",
+            "airway inflammation",
+            "gut inflammation",
+            "inflammation",
+            "inflammatory",
+            "intestinal and systemic inflammation",
+            "intestinal inflammation",
+            "liver inflammation"
+          ]
+        ],
+        "relations": [
+          "induces",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "37546931"
+          ],
+          [
+            "38554847"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis"
+          ],
+          [
+            "CFTR-KO mice exhibited gut dysbiosis with enrichment of Enterobacteriaceae and Enterococcus spp., which was associated with increased intestinal permeability and mucosal inflammation"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "induces",
+            "selected_pmid": "37546931",
+            "selected_quote": "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "2d31ad5ae6fc45d85f16eb5a5979f73daac3ad0b",
+              "schema_version": 1,
+              "pmid": "37546931",
+              "source_id": "12638_Gene",
+              "target_id": "MESH:D064806_Disease",
+              "relation": "induces",
+              "evidence": "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis",
+              "confidence": 0.95,
+              "study_type": "Animal",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "38554847",
+            "selected_quote": "CFTR-KO mice exhibited gut dysbiosis with enrichment of Enterobacteriaceae and Enterococcus spp., which was associated with increased intestinal permeability and mucosal inflammation",
+            "selected_confidence": 0.9,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 20,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "two_hop",
+          "all_support_in_text_top_k",
+          "bridge_visible_in_text",
+          "query_path_aligned"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "path_relevance_score": 0.867,
+        "graph_relevance_score": 0.734,
+        "query_endpoint_coverage": 1.0,
+        "requested_bridge_coverage": 1.0,
+        "query_bridge_precision": 1.0,
+        "query_path_alignment_score": 1.0,
+        "incremental_mechanism_score": 0.3,
+        "mechanism_utility_score": 0.61185,
+        "score": 0.734,
+        "hop_count": 2
+      },
+      {
+        "path_id": "PP010-P02",
+        "path_signature": "daf58598d61d93bf",
+        "path_text": "cftr ->[induces] inflammation",
+        "node_ids": [
+          "12638_Gene",
+          "MESH:D007249_Disease"
+        ],
+        "names": [
+          "cftr",
+          "inflammation"
+        ],
+        "node_aliases": [
+          [
+            "CF transmembrane conductance regulator",
+            "CFTR",
+            "Cftr",
+            "cystic fibrosis transmembrane conductance regulator"
+          ],
+          [
+            "Chronic intestinal inflammation",
+            "Inflammation",
+            "Intestinal Inflammation",
+            "Intestinal inflammation",
+            "airway inflammation",
+            "gut inflammation",
+            "inflammation",
+            "inflammatory",
+            "intestinal and systemic inflammation",
+            "intestinal inflammation",
+            "liver inflammation"
+          ]
+        ],
+        "relations": [
+          "induces"
+        ],
+        "edge_pmids": [
+          [
+            "37546931"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis and inflammation"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "induces",
+            "selected_pmid": "37546931",
+            "selected_quote": "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis and inflammation",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "846bef7c26343d41171c18943eec44753c2edd3c",
+              "schema_version": 1,
+              "pmid": "37546931",
+              "source_id": "12638_Gene",
+              "target_id": "MESH:D007249_Disease",
+              "relation": "induces",
+              "evidence": "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis and inflammation",
+              "confidence": 0.95,
+              "study_type": "Animal",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 4,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text",
+          "query_path_misaligned"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "path_relevance_score": 0.769,
+        "graph_relevance_score": 0.938,
+        "query_endpoint_coverage": 1.0,
+        "requested_bridge_coverage": 0.0,
+        "query_bridge_precision": 1.0,
+        "query_path_alignment_score": 0.6,
+        "incremental_mechanism_score": 0.25,
+        "mechanism_utility_score": 0.53545,
+        "score": 0.938,
+        "hop_count": 1
+      }
+    ]
+  },
+  "evidence_exposure": {
+    "profile": "H_evidence_gated_four_hop",
+    "routed_profile": "H_evidence_gated_four_hop",
+    "selection_frozen_before_answers": true,
+    "source_result": "evaluation/formal/runs/abcd20_path_replay_v2/questions/Q008/result.json",
+    "expanded_reliable_pool": true,
+    "frozen_exposure_source": "evaluation/formal/path_positive_20_v1/frozen_exposures_expanded/PP010/result.json",
+    "frozen_candidate_path_count": 2,
+    "frozen_exposed_path_count": 2,
+    "exposed_pmids": [
+      "37546931",
+      "38554847"
+    ],
+    "exposed_paths": [
+      [
+        "cftr",
+        "dysbiosis",
+        "inflammation"
+      ],
+      [
+        "cftr",
+        "inflammation"
+      ]
+    ],
+    "exposed_edges": [
+      "cftr ->[induces] dysbiosis | dysbiosis --[associated_with] inflammation",
+      "cftr ->[induces] inflammation"
+    ],
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 2,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [
+        "dysbiosis"
+      ],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "pre_gate_incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 2,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [
+        "dysbiosis"
+      ],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "integration_decision": {
+      "method": "three_stage_incremental_utility_router_v1",
+      "mode": "citation_validation",
+      "reason": "claim_safe_confirmation_only",
+      "claim_safe_path_count": 2,
+      "incremental_path_count": 0,
+      "confirmatory_path_count": 2,
+      "citation_validation_pmids": [
+        "37546931",
+        "38554847"
+      ],
+      "policy": "three_stage"
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 1,
+      "queries": [
+        "\"cftr\"[Title/Abstract] AND \"dysbiosis\"[Title/Abstract]"
+      ],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "disabled",
+      "reason": "integration_mode=citation_validation",
+      "boosted_pmids": {}
+    },
+    "fallback_answer_reused": {
+      "source": "evaluation/formal/runs/hybrid_gain_v2_query_aligned/arm_B/questions/PP010/result.json",
+      "source_system": "traditional_rag",
+      "mode": "citation_validation"
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "36600119",
+        "score": 0.5475427747395207
+      },
+      {
+        "pmid": "38554847",
+        "score": 0.5428355718932244
+      },
+      {
+        "pmid": "35160099",
+        "score": 0.5366646953708156
+      },
+      {
+        "pmid": "40824057",
+        "score": 0.5269386496090286
+      },
+      {
+        "pmid": "37546931",
+        "score": 0.5253108787767682
+      },
+      {
+        "pmid": "38073491",
+        "score": 0.5232141520043379
+      },
+      {
+        "pmid": "28155088",
+        "score": 0.5221417038922942
+      },
+      {
+        "pmid": "30546102",
+        "score": 0.5164803345032928
+      },
+      {
+        "pmid": "23788646",
+        "score": 0.5050432633207548
+      },
+      {
+        "pmid": "38179971",
+        "score": 0.5021925630001544
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "36600119",
+        "score": 0.5475427747395207
+      },
+      {
+        "pmid": "38554847",
+        "score": 0.5428355718932244
+      },
+      {
+        "pmid": "35160099",
+        "score": 0.5366646953708156
+      },
+      {
+        "pmid": "40824057",
+        "score": 0.5269386496090286
+      },
+      {
+        "pmid": "37546931",
+        "score": 0.5253108787767682
+      },
+      {
+        "pmid": "38073491",
+        "score": 0.5232141520043379
+      },
+      {
+        "pmid": "28155088",
+        "score": 0.5221417038922942
+      },
+      {
+        "pmid": "30546102",
+        "score": 0.5164803345032928
+      },
+      {
+        "pmid": "23788646",
+        "score": 0.5050432633207548
+      },
+      {
+        "pmid": "38179971",
+        "score": 0.5021925630001544
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "**Direct mechanistic evidence linking CFTR → dysbiosis → inflammation**\n\n*CFTR loss creates a dysbiotic gut ecosystem* – Whole‑body Cftr‑KO mice develop a marked shift in fecal microbiota (↑Enterobacteriaceae, Enterococcus, Proteobacteria) together with increased intestinal permeability and mucosal inflammation; gut‑corrected (CFTR‑KO‑GC) mice retain a normal microbiota and no pathology【PMID:38554847】 (animal).  Intestinal‑specific Cftr deletion (iCftr‑KO) reproduces this phenotype: beta‑diversity changes, enrichment of Proteobacteria and pathogenic Clostridia, and a rise in fecal calprotectin despite two different anti‑obstructive diets【PMID:37546931】【PMID:38073491】 (animal).  Human systematic review of 38 studies confirms reduced diversity and a pro‑inflammatory taxonomic profile in people with CF (pwCF) compared with controls【PMID:36600119】 (human/animal/in‑vitro).\n\n*Dysbiosis drives local intestinal inflammation* – In iCftr‑KO mice, the magnitude of Proteobacteria/Enterobacteriaceae expansion correlates with elevated fecal calprotectin, a quantitative marker of intestinal inflammation【PMID:37546931】 (animal).  Antibiotic reduction of the dysbiotic load restores barrier integrity and lowers hepatic inflammation in Cftr‑KO mice, indicating that the dysbiotic community is necessary for the inflammatory response【PMID:38554847】 (animal).  In vitro, CFTR‑deficient Caco‑2 cells (CFTR‑/‑) show a suppressed IL‑1β response when exposed to propionate produced by Bacteroides; removal of propionate restores the pro‑inflammatory phenotype, linking a dysbiosis‑derived metabolite to epithelial inflammation【PMID:38179971】 (in‑vitro).\n\n*Intestinal dysbiosis/inflammation propagates systemic inflammation* – Cftr‑KO mice develop peri‑portal liver inflammation and ductular proliferation; these lesions are absent in gut‑corrected mice, demonstrating that defective intestinal CFTR and its associated dysbiosis are required for extra‑intestinal (liver) inflammation【PMID:38554847】 (animal).  Human data show that ivacaftor‑mediated CFTR potentiation decreases stool calprotectin and simultaneously enriches anti‑inflammatory taxa (Akkermansia) while reducing Enterobacteriaceae, implicating a chain from restored CFTR function → microbiota normalization → reduced intestinal inflammation【PMID:30546102】 (human).  Reviews note bidirectional links between dysbiosis and low‑grade intestinal inflammation in CF, and propose that these processes may influence lung outcomes via the gut‑lung axis【PMID:35160099】【PMID:40824057】 (human/animal).\n\n**Associations (non‑causal) and testable hypotheses**\n\n- Several human studies report a correlation between dysbiosis severity and systemic markers (e.g., CRP, pulmonary function), but causality remains unproven【PMID:36600119】 (human).  \n- The gut‑liver axis model predicts that transplanting a dysbiotic microbiota into a CFTR‑competent host will not induce liver disease unless intestinal CFTR is also deficient; this was supported by the failure of fecal transfer to cause pathology"
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 2.390146255493164e-05,
+    "vector_index": 1.459314689040184,
+    "kg_expansion": 0.00012792646884918213,
+    "answer_netmedex_hybrid_rag": 0.0,
+    "total": 1.9590073600411415
+  },
+  "token_usage": {},
+  "completed_at": "2026-08-16T19:43:24.251436+00:00"
+}

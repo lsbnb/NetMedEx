@@ -1,0 +1,2288 @@
+{
+  "status": "complete",
+  "question_id": "Q022",
+  "domain": "cardiology",
+  "question": "Which inflammatory pathways connect atrial fibrillation and fibrosis?",
+  "question_type": "mechanism",
+  "pubmed_query": "atrial fibrillation fibrosis TGF-beta IL-6 NLRP3 inflammation",
+  "effective_pubmed_query": "atrial fibrillation fibrosis TGF-beta IL-6 NLRP3 inflammation",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "41154680"
+  ],
+  "graph": {
+    "node_count": 20,
+    "edge_count": 24,
+    "cache_hit": false,
+    "cache_key": "ff4dab8721c6dd11c3bc9be8b150a5ae65d6f11d24dc02786c0193ffb8899b8f",
+    "path_count": 0,
+    "pre_gate_candidate_count": 17,
+    "pre_gate_candidates": [
+      {
+        "path": [
+          "3384bad7ed73123c796f3f85e840271cefaca08c",
+          "a27210b9f96b15483759dd379ec6f4110423afd4"
+        ],
+        "node_ids": [
+          "MESH:D005355_Disease",
+          "GO:0006954_BiologicalProcess"
+        ],
+        "names": [
+          "fibrosis",
+          "inflammation"
+        ],
+        "node_aliases": [
+          [
+            "fibrosis"
+          ],
+          [
+            "inflammation"
+          ]
+        ],
+        "relations": [
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "41154680"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "41154680",
+            "selected_quote": "These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity.",
+            "selected_confidence": 0.85,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "f8be9e871546f917544be8e196ee35233bace99f",
+              "schema_version": 1,
+              "pmid": "41154680",
+              "source_id": "GO:0006954_BiologicalProcess",
+              "target_id": "MESH:D005355_Disease",
+              "relation": "promotes",
+              "evidence": "These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity.",
+              "confidence": 0.85,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.99,
+        "base_score": 0.99,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [
+            "MESH:D005355_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D001281_Disease",
+            "MESH:D005355_Disease",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 1,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "path_signature": "915ac05641cd4894"
+      },
+      {
+        "path": [
+          "a30e6216cdb3a0263811aca910bfc5141b7d64b1",
+          "df93ab693f62e5787379f9bd39b9f285dd8b02d2"
+        ],
+        "node_ids": [
+          "MESH:D001281_Disease",
+          "MESH:D002318_Disease"
+        ],
+        "names": [
+          "atrial fibrillation",
+          "cardiovascular disease"
+        ],
+        "node_aliases": [
+          [
+            "atrial fibrillation"
+          ],
+          [
+            "Cardiovascular Disease",
+            "cardiovascular disease"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "41154680"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "This review explores the molecular and cellular mechanisms underlying cardiovascular remodeling in age-related conditions such as hypertension, atrial fibrillation, atherosclerosis, and heart failure. Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "This review explores the molecular and cellular mechanisms underlying cardiovascular remodeling in age-related conditions such as hypertension, atrial fibrillation, atherosclerosis, and heart failure. Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.92,
+        "base_score": 0.92,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [
+            "MESH:D005355_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D001281_Disease",
+            "MESH:D005355_Disease",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 2,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "path_signature": "7d0f6a8dfb6b9e98"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "a27210b9f96b15483759dd379ec6f4110423afd4"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "GO:0006954_BiologicalProcess"
+        ],
+        "names": [
+          "inflammatory",
+          "inflammation"
+        ],
+        "node_aliases": [
+          [
+            "inflammation",
+            "inflammatory"
+          ],
+          [
+            "inflammation"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "41154680"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling. These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling. These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity.",
+            "selected_confidence": 0.75,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_below_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.848,
+        "base_score": 0.848,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [
+            "MESH:D005355_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D001281_Disease",
+            "MESH:D005355_Disease",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 3,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "path_signature": "0e10592a11273a52"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "a27210b9f96b15483759dd379ec6f4110423afd4",
+          "3384bad7ed73123c796f3f85e840271cefaca08c"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "GO:0006954_BiologicalProcess",
+          "MESH:D005355_Disease"
+        ],
+        "names": [
+          "inflammatory",
+          "inflammation",
+          "fibrosis"
+        ],
+        "node_aliases": [
+          [
+            "inflammation",
+            "inflammatory"
+          ],
+          [
+            "inflammation"
+          ],
+          [
+            "fibrosis"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "41154680"
+          ],
+          [
+            "41154680"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling. These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity."
+          ],
+          [
+            "These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling. These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity.",
+            "selected_confidence": 0.75,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_below_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          },
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "41154680",
+            "selected_quote": "These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity.",
+            "selected_confidence": 0.85,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "f8be9e871546f917544be8e196ee35233bace99f",
+              "schema_version": 1,
+              "pmid": "41154680",
+              "source_id": "GO:0006954_BiologicalProcess",
+              "target_id": "MESH:D005355_Disease",
+              "relation": "promotes",
+              "evidence": "These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity.",
+              "confidence": 0.85,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.798,
+        "base_score": 0.678,
+        "anchor_bonus": 0.12,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [
+            "MESH:D005355_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D001281_Disease",
+            "MESH:D005355_Disease",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": true,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 4,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_1",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "tier_b_retrieval_only",
+        "diversity_added": false,
+        "path_signature": "d3f4e625b5bf889c"
+      },
+      {
+        "path": [
+          "3384bad7ed73123c796f3f85e840271cefaca08c",
+          "a27210b9f96b15483759dd379ec6f4110423afd4",
+          "df93ab693f62e5787379f9bd39b9f285dd8b02d2"
+        ],
+        "node_ids": [
+          "MESH:D005355_Disease",
+          "GO:0006954_BiologicalProcess",
+          "MESH:D002318_Disease"
+        ],
+        "names": [
+          "fibrosis",
+          "inflammation",
+          "cardiovascular disease"
+        ],
+        "node_aliases": [
+          [
+            "fibrosis"
+          ],
+          [
+            "inflammation"
+          ],
+          [
+            "Cardiovascular Disease",
+            "cardiovascular disease"
+          ]
+        ],
+        "relations": [
+          "promotes",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "41154680"
+          ],
+          [
+            "41154680"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity."
+          ],
+          [
+            "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "41154680",
+            "selected_quote": "These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity.",
+            "selected_confidence": 0.85,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "f8be9e871546f917544be8e196ee35233bace99f",
+              "schema_version": 1,
+              "pmid": "41154680",
+              "source_id": "GO:0006954_BiologicalProcess",
+              "target_id": "MESH:D005355_Disease",
+              "relation": "promotes",
+              "evidence": "These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity.",
+              "confidence": 0.85,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.736,
+        "base_score": 0.696,
+        "anchor_bonus": 0.04,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [
+            "MESH:D005355_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D001281_Disease",
+            "MESH:D005355_Disease",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 5,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_2",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "path_signature": "77c668065723bab2"
+      },
+      {
+        "path": [
+          "3384bad7ed73123c796f3f85e840271cefaca08c",
+          "a27210b9f96b15483759dd379ec6f4110423afd4",
+          "09de34cdad1eb6fd39b204995fee082166ba88fc"
+        ],
+        "node_ids": [
+          "MESH:D005355_Disease",
+          "GO:0006954_BiologicalProcess",
+          "MESH:D006333_Disease"
+        ],
+        "names": [
+          "fibrosis",
+          "inflammation",
+          "heart failure"
+        ],
+        "node_aliases": [
+          [
+            "fibrosis"
+          ],
+          [
+            "inflammation"
+          ],
+          [
+            "heart failure"
+          ]
+        ],
+        "relations": [
+          "promotes",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "41154680"
+          ],
+          [
+            "41154680"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity."
+          ],
+          [
+            "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling. These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "41154680",
+            "selected_quote": "These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity.",
+            "selected_confidence": 0.85,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "f8be9e871546f917544be8e196ee35233bace99f",
+              "schema_version": 1,
+              "pmid": "41154680",
+              "source_id": "GO:0006954_BiologicalProcess",
+              "target_id": "MESH:D005355_Disease",
+              "relation": "promotes",
+              "evidence": "These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity.",
+              "confidence": 0.85,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling. These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.736,
+        "base_score": 0.696,
+        "anchor_bonus": 0.04,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [
+            "MESH:D005355_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D001281_Disease",
+            "MESH:D005355_Disease",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 6,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_2",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "path_signature": "ffc4b8ac48d439ac"
+      },
+      {
+        "path": [
+          "3384bad7ed73123c796f3f85e840271cefaca08c",
+          "a27210b9f96b15483759dd379ec6f4110423afd4",
+          "2ba06ca52b9b6352652457021f73522a4e6b7888"
+        ],
+        "node_ids": [
+          "MESH:D005355_Disease",
+          "GO:0006954_BiologicalProcess",
+          "MESH:D007249_Disease"
+        ],
+        "names": [
+          "fibrosis",
+          "inflammation",
+          "inflammatory"
+        ],
+        "node_aliases": [
+          [
+            "fibrosis"
+          ],
+          [
+            "inflammation"
+          ],
+          [
+            "inflammation",
+            "inflammatory"
+          ]
+        ],
+        "relations": [
+          "promotes",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "41154680"
+          ],
+          [
+            "41154680"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity."
+          ],
+          [
+            "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling. These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "41154680",
+            "selected_quote": "These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity.",
+            "selected_confidence": 0.85,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "f8be9e871546f917544be8e196ee35233bace99f",
+              "schema_version": 1,
+              "pmid": "41154680",
+              "source_id": "GO:0006954_BiologicalProcess",
+              "target_id": "MESH:D005355_Disease",
+              "relation": "promotes",
+              "evidence": "These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity.",
+              "confidence": 0.85,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling. These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity.",
+            "selected_confidence": 0.75,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_below_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.718,
+        "base_score": 0.678,
+        "anchor_bonus": 0.04,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [
+            "MESH:D005355_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D001281_Disease",
+            "MESH:D005355_Disease",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 7,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_2",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "path_signature": "b4621304c1a947fc"
+      },
+      {
+        "path": [
+          "3384bad7ed73123c796f3f85e840271cefaca08c",
+          "a27210b9f96b15483759dd379ec6f4110423afd4",
+          "d6a30f974730e1ce5b695abb8f61019f75dcfc1b"
+        ],
+        "node_ids": [
+          "MESH:D005355_Disease",
+          "GO:0006954_BiologicalProcess",
+          "MESH:D028361_Disease"
+        ],
+        "names": [
+          "fibrosis",
+          "inflammation",
+          "mitochondrial dysfunction"
+        ],
+        "node_aliases": [
+          [
+            "fibrosis"
+          ],
+          [
+            "inflammation"
+          ],
+          [
+            "mitochondrial dysfunction"
+          ]
+        ],
+        "relations": [
+          "promotes",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "41154680"
+          ],
+          [
+            "41154680"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity."
+          ],
+          [
+            "We also highlight the role of the senescence-associated secretory phenotype and mitochondrial dysfunction in perpetuating inflammatory and fibrotic cascades."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "41154680",
+            "selected_quote": "These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity.",
+            "selected_confidence": 0.85,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "f8be9e871546f917544be8e196ee35233bace99f",
+              "schema_version": 1,
+              "pmid": "41154680",
+              "source_id": "GO:0006954_BiologicalProcess",
+              "target_id": "MESH:D005355_Disease",
+              "relation": "promotes",
+              "evidence": "These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity.",
+              "confidence": 0.85,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "We also highlight the role of the senescence-associated secretory phenotype and mitochondrial dysfunction in perpetuating inflammatory and fibrotic cascades.",
+            "selected_confidence": 0.75,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_below_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.718,
+        "base_score": 0.678,
+        "anchor_bonus": 0.04,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [
+            "MESH:D005355_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D001281_Disease",
+            "MESH:D005355_Disease",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 8,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_2",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "path_signature": "ee44a2431bfe04fc"
+      },
+      {
+        "path": [
+          "a30e6216cdb3a0263811aca910bfc5141b7d64b1",
+          "df93ab693f62e5787379f9bd39b9f285dd8b02d2",
+          "a27210b9f96b15483759dd379ec6f4110423afd4"
+        ],
+        "node_ids": [
+          "MESH:D001281_Disease",
+          "MESH:D002318_Disease",
+          "GO:0006954_BiologicalProcess"
+        ],
+        "names": [
+          "atrial fibrillation",
+          "cardiovascular disease",
+          "inflammation"
+        ],
+        "node_aliases": [
+          [
+            "atrial fibrillation"
+          ],
+          [
+            "Cardiovascular Disease",
+            "cardiovascular disease"
+          ],
+          [
+            "inflammation"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "41154680"
+          ],
+          [
+            "41154680"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "This review explores the molecular and cellular mechanisms underlying cardiovascular remodeling in age-related conditions such as hypertension, atrial fibrillation, atherosclerosis, and heart failure. Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling."
+          ],
+          [
+            "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "This review explores the molecular and cellular mechanisms underlying cardiovascular remodeling in age-related conditions such as hypertension, atrial fibrillation, atherosclerosis, and heart failure. Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.696,
+        "base_score": 0.696,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [
+            "MESH:D005355_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D001281_Disease",
+            "MESH:D005355_Disease",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 9,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1",
+          "incomplete_evidence_hop_2",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "path_signature": "1ff48f6da116653e"
+      },
+      {
+        "path": [
+          "a30e6216cdb3a0263811aca910bfc5141b7d64b1",
+          "df93ab693f62e5787379f9bd39b9f285dd8b02d2",
+          "353ff1b3d12d99cd95860baa7a0a99fefdf6a9bb"
+        ],
+        "node_ids": [
+          "MESH:D001281_Disease",
+          "MESH:D002318_Disease",
+          "MESH:D050197_Disease"
+        ],
+        "names": [
+          "atrial fibrillation",
+          "cardiovascular disease",
+          "atherosclerosis"
+        ],
+        "node_aliases": [
+          [
+            "atrial fibrillation"
+          ],
+          [
+            "Cardiovascular Disease",
+            "cardiovascular disease"
+          ],
+          [
+            "atherosclerosis"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "41154680"
+          ],
+          [
+            "41154680"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "This review explores the molecular and cellular mechanisms underlying cardiovascular remodeling in age-related conditions such as hypertension, atrial fibrillation, atherosclerosis, and heart failure. Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling."
+          ],
+          [
+            "This review explores the molecular and cellular mechanisms underlying cardiovascular remodeling in age-related conditions such as hypertension, atrial fibrillation, atherosclerosis, and heart failure. Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "This review explores the molecular and cellular mechanisms underlying cardiovascular remodeling in age-related conditions such as hypertension, atrial fibrillation, atherosclerosis, and heart failure. Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "This review explores the molecular and cellular mechanisms underlying cardiovascular remodeling in age-related conditions such as hypertension, atrial fibrillation, atherosclerosis, and heart failure. Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.682,
+        "base_score": 0.682,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [
+            "MESH:D005355_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D001281_Disease",
+            "MESH:D005355_Disease",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 10,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1",
+          "incomplete_evidence_hop_2",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "path_signature": "14d5cb69d1e598f1"
+      },
+      {
+        "path": [
+          "a30e6216cdb3a0263811aca910bfc5141b7d64b1",
+          "df93ab693f62e5787379f9bd39b9f285dd8b02d2",
+          "9893bdef877e8e673459e0fee0a5eb552257e513"
+        ],
+        "node_ids": [
+          "MESH:D001281_Disease",
+          "MESH:D002318_Disease",
+          "GO:0006979_BiologicalProcess"
+        ],
+        "names": [
+          "atrial fibrillation",
+          "cardiovascular disease",
+          "oxidative stress"
+        ],
+        "node_aliases": [
+          [
+            "atrial fibrillation"
+          ],
+          [
+            "Cardiovascular Disease",
+            "cardiovascular disease"
+          ],
+          [
+            "oxidative stress"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "41154680"
+          ],
+          [
+            "41154680"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "This review explores the molecular and cellular mechanisms underlying cardiovascular remodeling in age-related conditions such as hypertension, atrial fibrillation, atherosclerosis, and heart failure. Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling."
+          ],
+          [
+            "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "This review explores the molecular and cellular mechanisms underlying cardiovascular remodeling in age-related conditions such as hypertension, atrial fibrillation, atherosclerosis, and heart failure. Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.682,
+        "base_score": 0.682,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [
+            "MESH:D005355_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D001281_Disease",
+            "MESH:D005355_Disease",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 11,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1",
+          "incomplete_evidence_hop_2",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "path_signature": "fb1990fed39af8bc"
+      },
+      {
+        "path": [
+          "a30e6216cdb3a0263811aca910bfc5141b7d64b1",
+          "df93ab693f62e5787379f9bd39b9f285dd8b02d2",
+          "da0d0baadd2a048bafec055089135b9c949f0db7"
+        ],
+        "node_ids": [
+          "MESH:D001281_Disease",
+          "MESH:D002318_Disease",
+          "GO:0090398_BiologicalProcess"
+        ],
+        "names": [
+          "atrial fibrillation",
+          "cardiovascular disease",
+          "cellular senescence"
+        ],
+        "node_aliases": [
+          [
+            "atrial fibrillation"
+          ],
+          [
+            "Cardiovascular Disease",
+            "cardiovascular disease"
+          ],
+          [
+            "cellular senescence"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "41154680"
+          ],
+          [
+            "41154680"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "This review explores the molecular and cellular mechanisms underlying cardiovascular remodeling in age-related conditions such as hypertension, atrial fibrillation, atherosclerosis, and heart failure. Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling."
+          ],
+          [
+            "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "This review explores the molecular and cellular mechanisms underlying cardiovascular remodeling in age-related conditions such as hypertension, atrial fibrillation, atherosclerosis, and heart failure. Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.682,
+        "base_score": 0.682,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [
+            "MESH:D005355_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D001281_Disease",
+            "MESH:D005355_Disease",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 12,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1",
+          "incomplete_evidence_hop_2",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "path_signature": "154677b7866e8caa"
+      },
+      {
+        "path": [
+          "a30e6216cdb3a0263811aca910bfc5141b7d64b1",
+          "df93ab693f62e5787379f9bd39b9f285dd8b02d2",
+          "09de34cdad1eb6fd39b204995fee082166ba88fc"
+        ],
+        "node_ids": [
+          "MESH:D001281_Disease",
+          "MESH:D002318_Disease",
+          "MESH:D006333_Disease"
+        ],
+        "names": [
+          "atrial fibrillation",
+          "cardiovascular disease",
+          "heart failure"
+        ],
+        "node_aliases": [
+          [
+            "atrial fibrillation"
+          ],
+          [
+            "Cardiovascular Disease",
+            "cardiovascular disease"
+          ],
+          [
+            "heart failure"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "41154680"
+          ],
+          [
+            "41154680"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "This review explores the molecular and cellular mechanisms underlying cardiovascular remodeling in age-related conditions such as hypertension, atrial fibrillation, atherosclerosis, and heart failure. Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling."
+          ],
+          [
+            "This review explores the molecular and cellular mechanisms underlying cardiovascular remodeling in age-related conditions such as hypertension, atrial fibrillation, atherosclerosis, and heart failure. Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "This review explores the molecular and cellular mechanisms underlying cardiovascular remodeling in age-related conditions such as hypertension, atrial fibrillation, atherosclerosis, and heart failure. Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "This review explores the molecular and cellular mechanisms underlying cardiovascular remodeling in age-related conditions such as hypertension, atrial fibrillation, atherosclerosis, and heart failure. Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.682,
+        "base_score": 0.682,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [
+            "MESH:D005355_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D001281_Disease",
+            "MESH:D005355_Disease",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 13,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1",
+          "incomplete_evidence_hop_2",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "path_signature": "dbf4ad95c594be15"
+      },
+      {
+        "path": [
+          "a30e6216cdb3a0263811aca910bfc5141b7d64b1",
+          "df93ab693f62e5787379f9bd39b9f285dd8b02d2",
+          "e049a5f54bb4661a93a35ec0c0bb007739eba9ba"
+        ],
+        "node_ids": [
+          "MESH:D001281_Disease",
+          "MESH:D002318_Disease",
+          "MESH:D006973_Disease"
+        ],
+        "names": [
+          "atrial fibrillation",
+          "cardiovascular disease",
+          "hypertension"
+        ],
+        "node_aliases": [
+          [
+            "atrial fibrillation"
+          ],
+          [
+            "Cardiovascular Disease",
+            "cardiovascular disease"
+          ],
+          [
+            "hypertension"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "41154680"
+          ],
+          [
+            "41154680"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "This review explores the molecular and cellular mechanisms underlying cardiovascular remodeling in age-related conditions such as hypertension, atrial fibrillation, atherosclerosis, and heart failure. Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling."
+          ],
+          [
+            "This review explores the molecular and cellular mechanisms underlying cardiovascular remodeling in age-related conditions such as hypertension, atrial fibrillation, atherosclerosis, and heart failure. Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "This review explores the molecular and cellular mechanisms underlying cardiovascular remodeling in age-related conditions such as hypertension, atrial fibrillation, atherosclerosis, and heart failure. Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "This review explores the molecular and cellular mechanisms underlying cardiovascular remodeling in age-related conditions such as hypertension, atrial fibrillation, atherosclerosis, and heart failure. Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.682,
+        "base_score": 0.682,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [
+            "MESH:D005355_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D001281_Disease",
+            "MESH:D005355_Disease",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 14,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1",
+          "incomplete_evidence_hop_2",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "path_signature": "d8afcaef4d222e42"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "a27210b9f96b15483759dd379ec6f4110423afd4",
+          "df93ab693f62e5787379f9bd39b9f285dd8b02d2"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "GO:0006954_BiologicalProcess",
+          "MESH:D002318_Disease"
+        ],
+        "names": [
+          "inflammatory",
+          "inflammation",
+          "cardiovascular disease"
+        ],
+        "node_aliases": [
+          [
+            "inflammation",
+            "inflammatory"
+          ],
+          [
+            "inflammation"
+          ],
+          [
+            "Cardiovascular Disease",
+            "cardiovascular disease"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "41154680"
+          ],
+          [
+            "41154680"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling. These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity."
+          ],
+          [
+            "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling. These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity.",
+            "selected_confidence": 0.75,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_below_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.678,
+        "base_score": 0.678,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [
+            "MESH:D005355_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D001281_Disease",
+            "MESH:D005355_Disease",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 15,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1",
+          "incomplete_evidence_hop_2",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "path_signature": "781f49d63f1cd50d"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "a27210b9f96b15483759dd379ec6f4110423afd4",
+          "09de34cdad1eb6fd39b204995fee082166ba88fc"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "GO:0006954_BiologicalProcess",
+          "MESH:D006333_Disease"
+        ],
+        "names": [
+          "inflammatory",
+          "inflammation",
+          "heart failure"
+        ],
+        "node_aliases": [
+          [
+            "inflammation",
+            "inflammatory"
+          ],
+          [
+            "inflammation"
+          ],
+          [
+            "heart failure"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "41154680"
+          ],
+          [
+            "41154680"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling. These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity."
+          ],
+          [
+            "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling. These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling. These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity.",
+            "selected_confidence": 0.75,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_below_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling. These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.678,
+        "base_score": 0.678,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [
+            "MESH:D005355_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D001281_Disease",
+            "MESH:D005355_Disease",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 16,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1",
+          "incomplete_evidence_hop_2",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "path_signature": "344bf14c9a69cad2"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "a27210b9f96b15483759dd379ec6f4110423afd4",
+          "d6a30f974730e1ce5b695abb8f61019f75dcfc1b"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "GO:0006954_BiologicalProcess",
+          "MESH:D028361_Disease"
+        ],
+        "names": [
+          "inflammatory",
+          "inflammation",
+          "mitochondrial dysfunction"
+        ],
+        "node_aliases": [
+          [
+            "inflammation",
+            "inflammatory"
+          ],
+          [
+            "inflammation"
+          ],
+          [
+            "mitochondrial dysfunction"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "41154680"
+          ],
+          [
+            "41154680"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling. These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity."
+          ],
+          [
+            "We also highlight the role of the senescence-associated secretory phenotype and mitochondrial dysfunction in perpetuating inflammatory and fibrotic cascades."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "Central to this process are chronic low-grade inflammation (inflammaging), oxidative stress, cellular senescence, and maladaptive extracellular matrix remodeling. These hallmarks of aging interact to impair endothelial function, promote fibrosis, and compromise cardiac and vascular integrity.",
+            "selected_confidence": 0.75,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_below_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41154680",
+            "selected_quote": "We also highlight the role of the senescence-associated secretory phenotype and mitochondrial dysfunction in perpetuating inflammatory and fibrotic cascades.",
+            "selected_confidence": 0.75,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_below_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.678,
+        "base_score": 0.678,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [
+            "MESH:D005355_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D001281_Disease",
+            "MESH:D005355_Disease",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 17,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1",
+          "incomplete_evidence_hop_2",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "path_signature": "205eca3aa53d4e30"
+      }
+    ],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": true,
+    "max_hops": 4,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "gate_evidence_paths": true,
+    "gate_tier_counts": {
+      "A": 0,
+      "B": 1,
+      "C": 0
+    },
+    "rescue_triggered": true,
+    "rescue_added_paths": 0,
+    "rescue_outcomes": [
+      "tier_b_retrieval_only"
+    ],
+    "pre_gate_candidate_count": 17,
+    "node_ids": [
+      "MESH:D005355_Disease",
+      "MESH:D007249_Disease",
+      "MESH:D001281_Disease"
+    ],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "exposure_signature": "cdeec80ea79808c4",
+    "routed_profile": "H_evidence_gated_four_hop",
+    "route_reason": "question_type=mechanism",
+    "question_type": "mechanism",
+    "graph_retrieval_query": "Which inflammatory pathways connect atrial fibrillation and fibrosis?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "41154680",
+        "score": 0.49579845988546517
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "41154680",
+        "score": 0.49579845988546517
+      }
+    ]
+  },
+  "answers": {},
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 17.881670750677586,
+    "vector_index": 0.7842464298009872,
+    "kg_expansion": 3.180652856826782e-05,
+    "total": 22.021386712789536
+  },
+  "token_usage": {
+    "total_tokens": 4590,
+    "input_tokens": 1590,
+    "output_tokens": 3000
+  },
+  "completed_at": "2026-08-13T10:36:43.426485+00:00"
+}

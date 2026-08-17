@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "Q041",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "79d33775708c85d33687993972fd71cd6962e4ffb939dba4824c7b1c2dd44d98",
+  "raw_response_sha256": "2764f9e70ca89e2ab0806cfbf6c4d1b73d004fa14ca4232e635083d95140575f",
+  "usage": {
+    "input_tokens": 3036,
+    "output_tokens": 546,
+    "total_tokens": 3582
+  },
+  "rated_at": "2026-08-13T04:38:31.224145+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q041-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "詳列人、動物、細胞證據，機制與文獻對應明確，假說與臨床前驗證建議具研究價值。"
+      },
+      {
+        "answer_id": "Q041-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "證據分層清楚，機制與信號路徑具體，動物與細胞證據區分明確，假說具驗證性。"
+      },
+      {
+        "answer_id": "Q041-C",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "機制描述合理但缺乏具體文獻與實驗分層，部分推論未明確標示證據層級。"
+      },
+      {
+        "answer_id": "Q041-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "證據分類明確，機制與信號路徑詳盡，引用具體，假說與臨床前驗證具研究價值。"
+      }
+    ],
+    "preferred_item_id": "tie",
+    "pairwise_reason": "A、B、D三者皆有明確分層（細胞、動物、臨床）、機制詳盡、文獻對應正確且具研究啟發性，難分軒輊。C雖合理但細節與證據層級較弱。"
+  }
+}

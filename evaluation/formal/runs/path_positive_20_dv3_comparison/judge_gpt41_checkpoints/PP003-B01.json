@@ -1,0 +1,51 @@
+{
+  "task": "answer",
+  "question_id": "PP003",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "ee579eeb0626d2543a413c9e8afc3ef2c48fbf7db73eaa5bec2fb422bdbb189a",
+  "raw_response_sha256": "13905c477e765f2007011ac75f5cbdf58953b0aa016edcef7e9054af4e84ba20",
+  "usage": {
+    "input_tokens": 1930,
+    "output_tokens": 394,
+    "total_tokens": 2324
+  },
+  "rated_at": "2026-08-13T10:31:21.266376+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP003-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurately distinguishes human, animal, and in vitro evidence; details mechanisms and limitations; well-grounded with specific PMIDs; no unsupported claims."
+      },
+      {
+        "answer_id": "PP003-B",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Correct and well-grounded, but slightly less detailed on study limitations and mechanistic diversity than A or C; clear distinction of evidence types."
+      },
+      {
+        "answer_id": "PP003-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, clearly distinguishes evidence types, mechanisms, and limitations; includes nuanced discussion of confounders and translational gaps."
+      }
+    ],
+    "preferred_item_id": "PP003-C",
+    "pairwise_reason": "PP003-C is the most comprehensive, clearly distinguishing between evidence types, mechanisms, and study limitations, and adds nuanced discussion of confounders and translational gaps. PP003-A is also strong, but C provides slightly more detail and critical analysis. PP003-B is accurate but less detailed."
+  }
+}

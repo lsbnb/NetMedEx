@@ -1,0 +1,28 @@
+{
+  "name": "netmedex-controlled-bridge-pilot-v1",
+  "status": "frozen_before_semantic_graph_generation",
+  "frozen_at": "2026-08-09T17:53:17.283432+00:00",
+  "independent_holdout": false,
+  "same_corpus_for_text_and_hybrid": true,
+  "mediators_used_only_for_corpus_construction": true,
+  "endpoint_co_mention_forbidden_per_article": true,
+  "query_spec": "evaluation/formal/controlled_bridge_query_spec_pilot_v1.json",
+  "query_spec_sha256": "feaa21b48ca278ce8124dd1ae6af10c7174aed26bc80be63e34ff78d0fb64822",
+  "questions": [
+    {
+      "question_id": "BW008",
+      "document_count": 15,
+      "eligible_mediators": [
+        "STAT1",
+        "cirrhosis"
+      ],
+      "corpus_sha256": "44f303da0ae8e8826d84659e0aeeff0b833c03e2bd334d9fcb12f586e1628f65"
+    }
+  ],
+  "checksums": {
+    "queries.csv": "60fbf24662a45e7b2805da07235e0cab07c4898ad473a706a5777d06cb3ae7c7",
+    "questions_metadata.csv": "2899303761eb22c14505aba545b1ff3058b737dca20d681b5738ac6aecc2b76e",
+    "questions/BW008/corpus.pubtator": "44f303da0ae8e8826d84659e0aeeff0b833c03e2bd334d9fcb12f586e1628f65",
+    "questions/BW008/corpus_manifest.json": "85cc9c21100bc2d42ac4c6423a1521dcb20d65c32c89d4e5c13138f036c1beb6"
+  }
+}

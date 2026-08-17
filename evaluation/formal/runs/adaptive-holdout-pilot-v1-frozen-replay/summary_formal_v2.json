@@ -1,0 +1,27 @@
+{
+  "input_dir": "evaluation/formal/runs/adaptive-holdout-pilot-v1-frozen-replay",
+  "metrics": {
+    "retrieval": {
+      "netmedex_hybrid_rag": {
+        "precision_at_5": 0.6667,
+        "recall_at_10": 0.3704,
+        "ndcg_at_10": 0.4256,
+        "judged_at_10": 1.0,
+        "unjudged_at_10": 0.0,
+        "returned_at_10": 0.3667,
+        "bpref": 0.6667,
+        "bpref_evaluable_questions": 1
+      },
+      "traditional_rag": {
+        "precision_at_5": 0.6667,
+        "recall_at_10": 0.3704,
+        "ndcg_at_10": 0.4256,
+        "judged_at_10": 1.0,
+        "unjudged_at_10": 0.0,
+        "returned_at_10": 0.3667,
+        "bpref": 0.6667,
+        "bpref_evaluable_questions": 1
+      }
+    }
+  }
+}

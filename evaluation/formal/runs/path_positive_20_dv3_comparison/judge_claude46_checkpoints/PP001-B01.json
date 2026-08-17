@@ -1,0 +1,53 @@
+{
+  "task": "answer",
+  "question_id": "PP001",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "d95fae7ebe73eedc594818275504601adfd683d541e880072cdcdd05803e4d79",
+  "raw_response_sha256": "0710a9fe0d32ca7f871cf1cc8ceaf8621fc8b61b765b2cbcbf78a448e79f41b5",
+  "usage": {
+    "input_tokens": 2736,
+    "output_tokens": 487,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 3223
+  },
+  "rated_at": "2026-08-13T10:31:16.082160+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP001-A",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Solid evidence coverage with valid PMIDs; answer appears truncated mid-sentence. Limitations section missing. Misses circ_0000349/JMJD3 axis and Wnt/β-catenin detail."
+      },
+      {
+        "answer_id": "PP001-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive: in vitro, in vivo, mechanistic pathways, limitations, testable hypothesis, novel PMID:38045146 and PMID:39588260. Well-structured and grounded with specific PMIDs throughout."
+      },
+      {
+        "answer_id": "PP001-C",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Strong mechanistic detail and valid PMIDs; appears truncated before limitations section. Covers human and murine evidence well; missing explicit limitations discussion reduces completeness."
+      }
+    ],
+    "preferred_item_id": "PP001-B",
+    "pairwise_reason": "PP001-B is the most complete response: it covers all major evidence streams with specific PMIDs, includes a clearly articulated limitations section, adds a testable hypothesis for future research, and is not truncated—making it the highest research value answer."
+  }
+}

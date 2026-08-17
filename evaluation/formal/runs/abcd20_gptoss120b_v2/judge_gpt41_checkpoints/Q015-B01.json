@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "Q015",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "cfacd1fed15e8f96c9885633447d93c1358503bc030341e80dc6133189492ec9",
+  "raw_response_sha256": "fba4c79a4cf524c29ec3c0763eeb749265ce87b4b2d89fd432e10eefb532e380",
+  "usage": {
+    "input_tokens": 3562,
+    "output_tokens": 518,
+    "total_tokens": 4080
+  },
+  "rated_at": "2026-08-13T04:38:04.981646+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q015-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate, well-grounded, human-focused, mechanistically detailed, and highly relevant. Cites primary literature and clearly distinguishes gene roles and evidence."
+      },
+      {
+        "answer_id": "Q015-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Thorough, mechanistically precise, and well-referenced. Clearly distinguishes human evidence, covers multiple plausible 2-hop paths, and adds research value."
+      },
+      {
+        "answer_id": "Q015-C",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate and well-grounded, with clear mechanistic links and testable hypotheses. Slightly less comprehensive in gene/pathway coverage than A/B."
+      },
+      {
+        "answer_id": "Q015-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Covers canonical and less-discussed 2-hop paths, including speculative links. Slightly less direct citation of human evidence for some chains."
+      }
+    ],
+    "preferred_item_id": "Q015-B",
+    "pairwise_reason": "Q015-B is preferred for its clarity, explicit distinction of human evidence, comprehensive coverage of canonical and alternative 2-hop gene paths, and precise mechanistic explanations. Q015-A is nearly equivalent but slightly less explicit in distinguishing evidence types. Q015-C is strong but less comprehensive. Q015-D is innovative but less grounded in direct human evidence for some links."
+  }
+}

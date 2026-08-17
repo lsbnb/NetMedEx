@@ -1,0 +1,137 @@
+##USE-MESH-VOCABULARY
+40320752|t|AlphaFold2 SLiM screen for LC3-LIR interactions in autophagy.
+40320752|a|In selective macroautophagy/autophagy, cargo recruitment is mediated by MAP1LC3/LC3-interacting regions (LIRs)/Atg8-family interacting motifs (AIMs) in the cargo or cargo receptor proteins. The binding of these motifs to LC3/Atg8 proteins at the phagophore membrane is often modulated by post-translational modifications, especially phosphorylation. As a challenge for computational LIR predictions, sequences may contain the short canonical (W/F/Y)XX(L/I/V) motif without being functional. Conversely, LIRs may be formed by non-canonical but functional sequence motifs. AlphaFold2 has proven to be useful for LIR predictions, even if some LIRs are missed and proteins with thousands of residues reach the limits of computational feasibility. We present a fragment-based approach to address these limitations. We find that fragment length and phosphomimetic mutations modulate the interactions predicted by AlphaFold2. Systematic fragment screening for a range of target proteins yields structural models for interactions that AlphaFold2 and AlphaFold3 fail to predict for full-length targets. We provide guidance on fragment choice, sequence tuning, LC3 isoform effects, and scoring for optimal LIR screens. Finally, we also test the transferability of this general framework to SUMO-SIM interactions, another type of protein-protein interaction involving short linear motifs (SLiMs).Abbreviations: 2-HP-LIR: ncLIR binding either or both HPs with non-canonical residues; AIM: Atg8-family interacting motif; ap. LIR: antiparallel LIR; A.t.; Arabidopsis thaliana; AT5G06830/C53 (A.t.): CDK5RAP3-like protein; Atg8/ATG8: autophagy related 8, in yeast and plants, respectively; ATG8CL: ATG8C-like of Solanum tuberosum (potato); ATG8E: ATG8e of A.t.; Av. num. of contacts: average number of heavy atom contacts; BCL2: BCL2 apoptosis regulator; BNIP3: BCL2 interacting protein 3; CALCOCO2/NDP52: calcium binding and coiled-coil domain 2; CALR: calreticulin; can. LIR: canonical LIR; CDF: cumulative distribution function; CDK5RAP3/C53 (H.s.): CDK5 regulatory subunit associated protein 3; [DE]W[DE]-LIR: TRIM5-like ncLIR; DSK2A: ubiquitin domain-containing protein DSK2a; FUNDC1: FUN14 domain containing 1; GABARAP: GABA type A receptor-associated protein; HP0/1/2: hydrophobic pocket 0/1/2; HP0-LIR: ncLIR engaging HP0; H.s.; Homo sapiens; lcLIR: low-confidence LIR (ncLIR not similar to previously characterized ncLIRs); LDS: LIR-docking site; LIR: LC3-interacting region; LO score: length-weighted fraction of occurrence score; MAP1LC3/LC3: microtubule associated protein 1 light chain 3; MAP1LC3B/LC3B: microtubule associated protein 1 light chain 3 beta; MD: molecular dynamics; MEFV/pyrin: MEFV innate immunity regulator, pyrin; minPAE: minimum PAE; MSA: multiple sequence alignment; ncLIR: non-canonical LIR; NPC: nuclear pore complex; Nup159: nucleoporin 159; NUP214: nucleoporin 214; OPTN: optineurin; other@LDS: other interaction proximal to the LIR-docking site; PAE: predicted aligned error; PDCD6IP: programmed cell death 6 interacting protein; PDF: probability distribution function; pLDDT: predicted local-distance difference test; PLEKHM1: pleckstrin homology and RUN domain containing M1; PTM: post-translational modification; sAIM: shuffled AIM (ncLIR with shuffled motif); seq.: sequence; SIM: SUMO-interacting motif; SLiM: short linear motif; SMN1/SMN: survival of motor neuron 1, telomeric; ST: phosphomimetic; STBD1: starch binding domain 1; STK3: serine/threonine kinase 3; SUMO: small ubiquitin like modifier; TBC1D2/TBC1D2A: TBC1 domain family member 2; TEX264: testis expressed 264, ER-phagy receptor; TRIM5/TRIM5alpha: tripartite motif-containing protein 5; UDS: UIM-docking site; UIM: ubiquitin-interacting motif; UIMC1/RAP80: ubiquitin interaction motif containing 1; ULK1: unc-51 like autophagy activating kinase 1; ULK2: unc-51 like autophagy activating kinase 2; WT: wild type.
+40320752	1603	1623	Arabidopsis thaliana	Species	3702
+40320752	1705	1710	yeast	Species	4932
+40320752	1745	1750	p.M8C	ProteinMutation	tmVar:p|SUB|M|8|C;HGVS:p.M8C;VariantGroup:0;CorrespondingGene:102603479;CorrespondingSpecies:4113
+40320752	1778	1784	potato	Species	4113
+40320752	2001	2013	LOC102603479	Gene	102603479
+40320752	3070	3113	LOC102589109	Gene	102589109
+40320752	3527	3543	#102603479#	ProteinMutation	tmVar:p|SUB|S||T;VariantGroup:1;CorrespondingGene:102603479;CorrespondingSpecies:4113
+
+40701479|t|Bicaudal-C plays a critical role in regulating oogenesis in the lepidopteran insect Bombyx mori.
+40701479|a|Oogenesis is an intricate cellular specialization process that requires the precise expression of multiple genes. However, the functional genes and mechanisms contributing to lepidopteran oogenesis remain incompletely understood. In silkworm, the eggless mutant (smn) has a typical oogenesis disorder phenotype. In smn females, oocyte development is delayed, causing follicle degeneration and the absence of mature eggs in virgin ovarioles. Here, we revealed that BmBic-C, an ortholog of Drosophila melanogaster Bicaudal-C (BicC), is responsible for smn. BmBic-C expression was significantly downregulated in smn, likely due to an Organdy transposon insertion upstream of BmBic-C. CRISPR/Cas9-mediated knockout of BmBic-C results in a no-egg phenotype consistent with smn. BmBic-C deficiency reduces the absorption efficiency of vitellogenin, a key factor in egg development. A comparative proteomic analysis between the DeltaBmBic-C and control strains revealed 633 differentially expressed proteins (DEPs). Gene Ontology (GO) enrichment and Kyoto Encyclopedia of Genes and Genomes (KEGG) pathway analyses of the DEPs suggested that BmBic-C might contribute to ovarian cell development and survival through signal transduction, autophagy, and other pathways. Moreover, BmBic-C dysfunction triggers the apoptosis cascade, highlighting the essential role of BmBic-C in regulating ovarian homeostasis and cell fate. Phylogenetic and selection pressure analyses revealed that Bic-C is highly conserved across lepidopteran species and has undergone purifying selection throughout evolution, suggesting that Bic-C is a key component in organism survival and reproductive regulation. This study provides novel insights into oogenesis and lays a foundation for precision lepidopteran pest control against species-specific genomic/coding variable regions.
+40701479	84	95	Bombyx mori	Species	7091
+40701479	330	338	silkworm	Species	7091
+40701479	379	397	Congenital Hereditary and Neonatal Diseases and Abnormalities	Disease	MESH:D009358
+40701479	585	608	Drosophila melanogaster	Species	7227
+
+36762938|t|An Overview of the Therapeutic Strategies for the Treatment of Spinal Muscular Atrophy.
+36762938|a|Spinal muscular atrophy (SMA) is a recessive, neurodegenerative disorder. It is one of the most common genetic causes of infant mortality and is characterized by muscle weakness, loss of ambulation, and respiratory failure. SMA is primarily caused by a homozygous deletion or mutation of the survival motor neuron 1 (SMN1) gene. Humans possess a second, nearly identical copy of SMN, known as the SMN2 gene. Although the disease severity correlates inversely with the number of SMN2 copies present, it can never completely compensate for the loss of SMN1 in patients with SMA; SMN2 expresses only a fraction of the functional SMN transcript. The SMN protein is ubiquitous in human cells and plays several roles, ranging from assembling the spliceosome machinery to autophagy, RNA metabolism, signal transduction, cellular homeostasis, DNA repair, and recombination. Although the underlying mechanism remains unclear, anterior horn cells of the spinal cord gray matter are highly vulnerable to decreased SMN protein levels. To harness SMN2's ability to provide SMN function, two treatment strategies have been approved by the Food and Drug Administration (FDA), including an antisense oligonucleotide, nusinersen (Spinraza), and a small molecule, risdiplam (Evrysdi). Onasemnogene abeparvovec (Zolgensma) is an FDA-approved adeno-associated virus 9-mediated gene replacement therapy that creates a copy of the human SMN1 gene. In this review, we summarize the SMA etiology and FDA-approved therapies, and discuss the development of SMA therapeutic strategies and the challenges we faced.
+36762938	63	86	Muscular Atrophy Spinal	Disease	MESH:D009134
+36762938	88	111	Muscular Atrophy Spinal	Disease	MESH:D009134
+36762938	113	116	Muscular Atrophy Spinal	Disease	MESH:D009134
+36762938	123	160	Neurodegenerative Diseases	Disease	MESH:D019636
+36762938	250	265	Muscle Weakness	Disease	MESH:D018908
+36762938	267	285	Mobility Limitation	Disease	MESH:D051346
+36762938	291	310	Respiratory Insufficiency	Disease	MESH:D012131
+36762938	312	315	Muscular Atrophy Spinal	Disease	MESH:D009134
+36762938	380	403	SMN1	Gene	6606
+36762938	405	409	SMN1	Gene	6606
+36762938	417	423	Humans	Species	9606
+36762938	467	470	SMN1	Gene	6606
+36762938	485	489	SMN2	Gene	6607
+36762938	566	570	SMN2	Gene	6607
+36762938	638	642	SMN1	Gene	6606
+36762938	646	654	patients	Species	9606
+36762938	660	663	Muscular Atrophy Spinal	Disease	MESH:D009134
+36762938	665	669	SMN2	Gene	6607
+36762938	714	717	SMN1	Gene	6606
+36762938	734	737	SMN1	Gene	6606
+36762938	763	768	human	Species	9606
+36762938	1091	1094	SMN1	Gene	6606
+36762938	1122	1126	SMN2	Gene	6607
+36762938	1148	1151	SMN1	Gene	6606
+36762938	1272	1287	Oligonucleotides	Chemical	MESH:D009841
+36762938	1289	1299	nusinersen	Chemical	MESH:C000590926
+36762938	1301	1309	nusinersen	Chemical	MESH:C000590926
+36762938	1334	1343	Risdiplam	Chemical	MESH:C000629884
+36762938	1345	1352	Risdiplam	Chemical	MESH:C000629884
+36762938	1368	1379	abeparvovec	Chemical	-
+36762938	1411	1435	adeno-associated virus 9	Chemical	-
+36762938	1497	1502	human	Species	9606
+36762938	1503	1507	SMN1	Gene	6606
+36762938	1547	1550	Muscular Atrophy Spinal	Disease	MESH:D009134
+36762938	1619	1622	Muscular Atrophy Spinal	Disease	MESH:D009134
+36762938	Negative_Correlation	MESH:C000590926	6607
+36762938	Association	MESH:D009134	6606
+36762938	Negative_Correlation	MESH:C000590926	MESH:D009134
+36762938	Bind	6606	6607
+
+28190529|t|Mitophagy and Alzheimer's Disease: Cellular and Molecular Mechanisms.
+28190529|a|Neurons affected in Alzheimer's disease (AD) experience mitochondrial dysfunction and a bioenergetic deficit that occurs early and promotes the disease-defining amyloid beta peptide (Abeta) and Tau pathologies. Emerging findings suggest that the autophagy/lysosome pathway that removes damaged mitochondria (mitophagy) is also compromised in AD, resulting in the accumulation of dysfunctional mitochondria. Results in animal and cellular models of AD and in patients with sporadic late-onset AD suggest that impaired mitophagy contributes to synaptic dysfunction and cognitive deficits by triggering Abeta and Tau accumulation through increases in oxidative damage and cellular energy deficits; these, in turn, impair mitophagy. Interventions that bolster mitochondrial health and/or stimulate mitophagy may therefore forestall the neurodegenerative process in AD.
+28190529	14	33	Alzheimer Disease	Disease	MESH:D000544
+28190529	90	109	Alzheimer Disease	Disease	MESH:D000544
+28190529	111	113	Alzheimer Disease	Disease	MESH:D000544
+28190529	126	151	Mitochondrial Diseases	Disease	MESH:D028361
+28190529	253	258	APP	Gene	351
+28190529	264	267	MAPT	Gene	4137
+28190529	412	414	Alzheimer Disease	Disease	MESH:D000544
+28190529	518	520	Alzheimer Disease	Disease	MESH:D000544
+28190529	528	536	patients	Species	9606
+28190529	562	564	Alzheimer Disease	Disease	MESH:D000544
+28190529	612	632	Night blindness congenital stationary	Disease	MESH:C536122
+28190529	637	655	Cognition Disorders	Disease	MESH:D003072
+28190529	670	675	APP	Gene	351
+28190529	680	683	MAPT	Gene	4137
+28190529	902	919	Neurodegenerative Diseases	Disease	MESH:D019636
+28190529	931	933	Alzheimer Disease	Disease	MESH:D000544
+28190529	Positive_Correlation	MESH:C536122	351
+28190529	Association	MESH:D000544	351
+
+25722131|t|ROS and Autophagy: Interactions and Molecular Regulatory Mechanisms.
+25722131|a|Reactive oxygen species (ROS) and antioxidant ingredients are a series of crucial signaling molecules in oxidative stress response. Under some pathological conditions such as traumatic brain injury, ischemia/reperfusion, and hypoxia in tumor, the relative excessive accumulation of ROS could break cellular homeostasis, resulting in oxidative stress and mitochondrial dysfunction. Meanwhile, autophagy is also induced. In this process, oxidative stress could promote the formation of autophagy. Autophagy, in turn, may contribute to reduce oxidative damages by engulfing and degradating oxidized substance. This short review summarizes these interactions between ROS and autophagy in related pathological conditions referred to as above with a focus on discussing internal regulatory mechanisms. The tight interactions between ROS and autophagy reflected in two aspects: the induction of autophagy by oxidative stress and the reduction of ROS by autophagy. The internal regulatory mechanisms of autophagy by ROS can be summarized as transcriptional and post-transcriptional regulation, which includes various molecular signal pathways such as ROS-FOXO3-LC3/BNIP3-autophagy, ROS-NRF2-P62-autophagy, ROS-HIF1-BNIP3/NIX-autophagy, and ROS-TIGAR-autophagy. Autophagy also may regulate ROS levels through several pathways such as chaperone-mediated autophagy pathway, mitophagy pathway, and P62 delivery pathway, which might provide a further theoretical basis for the pathogenesis of the related diseases and still need further research. 
+25722131	0	3	Reactive Oxygen Species	Chemical	MESH:D017382
+25722131	69	92	Reactive Oxygen Species	Chemical	MESH:D017382
+25722131	94	97	Reactive Oxygen Species	Chemical	MESH:D017382
+25722131	244	266	Brain Injuries Traumatic	Disease	MESH:D000070642
+25722131	268	276	Ischemia	Disease	MESH:D007511
+25722131	294	301	Hypoxia	Disease	MESH:D000860
+25722131	305	310	Neoplasms	Disease	MESH:D009369
+25722131	351	354	Reactive Oxygen Species	Chemical	MESH:D017382
+25722131	423	448	Mitochondrial Diseases	Disease	MESH:D028361
+25722131	732	735	Reactive Oxygen Species	Chemical	MESH:D017382
+25722131	896	899	Reactive Oxygen Species	Chemical	MESH:D017382
+25722131	1008	1011	Reactive Oxygen Species	Chemical	MESH:D017382
+25722131	1077	1080	Reactive Oxygen Species	Chemical	MESH:D017382
+25722131	1212	1215	Reactive Oxygen Species	Chemical	MESH:D017382
+25722131	1216	1221	FOXO3	Gene	2309
+25722131	1222	1225	MAP1LC3A	Gene	84557
+25722131	1226	1231	BNIP3	Gene	664
+25722131	1243	1246	Reactive Oxygen Species	Chemical	MESH:D017382
+25722131	1247	1251	NFE2L2	Gene	4780
+25722131	1252	1255	NUP62	Gene	23636
+25722131	1267	1270	Reactive Oxygen Species	Chemical	MESH:D017382
+25722131	1271	1275	HIF1A	Gene	3091
+25722131	1276	1281	BNIP3	Gene	664
+25722131	1282	1285	BNIP3L	Gene	665
+25722131	1301	1304	Reactive Oxygen Species	Chemical	MESH:D017382
+25722131	1305	1310	TIGAR	Gene	57103
+25722131	1350	1353	Reactive Oxygen Species	Chemical	MESH:D017382
+25722131	1455	1458	NUP62	Gene	23636
+25722131	Association	MESH:D017382	23636
+25722131	Association	MESH:D017382	665
+25722131	Positive_Correlation	MESH:D017382	MESH:D028361
+25722131	Association	MESH:D017382	MESH:D000860
+25722131	Association	MESH:D017382	MESH:D009369
+25722131	Association	MESH:D017382	4780
+25722131	Association	MESH:D017382	3091
+25722131	Association	MESH:D017382	57103
+25722131	Association	MESH:D017382	2309
+25722131	Association	MESH:D017382	84557
+25722131	Association	MESH:D017382	664
+25722131	Association	MESH:D017382	MESH:D000070642
+
+35534453|t|Mitochondrial autophagy: molecular mechanisms and implications for cardiovascular disease.
+35534453|a|Mitochondria are highly dynamic organelles that participate in ATP generation and involve calcium homeostasis, oxidative stress response, and apoptosis. Dysfunctional or damaged mitochondria could cause serious consequences even lead to cell death. Therefore, maintaining the homeostasis of mitochondria is critical for cellular functions. Mitophagy is a process of selectively degrading damaged mitochondria under mitochondrial toxicity conditions, which plays an essential role in mitochondrial quality control. The abnormal mitophagy that aggravates mitochondrial dysfunction is closely related to the pathogenesis of many diseases. As the myocardium is a highly oxidative metabolic tissue, mitochondria play a central role in maintaining optimal performance of the heart. Dysfunctional mitochondria accumulation is involved in the pathophysiology of cardiovascular diseases, such as myocardial infarction, cardiomyopathy and heart failure. This review discusses the most recent progress on mitophagy and its role in cardiovascular disease.
+35534453	67	89	Cardiovascular Diseases	Disease	MESH:D002318
+35534453	154	157	Adenosine Triphosphate	Chemical	MESH:D000255
+35534453	181	188	Calcium	Chemical	MESH:D002118
+35534453	506	528	Mitochondrial Diseases	Disease	MESH:D028361
+35534453	644	669	Mitochondrial Diseases	Disease	MESH:D028361
+35534453	867	893	Myopathy with Giant Abnormal Mitochondria	Disease	MESH:C564971
+35534453	945	968	Cardiovascular Diseases	Disease	MESH:D002318
+35534453	978	999	Myocardial Infarction	Disease	MESH:D009203
+35534453	1001	1015	Cardiomyopathies	Disease	MESH:D009202
+35534453	1020	1033	Heart Failure	Disease	MESH:D006333
+35534453	1111	1133	Cardiovascular Diseases	Disease	MESH:D002318

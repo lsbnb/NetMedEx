@@ -1,0 +1,626 @@
+##USE-MESH-VOCABULARY
+23254930|t|NLRP3 is activated in Alzheimer's disease and contributes to pathology in APP/PS1 mice.
+23254930|a|Alzheimer's disease is the world's most common dementing illness. Deposition of amyloid-beta peptide drives cerebral neuroinflammation by activating microglia. Indeed, amyloid-beta activation of the NLRP3 inflammasome in microglia is fundamental for interleukin-1beta maturation and subsequent inflammatory events. However, it remains unknown whether NLRP3 activation contributes to Alzheimer's disease in vivo. Here we demonstrate strongly enhanced active caspase-1 expression in human mild cognitive impairment and brains with Alzheimer's disease, suggesting a role for the inflammasome in this neurodegenerative disease. Nlrp3(-/-) or Casp1(-/-) mice carrying mutations associated with familial Alzheimer's disease were largely protected from loss of spatial memory and other sequelae associated with Alzheimer's disease, and demonstrated reduced brain caspase-1 and interleukin-1beta activation as well as enhanced amyloid-beta clearance. Furthermore, NLRP3 inflammasome deficiency skewed microglial cells to an M2 phenotype and resulted in the decreased deposition of amyloid-beta in the APP/PS1 model of Alzheimer's disease. These results show an important role for the NLRP3/caspase-1 axis in the pathogenesis of Alzheimer's disease, and suggest that NLRP3 inflammasome inhibition represents a new therapeutic intervention for the disease.
+23254930	0	5	Nlrp3	Gene	216799
+23254930	22	41	Alzheimer Disease	Disease	MESH:D000544
+23254930	78	81	Psen1	Gene	19164
+23254930	82	86	mice	Species	10090
+23254930	88	107	Alzheimer Disease	Disease	MESH:D000544
+23254930	135	152	Chronic Disease	Disease	MESH:D002908
+23254930	196	222	Neuroinflammatory Diseases	Disease	MESH:D000090862
+23254930	256	268	APP	Gene	351
+23254930	287	292	DFNA34	Gene	114548
+23254930	338	355	IL1B	Gene	3553
+23254930	382	394	Inflammation	Disease	MESH:D007249
+23254930	439	444	Nlrp3	Gene	216799
+23254930	471	490	Alzheimer Disease	Disease	MESH:D000544
+23254930	545	554	CASP1	Gene	834
+23254930	569	574	human	Species	9606
+23254930	580	600	Cognition Disorders	Disease	MESH:D003072
+23254930	617	636	Alzheimer Disease	Disease	MESH:D000544
+23254930	685	710	Neurodegenerative Diseases	Disease	MESH:D019636
+23254930	712	717	Nlrp3	Gene	216799
+23254930	726	731	Casp1	Gene	12362
+23254930	737	741	mice	Species	10090
+23254930	786	805	Alzheimer Disease	Disease	MESH:D000544
+23254930	834	856	Memory Disorders	Disease	MESH:D008569
+23254930	892	911	Alzheimer Disease	Disease	MESH:D000544
+23254930	944	953	Casp1	Gene	12362
+23254930	958	975	Il1b	Gene	16176
+23254930	1007	1019	APP	Gene	351
+23254930	1044	1049	Nlrp3	Gene	216799
+23254930	1161	1173	APP	Gene	351
+23254930	1185	1188	Psen1	Gene	19164
+23254930	1198	1217	Alzheimer Disease	Disease	MESH:D000544
+23254930	1264	1269	Nlrp3	Gene	216799
+23254930	1270	1279	Casp1	Gene	12362
+23254930	1308	1327	Alzheimer Disease	Disease	MESH:D000544
+23254930	1346	1351	Nlrp3	Gene	216799
+23254930	Association	MESH:D007249	114548
+23254930	Positive_Correlation	114548	351
+23254930	Association	114548	3553
+23254930	Association	MESH:D008569	12362
+23254930	Association	351	3553
+23254930	Positive_Correlation	MESH:D000544	834
+23254930	Association	MESH:D000544	12362
+23254930	Positive_Correlation	16176	216799
+23254930	Association	216799	351
+23254930	Association	12362	216799
+23254930	Association	MESH:D007249	351
+23254930	Positive_Correlation	MESH:D003072	834
+23254930	Association	MESH:D000544	216799
+23254930	Negative_Correlation	MESH:D000544	16176
+
+23686772|t|The NLRP3 inflammasome in Alzheimer's disease.
+23686772|a|Innate immunity and inflammatory response plays an important role in the pathogenesis of Alzheimer's disease (AD). As the major resident immune cells in the brain, microglial cells constantly survey the microenvironment and are activated by and recruited to senile plaques. Subsequently, they can phagocytose amyloid-beta (Abeta) and secrete pro-inflammatory cytokines that influence the surrounding brain tissue. Recently, a wealth of information linking the microglia-specific activation of NLRP3 inflammasome to AD pathogenesis has emerged. We review here the activation mechanisms of NLRP3 inflammasome in microglia and several downstream effects in the brain, demonstrating that toxic Abeta peptide can light a fire in NLRP3 inflammasome and eventually induce AD pathology and tissue damage. More importantly, it has been demonstrated that inhibition of NLRP3 could largely protect from memory loss and decrease Abeta deposition in AD transgenic mouse model. So, we further discuss the recent advances and challenges in targeting NLRP3 inflammasome for AD therapy.
+23686772	4	9	Nlrp3	Gene	216799
+23686772	26	45	Alzheimer Disease	Disease	MESH:D000544
+23686772	67	79	Inflammation	Disease	MESH:D007249
+23686772	136	155	Alzheimer Disease	Disease	MESH:D000544
+23686772	157	159	Alzheimer Disease	Disease	MESH:D000544
+23686772	370	375	App	Gene	11820
+23686772	393	405	Inflammation	Disease	MESH:D007249
+23686772	540	545	Nlrp3	Gene	216799
+23686772	562	564	Alzheimer Disease	Disease	MESH:D000544
+23686772	635	640	Nlrp3	Gene	216799
+23686772	737	742	App	Gene	11820
+23686772	771	776	Nlrp3	Gene	216799
+23686772	812	814	Alzheimer Disease	Disease	MESH:D000544
+23686772	829	842	Soft Tissue Injuries	Disease	MESH:D017695
+23686772	906	911	Nlrp3	Gene	216799
+23686772	939	950	Memory Disorders	Disease	MESH:D008569
+23686772	964	969	App	Gene	11820
+23686772	984	986	Alzheimer Disease	Disease	MESH:D000544
+23686772	998	1003	mouse	Species	10090
+23686772	1082	1087	Nlrp3	Gene	216799
+23686772	1105	1107	Alzheimer Disease	Disease	MESH:D000544
+23686772	Association	MESH:D017695	11820
+23686772	Association	MESH:D000544	216799
+23686772	Association	MESH:D008569	216799
+23686772	Association	11820	216799
+23686772	Positive_Correlation	MESH:D000544	11820
+
+31748742|t|NLRP3 inflammasome activation drives tau pathology.
+31748742|a|Alzheimer's disease is characterized by the accumulation of amyloid-beta in plaques, aggregation of hyperphosphorylated tau in neurofibrillary tangles and neuroinflammation, together resulting in neurodegeneration and cognitive decline1. The NLRP3 inflammasome assembles inside of microglia on activation, leading to increased cleavage and activity of caspase-1 and downstream interleukin-1beta release2. Although the NLRP3 inflammasome has been shown to be essential for the development and progression of amyloid-beta pathology in mice3, the precise effect on tau pathology remains unknown. Here we show that loss of NLRP3 inflammasome function reduced tau hyperphosphorylation and aggregation by regulating tau kinases and phosphatases. Tau activated the NLRP3 inflammasome and intracerebral injection of fibrillar amyloid-beta-containing brain homogenates induced tau pathology in an NLRP3-dependent manner. These data identify an important role of microglia and NLRP3 inflammasome activation in the pathogenesis of tauopathies and support the amyloid-cascade hypothesis in Alzheimer's disease, demonstrating that neurofibrillary tangles develop downstream of amyloid-beta-induced microglial activation.
+31748742	0	5	DFNA34	Gene	114548
+31748742	37	40	MAPT	Gene	4137
+31748742	52	71	Alzheimer Disease	Disease	MESH:D000544
+31748742	112	124	APP	Gene	351
+31748742	172	175	MAPT	Gene	4137
+31748742	179	202	Diffuse Neurofibrillary Tangles with Calcification	Disease	MESH:D055956
+31748742	207	224	Neuroinflammatory Diseases	Disease	MESH:D000090862
+31748742	248	265	Neurodegenerative Diseases	Disease	MESH:D019636
+31748742	270	288	Cognition Disorders	Disease	MESH:D003072
+31748742	294	299	DFNA34	Gene	114548
+31748742	404	413	CASP1	Gene	834
+31748742	429	446	IL1B	Gene	3553
+31748742	470	475	DFNA34	Gene	114548
+31748742	559	571	APP	Gene	351
+31748742	585	590	mice3	Species	-
+31748742	614	617	MAPT	Gene	4137
+31748742	671	676	DFNA34	Gene	114548
+31748742	792	795	MAPT	Gene	4137
+31748742	810	815	DFNA34	Gene	114548
+31748742	860	869	fibrillar	Chemical	-
+31748742	870	882	APP	Gene	351
+31748742	920	923	MAPT	Gene	4137
+31748742	940	945	DFNA34	Gene	114548
+31748742	1019	1024	DFNA34	Gene	114548
+31748742	1072	1083	Tauopathies	Disease	MESH:D024801
+31748742	1100	1107	AA amyloidosis	Disease	MESH:C000718787
+31748742	1130	1149	Alzheimer Disease	Disease	MESH:D000544
+31748742	1170	1193	Diffuse Neurofibrillary Tangles with Calcification	Disease	MESH:D055956
+31748742	1216	1228	APP	Gene	351
+31748742	Association	MESH:D055956	4137
+31748742	Association	MESH:D003072	351
+31748742	Positive_Correlation	114548	4137
+31748742	Association	114548	351
+31748742	Association	MESH:D000544	4137
+31748742	Positive_Correlation	114548	834
+31748742	Association	MESH:D000544	351
+31748742	Positive_Correlation	114548	3553
+31748742	Association	MESH:D024801	114548
+
+32958021|t|beta-Hydroxybutyrate inhibits inflammasome activation to attenuate Alzheimer's disease pathology.
+32958021|a|Alzheimer's disease (AD) is a progressive, late-onset dementia with no effective treatment available. Recent studies suggest that AD pathology is driven by age-related changes in metabolism. Alterations in metabolism, such as placing patients on a ketogenic diet, can alter cognition by an unknown mechanism. One of the ketone bodies produced as a result of ketogenesis, beta-hydroxybutyrate (BHB), is known to inhibit NLRP3 inflammasome activation. Therefore, we tested if BHB inhibition of the NLRP3 inflammasome reduces overall AD pathology in the 5XFAD mouse model of AD. Here, we find BHB levels are lower in red blood cells and brain parenchyma of AD patients when compared with non-AD controls. Furthermore, exogenous BHB administration reduced plaque formation, microgliosis, apoptosis-associated speck-like protein containing a caspase recruitment domain (Asc) speck formation, and caspase-1 activation in the 5XFAD mouse model of AD. Taken together, our findings demonstrate that BHB reduces AD pathology by inhibiting NLRP3 inflammasome activation. Additionally, our data suggest dietary or pharmacological approaches to increase BHB levels as promising therapeutic strategies for AD.
+32958021	0	20	3-Hydroxybutyric Acid	Chemical	MESH:D020155
+32958021	67	86	Alzheimer Disease	Disease	MESH:D000544
+32958021	98	117	Alzheimer Disease	Disease	MESH:D000544
+32958021	119	121	Alzheimer Disease	Disease	MESH:D000544
+32958021	152	160	Dementia	Disease	MESH:D003704
+32958021	228	230	Alzheimer Disease	Disease	MESH:D000544
+32958021	332	340	patients	Species	9606
+32958021	418	431	Ketone Bodies	Chemical	MESH:D007657
+32958021	469	489	3-Hydroxybutyric Acid	Chemical	MESH:D020155
+32958021	491	494	3-Hydroxybutyric Acid	Chemical	MESH:D020155
+32958021	517	522	Nlrp3	Gene	216799
+32958021	572	575	3-Hydroxybutyric Acid	Chemical	MESH:D020155
+32958021	594	599	Nlrp3	Gene	216799
+32958021	629	631	Alzheimer Disease	Disease	MESH:D000544
+32958021	655	660	mouse	Species	10090
+32958021	670	672	Alzheimer Disease	Disease	MESH:D000544
+32958021	688	691	3-Hydroxybutyric Acid	Chemical	MESH:D020155
+32958021	752	754	Alzheimer Disease	Disease	MESH:D000544
+32958021	755	763	patients	Species	9606
+32958021	787	789	Alzheimer Disease	Disease	MESH:D000544
+32958021	823	826	3-Hydroxybutyric Acid	Chemical	MESH:D020155
+32958021	868	880	microgliosis	Disease	-
+32958021	989	998	Casp1	Gene	12362
+32958021	1023	1028	mouse	Species	10090
+32958021	1038	1040	Alzheimer Disease	Disease	MESH:D000544
+32958021	1088	1091	3-Hydroxybutyric Acid	Chemical	MESH:D020155
+32958021	1100	1102	Alzheimer Disease	Disease	MESH:D000544
+32958021	1127	1132	Nlrp3	Gene	216799
+32958021	1239	1242	3-Hydroxybutyric Acid	Chemical	MESH:D020155
+32958021	1290	1292	Alzheimer Disease	Disease	MESH:D000544
+32958021	Negative_Correlation	MESH:D020155	216799
+32958021	Negative_Correlation	MESH:D020155	MESH:D000544
+32958021	Negative_Correlation	MESH:D007657	216799
+32958021	Negative_Correlation	MESH:D020155	12362
+
+34080771|t|Acute systemic inflammation exacerbates neuroinflammation in Alzheimer's disease: IL-1beta drives amplified responses in primed astrocytes and neuronal network dysfunction.
+34080771|a|Neuroinflammation contributes to Alzheimer's disease (AD) progression. Secondary inflammatory insults trigger delirium and can accelerate cognitive decline. Individual cellular contributors to this vulnerability require elucidation. Using APP/PS1 mice and AD brain, we studied secondary inflammatory insults to investigate hypersensitive responses in microglia, astrocytes, neurons, and human brain tissue. The NLRP3 inflammasome was assembled surrounding amyloid beta, and microglia were primed, facilitating exaggerated interleukin-1beta (IL-1beta) responses to subsequent LPS stimulation. Astrocytes were primed to produce exaggerated chemokine responses to intrahippocampal IL-1beta. Systemic LPS triggered microglial IL-1beta, astrocytic chemokines, IL-6, and acute cognitive dysfunction, whereas IL-1beta disrupted hippocampal gamma rhythm, all selectively in APP/PS1 mice. Brains from AD patients with infection showed elevated IL-1beta and IL-6 levels. Therefore, amyloid leaves the brain vulnerable to secondary inflammation at microglial, astrocytic, neuronal, and cognitive levels, and infection amplifies neuroinflammatory cytokine synthesis in humans. Exacerbation of neuroinflammation to produce deleterious outcomes like delirium and accelerated disease progression merits careful investigation in humans.
+34080771	15	27	Inflammation	Disease	MESH:D007249
+34080771	40	57	Neuroinflammatory Diseases	Disease	MESH:D000090862
+34080771	61	80	Alzheimer Disease	Disease	MESH:D000544
+34080771	82	90	IL1B	Gene	3553
+34080771	143	171	Neurologic Manifestations	Disease	MESH:D009461
+34080771	173	190	Neuroinflammatory Diseases	Disease	MESH:D000090862
+34080771	206	225	Alzheimer Disease	Disease	MESH:D000544
+34080771	227	229	Alzheimer Disease	Disease	MESH:D000544
+34080771	254	266	Inflammation	Disease	MESH:D007249
+34080771	283	291	Delirium	Disease	MESH:D003693
+34080771	311	328	Cognition Disorders	Disease	MESH:D003072
+34080771	416	419	Psen1	Gene	19164
+34080771	420	424	mice	Species	10090
+34080771	429	431	Alzheimer Disease	Disease	MESH:D000544
+34080771	460	472	Inflammation	Disease	MESH:D007249
+34080771	560	565	human	Species	9606
+34080771	584	589	Nlrp3	Gene	216799
+34080771	695	712	Il1b	Gene	16176
+34080771	714	722	Il1b	Gene	16176
+34080771	748	751	Lipopolysaccharides	Chemical	MESH:D008070
+34080771	851	859	Il1b	Gene	16176
+34080771	870	873	Lipopolysaccharides	Chemical	MESH:D008070
+34080771	895	903	Il1b	Gene	16176
+34080771	928	932	IL6	Gene	3569
+34080771	944	965	Cognition Disorders	Disease	MESH:D003072
+34080771	975	983	Il1b	Gene	16176
+34080771	1043	1046	Psen1	Gene	19164
+34080771	1047	1051	mice	Species	10090
+34080771	1065	1067	Alzheimer Disease	Disease	MESH:D000544
+34080771	1068	1076	patients	Species	9606
+34080771	1082	1091	Infections	Disease	MESH:D007239
+34080771	1108	1116	IL1B	Gene	3553
+34080771	1121	1125	IL6	Gene	3569
+34080771	1145	1152	AA amyloidosis	Disease	MESH:C000718787
+34080771	1194	1206	Inflammation	Disease	MESH:D007249
+34080771	1270	1279	Infections	Disease	MESH:D007239
+34080771	1290	1307	Neuroinflammatory Diseases	Disease	MESH:D000090862
+34080771	1330	1336	humans	Species	9606
+34080771	1354	1371	Neuroinflammatory Diseases	Disease	MESH:D000090862
+34080771	1409	1417	Delirium	Disease	MESH:D003693
+34080771	1486	1492	humans	Species	9606
+34080771	Positive_Correlation	MESH:D008070	16176
+34080771	Association	MESH:D009461	3553
+34080771	Positive_Correlation	MESH:D008070	MESH:D003072
+34080771	Positive_Correlation	MESH:D007239	3569
+34080771	Association	MESH:D000544	3569
+34080771	Association	MESH:D008070	3569
+34080771	Positive_Correlation	MESH:D007239	3553
+34080771	Association	MESH:D000544	3553
+
+34497121|t|NAD+ supplementation reduces neuroinflammation and cell senescence in a transgenic mouse model of Alzheimer's disease via cGAS-STING.
+34497121|a|Alzheimer's disease (AD) is a progressive and fatal neurodegenerative disorder. Impaired neuronal bioenergetics and neuroinflammation are thought to play key roles in the progression of AD, but their interplay is not clear. Nicotinamide adenine dinucleotide (NAD+) is an important metabolite in all human cells in which it is pivotal for multiple processes including DNA repair and mitophagy, both of which are impaired in AD neurons. Here, we report that levels of NAD+ are reduced and markers of inflammation increased in the brains of APP/PS1 mutant transgenic mice with beta-amyloid pathology. Treatment of APP/PS1 mutant mice with the NAD+ precursor nicotinamide riboside (NR) for 5 mo increased brain NAD+ levels, reduced expression of proinflammatory cytokines, and decreased activation of microglia and astrocytes. NR treatment also reduced NLRP3 inflammasome expression, DNA damage, apoptosis, and cellular senescence in the AD mouse brains. Activation of cyclic GMP-AMP synthase (cGAS) and stimulator of interferon genes (STING) are associated with DNA damage and senescence. cGAS-STING elevation was observed in the AD mice and normalized by NR treatment. Cell culture experiments using microglia suggested that the beneficial effects of NR are, in part, through a cGAS-STING-dependent pathway. Levels of ectopic (cytoplasmic) DNA were increased in APP/PS1 mutant mice and human AD fibroblasts and down-regulated by NR. NR treatment induced mitophagy and improved cognitive and synaptic functions in APP/PS1 mutant mice. Our findings suggest a role for NAD+ depletion-mediated activation of cGAS-STING in neuroinflammation and cellular senescence in AD.
+34497121	0	4	NAD	Chemical	MESH:D009243
+34497121	29	46	Neuroinflammatory Diseases	Disease	MESH:D000090862
+34497121	83	88	mouse	Species	10090
+34497121	98	117	Alzheimer Disease	Disease	MESH:D000544
+34497121	122	126	Cgas	Gene	214763
+34497121	127	132	Tmem173	Gene	72512
+34497121	134	153	Alzheimer Disease	Disease	MESH:D000544
+34497121	155	157	Alzheimer Disease	Disease	MESH:D000544
+34497121	186	212	Neurodegenerative Diseases	Disease	MESH:D019636
+34497121	250	267	Neuroinflammatory Diseases	Disease	MESH:D000090862
+34497121	320	322	Alzheimer Disease	Disease	MESH:D000544
+34497121	358	391	NAD	Chemical	MESH:D009243
+34497121	393	397	NAD	Chemical	MESH:D009243
+34497121	433	438	human	Species	9606
+34497121	557	559	Alzheimer Disease	Disease	MESH:D000544
+34497121	600	604	NAD	Chemical	MESH:D009243
+34497121	632	644	Inflammation	Disease	MESH:D007249
+34497121	676	679	Psen1	Gene	19164
+34497121	698	702	mice	Species	10090
+34497121	708	720	AA amyloidosis	Disease	MESH:C000718787
+34497121	749	752	Psen1	Gene	19164
+34497121	760	764	mice	Species	10090
+34497121	774	778	NAD	Chemical	MESH:D009243
+34497121	789	810	nicotinamide-beta-riboside	Chemical	MESH:C018613
+34497121	812	814	nicotinamide-beta-riboside	Chemical	MESH:C018613
+34497121	841	845	NAD	Chemical	MESH:D009243
+34497121	957	959	nicotinamide-beta-riboside	Chemical	MESH:C018613
+34497121	983	988	Nlrp3	Gene	216799
+34497121	1068	1070	Alzheimer Disease	Disease	MESH:D000544
+34497121	1071	1076	mouse	Species	10090
+34497121	1124	1128	Cgas	Gene	214763
+34497121	1134	1164	Tmem173	Gene	72512
+34497121	1166	1171	Tmem173	Gene	72512
+34497121	1220	1224	Cgas	Gene	214763
+34497121	1225	1230	Tmem173	Gene	72512
+34497121	1261	1263	Alzheimer Disease	Disease	MESH:D000544
+34497121	1264	1268	mice	Species	10090
+34497121	1287	1289	nicotinamide-beta-riboside	Chemical	MESH:C018613
+34497121	1383	1385	nicotinamide-beta-riboside	Chemical	MESH:C018613
+34497121	1410	1414	Cgas	Gene	214763
+34497121	1415	1420	Tmem173	Gene	72512
+34497121	1498	1501	Psen1	Gene	19164
+34497121	1509	1513	mice	Species	10090
+34497121	1518	1523	human	Species	9606
+34497121	1524	1526	Alzheimer Disease	Disease	MESH:D000544
+34497121	1561	1563	nicotinamide-beta-riboside	Chemical	MESH:C018613
+34497121	1565	1567	nicotinamide-beta-riboside	Chemical	MESH:C018613
+34497121	1649	1652	Psen1	Gene	19164
+34497121	1660	1664	mice	Species	10090
+34497121	1698	1702	NAD	Chemical	MESH:D009243
+34497121	1736	1740	Cgas	Gene	214763
+34497121	1741	1746	Tmem173	Gene	72512
+34497121	1750	1767	Neuroinflammatory Diseases	Disease	MESH:D000090862
+34497121	1795	1797	Alzheimer Disease	Disease	MESH:D000544
+34497121	Negative_Correlation	MESH:D009243	72512
+34497121	Association	MESH:D000090862	72512
+34497121	Negative_Correlation	MESH:C018613	216799
+34497121	Positive_Correlation	MESH:D000544	214763
+34497121	Negative_Correlation	MESH:C018613	MESH:D000544
+34497121	Negative_Correlation	MESH:D009243	MESH:D000544
+34497121	Negative_Correlation	MESH:D009243	MESH:C000718787
+34497121	Association	MESH:C000718787	19164
+34497121	Positive_Correlation	MESH:C018613	MESH:D009243
+34497121	Positive_Correlation	MESH:D000544	72512
+34497121	Negative_Correlation	MESH:C018613	72512
+34497121	Negative_Correlation	MESH:D009243	MESH:D000090862
+34497121	Negative_Correlation	MESH:C018613	214763
+34497121	Negative_Correlation	MESH:D009243	214763
+34497121	Association	MESH:D000090862	214763
+
+35642214|t|Microglia-Mediated Neuroinflammation: A Potential Target for the Treatment of Cardiovascular Diseases.
+35642214|a|Microglia are tissue-resident macrophages of the central nervous system (CNS). In the CNS, microglia play an important role in the monitoring and intervention of synaptic and neuron-level activities. Interventions targeting microglia have been shown to improve the prognosis of various neurological diseases. Recently, studies have observed the activation of microglia in different cardiovascular diseases. In addition, different approaches that regulate the activity of microglia have been shown to modulate the incidence and progression of cardiovascular diseases. The change in autonomic nervous system activity after neuroinflammation may be a potential intermediate link between microglia and cardiovascular diseases. Here, in this review, we will discuss recent updates on the regulatory role of microglia in hypertension, myocardial infarction and ischemia/reperfusion injury. We propose that microglia serve as neuroimmune modulators and potential targets for cardiovascular diseases.
+35642214	19	36	Neuroinflammatory Diseases	Disease	MESH:D000090862
+35642214	78	101	Cardiovascular Diseases	Disease	MESH:D002318
+35642214	389	410	Heredodegenerative Disorders Nervous System	Disease	MESH:D020271
+35642214	485	508	Cardiovascular Diseases	Disease	MESH:D002318
+35642214	645	668	Cardiovascular Diseases	Disease	MESH:D002318
+35642214	724	741	Neuroinflammatory Diseases	Disease	MESH:D000090862
+35642214	801	824	Cardiovascular Diseases	Disease	MESH:D002318
+35642214	918	930	Hypertension	Disease	MESH:D006973
+35642214	932	953	Myocardial Infarction	Disease	MESH:D009203
+35642214	958	967	Ischemia	Disease	MESH:D007511
+35642214	967	985	Reperfusion Injury	Disease	MESH:D015427
+35642214	1071	1094	Cardiovascular Diseases	Disease	MESH:D002318
+
+37072933|t|Degradation of NLRP3 by p62-dependent-autophagy improves cognitive function in Alzheimer's disease by maintaining the phagocytic function of microglia.
+37072933|a|BACKGROUND: Activation of the NLRP3 inflammasome promotes microglia to secrete inflammatory cytokines and induce pyroptosis, leading to impaired phagocytic and clearance functions of microglia in Alzheimer's disease (AD). This study found that the autophagy-associated protein p62 interacts with NLRP3, which is the rate-limiting protein of the NLRP3 inflammasome. Thus, we aimed to prove that the degradation of NLRP3 occurs through the autophagy-lysosome pathway (ALP) and also demonstrate its effects on the function of microglia and pathological changes in AD. METHODS: The 5XFAD/NLRP3-KO mouse model was established to study the effect of NLRP3 reduction on AD. Behavioral experiments were conducted to assess the cognitive function of the mice. In addition, immunohistochemistry was used to evaluate the deposition of Abeta plaques and morphological changes in microglia. BV2 cells treated with lipopolysaccharide (LPS) followed by Abeta1-42 oligomers were used as in vitro AD inflammation models and transfected with lentivirus to regulate the expression of the target protein. The pro-inflammatory status and function of BV2 cells were detected by flow cytometry and immunofluorescence (IF). Co-immunoprecipitation, mass spectrometry, IF, Western blot (WB), quantitative real-time PCR, and RNA-seq analysis were used to elucidate the mechanisms of molecular regulation. RESULTS: Cognitive function was improved in the 5XFAD/NLRP3-KO mouse model by reducing the pro-inflammatory response of microglia and maintaining the phagocytic and clearance function of microglia to the deposited Abeta plaque. The pro-inflammatory function and pyroptosis of microglia were regulated by NLRP3 expression. Ubiquitinated NLRP3 can be recognized by p62 and degraded by ALP, slowing down the proinflammatory function and pyroptosis of microglia. The expression of autophagy pathway-related proteins such as LC3B/A, p62 was increased in the AD model in vitro. CONCLUSIONS: P62 recognizes and binds to ubiquitin-modified NLRP3. It plays a vital role in regulating the inflammatory response by participating in ALP-associated NLRP3 protein degradation, which improves cognitive function in AD by reducing the pro-inflammatory status and pyroptosis of microglia, thus maintaining its phagocytic function.
+37072933	15	20	Nlrp3	Gene	216799
+37072933	24	27	Nup62	Gene	18226
+37072933	79	98	Alzheimer Disease	Disease	MESH:D000544
+37072933	182	187	Nlrp3	Gene	216799
+37072933	231	253	Cytokine Release Syndrome	Disease	MESH:D000080424
+37072933	348	367	Alzheimer Disease	Disease	MESH:D000544
+37072933	369	371	Alzheimer Disease	Disease	MESH:D000544
+37072933	429	432	Nup62	Gene	18226
+37072933	448	453	Nlrp3	Gene	216799
+37072933	497	502	Nlrp3	Gene	216799
+37072933	565	570	Nlrp3	Gene	216799
+37072933	713	715	Alzheimer Disease	Disease	MESH:D000544
+37072933	730	735	5U93	CellLine	CVCL:5U93
+37072933	736	741	Nlrp3	Gene	216799
+37072933	745	750	mouse	Species	10090
+37072933	796	801	Nlrp3	Gene	216799
+37072933	815	817	Alzheimer Disease	Disease	MESH:D000544
+37072933	897	901	mice	Species	10090
+37072933	976	981	App	Gene	11820
+37072933	1030	1033	0182	CellLine	CVCL:0182
+37072933	1053	1071	Lipopolysaccharides	Chemical	MESH:D008070
+37072933	1073	1076	Lipopolysaccharides	Chemical	MESH:D008070
+37072933	1132	1147	Alzheimer Disease	Disease	MESH:D000544
+37072933	1245	1257	Inflammation	Disease	MESH:D007249
+37072933	1281	1284	0182	CellLine	CVCL:0182
+37072933	1578	1583	5XFAD	Disease	-
+37072933	1584	1589	Nlrp3	Gene	216799
+37072933	1593	1598	mouse	Species	10090
+37072933	1625	1637	Inflammation	Disease	MESH:D007249
+37072933	1744	1749	App	Gene	11820
+37072933	1766	1778	Inflammation	Disease	MESH:D007249
+37072933	1834	1839	Nlrp3	Gene	216799
+37072933	1866	1871	Nlrp3	Gene	216799
+37072933	1893	1896	Nup62	Gene	18226
+37072933	1935	1950	proinflammatory	Disease	-
+37072933	2050	2056	Map1lc3b	Gene	67443;12757
+37072933	2058	2061	Nup62	Gene	18226
+37072933	2083	2085	Alzheimer Disease	Disease	MESH:D000544
+37072933	2115	2118	Nup62	Gene	18226
+37072933	2162	2167	Nlrp3	Gene	216799
+37072933	2209	2221	Inflammation	Disease	MESH:D007249
+37072933	2266	2271	Nlrp3	Gene	216799
+37072933	2330	2332	Alzheimer Disease	Disease	MESH:D000544
+37072933	2353	2365	Inflammation	Disease	MESH:D007249
+37072933	Association	MESH:D000544	12757
+37072933	Association	MESH:D000544	18226
+37072933	Association	18226	216799
+37072933	Association	MESH:D007249	216799
+37072933	Association	MESH:D000544	216799
+37072933	Association	MESH:D000544	67443
+37072933	Association	MESH:D000080424	216799
+
+39026249|t|Herpes simplex virus 1 accelerates the progression of Alzheimer's disease by modulating microglial phagocytosis and activating NLRP3 pathway.
+39026249|a|Accumulating evidence implicates that herpes simplex virus type 1 (HSV-1) has been linked to the development and progression of Alzheimer's disease (AD). HSV-1 infection induces beta-amyloid (Abeta) deposition in vitro and in vivo, but the effect and precise mechanism remain elusive. Here, we show that HSV-1 infection of the brains of transgenic 5xFAD mice resulted in accelerated Abeta deposition, gliosis, and cognitive dysfunction. We demonstrate that HSV-1 infection induced the recruitment of microglia to the viral core to trigger microglial phagocytosis of HSV-GFP-positive neuronal cells. In addition, we reveal that the NLRP3 inflammasome pathway induced by HSV-1 infection played a crucial role in Abeta deposition and the progression of AD caused by HSV-1 infection. Blockade of the NLRP3 inflammasome signaling reduces Abeta deposition and alleviates cognitive decline in 5xFAD mice after HSV-1 infection. Our findings support the notion that HSV-1 infection is a key factor in the etiology of AD, demonstrating that NLRP3 inflammasome activation functions in the interface of HSV-1 infection and Abeta deposition in AD.
+39026249	0	22	Herpes simplex virus 1	Species	10298
+39026249	127	132	DFNA34	Gene	114548
+39026249	180	207	herpes simplex virus type 1	Species	10298
+39026249	209	214	HSV-1	Species	10298
+39026249	320	332	beta-amyloid	Gene	-
+39026249	334	339	APP	Gene	351
+39026249	496	500	mice	Species	10090
+39026249	525	530	APP	Gene	351
+39026249	773	778	DFNA34	Gene	114548
+39026249	852	857	APP	Gene	351
+39026249	938	943	DFNA34	Gene	114548
+39026249	975	980	APP	Gene	351
+39026249	1034	1038	mice	Species	10090
+39026249	1173	1178	DFNA34	Gene	114548
+39026249	1253	1258	APP	Gene	351
+39026249	Association	114548	351
+
+39407211|t|Glutamine metabolism modulates microglial NLRP3 inflammasome activity through mitophagy in Alzheimer's disease.
+39407211|a|The NLR family pyrin domain containing 3 (NLRP3) inflammasome in microglia is intimately linked to the pathogenesis of Alzheimer's disease (AD). Although NLRP3 inflammasome activity is regulated by cellular metabolism, the underlying mechanism remains elusive. Here, we found that under the pathological conditions of AD, the activation of NLRP3 inflammasome in microglia is accompanied by increased glutamine metabolism. Suppression of glutaminase, the rate limiting enzyme in glutamine metabolism, attenuated the NLRP3 inflammasome activation both in the microglia of AD mice and cultured inflammatory microglia. Mechanistically, inhibiting glutaminase blocked the anaplerotic flux of glutamine to the tricarboxylic acid cycle and amino acid synthesis, down-regulated mTORC1 signaling by phosphorylating AMPK, which stimulated mitophagy and limited the accumulation of intracellular reactive oxygen species, ultimately prevented the activation of NLRP3 inflammasomes in activated microglia during AD. Taken together, our findings suggest that glutamine metabolism regulates the activation of NLRP3 inflammasome through mitophagy in microglia, thus providing a potential therapeutic target for AD treatment.
+39407211	0	9	Glutamine	Chemical	MESH:D005973
+39407211	42	47	DFNA34	Gene	114548
+39407211	91	110	Alzheimer Disease	Disease	MESH:D000544
+39407211	116	152	DFNA34	Gene	114548
+39407211	154	159	DFNA34	Gene	114548
+39407211	231	250	Alzheimer Disease	Disease	MESH:D000544
+39407211	252	254	Alzheimer Disease	Disease	MESH:D000544
+39407211	266	271	DFNA34	Gene	114548
+39407211	430	432	Alzheimer Disease	Disease	MESH:D000544
+39407211	452	457	DFNA34	Gene	114548
+39407211	512	521	Glutamine	Chemical	MESH:D005973
+39407211	549	560	GLS	Gene	2744
+39407211	590	599	Glutamine	Chemical	MESH:D005973
+39407211	627	632	DFNA34	Gene	114548
+39407211	682	684	Alzheimer Disease	Disease	MESH:D000544
+39407211	685	689	mice	Species	10090
+39407211	703	715	Inflammation	Disease	MESH:D007249
+39407211	755	766	GLS	Gene	2744
+39407211	799	808	Glutamine	Chemical	MESH:D005973
+39407211	816	834	Tricarboxylic Acids	Chemical	MESH:D014233
+39407211	845	855	Amino Acids	Chemical	MESH:D000596
+39407211	918	922	PRKAA1	Gene	5562
+39407211	997	1020	Reactive Oxygen Species	Chemical	MESH:D017382
+39407211	1061	1066	DFNA34	Gene	114548
+39407211	1111	1113	Alzheimer Disease	Disease	MESH:D000544
+39407211	1157	1166	Glutamine	Chemical	MESH:D005973
+39407211	1206	1211	DFNA34	Gene	114548
+39407211	1307	1309	Alzheimer Disease	Disease	MESH:D000544
+39407211	Association	MESH:D000596	MESH:D005973
+39407211	Association	MESH:D005973	MESH:D000544
+39407211	Association	114548	5562
+39407211	Association	MESH:D000544	5562
+39407211	Association	MESH:D000596	2744
+39407211	Association	MESH:D014233	2744
+39407211	Association	MESH:D000544	114548
+39407211	Positive_Correlation	MESH:D005973	114548
+39407211	Positive_Correlation	114548	2744
+39407211	Association	MESH:D005973	2744
+39407211	Association	2744	5562
+39407211	Association	MESH:D000544	2744
+39407211	Association	MESH:D005973	MESH:D014233
+39407211	Association	MESH:D017382	2744
+
+39499013|t|Extracellular vesicles from human-induced pluripotent stem cell-derived neural stem cells alleviate proinflammatory cascades within disease-associated microglia in Alzheimer's disease.
+39499013|a|As current treatments for Alzheimer's disease (AD) lack disease-modifying interventions, novel therapies capable of restraining AD progression and maintaining better brain function have great significance. Anti-inflammatory extracellular vesicles (EVs) derived from human induced pluripotent stem cell (hiPSC)-derived neural stem cells (NSCs) hold promise as a disease-modifying biologic for AD. This study directly addressed this issue by examining the effects of intranasal (IN) administrations of hiPSC-NSC-EVs in 3-month-old 5xFAD mice. IN administered hiPSC-NSC-EVs incorporated into microglia, including plaque-associated microglia, and encountered astrocyte soma and processes in the brain. Single-cell RNA sequencing revealed transcriptomic changes indicative of diminished activation of microglia and astrocytes. Multiple genes linked to disease-associated microglia, NOD-, LRR-, and pyrin domain-containing protein 3 (NLRP3)-inflammasome and interferon-1 (IFN-1) signalling displayed reduced expression in microglia. Adding hiPSC-NSC-EVs to cultured human microglia challenged with amyloid-beta oligomers resulted in similar effects. Astrocytes also displayed reduced expression of genes linked to IFN-1 and interleukin-6 signalling. Furthermore, the modulatory effects of hiPSC-NSC-EVs on microglia in the hippocampus persisted 2 months post-EV treatment without impacting their phagocytosis function. Such effects were evidenced by reductions in microglial clusters and inflammasome complexes, concentrations of mediators, and end products of NLRP3 inflammasome activation, the expression of genes and/or proteins involved in the activation of p38/mitogen-activated protein kinase and IFN-1 signalling, and unaltered phagocytosis function. The extent of astrocyte hypertrophy, amyloid-beta plaques, and p-tau were also reduced in the hippocampus. Such modulatory effects of hiPSC-NSC-EVs also led to better cognitive and mood function. Thus, early hiPSC-NSC-EV intervention in AD can maintain better brain function by reducing adverse neuroinflammatory signalling cascades, amyloid-beta plaque load, and p-tau. These results reflect the first demonstration of the efficacy of hiPSC-NSC-EVs to restrain neuroinflammatory signalling cascades in an AD model by inducing transcriptomic changes in activated microglia and reactive astrocytes.
+39499013	28	33	human	Species	9606
+39499013	100	115	proinflammatory	Disease	-
+39499013	164	183	Alzheimer Disease	Disease	MESH:D000544
+39499013	211	230	Alzheimer Disease	Disease	MESH:D000544
+39499013	232	234	Alzheimer Disease	Disease	MESH:D000544
+39499013	313	315	Alzheimer Disease	Disease	MESH:D000544
+39499013	391	408	Inflammation	Disease	MESH:D007249
+39499013	451	456	human	Species	9606
+39499013	577	579	Alzheimer Disease	Disease	MESH:D000544
+39499013	714	719	5xFAD	Disease	-
+39499013	720	724	mice	Species	10090
+39499013	1062	1111	DFNA34	Gene	114548
+39499013	1113	1118	DFNA34	Gene	114548
+39499013	1137	1149	IFN1@	Gene	3438
+39499013	1151	1156	IFN1@	Gene	3438
+39499013	1245	1250	human	Species	9606
+39499013	1393	1398	IFN1@	Gene	3438
+39499013	1403	1416	IL6	Gene	3569
+39499013	1740	1745	DFNA34	Gene	114548
+39499013	1841	1844	MAPK14	Gene	1432
+39499013	1882	1887	IFN1@	Gene	3438
+39499013	1951	1972	Hypertrophy	Disease	MESH:D006984
+39499013	1974	1986	APP	Gene	351
+39499013	2174	2176	Alzheimer Disease	Disease	MESH:D000544
+39499013	2232	2249	Neuroinflammatory Diseases	Disease	MESH:D000090862
+39499013	2271	2283	APP	Gene	351
+39499013	2399	2416	Neuroinflammatory Diseases	Disease	MESH:D000090862
+39499013	2443	2445	Alzheimer Disease	Disease	MESH:D000544
+
+39904338|t|NLRP3-mediated glutaminolysis controls microglial phagocytosis to promote Alzheimer's disease progression.
+39904338|a|Activation of the NLRP3 inflammasome has been implicated in the pathogenesis of Alzheimer's disease (AD) via the release of IL-1beta and ASC specks. However, whether NLRP3 is involved in pathways beyond this remained unknown. Here, we found that Abeta deposition in vivo directly triggered NLRP3 activation in APP/PS1 mice, which model many features of AD. Loss of NLRP3 increased glutamine- and glutamate-related metabolism and increased expression of microglial Slc1a3, which was associated with enhanced mitochondrial and metabolic activity. The generation of alpha-ketoglutarate during this process impacted cellular function, including increased clearance of Abeta peptides as well as epigenetic and gene transcription changes. This pathway was conserved between murine and human cells. Critically, we could mimic this effect pharmacologically using NLRP3-specific inhibitors, but only with chronic NLRP3 inhibition. Together, these data demonstrate an additional role for NLRP3, where it can modulate mitochondrial and metabolic function, with important downstream consequences for the progression of AD.
+39904338	0	5	DFNA34	Gene	114548
+39904338	74	93	Alzheimer Disease	Disease	MESH:D000544
+39904338	125	130	Nlrp3	Gene	216799
+39904338	187	206	Alzheimer Disease	Disease	MESH:D000544
+39904338	208	210	Alzheimer Disease	Disease	MESH:D000544
+39904338	231	239	Il1b	Gene	16176
+39904338	244	254	ASC specks	Gene	-
+39904338	273	278	Nlrp3	Gene	216799
+39904338	353	358	App	Gene	11820
+39904338	397	402	Nlrp3	Gene	216799
+39904338	421	424	Psen1	Gene	19164
+39904338	425	429	mice	Species	10090
+39904338	460	462	Alzheimer Disease	Disease	MESH:D000544
+39904338	472	477	Nlrp3	Gene	216799
+39904338	488	497	Glutamine	Chemical	MESH:D005973
+39904338	503	512	Glutamic Acid	Chemical	MESH:D018698
+39904338	571	577	Slc1a3	Gene	20512
+39904338	670	689	Ketoglutaric Acids	Chemical	MESH:D007656
+39904338	771	776	App	Gene	11820
+39904338	875	881	murine	Species	10090
+39904338	886	891	human	Species	9606
+39904338	962	967	DFNA34	Gene	114548
+39904338	1011	1016	DFNA34	Gene	114548
+39904338	1085	1090	Nlrp3	Gene	216799
+39904338	1214	1216	Alzheimer Disease	Disease	MESH:D000544
+39904338	Association	MESH:D000544	216799
+39904338	Association	MESH:D000544	114548
+39904338	Association	MESH:D000544	11820
+39904338	Negative_Correlation	MESH:D018698	216799
+39904338	Positive_Correlation	11820	216799
+39904338	Negative_Correlation	MESH:D005973	216799
+39904338	Negative_Correlation	MESH:D007656	11820
+39904338	Positive_Correlation	16176	216799
+39904338	Association	MESH:D000544	16176
+39904338	Negative_Correlation	20512	216799
+
+40541122|t|Ciliatoside A attenuates neuroinflammation in Alzheimer's disease by activating mitophagy and inhibiting NLRP3 inflammasome activation.
+40541122|a|BACKGROUND: Alzheimer's disease (AD) is a gradually worsening neurological condition that involves memory loss, brain inflammation, and impaired mitochondrial function. The NLRP3 inflammasome activation in microglia plays a pivotal role in promoting neuroinflammation and worsening disease progression. Mitochondrial dysfunction and impaired mitophagy further create a detrimental feedback loop of oxidative stress and inflammation. Despite extensive research, pharmacological agents capable of simultaneously targeting both NLRP3 inflammasome activation and impaired mitophagy remain scarce. METHODS: We explored the therapeutic potential of Ciliatoside A (CA), a novel natural compound isolated from Peristrophe japonica, utilizing comprehensive cellular and animal models. In lipopolysaccharide/nigericin (LPS/Nig)-stimulated BV-2 microglial cells, the impact of CA on inflammasome activation, pyroptosis, mitochondrial health, and oxidative stress was assessed. Mechanistic evaluations were conducted using Western blotting, immunofluorescence, and advanced mitophagy assays. Furthermore, the efficacy of CA was validated in Caenorhabditis elegans (C. elegans) models expressing human amyloid-beta (Ab) and the well-established 3xTg-AD mouse model. RESULTS: Our results demonstrate CA effectively inhibits NLRP3 inflammasome activation, reduces microglial pyroptosis, and mitigates oxidative stress-induced mitochondrial impairment in BV-2 cells. Notably, we identified the AMPK/ULK1 and PINK1/Parkin pathways as novel targets through which CA robustly activates mitophagy. Consistent therapeutic effects were observed in vivo, with CA significantly reducing Ab-induced paralysis, ROS generation, and enhancing autophagy in worms. In 3xTg-AD mice, CA markedly improved cognitive function, diminished Ab plaque deposition, alleviated neuroinflammation, and preserved neuronal integrity. CONCLUSION: For the first time, this study reveals that CA offers dual neuroprotective benefits by promoting mitophagy while inhibiting NLRP3 inflammasome-mediated neuroinflammation. These novel insights highlight the innovative therapeutic potential of CA, suggesting its promising application in slowing AD progression and mitigating its pathological features.
+40541122	0	13	ciliatoside A	Chemical	MESH:C420270
+40541122	25	42	Neuroinflammatory Diseases	Disease	MESH:D000090862
+40541122	46	65	Alzheimer Disease	Disease	MESH:D000544
+40541122	105	110	Nlrp3	Gene	216799
+40541122	148	167	Alzheimer Disease	Disease	MESH:D000544
+40541122	169	171	Alzheimer Disease	Disease	MESH:D000544
+40541122	211	220	Pathological Conditions Anatomical	Disease	MESH:D020763
+40541122	235	246	Memory Disorders	Disease	MESH:D008569
+40541122	248	266	Encephalitis	Disease	MESH:D004660
+40541122	272	303	Mitochondrial Diseases	Disease	MESH:D028361
+40541122	309	314	Nlrp3	Gene	216799
+40541122	386	403	Neuroinflammatory Diseases	Disease	MESH:D000090862
+40541122	439	464	Mitochondrial Diseases	Disease	MESH:D028361
+40541122	555	567	Inflammation	Disease	MESH:D007249
+40541122	661	666	Nlrp3	Gene	216799
+40541122	779	792	ciliatoside A	Chemical	MESH:C420270
+40541122	794	796	ciliatoside A	Chemical	MESH:C420270
+40541122	838	858	Peristrophe japonica	Species	1082503
+40541122	915	933	Lipopolysaccharides	Chemical	MESH:D008070
+40541122	934	943	Nigericin	Chemical	MESH:D009550
+40541122	945	948	Lipopolysaccharides	Chemical	MESH:D008070
+40541122	949	952	Nig	Chemical	-
+40541122	965	969	0182	CellLine	CVCL:0182
+40541122	1002	1004	ciliatoside A	Chemical	MESH:C420270
+40541122	1033	1043	pyroptosis	Disease	-
+40541122	1245	1247	ciliatoside A	Chemical	MESH:C420270
+40541122	1265	1287	Caenorhabditis elegans	Species	6239
+40541122	1289	1299	C. elegans	Species	6239
+40541122	1319	1324	human	Species	9606
+40541122	1368	1373	C6V6	CellLine	CVCL:C6V6
+40541122	1373	1375	Alzheimer Disease	Disease	MESH:D000544
+40541122	1376	1381	mouse	Species	10090
+40541122	1422	1424	ciliatoside A	Chemical	MESH:C420270
+40541122	1446	1451	Nlrp3	Gene	216799
+40541122	1496	1506	pyroptosis	Disease	-
+40541122	1547	1571	Mitochondrial Diseases	Disease	MESH:D028361
+40541122	1575	1579	0182	CellLine	CVCL:0182
+40541122	1619	1623	Ulk1	Gene	22241
+40541122	1628	1633	Pink1	Gene	68943
+40541122	1681	1683	ciliatoside A	Chemical	MESH:C420270
+40541122	1773	1775	ciliatoside A	Chemical	MESH:C420270
+40541122	1810	1819	Paralysis	Disease	MESH:D010243
+40541122	1821	1824	ROS	Chemical	-
+40541122	1879	1881	Alzheimer Disease	Disease	MESH:D000544
+40541122	1882	1886	mice	Species	10090
+40541122	1888	1890	ciliatoside A	Chemical	MESH:C420270
+40541122	1973	1990	Neuroinflammatory Diseases	Disease	MESH:D000090862
+40541122	2082	2084	ciliatoside A	Chemical	MESH:C420270
+40541122	2162	2167	Nlrp3	Gene	216799
+40541122	2190	2207	Neuroinflammatory Diseases	Disease	MESH:D000090862
+40541122	2280	2282	ciliatoside A	Chemical	MESH:C420270
+40541122	2332	2334	Alzheimer Disease	Disease	MESH:D000544
+40541122	Negative_Correlation	MESH:C420270	216799
+40541122	Association	MESH:C420270	22241
+40541122	Association	MESH:C420270	68943
+40541122	Negative_Correlation	MESH:C420270	MESH:D000090862
+40541122	Association	MESH:D000544	216799
+40541122	Association	MESH:D000090862	216799
+40541122	Negative_Correlation	MESH:C420270	MESH:D028361
+40541122	Negative_Correlation	MESH:C420270	MESH:D000544
+40541122	Negative_Correlation	MESH:C420270	MESH:D010243
+
+41173224|t|Semaglutide attenuates Alzheimer's disease model progression by targeting microglial NLRP3 inflammasome-mediated neuroinflammation and ferroptosis.
+41173224|a|Microglial activation driven by NOD-, LRR- and pyrin domain-containing protein 3 (NLRP3) inflammasome signaling exacerbates Alzheimer's disease (AD) pathology through enhanced neuroinflammation and amyloid beta (Abeta) accumulation. Semaglutide (SEM) has attracted growing attention for its potential therapeutic effects in AD, while its underlying mechanisms remain unclear. In this study, we investigated the neuroprotective effects of SEM in both APP/PS1 transgenic mice and LPS + ATP-stimulated BV2 microglia. Our results demonstrate that SEM treatment rescued APP/PS1 mice from cognitive impairment and suppressed Abeta aggregation and tau hyper-phosphorylation in the hippocampus of APP/PS1 mice. Furthermore, we found that SEM inhibited microglial NLRP3 activation, promoted microglial M2 polarization and alleviated ferroptosis via NLRP3/nuclear factor kappa B (NF-kappaB) and nuclear factor erythroid 2-related factor 2 (Nrf2)/heme oxygenase 1 (HO-1)/ cystine/glutamate antiporter SLC7A11 (xCT)/glutathione peroxidase 4 (GPX4) pathways in APP/PS1 mice and LPS + ATP-stimulated BV2 microglia. These findings were further corroborated by microglia-specific NLRP3 knockdown, which reduced Abeta deposition, promotied M2 polarization, attenuated neuroinflammation, and suppressed ferroptosis. Our findings provide further theoretical support for the clinical application of SEM in AD treatment, while also establishing a scientific foundation for AD therapeutic strategies targeting the microglial NLRP3 pathway.
+41173224	23	42	Alzheimer Disease	Disease	MESH:D000544
+41173224	85	90	Nlrp3	Gene	216799
+41173224	113	130	Neuroinflammatory Diseases	Disease	MESH:D000090862
+41173224	230	235	Nlrp3	Gene	216799
+41173224	272	291	Alzheimer Disease	Disease	MESH:D000544
+41173224	293	295	Alzheimer Disease	Disease	MESH:D000544
+41173224	324	341	Neuroinflammatory Diseases	Disease	MESH:D000090862
+41173224	360	365	App	Gene	11820
+41173224	472	474	Alzheimer Disease	Disease	MESH:D000544
+41173224	602	605	Psen1	Gene	19164
+41173224	617	621	mice	Species	10090
+41173224	626	629	Lipopolysaccharides	Chemical	MESH:D008070
+41173224	632	635	Adenosine Triphosphate	Chemical	MESH:D000255
+41173224	647	650	0182	CellLine	CVCL:0182
+41173224	717	720	Psen1	Gene	19164
+41173224	721	725	mice	Species	10090
+41173224	731	751	Cognition Disorders	Disease	MESH:D003072
+41173224	767	772	App	Gene	11820
+41173224	841	844	Psen1	Gene	19164
+41173224	845	849	mice	Species	10090
+41173224	903	908	Nlrp3	Gene	216799
+41173224	988	993	Nlrp3	Gene	216799
+41173224	1018	1027	Nfkb1	Gene	18033
+41173224	1033	1076	Nfe2l2	Gene	18024
+41173224	1078	1082	Nfe2l2	Gene	18024
+41173224	1084	1100	Hmox1	Gene	15368
+41173224	1102	1106	Hmox1	Gene	15368
+41173224	1138	1145	Slc7a11	Gene	26570
+41173224	1147	1150	Slc7a11	Gene	26570
+41173224	1152	1176	Gpx4	Gene	625249
+41173224	1178	1182	Gpx4	Gene	625249
+41173224	1200	1203	Psen1	Gene	19164
+41173224	1204	1208	mice	Species	10090
+41173224	1213	1216	Lipopolysaccharides	Chemical	MESH:D008070
+41173224	1219	1222	Adenosine Triphosphate	Chemical	MESH:D000255
+41173224	1234	1237	0182	CellLine	CVCL:0182
+41173224	1312	1317	Nlrp3	Gene	216799
+41173224	1343	1348	App	Gene	11820
+41173224	1399	1416	Neuroinflammatory Diseases	Disease	MESH:D000090862
+41173224	1534	1536	Alzheimer Disease	Disease	MESH:D000544
+41173224	1600	1602	Alzheimer Disease	Disease	MESH:D000544
+41173224	1651	1656	Nlrp3	Gene	216799
+41173224	Positive_Correlation	MESH:D000544	11820
+41173224	Association	MESH:D000090862	216799
+41173224	Association	MESH:D003072	19164
+41173224	Association	MESH:D000544	216799
+41173224	Association	11820	216799
+
+41571675|t|Identification of Chlamydia pneumoniae and NLRP3 inflammasome activation in Alzheimer's disease retina.
+41571675|a|Chlamydia pneumoniae is an intracellular bacterium implicated in Alzheimer's disease (AD), but its role in retinal pathology and disease progression is unclear. Here we identify Chlamydia pneumoniae inclusions in the retina, showing higher burden in AD retina and brain, increasing with APOEepsilon4, disease stage, and cognitive deficit. Retinal and cortical proteomics reveal bacterial-infection and related NLRP3-inflammasome pathways. Retinal NLRP3 is elevated in mild cognitive impairment and activated in AD dementia, evidenced by increased caspase-1, cleaved interleukin-1beta, and cleaved N-terminal gasdermin-D. Chlamydia pneumoniae associates with amyloid-beta42, inflammation, apoptosis, pyroptosis, and AD status. In neuronal cultures and APPSWE/PS1DeltaE9 model mice, infection induces amyloid-beta, inflammasome activation, neuroinflammation, and neurotoxicity, and chronic infection worsens cognition. Fewer pathogen-colocalized microglia are found in AD retinas, implying impaired clearance. Machine learning detects retinal Chlamydia pneumoniae or NLRP3, combined with amyloid-beta42, as predictors of AD diagnosis and stage. These findings support a disease-amplifying role for Chlamydia pneumoniae and propose NLRP3-attenuation or antibiotic-based early interventions.
+41571675	18	38	Chlamydia pneumoniae	Species	83558
+41571675	76	95	Alzheimer Disease	Disease	MESH:D000544
+41571675	104	124	Chlamydia pneumoniae	Species	83558
+41571675	169	188	Alzheimer Disease	Disease	MESH:D000544
+41571675	190	192	Alzheimer Disease	Disease	MESH:D000544
+41571675	282	302	Chlamydia pneumoniae	Species	83558
+41571675	354	356	Alzheimer Disease	Disease	MESH:D000544
+41571675	424	441	Cognition Disorders	Disease	MESH:D003072
+41571675	482	491	Bacterial Infections	Disease	MESH:D001424
+41571675	492	501	Infections	Disease	MESH:D007239
+41571675	577	597	Cognition Disorders	Disease	MESH:D003072
+41571675	615	626	Alzheimer Disease	Disease	MESH:D000544
+41571675	725	745	Chlamydia pneumoniae	Species	83558
+41571675	778	790	Inflammation	Disease	MESH:D007249
+41571675	819	821	Alzheimer Disease	Disease	MESH:D000544
+41571675	879	883	mice	Species	10090
+41571675	885	894	Infections	Disease	MESH:D007239
+41571675	942	959	Neuroinflammatory Diseases	Disease	MESH:D000090862
+41571675	965	978	Neurotoxicity Syndromes	Disease	MESH:D020258
+41571675	992	1001	Infections	Disease	MESH:D007239
+41571675	1071	1073	Alzheimer Disease	Disease	MESH:D000544
+41571675	1145	1165	Chlamydia pneumoniae	Species	83558
+41571675	1223	1225	Alzheimer Disease	Disease	MESH:D000544
+41571675	1300	1320	Chlamydia pneumoniae	Species	83558

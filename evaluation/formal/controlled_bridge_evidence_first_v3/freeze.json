@@ -1,0 +1,75 @@
+{
+  "name": "netmedex-controlled-bridge-evidence-first-v1",
+  "status": "frozen_before_semantic_graph_generation",
+  "frozen_at": "2026-08-09T19:27:01.864899+00:00",
+  "independent_holdout": false,
+  "same_corpus_for_text_and_hybrid": true,
+  "mediators_used_only_for_corpus_construction": true,
+  "endpoint_co_mention_forbidden_per_article": true,
+  "query_spec": "evaluation/formal/controlled_bridge_query_spec_evidence_first_v3.json",
+  "query_spec_sha256": "1d42b8a44eeacfc9dbcc0691325e14d9892e1d73bc864af934b723c43f28cfae",
+  "questions": [
+    {
+      "question_id": "BW002",
+      "document_count": 12,
+      "eligible_mediators": [
+        "Caspase-3",
+        "Reactive Oxygen Species"
+      ],
+      "graph_build_eligible": true,
+      "corpus_sha256": "5af6724b99e0318eb3c0c2f86e5ad617f7eab9f06bd0c709e7536e3c526e9fa1"
+    },
+    {
+      "question_id": "BW007",
+      "document_count": 12,
+      "eligible_mediators": [
+        "ICAM-1",
+        "PAI-1"
+      ],
+      "graph_build_eligible": true,
+      "corpus_sha256": "fb8a13a1d93c042ef500260f0c27b0ae67d693d871b3e5cbb8bd56757b2b2643"
+    },
+    {
+      "question_id": "BW008",
+      "document_count": 11,
+      "eligible_mediators": [
+        "c-Myc",
+        "miR-122"
+      ],
+      "graph_build_eligible": true,
+      "corpus_sha256": "283d1f0e233d845dcdff60f3911aa81d05e33c6980a72abf3bef03e36e6c4685"
+    },
+    {
+      "question_id": "BW009",
+      "document_count": 6,
+      "eligible_mediators": [
+        "SIRT1"
+      ],
+      "graph_build_eligible": true,
+      "corpus_sha256": "ad9d005c1b201efd1fcfa40c01dc2400d9bdeecfdf97839f0f389deb78dddcdb"
+    },
+    {
+      "question_id": "BW010",
+      "document_count": 9,
+      "eligible_mediators": [
+        "TNF-alpha"
+      ],
+      "graph_build_eligible": true,
+      "corpus_sha256": "203b0b8f7df82d69ad23aa485e50b5149e8441d0a988976b8df782a097388578"
+    }
+  ],
+  "checksums": {
+    "queries.csv": "dea2c49e89e64bc3f4f174b00a0b160ea7b2c25df3c3504002f897f294d1ab1e",
+    "questions_metadata.csv": "7668a982aaee64ec5af84c0da758967d90c90042026bdd03ea2a3932379991fd",
+    "questions/BW002/corpus.pubtator": "5af6724b99e0318eb3c0c2f86e5ad617f7eab9f06bd0c709e7536e3c526e9fa1",
+    "questions/BW002/corpus_manifest.json": "19f4a9c5014aa9d7254f8e2df7ceeae9e9e6e0df91198ef974380116a7f246b6",
+    "questions/BW007/corpus.pubtator": "fb8a13a1d93c042ef500260f0c27b0ae67d693d871b3e5cbb8bd56757b2b2643",
+    "questions/BW007/corpus_manifest.json": "96a87daf61b9a83c247ffd87c021d626879aa71615d7f60242cad1ba2e91e9d5",
+    "questions/BW008/corpus.pubtator": "283d1f0e233d845dcdff60f3911aa81d05e33c6980a72abf3bef03e36e6c4685",
+    "questions/BW008/corpus_manifest.json": "adbb9612f0b12884d14e082f3d49046216fc0684ef03ff0b887af32f8b9c4d7d",
+    "questions/BW009/corpus.pubtator": "ad9d005c1b201efd1fcfa40c01dc2400d9bdeecfdf97839f0f389deb78dddcdb",
+    "questions/BW009/corpus_manifest.json": "c3a12ef784b95fae5476d72165adee9836ae922935cc68bd8a687cf92abb786d",
+    "questions/BW010/corpus.pubtator": "203b0b8f7df82d69ad23aa485e50b5149e8441d0a988976b8df782a097388578",
+    "questions/BW010/corpus_manifest.json": "a3b652036ae0b2d9dfcdc6d148ead196741f36ffeab34dd680258cd87ee343cf"
+  }
+}

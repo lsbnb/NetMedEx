@@ -1,0 +1,156 @@
+{
+  "status": "complete",
+  "question_id": "Q029",
+  "domain": "vascular biology",
+  "question": "What mechanisms connect endothelial senescence to atherosclerosis?",
+  "question_type": "mechanism",
+  "pubmed_query": "endothelial senescence atherosclerosis oxidative stress inflammation SASP",
+  "effective_pubmed_query": "endothelial senescence atherosclerosis oxidative stress inflammation SASP",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "37107335",
+    "39119148",
+    "40113668",
+    "40418230",
+    "40681353",
+    "41587514",
+    "42065920"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What mechanisms connect endothelial senescence to atherosclerosis?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "40681353",
+        "score": 0.6625826425645082
+      },
+      {
+        "pmid": "42065920",
+        "score": 0.6400502969212211
+      },
+      {
+        "pmid": "40418230",
+        "score": 0.6218421033611548
+      },
+      {
+        "pmid": "39119148",
+        "score": 0.6086081043050243
+      },
+      {
+        "pmid": "41587514",
+        "score": 0.600091695491705
+      },
+      {
+        "pmid": "37107335",
+        "score": 0.5602111925930329
+      },
+      {
+        "pmid": "40113668",
+        "score": 0.5600431311445766
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "40681353",
+        "score": 0.6625826425645082
+      },
+      {
+        "pmid": "42065920",
+        "score": 0.6400502969212211
+      },
+      {
+        "pmid": "40418230",
+        "score": 0.6218421033611548
+      },
+      {
+        "pmid": "39119148",
+        "score": 0.6086081043050243
+      },
+      {
+        "pmid": "41587514",
+        "score": 0.600091695491705
+      },
+      {
+        "pmid": "37107335",
+        "score": 0.5602111925930329
+      },
+      {
+        "pmid": "40113668",
+        "score": 0.5600431311445766
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Mechanistic links between endothelial senescence and atherosclerosis**\n\n**Direct experimental evidence**  \n- **Senescence‑driven inflammation (SASP) promotes plaque progression** – In diabetic atherosclerosis, hyperglycaemia‑induced senescence of endothelial cells (ECs) generates a SASP that amplifies chronic vascular inflammation and destabilises plaques [PMID: 42065920].  \n- **Autophagy dysfunction mediates EC senescence and lesion growth** – Poliumoside reduced p16/p21/p53 expression, restored autophagic flux, and lowered SA‑β‑gal‑positive areas in the aortae of ApoE‑/‑ mice, resulting in smaller atherosclerotic lesions [PMID: 41587514] (animal + in‑vitro HUVEC data).  \n- **NF‑κB/MAPK activation links ethanol‑induced EC senescence to atherogenesis** – Colchicine blocked ethanol‑triggered p21 up‑regulation, NF‑κB and MAPK signalling, and SASP release in cultured ECs, suggesting that these pathways translate senescence into pro‑atherogenic inflammation [PMID: 37107335] (in‑vitro).  \n\n**Associative observations**  \n- **Endothelial dysfunction and arterial stiffness as senescence phenotypes** – Age‑related EC senescence correlates with impaired vasodilatation and increased elastic arterial stiffness, both independent predictors of future cardiovascular disease and atherosclerosis [PMID: 39119148].  \n- **p53/p21 and p16/Rb pathway activation in vascular cells is linked to atherosclerotic burden** – Reviews of vascular aging note that DNA damage and oxidative stress activate these canonical senescence pathways, which are enriched in human atherosclerotic plaques [PMID: 40418230].  \n\n**Testable hypotheses derived from the current literature**  \n- **Targeting the SASP will attenuate plaque inflammation and improve stability** – Pharmacologic senomorphics that suppress SASP components (e.g., IL‑6, IL‑1β) could reduce macrophage recruitment and matrix degradation within plaques.  \n- **Restoring autophagy in senescent ECs will halt lesion expansion** – Agents that activate the PI3K/AKT/mTOR axis downstream of MKRN2 (or directly stimulate autophagy) may reverse EC senescence and shrink atherosclerotic burden.  \n- **Inhibiting NLRP3 inflammasome activation in senescent ECs will diminish plaque formation** – Since NLRP3 is a key driver of EC senescence in diabetes, NLRP3 inhibitors represent a mechanistic intervention to test for atheroprotection.  \n\n**Key mechanistic pathways identified**  \n- **Oxidative stress & mitochondrial dysfunction** → DNA damage → p53/p21/p16 activation → irreversible cell‑cycle arrest.  \n- **SASP release (IL‑1β, IL‑6, MCP‑1, MMPs)** → chronic low‑grade inflammation and extracellular‑matrix remodeling.  \n- **NF‑κB and MAPK signalling** → up‑regulation of adhesion molecules (VCAM‑1, ICAM‑1) and pro‑thrombotic factors.  \n- **Impaired autophagy (PI3K/AKT/mTOR hyper‑activation)** → accumulation of damaged organelles, exacerbating ROS production and SASP secretion.  \n- **NLRP3 inflammasome activation** → caspase‑1‑mediated IL‑1β release, reinforcing senescence‑driven inflammation.  \n\n**Human vs. non‑human evidence**  \n- Human relevance is supported by epidemiologic links between endothelial dysfunction, arterial stiffness, and cardiovascular events [PMID: 39119148] and by detection of senescence markers in human atherosclerotic plaques [PMID: 40418230].  \n- Animal (ApoE‑/‑ mouse) and in‑vitro endothelial cell models provide causal data for the pathways listed above [PMIDs: 41587514, 37107335].  \n\n**Conclusion** – Endothelial senescence fuels atherosclerosis through oxidative DNA damage, canonical cell‑cycle arrest pathways, autophagy failure, and a pro‑inflammatory SASP that drives vascular inflammation, plaque growth and instability."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 5.3256750106811523e-05,
+    "vector_index": 1.4889448806643486,
+    "kg_expansion": 3.711134195327759e-05,
+    "answer_traditional_rag": 33.277458772063255,
+    "total": 35.26232051104307
+  },
+  "token_usage": {
+    "input_tokens": 2483,
+    "output_tokens": 1268,
+    "total_tokens": 3751
+  },
+  "completed_at": "2026-08-13T03:47:10.802092+00:00"
+}

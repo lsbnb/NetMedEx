@@ -1,0 +1,188 @@
+{
+  "status": "complete",
+  "question_id": "PP017",
+  "domain": "infectious disease",
+  "question": "What evidence supports a mechanistic path from hepatitis b chronic to carcinoma hepatocellular through liver cirrhosis? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "HBV hepatocellular carcinoma inflammation HBx integration fibrosis",
+  "effective_pubmed_query": "HBV hepatocellular carcinoma inflammation HBx integration fibrosis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "40512786",
+    "39599784",
+    "27314335",
+    "37879404",
+    "40928246",
+    "30842274",
+    "38351096",
+    "39486886",
+    "34168004",
+    "24574713",
+    "40024530",
+    "41997336",
+    "34842182",
+    "39411648",
+    "32020352"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports a mechanistic path from hepatitis b chronic to carcinoma hepatocellular through liver cirrhosis? Distinguish evidence for each hop from overall inference.",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "41997336",
+        "score": 0.523755079206907
+      },
+      {
+        "pmid": "24574713",
+        "score": 0.5016090329483857
+      },
+      {
+        "pmid": "27314335",
+        "score": 0.49548973407041835
+      },
+      {
+        "pmid": "40024530",
+        "score": 0.4878947135774724
+      },
+      {
+        "pmid": "39411648",
+        "score": 0.482966864357061
+      },
+      {
+        "pmid": "34842182",
+        "score": 0.4827690194790202
+      },
+      {
+        "pmid": "39599784",
+        "score": 0.44368689569364
+      },
+      {
+        "pmid": "32020352",
+        "score": 0.44173145548232573
+      },
+      {
+        "pmid": "37879404",
+        "score": 0.4373869950411689
+      },
+      {
+        "pmid": "30842274",
+        "score": 0.43510496950543953
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "41997336",
+        "score": 0.523755079206907
+      },
+      {
+        "pmid": "24574713",
+        "score": 0.5016090329483857
+      },
+      {
+        "pmid": "27314335",
+        "score": 0.49548973407041835
+      },
+      {
+        "pmid": "40024530",
+        "score": 0.4878947135774724
+      },
+      {
+        "pmid": "39411648",
+        "score": 0.482966864357061
+      },
+      {
+        "pmid": "34842182",
+        "score": 0.4827690194790202
+      },
+      {
+        "pmid": "39599784",
+        "score": 0.44368689569364
+      },
+      {
+        "pmid": "32020352",
+        "score": 0.44173145548232573
+      },
+      {
+        "pmid": "37879404",
+        "score": 0.4373869950411689
+      },
+      {
+        "pmid": "30842274",
+        "score": 0.43510496950543953
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Direct evidence for the CHB → cirrhosis step**  \n- Large Chinese cohorts (MASLD patients with and without CHB) showed that concurrent CHB markedly raised the odds of significant fibrosis, advanced fibrosis, and cirrhosis (OR ≈ 2–11, P < 0.001) after adjustment for confounders【PMID:41997336】. *Human, observational.*  \n- A review of CHB natural history reports that ≈ 23 % of chronic HBV carriers progress to cirrhosis, underscoring a measurable transition rate in untreated patients【PMID:24574713】. *Human, epidemiologic.*\n\n**Direct evidence for the cirrhosis → HCC step**  \n- A review of HCC epidemiology notes that liver cirrhosis is an “established high‑risk factor” and that the majority (≈ 80 %) of HCC cases occur in cirrhotic livers【PMID:34842182】. *Human, descriptive.*  \n- In a multicenter MASLD‑related HCC series, 65 % of tumors arose in patients with cirrhosis, confirming that cirrhosis remains the predominant substrate for HCC development even when metabolic disease is present【PMID:39411648】. *Human, cohort.*\n\n**Association linking the two hops**  \n- The CHB cohort data (41997336) also identified the HBeAg‑positive immune‑active phase as the period with the highest cirrhosis risk, a phase known to carry elevated viral replication and inflammation—conditions that foster oncogenic pathways. While the study does not report HCC outcomes, it provides a mechanistic bridge (viral activity →  fibrosis →  cirrhosis).  \n- The cirrhosis‑HCC reviews (34842182, 39411648) repeatedly cite chronic inflammatory and regenerative signaling (e.g., STAT, cytokine cascades) as the biological milieu that converts fibrotic architecture into malignant transformation, aligning with HBV‑driven immune dysregulation described elsewhere (e.g., HBx‑SMC5/6 axis, PMID 39599784).\n\n**Testable hypothesis derived from the mechanistic chain**  \n- **Hypothesis:** In chronic HBV infection, patients in the HBeAg‑positive immune‑active phase experience accelerated progression to cirrhosis, which then precipitates HCC by amplifying HBx‑mediated epigenetic deregulation and chronic inflammatory signaling (STAT‑dependent pathways). This can be tested prospectively by tracking viral phase, fibrosis stage (elastography/biopsy), and biomarkers of HBx activity (e.g., SMC5/6 degradation) in a longitudinal cohort, with HCC incidence as the endpoint.\n\n**Conclusion** – Robust human data show CHB substantially increases cirrhosis risk, and cirrhosis remains the principal substrate for HCC, together supporting a mechanistic pathway from chronic hepatitis B → liver cirrhosis → hepatocellular carcinoma."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 8.638948202133179e-05,
+    "vector_index": 1.7762023955583572,
+    "kg_expansion": 1.6577541828155518e-05,
+    "answer_traditional_rag": 31.008315943181515,
+    "total": 33.25639087706804
+  },
+  "token_usage": {
+    "input_tokens": 3906,
+    "output_tokens": 1113,
+    "total_tokens": 5019
+  },
+  "completed_at": "2026-08-13T06:23:47.967863+00:00"
+}

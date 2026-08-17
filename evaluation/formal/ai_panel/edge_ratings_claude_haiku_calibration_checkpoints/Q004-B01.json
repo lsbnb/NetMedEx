@@ -1,0 +1,26 @@
+{
+  "task": "edge",
+  "question_id": "Q004",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-haiku-4-5-20251001",
+  "input_sha256": "f758b7cc865c176603da3a67e36163bbf70d552a73ca3139a7d5b8b7580eb92c",
+  "raw_response_sha256": "d613863330d167506f3a857547960397efc23050fdad08d60f5043a654e31c04",
+  "rated_at": "2026-08-02T19:08:10.133399+00:00",
+  "result": {
+    "ratings": [
+      {
+        "edge_id": "Q004-E15",
+        "entity_valid": 1,
+        "relation_exists": 1,
+        "relation_type_correct": 1,
+        "direction_correct": 1,
+        "evidence_support": 1,
+        "confidence": 3,
+        "notes": "Abstract explicitly states curcumin can 'inhibit gastric cancer' and 'suppress multiple signaling pathways.' Treats relation appropriate for therapeutic agent."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

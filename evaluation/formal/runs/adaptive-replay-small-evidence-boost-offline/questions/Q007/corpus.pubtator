@@ -1,0 +1,489 @@
+##USE-MESH-VOCABULARY
+25130295|t|IL-12-and IL-23 in health and disease.
+25130295|a|Interleukin (IL)-12 and IL-23 play important roles in the development of experimental autoimmune disease models and numerous afflictions affecting humans. Preclinical data over the last 20 years combined with successful clinical trials has identified a clear relationship between IL-12, IL-23 and the generation of pathogenic T helper cells capable of orchestrating tissue inflammation. Observations made in the clinic have shown that IL-12p40, a common subunit shared by IL-12 and IL-23, is critical to pathologies associated with psoriasis, inflammatory bowel disease (IBD) and tumor growth. These advancements have set in motion the development of a number of potential therapeutics aimed at manipulating IL-12/23 signaling pathways in both mice and humans. This review will discuss a brief history of the understanding and expansion of the IL-12 cytokine family, some difficulties associated with preclinical data interpretation and finally the medicinal interventions that have been developed to combat IL-12/23-driven autoimmune disorders. 
+25130295	0	5	None	Gene	3593
+25130295	10	15	None	Gene	51561
+25130295	39	58	None	Gene	3593
+25130295	63	68	None	Gene	51561
+25130295	125	143	None	Disease	MESH:D001327
+25130295	186	192	None	Species	9606
+25130295	319	324	None	Gene	3593
+25130295	326	331	None	Gene	51561
+25130295	412	424	None	Disease	MESH:D007249
+25130295	474	482	None	Gene	16160
+25130295	511	516	None	Gene	3593
+25130295	521	526	None	Gene	51561
+25130295	571	580	None	Disease	MESH:D011565
+25130295	582	608	None	Disease	MESH:D015212
+25130295	610	613	None	Disease	MESH:D015212
+25130295	619	624	None	Disease	MESH:D009369
+25130295	747	755	None	Gene	-
+25130295	783	787	None	Species	10090
+25130295	792	798	None	Species	9606
+25130295	883	888	None	Gene	3593
+25130295	1047	1055	None	Gene	-
+25130295	1063	1083	None	Disease	MESH:D001327
+25130295	Association	MESH:D001327	51561
+25130295	Association	MESH:D009369	51561
+25130295	Association	MESH:D009369	3593
+25130295	Association	MESH:D007249	51561
+25130295	Association	MESH:D009369	16160
+25130295	Bind	16160	51561
+25130295	Association	MESH:D015212	51561
+25130295	Association	MESH:D007249	3593
+25130295	Association	MESH:D001327	3593
+25130295	Association	MESH:D015212	16160
+25130295	Association	MESH:D011565	51561
+25130295	Association	MESH:D011565	16160
+
+25145755|t|The IL-23-IL-17 immune axis: from mechanisms to therapeutic testing.
+25145755|a|Following the discovery of T helper 17 (TH17) cells, the past decade has witnessed a major revision of the TH subset paradigm and substantial progress has been made in deciphering the molecular mechanisms of T cell lineage commitment and function. In this Review, we focus on the recent advances that have been made regarding the transcriptional control of TH17 cell plasticity and stability, as well as the effector functions of TH17 cells, and we highlight the mechanisms of IL-17 signalling in mesenchymal and barrier epithelial tissues. We also discuss the emerging clinical data showing that IL-17-specific and IL-23-specific antibody treatments are remarkably effective for treating many immune-mediated inflammatory diseases. 
+25145755	4	9	None	Gene	51561
+25145755	10	15	None	Gene	3605
+25145755	176	178	None	Disease	-
+25145755	546	551	None	Gene	3605
+25145755	666	671	None	Gene	3605
+25145755	685	690	None	Gene	51561
+25145755	763	800	None	Disease	MESH:C567355
+25145755	Association	MESH:C567355	51561
+25145755	Association	3605	51561
+25145755	Association	MESH:C567355	3605
+
+25467639|t|IL-22, cell regeneration and autoimmunity.
+25467639|a|IL-22 as a cytokine is described with opposing pro-inflammatory and anti-inflammatory functions. Cell regeneration, tissue remodelling and balance between commensal bacteria in the gut and host immune system are considered as anti-inflammatory features of IL-22, whereas production of IL-22 from Th17 cells links this cytokine to pro-inflammatory pathways. Th17 cells and group 3 innate lymphoid cells (ILC3) are two major producers of IL-22 and both cell types express ROR-gammat and Aryl hydrocarbon receptor (AhR) transcription factors. Typically, the immune system cells are the main producers of IL-22. However, targets of this cytokine are mostly non-hematopoietic cells such as hepatocytes, keratinocytes, and epithelial cells of lung and intestine. Association of IL-22 with other cytokines or transcription factors in different cell types might explain its contrasting role in health and disease. In this review we discuss the regulation of IL-22 production by AhR- and IL-23-driven pathways. A clear understanding of the biology of IL-22 will provide new opportunities for its application to improve human health involving many debilitating conditions. 
+25467639	0	5	None	Gene	50616
+25467639	43	48	None	Gene	50616
+25467639	94	106	None	Disease	MESH:D007249
+25467639	116	128	None	Disease	MESH:D007249
+25467639	274	286	None	Disease	MESH:D007249
+25467639	299	304	None	Gene	50616
+25467639	328	333	None	Gene	50616
+25467639	377	389	None	Disease	MESH:D007249
+25467639	479	484	None	Gene	50616
+25467639	528	553	None	Gene	196
+25467639	555	558	None	Gene	196
+25467639	644	649	None	Gene	50616
+25467639	815	820	None	Gene	50616
+25467639	993	998	None	Gene	50616
+25467639	1013	1016	None	Gene	196
+25467639	1022	1027	None	Gene	51561
+25467639	1085	1090	None	Gene	50616
+25467639	1153	1158	None	Species	9606
+25467639	Association	50616	51561
+25467639	Association	MESH:D007249	50616
+25467639	Association	196	50616
+
+27576555|t|Targeting IL-17 in autoimmunity and inflammation.
+27576555|a|The discovery of two distinct subsets of helper T cells, IFN-gamma-producing Th1 cells and IL-4-producing Th2 cells, about three decades ago enabled us to understand the immunopathology of cell-mediated and allergic inflammatory diseases in humans. The observation that T cell-mediated experimental autoimmune diseases can be induced in mice lacking Th1 and Th2 cell responses prompted many immunologists to hypothesize that there might be additional subsets in helper T cell population which mediate autoimmunity in the absence of Th1 and Th2 cells. Consequently, multiple independent research groups identified IL-17-expressing RORgammat+CD4+ T cell population as a distinct subset of helper T cells which promotes autoimmune tissue inflammation. Subsequent studies have revealed that innate immune cells, including gammadelta T cells, NKT cells and innate lymphoid cells, also produce type 17 cytokines and contribute to tissue inflammation. In this review, we discuss our current understanding on the biology of IL-17 and the therapeutic potential of targeting IL-17 for the treatment of immune disorders in humans.
+27576555	10	15	None	Gene	3605
+27576555	19	31	None	Disease	MESH:D001327
+27576555	36	48	None	Disease	MESH:D007249
+27576555	107	116	None	Gene	3458
+27576555	141	145	None	Gene	3565
+27576555	257	287	None	Disease	MESH:D004342
+27576555	291	297	None	Species	9606
+27576555	349	368	None	Disease	MESH:D001327
+27576555	387	391	None	Species	10090
+27576555	551	563	None	Disease	MESH:D001327
+27576555	663	668	None	Gene	3605
+27576555	690	693	None	Gene	920
+27576555	767	797	None	Disease	MESH:D007249
+27576555	981	993	None	Disease	MESH:D007249
+27576555	1066	1071	None	Gene	3605
+27576555	1115	1120	None	Gene	3605
+27576555	1142	1158	None	Disease	MESH:D007154
+27576555	1162	1168	None	Species	9606
+27576555	Association	MESH:D007154	3605
+27576555	Association	MESH:D001327	3605
+27576555	Association	MESH:D007249	920
+27576555	Association	3605	920
+27576555	Association	MESH:D007249	3605
+
+27757507|t|The obesity-related pathology and Th17 cells.
+27757507|a|Chronic inflammation associated with obesity plays a major role in the development of metabolic diseases, cancer, and autoimmune diseases. Among Th subsets, Th17 cells are involved in the pathogenesis of autoimmune disorders such as psoriasis, rheumatoid arthritis, inflammatory bowel disease, steroid-resistant asthma, and multiple sclerosis. Accumulating data suggest that reciprocal interactions between the metabolic systems and immune system play pivotal roles in the pathogenesis of obesity-associated diseases. We herein outline the developing principles in the control of T cell differentiation and function via their cellular metabolism. Also discussed are recent findings that changes in the intracellular metabolism, including fatty acid metabolism, affect the Th17 cell function in obese individuals. Finally, we will also highlight the unique molecular mechanism involved in the activation of retinoid-related orphan receptor-gamma-t (RORgammat) by intracellular metabolism and discuss a new therapeutic approach for treating autoimmune disorders through the inhibition of RORgammat.
+27757507	4	11	None	Disease	MESH:D009765
+27757507	46	66	None	Disease	MESH:D007249
+27757507	83	90	None	Disease	MESH:D009765
+27757507	132	150	None	Disease	MESH:D008659
+27757507	152	158	None	Disease	MESH:D009369
+27757507	164	183	None	Disease	MESH:D001327
+27757507	250	270	None	Disease	MESH:D001327
+27757507	279	288	None	Disease	MESH:D011565
+27757507	290	310	None	Disease	MESH:D001172
+27757507	312	338	None	Disease	MESH:D015212
+27757507	340	347	None	Chemical	MESH:D013256
+27757507	358	364	None	Disease	MESH:D001249
+27757507	370	388	None	Disease	MESH:D009103
+27757507	535	542	None	Disease	MESH:D009765
+27757507	784	794	None	Chemical	MESH:D005227
+27757507	840	845	None	Disease	MESH:D009765
+27757507	1085	1105	None	Disease	MESH:D001327
+27757507	Negative_Correlation	MESH:D013256	MESH:D001249
+27757507	Association	MESH:D005227	MESH:D009765
+
+30502718|t|A role for Th1-like Th17 cells in the pathogenesis of inflammatory and autoimmune disorders.
+30502718|a|The T helper 17 (Th17) cells contain a dynamic subset of CD4+ T-cells that are able to develop into other different lineage subsets, including the Th1-like Th17 cells. These cells co-express retinoic acid-related orphan receptor gamma t (RORgammat) and transcription factor T-box-expressed-in-T-cells (T-bet) and produce both interleukin (IL)-17 and interferon (IFN)-gamma. Recent reports have shown that Th1-like Th17 cells play crucial roles in the pathogenesis of autoimmune diseases such as inflammatory bowel disease, multiple sclerosis and rheumatoid arthritis, as well as, some primary immunodeficiency with autoimmune features. Here, the actual mechanisms for Th17 cells plasticity to Th1-like Th17 cells are discussed and reviewed in association to the role that Th1-like Th17 cells have on inflammatory and autoimmune disorders.
+30502718	54	91	None	Disease	MESH:D007249
+30502718	150	153	None	Gene	920
+30502718	395	400	None	Gene	30009
+30502718	419	438	None	Gene	3605
+30502718	443	465	None	Gene	3458
+30502718	560	579	None	Disease	MESH:D001327
+30502718	588	614	None	Disease	MESH:D015212
+30502718	616	634	None	Disease	MESH:D009103
+30502718	639	659	None	Disease	MESH:D001172
+30502718	686	702	None	Disease	MESH:D007153
+30502718	708	718	None	Disease	MESH:D001327
+30502718	893	930	None	Disease	MESH:D007249
+
+30891627|t|The pathogenicity of Th17 cells in autoimmune diseases.
+30891627|a|IL-17-producing T helper (Th17) cells have been implicated in the pathogenesis of many inflammatory and autoimmune diseases. Targeting the effector cytokines IL-17 and GM-CSF secreted by autoimmune Th17 cells has been shown to be effective for the treatment of the diseases. Understanding a molecular basis of Th17 differentiation and effector functions is therefore critical for the regulation of the pathogenicity of tissue Th17 cells in chronic inflammation. Here, we discuss the roles of proinflammatory cytokines and environmental stimuli in the control of Th17 differentiation and chronic tissue inflammation by pathogenic Th17 cells in humans and in mouse models of autoimmune diseases. We also highlight recent advances in the regulation of pathogenic Th17 cells by gut microbiota and immunometabolism in autoimmune arthritis.
+30891627	35	54	None	Disease	MESH:D001327
+30891627	56	61	None	Gene	3605
+30891627	143	155	None	Disease	MESH:D007249
+30891627	160	179	None	Disease	MESH:D001327
+30891627	214	219	None	Gene	3605
+30891627	224	230	None	Gene	12981
+30891627	496	516	None	Disease	MESH:D007249
+30891627	658	670	None	Disease	MESH:D007249
+30891627	699	705	None	Species	9606
+30891627	713	718	None	Species	10090
+30891627	729	748	None	Disease	MESH:D001327
+30891627	869	889	None	Disease	MESH:D001168
+30891627	Association	MESH:D007249	3605
+30891627	Association	MESH:D001327	3605
+
+31295952|t|Th17 Cells and the IL-23/IL-17 Axis in the Pathogenesis of Periodontitis and Immune-Mediated Inflammatory Diseases.
+31295952|a|Innate immunity represents the semi-specific first line of defense and provides the initial host response to tissue injury, trauma, and pathogens. Innate immunity activates the adaptive immunity, and both act highly regulated together to establish and maintain tissue homeostasis. Any dysregulation of this interaction can result in chronic inflammation and autoimmunity and is thought to be a major underlying cause in the initiation and progression of highly prevalent immune-mediated inflammatory diseases (IMIDs) such as psoriasis, rheumatoid arthritis, inflammatory bowel diseases among others, and periodontitis. Th1 and Th2 cells of the adaptive immune system are the major players in the pathogenesis of IMIDs. In addition, Th17 cells, their key cytokine IL-17, and IL-23 seem to play pivotal roles. This review aims to provide an overview of the current knowledge about the differentiation of Th17 cells and the role of the IL-17/IL-23 axis in the pathogenesis of IMIDs. Moreover, it aims to review the association of these IMIDs with periodontitis and briefly discusses the therapeutic potential of agents that modulate the IL-17/IL-23 axis.
+31295952	19	24	None	Gene	51561
+31295952	25	30	None	Gene	3605
+31295952	59	72	None	Disease	MESH:D010518
+31295952	77	114	None	Disease	MESH:C567355
+31295952	225	238	None	Disease	MESH:D017695
+31295952	240	246	None	Disease	MESH:D014947
+31295952	457	469	None	Disease	MESH:D007249
+31295952	587	624	None	Disease	MESH:C567355
+31295952	626	631	None	Disease	MESH:C567355
+31295952	641	650	None	Disease	MESH:D011565
+31295952	652	672	None	Disease	MESH:D001172
+31295952	674	701	None	Disease	MESH:D015212
+31295952	720	733	None	Disease	MESH:D010518
+31295952	828	833	None	Disease	MESH:C567355
+31295952	879	884	None	Gene	3605
+31295952	890	895	None	Gene	51561
+31295952	1049	1054	None	Gene	3605
+31295952	1055	1060	None	Gene	51561
+31295952	1089	1094	None	Disease	MESH:C567355
+31295952	1149	1154	None	Disease	MESH:C567355
+31295952	1160	1173	None	Disease	MESH:D010518
+31295952	1250	1255	None	Gene	3605
+31295952	1256	1261	None	Gene	51561
+31295952	Association	MESH:D010518	3605
+31295952	Association	MESH:D010518	51561
+31295952	Association	MESH:C567355	51561
+31295952	Association	MESH:C567355	3605
+
+31866067|t|Serum Amyloid A Proteins Induce Pathogenic Th17 Cells and Promote Inflammatory Disease.
+31866067|a|Lymphoid cells that produce interleukin (IL)-17 cytokines protect barrier tissues from pathogenic microbes but are also prominent effectors of inflammation and autoimmune disease. T helper 17 (Th17) cells, defined by RORgammat-dependent production of IL-17A and IL-17F, exert homeostatic functions in the gut upon microbiota-directed differentiation from naive CD4+ T cells. In the non-pathogenic setting, their cytokine production is regulated by serum amyloid A proteins (SAA1 and SAA2) secreted by adjacent intestinal epithelial cells. However, Th17 cell behaviors vary markedly according to their environment. Here, we show that SAAs additionally direct a pathogenic pro-inflammatory Th17 cell differentiation program, acting directly on T cells in collaboration with STAT3-activating cytokines. Using loss- and gain-of-function mouse models, we show that SAA1, SAA2, and SAA3 have distinct systemic and local functions in promoting Th17-mediated inflammatory diseases. These studies suggest that T cell signaling pathways modulated by the SAAs may be attractive targets for anti-inflammatory therapies.
+31866067	66	86	None	Disease	MESH:D007249
+31866067	116	135	None	Gene	16171
+31866067	231	243	None	Disease	MESH:D007249
+31866067	248	266	None	Disease	MESH:D001327
+31866067	339	345	None	Gene	16171
+31866067	350	356	None	Gene	257630
+31866067	449	452	None	Gene	12504
+31866067	562	566	None	Gene	20208
+31866067	571	575	None	Gene	20209
+31866067	763	775	None	Disease	MESH:D007249
+31866067	860	865	None	Gene	20848
+31866067	921	926	None	Species	10090
+31866067	948	952	None	Gene	20208
+31866067	954	958	None	Gene	20209
+31866067	964	968	None	Gene	20210
+31866067	1039	1060	None	Disease	MESH:D007249
+31866067	1172	1184	None	Disease	MESH:D007249
+31866067	Positive_Correlation	MESH:D007249	20210
+31866067	Positive_Correlation	MESH:D007249	20208
+31866067	Association	MESH:D007249	16171
+31866067	Positive_Correlation	MESH:D007249	20209
+31866067	Association	MESH:D001327	16171
+
+34635393|t|RORgammat protein modifications and IL-17-mediated inflammation.
+34635393|a|RORgammat, the master transcription factor for cytokine interleukin (IL)-17, is expressed explicitly in Th17 cells, gammadeltaT cells, and type 3 innate lymphoid cells in mice and humans. Since dysregulated IL-17 expression is strongly linked to several human inflammatory diseases, the RORgammat-IL-17 axis has been the focus of intense research. Recently, several studies have shown that RORgammat is modified by multiple post-translational mechanisms, including ubiquitination, acetylation, SUMOylation, and phosphorylation. This review discusses how post-translational modifications modulate RORgammat function and its turnover to regulate IL-17-driven inflammation. Broad knowledge of these pathways is crucial for a clear understanding of the pathogenic role of RORgammat+IL-17+ cells and for the development of putative therapeutic strategies to target IL-17-driven diseases such as multiple sclerosis, psoriasis, rheumatoid arthritis, systemic lupus erythematosus, and inflammatory bowel disease.
+34635393	0	9	None	Gene	-
+34635393	36	41	None	Gene	3605
+34635393	51	63	None	Disease	MESH:D007249
+34635393	65	74	None	Gene	-
+34635393	121	140	None	Gene	3605
+34635393	236	240	None	Species	10090
+34635393	245	251	None	Species	9606
+34635393	272	277	None	Gene	3605
+34635393	319	324	None	Species	9606
+34635393	325	346	None	Disease	MESH:D007249
+34635393	362	367	None	Gene	3605
+34635393	661	670	None	Gene	-
+34635393	709	714	None	Gene	3605
+34635393	722	734	None	Disease	MESH:D007249
+34635393	833	842	None	Gene	-
+34635393	843	848	None	Gene	3605
+34635393	925	930	None	Gene	3605
+34635393	955	973	None	Disease	MESH:D009103
+34635393	975	984	None	Disease	MESH:D011565
+34635393	986	1006	None	Disease	MESH:D001172
+34635393	1008	1036	None	Disease	MESH:D008180
+34635393	1042	1068	None	Disease	MESH:D015212
+34635393	Association	MESH:D015212	3605
+34635393	Association	MESH:D009103	3605
+34635393	Association	MESH:D008180	3605
+34635393	Association	MESH:D007249	3605
+34635393	Association	MESH:D011565	3605
+34635393	Association	MESH:D001172	3605
+
+34875227|t|Stem-like intestinal Th17 cells give rise to pathogenic effector T cells during autoimmunity.
+34875227|a|While intestinal Th17 cells are critical for maintaining tissue homeostasis, recent studies have implicated their roles in the development of extra-intestinal autoimmune diseases including multiple sclerosis. However, the mechanisms by which tissue Th17 cells mediate these dichotomous functions remain unknown. Here, we characterized the heterogeneity, plasticity, and migratory phenotypes of tissue Th17 cells in vivo by combined fate mapping with profiling of the transcriptomes and TCR clonotypes of over 84,000 Th17 cells at homeostasis and during CNS autoimmune inflammation. Inter- and intra-organ single-cell analyses revealed a homeostatic, stem-like TCF1+ IL-17+ SLAMF6+ population that traffics to the intestine where it is maintained by the microbiota, providing a ready reservoir for the IL-23-driven generation of encephalitogenic GM-CSF+ IFN-gamma+ CXCR6+ T cells. Our study defines a direct in vivo relationship between IL-17+ non-pathogenic and GM-CSF+ and IFN-gamma+ pathogenic Th17 populations and provides a mechanism by which homeostatic intestinal Th17 cells direct extra-intestinal autoimmune disease.
+34875227	253	272	None	Disease	MESH:D001327
+34875227	283	301	None	Disease	MESH:D009103
+34875227	580	583	None	Gene	6962
+34875227	651	674	None	Disease	MESH:D007249
+34875227	754	758	None	Gene	6932
+34875227	760	765	None	Gene	3605
+34875227	767	773	None	Gene	114836
+34875227	895	900	None	Gene	51561
+34875227	939	945	None	Gene	1437
+34875227	947	956	None	Gene	3458
+34875227	958	963	None	Gene	10663
+34875227	1030	1035	None	Gene	3605
+34875227	1056	1062	None	Gene	1437
+34875227	1068	1077	None	Gene	3458
+34875227	1199	1217	None	Disease	MESH:D001327
+34875227	Positive_Correlation	10663	51561
+34875227	Positive_Correlation	1437	51561
+34875227	Positive_Correlation	3458	51561
+
+35872102|t|Abnormalities of T cells in systemic lupus erythematosus: new insights in pathogenesis and therapeutic strategies.
+35872102|a|Systemic lupus erythematosus (SLE) is an autoimmune disease characterized by loss of immune tolerance and sustained production of autoantibodies. Multiple and profound T cell abnormalities in SLE are intertwined with disease expression. Both numerical and functional disturbances have been reported in main CD4+ T helper cell subsets including Th1, Th2, Th17, regulatory, and follicular helper cells. SLE CD4+ T cells are known to provide help to B cells, produce excessive IL-17 but insufficient IL-2, and infiltrate tissues. In the absence of sufficient amounts of IL-2, regulatory T cells, do not function properly to constrain inflammation. A complicated series of early signaling defects and aberrant activation of kinases and phosphatases result in complex cell phenotypes by altering the metabolic profile and the epigenetic landscape. All main metabolic pathways including glycolysis, glutaminolysis and oxidative phosphorylation are altered in T cells from lupus prone mice and patients with SLE. SLE CD8+ cytotoxic T cells display reduced cytolytic activity which accounts for higher rates of infection and the sustenance of autoimmunity. Further, CD8+ T cells in the context of rheumatic diseases lose the expression of CD8, acquire IL-17+CD4-CD8- double negative T (DNT) cell phenotype and infiltrate tissues. Herein we present an update on these T cell abnormalities along with underlying mechanisms and discuss how these advances can be exploited therapeutically. Novel strategies to correct these aberrations in T cells show promise for SLE treatment.
+35872102	28	56	None	Disease	MESH:D008180
+35872102	115	143	None	Disease	MESH:D008180
+35872102	145	148	None	Disease	MESH:D008180
+35872102	156	174	None	Disease	MESH:D001327
+35872102	283	303	None	Disease	MESH:C536780
+35872102	307	310	None	Disease	MESH:D008180
+35872102	422	425	None	Gene	920
+35872102	516	519	None	Disease	MESH:D008180
+35872102	520	523	None	Gene	920
+35872102	589	594	None	Gene	3605
+35872102	612	616	None	Gene	3558
+35872102	682	686	None	Gene	3558
+35872102	746	758	None	Disease	MESH:D007249
+35872102	1081	1086	None	Disease	MESH:D008180
+35872102	1093	1097	None	Species	10090
+35872102	1102	1110	None	Species	9606
+35872102	1116	1119	None	Disease	MESH:D008180
+35872102	1121	1124	None	Disease	MESH:D008180
+35872102	1125	1128	None	Gene	925
+35872102	1218	1227	None	Disease	MESH:D007239
+35872102	1273	1276	None	Gene	925
+35872102	1304	1322	None	Disease	MESH:D012216
+35872102	1346	1349	None	Gene	925
+35872102	1359	1364	None	Gene	16171
+35872102	1365	1368	None	Gene	12504
+35872102	1369	1372	None	Gene	925
+35872102	1474	1494	None	Disease	MESH:C536780
+35872102	1667	1670	None	Disease	MESH:D008180
+35872102	Negative_Correlation	16171	925
+35872102	Association	MESH:D008180	3605
+35872102	Association	MESH:D007239	925
+35872102	Association	3558	925
+35872102	Positive_Correlation	3605	920
+35872102	Negative_Correlation	12504	925
+35872102	Association	3558	920
+35872102	Association	MESH:D012216	16171
+35872102	Association	MESH:C536780	925
+35872102	Association	MESH:D012216	925
+35872102	Association	MESH:D008180	925
+
+37579542|t|IL-17A functions and the therapeutic use of IL-17A and IL-17RA targeted antibodies for cancer treatment.
+37579542|a|Interleukin 17A (IL-17A) is a major member of the IL-17 cytokine family and is produced mainly by T helper 17 (Th17) cells. Other cells such as CD8+ T cells, gammadelta T cells, natural killer T cells and innate lymphoid-like cells can also produce IL-17A. In healthy individuals, IL-17A has a host-protective capacity, but excessive elevation of IL-17A is associated with the development of autoimmune diseases and cancer. Monoclonal antibodies (mAbs) targeting IL-17A (e.g., ixekizumab and secukinumab) or IL-17A receptor (IL-17RA) (e.g., brodalumab) would be investigated as potential treatments for these diseases. Currently, the application of IL-17A-targeted drugs in autoimmune diseases will provide new ideas for the treatment of tumors, and its combined application with immune checkpoint inhibitors has become a research hotspot. This article reviews the mechanism of action of IL-17A and the application of anti-IL-17A antibodies, focusing on the research progress on the mechanism of action and therapeutic blockade of IL-17A in various tumors such as colorectal cancer (CRC), lung cancer, gastric cancer and breast cancer. Moreover, we also include the results of therapeutic blockade in the field of cancer as well as recent advances in the regulation of IL-17A signaling.
+37579542	0	6	None	Gene	3605
+37579542	44	50	None	Gene	3605
+37579542	55	62	None	Gene	23765
+37579542	87	93	None	Disease	MESH:D009369
+37579542	105	120	None	Gene	3605
+37579542	122	128	None	Gene	3605
+37579542	155	160	None	Gene	3605
+37579542	354	361	None	Gene	3605
+37579542	386	392	None	Gene	3605
+37579542	452	458	None	Gene	3605
+37579542	497	516	None	Disease	MESH:D001327
+37579542	521	527	None	Disease	MESH:D009369
+37579542	568	574	None	Gene	3605
+37579542	582	592	None	Chemical	MESH:C549079
+37579542	597	608	None	Chemical	MESH:C555450
+37579542	630	637	None	Gene	23765
+37579542	646	656	None	Chemical	MESH:C571216
+37579542	754	760	None	Gene	3605
+37579542	779	798	None	Disease	MESH:D001327
+37579542	843	849	None	Disease	MESH:D009369
+37579542	993	999	None	Gene	3605
+37579542	1028	1034	None	Gene	3605
+37579542	1136	1142	None	Gene	3605
+37579542	1154	1160	None	Disease	MESH:D009369
+37579542	1169	1186	None	Disease	MESH:D015179
+37579542	1188	1191	None	Disease	MESH:D015179
+37579542	1194	1205	None	Disease	MESH:D008175
+37579542	1207	1221	None	Disease	MESH:D013274
+37579542	1226	1239	None	Disease	MESH:D001943
+37579542	1319	1325	None	Disease	MESH:D009369
+37579542	1374	1380	None	Gene	3605
+37579542	Positive_Correlation	MESH:D001327	3605
+37579542	Association	MESH:D001943	3605
+37579542	Association	MESH:D013274	3605
+37579542	Association	MESH:D009369	23765
+37579542	Negative_Correlation	MESH:C549079	3605
+37579542	Association	MESH:D008175	3605
+37579542	Negative_Correlation	MESH:C555450	3605
+37579542	Association	MESH:D015179	3605
+37579542	Association	MESH:D009369	3605
+
+37670700|t|Role of Th17 and IL-17 Cytokines on Inflammatory and Auto-immune Diseases.
+37670700|a|BACKGROUND: The IL-17 (interleukin 17) family consists of six structurally related pro-inflammatory cytokines, namely IL-17A to IL-17F. These cytokines have garnered significant scientific interest due to their pivotal role in the pathogenesis of various diseases. Notably, a specific subset of T-cells expresses IL-17 family members, highlighting their importance in immune responses against microbial infections. INTRODUCTION: IL-17 cytokines play a critical role in host defense mechanisms by inducing cytokines and chemokines, recruiting neutrophils, modifying T-cell differentiation, and stimulating the production of antimicrobial proteins. Maintaining an appropriate balance of IL-17 is vital for overall health. However, dysregulated production of IL-17A and other members can lead to the pathogenesis of numerous inflammatory and autoimmune diseases. METHOD: This review provides a comprehensive overview of the IL-17 family and its involvement in several inflammatory and autoimmune diseases. Relevant literature and research studies were analyzed to compile the data presented in this review. RESULTS: IL-17 cytokines, particularly IL-17A, have been implicated in the development of various inflammatory and autoimmune disorders, including multiple sclerosis, Hashimoto's thyroiditis, systemic lupus erythematosus, pyoderma gangrenosum, autoimmune hepatic disorders, rheumatoid arthritis, psoriasis, psoriatic arthritis, ankylosing spondylitis, osteoarthritis, and graft-versus-host disease. Understanding the role of IL-17 in these diseases is crucial for developing targeted therapeutic strategies. CONCLUSION: The significant involvement of IL-17 cytokines in inflammatory and autoimmune diseases underscores their potential as therapeutic targets. Current treatments utilizing antibodies against IL-17 cytokines and IL-17RA receptors have shown promise in managing these conditions. This review consolidates the understanding of IL-17 family members and their roles, providing valuable insights for the development of novel immunomodulators to effectively treat inflammatory and autoimmune diseases.
+37670700	36	73	None	Disease	MESH:C538437
+37670700	91	96	None	Gene	3605
+37670700	98	112	None	Gene	3605
+37670700	162	174	None	Disease	MESH:D007249
+37670700	193	199	None	Gene	3605
+37670700	203	210	None	Gene	112744
+37670700	388	393	None	Gene	3605
+37670700	468	488	None	Disease	MESH:D015163
+37670700	760	765	None	Gene	3605
+37670700	831	837	None	Gene	3605
+37670700	897	933	None	Disease	MESH:D001327
+37670700	996	1001	None	Gene	3605
+37670700	1040	1076	None	Disease	MESH:D001327
+37670700	1218	1224	None	Gene	3605
+37670700	1277	1314	None	Disease	MESH:D007249
+37670700	1326	1344	None	Disease	MESH:D009103
+37670700	1346	1369	None	Disease	MESH:D050031
+37670700	1371	1399	None	Disease	MESH:D008180
+37670700	1401	1421	None	Disease	MESH:D017511
+37670700	1423	1451	None	Disease	MESH:D019693
+37670700	1453	1473	None	Disease	MESH:D001172
+37670700	1475	1484	None	Disease	MESH:D011565
+37670700	1486	1505	None	Disease	MESH:D015535
+37670700	1507	1529	None	Disease	MESH:D013167
+37670700	1531	1545	None	Disease	MESH:D010003
+37670700	1551	1576	None	Disease	MESH:D006086
+37670700	1604	1609	None	Gene	3605
+37670700	1749	1785	None	Disease	MESH:D001327
+37670700	2019	2024	None	Gene	3605
+37670700	2152	2188	None	Disease	MESH:D001327
+37670700	Association	MESH:D017511	3605
+37670700	Association	MESH:D050031	3605
+37670700	Association	MESH:D008180	3605
+37670700	Association	MESH:D019693	3605
+37670700	Association	MESH:D006086	3605
+37670700	Association	MESH:D011565	3605
+37670700	Association	MESH:D015535	3605
+37670700	Association	MESH:D001327	3605
+37670700	Association	MESH:D001172	3605
+37670700	Association	MESH:D015163	3605
+37670700	Association	MESH:D009103	3605
+37670700	Association	MESH:D013167	3605
+37670700	Association	MESH:D010003	3605
+37670700	Association	MESH:D007249	3605
+
+39875232|t|Interleukin-17: A pleiotropic cytokine implicated in inflammatory, infectious, and malignant disorders.
+39875232|a|IL-17A, referred to as IL-17, is the founding member of a family of pro-inflammatory cytokines, including IL-17B, IL-17C, IL-17D, IL-17E (or IL-25), and IL-17F, which act via receptors IL-17RA to IL-17RE, and elicit potent cellular responses that impact diverse diseases. IL-17's interactions with various cytokines include forming a heterodimer with IL-17F and being stimulated by IL-23's activation of Th17 cells, which can lead to inflammation and autoimmunity. IL-17 is implicated in infectious diseases and inflammatory disorders such as rheumatoid arthritis and psoriasis, promoting neutrophil recruitment and anti-bacterial immunity, but potentially exacerbating fungal and viral infections, revealing its dual role as protective and pathologic. IL-17 is also involved in various cancers, including breast, colon, cervical, prostate, and skin cancer, contributing to proliferation, immune invasion, and metastases, but also playing a protective role in certain instances. Four FDA-approved drugs-secukinumab (for ankylosing spondylitis, enthesitis-related arthritis, hidradenitis suppurativa, non-radiographic axial spondyloarthritis, plaque psoriasis, and psoriatic arthritis), ixekizumab (for ankylosing spondylitis, non-radiographic axial spondyloarthritis, plaque psoriasis, and psoriatic arthritis), brodalumab (for plaque psoriasis), and bimekizumab (for plaque psoriasis)-suppress the IL-17 pathway, with more in development, including netakimab, sonelokimab, izokibep, and CJM112. These agents and others are being studied across a spectrum of disorders. Understanding the complicated interplay between IL-17 and other immune mediators may yield new treatments for inflammatory/autoimmune conditions and malignancies.
+39875232	53	65	None	Disease	MESH:D007249
+39875232	67	77	None	Disease	MESH:D003141
+39875232	83	102	None	Disease	MESH:D009369
+39875232	104	110	None	Gene	3605
+39875232	127	132	None	Gene	3605
+39875232	210	216	None	Gene	27190
+39875232	218	224	None	Gene	27189
+39875232	226	232	None	Gene	53342
+39875232	234	240	None	Gene	64806
+39875232	245	250	None	Gene	64806
+39875232	257	263	None	Gene	112744
+39875232	289	296	None	Gene	23765
+39875232	300	307	None	Gene	132014
+39875232	376	381	None	Gene	3605
+39875232	455	461	None	Gene	112744
+39875232	486	491	None	Gene	51561
+39875232	538	550	None	Disease	MESH:D007249
+39875232	569	574	None	Gene	3605
+39875232	592	611	None	Disease	MESH:D003141
+39875232	616	638	None	Disease	MESH:D007249
+39875232	647	667	None	Disease	MESH:D001172
+39875232	672	681	None	Disease	MESH:D011565
+39875232	774	801	None	Disease	MESH:D014777
+39875232	857	862	None	Gene	3605
+39875232	891	898	None	Disease	MESH:D009369
+39875232	910	960	None	Disease	MESH:D011471
+39875232	1014	1024	None	Disease	MESH:D009362
+39875232	1107	1118	None	Chemical	MESH:C555450
+39875232	1124	1146	None	Disease	MESH:D013167
+39875232	1148	1176	None	Disease	MESH:D001171
+39875232	1178	1202	None	Disease	MESH:D017497
+39875232	1221	1244	None	Disease	MESH:D000089183
+39875232	1246	1262	None	Disease	MESH:D011565
+39875232	1268	1287	None	Disease	MESH:D015535
+39875232	1290	1300	None	Chemical	MESH:C549079
+39875232	1306	1328	None	Disease	MESH:D013167
+39875232	1347	1370	None	Disease	MESH:D000089183
+39875232	1372	1388	None	Disease	MESH:D011565
+39875232	1394	1413	None	Disease	MESH:D015535
+39875232	1416	1426	None	Chemical	MESH:C571216
+39875232	1432	1448	None	Disease	MESH:D011565
+39875232	1455	1466	None	Chemical	MESH:C000625981
+39875232	1472	1488	None	Disease	MESH:D011565
+39875232	1503	1508	None	Gene	3605
+39875232	1554	1563	None	Chemical	MESH:C000718740
+39875232	1578	1586	None	Chemical	-
+39875232	1592	1598	None	Chemical	-
+39875232	1722	1727	None	Gene	3605
+39875232	1784	1818	None	Disease	MESH:D007249
+39875232	1823	1835	None	Disease	MESH:D009369
+39875232	Negative_Correlation	MESH:C549079	MESH:D007249
+39875232	Association	MESH:D001171	3605
+39875232	Negative_Correlation	MESH:C000625981	MESH:D009369
+39875232	Association	MESH:D001172	3605
+39875232	Association	MESH:D013167	3605
+39875232	Bind	112744	3605
+39875232	Negative_Correlation	MESH:C000718740	MESH:D000089183
+39875232	Negative_Correlation	MESH:C555450	3605
+39875232	Negative_Correlation	MESH:C555450	MESH:D013167
+39875232	Negative_Correlation	MESH:C555450	MESH:D017497
+39875232	Negative_Correlation	MESH:C571216	3605
+39875232	Negative_Correlation	MESH:C571216	MESH:D011565
+39875232	Association	MESH:D017497	3605
+39875232	Association	MESH:D014777	3605
+39875232	Negative_Correlation	MESH:C000718740	MESH:D011565
+39875232	Association	MESH:D009369	3605
+39875232	Negative_Correlation	MESH:C549079	MESH:D000089183
+39875232	Negative_Correlation	MESH:C571216	MESH:D007249
+39875232	Association	MESH:D000089183	3605
+39875232	Negative_Correlation	MESH:C549079	MESH:D015535
+39875232	Negative_Correlation	MESH:C000625981	3605
+39875232	Association	MESH:D015535	3605
+39875232	Association	MESH:D003141	3605
+39875232	Negative_Correlation	MESH:C000625981	MESH:D011565
+39875232	Negative_Correlation	MESH:C000718740	MESH:D007249
+39875232	Negative_Correlation	MESH:C000718740	3605
+39875232	Association	MESH:D009362	3605
+39875232	Bind	112744	23765
+39875232	Negative_Correlation	MESH:C549079	MESH:D011565
+39875232	Negative_Correlation	MESH:C549079	MESH:D013167
+39875232	Association	MESH:D007249	3605
+39875232	Bind	132014	23765
+39875232	Negative_Correlation	MESH:C000625981	MESH:D007249
+39875232	Negative_Correlation	MESH:C555450	MESH:D001171
+39875232	Association	MESH:D011471	3605
+39875232	Negative_Correlation	MESH:C555450	MESH:D015535
+39875232	Positive_Correlation	3605	51561
+39875232	Association	MESH:D011565	3605
+39875232	Negative_Correlation	MESH:C000718740	MESH:D009369
+39875232	Negative_Correlation	MESH:C000718740	MESH:D017497
+39875232	Negative_Correlation	MESH:C555450	MESH:D000089183
+39875232	Negative_Correlation	MESH:C549079	3605
+39875232	Negative_Correlation	MESH:C000718740	MESH:D015535

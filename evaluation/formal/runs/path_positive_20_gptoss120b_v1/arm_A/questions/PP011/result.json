@@ -1,0 +1,184 @@
+{
+  "status": "complete",
+  "question_id": "PP011",
+  "domain": "infectious disease",
+  "question": "What evidence supports a mechanistic path from chronic hepatitis b virus (hbv) infection to hcc through liver fibrosis, hbv, chronic liver inflammation? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "HBV hepatocellular carcinoma inflammation HBx integration fibrosis",
+  "effective_pubmed_query": "HBV hepatocellular carcinoma inflammation HBx integration fibrosis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "16461228",
+    "20413301",
+    "20485626",
+    "25646384",
+    "28097530",
+    "29052129",
+    "30611768",
+    "32839523",
+    "38064540",
+    "39290403",
+    "40544269"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports a mechanistic path from chronic hepatitis b virus (hbv) infection to hcc through liver fibrosis, hbv, chronic liver inflammation? Distinguish evidence for each hop from overall inference.",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "29052129",
+        "score": 0.6353372954966955
+      },
+      {
+        "pmid": "30611768",
+        "score": 0.5983343644247671
+      },
+      {
+        "pmid": "39290403",
+        "score": 0.5768435685847411
+      },
+      {
+        "pmid": "20413301",
+        "score": 0.5693310919186567
+      },
+      {
+        "pmid": "20485626",
+        "score": 0.5693294690328732
+      },
+      {
+        "pmid": "16461228",
+        "score": 0.5625305117825105
+      },
+      {
+        "pmid": "32839523",
+        "score": 0.5456156201265928
+      },
+      {
+        "pmid": "28097530",
+        "score": 0.543117985416578
+      },
+      {
+        "pmid": "25646384",
+        "score": 0.5413345226169859
+      },
+      {
+        "pmid": "38064540",
+        "score": 0.5307733705345512
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "29052129",
+        "score": 0.6353372954966955
+      },
+      {
+        "pmid": "30611768",
+        "score": 0.5983343644247671
+      },
+      {
+        "pmid": "39290403",
+        "score": 0.5768435685847411
+      },
+      {
+        "pmid": "20413301",
+        "score": 0.5693310919186567
+      },
+      {
+        "pmid": "20485626",
+        "score": 0.5693294690328732
+      },
+      {
+        "pmid": "16461228",
+        "score": 0.5625305117825105
+      },
+      {
+        "pmid": "32839523",
+        "score": 0.5456156201265928
+      },
+      {
+        "pmid": "28097530",
+        "score": 0.543117985416578
+      },
+      {
+        "pmid": "25646384",
+        "score": 0.5413345226169859
+      },
+      {
+        "pmid": "38064540",
+        "score": 0.5307733705345512
+      }
+    ]
+  },
+  "answers": {
+    "general_llm": "Chronic hepatitis B virus (HBV) infection drives hepatocellular carcinoma (HCC) through a cascade of inter‑related processes—persistent inflammation, progressive fibrosis/cirrhosis, and direct viral oncogenic activities. The strength of the mechanistic evidence varies for each “hop” in the pathway.\n\n**1. Chronic HBV → Persistent liver inflammation**  \n*Epidemiologic* – Large cohort studies (e.g., REVEAL‑HBV) demonstrate that individuals with detectable HBV DNA and elevated alanine aminotransferase have a 2‑ to 10‑fold higher incidence of HCC than inactive carriers, implicating ongoing immune‑mediated injury as a risk factor.  \n*Immunologic* – Histologic analyses of HBV‑infected livers repeatedly show portal infiltrates rich in CD8⁺ cytotoxic T cells and NK cells that produce interferon‑γ, TNF‑α, and reactive oxygen species. Animal models (HBV transgenic mice) develop lymphocyte‑driven hepatitis that resolves only when viral replication is suppressed, confirming that the virus itself provokes a chronic inflammatory milieu.  \n\n**2. Persistent inflammation → Activation of hepatic stellate cells and fibrosis**  \n*Cellular* – In vitro, cytokines released by activated immune cells (TGF‑β, PDGF, IL‑6) transform quiescent hepatic stellate cells (HSCs) into collagen‑producing myofibroblasts. Liver biopsy series from chronically HBV‑infected patients show a tight correlation between inflammatory grade and fibrosis stage.  \n*Translational* – Serial elastography measurements reveal that each 1‑point rise in fibrosis score (Metavir F1→F2, etc.) roughly doubles the subsequent HCC risk, indicating that fibrogenesis is not merely a by‑product but a quantitative driver of carcinogenesis.  \n\n**3. Fibrosis/cirrhosis → Pro‑carcinogenic tissue environment**  \n*Structural* – Cirrhotic nodules disrupt normal architecture, creating hypoxic zones that activate HIF‑1α and promote angiogenesis, both hallmarks of early tumorigenesis.  \n*Genomic* – Whole‑genome sequencing of HCC arising in cirrhotic livers frequently uncovers mutational signatures of oxidative DNA damage (C>A transversions) that are absent in non‑cirrhotic tissue, linking the fibrotic micro‑environment to mutagenesis.  \n\n**4. HBV direct oncogenic actions (parallel to fibrosis)**  \n*Viral integration* – Integrated HBV DNA is detected in 70‑90 % of HBV‑related HCCs, often near oncogenes (e.g., TERT) or tumor suppressors, causing genomic instability.  \n*HBx protein* – Transgenic mice expressing HBx develop HCC without overt fibrosis, and HBx is known to dysregulate p53, Wnt/β‑catenin, and epigenetic modifiers, providing a viable HBV‑centric route to malignancy.  \n\n**5. Integrated pathway inference**  \nThe convergence of (i) longitudinal epidemiology showing stepwise risk elevation from active replication → inflammation → fibrosis → HCC, (ii) mechanistic studies demonstrating cytokine‑driven HSC activation, and (iii) molecular data on HBV integration and HBx‐mediated signaling establishes a coherent, multi‑hit model. Nonetheless, the relative contribution of each component varies among patients; in some, direct viral oncogenesis may dominate, while in others fibrosis is the principal conduit.\n\n**Conclusion:** Robust clinical, cellular, and molecular data collectively support a mechanistic trajectory from chronic HBV infection through inflammation and fibrosis to HCC, with direct viral oncogenic effects acting in parallel."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 4.2945146560668945e-05,
+    "vector_index": 1.5463974922895432,
+    "kg_expansion": 3.873556852340698e-05,
+    "answer_general_llm": 25.25492037832737,
+    "total": 27.337684109807014
+  },
+  "token_usage": {
+    "total_tokens": 1229,
+    "input_tokens": 188,
+    "output_tokens": 1041
+  },
+  "completed_at": "2026-08-13T05:43:25.412675+00:00"
+}

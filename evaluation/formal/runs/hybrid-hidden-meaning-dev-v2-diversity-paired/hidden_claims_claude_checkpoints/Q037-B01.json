@@ -1,0 +1,59 @@
+{
+  "task": "hidden_claim",
+  "question_id": "Q037",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "5895bd22da05332e62118a460f887a61228326fceebb30d3ba7376711d9b4247",
+  "raw_response_sha256": "99fceb8c0430b4853d7c4e25bf57c02b2e79aa09a0e4d5d7aa840c1b2f461207",
+  "usage": {
+    "input_tokens": 4425,
+    "output_tokens": 487,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 4912
+  },
+  "rated_at": "2026-08-09T10:34:05.444638+00:00",
+  "result": {
+    "ratings": [
+      {
+        "hidden_claim_id": "Q037-HC01",
+        "hybrid_only": 0,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 1,
+        "non_obviousness": 2,
+        "research_utility": 3,
+        "unsupported_novelty": 0,
+        "notes": "Well-supported two-hop path with explicit quotes and PMIDs. Claim is broadly known; inflammation-to-HCC link is textbook knowledge."
+      },
+      {
+        "hidden_claim_id": "Q037-HC02",
+        "hybrid_only": 0,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 1,
+        "non_obviousness": 2,
+        "research_utility": 3,
+        "unsupported_novelty": 0,
+        "notes": "Supported two-hop path; fibrosis-to-HCC is well-established. Second hop quote mentions fibrosis in cytokine context, slightly indirect but acceptable."
+      },
+      {
+        "hidden_claim_id": "Q037-HC03",
+        "hybrid_only": 0,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 1,
+        "non_obviousness": 2,
+        "research_utility": 3,
+        "unsupported_novelty": 0,
+        "notes": "Two-hop path well-supported; second PMID quote directly links fibrosis/cirrhosis to HCC. Largely overlaps with HC02; minimal added novelty."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

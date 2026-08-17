@@ -1,0 +1,1327 @@
+system,question_id,run_id,output_source,answer
+netmedex_hybrid_rag,Q001,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"## Direct evidence
+
+- **Downregulation of miR-34c:** In an LPS-stimulated osteogenic in-vitro model, icariin lowered the LPS-induced increase in miR-34c. miR-34c overexpression suppressed ALP, RUNX2, osteopontin, and BMP2, and reversed icariin-induced ALP activity and mineralized nodule formation. Thus, icariin may promote osteoblast differentiation by relieving miR-34c-mediated inhibition of osteogenic programs. This effect occurred alongside suppression of JNK/p38 and NF-κB signaling. **Evidence: in vitro; model details are not specified as human.** [PMID: 27492554]
+
+- **Upregulation of miR-153 and RUNX2:** In murine MC3T3-E1 osteoblast-like cells, icariin increased miR-153, RUNX2 expression, ALP activity, proliferation, and mineralization. Functional experiments linked icariin’s effect to the miR-153/RUNX2 pathway: miR-153 mimics enhanced RUNX2 expression in the presence of icariin, whereas a miR-153 inhibitor counteracted icariin’s effects. [PMID: 29904399]
+
+- **circRNA-mediated suppression of miR-138-5p:** In MC3T3-E1 cells, icariin increased mmu_circ_0000349 and JMJD3 while decreasing miR-138-5p. The circRNA acted as a miR-138-5p sponge, thereby increasing JMJD3, which was associated with higher RUNX2 and ALP expression and greater mineralization. This supports an icariin → circRNA ↑ → miR-138-5p sequestration ↓ → JMJD3 ↑ mechanism. **Evidence: in vitro, murine cells.** [PMID: 38045146]
+
+- **Upregulation of miR-335-5p:** In bone marrow mesenchymal stem cells, icariin increased miR-335-5p activity and promoted matrix mineralization. PTEN was identified as a downstream effector: PTEN overexpression reversed the pro-osteogenic effect of miR-335-5p mimics during icariin induction. **Evidence: in vitro BMSCs, with supporting human and rat bone-tissue observations and rat in-vivo experiments.** [PMID: 35292240]
+
+- **Upregulation of miR-21-5p:** In titanium-particle-exposed MC3T3-E1 cells, icariin increased miR-21-5p and restored osteogenic markers, including BMP2, RUNX2, and osteocalcin, as well as ALP activity and mineralization. Knockdown of miR-21-5p abolished part of icariin’s pro-differentiation effect, indicating that miR-21-5p is functionally required for the response. **Evidence: in vitro, murine cells.** [PMID: 29500883]
+
+- **Reduction of miR-23a with Wnt/β-catenin activation:** In human BMSCs, icariin promoted osteogenesis and activated Wnt/β-catenin signaling, increasing β-catenin, LRP5, and TCF1. The reported perturbation experiments indicated that miR-23a upregulation attenuated this pathway, whereas miR-23a downregulation produced effects resembling icariin. Therefore, the supplied data support an icariin-associated decrease in miR-23a, facilitating Wnt/β-catenin signaling and osteoblast differentiation. **Evidence: in vitro, human BMSCs.** [PMID: 33743412]
+
+- **Exosomal miR-331-3p from osteoclasts:** In a more indirect mechanism, icariin increased the amount of osteoclast-derived exosomes and their miR-331-3p content through MITF/Rab27A signaling. These exosomes stimulated osteoblast function by targeting FGF23, reducing DKK1, and increasing ALP. Bone-healing effects were also observed in infected bone-defect rats. **Evidence: in vitro and rat in vivo; the miRNA effect is mediated between osteoclasts and osteoblasts rather than solely within osteoblasts.** [PMID: 39588260]
+
+## Association
+
+Across the supplied studies, icariin is repeatedly associated with a shift toward pro-osteogenic miRNA states: **miR-34c and miR-138-5p decrease**, whereas **miR-153, miR-335-5p, miR-21-5p, and exosomal miR-331-3p increase**. These changes converge on osteogenic regulators such as RUNX2, JMJD3, PTEN, Wnt/β-catenin components, FGF23, and DKK1. Evidence is predominantly cellular and preclinical rather than clinical.
+
+## Testable hypothesis
+
+Icariin may promote osteoblast differentiation through several context-dependent miRNA circuits rather than one universal pathway:
+
+1. relieving miR-34c inhibition of RUNX2 and other osteogenic genes;
+2. enhancing miR-153/RUNX2 signaling;
+3. increasing circRNA-mediated sequestration of miR-138-5p to release JMJD3;
+4. increasing miR-335-5p to suppress PTEN;
+5. increasing miR-21-5p during particle-induced osteogenic impairment; and
+6. lowering miR-23a to permit Wnt/β-catenin activation.
+
+A testable prediction is that simultaneous disruption of the relevant miRNA—for example, miR-34c, miR-21-5p, or miR-335-5p—should reduce icariin-induced RUNX2, ALP, and mineralization, whereas restoring the corresponding pro-osteogenic pathway should partially rescue differentiation."
+traditional_rag,Q001,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"Icariin may promote osteoblast differentiation by altering miRNA expression and thereby relieving inhibition of osteogenic transcription factors or signaling pathways.
+
+### Direct evidence
+
+- **miR-153/Runx2 pathway — mouse MC3T3-E1 osteoblasts, in vitro:** Icariin increased miR-153 and Runx2 expression, ALP activity, proliferation, and mineralization. miR-153 manipulation altered the icariin response, and the study identified a functional miR-153/Runx2 relationship. Thus, icariin may enhance differentiation by increasing miR-153-dependent Runx2 activity [PMID: 29904399].
+
+- **miR-34c — LPS-exposed osteogenic cells, in vitro:** LPS increased miR-34c, whereas icariin reduced it and restored Runx2 protein, ALP, osteopontin, BMP2, ALP activity, and mineralized nodule formation. miR-34c overexpression reversed icariin-induced osteogenesis. Icariin also suppressed LPS-associated JNK, p38, and NF-κB pathway phosphorylation. This supports a mechanism in which icariin downregulates miR-34c to preserve osteoblast differentiation under inflammatory stress [PMID: 27492554].
+
+- **miR-21-5p — titanium-particle-exposed MC3T3-E1 cells, in vitro:** Icariin increased miR-21-5p and osteogenic markers including BMP2, Runx2, and osteocalcin, while improving ALP activity and mineralization. Knockdown of miR-21-5p abolished much of icariin’s pro-osteogenic effect, indicating that miR-21-5p is functionally required in this model [PMID: 29500883].
+
+- **miR-335-5p/PTEN — bone marrow mesenchymal stem cells and osteoporosis models:** Icariin increased miR-335-5p, which targets PTEN. miR-335-5p inhibition impaired mineralization, whereas icariin counteracted this effect; PTEN overexpression reversed the pro-osteogenic effect of miR-335-5p. In rats, either icariin or miR-335-5p overexpression improved osteoporosis-related changes [PMID: 35292240]. The reported low miR-335-5p expression in bone tissues from patients and osteoporotic rats provides human and animal disease association, respectively, but the mechanistic intervention data were primarily from cells and rats.
+
+- **miR-23a/Wnt–β-catenin pathway — human bone marrow mesenchymal stem cells, in vitro:** Icariin promoted osteogenic differentiation and activated Wnt/β-catenin signaling, increasing β-catenin, LRP5, and TCF1. The study linked this effect to reduced miR-23a activity: miR-23a upregulation attenuated Wnt/β-catenin activation, whereas miR-23a downregulation produced effects similar to icariin. This suggests that icariin may promote osteogenesis partly by suppressing miR-23a-mediated inhibition of Wnt signaling [PMID: 33743412].
+
+- **circRNA/miR-138-5p/JMJD3 axis — mouse MC3T3-E1 cells, in vitro:** Icariin increased mmu_circ_0000349 and JMJD3 while decreasing miR-138-5p. The circRNA acted as a miR-138-5p “sponge,” reducing miR-138-5p-mediated repression of JMJD3. Manipulation of this axis changed ALP, Runx2, ALP activity, and mineralized nodule formation, supporting an icariin → circRNA↑ → miR-138-5p↓ → JMJD3↑ mechanism [PMID: 38045146].
+
+- **Osteoclast-derived exosomal miR-331-3p — rat infected bone-defect model and cell studies:** Icariin increased the quantity of osteoclast-derived exosomes and their miR-331-3p content through MITF/Rab27A signaling. These exosomes promoted osteoblast function by targeting FGF23, reducing DKK1, and increasing ALP. In rats, the exosomes improved bone healing after treatment of infected defects. This represents an indirect, intercellular miRNA mechanism rather than direct miRNA regulation within osteoblasts [PMID: 39588260].
+
+### Association
+
+Across the supplied studies, icariin is repeatedly associated with a pro-osteogenic miRNA pattern:
+
+- miR-153, miR-21-5p, miR-335-5p, and exosomal miR-331-3p are increased or functionally promoted.
+- miR-34c, miR-23a, and miR-138-5p are reduced or functionally inhibited.
+- These changes are associated with increased Runx2, ALP, BMP2, osteocalcin, Wnt/β-catenin signaling, JMJD3, and matrix mineralization [PMID: 27492554; PMID: 29904399; PMID: 29500883; PMID: 35292240; PMID: 33743412; PMID: 38045146; PMID: 39588260].
+
+Icariin may also influence osteoblast differentiation indirectly by suppressing osteoclastogenesis through miR-376c-3p/Mmp3, although that study primarily addressed osteoclast differentiation rather than osteoblast differentiation [PMID: 41484919].
+
+### Testable hypothesis
+
+A unified hypothesis is that icariin reprograms miRNA networks in osteoblast-lineage cells—and, in some settings, in osteoclast-derived exosomes—to increase Runx2-centered osteogenesis, activate Wnt/β-catenin signaling, enhance JMJD3 activity, and reduce inflammatory or PTEN/DKK1-mediated anti-osteogenic effects. This could be tested by independently manipulating each miRNA or its target during icariin treatment and determining whether osteogenic rescue is lost or preserved."
+general_llm,Q001,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"Icariin, a flavonol glycoside from *Epimedium*, may promote osteoblast differentiation partly by changing the expression or activity of osteogenesis-related microRNAs (miRNAs). The proposed sequence is:
+
+**icariin → altered miRNA profile → relief of repression or enhancement of osteogenic signaling → increased RUNX2, alkaline phosphatase (ALP), COL1A1, osteocalcin, and matrix mineralization.**
+
+### Main proposed miRNA-related mechanisms
+
+1. **Enhancement of pro-osteogenic miRNAs**
+   - Icariin has been reported in some mesenchymal stem-cell and osteoblast models to increase **miR-21**.
+   - miR-21 can repress **PTEN**, thereby activating the **PI3K–AKT pathway**, which supports RUNX2 expression, cell survival, and osteoblast maturation.
+   - Other studies have implicated pro-osteogenic miRNAs such as **miR-335-5p** or **miR-27a**, which can influence Wnt signaling or osteogenic transcriptional programs. These findings are more model-dependent and are not uniformly established for icariin.
+
+2. **Suppression of anti-osteogenic miRNAs**
+   Icariin may reduce miRNAs that normally inhibit osteoblast differentiation, including candidate pathways involving:
+
+   - **miR-204/miR-211**, which can directly or indirectly suppress **RUNX2**;
+   - **miR-23a**, associated in some systems with reduced RUNX2-dependent differentiation;
+   - **miR-31**, which can inhibit osteoblast-related transcriptional regulators such as RUNX2 or SATB2;
+   - **miR-34a**, a negative regulator of osteoblast proliferation and differentiation in several osteoporosis-related settings.
+
+   Decreasing these miRNAs would be expected to release RUNX2, SATB2, or related targets and increase osteogenic gene expression. However, the precise direction of regulation by icariin varies among cell types, culture conditions, and disease models.
+
+3. **Interaction with major osteogenic signaling pathways**
+   miRNAs can connect icariin to pathways already known to respond to icariin:
+
+   - **BMP–SMAD signaling:** miRNA changes may reduce inhibitors of BMP signaling or enhance SMAD-dependent activation of RUNX2.
+   - **Wnt–β-catenin signaling:** regulation of miRNAs targeting Wnt antagonists, such as DKK1-related pathways, could stabilize β-catenin and promote osteoblast commitment.
+   - **PI3K–AKT signaling:** miRNA-mediated suppression of PTEN is a possible link.
+   - **MAPK and oxidative-stress pathways:** icariin’s effects on ERK, p38, and cellular redox state may secondarily alter miRNA transcription or processing.
+
+4. **Effects in osteoporotic or inflammatory environments**
+   In glucocorticoid exposure, aging, or inflammatory conditions, icariin may restore a more favorable miRNA balance—reducing miRNAs that suppress osteogenesis and increasing miRNAs that support survival and differentiation. This could explain why effects are sometimes more prominent in disease models than in unstressed cultures.
+
+### Important limitations
+
+Most evidence is based on cultured bone-marrow stromal cells, osteoblast-like cells, or animal models. An observed change in a miRNA after icariin treatment does **not** by itself establish that the miRNA mediates the effect. Stronger evidence requires:
+
+- miRNA mimics or inhibitors;
+- demonstration that the predicted target changes;
+- 3′-UTR reporter or target-binding experiments;
+- rescue experiments showing that restoring the target reverses icariin’s effect.
+
+Thus, the best-supported general interpretation is that icariin may shift miRNA networks toward **greater RUNX2 activity, enhanced PI3K–AKT/BMP/Wnt signaling, and reduced repression of osteoblast genes**. The exact miRNA–target pairs remain context-dependent, and no single miRNA pathway can yet be regarded as a universal mechanism for icariin-induced osteoblast differentiation."
+netmedex_hybrid_rag,Q002,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"Among the **named miRNAs in the retrieved records**, **miR-214 is the most frequently linked to osteoporosis-related osteogenesis**, appearing in **two records**:
+
+1. **miR-214 — most frequent (2 records)**
+   - **Direct evidence:** Elevated miR-214 correlated with reduced bone formation in **human aged fracture specimens**; inhibition improved osteoblast activity and mineralization in vitro and enhanced bone formation in osteoporotic mouse models. miR-214 directly targeted **ATF4**. [PMID: 23223004]
+   - **Association:** Also cited in an osteogenesis review as part of lncRNA–miRNA regulatory interactions. [PMID: 34311172]
+   - **Testable hypothesis:** Osteoblast-targeted miR-214 inhibition could be an anabolic osteoporosis treatment, although delivery and safety require further validation. [PMID: 23223004]
+
+2. **miR-15b — 1 record**
+   - **Direct evidence:** In ovariectomized osteoporosis **mice**, miR-15b was increased; silencing it improved bone mineral density and mechanical properties. In osteoblasts, miR-15b inhibited differentiation and autophagy through the USP7/KDM6B axis. [PMID: 33434305]
+
+3. **miR-1224-5p — 1 record**
+   - **Direct evidence:** In vitro and **mouse** models showed that miR-1224-5p promoted osteoblast differentiation, reduced osteoclast differentiation, improved fracture healing, and ameliorated estrogen-deficiency- and aging-related osteoporosis. [PMID: 35831436]
+   - **Testable hypothesis:** It may be a therapeutic target for osteoporosis and fracture nonunion. [PMID: 35831436]
+
+4. **miR-582-3p — 1 record**
+   - **Direct evidence:** It was increased in osteoporosis tissue and suppressed osteogenic markers in C2C12 osteogenic cells by targeting **HOXA10**. The context does not specify the species of the osteoporosis tissue. [PMID: 35285389]
+
+5. **miR-218 and miR-148a — 1 review record each**
+   - **Association:** miR-218 was highlighted as temporally upregulated during osteoblastogenesis, whereas miR-148a was linked to osteoclastogenesis. These are review-level examples rather than newly presented primary osteoporosis experiments in the supplied context. [PMID: 23605904]
+
+Other miRNAs—**miR-30, miR-24-3p, miR-33a, and miR-140-5p**—were mentioned once in a review describing lncRNA–miRNA interactions in osteogenesis, without direct osteoporosis-specific evidence in the supplied abstracts. [PMID: 34311172]
+
+**Bottom line:** **miR-214 is the most frequently represented miRNA**, with the strongest osteoporosis-specific evidence in this retrieval; **miR-15b, miR-1224-5p, and miR-582-3p** each have one directly relevant primary study."
+traditional_rag,Q002,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"## Direct evidence
+
+Among the retrieved records, **miR-214 is the most frequently linked miRNA**, appearing in two records:
+
+- In human osteoporotic fracture specimens, elevated miR-214 correlated with reduced bone formation; mouse and in-vitro osteoblast experiments showed that miR-214 inhibits osteoblast activity by targeting **ATF4**. [PMID: 23223004] **(human, animal, and in-vitro evidence)**
+- It is also cited in osteogenesis-related lncRNA–miRNA interactions, including **MALAT1/miR-214** and **KCNQ1OT1/miR-214**. [PMID: 34311172]
+
+Other miRNAs were each represented in one retrieved record:
+
+- **miR-15b**: increased in osteoporotic mice and inhibited osteoblast differentiation through the **USP7/KDM6B** axis. [PMID: 33434305] **(animal and in-vitro evidence)**
+- **miR-1224-5p**: promoted osteoblast differentiation, reduced osteoclast differentiation, and ameliorated osteoporosis in mouse models. [PMID: 35831436] **(animal and in-vitro evidence)**
+- **miR-582-3p**: was increased in osteoporosis tissue and suppressed osteoblast markers by targeting **HOXA10**. [PMID: 35285389] **(tissue and in-vitro evidence; species of tissue is not specified)**
+- **miR-218** and **miR-148a** were highlighted in a review as miRNAs upregulated during osteoblastogenesis and osteoclastogenesis, respectively. [PMID: 23605904]
+
+## Association
+
+The retrieved reviews also mention **miR-30, miR-24-3p, miR-33a, and miR-140-5p** in lncRNA–miRNA networks related to osteogenesis, but the supplied abstracts do not establish their osteoporosis-specific frequency or effects. [PMID: 34311172]
+
+## Testable hypothesis
+
+Based on this retrieval set, **miR-214 is the strongest recurring candidate for osteoporosis-related osteogenesis**, particularly as a negative regulator of osteoblast-mediated bone formation. However, this is a frequency observation within the supplied retrieved records—not a systematic bibliometric count of the entire literature. [PMID: 23223004; PMID: 34311172]"
+general_llm,Q002,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"Without the specific retrieved corpus, exact frequency cannot be calculated. Across the osteoporosis–osteogenesis literature, the miRNAs most repeatedly discussed are generally:
+
+| miRNA | Typical relationship to osteogenesis/osteoporosis |
+|---|---|
+| **miR-21** | Usually promotes osteogenic differentiation of mesenchymal stem cells (MSCs), although effects are context- and cell-type-dependent. |
+| **miR-29b** | Frequently described as pro-osteogenic; promotes osteoblast differentiation and can repress inhibitors such as **DKK1** and **HDAC4**. |
+| **miR-34a** | Commonly linked to impaired osteoblast differentiation and age-related bone loss; often considered anti-osteogenic through effects involving **SATB2**, **RUNX2**, and related pathways. |
+| **miR-133a** | Repeatedly reported as an inhibitor of osteoblast differentiation, mainly through suppression of **RUNX2**. |
+| **miR-204/miR-211** | Strongly associated with inhibition of osteogenesis by targeting **RUNX2** and related osteoblast programs. |
+| **miR-2861** | A well-established pro-osteogenic miRNA that promotes osteoblast differentiation by repressing **HDAC5**; loss of its activity has been associated with low bone mass. |
+| **miR-3960** | Often discussed together with miR-2861 and generally promotes osteoblast differentiation. |
+| **miR-17-5p / miR-20a** | Frequently reported as pro-osteogenic regulators of BMP–RUNX2, Wnt, and related signaling pathways. |
+| **miR-218** | Commonly linked to enhanced osteogenesis, partly through activation of Wnt signaling and suppression of Wnt antagonists. |
+| **miR-335-5p** | Generally promotes osteogenic differentiation, including through effects on **DKK1/Wnt** signaling. |
+
+A practical “most frequently recurring” shortlist would therefore be:
+
+**miR-21, miR-29b, miR-34a, miR-133a, miR-204/211, miR-2861, miR-3960, miR-17-5p/miR-20a, miR-218, and miR-335-5p.**
+
+The strongest and most consistently cited mechanistic evidence is probably for **miR-29b, miR-34a, miR-133a, miR-204/211, miR-2861, and miR-3960**. However, directionality can vary with species, tissue, disease model, and whether the study examines osteoblasts, MSCs, osteocytes, or circulating miRNAs."
+netmedex_hybrid_rag,Q003,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"### Direct human evidence
+
+- **Population studies show a strong association** between inflammatory indices and abnormal carbohydrate/lipid metabolism, obesity, and atherosclerosis—conditions commonly accompanied by insulin resistance. The review identifies **TNF-α, IL-1, and IL-6** as key inflammatory mediators and reports that diseases involving insulin insensitivity also show increased cytokine production and inflammatory markers [PMID: 12172480].
+- In obesity, inflammatory immune-cell accumulation and polarization have been observed in **human-relevant metabolic tissues**, including adipose tissue, skeletal muscle, liver, gut, pancreatic islets, and brain. This tissue inflammation is described as contributing to obesity-associated metabolic dysfunction and insulin resistance [PMID: 32437299].
+- In **polycystic ovary syndrome (PCOS)**, a human clinical disorder frequently associated with insulin resistance, increased inflammatory factors—particularly **IL-6 and TNF-α**—and immune-cell infiltration have been reported. The inflammatory cytokines interact with insulin resistance and may worsen metabolic and reproductive dysfunction [PMID: 39749338].
+- Reviews of vitamin D research report that human studies often find inverse relationships between vitamin D concentrations, pro-inflammatory markers, and insulin resistance; however, supplementation trials have produced inconsistent effects on insulin sensitivity and inflammation [PMID: 37895163].
+
+### Mechanistic evidence and interpretation
+
+- TNF-α is proposed to link inflammation with impaired insulin signaling. Reported mechanisms include induction of **SOCS-3**, reduced insulin-stimulated IRS-1 phosphorylation and PI3K association, and negative regulation of PPAR-γ [PMID: 12172480].
+- Inflammatory cytokines are also proposed to contribute to skeletal-muscle insulin resistance by linking chronic low-grade inflammation and oxidative stress to impaired insulin signaling [PMID: 18094066].
+- Adipose tissue is a likely source of inflammatory signaling: adipocytes and immune cells can produce TNF-α, while adipose expansion is associated with increased leptin and a pro-inflammatory state [PMID: 12172480].
+
+### Strength of the human evidence
+
+The supplied context supports a **consistent human association** between chronic low-grade inflammation—especially elevated inflammatory markers and cytokines such as TNF-α and IL-6—and insulin resistance, particularly in obesity and PCOS. It also supports biologically plausible mechanisms by which cytokines could impair insulin signaling. However, the cited human evidence is largely from **population studies, tissue observations, and reviews**, so it does not establish that a specific cytokine alone causes insulin resistance.
+
+### Animal or in-vitro evidence
+
+- The TLR4 study provides stronger causal mechanistic evidence, showing that TLR4-dependent inflammatory signaling links fatty acids to insulin resistance, but the protective experiments were conducted primarily in **mice**, not humans [PMID: 17053832].
+- Similarly, evidence involving 12/15-lipoxygenase knockout protection from insulin resistance is based on **mouse models**, although related pathway activity has been observed in human adipose tissue and islets [PMID: 24003928].
+
+### Testable hypothesis
+
+In humans, reducing adipose-tissue or systemic cytokine signaling—particularly TNF-α/IL-6-associated inflammation—should improve insulin signaling and insulin sensitivity, with the largest effects expected in people whose insulin resistance is accompanied by clearly elevated inflammatory activity. The supplied context indicates this remains a hypothesis requiring confirmation in controlled clinical trials [PMID: 32437299]."
+traditional_rag,Q003,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"### Direct human evidence
+
+- **Population studies** report a strong association between inflammatory indices and abnormal carbohydrate/lipid metabolism, obesity, and atherosclerosis—conditions commonly accompanied by insulin resistance. The review specifically identifies **TNF-α, IL-1, and IL-6** as key inflammatory mediators and notes increased cytokine production and inflammatory markers in obesity, type 2 diabetes, and atherosclerosis [PMID: 12172480].  
+- In **obesity**, inflammatory immune-cell accumulation and polarization have been observed in human-relevant metabolic tissues, including adipose tissue, skeletal muscle, liver, gut, pancreatic islets, and brain. These inflammatory changes may contribute to obesity-associated insulin resistance [PMID: 32437299].  
+- **Human adipose tissue and islet analyses** show temporal regulation of inflammatory mediators, including 12/15-lipoxygenase pathways, during obesity and diabetes development [PMID: 24003928]. However, this record does not establish that cytokines directly caused insulin resistance in those human samples.  
+- In **women with polycystic ovary syndrome (PCOS)**, increased immune-cell infiltration and higher IL-6 and TNF-α have been detected, and pro-inflammatory cytokines interact with obesity and insulin resistance [PMID: 39749338]. This supports an association in a specific human population, but the supplied record is a review rather than a single causal human trial.
+
+### Proposed mechanistic evidence
+
+- TNF-α is produced by immune cells and adipocytes and may impair insulin signaling by inducing SOCS-3, reducing insulin-stimulated IRS-1 phosphorylation and its association with PI3K, and negatively regulating PPAR-γ [PMID: 12172480]. This is a mechanistic explanation for how cytokines could promote insulin resistance, but the context does not specify that all of these steps were demonstrated directly in human participants.  
+- Reviews of skeletal-muscle insulin resistance describe low-grade chronic inflammation and inflammatory cytokines as likely contributors to impaired insulin signaling and insulin resistance [PMID: 18094066]. This is mechanistic and integrative evidence, not definitive human causal proof.
+
+### Animal or in-vitro evidence, not direct human proof
+
+- TLR4-mediated inflammatory signaling induced by fatty acids is linked to impaired insulin signaling, but the protective effects of TLR4 deficiency against insulin resistance were demonstrated primarily in **mice** [PMID: 17053832].  
+- Protection from insulin resistance after 12/15-lipoxygenase deletion was also demonstrated in **mice**, while the human evidence in that record concerns tissue expression/regulation [PMID: 24003928].  
+- Reduced inflammatory cytokines and improved insulin sensitivity after tirzepatide treatment were reported in **obese mouse models**, not human patients [PMID: 39471690].
+
+### Overall interpretation
+
+Human studies support a **consistent association** between elevated inflammatory cytokines or inflammatory markers—particularly TNF-α and IL-6—and insulin resistance, especially in obesity, type 2 diabetes, and PCOS [PMID: 12172480; PMID: 32437299; PMID: 39749338]. The supplied context also provides plausible molecular mechanisms, but it does **not provide definitive randomized human evidence proving that cytokine elevation causes insulin resistance**. A testable hypothesis is that reducing adipose-tissue or systemic cytokine activity in insulin-resistant humans should improve insulin signaling and glucose disposal; direct confirmation of this causal effect is described as requiring further clinical trials [PMID: 32437299]."
+general_llm,Q003,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"Human evidence supports a link between chronic low-grade inflammation and insulin resistance, but it is stronger for **association and biological plausibility** than for a single cytokine being proven as the primary cause.
+
+### Main evidence
+
+**1. Circulating cytokine concentrations correlate with insulin resistance**
+
+In people with obesity, metabolic syndrome, and type 2 diabetes, higher concentrations of inflammatory mediators—including:
+
+- **TNF-α**
+- **IL-6**
+- **IL-1β**
+- **MCP-1/CCL2**
+- **high-sensitivity C-reactive protein (hsCRP)**
+
+often correlate with higher fasting insulin, impaired glucose disposal during hyperinsulinemic–euglycemic clamps, and increased HOMA-IR. These relationships are generally modest and are influenced by adiposity, fitness, liver fat, age, and renal function.
+
+**2. Adipose-tissue studies provide more direct evidence**
+
+Human adipose tissue from people with obesity and insulin resistance commonly shows:
+
+- increased expression of inflammatory genes and cytokines;
+- infiltration by macrophages and other immune cells;
+- greater inflammatory signaling in visceral than subcutaneous fat;
+- associations between adipose TNF-α, IL-6, or MCP-1 expression and reduced insulin sensitivity.
+
+This supports the idea that adipose inflammation can affect systemic metabolism, although circulating cytokine concentrations may not accurately reflect cytokine activity within tissues.
+
+**3. Experimental cytokine exposure can impair insulin action**
+
+In controlled human experiments, exposure to inflammatory mediators—particularly TNF-α and, in some settings, IL-6—has been associated with reduced insulin-stimulated glucose uptake or impaired insulin signaling. These experiments support biological plausibility, but the doses, duration, and route of exposure may not reproduce chronic obesity-related inflammation.
+
+**4. Weight loss and exercise generally improve both inflammation and insulin sensitivity**
+
+Calorie restriction, bariatric surgery, and regular exercise commonly reduce hsCRP and, to variable degrees, TNF-α and IL-6 while improving insulin sensitivity. The parallel changes are consistent with a causal contribution, but they do not prove that cytokine reduction is the mechanism: weight loss also changes liver fat, free fatty acids, adipokines, muscle function, and gut-derived signals.
+
+**5. Anti-inflammatory interventions provide mixed causal evidence**
+
+- **IL-1 blockade** with agents such as anakinra has produced modest improvements in glycemia, β-cell function, and sometimes insulin sensitivity in small studies of type 2 diabetes. Results have not been uniformly positive.
+- **TNF inhibitors** have generally not produced consistent improvements in insulin resistance, despite reducing inflammation in diseases such as rheumatoid arthritis. This argues against TNF-α alone being the dominant driver.
+- **Salicylates** can improve insulin signaling and glycemia in some studies, but their effects are broad and not specific proof of cytokine causality.
+- In the **CANTOS** trial, IL-1β inhibition reduced cardiovascular events and inflammatory markers but did not establish a major direct improvement in insulin resistance or diabetes progression.
+
+### Cytokine-specific interpretation
+
+- **TNF-α:** Strong mechanistic and tissue-level evidence, especially in adipose tissue, but systemic anti-TNF treatment has yielded inconsistent metabolic benefits.
+- **IL-6:** Chronic elevation is associated with insulin resistance, but IL-6 is context-dependent. Acute IL-6 released from exercising muscle may have beneficial metabolic effects, whereas persistent elevation from visceral fat or other tissues may be harmful.
+- **IL-1β:** Plausibly contributes to β-cell dysfunction and metabolic inflammation; clinical blockade offers some supportive but incomplete evidence.
+- **CRP:** A useful marker of inflammation and cardiometabolic risk, but it is generally viewed as a downstream marker rather than a direct cause of insulin resistance.
+
+### Important limitations
+
+Most human studies are observational and cannot determine whether inflammation causes insulin resistance, results from it, or forms a reinforcing feedback loop. Obesity, ectopic fat, sleep apnea, physical inactivity, infection, smoking, and fatty liver can independently increase both cytokines and insulin resistance. Cytokine levels also fluctuate substantially and may not represent local signaling in liver, muscle, or adipose tissue.
+
+### Overall conclusion
+
+Human studies support a model in which **chronic, tissue-level inflammation—particularly in visceral adipose tissue, liver, and possibly skeletal muscle—contributes to insulin resistance through cytokine-mediated effects on insulin signaling, lipid metabolism, endothelial function, and β-cell function**. However, the evidence does not establish that any single circulating cytokine is necessary or sufficient, and clinical trials have not shown that broadly suppressing one cytokine reliably reverses insulin resistance."
+netmedex_hybrid_rag,Q004,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"No explicit graph paths were supplied, so a 2-hop path cannot be confirmed. From the PubMed context, the most plausible gene-mediated candidates are:
+
+### Direct evidence
+- **TP53 (p53):** Curcumin reportedly upregulates p53, which inhibits tumor-cell proliferation and increases apoptosis: **curcumin → TP53 → apoptosis**. This evidence is presented in a cancer-cell mechanistic review, not as a single validated universal pathway [PMID: 30623450].
+- **BCL2:** Curcumin inhibits NF-κB and COX-2 activity, pathways associated with overexpression of anti-apoptotic genes such as **BCL2**; reduction of BCL2 would plausibly favor apoptosis: **curcumin → BCL2 → apoptosis** [PMID: 30623450].
+- **NFE2L2 (Nrf2) and GPX4:** In osteosarcoma **in vitro and xenograft-mouse** models, curcumin altered Nrf2/GPX4 signaling and increased apoptosis. Thus, **curcumin → NFE2L2/GPX4 → apoptosis** is a supported mechanistic candidate, although the study also examined ferroptosis [PMID: 38166505].
+
+### Association
+- **PI3K/AKT-pathway genes/proteins:** Curcumin attenuates anti-apoptotic PI3K signaling and modulates PI3K/AKT in cancer models, making this pathway a possible intermediary between curcumin and apoptosis [PMID: 30623450; PMID: 29693253].
+- **MAPK-pathway genes/proteins:** Curcumin increases MAPK signaling and endogenous ROS production, which may contribute to apoptosis [PMID: 30623450].
+- **NF-κB/COX-2-related regulators:** Their inhibition is associated with reduced anti-apoptotic signaling, but the supplied abstracts do not establish a specific single-gene 2-hop route [PMID: 30623450].
+
+### Testable hypothesis
+The strongest testable gene-level hypotheses are **TP53**, **BCL2**, and **NFE2L2–GPX4**. These should be validated by gene knockdown or rescue experiments to determine whether each is necessary for curcumin-induced apoptosis."
+traditional_rag,Q004,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"### Direct evidence for a curcumin → gene/protein → apoptosis path
+
+- **TP53 (p53):** Curcumin can increase p53 expression/activity; p53 inhibits tumor-cell proliferation and increases apoptosis. This is the clearest reported intermediary. **Evidence is from cancer-cell studies summarized in a review; not human clinical evidence.** [PMID: 30623450]
+- **BCL2 (Bcl-2):** Curcumin inhibits **NF-κB** and **COX-2/PTGS2**, pathways associated with overexpression of antiapoptotic genes such as **BCL2**. Thus, a possible path is curcumin → reduced BCL2-mediated survival → apoptosis. The supplied abstract does not explicitly state that curcumin directly changes BCL2 expression in a specific experiment. [PMID: 30623450]
+- **NFE2L2 (Nrf2) and GPX4:** In osteosarcoma cells and a xenograft-mouse model, curcumin altered the Nrf2/GPX4 pathway and increased apoptosis; activation of Nrf2 reversed curcumin’s effects. This supports a possible curcumin → **NFE2L2/GPX4** → apoptosis path, although ferroptosis was also involved. [PMID: 38166505]
+
+### Associated genes/pathways
+
+- **PTGS2 (COX-2):** Curcumin’s inhibition of COX-2 is associated with suppression of antiapoptotic signaling, but the supplied context does not establish PTGS2 as the direct mediator of apoptosis. [PMID: 30623450]
+- **PIK3CA/PI3K and AKT1/AKT:** Curcumin attenuates antiapoptotic PI3K signaling, and PI3K/AKT is repeatedly identified as a curcumin target in cancer. The context supports an association with apoptosis modulation but does not provide a gene-specific two-hop causal demonstration. [PMID: 30623450; PMID: 29693253]
+- **MAPK-family genes/proteins:** Curcumin increases MAPK expression and endogenous ROS production, which may contribute to apoptosis, but the supplied abstracts do not identify a specific MAPK gene as the mediator. [PMID: 30623450]
+
+### Testable hypothesis
+
+The most testable candidate paths are:
+
+1. **Curcumin → TP53 → apoptosis**
+2. **Curcumin → BCL2 downregulation → apoptosis**
+3. **Curcumin → NFE2L2/GPX4 modulation → apoptosis**  
+
+These should be tested with gene knockdown or rescue experiments. The supplied context contains no direct human evidence establishing any of these as a definitive two-hop mechanism."
+general_llm,Q004,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"Interpreting a **2-hop path** as:
+
+**curcumin → gene/protein → apoptosis**
+
+the most plausible intermediary genes are:
+
+| Gene | Possible path and role | Evidence strength |
+|---|---|---|
+| **TP53** | Curcumin can activate p53, which promotes apoptotic transcriptional programs | Relatively well established, but cell-type dependent |
+| **BAX** | Curcumin-associated induction or activation of BAX promotes mitochondrial apoptosis | Frequently reported |
+| **BCL2** | Curcumin often decreases anti-apoptotic BCL-2, shifting the BAX:BCL2 balance toward apoptosis | Frequently reported |
+| **CASP3** | Curcumin can promote activation of executioner caspase-3 | Frequently reported; activation does not necessarily imply increased transcription |
+| **CASP9** | Links mitochondrial cytochrome-c signaling to caspase-3 activation | Commonly implicated |
+| **CASP8** | May mediate death-receptor/extrinsic apoptosis induced by curcumin in some models | Context dependent |
+| **AKT1** | Curcumin inhibition of PI3K–AKT survival signaling can facilitate apoptosis | Frequently reported, but highly context dependent |
+| **RELA** and **NFKB1** | Suppression of NF-κB signaling can reduce survival and anti-apoptotic gene expression | Frequently reported |
+| **MAPK8** (*JNK1*) | Stress-kinase activation may contribute to curcumin-induced apoptosis | Context dependent |
+| **MAPK14** (*p38α*) | Another stress-response kinase potentially linking curcumin to apoptosis | Context dependent |
+| **FAS** (*CD95*) | Increased death-receptor signaling can activate CASP8 and apoptosis | Model dependent |
+| **TNFRSF10B** (*DR5*) | Curcumin has been reported to induce DR5 in some cancer cells, promoting extrinsic apoptosis | Model dependent |
+| **XIAP** | Downregulation can remove inhibition of caspases | Frequently reported, but not universal |
+| **MCL1** | Suppression can destabilize mitochondrial survival signaling | Context dependent |
+
+A compact set of likely high-confidence intermediaries would therefore be:
+
+**TP53, BAX, BCL2, CASP3, CASP9, AKT1, RELA/NFKB1, and CASP8.**
+
+Example two-hop paths include:
+
+- **curcumin → TP53 → apoptosis**
+- **curcumin → BAX → apoptosis**
+- **curcumin → BCL2 → apoptosis**
+- **curcumin → CASP3 → apoptosis**
+- **curcumin → AKT1 → apoptosis**
+- **curcumin → RELA → apoptosis**
+
+These should be viewed as **mechanistic or literature-supported associations**, not necessarily proof that curcumin directly binds each gene product. The actual intermediary depends strongly on cancer type, dose, exposure time, and whether apoptosis is intrinsic, extrinsic, or indirectly caused by inhibition of survival pathways."
+netmedex_hybrid_rag,Q005,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"**Direct evidence**
+
+Yes—oxidative stress provides a plausible mechanistic bridge between amyloid beta (Aβ) and mitochondrial dysfunction, but the supplied evidence does **not establish an unequivocal direct causal pathway in humans**.
+
+- Aβ is reported to induce oxidative stress and mitochondrial impairments, with downstream neuronal apoptosis. In a **triple-transgenic AD mouse model and primary neurons (animal/in-vitro evidence)**, luteolin reduced Aβ-associated oxidative stress, mitochondrial dysfunction, and apoptosis through a PPARγ-dependent mechanism. This supports a functional Aβ → oxidative stress/mitochondrial injury relationship, although the protective-intervention design does not prove that oxidative stress is the sole mediator [PMID: 37597424].
+- Proposed mechanisms include Aβ-associated mitochondrial membrane permeability, disrupted calcium homeostasis, impaired oxidative phosphorylation, and consequent excess reactive oxygen species (ROS) production [PMID: 22697066].
+- The relationship may be bidirectional: dysfunctional mitochondria generate ROS, while Aβ can promote mitochondrial damage and further ROS production, creating a self-amplifying cycle [PMID: 22697066; PMID: 40864415].
+
+**Association**
+
+- Reviews consistently associate oxidative stress, mitochondrial dysfunction, Aβ pathology, impaired energy metabolism, altered mitochondrial dynamics, and neuronal injury in AD [PMID: 27766447; PMID: 33476985; PMID: 40023293].
+- In AD brain, inflammatory regions near amyloid deposits contain activated microglia that release free radicals and other mediators, potentially worsening neuronal and mitochondrial dysfunction [PMID: 22697066].
+- Oxidative stress and mitochondrial dysfunction are described as mutually reinforcing processes that can increase Aβ pathology, while Aβ and tau can themselves produce redox imbalance [PMID: 37956598].
+
+**Testable hypothesis**
+
+Oxidative stress may be an intermediate or amplifier through which Aβ disrupts mitochondrial membranes, calcium handling, oxidative phosphorylation, and mitochondrial dynamics, leading to increased ROS and neuronal damage. However, the context explicitly notes that the mitochondrial toxicity of Aβ remains unclear and that the relationship among mitochondrial dysfunction, oxidative stress, and neuronal death also remains unresolved [PMID: 22697066; PMID: 33476985].
+
+**Conclusion:** Oxidative stress **supports a mechanistic link** between Aβ and mitochondrial dysfunction, with supporting animal and in-vitro evidence, but the supplied PubMed context does not demonstrate a definitive, direct causal mechanism in humans."
+traditional_rag,Q005,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"**Direct evidence:**  
+The supplied context supports a **plausible mechanistic link**, but not definitive proof that oxidative stress directly mediates amyloid-beta (Aβ)-induced mitochondrial dysfunction.
+
+- Mitochondrial dysfunction can increase reactive oxygen species (ROS), causing oxidative damage and promoting amyloid pathology. Conversely, Aβ may disrupt mitochondrial membrane permeability, calcium homeostasis, and oxidative phosphorylation, thereby increasing ROS production [PMID: 22697066].  
+- Aβ-related pathology, oxidative stress, and mitochondrial dysfunction are described as interacting in a potentially self-reinforcing cycle [PMID: 37956598; PMID: 32967303].  
+- In **3xTg-AD mice and cultured primary neurons**, luteolin reduced Aβ-associated oxidative stress, mitochondrial impairment, and neuronal apoptosis through a PPARγ-dependent mechanism. This experimentally supports an Aβ–oxidative stress–mitochondrial injury pathway, although it does not establish that oxidative stress is the sole or initiating cause [PMID: 37597424].
+
+**Association:**  
+Oxidative stress, mitochondrial dysfunction, altered calcium handling, impaired energy metabolism, and Aβ pathology are consistently linked in Alzheimer’s disease reviews. However, the relationship is described as bidirectional: mitochondrial dysfunction can generate ROS, while oxidative stress and Aβ can further damage mitochondria [PMID: 33476985; PMID: 35522844]. The context does not provide a definitive human causal study separating cause from consequence.
+
+**Testable hypothesis:**  
+Aβ oligomers may initiate mitochondrial membrane, calcium, or oxidative-phosphorylation abnormalities; the resulting ROS then amplify mitochondrial damage and Aβ pathology. This could be tested by selectively blocking mitochondrial ROS in Aβ-exposed neurons or animal models and determining whether mitochondrial dysfunction and neuronal injury are prevented.
+
+**Conclusion:**  
+Yes—oxidative stress provides a credible mechanistic bridge between Aβ and mitochondrial dysfunction, with supporting **animal and in-vitro evidence** and strong pathological associations. However, the supplied evidence does not establish a definitive direct causal sequence in humans; the relationship may be a reciprocal vicious cycle."
+general_llm,Q005,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"Yes—but with an important qualification: **oxidative stress provides a plausible mechanistic bridge between amyloid-β (Aβ) and mitochondrial dysfunction, but it is not by itself proof of a direct causal link.**
+
+A commonly proposed sequence is:
+
+1. **Aβ oligomers interact with mitochondria**—directly or through associated proteins—and impair respiratory-chain activity, mitochondrial membrane potential, calcium handling, and ATP production.
+2. This impairment increases **mitochondrial reactive oxygen species (ROS)** and reduces antioxidant capacity.
+3. ROS then oxidize mitochondrial proteins, lipids, DNA, and respiratory-chain components, further worsening mitochondrial function.
+4. Oxidative damage may also promote additional Aβ production, aggregation, synaptic injury, and inflammatory signaling, creating a **feed-forward cycle**.
+
+Potential molecular connections include Aβ interactions with mitochondrial proteins such as amyloid-β–binding alcohol dehydrogenase and cyclophilin D, effects on respiratory-chain complexes, altered mitochondrial permeability-transition signaling, and disrupted mitochondrial trafficking and dynamics. These findings are strongest in experimental cellular and animal models, particularly with soluble Aβ oligomers.
+
+However, several limitations matter:
+
+- Oxidative stress can be **both a cause and a consequence** of mitochondrial dysfunction.
+- ROS may arise from other Alzheimer-related processes, including neuroinflammation, metal dysregulation, tau pathology, and impaired antioxidant systems.
+- Much human evidence is associative: oxidative damage and mitochondrial abnormalities occur together, but their temporal order and relative importance are difficult to establish.
+- Antioxidant treatments have not consistently produced major clinical benefit, suggesting that nonspecific ROS reduction may be insufficient or may not reach the relevant mitochondrial compartments.
+
+Thus, oxidative stress **supports a biologically coherent, likely bidirectional mechanism linking Aβ to mitochondrial dysfunction**, but the strongest interpretation is that it acts as an important mediator and amplifier rather than as definitive evidence of a single direct pathway."
+netmedex_hybrid_rag,Q006,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"## Direct evidence
+
+- **Randomized-trial meta-analysis in humans:** A systematic review and dose–response meta-analysis of **35 randomized placebo-controlled trials involving 2,178 participants** found that statin therapy significantly improved brachial artery flow-mediated dilation (FMD), with a weighted mean difference of **1.7 percentage points (95% CI 1.3–2.2; p < 0.001)**. FMD is an established measure of endothelium-dependent vascular function. The analysis had substantial heterogeneity (**I² = 97.9%**), so the magnitude of benefit varied across studies. The greatest dose-response signal was reported for atorvastatin 20 mg/day and simvastatin 80 mg/day. **Human randomized-trial evidence supports improved endothelial function, although heterogeneity warrants caution.** [PMID: 38385489]
+
+- **Short-term human intervention study:** In a small study of women with endometriosis, 7 days of atorvastatin 10 mg improved acetylcholine-induced cutaneous vasodilation and nitric-oxide-dependent vasodilation. The study included six women with endometriosis who received the intervention, so it provides supportive but limited evidence because of the small sample and specialized population. [PMID: 35970408]
+
+## Associations and proposed mechanisms
+
+- Reviews describe endothelial dysfunction as involving reduced nitric oxide (NO) bioavailability, oxidative stress, inflammation, and impaired vasomotion. Statins are reported to exert vascular effects that may extend beyond LDL-cholesterol reduction, including enhancement of endothelial NO signaling. [PMID: 15861315; PMID: 17430168]
+
+- Statins have been associated with increased endothelial NO synthase activity or expression, improved NO bioavailability, antioxidant effects, and anti-inflammatory actions. [PMID: 15815580; PMID: 15111011]
+
+- A proposed molecular explanation is inhibition of isoprenoid production and downstream Rho/Rac, Rho-kinase, and NADPH-oxidase pathways, which may affect endothelial NO synthase, reactive oxygen species, and inflammatory signaling. The clinical importance of these cholesterol-independent effects remains uncertain. [PMID: 28057795]
+
+- Reviews of hypertension and vascular disease report that statins can improve endothelial dysfunction, but emphasize that confirmation of whether this translates into improved cardiovascular prognosis is still needed. [PMID: 22112351]
+
+## Animal and in-vitro evidence
+
+- The supplied context describes **animal models of stroke** in which statins improved cerebral blood flow and provided protection partly through endothelial NO synthase upregulation. [PMID: 15815580]
+
+- **Cell-culture and animal studies** suggest that statins alter endothelial NO synthase expression and reduce oxidative and inflammatory pathways. These findings support biological plausibility but are not equivalent to direct clinical evidence in humans. [PMID: 28057795]
+
+## Testable hypothesis
+
+Statins may improve endothelial dysfunction through both LDL-cholesterol lowering and cholesterol-independent effects that increase NO bioavailability while reducing oxidative stress and inflammation. This hypothesis is supported by improved FMD in randomized trials, but the supplied records do not establish how much of the benefit is independent of lipid lowering or whether FMD improvement consistently improves long-term cardiovascular outcomes."
+traditional_rag,Q006,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"### Direct evidence
+
+- **Human randomized-trial evidence:** A systematic review and dose–response meta-analysis of **35 randomized placebo-controlled trials (41 treatment arms; 2,178 participants)** found that statins significantly improved brachial artery flow-mediated dilation (FMD), with a weighted mean difference of **1.7 percentage points (95% CI 1.3–2.2; p < 0.001)**. FMD is used as a measure of endothelium-dependent vascular function. The analysis showed substantial heterogeneity, and the largest dose-associated improvements were reported with atorvastatin 20 mg/day and simvastatin 80 mg/day. [PMID: 38385489]  
+  - **Evidence type:** Human randomized trials; direct evidence for improved endothelial function measured by FMD.
+
+- **Human mechanistic vascular study:** In a small study of women with endometriosis, endothelial-dependent cutaneous vasodilation and nitric-oxide-dependent dilation were impaired compared with healthy controls. After **7 days of atorvastatin 10 mg**, both acetylcholine-induced and NO-dependent vasodilation improved. [PMID: 35970408]  
+  - **Evidence type:** Human interventional study; direct but limited by the very small sample size and lack of a reported randomized placebo-controlled design.
+
+### Association and review-level evidence
+
+- A review describes endothelial dysfunction as related to reduced NO activity and cardiovascular risk, and summarizes evidence that statins may have both cholesterol-dependent and cholesterol-independent effects on the endothelium. [PMID: 15861315]
+
+- Reviews report that statins are among the pharmacological treatments associated with improved endothelial function, particularly in high-risk cardiovascular settings and hypertension. [PMID: 17430168; PMID: 22112351; PMID: 24928320]
+
+- Statin-associated vascular effects described in reviews include increased NO bioavailability, improved endothelial NO synthase activity or expression, reduced oxidative stress, and reduced inflammation. [PMID: 15815580; PMID: 15111011]
+
+### Testable mechanistic hypothesis
+
+- The proposed “pleiotropic” mechanism is that statin inhibition of isoprenoid production alters prenylation of small GTPases such as Rho and Rac, which may affect endothelial NO synthase, NADPH oxidase activity, reactive oxygen species, and inflammatory signaling. [PMID: 28057795]  
+  - **Evidence type:** Mechanistic evidence from **cell-culture and animal studies**, as described in the review; the clinical contribution independent of LDL-cholesterol lowering remains uncertain.
+
+### Bottom line
+
+The strongest PubMed evidence is human randomized-trial evidence showing a statistically significant improvement in FMD with statins, although heterogeneity between trials is very high. Small human studies and reviews support improved NO-mediated endothelial vasodilation, while the precise LDL-independent molecular mechanisms remain a testable hypothesis rather than conclusively established clinical causation."
+general_llm,Q006,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"PubMed-indexed evidence supports the conclusion that statins can improve **endothelial dysfunction**, particularly in patients with hypercholesterolemia, coronary artery disease, diabetes, or other high-risk states. The strongest evidence concerns improvement in **endothelium-dependent vasodilation**, rather than proof that this mechanism alone explains cardiovascular outcome reduction.
+
+### Main clinical evidence
+
+- **Flow-mediated dilation (FMD):** Numerous randomized trials report improved brachial-artery FMD after treatment with pravastatin, simvastatin, atorvastatin, rosuvastatin, or fluvastatin. Improvements have generally been observed over weeks to months and are often greater in patients with baseline endothelial impairment.
+- **Coronary endothelial function:** Invasive studies using intracoronary acetylcholine demonstrated improved endothelium-dependent coronary vasomotion after lipid-lowering therapy. A landmark example is the **TREND study**, published by Anderson and colleagues in *New England Journal of Medicine* in 1995, in which pravastatin improved coronary endothelial responses in patients with coronary artery disease.
+- **Meta-analyses:** PubMed-indexed systematic reviews and meta-analyses of randomized trials generally find a modest but statistically significant improvement in FMD with statin therapy. The effect is usually larger in people with cardiovascular disease or dyslipidemia than in healthy individuals.
+
+### Proposed mechanisms
+
+The literature supports several mechanisms beyond simply lowering LDL cholesterol:
+
+1. **Increased endothelial nitric-oxide synthase activity and nitric oxide bioavailability**
+2. **Reduced vascular oxidative stress and superoxide-mediated nitric-oxide inactivation**
+3. **Improved endothelial-cell signaling through the PI3K/Akt/eNOS pathway**
+4. **Reduced expression of inflammatory and adhesion molecules**
+5. **Improved endothelial repair and progenitor-cell function**
+6. **Reduced Rho/Rho-kinase signaling**, which may enhance eNOS activity
+7. **Improved endothelial response to ischemia and reduced thrombogenicity**
+
+Experimental and mechanistic studies, including work by **Laufs and colleagues**, showed that statins can increase eNOS expression and activity independently of LDL reduction in cellular and animal models.
+
+### Evidence for effects independent of LDL lowering
+
+Some clinical studies found endothelial improvement before substantial LDL reduction or despite similar LDL reductions between treatment groups. This supports a possible “pleiotropic” effect. However, this interpretation is not definitive:
+
+- Many studies were small.
+- Endothelial-function measures have substantial methodological variability.
+- The apparent LDL-independent effects may partly reflect rapid biological consequences of LDL lowering, regression to the mean, or differences in baseline risk.
+- Trials designed specifically to separate LDL-mediated from LDL-independent effects are limited.
+
+### Important limitations
+
+- **FMD is a surrogate measure**, not a clinical outcome.
+- Results vary according to statin, dose, duration, baseline endothelial function, and measurement technique.
+- Improvement in FMD does not establish that statins prevent myocardial infarction specifically through endothelial effects.
+- Large outcome trials clearly show cardiovascular benefit from statins, but those benefits likely result from multiple mechanisms: LDL reduction, plaque stabilization, reduced inflammation, prevention of thrombosis, and possibly improved endothelial function.
+
+### Bottom line
+
+The PubMed literature provides reasonably consistent evidence that statins improve endothelial-dependent vasodilation and several biological markers of endothelial health. The evidence is strongest for improvement in **brachial FMD and coronary vasomotor responses**, while the extent to which these effects are independent of LDL lowering—and their contribution to reduced cardiovascular events—remains uncertain."
+netmedex_hybrid_rag,Q007,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"## Direct evidence
+
+Immune cell types associated with IL-17 in autoimmune disease contexts include:
+
+- **Th17 cells (RORγt⁺ CD4⁺ T cells):** The principal IL-17-producing adaptive immune population and a major driver of autoimmune tissue inflammation. Evidence includes human disease and mouse autoimmune models. [PMID: 27576555] [PMID: 30891627]
+- **Th1-like Th17 cells:** A plastic Th17 subset that co-expresses RORγt and T-bet and produces both **IL-17 and IFN-γ**. These cells are associated with inflammatory bowel disease, multiple sclerosis, and rheumatoid arthritis. [PMID: 30502718]
+- **γδ T cells:** Innate-like lymphocytes that produce type 17 cytokines and contribute to tissue inflammation; RORγt/IL-17 activity is described in mice and humans. [PMID: 27576555] [PMID: 34635393]
+- **Natural killer T (NKT) cells:** Reported sources of IL-17/type 17 cytokines that may contribute to inflammatory tissue responses. [PMID: 27576555] [PMID: 37579542]
+- **Innate lymphoid cells, particularly type 3 ILCs:** Produce type 17 cytokines and are associated with IL-17-driven inflammation; the cited evidence includes mice and humans. [PMID: 27576555] [PMID: 34635393]
+- **CD8⁺ T cells:** Can produce IL-17A, although the context identifies them as additional producers rather than the main source. [PMID: 37579542]
+
+## Association with autoimmune disease networks
+
+These IL-17-associated cells are linked to diseases including **multiple sclerosis, rheumatoid arthritis, psoriasis, inflammatory bowel disease, systemic lupus erythematosus, and other immune-mediated inflammatory disorders**. [PMID: 37670700] [PMID: 31295952] [PMID: 34635393]
+
+## Testable hypothesis
+
+The context supports testing whether **plastic transitions among intestinal or tissue-resident Th17 cells, Th1-like Th17 cells, and other type 17-producing innate lymphocytes** determine whether IL-17 responses remain homeostatic or become pathogenic. In one study, stem-like intestinal IL-17⁺ Th17 cells generated pathogenic GM-CSF⁺IFN-γ⁺ effector cells during CNS autoimmunity; this specific mechanistic evidence was obtained in an in-vivo model. [PMID: 34875227]"
+traditional_rag,Q007,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"### Direct evidence: IL-17-associated immune cell types
+
+The main immune cell types linked to IL-17 production in autoimmune disease networks are:
+
+- **Th17 cells** — RORγt⁺ CD4⁺ T cells and the principal adaptive source of IL-17; they promote autoimmune tissue inflammation [PMID: 27576555].
+- **Th1-like Th17 cells** — a plastic Th17 subset that co-expresses RORγt and T-bet and produces both **IL-17 and IFN-γ**. These cells are associated with inflammatory bowel disease, multiple sclerosis, and rheumatoid arthritis [PMID: 30502718].
+- **γδ T cells** — innate-like T cells that can produce type 17 cytokines and contribute to tissue inflammation [PMID: 27576555].
+- **Natural killer T (NKT) cells** — reported producers of IL-17/type 17 cytokines [PMID: 27576555].
+- **Innate lymphoid cells (ILCs), particularly type 3 ILCs** — associated with IL-17 production and IL-17-driven inflammation [PMID: 27576555; PMID: 34635393].
+- **CD8⁺ T cells** — can also produce IL-17A [PMID: 37579542].
+- **Innate lymphoid-like cells** — reported as additional IL-17A-producing cells [PMID: 37579542].
+
+### Disease association
+
+These IL-17-producing populations are associated with autoimmune or immune-mediated inflammatory diseases including **multiple sclerosis, rheumatoid arthritis, psoriasis, inflammatory bowel disease, systemic lupus erythematosus, and other inflammatory disorders** [PMID: 37670700; PMID: 31295952].
+
+### Additional evidence
+
+In the **mouse autoimmune-inflammation model**, intestinal stem-like **TCF1⁺ IL-17⁺ Th17 cells** were described as a reservoir that can generate pathogenic **GM-CSF⁺ IFN-γ⁺ effector T cells** [PMID: 34875227]. The supplied context does not establish that this specific developmental relationship is directly demonstrated in humans.
+
+### Testable hypothesis
+
+Because IL-17 can originate from both adaptive T cells and innate-like lymphoid populations, autoimmune disease networks may be driven by **interactions among Th17/Th1-like Th17 cells, γδ T cells, NKT cells, and type 3 ILCs**, rather than by a single IL-17-producing cell type. The context supports this as a mechanistic hypothesis but does not provide comparative evidence identifying which population is dominant in each disease."
+general_llm,Q007,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"IL-17-centered autoimmune disease networks typically involve the following immune cell types:
+
+### Main IL-17-producing cells
+- **Th17 cells (CD4⁺ T cells):** The canonical source of IL-17A and IL-17F. They are promoted by cytokines such as **IL-1β, IL-6, IL-21, and IL-23** and maintained by the transcription factor **RORγt**.
+- **Tc17 cells (CD8⁺ T cells):** Produce IL-17 and may contribute to tissue inflammation, particularly in skin, joints, and mucosal tissues.
+- **γδ T cells:** Can produce IL-17 rapidly, often in response to tissue stress or innate cytokines, without conventional antigen-specific priming.
+- **MAIT cells and some invariant NKT cells:** Can produce IL-17 in mucosal and inflammatory settings.
+- **ILC3s:** Innate lymphoid cells that produce IL-17 and/or IL-22, especially at barrier sites such as the intestine and skin.
+- **Neutrophils and other myeloid cells:** IL-17 production has been reported in some inflammatory contexts, but the extent and biological importance of neutrophil-derived IL-17 remain more context-dependent than for T cells.
+
+### Cells that promote IL-17 responses
+- **Dendritic cells:** Provide IL-1β, IL-6, and IL-23, helping initiate or sustain Th17-type responses.
+- **Monocytes and macrophages:** Produce IL-1β, IL-6, TNF, and IL-23; they both promote IL-17 production and are activated by IL-17-driven inflammation.
+- **B cells:** Can support Th17 responses through antigen presentation and cytokine production. Their relationship with IL-17 is disease-specific rather than uniformly causal.
+- **T follicular helper-like and regulatory T-cell populations:** Some Tregs can acquire a Th17-like phenotype under inflammatory conditions, particularly in the presence of IL-6 and IL-23.
+
+### Major IL-17-responsive cells
+IL-17 acts mainly on nonhematopoietic and stromal cells, including:
+
+- **Fibroblasts and synovial fibroblasts**
+- **Keratinocytes**
+- **Intestinal and airway epithelial cells**
+- **Endothelial cells**
+- **Osteoblasts and other bone-associated stromal cells**
+- **Macrophages and dendritic cells**
+
+These cells respond by producing **CXCL1, CXCL2, CXCL5, CXCL8/IL-8, G-CSF, GM-CSF, antimicrobial peptides, IL-6, and additional inflammatory mediators**, thereby recruiting and activating neutrophils.
+
+### Typical network structure in autoimmune disease
+A common pattern is:
+
+**Dendritic cells/monocytes → Th17, γδ T cells, ILC3s → IL-17A/F → stromal and epithelial cells → chemokines and G-CSF → neutrophil recruitment and tissue inflammation.**
+
+This network is prominent in **psoriasis, psoriatic arthritis, spondyloarthritis, inflammatory bowel disease, rheumatoid arthritis, and some forms of multiple sclerosis**. However, IL-17 can be protective at barrier surfaces, and its pathogenic importance varies by disease, tissue, disease stage, and the balance between IL-17A, IL-17F, IL-22, and other cytokines."
+netmedex_hybrid_rag,Q008,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"## Direct evidence
+
+1. **Defective epithelial CFTR alters the intestinal environment and promotes dysbiosis.**  
+   In intestinal-epithelial-specific **Cftr knockout mice**, CFTR loss alone was sufficient to produce altered microbial composition and elevated fecal calprotectin, indicating intestinal inflammation. Changes included expansion of Proteobacteria, Enterobacteriaceae, several Clostridia, and mucolytic organisms, depending on diet [PMID: 37546931; PMID: 38073491]. This supports a mechanism in which CFTR-dependent epithelial ion and fluid transport shapes the luminal environment, and its disruption favors inflammatory microbial communities.
+
+2. **Dysbiosis may stimulate mucosal inflammation.**  
+   CF intestinal disease is characterized by increased Proteobacteria, loss of anaerobic short-chain-fatty-acid producers, altered metabolites, and inflammatory markers such as calprotectin, S100A12, and lactoferrin [PMID: 40824057]. In people with CF carrying at least one gating mutation, ivacaftor treatment was associated with increased *Akkermansia*, decreased Enterobacteriaceae, and reduced stool calprotectin; the microbial changes correlated with lower inflammation [PMID: 30546102]. These findings support a microbiota-mediated inflammatory mechanism, although the human study was observational with respect to mechanism.
+
+3. **Increased intestinal permeability could permit microbial or inflammatory stimuli to reach mucosal and systemic immune compartments.**  
+   In CFTR-knockout mice, intestinal dysbiosis was associated with increased intestinal permeability and mucosal inflammation. Restoring CFTR specifically in the gut prevented these abnormalities, while nonabsorbable antibiotics improved permeability and inflammation [PMID: 38554847]. This provides animal evidence that defective intestinal CFTR can increase barrier dysfunction and expose the immune system to gut-derived stimuli.
+
+4. **CFTR loss may directly activate the NF-κB inflammatory pathway through disruption of β-catenin signaling.**  
+   In ΔF508-CFTR-deficient mouse intestine and CFTR-knockdown human intestinal epithelial cell lines, the NF-κB/COX-2/PGE2 pathway was activated while β-catenin signaling was suppressed. CFTR interacted with β-catenin, and CFTR dysfunction reduced β-catenin stability; restoring β-catenin signaling suppressed NF-κB activation, whereas inhibiting β-catenin promoted NF-κB nuclear translocation [PMID: 27588407]. This is a direct molecular mechanism supported by **mouse and in-vitro human epithelial-cell evidence**.
+
+5. **Abnormal mucus, luminal obstruction, and infection may create a self-reinforcing inflammatory cycle.**  
+   A review of the CF intestine describes a shared pathophysiologic triad of **obstruction, infection, and inflammation** in the gastrointestinal tract, analogous to CF airway disease [PMID: 23788646]. CFTR dysfunction, diet, and antibiotic exposure are also proposed contributors to chronic low-grade inflammation and microbiota alterations [PMID: 35160099]. The supplied context does not establish which of these factors is dominant for particular CFTR variants.
+
+## Associations and modifiers
+
+- **CFTR genotype may not fully determine intestinal disease severity.** Gastrointestinal CFTR dysfunction occurs early and is present across genotypes, suggesting that environmental, dietary, microbial, and treatment-related factors modify the inflammatory phenotype [PMID: 23788646].
+- **CFTR expression in leukocytes could contribute to inflammation**, since CFTR is expressed in both epithelia and leukocyte populations; however, the intestinal-specific knockout studies show that epithelial CFTR loss is sufficient to induce dysbiosis and inflammation in mice [PMID: 37546931; PMID: 38073491].
+- **Diet and antibiotics may shape the phenotype.** Different anti-obstructive diets produced distinct microbiota changes in intestinal-specific knockout mice, and reviews identify high-fat diet and antibiotic use as potential contributors to CF dysbiosis and inflammation [PMID: 37546931; PMID: 35160099].
+
+## Testable hypotheses
+
+- CFTR variants that cause greater impairment of intestinal chloride/bicarbonate and fluid secretion may produce thicker luminal contents, slower transit, barrier stress, and greater dysbiosis, thereby increasing inflammation.
+- Restoring epithelial CFTR function should reduce intestinal permeability and inflammatory markers partly by normalizing the microbial ecosystem, not only by correcting ion transport.
+- Stabilizing β-catenin or interrupting the NF-κB/COX-2/PGE2 pathway could reduce inflammation downstream of CFTR deficiency [PMID: 27588407].
+- Targeted microbiota interventions, including reduction of Enterobacteriaceae or restoration of beneficial anaerobic and mucin-associated organisms, may lessen CF intestinal inflammation; this remains to be validated clinically.
+- Because epithelial CFTR restoration prevented dysbiosis and inflammation in mice, epithelial dysfunction is likely a necessary initiating factor in at least some CF-associated inflammatory phenotypes, whereas microbiota and immune alterations may amplify the response [PMID: 38554847]."
+traditional_rag,Q008,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"Candidate mechanisms linking **CFTR variants to intestinal inflammation** include:
+
+### Direct mechanistic evidence
+
+1. **Defective epithelial ion transport and luminal obstruction**
+   - CFTR dysfunction alters intestinal chloride and bicarbonate secretion and the intraluminal environment, producing the classic triad of **obstruction, infection, and inflammation** in the intestine [PMID: 23788646].
+   - The resulting abnormal luminal contents and impaired clearance may promote mucosal irritation and microbial overgrowth. This mechanism is supported primarily by CF physiology and **animal models**, rather than by variant-specific human comparisons.
+
+2. **Intestinal epithelial CFTR loss causing dysbiosis and inflammation**
+   - In **intestinal epithelial-specific Cftr-knockout mice**, CFTR loss alone was sufficient to increase fecal calprotectin and alter microbial composition, including enrichment of Proteobacteria, Enterobacteriaceae, Clostridia, and mucolytic organisms [PMID: 37546931; PMID: 38073491].
+   - This directly supports an epithelial-autonomous pathway: CFTR-deficient epithelium changes the intestinal habitat, which is associated with inflammatory activation.
+
+3. **Increased intestinal permeability and microbial translocation**
+   - In **CFTR-knockout mice**, dysbiosis was accompanied by increased intestinal permeability and mucosal inflammation. Restoring CFTR specifically in the gut prevented these abnormalities, while nonabsorbable antibiotics reduced permeability and inflammation [PMID: 38554847].
+   - These findings support a mechanism in which CFTR deficiency compromises epithelial barrier function, allowing microbial products to stimulate mucosal and systemic inflammation.
+
+4. **CFTR–β-catenin disruption with NF-κB activation**
+   - In **ΔF508 CF mice and CFTR-knockdown human intestinal epithelial cells**, CFTR interacted with and stabilized β-catenin. CFTR deficiency reduced β-catenin signaling and promoted nuclear translocation of NF-κB, activating the **NF-κB/COX-2/PGE2 inflammatory pathway** [PMID: 27588407].
+   - This is direct **animal and in-vitro evidence** for a cell-intrinsic signaling mechanism connecting a CFTR variant or reduced CFTR expression to inflammation.
+
+5. **Abnormal host response to microbial products**
+   - CF cholangiocytes in mice reportedly respond excessively to LPS, and CFTR-knockout livers show immune-cell infiltration and activation of pathogen-response pathways consistent with gut-derived inflammatory stimuli [PMID: 38554847].
+   - Although this study focuses on liver disease, it supports the broader possibility that CFTR deficiency alters epithelial innate immune responses to bacterial products.
+
+### Human associations
+
+6. **Dysbiosis-associated inflammation**
+   - People with CF show intestinal dysbiosis and inflammatory markers, including elevated fecal calprotectin. In patients carrying at least one gating CFTR mutation, ivacaftor was associated with reduced calprotectin, increased *Akkermansia*, and reduced Enterobacteriaceae; the microbial changes correlated with lower inflammation [PMID: 30546102].
+   - This supports an association between residual CFTR function, microbiome composition, and intestinal inflammation, but does not prove that the microbiome is the causal mediator.
+
+7. **Contributions from treatment and diet**
+   - Reviews describe CF intestinal inflammation as multifactorial, involving CFTR dysfunction together with a high-fat diet and antibiotic exposure. Inflammation and microbiome changes may also reinforce one another bidirectionally [PMID: 35160099].
+   - Thus, the effect of a CFTR variant may be modified by diet, antibiotics, pancreatic or intestinal disease, and other environmental factors.
+
+### Testable hypotheses
+
+- **Barrier hypothesis:** CFTR variants reduce epithelial chloride/bicarbonate transport and weaken mucus or epithelial-barrier function, increasing exposure to microbial products and inflammatory signaling.
+- **Microbiome hypothesis:** CFTR-dependent changes in luminal hydration, pH, mucus, and transit select for pro-inflammatory or mucolytic organisms, which then drive chronic low-grade inflammation [PMID: 37546931; PMID: 38554847].
+- **Cell-intrinsic signaling hypothesis:** Certain CFTR variants directly promote inflammation by destabilizing β-catenin and activating NF-κB/COX-2/PGE2 signaling, independently of dysbiosis [PMID: 27588407].
+- **Gut–liver/systemic inflammation hypothesis:** Increased permeability and dysbiosis allow gut-derived stimuli to promote inflammation outside the intestine, including CF-related liver disease [PMID: 38554847].
+- **Variant-specificity hypothesis:** Different CFTR variants may produce different degrees of residual channel function and therefore different intestinal inflammatory phenotypes. The supplied records do **not** provide direct variant-by-variant evidence testing this hypothesis."
+general_llm,Q008,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"Candidate mechanisms fall into several interconnected pathways. The best-supported model is that CFTR dysfunction changes the intestinal luminal environment first, which then promotes barrier stress, dysbiosis, and immune activation.
+
+### 1. Reduced chloride and bicarbonate secretion
+
+CFTR is expressed in intestinal epithelial cells and supports chloride and bicarbonate secretion, partly through interactions with chloride–bicarbonate exchangers. CFTR variants can therefore cause:
+
+- reduced fluid secretion and slower intestinal transit;
+- a more acidic luminal and mucus environment;
+- impaired mucus expansion and clearance;
+- impaired solubilization of mucins and other luminal contents.
+
+This mechanism is well established as a cause of thick intestinal contents, meconium ileus, distal intestinal obstruction syndrome, and constipation. Chronic stasis can secondarily promote epithelial injury and inflammation.
+
+### 2. Abnormal mucus properties and clearance
+
+Inadequate bicarbonate secretion prevents normal unfolding and hydration of mucins after secretion. The resulting mucus may be denser, less penetrable, and less effectively cleared. This can:
+
+- increase contact between bacteria and the epithelial surface;
+- trap microbial products;
+- facilitate mucus plugging and localized hypoxia;
+- promote bacterial overgrowth.
+
+The general mucus-hydration mechanism is strongly supported, although the precise contribution of altered mucin glycosylation and mucus-associated immune functions in human CF intestine remains incompletely defined.
+
+### 3. Barrier dysfunction
+
+CFTR dysfunction may compromise epithelial barrier integrity directly or indirectly. Proposed processes include:
+
+- altered tight-junction organization;
+- impaired epithelial restitution after injury;
+- increased epithelial permeability;
+- endoplasmic-reticulum and proteostatic stress, particularly with misfolded CFTR such as F508del;
+- oxidative and mitochondrial stress.
+
+Some of these effects are demonstrated in cell and animal models, but it is uncertain how much is a primary consequence of CFTR loss versus a secondary effect of obstruction, infection, medications, or nutritional disease in patients.
+
+### 4. Dysbiosis and bacterial overgrowth
+
+Slow transit, thick mucus, altered pH, pancreatic insufficiency, antibiotic exposure, and changes in diet can all reshape the intestinal microbiome. Reported consequences include:
+
+- reduced microbial diversity;
+- expansion of facultative or potentially pro-inflammatory organisms;
+- altered short-chain-fatty-acid production;
+- changes in bile-acid metabolism;
+- greater exposure to bacterial lipopolysaccharide, flagellin, and other microbial ligands.
+
+These signals can activate epithelial and immune receptors such as TLRs and NOD-like receptors. Dysbiosis is a plausible and probably important mediator, but the exact microbial signatures are not consistent across studies and are strongly influenced by treatment and disease context.
+
+### 5. Activation of epithelial innate immunity
+
+Persistent epithelial contact with microbes and microbial products may activate:
+
+- NF-κB and MAP-kinase pathways;
+- inflammasomes, including NLRP3;
+- secretion of IL-1β, IL-18, IL-6, CXCL8/IL-8, and other inflammatory mediators;
+- neutrophil recruitment and reactive-oxygen production.
+
+CF intestinal tissues and models can show increased inflammatory markers even without overt infection. Whether this reflects a CFTR-specific epithelial signaling defect or chronic exposure to retained luminal material is still uncertain.
+
+### 6. Altered antimicrobial peptide and mucus defenses
+
+Luminal pH and ionic composition influence the activity and processing of antimicrobial peptides, including defensins. CFTR-dependent bicarbonate secretion may therefore affect the ability of crypt and epithelial secretions to control microbes. Abnormal mucus organization may further separate antimicrobial factors from their intended sites of action.
+
+This is biologically plausible and supported by experimental work, but its quantitative importance in human intestinal inflammation is not fully established.
+
+### 7. Effects on intestinal immune cells
+
+CFTR is expressed in some myeloid and other immune-cell populations. Proposed consequences of CFTR dysfunction include altered:
+
+- phagosomal acidification and microbial killing;
+- macrophage inflammatory signaling;
+- neutrophil function;
+- antigen presentation and cytokine production.
+
+These mechanisms are better documented in pulmonary and systemic CF studies than in the intestine. Thus, a direct immune-cell effect may contribute, but the relative importance compared with epithelial and luminal mechanisms remains unresolved.
+
+### 8. Defective autophagy, unfolded-protein responses, and cellular stress
+
+Misfolded CFTR, especially F508del, can produce ER stress and disturb autophagy or proteostasis in epithelial cells. This may increase susceptibility to inflammatory signaling and impair epithelial repair. Evidence is strongest in experimental models; it is not yet clear whether these pathways are major independent drivers of intestinal inflammation in people with different CFTR genotypes.
+
+### 9. Altered bile-acid and metabolic signaling
+
+CF intestinal disease can be associated with altered bile-acid handling and microbial bile-acid conversion. Changes in FXR, TGR5, and related metabolic signaling could influence epithelial integrity and immune tone. This is an emerging hypothesis rather than a firmly established central mechanism.
+
+### 10. Secondary effects of exocrine pancreatic disease and treatment
+
+Some intestinal inflammation attributed to CFTR may be amplified by factors accompanying CF rather than by epithelial CFTR loss alone:
+
+- pancreatic enzyme insufficiency and malabsorption;
+- altered fat delivery to the colon;
+- nutritional deficiencies;
+- repeated antibiotics;
+- proton-pump inhibitors;
+- opioid or anticholinergic treatment;
+- intestinal obstruction and surgery;
+- liver disease and altered bile flow.
+
+These factors complicate attempts to infer a direct genotype-to-inflammation pathway.
+
+### Overall interpretation
+
+The most established causal sequence is:
+
+**CFTR dysfunction → reduced chloride/bicarbonate and fluid secretion → abnormal mucus, slow transit, and luminal stasis → dysbiosis and increased epithelial microbial exposure → barrier stress and innate immune activation.**
+
+Direct effects of CFTR in epithelial or immune signaling, autophagy, inflammasome activity, and bile-acid pathways are credible additional mechanisms, but their importance varies by variant, tissue, age, treatment, and clinical context. CFTR variants clearly predispose to intestinal obstruction and inflammatory abnormalities, whereas a direct, uniform increase in classic inflammatory bowel disease risk is less firmly established."
+netmedex_hybrid_rag,Q009,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"## Direct evidence
+
+- **SGI-1252** — a JAK/STAT inhibitor tested in **mice and human primary myoblasts**. In mouse gastrocnemius, it reduced STAT3 phosphorylation by 53%, increased type II fiber area, muscle mass, and Pax7+ satellite-cell content. In human myoblasts, it suppressed MyoD/Myogenin expression and myogenic differentiation [PMID: 29897957].
+
+- **Tofacitinib** — a JAK inhibitor tested in **humans**. Forty-eight hours of treatment increased single-fiber contractile force in diaphragm and serratus anterior skeletal muscle, alongside reduced protein oxidation and FoxO-proteasome signaling. The study attributes these effects to JAK/STAT inhibition [PMID: 39122555].
+
+- **AG490** — a JAK2 inhibitor tested in **septic mice and C2C12 myotubes in vitro**. It reduced STAT3 phosphorylation and attenuated IL-6-induced myotube atrophy in vitro and sepsis-associated tibialis anterior muscle atrophy in mice [PMID: 34821076].
+
+- **Scutellarein** — a natural compound identified as a JAK kinase inhibitor and tested in **C2C12 cells, human iPSC-derived muscle cells, and mouse cancer-cachexia models**. It inhibited JAK/STAT activation, reduced myotube and skeletal-muscle atrophy, and improved muscle strength and function in mice [PMID: 40617409].
+
+## Association or indirect modulation
+
+- **MitoQ** — a mitochondria-targeted antioxidant tested in **cultured skeletal-muscle myotubes**. It partly attenuated IL-6-induced STAT3 activation, suggesting that mitochondrial reactive oxygen species amplify IL-6/JAK/STAT signaling; the context does not establish MitoQ as a direct JAK/STAT inhibitor [PMID: 32885495].
+
+- **Metyrapone** — tested in **rats** subjected to sleep deprivation. Metyrapone was associated with increased IL-6 and phosphorylated STAT3 in masseter muscle, but the supplied abstract does not establish that it directly modulates JAK/STAT or that it improves the muscle phenotype [PMID: 33601387].
+
+- **Alk5 inhibitor (A5i)** and **oxytocin** — tested in **old mice**. Their combination prevented exercise-associated inflammation and fibrosis in skeletal muscle in the setting of dysregulated TGF-β, Ras/MAPK/PI3K-Akt, and JAK/STAT pathways. The abstract does not show that either agent directly targets JAK/STAT [PMID: 40536399].
+
+## Additional pathway-modulating stimuli, not conventional chemicals
+
+- **IL-6** activates canonical JAK/STAT signaling in cultured skeletal-muscle myotubes and alters mitochondrial physiology; chronic exposure eventually impairs respiratory capacity [PMID: 32885495].
+- **IFN-γ** activates JAK/STAT1 and causes wasting in engineered **human skeletal-muscle myobundles**; JAK/STAT inhibitors prevented this myopathy, although the specific inhibitors are not named in the supplied context [PMID: 33523949].
+- The review identifies **IL-6-family cytokines** as major skeletal-muscle JAK/STAT activators and notes that epigenetic drugs affecting histone methylation or acetylation may modulate the pathway, but no specific epigenetic chemical is named [PMID: 31114509].
+
+### Testable hypothesis
+
+The strongest chemical candidates for direct skeletal-muscle JAK/STAT modulation are **SGI-1252, tofacitinib, AG490, and scutellarein**. MitoQ, metyrapone, A5i, and oxytocin may influence pathway activity indirectly, but the supplied records do not establish them as direct JAK/STAT modulators."
+traditional_rag,Q009,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"## Direct evidence of JAK/STAT modulation in skeletal muscle
+
+### Inhibitors or pathway-targeting compounds
+
+- **SGI-1252** — An orally administered JAK/STAT inhibitor reduced gastrocnemius STAT3 phosphorylation by 53% and increased type II fiber area, muscle mass, and Pax7-positive satellite-cell content in **mice**. It also suppressed MyoD/Myogenin expression and myogenic differentiation in **human primary myoblasts in vitro**. [PMID: 29897957]
+
+- **Tofacitinib** — Short-term treatment increased single-fiber contractile force in diaphragm and serratus anterior muscle biopsies from **humans**. The study interpreted these effects as consistent with JAK/STAT inhibition, alongside reduced protein oxidation and FoxO–ubiquitin–proteasome signaling. [PMID: 39122555]
+
+- **AG490** — A JAK2 inhibitor reduced STAT3 phosphorylation, MuRF1/Atrogin-1 expression, and sepsis-associated tibialis anterior muscle atrophy in **mice**. In **C2C12 myotubes in vitro**, JAK2 inhibition attenuated IL-6-induced SOCS3 expression and myotube atrophy. [PMID: 34821076]
+
+- **Scutellarein** — Identified as a JAK kinase inhibitor in **C2C12 and human iPSC-derived skeletal muscle cells in vitro**. It reduced cytokine- or cancer-conditioned-media-induced myotube atrophy and inhibited JAK/STAT activation. In two **mouse cancer-cachexia models**, it reduced muscle wasting and improved strength and function. [PMID: 40617409]
+
+- **Unspecified JAK/STAT inhibitors** — In engineered **human skeletal-muscle myobundles in vitro**, JAK/STAT inhibitors prevented IFN-γ-induced myopathy, supporting a causal role for STAT1 activation. The supplied abstract does not name the inhibitors. [PMID: 33523949]
+
+### Cytokines and related signaling chemicals
+
+- **Interleukin-6 (IL-6)** — In differentiated skeletal-muscle myotubes in vitro, IL-6 induced STAT3 phosphorylation, SOCS3 expression, mitochondrial reactive oxygen species, and increased oxygen consumption; these mitochondrial effects depended on JAK/STAT activation. Chronic IL-6 exposure eventually impaired respiratory capacity. [PMID: 32885495] In **C2C12 myotubes**, IL-6 also caused STAT3-dependent myotube atrophy. [PMID: 34821076]
+
+- **Interferon-γ (IFN-γ)** — In engineered **human myobundles in vitro**, chronic IFN-γ activated JAK/STAT1 signaling and induced myofiber atrophy and contractile loss. [PMID: 33523949]
+
+- **Tumor necrosis factor-α (TNF-α)** — Used together with IFN-γ to induce atrophy in C2C12 and human iPSC-derived muscle cells; scutellarein counteracted the associated JAK/STAT activation. The supplied context does not establish TNF-α alone as the specific JAK/STAT modulator. [PMID: 40617409]
+
+## Associations rather than direct chemical-intervention evidence
+
+- **IL-6/gp130/JAK2/STAT3 signaling** was activated in skeletal muscle during sepsis and associated with muscle wasting in **humans and mice**. Increased muscle SOCS3 in ICU-acquired weakness patients was an indicator of pathway activation, but this observational human evidence does not by itself prove that IL-6 caused the wasting. [PMID: 34821076]
+
+- **Sleep deprivation and metyrapone** — In **rats**, sleep deprivation increased inflammatory changes, atrophy, and p-STAT3 in masseter muscle. Metyrapone treatment altered IL-6 and p-STAT3 responses, but the abstract does not demonstrate that metyrapone directly targets JAK/STAT. [PMID: 33601387]
+
+- **Alk5 inhibitor and oxytocin** — In **old mice**, their combination prevented exercise-associated muscle inflammation and fibrosis in a setting involving dysregulated JAK/STAT signaling. Direct inhibition or activation of JAK/STAT by either chemical is not demonstrated in the supplied abstract. [PMID: 40536399]
+
+## Testable hypotheses
+
+- **MitoQ** may modulate IL-6–JAK/STAT signaling indirectly through mitochondrial reactive oxygen species, because it partly attenuated IL-6-induced STAT3 activation in muscle cells in vitro. This is mechanistic evidence but not evidence that MitoQ directly targets JAK or STAT. [PMID: 32885495]
+
+- Drugs that inhibit **JAK2, JAK, or STAT3** may reduce inflammatory or sepsis-associated skeletal-muscle wasting, whereas pathway activation by IL-6 or IFN-γ may promote atrophy in some contexts. This therapeutic interpretation is supported by animal and in-vitro studies, with direct human muscle evidence available for tofacitinib. [PMID: 31114509; PMID: 34821076; PMID: 39122555]"
+general_llm,Q009,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"Several classes of chemicals have been reported to modulate JAK/STAT signaling in skeletal muscle. The strength of evidence varies substantially between cytokine stimulation, experimental pathway inhibitors, and compounds that may affect JAK/STAT only indirectly.
+
+## Endogenous ligands with relatively strong muscle evidence
+
+| Chemical | Principal signaling | Skeletal-muscle context |
+|---|---|---|
+| **Interleukin-6 (IL-6)** | gp130-associated JAK1/JAK2/TYK2 → mainly STAT3, sometimes STAT1 | Activates STAT3 in myoblasts and myotubes; involved in exercise responses, satellite-cell activity, inflammation, cachexia, and muscle wasting. Acute and chronic effects can differ. |
+| **Leukemia inhibitory factor (LIF)** | JAK1/JAK2/TYK2 → STAT3 | Promotes satellite-cell activation/proliferation and can influence myoblast survival and differentiation. |
+| **Oncostatin M (OSM)** | JAK/STAT3, with additional MAPK signaling | Reported in inflammatory and regenerative muscle settings; may affect myoblast behavior and muscle remodeling. |
+| **Cardiotrophin-1 (CT-1)** | gp130/LIFR → JAK/STAT3 | Has been studied in muscle growth, regeneration, and metabolic signaling, although effects are context-dependent. |
+| **Interferon-γ** | JAK1/JAK2 → STAT1 | Strong inducer of STAT1 in muscle cells; generally associated with inflammatory signaling and inhibition or alteration of myogenic differentiation. |
+| **Type-I interferons (IFN-α/β)** | JAK1/TYK2 → STAT1/STAT2 | Activate interferon-response pathways in muscle and may contribute to inflammatory or antiviral muscle phenotypes. |
+| **Interleukin-4 and interleukin-13** | JAK1/JAK3 → STAT6 | STAT6 signaling has been implicated in myoblast fusion, myofiber growth, and alternative macrophage–muscle interactions. |
+| **Growth hormone** | JAK2 → STAT5 | Has direct JAK2/STAT5 signaling potential in skeletal muscle, although many growth effects also involve IGF-1 and PI3K–AKT–mTOR. |
+| **Leptin** | JAK2 → STAT3 | Activates STAT3 in muscle and influences metabolism and insulin sensitivity; its effects on muscle mass are less straightforward. |
+| **Interleukin-15 (IL-15)** | Usually JAK1/JAK3 → STAT3/STAT5 | Studied as a muscle-derived or muscle-active cytokine with effects on protein metabolism and muscle phenotype, but results vary by model. |
+
+**Important distinction:** myostatin, activin A, and TGF-β are major muscle regulators, but their canonical pathway is **SMAD2/3**, not JAK/STAT. They can nevertheless interact with JAK/STAT signaling.
+
+## Small-molecule JAK inhibitors studied in muscle-related models
+
+These compounds can suppress cytokine-induced signaling, but most are not muscle-selective.
+
+- **Ruxolitinib** — JAK1/JAK2 inhibitor; suppresses IL-6-, interferon-, and other cytokine-driven STAT activation. Relevant to inflammatory muscle and regeneration studies, and clinically used in some inflammatory conditions.
+- **Baricitinib** — mainly JAK1/JAK2 inhibitor; has been investigated in inflammatory myopathies and other immune-mediated disorders.
+- **Tofacitinib** — mainly JAK1/JAK3, with some JAK2 activity; can reduce cytokine signaling relevant to inflammatory muscle disease.
+- **Upadacitinib** — relatively JAK1-selective; muscle-specific mechanistic evidence is less extensive than for its broader inflammatory indications.
+- **Fedratinib** — relatively JAK2-focused; useful experimentally for JAK2-dependent signaling but not a standard skeletal-muscle tool.
+- **AG490 and related tyrphostins** — older, relatively nonspecific JAK2/tyrosine-kinase inhibitors used in cell and muscle experiments.
+- **Pyridone 6** — broad JAK-family inhibitor used experimentally; interpretation requires caution because it is not highly selective.
+
+Clinical improvement of inflammatory muscle disease with JAK inhibitors supports the importance of cytokine/JAK signaling, but it does not prove that JAK/STAT inhibition is the sole mechanism of benefit.
+
+## STAT-directed experimental inhibitors
+
+- **Stattic** — commonly used as a STAT3 inhibitor; reported to reduce STAT3-dependent responses in myoblast, myotube, injury, and disease models. It can have off-target effects at higher concentrations.
+- **S3I-201** — STAT3 DNA-binding/dimerization inhibitor used in experimental muscle studies.
+- **C188-9** — STAT3 SH2-domain inhibitor; generally a more mechanistically targeted STAT3 tool than broad kinase inhibitors, but still not completely free of pharmacological limitations.
+- **WP1066** — inhibits STAT3/STAT5-associated signaling and upstream JAK activity; relatively broad.
+- **Cucurbitacin I (JSI-124)** — reported to inhibit JAK2/STAT3 signaling and used in cancer and inflammatory models, including some muscle-related experiments; it is pleiotropic and can be cytotoxic.
+- **Nifuroxazide** — reported as a STAT3 inhibitor; evidence in skeletal muscle is more limited and should be considered exploratory.
+- **Fludarabine** — sometimes used to inhibit STAT1-dependent transcription; muscle-specific use is limited.
+- **Pimozide** — can interfere with STAT5 signaling but has substantial non-STAT pharmacology and is not a clean muscle tool.
+
+## Natural products and other pleiotropic compounds
+
+Several compounds have been reported to reduce JAK/STAT activation in muscle injury, atrophy, or inflammatory models:
+
+- **Curcumin**
+- **Resveratrol**
+- **Epigallocatechin gallate (EGCG)**
+- **Quercetin**
+- **Sulforaphane**
+- **Berberine**
+
+These may reduce phosphorylation of JAK2, STAT3, or STAT1 in particular models, but the evidence is generally weaker as a statement of direct JAK/STAT modulation. They also affect NF-κB, AMPK, oxidative stress, MAPK, PI3K–AKT, mitochondrial pathways, and transcriptional regulators. Thus, they should not usually be treated as selective JAK/STAT probes.
+
+## Overall interpretation
+
+The most consistently supported muscle-relevant axis is:
+
+**IL-6/LIF/OSM/CT-1 → JAK1/JAK2/TYK2 → STAT3**
+
+This pathway can be beneficial during acute regeneration but harmful when chronically activated, contributing to inflammation, impaired differentiation, fibrosis, or atrophy depending on the model. Other well-supported axes include:
+
+- **IFN-γ → JAK1/JAK2 → STAT1**
+- **IL-4/IL-13 → JAK1/JAK3 → STAT6**
+- **Growth hormone → JAK2 → STAT5**
+
+For mechanistic experiments, the strongest approach is usually to combine a genetic method—such as STAT3, STAT1, or JAK2 knockdown—with a pharmacological inhibitor, because many commonly used small molecules have significant off-target activity."
+netmedex_hybrid_rag,Q010,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"## 可能機制整理
+
+### 一、直接證據
+
+#### 1. 以 miRNA 調節 Wnt/β-catenin，促進骨形成
+
+- **miR-375-3p 為潛在的促骨質疏鬆 miRNA**：在 MC3T3-E1 成骨前驅細胞中，miR-375-3p 直接靶向 **LRP5** 與 **β-catenin**，降低其表達，從而抑制 Wnt 訊號、成骨作用、細胞增殖及存活；LRP5 功能缺失的小鼠亦出現骨小梁鬆散及骨形成受損。此研究並觀察到骨質疏鬆性椎體壓迫骨折患者骨組織中的 β-catenin 降低，但尚未證明 miR-375-3p 是患者骨質疏鬆的因果因素。[PMID: 28158288]  
+  - **證據類型**：體外細胞、動物；另有人類骨組織觀察證據。  
+  - **可能治療方向**：抑制 miR-375-3p，或恢復 LRP5/β-catenin 活性。
+
+- **補骨脂甲素／龜板類天然物調節 miR-214–Wnt/β-catenin 軸**：在卵巢切除（OVX）大鼠中，Plastrum Testudinis 萃取物提高 Wnt3a、β-catenin、GSK-3β、LRP5 及多種成骨因子；其作用可能與抑制 BMSCs 中的 miR-214 有關。miR-214 mimic 可抑制 Wnt 訊號及成骨分化，而 PT 萃取物能部分逆轉此效應。[PMID: 40358879]  
+  - **證據類型**：OVX 大鼠及體外 BMSC 實驗。  
+  - **可能機制**：天然物 ↓ miR-214 → 恢復 Wnt/β-catenin → ↑ RUNX2、BMP2、ALP、COL1A1 → 促進骨形成。
+
+- **熟地黃水萃取物調節 miR-29a-3p/NFIA/Wnt**：在 OVX 大鼠中，熟地黃提高血清外泌體及骨組織中的 miR-29a-3p。miR-29a-3p 直接抑制 **NFIA**；NFIA 會促進 Wnt 抑制因子 **SFRP1** 的轉錄，因此熟地黃可能透過「↑ miR-29a-3p → ↓ NFIA → ↓ SFRP1 → 活化 Wnt」促進 BMSC 成骨及改善骨微結構。[PMID: 40024453]  
+  - **證據類型**：OVX 大鼠及大鼠 BMSC 體外實驗。  
+  - **可能機制**：以血清外泌體作為天然物作用的 miRNA 傳遞媒介。
+
+- **強骨飲調節破骨細胞外泌體 miR-27b-3p/DKK2/β-catenin**：破骨細胞來源外泌體會抑制 BMMSC 成骨；強骨飲含藥血清增加外泌體 miR-27b-3p，miR-27b-3p 直接靶向 **DKK2**。DKK2 過度表達會阻斷強骨飲對成骨及 β-catenin 的救援作用；在 PMOP 大鼠中，強骨飲提高血清外泌體 miR-27b-3p、降低 DKK2 並提高股骨 β-catenin。[PMID: 41961168]  
+  - **證據類型**：體外細胞／外泌體、PMOP 大鼠。  
+  - **可能機制**：天然方劑重塑「破骨細胞—成骨細胞」間的外泌體訊號，解除破骨細胞對成骨的抑制。
+
+#### 2. 天然物透過肌肉或外泌體 miRNA 促進成骨
+
+- **壯骨方（ZGF）與肌母細胞來源外泌體**：ZGF 可透過肌母細胞及其外泌體促進 BMSC 成骨分化。在 SAMP6 老年骨質疏鬆小鼠中，ZGF 上調肌肉及骨組織中的 miR-5100、miR-126a-3p、miR-450b-5p，並下調 miR-669a-5p，同時提高骨組織 OCN 與 Osterix。[PMID: 38795694]  
+  - **證據類型**：體外細胞／外泌體及 SAMP6 小鼠。  
+  - **可能機制**：ZGF 改變肌肉分泌的外泌體 miRNA 組成，形成肌肉—骨骼訊號，進而促進成骨。  
+  - **限制**：摘要未提供這些 miRNA 各自的直接靶基因，因此其下游分子機制仍未完全確定。
+
+- **植物來源細胞外奈米囊泡**：淫羊藿來源的細胞外奈米囊泡含有小分子代謝物及 miRNA；體外可促進 BMSC 成骨，並與 PI3K/Akt/mTOR 路徑活化相關。其負載羥基磷灰石複合物可改善 OVX 大鼠下顎骨缺損修復。[PMID: 40266676]  
+  - **證據類型**：體外 BMSC 及 OVX 大鼠。  
+  - **限制**：雖然確認囊泡含有 miRNA，但摘要未指出哪一個 miRNA 是造成 PI3K/Akt/mTOR 活化的必要因子。
+
+#### 3. miRNA、細胞凋亡／自噬與成骨細胞存活
+
+- **miR-140-5p/BCL2L1**：在人類胎兒成骨細胞 HFOB1.19 中，miR-140-5p 可直接結合抗凋亡蛋白 **BCL2L1**，促進細胞凋亡並抑制自噬。補腎健脾活血湯含藥血清可影響 miR-140-5p 相關的成骨蛋白表達，其作用可能涉及 BMP2。[PMID: 40350835]  
+  - **證據類型**：人類成骨細胞株體外實驗；含藥血清來源為大鼠。  
+  - **可能機制**：天然方劑調節 miR-140-5p/BCL2L1，改善成骨細胞存活與自噬，進而支持骨形成。  
+  - **限制**：摘要所述結果較複雜，且未完全證明含藥血清是直接透過 miR-140-5p/BCL2L1 產生所有成骨效應。
+
+#### 4. 天然物抑制炎症性骨吸收
+
+- **淫羊藿苷（Icariine）與 miR-34c**：在 LPS 誘導的體外骨流失模型中，LPS 使 miR-34c 顯著上升；淫羊藿苷可降低 miR-34c，恢復 Runx2 蛋白及 ALP、OPN、BMP2 等成骨指標。miR-34c 過度表達會抵消淫羊藿苷誘導的成骨分化及礦化結節形成。此外，淫羊藿苷抑制 JNK、p38 及 NF-κB 相關磷酸化。[PMID: 27492554]  
+  - **證據類型**：體外實驗。  
+  - **可能機制**：淫羊藿苷 ↓ miR-34c，同時抑制 LPS 引發的 MAPK/NF-κB 炎症訊號，從而減少炎症性骨吸收並恢復成骨。
+
+#### 5. 天然單體抑制破骨細胞分化
+
+- **熊果酸與 XPO5/let-7g-5p**：從枇杷葉分離的熊果酸可抑制破骨細胞分化，IC50 約為 5.4 μM。其可能靶向 miRNA 核輸出蛋白 **XPO5**；抑制 XPO5 或使用熊果酸均會降低破骨細胞分化過程中的成熟 miR-let-7g-5p。[PMID: 30827108]  
+  - **證據類型**：體外細胞實驗。  
+  - **可能機制**：熊果酸 → 抑制 XPO5 → 改變成熟 miRNA 輸出／表達 → 抑制破骨細胞生成及骨吸收。  
+  - **限制**：此研究尚未在骨質疏鬆動物或人類中確認療效。
+
+---
+
+### 二、關聯性證據
+
+1. **Wnt/β-catenin 是多個 miRNA—天然物機制的共同節點**：miR-375-3p 抑制 LRP5/β-catenin，而 PT、熟地黃及強骨飲相關研究則分別透過 miR-214、miR-29a-3p/NFIA 及 miR-27b-3p/DKK2 促進 β-catenin 訊號。[PMID: 28158288; PMID: 40024453; PMID: 40358879; PMID: 41961168]
+
+2. **外泌體可能是天然物調控 miRNA 的重要媒介**：熟地黃影響血清外泌體 miR-29a-3p；ZGF 影響肌母細胞來源外泌體 miRNA；強骨飲則改變破骨細胞來源外泌體 miR-27b-3p。這提示天然物可能不只是直接作用於骨細胞，也能改變細胞間 miRNA 傳遞。[PMID: 38795694; PMID: 40024453; PMID: 41961168]
+
+3. **骨質疏鬆的可能治療策略可分為兩類**：  
+   - 促進骨形成：恢復 LRP5/Wnt、β-catenin、RUNX2、BMP2 等路徑。  
+   - 抑制骨吸收或炎症：抑制破骨細胞分化及 miR-34c 相關的 LPS/MAPK/NF-κB 反應。[PMID: 27492554; PMID: 30827108]
+
+4. **人類證據目前有限**：現有摘要中，較接近人類臨床關聯的是骨質疏鬆性椎體壓迫骨折患者骨組織 β-catenin 降低；其餘主要為細胞、外泌體及動物模型，尚不能直接推論天然物對人類骨質疏鬆患者的臨床療效。[PMID: 28158288]
+
+---
+
+### 三、可檢驗的假說
+
+1. **抑制 miR-375-3p 可能增加骨形成**  
+   在骨質疏鬆模型中使用 miR-375-3p inhibitor、antagomir 或其他抑制策略，應可恢復 LRP5/β-catenin、改善成骨細胞活性及骨微結構；亦可測試其是否增強 Wnt 活化型天然物的作用。[PMID: 28158288]
+
+2. **天然物可能透過外泌體 miRNA 產生系統性骨保護作用**  
+   可分別阻斷外泌體生成、去除特定 miRNA，或使用 miRNA mimic/inhibitor，驗證 ZGF、熟地黃與強骨飲的骨保護效果是否必須依賴 miR-5100、miR-29a-3p 或 miR-27b-3p。[PMID: 38795694; PMID: 40024453; PMID: 41961168]
+
+3. **聯合調節骨形成與骨吸收可能比單一路徑更有效**  
+   例如同時以淫羊藿苷降低 miR-34c／NF-κB 炎症骨吸收，再以熟地黃或 PT 活化 miRNA-Wnt 成骨軸，可能同時改善骨形成不足及骨吸收過度；但目前提供的資料尚未直接測試此聯合療法。[PMID: 27492554; PMID: 40024453; PMID: 40358879]
+
+4. **miRNA 可作為天然物治療反應的生物標誌**  
+   血清或骨組織中的 miR-27b-3p、miR-29a-3p、miR-375-3p 等，可能用於監測骨形成、Wnt 活性或治療反應；然而目前尚缺乏人類前瞻性研究、劑量—反應資料及臨床結局驗證。[PMID: 28158288; PMID: 40024453; PMID: 41961168]
+
+**總結：**目前最一致的可能機制是：天然物透過調節特定 miRNA 及其外泌體傳遞，解除對 Wnt/β-catenin 成骨訊號的抑制，或抑制炎症與破骨細胞分化，最終改善骨形成與骨吸收失衡。不過，證據主要來自體外及動物研究，臨床人類療效與安全性仍需進一步驗證。"
+traditional_rag,Q010,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"## 可能機制總結
+
+現有資料顯示，天然物可能透過調節 miRNA、細胞外囊泡／外泌體及其下游訊號，改善骨形成、抑制骨吸收，從而對骨質疏鬆產生治療作用。證據主要來自**動物模型與體外細胞研究**；所提供內容中缺乏充分的人體臨床試驗證據。
+
+### 一、促進 Wnt／β-catenin 骨形成訊號
+
+- **miR-375-3p—LRP5／β-catenin軸**  
+  miR-375-3p可直接靶向LRP5與β-catenin，降低其表現，抑制成骨、降低細胞活性並促進成骨前驅細胞凋亡。LRP5功能缺失的小鼠出現骨小樑稀疏及連結變差，提示此軸是骨質疏鬆的重要機制。[PMID: 28158288]  
+  **證據類型：體外細胞、動物；另有人類骨折性骨質疏鬆患者骨組織觀察。**
+
+- **RRP—miR-29a-3p／NFIA／Wnt軸**  
+  熟地黃水萃取物（Rehmanniae Radix Praeparata, RRP）提高血清外泌體及骨組織中的miR-29a-3p。miR-29a-3p抑制NFIA；NFIA原本可促進Wnt抑制因子SFRP1的轉錄，因此NFIA下降可能解除SFRP1對Wnt的抑制，活化Wnt訊號並促進成骨。[PMID: 40024453]  
+  **證據類型：OVX大鼠與大鼠BMSC體外研究。**
+
+- **Plastrum Testudinis—miR-214／Wnt-β-catenin軸**  
+  甲魚甲提取物可改善OVX大鼠骨量與骨微結構，增加Wnt3a、β-catenin、GSK-3β、LRP5及ALP、BMP2、COL1A1、RUNX2等骨形成相關因子。研究指出，miR-214在OVX大鼠下降，miR-214 mimic可抑制BMSC的Wnt訊號與成骨；甲魚甲提取物可抵銷此作用。[PMID: 40358879]  
+  **證據類型：OVX大鼠與BMSC體外研究。**
+
+- **QiangGuYin—外泌體miR-27b-3p／DKK2／β-catenin軸**  
+  破骨細胞來源外泌體可抑制BMSC成骨；強骨飲含藥血清提高這些外泌體中的miR-27b-3p。miR-27b-3p直接靶向DKK2，降低DKK2後可增強β-catenin訊號與成骨；miR-27b-3p抑制劑或DKK2過度表現會削弱強骨飲的保護作用。[PMID: 41961168]  
+  **證據類型：體外細胞、PMOP大鼠。**
+
+### 二、透過肌肉—骨骼之外泌體通訊促進成骨
+
+- **Zhuang-Gu-Fang與肌母細胞來源外泌體**  
+  壯骨方可能先作用於肌母細胞，再透過肌母細胞來源外泌體影響BMSC。研究辨識出miR-5100、miR-126a-3p、miR-450b-5p及miR-669a-5p等候選miRNA；其中壯骨方上調miR-5100、miR-450b-5p與miR-126a-3p，並下調miR-669a-5p，同時增加SOP小鼠骨組織中的OCN與Osterix。[PMID: 38795694]  
+  **證據類型：體外細胞、SOP小鼠。**
+
+- 這提示一種可能的整體機制：天然物不只直接作用於成骨細胞，也可能改變肌肉或破骨細胞所釋放外泌體的miRNA內容，重新調節骨髓間質幹細胞的分化方向。[PMID: 38795694; PMID: 41961168]
+
+### 三、抑制炎症誘導的骨流失
+
+- **淫羊藿苷—miR-34c／MAPK與NF-κB軸**  
+  在LPS誘導的體外骨流失模型中，LPS使miR-34c顯著上升；淫羊藿苷可降低miR-34c，恢復Runx2蛋白及ALP、OPN、BMP2等成骨指標。miR-34c過度表現會削弱成骨分化及礦化結節形成。淫羊藿苷同時抑制JNK、p38及NF-κB相關磷酸化訊號。[PMID: 27492554]  
+  **證據類型：體外細胞模型；屬炎症性骨流失，不等同於已證實的人類骨質疏鬆治療效果。**
+
+### 四、抑制破骨細胞分化與骨吸收
+
+- **熊果酸—XPO5／let-7g-5p機制**  
+  從枇杷葉分離出的熊果酸可靶向核輸出蛋白XPO5；XPO5被抑制或受到熊果酸作用時，成熟miRNA let-7g-5p下降，並抑制破骨細胞分化。由於破骨細胞負責骨吸收，此機制可能降低骨質流失。[PMID: 30827108]  
+  **證據類型：體外細胞研究。**
+
+### 五、可能涉及的凋亡、自噬與成骨細胞存活
+
+- **補腎健脾活血湯—miR-140-5p／BCL2L1軸**  
+  miR-140-5p可結合BCL2L1，促進HFOB1.19成骨細胞凋亡並抑制自噬。補腎健脾活血湯含藥血清可影響miR-140-5p相關的成骨作用；其對OCN、OPN、RUNX2及TGF-β1的調節，可能部分透過BMP2發生。[PMID: 40350835]  
+  **證據類型：人類成骨細胞株體外研究；含藥血清來自大鼠。**
+
+- 此機制與miR-375-3p誘導成骨前驅細胞凋亡的結果相互呼應，表示天然物可能藉由降低促凋亡miRNA效應、改善細胞存活，支持骨形成。[PMID: 28158288; PMID: 40350835]
+
+### 六、植物來源細胞外囊泡與多重成骨訊號
+
+- **淫羊藿來源細胞外奈米囊泡（EELNs）**  
+  淫羊藿來源囊泡含有小分子代謝物及miRNA，可促進BMSC成骨分化，並涉及PI3K／Akt／mTOR訊號。其負載羥基磷灰石複合材料在OVX大鼠下頜骨缺損模型中具有骨修復潛力。[PMID: 40266676]  
+  **證據類型：體外細胞與OVX大鼠；具體是哪一個miRNA發揮主要作用，所提供摘要尚未確定。**
+
+## 直接證據、關聯與可驗證假說
+
+### 直接證據
+
+1. miR-375-3p可直接靶向LRP5與β-catenin，且抑制成骨。[PMID: 28158288]  
+2. miR-27b-3p可直接靶向DKK2；強骨飲透過此機制增強β-catenin與成骨。[PMID: 41961168]  
+3. miR-29a-3p可直接靶向NFIA，NFIA與Wnt抑制因子SFRP1相關；RRP可透過此軸促進成骨。[PMID: 40024453]  
+4. miR-140-5p可結合BCL2L1，並影響成骨細胞凋亡與自噬。[PMID: 40350835]  
+5. 熊果酸可作用於XPO5並降低成熟let-7g-5p，抑制破骨細胞分化。[PMID: 30827108]
+
+### 關聯性證據
+
+- 壯骨方處理後，肌肉、骨組織及肌母細胞外泌體中的多個miRNA發生一致變化，並伴隨成骨標誌物上升，但摘要未逐一確認每個miRNA的直接靶基因。[PMID: 38795694]  
+- 甲魚甲治療後骨量、骨微結構及Wnt相關蛋白改善，且miR-214 mimic可抑制其部分作用，支持二者具有功能關聯。[PMID: 40358879]  
+- 淫羊藿來源囊泡可活化PI3K／Akt／mTOR並促進骨修復，但其特定miRNA與直接靶點尚未由所提供資料確定。[PMID: 40266676]
+
+### 可驗證假說
+
+1. 在骨質疏鬆患者中，抑制miR-375-3p或恢復LRP5／β-catenin活性，可能提升成骨並改善骨微結構；但目前所提供資料不足以證實其人體治療效果。[PMID: 28158288]  
+2. 將含有miR-27b-3p、miR-29a-3p或壯骨方相關miRNA的外泌體作為治療載體，可能同時改善骨形成與骨細胞間通訊；仍需進行劑量、安全性及人體研究。[PMID: 38795694; PMID: 40024453; PMID: 41961168]  
+3. 天然物可能透過「降低抑制成骨的miRNA」及「增加促成骨的外泌體miRNA」雙重方式，重新平衡骨形成與骨吸收。[PMID: 27492554; PMID: 38795694; PMID: 41961168]  
+4. 將天然物與Wnt、PI3K／Akt／mTOR或炎症NF-κB訊號抑制策略結合，可能產生協同的骨保護效果，但此組合治療在所提供資料中尚無直接證據。[PMID: 27492554; PMID: 40266676]
+
+**總結：**最具一致性的核心概念是：天然物可調節miRNA及外泌體miRNA，進而解除對Wnt／β-catenin或PI3K／Akt／mTOR成骨訊號的抑制，同時降低炎症、破骨細胞分化及成骨細胞凋亡。可是，目前證據以動物與體外研究為主，尚不能直接推論其已在人類骨質疏鬆患者中具確定療效。"
+general_llm,Q010,formal-v1-gpt-5.6-luna-B_entity_validated,fixed_formal_system_run,"與「骨質疏鬆—miRNA—天然物治療」相關的機制，可整理為：天然物先改變骨髓微環境、氧化壓力或發炎訊號，進而調節特定 miRNA；miRNA 再同時影響成骨細胞、破骨細胞及骨細胞，恢復骨重塑平衡。
+
+## 一、骨質疏鬆中 miRNA 可能扮演的核心角色
+
+骨質疏鬆的主要病理變化是：
+
+- 破骨細胞吸收骨質增加
+- 成骨細胞生成骨基質不足
+- 成骨與破骨耦合失衡
+- 氧化壓力、慢性發炎及雌激素缺乏
+- Wnt、RANKL/OPG、BMP、PI3K/AKT 等訊號異常
+
+miRNA 可透過與特定 mRNA 的 3′-UTR 結合，抑制蛋白質表現，因此可能同時調節多條骨代謝訊號。
+
+### 1. 調節破骨細胞生成
+
+破骨細胞主要受 RANKL–RANK–TRAF6–NF-κB/NFATc1 軸控制。部分 miRNA 可能：
+
+- 抑制 RANKL 表現或 RANK 訊號
+- 降低 NF-κB、c-Fos、NFATc1 活性
+- 抑制破骨細胞前驅細胞融合
+- 增加 OPG，降低 RANKL/OPG 比值
+
+較常被討論的 miRNA 包括：
+
+| miRNA | 可能作用 |
+|---|---|
+| miR-21 | 可促進破骨細胞分化，部分機制涉及抑制 PDCD4；但在不同細胞及疾病情境中可能具有雙向作用 |
+| miR-34a | 多數研究支持其可抑制破骨細胞分化，可能作用於 TGF-β、Tgif2 等相關路徑 |
+| miR-146a | 可負向調節發炎與 NF-κB 訊號，可能抑制破骨細胞活化 |
+| miR-503 | 可能抑制 RANKL 誘導的破骨細胞分化 |
+| miR-223 | 與破骨細胞分化及骨髓前驅細胞命運有關，方向可能受細胞環境影響 |
+| miR-155 | 在發炎及免疫細胞中可影響破骨細胞形成，但其作用具有情境依賴性 |
+
+其中，**抑制 RANKL/NF-κB/NFATc1 軸**是天然物透過 miRNA 抗骨吸收的主要假設之一。
+
+---
+
+### 2. 促進成骨細胞分化
+
+成骨細胞分化主要涉及：
+
+- Runx2
+- Osterix/SP7
+- ALP
+- 骨鈣素
+- Wnt/β-catenin
+- BMP/Smad
+- PI3K/AKT
+
+可能促進成骨的 miRNA 包括：
+
+| miRNA | 可能作用 |
+|---|---|
+| miR-29a/b | 促進骨基質生成及 Wnt 訊號，可能抑制 DKK1、SFRP 等 Wnt 抑制因子 |
+| miR-218 | 促進 Wnt/β-catenin 活性，有利於成骨分化 |
+| miR-2861 | 可透過抑制 HDAC5，維持 Runx2 活性 |
+| miR-27a | 可能促進成骨細胞分化及骨基質形成，但依模型而異 |
+| miR-21 | 在某些成骨模型可促進 PI3K/AKT 或相關分化訊號，作用具有細胞類型依賴性 |
+| miR-146a | 在部分研究中與成骨及發炎抑制相關，但不是單純的成骨促進因子 |
+
+另一方面，某些 miRNA 可能抑制成骨：
+
+- miR-133a：可抑制 Runx2，因而不利於成骨分化。
+- miR-135a：可能影響 Runx2 或 BMP 相關作用。
+- miR-204/211：在部分模型與成骨能力下降相關。
+- miR-31a-5p：與老化骨骼及成骨抑制有關，但其功能受年齡及細胞狀態影響。
+
+因此，天然物可能透過「增加促成骨 miRNA」或「降低抑制成骨 miRNA」來改善骨形成。
+
+---
+
+## 二、天然物可能透過 miRNA 發揮骨保護作用
+
+### 1. 白藜蘆醇
+
+可能機制包括：
+
+- 活化 SIRT1/AMPK
+- 抑制 NF-κB 發炎訊號
+- 降低氧化壓力
+- 促進 Wnt/β-catenin 及成骨分化
+- 調節 miR-21、miR-29、miR-146a 等與發炎、成骨及骨吸收相關的 miRNA
+
+可能結果：
+
+- 抑制 RANKL 誘導的破骨細胞形成
+- 增加 Runx2、ALP、骨鈣素表現
+- 改善成骨／破骨失衡
+
+目前較合理的解釋是：白藜蘆醇的 miRNA 效應可能是其抗氧化、抗發炎及 SIRT1/AMPK 活化的下游結果，而不一定是直接作用於 miRNA。
+
+---
+
+### 2. 薑黃素
+
+可能作用於：
+
+- NF-κB
+- MAPK
+- PI3K/AKT
+- Nrf2/HO-1
+- RANKL/NFATc1
+- Wnt/β-catenin
+
+其可能透過改變 miR-21、miR-34a、miR-146a、miR-29 等，達到：
+
+- 抑制破骨細胞分化
+- 減少發炎細胞因子
+- 增加抗氧化能力
+- 保護成骨細胞免受氧化壓力
+- 維持骨基質生成
+
+然而，薑黃素具有溶解度低及生體可用率有限的問題，因此細胞或動物研究中的濃度未必能直接對應到人體治療劑量。
+
+---
+
+### 3. 淫羊藿苷及淫羊藿類成分
+
+淫羊藿苷被廣泛研究於骨代謝，可能涉及：
+
+- BMP-2/Smad
+- Wnt/β-catenin
+- PI3K/AKT
+- ERK/MAPK
+- OPG/RANKL
+- 抗氧化及抗發炎訊號
+
+其可能透過 miR-21、miR-29、miR-218 或其他成骨相關 miRNA：
+
+- 增強 Runx2、Osterix 及 ALP
+- 增加骨基質礦化
+- 改變 OPG/RANKL 比值
+- 抑制破骨細胞生成
+
+目前證據多集中於細胞與動物模型；其特定 miRNA 是否為必要的直接作用媒介，仍需以 miRNA 抑制劑、模擬物及靶基因救援實驗確認。
+
+---
+
+### 4. 小檗鹼
+
+小檗鹼可能透過：
+
+- AMPK
+- SIRT1
+- NF-κB
+- MAPK
+- PI3K/AKT
+- OPG/RANKL
+
+發揮骨保護作用。與 miRNA 的可能關聯包括：
+
+- 抑制促發炎 miRNA
+- 增加抗發炎 miR-146a
+- 調節 miR-21、miR-29 或其他與成骨、破骨相關的 miRNA
+- 改善氧化壓力及粒線體功能
+
+小檗鹼也可能透過腸道菌相間接影響 miRNA。其機制可能不是「天然物直接接觸骨細胞」，而是先改變腸道代謝物、免疫反應或全身發炎狀態，再影響骨髓微環境。
+
+---
+
+### 5. 大豆異黃酮與染料木素
+
+染料木素具有類雌激素活性，可能透過：
+
+- 雌激素受體 ERα/ERβ
+- Wnt/β-catenin
+- OPG/RANKL
+- PI3K/AKT
+- 抗氧化與抗發炎訊號
+
+在雌激素缺乏性骨質疏鬆模型中，可能：
+
+- 增加 OPG
+- 降低 RANKL
+- 抑制破骨細胞活化
+- 促進成骨細胞功能
+- 調整與雌激素反應相關的 miRNA
+
+其可能被視為「植物性選擇性雌激素樣作用」的一部分，但人體效果可能受到劑量、腸道代謝、荷爾蒙狀態及個體差異影響。
+
+---
+
+### 6. 槲皮素、柚皮苷及表沒食子兒茶素沒食子酸酯
+
+這些多酚類天然物可能具有共同的作用方向：
+
+- 降低活性氧
+- 活化 Nrf2
+- 抑制 NF-κB
+- 促進 Wnt/β-catenin
+- 改變 RANKL/OPG
+- 調節成骨及破骨相關 miRNA
+
+例如，可能增加 miR-29、miR-218 等促成骨訊號，或抑制與破骨細胞生成相關的 miRNA。但不同研究的 miRNA 變化並不一定一致，可能與細胞種類、處理時間及劑量有關。
+
+---
+
+### 7. 人參皂苷及中藥多醣
+
+人參皂苷、靈芝多醣、枸杞多醣及其他植物多醣，可能經由：
+
+- 抗發炎
+- 抗氧化
+- 免疫調節
+- 腸道菌相改變
+- 促進成骨細胞存活
+- 抑制破骨細胞
+
+影響 miRNA 及細胞外囊泡中的 miRNA。尤其是骨髓間質細胞或免疫細胞分泌的外泌體，可能將 miRNA 傳遞至：
+
+- 成骨細胞
+- 破骨細胞前驅細胞
+- 骨細胞
+- 血管內皮細胞
+
+這形成「天然物—外泌體 miRNA—骨重塑」的可能機制，但目前仍多屬前臨床或探索性研究。
+
+---
+
+## 三、可能的整合性機制模型
+
+可以用以下流程概括：
+
+### 機制一：天然物抑制發炎性 miRNA，降低破骨作用
+
+天然物  
+→ 抑制 ROS、TLR4/NF-κB 或 MAPK  
+→ 降低促發炎 miRNA  
+→ 減少 RANKL、TNF-α、IL-1β、IL-6  
+→ 抑制 NFATc1 與破骨細胞生成  
+→ 降低骨吸收
+
+### 機制二：天然物增加促成骨 miRNA
+
+天然物  
+→ 活化 Wnt/β-catenin、BMP/Smad、PI3K/AKT 或 AMPK  
+→ 增加 miR-29、miR-218、miR-2861 等  
+→ 增加 Runx2、Osterix、ALP 及骨鈣素  
+→ 促進骨基質形成與礦化
+
+### 機制三：天然物改善氧化壓力，間接恢復 miRNA 平衡
+
+天然物  
+→ 活化 Nrf2/HO-1、SIRT1 或粒線體抗氧化系統  
+→ 降低 ROS  
+→ 減少成骨細胞凋亡及衰老  
+→ 修正氧化壓力誘導的 miRNA 異常  
+→ 改善骨形成能力
+
+### 機制四：天然物透過腸道菌相與外泌體影響骨骼
+
+天然物  
+→ 改變腸道菌相及短鏈脂肪酸  
+→ 影響腸道免疫、雌激素代謝及全身發炎  
+→ 改變骨髓細胞或免疫細胞分泌的外泌體 miRNA  
+→ 調節成骨細胞與破骨細胞  
+→ 改善骨密度及骨品質
+
+---
+
+## 四、目前證據的強弱
+
+### 相對較確立的部分
+
+- miRNA 確實參與成骨、破骨、骨細胞及骨髓間質細胞的調控。
+- Wnt/β-catenin、RANKL/OPG、NF-κB、BMP/Smad 等是天然物與 miRNA 可能共同作用的主要路徑。
+- 多種天然物在細胞及動物模型可抑制破骨細胞或促進成骨。
+- 氧化壓力及慢性發炎可能是天然物調節 miRNA 的重要中介。
+
+### 仍屬推測或證據有限的部分
+
+- 某一天然物是否「直接」靶向某個 miRNA，通常尚未完全確立。
+- 許多研究只觀察 miRNA 表現改變，未證明該 miRNA 是治療效果所必需。
+- 細胞實驗使用的濃度可能高於人體可達濃度。
+- 人體骨密度改善是否由 miRNA 介導，尚缺乏大型、長期、機制導向的臨床試驗。
+- miRNA 常具有組織、年齡、性別及疾病階段依賴性，同一 miRNA 可能在不同模型中呈現相反效果。
+
+## 五、較值得優先驗證的研究方向
+
+若要建立較可靠的「天然物—miRNA—骨質疏鬆」機制，建議優先檢驗：
+
+1. 天然物是否改變 miR-29a、miR-218、miR-2861、miR-34a、miR-146a 等。
+2. miRNA 改變是否伴隨 Runx2、ALP、OPG、RANKL、NFATc1 的變化。
+3. 使用 miRNA mimic 或 inhibitor 確認其是否為必要中介。
+4. 進行靶基因救援實驗，確認 miRNA 的直接靶點。
+5. 比較成骨細胞、破骨細胞及骨髓間質細胞中的差異。
+6. 分析血液與骨組織 miRNA 是否一致。
+7. 評估天然物的生體可用率、代謝物及實際可達骨組織濃度。
+8. 將骨密度、骨強度及骨組織形態，而不只是 miRNA 表現，作為主要結果。
+
+**總結而言，最具合理性的共同機制是：天然物透過抗發炎、抗氧化、SIRT1/AMPK、Wnt/β-catenin 及 RANKL/OPG 等路徑，重新調整成骨與破骨相關 miRNA，最後改善骨重塑平衡。然而，目前大部分證據仍來自細胞和動物研究，miRNA 作為天然物治療骨質疏鬆的直接必要機制，尚未在人體中充分證實。**"

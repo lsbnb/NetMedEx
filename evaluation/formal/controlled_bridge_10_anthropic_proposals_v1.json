@@ -1,0 +1,561 @@
+{
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "reviewer_type": "AI corpus-spec proposer",
+  "human_expert_review_claimed": false,
+  "generated_at": "2026-08-09T18:15:01.099216+00:00",
+  "input_sha256": "558a31516531f42fa0a5c2eddc7303a74ac99edbbcbb2af44216c232f2cb87e5",
+  "raw_response_sha256": "9aa050bdee148959f261185df05cb37c48beebf453d907cf9ab8f0cfa569cdf2",
+  "usage": {
+    "input_tokens": 765,
+    "output_tokens": 7979,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 8744
+  },
+  "questions": [
+    {
+      "question_id": "BW001",
+      "source_patterns": [
+        "\\bicariin\\b",
+        "\\bICA\\b(?=.*osteob)"
+      ],
+      "target_patterns": [
+        "\\bosteoblast\\s+differentiation\\b",
+        "\\bosteogenic\\s+differentiation\\b",
+        "\\bosteoblastogenesis\\b"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "\\bicariin\\b"
+      ],
+      "mediators": [
+        {
+          "name": "Wnt/beta-catenin signaling",
+          "patterns": [
+            "\\bWnt[/\\s].*beta.?catenin\\b",
+            "\\bbeta.?catenin\\b",
+            "\\bCTNNB1\\b"
+          ],
+          "source_query": "icariin[Title/Abstract] AND (Wnt[Title/Abstract] OR beta-catenin[Title/Abstract] OR CTNNB1[Title/Abstract])",
+          "target_query": "(Wnt[Title/Abstract] OR beta-catenin[Title/Abstract] OR CTNNB1[Title/Abstract]) AND osteoblast differentiation[Title/Abstract]",
+          "rationale": "Icariin activates Wnt/beta-catenin pathway; beta-catenin nuclear signaling is a canonical driver of osteoblast commitment and differentiation."
+        },
+        {
+          "name": "BMP2",
+          "patterns": [
+            "\\bBMP.?2\\b",
+            "\\bbone\\s+morphogenetic\\s+protein.?2\\b"
+          ],
+          "source_query": "icariin[Title/Abstract] AND (BMP2[Title/Abstract] OR bone morphogenetic protein 2[Title/Abstract])",
+          "target_query": "(BMP2[Title/Abstract] OR bone morphogenetic protein 2[Title/Abstract]) AND osteoblast differentiation[Title/Abstract]",
+          "rationale": "Icariin upregulates BMP2 expression; BMP2 is a master regulator of osteoblast differentiation via SMAD signaling."
+        },
+        {
+          "name": "Runx2",
+          "patterns": [
+            "\\bRunx2\\b",
+            "\\bRUNX2\\b",
+            "\\bCbfa1\\b",
+            "\\bOSF2\\b"
+          ],
+          "source_query": "icariin[Title/Abstract] AND (Runx2[Title/Abstract] OR RUNX2[Title/Abstract] OR Cbfa1[Title/Abstract])",
+          "target_query": "(Runx2[Title/Abstract] OR RUNX2[Title/Abstract] OR Cbfa1[Title/Abstract]) AND osteoblast differentiation[Title/Abstract]",
+          "rationale": "Icariin modulates Runx2 transcription factor levels; Runx2 is the primary transcriptional determinant of osteoblast lineage specification."
+        }
+      ]
+    },
+    {
+      "question_id": "BW002",
+      "source_patterns": [
+        "\\bcurcumin\\b",
+        "\\bdiferuloylmethane\\b"
+      ],
+      "target_patterns": [
+        "\\bapoptosis\\b",
+        "\\bapoptotic\\b",
+        "\\bprogrammed\\s+cell\\s+death\\b"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "\\bcurcumin\\b",
+        "\\bdiferuloylmethane\\b"
+      ],
+      "mediators": [
+        {
+          "name": "Bcl-2",
+          "patterns": [
+            "\\bBcl.?2\\b",
+            "\\bBCL2\\b",
+            "\\bB.cell\\s+lymphoma\\s+2\\b"
+          ],
+          "source_query": "curcumin[Title/Abstract] AND (Bcl-2[Title/Abstract] OR BCL2[Title/Abstract])",
+          "target_query": "(Bcl-2[Title/Abstract] OR BCL2[Title/Abstract]) AND apoptosis[Title/Abstract]",
+          "rationale": "Curcumin downregulates anti-apoptotic Bcl-2; reduced Bcl-2 releases cytochrome c and activates caspase-dependent apoptosis in cancer cells."
+        },
+        {
+          "name": "NF-kappaB",
+          "patterns": [
+            "\\bNF.?[Kk][Bb]\\b",
+            "\\bnuclear\\s+factor.?kappa.?B\\b",
+            "\\bNFKB\\b"
+          ],
+          "source_query": "curcumin[Title/Abstract] AND (NF-kappaB[Title/Abstract] OR NF-kB[Title/Abstract] OR nuclear factor kappa B[Title/Abstract])",
+          "target_query": "(NF-kappaB[Title/Abstract] OR NF-kB[Title/Abstract] OR nuclear factor kappa B[Title/Abstract]) AND apoptosis[Title/Abstract]",
+          "rationale": "Curcumin inhibits NF-kappaB activation; NF-kappaB suppression removes survival signals and sensitizes tumor cells to apoptotic stimuli."
+        },
+        {
+          "name": "p53",
+          "patterns": [
+            "\\bp53\\b",
+            "\\bTP53\\b",
+            "\\btumor\\s+protein\\s+p53\\b"
+          ],
+          "source_query": "curcumin[Title/Abstract] AND (p53[Title/Abstract] OR TP53[Title/Abstract])",
+          "target_query": "(p53[Title/Abstract] OR TP53[Title/Abstract]) AND apoptosis[Title/Abstract]",
+          "rationale": "Curcumin stabilizes and activates p53; p53 transcriptionally induces pro-apoptotic genes including PUMA and BAX to execute apoptosis."
+        }
+      ]
+    },
+    {
+      "question_id": "BW003",
+      "source_patterns": [
+        "\\bCFTR\\b",
+        "\\bcystic\\s+fibrosis\\s+transmembrane\\b"
+      ],
+      "target_patterns": [
+        "\\bintestinal\\s+inflammation\\b",
+        "\\bgut\\s+inflammation\\b",
+        "\\bintestinal\\s+inflammatory\\b"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "\\bCFTR\\b",
+        "\\bcystic\\s+fibrosis\\s+transmembrane\\b"
+      ],
+      "mediators": [
+        {
+          "name": "dysbiosis",
+          "patterns": [
+            "\\bdysbiosis\\b",
+            "\\bgut\\s+microbiome\\s+alteration\\b",
+            "\\bmicrobial\\s+dysbiosis\\b"
+          ],
+          "source_query": "CFTR[Title/Abstract] AND (dysbiosis[Title/Abstract] OR gut microbiome[Title/Abstract] OR intestinal microbiota[Title/Abstract])",
+          "target_query": "(dysbiosis[Title/Abstract] OR gut microbiome[Title/Abstract] OR intestinal microbiota[Title/Abstract]) AND intestinal inflammation[Title/Abstract]",
+          "rationale": "CFTR dysfunction alters intestinal pH and mucus, driving microbiome dysbiosis; dysbiotic communities promote mucosal immune activation and intestinal inflammation."
+        },
+        {
+          "name": "IL-8",
+          "patterns": [
+            "\\bIL.?8\\b",
+            "\\binterleukin.?8\\b",
+            "\\bCXCL8\\b"
+          ],
+          "source_query": "CFTR[Title/Abstract] AND (IL-8[Title/Abstract] OR interleukin-8[Title/Abstract] OR CXCL8[Title/Abstract])",
+          "target_query": "(IL-8[Title/Abstract] OR interleukin-8[Title/Abstract] OR CXCL8[Title/Abstract]) AND intestinal inflammation[Title/Abstract]",
+          "rationale": "CFTR-deficient epithelial cells constitutively overproduce IL-8; IL-8 recruits neutrophils to the intestinal mucosa, amplifying inflammatory tissue damage."
+        },
+        {
+          "name": "ER stress",
+          "patterns": [
+            "\\bER\\s+stress\\b",
+            "\\bendoplasmic\\s+reticulum\\s+stress\\b",
+            "\\bunfolded\\s+protein\\s+response\\b",
+            "\\bUPR\\b"
+          ],
+          "source_query": "CFTR[Title/Abstract] AND (ER stress[Title/Abstract] OR endoplasmic reticulum stress[Title/Abstract] OR unfolded protein response[Title/Abstract])",
+          "target_query": "(ER stress[Title/Abstract] OR endoplasmic reticulum stress[Title/Abstract] OR unfolded protein response[Title/Abstract]) AND intestinal inflammation[Title/Abstract]",
+          "rationale": "Misfolded CFTR accumulates in ER, triggering UPR/ER stress; ER stress in intestinal epithelium activates inflammatory NF-kappaB and MAPK cascades."
+        }
+      ]
+    },
+    {
+      "question_id": "BW004",
+      "source_patterns": [
+        "\\bSMN\\b(?!.*unrelated)",
+        "\\bsurvival\\s+motor\\s+neuron\\b",
+        "\\bSMN1\\b",
+        "\\bSMN2\\b"
+      ],
+      "target_patterns": [
+        "\\bmitochondrial\\s+dysfunction\\b",
+        "\\bmitochondrial\\s+impairment\\b",
+        "\\bmitochondria\\b.*\\bdysfunction\\b"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "\\bSMN\\b",
+        "\\bsurvival\\s+motor\\s+neuron\\b"
+      ],
+      "mediators": [
+        {
+          "name": "oxidative stress",
+          "patterns": [
+            "\\boxidative\\s+stress\\b",
+            "\\breactive\\s+oxygen\\s+species\\b",
+            "\\bROS\\b"
+          ],
+          "source_query": "SMN[Title/Abstract] AND (oxidative stress[Title/Abstract] OR reactive oxygen species[Title/Abstract] OR ROS[Title/Abstract])",
+          "target_query": "(oxidative stress[Title/Abstract] OR reactive oxygen species[Title/Abstract] OR ROS[Title/Abstract]) AND mitochondrial dysfunction[Title/Abstract]",
+          "rationale": "SMN-deficient motor neurons exhibit elevated ROS; oxidative stress damages mitochondrial membranes and respiratory chain complexes, causing mitochondrial dysfunction."
+        },
+        {
+          "name": "Plastin 3",
+          "patterns": [
+            "\\bPlastin\\s*3\\b",
+            "\\bPLS3\\b"
+          ],
+          "source_query": "SMN[Title/Abstract] AND (Plastin 3[Title/Abstract] OR PLS3[Title/Abstract])",
+          "target_query": "(Plastin 3[Title/Abstract] OR PLS3[Title/Abstract]) AND mitochondrial dysfunction[Title/Abstract]",
+          "rationale": "PLS3 modifies SMA severity downstream of SMN; PLS3 interacts with actin dynamics affecting mitochondrial trafficking and function in neurons."
+        },
+        {
+          "name": "autophagy",
+          "patterns": [
+            "\\bautophagy\\b",
+            "\\bmitophagy\\b",
+            "\\bautophagic\\b"
+          ],
+          "source_query": "SMN[Title/Abstract] AND (autophagy[Title/Abstract] OR mitophagy[Title/Abstract])",
+          "target_query": "(autophagy[Title/Abstract] OR mitophagy[Title/Abstract]) AND mitochondrial dysfunction[Title/Abstract]",
+          "rationale": "SMN deficiency impairs autophagic flux; defective mitophagy allows accumulation of damaged mitochondria, perpetuating mitochondrial dysfunction in motor neurons."
+        }
+      ]
+    },
+    {
+      "question_id": "BW005",
+      "source_patterns": [
+        "\\bPD.?1\\s+blockade\\b",
+        "\\banti.PD.?1\\b",
+        "\\bpembrolizumab\\b",
+        "\\bnivolumab\\b",
+        "\\bPDCD1\\s+block\\b"
+      ],
+      "target_patterns": [
+        "\\bimmune.related\\s+adverse\\s+event\\b",
+        "\\birAE\\b",
+        "\\bimmune\\s+toxicity\\b",
+        "\\bautoimmune\\s+toxicity\\b"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "\\bPD.?1\\b",
+        "\\banti.PD.?1\\b",
+        "\\bpembrolizumab\\b",
+        "\\bnivolumab\\b"
+      ],
+      "mediators": [
+        {
+          "name": "regulatory T cells",
+          "patterns": [
+            "\\bregulatory\\s+T\\s+cell\\b",
+            "\\bTreg\\b",
+            "\\bFOXP3\\b"
+          ],
+          "source_query": "PD-1 blockade[Title/Abstract] AND (regulatory T cell[Title/Abstract] OR Treg[Title/Abstract] OR FOXP3[Title/Abstract])",
+          "target_query": "(regulatory T cell[Title/Abstract] OR Treg[Title/Abstract] OR FOXP3[Title/Abstract]) AND immune-related adverse event[Title/Abstract]",
+          "rationale": "PD-1 blockade depletes or impairs Tregs; reduced Treg suppression allows autoreactive T cells to attack normal tissues, precipitating immune-related adverse events."
+        },
+        {
+          "name": "IL-17",
+          "patterns": [
+            "\\bIL.?17\\b",
+            "\\binterleukin.?17\\b",
+            "\\bIL17\\b"
+          ],
+          "source_query": "PD-1 blockade[Title/Abstract] AND (IL-17[Title/Abstract] OR interleukin-17[Title/Abstract])",
+          "target_query": "(IL-17[Title/Abstract] OR interleukin-17[Title/Abstract]) AND immune-related adverse event[Title/Abstract]",
+          "rationale": "PD-1 inhibition expands Th17 cells elevating IL-17; IL-17-driven neutrophilic inflammation underlies colitis and pneumonitis irAEs."
+        },
+        {
+          "name": "CTLA-4",
+          "patterns": [
+            "\\bCTLA.?4\\b",
+            "\\bCD152\\b",
+            "\\bCTLA4\\b"
+          ],
+          "source_query": "PD-1 blockade[Title/Abstract] AND (CTLA-4[Title/Abstract] OR CTLA4[Title/Abstract] OR CD152[Title/Abstract])",
+          "target_query": "(CTLA-4[Title/Abstract] OR CTLA4[Title/Abstract] OR CD152[Title/Abstract]) AND immune-related adverse event[Title/Abstract]",
+          "rationale": "PD-1 blockade upregulates compensatory CTLA-4 expression; residual CTLA-4 pathway perturbation modulates irAE spectrum and severity independently."
+        }
+      ]
+    },
+    {
+      "question_id": "BW006",
+      "source_patterns": [
+        "\\bdystrophin\\s+deficiency\\b",
+        "\\bdystrophin.deficient\\b",
+        "\\bDMD\\b(?=.*dystrophin|.*muscular)",
+        "\\bDuchenne\\b"
+      ],
+      "target_patterns": [
+        "\\bchronic\\s+inflammation\\b",
+        "\\bskeletal\\s+muscle\\s+inflammation\\b",
+        "\\bmuscle\\s+inflammatory\\b"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "\\bdystrophin\\b",
+        "\\bDuchenne\\b",
+        "\\bDMD\\b"
+      ],
+      "mediators": [
+        {
+          "name": "NF-kappaB",
+          "patterns": [
+            "\\bNF.?[Kk][Bb]\\b",
+            "\\bnuclear\\s+factor.?kappa.?B\\b",
+            "\\bNFKB\\b"
+          ],
+          "source_query": "dystrophin deficiency[Title/Abstract] AND (NF-kappaB[Title/Abstract] OR NF-kB[Title/Abstract] OR nuclear factor kappa B[Title/Abstract])",
+          "target_query": "(NF-kappaB[Title/Abstract] OR NF-kB[Title/Abstract] OR nuclear factor kappa B[Title/Abstract]) AND chronic inflammation[Title/Abstract]",
+          "rationale": "Membrane fragility in dystrophin-deficient muscle constitutively activates NF-kappaB; sustained NF-kappaB drives cytokine production maintaining chronic muscle inflammation."
+        },
+        {
+          "name": "NLRP3 inflammasome",
+          "patterns": [
+            "\\bNLRP3\\b",
+            "\\binflammasome\\b",
+            "\\bNACHT.LRR\\b"
+          ],
+          "source_query": "dystrophin deficiency[Title/Abstract] AND (NLRP3[Title/Abstract] OR inflammasome[Title/Abstract])",
+          "target_query": "(NLRP3[Title/Abstract] OR inflammasome[Title/Abstract]) AND chronic inflammation[Title/Abstract]",
+          "rationale": "Calcium influx and mitochondrial damage in dystrophin-null fibers activate NLRP3 inflammasome; NLRP3-driven IL-1beta release sustains chronic inflammatory cycles."
+        },
+        {
+          "name": "macrophage polarization",
+          "patterns": [
+            "\\bmacrophage\\s+polarization\\b",
+            "\\bM1\\s+macrophage\\b",
+            "\\bM2\\s+macrophage\\b",
+            "\\bpro.inflammatory\\s+macrophage\\b"
+          ],
+          "source_query": "dystrophin deficiency[Title/Abstract] AND (macrophage polarization[Title/Abstract] OR M1 macrophage[Title/Abstract] OR macrophage infiltration[Title/Abstract])",
+          "target_query": "(macrophage polarization[Title/Abstract] OR M1 macrophage[Title/Abstract] OR pro-inflammatory macrophage[Title/Abstract]) AND chronic inflammation[Title/Abstract]",
+          "rationale": "Necrotic dystrophin-deficient fibers recruit and skew macrophages toward M1 phenotype; persistent M1 macrophage dominance perpetuates chronic inflammatory tissue damage."
+        }
+      ]
+    },
+    {
+      "question_id": "BW007",
+      "source_patterns": [
+        "\\bendothelial\\s+senescence\\b",
+        "\\bvascular\\s+senescence\\b",
+        "\\bsenescent\\s+endothelial\\b"
+      ],
+      "target_patterns": [
+        "\\batherosclerosis\\b",
+        "\\batherosclerotic\\b",
+        "\\batherogenesis\\b"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "\\bendothelial\\s+senescence\\b",
+        "\\bsenescent\\s+endothelial\\b"
+      ],
+      "mediators": [
+        {
+          "name": "SASP",
+          "patterns": [
+            "\\bSASP\\b",
+            "\\bsenescence.associated\\s+secretory\\s+phenotype\\b",
+            "\\bsenescence\\s+associated\\s+secretory\\b"
+          ],
+          "source_query": "endothelial senescence[Title/Abstract] AND (SASP[Title/Abstract] OR senescence-associated secretory phenotype[Title/Abstract])",
+          "target_query": "(SASP[Title/Abstract] OR senescence-associated secretory phenotype[Title/Abstract]) AND atherosclerosis[Title/Abstract]",
+          "rationale": "Senescent endothelial cells secrete SASP factors; SASP cytokines recruit monocytes and promote foam cell formation, accelerating atherosclerotic plaque development."
+        },
+        {
+          "name": "p16INK4a",
+          "patterns": [
+            "\\bp16\\b",
+            "\\bINK4a\\b",
+            "\\bCDKN2A\\b",
+            "\\bp16INK4a\\b"
+          ],
+          "source_query": "endothelial senescence[Title/Abstract] AND (p16[Title/Abstract] OR CDKN2A[Title/Abstract] OR p16INK4a[Title/Abstract])",
+          "target_query": "(p16[Title/Abstract] OR CDKN2A[Title/Abstract] OR p16INK4a[Title/Abstract]) AND atherosclerosis[Title/Abstract]",
+          "rationale": "p16INK4a accumulates in senescent endothelium impairing cell cycle; p16-positive senescent cells in plaques correlate with atherosclerotic lesion burden and instability."
+        },
+        {
+          "name": "eNOS uncoupling",
+          "patterns": [
+            "\\beNOS\\s+uncoupling\\b",
+            "\\buncoupled\\s+eNOS\\b",
+            "\\bendothelial\\s+nitric\\s+oxide\\s+synthase\\s+uncoupl\\w+\\b"
+          ],
+          "source_query": "endothelial senescence[Title/Abstract] AND (eNOS uncoupling[Title/Abstract] OR eNOS[Title/Abstract] OR endothelial nitric oxide synthase[Title/Abstract])",
+          "target_query": "(eNOS uncoupling[Title/Abstract] OR eNOS[Title/Abstract] OR endothelial nitric oxide synthase[Title/Abstract]) AND atherosclerosis[Title/Abstract]",
+          "rationale": "Senescent endothelial cells exhibit eNOS uncoupling reducing NO bioavailability; impaired NO signaling promotes endothelial dysfunction and pro-atherogenic lipid oxidation."
+        }
+      ]
+    },
+    {
+      "question_id": "BW008",
+      "source_patterns": [
+        "\\bchronic\\s+hepatitis\\s+B\\b",
+        "\\bHBV\\s+infection\\b",
+        "\\bhepatitis\\s+B\\s+virus\\b"
+      ],
+      "target_patterns": [
+        "\\bhepatocellular\\s+carcinoma\\b",
+        "\\bHCC\\b",
+        "\\bliver\\s+cancer\\b",
+        "\\bhepatoma\\b"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "\\bhepatitis\\s+B\\b",
+        "\\bHBV\\b",
+        "\\bchronic\\s+hepatitis\\b"
+      ],
+      "mediators": [
+        {
+          "name": "HBx protein",
+          "patterns": [
+            "\\bHBx\\b",
+            "\\bhepatitis\\s+B\\s+x\\s+protein\\b",
+            "\\bHBxAg\\b"
+          ],
+          "source_query": "hepatitis B virus[Title/Abstract] AND (HBx[Title/Abstract] OR hepatitis B x protein[Title/Abstract])",
+          "target_query": "(HBx[Title/Abstract] OR hepatitis B x protein[Title/Abstract]) AND hepatocellular carcinoma[Title/Abstract]",
+          "rationale": "HBV encodes HBx oncoprotein that transactivates host oncogenes; HBx disrupts p53 function and activates Wnt/beta-catenin, directly driving hepatocellular carcinoma."
+        },
+        {
+          "name": "DNA methylation",
+          "patterns": [
+            "\\bDNA\\s+methylation\\b",
+            "\\bepigenetic\\s+silencing\\b",
+            "\\bpromoter\\s+methylation\\b"
+          ],
+          "source_query": "hepatitis B virus[Title/Abstract] AND (DNA methylation[Title/Abstract] OR epigenetic silencing[Title/Abstract] OR promoter methylation[Title/Abstract])",
+          "target_query": "(DNA methylation[Title/Abstract] OR epigenetic silencing[Title/Abstract] OR promoter methylation[Title/Abstract]) AND hepatocellular carcinoma[Title/Abstract]",
+          "rationale": "Chronic HBV infection induces aberrant DNA methylation silencing tumor suppressors; epigenetic reprogramming of hepatocytes is a non-mutagenic route to hepatocellular carcinoma."
+        },
+        {
+          "name": "hepatic stellate cell activation",
+          "patterns": [
+            "\\bhepatic\\s+stellate\\s+cell\\s+activation\\b",
+            "\\bactivated\\s+hepatic\\s+stellate\\b",
+            "\\bHSC\\s+activation\\b"
+          ],
+          "source_query": "hepatitis B virus[Title/Abstract] AND (hepatic stellate cell activation[Title/Abstract] OR HSC activation[Title/Abstract] OR liver fibrosis[Title/Abstract])",
+          "target_query": "(hepatic stellate cell activation[Title/Abstract] OR HSC activation[Title/Abstract]) AND hepatocellular carcinoma[Title/Abstract]",
+          "rationale": "HBV-driven hepatic stellate cell activation creates fibrotic niche; activated HSCs secrete HGF and TGF-beta creating tumor-permissive microenvironment for hepatocellular carcinoma."
+        }
+      ]
+    },
+    {
+      "question_id": "BW009",
+      "source_patterns": [
+        "\\bSGLT2\\s+inhibitor\\b",
+        "\\bSGLT2i\\b",
+        "\\bempagliflozin\\b",
+        "\\bdapagliflozin\\b",
+        "\\bcanagliflozin\\b",
+        "\\bSodium.glucose\\s+cotransporter.?2\\b"
+      ],
+      "target_patterns": [
+        "\\brenal\\s+protection\\b",
+        "\\bnephroprotection\\b",
+        "\\bkidney\\s+protection\\b",
+        "\\brenoprotection\\b",
+        "\\brenoprotective\\b"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "\\bSGLT2\\b",
+        "\\bempagliflozin\\b",
+        "\\bdapagliflozin\\b",
+        "\\bcanagliflozin\\b"
+      ],
+      "mediators": [
+        {
+          "name": "tubuloglomerular feedback",
+          "patterns": [
+            "\\btubuloglomerular\\s+feedback\\b",
+            "\\bTGF\\b(?=.*glomerular|.*tubulo)",
+            "\\bafferent\\s+arteriole\\b"
+          ],
+          "source_query": "SGLT2 inhibitor[Title/Abstract] AND (tubuloglomerular feedback[Title/Abstract] OR afferent arteriole[Title/Abstract] OR glomerular hyperfiltration[Title/Abstract])",
+          "target_query": "(tubuloglomerular feedback[Title/Abstract] OR glomerular hyperfiltration[Title/Abstract]) AND renal protection[Title/Abstract]",
+          "rationale": "SGLT2 inhibitors restore tubuloglomerular feedback by reducing proximal sodium reabsorption; corrected TGF reduces glomerular hyperfiltration, a key renoprotective mechanism."
+        },
+        {
+          "name": "AMPK",
+          "patterns": [
+            "\\bAMPK\\b",
+            "\\bAMP.activated\\s+protein\\s+kinase\\b",
+            "\\bPRKAA\\b"
+          ],
+          "source_query": "SGLT2 inhibitor[Title/Abstract] AND (AMPK[Title/Abstract] OR AMP-activated protein kinase[Title/Abstract])",
+          "target_query": "(AMPK[Title/Abstract] OR AMP-activated protein kinase[Title/Abstract]) AND renal protection[Title/Abstract]",
+          "rationale": "SGLT2 inhibition activates renal AMPK via energy sensing; AMPK suppresses mTORC1 and oxidative stress in tubular cells, conferring direct renoprotection."
+        },
+        {
+          "name": "ketone bodies",
+          "patterns": [
+            "\\bketone\\s+bod\\w+\\b",
+            "\\bbeta.hydroxybutyrate\\b",
+            "\\bBHB\\b",
+            "\\bketosis\\b"
+          ],
+          "source_query": "SGLT2 inhibitor[Title/Abstract] AND (ketone bodies[Title/Abstract] OR beta-hydroxybutyrate[Title/Abstract] OR BHB[Title/Abstract])",
+          "target_query": "(ketone bodies[Title/Abstract] OR beta-hydroxybutyrate[Title/Abstract] OR BHB[Title/Abstract]) AND renal protection[Title/Abstract]",
+          "rationale": "SGLT2 inhibitors elevate circulating ketone bodies; beta-hydroxybutyrate acts as HDAC inhibitor and NLRP3 suppressor in renal tubular cells, providing renoprotection."
+        }
+      ]
+    },
+    {
+      "question_id": "BW010",
+      "source_patterns": [
+        "\\bgut\\s+microbiome\\s+dysbiosis\\b",
+        "\\bintestinal\\s+dysbiosis\\b",
+        "\\bgut\\s+dysbiosis\\b",
+        "\\bmicrobial\\s+dysbiosis\\b"
+      ],
+      "target_patterns": [
+        "\\bbone\\s+loss\\b",
+        "\\bosteoporosis\\b",
+        "\\bbone\\s+mineral\\s+density\\b",
+        "\\bBMD\\b",
+        "\\bosteoclast\\b"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "\\bgut\\s+microbiome\\s+dysbiosis\\b",
+        "\\bgut\\s+dysbiosis\\b",
+        "\\bintestinal\\s+dysbiosis\\b"
+      ],
+      "mediators": [
+        {
+          "name": "short-chain fatty acids",
+          "patterns": [
+            "\\bshort.chain\\s+fatty\\s+acid\\b",
+            "\\bSCFA\\b",
+            "\\bbutyrate\\b",
+            "\\bpropionate\\b"
+          ],
+          "source_query": "gut dysbiosis[Title/Abstract] AND (short-chain fatty acids[Title/Abstract] OR SCFA[Title/Abstract] OR butyrate[Title/Abstract])",
+          "target_query": "(short-chain fatty acids[Title/Abstract] OR SCFA[Title/Abstract] OR butyrate[Title/Abstract]) AND bone loss[Title/Abstract]",
+          "rationale": "Dysbiosis reduces SCFA-producing bacteria; SCFAs regulate osteoclast differentiation via GPR signaling and Treg induction, linking microbiome composition to bone loss."
+        },
+        {
+          "name": "serotonin",
+          "patterns": [
+            "\\bserotonin\\b",
+            "\\b5.hydroxytryptamine\\b",
+            "\\b5.HT\\b",
+            "\\bTPH1\\b"
+          ],
+          "source_query": "gut dysbiosis[Title/Abstract] AND (serotonin[Title/Abstract] OR 5-hydroxytryptamine[Title/Abstract] OR TPH1[Title/Abstract])",
+          "target_query": "(serotonin[Title/Abstract] OR 5-hydroxytryptamine[Title/Abstract] OR gut-derived serotonin[Title/Abstract]) AND bone loss[Title/Abstract]",
+          "rationale": "Dysbiosis alters gut-derived serotonin synthesis via TPH1; elevated peripheral serotonin inhibits osteoblast proliferation, providing a non-obvious gut-bone axis mechanism."
+        },
+        {
+          "name": "intestinal permeability",
+          "patterns": [
+            "\\bintestinal\\s+permeability\\b",
+            "\\bleaky\\s+gut\\b",
+            "\\btight\\s+junction\\b",
+            "\\bgut\\s+barrier\\b"
+          ],
+          "source_query": "gut dysbiosis[Title/Abstract] AND (intestinal permeability[Title/Abstract] OR leaky gut[Title/Abstract] OR tight junction[Title/Abstract])",
+          "target_query": "(intestinal permeability[Title/Abstract] OR leaky gut[Title/Abstract] OR gut barrier[Title/Abstract]) AND bone loss[Title/Abstract]",
+          "rationale": "Dysbiosis disrupts tight junctions increasing intestinal permeability; bacterial LPS translocation activates systemic RANKL-mediated osteoclastogenesis driving bone loss."
+        }
+      ]
+    }
+  ]
+}

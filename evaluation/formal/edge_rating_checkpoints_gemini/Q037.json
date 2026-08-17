@@ -1,0 +1,129 @@
+{
+  "question_id": "Q037",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-31T19:32:51.135062+00:00",
+  "ratings": [
+    {
+      "edge_id": "Q037-E01",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles explicitly mention Hepatitis-B-virus-associated Hepatocellular Carcinoma and its pathogenesis, supporting a causal relationship."
+    },
+    {
+      "edge_id": "Q037-E02",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles mention both Hepatitis B virus and chronic hepatitis B virus, supporting an association between the general and specific terms."
+    },
+    {
+      "edge_id": "Q037-E03",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The generic term 'infections' is not mentioned as a distinct entity in the titles, making this edge unsupported."
+    },
+    {
+      "edge_id": "Q037-E04",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The target 'x' is an extraction artifact and is not mentioned in the titles."
+    },
+    {
+      "edge_id": "Q037-E05",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Inflammation is not mentioned in the provided titles."
+    },
+    {
+      "edge_id": "Q037-E06",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Liver cirrhosis is not mentioned in the provided titles."
+    },
+    {
+      "edge_id": "Q037-E07",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The term 'neoplasms' is not explicitly mentioned as a distinct entity related to HCC in the titles; this is an ontology artifact."
+    },
+    {
+      "edge_id": "Q037-E08",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles indicate HBV leads to HCC, not that HCC causes chronic hepatitis B (the direction of causality is reversed)."
+    },
+    {
+      "edge_id": "Q037-E09",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Fibrosis is not mentioned in the provided titles."
+    },
+    {
+      "edge_id": "Q037-E10",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles explicitly mention HBV-related HCC development, supporting that chronic hepatitis B causes HCC."
+    },
+    {
+      "edge_id": "Q037-E11",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title states HCC development is STAT3 dependent, meaning STAT3 promotes HCC, not the reverse."
+    },
+    {
+      "edge_id": "Q037-E12",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title mentions the oncogenic effect of HBx in HBV-related HCC development, supporting an association."
+    },
+    {
+      "edge_id": "Q037-E13",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The target 'pres2/' is an extraction artifact and is not mentioned in the titles."
+    },
+    {
+      "edge_id": "Q037-E14",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Fibrosis is not mentioned in the provided titles."
+    },
+    {
+      "edge_id": "Q037-E15",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Inflammation is not mentioned in the provided titles."
+    },
+    {
+      "edge_id": "Q037-E16",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Liver cirrhosis is not mentioned in the provided titles."
+    },
+    {
+      "edge_id": "Q037-E17",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Death is not mentioned in the provided titles."
+    },
+    {
+      "edge_id": "Q037-E18",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The term 'liver neoplasms' is not explicitly mentioned as a distinct entity related to HCC in the titles; this is an ontology artifact."
+    },
+    {
+      "edge_id": "Q037-E19",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The generic term 'virus diseases' is not mentioned in the title, making this edge an unsupported generalization."
+    },
+    {
+      "edge_id": "Q037-E20",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] HCC is merely an acronym for hepatocellular carcinoma; they are the same entity, so an association edge between them is an artifact."
+    }
+  ],
+  "raw_response_sha256": "16d73e48db13d8e25965442e0120ebebb4481853a308e3303191bf6035d47bd6"
+}

@@ -1,0 +1,120 @@
+{
+  "question_id": "Q028",
+  "model": "gpt-5.6-sol",
+  "rated_at": "2026-07-29T10:12:20.365218+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q028-C001",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Combined treatment co-downregulated EGFR, MAPK/ERK, AKT, mTOR, and MDR1 while inducing apoptosis, but it did not establish which gene causally mediates EGFR-driven apoptosis resistance."
+    },
+    {
+      "candidate_id": "Q028-C002",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "EGFR pathway suppression was associated with reduced AKT/ERK and BCL2 and increased apoptosis in NSCLC, supporting candidate pathway components without directly testing mediation from EGFR activation."
+    },
+    {
+      "candidate_id": "Q028-C003",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Directly links activated EGFR-PI3K/AKT signaling to miR-19b and shows through anti-miR and target-validation experiments that miR-19b promotes apoptosis resistance mainly by targeting BCL2L11/BIM."
+    },
+    {
+      "candidate_id": "Q028-C004",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "no_usable_evidence",
+      "reviewer_notes": "Notch inhibition altered EGFR, PI3K/AKT, BCL2-family proteins, and apoptosis concurrently, but no EGFR-to-apoptosis-resistance mediator was tested."
+    },
+    {
+      "candidate_id": "Q028-C005",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Mechanistically shows that EGFR-dependent survival converges through PI3K-mTOR control of MCL1 and MEK control of BIM/BCL2L11; simultaneous pathway inhibition induces apoptosis, and MCL1 knockdown sensitizes cells."
+    },
+    {
+      "candidate_id": "Q028-C006",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Directly demonstrates that EGFR/MEK/MAPK-dependent phosphorylation of BAD at Ser112 sequesters BAD and prevents apoptosis; BAD knockdown confirms its required mediator role."
+    },
+    {
+      "candidate_id": "Q028-C007",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Review-level evidence specifically discussing regulation of the BAX/BCL2 apoptotic cascade by the EGFR pathway in NSCLC."
+    },
+    {
+      "candidate_id": "Q028-C008",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Establishes ERK and PP2A regulation of BCL2 phosphorylation and anti-apoptotic activity, providing a downstream segment of a possible EGFR-ERK-BCL2 path, but EGFR was not tested."
+    },
+    {
+      "candidate_id": "Q028-C009",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Review-level context connects survivin regulation with EGFR and downstream PI3K/AKT, mTOR, and ERK signaling, but does not directly establish a two-hop causal path."
+    },
+    {
+      "candidate_id": "Q028-C010",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Directly identifies ERK/PI3K-dependent upregulation of survivin and BCL2 by HER2, offering an informative related ERBB-receptor model, but it studies HER2 rather than EGFR."
+    },
+    {
+      "candidate_id": "Q028-C011",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "wrong_context",
+      "reviewer_notes": "Examines MLH1 silencing and 5-fluorouracil sensitivity in colorectal cells; EGFR is only one of many expression measurements and EGFR activation is not linked mechanistically to apoptosis resistance."
+    },
+    {
+      "candidate_id": "Q028-C012",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "no_usable_evidence",
+      "reviewer_notes": "Proteomic study of CDK4/6 inhibitor resistance reports survival genes and EGFR-related pathway annotations but does not test an EGFR activation-to-apoptosis-resistance path."
+    },
+    {
+      "candidate_id": "Q028-C013",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "wrong_entity",
+      "reviewer_notes": "KDM3A is studied as a mediator of trastuzumab resistance through HER2/PI3K/AKT/ERK signaling, not as a mediator downstream of EGFR activation."
+    },
+    {
+      "candidate_id": "Q028-C014",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Review-level context describes EGFR signaling through RAF/MEK/ERK and PI3K/AKT pathways to prevent apoptosis and discusses downstream BCL2, but is not a focused test of the requested path."
+    },
+    {
+      "candidate_id": "Q028-C015",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Broad review explicitly describes EGFR-AKT-NF-kappaB regulation of BCL2, BCL2L1/BCL-XL, and survivin in chemoresistance, providing candidate genes but not direct focused experimentation."
+    },
+    {
+      "candidate_id": "Q028-C016",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Shows that activated AKT is a convergent survival mechanism in EGFR-TKI-resistant NSCLC and that combined EGFR/AKT inhibition induces apoptosis, but the primary relationship is drug resistance rather than EGFR activation causing apoptosis resistance."
+    }
+  ],
+  "raw_response_sha256": "71a48df0bff565140207d6ab8de69980bf15e329ef70f6eec904b9357d30a590"
+}

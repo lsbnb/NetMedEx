@@ -1,0 +1,79 @@
+{
+  "question_id": "Q040",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-30T09:59:24.759635+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q040-C001",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract directly addresses the question by demonstrating that in a KRAS-mutant lung cancer model, tumor-associated alveolar macrophages undergo glycolytic reprogramming (increased glucose uptake), which impairs SOCS3 secretion and contributes to immune suppression."
+    },
+    {
+      "candidate_id": "Q040-C002",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This review provides relevant context by explicitly stating that KRAS mutation-driven events, including metabolic reprogramming, converge to cause immune evasion in pancreatic ductal adenocarcinoma."
+    },
+    {
+      "candidate_id": "Q040-C003",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This is a review article that discusses how oncogenic KRAS mutations remodel the immune microenvironment and drive immune suppression specifically through the regulation of multiple metabolic pathways."
+    },
+    {
+      "candidate_id": "Q040-C004",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "wrong_context",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The study links KRAS mutation to immune escape via PD-L1 upregulation, but it focuses on the p-ERK kinase signaling pathway rather than a metabolic pathway."
+    },
+    {
+      "candidate_id": "Q040-C005",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract directly answers the question by showing that in KRASG12C-mutant colorectal cancer, altered metabolism (increased lactate production via AKR1B10) leads to histone lactylation in neutrophils, inducing an immunosuppressive phenotype and immune evasion."
+    },
+    {
+      "candidate_id": "Q040-C006",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Provides useful adjacent evidence in a different but informative model (HRAS instead of KRAS), showing that the metabolite lactate induces PD-L1 expression to aid immune evasion."
+    },
+    {
+      "candidate_id": "Q040-C007",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "too_broad",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract discusses the impact of KRAS mutations on the tumor microenvironment in broad terms but does not mention metabolic pathways or their connection to immune evasion."
+    },
+    {
+      "candidate_id": "Q040-C008",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Provides evidence for one segment of the requested mechanism (glycolysis/lactate driving immune evasion via B7-H3 expression), but lacks the connection to KRAS mutations."
+    },
+    {
+      "candidate_id": "Q040-C009",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Offers useful adjacent evidence by linking KRAS mutations to metabolic reprogramming (glycolysis) driven by immune cells (Th2 cytokines) in the tumor microenvironment, though it focuses on protumorigenic growth rather than immune evasion per se."
+    },
+    {
+      "candidate_id": "Q040-C010",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "wrong_context",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The review discusses KRAS and immune evasion (specifically via PD-L1), but does not mention metabolic pathways as the connecting mechanism."
+    }
+  ],
+  "raw_response_sha256": "87db31e02ac534e46a583563e7d5f1e3c09034e8db0a7be6e262725a329b9252"
+}

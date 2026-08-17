@@ -1,0 +1,225 @@
+{
+  "status": "complete",
+  "question_id": "PP020",
+  "domain": "osteoimmunology",
+  "question": "What evidence supports a mechanistic path from dysbiosis to bone loss through periodontitis, inflammation, osteoporosis? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "(\"gut microbiome\"[Title/Abstract] OR dysbiosis[Title/Abstract]) AND (inflammation[Title/Abstract] OR cytokine*[Title/Abstract] OR immune[Title/Abstract]) AND (\"1900\"[Date - Publication] : \"2015\"[Date - Publication])",
+  "effective_pubmed_query": "(\"gut microbiome\"[Title/Abstract] OR dysbiosis[Title/Abstract]) AND (inflammation[Title/Abstract] OR cytokine*[Title/Abstract] OR immune[Title/Abstract]) AND (\"1900\"[Date - Publication] : \"2015\"[Date - Publication])",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "15133327",
+    "16313350",
+    "17191007",
+    "18240539",
+    "19803549",
+    "20485900",
+    "20599675",
+    "21996023",
+    "22179898",
+    "22863002",
+    "23134607",
+    "23238181",
+    "24176761",
+    "24231662",
+    "24269668",
+    "24407713",
+    "24629344",
+    "24646638",
+    "24798552",
+    "24808362",
+    "24829482",
+    "24976068",
+    "25019175",
+    "25163502",
+    "25447398",
+    "25574929",
+    "25883837",
+    "25918553",
+    "25946408",
+    "26102296",
+    "26155460",
+    "26210164",
+    "26215995",
+    "26252398",
+    "26357876",
+    "26387645",
+    "26424567",
+    "26449893",
+    "26509049",
+    "26604935",
+    "26605783",
+    "26707036"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports a mechanistic path from dysbiosis to bone loss through periodontitis, inflammation, osteoporosis? Distinguish evidence for each hop from overall inference.",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "integration_decision": {
+      "method": "three_stage_incremental_utility_router_v1",
+      "mode": "traditional_fallback",
+      "reason": "no_claim_safe_path",
+      "claim_safe_path_count": 0,
+      "incremental_path_count": 0,
+      "confirmatory_path_count": 0,
+      "citation_validation_pmids": [],
+      "policy": "three_stage"
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "disabled",
+      "reason": "integration_mode=traditional_fallback",
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "24646638",
+        "score": 0.5926445481960375
+      },
+      {
+        "pmid": "25574929",
+        "score": 0.5854932300795795
+      },
+      {
+        "pmid": "26707036",
+        "score": 0.5736681339233362
+      },
+      {
+        "pmid": "24269668",
+        "score": 0.5656662759617485
+      },
+      {
+        "pmid": "26252398",
+        "score": 0.5559705185987921
+      },
+      {
+        "pmid": "25918553",
+        "score": 0.5306060422147224
+      },
+      {
+        "pmid": "24976068",
+        "score": 0.5269820309513541
+      },
+      {
+        "pmid": "25447398",
+        "score": 0.523541152185746
+      },
+      {
+        "pmid": "25946408",
+        "score": 0.52125766854392
+      },
+      {
+        "pmid": "23134607",
+        "score": 0.5113662385768175
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "24646638",
+        "score": 0.5926445481960375
+      },
+      {
+        "pmid": "25574929",
+        "score": 0.5854932300795795
+      },
+      {
+        "pmid": "26707036",
+        "score": 0.5736681339233362
+      },
+      {
+        "pmid": "24269668",
+        "score": 0.5656662759617485
+      },
+      {
+        "pmid": "26252398",
+        "score": 0.5559705185987921
+      },
+      {
+        "pmid": "25918553",
+        "score": 0.5306060422147224
+      },
+      {
+        "pmid": "24976068",
+        "score": 0.5269820309513541
+      },
+      {
+        "pmid": "25447398",
+        "score": 0.523541152185746
+      },
+      {
+        "pmid": "25946408",
+        "score": 0.52125766854392
+      },
+      {
+        "pmid": "23134607",
+        "score": 0.5113662385768175
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Dysbiosis → periodontitis (local bone loss)**  \n- Human metatranscriptome profiling of sub‑gingival plaque identified a distinct dysbiotic signature (up‑regulated motility, lipid A, peptidoglycan, iron‑transport genes) that preceded clinical progression and alveolar bone loss【PMID:25918553】 (human).  \n- Review of oral pathobionts describes how cooperative interactions among a dysbiotic community generate potent immunostimulatory activity that directly drives alveolar bone loss【PMID:24646638】 (human observation).  \n- Animal studies show that community‑level dysbiosis, rather than single taxa, initiates periodontal bone loss and that bacterial challenge is necessary for the inflammatory cascade【PMID:25574929】 (mouse/rat).\n\n**Periodontitis → inflammatory mediators**  \n- In murine models, bacterial challenge provokes key cytokines (IL‑1, TNF‑α, prostaglandins, complement, RANKL) that are required for inflammatory bone destruction【PMID:25574929】 (animal).  \n- A P. gingivalis mouse model demonstrated that reduced hepatic‑X‑receptor expression modulates the macrophage cytokine response"
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 3.09869647026062e-05,
+    "vector_index": 3.869850367307663,
+    "kg_expansion": 3.451108932495117e-05,
+    "answer_traditional_rag": 33.04119514673948,
+    "total": 37.59160193055868
+  },
+  "token_usage": {
+    "total_tokens": 5053,
+    "input_tokens": 3853,
+    "output_tokens": 1200
+  },
+  "completed_at": "2026-08-16T18:09:01.068542+00:00"
+}

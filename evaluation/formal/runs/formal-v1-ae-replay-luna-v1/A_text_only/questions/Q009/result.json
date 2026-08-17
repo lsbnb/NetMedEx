@@ -1,0 +1,183 @@
+{
+  "status": "complete",
+  "question_id": "Q009",
+  "domain": "pharmacology",
+  "question": "Which chemicals have evidence for modulating the JAK/STAT pathway in skeletal muscle contexts?",
+  "question_type": "retrieval",
+  "pubmed_query": "JAK STAT AND skeletal muscle AND (inhibitor OR compound OR chemical)",
+  "effective_pubmed_query": "JAK STAT AND skeletal muscle AND (inhibitor OR compound OR chemical)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "26972840",
+    "27330885",
+    "29897957",
+    "31114509",
+    "32885495",
+    "33523949",
+    "33601387",
+    "34821076",
+    "35565236",
+    "39122555",
+    "39381601",
+    "40296760",
+    "40536399",
+    "40617409",
+    "41344510"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "31114509",
+        "score": 0.6972914004632977
+      },
+      {
+        "pmid": "29897957",
+        "score": 0.621531819670738
+      },
+      {
+        "pmid": "39122555",
+        "score": 0.5901123182751286
+      },
+      {
+        "pmid": "33523949",
+        "score": 0.584064724831667
+      },
+      {
+        "pmid": "26972840",
+        "score": 0.5752253359755117
+      },
+      {
+        "pmid": "34821076",
+        "score": 0.545118334351403
+      },
+      {
+        "pmid": "32885495",
+        "score": 0.5426608690431954
+      },
+      {
+        "pmid": "40617409",
+        "score": 0.5331137480788594
+      },
+      {
+        "pmid": "33601387",
+        "score": 0.5300416685675089
+      },
+      {
+        "pmid": "40536399",
+        "score": 0.49457871821892874
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "31114509",
+        "score": 0.6972914004632977
+      },
+      {
+        "pmid": "29897957",
+        "score": 0.621531819670738
+      },
+      {
+        "pmid": "39122555",
+        "score": 0.5901123182751286
+      },
+      {
+        "pmid": "33523949",
+        "score": 0.584064724831667
+      },
+      {
+        "pmid": "26972840",
+        "score": 0.5752253359755117
+      },
+      {
+        "pmid": "34821076",
+        "score": 0.545118334351403
+      },
+      {
+        "pmid": "32885495",
+        "score": 0.5426608690431954
+      },
+      {
+        "pmid": "40617409",
+        "score": 0.5331137480788594
+      },
+      {
+        "pmid": "33601387",
+        "score": 0.5300416685675089
+      },
+      {
+        "pmid": "40536399",
+        "score": 0.49457871821892874
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "## Direct evidence of chemical modulation\n\n- **SGI-1252** — a JAK/STAT inhibitor. In **mice**, oral SGI-1252 reduced gastrocnemius STAT3 phosphorylation by 53%, increased type II fiber cross-sectional area, muscle mass, and Pax7⁺ satellite-cell content. In **human primary myoblasts in vitro**, it suppressed MyoD/Myogenin expression and myogenic differentiation [PMID: 29897957].  \n- **Tofacitinib** — a JAK inhibitor. In **humans**, 48-hour treatment increased single-fiber contractile force in diaphragm and serratus anterior muscle by approximately 15.7%, alongside reduced protein oxidation and FoxO–ubiquitin–proteasome signaling [PMID: 39122555].  \n- **AG490** — a JAK2 inhibitor. In **septic mice**, AG490 reduced muscle STAT3 phosphorylation and attenuated tibialis anterior muscle atrophy, with lower MuRF1 and Atrogin-1 expression. In **C2C12 myotubes in vitro**, JAK2 inhibition reduced IL-6-induced signaling and atrophy [PMID: 34821076].  \n- **Scutellarein** — a natural compound identified as a JAK kinase inhibitor. In **C2C12 mouse myotubes and human iPSC-derived skeletal muscle cells in vitro**, it reduced cytokine- or cancer-conditioned-media-induced atrophy. In **two mouse cancer-cachexia models**, it reduced muscle wasting and inhibited JAK/STAT activation [PMID: 40617409].  \n- **MitoQ** — a mitochondria-targeted antioxidant. In **differentiated muscle cells in vitro**, MitoQ partly attenuated IL-6-induced STAT3 activation, suggesting indirect modulation of JAK/STAT through mitochondrial reactive oxygen species [PMID: 32885495].\n\n## Chemical or cytokine stimuli associated with JAK/STAT activation\n\n- **Interleukin-6 (IL-6)** — in **C2C12 myotubes in vitro**, IL-6 increased STAT3 phosphorylation, SOCS3 expression, and myotube atrophy; these effects were reduced by JAK2 or STAT3 inhibition. IL-6/JAK/STAT signaling was also activated in skeletal muscle of septic mice and associated with muscle wasting [PMID: 34821076]. IL-6 additionally increased mitochondrial ROS and oxygen consumption through JAK/STAT-dependent signaling in cultured myotubes [PMID: 32885495].  \n- **Interferon-γ (IFN-γ)** — in **engineered human skeletal-muscle myobundles in vitro**, chronic IFN-γ activated JAK/STAT1 and caused atrophy and contractile weakness. JAK/STAT inhibitors prevented the induced myopathy [PMID: 33523949].  \n- **Tumor necrosis factor-α (TNF-α)** — used with IFN-γ to induce atrophy in **C2C12 and human iPSC-derived muscle cells**; scutellarein counteracted the resulting atrophy while inhibiting JAK/STAT signaling. The supplied abstract does not establish TNF-α alone as a direct JAK/STAT modulator [PMID: 40617409].\n\n## Association or indirect evidence\n\n- **Metyrapone** — in **rats subjected to sleep deprivation**, metyrapone treatment was associated with increased IL-6 and phosphorylated STAT3 in masseter muscle; the abstract does not show that metyrapone directly targets JAK/STAT [PMID: 33601387].  \n- **Alk5 inhibitor (A5i) and oxytocin** — in **old mice**, the combination prevented exercise-associated inflammation and fibrosis in skeletal muscle in a setting involving dysregulated JAK/STAT signaling. Direct inhibition or activation of JAK/STAT by either compound was not demonstrated in the supplied abstract [PMID: 40536399].\n\n## Testable hypothesis\n\nThe strongest therapeutic hypothesis supported by these records is that **JAK/JAK2/STAT3 or STAT1 inhibition—using agents such as tofacitinib, SGI-1252, AG490, or scutellarein—may reduce inflammatory or sepsis- and cancer-associated skeletal-muscle wasting and improve muscle function**. Human evidence is currently direct for tofacitinib; the other compounds are supported mainly by animal or in-vitro studies [PMID: 29897957; PMID: 39122555; PMID: 34821076; PMID: 40617409].",
+    "traditional_rag": "## Direct evidence of JAK/STAT modulation in skeletal muscle\n\n- **SGI-1252** — A JAK/STAT inhibitor tested in **mice and human primary myoblasts**. In mouse gastrocnemius, it reduced STAT3 phosphorylation by 53%, increased type II fiber area, muscle mass, and Pax7⁺ satellite-cell content. In human myoblasts, it suppressed MyoD/Myogenin expression and myogenic differentiation [PMID: 29897957].  \n  **Evidence:** Animal and in-vitro.\n\n- **Tofacitinib** — A JAK inhibitor tested in **humans**. Forty-eight hours of treatment increased single-fiber contractile force in diaphragm and serratus anterior muscle, with reduced protein oxidation and FoxO–ubiquitin–proteasome signaling. The findings support JAK/STAT inhibition as the mechanism, although MYLK inhibition attenuated the force increase [PMID: 39122555].  \n  **Evidence:** Human clinical muscle-biopsy study.\n\n- **AG490** — A JAK2 inhibitor tested in **septic mice and C2C12 myotubes**. It reduced STAT3 phosphorylation, attenuated IL-6-induced myotube atrophy, and reduced sepsis-associated tibialis anterior muscle atrophy and MuRF1/Atrogin-1 changes [PMID: 34821076].  \n  **Evidence:** Animal and in-vitro.\n\n- **Scutellarein** — A natural compound identified as a JAK kinase inhibitor. In **C2C12 cells, human iPSC-derived muscle cells, and two mouse cancer-cachexia models**, it inhibited JAK/STAT activation, reduced myotube and muscle wasting, and improved muscle strength and function [PMID: 40617409].  \n  **Evidence:** In-vitro and animal; no human therapeutic evidence is provided.\n\n- **MitoQ** — A mitochondria-targeted antioxidant tested in **cultured muscle myotubes**. It partly attenuated IL-6-induced STAT3 activation, suggesting that mitochondrial reactive oxygen species can potentiate IL-6/JAK/STAT signaling [PMID: 32885495].  \n  **Evidence:** In-vitro; this appears to be indirect modulation rather than direct JAK inhibition.\n\n- **IL-6** — In **C2C12 myotubes**, IL-6 induced STAT3 phosphorylation and Socs3 expression and caused myotube atrophy; acute IL-6 exposure also increased mitochondrial ROS and oxygen consumption through JAK/STAT-dependent signaling [PMID: 34821076; PMID: 32885495].  \n  **Evidence:** In-vitro. IL-6/JAK/STAT activation is also associated with sepsis-related muscle atrophy in mice and humans [PMID: 34821076].\n\n- **Interferon-γ (IFN-γ)** — In **engineered human skeletal-muscle myobundles**, chronic IFN-γ caused atrophy and contractile loss through amplified JAK/STAT1 signaling. JAK/STAT inhibitors prevented the induced myopathy [PMID: 33523949].  \n  **Evidence:** In-vitro human muscle model.\n\n## Association or indirect evidence\n\n- **Oxytocin plus an Alk5/TGF-β inhibitor** — In **old mice**, the combination allowed eccentric exercise without the inflammation and fibrosis associated with dysregulated TGF-β, Ras/MAPK/PI3K-Akt, and JAK/STAT pathways. The supplied abstract does not establish that either compound directly targets JAK/STAT [PMID: 40536399].  \n  **Evidence:** Animal association/intervention; direct JAK/STAT modulation is not demonstrated.\n\n- **Metyrapone** — In **sleep-deprived rats**, metyrapone did not normalize the response: the treated group showed increased IL-6 and phosphorylated STAT3. This indicates an altered stress/inflammatory state but does not provide clear evidence that metyrapone directly modulates JAK/STAT [PMID: 33601387].  \n  **Evidence:** Animal; indirect and inconclusive.\n\n## Testable hypotheses\n\n- **JAK/STAT inhibitors or scutellarein** may be therapeutically useful for inflammatory, septic, or cancer-cachexia muscle wasting, but clinical efficacy beyond the reported short-term tofacitinib study remains unestablished.\n- **MitoQ** may reduce IL-6/JAK/STAT signaling by lowering mitochondrial ROS rather than by directly inhibiting JAK or STAT proteins [PMID: 32885495].\n- The review context also proposes epigenetic drugs targeting histone methylation or acetylation as possible JAK/STAT modulators in muscle, but the supplied records do not identify a specific epigenetic chemical with direct skeletal-muscle evidence [PMID: 31114509].",
+    "general_llm": "Several endogenous ligands and pharmacological compounds have been reported to modulate JAK/STAT signaling in skeletal-muscle cells, muscle tissue, or muscle-related disease models. The strength of evidence varies considerably.\n\n### Relatively well-established skeletal-muscle modulators\n\n| Chemical or ligand | Principal pathway effect | Skeletal-muscle context |\n|---|---|---|\n| **IL-6** | Mainly activates **JAK1/JAK2–STAT3** through gp130; can also activate STAT1 | Exercise-induced myokine signaling, muscle regeneration, inflammation, cachexia, disuse and aging models. Acute signaling may support adaptation or regeneration, whereas persistent IL-6/STAT3 activation is often associated with inflammation and atrophy. |\n| **Leukemia inhibitory factor (LIF)** | gp130-mediated **JAK/STAT3** activation | Satellite-cell proliferation, myoblast survival and regeneration; effects can be context- and dose-dependent. |\n| **Oncostatin M (OSM)** | gp130/LIFR-mediated **JAK–STAT3**, with additional MAPK signaling | Muscle inflammation, regeneration and fibrotic or wasting phenotypes in experimental systems. |\n| **Interferon-γ** | **JAK1/JAK2–STAT1** | Strongly activates STAT1 in myoblasts and myotubes; associated with inflammatory remodeling and, in some settings, impaired differentiation or muscle wasting. |\n| **Type I interferons** — IFN-α and IFN-β | **JAK1/TYK2–STAT1/STAT2** | Muscle inflammatory responses and antiviral signaling; relevant to inflammatory myopathies and infection-associated muscle dysfunction. |\n| **Growth hormone** | **JAK2–STAT5**, as well as MAPK and PI3K–AKT signaling | Direct signaling in skeletal muscle and regulation of growth and metabolism. Its anabolic effects are not attributable solely to JAK/STAT. |\n| **Erythropoietin** | Primarily **JAK2–STAT5** | EPO receptors are present in muscle and satellite-cell-related systems; reported effects include cytoprotection and regeneration, although physiological importance remains uncertain. |\n| **IL-15** | Usually **JAK1/JAK3–STAT3/STAT5** | Muscle growth, mitochondrial function and myoblast biology; some reports support anabolic or anti-atrophy actions, but the in vivo evidence is not uniform. |\n| **IL-10** | **JAK1/TYK2–STAT3** | Anti-inflammatory signaling in muscle and immune cells; may counter inflammatory injury, but direct effects on muscle mass are less clearly established. |\n\n### Small-molecule inhibitors used in muscle studies\n\n| Compound | Main target | Evidence and limitations |\n|---|---|---|\n| **Ruxolitinib** | JAK1/JAK2 inhibitor | Used experimentally to suppress cytokine-driven STAT3/STAT1 signaling. It is relevant to muscle inflammation and wasting models, but many skeletal-muscle findings are indirect or derived from broader inflammatory-disease models. |\n| **Baricitinib** | JAK1/JAK2 inhibitor | Can inhibit IL-6-, interferon- and other cytokine-driven signaling. It has potential relevance to inflammatory myopathies, but muscle-specific mechanistic evidence remains less extensive than its general immunological evidence. |\n| **Tofacitinib** | Mainly JAK1/JAK3, with activity against JAK2 at higher concentrations | Used in experimental and clinical inflammatory settings involving muscle; effects may reflect suppression of immune-cell cytokines rather than direct action on myofibers. |\n| **Fedratinib** | Relatively selective JAK2 inhibitor | Useful experimentally for testing JAK2-dependent signaling, but not a well-established skeletal-muscle therapeutic. |\n| **AG490** | Early, relatively nonspecific JAK2-family inhibitor | Frequently used in cell culture to block cytokine-induced STAT activation in myoblasts or myotubes. Its off-target effects and limited potency make mechanistic interpretation cautious. |\n| **Pyridone 6** | Broad JAK inhibitor | Used as a research tool to inhibit cytokine-induced JAK/STAT signaling; not muscle-specific. |\n| **Stattic** | STAT3 inhibitor, affecting STAT3 activation/dimerization | Commonly used in myoblast, myotube, regeneration and muscle-wasting experiments. It is useful as a probe but is not completely selective and can have cytotoxic or off-target effects. |\n| **S3I-201** | STAT3 SH2-domain inhibitor | Used to test STAT3 dependence in muscle-cell and cancer-cachexia-related models. Pharmacological specificity and cellular potency can be limiting. |\n| **WP1066** | Inhibits STAT3 signaling, partly through effects on upstream JAKs and phosphatases | Used in cancer-cachexia and inflammatory models; direct skeletal-muscle evidence is more limited than its use in tumor biology. |\n| **Cucurbitacin I (JSI-124)** | Reported STAT3 inhibitor | Has been used in muscle-related cell and wasting studies, but it is pleiotropic and can be toxic; inhibition should ideally be confirmed genetically or with an unrelated inhibitor. |\n| **Niclosamide** | Can suppress STAT3 and other signaling pathways | Reported to inhibit STAT3-dependent processes in several biological systems, including some muscle-related models. Its mitochondrial and metabolic effects make pathway attribution difficult. |\n\n### Less-specific natural products reported to suppress muscle JAK/STAT signaling\n\nThese compounds have been reported in some muscle, cachexia, inflammatory or metabolic models to reduce cytokine–JAK/STAT activity, but the evidence is generally less definitive because they affect multiple pathways:\n\n- **Curcumin** — often reported to reduce IL-6/JAK2/STAT3-associated inflammatory or atrophic signaling.\n- **Resveratrol** — may reduce inflammatory STAT3 signaling while also affecting AMPK, SIRT1, NF-κB and mitochondrial pathways.\n- **Epigallocatechin gallate (EGCG)** — reported to inhibit inflammatory JAK/STAT and NF-κB signaling in some muscle-related systems.\n- **Quercetin** — can attenuate cytokine signaling, although direct skeletal-muscle JAK/STAT selectivity is weak.\n- **Berberine** — may reduce STAT3-associated inflammation and improve metabolic signaling, but its effects are highly pleiotropic.\n- **Metformin** — can indirectly influence JAK/STAT through AMPK, inflammatory cytokines and cellular metabolism; it should not be considered a selective JAK/STAT modulator.\n- **Dexamethasone** — glucocorticoid-driven muscle atrophy involves several pathways, including possible modulation of STAT3-related signaling, but dexamethasone is not a clean JAK/STAT probe.\n\n### Important interpretation points\n\n1. **STAT3 is not uniformly “bad” in muscle.** Transient STAT3 activation can participate in satellite-cell activity and regeneration, whereas chronic activation is more often linked to inflammation, fibrosis or wasting.\n2. **Many apparent muscle effects are indirect.** JAK inhibitors may act primarily on infiltrating immune cells, macrophages or systemic cytokine production rather than directly on myofibers.\n3. **Small-molecule specificity is often limited.** AG490, Stattic, S3I-201, WP1066 and cucurbitacin I are useful research tools but should be paired with genetic inhibition, phospho-protein measurements and pathway-rescue experiments.\n4. **The strongest mechanistic evidence concerns cytokine-induced signaling**, especially IL-6-family ligands and interferons. Evidence for nutritional supplements and broad anti-inflammatory compounds is more suggestive than conclusive.\n5. **JAK/STAT modulation is not equivalent to muscle growth.** Muscle mass, force, regeneration, protein synthesis and inflammatory status can move in different directions.\n\nIn short, the most defensible skeletal-muscle JAK/STAT modulators are **IL-6, LIF, OSM, interferons, growth hormone and IL-15** as pathway activators, and **ruxolitinib, baricitinib, tofacitinib, AG490, Stattic, S3I-201 and WP1066** as experimental inhibitors."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 4.476308822631836e-05,
+    "vector_index": 1.4037263989448547,
+    "answer_netmedex_hybrid_rag": 8.492712676525116,
+    "answer_traditional_rag": 7.752099052071571,
+    "answer_general_llm": 18.85713756084442,
+    "total": 37.01479108631611
+  },
+  "token_usage": {
+    "input_tokens": 8200,
+    "total_tokens": 13528,
+    "output_tokens": 5328
+  },
+  "completed_at": "2026-08-11T05:06:46.144008+00:00"
+}

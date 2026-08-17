@@ -1,0 +1,91 @@
+{
+  "task": "answer",
+  "question_id": "PP013",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "f25e767b801fbb0fdb89def5b34f4f793016b13620aa0c568d36ac393e637528",
+  "raw_response_sha256": "ef03d9b8d1c6d1279b6e1920413e037b4401122a449b703c6291aecf19f8d2f4",
+  "usage": {
+    "input_tokens": 4169,
+    "output_tokens": 602,
+    "total_tokens": 4771
+  },
+  "rated_at": "2026-08-16T18:47:44.778077+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP013-A",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Accurate chain, but lacks detailed molecular data and animal evidence."
+      },
+      {
+        "answer_id": "PP013-B",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Same as A; correct but superficial."
+      },
+      {
+        "answer_id": "PP013-C",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Identical to A/B; limited depth."
+      },
+      {
+        "answer_id": "PP013-D",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Repeats same content; no added value."
+      },
+      {
+        "answer_id": "PP013-E",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Same as others; adequate but not exhaustive."
+      },
+      {
+        "answer_id": "PP013-F",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Identical summary; lacks nuance."
+      },
+      {
+        "answer_id": "PP013-G",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Same content; no distinction among items."
+      }
+    ],
+    "preferred_item_id": "tie",
+    "pairwise_reason": "All seven answers are identical in wording, citations, and depth; therefore no single item outperforms the others."
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "status": "complete",
+  "question_id": "Q017",
+  "domain": "pharmacogenomics",
+  "question": "Which genes are associated with clopidogrel response or resistance?",
+  "pubmed_query": "clopidogrel CYP2C19 ABCB1 PON1 platelet reactivity",
+  "language": "English",
+  "corpus_pmids": [
+    "21806387",
+    "22285300",
+    "23150151",
+    "23260377",
+    "23333143",
+    "23726091",
+    "23981082",
+    "26309584",
+    "27380588",
+    "28135763",
+    "29352151",
+    "29408797",
+    "34415683",
+    "36891827",
+    "39327966"
+  ],
+  "graph": {
+    "node_count": 38,
+    "edge_count": 59,
+    "path_count": 20,
+    "preferred_pmids": [
+      "21806387",
+      "22285300",
+      "23150151",
+      "23333143",
+      "23726091",
+      "23981082",
+      "26309584",
+      "28135763",
+      "29352151",
+      "29408797",
+      "36891827",
+      "39327966"
+    ]
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "23333143",
+        "score": 0.8127636369214819
+      },
+      {
+        "pmid": "22285300",
+        "score": 0.7865987835233189
+      },
+      {
+        "pmid": "23726091",
+        "score": 0.7865907930163402
+      },
+      {
+        "pmid": "23981082",
+        "score": 0.772824089285115
+      },
+      {
+        "pmid": "28135763",
+        "score": 0.769505429536923
+      },
+      {
+        "pmid": "26309584",
+        "score": 0.7612319399741156
+      },
+      {
+        "pmid": "23150151",
+        "score": 0.7508060869360528
+      },
+      {
+        "pmid": "36891827",
+        "score": 0.7316763594255729
+      },
+      {
+        "pmid": "29408797",
+        "score": 0.7266492072521057
+      },
+      {
+        "pmid": "39327966",
+        "score": 0.7131406621559907
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "34415683",
+        "score": 0.5629618235795589
+      },
+      {
+        "pmid": "23333143",
+        "score": 0.5418424246143213
+      },
+      {
+        "pmid": "23260377",
+        "score": 0.5363788166184815
+      },
+      {
+        "pmid": "22285300",
+        "score": 0.5243991890155459
+      },
+      {
+        "pmid": "23726091",
+        "score": 0.5243938620108934
+      },
+      {
+        "pmid": "23981082",
+        "score": 0.51521605952341
+      },
+      {
+        "pmid": "28135763",
+        "score": 0.513003619691282
+      },
+      {
+        "pmid": "26309584",
+        "score": 0.5074879599827438
+      },
+      {
+        "pmid": "23150151",
+        "score": 0.5005373912907018
+      },
+      {
+        "pmid": "27380588",
+        "score": 0.49644726822584867
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "## Direct evidence — human studies\n\n- **CYP2C19** is the most consistently associated gene with reduced clopidogrel response/high on-treatment platelet reactivity (HPR), i.e., laboratory clopidogrel resistance.\n  - **Loss-of-function (LOF) alleles *2 and *3** were associated with higher platelet aggregation; *2 particularly predicted HPR in Chinese ACS patients. Carriage of either *2 or *3 increased HPR risk, with the principal effect attributable to *2 [PMID: 23726091].\n  - **CYP2C19*2** was associated with HPR after a 600-mg loading dose in ACS patients undergoing PCI [PMID: 22285300], clopidogrel non-response in Turkish PCI patients (odds ratio 2.92 for the variant allele) [PMID: 28135763], and adverse ischemic outcomes in Chinese PCI cohorts [PMID: 23150151; PMID: 26309584].\n  - A gene-dose relationship was reported: increasing numbers of CYP2C19 LOF alleles increased the risk of low response and composite ischemic events [PMID: 23150151].\n  - **CYP2C19*17** was associated with lower platelet reactivity and greater inhibition in one Turkish PCI cohort—consistent with enhanced response rather than resistance [PMID: 28135763].\n  - In children aged ≥2 years with Kawasaki disease and coronary artery lesions, CYP2C19 LOF alleles were associated with HPR; CYP2C19*1/*3 was associated with lower ADP-induced platelet inhibition than *1/*1 [PMID: 39327966].\n\n- **PON1 (paraoxonase-1)**:\n  - The **PON1 Q192R** variant was associated with platelet response in one Chinese PCI study: the **192Q allele** was enriched among HPR patients, associated with higher platelet aggregation, and associated with increased major adverse cardiovascular events [PMID: 26309584].\n  - In Kawasaki disease children aged ≥2 years, **PON1 192R** carriage/homozygosity was protective against HPR, implying that the 192Q allele may confer poorer response [PMID: 39327966].\n\n- **ABCB1**:\n  - **ABCB1 C3435T** was associated with failure of platelet-reactivity-guided clopidogrel loading-dose adjustment in ACS/PCI patients; in multivariable analysis, ABCB1 polymorphism and BMI were the independent predictors of adjustment failure [PMID: 22285300].\n\n## Association evidence that is inconsistent or population-dependent — human studies\n\n- **ABCB1**: Despite its association with failed dose adjustment in one study, ABCB1 C3435T was *not* associated with platelet aggregation/HPR in a Chinese ACS cohort [PMID: 23726091], nor with pharmacodynamic or clinical outcomes in another Chinese PCI cohort [PMID: 23150151]. It was also not associated with non-response in the Turkish PCI study [PMID: 28135763].\n\n- **PON1**: Results are conflicting. PON1 Q192R/192Q was associated with HPR and ischemic events in one Chinese PCI cohort [PMID: 26309584], but no significant association was observed in other Chinese ACS/PCI cohorts [PMID: 23726091; PMID: 23150151] or the Turkish PCI cohort [PMID: 28135763].\n\n- **Other evaluated genes with no demonstrated association in the supplied studies:**\n  - **CYP3A4, CYP3A5, CYP2B6, ITGB3, and P2RY12/P2Y12** variants were evaluated in a Turkish PCI study but were not significantly associated with clopidogrel non-response or antiplatelet activity [PMID: 28135763].\n  - CYP3A5 was among controlled/excluded known factors in a healthy-volunteer study, yet substantial response variability remained [PMID: 23333143].\n  - CYP2C19*4 and P2Y12 variants were not found in one Chinese PCI population, preventing association assessment there [PMID: 26309584].\n\n## Overall interpretation\n\n**CYP2C19—especially LOF alleles *2 and *3, with the strongest and most reproducible evidence for *2—is the principal genetic determinant of clopidogrel resistance/poor response in the supplied human evidence** [PMID: 23726091; PMID: 23981082; PMID: 28135763]. **CYP2C19*17** may be associated with greater antiplatelet effect [PMID: 28135763]. **ABCB1** and **PON1** are plausible contributors, but their associations are inconsistent across cohorts [PMID: 22285300; PMID: 23726091; PMID: 26309584].\n\n## Testable hypothesis\n\nA multi-gene model incorporating **CYP2C19, PON1, and ABCB1** variants may predict thrombosis or poor clopidogrel response better than CYP2C19 alone in some PCI populations; this requires prospective validation because the supporting study is cohort-specific and ABCB1/PON1 findings conflict across studies [PMID: 36891827; PMID: 23150151; PMID: 23726091].",
+    "traditional_rag": "## Direct evidence in human studies\n\n- **CYP2C19** is the most consistently associated gene. Its loss-of-function alleles—especially **CYP2C19*2** and, in several East Asian cohorts, **CYP2C19*3**—are associated with higher on-clopidogrel platelet reactivity, clopidogrel nonresponse/resistance, and/or ischemic events. There is evidence of a gene-dose effect, with progressively poorer response in intermediate and poor metabolizers. [PMID: 34415683] [PMID: 23260377] [PMID: 23726091] [PMID: 23150151] [PMID: 27380588]\n  - **CYP2C19*17** was associated with lower platelet reactivity and greater platelet inhibition (i.e., enhanced clopidogrel response) in a Turkish PCI cohort. [PMID: 28135763]\n\n## Associations with inconsistent or population-specific evidence in humans\n\n- **PON1**: The **PON1 Q192R (rs662)** variant was associated with platelet reactivity in Caribbean Hispanic patients and with high platelet reactivity and ischemic events in one Chinese PCI study. [PMID: 34415683] [PMID: 26309584]  \n  However, multiple Chinese and Korean studies found no significant association of PON1 variants with clopidogrel response. [PMID: 23260377] [PMID: 23726091] [PMID: 23150151] [PMID: 27380588]\n\n- **ABCB1/MDR1**: Variants including **ABCB1 C3435T (rs1045642)** and **rs2032582** have been associated with platelet reactivity or failure of platelet-reactivity-guided clopidogrel loading-dose adjustment in some cohorts. [PMID: 34415683] [PMID: 22285300]  \n  In contrast, Korean and Chinese studies did not find ABCB1 to predict clopidogrel platelet response or clinical outcomes. [PMID: 23260377] [PMID: 23726091] [PMID: 23150151] [PMID: 27380588]\n\n- **PEAR1**: **PEAR1 rs12041331** carrier status, including an interaction with African ancestry, predicted on-clopidogrel platelet reactivity in Caribbean Hispanic patients. This is population-specific evidence from one study in the supplied context. [PMID: 34415683]\n\n## Genes investigated but not supported as predictors in the supplied studies\n\nIn Korean cohorts, variants in **CYP1A2, CYP2B6, CYP3A4, CYP3A5, ITGB3,** and **P2Y12** generally were not associated with clopidogrel-response variability; CYP2C19 was the only consistent independent genetic predictor. [PMID: 23260377] [PMID: 27380588] [PMID: 28135763]\n\n## Testable hypothesis\n\nA multigene model incorporating **CYP2C19** plus selected variants in **PON1, ABCB1,** and **PEAR1** may improve prediction of clopidogrel resistance in particular ancestry groups. A four-variant weighted pharmacogenomic score correlated with platelet reactivity and distinguished responders from nonresponders in Caribbean Hispanics, but this requires validation in additional populations. [PMID: 34415683]\n\nNo animal or in-vitro evidence is provided in the supplied context.",
+    "general_llm": "The **best-established genetic determinant of clopidogrel response is CYP2C19**. Clopidogrel is a prodrug and requires hepatic bioactivation; reduced activation can lead to less platelet inhibition and a higher likelihood of “high on-treatment platelet reactivity” (often called clopidogrel resistance).\n\n## Strongest and clinically actionable gene\n\n### **CYP2C19**\n- **Loss-of-function (LOF) alleles** reduce formation of clopidogrel’s active metabolite.\n  - Most important: **CYP2C19*2** and **CYP2C19*3**\n  - Other rare no-function alleles also exist (for example, *4 in some populations).\n- People with:\n  - **Intermediate metabolizer** status (one LOF allele), or\n  - **Poor metabolizer** status (two LOF alleles)\n  \n  generally have lower active-metabolite exposure, weaker platelet inhibition, and—in particular among patients treated for acute coronary syndrome or undergoing PCI/stenting—higher risk of ischemic events and stent thrombosis when treated with standard clopidogrel.\n- **CYP2C19*17** is an increased-function allele. It can be associated with greater platelet inhibition and sometimes bleeding risk, although its clinical effect is less consistent and may be influenced by whether a LOF allele is also present.\n\nClinical pharmacogenetic guidelines primarily use **CYP2C19** to guide antiplatelet selection. In many higher-risk PCI/acute-coronary-syndrome settings, an alternative such as ticagrelor or prasugrel is often considered for CYP2C19 intermediate or poor metabolizers if not contraindicated.\n\n## Other genes with reported associations, but less consistent clinical utility\n\n### **ABCB1**\n- Encodes P-glycoprotein, an intestinal drug transporter.\n- The commonly studied variant is **3435C>T** (rs1045642).\n- Some studies have linked certain genotypes to altered clopidogrel absorption and poorer outcomes, but results have been inconsistent. It is not routinely used alone for treatment decisions.\n\n### **CES1**\n- Encodes carboxylesterase 1, which inactivates much of administered clopidogrel before it can be activated.\n- Reduced CES1 activity can increase active-metabolite exposure and platelet inhibition, potentially increasing bleeding tendency rather than causing resistance.\n- **CES1 G143E** is a notable reduced-function variant, but it is relatively uncommon and is not a standard clinical test for clopidogrel selection.\n\n### **PON1**\n- The **PON1 Q192R** variant was once proposed to strongly influence clopidogrel bioactivation and stent thrombosis.\n- Larger follow-up studies did not consistently confirm a clinically important effect. PON1 is generally **not considered a validated determinant** of clopidogrel resistance.\n\n### **CYP3A4, CYP3A5, CYP2B6, and CYP2C9**\n- These enzymes may contribute to portions of clopidogrel metabolism.\n- Variants such as **CYP3A4*22**, CYP3A5 expression variants, and variants in CYP2B6 or CYP2C9 have been studied.\n- Their individual effects appear small, variable, or context-dependent compared with CYP2C19, and they are not routinely used to guide therapy.\n\n### **P2RY12**\n- Encodes the platelet P2Y12 receptor, the pharmacologic target of clopidogrel’s active metabolite.\n- Several variants have been investigated for association with residual platelet reactivity or clinical events.\n- Evidence is heterogeneous; no P2RY12 variant currently has broad clinical guideline use for selecting clopidogrel.\n\n### **PEAR1, ITGB3, and other platelet-function genes**\n- **PEAR1** and **ITGB3** have been associated in some studies with platelet reactivity or antiplatelet response.\n- Findings have not been sufficiently reproducible or predictive for routine clinical use.\n\n## Practical interpretation\n\n- **CYP2C19 is the key gene** for clopidogrel pharmacogenetics.\n- The term “clopidogrel resistance” is not a single standardized diagnosis; it may refer to high residual platelet reactivity, recurrent thrombosis, or inadequate active-metabolite formation.\n- Genetics is only one contributor. Adherence, drug interactions—especially some CYP2C19 inhibitors—dose, diabetes, kidney disease, inflammation, high platelet turnover, and the clinical indication also affect response.\n\nIn short: **CYP2C19*2 and *3 are the most important variants associated with reduced clopidogrel response; CYP2C19*17 may increase response. ABCB1, CES1, PON1, CYP3A-family genes, P2RY12, PEAR1, and ITGB3 are candidate or secondary genes, but their evidence is less consistent and generally not clinically actionable.**"
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 1.0909507647156715,
+    "semantic_graph": 62.89993917196989,
+    "vector_index": 1.63432028144598,
+    "answer_netmedex_hybrid_rag": 10.836438409984112,
+    "answer_traditional_rag": 8.469227388501167,
+    "answer_general_llm": 18.847865603864193,
+    "total": 105.33900274336338
+  },
+  "completed_at": "2026-07-27T18:17:46.272956+00:00"
+}

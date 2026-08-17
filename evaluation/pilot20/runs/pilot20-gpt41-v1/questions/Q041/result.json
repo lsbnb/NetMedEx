@@ -1,0 +1,192 @@
+{
+  "status": "complete",
+  "question_id": "Q041",
+  "domain": "multilingual",
+  "question": "請找出 SGLT2 抑制劑可能保護腎臟的抗發炎或抗纖維化機制。",
+  "question_type": "multilingual_mechanism",
+  "pubmed_query": "SGLT2 inhibitor kidney inflammation fibrosis empagliflozin dapagliflozin",
+  "effective_pubmed_query": "SGLT2 inhibitor kidney inflammation fibrosis empagliflozin dapagliflozin",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "Traditional Chinese",
+  "corpus_pmids": [
+    "31936266",
+    "36513134",
+    "36534320",
+    "36768138",
+    "38634653",
+    "39676197",
+    "40279256",
+    "40429921",
+    "40829258",
+    "41285328"
+  ],
+  "graph": {
+    "node_count": 75,
+    "edge_count": 176,
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": true,
+    "max_hops": 4,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": true,
+    "gate_evidence_paths": true,
+    "gate_tier_counts": {
+      "A": 0,
+      "B": 0,
+      "C": 0
+    },
+    "rescue_triggered": false,
+    "rescue_added_paths": 0,
+    "rescue_outcomes": [],
+    "pre_gate_candidate_count": 0,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "exposure_signature": "cdeec80ea79808c4",
+    "routed_profile": "H_evidence_gated_four_hop",
+    "route_reason": "question_type=multilingual_mechanism: bounded evidence-gated multi-hop task",
+    "question_type": "multilingual_mechanism",
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "40279256",
+        "score": 0.3635939813000195
+      },
+      {
+        "pmid": "40429921",
+        "score": 0.3632049640302472
+      },
+      {
+        "pmid": "36534320",
+        "score": 0.3592406063548774
+      },
+      {
+        "pmid": "31936266",
+        "score": 0.3555295760689145
+      },
+      {
+        "pmid": "36513134",
+        "score": 0.35450527573634594
+      },
+      {
+        "pmid": "36768138",
+        "score": 0.3543307971315985
+      },
+      {
+        "pmid": "38634653",
+        "score": 0.34996440742800267
+      },
+      {
+        "pmid": "41285328",
+        "score": 0.341458198438695
+      },
+      {
+        "pmid": "39676197",
+        "score": 0.341148711024714
+      },
+      {
+        "pmid": "40829258",
+        "score": 0.3350578561997407
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "40279256",
+        "score": 0.3635939813000195
+      },
+      {
+        "pmid": "40429921",
+        "score": 0.3632049640302472
+      },
+      {
+        "pmid": "36534320",
+        "score": 0.3592406063548774
+      },
+      {
+        "pmid": "31936266",
+        "score": 0.3555295760689145
+      },
+      {
+        "pmid": "36513134",
+        "score": 0.35450527573634594
+      },
+      {
+        "pmid": "36768138",
+        "score": 0.3543307971315985
+      },
+      {
+        "pmid": "38634653",
+        "score": 0.34996440742800267
+      },
+      {
+        "pmid": "41285328",
+        "score": 0.341458198438695
+      },
+      {
+        "pmid": "39676197",
+        "score": 0.341148711024714
+      },
+      {
+        "pmid": "40829258",
+        "score": 0.3350578561997407
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "根據提供的 PubMed 文獻，SGLT2 抑制劑具備多重抗發炎與抗纖維化的腎臟保護機制。以下以「直接證據」、「相關聯想」、「可檢驗假說」分列，並標註人類、動物或細胞實驗。\n\n【直接證據】\n\n1. SGLT2 抑制劑能抑制腎臟的發炎與纖維化反應。多篇綜述明確指出，這一類藥物除了影響血流動力學及代謝，還能透過抑制發炎及纖維化機制，帶來腎臟保護作用[PMID: 40279256][PMID: 36513134][PMID: 36534320]（多為臨床及基礎研究彙整）。\n2. SGLT2 抑制劑能降低腎臟炎症與纖維化相關因子的表現。例如：\n    - 可抑制腎臟近曲小管上皮細胞的 ICAM-1（細胞間黏附分子-1，炎症與損傷反應的關鍵調節者）表達，顯著減少其蛋白量，於原代人類細胞培養（in vitro）中證明[PMID: 36768138]。\n    - Dapagliflozin 可顯著降低腎臟近曲小管細胞的氧化壓力，同時無明顯促發炎（IL-6, KIM-1, NGAL）表現升高[PMID: 31936266]（人類細胞 in vitro）。\n3. 免疫調節方面，臨床與動物、細胞研究指出，SGLT2 抑制劑可：\n    - 抑制促發炎型 M1 巨噬細胞，促進抗發炎型 M2 巨噬細胞分化；\n    - 降低 IL-1β、IL-6、TNF-α 等炎性細胞激素表現；\n    - 并可經 NF-κB、AMPK/mTOR、JAK/STAT 等多條訊號路徑發揮作用[PMID: 41285328][PMID: 40829258]。\n4. 動物及臨床研究亦顯示，SGLT2 抑制劑可同步抑制腎臟纖維化相關過程，\n    - 包括透過減少發炎、低氧、氧化壓力及腎素-血管緊張素系統活化等手段；\n    - 並可能調節 klotho 表達、改善微血管密度、下降 TGF-beta 作用等，最終減緩腎臟纖維化[PMID: 36534320][PMID: 40429921]。\n\n【相關聯想】\n\n- SGLT2 抑制劑可能除了單純降低血糖及血流動力學外，還透過抗發炎、抗氧化及抗纖維化路徑帶來心腎保護。因此，這些機制也可能適用於非糖尿病腎臟病患者，有利長期心腎結局[PMID: 40279256][PMID: 36513134][PMID: 38634653]。\n- 其抗發炎作用亦包括降低 NLRP3 inflammasome 活化、MyD88 路徑、IL-17、TGF-beta 等，進而對腎臟與心臟均有保護[PMID: 40429921][PMID: 40829258][PMID: 40829258]。\n\n【可檢驗假說】\n\n- 雖多數研究均認為 SGLT2 抑制劑有抗纖維化功效，少部分動物模型尚未觀察到一致效果，可能與試驗設計及實驗對象相關。未來仍可針對不同 CKD 亞型及人群進行更細緻驗證[PMID: 36534320]。\n- SGLT2 抑制劑與礦物皮質酮受體拮抗劑組合治療（如 finerenone）可能呈現互補作用，但目前證據尚不足[PMID: 39676197]。\n\n【總結】\nSGLT2 抑制劑透過多重機制抑制主動發炎反應（NLRP3、IL-1β、IL-6、TNF-α、ICAM-1等）、調節巨噬細胞極化（M1→M2）、降低促纖維化因子（如TGF-beta）、減少氧化壓力及RAS活化，直接減緩腎臟纖維化與進展，這些效應在細胞、動物及臨床研究均有證據支持[PMID: 40279256][PMID: 36534320][PMID: 36768138][PMID: 41285328][PMID: 40829258][PMID: 40429921]。",
+    "traditional_rag": "直接證據（Direct Evidence）：\n1. 研究總結指出，SGLT2 抑制劑具有抗發炎與抗纖維化的腎臟保護作用，其表現為「抑制炎症與纖維化」[PMID:40279256]。這種作用不僅限於糖尿病族群，也見諸非糖尿病慢性腎臟病，顯示此腎保護效應並非只來自血糖或血流動力學的變化。\n2. 綜合評論與機制研究詳細描述，SGLT2 抑制劑可改善腎臟纖維化，作用機制包含減少炎症、低氧壓、氧化壓力與腎素-血管收縮素系統（RAS）活化，以及調節 klotho 蛋白、減緩微血管罕見化、STAT 訊號傳遞等，這些加總效應有助減緩腎臟纖維化進展[PMID:36534320]。\n3. 體外研究（in vitro，人體腎臟近曲小管上皮細胞）顯示，empagliflozin 與 dapagliflozin 具備顯著的抗發炎作用，包括降低黏附分子 ICAM-1 的 mRNA 與蛋白表達量，該分子為促發炎與損傷反應的總開關。此研究亦觀察到這兩種 SGLT2 抑制劑可在高糖+細胞激素共刺激下，部分減弱 IL-1β、IL-6、TNF-α、MCP-1 的誘導[PMID:36768138]。\n4. 另一篇以巨噬細胞為主軸的綜述總結，SGLT2 抑制劑能調節巨噬細胞極化，減少促發炎（M1型）巨噬細胞的活化、促進抗發炎（M2型）巨噬細胞表現，抑制包括 NF-κB、AMPK/mTOR 與 JAK/STAT 等訊號路徑，並減少多種發炎性細胞激素（如 IL-1β、IL-6、TNF-α）釋放，最終降低腎臟與心臟的炎症與纖維化[PMID:41285328]。\n5. SGLT2 抑制劑抑制 NLRP3 發炎體活化、MyD88 訊號，也被證明能減少心臟（及腎臟）炎症與纖維化，並提升粒線體活性[PMID:40429921]。\n6. 動物實驗與臨床數據總結，SGLT2 抑制劑除利尿與排糖外，具有降低纖維化、發炎、氧化壓力等多效性—尤其在非糖尿病腎病動物模型同樣觀察到這些效益[PMID:38634653]。\n\n關聯性證據（Association）：\n- 臨床回顧指出，SGLT2 抑制劑可以顯著改善腎臟功能與蛋白尿，且這些效果與抗發炎、抗纖維化有關聯，但機制多來自動物或細胞模型，部分臨床試驗資料則以終點事件支撐這些關聯[PMID:36513134, 40279256]。\n- 免疫調節綜述補充，SGLT2 抑制劑可減少腎臟、心臟與肝臟中的 IL-1β、IL-6、IL-17、TGF-β、MCP-1，進而抑制發炎與纖維化，尤其經由β-羥基丁酸介導 NLRP3 抑制及粒線體保護[PMID:40829258]。\n\n可驗證假說（Testable Hypothesis）：\n- SGLT2 抑制劑透過抑制關鍵發炎與纖維化路徑（如NLRP3發炎體、NF-κB、JAK/STAT、TGF-β/Smad）與調節巨噬細胞極化，發揮腎臟抗發炎、抗纖維化作用，這將可做細胞、動物模型深層實驗或臨床生物標誌試驗以驗證[PMID:41285328, 40829258, 36534320]。\n- SGLT2 抑制劑提升抗纖維化分子（如klotho)表現、減緩微血管稀疏、抑制特定酶Pin1的降低與細胞代謝功能，是未來值得深化的機制假說[PMID:36534320]。\n\n人類/動物/體外證據標示：\n- 人體臨床證據：大多屬於關聯性證據，終點為腎功能或蛋白尿改善。\n- 動物證據：支援抗纖維化、抗發炎機制於多種非糖尿病腎損傷模型，詳細路徑與細胞反應多來自動物實驗[PMID:38634653]。\n- 體外證據：腎臟近曲小管上皮細胞顯示直接抗發炎效果[PMID:36768138, 31936266]，巨噬細胞極化等亦為體外機制探討[PMID:41285328]。\n\n結論：\nSGLT2 抑制劑之腎臟保護機制，除了血糖與血流動力學調整外，主要尚包含（a）抑制 NLRP3 發炎體與 NF-κB、JAK/STAT 等訊號傳遞、（b）促進抗發炎巨噬細胞，減少促發炎巨噬細胞，進而減少 IL-1β 等促發炎細胞激素、（c）下調黏附分子ICAM-1，減少腎臟發炎細胞浸潤與纖維化、（d）保護粒線體、減少氧化壓力及低氧損傷，以及（e）調制腎素-血管收縮素系統和增加抗纖維化分子，綜合提升腎臟結構與功能[PMID:36534320, 36768138, 41285328, 40429921, 40829258]。\n\n如需原始機制或方式細節，請指定文獻以進一步查核。",
+    "general_llm": "根據現有的生物醫學知識，SGLT2 抑制劑（如 dapagliflozin、empagliflozin 等）除了降血糖外，的確被認為具有腎臟保護作用，這些保護作用不僅來自於血壓、血糖、體重的改善，還可能涉及抗發炎及抗纖維化的機制。以下為目前推測與部分實證支持的機轉：\n\n**1. 抗發炎機制（Established/部分有實驗及臨床支持）**\n- SGLT2 抑制劑可減少腎小球與腎小管中某些促發炎細胞激素（如 TNF-α、IL-6、MCP-1）的表達和釋放，減輕發炎反應。\n- 動物實驗中，這類藥物可以降低腎臟巨噬細胞浸潤，減少組織內白血球聚集，進而保護腎組織。\n- 有證据顯示，這些藥物可以抑制 NF-κB 訊號通路的啟動，降低發炎相關基因的表現，有助減少慢性腎臟病進展。\n\n**2. 抗纖維化機制（動物試驗、初步臨床資料支持，仍有未解部分）**\n- SGLT2 抑制劑可降低 TGF-β（一種促纖維化細胞激素）在腎臟的表達，此路徑在腎小管間質纖維化扮演重要角色。\n- 研究顯示，藥物可抑制腎臟組織的膠原蛋白與其它細胞外基質（ECM）蛋白的生成，減少組織纖維化。\n- 亦有證據指出它們可降低腎臟中 α-SMA（肌成纖維細胞標誌）表達，抑制上皮-間質轉化（EMT）過程。\n\n**3. 其他相關機制**\n- SGLT2 抑制劑可以促使尿鈉排泄與體液減少，降低腎絲球高壓與過濾負荷，這些間接也可減少發炎和纖維化的過程。\n- 提高酮體供應、減少氧化壓力與細胞凋亡，亦可能進一步降低組織傷害。\n\n**總結**  \nSGLT2 抑制劑的腎臟保護機制中，抗發炎與抗纖維化作用目前在動物模型與部分臨床數據中已獲得支持，但確切的細胞分子機轉仍在持續研究中。這些作用被認為是該藥物能減緩慢性腎臟病惡化、降低蛋白尿與腎衰竭風險的重要因素。"
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 34.63223993778229,
+    "vector_index": 1.5330572351813316,
+    "answer_netmedex_hybrid_rag": 10.156640477478504,
+    "answer_traditional_rag": 16.011990562081337,
+    "answer_general_llm": 6.271529778838158,
+    "total": 74.23974515497684
+  },
+  "token_usage": {
+    "total_tokens": 51891,
+    "input_tokens": 25456,
+    "output_tokens": 26435
+  },
+  "completed_at": "2026-08-12T19:17:36.883899+00:00"
+}

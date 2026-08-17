@@ -1,0 +1,86 @@
+{
+  "question_id": "Q015",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-30T09:22:36.638879+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q015-C001",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract directly addresses the question by using network-informed algorithms to identify host genes (HLH genes) and pathways (NETs) that form a mechanistic link between SARS-CoV-2 infection and thrombosis."
+    },
+    {
+      "candidate_id": "Q015-C002",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This experimental study directly addresses the question by identifying specific host gene products (Tissue Factor, Mac-1) and cellular interactions (platelet-monocyte) that mechanistically link SARS-CoV-2 infection to hypercoagulability."
+    },
+    {
+      "candidate_id": "Q015-C003",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The study does not mention SARS-CoV-2, but it provides experimental evidence for a supported segment of a multi-hop mechanism by showing that IL-6 and IL-8 (cytokines elevated in COVID-19) induce Tissue Factor expression and procoagulant activity."
+    },
+    {
+      "candidate_id": "Q015-C004",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This article provides review-level context on the immunothrombosis pathways (including Tissue Factor, NETs, and complement) linking SARS-CoV-2 infection to coagulopathy."
+    },
+    {
+      "candidate_id": "Q015-C005",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract provides review-level context regarding the role of endothelial injury and complement-induced coagulopathy in the pathogenesis of COVID-19."
+    },
+    {
+      "candidate_id": "Q015-C006",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This is a clinical biomarker study rather than a mechanistic investigation, providing useful adjacent evidence that host factors like citrullinated histone H3 (a marker of NETs) predict thrombotic events in COVID-19 patients."
+    },
+    {
+      "candidate_id": "Q015-C007",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The study directly addresses the question by identifying specific host genes (ADAMTS9, SYAP1, HIGD1A, and CD59) that are modulated by SARS-CoV-2 proteins, leading to complement-mediated endothelial injury and thrombotic microangiopathy."
+    },
+    {
+      "candidate_id": "Q015-C008",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This systematic review provides review-level context on the mechanisms by which Tissue Factor expression is triggered during SARS-CoV-2 infection, leading to coagulopathy."
+    },
+    {
+      "candidate_id": "Q015-C009",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The article provides review-level context discussing the interplay between the complement system, endothelial dysfunction, and the coagulation cascade in COVID-19."
+    },
+    {
+      "candidate_id": "Q015-C010",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This article provides review-level context on how proinflammatory cytokines and SARS-CoV-2 infection of monocytes/macrophages lead to Tissue Factor overexpression and subsequent coagulation abnormalities."
+    },
+    {
+      "candidate_id": "Q015-C011",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract provides detailed review-level context on multiple host pathways (ACE2/Ang II, FXII, NETs) that form multi-hop links between SARS-CoV-2 and coagulopathy."
+    }
+  ],
+  "raw_response_sha256": "9cbd9c977a028c15266de49c7eb6b591392a11b44bc9c31b343829a83451360b"
+}

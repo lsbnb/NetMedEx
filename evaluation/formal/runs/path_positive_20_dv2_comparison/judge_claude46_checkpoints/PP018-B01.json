@@ -1,0 +1,63 @@
+{
+  "task": "answer",
+  "question_id": "PP018",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "52099ac64ca378af41a37e29e294616716e6336ce1d540990601c932625e7c61",
+  "raw_response_sha256": "41846c40abd8d460d32368264cbfcb3593ec7fe13447a20e7c44b475800bf55e",
+  "usage": {
+    "input_tokens": 2665,
+    "output_tokens": 618,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 3283
+  },
+  "rated_at": "2026-08-13T07:13:15.907368+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP018-A",
+        "correctness": 3,
+        "completeness": 2,
+        "relevance": 3,
+        "grounding": 3,
+        "mechanistic_coherence": 2,
+        "research_value": 2,
+        "notes": "Covers only two hops superficially; omits inflammation and osteoclast steps. PMIDs cited are plausible but mechanistic detail is thin. Graph-confirmation claim adds little substance."
+      },
+      {
+        "answer_id": "PP018-B",
+        "correctness": 3,
+        "completeness": 3,
+        "relevance": 4,
+        "grounding": 3,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Introduces multi-hop paths including osteoporosis intermediary; text is truncated mid-sentence. Graph paths add value but IL-1 sentence is cut off, reducing completeness."
+      },
+      {
+        "answer_id": "PP018-C",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Best mechanistic detail: dysbiosis→inflammation→RANKL/osteoclast→bone loss with specific PMIDs, LXR pathway, animal and human evidence distinguished at each hop."
+      },
+      {
+        "answer_id": "PP018-D",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Most complete: three explicit hops, keystone pathogen concept, LXR/TRIF pathway, pharmacologic inhibition evidence, testable hypothesis. Human and animal evidence distinguished throughout."
+      }
+    ],
+    "preferred_item_id": "PP018-D",
+    "pairwise_reason": "PP018-D provides the most structured hop-by-hop mechanistic breakdown with distinct human and animal evidence at each step, includes a testable hypothesis, and covers keystone pathogens, RANKL, LXR signaling, and pharmacologic validation—outperforming PP018-C on completeness and research value despite similar mechanistic coherence."
+  }
+}

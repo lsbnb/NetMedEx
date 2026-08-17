@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP014",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "296d2b710b816b22389bb8bcd520e7461bf9ec1cc4d81174267972a56ba2f105",
+  "raw_response_sha256": "49711d63d88d49cd4d056086c1ac64ae7ef6964d7039ff49906dbc363502fbc2",
+  "usage": {
+    "input_tokens": 4014,
+    "output_tokens": 411,
+    "total_tokens": 4425
+  },
+  "rated_at": "2026-08-13T06:37:08.409559+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP014-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, well‑cited preclinical chain; clearly separates each hop."
+      },
+      {
+        "answer_id": "PP014-B",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 4,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Accurate but brief; omits immune‑mediated step and broader evidence."
+      },
+      {
+        "answer_id": "PP014-C",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Well‑cited, clear hops; minor omission of antibiotic dysbiosis evidence."
+      },
+      {
+        "answer_id": "PP014-D",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 2,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Broad evidence, uncited; some claims lack explicit references, reducing grounding."
+      }
+    ],
+    "preferred_item_id": "PP014-A",
+    "pairwise_reason": "Answer A provides the most complete, accurate, and well‑referenced step‑by‑step evidence for each hop, with clear mechanistic links and high research value, outperforming the others."
+  }
+}

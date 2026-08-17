@@ -1,0 +1,108 @@
+{
+  "status": "complete",
+  "question_count": 20,
+  "systems": [
+    "netmedex_hybrid_rag",
+    "traditional_rag",
+    "general_llm"
+  ],
+  "generation_model": "gpt-4.1",
+  "review": {
+    "reviewer_type": "AI expert proxy",
+    "human_expert_review_claimed": false,
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-6",
+    "blinded": true,
+    "single_rater": true
+  },
+  "mean_scores_1_to_5": {
+    "netmedex_hybrid_rag": {
+      "correctness": 4.2,
+      "completeness": 4.6,
+      "relevance": 4.85,
+      "grounding": 3.95,
+      "mechanistic_coherence": 4.55,
+      "research_value": 4.5,
+      "overall": 4.4417
+    },
+    "traditional_rag": {
+      "correctness": 4.3,
+      "completeness": 4.55,
+      "relevance": 4.95,
+      "grounding": 4.05,
+      "mechanistic_coherence": 4.6,
+      "research_value": 4.55,
+      "overall": 4.5
+    },
+    "general_llm": {
+      "correctness": 4.05,
+      "completeness": 3.65,
+      "relevance": 4.8,
+      "grounding": 2.45,
+      "mechanistic_coherence": 4.3,
+      "research_value": 3.35,
+      "overall": 3.7667
+    }
+  },
+  "question_level_preferences": {
+    "netmedex_hybrid_rag": 10,
+    "traditional_rag": 7,
+    "general_llm": 3
+  },
+  "paired_overall_score_differences": {
+    "hybrid_minus_general": {
+      "mean": 0.675,
+      "bootstrap_95ci": [0.2917, 1.0583],
+      "sign_test_p": 0.0044,
+      "hybrid_wins": 16,
+      "general_wins": 3,
+      "ties": 1
+    },
+    "traditional_minus_general": {
+      "mean": 0.7333,
+      "bootstrap_95ci": [0.425, 1.0583],
+      "sign_test_p": 0.0192,
+      "traditional_wins": 15,
+      "general_wins": 4,
+      "ties": 1
+    },
+    "hybrid_minus_traditional": {
+      "mean": -0.0583,
+      "bootstrap_95ci": [-0.3, 0.125],
+      "sign_test_p": 0.5811,
+      "hybrid_wins": 8,
+      "traditional_wins": 5,
+      "ties": 7
+    }
+  },
+  "retrieval": {
+    "netmedex_hybrid_rag": {
+      "precision_at_5": 0.83,
+      "recall_at_10": 0.4712,
+      "ndcg_at_10": 0.6104
+    },
+    "traditional_rag": {
+      "precision_at_5": 0.83,
+      "recall_at_10": 0.4712,
+      "ndcg_at_10": 0.6078
+    },
+    "note": "The two RAG arms shared the same base retrieval pool, so retrieval equality is expected; this pilot tests answer synthesis, not a distinct hybrid retriever."
+  },
+  "tokens": {
+    "gpt_4_1_generation": {"input": 330333, "output": 270750, "total": 601083},
+    "claude_review": {"input": 64538, "output": 9599, "total": 74137},
+    "combined": 675220
+  },
+  "estimated_usd": {
+    "assumed_rates_per_million": {
+      "gpt_4_1_input": 2.0,
+      "gpt_4_1_output": 8.0,
+      "claude_sonnet_4_6_input": 3.0,
+      "claude_sonnet_4_6_output": 15.0
+    },
+    "generation": 2.83,
+    "review": 0.34,
+    "total": 3.16
+  },
+  "conclusion": "Both RAG arms outperformed closed-book GPT-4.1 in this single-AI-rater pilot. NetMedEx Hybrid RAG did not outperform Traditional RAG on the mean overall score; the observed difference was small and not statistically significant."
+}

@@ -1,0 +1,91 @@
+{
+  "task": "answer",
+  "question_id": "PP009",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "324ad11d87c01d40a22f77064c14357cb7c900cbc5b85f970b7cb63883dabec3",
+  "raw_response_sha256": "997da8bbe4199d11dc60d2f3f12253f2daefdba9a331b2032b34b029c62ac7af",
+  "usage": {
+    "input_tokens": 4312,
+    "output_tokens": 663,
+    "total_tokens": 4975
+  },
+  "rated_at": "2026-08-16T18:42:53.600069+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP009-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate, comprehensive, well‑cited mechanistic pathway; clear evidence per hop."
+      },
+      {
+        "answer_id": "PP009-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate, comprehensive, well‑cited mechanistic pathway; clear evidence per hop."
+      },
+      {
+        "answer_id": "PP009-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate, comprehensive, well‑cited mechanistic pathway; clear evidence per hop."
+      },
+      {
+        "answer_id": "PP009-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate, comprehensive, well‑cited mechanistic pathway; clear evidence per hop."
+      },
+      {
+        "answer_id": "PP009-E",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate, comprehensive, well‑cited mechanistic pathway; clear evidence per hop."
+      },
+      {
+        "answer_id": "PP009-F",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate, comprehensive, well‑cited mechanistic pathway; clear evidence per hop."
+      },
+      {
+        "answer_id": "PP009-G",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate, comprehensive, well‑cited mechanistic pathway; clear evidence per hop."
+      }
+    ],
+    "preferred_item_id": "tie",
+    "pairwise_reason": "All answers are identical in content, citations, and quality; no single answer outperforms the others."
+  }
+}

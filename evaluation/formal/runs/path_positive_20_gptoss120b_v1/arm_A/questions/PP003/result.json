@@ -1,0 +1,188 @@
+{
+  "status": "complete",
+  "question_id": "PP003",
+  "domain": "neurodegeneration",
+  "question": "What evidence supports the claim that amyloid-beta related_to mitochondrial toxicity, and what are the important study-context limitations?",
+  "question_type": "mechanism",
+  "pubmed_query": "amyloid beta AND oxidative stress AND mitochondrial dysfunction",
+  "effective_pubmed_query": "amyloid beta AND oxidative stress AND mitochondrial dysfunction",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "22697066",
+    "27766447",
+    "27809706",
+    "32967303",
+    "33476985",
+    "35269827",
+    "35522844",
+    "35660451",
+    "37227619",
+    "37597424",
+    "37956598",
+    "40023293",
+    "40864415",
+    "40902587",
+    "40931065"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports the claim that amyloid-beta related_to mitochondrial toxicity, and what are the important study-context limitations?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "22697066",
+        "score": 0.6085394501285545
+      },
+      {
+        "pmid": "35522844",
+        "score": 0.6019543944957456
+      },
+      {
+        "pmid": "27766447",
+        "score": 0.566146711739603
+      },
+      {
+        "pmid": "40023293",
+        "score": 0.5602891518336001
+      },
+      {
+        "pmid": "40864415",
+        "score": 0.5406613720969151
+      },
+      {
+        "pmid": "27809706",
+        "score": 0.5379686779730235
+      },
+      {
+        "pmid": "33476985",
+        "score": 0.5359119468749663
+      },
+      {
+        "pmid": "37597424",
+        "score": 0.5172413623006965
+      },
+      {
+        "pmid": "32967303",
+        "score": 0.5171747462171082
+      },
+      {
+        "pmid": "37956598",
+        "score": 0.5149355790951062
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "22697066",
+        "score": 0.6085394501285545
+      },
+      {
+        "pmid": "35522844",
+        "score": 0.6019543944957456
+      },
+      {
+        "pmid": "27766447",
+        "score": 0.566146711739603
+      },
+      {
+        "pmid": "40023293",
+        "score": 0.5602891518336001
+      },
+      {
+        "pmid": "40864415",
+        "score": 0.5406613720969151
+      },
+      {
+        "pmid": "27809706",
+        "score": 0.5379686779730235
+      },
+      {
+        "pmid": "33476985",
+        "score": 0.5359119468749663
+      },
+      {
+        "pmid": "37597424",
+        "score": 0.5172413623006965
+      },
+      {
+        "pmid": "32967303",
+        "score": 0.5171747462171082
+      },
+      {
+        "pmid": "37956598",
+        "score": 0.5149355790951062
+      }
+    ]
+  },
+  "answers": {
+    "general_llm": "**Evidence linking amyloid‑β (Aβ) to mitochondrial toxicity**\n\n- **Direct binding to mitochondrial proteins** – Biochemical studies have shown that Aβ interacts with components of the electron‑transport chain, especially complex IV (cytochrome c oxidase) and the adenine‑nucleotide translocator, reducing enzymatic activity and respiration in isolated mitochondria from rodent brain and cultured neurons.  \n- **Induction of oxidative stress** – In vitro exposure of primary cortical neurons or neuroblastoma cells to Aβ oligomers elevates mitochondrial super‑oxide production, depletes glutathione, and triggers lipid peroxidation, effects that are attenuated by antioxidants or mitochondrial‑targeted ROS scavengers.  \n- **Loss of mitochondrial membrane potential (ΔΨm) and Ca²⁺ dysregulation** – Live‑cell imaging in cells treated with Aβ shows rapid ΔΨm depolarization and impaired Ca²⁺ uptake, leading to opening of the permeability transition pore and release of pro‑apoptotic factors such as cytochrome c.  \n- **Mitochondrial DNA (mtDNA) damage and biogenesis impairment** – Transgenic mice overexpressing human APP/PS1 display reduced mtDNA copy number, increased 8‑oxo‑G lesions, and lowered expression of PGC‑1α and NRF1, indicating compromised mitochondrial replication and repair pathways.  \n- **Human post‑mortem correlations** – Brain tissues from Alzheimer’s disease (AD) patients reveal colocalisation of Aβ deposits with fragmented mitochondria, decreased complex I/IV activity, and up‑regulation of mitochondrial stress markers (e.g., HSP60, ATF4), supporting a pathophysiological link in the human disease context.\n\n**Key study‑context limitations**\n\nMost mechanistic work relies on supraphysiological concentrations of synthetic Aβ oligomers, which may not reflect the gradual accumulation occurring in vivo. Transgenic mouse models often overexpress mutant APP at levels far exceeding those in typical sporadic AD, potentially exaggerating mitochondrial phenotypes. Isolated mitochondria or permeabilised cells lack the full cellular milieu, omitting contributions from astrocytes, microglia, and systemic factors that modulate toxicity. Human data are largely correlative; post‑mortem intervals, agonal states, and comorbidities can confound biochemical measurements. Finally, species‑specific differences in mitochondrial composition and Aβ processing limit direct extrapolation from rodent findings to humans.\n\n**Conclusion:** A substantial body of experimental evidence implicates Aβ in mitochondrial dysfunction, but methodological constraints temper the strength of causal inference."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 8.039921522140503e-05,
+    "vector_index": 1.8079072758555412,
+    "kg_expansion": 1.3686716556549072e-05,
+    "answer_general_llm": 19.54853270202875,
+    "total": 21.87764412164688
+  },
+  "token_usage": {
+    "total_tokens": 977,
+    "input_tokens": 169,
+    "output_tokens": 808
+  },
+  "completed_at": "2026-08-13T05:39:49.166136+00:00"
+}

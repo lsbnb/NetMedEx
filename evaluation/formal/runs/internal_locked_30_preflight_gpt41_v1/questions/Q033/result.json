@@ -1,0 +1,184 @@
+{
+  "status": "complete",
+  "question_id": "Q033",
+  "domain": "hepatology",
+  "question": "What evidence supports a link between ferroptosis and liver fibrosis?",
+  "question_type": "direct_evidence",
+  "pubmed_query": "ferroptosis liver fibrosis hepatic stellate cell iron lipid peroxidation",
+  "effective_pubmed_query": "ferroptosis liver fibrosis hepatic stellate cell iron lipid peroxidation",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "29957462",
+    "30081711",
+    "33869196",
+    "34129254",
+    "34522161",
+    "34607160",
+    "35646542",
+    "35785548",
+    "36370962",
+    "36398583",
+    "36703745",
+    "38351696",
+    "38871948",
+    "41351245",
+    "42173841"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "routed_profile": "A_text_only",
+    "route_reason": "question_type=direct_evidence",
+    "question_type": "direct_evidence",
+    "graph_retrieval_query": "What evidence supports a link between ferroptosis and liver fibrosis?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "34522161",
+        "score": 0.6479239589517245
+      },
+      {
+        "pmid": "36703745",
+        "score": 0.6032923581422689
+      },
+      {
+        "pmid": "29957462",
+        "score": 0.5847865232509863
+      },
+      {
+        "pmid": "38871948",
+        "score": 0.5470644469946472
+      },
+      {
+        "pmid": "36370962",
+        "score": 0.545491546192902
+      },
+      {
+        "pmid": "38351696",
+        "score": 0.5435935904670393
+      },
+      {
+        "pmid": "30081711",
+        "score": 0.538425661324831
+      },
+      {
+        "pmid": "35785548",
+        "score": 0.5237862128081298
+      },
+      {
+        "pmid": "42173841",
+        "score": 0.5223636124517278
+      },
+      {
+        "pmid": "33869196",
+        "score": 0.5178286219519163
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "34522161",
+        "score": 0.6479239589517245
+      },
+      {
+        "pmid": "36703745",
+        "score": 0.6032923581422689
+      },
+      {
+        "pmid": "29957462",
+        "score": 0.5847865232509863
+      },
+      {
+        "pmid": "38871948",
+        "score": 0.5470644469946472
+      },
+      {
+        "pmid": "36370962",
+        "score": 0.545491546192902
+      },
+      {
+        "pmid": "38351696",
+        "score": 0.5435935904670393
+      },
+      {
+        "pmid": "30081711",
+        "score": 0.538425661324831
+      },
+      {
+        "pmid": "35785548",
+        "score": 0.5237862128081298
+      },
+      {
+        "pmid": "42173841",
+        "score": 0.5223636124517278
+      },
+      {
+        "pmid": "33869196",
+        "score": 0.5178286219519163
+      }
+    ]
+  },
+  "answers": {},
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 1.3284385204315186e-05,
+    "vector_index": 1.6506948322057724,
+    "kg_expansion": 9.268522262573242e-06,
+    "total": 2.2012974098324776
+  },
+  "token_usage": {},
+  "completed_at": "2026-08-13T10:35:59.427845+00:00"
+}

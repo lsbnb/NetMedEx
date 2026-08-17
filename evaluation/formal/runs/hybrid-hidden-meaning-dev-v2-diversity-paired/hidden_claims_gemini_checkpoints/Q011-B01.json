@@ -1,0 +1,57 @@
+{
+  "task": "hidden_claim",
+  "question_id": "Q011",
+  "batch": 1,
+  "provider": "google",
+  "model": "gemini-3.1-pro-preview",
+  "input_sha256": "bb0b8a7a766c8526c128057082fe527dabcc0730938a2bcdd61bd57dcd87d479",
+  "raw_response_sha256": "2320c2726c83f2efbdb9da4ffc66fc513a6f1c6039fb0ab997f276174710a5ef",
+  "usage": {
+    "input_tokens": 3223,
+    "output_tokens": 470,
+    "total_tokens": 5866
+  },
+  "rated_at": "2026-08-09T10:35:02.350357+00:00",
+  "result": {
+    "ratings": [
+      {
+        "hidden_claim_id": "Q011-HC01",
+        "hybrid_only": 0,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 0,
+        "non_obviousness": 3,
+        "research_utility": 3,
+        "unsupported_novelty": 0,
+        "notes": "The claim is fully supported by the provided path evidence and aligns with the comparison answer."
+      },
+      {
+        "hidden_claim_id": "Q011-HC02",
+        "hybrid_only": 0,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 0,
+        "non_obviousness": 3,
+        "research_utility": 3,
+        "unsupported_novelty": 0,
+        "notes": "The claim is fully supported by the provided path evidence and aligns with the comparison answer."
+      },
+      {
+        "hidden_claim_id": "Q011-HC03",
+        "hybrid_only": 0,
+        "path_traceable": 0,
+        "evidence_support": 0,
+        "relation_direction_correct": 0,
+        "multi_document_or_hop": 1,
+        "non_obviousness": 3,
+        "research_utility": 3,
+        "unsupported_novelty": 1,
+        "notes": "The claim cites a second path (e999bb743cf0c4c2) and PMIDs (24009772, 29167573) that are missing from the provided path evidence, making it unsupported."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

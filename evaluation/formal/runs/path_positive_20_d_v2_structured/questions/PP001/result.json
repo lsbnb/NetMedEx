@@ -1,0 +1,697 @@
+{
+  "status": "complete",
+  "question_id": "PP001",
+  "domain": "osteoporosis",
+  "question": "What evidence supports the claim that icariin promotes osteogenic differentiation, and what are the important study-context limitations?",
+  "question_type": "mechanism",
+  "pubmed_query": "icariin AND (osteoblast OR osteogenesis) AND (microRNA OR miRNA)",
+  "effective_pubmed_query": "icariin AND (osteoblast OR osteogenesis) AND (microRNA OR miRNA)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "27492554",
+    "29500883",
+    "29904399",
+    "32911026",
+    "33743412",
+    "35292240",
+    "38045146",
+    "39588260",
+    "41484919"
+  ],
+  "graph": {
+    "node_count": 65,
+    "edge_count": 90,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 2,
+    "pre_gate_candidate_count": 2,
+    "pre_gate_candidates": [
+      {
+        "path_id": "Q001-P01",
+        "path_signature": "726c66af94dc377a",
+        "path_text": "icariin ->[blocks] ti | ti ->[inhibits] osteogenic differentiation",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "MESH:D014025_Chemical",
+          "GO:0001649_BiologicalProcess"
+        ],
+        "names": [
+          "icariin",
+          "ti",
+          "osteogenic differentiation"
+        ],
+        "node_aliases": [
+          [
+            "ICA",
+            "Icariin",
+            "icariin"
+          ],
+          [
+            "Ti",
+            "titanium"
+          ],
+          [
+            "osteoblast differentiation",
+            "osteogenic differentiation"
+          ]
+        ],
+        "relations": [
+          "blocks",
+          "inhibits"
+        ],
+        "edge_pmids": [
+          [
+            "29500883"
+          ],
+          [
+            "29500883"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "icariin pretreatment blocked the effect of Ti particles"
+          ],
+          [
+            "Inhibition of bone regeneration by wear debris is the main cause of peri-prosthetic osteolysis"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "blocks",
+            "selected_pmid": "29500883",
+            "selected_quote": "icariin pretreatment blocked the effect of Ti particles",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "de19a6483d6b683f73975823d36988bcab0eac3f",
+              "schema_version": 1,
+              "pmid": "29500883",
+              "source_id": "MESH:C056599_Chemical",
+              "target_id": "MESH:D014025_Chemical",
+              "relation": "blocks",
+              "evidence": "icariin pretreatment blocked the effect of Ti particles",
+              "confidence": 0.9,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "inhibits",
+            "selected_pmid": "29500883",
+            "selected_quote": "Inhibition of bone regeneration by wear debris is the main cause of peri-prosthetic osteolysis",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "65e246b0cef93892039b90ddab42740431541782",
+              "schema_version": 1,
+              "pmid": "29500883",
+              "source_id": "MESH:D014025_Chemical",
+              "target_id": "GO:0001649_BiologicalProcess",
+              "relation": "inhibits",
+              "evidence": "Inhibition of bone regeneration by wear debris is the main cause of peri-prosthetic osteolysis",
+              "confidence": 0.95,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 51,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": true,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "two_hop",
+          "all_support_in_text_top_k",
+          "bridge_visible_in_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.641,
+        "hop_count": 2
+      },
+      {
+        "path_id": "Q001-P02",
+        "path_signature": "90b8236c9fc91254",
+        "path_text": "icariin ->[promotes] osteogenic differentiation",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "GO:0001649_BiologicalProcess"
+        ],
+        "names": [
+          "icariin",
+          "osteogenic differentiation"
+        ],
+        "node_aliases": [
+          [
+            "ICA",
+            "Icariin",
+            "icariin"
+          ],
+          [
+            "osteoblast differentiation",
+            "osteogenic differentiation"
+          ]
+        ],
+        "relations": [
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "38045146"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Icariin promoted osteogenic differentiation by regulating the mmu_circ_0000349/mmu-miR-138-5p/JMJD3 pathway"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "38045146",
+            "selected_quote": "Icariin promoted osteogenic differentiation by regulating the mmu_circ_0000349/mmu-miR-138-5p/JMJD3 pathway",
+            "selected_confidence": 0.98,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "cef7d5cd52b8b8c64f48f071a78391b3df942047",
+              "schema_version": 1,
+              "pmid": "38045146",
+              "source_id": "MESH:C056599_Chemical",
+              "target_id": "GO:0001649_BiologicalProcess",
+              "relation": "promotes",
+              "evidence": "Icariin promoted osteogenic differentiation by regulating the mmu_circ_0000349/mmu-miR-138-5p/JMJD3 pathway",
+              "confidence": 0.98,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 1.023,
+        "hop_count": 1
+      }
+    ],
+    "preferred_pmids": [
+      "29500883",
+      "38045146"
+    ],
+    "paths": [
+      {
+        "path_id": "PP001-P01",
+        "path_signature": "726c66af94dc377a",
+        "path_text": "icariin ->[blocks] ti | ti ->[inhibits] osteogenic differentiation",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "MESH:D014025_Chemical",
+          "GO:0001649_BiologicalProcess"
+        ],
+        "names": [
+          "icariin",
+          "ti",
+          "osteogenic differentiation"
+        ],
+        "node_aliases": [
+          [
+            "ICA",
+            "Icariin",
+            "icariin"
+          ],
+          [
+            "Ti",
+            "titanium"
+          ],
+          [
+            "osteoblast differentiation",
+            "osteogenic differentiation"
+          ]
+        ],
+        "relations": [
+          "blocks",
+          "inhibits"
+        ],
+        "edge_pmids": [
+          [
+            "29500883"
+          ],
+          [
+            "29500883"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "icariin pretreatment blocked the effect of Ti particles"
+          ],
+          [
+            "Inhibition of bone regeneration by wear debris is the main cause of peri-prosthetic osteolysis"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "blocks",
+            "selected_pmid": "29500883",
+            "selected_quote": "icariin pretreatment blocked the effect of Ti particles",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "de19a6483d6b683f73975823d36988bcab0eac3f",
+              "schema_version": 1,
+              "pmid": "29500883",
+              "source_id": "MESH:C056599_Chemical",
+              "target_id": "MESH:D014025_Chemical",
+              "relation": "blocks",
+              "evidence": "icariin pretreatment blocked the effect of Ti particles",
+              "confidence": 0.9,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "inhibits",
+            "selected_pmid": "29500883",
+            "selected_quote": "Inhibition of bone regeneration by wear debris is the main cause of peri-prosthetic osteolysis",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "65e246b0cef93892039b90ddab42740431541782",
+              "schema_version": 1,
+              "pmid": "29500883",
+              "source_id": "MESH:D014025_Chemical",
+              "target_id": "GO:0001649_BiologicalProcess",
+              "relation": "inhibits",
+              "evidence": "Inhibition of bone regeneration by wear debris is the main cause of peri-prosthetic osteolysis",
+              "confidence": 0.95,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 51,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": true,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "two_hop",
+          "all_support_in_text_top_k",
+          "bridge_visible_in_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.641,
+        "hop_count": 2
+      },
+      {
+        "path_id": "PP001-P02",
+        "path_signature": "90b8236c9fc91254",
+        "path_text": "icariin ->[promotes] osteogenic differentiation",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "GO:0001649_BiologicalProcess"
+        ],
+        "names": [
+          "icariin",
+          "osteogenic differentiation"
+        ],
+        "node_aliases": [
+          [
+            "ICA",
+            "Icariin",
+            "icariin"
+          ],
+          [
+            "osteoblast differentiation",
+            "osteogenic differentiation"
+          ]
+        ],
+        "relations": [
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "38045146"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Icariin promoted osteogenic differentiation by regulating the mmu_circ_0000349/mmu-miR-138-5p/JMJD3 pathway"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "38045146",
+            "selected_quote": "Icariin promoted osteogenic differentiation by regulating the mmu_circ_0000349/mmu-miR-138-5p/JMJD3 pathway",
+            "selected_confidence": 0.98,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "cef7d5cd52b8b8c64f48f071a78391b3df942047",
+              "schema_version": 1,
+              "pmid": "38045146",
+              "source_id": "MESH:C056599_Chemical",
+              "target_id": "GO:0001649_BiologicalProcess",
+              "relation": "promotes",
+              "evidence": "Icariin promoted osteogenic differentiation by regulating the mmu_circ_0000349/mmu-miR-138-5p/JMJD3 pathway",
+              "confidence": 0.98,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 1.023,
+        "hop_count": 1
+      }
+    ]
+  },
+  "evidence_exposure": {
+    "profile": "H_evidence_gated_four_hop",
+    "routed_profile": "H_evidence_gated_four_hop",
+    "selection_frozen_before_answers": true,
+    "source_result": "evaluation/formal/runs/abcd20_path_replay_v2/questions/Q001/result.json",
+    "expanded_reliable_pool": true,
+    "frozen_exposure_source": "evaluation/formal/path_positive_20_v1/frozen_exposures_expanded/PP001/result.json",
+    "frozen_candidate_path_count": 2,
+    "frozen_exposed_path_count": 2,
+    "exposed_pmids": [
+      "29500883",
+      "38045146"
+    ],
+    "exposed_paths": [
+      [
+        "icariin",
+        "ti",
+        "osteogenic differentiation"
+      ],
+      [
+        "icariin",
+        "osteogenic differentiation"
+      ]
+    ],
+    "exposed_edges": [
+      "icariin ->[blocks] ti | ti ->[inhibits] osteogenic differentiation",
+      "icariin ->[promotes] osteogenic differentiation"
+    ],
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 2,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "answer_context_path_signatures": [
+      "90b8236c9fc91254",
+      "726c66af94dc377a"
+    ],
+    "kg_expansion": {
+      "enabled": true,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {
+        "38045146": {
+          "text_score": 0.558019,
+          "graph_score": 1.0,
+          "reranked_score": 0.712712
+        }
+      }
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "38045146",
+        "score": 0.7127123692902902
+      },
+      {
+        "pmid": "27492554",
+        "score": 0.633327811872088
+      },
+      {
+        "pmid": "33743412",
+        "score": 0.5862302414526778
+      },
+      {
+        "pmid": "29904399",
+        "score": 0.5771281986222854
+      },
+      {
+        "pmid": "35292240",
+        "score": 0.5741757243258253
+      },
+      {
+        "pmid": "29500883",
+        "score": 0.558228130795323
+      },
+      {
+        "pmid": "41484919",
+        "score": 0.5308068723750677
+      },
+      {
+        "pmid": "39588260",
+        "score": 0.517301487762988
+      },
+      {
+        "pmid": "32911026",
+        "score": 0.5018999076626148
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "27492554",
+        "score": 0.633327811872088
+      },
+      {
+        "pmid": "33743412",
+        "score": 0.5862302414526778
+      },
+      {
+        "pmid": "29904399",
+        "score": 0.5771281986222854
+      },
+      {
+        "pmid": "35292240",
+        "score": 0.5741757243258253
+      },
+      {
+        "pmid": "29500883",
+        "score": 0.558228130795323
+      },
+      {
+        "pmid": "38045146",
+        "score": 0.5580190296773696
+      },
+      {
+        "pmid": "41484919",
+        "score": 0.5308068723750677
+      },
+      {
+        "pmid": "39588260",
+        "score": 0.517301487762988
+      },
+      {
+        "pmid": "32911026",
+        "score": 0.5018999076626148
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "**Direct evidence (in‑vitro & animal)**  \n- **Mouse MC3T3‑E1 pre‑osteoblasts**: Icariin dose‑dependently increased circ‑0000349, JMJD3, ALP and RUNX2 expression, enhanced ALP activity and the number of Alizarin‑Red mineralized nodules; inhibition of the circRNA reversed these effects【PMID: 38045146】 (in‑vitro).  \n- **Human bone‑marrow MSCs**: Icariin raised ALP activity, BSPII and RUNX2 protein levels, suppressed adipogenic markers (PPAR‑γ, C/EBP‑α) and activated Wnt/β‑catenin signaling; effects were blocked by DKK1 or miR‑23a over‑expression【PMID: 33743412】 (in‑vitro).  \n- **Mouse MC3T3‑E1 cells**: Icariin up‑regulated miR‑153, which directly enhanced RUNX2 3′‑UTR activity, leading to higher proliferation, ALP activity and mineralization【PMID: 29904399】 (in‑vitro).  \n- **Rat osteoporotic model**: Oral icariin or BMSC miR‑335‑5p over‑expression restored bone micro‑architecture and increased BMSC mineralization; miR‑335‑5p acted via PTEN inhibition【PMID: 35292240】 (in‑vivo).  \n- **Ti‑particle‑induced osteolysis (MC3T3‑E1)**: Pre‑treatment with 10⁻⁸ M icariin rescued ALP activity, BMP2, RUNX2, OCN and miR‑21‑5p levels, counter‑acting particle‑mediated suppression of differentiation【PMID: 29500883】 (in‑vitro).\n\n**Associative observations**  \n- Icariin restored LPS‑induced bone loss by normalising RUNX2 protein (not mRNA) and down‑regulating miR‑34c, while inhibiting JNK/p38/NF‑κB activation【PMID: 27492554】 (in‑vitro).  \n- In infected‑bone‑defect rats, icariin‑treated osteoclast‑derived exosomes enriched miR‑331‑3p and promoted osteoblast ALP expression, suggesting an indirect osteogenic effect【PMID: 39588260】 (in‑vivo association).\n\n**Testable hypothesis**  \n- *Hypothesis*: Icariin promotes osteogenic differentiation primarily by sponging specific miRNAs (e.g., miR‑138‑5p, miR‑23a, miR‑153) that relieve repression of epigenetic or transcriptional regulators (JMJD3, RUNX2, β‑catenin). Future studies could employ conditional miRNA knock‑out mice to verify whether icariin’s osteogenic benefit persists in the absence of these miRNAs.\n\n**Key study‑context limitations**  \n- Predominantly cell‑culture systems (mouse MC3T3‑E1, human MSCs) with supraphysiologic icariin concentrations; relevance to systemic exposure in humans is unclear.  \n- Rodent models (osteoporosis, steroid‑induced osteonecrosis) may not translate to human bone biology.  \n- Most works focus on molecular pathways rather than functional bone strength outcomes; long‑term safety and pharmacokinetics are not addressed.  \n\n*Overall, multiple pre‑clinical studies consistently show icariin enhances osteogenic markers, but translation to human therapy remains unproven.*\n\nGraph-derived candidate insights\n- PATH 90b8236c9fc91254 — GRAPH-CONFIRMED; direct graph evidence; HOP 1: icariin promotes osteogenic differentiation [PMID: 38045146].\n- PATH 726c66af94dc377a — GRAPH-CONFIRMED; multi-hop inference; HOP 1: icariin blocks ti [PMID: 29500883]; HOP 2: ti inhibits osteogenic differentiation [PMID: 29500883]."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 2,
+    "supported_claim_count": 2,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": false,
+    "claims": [
+      {
+        "claim_id": "HC-01",
+        "path_id": "90b8236c9fc91254",
+        "verdict": "supported",
+        "reasons": []
+      },
+      {
+        "claim_id": "HC-02",
+        "path_id": "726c66af94dc377a",
+        "verdict": "supported",
+        "reasons": []
+      }
+    ]
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 2.018362283706665e-05,
+    "vector_index": 3.5212140530347824,
+    "kg_expansion": 0.00016946345567703247,
+    "answer_netmedex_hybrid_rag": 49.872784309089184,
+    "total": 53.84793899953365
+  },
+  "token_usage": {
+    "output_tokens": 1146,
+    "total_tokens": 5783,
+    "input_tokens": 4637
+  },
+  "completed_at": "2026-08-13T06:56:20.843760+00:00"
+}

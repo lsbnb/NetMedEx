@@ -1,0 +1,219 @@
+{
+  "status": "complete",
+  "question_id": "PP007",
+  "domain": "cancer",
+  "question": "What evidence supports a mechanistic path from curcumin to apoptosis through p53? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "curcumin AND apoptosis AND cancer AND (gene OR pathway)",
+  "effective_pubmed_query": "curcumin AND apoptosis AND cancer AND (gene OR pathway)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "15810876",
+    "29693253",
+    "30623450",
+    "30725357",
+    "31590362",
+    "32519340",
+    "35722665",
+    "37776274",
+    "38031951",
+    "38166505",
+    "38269517",
+    "38699926",
+    "39219410",
+    "41109942",
+    "41252742"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports a mechanistic path from curcumin to apoptosis through p53? Distinguish evidence for each hop from overall inference.",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [
+        "p53"
+      ],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "pre_gate_incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [
+        "p53"
+      ],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "integration_decision": {
+      "method": "three_stage_incremental_utility_router_v1",
+      "mode": "traditional_fallback",
+      "reason": "no_claim_safe_path",
+      "claim_safe_path_count": 0,
+      "incremental_path_count": 0,
+      "confirmatory_path_count": 0,
+      "citation_validation_pmids": [],
+      "policy": "three_stage"
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "disabled",
+      "reason": "integration_mode=traditional_fallback",
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "15810876",
+        "score": 0.5854452378113403
+      },
+      {
+        "pmid": "38031951",
+        "score": 0.5681875170095074
+      },
+      {
+        "pmid": "38699926",
+        "score": 0.5629459373170772
+      },
+      {
+        "pmid": "30623450",
+        "score": 0.5628830810904553
+      },
+      {
+        "pmid": "31590362",
+        "score": 0.5462055206514923
+      },
+      {
+        "pmid": "32519340",
+        "score": 0.5460979578471317
+      },
+      {
+        "pmid": "29693253",
+        "score": 0.5398538420128113
+      },
+      {
+        "pmid": "41109942",
+        "score": 0.5182263549103346
+      },
+      {
+        "pmid": "41252742",
+        "score": 0.5133090885593484
+      },
+      {
+        "pmid": "30725357",
+        "score": 0.5066911851667424
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "15810876",
+        "score": 0.5854452378113403
+      },
+      {
+        "pmid": "38031951",
+        "score": 0.5681875170095074
+      },
+      {
+        "pmid": "38699926",
+        "score": 0.5629459373170772
+      },
+      {
+        "pmid": "30623450",
+        "score": 0.5628830810904553
+      },
+      {
+        "pmid": "31590362",
+        "score": 0.5462055206514923
+      },
+      {
+        "pmid": "32519340",
+        "score": 0.5460979578471317
+      },
+      {
+        "pmid": "29693253",
+        "score": 0.5398538420128113
+      },
+      {
+        "pmid": "41109942",
+        "score": 0.5182263549103346
+      },
+      {
+        "pmid": "41252742",
+        "score": 0.5133090885593484
+      },
+      {
+        "pmid": "30725357",
+        "score": 0.5066911851667424
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Direct evidence**\n\n• Curcumin induces apoptosis in diverse human cancer cell lines (e.g., thymocytes, colorectal, gastric, lung) through mitochondrial and intrinsic pathways【PMID:15810876】, 【PMID:38031951】, 【PMID:30725357】 (in‑vitro human cells).  \n\n**Link 1: Curcumin → p53 up‑regulation**\n\n• A review of mechanistic studies reports that curcumin “up‑regulates the expression and activity of p53” which “inhibits tumor cell proliferation and increases apoptosis”【PMID:30623450】 (in‑vitro human tumor models). This is a direct molecular association observed after curcumin treatment.\n\n**Link 2: p53 → Apoptosis**\n\n• The same source states that p53 activation “inhibits tumor cell proliferation and increases apoptosis,” indicating that p53 functions as a pro‑apoptotic transcription factor in the context of curcumin‑treated cells【PMID:30623450】 (human cell‑based evidence).  \n\n**Association (overall pathway inference)**\n\n• Multiple studies confirm that curcumin‑treated cancer cells show increased Sub‑G1 (apoptotic) fractions and activation of intrinsic apoptotic markers, while the p53‑dependent transcriptional program is a known route to such death. Together, the evidence supports a mechanistic cascade: curcumin → p53 up‑regulation → p53‑mediated apoptotic signaling → cell death【PMID:15810876】【PMID:30623450】 (in‑vitro human evidence).  \n\n**Testable hypothesis**\n\n• If p53 is knocked down or inhibited in curcumin‑treated cells, the apoptotic response should be attenuated, directly testing the curcumin → p53 → apoptosis axis.  \n\n**Conclusion** – The literature provides direct in‑vitro human evidence that curcumin up‑regulates p53, and that p53 activation drives apoptosis, supporting a mechanistic pathway from curcumin to cell death via p53."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 4.466623067855835e-05,
+    "vector_index": 1.9069401174783707,
+    "kg_expansion": 1.5847384929656982e-05,
+    "answer_traditional_rag": 23.039409890770912,
+    "total": 25.447362788021564
+  },
+  "token_usage": {
+    "input_tokens": 3773,
+    "total_tokens": 4582,
+    "output_tokens": 809
+  },
+  "completed_at": "2026-08-16T19:34:36.636031+00:00"
+}

@@ -1,0 +1,183 @@
+{
+  "status": "complete",
+  "question_id": "Q008",
+  "domain": "rare disease",
+  "question": "What candidate mechanisms connect CFTR variants to intestinal inflammation?",
+  "question_type": "hypothesis",
+  "pubmed_query": "CFTR AND intestinal inflammation AND (NF-kB OR dysbiosis OR cytokines)",
+  "effective_pubmed_query": "CFTR AND intestinal inflammation AND (NF-kB OR dysbiosis OR cytokines)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "23788646",
+    "27588407",
+    "28155088",
+    "30546102",
+    "31636470",
+    "32326161",
+    "35160099",
+    "35743652",
+    "36600119",
+    "37546931",
+    "38073491",
+    "38179971",
+    "38554847",
+    "40247380",
+    "40824057"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "23788646",
+        "score": 0.5924575339096969
+      },
+      {
+        "pmid": "37546931",
+        "score": 0.586425232829002
+      },
+      {
+        "pmid": "38554847",
+        "score": 0.5814075891617623
+      },
+      {
+        "pmid": "27588407",
+        "score": 0.5784967622252719
+      },
+      {
+        "pmid": "40824057",
+        "score": 0.5755874865591056
+      },
+      {
+        "pmid": "38073491",
+        "score": 0.568924114835398
+      },
+      {
+        "pmid": "40247380",
+        "score": 0.5654743603804582
+      },
+      {
+        "pmid": "35160099",
+        "score": 0.5584148611196817
+      },
+      {
+        "pmid": "30546102",
+        "score": 0.5492994941873619
+      },
+      {
+        "pmid": "35743652",
+        "score": 0.5424239095130753
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "23788646",
+        "score": 0.5924575339096969
+      },
+      {
+        "pmid": "37546931",
+        "score": 0.586425232829002
+      },
+      {
+        "pmid": "38554847",
+        "score": 0.5814075891617623
+      },
+      {
+        "pmid": "27588407",
+        "score": 0.5784967622252719
+      },
+      {
+        "pmid": "40824057",
+        "score": 0.5755874865591056
+      },
+      {
+        "pmid": "38073491",
+        "score": 0.568924114835398
+      },
+      {
+        "pmid": "40247380",
+        "score": 0.5654743603804582
+      },
+      {
+        "pmid": "35160099",
+        "score": 0.5584148611196817
+      },
+      {
+        "pmid": "30546102",
+        "score": 0.5492994941873619
+      },
+      {
+        "pmid": "35743652",
+        "score": 0.5424239095130753
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "CFTR variants that reduce or abolish CFTR function may connect to intestinal inflammation through several candidate mechanisms:\n\n### Direct evidence\n\n1. **Intestinal epithelial CFTR loss can itself drive dysbiosis and inflammation**  \n   In intestinal epithelium-specific *Cftr* knockout mice, fecal calprotectin was elevated despite anti-obstructive dietary treatment. These mice also developed altered microbial composition, including enrichment of Proteobacteria and selected *Clostridia* taxa. This shows that epithelial CFTR loss is sufficient to promote intestinal dysbiosis and inflammation, rather than requiring CFTR loss in leukocytes or other tissues. **Animal evidence (mouse).** [PMID: 37546931] [PMID: 38073491]\n\n2. **Loss of CFTR–β-catenin regulation may activate NF-κB inflammatory signaling**  \n   In ΔF508-*Cftr* mouse intestine and CFTR-knockdown human intestinal epithelial cells, CFTR dysfunction was associated with reduced β-catenin signaling and activation of the NF-κB/COX-2/PGE2 pathway. The study reports that CFTR normally interacts with and stabilizes β-catenin; CFTR mutation or knockdown permits β-catenin loss and NF-κB nuclear translocation. Pharmacologic activation of β-catenin suppressed the inflammatory pathway. **Animal evidence (ΔF508 mouse) and in-vitro human epithelial-cell evidence.** [PMID: 27588407]\n\n3. **Defective intestinal CFTR can increase permeability and sustain a pathogenic microbiota**  \n   Whole-body CFTR-knockout mice had dysbiosis, intestinal mucosal inflammation, and increased intestinal permeability. Gut-corrected CFTR-knockout mice lacked these intestinal abnormalities and also lacked liver pathology, supporting a causal role for intestinal CFTR deficiency. Nonabsorbable antibiotics improved permeability and liver inflammation in knockout mice. **Animal evidence (mouse).** [PMID: 38554847]\n\n4. **Partial restoration of CFTR function is associated with reduced intestinal inflammation in people with CF**  \n   In 16 individuals with CF carrying at least one gating CFTR mutation, ivacaftor treatment was followed by reduced stool calprotectin and increased *Akkermansia*. Lower Enterobacteriaceae abundance correlated with lower calprotectin. **Human evidence; an association following treatment, not definitive proof that microbiome change mediates the anti-inflammatory effect.** [PMID: 30546102]\n\n### Associations and plausible intermediate processes\n\n1. **Dysbiosis as an inflammatory amplifier**  \n   CF intestinal inflammation is associated with microbial shifts, including increased Proteobacteria/Enterobacteriaceae and altered mucolytic organisms in mouse models. In people with CF, dysbiosis and chronic low-grade intestinal inflammation are described as common features. These microbiota changes could increase exposure to inflammatory microbial products or impair protective microbial functions. **Direct epithelial-CFTR-to-dysbiosis evidence is from mice; human dysbiosis–inflammation linkage is associative.** [PMID: 37546931] [PMID: 35160099]\n\n2. **Barrier dysfunction and gut-derived inflammatory stimuli**  \n   Increased permeability in CFTR-knockout mice provides a mechanism by which luminal microbial products may access mucosal or systemic immune compartments. In the gut–liver model, liver immune activation was consistent with response to gut-derived stimuli. **Animal evidence.** [PMID: 38554847]\n\n3. **Altered luminal physiology from impaired ion secretion**  \n   CFTR dysfunction affects intestinal tissues and the intraluminal environment, and CF intestinal disease is described as involving obstruction, infection, and inflammation. This supports a framework in which impaired chloride/bicarbonate transport alters the local environment, favoring stasis, microbial alteration, and inflammation. **General CF pathophysiologic framework; the supplied context does not establish each molecular intermediate for specific variants.** [PMID: 23788646]\n\n4. **Diet and antibiotics may modify the CFTR–microbiome–inflammation relationship**  \n   High-fat CF diets and antibiotic exposure are reported contributors to intestinal dysbiosis/inflammation in CF. In the epithelial-specific knockout mouse study, the particular anti-obstructive diet altered some microbiome findings, although inflammation persisted. **Association/modifier evidence.** [PMID: 35160099] [PMID: 37546931]\n\n### Testable hypotheses\n\n1. **CFTR variant severity may determine the degree of epithelial barrier failure and dysbiosis.**  \n   This is plausible because complete epithelial *Cftr* loss is sufficient for inflammation in mice, while ivacaftor-responsive gating mutations in humans showed improvement after CFTR potentiation. However, the supplied context does not provide a direct genotype-by-genotype comparison of intestinal inflammatory risk. [PMID: 37546931] [PMID: 30546102]\n\n2. **Restoring epithelial CFTR could reduce inflammation by correcting both β-catenin/NF-κB signaling and the luminal microbial niche.**  \n   This integrates the β-catenin/NF-κB findings with the dysbiosis/permeability studies, but whether these are sequentially linked in human intestine remains unproven. [PMID: 27588407] [PMID: 38554847]\n\n3. **Microbiota-directed therapy may be most effective when combined with CFTR restoration.**  \n   Antibiotics improved permeability and liver inflammation in CFTR-knockout mice, while fecal transfer from CFTR-knockout mice to germ-free wild-type mice did not reproduce dysbiosis or liver disease, suggesting that the defective intestinal CFTR environment is required to maintain the pathogenic microbiota. This predicts that microbiome intervention alone may be incomplete if epithelial CFTR dysfunction persists. **Animal evidence supporting the premise; clinical efficacy remains unestablished in the supplied context.** [PMID: 38554847]\n\nOverall, the strongest mechanistic model is: **CFTR loss in intestinal epithelium alters epithelial signaling and luminal ion-dependent physiology, promotes barrier dysfunction and dysbiosis, and thereby sustains NF-κB-linked and microbe-associated intestinal inflammation.** Evidence is strongest in mouse and epithelial-cell models; direct variant-specific mechanisms in humans remain limited.",
+    "traditional_rag": "## Direct evidence\n\n- **Loss of epithelial CFTR is sufficient to promote intestinal inflammation and dysbiosis.** Intestinal epithelium-specific *Cftr* knockout mice had elevated fecal calprotectin despite anti-obstructive diets, showing that epithelial CFTR loss itself can drive gut inflammation. The knockout mice also developed altered microbial communities, including expansion of Proteobacteria and taxa within Clostridia/Enterobacteriaceae, although details varied with diet. **Animal evidence (mouse).** [PMID: 37546931; PMID: 38073491]\n\n- **A CFTR–β-catenin–NF-κB mechanism may directly link CFTR defects to epithelial inflammatory signaling.** In ΔF508-*cftr* mice and CFTR-knockdown human intestinal epithelial cell lines, CFTR deficiency was associated with reduced β-catenin signaling and activation/nuclear translocation of NF-κB, with induction of the COX-2/PGE2 inflammatory pathway. The study reports that CFTR interacts with and stabilizes β-catenin; loss of this interaction promotes β-catenin degradation and NF-κB-driven inflammation. **Animal and in-vitro human-cell evidence.** [PMID: 27588407]\n\n- **CFTR dysfunction is associated with a dysbiotic inflammatory intestinal milieu.** In people with CF, intestinal dysbiosis and inflammation are reported features. In a small ivacaftor-treated cohort carrying at least one gating variant, fecal calprotectin declined after treatment, while Akkermansia increased; decreases in Enterobacteriaceae correlated with decreases in calprotectin. **Human association/interventional before–after evidence; not definitive proof of causation.** [PMID: 30546102]\n\n- **Defective intestinal CFTR can increase permeability and permit pro-inflammatory gut-derived stimuli.** Whole-body CFTR-knockout mice had dysbiosis, intestinal mucosal inflammation, and increased gut permeability. Intestinal CFTR correction prevented these abnormalities and liver inflammation; nonabsorbable antibiotics improved permeability and liver inflammation. **Animal evidence.** [PMID: 38554847]\n\n- **Altered ion/fluid handling may create the initiating luminal environment.** CFTR dysfunction affects intestinal tissue and the intraluminal environment; the CF intestine is described as sharing an obstruction–infection–inflammation triad with CF airways. **Review-level synthesis, with substantial reliance on mouse-model work.** [PMID: 23788646]\n\n## Associations and likely contributors\n\n- **Microbial dysbiosis may amplify inflammation.** Reported CF-associated changes include increased Proteobacteria/Enterobacteriaceae and altered mucolytic organisms; these changes coexist with elevated inflammatory markers. **Human and mouse association; causal direction may be bidirectional.** [PMID: 37546931; PMID: 38073491; PMID: 30546102; PMID: 35160099]\n\n- **Barrier impairment may link dysbiosis to immune activation.** Increased permeability in CFTR-knockout mice is associated with mucosal inflammation and microbiota changes, consistent with greater exposure to microbial products. **Animal association supported by intervention.** [PMID: 38554847]\n\n- **Non-CFTR factors can compound the phenotype.** High-fat CF diets and antibiotic exposure are proposed contributors to intestinal dysbiosis/inflammation in CF. **Review-level association.** [PMID: 35160099]\n\n- **Immune-cell CFTR could contribute, but the provided context does not establish its specific mechanism.** CFTR is expressed in leukocytes, but epithelial-specific knockout being sufficient indicates that leukocyte CFTR loss is not required for the mouse intestinal phenotype. **Animal evidence for epithelial sufficiency; no direct mechanism for leukocytes in the supplied records.** [PMID: 37546931; PMID: 38073491]\n\n## Testable integrated hypothesis\n\nCFTR variants that reduce intestinal epithelial chloride/bicarbonate transport may alter mucus, hydration, luminal chemistry, and transit, favoring obstruction and a dysbiotic microbiota. Dysbiosis plus impaired epithelial barrier function may increase microbial stimulation of mucosal immune pathways. In parallel, impaired CFTR–β-catenin interaction may release NF-κB/COX-2/PGE2 signaling, producing an epithelial-intrinsic inflammatory response. These processes could reinforce one another: inflammation worsens barrier function and dysbiosis, while dysbiosis sustains inflammation. This integrated model is supported by separate animal, cell, and human associative findings, but has not been fully causally demonstrated in humans. [PMID: 23788646; PMID: 27588407; PMID: 37546931; PMID: 38554847; PMID: 30546102]",
+    "general_llm": "CFTR variants can plausibly promote intestinal inflammation through several interconnected mechanisms. The strongest evidence comes from cystic fibrosis (CF), where CFTR function is markedly reduced or absent; links in CFTR heterozygotes or common mild variants are more uncertain and likely smaller.\n\n### 1. Dehydrated, poorly cleared mucus\nCFTR normally drives chloride and bicarbonate secretion, which helps hydrate intestinal mucus. Reduced CFTR activity can produce thicker, more adherent mucus that is harder to clear.\n\nConsequences may include:\n\n- Bacterial retention near the epithelial surface  \n- Impaired separation between luminal microbes and the mucosa  \n- Stasis and small-intestinal bacterial overgrowth  \n- Local activation of epithelial and mucosal immune responses  \n\nThis is a leading mechanism for the inflammatory intestinal phenotype seen in CF.\n\n### 2. Reduced bicarbonate secretion and abnormal luminal pH\nCFTR-mediated bicarbonate secretion is important for neutralizing gastric acid in the proximal intestine and for normal mucus expansion and unfolding.\n\nLow bicarbonate secretion may lead to:\n\n- A more acidic duodenal/proximal intestinal environment  \n- Abnormal mucus properties  \n- Reduced activity of pancreatic digestive enzymes  \n- Altered bile acid solubility and antimicrobial activity  \n- Selection for a different microbial community  \n\nThese effects can favor irritation, dysbiosis, and inflammatory signaling.\n\n### 3. Altered gut microbiome and microbial metabolites\nPeople with CF commonly have intestinal dysbiosis, often with reduced microbial diversity and changes in taxa that produce beneficial short-chain fatty acids such as butyrate. The causes are multifactorial: CFTR dysfunction, mucus changes, antibiotic exposure, diet, pancreatic insufficiency, and intestinal transit abnormalities all contribute.\n\nPotential inflammatory consequences include:\n\n- Reduced production of anti-inflammatory metabolites  \n- Expansion of pro-inflammatory or mucus-adherent organisms  \n- Increased microbial products such as lipopolysaccharide reaching the mucosa  \n- Abnormal stimulation of innate immune receptors  \n\nDysbiosis is well supported in CF, but it is not always clear how much is directly caused by CFTR dysfunction versus treatment and disease-related factors.\n\n### 4. Impaired epithelial barrier function\nCFTR is expressed in intestinal epithelial cells and participates in ion/fluid transport that supports epithelial homeostasis. CFTR dysfunction may compromise barrier integrity indirectly through mucus abnormalities, altered pH, dysbiosis, and epithelial stress.\n\nA leakier or injured barrier could permit greater access of bacteria and bacterial products to immune cells in the lamina propria, promoting cytokine production and chronic low-grade inflammation.\n\nThe existence of barrier abnormalities in CF is supported, although the exact direct molecular role of CFTR in tight-junction regulation remains incompletely defined.\n\n### 5. Defective antimicrobial defenses, including Paneth-cell-related effects\nNormal intestinal defense depends on antimicrobial peptides, mucus, bicarbonate, and epithelial secretion. CFTR dysfunction may impair the intestinal environment required for effective antimicrobial peptide activity and proper mucus-mediated defense.\n\nPaneth-cell dysfunction has been proposed, particularly in relation to Crohn’s-like ileal inflammation, because Paneth cells depend on appropriate secretory and luminal conditions. However, whether CFTR variants directly cause a primary Paneth-cell defect in humans is not fully established.\n\n### 6. Abnormal innate immune and inflammatory signaling\nCFTR may influence inflammatory signaling in epithelial and immune cells. Experimental work has suggested that loss of CFTR can be associated with increased activation of pathways such as NF-κB and inflammasome-related responses, with increased production of mediators including IL-8 and other cytokines.\n\nPossible explanations include:\n\n- Persistent microbial stimulation due to mucus/barrier defects  \n- Oxidative and endoplasmic-reticulum stress from misfolded CFTR variants  \n- Altered intracellular ion balance and vesicle/lysosome function  \n- Changes in autophagy and bacterial handling  \n\nA tendency toward exaggerated inflammation is plausible, but whether immune-cell-intrinsic CFTR dysfunction is a major driver in human intestinal disease remains debated.\n\n### 7. Impaired autophagy, lysosomal function, and bacterial clearance\nIn cell and animal models, defective CFTR has been linked to abnormalities in autophagy and intracellular trafficking. These pathways are relevant because intestinal epithelial cells and macrophages need them to process damaged organelles and clear invading microbes.\n\nDefects in these processes could amplify inflammation after bacterial contact. This mechanism is biologically appealing because impaired autophagy is also implicated in Crohn’s disease, but direct clinical proof connecting CFTR variants to Crohn’s through this route is limited.\n\n### 8. Pancreatic insufficiency, maldigestion, and bile-acid abnormalities\nIn classic CF, pancreatic exocrine insufficiency and altered bile-acid physiology can substantially influence intestinal inflammation.\n\nMaldigestion may cause:\n\n- Increased delivery of fat and undigested nutrients to the distal gut  \n- Changes in microbial substrate availability  \n- Bacterial fermentation and altered metabolites  \n- Diarrhea, mucus changes, and epithelial stress  \n\nBile-acid malabsorption or altered bile-acid composition can further shape the microbiome and influence immune signaling through bile-acid receptors. These are often important amplifiers rather than purely direct effects of intestinal CFTR loss.\n\n### 9. Slow transit, obstruction, and mechanical mucosal injury\nCFTR dysfunction can contribute to dehydrated luminal contents and slow intestinal transit. Severe examples include meconium ileus and distal intestinal obstruction syndrome.\n\nStasis can promote bacterial overgrowth and focal mucosal injury. Recurrent partial obstruction may therefore create a cycle of impaired clearance, dysbiosis, epithelial injury, and inflammation.\n\n### 10. Interaction with genetic susceptibility to inflammatory bowel disease\nCFTR variants alone generally do not explain most cases of Crohn’s disease or ulcerative colitis. However, reduced CFTR activity could interact with other susceptibility genes—especially genes involved in microbial sensing, epithelial defense, autophagy, and immune regulation—to lower the threshold for inflammation.\n\nThis “multiple-hit” model is likely more realistic than a single-gene model, especially for people carrying one CFTR variant rather than having CF.\n\n## Clinical interpretation\n- **Established:** People with CF frequently show intestinal inflammation, dysbiosis, altered mucus and bicarbonate secretion, pancreatic-related digestive abnormalities, and episodes of intestinal obstruction.  \n- **Plausible but incompletely resolved:** Direct effects of CFTR loss on epithelial barrier signaling, Paneth-cell biology, autophagy, and immune-cell inflammatory programming.  \n- **Uncertain for heterozygous carriers:** A single pathogenic CFTR variant may modestly affect some gastrointestinal phenotypes in certain settings, but it is not established that CFTR carrier status alone causes inflammatory bowel disease.  \n\nOverall, the most coherent model is that reduced CFTR-mediated chloride/bicarbonate transport alters mucus, pH, motility, digestion, and microbial ecology; these changes weaken mucosal defenses and increase immune exposure to bacteria, producing chronic intestinal inflammation in susceptible individuals."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 3.847479820251465e-05,
+    "vector_index": 1.9019783362746239,
+    "answer_netmedex_hybrid_rag": 14.342028990387917,
+    "answer_traditional_rag": 11.375953681766987,
+    "answer_general_llm": 18.78268066048622,
+    "total": 46.894740872085094
+  },
+  "token_usage": {
+    "output_tokens": 3912,
+    "total_tokens": 12721,
+    "input_tokens": 8809
+  },
+  "completed_at": "2026-08-11T04:16:44.189490+00:00"
+}

@@ -1,0 +1,129 @@
+{
+  "question_id": "Q004",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-31T19:26:25.734680+00:00",
+  "ratings": [
+    {
+      "edge_id": "Q004-E01",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles explicitly mention curcumin's role in 'cancer therapy' and 'cancer prevention and treatment', supporting that it treats neoplasms."
+    },
+    {
+      "edge_id": "Q004-E02",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] None of the provided titles mention inflammation, so there is no support for this relationship in the text provided."
+    },
+    {
+      "edge_id": "Q004-E03",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles mention various cancers (gastric, breast) but do not specifically mention metastasis or its inhibition."
+    },
+    {
+      "edge_id": "Q004-E04",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The provided titles do not mention nfkb1 or NF-kB."
+    },
+    {
+      "edge_id": "Q004-E05",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles do not mention polyphenols, even though curcumin is one."
+    },
+    {
+      "edge_id": "Q004-E06",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The provided title discusses prostate cancer but does not mention akt1."
+    },
+    {
+      "edge_id": "Q004-E07",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The provided title discusses prostate cancer but does not mention mtor."
+    },
+    {
+      "edge_id": "Q004-E08",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The provided title discusses apoptosis modulation but does not mention cox2."
+    },
+    {
+      "edge_id": "Q004-E09",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The provided title discusses prostate cancer but does not mention pik3cb."
+    },
+    {
+      "edge_id": "Q004-E10",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The provided title discusses apoptosis modulation but does not mention tp53 or p53."
+    },
+    {
+      "edge_id": "Q004-E11",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly mentions targeting a signaling pathway by curcumin 'for breast cancer', implying a therapeutic relationship."
+    },
+    {
+      "edge_id": "Q004-E12",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly mentions the role of curcumin in 'lung cancer therapy'."
+    },
+    {
+      "edge_id": "Q004-E13",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly mentions curcumin in 'prostate cancer' and 'therapeutic strategies'."
+    },
+    {
+      "edge_id": "Q004-E14",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title states curcumin induces apoptosis in 'osteosarcoma cells', which correctly aligns with inhibiting the cancer."
+    },
+    {
+      "edge_id": "Q004-E15",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title discusses curcumin and 'Gastric Cancer' (stomach neoplasms) and its mechanisms of action, implying a treatment role."
+    },
+    {
+      "edge_id": "Q004-E16",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly mentions 'cancer prevention', which is synonymous with inhibiting carcinogenesis."
+    },
+    {
+      "edge_id": "Q004-E17",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The target '0546' is an artifact and is not supported by the title."
+    },
+    {
+      "edge_id": "Q004-E18",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The provided title does not mention docetaxel."
+    },
+    {
+      "edge_id": "Q004-E19",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The provided title does not mention quercetin."
+    },
+    {
+      "edge_id": "Q004-E20",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The provided title does not mention reactive oxygen species."
+    }
+  ],
+  "raw_response_sha256": "ffe44d02b3bb63c1fc5c78f8e2c7b53f2a029f6fd7106c7ad099143235f3ae8c"
+}

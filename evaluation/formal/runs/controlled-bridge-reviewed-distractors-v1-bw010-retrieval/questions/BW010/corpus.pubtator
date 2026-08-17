@@ -1,0 +1,852 @@
+##USE-MESH-VOCABULARY
+35950704|t|Gut Dysbiosis Promotes Preeclampsia by Regulating Macrophages and Trophoblasts.
+35950704|a|BACKGROUND: Preeclampsia is one of the leading causes of maternal and perinatal morbidity and is characterized by hypertension, inflammation, and placental dysfunction. Gut microbiota plays key roles in inflammation and hypertension. However, its roles and mechanisms in preeclampsia have not been fully elucidated. METHODS: 16S rRNA gene sequencing and targeted metabolomics were conducted on stool samples from 92 preeclamptic patients and 86 normal late-pregnant women. Then, fecal microbiota transplantation and in vitro and in vivo functional experiments were performed to explore the roles and mechanisms of gut microbiota in preeclampsia development. RESULTS: We revealed the gut microbiota dysbiosis in preeclamptic patients, including significant reductions in short-chain fatty acid-producing bacteria and short-chain fatty acids. The gut microbiota of preeclamptic patients significantly exacerbated pathologies and symptoms of preeclamptic rats, whereas the gut microbiota of healthy pregnant women had significant protective effects. Akkermansia muciniphila, propionate, or butyrate significantly alleviated the symptoms of preeclamptic rats. Mechanistically, they significantly promoted autophagy and M2 polarization of macrophages in placental bed, thereby suppressing inflammation. Propionate also significantly promoted trophoblast invasion, thereby improved spiral arterial remodeling. Additionally, we identified a marker set consisting of Akkermansia, Oscillibacter, and short-chain fatty acids that could accurately diagnose preeclampsia. CONCLUSIONS: Our study revealed that gut microbiota dysbiosis is an important etiology of preeclampsia. Gut microbiota and their active metabolites have great potential for the treatment and diagnosis of preeclampsia. Our findings enrich the gut-placenta axis theory and contribute to the development of microecological products for preeclampsia.
+35950704	0	13	Dysbiosis	Disease	MESH:D064806
+35950704	23	35	Pre-Eclampsia	Disease	MESH:D011225
+35950704	92	104	Pre-Eclampsia	Disease	MESH:D011225
+35950704	194	206	Hypertension	Disease	MESH:D006973
+35950704	208	220	Inflammation	Disease	MESH:D007249
+35950704	226	247	Placenta Diseases	Disease	MESH:D010922
+35950704	253	263	microbiota	Disease	-
+35950704	283	295	Inflammation	Disease	MESH:D007249
+35950704	300	312	Hypertension	Disease	MESH:D006973
+35950704	351	363	Pre-Eclampsia	Disease	MESH:D011225
+35950704	496	508	Preeclamptic toxemia	Disease	MESH:C538543
+35950704	509	517	patients	Species	9606
+35950704	546	551	women	Species	9606
+35950704	565	575	microbiota	Disease	-
+35950704	698	708	microbiota	Disease	-
+35950704	712	724	Pre-Eclampsia	Disease	MESH:D011225
+35950704	767	787	Dysbiosis	Disease	MESH:D064806
+35950704	791	803	Preeclamptic toxemia	Disease	MESH:C538543
+35950704	804	812	patients	Species	9606
+35950704	850	872	Fatty Acids Volatile	Chemical	MESH:D005232
+35950704	896	919	Fatty Acids Volatile	Chemical	MESH:D005232
+35950704	929	939	microbiota	Disease	-
+35950704	943	955	Preeclamptic toxemia	Disease	MESH:C538543
+35950704	956	964	patients	Species	9606
+35950704	1019	1031	Preeclamptic toxemia	Disease	MESH:C538543
+35950704	1032	1036	rats	Species	10116
+35950704	1054	1064	microbiota	Disease	-
+35950704	1085	1090	women	Species	9606
+35950704	1127	1150	Akkermansia muciniphila	Species	239935
+35950704	1152	1162	Propionates	Chemical	MESH:D011422
+35950704	1167	1175	Butyrates	Chemical	MESH:D002087
+35950704	1217	1229	Preeclamptic toxemia	Disease	MESH:C538543
+35950704	1230	1234	rats	Species	10116
+35950704	1364	1376	Inflammation	Disease	MESH:D007249
+35950704	1378	1388	Propionates	Chemical	MESH:D011422
+35950704	1539	1550	Akkermansia	Species	239935
+35950704	1552	1565	Oscillibacter	Species	459786
+35950704	1571	1594	Fatty Acids Volatile	Chemical	MESH:D005232
+35950704	1626	1638	Pre-Eclampsia	Disease	MESH:D011225
+35950704	1681	1701	Dysbiosis	Disease	MESH:D064806
+35950704	1730	1742	Pre-Eclampsia	Disease	MESH:D011225
+35950704	1748	1758	microbiota	Disease	-
+35950704	1844	1856	Pre-Eclampsia	Disease	MESH:D011225
+35950704	1973	1985	Pre-Eclampsia	Disease	MESH:D011225
+35950704	Negative_Correlation	MESH:D005232	MESH:D064806
+35950704	Negative_Correlation	MESH:D005232	MESH:C538543
+35950704	Negative_Correlation	MESH:D011422	MESH:C538543
+35950704	Negative_Correlation	MESH:D002087	MESH:C538543
+35950704	Negative_Correlation	MESH:D011422	MESH:D007249
+35950704	Negative_Correlation	MESH:D002087	MESH:D007249
+
+33074224|t|Short-Chain Fatty Acids and Lipopolysaccharide as Mediators Between Gut Dysbiosis and Amyloid Pathology in Alzheimer's Disease.
+33074224|a|BACKGROUND: Metagenomic data support an association between certain bacterial strains and Alzheimer's disease (AD), but their functional dynamics remain elusive. OBJECTIVE: To investigate the association between amyloid pathology, bacterial products such as lipopolysaccharide (LPS) and short chain fatty acids (SCFAs: acetate, valerate, butyrate), inflammatory mediators, and markers of endothelial dysfunction in AD. METHODS: Eighty-nine older persons with cognitive performance from normal to dementia underwent florbetapir amyloid PET and blood collection. Brain amyloidosis was measured with standardized uptake value ratio versus cerebellum. Blood levels of LPS were measured by ELISA, SCFAs by mass spectrometry, cytokines by using real-time PCR, and biomarkers of endothelial dysfunction by flow cytometry. We investigated the association between the variables listed above with Spearman's rank test. RESULTS: Amyloid SUVR uptake was positively associated with blood LPS (rho>=0.32, p<=0.006), acetate and valerate (rho>=0.45, p < 0.001), pro-inflammatory cytokines (rho>=0.25, p<=0.012), and biomarkers of endothelial dysfunction (rho>=0.25, p<=0.042). In contrast, it was negatively correlated with butyrate (rho<=-0.42, p<=0.020) and the anti-inflammatory cytokine IL10 (rho<=-0.26, p<=0.009). Endothelial dysfunction was positively associated with pro-inflammatory cytokines, acetate and valerate (rho>=0.25, p<=0.045) and negatively with butyrate and IL10 levels (rho<=-0.25, p<=0.038). CONCLUSION: We report a novel association between gut microbiota-related products and systemic inflammation with brain amyloidosis via endothelial dysfunction, suggesting that SCFAs and LPS represent candidate pathophysiologic links between the gut microbiota and AD pathology.
+33074224	0	23	Fatty Acids Volatile	Chemical	MESH:D005232
+33074224	28	46	Lipopolysaccharides	Chemical	MESH:D008070
+33074224	68	81	Dysbiosis	Disease	MESH:D064806
+33074224	86	103	AA amyloidosis	Disease	MESH:C000718787
+33074224	107	126	Alzheimer Disease	Disease	MESH:D000544
+33074224	218	237	Alzheimer Disease	Disease	MESH:D000544
+33074224	239	241	Alzheimer Disease	Disease	MESH:D000544
+33074224	340	357	AA amyloidosis	Disease	MESH:C000718787
+33074224	386	404	Lipopolysaccharides	Chemical	MESH:D008070
+33074224	406	409	Lipopolysaccharides	Chemical	MESH:D008070
+33074224	415	438	Fatty Acids Volatile	Chemical	MESH:D005232
+33074224	440	445	Fatty Acids Volatile	Chemical	MESH:D005232
+33074224	447	454	Acetates	Chemical	MESH:D000085
+33074224	456	464	Valerates	Chemical	MESH:D014631
+33074224	466	474	Butyrates	Chemical	MESH:D002087
+33074224	477	489	Inflammation	Disease	MESH:D007249
+33074224	516	539	Vascular Diseases	Disease	MESH:D014652
+33074224	543	545	Alzheimer Disease	Disease	MESH:D000544
+33074224	624	632	Dementia	Disease	MESH:D003704
+33074224	643	654	florbetapir	Chemical	MESH:C545186
+33074224	689	706	Amyloidosis	Disease	MESH:D000686
+33074224	792	795	Lipopolysaccharides	Chemical	MESH:D008070
+33074224	820	825	Fatty Acids Volatile	Chemical	MESH:D005232
+33074224	900	923	Vascular Diseases	Disease	MESH:D014652
+33074224	1103	1106	Lipopolysaccharides	Chemical	MESH:D008070
+33074224	1130	1137	Acetates	Chemical	MESH:D000085
+33074224	1142	1150	Valerates	Chemical	MESH:D014631
+33074224	1179	1191	Inflammation	Disease	MESH:D007249
+33074224	1243	1266	Vascular Diseases	Disease	MESH:D014652
+33074224	1337	1345	Butyrates	Chemical	MESH:D002087
+33074224	1382	1394	Inflammation	Disease	MESH:D007249
+33074224	1404	1408	IL10	Gene	3586
+33074224	1433	1456	Vascular Diseases	Disease	MESH:D014652
+33074224	1492	1504	Inflammation	Disease	MESH:D007249
+33074224	1516	1523	Acetates	Chemical	MESH:D000085
+33074224	1528	1536	Valerates	Chemical	MESH:D014631
+33074224	1579	1587	Butyrates	Chemical	MESH:D002087
+33074224	1592	1596	IL10	Gene	3586
+33074224	1723	1735	Inflammation	Disease	MESH:D007249
+33074224	1741	1758	Amyloidosis	Disease	MESH:D000686
+33074224	1763	1786	Vascular Diseases	Disease	MESH:D014652
+33074224	1804	1809	Fatty Acids Volatile	Chemical	MESH:D005232
+33074224	1814	1817	Lipopolysaccharides	Chemical	MESH:D008070
+33074224	1892	1894	Alzheimer Disease	Disease	MESH:D000544
+33074224	Association	MESH:D008070	MESH:D064806
+33074224	Positive_Correlation	MESH:D000085	MESH:D014652
+33074224	Association	MESH:D005232	MESH:D064806
+33074224	Association	MESH:D014652	3586
+33074224	Association	MESH:D008070	MESH:C000718787
+33074224	Association	MESH:C545186	MESH:D003704
+33074224	Association	MESH:D008070	MESH:D000544
+33074224	Positive_Correlation	MESH:D014631	MESH:D014652
+33074224	Association	MESH:D008070	MESH:D000686
+33074224	Association	MESH:D005232	MESH:D000544
+33074224	Association	MESH:D005232	MESH:C000718787
+33074224	Association	MESH:D002087	MESH:D014652
+
+35430804|t|The microbiota-gut-brain axis participates in chronic cerebral hypoperfusion by disrupting the metabolism of short-chain fatty acids.
+35430804|a|BACKGROUND: Chronic cerebral hypoperfusion (CCH) underlies secondary brain injury following certain metabolic disorders and central nervous system (CNS) diseases. Dysregulation of the microbiota-gut-brain axis can exacerbate various CNS disorders through aberrantly expressed metabolites such as short-chain fatty acids (SCFAs). Yet, its relationship with CCH remains to be demonstrated. And if so, it is of interest to explore whether restoring gut microbiota to maintain SCFA metabolism could protect against CCH. RESULTS: Rats subjected to bilateral common carotid artery occlusion (BCCAO) as a model of CCH exhibited cognitive impairment, depressive-like behaviors, decreased gut motility, and compromised gut barrier functions. The 16S ribosomal RNA gene sequencing revealed an abnormal gut microbiota profile and decreased relative abundance of some representative SCFA producers, with the decreased hippocampal SCFAs as the further evidence. Using fecal microbiota transplantation (FMT), rats recolonized with a balanced gut microbiome acquired a higher level of hippocampal SCFAs, as well as decreased neuroinflammation when exposed to lipopolysaccharide. Healthy FMT promoted gut motility and gut barrier functions, and improved cognitive decline and depressive-like behaviors by inhibiting hippocampal neuronal apoptosis in BCCAO rats. Long-term SCFA supplementation further confirmed its neuroprotective effect in terms of relieving inflammatory response and hippocampal neuronal apoptosis following BCCAO. CONCLUSION: Our results demonstrate that modulating the gut microbiome via FMT can ameliorate BCCAO-induced gut dysbiosis, cognitive decline, and depressive-like behaviors, possibly by enhancing the relative abundance of SCFA-producing floras and subsequently increasing SCFA levels. Video abstract.
+35430804	46	76	Hepatitis Chronic	Disease	MESH:D006521
+35430804	109	132	Fatty Acids Volatile	Chemical	MESH:D005232
+35430804	146	176	Hepatitis Chronic	Disease	MESH:D006521
+35430804	178	181	Hepatitis Chronic	Disease	MESH:D006521
+35430804	203	215	Brain Injuries	Disease	MESH:D001930
+35430804	234	253	Metabolic Diseases	Disease	MESH:D008659
+35430804	258	295	Central Nervous System Diseases	Disease	MESH:D002493
+35430804	367	380	Central Nervous System Diseases	Disease	MESH:D002493
+35430804	430	453	Fatty Acids Volatile	Chemical	MESH:D005232
+35430804	455	460	Fatty Acids Volatile	Chemical	MESH:D005232
+35430804	490	493	Hepatitis Chronic	Disease	MESH:D006521
+35430804	607	611	Fatty Acids Volatile	Chemical	MESH:D005232
+35430804	645	648	Hepatitis Chronic	Disease	MESH:D006521
+35430804	659	663	Rats	Species	10116
+35430804	687	718	Carotid Artery Diseases	Disease	MESH:D002340
+35430804	720	725	Carotid Artery Diseases	Disease	MESH:D002340
+35430804	741	744	Hepatitis Chronic	Disease	MESH:D006521
+35430804	755	775	Cognition Disorders	Disease	MESH:D003072
+35430804	777	787	Depressive Disorder	Disease	MESH:D003866
+35430804	1005	1009	Fatty Acids Volatile	Chemical	MESH:D005232
+35430804	1052	1057	Fatty Acids Volatile	Chemical	MESH:D005232
+35430804	1129	1133	rats	Species	10116
+35430804	1216	1221	Fatty Acids Volatile	Chemical	MESH:D005232
+35430804	1244	1261	Neuroinflammatory Diseases	Disease	MESH:D000090862
+35430804	1278	1296	Lipopolysaccharides	Chemical	MESH:D008070
+35430804	1372	1389	Cognition Disorders	Disease	MESH:D003072
+35430804	1394	1404	Depressive Disorder	Disease	MESH:D003866
+35430804	1446	1454	Nerve Degeneration	Disease	MESH:D009410
+35430804	1468	1473	Carotid Artery Diseases	Disease	MESH:D002340
+35430804	1474	1478	rats	Species	10116
+35430804	1490	1494	Fatty Acids Volatile	Chemical	MESH:D005232
+35430804	1578	1590	Inflammation	Disease	MESH:D007249
+35430804	1616	1624	Nerve Degeneration	Disease	MESH:D009410
+35430804	1645	1650	Carotid Artery Diseases	Disease	MESH:D002340
+35430804	1746	1751	Carotid Artery Diseases	Disease	MESH:D002340
+35430804	1764	1773	Dysbiosis	Disease	MESH:D064806
+35430804	1775	1792	Cognition Disorders	Disease	MESH:D003072
+35430804	1798	1808	Depressive Disorder	Disease	MESH:D003866
+35430804	1873	1877	Fatty Acids Volatile	Chemical	MESH:D005232
+35430804	1923	1927	Fatty Acids Volatile	Chemical	MESH:D005232
+35430804	Association	MESH:D005232	MESH:D003866
+35430804	Negative_Correlation	MESH:D005232	MESH:D006521
+35430804	Negative_Correlation	MESH:D005232	MESH:D009410
+35430804	Negative_Correlation	MESH:D005232	MESH:D007249
+35430804	Association	MESH:D005232	MESH:D003072
+35430804	Positive_Correlation	MESH:D008070	MESH:D000090862
+35430804	Negative_Correlation	MESH:D005232	MESH:D002340
+35430804	Association	MESH:D005232	MESH:D002493
+
+29302038|t|Short-chain fatty acids regulate systemic bone mass and protect from pathological bone loss.
+29302038|a|Microbial metabolites are known to modulate immune responses of the host. The main metabolites derived from microbial fermentation of dietary fibers in the intestine, short-chain fatty acids (SCFA), affect local and systemic immune functions. Here we show that SCFA are regulators of osteoclast metabolism and bone mass in vivo. Treatment of mice with SCFA as well as feeding with a high-fiber diet significantly increases bone mass and prevents postmenopausal and inflammation-induced bone loss. The protective effects of SCFA on bone mass are associated with inhibition of osteoclast differentiation and bone resorption in vitro and in vivo, while bone formation is not affected. Mechanistically, propionate (C3) and butyrate (C4) induce metabolic reprogramming of osteoclasts resulting in enhanced glycolysis at the expense of oxidative phosphorylation, thereby downregulating essential osteoclast genes such as TRAF6 and NFATc1. In summary, these data identify SCFA as potent regulators of osteoclast metabolism and bone homeostasis.
+29302038	0	23	Fatty Acids Volatile	Chemical	MESH:D005232
+29302038	82	91	Bone Diseases	Disease	MESH:D001847
+29302038	260	283	Fatty Acids Volatile	Chemical	MESH:D005232
+29302038	285	289	Fatty Acids Volatile	Chemical	MESH:D005232
+29302038	354	358	Fatty Acids Volatile	Chemical	MESH:D005232
+29302038	435	439	mice	Species	10090
+29302038	445	449	Fatty Acids Volatile	Chemical	MESH:D005232
+29302038	558	570	Inflammation	Disease	MESH:D007249
+29302038	579	588	Bone Diseases	Disease	MESH:D001847
+29302038	616	620	Fatty Acids Volatile	Chemical	MESH:D005232
+29302038	792	802	Propionates	Chemical	MESH:D011422
+29302038	812	820	Butyrates	Chemical	MESH:D002087
+29302038	822	824	imciromab pentetate	Chemical	MESH:C058899
+29302038	1008	1013	Traf6	Gene	22034
+29302038	1018	1024	Nfatc1	Gene	18018
+29302038	1058	1062	Fatty Acids Volatile	Chemical	MESH:D005232
+29302038	Negative_Correlation	MESH:C058899	22034
+29302038	Negative_Correlation	MESH:D002087	18018
+29302038	Negative_Correlation	MESH:D002087	22034
+29302038	Negative_Correlation	MESH:D005232	MESH:D001847
+29302038	Negative_Correlation	MESH:D005232	MESH:D007249
+29302038	Negative_Correlation	MESH:C058899	18018
+29302038	Negative_Correlation	MESH:D011422	18018
+29302038	Negative_Correlation	MESH:D011422	22034
+
+39738035|t|Colon-targeted engineered postbiotics nanoparticles alleviate osteoporosis through the gut-bone axis.
+39738035|a|The potential for mitigating intestinal inflammation through the gut-bone axis in the treatment of osteoporosis is significant. While various gut-derived postbiotics or bacterial metabolites have been created as dietary supplements to prevent or reverse bone loss, their efficacy and safety still need improvement. Herein, a colon-targeted drug delivery system is developed using surface engineering of polyvinyl butyrate nanoparticles by shellac resin to achieve sustained release of postbiotics butyric acid at the colorectal site. These engineered postbiotics nanoparticles can effectively suppress macrophage inflammatory activation, modulate the redox balance, and regulate the composition of the gut microbiota, thereby restoring epithelial barriers, inhibiting bacterial invasion, and down-regulating pro-inflammatory responses. As a result, the remission of systemic inflammation is accompanied by a rebalancing of osteoblast and osteoclast activity, alleviating inflammatory bowel disease-related and post-menopausal bone loss. Specifically, the treatment of engineered postbiotics nanoparticles can also improve the quality and quantity of bone with restoration of deteriorative mechanical properties, which indicating a therapeutic potential on fracture prevention. This study provides valuable insights into the gut-bone axis and establishes a promising and safe therapeutic strategy for osteoporosis.
+39738035	26	37	postbiotics	Chemical	-
+39738035	62	74	Osteoporosis	Disease	MESH:D010024
+39738035	142	154	Inflammation	Disease	MESH:D007249
+39738035	201	213	Osteoporosis	Disease	MESH:D010024
+39738035	256	267	postbiotics	Chemical	-
+39738035	356	365	Bone Diseases	Disease	MESH:D001847
+39738035	505	523	polyvinyl butyrate	Chemical	-
+39738035	541	554	shellac resin	Chemical	-
+39738035	587	598	postbiotics	Chemical	-
+39738035	599	611	Butyric Acid	Chemical	MESH:D020148
+39738035	653	664	postbiotics	Chemical	-
+39738035	715	727	Inflammation	Disease	MESH:D007249
+39738035	914	926	Inflammation	Disease	MESH:D007249
+39738035	977	989	Inflammation	Disease	MESH:D007249
+39738035	1073	1099	Inflammatory Bowel Diseases	Disease	MESH:D015212
+39738035	1112	1137	Osteoporosis Postmenopausal	Disease	MESH:D015663
+39738035	1181	1192	postbiotics	Chemical	-
+39738035	1358	1366	Fractures Bone	Disease	MESH:D050723
+39738035	1502	1514	Osteoporosis	Disease	MESH:D010024
+
+30446387|t|The Microbial Metabolite Butyrate Stimulates Bone Formation via T Regulatory Cell-Mediated Regulation of WNT10B Expression.
+30446387|a|Nutritional supplementation with probiotics can prevent pathologic bone loss. Here we examined the impact of supplementation with Lactobacillus rhamnosus GG (LGG) on bone homeostasis in eugonadic young mice. Micro-computed tomography revealed that LGG increased trabecular bone volume in mice, which was due to increased bone formation. Butyrate produced in the gut following LGG ingestion, or butyrate fed directly to germ-free mice, induced the expansion of intestinal and bone marrow (BM) regulatory T (Treg) cells. Interaction of BM CD8+ T cells with Treg cells resulted in increased secretion of Wnt10b, a bone anabolic Wnt ligand. Mechanistically, Treg cells promoted the assembly of a NFAT1-SMAD3 transcription complex in CD8+ cells, which drove expression of Wnt10b. Reducing Treg cell numbers, or reconstitution of TCRbeta-/- mice with CD8+ T cells from Wnt10b-/- mice, prevented butyrate-induced bone formation and bone mass acquisition. Thus, butyrate concentrations regulate bone anabolism via Treg cell-mediated regulation of CD8+ T cell Wnt10b production.
+30446387	25	33	Butyrates	Chemical	MESH:D002087
+30446387	105	111	Wnt10b	Gene	22410
+30446387	191	200	Bone Diseases	Disease	MESH:D001847
+30446387	254	280	Lactobacillus rhamnosus GG	Species	568703
+30446387	282	285	LGG	Species	568703
+30446387	326	330	mice	Species	10090
+30446387	372	375	LGG	Species	568703
+30446387	412	416	mice	Species	10090
+30446387	461	469	Butyrates	Chemical	MESH:D002087
+30446387	500	503	LGG	Species	568703
+30446387	518	526	Butyrates	Chemical	MESH:D002087
+30446387	553	557	mice	Species	10090
+30446387	725	731	Wnt10b	Gene	22410
+30446387	816	821	Nfatc2	Gene	18019
+30446387	822	827	Smad3	Gene	17127
+30446387	891	897	Wnt10b	Gene	22410
+30446387	948	955	Tcrb	Gene	21577
+30446387	959	963	mice	Species	10090
+30446387	987	993	Wnt10b	Gene	22410
+30446387	997	1001	mice	Species	10090
+30446387	1013	1021	Butyrates	Chemical	MESH:D002087
+30446387	1078	1086	Butyrates	Chemical	MESH:D002087
+30446387	1175	1181	Wnt10b	Gene	22410
+30446387	Association	MESH:D002087	22410
+30446387	Association	17127	18019
+30446387	Association	17127	22410
+
+33968085|t|Partners in Leaky Gut Syndrome: Intestinal Dysbiosis and Autoimmunity.
+33968085|a|The intestinal surface is constitutively exposed to diverse antigens, such as food antigens, food-borne pathogens, and commensal microbes. Intestinal epithelial cells have developed unique barrier functions that prevent the translocation of potentially hostile antigens into the body. Disruption of the epithelial barrier increases intestinal permeability, resulting in leaky gut syndrome (LGS). Clinical reports have suggested that LGS contributes to autoimmune diseases such as type 1 diabetes, multiple sclerosis, rheumatoid arthritis, and celiac disease. Furthermore, the gut commensal microbiota plays a critical role in regulating host immunity; abnormalities of the microbial community, known as dysbiosis, are observed in patients with autoimmune diseases. However, the pathological links among intestinal dysbiosis, LGS, and autoimmune diseases have not been fully elucidated. This review discusses the current understanding of how commensal microbiota contributes to the pathogenesis of autoimmune diseases by modifying the epithelial barrier.
+33968085	12	30	Red cell phospholipid defect with hemolysis	Disease	MESH:C535298
+33968085	32	52	Dysbiosis	Disease	MESH:D064806
+33968085	441	459	Red cell phospholipid defect with hemolysis	Disease	MESH:C535298
+33968085	461	464	Red cell phospholipid defect with hemolysis	Disease	MESH:C535298
+33968085	504	507	Red cell phospholipid defect with hemolysis	Disease	MESH:C535298
+33968085	523	542	Autoimmune Diseases	Disease	MESH:D001327
+33968085	551	566	Diabetes Mellitus Type 1	Disease	MESH:D003922
+33968085	568	586	Multiple Sclerosis	Disease	MESH:D009103
+33968085	588	608	Arthritis Rheumatoid	Disease	MESH:D001172
+33968085	614	628	Celiac Disease	Disease	MESH:D002446
+33968085	801	809	patients	Species	9606
+33968085	815	834	Autoimmune Diseases	Disease	MESH:D001327
+33968085	874	894	Dysbiosis	Disease	MESH:D064806
+33968085	896	899	Red cell phospholipid defect with hemolysis	Disease	MESH:C535298
+33968085	905	924	Autoimmune Diseases	Disease	MESH:D001327
+33968085	1068	1087	Autoimmune Diseases	Disease	MESH:D001327
+
+35177222|t|The etiology of preeclampsia.
+35177222|a|Preeclampsia is one of the "great obstetrical syndromes" in which multiple and sometimes overlapping pathologic processes activate a common pathway consisting of endothelial cell activation, intravascular inflammation, and syncytiotrophoblast stress. This article reviews the potential etiologies of preeclampsia. The role of uteroplacental ischemia is well-established on the basis of a solid body of clinical and experimental evidence. A causal role for microorganisms has gained recognition through the realization that periodontal disease and maternal gut dysbiosis are linked to atherosclerosis, thus possibly to a subset of patients with preeclampsia. The recent reports indicating that SARS-CoV-2 infection might be causally linked to preeclampsia are reviewed along with the potential mechanisms involved. Particular etiologic factors, such as the breakdown of maternal-fetal immune tolerance (thought to account for the excess of preeclampsia in primipaternity and egg donation), may operate, in part, through uteroplacental ischemia, whereas other factors such as placental aging may operate largely through syncytiotrophoblast stress. This article also examines the association between gestational diabetes mellitus and maternal obesity with preeclampsia. The role of autoimmunity, fetal diseases, and endocrine disorders is discussed. A greater understanding of the etiologic factors of preeclampsia is essential to improve treatment and prevention.
+35177222	16	28	Pre-Eclampsia	Disease	MESH:D011225
+35177222	30	42	Pre-Eclampsia	Disease	MESH:D011225
+35177222	64	75	Labor Pain	Disease	MESH:D048949
+35177222	235	247	Inflammation	Disease	MESH:D007249
+35177222	330	342	Pre-Eclampsia	Disease	MESH:D011225
+35177222	356	379	Ischemia	Disease	MESH:D007511
+35177222	553	572	Periodontal Diseases	Disease	MESH:D010510
+35177222	590	599	Dysbiosis	Disease	MESH:D064806
+35177222	614	629	Atherosclerosis	Disease	MESH:D050197
+35177222	660	668	patients	Species	9606
+35177222	674	686	Pre-Eclampsia	Disease	MESH:D011225
+35177222	723	743	COVID-19	Disease	MESH:D000086382
+35177222	772	784	Pre-Eclampsia	Disease	MESH:D011225
+35177222	969	981	Pre-Eclampsia	Disease	MESH:D011225
+35177222	1049	1072	Ischemia	Disease	MESH:D007511
+35177222	1227	1256	Diabetes Gestational	Disease	MESH:D016640
+35177222	1270	1277	Obesity	Disease	MESH:D009765
+35177222	1283	1295	Pre-Eclampsia	Disease	MESH:D011225
+35177222	1323	1337	Fetal Diseases	Disease	MESH:D005315
+35177222	1343	1362	Endocrine System Diseases	Disease	MESH:D004700
+35177222	1429	1441	Pre-Eclampsia	Disease	MESH:D011225
+
+38321650|t|Diet-induced gut dysbiosis and leaky gut syndrome.
+38321650|a|Chronic gut inflammation promotes the development of metabolic diseases such as obesity. There is growing evidence which suggests that dysbiosis in gut microbiota and metabolites disrupt the integrity of the intestinal barrier and significantly impact the level of inflammation in various tissues, including the liver and adipose tissues. Moreover, dietary sources are connected to the development of leaky gut syndrome through their interaction with the gut microbiota. This review examines the effects of these factors on intestinal microorganisms and the communication pathways between the gut-liver and gut-brain axis. The consumption of diets rich in fats and carbohydrates has been found to weaken the adherence of tight junction proteins in the gastrointestinal tract. Consequently, this allows endotoxins, such as lipopolysaccharides produced by detrimental bacteria, to permeate through portal veins, leading to metabolic endotoxemia and alterations in the gut microbiome composition with reduced production of metabolites, such as short-chain fatty acids. However, the precise correlation between gut microbiota and alternative sweeteners remains uncertain, necessitating further investigation. This study highlights the significance of exploring the impact of diet on gut microbiota and the underlying mechanisms in the gut-liver and gut-brain axis. Nevertheless, limited research on the gut-liver axis poses challenges in comprehending the intricate connections between diet and the gut-brain axis. This underscores the need for comprehensive studies to elucidate the intricate gut-brain mechanisms underlying intestinal health and microbiota.
+38321650	13	26	Dysbiosis	Disease	MESH:D064806
+38321650	31	49	Red cell phospholipid defect with hemolysis	Disease	MESH:C535298
+38321650	59	75	Inflammation	Disease	MESH:D007249
+38321650	104	122	Metabolic Diseases	Disease	MESH:D008659
+38321650	131	138	Obesity	Disease	MESH:D009765
+38321650	316	328	Inflammation	Disease	MESH:D007249
+38321650	452	470	Red cell phospholipid defect with hemolysis	Disease	MESH:C535298
+38321650	707	711	Fats	Chemical	MESH:D005223
+38321650	716	729	Carbohydrates	Chemical	MESH:D002241
+38321650	873	892	Lipopolysaccharides	Chemical	MESH:D008070
+38321650	972	993	Endotoxemia	Disease	MESH:D019446
+38321650	1092	1115	Fatty Acids Volatile	Chemical	MESH:D005232
+38321650	Positive_Correlation	MESH:D008070	MESH:D019446
+38321650	Positive_Correlation	MESH:D002241	MESH:D019446
+38321650	Positive_Correlation	MESH:D005223	MESH:D019446
+38321650	Negative_Correlation	MESH:D002241	MESH:D005232
+
+33651651|t|Association between antibiotics and gut microbiome dysbiosis in children: systematic review and meta-analysis.
+33651651|a|Antibiotics in childhood have been linked with diseases including asthma, juvenile arthritis, type 1 diabetes, Crohn's disease and mental illness. The underlying mechanisms are thought related to dysbiosis of the gut microbiome. We conducted a systematic review of the association between antibiotics and disruption of the pediatric gut microbiome. Searches used MEDLINE, EMBASE and Web of Science. Eligible studies: association between antibiotics and gut microbiome dysbiosis; children 0-18 years; molecular techniques of assessment; outcomes of microbiome richness, diversity or composition. Quality assessed by Newcastle-Ottawa Scale or Cochrane Risk of Bias Tool. Meta-analysis where possible. A total of 4,668 publications identified: 12 in final analysis (5 randomized controlled trials (RCTs), 5 cohort studies, 2 cross-sectional studies). Microbiome richness was measured in 3 studies, species diversity in 6, and species composition in 10. Quality of evidence was good or fair. 5 studies found a significant reduction in diversity and 3 a significant reduction in richness. Macrolide exposure was associated with reduced richness for twice as long as penicillin. Significant reductions were seen in Bifidobacteria (5 studies) and Lactobacillus (2 studies), and significant increases in Proteobacteria such as E. coli (4 studies). A meta-analysis of RCTs of the effect of macrolide (azithromycin) exposure on the gut microbiome found a significant reduction in alpha-diversity (Shannon index: mean difference -0.86 (95% CI -1.59, -0.13). Antibiotic exposure was associated with reduced microbiome diversity and richness, and with changes in bacterial abundance. The potential for dysbiosis in the microbiome should be taken into account when prescribing antibiotics for children.Systematic review registration number: CRD42018094188.
+33651651	40	60	Dysbiosis	Disease	MESH:D064806
+33651651	177	183	Asthma	Disease	MESH:D001249
+33651651	185	203	Arthritis Juvenile	Disease	MESH:D001171
+33651651	205	220	Diabetes Mellitus Type 1	Disease	MESH:D003922
+33651651	222	237	Crohn Disease	Disease	MESH:D003424
+33651651	242	256	Mental Disorders	Disease	MESH:D001523
+33651651	568	588	Dysbiosis	Disease	MESH:D064806
+33651651	1195	1204	Macrolides	Chemical	MESH:D018942
+33651651	1272	1282	Penicillins	Chemical	MESH:D010406
+33651651	1320	1334	Bifidobacteria	Species	-
+33651651	1351	1364	Lactobacillus	Species	1578
+33651651	1430	1437	E. coli	Species	562
+33651651	1492	1501	Macrolides	Chemical	MESH:D018942
+33651651	1503	1515	Azithromycin	Chemical	MESH:D017963
+
+36421397|t|The Gut Microbiome and Female Health.
+36421397|a|The possession of two X chromosomes may come with the risk of various illnesses, females are more likely to be affected by osteoarthritis, heart disease, and anxiety. Given the reported correlations between gut microbiome dysbiosis and various illnesses, the female gut microbiome is worthy of exploration. Herein, we discuss the composition of the female gut microbiota and its dysbiosis in pathologies affecting the female population. Using PubMed, we performed a literature search, using key terms, namely: "gut microbiome", "estrogen", "menopause", "polycystic ovarian syndrome", "pregnancy", and "menstruation". In polycystic ovarian syndrome (PCOS), the abundance of Bacteroides vulgatus, Firmicutes, Streptococcus, and the ratio of Escherichia/Shigella was found to be increased while that of Tenericutes ML615J-28, Tenericutes 124-7, Akkermansia, Ruminococcaceae, and Bacteroidetes S24-7 was reduced. In breast cancer, the abundance of Clostridiales was enhanced, while in cervical cancer, Prevotella, Porphyromonas, and Dialister were enhanced but Bacteroides, Alistipes, and members of Lachnospiracea, were decreased. In ovarian cancer, Prevotella abundance was increased. Interestingly, the administration of Lactobacillus acidophilus, Bifidobacterium bifidum, Lactobacillus reuteri, and Lactobacillus fermentum ameliorated PCOS symptoms while that of a mix of Bifidobacterium lactis W51, Bifidobacterium bifidum W23, Lactobacillus brevis W63, Bifidobacterium lactis W52, Lactobacillus salivarius W24, Lactobacillus acidophilus W37, Lactococcus lactis W19, Lactobacillus casei W56, and Lactococcus lactis W58 alleviated vascular malfunction and arterial stiffness in obese postmenopausal women, and finally, while further research is needed, Prevotella maybe protective against postmenopausal bone mass loss. As several studies report the therapeutic potential of probiotics and since the gut microbiota of certain female pathological states has been relatively characterized, we speculate that the administration of certain bacterial species as probiotics is warranted, as novel independent or adjunct therapies for various female pathologies.
+36421397	161	175	Osteoarthritis	Disease	MESH:D010003
+36421397	177	190	Heart Diseases	Disease	MESH:D006331
+36421397	196	203	Anxiety	Disease	MESH:D001007
+36421397	592	619	Polycystic Ovary Syndrome	Disease	MESH:D011085
+36421397	658	685	Polycystic Ovary Syndrome	Disease	MESH:D011085
+36421397	687	691	Polycystic Ovary Syndrome	Disease	MESH:D011085
+36421397	711	731	Bacteroides vulgatus	Species	821
+36421397	745	758	Streptococcus	Species	1301
+36421397	777	788	Escherichia	Species	562
+36421397	789	797	Shigella	Species	620
+36421397	838	859	Tenericutes ML615J-28	Species	-
+36421397	861	878	Tenericutes 124-7	Species	-
+36421397	880	891	Akkermansia	Species	239934
+36421397	914	933	Bacteroidetes S24-7	Species	-
+36421397	950	963	Breast Neoplasms	Disease	MESH:D001943
+36421397	1019	1034	Uterine Cervical Neoplasms	Disease	MESH:D002583
+36421397	1036	1046	Prevotella	Species	838
+36421397	1048	1061	Porphyromonas	Species	836
+36421397	1067	1076	Dialister	Species	39948
+36421397	1095	1106	Bacteroides	Species	821
+36421397	1108	1117	Alistipes	Species	239759
+36421397	1169	1183	Ovarian Neoplasms	Disease	MESH:D010051
+36421397	1185	1195	Prevotella	Species	838
+36421397	1258	1283	Lactobacillus acidophilus	Species	1579
+36421397	1285	1308	Bifidobacterium bifidum	Species	1681
+36421397	1310	1331	Lactobacillus reuteri	Species	1598
+36421397	1337	1360	Lactobacillus fermentum	Species	1613
+36421397	1373	1377	Polycystic Ovary Syndrome	Disease	MESH:D011085
+36421397	1410	1436	Bifidobacterium lactis W51	Species	-
+36421397	1438	1465	Bifidobacterium bifidum W23	Species	-
+36421397	1467	1491	Lactobacillus brevis W63	Species	-
+36421397	1493	1519	Bifidobacterium lactis W52	Species	-
+36421397	1521	1549	Lactobacillus salivarius W24	Species	-
+36421397	1551	1580	Lactobacillus acidophilus W37	Species	-
+36421397	1582	1604	Lactococcus lactis W19	Species	-
+36421397	1606	1629	Lactobacillus casei W56	Species	1215914
+36421397	1635	1657	Lactococcus lactis W58	Species	-
+36421397	1669	1689	Vascular System Injuries	Disease	MESH:D057772
+36421397	1694	1712	Stiff Skin Syndrome	Disease	MESH:C566112
+36421397	1716	1721	Obesity	Disease	MESH:D009765
+36421397	1737	1742	women	Species	9606
+36421397	1791	1801	Prevotella	Species	838
+36421397	1842	1856	Bone Diseases	Disease	MESH:D001847
+
+33670115|t|Gut-Skin Axis: Current Knowledge of the Interrelationship between Microbial Dysbiosis and Skin Conditions.
+33670115|a|The microbiome plays an important role in a wide variety of skin disorders. Not only is the skin microbiome altered, but also surprisingly many skin diseases are accompanied by an altered gut microbiome. The microbiome is a key regulator for the immune system, as it aims to maintain homeostasis by communicating with tissues and organs in a bidirectional manner. Hence, dysbiosis in the skin and/or gut microbiome is associated with an altered immune response, promoting the development of skin diseases, such as atopic dermatitis, psoriasis, acne vulgaris, dandruff, and even skin cancer. Here, we focus on the associations between the microbiome, diet, metabolites, and immune responses in skin pathologies. This review describes an exhaustive list of common skin conditions with associated dysbiosis in the skin microbiome as well as the current body of evidence on gut microbiome dysbiosis, dietary links, and their interplay with skin conditions. An enhanced understanding of the local skin and gut microbiome including the underlying mechanisms is necessary to shed light on the microbial involvement in human skin diseases and to develop new therapeutic approaches.
+33670115	66	85	Dysbiosis	Disease	MESH:D064806
+33670115	90	105	Skin Diseases	Disease	MESH:D012871
+33670115	167	181	Skin Diseases	Disease	MESH:D012871
+33670115	251	264	Skin Diseases	Disease	MESH:D012871
+33670115	598	611	Skin Diseases	Disease	MESH:D012871
+33670115	621	638	Dermatitis Atopic	Disease	MESH:D003876
+33670115	640	649	Psoriasis	Disease	MESH:D011565
+33670115	651	664	Acne Vulgaris	Disease	MESH:D000152
+33670115	666	674	Dandruff	Disease	MESH:D063807
+33670115	685	696	Skin Neoplasms	Disease	MESH:D012878
+33670115	800	816	Skin Diseases	Disease	MESH:D012871
+33670115	869	884	Skin Diseases	Disease	MESH:D012871
+33670115	981	1001	Dysbiosis	Disease	MESH:D064806
+33670115	1043	1058	Skin Diseases	Disease	MESH:D012871
+33670115	1218	1223	human	Species	9606
+33670115	1224	1237	Skin Diseases	Disease	MESH:D012871
+
+38218095|t|Atopic dermatitis: Pathophysiology, microbiota, and metabolome - A comprehensive review.
+38218095|a|Atopic dermatitis (AD) is a prevalent inflammatory skin condition that commonly occurs in children. Genetics, environment, and defects in the skin barrier are only a few of the factors that influence how the disease develops. As human microbiota research has advanced, more scientific evidence has shown the critical involvement of the gut and skin bacteria in the pathogenesis of atopic dermatitis. Microbiome dysbiosis, defined by changed diversity and composition, as well as the development of pathobionts, has been identified as a potential cause for recurring episodes of atopic dermatitis. Gut dysbiosis causes "leaky gut syndrome" by disrupting the epithelial lining of the gut, which allows bacteria and other endotoxins to enter the bloodstream and cause inflammation. The same is true for the disruption of cutaneous homeostasis caused by skin dysbiosis, which enables bacteria and other pathogens to reach deeper skin layers or even systemic circulation, resulting in inflammation. Furthermore, it is now recognized that the gut and skin microbiota releases both beneficial and toxic metabolites. Here, this review covers a range of topics related to AD, including its pathophysiology, the microbiota-AD connection, commonly used treatments, and the significance of metabolomics in AD prevention, treatment, and management, recognizing its potential in providing valuable insights into the disease.
+38218095	0	17	Dermatitis Atopic	Disease	MESH:D003876
+38218095	89	106	Dermatitis Atopic	Disease	MESH:D003876
+38218095	108	110	Dermatitis Atopic	Disease	MESH:D003876
+38218095	127	154	Skin Diseases	Disease	MESH:D012871
+38218095	318	323	human	Species	9606
+38218095	470	487	Dermatitis Atopic	Disease	MESH:D003876
+38218095	667	684	Dermatitis Atopic	Disease	MESH:D003876
+38218095	708	726	Red cell phospholipid defect with hemolysis	Disease	MESH:C535298
+38218095	854	866	Inflammation	Disease	MESH:D007249
+38218095	1069	1081	Inflammation	Disease	MESH:D007249
+38218095	1252	1254	Dermatitis Atopic	Disease	MESH:D003876
+38218095	1302	1304	Dermatitis Atopic	Disease	MESH:D003876
+38218095	1383	1385	Dermatitis Atopic	Disease	MESH:D003876
+
+37224131|t|Gut microbiome dysbiosis in Alzheimer's disease and mild cognitive impairment: A systematic review and meta-analysis.
+37224131|a|BACKGROUND: Alzheimer's disease (AD) is a neurodegenerative disorder that causes gradual memory loss. AD and its prodromal stage of mild cognitive impairment (MCI) are marked by significant gut microbiome perturbations, also known as gut dysbiosis. However, the direction and extent of gut dysbiosis have not been elucidated. Therefore, we performed a meta-analysis and systematic review of 16S gut microbiome studies to gain insights into gut dysbiosis in AD and MCI. METHODS: We searched MEDLINE, Scopus, EMBASE, EBSCO, and Cochrane for AD gut microbiome studies published between Jan 1, 2010 and Mar 31, 2022. This study has two outcomes: primary and secondary. The primary outcomes explored the changes in alpha-diversity and relative abundance of microbial taxa, which were analyzed using a variance-weighted random-effects model. The secondary outcomes focused on qualitatively summarized beta-diversity ordination and linear discriminant analysis effect sizes. The risk of bias was assessed using a methodology appropriate for the included case-control studies. The geographic cohorts' heterogeneity was examined using subgroup meta-analyses if sufficient studies reported the outcome. The study protocol has been registered with PROSPERO (CRD42022328141). FINDINGS: Seventeen studies with 679 AD and MCI patients and 632 controls were identified and analyzed. The cohort is 61.9% female with a mean age of 71.3+-6.9 years. The meta-analysis shows an overall decrease in species richness in the AD gut microbiome. However, the phylum Bacteroides is consistently higher in US cohorts (standardised mean difference [SMD] 0.75, 95% confidence interval [CI] 0.37 to 1.13, p < 0.01) and lower in Chinese cohorts (SMD -0.79, 95% CI -1.32 to -0.25, p < 0.01). Moreover, the Phascolarctobacterium genus is shown to increase significantly, but only during the MCI stage. DISCUSSION: Notwithstanding possible confounding from polypharmacy, our findings show the relevance of diet and lifestyle in AD pathophysiology. Our study presents evidence for region-specific changes in abundance of Bacteroides, a major constituent of the microbiome. Moreover, the increase in Phascolarctobacterium and the decrease in Bacteroides in MCI subjects shows that gut microbiome dysbiosis is initiated in the prodromal stage. Therefore, studies of the gut microbiome can facilitate early diagnosis and intervention in Alzheimer's disease and perhaps other neurodegenerative disorders.
+37224131	15	24	Dysbiosis	Disease	MESH:D064806
+37224131	28	47	Alzheimer Disease	Disease	MESH:D000544
+37224131	52	77	Cognitive Dysfunction	Disease	MESH:D060825
+37224131	130	149	Alzheimer Disease	Disease	MESH:D000544
+37224131	151	153	Alzheimer Disease	Disease	MESH:D000544
+37224131	160	186	Neurodegenerative Diseases	Disease	MESH:D019636
+37224131	207	218	Memory Disorders	Disease	MESH:D008569
+37224131	220	222	Alzheimer Disease	Disease	MESH:D000544
+37224131	250	275	Cognitive Dysfunction	Disease	MESH:D060825
+37224131	277	280	Cognitive Dysfunction	Disease	MESH:D060825
+37224131	352	365	Dysbiosis	Disease	MESH:D064806
+37224131	404	417	Dysbiosis	Disease	MESH:D064806
+37224131	558	571	Dysbiosis	Disease	MESH:D064806
+37224131	575	577	Alzheimer Disease	Disease	MESH:D000544
+37224131	582	585	Cognitive Dysfunction	Disease	MESH:D060825
+37224131	657	659	Alzheimer Disease	Disease	MESH:D000544
+37224131	1419	1421	Alzheimer Disease	Disease	MESH:D000544
+37224131	1426	1429	Cognitive Dysfunction	Disease	MESH:D060825
+37224131	1430	1438	patients	Species	9606
+37224131	1620	1622	Alzheimer Disease	Disease	MESH:D000544
+37224131	1659	1670	Bacteroides	Species	816
+37224131	1892	1913	Phascolarctobacterium	Species	33024
+37224131	1976	1979	Cognitive Dysfunction	Disease	MESH:D060825
+37224131	2112	2114	Alzheimer Disease	Disease	MESH:D000544
+37224131	2204	2215	Bacteroides	Species	816
+37224131	2282	2303	Phascolarctobacterium	Species	33024
+37224131	2324	2335	Bacteroides	Species	816
+37224131	2339	2342	Cognitive Dysfunction	Disease	MESH:D060825
+37224131	2378	2387	Dysbiosis	Disease	MESH:D064806
+37224131	2517	2536	Alzheimer Disease	Disease	MESH:D000544
+37224131	2555	2582	Neurodegenerative Diseases	Disease	MESH:D019636
+
+40013938|t|Advances in Fecal Microbiota Transplantation for Gut Dysbiosis-Related Diseases.
+40013938|a|This article provides an overview of the advancements in the application of fecal microbiota transplantation (FMT) in treating diseases related to intestinal dysbiosis. FMT involves the transfer of healthy donor fecal microbiota into the patient's body, aiming to restore the balance of intestinal microbiota and thereby treat a variety of intestinal diseases such as recurrent Clostridioides difficile infection (rCDI), inflammatory bowel disease (IBD), constipation, short bowel syndrome (SBS), and irritable bowel syndrome (IBS). While FMT has shown high efficacy in the treatment of rCDI, further research is needed for its application in other chronic conditions. This article elaborates on the application of FMT in intestinal diseases and the mechanisms of intestinal dysbiosis, as well as discusses key factors influencing the effectiveness of FMT, including donor selection, recipient characteristics, treatment protocols, and methods for assessing microbiota. Additionally, it emphasizes the key to successful FMT. Future research should focus on optimizing the FMT process to ensure long-term safety and explore the potential application of FMT in a broader range of medical conditions.
+40013938	49	79	Dysbiosis	Disease	MESH:D064806
+40013938	228	248	Dysbiosis	Disease	MESH:D064806
+40013938	319	326	patient	Species	9606
+40013938	421	440	Intestinal Diseases	Disease	MESH:D007410
+40013938	459	493	Clostridium Infections	Disease	MESH:D003015
+40013938	495	499	Clostridium Infections	Disease	MESH:D003015
+40013938	502	528	Inflammatory Bowel Diseases	Disease	MESH:D015212
+40013938	530	533	Inflammatory Bowel Diseases	Disease	MESH:D015212
+40013938	536	548	Constipation	Disease	MESH:D003248
+40013938	550	570	Short Bowel Syndrome	Disease	MESH:D012778
+40013938	572	575	Short Bowel Syndrome	Disease	MESH:D012778
+40013938	582	606	Irritable Bowel Syndrome	Disease	MESH:D043183
+40013938	608	611	Irritable Bowel Syndrome	Disease	MESH:D043183
+40013938	668	672	Clostridium Infections	Disease	MESH:D003015
+40013938	803	822	Intestinal Diseases	Disease	MESH:D007410
+40013938	845	865	Dysbiosis	Disease	MESH:D064806
+
+28765474|t|Mucosal microbiome dysbiosis in gastric carcinogenesis.
+28765474|a|OBJECTIVES: We aimed to characterise the microbial changes associated with histological stages of gastric tumourigenesis. DESIGN: We performed 16S rRNA gene analysis of gastric mucosal samples from 81 cases including superficial gastritis (SG), atrophic gastritis (AG), intestinal metaplasia (IM) and gastric cancer (GC) from Xi'an, China, to determine mucosal microbiome dysbiosis across stages of GC. We validated the results in mucosal samples of 126 cases from Inner Mongolia, China. RESULTS: We observed significant mucosa microbial dysbiosis in IM and GC subjects, with significant enrichment of 21 and depletion of 10 bacterial taxa in GC compared with SG (q<0.05). Microbial network analysis showed increasing correlation strengths among them with disease progression (p<0.001). Five GC-enriched bacterial taxa whose species identifications correspond to Peptostreptococcus stomatis, Streptococcus anginosus, Parvimonas micra, Slackia exigua and Dialister pneumosintes had significant centralities in the GC ecological network (p<0.05) and classified GC from SG with an area under the receiver-operating curve (AUC) of 0.82. Moreover, stronger interactions among gastric microbes were observed in Helicobacter pylori-negative samples compared with H. pylori-positive samples in SG and IM. The fold changes of selected bacteria, and strengths of their interactions were successfully validated in the Inner Mongolian cohort, in which the five bacterial markers distinguished GC from SG with an AUC of 0.81. CONCLUSIONS: In addition to microbial compositional changes, we identified differences in bacterial interactions across stages of gastric carcinogenesis. The significant enrichments and network centralities suggest potentially important roles of P. stomatis, D. pneumosintes, S. exigua, P. micra and S. anginosus in GC progression.
+28765474	8	28	Dysbiosis	Disease	MESH:D064806
+28765474	32	54	Carcinogenesis	Disease	MESH:D063646
+28765474	154	176	Stomach Diseases	Disease	MESH:D013272
+28765474	273	294	Gastritis	Disease	MESH:D005756
+28765474	296	298	Gastritis	Disease	MESH:D005756
+28765474	301	319	Gastritis Atrophic	Disease	MESH:D005757
+28765474	321	323	Gastritis Atrophic	Disease	MESH:D005757
+28765474	326	347	Intestinal Diseases	Disease	MESH:D007410
+28765474	349	351	Intestinal Diseases	Disease	MESH:D007410
+28765474	357	371	Stomach Neoplasms	Disease	MESH:D013274
+28765474	373	375	Stomach Neoplasms	Disease	MESH:D013274
+28765474	417	437	Dysbiosis	Disease	MESH:D064806
+28765474	455	457	Stomach Neoplasms	Disease	MESH:D013274
+28765474	607	609	Intestinal Diseases	Disease	MESH:D007410
+28765474	614	616	Stomach Neoplasms	Disease	MESH:D013274
+28765474	699	701	Stomach Neoplasms	Disease	MESH:D013274
+28765474	716	718	Gastritis	Disease	MESH:D005756
+28765474	848	850	Stomach Neoplasms	Disease	MESH:D013274
+28765474	919	946	Peptostreptococcus stomatis	Species	341694
+28765474	948	971	Streptococcus anginosus	Species	1328
+28765474	973	989	Parvimonas micra	Species	33033
+28765474	991	1005	Slackia exigua	Species	84109
+28765474	1010	1032	Dialister pneumosintes	Species	39950
+28765474	1069	1071	Stomach Neoplasms	Disease	MESH:D013274
+28765474	1115	1117	Stomach Neoplasms	Disease	MESH:D013274
+28765474	1123	1125	Gastritis	Disease	MESH:D005756
+28765474	1261	1280	Helicobacter pylori	Species	210
+28765474	1312	1321	H. pylori	Species	210
+28765474	1342	1344	Gastritis	Disease	MESH:D005756
+28765474	1349	1351	Intestinal Diseases	Disease	MESH:D007410
+28765474	1537	1539	Stomach Neoplasms	Disease	MESH:D013274
+28765474	1545	1547	Gastritis	Disease	MESH:D005756
+28765474	1699	1721	Carcinogenesis	Disease	MESH:D063646
+28765474	1815	1826	P. stomatis	Species	760
+28765474	1828	1843	D. pneumosintes	Species	39950
+28765474	1845	1854	S. exigua	Species	7107
+28765474	1856	1864	P. micra	Species	-
+28765474	1869	1881	S. anginosus	Species	1328
+28765474	1885	1887	Stomach Neoplasms	Disease	MESH:D013274
+
+12748652|t|Osteoclast differentiation and activation.
+12748652|a|Osteoclasts are specialized cells derived from the monocyte/macrophage haematopoietic lineage that develop and adhere to bone matrix, then secrete acid and lytic enzymes that degrade it in a specialized, extracellular compartment. Discovery of the RANK signalling pathway in the osteoclast has provided insight into the mechanisms of osteoclastogenesis and activation of bone resorption, and how hormonal signals impact bone structure and mass. Further study of this pathway is providing the molecular basis for developing therapeutics to treat osteoporosis and other diseases of bone loss.
+12748652	588	600	Osteoporosis	Disease	MESH:D010024
+12748652	623	632	Bone Diseases	Disease	MESH:D001847
+
+37188819|t|SIRT2 regulates extracellular vesicle-mediated liver-bone communication.
+37188819|a|The interplay between liver and bone metabolism remains largely uncharacterized. Here, we uncover a mechanism of liver-bone crosstalk regulated by hepatocyte SIRT2. We demonstrate that hepatocyte SIRT2 expression is increased in aged mice and elderly humans. Liver-specific SIRT2 deficiency inhibits osteoclastogenesis and alleviates bone loss in mouse models of osteoporosis. We identify leucine-rich alpha-2-glycoprotein 1 (LRG1) as a functional cargo in hepatocyte-derived small extracellular vesicles (sEVs). In SIRT2-deficient hepatocytes, LRG1 levels in sEVs are upregulated, leading to increased transfer of LRG1 to bone-marrow-derived monocytes (BMDMs), and in turn, to inhibition of osteoclast differentiation via reduced nuclear translocation of NF-kappaB p65. Treatment with sEVs carrying high levels of LRG1 inhibits osteoclast differentiation in human BMDMs and in mice with osteoporosis, resulting in attenuated bone loss in mice. Furthermore, the plasma level of sEVs carrying LRG1 is positively correlated with bone mineral density in humans. Thus, drugs targeting hepatocyte-osteoclast communication may constitute a promising therapeutic strategy for primary osteoporosis.
+37188819	0	5	Sirt2	Gene	64383
+37188819	231	236	SIRT2	Gene	22933
+37188819	269	274	SIRT2	Gene	22933
+37188819	307	311	mice	Species	10090
+37188819	324	330	humans	Species	9606
+37188819	347	352	Sirt2	Gene	64383
+37188819	407	416	Bone Diseases	Disease	MESH:D001847
+37188819	420	425	mouse	Species	10090
+37188819	436	448	Osteoporosis	Disease	MESH:D010024
+37188819	462	497	LRG1	Gene	116844
+37188819	499	503	LRG1	Gene	116844
+37188819	589	594	SIRT2	Gene	22933
+37188819	618	622	LRG1	Gene	116844
+37188819	688	692	LRG1	Gene	116844
+37188819	765	775	Bone Resorption	Disease	MESH:D001862
+37188819	829	842	RELA	Gene	5970
+37188819	888	892	LRG1	Gene	116844
+37188819	902	912	Bone Resorption	Disease	MESH:D001862
+37188819	932	937	human	Species	9606
+37188819	951	955	mice	Species	10090
+37188819	961	973	Osteoporosis	Disease	MESH:D010024
+37188819	999	1008	Bone Diseases	Disease	MESH:D001847
+37188819	1012	1016	mice	Species	10090
+37188819	1065	1069	LRG1	Gene	116844
+37188819	1124	1130	humans	Species	9606
+37188819	1165	1175	Bone Resorption	Disease	MESH:D001862
+37188819	1250	1262	Osteoporosis	Disease	MESH:D010024
+37188819	Negative_Correlation	MESH:D001847	116844
+37188819	Association	MESH:D001862	5970
+37188819	Association	MESH:D010024	64383
+37188819	Association	MESH:D001847	64383
+37188819	Positive_Correlation	116844	22933
+37188819	Negative_Correlation	MESH:D001862	116844
+37188819	Negative_Correlation	116844	5970
+37188819	Association	MESH:D010024	116844
+
+38316760|t|IL-17 promotes osteoclast-induced bone loss by regulating glutamine-dependent energy metabolism.
+38316760|a|Osteoclasts consume an amount of adenosine triphosphate (ATP) to perform their bone resorption function in the development of osteoporosis. However, the mechanism underlying osteoclast energy metabolism has not been fully elucidated. In addition to glucose, glutamine (Glu) is another major energy carrier to produce ATP. However, the role of Glu metabolism in osteoclasts and the related molecular mechanisms has been poorly elucidated. Here we show that Glu is required for osteoclast differentiation and function, and that Glu deprivation or pharmacological inhibition of Glu transporter ASCT2 by V9302 suppresses osteoclast differentiation and their bone resorptive function. In vivo treatment with V9302 improved OVX-induced bone loss. Mechanistically, RNA-seq combined with in vitro and in vivo experiments suggested that Glu mediates the role of IL-17 in promoting osteoclast differentiation and in regulating energy metabolism. In vivo IL-17 treatment exacerbated OVX-induced bone loss, and this effect requires the participation of Glu or its downstream metabolite alpha-KG. Taken together, this study revealed a previously unappreciated regulation of IL-17 on energy metabolism, and this regulation is Glu-dependent. Targeting the IL-17-Glu-energy metabolism axis may be a potential therapeutic strategy for the treatment of osteoporosis and other IL-17 related diseases.
+38316760	0	5	IL17A	Gene	3605
+38316760	34	43	Bone Diseases	Disease	MESH:D001847
+38316760	58	67	Glutamine	Chemical	MESH:D005973
+38316760	130	152	Adenosine Triphosphate	Chemical	MESH:D000255
+38316760	154	157	Adenosine Triphosphate	Chemical	MESH:D000255
+38316760	223	235	Osteoporosis	Disease	MESH:D010024
+38316760	346	353	Glucose	Chemical	MESH:D005947
+38316760	355	364	Glutamine	Chemical	MESH:D005973
+38316760	366	369	Glutamine	Chemical	MESH:D005973
+38316760	414	417	Adenosine Triphosphate	Chemical	MESH:D000255
+38316760	440	443	Glutamine	Chemical	MESH:D005973
+38316760	553	556	Glutamine	Chemical	MESH:D005973
+38316760	623	626	Glutamine	Chemical	MESH:D005973
+38316760	672	675	Glutamine	Chemical	MESH:D005973
+38316760	688	693	SLC1A5	Gene	6510
+38316760	697	702	V9302	Chemical	-
+38316760	800	805	V9302	Chemical	-
+38316760	815	818	OVX	Disease	-
+38316760	827	836	Bone Diseases	Disease	MESH:D001847
+38316760	925	928	Glutamine	Chemical	MESH:D005973
+38316760	950	955	IL17A	Gene	3605
+38316760	1041	1046	IL17A	Gene	3605
+38316760	1069	1072	OVX	Disease	-
+38316760	1081	1090	Bone Diseases	Disease	MESH:D001847
+38316760	1138	1141	Glutamine	Chemical	MESH:D005973
+38316760	1171	1179	alpha-KG	Chemical	-
+38316760	1258	1263	IL17A	Gene	3605
+38316760	1309	1312	Glutamine	Chemical	MESH:D005973
+38316760	1338	1343	IL17A	Gene	3605
+38316760	1344	1347	Glutamine	Chemical	MESH:D005973
+38316760	1432	1444	Osteoporosis	Disease	MESH:D010024
+38316760	1455	1460	IL17A	Gene	3605
+38316760	Association	MESH:D005973	MESH:D010024
+38316760	Association	MESH:D000255	MESH:D010024
+38316760	Association	MESH:D005973	3605
+38316760	Association	MESH:D000255	MESH:D005973
+38316760	Association	MESH:D005973	MESH:D001847
+38316760	Association	MESH:D010024	3605
+38316760	Association	MESH:D001847	3605
+38316760	Association	MESH:D005973	6510
+
+38569557|t|A clinical-stage Nrf2 activator suppresses osteoclast differentiation via the iron-ornithine axis.
+38569557|a|Activating Nrf2 by small molecules is a promising strategy to treat postmenopausal osteoporosis. However, there is currently no Nrf2 activator approved for treating chronic diseases, and the downstream mechanism underlying the regulation of Nrf2 on osteoclast differentiation remains unclear. Here, we found that bitopertin, a clinical-stage glycine uptake inhibitor, suppresses osteoclast differentiation and ameliorates ovariectomy-induced bone loss by activating Nrf2. Mechanistically, bitopertin interacts with the Keap1 Kelch domain and decreases Keap1-Nrf2 binding, leading to reduced Nrf2 ubiquitination and degradation. Bitopertin is associated with less adverse events than clinically approved Nrf2 activators in both mice and human subjects. Furthermore, Nrf2 transcriptionally activates ferroportin-coding gene Slc40a1 to reduce intracellular iron levels in osteoclasts. Loss of Nrf2 or iron supplementation upregulates ornithine-metabolizing enzyme Odc1, which decreases ornithine levels and thereby promotes osteoclast differentiation. Collectively, our findings identify a novel clinical-stage Nrf2 activator and propose a novel Nrf2-iron-ornithine metabolic axis in osteoclasts.
+38569557	17	21	NFE2L2	Gene	4780
+38569557	78	82	Iron	Chemical	MESH:D007501
+38569557	83	92	Ornithine	Chemical	MESH:D009952
+38569557	110	114	NFE2L2	Gene	4780
+38569557	182	194	Osteoporosis	Disease	MESH:D010024
+38569557	227	231	NFE2L2	Gene	4780
+38569557	340	344	NFE2L2	Gene	4780
+38569557	412	422	(4-(3-fluoro-5-trifluoromethylpyridin-2-yl)piperazin-1-yl)(5-methanesulfonyl-2-(2 2 2-trifluoro-1-methylethoxy)phenyl)methanone	Chemical	MESH:C550631
+38569557	441	448	Glycine	Chemical	MESH:D005998
+38569557	541	550	Bone Diseases	Disease	MESH:D001847
+38569557	565	569	NFE2L2	Gene	4780
+38569557	618	623	KEAP1	Gene	9817
+38569557	651	656	KEAP1	Gene	9817
+38569557	657	661	NFE2L2	Gene	4780
+38569557	690	694	NFE2L2	Gene	4780
+38569557	727	737	(4-(3-fluoro-5-trifluoromethylpyridin-2-yl)piperazin-1-yl)(5-methanesulfonyl-2-(2 2 2-trifluoro-1-methylethoxy)phenyl)methanone	Chemical	MESH:C550631
+38569557	802	806	NFE2L2	Gene	4780
+38569557	826	830	mice	Species	10090
+38569557	835	840	human	Species	9606
+38569557	864	868	NFE2L2	Gene	4780
+38569557	921	928	SLC40A1	Gene	30061
+38569557	953	957	Iron	Chemical	MESH:D007501
+38569557	989	993	NFE2L2	Gene	4780
+38569557	997	1001	Iron	Chemical	MESH:D007501
+38569557	1030	1039	Ornithine	Chemical	MESH:D009952
+38569557	1060	1064	ODC1	Gene	4953
+38569557	1082	1091	Ornithine	Chemical	MESH:D009952
+38569557	1207	1211	NFE2L2	Gene	4780
+38569557	1242	1246	NFE2L2	Gene	4780
+38569557	1247	1251	Iron	Chemical	MESH:D007501
+38569557	1252	1261	Ornithine	Chemical	MESH:D009952
+38569557	Positive_Correlation	MESH:C550631	4780
+38569557	Association	MESH:D009952	4953
+38569557	Association	MESH:D007501	MESH:D009952
+38569557	Negative_Correlation	MESH:C550631	MESH:D005998
+38569557	Positive_Correlation	MESH:D007501	4953
+38569557	Bind	4780	9817
+38569557	Association	MESH:D009952	4780
+38569557	Association	MESH:D001847	4780
+38569557	Negative_Correlation	MESH:C550631	MESH:D001847
+38569557	Negative_Correlation	MESH:D007501	4780
+38569557	Association	MESH:D007501	30061
+38569557	Negative_Correlation	4780	4953
+38569557	Positive_Correlation	30061	4780
+38569557	Association	MESH:D010024	4780
+
+38034017|t|Aconine attenuates osteoclast-mediated bone resorption and ferroptosis to improve osteoporosis via inhibiting NF-kappaB signaling.
+38034017|a|Osteoporosis (OP), a prevalent public health concern primarily caused by osteoclast-induced bone resorption, requires potential therapeutic interventions. Natural compounds show potential as therapeutics for postmenopausal OP. Emerging evidence from in vitro osteoclastogenesis assay suggests that aconine (AC) serves as an osteoclast differentiation regulator without causing cytotoxicity. However, the in vivo functions of AC in various OP models need clarification. To address this, we administered intraperitoneal injections of AC to ovariectomy (OVX)-induced OP mice for 8 weeks and found that AC effectively reversed the OP phenotype of OVX mice, leading to a reduction in vertebral bone loss and restoration of high bone turnover markers. Specifically, AC significantly suppressed osteoclastogenesis in vivo and in vitro by decreasing the expression of osteoclast-specific genes such as NFATc1, c-Fos, Cathepsin K, and Mmp9. Importantly, AC can regulate osteoclast ferroptosis by suppressing Gpx4 and upregulating Acsl4, which is achieved through inhibition of the phosphorylation of I-kappaB and p65 in the NF-kappaB signaling pathway. These findings suggest that AC is a potential therapeutic option for managing OP by suppressing NF-kappaB signaling-mediated osteoclast ferroptosis and formation.
+38034017	0	7	aconine	Chemical	MESH:C047306
+38034017	39	43	Bone Diseases	Disease	MESH:D001847
+38034017	44	54	Tooth Resorption	Disease	MESH:D014091
+38034017	82	94	Osteoporosis	Disease	MESH:D010024
+38034017	110	119	Nfkb1	Gene	18033
+38034017	131	143	Osteoporosis	Disease	MESH:D010024
+38034017	145	147	Osteoporosis	Disease	MESH:D010024
+38034017	223	227	Bone Diseases	Disease	MESH:D001847
+38034017	228	238	Tooth Resorption	Disease	MESH:D014091
+38034017	354	356	Osteoporosis	Disease	MESH:D010024
+38034017	429	436	aconine	Chemical	MESH:C047306
+38034017	438	440	aconine	Chemical	MESH:C047306
+38034017	508	520	Drug-Related Side Effects and Adverse Reactions	Disease	MESH:D064420
+38034017	556	558	aconine	Chemical	MESH:C047306
+38034017	570	572	Osteoporosis	Disease	MESH:D010024
+38034017	663	665	aconine	Chemical	MESH:C047306
+38034017	669	680	ovariectomy	Disease	-
+38034017	682	685	OVX	Disease	-
+38034017	695	697	Osteoporosis	Disease	MESH:D010024
+38034017	730	732	aconine	Chemical	MESH:C047306
+38034017	758	760	Osteoporosis	Disease	MESH:D010024
+38034017	774	777	OVX	Disease	-
+38034017	810	829	Bone Diseases	Disease	MESH:D001847
+38034017	854	858	Bone Diseases	Disease	MESH:D001847
+38034017	891	893	aconine	Chemical	MESH:C047306
+38034017	1025	1031	Nfatc1	Gene	18018
+38034017	1033	1038	Fos	Gene	14281
+38034017	1040	1051	Ctsk	Gene	13038
+38034017	1057	1061	Mmp9	Gene	17395
+38034017	1076	1078	aconine	Chemical	MESH:C047306
+38034017	1130	1134	Gpx4	Gene	625249
+38034017	1152	1157	Acsl4	Gene	50790
+38034017	1235	1238	Rela	Gene	19697
+38034017	1246	1255	Nfkb1	Gene	18033
+38034017	1303	1305	aconine	Chemical	MESH:C047306
+38034017	1353	1355	Osteoporosis	Disease	MESH:D010024
+38034017	1371	1380	Nfkb1	Gene	18033
+38034017	Negative_Correlation	MESH:C047306	17395
+38034017	Negative_Correlation	MESH:C047306	18018
+38034017	Negative_Correlation	MESH:C047306	625249
+38034017	Negative_Correlation	MESH:C047306	18033
+38034017	Negative_Correlation	MESH:C047306	14281
+38034017	Negative_Correlation	MESH:C047306	MESH:D010024
+38034017	Negative_Correlation	MESH:C047306	19697
+38034017	Negative_Correlation	MESH:C047306	MESH:D001847
+38034017	Association	MESH:D010024	18033
+38034017	Negative_Correlation	MESH:C047306	13038
+38034017	Negative_Correlation	MESH:C047306	MESH:D014091
+38034017	Positive_Correlation	MESH:C047306	50790
+
+41372218|t|Pla2g7 regulates bone homeostasis via Alox12/12-HETE/Gpr31 signaling axis.
+41372218|a|Bone homeostasis mainly depends on the equilibrium of osteoclasts and osteoblasts, overactivated osteoclasts play a pivotal role in the progression of osteoporosis. Here, we revealed that Pla2g7 (phospholipase A2 group VII) was positively correlated with bone resorption in clinic. By single-cell RNA-seq data analysis, Pla2g7 was found highly enriched in osteoclasts along the developmental trajectory, which promoted osteoclast differentiation. Inhibition of Pla2g7 by Darapladib impaired both human and mice osteoclast differentiation, meanwhile, Pla2g7-deficient mice showed higher bone mass and restored the ovariectomy-induced bone loss. Mechanistically, we identified that Alox12 (arachidonate 12-lipoxygenase) mediated-arachidonic acid metabolism is a key determinant in Pla2g7 enhanced osteoclast differentiation. Its metabolite 12-HETE (12-hydroxyeicosatetraenoic acid) activated Gpr31 to regulate osteoclast formation via p38 MAPK pathway and mitochondrial energy metabolism. Collectively, our study uncovers an Alox12/12-HETE/Gpr31 axis that regulates Pla2g7-induced osteoclast differentiation, and provides a new insight for osteoporosis treatment.
+41372218	0	6	Pla2g7	Gene	27226
+41372218	38	44	Alox12	Gene	11684
+41372218	45	52	12-Hydroxy-5 8 10 14-eicosatetraenoic Acid	Chemical	MESH:D019377
+41372218	53	58	Gpr31	Gene	107431
+41372218	226	238	Osteoporosis	Disease	MESH:D010024
+41372218	263	269	Pla2g7	Gene	27226
+41372218	335	345	Tooth Resorption	Disease	MESH:D014091
+41372218	395	401	Pla2g7	Gene	27226
+41372218	536	542	Pla2g7	Gene	27226
+41372218	546	556	darapladib	Chemical	MESH:C529040
+41372218	571	576	human	Species	9606
+41372218	581	585	mice	Species	10090
+41372218	625	631	Pla2g7	Gene	27226
+41372218	642	646	mice	Species	10090
+41372218	708	717	Bone Diseases	Disease	MESH:D001847
+41372218	755	761	Alox12	Gene	11684
+41372218	763	791	Alox12	Gene	11684
+41372218	802	818	Arachidonic Acid	Chemical	MESH:D016718
+41372218	854	860	Pla2g7	Gene	27226
+41372218	913	920	12-Hydroxy-5 8 10 14-eicosatetraenoic Acid	Chemical	MESH:D019377
+41372218	922	953	12-Hydroxy-5 8 10 14-eicosatetraenoic Acid	Chemical	MESH:D019377
+41372218	965	970	Gpr31	Gene	107431
+41372218	1008	1016	Mapk14	Gene	26416
+41372218	1098	1104	Alox12	Gene	11684
+41372218	1105	1112	12-Hydroxy-5 8 10 14-eicosatetraenoic Acid	Chemical	MESH:D019377
+41372218	1113	1118	Gpr31	Gene	107431
+41372218	1139	1145	Pla2g7	Gene	27226
+41372218	1213	1225	Osteoporosis	Disease	MESH:D010024
+41372218	Association	MESH:D019377	27226
+41372218	Association	MESH:D014091	27226
+41372218	Association	107431	27226
+41372218	Negative_Correlation	MESH:C529040	27226
+41372218	Association	MESH:D010024	107431
+41372218	Association	MESH:D016718	11684
+41372218	Negative_Correlation	MESH:D019377	MESH:D010024
+41372218	Positive_Correlation	MESH:D019377	107431
+41372218	Association	107431	26416
+41372218	Association	MESH:D019377	11684
+41372218	Association	MESH:D001847	27226
+41372218	Association	11684	27226
+
+37118283|t|Skin chronological aging drives age-related bone loss via secretion of cystatin-A.
+37118283|a|Although clinical evidence has indicated an association between skin atrophy and bone loss during aging, their causal relationship and the underlying mechanisms are unknown. Here we show that premature skin aging drives bone loss in mice. We further identify that cystatin-A (Csta), a keratinocyte-enriched secreted factor, mediates the effect of skin on bone. Keratinocyte-derived Csta binds the receptor for activated C-kinase 1 in osteoblast and osteoclast progenitors, thus promoting their proliferation but inhibiting osteoclast differentiation. Csta secretion decreases with skin aging in both mice and humans, thereby causing senile osteoporosis by differentially decreasing the numbers of osteoblasts and osteoclasts. In contrast, topical application of calcipotriol stimulates Csta production in the epidermis and alleviates osteoporosis. These results reveal a mode of endocrine regulation of bone metabolism in the skin, and identify Csta as an epidermally derived hormone linking skin aging to age-related bone loss. Enhancers of skin Csta levels could serve as a potential topical drug for treatment of senile osteoporosis.
+37118283	44	53	Bone Diseases	Disease	MESH:D001847
+37118283	71	82	Csta1	Gene	209294
+37118283	147	159	Atrophy	Disease	MESH:D001284
+37118283	164	173	Bone Diseases	Disease	MESH:D001847
+37118283	285	295	Skin Diseases	Disease	MESH:D012871
+37118283	303	312	Bone Diseases	Disease	MESH:D001847
+37118283	316	320	mice	Species	10090
+37118283	347	357	Csta1	Gene	209294
+37118283	359	363	Csta1	Gene	209294
+37118283	465	469	Csta1	Gene	209294
+37118283	480	513	RACK1	Gene	10399
+37118283	634	638	CSTA	Gene	1475
+37118283	664	674	Skin Diseases	Disease	MESH:D012871
+37118283	683	687	mice	Species	10090
+37118283	692	698	humans	Species	9606
+37118283	723	735	Osteoporosis	Disease	MESH:D010024
+37118283	845	857	calcipotriene	Chemical	MESH:C055085
+37118283	869	873	CSTA	Gene	1475
+37118283	917	929	Osteoporosis	Disease	MESH:D010024
+37118283	1028	1032	CSTA	Gene	1475
+37118283	1075	1085	Skin Diseases	Disease	MESH:D012871
+37118283	1101	1110	Bone Diseases	Disease	MESH:D001847
+37118283	1130	1134	CSTA	Gene	1475
+37118283	1206	1218	Osteoporosis	Disease	MESH:D010024
+37118283	Association	MESH:D001847	1475
+37118283	Association	MESH:D010024	1475
+37118283	Bind	10399	209294
+37118283	Association	MESH:D012871	1475
+37118283	Negative_Correlation	MESH:C055085	MESH:D010024
+37118283	Association	MESH:D001847	209294
+37118283	Positive_Correlation	MESH:C055085	1475
+
+39880362|t|FSH exacerbates bone loss by promoting osteoclast energy metabolism through the CREB-MDH2-NAD+ axis.
+39880362|a|AIMS: Osteoclast energy metabolism is a promising target for treating diseases characterized by high osteoclast activity, such as osteoporosis. However, the regulatory factors involved in osteoclast bioenergetic processes are still in the early stages of being fully understood. This study reveals the effects of follicle-stimulating hormone (FSH) on osteoclast energy metabolism. METHODS: The Lyz2-Cre-Flox model selectively deletes FSH receptor (FSHR) from osteoclast precursor cells to generate Fshrf/f; Lyz2-Cre (Fshrf/f; Cre) mice. Bone quality was assessed using micro-computed tomography, histomorphometric analysis, and dual-fluorescence labeling. The in vitro assays measured oxygen consumption rate, extracellular acidification rate, pyruvate content, and mitochondrial membrane potential to determine metabolic flux. RNA-seq, LC-MS, dual-luciferase reporter assays, and chromatin immunoprecipitation (ChIP) assays were used to elucidate the underlying mechanisms. RESULTS: FSHR deficiency in osteoclasts protected bone from resorption under normal and ovariectomized conditions. FSHR-deficient osteoclasts have reduced nicotinamide adenine dinucleotide (NAD+) levels, impairing osteoclast activity and energy metabolism. Mechanistically, FSH influenced NAD+ levels via the CREB/MDH2 axis. Treatment with FSH monoclonal antibodies rescued bone loss in OVX mice and reduced bone marrow NAD+ levels. CONCLUSIONS: Targeting FSH may be a promising metabolic modulation strategy for treating osteoporosis and other diseases associated with high osteoclast activity.
+39880362	16	25	Bone Diseases	Disease	MESH:D001847
+39880362	80	84	CREB1	Gene	1385
+39880362	85	89	MDH2	Gene	4191
+39880362	90	94	NAD	Chemical	MESH:D009243
+39880362	231	243	Osteoporosis	Disease	MESH:D010024
+39880362	535	547	FSHR	Gene	2492
+39880362	549	553	FSHR	Gene	2492
+39880362	632	636	mice	Species	10090
+39880362	786	792	Oxygen	Chemical	MESH:D010100
+39880362	845	853	Pyruvic Acid	Chemical	MESH:D019289
+39880362	1191	1195	FSHR	Gene	2492
+39880362	1231	1264	NAD	Chemical	MESH:D009243
+39880362	1266	1270	NAD	Chemical	MESH:D009243
+39880362	1365	1369	NAD	Chemical	MESH:D009243
+39880362	1385	1389	CREB1	Gene	1385
+39880362	1390	1394	MDH2	Gene	4191
+39880362	1450	1459	Bone Diseases	Disease	MESH:D001847
+39880362	1463	1466	OVX	Disease	-
+39880362	1467	1471	mice	Species	10090
+39880362	1496	1500	NAD	Chemical	MESH:D009243
+39880362	1598	1610	Osteoporosis	Disease	MESH:D010024
+39880362	Association	1385	4191
+39880362	Association	MESH:D001847	4191
+39880362	Association	MESH:D009243	4191
+39880362	Association	MESH:D009243	MESH:D001847
+39880362	Association	MESH:D009243	1385
+39880362	Association	MESH:D009243	2492
+
+39539387|t|Phosphatidylserine-incorporated exosome mimetics encapsulating CXCR3 antagonist alleviate osteoporosis.
+39539387|a|Exosomes derived from mesenchymal stem cells are an active area of research due to their therapeutic potential in treating osteoporosis. To further harness their therapeutic performance in modulating bone resorption, we have equipped exosomes with osteoclast-targeting moieties on their surface as well as chemokine receptor antagonists blocking osteoclast recruitment. Phosphatidylserine (PS), a membrane lipid exerting immunosuppressive and phagocytic signals, was incorporated in the membrane of exosome mimetics (EMs) to achieve a marked affinity for osteoclast precursors and potential anti-resorptive effects. We also aimed to tackle a CXCL9-CXCR3 ligand-receptor axis, a critical signaling axis in regulating osteoclast precursor recruitment and differentiation at bone resorption sites, by encapsulating a chemical antagonist of CXCR3, AMG487, in the PS-incorporated EMs (PS-EMs). The osteoclast-targeting PS-EMs loaded with AMG487 effectively protected against bone loss in an ovariectomized mouse model. Our findings demonstrate the great promise of PS-EMs as anti-resorptive nanotherapies for alleviating osteoporosis.
+39539387	0	18	Phosphatidylserines	Chemical	MESH:D010718
+39539387	63	68	Cxcr3	Gene	12766
+39539387	90	102	Osteoporosis	Disease	MESH:D010024
+39539387	227	239	Osteoporosis	Disease	MESH:D010024
+39539387	474	492	Phosphatidylserines	Chemical	MESH:D010718
+39539387	494	496	Phosphatidylserines	Chemical	MESH:D010718
+39539387	510	515	Lipids	Chemical	MESH:D008055
+39539387	746	751	Cxcl9	Gene	17329
+39539387	941	946	Cxcr3	Gene	12766
+39539387	948	954	AMG 487	Chemical	MESH:C541505
+39539387	963	965	Phosphatidylserines	Chemical	MESH:D010718
+39539387	984	986	Phosphatidylserines	Chemical	MESH:D010718
+39539387	1018	1020	Phosphatidylserines	Chemical	MESH:D010718
+39539387	1037	1043	AMG 487	Chemical	MESH:C541505
+39539387	1074	1083	Bone Diseases	Disease	MESH:D001847
+39539387	1105	1110	mouse	Species	10090
+39539387	1164	1166	Phosphatidylserines	Chemical	MESH:D010718
+39539387	1220	1232	Osteoporosis	Disease	MESH:D010024
+39539387	Negative_Correlation	MESH:D010718	MESH:D010024
+39539387	Association	MESH:D010024	12766
+39539387	Association	MESH:C541505	MESH:D010718
+39539387	Negative_Correlation	MESH:C541505	MESH:D001847
+39539387	Negative_Correlation	MESH:D010718	MESH:D001847
+39539387	Negative_Correlation	MESH:C541505	12766
+39539387	Association	MESH:D010718	12766
+
+40193598|t|Nat10-mediated N4-acetylcytidine modification enhances Nfatc1 translation to exacerbate osteoclastogenesis in postmenopausal osteoporosis.
+40193598|a|Increased differentiation or activity of osteoclasts is the key pathogenic factor of postmenopausal osteoporosis (PMOP). N4-acetylcytidine (ac4C) modification, catalyzed by Nat10, is a novel posttranscriptional mRNA modification related to many diseases. However, its impact on regulating osteoclast activation in PMOP remains uncertain. Here, we initially observed that Nat10-mediated ac4C positively correlates with osteoclast differentiation of monocytes and low bone mass in PMOP. The specific knockout of Nat10 in monocytes and remodelin, a Nat10 inhibitor, alleviates ovariectomized (OVX)-induced bone loss by downregulating osteoclast differentiation. Mechanistically, epitranscriptomic analyses reveal that the nuclear factor of activated T cells cytoplasmic 1 (Nfatc1) is the key downstream target of ac4C modification during osteoclast differentiation. Subsequently, translatomic results demonstrate that Nat10-mediated ac4C enhances the translation efficiency (TE) of Nfatc1, thereby inducing Nfatc1 expression and consequent osteoclast maturation. Cumulatively, these findings reveal the promotive role of Nat10 in osteoclast differentiation and PMOP from a novel field of RNA modifications and suggest that Nat10 can be a target of epigenetic therapy for preventing bone loss in PMOP.
+40193598	0	5	NAT10	Gene	55226
+40193598	15	32	N4-acetylcytidine	Chemical	-
+40193598	55	61	NFATC1	Gene	4772
+40193598	110	137	Osteoporosis	Disease	MESH:D010024
+40193598	224	251	Osteoporosis	Disease	MESH:D010024
+40193598	253	257	Osteoporosis	Disease	MESH:D010024
+40193598	260	277	N4-acetylcytidine	Chemical	-
+40193598	279	283	ac4C	Chemical	-
+40193598	312	317	NAT10	Gene	55226
+40193598	453	457	Osteoporosis	Disease	MESH:D010024
+40193598	510	515	NAT10	Gene	55226
+40193598	618	622	Osteoporosis	Disease	MESH:D010024
+40193598	649	654	NAT10	Gene	55226
+40193598	672	681	4-(4-cyanophenyl)-2-(2-cyclopentylidenehydrazinyl)thiazole	Chemical	MESH:C000588556
+40193598	685	690	NAT10	Gene	55226
+40193598	742	751	Bone Diseases	Disease	MESH:D001847
+40193598	858	907	NFATC1	Gene	4772
+40193598	909	915	NFATC1	Gene	4772
+40193598	1054	1059	NAT10	Gene	55226
+40193598	1118	1124	NFATC1	Gene	4772
+40193598	1143	1149	NFATC1	Gene	4772
+40193598	1257	1262	NAT10	Gene	55226
+40193598	1297	1301	Osteoporosis	Disease	MESH:D010024
+40193598	1359	1364	NAT10	Gene	55226
+40193598	1418	1427	Bone Diseases	Disease	MESH:D001847
+40193598	1431	1435	Osteoporosis	Disease	MESH:D010024
+40193598	Association	MESH:D010024	55226
+40193598	Association	MESH:D010024	4772
+40193598	Association	MESH:D001847	55226
+40193598	Negative_Correlation	MESH:C000588556	MESH:D001847
+40193598	Positive_Correlation	4772	55226
+40193598	Negative_Correlation	MESH:C000588556	55226

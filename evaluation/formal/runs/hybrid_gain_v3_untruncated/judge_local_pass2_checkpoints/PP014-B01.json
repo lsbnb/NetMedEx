@@ -1,0 +1,91 @@
+{
+  "task": "answer",
+  "question_id": "PP014",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "9ebf4a6895feb922c1232c9ad004b0405d91ecfd8148799ed15e4cf0c0856d8e",
+  "raw_response_sha256": "c285d832fc1a1a9cd7feceac4b192f8c1bf50827296784e624b8c8e416c97c0e",
+  "usage": {
+    "input_tokens": 6183,
+    "output_tokens": 645,
+    "total_tokens": 6828
+  },
+  "rated_at": "2026-08-16T21:07:12.134822+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP014-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, clear hop separation, includes hypothesis, strong citations."
+      },
+      {
+        "answer_id": "PP014-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Similar completeness, includes graph note, slightly less explicit overall inference."
+      },
+      {
+        "answer_id": "PP014-C",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Missing explicit overall inference bullet, slightly less complete."
+      },
+      {
+        "answer_id": "PP014-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Well‑structured, combines reviews and mouse data, strong inference."
+      },
+      {
+        "answer_id": "PP014-E",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Clear distinction of indirect vs direct evidence, cautious language."
+      },
+      {
+        "answer_id": "PP014-F",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Clear chain, notes lack of human trials, solid grounding."
+      },
+      {
+        "answer_id": "PP014-G",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Hop‑wise format, thorough, includes overall inference, strong citations."
+      }
+    ],
+    "preferred_item_id": "PP014-A",
+    "pairwise_reason": "PP014-A provides the most explicit separation of each mechanistic hop, includes a testable hypothesis, and clearly distinguishes direct experimental evidence from broader inferential statements, offering the highest overall clarity and research value."
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP006",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "bc4ac27d8511a5a5d0a602beed1d7ae1c3f7417e06671fe8b24902b82be08bcd",
+  "raw_response_sha256": "d96c93c071f30c7929d37f4a4d4125adf42e1b96fdd4a6b9b894621e63dfdd5a",
+  "usage": {
+    "input_tokens": 2516,
+    "output_tokens": 500,
+    "total_tokens": 3016
+  },
+  "rated_at": "2026-08-13T07:09:43.194317+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP006-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurately details each mechanistic hop, cites evidence, distinguishes steps, and proposes a testable hypothesis."
+      },
+      {
+        "answer_id": "PP006-B",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 4,
+        "research_value": 5,
+        "notes": "Correct and well-grounded; slightly less explicit in stepwise mechanistic detail and evidence separation for each hop."
+      },
+      {
+        "answer_id": "PP006-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Clearly distinguishes evidence for each hop, mechanistic chain, and testable hypothesis; well-grounded and complete."
+      },
+      {
+        "answer_id": "PP006-D",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 4,
+        "grounding": 4,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Misses miR-21-5p step, mislabels cell type as human, less mechanistic detail, and less evidence separation."
+      }
+    ],
+    "preferred_item_id": "PP006-C",
+    "pairwise_reason": "PP006-C and PP006-A both provide stepwise, well-grounded mechanistic evidence and distinguish each hop, but C is slightly clearer in separating evidence for each mechanistic step and in articulating the overall inference. B is solid but less explicit in hop separation. D omits key mechanistic detail (miR-21-5p) and contains a factual error regarding cell type."
+  }
+}

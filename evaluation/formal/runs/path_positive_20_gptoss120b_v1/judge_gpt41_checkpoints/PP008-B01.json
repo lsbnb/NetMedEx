@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP008",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "f09f7e672a536752d9761467fe8762898957e6a9e02ea0b259163ef9a5ed1069",
+  "raw_response_sha256": "70f181d05f7faded55ec2faa11385ce45b4ed1b3507ed1c2a2df8a41ab7f8e7b",
+  "usage": {
+    "input_tokens": 2278,
+    "output_tokens": 459,
+    "total_tokens": 2737
+  },
+  "rated_at": "2026-08-13T06:28:07.907075+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP008-A",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Accurately cites key hops and mechanisms, but lacks detail on animal/human distinction and omits direct bridging evidence."
+      },
+      {
+        "answer_id": "PP008-B",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Distinguishes evidence for each hop, notes lack of direct bridging studies, and proposes testable hypotheses. Clearly separates animal/human data."
+      },
+      {
+        "answer_id": "PP008-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, details animal and human evidence, distinguishes each hop, and discusses mechanistic and translational gaps."
+      },
+      {
+        "answer_id": "PP008-D",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Well-structured, covers animal and human evidence, but less detail on bridging studies and mechanistic nuance than C or B."
+      }
+    ],
+    "preferred_item_id": "PP008-C",
+    "pairwise_reason": "PP008-C provides the most comprehensive, well-grounded, and mechanistically coherent account, clearly distinguishing animal and human evidence for each hop and addressing translational gaps."
+  }
+}

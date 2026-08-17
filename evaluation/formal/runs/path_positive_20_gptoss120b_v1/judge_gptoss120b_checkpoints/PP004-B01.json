@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP004",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "81af7d34ab0f1656e516f77d61f1639567a7853501a713f6287efa8d867aba1f",
+  "raw_response_sha256": "9045d523f9ad612cee5dccc47783a7a45b826af49e94978b8f5585242c036aca",
+  "usage": {
+    "input_tokens": 3685,
+    "output_tokens": 395,
+    "total_tokens": 4080
+  },
+  "rated_at": "2026-08-13T06:30:02.049387+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP004-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Accurate but relies on reviews; lacks detailed clinical trial data."
+      },
+      {
+        "answer_id": "PP004-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, includes trials; some cited PMID may be uncertain."
+      },
+      {
+        "answer_id": "PP004-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Well‑rounded evidence (genetics, animal, clinical) and clear limitations."
+      },
+      {
+        "answer_id": "PP004-D",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Solid but less comprehensive; missing genetics and detailed trial discussion."
+      }
+    ],
+    "preferred_item_id": "PP004-C",
+    "pairwise_reason": "C integrates genetic, pre‑clinical, and clinical data with explicit limitations, offering the most balanced and actionable overview of IL‑17’s role in autoimmunity."
+  }
+}

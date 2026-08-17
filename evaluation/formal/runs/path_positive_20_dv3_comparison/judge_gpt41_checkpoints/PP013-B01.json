@@ -1,0 +1,51 @@
+{
+  "task": "answer",
+  "question_id": "PP013",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "881a9c2dd5f4f940f3939a10143404af6e93b50b6e2c4824787c02e8f6e1d412",
+  "raw_response_sha256": "96b6edf3599df78f5594c67f4edc9afc32a2c1e2579809586f4dd132823ff374",
+  "usage": {
+    "input_tokens": 1995,
+    "output_tokens": 395,
+    "total_tokens": 2390
+  },
+  "rated_at": "2026-08-13T10:31:56.296226+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP013-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Clearly delineates each mechanistic step, cites human and animal evidence, and distinguishes evidence for each hop. Well-grounded and mechanistically coherent."
+      },
+      {
+        "answer_id": "PP013-B",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Strong mechanistic detail and hop distinction, but the last step is truncated and lacks full citation support. Otherwise, well-grounded and relevant."
+      },
+      {
+        "answer_id": "PP013-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Thorough, stepwise, and well-cited. Includes graph-derived insights and distinguishes human evidence. Mechanistically and evidentially robust."
+      }
+    ],
+    "preferred_item_id": "PP013-C",
+    "pairwise_reason": "PP013-C is preferred for its comprehensive, stepwise explanation, explicit citation of evidence for each mechanistic hop, and inclusion of graph-derived multi-hop inferences. It is slightly more complete and integrative than PP013-A, while PP013-B is less complete due to truncation."
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "task": "answer",
+  "question_id": "PP001",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "b4f7b8178937c8f26b636dd74fc7adc023f2c2ef8ec5eeffe3a7e7bc9b939d78",
+  "raw_response_sha256": "35b0495358e23fa9d6356439fb7bceb17139c21a5e78dbe8bac6e5fca5b47b97",
+  "usage": {
+    "input_tokens": 3565,
+    "output_tokens": 578,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 4143
+  },
+  "rated_at": "2026-08-13T07:09:23.135093+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP001-A",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 4,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Solid evidence summary with PMIDs; answer appears truncated mid-sentence. Limitations section missing. Grounding adequate but some claims lack full citation context."
+      },
+      {
+        "answer_id": "PP001-B",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 5,
+        "notes": "Most complete answer: covers in vitro, in vivo, limitations, testable hypothesis, and graph-derived paths. PMID citations present. Minor: miR-153/RUNX2 direction needs care."
+      },
+      {
+        "answer_id": "PP001-C",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Well-structured with clear limitations section. Answer truncated before completing functional endpoints point. Good PMID grounding and species/sex bias limitation noted."
+      },
+      {
+        "answer_id": "PP001-D",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Strongest mechanistic detail per study; clearly labels in vitro vs in vivo. Also truncated before limitations. Mechanistic coherence is best among all answers."
+      }
+    ],
+    "preferred_item_id": "PP001-B",
+    "pairwise_reason": "PP001-B is the only answer that is both complete (not truncated) and includes all key components: direct evidence with PMIDs, associative observations, explicit study-context limitations, and a testable hypothesis, making it most useful for research purposes."
+  }
+}

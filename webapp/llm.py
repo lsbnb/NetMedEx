@@ -48,12 +48,24 @@ COMMON_OPENAI_MODELS = {
 }
 
 
+def gemini_api_disabled() -> bool:
+    """Return whether all Google/Gemini network initialization is administratively disabled."""
+    return os.getenv("DISABLE_GEMINI_API", "").strip().casefold() in {
+        "1",
+        "true",
+        "yes",
+        "on",
+    }
+
+
 def get_provider_api_key(provider: str | None, explicit_key: str | None = None) -> str | None:
     """Resolve an API key without requiring it to be stored in browser state."""
     if explicit_key:
         return explicit_key
     raw_provider = (provider or "openai").strip().lower()
     if raw_provider == "google":
+        if gemini_api_disabled():
+            return None
         return os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
     if raw_provider == "openrouter":
         return os.getenv("OPENROUTER_API_KEY")
@@ -216,6 +228,7 @@ class LLMClient:
         self.client = None
         self.anthropic_client = None
         self.last_completion_usage: dict[str, int] = {}
+        self.last_completion_finish_reason = ""
         self.completion_usage_totals: dict[str, int] = {}
 
         # Provider-specific env resolution (with legacy fallbacks).
@@ -231,7 +244,9 @@ class LLMClient:
         elif self.provider == "local":
             self.api_key = os.getenv("LOCAL_LLM_API_KEY") or "local-dummy-key"
             self.base_url = (
-                self.base_url or os.getenv("LOCAL_LLM_BASE_URL") or "http://localhost:11434/v1"
+                os.getenv("LOCAL_LLM_BASE_URL")
+                or self.base_url
+                or "http://localhost:11434/v1"
             )
             self.model = os.getenv("LOCAL_LLM_MODEL", self.model)
             self.embedding_model = os.getenv("LOCAL_EMBEDDING_MODEL", self.embedding_model)
@@ -294,6 +309,11 @@ class LLMClient:
                     "anthropic": ANTHROPIC_BASE_URL,
                 }
                 self.base_url = provider_defaults.get(self.provider, self.base_url)
+        if self.provider == "google" and gemini_api_disabled():
+            raise RuntimeError(
+                "Google/Gemini API is temporarily disabled by DISABLE_GEMINI_API. "
+                "Use provider='local' (for example medgemma:27b) instead."
+            )
         self.api_key = get_provider_api_key(self.provider, api_key)
         if base_url:
             self.base_url = base_url
@@ -454,6 +474,7 @@ class LLMClient:
         )
         self._record_completion_usage(usage_record)
         stop_reason = getattr(response, "stop_reason", "unknown")
+        self.last_completion_finish_reason = str(stop_reason or "")
         if stop_reason == "max_tokens":
             logger.warning(
                 f"Anthropic response truncated by max_tokens={kwargs.get('max_tokens')}. "
@@ -531,7 +552,11 @@ class LLMClient:
             "output_tokens": int(getattr(usage, "completion_tokens", 0) or 0),
             "total_tokens": int(getattr(usage, "total_tokens", 0) or 0),
         })
-        content = response.choices[0].message.content
+        choice = response.choices[0]
+        self.last_completion_finish_reason = str(
+            getattr(choice, "finish_reason", "") or ""
+        )
+        content = choice.message.content
         if content is None:
             return ""
         return str(content).strip()

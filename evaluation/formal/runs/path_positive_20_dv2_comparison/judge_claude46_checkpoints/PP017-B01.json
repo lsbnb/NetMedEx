@@ -1,0 +1,63 @@
+{
+  "task": "answer",
+  "question_id": "PP017",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "d0b1c1eaf97551b70f97237a813966117feb08985b55073cd38cfe697f2edb83",
+  "raw_response_sha256": "c91081cea275c1048669be386f3ddf81bcaef6d62c2a2c6f6915cd164f79115b",
+  "usage": {
+    "input_tokens": 2916,
+    "output_tokens": 665,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 3581
+  },
+  "rated_at": "2026-08-13T07:13:04.663057+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP017-A",
+        "correctness": 3,
+        "completeness": 2,
+        "relevance": 3,
+        "grounding": 3,
+        "mechanistic_coherence": 2,
+        "research_value": 2,
+        "notes": "Correct directional claims but thin mechanistic detail. MASLD cohort citation for hop1 is tangential; hop2 evidence also MASLD-based. No molecular mechanism described. Weakest of the four."
+      },
+      {
+        "answer_id": "PP017-B",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 4,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Good hop-by-hop structure, quantitative data for both hops, molecular mechanism sketch (HBx, stellate cells). PMID 34842182 plausible. Distinguishes cirrhotic vs non-cirrhotic HCC appropriately."
+      },
+      {
+        "answer_id": "PP017-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Best answer: clear hop separation, strongest evidence (HR 17.16 for cirrhosis→HCC in CHB cohort PMID 25473072), HBx mechanism cited with evidence type noted, testable hypothesis with quantitative predictions."
+      },
+      {
+        "answer_id": "PP017-D",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 4,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Solid structure, good epidemiologic grounding, includes HBx-SMC5/6 axis and testable hypothesis. Slightly less precise than C; PMID 39599784 unverified but plausible. Good overall."
+      }
+    ],
+    "preferred_item_id": "PP017-C",
+    "pairwise_reason": "PP017-C uniquely provides a direct CHB-cohort HR for cirrhosis→HCC (17-fold, PMID 25473072), distinguishes evidence types including in-vitro/animal for HBx, and offers a quantitatively grounded testable hypothesis, making it the most complete and mechanistically rigorous response."
+  }
+}

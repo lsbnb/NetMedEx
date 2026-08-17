@@ -1,0 +1,63 @@
+{
+  "task": "answer",
+  "question_id": "PP011",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "95308f2ee40fe0de5f4f346af0922bbc6b73e9787bf3b31a70ecbd129b294218",
+  "raw_response_sha256": "a7fd8bba8b3d1c8ad665396bdccc67c2c1d42c131c5ffd63da767f41cab64e82",
+  "usage": {
+    "input_tokens": 3184,
+    "output_tokens": 622,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 3806
+  },
+  "rated_at": "2026-08-13T07:11:38.576057+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP011-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Covers all hops with labeled evidence types; distinguishes direct vs. indirect routes well. PMID 39290403 animal evidence for STAT3 is well-contextualized. Text truncated before completing HBx discussion."
+      },
+      {
+        "answer_id": "PP011-B",
+        "correctness": 3,
+        "completeness": 2,
+        "relevance": 4,
+        "grounding": 3,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Honestly flags missing PMIDs for hops 2-3, which is good. But incomplete coverage of mechanistic hops and limited synthesis. Testable hypothesis is reasonable but underdeveloped."
+      },
+      {
+        "answer_id": "PP011-C",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Best structured response: each hop clearly delineated with labeled evidence types, human vs. animal distinguished, direct oncogenic path contextualized. Graph paths explicitly cited. Well-balanced and complete."
+      },
+      {
+        "answer_id": "PP011-D",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Strong evidence labeling, testable hypotheses add value, STAT3 and HBx mechanisms well-integrated. Slightly less hop-by-hop structured than C but broader mechanistic depth and hypothesis generation."
+      }
+    ],
+    "preferred_item_id": "PP011-C",
+    "pairwise_reason": "PP011-C most clearly distinguishes evidence for each mechanistic hop, labels human vs. animal evidence, contextualizes the direct oncogenic path, and explicitly maps graph-confirmed paths. PP011-D is close but less hop-structured; PP011-A is truncated; PP011-B is incomplete."
+  }
+}

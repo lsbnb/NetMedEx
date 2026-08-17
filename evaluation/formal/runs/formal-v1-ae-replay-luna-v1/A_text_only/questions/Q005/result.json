@@ -1,0 +1,183 @@
+{
+  "status": "complete",
+  "question_id": "Q005",
+  "domain": "neurodegeneration",
+  "question": "Does oxidative stress directly support a mechanistic link between amyloid beta and mitochondrial dysfunction?",
+  "question_type": "mechanism",
+  "pubmed_query": "amyloid beta AND oxidative stress AND mitochondrial dysfunction",
+  "effective_pubmed_query": "amyloid beta AND oxidative stress AND mitochondrial dysfunction",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "22697066",
+    "27766447",
+    "27809706",
+    "32967303",
+    "33476985",
+    "35269827",
+    "35522844",
+    "35660451",
+    "37227619",
+    "37597424",
+    "37956598",
+    "40023293",
+    "40864415",
+    "40902587",
+    "40931065"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "22697066",
+        "score": 0.6518603248807963
+      },
+      {
+        "pmid": "27766447",
+        "score": 0.6284797728166837
+      },
+      {
+        "pmid": "35522844",
+        "score": 0.6255463626160976
+      },
+      {
+        "pmid": "40864415",
+        "score": 0.6222238804425763
+      },
+      {
+        "pmid": "27809706",
+        "score": 0.6024005227894552
+      },
+      {
+        "pmid": "33476985",
+        "score": 0.5980470914403906
+      },
+      {
+        "pmid": "40023293",
+        "score": 0.588403187878819
+      },
+      {
+        "pmid": "37956598",
+        "score": 0.5670294003848598
+      },
+      {
+        "pmid": "37597424",
+        "score": 0.5659019729543693
+      },
+      {
+        "pmid": "32967303",
+        "score": 0.550660436103534
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "22697066",
+        "score": 0.6518603248807963
+      },
+      {
+        "pmid": "27766447",
+        "score": 0.6284797728166837
+      },
+      {
+        "pmid": "35522844",
+        "score": 0.6255463626160976
+      },
+      {
+        "pmid": "40864415",
+        "score": 0.6222238804425763
+      },
+      {
+        "pmid": "27809706",
+        "score": 0.6024005227894552
+      },
+      {
+        "pmid": "33476985",
+        "score": 0.5980470914403906
+      },
+      {
+        "pmid": "40023293",
+        "score": 0.588403187878819
+      },
+      {
+        "pmid": "37956598",
+        "score": 0.5670294003848598
+      },
+      {
+        "pmid": "37597424",
+        "score": 0.5659019729543693
+      },
+      {
+        "pmid": "32967303",
+        "score": 0.550660436103534
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "**Direct evidence:**  \nYes, the supplied literature supports a mechanistic connection in which amyloid beta (Aβ) is associated with oxidative stress and mitochondrial dysfunction. Proposed mechanisms include Aβ-induced mitochondrial membrane permeability, disturbed calcium homeostasis, impaired oxidative phosphorylation, and consequent overproduction of reactive oxygen species (ROS) [PMID: 22697066]. Aβ is also reported to interact with mitochondrial membranes and proteins, promoting mitochondrial fragmentation and further ROS generation [PMID: 40864415].\n\n**Experimental evidence:**  \nIn **animal and in-vitro models**, Aβ-related oxidative stress and mitochondrial impairment were reduced by luteolin through a PPARγ-dependent mechanism in 3×Tg-AD mice and cultured primary neurons [PMID: 37597424]. This supports a causal pathway, although the intervention also inhibited Aβ generation, so it does not isolate oxidative stress as the sole mediator.\n\n**Association:**  \nOxidative stress, mitochondrial dysfunction, altered calcium handling, and Aβ pathology are repeatedly described as interconnected and potentially mutually reinforcing processes [PMID: 33476985; PMID: 32967303; PMID: 37956598]. Oxidative stress may therefore act both downstream of Aβ and upstream by worsening Aβ-related pathology.\n\n**Testable hypothesis:**  \nAβ may impair mitochondrial function, increasing ROS production; the resulting oxidative stress could further damage mitochondrial proteins, lipids, DNA, and calcium regulation, creating a self-amplifying cycle. However, the context does not establish that oxidative stress is the necessary or primary mediator, and the exact mitochondrial toxicity of Aβ remains unresolved [PMID: 22697066; PMID: 33476985].\n\n**Conclusion:**  \nOxidative stress **does support a biologically plausible mechanistic link** between Aβ and mitochondrial dysfunction, with supporting animal and in-vitro evidence. However, the supplied context does not demonstrate definitive direct causality in humans.",
+    "traditional_rag": "**Yes—but the supplied evidence supports a mechanistic link more strongly than it proves a direct causal chain in humans.**\n\n### Direct evidence\n- **Animal and in-vitro evidence:** In 3xTg-AD mice and primary hippocampal neurons, amyloid beta was associated with oxidative stress, mitochondrial damage, and neuronal apoptosis; luteolin reduced these effects through a PPARγ-dependent mechanism. This supports an Aβ → oxidative stress/mitochondrial impairment pathway, although the intervention study does not establish that oxidative stress is the sole or necessary mediator. [PMID: 37597424]\n- **Proposed mitochondrial mechanisms:** Aβ may increase mitochondrial membrane permeability, disrupt calcium homeostasis, and impair oxidative phosphorylation, thereby increasing reactive oxygen species (ROS) production. [PMID: 22697066]\n- **Feedback mechanism:** Oxidative stress and mitochondrial dysfunction may reinforce one another: mitochondrial dysfunction increases ROS, while Aβ and oxidative damage further impair mitochondrial membranes, proteins, and energy production. [PMID: 22697066; PMID: 40864415]\n\n### Association\n- Reviews consistently associate Aβ pathology, oxidative stress, ROS generation, mitochondrial dysfunction, calcium dysregulation, and neuronal injury in Alzheimer’s disease. [PMID: 27809706; PMID: 33476985; PMID: 32967303]\n- Aβ and mitochondrial dysfunction may therefore form a **vicious cycle**, but the direction of causality is unresolved; mitochondrial dysfunction may also precede or promote Aβ accumulation. [PMID: 35522844; PMID: 37956598]\n\n### Testable hypothesis\nAβ directly damages mitochondria or alters mitochondrial calcium and oxidative-phosphorylation processes, causing excess ROS; ROS then further damages mitochondria and promotes Alzheimer’s pathology. This could be tested by selectively blocking ROS or mitochondrial oxidative injury while maintaining Aβ exposure and determining whether mitochondrial dysfunction is prevented.\n\n**Bottom line:** Oxidative stress provides a biologically plausible intermediary linking Aβ to mitochondrial dysfunction, with supporting animal and in-vitro evidence. However, the supplied context does not provide definitive human evidence demonstrating that oxidative stress is the necessary direct mediator.",
+    "general_llm": "Yes—oxidative stress provides biologically plausible and experimentally supported evidence for a mechanistic link between amyloid-β (Aβ) and mitochondrial dysfunction, although it is not definitive proof that Aβ is the sole or initiating cause of mitochondrial failure in Alzheimer disease.\n\nA commonly proposed sequence is:\n\n1. **Aβ, particularly soluble oligomers, interacts with mitochondria**  \n   Aβ has been detected in or near mitochondria and can associate with mitochondrial membranes and proteins involved in electron transport, protein import, and calcium handling.\n\n2. **Mitochondrial impairment increases reactive oxygen species (ROS)**  \n   Aβ can interfere with respiratory-chain activity, mitochondrial membrane potential, calcium homeostasis, and mitochondrial permeability. These changes can increase superoxide and other ROS while reducing ATP production.\n\n3. **ROS further damage mitochondria and neurons**  \n   Oxidative modification of mitochondrial DNA, respiratory-chain proteins, lipids, and antioxidant enzymes can worsen electron-transport inefficiency, creating a self-reinforcing cycle of ROS production and mitochondrial decline.\n\n4. **Oxidative stress can also promote Aβ pathology**  \n   Oxidative signaling may increase amyloidogenic processing of amyloid precursor protein, impair Aβ clearance, and favor Aβ aggregation. Thus, the relationship is likely bidirectional rather than simply “Aβ causes oxidative stress.”\n\nThere are also connecting mechanisms involving **calcium dysregulation, lipid peroxidation, impaired mitophagy, altered mitochondrial dynamics, and neuroinflammation**. These processes can link Aβ exposure to persistent mitochondrial injury.\n\nHowever, several qualifications are important:\n\n- Much of the strongest mechanistic evidence comes from cell culture, isolated mitochondria, and animal models using particular Aβ preparations; results can depend heavily on Aβ concentration and aggregation state.\n- Oxidative stress is also a consequence of aging, inflammation, tau pathology, vascular injury, and other forms of neuronal dysfunction.\n- Antioxidant interventions have not consistently prevented or reversed Alzheimer disease in humans, indicating that oxidative stress is probably one component of a larger pathogenic network rather than an isolated primary driver.\n\nThus, oxidative stress **supports a mechanistic Aβ–mitochondrial dysfunction link**, especially as part of a feed-forward cycle, but the exact causal order and importance in human disease remain incompletely established."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 4.0903687477111816e-05,
+    "vector_index": 1.9690282195806503,
+    "answer_netmedex_hybrid_rag": 4.067349955439568,
+    "answer_traditional_rag": 4.595210701227188,
+    "answer_general_llm": 5.093512125313282,
+    "total": 16.26645516604185
+  },
+  "token_usage": {
+    "input_tokens": 6533,
+    "total_tokens": 8208,
+    "output_tokens": 1675
+  },
+  "completed_at": "2026-08-11T05:04:53.797256+00:00"
+}

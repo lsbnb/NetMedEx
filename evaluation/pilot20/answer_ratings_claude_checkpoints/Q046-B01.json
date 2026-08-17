@@ -1,0 +1,53 @@
+{
+  "task": "answer",
+  "question_id": "Q046",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "a253ee08c893e00d531a6d0a2d1b8fdf352d91bc82c1a2dfb2edc3b979bc206c",
+  "raw_response_sha256": "a318cf7d238944958feeebf1e9acd4e5b23c65b6b6b6c5134da77ee359547d72",
+  "usage": {
+    "input_tokens": 1948,
+    "output_tokens": 442,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 2390
+  },
+  "rated_at": "2026-08-12T19:23:59.155138+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q046-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 4,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Accurately states no direct evidence exists; cites specific PMIDs with correct context; includes testable hypothesis; well-grounded and mechanistically coherent."
+      },
+      {
+        "answer_id": "Q046-B",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 4,
+        "grounding": 2,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Correct conclusion but lacks specific citations; vague references to yeast/non-immune cells without PMIDs; lower grounding score due to unsupported general claims."
+      },
+      {
+        "answer_id": "Q046-C",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 4,
+        "grounding": 5,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Best grounding with precise PMID citations and accurate descriptions; clearly distinguishes cell types; honest about absence of direct evidence; concise hypothesis."
+      }
+    ],
+    "preferred_item_id": "Q046-C",
+    "pairwise_reason": "Q046-C provides the most precise citation-level grounding with accurate PMID descriptions, clearly distinguishes evidence by cell type, and correctly concludes no direct causal link exists, making it the most reliable and reproducible answer."
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "name": "netmedex-hybrid-hidden-meaning-development-v2",
+  "status": "frozen-before-v2-paid-run",
+  "registered_at": "2026-08-09T00:00:00+08:00",
+  "purpose": "Improve Hybrid RAG so graph paths reveal evidence-grounded, non-obvious biomedical meaning beyond text-only RAG.",
+  "claim_boundary": "Development analysis only; it cannot establish independent superiority because the source questions have prior-system exposure.",
+  "source_batch": "netmedex-hidden-information-10-v1",
+  "source_questions": [
+    "Q005", "Q008", "Q010", "Q011", "Q012",
+    "Q018", "Q019", "Q026", "Q037", "Q041"
+  ],
+  "paid_pilot_selection": {
+    "question_ids": ["Q008", "Q011", "Q037"],
+    "rule": "Graph-oriented mechanism/hypothesis questions with at least one cached path after deterministic alias-aware proxy gating.",
+    "selection_used_answer_scores": false,
+    "selection_used_qrels": false
+  },
+  "comparison": {
+    "generator_provider": "openai",
+    "generator_model": "gpt-4.1",
+    "same_model_both_arms": true,
+    "hybrid_profile": "F_adaptive",
+    "corpora": "reuse frozen hidden-info-10-gpt41-v1 corpora",
+    "top_k": 10
+  },
+  "cost_control": {
+    "stage_1": "rebuild retrieval and graph only",
+    "stage_1_max_provider_reported_chat_tokens": 120000,
+    "stage_2": "generate paired answers only for questions with at least one Tier A path",
+    "stage_3": "run blinded judges only for traceable candidate claims",
+    "checkpoint_granularity": "one question"
+  },
+  "primary_improvement_metrics": [
+    "questions_with_at_least_one_tier_a_path",
+    "verifier_supported_graph_claims_per_question",
+    "hybrid_only_supported_hidden_claims_per_question",
+    "unsupported_graph_claim_fraction"
+  ],
+  "quality_constraints": {
+    "every_graph_claim_requires_tier_a_path": true,
+    "every_graph_claim_requires_all_hop_pmids": true,
+    "unsupported_graph_claim_fraction_max": 0.15,
+    "text_and_hybrid_use_same_generator_and_frozen_corpus": true
+  }
+}

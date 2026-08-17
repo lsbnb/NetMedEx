@@ -1,0 +1,5 @@
+system,arm,question_id,run_id,path_rank,path_id,path_signature,source,bridge,target,relation_1,relation_2,direction_1,direction_2,pmids,score,hop_count,path_text
+netmedex_hybrid_rag,F_adaptive,Q001,formal-v1-gpt-4.1-F_adaptive,1,Q001-P01,d980b84d3369fc1e,icariin,,mir-23a,regulates,,forward,undirected,33743412,0.8490,1,icariin ->[regulates] mir-23a
+netmedex_hybrid_rag,F_adaptive,Q001,formal-v1-gpt-4.1-F_adaptive,2,Q001-P02,9d123cb2776a2b25,icariin,,mir-153,upregulates,,forward,undirected,29904399,0.8470,1,icariin ->[upregulates] mir-153
+netmedex_hybrid_rag,F_adaptive,Q001,formal-v1-gpt-4.1-F_adaptive,3,Q001-P03,f5414ab8bd6ffab8,icariin,,mir-335,regulates,,forward,undirected,32911026,0.8450,1,icariin ->[regulates] mir-335
+netmedex_hybrid_rag,F_adaptive,Q001,formal-v1-gpt-4.1-F_adaptive,4,Q001-P04,c6b93ebbc4c518d2,icariin,,mir-21-5p,upregulates,,forward,undirected,29500883,0.8130,1,icariin ->[upregulates] mir-21-5p

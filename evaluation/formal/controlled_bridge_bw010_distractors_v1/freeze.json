@@ -1,0 +1,28 @@
+{
+  "name": "netmedex-controlled-bridge-bw010-distractors-v1",
+  "status": "frozen_before_semantic_graph_generation",
+  "frozen_at": "2026-08-09T18:22:58.848867+00:00",
+  "independent_holdout": false,
+  "same_corpus_for_text_and_hybrid": true,
+  "mediators_used_only_for_corpus_construction": true,
+  "endpoint_co_mention_forbidden_per_article": true,
+  "query_spec": "evaluation/formal/controlled_bridge_query_spec_bw010_distractors_v1.json",
+  "query_spec_sha256": "326fadcb2ee78be26c68674e60579351699c21bb612060d2735dd9dc4503ea13",
+  "questions": [
+    {
+      "question_id": "BW010",
+      "document_count": 26,
+      "eligible_mediators": [
+        "serotonin"
+      ],
+      "graph_build_eligible": true,
+      "corpus_sha256": "1360df81ff2d3775902ae259c205b0a3a10b22dac116736b9d79386f5270e0de"
+    }
+  ],
+  "checksums": {
+    "queries.csv": "9b38cb5bd27dfa2caf9800ec2d8f7b740eb6a659994b1b923949a07aa1c54a6f",
+    "questions_metadata.csv": "170b77de3fea8571c35b5b324895c6325e2c5f5e77e3e4088845e6e77658f25b",
+    "questions/BW010/corpus.pubtator": "1360df81ff2d3775902ae259c205b0a3a10b22dac116736b9d79386f5270e0de",
+    "questions/BW010/corpus_manifest.json": "ef1c0a872dd848915de011a4acbd53d5e2ea359cd7e250353b41847a1898fbc2"
+  }
+}

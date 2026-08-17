@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "Q006",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "95e10851af02187cd20dbe44cbaadc7ef821aafff7d449fec4ed98bd765b1596",
+  "raw_response_sha256": "af1bf2664611b1b8974c217706d2dbbd6271e7fcad3ec49f871b316e7cf92626",
+  "usage": {
+    "input_tokens": 2688,
+    "output_tokens": 465,
+    "total_tokens": 3153
+  },
+  "rated_at": "2026-08-13T04:37:40.134214+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q006-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Well-structured, cites specific PubMed IDs, distinguishes evidence types, and provides mechanistic and clinical context. No unsupported claims."
+      },
+      {
+        "answer_id": "Q006-B",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Accurate summary but lacks specific PubMed citations and clear separation of human/animal evidence. Mechanisms are well described."
+      },
+      {
+        "answer_id": "Q006-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Cites PubMed IDs, clearly separates evidence types, and provides mechanistic and clinical synthesis. No unsupported claims."
+      },
+      {
+        "answer_id": "Q006-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Well-cited, distinguishes evidence types, and includes hypothesis generation. Mechanistic and clinical evidence are clearly presented."
+      }
+    ],
+    "preferred_item_id": "Q006-C",
+    "pairwise_reason": "Q006-C and Q006-D are both excellent, but Q006-C provides slightly clearer synthesis and more explicit separation of evidence types. Q006-A is also strong but less concise. Q006-B lacks citations."
+  }
+}

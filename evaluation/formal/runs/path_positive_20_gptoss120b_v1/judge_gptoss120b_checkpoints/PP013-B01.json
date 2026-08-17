@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP013",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "398bc133f80d337dddc676717faacc1ceeb1630fb3d481c5d3e735f4fe9f51bb",
+  "raw_response_sha256": "81c0e9e8bca62556ee309d6de4c1d1a6685490c52ed8ba2cb40af2d967b53fcd",
+  "usage": {
+    "input_tokens": 3673,
+    "output_tokens": 416,
+    "total_tokens": 4089
+  },
+  "rated_at": "2026-08-13T06:36:19.976440+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP013-A",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 4,
+        "grounding": 3,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Chain with citations but truncates later steps; limited detail on mutation/HCC evidence."
+      },
+      {
+        "answer_id": "PP013-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, well‑cited evidence for each hop, includes human and animal data, acknowledges uncertainties."
+      },
+      {
+        "answer_id": "PP013-C",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 4,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Accurate chain with citations; less depth than B and missing some mechanistic details."
+      },
+      {
+        "answer_id": "PP013-D",
+        "correctness": 3,
+        "completeness": 2,
+        "relevance": 3,
+        "grounding": 3,
+        "mechanistic_coherence": 2,
+        "research_value": 2,
+        "notes": "Only covers first two hops; lacks evidence for fibrosis‑mutation‑HCC; minimal detail."
+      }
+    ],
+    "preferred_item_id": "PP013-B",
+    "pairwise_reason": "Answer B offers the most complete, accurate, and well‑grounded mechanistic pathway, distinguishing evidence for each hop and addressing uncertainties, making it superior to the others."
+  }
+}

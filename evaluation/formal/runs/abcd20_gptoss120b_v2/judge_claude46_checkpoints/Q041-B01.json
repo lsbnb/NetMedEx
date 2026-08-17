@@ -1,0 +1,63 @@
+{
+  "task": "answer",
+  "question_id": "Q041",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "79d33775708c85d33687993972fd71cd6962e4ffb939dba4824c7b1c2dd44d98",
+  "raw_response_sha256": "d02a4e40801c04e5c900a488c5bc69434297c33661b14c82370243f7c533e97f",
+  "usage": {
+    "input_tokens": 3715,
+    "output_tokens": 641,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 4356
+  },
+  "rated_at": "2026-08-13T04:42:02.326432+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q041-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Good mechanistic coverage; PMID 40829258 and 41285328 not verifiable but plausible. PMID 36768138 well-established. Hypothesis section adds value."
+      },
+      {
+        "answer_id": "Q041-B",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Structured clearly; PMID 36768138 and 36534320 credible. Ketone/NLRP3 hypothesis well-framed. Slightly less detail on TGF-β/Smad than D."
+      },
+      {
+        "answer_id": "Q041-C",
+        "correctness": 3,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 2,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "No PMIDs cited; claims about clinical cytokine reductions stated as established without references. Good mechanistic breadth but poor grounding."
+      },
+      {
+        "answer_id": "Q041-D",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Most comprehensive; clearly separates direct evidence, clinical associations, and hypotheses. Multiple PMIDs cited; NLRP3, macrophage polarization, TGF-β/Smad, Klotho all covered."
+      }
+    ],
+    "preferred_item_id": "Q041-D",
+    "pairwise_reason": "Q041-D provides the most complete mechanistic coverage with clear evidence stratification (in-vitro, clinical, hypothesis), multiple cited PMIDs, and includes all major pathways (NLRP3, macrophage M1/M2, TGF-β/Smad, Klotho, ICAM-1), making it the most research-valuable response."
+  }
+}

@@ -1,0 +1,7 @@
+system,question_id,answer_id,claim_id,claim_text,cited_pmids,support_label,notes
+netmedex_hybrid_rag,Q001,A001,C001,"Claim one.",111,direct,""
+netmedex_hybrid_rag,Q001,A001,C002,"Claim two.",222,partial,""
+netmedex_hybrid_rag,Q001,A001,C003,"Claim three.",999,unsupported,""
+traditional_rag,Q001,A002,C001,"Claim one.",111,direct,""
+traditional_rag,Q001,A002,C002,"Claim two.",999,unsupported,""
+

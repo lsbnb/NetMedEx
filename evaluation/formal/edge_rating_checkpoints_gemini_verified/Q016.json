@@ -1,0 +1,129 @@
+{
+  "question_id": "Q016",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-08-01T05:03:38.496526+00:00",
+  "ratings": [
+    {
+      "edge_id": "Q016-E01",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title mentions SMA (spinal muscular atrophy) but does not state or imply that 'atrophy' causes it."
+    },
+    {
+      "edge_id": "Q016-E02",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title mentions SMA and mitochondrial deficiency, but does not explicitly mention the SMN gene or protein."
+    },
+    {
+      "edge_id": "Q016-E03",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Neither SMN nor SMN1 are mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q016-E04",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Neither SMN nor nusinersen are mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q016-E05",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Neither SMN nor risdiplam are mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q016-E06",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Neither SMN nor fatigue are mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q016-E07",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Neither SMN nor fibrosis are mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q016-E08",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Neither SMN nor scoliosis are mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q016-E09",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Neither SMN nor muscle weakness are mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q016-E10",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Neither SMN nor neuromuscular manifestations are mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q016-E11",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] SMN1 is not mentioned in any of the supporting titles, and SMA does not cause SMN1 (rather, SMN1 mutations cause SMA)."
+    },
+    {
+      "edge_id": "Q016-E12",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The broad category of 'neuromuscular diseases' is not explicitly mentioned in the titles, even though SMA is one."
+    },
+    {
+      "edge_id": "Q016-E13",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Muscle weakness is not explicitly mentioned in the supporting titles."
+    },
+    {
+      "edge_id": "Q016-E14",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles explicitly mention both 'mitochondrial dysfunction' and 'spinal muscular atrophy', supporting an association."
+    },
+    {
+      "edge_id": "Q016-E15",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] SMN1 is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q016-E16",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The entity 'd356' is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q016-E17",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly links 'mitochondrial defects in the respiratory complex I' with 'SMA'."
+    },
+    {
+      "edge_id": "Q016-E18",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] While 'energy homeostasis' is mentioned, 'adenosine triphosphate' (ATP) is not explicitly stated in the title."
+    },
+    {
+      "edge_id": "Q016-E19",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Metabolic diseases are not explicitly mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q016-E20",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly mentions 'ROS' (reactive oxygen species) in the context of 'SMA motor neurons', supporting the association."
+    }
+  ],
+  "raw_response_sha256": "54fa39290c0a307aedfcda9bafb5cb0031c43eaca7cd5900969ed16e35393713"
+}

@@ -1,0 +1,333 @@
+{
+  "question_id": "BW005",
+  "status": "eligible",
+  "corpus_strategy": "controlled_endpoint_isolated_shared_bridge",
+  "same_corpus_for_text_and_hybrid": true,
+  "mediators_withheld_from_system_query": true,
+  "source_patterns": [
+    "\\bPD.?1\\s+blockade\\b",
+    "\\banti.PD.?1\\b",
+    "\\bpembrolizumab\\b",
+    "\\bnivolumab\\b",
+    "\\bPDCD1\\s+block\\b"
+  ],
+  "target_patterns": [
+    "\\bimmune.related\\s+adverse\\s+event\\b",
+    "\\birAE\\b",
+    "\\bimmune\\s+toxicity\\b",
+    "\\bautoimmune\\s+toxicity\\b"
+  ],
+  "source_identifiers": [],
+  "target_identifiers": [],
+  "target_side_forbidden_source_patterns": [
+    "\\bPD.?1\\b",
+    "\\banti.PD.?1\\b",
+    "\\bpembrolizumab\\b",
+    "\\bnivolumab\\b"
+  ],
+  "target_side_forbidden_source_identifiers": [],
+  "eligible_mediators": [
+    "IL-17"
+  ],
+  "mediator_audit": [
+    {
+      "name": "IL-17",
+      "queries": {
+        "source": "PD-1 blockade[Title/Abstract] AND (IL-17[Title/Abstract] OR interleukin-17[Title/Abstract])",
+        "target": "(IL-17[Title/Abstract] OR interleukin-17[Title/Abstract]) AND immune-related adverse event[Title/Abstract]"
+      },
+      "candidate_pmids": {
+        "source": [
+          "36356191",
+          "37359545",
+          "38774604",
+          "41953027",
+          "28483607",
+          "31478975",
+          "32106386",
+          "42463423",
+          "28115719",
+          "33896829",
+          "28890543",
+          "22306905",
+          "42279452",
+          "30713791",
+          "41256134",
+          "33972557",
+          "19505258",
+          "33294000"
+        ],
+        "target": [
+          "39023770",
+          "33186857",
+          "36422998",
+          "41148453",
+          "38742650",
+          "36134105",
+          "39450178",
+          "33552049"
+        ]
+      },
+      "accepted_pmids": {
+        "source": [
+          "36356191",
+          "37359545",
+          "38774604"
+        ],
+        "target": [
+          "36422998"
+        ]
+      },
+      "annotation_identifiers": {
+        "source": [
+          "16171",
+          "3605"
+        ],
+        "target": [
+          "3605"
+        ]
+      },
+      "shared_mediator_identifiers": [
+        "3605"
+      ],
+      "rejected_pmids": {
+        "source": {},
+        "target": {
+          "39023770": [
+            "target_absent",
+            "source_leak"
+          ],
+          "33186857": [
+            "target_absent",
+            "source_leak"
+          ],
+          "41148453": [
+            "mediator_absent",
+            "target_absent"
+          ],
+          "38742650": [
+            "mediator_absent"
+          ],
+          "36134105": [
+            "mediator_absent",
+            "target_absent",
+            "source_leak"
+          ],
+          "39450178": [
+            "source_leak"
+          ],
+          "33552049": [
+            "target_absent"
+          ]
+        }
+      },
+      "bridge_eligible": true
+    },
+    {
+      "name": "CTLA-4",
+      "queries": {
+        "source": "PD-1 blockade[Title/Abstract] AND (CTLA-4[Title/Abstract] OR CTLA4[Title/Abstract] OR CD152[Title/Abstract])",
+        "target": "(CTLA-4[Title/Abstract] OR CTLA4[Title/Abstract] OR CD152[Title/Abstract]) AND immune-related adverse event[Title/Abstract]"
+      },
+      "candidate_pmids": {
+        "source": [
+          "39214097",
+          "41038207",
+          "34239137",
+          "20160101",
+          "29891009",
+          "33419761",
+          "31969335",
+          "31028147",
+          "37602831",
+          "33320838",
+          "32839551",
+          "40593647",
+          "25809635",
+          "38349740",
+          "37592104",
+          "36443332",
+          "41006211",
+          "40833920",
+          "38260999",
+          "28064556",
+          "37097465",
+          "41570324",
+          "38923991",
+          "40666508",
+          "23667165",
+          "28482851",
+          "40828195",
+          "40460830",
+          "40440077",
+          "33252786"
+        ],
+        "target": [
+          "32200442",
+          "35432346",
+          "31730012",
+          "32746624",
+          "39089739",
+          "40608313",
+          "31969335",
+          "36709596",
+          "41231502",
+          "31668277",
+          "36264425",
+          "32726153",
+          "37269504",
+          "28603205",
+          "36636436",
+          "35101349",
+          "39793444",
+          "35876957",
+          "37276071",
+          "36925916",
+          "33643899",
+          "32381949",
+          "32299675",
+          "32702598",
+          "39945070",
+          "35571340",
+          "37504358",
+          "40248956",
+          "35159059",
+          "39023770"
+        ]
+      },
+      "accepted_pmids": {
+        "source": [
+          "39214097",
+          "41038207",
+          "34239137"
+        ],
+        "target": []
+      },
+      "annotation_identifiers": {
+        "source": [
+          "1493"
+        ],
+        "target": []
+      },
+      "shared_mediator_identifiers": [],
+      "rejected_pmids": {
+        "source": {},
+        "target": {
+          "32200442": [
+            "mediator_absent"
+          ],
+          "35432346": [
+            "target_absent",
+            "source_leak"
+          ],
+          "31730012": [
+            "source_leak"
+          ],
+          "32746624": [
+            "source_leak"
+          ],
+          "39089739": [
+            "target_absent",
+            "source_leak"
+          ],
+          "40608313": [
+            "source_leak"
+          ],
+          "31969335": [
+            "source_leak"
+          ],
+          "36709596": [
+            "source_leak"
+          ],
+          "41231502": [
+            "source_leak"
+          ],
+          "31668277": [
+            "mediator_absent"
+          ],
+          "36264425": [
+            "mediator_absent",
+            "target_absent"
+          ],
+          "32726153": [
+            "mediator_absent",
+            "target_absent"
+          ],
+          "37269504": [
+            "source_leak"
+          ],
+          "28603205": [
+            "target_absent",
+            "source_leak"
+          ],
+          "36636436": [
+            "mediator_absent",
+            "target_absent"
+          ],
+          "35101349": [
+            "target_absent",
+            "source_leak"
+          ],
+          "39793444": [
+            "source_leak"
+          ],
+          "35876957": [
+            "mediator_absent"
+          ],
+          "37276071": [
+            "mediator_absent",
+            "target_absent"
+          ],
+          "36925916": [
+            "source_leak"
+          ],
+          "33643899": [
+            "source_leak"
+          ],
+          "32381949": [
+            "source_leak"
+          ],
+          "32299675": [
+            "mediator_absent",
+            "target_absent"
+          ],
+          "32702598": [
+            "source_leak"
+          ],
+          "39945070": [
+            "source_leak"
+          ],
+          "35571340": [
+            "source_leak"
+          ],
+          "37504358": [
+            "target_absent",
+            "source_leak"
+          ],
+          "40248956": [
+            "source_leak"
+          ],
+          "35159059": [
+            "target_absent",
+            "source_leak"
+          ],
+          "39023770": [
+            "target_absent",
+            "source_leak"
+          ]
+        }
+      },
+      "bridge_eligible": false
+    }
+  ],
+  "distractor_audit": null,
+  "fetched_pmids": [
+    "36356191",
+    "37359545",
+    "38774604",
+    "36422998",
+    "39214097",
+    "41038207",
+    "34239137"
+  ]
+}

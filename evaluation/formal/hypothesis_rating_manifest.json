@@ -1,0 +1,14 @@
+{
+  "reviewer_type": "AI",
+  "role": "supplementary_hypothesis_quality_rater",
+  "provider": "google",
+  "model": "gemini-3.1-pro-preview",
+  "input_file": "evaluation/formal/hypothesis_ratings_worksheet.csv",
+  "instructions_file": "evaluation/formal/hypothesis_rating_instructions.md",
+  "started_at": "2026-07-31T17:42:15.557835+00:00",
+  "completed_at": "2026-07-31T17:45:42.686771+00:00",
+  "row_count": 18,
+  "question_count": 9,
+  "status": "complete",
+  "notes": "Blinded AI rating of the hypothesis/two_hop_path stratum's netmedex_hybrid_rag vs traditional_rag answers. Supplementary AI cross-check, not a human expert review."
+}

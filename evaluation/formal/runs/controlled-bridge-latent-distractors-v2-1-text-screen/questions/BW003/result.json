@@ -1,0 +1,176 @@
+{
+  "status": "complete",
+  "question_id": "BW003",
+  "domain": "rare disease",
+  "question": "Which evidence-supported intermediates connect CFTR dysfunction to intestinal inflammation?",
+  "question_type": "mechanism",
+  "pubmed_query": "CFTR AND intestinal inflammation AND (NF-kB OR dysbiosis OR cytokines)",
+  "effective_pubmed_query": "CFTR AND intestinal inflammation AND (NF-kB OR dysbiosis OR cytokines)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "19358684",
+    "35081328",
+    "31992345",
+    "41897439",
+    "39298837",
+    "37891968",
+    "37558605",
+    "38388235",
+    "34934215",
+    "39971692",
+    "37371025",
+    "39051188",
+    "34268058",
+    "31899933",
+    "27704174",
+    "36266104",
+    "24415861",
+    "37236193",
+    "32101703",
+    "32758418",
+    "17406617",
+    "22331082",
+    "22903521",
+    "28877980",
+    "39468026",
+    "37813835"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "24415861",
+        "score": 0.5520315896067646
+      },
+      {
+        "pmid": "27704174",
+        "score": 0.5409458004564753
+      },
+      {
+        "pmid": "22331082",
+        "score": 0.5365526718792549
+      },
+      {
+        "pmid": "32101703",
+        "score": 0.5292969687830176
+      },
+      {
+        "pmid": "37236193",
+        "score": 0.5266425860872344
+      },
+      {
+        "pmid": "34934215",
+        "score": 0.5101608955046607
+      },
+      {
+        "pmid": "31992345",
+        "score": 0.5074152075252182
+      },
+      {
+        "pmid": "22903521",
+        "score": 0.5032280930177424
+      },
+      {
+        "pmid": "36266104",
+        "score": 0.5002610704781157
+      },
+      {
+        "pmid": "17406617",
+        "score": 0.4986118577330711
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "24415861",
+        "score": 0.5520315896067646
+      },
+      {
+        "pmid": "27704174",
+        "score": 0.5409458004564753
+      },
+      {
+        "pmid": "22331082",
+        "score": 0.5365526718792549
+      },
+      {
+        "pmid": "32101703",
+        "score": 0.5292969687830176
+      },
+      {
+        "pmid": "37236193",
+        "score": 0.5266425860872344
+      },
+      {
+        "pmid": "34934215",
+        "score": 0.5101608955046607
+      },
+      {
+        "pmid": "31992345",
+        "score": 0.5074152075252182
+      },
+      {
+        "pmid": "22903521",
+        "score": 0.5032280930177424
+      },
+      {
+        "pmid": "36266104",
+        "score": 0.5002610704781157
+      },
+      {
+        "pmid": "17406617",
+        "score": 0.4986118577330711
+      }
+    ]
+  },
+  "answers": {},
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 1.9744038581848145e-05,
+    "vector_index": 4.633431427180767,
+    "total": 5.291533336043358
+  },
+  "token_usage": {},
+  "completed_at": "2026-08-09T19:09:46.321272+00:00"
+}

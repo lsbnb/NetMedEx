@@ -1,0 +1,161 @@
+{
+  "status": "complete",
+  "question_id": "Q010",
+  "domain": "multilingual",
+  "question": "請找出與骨質疏鬆、miRNA、天然物治療相關的可能機制。",
+  "question_type": "multilingual_mechanism",
+  "pubmed_query": "osteoporosis AND microRNA AND (natural product OR phytochemical) AND osteogenesis",
+  "effective_pubmed_query": "osteoporosis AND microRNA AND (natural product OR phytochemical) AND osteogenesis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "Traditional Chinese",
+  "corpus_pmids": [
+    "27492554",
+    "28158288",
+    "28361330",
+    "30827108",
+    "31131457",
+    "38795694",
+    "40024453",
+    "40266676",
+    "40350835",
+    "40358879",
+    "41196108",
+    "41961168"
+  ],
+  "graph": {
+    "node_count": 68,
+    "edge_count": 100,
+    "path_count": 0,
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": true,
+    "max_hops": 2,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "gate_evidence_paths": true,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "exposure_signature": "4f8698ecdef6d9b5",
+    "routed_profile": "G_evidence_gated_two_hop",
+    "route_reason": "question_type=multilingual_mechanism: evidence-gated multi-hop task",
+    "question_type": "multilingual_mechanism",
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "28158288",
+        "score": 0.37199336030222757
+      },
+      {
+        "pmid": "38795694",
+        "score": 0.3714197375977801
+      },
+      {
+        "pmid": "40350835",
+        "score": 0.36869828961533774
+      },
+      {
+        "pmid": "41961168",
+        "score": 0.3600909726138641
+      },
+      {
+        "pmid": "31131457",
+        "score": 0.35453840294392625
+      },
+      {
+        "pmid": "27492554",
+        "score": 0.3525113097585859
+      },
+      {
+        "pmid": "40024453",
+        "score": 0.35132081692168105
+      },
+      {
+        "pmid": "30827108",
+        "score": 0.34564720054712794
+      },
+      {
+        "pmid": "40266676",
+        "score": 0.34286514923730294
+      },
+      {
+        "pmid": "40358879",
+        "score": 0.3413258751629654
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "28158288",
+        "score": 0.37199336030222757
+      },
+      {
+        "pmid": "38795694",
+        "score": 0.3714197375977801
+      },
+      {
+        "pmid": "40350835",
+        "score": 0.36869828961533774
+      },
+      {
+        "pmid": "41961168",
+        "score": 0.3600909726138641
+      },
+      {
+        "pmid": "31131457",
+        "score": 0.35453840294392625
+      },
+      {
+        "pmid": "27492554",
+        "score": 0.3525113097585859
+      },
+      {
+        "pmid": "40024453",
+        "score": 0.35132081692168105
+      },
+      {
+        "pmid": "30827108",
+        "score": 0.34564720054712794
+      },
+      {
+        "pmid": "40266676",
+        "score": 0.34286514923730294
+      },
+      {
+        "pmid": "40358879",
+        "score": 0.3413258751629654
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "根據提供的文獻，與骨質疏鬆、miRNA 及天然物治療相關的機制梳理如下：\n\n---\n\n**直接證據（Direct Evidence）**\n\n- 壯骨方（Zhuang-Gu-Fang, ZGF）可促進骨髓間質幹細胞（BMSCs）經由肌母細胞及其外泌體miRNA（如 miR-5100, miR-126a-3p, miR-450b-5p，上調；miR-669a-5p，下調）進行成骨分化，並提高骨組織Osterix（Sp7）及OCN蛋白表達。此顯示ZGF通過調控特定miRNA改善老年性骨質疏鬆 [PMID: 38795694]。（人/小鼠體內外證據）\n    - PATH: ZGF ➡️ (調控) ➡️ 骨骼肌外泌體miRNA ➡️ (上/下調) ➡️ 促成骨分化\n\n- 熟地黃（Rehmanniae Radix Praeparata, RRP）水提物可上調血清外泌體內 miR-29a-3p 水平，進而抑制NFIA促進Wnt訊號通路，促進成骨作用與骨質改善於去卵巢大鼠。NFIA亦能影響Wnt抑制因子SFRP1的轉錄 [PMID: 40024453]。（動物體內/細胞證據）\n    - PATH: RRP ➡️ (提升) ➡️ miR-29a-3p ➡️ (抑制) ➡️ NFIA ➡️ (促活) ➡️ Wnt pathway ➡️ 促進成骨\n\n- 黃芪（QiangGuYin, QGY）可提升破骨細胞外泌體的 miR-27b-3p，抑制 DKK2，進一步活化β-catenin路徑，促進骨髓間質幹細胞成骨分化並維護骨微結構，對抗絕經後骨質疏鬆 [PMID: 41961168]。（動物體內/細胞證據）\n    - PATH: QGY ➡️ (提升) ➡️ miR-27b-3p ➡️ (抑制) ➡️ DKK2 ➡️ (活化) ➡️ β-catenin pathway ➡️ 促進成骨\n\n- 龜板膠（Plastrum Testudinis, PT）可抑制miR-214，減少其對Wnt/β-catenin通路的負向調控，從而促進骨髓間質幹細胞的成骨分化，改善雌激素缺乏骨質疏鬆大鼠的骨量及骨結構 [PMID: 40358879]。（動物體內/細胞證據）\n    - PATH: PT ➡️ (抑制) ➡️ miR-214 ➡️ (釋放) ➡️ Wnt/β-catenin pathway ➡️ 促進成骨\n\n---\n\n**關聯性（Association）**\n\n- 五味子甙元（Icariine）能下調LPS誘導上升的miR-34c，恢復Runx2蛋白表達，提高ALP、OPN、BMP2等成骨相關標記，進而減少骨損失及改善骨質疏鬆，但miR-34c明顯抑制成骨分化 [PMID: 27492554]。\n    - PATH: Icariine ➡️ (降低) ➡️ miR-34c ➡️ (提升) ➡️ Osteogenic markers\n\n- 枇杷葉（Eriobotrya japonica）中的熊果酸（Ursolic Acid）可透過抑制輸出蛋白XPO5，進而下調mature microRNA let-7g-5p，抑制破骨細胞分化 [PMID: 30827108]。\n    - PATH: Ursolic acid ➡️ (作用於) ➡️ XPO5 ➡️ (下調) ➡️ let-7g-5p ➡️ 抑制破骨細胞分化\n\n---\n\n**可檢驗假說（Testable Hypothesis）**\n\n- 某些中藥萃取物（如Herba Epimedium外泌體）中富含miRNA並可促進骨骼幹細胞成骨分化，推測其機制與調控特定miRNA、影響PI3K/Akt/mTOR等信號路徑相關，值得深入追蹤其具體調控miRNA及精確分子機制 [PMID: 40266676]。\n    - PATH: Herba Epimedium extracellular vesicles ➡️ (調控) ➡️ 調控性miRNA ➡️ (活化) ➡️ PI3K/Akt/mTOR pathway ➡️ 成骨促進\n\n---\n\n**Graph-derived candidate insights**\n\n1. 【PATH: ZGF ➡️ exosomal miR-5100/126a-3p/450b-5p/669a-5p ➡️ osteogenic differentiation】ZGF可能通過肌母細胞來源外泌體調控一組miRNA（miR-5100, miR-126a-3p, miR-450b-5p上調，miR-669a-5p下調），激活成骨分化 [PMID: 38795694]。直接證據。\n\n2. 【PATH: RRP ➡️ miR-29a-3p ➡️ NFIA/Wnt pathway ➡️ osteogenesis】RRP可提升血清外泌體miR-29a-3p，抑制NFIA後釋放Wnt路徑，促進成骨 [PMID: 40024453]。直接證據。\n\n3. 【PATH: QGY ➡️ miR-27b-3p ➡️ DKK2 ➡️ β-catenin pathway ➡️ osteogenesis】QGY提升破骨細胞外泌體miR-27b-3p，進一步抑制DKK2並活化β-catenin促進成骨作用 [PMID: 41961168]。直接證據。\n\n4. 【PATH: PT ➡️ (減少) miR-214 ➡️ Wnt/β-catenin pathway】PT通過下調miR-214釋放Wnt/β-catenin訊號軸活性，促進成骨 [PMID: 40358879]。直接證據。\n\n5. 【PATH: Icariine ➡️ miR-34c ➡️ Runx2/BMP2/OPN/ALP】Icariine下調miR-34c，恢復成骨分化關鍵蛋白表達 [PMID: 27492554]。直接證據。\n\n---\n\n若需進一步說明某一條路徑或機轉細節，請再告知。",
+    "traditional_rag": "根據您提供的PubMed文獻內容，以下總結骨質疏鬆、miRNA與天然物治療相關的「可能機制」及其直接或間接證據：\n\n【直接證據】\n\n1. Plastrum Testudinis（龜板）與miR-214/Wnt/beta-catenin信號：\n- 龜板提取物可顯著促進去卵巢（OVX）大鼠的骨形成、改善骨質結構，並激活Wnt/beta-catenin信號途徑。\n- miR-214的高表現會抑制Wnt信號並抑制骨生成，龜板可逆轉miR-214的作用，使間質幹細胞促進骨生成。[動物及細胞實驗][PMID: 40358879]\n\n2. 巴戟健脾活血湯（Bushen Jianpi Huoxue Decoction）與miR-140-5p/BCL2L1：\n- miR-140-5p可促使人類成骨細胞（HFOB1.19）凋亡並抑制自噬，進而影響骨生成。\n- 巴戟健脾活血湯能調節miR-140-5p對成骨細胞的影響，特別是在骨形成蛋白等表現上產生作用，顯示其干預miRNA機制以治療骨質疏鬆。[細胞與動物實驗][PMID: 40350835]\n\n3. 壯骨方（Zhuang-Gu-Fang, ZGF）通過肌源性外泌體miRNA調節骨生成：\n- ZGF可提升肌肉及骨組織的miR-5100、miR-450b-5p、miR-126a-3p並抑制miR-669a-5p表現。此改變促進成骨分化及相關轉錄因子的表現，延緩老年性骨質疏鬆進程。[動物實驗，分子驗證][PMID: 38795694]\n\n4. 強骨飲（QiangGuYin, QGY）與破骨細胞外泌體miR-27b-3p：\n- QGY提高破骨細胞外泌體中miR-27b-3p含量，抑制其下游靶點DKK2（Wnt途徑抑制因子），改善骨質結構，促進beta-catenin通路激活。[動物、分子實驗][PMID: 41961168]\n\n5. 熟地黃（Rehmanniae Radix Praeparata, RRP）與miR-29a-3p/NFIA/Wnt：\n- 熟地黃水提物可經由提升外泌體miR-29a-3p，抑制NFIA，活化Wnt通路而促進骨生成，改善去卵巢大鼠骨質疏鬆的骨微結構損傷。[動物實驗及細胞共培養][PMID: 40024453]\n\n6. 淫羊藿外泌體樣納米囊泡（EELNs）含miRNA，參與促進成骨及骨再生：\n- 淫羊藿EELNs富含miRNA，經網絡藥理學及實驗確認其激活PI3K/Akt/mTOR等骨生路徑，在體外促進成骨、於OVX大鼠促進骨修復。[動物及細胞實驗][PMID: 40266676]\n\n7. 淫羊藿苷（Icariine）和miR-34c：\n- Icariine通過下調miR-34c表現，促進ALP、Runx2、OPN和BMP2等成骨基因表現，並減少炎症相關訊號（JNKs, p38, NF-kB），改善LPS誘導的骨質丟失。[細胞及動物實驗][PMID: 27492554]\n\n8. 枇杷葉酸（Ursolic acid）與let-7g-5p及出口蛋白XPO5：\n- Ursolic acid抑制出口蛋白XPO5，降低miRNA let-7g-5p在破骨細胞的成熟度，抑制破骨細胞分化，提供骨吸收疾病潛在治療措施。[細胞實驗][PMID: 30827108]\n\n【關聯性（Association）】\n\n- 許多天然藥物（如龜板、熟地黃、淫羊藿等）都被驗證可以經由調控 miRNA 表現來促進成骨或抑制破骨細胞活性，為中醫藥治療骨質疏鬆提供分子層面的科學依據。\n- 中樞機制多數涉及Wnt/beta-catenin訊號、NFIA調控、JNK/NF-kB炎症途徑及骨形成相關轉錄因子的調節。\n\n【可測試假說（Testable hypothesis）】\n\n- 調控特定miRNA（如下調miR-214、miR-34c；上調miR-29a-3p、miR-27b-3p、miR-126a-3p等）有望作為新型骨質疏鬆分子治療靶點。\n- 天然物活性成分或其衍生外泌體、納米囊泡可作為載體介導miRNA調控，進而調節骨代謝。\n\n【證據種類】\n\n- 動物模型、細胞實驗支撐上述所有關鍵機制。\n- 部分臨床間接證據（如熟地黃、淫羊藿有臨床治療輔證），但miRNA調控機制以實驗為主。\n\n【結論概述】\n多種天然物治療骨質疏鬆的作用機制核心涉及藉由調控特定miRNA表現，介導Wnt/beta-catenin、NFIA/SFRP1、PI3K/Akt/mTOR等信號通路，促進骨生成或抑制骨吸收，已在動物模型及細胞實驗得到明確證實，未來可進一步開發作為臨床治療新策略。\n\n【主要參考文獻】\n[PMID: 40358879, 40350835, 38795694, 41961168, 40024453, 40266676, 27492554, 30827108]"
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 25.971894405782223,
+    "vector_index": 1.5262232199311256,
+    "answer_netmedex_hybrid_rag": 12.372455894947052,
+    "answer_traditional_rag": 14.39674237370491,
+    "total": 59.823019094765186
+  },
+  "token_usage": {
+    "input_tokens": 27097,
+    "total_tokens": 40675,
+    "output_tokens": 13578
+  },
+  "completed_at": "2026-08-05T02:26:57.064180+00:00"
+}

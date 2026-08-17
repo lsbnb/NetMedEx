@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "Q046",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "7dc54cbec57e496fb60703a809326bf95f0103cf4e67343b3b17407efc2d0566",
+  "raw_response_sha256": "f64e3be5b9aaeda8a78b1b60e95cabb3f79eef16cb74bd1376ff3cbd1792dbaa",
+  "usage": {
+    "input_tokens": 3260,
+    "output_tokens": 404,
+    "total_tokens": 3664
+  },
+  "rated_at": "2026-08-13T04:55:35.817000+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q046-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, accurate summary; highlights lack of direct causal evidence across study types."
+      },
+      {
+        "answer_id": "Q046-B",
+        "correctness": 5,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Correctly notes absence of direct evidence in cited papers but omits broader literature."
+      },
+      {
+        "answer_id": "Q046-C",
+        "correctness": 5,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Accurate statement of no direct link; limited to supplied citations without wider context."
+      },
+      {
+        "answer_id": "Q046-D",
+        "correctness": 5,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Accurate but narrow; adds few extra citations yet still lacks direct evidence discussion."
+      }
+    ],
+    "preferred_item_id": "Q046-A",
+    "pairwise_reason": "Q046-A provides the most complete, well‑grounded overview and explicitly addresses the lack of a direct causal link, whereas others are limited to citation lists."
+  }
+}

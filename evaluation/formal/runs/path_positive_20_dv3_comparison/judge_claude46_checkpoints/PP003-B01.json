@@ -1,0 +1,53 @@
+{
+  "task": "answer",
+  "question_id": "PP003",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "ee579eeb0626d2543a413c9e8afc3ef2c48fbf7db73eaa5bec2fb422bdbb189a",
+  "raw_response_sha256": "a555ea9383ce3987532122bdd878678029915079ee637670836c7d4d16a4d1a6",
+  "usage": {
+    "input_tokens": 2390,
+    "output_tokens": 453,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 2843
+  },
+  "rated_at": "2026-08-13T10:31:37.020894+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP003-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Solid coverage with appropriate PMID citations. Limitations section is thorough. Slightly less mechanistic depth than C; PMID:40864415 plausibility uncertain."
+      },
+      {
+        "answer_id": "PP003-B",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Accurate and well-cited but less comprehensive than A or C; limitations section adequate but briefer; missing some mechanistic nuance and additional citations."
+      },
+      {
+        "answer_id": "PP003-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Most comprehensive: clear evidence tiers, detailed mechanisms, thorough limitations including dose-response gap and therapeutic translation. PMID:27766447 unverified but plausible."
+      }
+    ],
+    "preferred_item_id": "PP003-C",
+    "pairwise_reason": "PP003-C provides the most structured, mechanistically detailed, and complete answer with well-organized evidence tiers, the most thorough limitations section including dose-response and therapeutic translation gaps, and clear distinction between human and pre-clinical evidence."
+  }
+}

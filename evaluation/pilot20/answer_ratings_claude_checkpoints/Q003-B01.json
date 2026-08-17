@@ -1,0 +1,53 @@
+{
+  "task": "answer",
+  "question_id": "Q003",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "1773e989a3ed243f70222c1887afcd3963c82b615f8097b3fe33a418ff5d066e",
+  "raw_response_sha256": "e1e3e7fd0d99a023082e37189457042c15e1fb6021eddb07405908c86074401a",
+  "usage": {
+    "input_tokens": 2420,
+    "output_tokens": 498,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 2918
+  },
+  "rated_at": "2026-08-12T19:21:21.507077+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q003-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Solid coverage of TNF-α, IL-6 mechanisms and human population data. PMIDs cited are plausible. Lacks discussion of causality ambiguity and intervention trial nuance."
+      },
+      {
+        "answer_id": "Q003-B",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 5,
+        "notes": "Broadest coverage including PCOS, lipoxygenase pathways, multiple PMIDs. PMID 39749338 unverifiable but content plausible. Good breadth across disease contexts."
+      },
+      {
+        "answer_id": "Q003-C",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Best handling of causality ambiguity and bidirectionality. No PMIDs cited reduces grounding score. Epidemiological, intervention, and mechanistic layers well-balanced."
+      }
+    ],
+    "preferred_item_id": "Q003-B",
+    "pairwise_reason": "Q003-B provides the broadest and most complete coverage across multiple human disease contexts (obesity, T2D, PCOS), includes mechanistic detail, cites multiple PMIDs, and adds unique content (lipoxygenase pathways, PCOS) not found in A or C, making it most valuable for research purposes despite minor citation uncertainty."
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "name": "netmedex-controlled-bridge-reviewed-distractors-v1",
+  "status": "frozen_before_semantic_graph_generation",
+  "frozen_at": "2026-08-09T18:46:37.366125+00:00",
+  "independent_holdout": false,
+  "same_corpus_for_text_and_hybrid": true,
+  "mediators_used_only_for_corpus_construction": true,
+  "endpoint_co_mention_forbidden_per_article": true,
+  "query_spec": "evaluation/formal/controlled_bridge_query_spec_reviewed_distractors_v1.json",
+  "query_spec_sha256": "50d8a7587fc2945c545bf7411ff5a8ed0ef19597f88b05ba5f968c6b09616274",
+  "questions": [
+    {
+      "question_id": "BW003",
+      "document_count": 26,
+      "eligible_mediators": [
+        "IL-8"
+      ],
+      "graph_build_eligible": true,
+      "corpus_sha256": "a7c014b3a9dbb8fd62cbcb4440d6bec3848d97b1639468464a23206a9830c03d"
+    },
+    {
+      "question_id": "BW005",
+      "document_count": 24,
+      "eligible_mediators": [
+        "IL-17"
+      ],
+      "graph_build_eligible": true,
+      "corpus_sha256": "0b9b03fb3df5d22f27ba406c0fab038374d5afbe0b93afcf3e50a13e56c690a0"
+    },
+    {
+      "question_id": "BW007",
+      "document_count": 26,
+      "eligible_mediators": [
+        "p16INK4a"
+      ],
+      "graph_build_eligible": true,
+      "corpus_sha256": "5843281181c491e220944be5107f5b2ed89fb61ba7c53b6a349f9b080ca04498"
+    },
+    {
+      "question_id": "BW009",
+      "document_count": 26,
+      "eligible_mediators": [
+        "AMPK"
+      ],
+      "graph_build_eligible": true,
+      "corpus_sha256": "e44a0b06703b43153c4dfb4b56f194f06629362474a4711ceab05fe83c53aa64"
+    },
+    {
+      "question_id": "BW010",
+      "document_count": 26,
+      "eligible_mediators": [
+        "short-chain fatty acids"
+      ],
+      "graph_build_eligible": true,
+      "corpus_sha256": "2926698a0587b25e2e2a2cddc9641f6a2ba0c29edafb0e0756947008608a1c8e"
+    }
+  ],
+  "checksums": {
+    "queries.csv": "3321df613fe20ce54b0e1ee8b9318a1ff22dd585cf1a44374183016f80ab4f40",
+    "questions_metadata.csv": "2ffa7ea5626eb51d44754775cac15eaa7b4862167096787617020780283f0c16",
+    "questions/BW003/corpus.pubtator": "a7c014b3a9dbb8fd62cbcb4440d6bec3848d97b1639468464a23206a9830c03d",
+    "questions/BW003/corpus_manifest.json": "60c426546be07a7fcdd2a248cd7e0debf5b6e28d53017ed771e32a15e753f2e7",
+    "questions/BW005/corpus.pubtator": "0b9b03fb3df5d22f27ba406c0fab038374d5afbe0b93afcf3e50a13e56c690a0",
+    "questions/BW005/corpus_manifest.json": "9e51a9e479c6dce8e71fba9b654eb1465a340bd21b426144c6552059b0e7c45b",
+    "questions/BW007/corpus.pubtator": "5843281181c491e220944be5107f5b2ed89fb61ba7c53b6a349f9b080ca04498",
+    "questions/BW007/corpus_manifest.json": "8b7afb9c7a4f5633fd0f19dc426f4d070512a8ec781847e15e1e65c455fcabf0",
+    "questions/BW009/corpus.pubtator": "e44a0b06703b43153c4dfb4b56f194f06629362474a4711ceab05fe83c53aa64",
+    "questions/BW009/corpus_manifest.json": "1bf976e63ffe2c91db065389fe587b64fc03edf79e03d28cca37a209d64f229e",
+    "questions/BW010/corpus.pubtator": "2926698a0587b25e2e2a2cddc9641f6a2ba0c29edafb0e0756947008608a1c8e",
+    "questions/BW010/corpus_manifest.json": "bee80ca28bf6ae9c7f6249cf7da5274250ee6918d7df5fd1738f0722057b7ae4"
+  }
+}

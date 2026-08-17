@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP002",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "c9ba4ce965ef561a4aa95d6ef47dfb8219b79524d6a539d75f65c58b0e85ba60",
+  "raw_response_sha256": "9e9f82e40ac435564e88035866181bbe6dffb6677d4b31706e253a40c0577fd1",
+  "usage": {
+    "input_tokens": 3017,
+    "output_tokens": 475,
+    "total_tokens": 3492
+  },
+  "rated_at": "2026-08-13T07:09:17.123368+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP002-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate, well-cited, details mechanisms, limitations, and testable hypotheses. Clearly distinguishes in-vitro from in-vivo/clinical evidence."
+      },
+      {
+        "answer_id": "PP002-B",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate and well-grounded, but the answer is truncated and lacks a full conclusion. Mechanistic and contextual limitations are well described."
+      },
+      {
+        "answer_id": "PP002-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, mechanistically detailed, clearly distinguishes evidence types, and highlights translational limitations. Strong research value."
+      },
+      {
+        "answer_id": "PP002-D",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Accurate and well-grounded, but less mechanistic depth and less detail on animal/clinical gaps than A or C. Good summary of limitations."
+      }
+    ],
+    "preferred_item_id": "PP002-C",
+    "pairwise_reason": "PP002-C is the most comprehensive, mechanistically detailed, and clearly distinguishes between in-vitro, animal, and clinical evidence. It provides nuanced limitations and testable hypotheses, maximizing research value."
+  }
+}

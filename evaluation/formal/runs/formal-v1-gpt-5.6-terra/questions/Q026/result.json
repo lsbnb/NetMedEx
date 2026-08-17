@@ -1,0 +1,134 @@
+{
+  "status": "complete",
+  "question_id": "Q026",
+  "domain": "gastroenterology",
+  "question": "Which microbiome metabolites are linked to intestinal barrier integrity?",
+  "pubmed_query": "microbiome short-chain fatty acids butyrate intestinal barrier tight junction",
+  "language": "English",
+  "corpus_pmids": [
+    "35953929",
+    "36326134",
+    "36709599",
+    "36810115",
+    "36831324",
+    "38061697",
+    "39286812",
+    "39461239",
+    "40469511",
+    "40510181",
+    "40674913",
+    "40885307",
+    "40917749",
+    "41300111",
+    "41651593"
+  ],
+  "graph": {
+    "node_count": 34,
+    "edge_count": 37,
+    "path_count": 1,
+    "preferred_pmids": [
+      "40674913"
+    ]
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "40674913",
+        "score": 0.7086032685969252
+      },
+      {
+        "pmid": "40917749",
+        "score": 0.6155453712405877
+      },
+      {
+        "pmid": "41651593",
+        "score": 0.5840765995614451
+      },
+      {
+        "pmid": "35953929",
+        "score": 0.567365970519128
+      },
+      {
+        "pmid": "36326134",
+        "score": 0.5640532993079014
+      },
+      {
+        "pmid": "40885307",
+        "score": 0.5560570879694718
+      },
+      {
+        "pmid": "39286812",
+        "score": 0.5504903064160809
+      },
+      {
+        "pmid": "41300111",
+        "score": 0.5491936218285107
+      },
+      {
+        "pmid": "40510181",
+        "score": 0.5431698397085226
+      },
+      {
+        "pmid": "36831324",
+        "score": 0.5276323481733642
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "40917749",
+        "score": 0.6155453712405877
+      },
+      {
+        "pmid": "41651593",
+        "score": 0.5840765995614451
+      },
+      {
+        "pmid": "35953929",
+        "score": 0.567365970519128
+      },
+      {
+        "pmid": "36326134",
+        "score": 0.5640532993079014
+      },
+      {
+        "pmid": "40885307",
+        "score": 0.5560570879694718
+      },
+      {
+        "pmid": "39286812",
+        "score": 0.5504903064160809
+      },
+      {
+        "pmid": "41300111",
+        "score": 0.5491936218285107
+      },
+      {
+        "pmid": "40510181",
+        "score": 0.5431698397085226
+      },
+      {
+        "pmid": "36831324",
+        "score": 0.5276323481733642
+      },
+      {
+        "pmid": "38061697",
+        "score": 0.5273105771853375
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "Microbiome metabolites linked to **intestinal barrier integrity** in the supplied context are predominantly the **short-chain fatty acids (SCFAs)**:\n\n| Metabolite | Relationship to intestinal barrier integrity | Evidence type |\n|---|---|---|\n| **Butyrate** | Most consistently linked to barrier support: associated with increased tight-junction expression, reduced permeability, and improved barrier integrity. Proposed mechanisms include effects on AMPK/MLCK signaling, tight-junction proteins, and HDAC-related pathways. | **Direct animal evidence:** protected butyrate improved gut barrier integrity in broiler chickens [PMID: 35953929]; butyrate rose alongside improved intestinal barrier integrity in a rat Tourette syndrome model [PMID: 40674913]. **In-vitro evidence:** butyrate prevented LPS-induced gut-barrier disruption and altered tight-junction abundance/morphology [PMID: 40510181]. |\n| **Acetate** | Linked to improved barrier markers and restoration of tight-junction proteins when increased together with SCFA-producing microbiota. | **Animal association/direct intervention context:** acetate production increased in aging mice treated with probiotic strains that improved intestinal barrier integrity through AMPK activation and reduced MLCK activity [PMID: 40885307]. Acetate also increased with improved ZO-1 and claudin-1 in a food-allergy mouse model [PMID: 41300111]. **In-vitro evidence:** acetate protected against LPS-induced gut-barrier disruption [PMID: 40510181]. |\n| **Propionate** | Linked with strengthened tight-junction expression and improved barrier outcomes as part of the SCFA pool. | **Animal evidence:** a propionate-producing probiotic improved tight-junction protein expression (ZO-1, occludin, claudin-1) in DSS colitis mice, alongside increased SCFAs [PMID: 36326134]. Propionate was also elevated in probiotic-treated food-allergy mice with improved barrier markers [PMID: 41300111]. |\n| **SCFAs as a class** | Acetate, propionate, and butyrate regulate tight-junction proteins, support mucus production, and reduce inflammatory injury to the intestinal epithelium. | **Review-level evidence:** SCFAs are described as regulators of intestinal barrier and tight junctions [PMID: 40917749; PMID: 39286812]. |\n\n### Direct evidence\n- **Butyrate** improved intestinal barrier integrity in chickens and was associated with enhanced barrier integrity in rats [PMID: 35953929; PMID: 40674913].  \n- Probiotic interventions that raised **acetate and butyrate** improved barrier integrity in aging mice, with increased tight junctions through an AMPK/MLCK-related pathway [PMID: 40885307].  \n- In DSS-colitis mice, strains producing **acetate, propionate, or butyrate** increased ZO-1, occludin, and claudin-1 [PMID: 36326134].  \n- **Acetate and butyrate** directly protected gut-barrier models from LPS-induced disruption in vitro [PMID: 40510181].\n\n### Association evidence\n- In mouse food allergy, higher **acetate, propionate, and butyrate** correlated with enrichment of SCFA-producing taxa and with higher ZO-1 and claudin-1 expression [PMID: 41300111].  \n- In the rat Tourette model, higher colonic butyrate coincided with enhanced intestinal barrier integrity after treatment [PMID: 40674913].\n\n### Testable hypothesis\n- Restoring microbiota-derived **butyrate**, alone or in combination with **acetate and propionate**, may improve intestinal barrier integrity by increasing tight-junction proteins and suppressing permeability-promoting signaling such as MLCK activity. This is supported by animal and in-vitro findings, but the supplied context provides **no primary human intestinal-barrier intervention evidence**.",
+    "traditional_rag": "The metabolites linked to intestinal barrier integrity in the supplied records are predominantly **microbiota-derived short-chain fatty acids (SCFAs)**:\n\n- **Butyrate (butyric acid)**\n- **Acetate (acetic acid)**\n- **Propionate (propionic acid)**\n- **Isobutyrate (isobutyric acid)**—reported in one mouse colitis study alongside other SCFAs [PMID: 38061697]\n\n## Direct evidence\n\n### Animal evidence\n- **Butyrate** improved intestinal barrier integrity in broiler chickens, with effects assessed through intestinal tight-junction/barrier-protein measures; supplementation also altered caecal SCFA concentration and composition [PMID: 35953929].\n- In DSS-colitis mice, strains producing **acetate, propionate, or butyrate** increased expression of the tight-junction proteins ZO-1, occludin, and claudin-1, alongside increased intestinal SCFA production [PMID: 36326134].\n- In aging mice, increased **acetate and butyrate** production following probiotic treatment was linked to improved barrier integrity and increased tight-junction expression through an AMPK/MLCK-related pathway [PMID: 40885307].\n- In a murine food-allergy model, increased **acetate, butyrate, and propionate** correlated with restoration of intestinal integrity and higher ZO-1 and claudin-1 expression [PMID: 41300111].\n- In DSS-induced chronic colitis mice, restoration of barrier-associated proteins (increased occludin and ZO-1; decreased claudin-2) occurred together with increased **acetate, propionate, butyrate, and isobutyrate** [PMID: 38061697].\n\n### In-vitro evidence\n- **Butyrate and acetate** prevented LPS-induced disruption of gut-barrier function in dose-dependent in-vitro models; protection was associated with changes in tight-junction abundance and morphology [PMID: 40510181].\n\n## Association / review-level evidence\n- SCFAs—especially **acetate, propionate, and butyrate**—are described as regulators of intestinal barrier function through regulation of tight-junction proteins [PMID: 40917749].\n- **Butyrate** is described as a colonocyte fuel and barrier stabilizer in the context of sepsis; SCFA transport and permeability are linked to epithelial tight-junction-regulated pathways [PMID: 41651593].\n- In porcine nutrition literature, SCFAs (**acetate, propionate, butyrate**) are associated with increased tight-junction-protein expression, mucus production, reduced inflammation, and preserved intestinal structural integrity [PMID: 39286812].\n\n## Testable hypothesis\n- Increasing intestinal availability of **butyrate**, and potentially **acetate and propionate**, may strengthen the intestinal barrier by increasing protective tight-junction proteins (e.g., ZO-1, occludin, claudin-1), reducing permeability-associated pathways such as MLCK or claudin-2, and supporting mucus production. This is supported mainly by animal, in-vitro, and review evidence in the supplied context; direct human intestinal-barrier intervention evidence is not provided.",
+    "general_llm": "Microbiome-derived metabolites most often linked to intestinal barrier integrity include the following:\n\n### Metabolites generally associated with barrier support\n\n- **Short-chain fatty acids (SCFAs)** — especially **butyrate**, and also **acetate** and **propionate**  \n  - Produced by microbial fermentation of dietary fiber and resistant starch.  \n  - **Butyrate** is the best-established: it is a major fuel for colonic epithelial cells, can support tight-junction protein expression, mucus production, epithelial repair, and anti-inflammatory signaling.  \n  - SCFAs can act through receptors such as GPR41/FFAR3, GPR43/FFAR2, and GPR109A, and through effects on histone deacetylases.  \n  - The strongest mechanistic evidence is from experimental models, but low fiber intake and reduced butyrate-producing bacteria are commonly associated with barrier-related diseases in humans.\n\n- **Tryptophan-derived indoles**  \n  Important examples include **indole**, **indole-3-propionic acid (IPA)**, **indole-3-aldehyde**, **indole-3-lactic acid**, and other indole derivatives.  \n  - These metabolites can activate pathways including the **aryl hydrocarbon receptor (AhR)** and, for some compounds, **pregnane X receptor (PXR)**.  \n  - They are linked to maintenance of epithelial tight junctions, mucus-related defenses, antimicrobial peptide production, and immune regulation, particularly through IL-22-associated pathways.  \n  - IPA is frequently discussed as a potentially protective metabolite, although human causal evidence remains incomplete.\n\n- **Secondary bile acids**  \n  Examples include **deoxycholic acid**, **lithocholic acid**, and their modified derivatives.  \n  - Microbes convert primary bile acids into secondary bile acids, which can influence epithelial and immune function through receptors such as **FXR** and **TGR5**.  \n  - Their effects are strongly context-dependent: some bile-acid signaling may promote epithelial repair and anti-inflammatory responses, whereas high concentrations of certain hydrophobic bile acids can injure epithelial cells, increase permeability, and promote inflammation.  \n  - Thus, “more secondary bile acids” is not necessarily beneficial.\n\n- **Polyamines**  \n  Such as **spermidine**, **spermine**, and **putrescine**, which can be supplied or modified by microbes and diet.  \n  - They participate in epithelial cell proliferation, wound repair, and maturation of the intestinal lining.  \n  - Their net effect varies with dose, site, diet, host metabolism, and disease setting; the evidence is less definitive than for SCFAs.\n\n- **Microbial phenolic metabolites of plant foods**  \n  Examples include **urolithins** (from ellagitannins), and some metabolites of flavonoids and other polyphenols.  \n  - Several have shown protection of tight junctions, reduction of oxidative stress, or improvement of experimental colitis in laboratory and animal studies.  \n  - Human evidence is emerging, and effects depend greatly on whether a person has the microbial capacity to produce the metabolite.\n\n- **Microbial sphingolipids and related lipids**  \n  Particularly those produced by some *Bacteroides* species.  \n  - These may shape epithelial and mucosal immune signaling and have been associated with intestinal homeostasis.  \n  - This is an active research area; their direct role in human barrier integrity is not yet as firmly established as that of SCFAs.\n\n### Metabolites that may impair the barrier, especially in excess or in susceptible settings\n\n- **Hydrogen sulfide**  \n  - At low physiological levels it may have signaling roles, but excessive production—often associated with sulfur-rich substrates and certain microbial communities—can impair colonocyte energy metabolism, weaken mucus defenses, and damage epithelium.\n\n- **Lipopolysaccharide (LPS)**  \n  - Strictly speaking, LPS is a bacterial cell-wall component rather than a classical secreted metabolite. It is nevertheless highly relevant to barrier dysfunction.  \n  - When it reaches the mucosa or circulation in increased amounts, it can stimulate inflammatory pathways and is often discussed in connection with “metabolic endotoxemia.”\n\n- **Ethanol and acetaldehyde produced by microbes**  \n  - Local microbial production may contribute to tight-junction disruption and mucosal injury, particularly in settings with altered microbial fermentation or alcohol exposure.\n\n- **Certain bile acids at high concentrations**  \n  - As noted above, deoxycholic acid and other hydrophobic bile acids can be barrier-damaging despite having signaling functions at lower or regulated concentrations.\n\n- **Excess proteolytic fermentation products**  \n  - Compounds such as **ammonia**, **p-cresol**, **phenols**, and some amines are often associated with low-fiber, high-protein fermentation patterns and may adversely affect epithelial metabolism or barrier function in experimental systems.\n\n### Bottom line\n\nThe most consistently supported microbiome metabolites for maintaining intestinal barrier integrity are **fiber-derived SCFAs—particularly butyrate—and microbial tryptophan-derived indoles**. **Bile acids, polyamines, sulfur metabolites, and polyphenol-derived compounds** also influence the barrier, but their effects are more dependent on dose, location in the gut, host condition, and overall microbial ecology. Associations in human studies do not always establish that a metabolite is the cause of barrier improvement or damage."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 1.0891330391168594,
+    "semantic_graph": 68.4838364571333,
+    "vector_index": 1.786833569407463,
+    "answer_netmedex_hybrid_rag": 9.921756945550442,
+    "answer_traditional_rag": 7.632727548480034,
+    "answer_general_llm": 20.46922877430916,
+    "total": 110.75931544601917
+  },
+  "completed_at": "2026-07-27T18:33:16.118657+00:00"
+}

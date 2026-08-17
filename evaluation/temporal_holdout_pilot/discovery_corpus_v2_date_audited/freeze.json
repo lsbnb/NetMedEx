@@ -1,0 +1,56 @@
+{
+  "name": "netmedex-bridge-withheld-union-development-v1",
+  "status": "frozen_before_semantic_graph_generation",
+  "frozen_at": "2026-08-12T19:34:12.923972+00:00",
+  "independent_holdout": false,
+  "same_union_corpus_for_text_and_hybrid": true,
+  "text_context_top_k": 10,
+  "max_pub_year": 2015,
+  "query_spec": "evaluation/temporal_holdout_pilot/query_spec_v1.json",
+  "query_spec_sha256": "88dac5fc33b099307f13d41788db41d9cf77d5369cd9b97cfec39b4dccbc5716",
+  "questions": [
+    {
+      "question_id": "TH001",
+      "document_count": 42,
+      "requested_union_count": 42,
+      "stratum_unique_counts": {
+        "source": 15,
+        "target": 15,
+        "endpoint_pair": 15
+      },
+      "corpus_sha256": "e9704e896e957ea5513d59644c4e9778b6fbcdb835de45e12dde19bf7de69265"
+    },
+    {
+      "question_id": "TH002",
+      "document_count": 43,
+      "requested_union_count": 43,
+      "stratum_unique_counts": {
+        "source": 15,
+        "target": 15,
+        "endpoint_pair": 14
+      },
+      "corpus_sha256": "3bd2f8bc60661a7d9e5e1897c083f91f25162d9d104ce201eaa02a5f33553873"
+    },
+    {
+      "question_id": "TH003",
+      "document_count": 39,
+      "requested_union_count": 39,
+      "stratum_unique_counts": {
+        "source": 15,
+        "target": 15,
+        "endpoint_pair": 15
+      },
+      "corpus_sha256": "379f1caafdb04903a5b3125080f2617a22af89daa5cd40baa572301d91b18281"
+    }
+  ],
+  "checksums": {
+    "queries.csv": "8cd7f05729171bcca75c7e20cc50f097a37a6e2e850971bf3821c9391c6d4879",
+    "questions_metadata.csv": "cc98d2e835ec2b7763934e4414d5f442e34a4d11f259f22c5b78a33f9a19589d",
+    "questions/TH001/corpus.pubtator": "e9704e896e957ea5513d59644c4e9778b6fbcdb835de45e12dde19bf7de69265",
+    "questions/TH001/corpus_manifest.json": "b3f4178eb2d5c6dbcaab38b1cfed08be374d1817e6c07966b55fe023cf5e0ee1",
+    "questions/TH002/corpus.pubtator": "3bd2f8bc60661a7d9e5e1897c083f91f25162d9d104ce201eaa02a5f33553873",
+    "questions/TH002/corpus_manifest.json": "cd393aa61f033400599a79b705715917ffcfa800c5478c067bfa2ab021f10828",
+    "questions/TH003/corpus.pubtator": "379f1caafdb04903a5b3125080f2617a22af89daa5cd40baa572301d91b18281",
+    "questions/TH003/corpus_manifest.json": "86a9daf599264d5e1fa2804b700f9f5009fbe566da1b5447190dceb1fce27902"
+  }
+}

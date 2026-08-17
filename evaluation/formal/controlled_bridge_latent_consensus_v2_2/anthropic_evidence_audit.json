@@ -1,0 +1,57 @@
+{
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "reviewer_type": "AI PMID-level signed-hop evidence auditor",
+  "human_expert_review_claimed": false,
+  "reviewed_at": "2026-08-09T19:19:32.800641+00:00",
+  "corpus_freeze_sha256": "dfdc349e27e74e340ade42c608223e9048b3d6dcb0e032df91b849a90317a957",
+  "usage": {
+    "input_tokens": 5914,
+    "output_tokens": 585,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 6499
+  },
+  "questions": {
+    "BW003": {
+      "DUOX2": {
+        "source_relation_supported": 0,
+        "target_relation_supported": 1,
+        "signed_composition_valid": 0,
+        "endpoint_semantically_isolated": 0,
+        "source_supporting_pmids": [],
+        "target_supporting_pmids": [
+          "37891968",
+          "41897439"
+        ],
+        "contradiction_pmids": [],
+        "reason": "No supplied abstract explicitly shows CFTR dysfunction upregulating DUOX2. PMID 19358684 describes DUOX/CFTR functional dependence without directional upregulation; PMID 31992345 shows correlation/biomarker language only; PMID 35081328 concerns roscovitine effects, not CFTR-driven DUOX2 upregulation. Target relation is supported. Composition fails due to unsupported source relation.",
+        "passes_evidence_gate": 0
+      }
+    },
+    "BW006": {
+      "Galectin-3": {
+        "source_relation_supported": 0,
+        "target_relation_supported": 0,
+        "signed_composition_valid": 0,
+        "endpoint_semantically_isolated": 1,
+        "source_supporting_pmids": [],
+        "target_supporting_pmids": [],
+        "contradiction_pmids": [],
+        "reason": "PMID 41124255 shows Galectin-3 upregulation as a lysosomal damage biomarker in DMD, not a direct consequence of dystrophin deficiency driving inflammation. PMIDs 29894670 and 40948348 show Galectin-3 promotes myogenesis—a contradictory/protective role. Target PMIDs provide only biomarker/review language without mechanistic support for Galectin-3 promoting chronic inflammation.",
+        "passes_evidence_gate": 0
+      },
+      "HMGB1": {
+        "source_relation_supported": 0,
+        "target_relation_supported": 0,
+        "signed_composition_valid": 0,
+        "endpoint_semantically_isolated": 1,
+        "source_supporting_pmids": [],
+        "target_supporting_pmids": [],
+        "contradiction_pmids": [],
+        "reason": "PMID 27229112 shows higher HMGB1 expression in burn+mdx mice versus burn alone, confounded by burn injury—not dystrophin deficiency alone. PMID 32508664 is correlational/biomarker language. PMID 29238012 is an award announcement. Target PMIDs cover mesothelioma, cisplatin nephrotoxicity, and diabetic foot—cross-disease extrapolation, no mechanistic support for general chronic inflammation.",
+        "passes_evidence_gate": 0
+      }
+    }
+  }
+}

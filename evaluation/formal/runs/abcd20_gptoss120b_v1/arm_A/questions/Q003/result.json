@@ -1,0 +1,188 @@
+{
+  "status": "complete",
+  "question_id": "Q003",
+  "domain": "metabolic disease",
+  "question": "What evidence links insulin resistance to inflammatory cytokines in human studies?",
+  "question_type": "direct_evidence",
+  "pubmed_query": "insulin resistance AND inflammatory cytokines AND humans",
+  "effective_pubmed_query": "insulin resistance AND inflammatory cytokines AND humans",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "12172480",
+    "17053832",
+    "18094066",
+    "24003928",
+    "29241747",
+    "31426593",
+    "31577826",
+    "32437299",
+    "33439300",
+    "34536157",
+    "34847640",
+    "37895163",
+    "39471690",
+    "39593091",
+    "39749338"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence links insulin resistance to inflammatory cytokines in human studies?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "32437299",
+        "score": 0.6123151536067515
+      },
+      {
+        "pmid": "12172480",
+        "score": 0.6025437888221288
+      },
+      {
+        "pmid": "34536157",
+        "score": 0.5703837014267262
+      },
+      {
+        "pmid": "18094066",
+        "score": 0.5500758840519097
+      },
+      {
+        "pmid": "24003928",
+        "score": 0.5239153161143528
+      },
+      {
+        "pmid": "17053832",
+        "score": 0.5233060489058562
+      },
+      {
+        "pmid": "39749338",
+        "score": 0.5146218576478013
+      },
+      {
+        "pmid": "39471690",
+        "score": 0.5073398217683751
+      },
+      {
+        "pmid": "33439300",
+        "score": 0.5069387500055144
+      },
+      {
+        "pmid": "37895163",
+        "score": 0.5055957155978293
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "32437299",
+        "score": 0.6123151536067515
+      },
+      {
+        "pmid": "12172480",
+        "score": 0.6025437888221288
+      },
+      {
+        "pmid": "34536157",
+        "score": 0.5703837014267262
+      },
+      {
+        "pmid": "18094066",
+        "score": 0.5500758840519097
+      },
+      {
+        "pmid": "24003928",
+        "score": 0.5239153161143528
+      },
+      {
+        "pmid": "17053832",
+        "score": 0.5233060489058562
+      },
+      {
+        "pmid": "39749338",
+        "score": 0.5146218576478013
+      },
+      {
+        "pmid": "39471690",
+        "score": 0.5073398217683751
+      },
+      {
+        "pmid": "33439300",
+        "score": 0.5069387500055144
+      },
+      {
+        "pmid": "37895163",
+        "score": 0.5055957155978293
+      }
+    ]
+  },
+  "answers": {
+    "general_llm": "**Linking insulin resistance and inflammatory cytokines in humans – what the data show**\n\nHuman research over the past ≈ 30 years has produced a fairly consistent picture: people who are insulin‑resistant (IR) tend to have higher circulating levels of several pro‑inflammatory mediators, and experimental or lifestyle interventions that lower those mediators often improve insulin sensitivity.  Below is a synthesis of the major lines of evidence, separated into three categories: (1) cross‑sectional/epidemiologic associations, (2) longitudinal/cohort data that address temporality, and (3) interventional studies that test causality.  Where the evidence is strong, I note it as *established*; where the data are suggestive but not definitive, I flag the uncertainty.\n\n---\n\n## 1. Cross‑sectional and epidemiologic associations\n\n| Cytokine / marker | Typical findings in IR subjects | Key points & caveats |\n|-------------------|--------------------------------|----------------------|\n| **Tumor necrosis factor‑α (TNF‑α)** | Higher plasma or adipose‑tissue TNF‑α in obese, pre‑diabetic, or Metabolic Syndrome cohorts vs. lean, insulin‑sensitive controls. | The association persists after adjusting for BMI in many studies, supporting an *independent* link. However, some reports find no difference when very precise insulin clamp measures are used, suggesting that assay sensitivity and sample handling matter. |\n| **Interleukin‑6 (IL‑6)** | Elevated serum IL‑6 correlates with fasting insulin, HOMA‑IR, and reduced glucose‑uptake in muscle. | IL‑6 is also released by exercising muscle (as a “myokine”), so a high level can reflect both chronic inflammation and recent physical activity. Most studies control for recent exercise, but residual confounding remains. |\n| **C‑reactive protein (CRP, high‑sensitivity CRP)** | hs‑CRP is consistently higher in individuals with IR (often 2–3 × greater) and in those with the Metabolic Syndrome. | CRP is a downstream acute‑phase protein rather than a primary cytokine, yet it is a reliable *clinical* marker of the low‑grade inflammation that accompanies IR. |\n| **Monocyte chemoattractant protein‑1 (MCP‑1/CCL2)** | Increased plasma MCP‑1 in insulin‑resistant adolescents and adults predicts higher HOMA‑IR. | Evidence is less extensive than for TNF‑α/IL‑6 but converges on the notion of macrophage recruitment to adipose tissue. |\n| **Leptin & adiponectin** | Leptin (pro‑inflammatory) rises, while adiponectin (anti‑inflammatory, insulin‑sensitizing) falls in IR. | These adipokines are often measured together; the leptin‑adiponectin ratio is a stronger predictor of IR than either alone. |\n| **Other cytokines (IL‑1β, IL‑18, IL‑17, TGF‑β)** | Modest elevations reported in certain cohorts (e.g., people with non‑alcoholic fatty liver disease). | Data are heterogeneous; these cytokines are not routinely used in clinical studies of IR yet. |\n\n**Take‑away:** A *consistent* pattern emerges across dozens of observational studies: higher circulating levels of TNF‑α, IL‑6, CRP, and several chemokines are associated with greater insulin resistance, even after statistical adjustment for adiposity, lipids, and lifestyle factors.  This pattern is observed in diverse populations (Europeans, East Asians, African‑Americans), across age ranges (children, adults, older adults), and in both sexes.\n\n---\n\n## 2. Longitudinal/cohort data (temporality)\n\n| Study design | Main finding linking cytokines → later IR/diabetes | Strength of evidence |\n|--------------|----------------------------------------------------|----------------------|\n| **Prospective community cohorts (e.g., Framingham Offspring, Whitehall II, EPIC‑Potsdam)** | Baseline hs‑CRP or IL‑6 predicts incident type‑2 diabetes (T2DM) over 5–15 years, independent of BMI, fasting glucose, and lipid profile. Hazard ratios typically 1.2–1.5 per SD increase. | *Established*: Replicated in ≥ 5 large cohorts. |\n| **Baseline cytokine levels and future HOMA‑IR** | In the Dallas Heart Study, baseline TNF‑α and IL‑6 predicted a 10–15 % rise in HOMA‑IR after 5 years, after controlling for weight change. | *Suggestive*: Fewer studies, modest effect size. |\n| **Adipose‑tissue biopsy cohort** | Higher expression of TNF‑α and MCP‑1 mRNA in subcutaneous fat at baseline correlated with a steeper decline in insulin sensitivity (measured by hyperinsulinemic‑euglycemic clamp) over 2 years. | *Moderate*: Small sample (< 100 individuals), but tissue‑level data strengthen biological plausibility. |\n| **Children/adolescents (e.g., ALSPAC)** | Elevated IL‑6 at age 9 predicted higher fasting insulin and HOMA‑IR at age 15, independent of BMI gain. | *Emerging*: Pediatric data are fewer, but directionality mirrors adult findings. |\n\n**Interpretation:** Prospective studies give the strongest support that inflammatory cytokines are *not merely a consequence* of insulin resistance but can *precede* and predict its development. The consistency of CRP and IL‑6 as predictors across multiple cohorts underpins the hypothesis that low‑grade inflammation is an early pathogenic driver.\n\n---\n\n## 3. Interventional studies (testing causality)\n\n### 3.1. Anti‑inflammatory pharmacology\n\n| Intervention | Cytokine change | Insulin‑sensitivity outcome | Quality of evidence |\n|--------------|----------------|----------------------------|---------------------|\n| **TNF‑α antagonists (e.g., etanercept, infliximab) in rheumatoid arthritis (RA)** | Marked reduction in circulating TNF‑α (≈ 60 %). | Small but significant improvement in HOMA‑IR and, in some trials, in hyperinsulinemic‑euglycemic clamp glucose infusion rates. | *Moderate*: Benefit seen in RA patients, but confounded by disease activity and glucocorticoid reduction. |\n| **IL‑1 receptor antagonist (anakinra) in overweight subjects with impaired glucose tolerance** | ↓ IL‑1β and CRP within 2 weeks. | ↑ insulin‑stimulated glucose disposal by ~ 15 % (clamp). | *Moderate*: Randomized, placebo‑controlled; effect wanes after washout. |\n| **Salicylates (e.g., salsalate)** | ↓ NF‑κB activity, modest ↓ CRP and TNF‑α. | ↑ peripheral insulin sensitivity (≈ 20 % improvement in clamp; ↓ fasting glucose). | *Established*: Multiple RCTs in pre‑diabetes; side‑effect profile limits long‑term use. |\n| **PPAR‑γ agonists (thiazolidinediones)** | ↓ TNF‑α and IL‑6 in adipose tissue; ↑ adiponectin. | Strong ↑ insulin sensitivity (gold‑standard). | *Established*: Though primarily a metabolic drug, anti‑inflammatory actions are part of the mechanism. |\n\n### 3.2. Lifestyle interventions that modify cytokines\n\n| Intervention | Cytokine response | Insulin‑sensitivity effect | Comments |\n|--------------|-------------------|---------------------------|----------|\n| **Weight loss (≈ 5–10 % body weight) via diet** | ↓ CRP (≈ 30 %); ↓ TNF‑α and IL‑6 (10–20 %). | ↑ insulin sensitivity (HOMA‑IR ↓ 30–40 %; clamp ↑ 30 %). | *Established*: Large RCTs (e.g., Look AHEAD) show parallel reductions. |\n| **Exercise (≥ 150 min/week aerobic or combined aerobic + resistance)** | Acute rise then chronic ↓ basal IL‑6 and CRP; ↑ anti‑inflammatory cytokines (IL‑10). | ↑ glucose uptake, ↓ fasting insulin. | *Established*: Training studies consistently demonstrate anti‑inflammatory shifts that parallel metabolic improvements. |\n| **Bariatric surgery (RYGB, sleeve gastrectomy)** | Massive ↓ CRP (≈ 70 % at 12 mo), ↓ TNF‑α, IL‑6; ↑ adiponectin. | Near‑normalization of insulin sensitivity (often remission of T2DM). | *Strong*: Observational and interventional data; the rapid metabolic improvement before major weight loss suggests a direct cytokine‑mediated component. |\n| **Omega‑3 fatty acid supplementation** | ↓ IL‑6 and CRP modestly (5–15 %). | Mixed results on insulin sensitivity; meta‑analyses show small or null effect. | *Uncertain*: Anti‑inflammatory changes may be insufficient to influence IR appreciably. |\n\n### 3.3. Acute inflammatory challenges\n\n| Challenge | Cytokine surge | Short‑term insulin‑sensitivity impact |\n|-----------|----------------|--------------------------------------|\n| **Low‑dose endotoxin (LPS) infusion** | Rapid ↑ TNF‑α, IL‑6, CRP within hours. | Acute insulin resistance (↑ glucose output, ↓ peripheral glucose uptake) that resolves as cytokines fall. | *Mechanistic*: Demonstrates that a transient inflammatory spike can directly impair insulin signaling in humans. |\n| **Typhoid vaccination** | Moderate ↑ IL‑6, CRP. | Small, transient rise in fasting insulin and HOMA‑IR. | *Supportive*: Reinforces causality, albeit with modest magnitude. |\n\n---\n\n## 4. Proposed biological mechanisms (human data support)\n\n1. **Serine phosphorylation of IRS‑1/IRS‑2** – TNF‑α and IL‑6 activate JNK and IKKβ pathways, which phosphorylate insulin‑receptor substrate proteins on serine residues, blunting downstream PI3K‑Akt signaling. Human muscle biopsies show increased phospho‑JNK and phospho‑IRS‑1 after endotoxin exposure.\n\n2. **Suppression of adiponectin** – TNF‑α down‑regulates adiponectin expression in adipocytes; low adiponectin diminishes AMPK activation, a key insulin‑sensitizing pathway. Circulating adiponectin inversely correlates with CRP and directly with insulin sensitivity in many cohorts.\n\n3. **Macrophage infiltration of adipose tissue** – Imaging and histology of human subcutaneous and visceral fat reveal more CD68⁺ macrophages in insulin‑resistant subjects. The macrophage crown‑like structures are a source of local TNF‑α and IL‑1β, linking tissue inflammation to systemic insulin resistance.\n\n4. **Endothelial dysfunction** – IL‑6 and CRP promote endothelial nitric‑oxide synthase uncoupling, impairing insulin‑mediated vasodilation and thus glucose delivery to skeletal muscle. Flow‑mediated dilation improves after anti‑inflammatory therapy (e.g., salsalate), paralleling insulin‐sensitizing effects.\n\n5. **Altered gut‑derived inflammation** – Elevations of circulating lipopolysaccharide‐binding protein (LBP) and endotoxin core antibodies correlate with IR, suggesting that metabolic endotoxemia may fuel systemic cytokine production.\n\n---\n\n## 5. Limitations and areas of uncertainty\n\n| Issue | Why it matters |\n|-------|----------------|\n| **Reverse causality** – IR itself promotes lipolysis and ectopic fat deposition, which can stimulate cytokine production. Prospective data help, but residual bidirectional influences remain. |\n| **Confounding by adiposity** – Obesity drives both inflammation and IR; the strongest studies adjust for BMI, waist circumference, or body‑fat percentage, yet visceral fat may still be an unmeasured mediator. |\n| **Heterogeneity of assay methods** – Cytokine levels are low and assay‐dependent; some older studies used insensitive ELISAs, potentially under‑ or over‑estimating differences. |\n| **Population specifics** – Ethnic groups differ in baseline inflammatory tone (e.g., higher CRP in African‑Americans). Generalizability of effect sizes can vary. |\n| **Intervention durability** – Anti‑inflammatory drugs improve insulin sensitivity acutely, but long‑term safety and sustained metabolic benefit are less clear (e.g., increased infection risk with biologics). |\n| **Cytokine network complexity** – Focusing on single cytokines (TNF‑α, IL‑6) oversimplifies a highly inter‑connected network; newer omics studies reveal many other mediators (e.g., IL‑18, GDF‑15) whose roles are still being mapped. |\n\n---\n\n## 6. Bottom‑line summary\n\n- **Strong, reproducible evidence** from cross‑sectional, prospective, and interventional human studies links **higher systemic levels of TNF‑α, IL‑6, CRP, and related chemokines** with **greater insulin resistance**.\n- **Temporal data** (e.g., CRP/IL‑6 predicting incident T2DM) and **mechanistic challenges** (LPS infusion causing acute IR) support a **causal direction** from inflammation to insulin resistance, although a bidirectional relationship likely exists.\n- **Interventions that lower these cytokines**—weight loss, exercise, bariatric surgery, and certain anti‑inflammatory drugs—**consistently improve insulin sensitivity**, reinforcing the biological relevance of the inflammation‑IR axis.\n- The **cellular mechanisms** most supported in humans involve cytokine‑driven activation of stress kinases (JNK, IKKβ), serine phosphorylation of insulin‑receptor substrates, reduced adiponectin, and macrophage infiltration of adipose tissue.\n- **Uncertainties** remain regarding the precise contribution of each cytokine, the long‑term safety of pharmacologic anti‑inflammatory approaches, and how individual variability (genetics, ethnicity, gut microbiota) modulates the inflammation‑IR link.\n\nIn practical terms, measuring **hs‑CRP** (and, when research‑focused, **IL‑6 or TNF‑α**) can serve as a useful clinical proxy for low‑grade inflammation that often accompanies insulin resistance, and therapeutic strategies that attenuate this inflammatory milieu are an active area of both research and clinical development."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 8.355081081390381e-05,
+    "vector_index": 1.8613417595624924,
+    "kg_expansion": 1.0795891284942627e-05,
+    "answer_general_llm": 78.59645341336727,
+    "total": 80.9231362119317
+  },
+  "token_usage": {
+    "output_tokens": 3241,
+    "total_tokens": 3371,
+    "input_tokens": 130
+  },
+  "completed_at": "2026-08-13T03:11:49.715072+00:00"
+}

@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "Q021",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "a5bc76ec547d460788c87c25b5b36967216bb70e126f163ac33308ab87dd8839",
+  "raw_response_sha256": "3710235c39bd77ccc35990813e696564b43c8a2d2bf79881c538db4706173fbb",
+  "usage": {
+    "input_tokens": 4374,
+    "output_tokens": 403,
+    "total_tokens": 4777
+  },
+  "rated_at": "2026-08-13T04:51:05.635126+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q021-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, well‑cited across in‑vitro, animal, and human data; clear mechanisms; high relevance."
+      },
+      {
+        "answer_id": "Q021-B",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Good coverage but fewer specific citations; relies on surrogate biomarkers."
+      },
+      {
+        "answer_id": "Q021-C",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Solid evidence with citations; slightly less detailed than A."
+      },
+      {
+        "answer_id": "Q021-D",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Broad synthesis with citations; similar to A but less depth."
+      }
+    ],
+    "preferred_item_id": "Q021-A",
+    "pairwise_reason": "Answer A provides the most thorough, well‑referenced synthesis of in‑vitro, animal, and human evidence with clear mechanistic pathways, offering the highest overall value."
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "task": "answer",
+  "question_id": "PP020",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "27f6336b95ba4edc1df1cb66715e1b2413529c716b450f5044df05d9e6b89eca",
+  "raw_response_sha256": "71a415ff7c161e9fd619a88691e49dbacaab21233f6f5ffb524ee1ba5fedcdc6",
+  "usage": {
+    "input_tokens": 6819,
+    "output_tokens": 646,
+    "total_tokens": 7465
+  },
+  "rated_at": "2026-08-16T21:10:01.618694+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP020-A",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Clear hop-specific evidence, citations, distinguishes final hop as correlative."
+      },
+      {
+        "answer_id": "PP020-B",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Well-structured, cites studies, notes limited longitudinal data."
+      },
+      {
+        "answer_id": "PP020-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, human and animal data for each hop."
+      },
+      {
+        "answer_id": "PP020-D",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 4,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Adds extra hop, less focus on systemic link."
+      },
+      {
+        "answer_id": "PP020-E",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Good evidence, acknowledges lack of direct mechanistic data."
+      },
+      {
+        "answer_id": "PP020-F",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Thorough, includes hypothesis, multi‑level evidence, clear distinctions."
+      },
+      {
+        "answer_id": "PP020-G",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Strong evidence, but includes irrelevant graph details."
+      }
+    ],
+    "preferred_item_id": "PP020-F",
+    "pairwise_reason": "PP020-F provides the most complete, well‑grounded mechanistic chain, distinguishes each hop clearly, integrates human, animal, and in‑vitro data, and adds a testable hypothesis, making it the most valuable answer."
+  }
+}

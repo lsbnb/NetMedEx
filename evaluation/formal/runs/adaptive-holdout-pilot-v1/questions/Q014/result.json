@@ -1,0 +1,112 @@
+{
+  "status": "complete",
+  "question_id": "Q014",
+  "domain": "autoimmune disease",
+  "question": "Which JAK inhibitors have evidence for modulating IL-6 or interferon signaling in rheumatoid arthritis?",
+  "question_type": "retrieval",
+  "pubmed_query": "rheumatoid arthritis JAK inhibitor tofacitinib baricitinib IL-6 interferon",
+  "effective_pubmed_query": "rheumatoid arthritis JAK inhibitor tofacitinib baricitinib IL-6 interferon",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "30002661",
+    "31375130",
+    "32561292",
+    "33741556",
+    "37014106",
+    "39354368"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "path_count": 0,
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "routed_profile": "A_text_only",
+    "route_reason": "question_type=retrieval: text retrieval task",
+    "question_type": "retrieval",
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "37014106",
+        "score": 0.7776569433529844
+      },
+      {
+        "pmid": "33741556",
+        "score": 0.6124324113588779
+      },
+      {
+        "pmid": "32561292",
+        "score": 0.6054664212977948
+      },
+      {
+        "pmid": "30002661",
+        "score": 0.5197049977184015
+      },
+      {
+        "pmid": "31375130",
+        "score": 0.5035357194522495
+      },
+      {
+        "pmid": "39354368",
+        "score": 0.46395007489142376
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "37014106",
+        "score": 0.7776569433529844
+      },
+      {
+        "pmid": "33741556",
+        "score": 0.6124324113588779
+      },
+      {
+        "pmid": "32561292",
+        "score": 0.6054664212977948
+      },
+      {
+        "pmid": "30002661",
+        "score": 0.5197049977184015
+      },
+      {
+        "pmid": "31375130",
+        "score": 0.5035357194522495
+      },
+      {
+        "pmid": "39354368",
+        "score": 0.46395007489142376
+      }
+    ]
+  },
+  "answers": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 1.745671033859253e-05,
+    "vector_index": 3.380173936486244,
+    "total": 3.857468396425247
+  },
+  "token_usage": {},
+  "completed_at": "2026-08-03T18:14:13.331647+00:00"
+}

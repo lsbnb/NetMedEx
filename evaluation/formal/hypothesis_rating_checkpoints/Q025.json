@@ -1,0 +1,25 @@
+{
+  "question_id": "Q025",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-31T17:44:18.767645+00:00",
+  "ratings": [
+    {
+      "hypothesis_id": "Q025-A",
+      "novelty": 3,
+      "plausibility": 5,
+      "testability": 5,
+      "research_value": 4,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded hypothesis/2-hop quality pass, not a human expert review.] The answer effectively synthesizes the provided literature into a cohesive degeneration-inflammation cycle, though it relies entirely on established findings rather than proposing highly novel connections. The mechanisms (e.g., NF-kB, connexins) are highly plausible and directly backed by cited PMIDs. The integrated hypothesis is readily testable in animal models, and the clear delineation of the pathway offers good value for identifying therapeutic intervention points."
+    },
+    {
+      "hypothesis_id": "Q025-B",
+      "novelty": 3,
+      "plausibility": 5,
+      "testability": 5,
+      "research_value": 5,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded hypothesis/2-hop quality pass, not a human expert review.] Like the first answer, it synthesizes known literature, but it stands out by proposing specific, logical extensions such as the need for dual-compartment (myofiber and macrophage) NF-kB inhibition. The mechanisms are highly plausible and supported by the cited mdx mouse studies. The explicit breakdown into four distinct, actionable hypotheses makes it highly testable and exceptionally valuable for a researcher designing future experiments."
+    }
+  ],
+  "raw_response_sha256": "537e6266188345031699e8e0a35df2f40df65490a79ccb23fb6ad6c90e67de56"
+}

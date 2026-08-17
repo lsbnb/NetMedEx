@@ -1,0 +1,26 @@
+{
+  "reviewer_type": "AI",
+  "human_expert_review_claimed": false,
+  "blinded": true,
+  "task": "answer",
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_file": "evaluation/pilot20/answer_ratings_worksheet.csv",
+  "input_sha256": "9f20ee29101a72ef0aeb7c73370c3b1dbd79a0f7ba92c8f3f35fbb884ac69fa4",
+  "output_file": "evaluation/pilot20/answer_ratings_claude.csv",
+  "question_count": 20,
+  "row_count": 60,
+  "estimated_prompt_chars": 204581,
+  "estimated_input_tokens_rough": 51145,
+  "actual_api_usage_from_checkpoints": {
+    "input_tokens": 64538,
+    "output_tokens": 9599,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 74137
+  },
+  "completed_batches": 20,
+  "started_at": "2026-08-12T19:21:01.453120+00:00",
+  "completed_at": "2026-08-12T19:24:20.910734+00:00",
+  "status": "complete"
+}

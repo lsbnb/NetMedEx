@@ -1,0 +1,319 @@
+{
+  "name": "netmedex-controlled-bridge-evidence-first-v1",
+  "generated_at": "2026-08-09T19:26:18.533063+00:00",
+  "selection": {
+    "min_non_obviousness": 3,
+    "min_research_utility": 4,
+    "required_binary_fields": [
+      "polarity_coherent",
+      "canonical_entity_likely",
+      "endpoint_isolation_feasible"
+    ],
+    "excluded_pairs": [],
+    "audit": [
+      {
+        "question_id": "BW002",
+        "mediator": "Caspase-3",
+        "selected": true,
+        "reasons": [
+          "pending_pmid_level_evidence_audit"
+        ]
+      },
+      {
+        "question_id": "BW002",
+        "mediator": "Reactive Oxygen Species",
+        "selected": true,
+        "reasons": [
+          "pending_pmid_level_evidence_audit"
+        ]
+      },
+      {
+        "question_id": "BW007",
+        "mediator": "ICAM-1",
+        "selected": true,
+        "reasons": [
+          "pending_pmid_level_evidence_audit"
+        ]
+      },
+      {
+        "question_id": "BW007",
+        "mediator": "PAI-1",
+        "selected": true,
+        "reasons": [
+          "pending_pmid_level_evidence_audit"
+        ]
+      },
+      {
+        "question_id": "BW008",
+        "mediator": "c-Myc",
+        "selected": true,
+        "reasons": [
+          "pending_pmid_level_evidence_audit"
+        ]
+      },
+      {
+        "question_id": "BW008",
+        "mediator": "miR-122",
+        "selected": true,
+        "reasons": [
+          "pending_pmid_level_evidence_audit"
+        ]
+      },
+      {
+        "question_id": "BW009",
+        "mediator": "FGF23",
+        "selected": true,
+        "reasons": [
+          "pending_pmid_level_evidence_audit"
+        ]
+      },
+      {
+        "question_id": "BW009",
+        "mediator": "SIRT1",
+        "selected": true,
+        "reasons": [
+          "pending_pmid_level_evidence_audit"
+        ]
+      },
+      {
+        "question_id": "BW010",
+        "mediator": "TNF-alpha",
+        "selected": true,
+        "reasons": [
+          "pending_pmid_level_evidence_audit"
+        ]
+      },
+      {
+        "question_id": "BW010",
+        "mediator": "RANKL",
+        "selected": true,
+        "reasons": [
+          "pending_pmid_level_evidence_audit"
+        ]
+      }
+    ],
+    "evidence_first": true
+  },
+  "questions": {
+    "BW002": {
+      "source_patterns": [
+        "curcumin"
+      ],
+      "target_patterns": [
+        "apoptosis"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "cell death",
+        "programmed cell death"
+      ],
+      "max_candidates_per_query": 30,
+      "max_articles_per_side": 3,
+      "mediators": [
+        {
+          "name": "Caspase-3",
+          "patterns": [
+            "caspase-3"
+          ],
+          "source_query": "curcumin[Title/Abstract] AND caspase-3 [Title/Abstract]",
+          "target_query": "caspase-3[Title/Abstract] AND apoptosis [Title/Abstract]",
+          "rationale": "Caspase-3 is a key effector in apoptosis, not a generic hub.",
+          "relation_1": "curcumin upregulates caspase-3",
+          "relation_2": "caspase-3 promotes apoptosis",
+          "why_text_rag_may_miss": "Text-only RAG may miss indirect activation routes or context-specific upregulation.",
+          "falsifiable_hypothesis": "Curcumin-induced apoptosis in cancer cells is mediated by caspase-3 activation."
+        },
+        {
+          "name": "Reactive Oxygen Species",
+          "patterns": [
+            "reactive oxygen species",
+            "ROS"
+          ],
+          "source_query": "curcumin[Title/Abstract] AND reactive oxygen species [Title/Abstract]",
+          "target_query": "reactive oxygen species[Title/Abstract] AND apoptosis [Title/Abstract]",
+          "rationale": "ROS is a specific molecular mediator, not a broad process.",
+          "relation_1": "curcumin increases ROS",
+          "relation_2": "ROS induces apoptosis",
+          "why_text_rag_may_miss": "RAG may overlook ROS as a mediator due to context-dependent roles.",
+          "falsifiable_hypothesis": "Curcumin triggers apoptosis via ROS generation in cancer cells."
+        }
+      ]
+    },
+    "BW007": {
+      "source_patterns": [
+        "endothelial senescence"
+      ],
+      "target_patterns": [
+        "atherosclerosis"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "vascular disease",
+        "arterial disease"
+      ],
+      "max_candidates_per_query": 30,
+      "max_articles_per_side": 3,
+      "mediators": [
+        {
+          "name": "ICAM-1",
+          "patterns": [
+            "ICAM-1",
+            "intercellular adhesion molecule-1"
+          ],
+          "source_query": "endothelial senescence[Title/Abstract] AND ICAM-1 [Title/Abstract]",
+          "target_query": "ICAM-1[Title/Abstract] AND atherosclerosis [Title/Abstract]",
+          "rationale": "ICAM-1 is a specific adhesion molecule, not a broad process.",
+          "relation_1": "senescence upregulates ICAM-1",
+          "relation_2": "ICAM-1 promotes atherosclerosis",
+          "why_text_rag_may_miss": "RAG may miss the link due to focus on inflammation or generic adhesion.",
+          "falsifiable_hypothesis": "Endothelial senescence accelerates atherosclerosis via ICAM-1 upregulation."
+        },
+        {
+          "name": "PAI-1",
+          "patterns": [
+            "PAI-1",
+            "plasminogen activator inhibitor-1"
+          ],
+          "source_query": "endothelial senescence[Title/Abstract] AND PAI-1 [Title/Abstract]",
+          "target_query": "PAI-1[Title/Abstract] AND atherosclerosis [Title/Abstract]",
+          "rationale": "PAI-1 is a specific protein, not a generic hub.",
+          "relation_1": "senescence increases PAI-1",
+          "relation_2": "PAI-1 contributes to atherosclerosis",
+          "why_text_rag_may_miss": "Text-only RAG may miss PAI-1’s dual roles in senescence and vascular disease.",
+          "falsifiable_hypothesis": "PAI-1 links endothelial senescence to atherosclerosis progression."
+        }
+      ]
+    },
+    "BW008": {
+      "source_patterns": [
+        "chronic hepatitis B"
+      ],
+      "target_patterns": [
+        "hepatocellular carcinoma"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "liver cancer",
+        "malignancy"
+      ],
+      "max_candidates_per_query": 30,
+      "max_articles_per_side": 3,
+      "mediators": [
+        {
+          "name": "c-Myc",
+          "patterns": [
+            "c-Myc"
+          ],
+          "source_query": "hepatitis B[Title/Abstract] AND c-Myc [Title/Abstract]",
+          "target_query": "c-Myc[Title/Abstract] AND hepatocellular carcinoma [Title/Abstract]",
+          "rationale": "c-Myc is a specific oncogene, not a broad process.",
+          "relation_1": "hepatitis B upregulates c-Myc",
+          "relation_2": "c-Myc promotes hepatocellular carcinoma",
+          "why_text_rag_may_miss": "RAG may miss c-Myc’s indirect regulation by HBV.",
+          "falsifiable_hypothesis": "HBV infection drives HCC via c-Myc upregulation."
+        },
+        {
+          "name": "miR-122",
+          "patterns": [
+            "miR-122",
+            "microRNA-122"
+          ],
+          "source_query": "hepatitis B[Title/Abstract] AND miR-122 [Title/Abstract]",
+          "target_query": "miR-122[Title/Abstract] AND hepatocellular carcinoma [Title/Abstract]",
+          "rationale": "miR-122 is a specific microRNA, not a generic hub.",
+          "relation_1": "hepatitis B alters miR-122 expression",
+          "relation_2": "miR-122 dysregulation promotes HCC",
+          "why_text_rag_may_miss": "RAG may overlook microRNA-mediated mechanisms.",
+          "falsifiable_hypothesis": "HBV-induced miR-122 dysregulation contributes to HCC development."
+        }
+      ]
+    },
+    "BW009": {
+      "source_patterns": [
+        "SGLT2 抑制劑",
+        "SGLT2 inhibitor"
+      ],
+      "target_patterns": [
+        "腎臟保護",
+        "renal protection"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "腎臟疾病",
+        "kidney disease"
+      ],
+      "max_candidates_per_query": 30,
+      "max_articles_per_side": 3,
+      "mediators": [
+        {
+          "name": "FGF23",
+          "patterns": [
+            "FGF23",
+            "fibroblast growth factor 23"
+          ],
+          "source_query": "SGLT2 inhibitor[Title/Abstract] AND FGF23 [Title/Abstract]",
+          "target_query": "FGF23[Title/Abstract] AND renal protection [Title/Abstract]",
+          "rationale": "FGF23 is a specific hormone, not a broad process.",
+          "relation_1": "SGLT2 inhibitor reduces FGF23",
+          "relation_2": "FGF23 reduction improves renal protection",
+          "why_text_rag_may_miss": "RAG may miss FGF23’s role due to focus on glucose or hemodynamics.",
+          "falsifiable_hypothesis": "SGLT2 inhibitors confer renal protection by lowering FGF23."
+        },
+        {
+          "name": "SIRT1",
+          "patterns": [
+            "SIRT1",
+            "sirtuin 1"
+          ],
+          "source_query": "SGLT2 inhibitor[Title/Abstract] AND SIRT1 [Title/Abstract]",
+          "target_query": "SIRT1[Title/Abstract] AND renal protection [Title/Abstract]",
+          "rationale": "SIRT1 is a specific protein, not a generic hub.",
+          "relation_1": "SGLT2 inhibitor activates SIRT1",
+          "relation_2": "SIRT1 activation mediates renal protection",
+          "why_text_rag_may_miss": "RAG may miss SIRT1 due to indirect metabolic effects.",
+          "falsifiable_hypothesis": "SGLT2 inhibitors protect kidneys via SIRT1 activation."
+        }
+      ]
+    },
+    "BW010": {
+      "source_patterns": [
+        "gut microbiome dysbiosis"
+      ],
+      "target_patterns": [
+        "bone loss"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "osteoporosis",
+        "skeletal disease"
+      ],
+      "max_candidates_per_query": 30,
+      "max_articles_per_side": 3,
+      "mediators": [
+        {
+          "name": "TNF-alpha",
+          "patterns": [
+            "TNF-alpha",
+            "tumor necrosis factor alpha"
+          ],
+          "source_query": "gut microbiome dysbiosis[Title/Abstract] AND TNF-alpha [Title/Abstract]",
+          "target_query": "TNF-alpha[Title/Abstract] AND bone loss [Title/Abstract]",
+          "rationale": "TNF-alpha is a specific cytokine, not a broad process.",
+          "relation_1": "dysbiosis increases TNF-alpha",
+          "relation_2": "TNF-alpha promotes bone loss",
+          "why_text_rag_may_miss": "RAG may miss TNF-alpha’s gut-bone axis role.",
+          "falsifiable_hypothesis": "Microbiome dysbiosis leads to bone loss via TNF-alpha elevation."
+        },
+        {
+          "name": "RANKL",
+          "patterns": [
+            "RANKL",
+            "receptor activator of nuclear factor kappa-Β ligand"
+          ],
+          "source_query": "gut microbiome dysbiosis[Title/Abstract] AND RANKL [Title/Abstract]",
+          "target_query": "RANKL[Title/Abstract] AND bone loss [Title/Abstract]",
+          "rationale": "RANKL is a specific ligand, not a generic hub.",
+          "relation_1": "dysbiosis upregulates RANKL",
+          "relation_2": "RANKL induces bone loss",
+          "why_text_rag_may_miss": "RAG may miss RANKL’s indirect regulation by microbiota.",
+          "falsifiable_hypothesis": "Gut dysbiosis increases bone loss by upregulating RANKL."
+        }
+      ]
+    }
+  }
+}

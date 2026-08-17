@@ -1,0 +1,373 @@
+##USE-MESH-VOCABULARY
+34799298|t|Modeling pulmonary cystic fibrosis in a human lung airway-on-a-chip.
+34799298|a|BACKGROUND: Cystic fibrosis (CF) is a genetic disease caused by mutations in the gene encoding the cystic fibrosis transmembrane conductance regulator (CFTR), which results in impaired airway mucociliary clearance, inflammation, infection, and respiratory insufficiency. The development of new therapeutics for CF are limited by the lack of reliable preclinical models that recapitulate the structural, immunological, and bioelectrical features of human CF lungs. METHODS: We leveraged organ-on-a-chip technology to develop a microfluidic device lined by primary human CF bronchial epithelial cells grown under an air-liquid interface and interfaced with pulmonary microvascular endothelial cells (CF Airway Chip) exposed to fluid flow. The responses of CF and healthy Airway Chips were analyzed in the presence or absence of polymorphonuclear leukocytes (PMNs) and the bacterial pathogen, Pseudomonas aeruginosa. RESULTS: The CF Airway Chip faithfully recapitulated many features of the human CF airways, including enhanced mucus accumulation, increased cilia density, and a higher ciliary beating frequency compared to chips lined by healthy bronchial epithelial cells. The CF chips also secreted higher levels of IL-8, which was accompanied by enhanced PMN adhesion to the endothelium and transmigration into the airway compartment. In addition, CF Airway Chips provided a more favorable environment for Pseudomonas aeruginosa growth, which resulted in enhanced secretion of inflammatory cytokines and recruitment of PMNs to the airway. CONCLUSIONS: The human CF Airway Chip may provide a valuable preclinical tool for pathophysiology studies as well as for drug testing and personalized medicine.
+34799298	9	34	Cystic Fibrosis	Disease	MESH:D003550
+34799298	40	45	human	Species	9606
+34799298	81	96	Cystic Fibrosis	Disease	MESH:D003550
+34799298	98	100	Cystic Fibrosis	Disease	MESH:D003550
+34799298	107	122	Genetic Diseases Inborn	Disease	MESH:D030342
+34799298	168	219	CFTR	Gene	1080
+34799298	221	225	CFTR	Gene	1080
+34799298	284	296	Inflammation	Disease	MESH:D007249
+34799298	298	307	Infections	Disease	MESH:D007239
+34799298	313	338	Respiratory Insufficiency	Disease	MESH:D012131
+34799298	380	382	Cystic Fibrosis	Disease	MESH:D003550
+34799298	517	522	human	Species	9606
+34799298	523	525	Cystic Fibrosis	Disease	MESH:D003550
+34799298	632	637	human	Species	9606
+34799298	638	640	Cystic Fibrosis	Disease	MESH:D003550
+34799298	767	769	Cystic Fibrosis	Disease	MESH:D003550
+34799298	823	825	Cystic Fibrosis	Disease	MESH:D003550
+34799298	959	981	Pseudomonas aeruginosa	Species	287
+34799298	996	998	Cystic Fibrosis	Disease	MESH:D003550
+34799298	1057	1062	human	Species	9606
+34799298	1063	1065	Cystic Fibrosis	Disease	MESH:D003550
+34799298	1245	1247	Cystic Fibrosis	Disease	MESH:D003550
+34799298	1285	1289	CXCL8	Gene	3576
+34799298	1418	1420	Cystic Fibrosis	Disease	MESH:D003550
+34799298	1476	1498	Pseudomonas aeruginosa	Species	287
+34799298	1547	1559	Inflammation	Disease	MESH:D007249
+34799298	1626	1631	human	Species	9606
+34799298	1632	1634	Cystic Fibrosis	Disease	MESH:D003550
+34799298	Association	MESH:D003550	1080
+34799298	Positive_Correlation	MESH:D003550	3576
+
+37414422|t|Longitudinal Effects of Elexacaftor/Tezacaftor/Ivacaftor on Sputum Viscoelastic Properties, Airway Infection and Inflammation in Patients with Cystic Fibrosis.
+37414422|a|BACKGROUND: Recent studies demonstrated that the triple combination CFTR modulator therapy elexacaftor/tezacaftor/ivacaftor (ETI) improves lung function and reduces pulmonary exacerbations in CF patients with at least one F508del allele. However, effects of ETI on downstream consequences of CFTR dysfunction, i.e. abnormal viscoelastic properties of airway mucus, chronic airway infection and inflammation have not been studied. The aim of this study was, therefore, to determine the longitudinal effects of ETI on airway mucus rheology, microbiome and inflammation in CF patients with one or two F508del alleles aged 12 years and older throughout the first 12 months of therapy. METHODS: In this prospective observational study, we assessed sputum rheology, the microbiome, inflammation markers and proteome before and 1, 3 and 12 months after initiation of ETI. RESULTS: In total, 79 patients with CF and at least one F508del allele and 10 healthy controls were enrolled in this study. ETI improved the elastic modulus and viscous modulus of CF sputum at 3 and 12 months after initiation (all p<0.01). Further, ETI decreased the relative abundance of Pseudomonas aeruginosa in CF sputum at 3 months and increased the microbiome alpha-diversity at all timepoints. ETI also reduced IL-8 at 3 months (p<0.05) and free NE activity at all timepoints (all p<0.001), and shifted the CF sputum proteome towards healthy. CONCLUSIONS: Our data demonstrate that restoration of CFTR function by ETI improves sputum viscoelastic properties, chronic airway infection and inflammation in CF patients with at least one F508del allele over the first 12 months of therapy, however, without reaching levels close to healthy.
+37414422	24	35	elexacaftor	Chemical	MESH:C000629074
+37414422	36	46	tezacaftor	Chemical	MESH:C000625213
+37414422	47	56	ivacaftor	Chemical	MESH:C545203
+37414422	92	108	Infections	Disease	MESH:D007239
+37414422	113	125	Inflammation	Disease	MESH:D007249
+37414422	143	158	Cystic Fibrosis	Disease	MESH:D003550
+37414422	228	232	CFTR	Gene	1080
+37414422	251	262	elexacaftor	Chemical	MESH:C000629074
+37414422	263	273	tezacaftor	Chemical	MESH:C000625213
+37414422	274	283	ivacaftor	Chemical	MESH:C545203
+37414422	285	288	ETI	Chemical	-
+37414422	352	354	Cystic Fibrosis	Disease	MESH:D003550
+37414422	382	389	p.F508del	ProteinMutation	tmVar:p|DEL|508|F;HGVS:p.F508del;VariantGroup:0;CorrespondingGene:1080;RS#:113993960;CorrespondingSpecies:9606;CA#:118639
+37414422	418	421	ETI	Chemical	-
+37414422	452	456	CFTR	Gene	1080
+37414422	533	549	Infections	Disease	MESH:D007239
+37414422	554	566	Inflammation	Disease	MESH:D007249
+37414422	669	672	ETI	Chemical	-
+37414422	714	726	Inflammation	Disease	MESH:D007249
+37414422	730	732	Cystic Fibrosis	Disease	MESH:D003550
+37414422	758	765	p.F508del	ProteinMutation	tmVar:p|DEL|508|F;HGVS:p.F508del;VariantGroup:0;CorrespondingGene:1080;RS#:113993960;CorrespondingSpecies:9606;CA#:118639
+37414422	936	948	Inflammation	Disease	MESH:D007249
+37414422	1020	1023	ETI	Chemical	-
+37414422	1061	1063	Cystic Fibrosis	Disease	MESH:D003550
+37414422	1081	1088	p.F508del	ProteinMutation	tmVar:p|DEL|508|F;HGVS:p.F508del;VariantGroup:0;CorrespondingGene:1080;RS#:113993960;CorrespondingSpecies:9606;CA#:118639
+37414422	1149	1152	ETI	Chemical	-
+37414422	1205	1207	Cystic Fibrosis	Disease	MESH:D003550
+37414422	1274	1277	ETI	Chemical	-
+37414422	1340	1342	Cystic Fibrosis	Disease	MESH:D003550
+37414422	1426	1429	ETI	Chemical	-
+37414422	1443	1447	CXCL8	Gene	3576
+37414422	1539	1541	Cystic Fibrosis	Disease	MESH:D003550
+37414422	1629	1633	CFTR	Gene	1080
+37414422	1646	1649	ETI	Chemical	-
+37414422	1699	1715	Infections	Disease	MESH:D007239
+37414422	1720	1732	Inflammation	Disease	MESH:D007249
+37414422	1736	1738	Cystic Fibrosis	Disease	MESH:D003550
+37414422	1766	1773	p.F508del	ProteinMutation	tmVar:p|DEL|508|F;HGVS:p.F508del;VariantGroup:0;CorrespondingGene:1080;RS#:113993960;CorrespondingSpecies:9606;CA#:118639
+37414422	Association	MESH:D007239	RS#:113993960;HGVS:p.F508del;CorrespondingGene:1080
+37414422	Association	MESH:C000629074	1080
+37414422	Negative_Correlation	MESH:C000625213	MESH:D003550
+37414422	Negative_Correlation	MESH:C000625213	MESH:D007239
+37414422	Association	MESH:D007239	1080
+37414422	Negative_Correlation	MESH:C000625213	1080
+37414422	Association	MESH:D007249	RS#:113993960;HGVS:p.F508del;CorrespondingGene:1080
+37414422	Association	MESH:D003550	1080
+37414422	Association	MESH:D003550	RS#:113993960;HGVS:p.F508del;CorrespondingGene:1080
+37414422	Cotreatment	MESH:C000625213	MESH:C545203
+37414422	Association	MESH:C545203	1080
+37414422	Negative_Correlation	MESH:C000629074	MESH:D003550
+37414422	Association	MESH:D007249	1080
+37414422	Negative_Correlation	MESH:C545203	MESH:D003550
+37414422	Negative_Correlation	MESH:C000629074	MESH:D007239
+37414422	Cotreatment	MESH:C000629074	MESH:C545203
+37414422	Negative_Correlation	MESH:C545203	MESH:D007239
+
+21148790|t|Trimethylangelicin reduces IL-8 transcription and potentiates CFTR function.
+21148790|a|Chronic inflammatory response in the airway tract of patients affected by cystic fibrosis is characterized by an excessive recruitment of neutrophils to the bronchial lumina, driven by the chemokine interleukin (IL)-8. We previously found that 5-methoxypsoralen reduces Pseudomonas aeruginosa-dependent IL-8 transcription in bronchial epithelial cell lines, with an IC(50) of 10 muM (Nicolis E, Lampronti I, Dechecchi MC, Borgatti M, Tamanini A, Bezzerri V, Bianchi N, Mazzon M, Mancini I, Giri MG, Rizzotti P, Gambari R, Cabrini G. Int Immunopharmacol 9: 1411-1422, 2009). Here, we extended the investigation to analogs of 5-methoxypsoralen, and we found that the most potent effect is obtained with 4,6,4'-trimethylangelicin (TMA), which inhibits P. aeruginosa-dependent IL-8 transcription at nanomolar concentration in IB3-1, CuFi-1, CFBE41o-, and Calu-3 bronchial epithelial cell lines. Analysis of phosphoproteins involved in proinflammatory transmembrane signaling evidenced that TMA reduces the phosphorylation of ribosomal S6 kinase-1 and AKT2/3, which we found indeed involved in P. aeruginosa-dependent activation of IL-8 gene transcription by testing the effect of pharmacological inhibitors. In addition, we found a docking site of TMA into NF-kappaB by in silico analysis, whereas inhibition of the NF-kappaB/DNA interactions in vitro by EMSA was observed at high concentrations (10 mM TMA). To further understand whether NF-kappaB pathway should be considered a target of TMA, chromatin immunoprecipitation was performed, and we observed that TMA (100 nM) preincubated in whole living cells reduced the interaction of NF-kappaB with the promoter of IL-8 gene. These results suggest that TMA could inhibit IL-8 gene transcription mainly by intervening on driving the recruitment of activated transcription factors on IL-8 gene promoter, as demonstrated here for NF-kappaB. Although the complete understanding of the mechanism of action of TMA deserves further investigation, an activity of TMA on phosphorylating pathways was already demonstrated by our study. Finally, since psoralens have been shown to potentiate cystic fibrosis transmembrane conductance regulator (CFTR)-mediated chloride transport, TMA was tested and found to potentiate CFTR-dependent chloride efflux. In conclusion, TMA is a dual-acting compound reducing excessive IL-8 expression and potentiating CFTR function.
+21148790	0	18	Trimethylangelicin	Chemical	-
+21148790	27	31	CXCL8	Gene	3576
+21148790	62	66	CFTR	Gene	1080
+21148790	77	97	Polyradiculoneuropathy Chronic Inflammatory Demyelinating	Disease	MESH:D020277
+21148790	130	138	patients	Species	9606
+21148790	151	166	Cystic Fibrosis	Disease	MESH:D003550
+21148790	276	294	CXCL8	Gene	3576
+21148790	321	338	5-Methoxypsoralen	Chemical	MESH:D000078223
+21148790	347	369	Pseudomonas aeruginosa	Species	287
+21148790	380	384	CXCL8	Gene	3576
+21148790	701	718	5-Methoxypsoralen	Chemical	MESH:D000078223
+21148790	778	803	4 4' 6-trimethylangelicin	Chemical	MESH:C041621
+21148790	805	808	4 4' 6-trimethylangelicin	Chemical	MESH:C041621
+21148790	826	839	P. aeruginosa	Species	287
+21148790	850	854	CXCL8	Gene	3576
+21148790	899	904	0338	CellLine	CVCL:0338
+21148790	906	912	C457	CellLine	CVCL:C457
+21148790	914	921	HL93	CellLine	CVCL:HL93
+21148790	928	934	0609	CellLine	CVCL:0609
+21148790	1063	1066	4 4' 6-trimethylangelicin	Chemical	MESH:C041621
+21148790	1098	1119	RPS6KA1	Gene	6195
+21148790	1124	1130	AKT2	Gene	208;10000
+21148790	1166	1179	P. aeruginosa	Species	287
+21148790	1204	1208	CXCL8	Gene	3576
+21148790	1321	1324	4 4' 6-trimethylangelicin	Chemical	MESH:C041621
+21148790	1330	1339	NFKB1	Gene	4790
+21148790	1389	1398	NFKB1	Gene	4790
+21148790	1476	1479	4 4' 6-trimethylangelicin	Chemical	MESH:C041621
+21148790	1512	1521	NFKB1	Gene	4790
+21148790	1563	1566	4 4' 6-trimethylangelicin	Chemical	MESH:C041621
+21148790	1634	1637	4 4' 6-trimethylangelicin	Chemical	MESH:C041621
+21148790	1709	1718	NFKB1	Gene	4790
+21148790	1740	1744	CXCL8	Gene	3576
+21148790	1778	1781	4 4' 6-trimethylangelicin	Chemical	MESH:C041621
+21148790	1796	1800	CXCL8	Gene	3576
+21148790	1907	1911	CXCL8	Gene	3576
+21148790	1952	1962	NFKB1	Gene	4790
+21148790	2029	2032	4 4' 6-trimethylangelicin	Chemical	MESH:C041621
+21148790	2080	2083	4 4' 6-trimethylangelicin	Chemical	MESH:C041621
+21148790	2166	2175	Furocoumarins	Chemical	MESH:D011564
+21148790	2259	2263	CFTR	Gene	1080
+21148790	2274	2282	Chlorides	Chemical	MESH:D002712
+21148790	2294	2297	4 4' 6-trimethylangelicin	Chemical	MESH:C041621
+21148790	2333	2337	CFTR	Gene	1080
+21148790	2348	2356	Chlorides	Chemical	MESH:D002712
+21148790	2380	2383	4 4' 6-trimethylangelicin	Chemical	MESH:C041621
+21148790	2429	2433	CXCL8	Gene	3576
+21148790	2462	2466	CFTR	Gene	1080
+21148790	Association	3576	6195
+21148790	Negative_Correlation	MESH:C041621	10000
+21148790	Negative_Correlation	MESH:C041621	3576
+21148790	Association	208	3576
+21148790	Association	MESH:D003550	3576
+21148790	Negative_Correlation	MESH:D000078223	3576
+21148790	Negative_Correlation	MESH:C041621	4790
+21148790	Negative_Correlation	MESH:C041621	208
+21148790	Association	10000	3576
+21148790	Negative_Correlation	MESH:C041621	6195
+
+33653893|t|Fusobacterium nucleatum Secretes Outer Membrane Vesicles and Promotes Intestinal Inflammation.
+33653893|a|Multiple studies have implicated microbes in the development of inflammation, but the mechanisms remain unknown. Bacteria in the genus Fusobacterium have been identified in the intestinal mucosa of patients with digestive diseases; thus, we hypothesized that Fusobacterium nucleatum promotes intestinal inflammation. The addition of >50 kDa F. nucleatum conditioned media, which contain outer membrane vesicles (OMVs), to colonic epithelial cells stimulated secretion of the proinflammatory cytokines interleukin-8 (IL-8) and tumor necrosis factor (TNF). In addition, purified F. nucleatum OMVs, but not compounds <50 kDa, stimulated IL-8 and TNF production; which was decreased by pharmacological inhibition of Toll-like receptor 4 (TLR4). These effects were linked to downstream effectors p-ERK, p-CREB, and NF-kappaB. F. nucleatum >50-kDa compounds also stimulated TNF secretion, p-ERK, p-CREB, and NF-kappaB activation in human colonoid monolayers. In mice harboring a human microbiota, pretreatment with antibiotics and a single oral gavage of F. nucleatum resulted in inflammation. Compared to mice receiving vehicle control, mice treated with F. nucleatum showed disruption of the colonic architecture, with increased immune cell infiltration and depleted mucus layers. Analysis of mucosal gene expression revealed increased levels of proinflammatory cytokines (KC, TNF, IL-6, IFN-gamma, and MCP-1) at day 3 and day 5 in F. nucleatum-treated mice compared to controls. These proinflammatory effects were absent in mice who received F. nucleatum without pretreatment with antibiotics, suggesting that an intact microbiome is protective against F. nucleatum-mediated immune responses. These data provide evidence that F. nucleatum promotes proinflammatory signaling cascades in the context of a depleted intestinal microbiome.IMPORTANCE Several studies have identified an increased abundance of Fusobacterium in the intestinal tracts of patients with colon cancer, liver cirrhosis, primary sclerosing cholangitis, gastroesophageal reflux disease, HIV infection, and alcoholism. However, the direct mechanism(s) of action of Fusobacterium on pathophysiological within the gastrointestinal tract is unclear. These studies have identified that F. nucleatum subsp. polymorphum releases outer membrane vesicles which activate TLR4 and NF-kappaB to stimulate proinflammatory signals in vitro Using mice harboring a human microbiome, we demonstrate that F. nucleatum can promote inflammation, an effect which required antibiotic-mediated alterations in the gut microbiome. Collectively, these results suggest a mechanism by which F. nucleatum may contribute to intestinal inflammation.
+33653893	0	23	Fusobacterium nucleatum	Species	851
+33653893	70	93	Inflammation	Disease	MESH:D007249
+33653893	159	171	Inflammation	Disease	MESH:D007249
+33653893	230	243	Fusobacterium	Species	851
+33653893	293	301	patients	Species	9606
+33653893	307	325	Digestive System Diseases	Disease	MESH:D004066
+33653893	354	377	Fusobacterium nucleatum	Species	851
+33653893	387	410	Inflammation	Disease	MESH:D007249
+33653893	436	448	F. nucleatum	Species	851
+33653893	596	609	CXCL8	Gene	3576
+33653893	611	615	CXCL8	Gene	3576
+33653893	621	642	TNF	Gene	7124
+33653893	644	647	TNF	Gene	7124
+33653893	672	684	F. nucleatum	Species	851
+33653893	729	733	CXCL8	Gene	3576
+33653893	738	741	TNF	Gene	7124
+33653893	807	827	TLR4	Gene	7099
+33653893	829	833	TLR4	Gene	7099
+33653893	888	891	MAPK1	Gene	5594
+33653893	895	899	CREB1	Gene	1385
+33653893	905	915	NFKB1	Gene	4790
+33653893	916	928	F. nucleatum	Species	851
+33653893	963	966	TNF	Gene	7124
+33653893	980	983	MAPK1	Gene	5594
+33653893	987	991	CREB1	Gene	1385
+33653893	997	1006	NFKB1	Gene	4790
+33653893	1021	1026	human	Species	9606
+33653893	1051	1055	mice	Species	10090
+33653893	1068	1073	human	Species	9606
+33653893	1144	1156	F. nucleatum	Species	851
+33653893	1169	1181	Inflammation	Disease	MESH:D007249
+33653893	1195	1199	mice	Species	10090
+33653893	1227	1231	mice	Species	10090
+33653893	1245	1257	F. nucleatum	Species	851
+33653893	1468	1471	Tnf	Gene	21926
+33653893	1473	1477	Il6	Gene	16193
+33653893	1479	1488	Ifng	Gene	15978
+33653893	1494	1499	Mcpt1	Gene	17224
+33653893	1523	1535	F. nucleatum	Species	851
+33653893	1544	1548	mice	Species	10090
+33653893	1577	1592	proinflammatory	Disease	-
+33653893	1616	1620	mice	Species	10090
+33653893	1634	1646	F. nucleatum	Species	851
+33653893	1745	1757	F. nucleatum	Species	851
+33653893	1818	1830	F. nucleatum	Species	851
+33653893	1840	1855	proinflammatory	Disease	-
+33653893	1995	2008	Fusobacterium	Species	851
+33653893	2037	2045	patients	Species	9606
+33653893	2051	2063	Colorectal Neoplasms	Disease	MESH:D015179
+33653893	2065	2080	Liver Cirrhosis	Disease	MESH:D008103
+33653893	2082	2112	Cholangitis Sclerosing	Disease	MESH:D015209
+33653893	2114	2145	Gastroesophageal Reflux	Disease	MESH:D005764
+33653893	2147	2160	HIV Infections	Disease	MESH:D015658
+33653893	2166	2176	Alcoholism	Disease	MESH:D000437
+33653893	2224	2237	Fusobacterium	Species	851
+33653893	2341	2360	F. nucleatum subsp.	Species	-
+33653893	2361	2372	polymorphum	Species	76857
+33653893	2421	2425	TLR4	Gene	7099
+33653893	2430	2439	NFKB1	Gene	4790
+33653893	2453	2468	proinflammatory	Disease	-
+33653893	2492	2496	mice	Species	10090
+33653893	2509	2514	human	Species	9606
+33653893	2547	2559	F. nucleatum	Species	851
+33653893	2572	2584	Inflammation	Disease	MESH:D007249
+33653893	2723	2735	F. nucleatum	Species	851
+33653893	2754	2777	Inflammation	Disease	MESH:D007249
+33653893	Positive_Correlation	17224	4790
+33653893	Association	7099	7124
+33653893	Positive_Correlation	1385	4790
+33653893	Positive_Correlation	MESH:D005764	4790
+33653893	Positive_Correlation	4790	7124
+33653893	Positive_Correlation	MESH:D015209	4790
+33653893	Positive_Correlation	MESH:D015658	4790
+33653893	Positive_Correlation	4790	5594
+33653893	Positive_Correlation	21926	4790
+33653893	Positive_Correlation	15978	4790
+33653893	Positive_Correlation	16193	4790
+33653893	Positive_Correlation	3576	4790
+33653893	Positive_Correlation	MESH:D000437	4790
+33653893	Positive_Correlation	MESH:D007249	4790
+33653893	Positive_Correlation	4790	7099
+33653893	Association	3576	7099
+
+33634990|t|Cyclosporine modulates neutrophil functions via the SIRT6-HIF-1alpha-glycolysis axis to alleviate severe ulcerative colitis.
+33634990|a|BACKGROUND: Cyclosporine A (CsA) is routinely used to treat patients with steroid-refractory acute severe ulcerative colitis (ASUC). Here, we studied the underlying mechanisms of CsA-mediated alleviation in ASUC patients. METHODS: Neutrophil functions including expression of cytokines, apoptosis, and migration were measured by qRT-PCR, flow cytometry, and Transwell assay. Dynamic changes of glycolysis and tricarboxylic acid (TCA) cycle were measured by a Seahorse extracellular flux analyzer. Gene differences were determined and verified by RNA sequencing, qRT-PCR, and Western blotting. Small interfering RNA and inhibitors were used to knock down Sirtuin 6 (SIRT6) in HL-60 cells and block expression of SIRT6, hypoxia-inducible factor-1alpha (HIF-1alpha), and pyruvate dehydrogenase lipoamide kinase isozyme 4 (PDK4) in neutrophils. RESULTS: We found that HIF-1alpha expression and glycolysis significantly increased, while the release of IL-8, myeloperoxidase (MPO) and reactive oxygen species (ROS), the apoptosis, and ability of migration markedly decreased in neutrophils of ASUC patients who responded to CsA (Response group) compared with those who did not respond to CsA (Nonresponse group). We also observed that CsA-induced functional alternation of neutrophils was initiated through suppressing SIRT6 expression, which is responsible for expression of the downstream signaling molecules (e.g., HIF-1alpha, PFKFB3) and PDK4 ubiquitination, leading to fueling neutrophil glycolysis and TCA cycle. Furthermore, blockage of SIRT6 signaling demonstrated to be the same functional changes as CsA to decrease the migration of neutrophils. CONCLUSIONS: The data reveal a novel mechanism of CsA in alleviating ASUC by promoting neutrophil HIF-1alpha expression and restricting excessive neutrophil activation in a SIRT6-HIF-1alpha-glycolysis axis, suggesting SIRT6 as a candidate target for maintaining mucosal homeostasis and treating intestinal inflammation.
+33634990	0	12	Cyclosporine	Chemical	MESH:D016572
+33634990	52	57	SIRT6	Gene	51548
+33634990	58	68	HIF1A	Gene	3091
+33634990	105	123	Colitis Ulcerative	Disease	MESH:D003093
+33634990	137	151	Cyclosporine	Chemical	MESH:D016572
+33634990	153	156	Cyclosporine	Chemical	MESH:D016572
+33634990	185	193	patients	Species	9606
+33634990	199	206	Steroids	Chemical	MESH:D013256
+33634990	231	249	Colitis Ulcerative	Disease	MESH:D003093
+33634990	251	255	Severe Acute Respiratory Syndrome	Disease	MESH:D045169
+33634990	304	307	Cyclosporine	Chemical	MESH:D016572
+33634990	332	336	Severe Acute Respiratory Syndrome	Disease	MESH:D045169
+33634990	337	345	patients	Species	9606
+33634990	534	552	Tricarboxylic Acids	Chemical	MESH:D014233
+33634990	554	557	Tricarboxylic Acids	Chemical	MESH:D014233
+33634990	779	788	SIRT6	Gene	51548
+33634990	790	795	SIRT6	Gene	51548
+33634990	800	805	0002	CellLine	CVCL:0002
+33634990	836	841	SIRT6	Gene	51548
+33634990	843	874	HIF1A	Gene	3091
+33634990	876	886	HIF1A	Gene	3091
+33634990	893	942	PDK4	Gene	5166
+33634990	944	948	PDK4	Gene	5166
+33634990	989	999	HIF1A	Gene	3091
+33634990	1072	1076	CXCL8	Gene	3576
+33634990	1078	1093	MPO	Gene	4353
+33634990	1095	1098	MPO	Gene	4353
+33634990	1104	1127	Reactive Oxygen Species	Chemical	MESH:D017382
+33634990	1129	1132	Reactive Oxygen Species	Chemical	MESH:D017382
+33634990	1212	1216	Severe Acute Respiratory Syndrome	Disease	MESH:D045169
+33634990	1217	1225	patients	Species	9606
+33634990	1243	1246	Cyclosporine	Chemical	MESH:D016572
+33634990	1307	1310	Cyclosporine	Chemical	MESH:D016572
+33634990	1354	1357	Cyclosporine	Chemical	MESH:D016572
+33634990	1438	1443	SIRT6	Gene	51548
+33634990	1537	1547	HIF1A	Gene	3091
+33634990	1549	1555	PFKFB3	Gene	5209
+33634990	1561	1565	PDK4	Gene	5166
+33634990	1627	1630	Tricarboxylic Acids	Chemical	MESH:D014233
+33634990	1663	1668	SIRT6	Gene	51548
+33634990	1729	1732	Cyclosporine	Chemical	MESH:D016572
+33634990	1825	1828	Cyclosporine	Chemical	MESH:D016572
+33634990	1844	1848	Severe Acute Respiratory Syndrome	Disease	MESH:D045169
+33634990	1873	1883	HIF1A	Gene	3091
+33634990	1948	1953	SIRT6	Gene	51548
+33634990	1954	1964	HIF1A	Gene	3091
+33634990	1993	1998	SIRT6	Gene	51548
+33634990	2070	2093	Inflammation	Disease	MESH:D007249
+33634990	Association	51548	5209
+33634990	Negative_Correlation	MESH:D016572	MESH:D003093
+33634990	Association	MESH:D014233	51548
+33634990	Negative_Correlation	MESH:D016572	MESH:D017382
+33634990	Association	MESH:D014233	5166
+33634990	Association	MESH:D016572	5166
+33634990	Negative_Correlation	MESH:D016572	3576
+33634990	Negative_Correlation	MESH:D013256	MESH:D003093
+33634990	Association	MESH:D045169	4353
+33634990	Association	MESH:D016572	3091
+33634990	Association	MESH:D014233	MESH:D016572
+33634990	Negative_Correlation	MESH:D013256	MESH:D045169
+33634990	Association	MESH:D016572	5209
+33634990	Negative_Correlation	MESH:D016572	4353
+33634990	Association	MESH:D045169	3091
+33634990	Association	MESH:D016572	51548
+33634990	Association	MESH:D045169	51548
+33634990	Association	MESH:D003093	3091
+33634990	Association	MESH:D003093	51548
+33634990	Negative_Correlation	MESH:D017382	MESH:D045169
+33634990	Association	51548	5166
+33634990	Negative_Correlation	MESH:D016572	MESH:D045169
+33634990	Association	MESH:D045169	3576
+33634990	Association	3091	51548
+33634990	Association	MESH:D017382	3091
+33634990	Association	MESH:D007249	51548
+
+26202676|t|Galectin-3 Modulates Experimental Colitis.
+26202676|a|BACKGROUND: We recently identified galectin-3 (gal-3) as a new and strong fibroblast activator produced by colonic epithelial cells. Very little is known about the influence of gal-3 in inflammatory bowel disease. We, therefore, investigated the impact of gal-3 on dextran sodium sulfate (DSS)-induced colitis in a mouse model. METHODS: Colonic lamina propria fibroblasts of healthy controls were used for co-incubation studies of gal-3 with gal-1, TGF-beta1, IFNgamma, IL-4 and IL-10. Acute and chronic DSS colitis was induced by 3% DSS in drinking water in female Balb/c mice weighing 20-22 g. Recombinant gal-3 was expressed by the pET vector system and used for a 5-day treatment in different concentrations intraperitoneally. The distal third of the colon was used for histologic analysis. Colonic cytokine expression was determined by quantitative RT-PCR. RESULTS: In vitro, gal-3 induced IL-8 secretion was significantly reduced by co-incubation with IL-10 (5 ng/ml) and IL-4 (10 ng/ml). Acute DSS-induced colitis was ameliorated by gal-3 treatment as indicated by increased colonic length and reduced weight loss compared to that of controls. In acute and chronic colitis, gal-3 treatment resulted in a significant suppression of colonic IL-6. CONCLUSION: Gal-3 significantly reduces inflammation in acute and chronic DSS colitis in mice indicating a potential role in intestinal inflammation.
+26202676	0	10	Lgals3	Gene	16854
+26202676	34	41	Colitis	Disease	MESH:D003092
+26202676	78	88	Lgals3	Gene	16854
+26202676	90	95	Lgals3	Gene	16854
+26202676	220	225	Lgals3	Gene	16854
+26202676	229	255	Inflammatory Bowel Diseases	Disease	MESH:D015212
+26202676	299	304	Lgals3	Gene	16854
+26202676	308	330	dextran sodium sulfate	Chemical	-
+26202676	332	335	DSS	Chemical	-
+26202676	345	352	Colitis	Disease	MESH:D003092
+26202676	358	363	mouse	Species	10090
+26202676	474	479	Lgals3	Gene	16854
+26202676	485	490	Lgals1	Gene	16852
+26202676	492	501	Tgfb1	Gene	21803
+26202676	503	511	Ifng	Gene	15978
+26202676	513	517	Il4	Gene	16189
+26202676	522	527	Il10	Gene	16153
+26202676	529	534	Acute Disease	Disease	MESH:D000208
+26202676	547	550	DSS	Chemical	-
+26202676	551	558	Colitis	Disease	MESH:D003092
+26202676	577	580	DSS	Chemical	-
+26202676	609	613	0637	CellLine	CVCL:0637
+26202676	616	620	mice	Species	10090
+26202676	651	656	Lgals3	Gene	16854
+26202676	924	929	Lgals3	Gene	16854
+26202676	938	942	Cxcl15	Gene	20309
+26202676	1001	1006	Il10	Gene	16153
+26202676	1021	1025	Il4	Gene	16189
+26202676	1038	1043	Acute Disease	Disease	MESH:D000208
+26202676	1044	1047	DSS	Chemical	-
+26202676	1056	1063	Colitis	Disease	MESH:D003092
+26202676	1083	1088	Lgals3	Gene	16854
+26202676	1152	1163	Weight Loss	Disease	MESH:D015431
+26202676	1197	1202	Acute Disease	Disease	MESH:D000208
+26202676	1215	1222	Colitis	Disease	MESH:D003092
+26202676	1224	1229	Lgals3	Gene	16854
+26202676	1289	1293	Il6	Gene	16193
+26202676	1307	1312	Lgals3	Gene	16854
+26202676	1335	1347	Inflammation	Disease	MESH:D007249
+26202676	1351	1356	Acute Disease	Disease	MESH:D000208
+26202676	1369	1372	DSS	Chemical	-
+26202676	1373	1380	Colitis	Disease	MESH:D003092
+26202676	1384	1388	mice	Species	10090
+26202676	1420	1443	Inflammation	Disease	MESH:D007249
+26202676	Association	MESH:D003092	16854
+26202676	Association	MESH:D003092	16193
+26202676	Negative_Correlation	MESH:D000208	16854
+26202676	Negative_Correlation	16193	16854
+26202676	Association	16189	16854
+26202676	Bind	16852	16854
+26202676	Association	MESH:D015212	16854
+26202676	Negative_Correlation	MESH:D015431	16854
+26202676	Positive_Correlation	16854	20309
+26202676	Association	16153	16854
+26202676	Negative_Correlation	MESH:D007249	16854
+26202676	Negative_Correlation	16153	20309

@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "Q028",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "9ef0988a4e9e46b7c5f543a939c51e8d63c076f6bf5afc352f8e54bd66de3c18",
+  "raw_response_sha256": "94db3e2a0c27cc23b0c9d34a31ee85f59f9d432062f841c5aaa2dae7a6377e09",
+  "usage": {
+    "input_tokens": 3376,
+    "output_tokens": 485,
+    "total_tokens": 3861
+  },
+  "rated_at": "2026-08-13T04:38:19.961008+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q028-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, mechanistically detailed, and distinguishes multiple 2-hop routes. Lacks explicit citation links but aligns with established literature and experimental evidence."
+      },
+      {
+        "answer_id": "Q028-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurately cites PMIDs, clearly maps 2-hop paths, and distinguishes direct evidence from hypotheses. Mechanistically and experimentally grounded in human cancer studies."
+      },
+      {
+        "answer_id": "Q028-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Well-cited, covers multiple mechanistic routes, and includes evidence from human cell studies. Clearly explains each 2-hop connection and its experimental context."
+      },
+      {
+        "answer_id": "Q028-D",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Concise, well-grounded, and cites PMIDs. Slightly less detailed on mechanistic diversity and context-dependence compared to others, but accurate and relevant."
+      }
+    ],
+    "preferred_item_id": "Q028-C",
+    "pairwise_reason": "All answers are correct and well-grounded, but Q028-C provides the most comprehensive, clearly cited, and mechanistically detailed explanation, covering multiple pathways and experimental contexts."
+  }
+}

@@ -1,0 +1,263 @@
+##USE-MESH-VOCABULARY
+12429935|t|Degradation of ATM-independent decatenation checkpoint function in human cells is secondary to inactivation of p53 and correlated with chromosomal destabilization.
+12429935|a|DNA topoisomerase II is required in the cell cycle to decatenate intertwined daughter chromatids prior to mitosis. To study the mechanisms that cells use to accomplish timely chromatid decatenation, the activity of a catenation-responsive checkpoint was monitored in human skin fibroblasts with inherited or acquired defects in the DNA damage G2 checkpoint. G2 delay was quantified shortly after a brief incubation with ICRF-193, which blocks the ability of topoisomerase II to decatenate chromatids, or treatment with ionizing radiation (IR), which damages DNA. Both treatments induced G2 delay in normal human fibroblasts. Ataxia telangiectasia fibroblasts with defective G2 checkpoint response to IR displayed normal G2 delay after treatment with ICRF-193, demonstrating that ATM kinase was not required for signaling when chromatid decatenation was blocked. The G2 delay induced by ICRF-193 was reversed by caffeine, indicating that active checkpoint signaling was involved. ICRF-193-induced G2 delay also was independent of p53 function, being evident in cells expressing HPV16E6 to inactivate p53. However, as fibroblasts expressing HPV16E6 aged in culture, they lost the ability to delay entry to mitosis, both after DNA damage and when decatenation was blocked. This age-related loss of G2 delay in response to ICRF-193 and IR in E6-expressing cells was blocked by induction of telomerase. Expression of telomerase also prevented chromosomal destabilization in aging E6-expressing cells. These observations lead to a new model of genetic instability, in which attenuation of G2 decatenatory checkpoint function permits cells to enter mitosis with insufficiently decatenated chromatids, leading to aneuploidy and polyploidy.
+12429935	15	18	ATM	Gene	472
+12429935	67	72	human	Species	9606
+12429935	111	114	p53	Gene	7157
+12429935	431	436	human	Species	9606
+12429935	525	530	delay	Disease	MESH:D006968
+12429935	584	592	ICRF-193	Chemical	MESH:C070899
+12429935	754	759	delay	Disease	MESH:D006968
+12429935	770	775	human	Species	9606
+12429935	789	810	Ataxia telangiectasia	Disease	MESH:D001260
+12429935	887	892	delay	Disease	MESH:D006968
+12429935	914	922	ICRF-193	Chemical	MESH:C070899
+12429935	1033	1038	delay	Disease	MESH:D006968
+12429935	1050	1058	ICRF-193	Chemical	MESH:C070899
+12429935	1075	1083	caffeine	Chemical	MESH:D002110
+12429935	1143	1151	ICRF-193	Chemical	MESH:C070899
+12429935	1163	1168	delay	Disease	MESH:D006968
+12429935	1193	1196	p53	Gene	7157
+12429935	1263	1266	p53	Gene	7157
+12429935	1353	1358	delay	Disease	MESH:D006968
+12429935	1462	1467	delay	Disease	MESH:D006968
+12429935	1483	1491	ICRF-193	Chemical	MESH:C070899
+12429935	1702	1721	genetic instability	Disease	MESH:D043171
+12429935	1869	1879	aneuploidy	Disease	MESH:D000782
+12429935	Association	472	7157
+12429935	Negative_Correlation	MESH:C070899	MESH:D002110
+12429935	Negative_Correlation	MESH:D002110	MESH:D006968
+12429935	Positive_Correlation	MESH:C070899	MESH:D006968
+
+12446774|t|An ATR- and Chk1-dependent S checkpoint inhibits replicon initiation following UVC-induced DNA damage.
+12446774|a|Inhibition of replicon initiation is a stereotypic DNA damage response mediated through S checkpoint mechanisms not yet fully understood. Studies were undertaken to elucidate the function of checkpoint proteins in the inhibition of replicon initiation following irradiation with 254 nm UV light (UVC) of diploid human fibroblasts immortalized by the ectopic expression of telomerase. Velocity sedimentation analysis of nascent DNA molecules revealed a 50% inhibition of replicon initiation when normal human fibroblasts were treated with a low dose of UVC (1 J/m(2)). Ataxia telangiectasia (AT), Nijmegen breakage syndrome (NBS), and AT-like disorder fibroblasts, which lack an S checkpoint response when exposed to ionizing radiation, responded normally when exposed to UVC and inhibited replicon initiation. Pretreatment of normal and AT fibroblasts with caffeine or UCN-01, inhibitors of ATR (AT mutated and Rad3 related) and Chk1, respectively, abolished the S checkpoint response to UVC. Moreover, overexpression of kinase-inactive ATR in U2OS cells severely attenuated UVC-induced Chk1 phosphorylation and reversed the UVC-induced inhibition of replicon initiation, as did overexpression of kinase-inactive Chk1. Taken together, these data suggest that the UVC-induced S checkpoint response of inhibition of replicon initiation is mediated by ATR signaling through Chk-1 and is independent of ATM, Nbs1, and Mre11.
+12446774	3	6	ATR	Gene	545
+12446774	12	16	Chk1	Gene	1111
+12446774	79	82	UVC	Chemical	-
+12446774	399	402	UVC	Chemical	-
+12446774	415	420	human	Species	9606
+12446774	605	610	human	Species	9606
+12446774	655	658	UVC	Chemical	-
+12446774	671	692	Ataxia telangiectasia	Disease	MESH:D001260
+12446774	694	696	AT	Disease	MESH:D001260
+12446774	699	725	Nijmegen breakage syndrome	Disease	MESH:D049932
+12446774	727	730	NBS	Disease	MESH:D049932
+12446774	737	753	AT-like disorder	Disease	MESH:C565779
+12446774	874	877	UVC	Chemical	-
+12446774	940	942	AT	Disease	MESH:D001260
+12446774	960	968	caffeine	Chemical	MESH:D002110
+12446774	972	978	UCN-01	Chemical	MESH:C054852
+12446774	994	997	ATR	Gene	545
+12446774	999	1001	AT	Disease	MESH:D001260
+12446774	1032	1036	Chk1	Gene	1111
+12446774	1091	1094	UVC	Chemical	-
+12446774	1140	1143	ATR	Gene	545
+12446774	1147	1151	U2OS	CellLine	CVCL:0042
+12446774	1178	1181	UVC	Chemical	-
+12446774	1190	1194	Chk1	Gene	1111
+12446774	1228	1231	UVC	Chemical	-
+12446774	1316	1320	Chk1	Gene	1111
+12446774	1366	1369	UVC	Chemical	-
+12446774	1452	1455	ATR	Gene	545
+12446774	1474	1479	Chk-1	Gene	1111
+12446774	1502	1505	ATM	Gene	472
+12446774	1507	1511	Nbs1	Gene	4683
+12446774	1517	1522	Mre11	Gene	4361
+12446774	Negative_Correlation	MESH:C054852	1111
+12446774	Association	1111	545
+12446774	Negative_Correlation	MESH:D002110	545
+12446774	Negative_Correlation	MESH:C054852	MESH:D001260
+12446774	Negative_Correlation	MESH:D002110	1111
+12446774	Negative_Correlation	MESH:D002110	MESH:D001260
+12446774	Negative_Correlation	MESH:C054852	545
+
+15075340|t|Localization of hRad9, hHus1, hRad1, and hRad17 and caffeine-sensitive DNA replication at the alternative lengthening of telomeres-associated promyelocytic leukemia body.
+15075340|a|Telomere maintenance is essential for continued cell proliferation. Although most cells accomplish this by activating telomerase, a subset of immortalized tumors and cell lines do so in a telomerase-independent manner, a process called alternative lengthening of telomeres (ALT). DNA recombination has been shown to be involved in ALT, but the precise mechanisms remain unknown. A fraction of cells in a given ALT population contain a unique nuclear structure called APB (ALT-associated promyelocytic leukemia (PML) body), which is characterized by the presence of telomeric DNA in the PML body. Here we describe that hRad9, hHus1, and hRad1, which form a DNA clamp complex that is associated with DNA damage, as well as its clamp loader, hRad17, are constitutive components of APB. Phosphorylated histone H2AX (gamma-H2AX), a molecular marker of double-strand breaks (DSBs), also colocalizes with some APBs. The results suggest that telomeric DNAs at APBs are recognized as DSBs. PML staining and fluorescence in situ hybridization analyses of mitotic ALT cells revealed that telomeric DNAs present at APBs are of both extrachromosomal and native telomere origins. Furthermore, we demonstrated that DNA synthesis occurs at APBs and is significantly inhibited by caffeine, an inhibitor of phosphatidylinositol 3-kinase-related kinases. Taken together, we suggest that telomeric DNAs at APBs are recognized and processed as DSBs, leading to telomeric DNA synthesis and thereby contributing to telomere maintenance in ALT cells.
+15075340	52	60	caffeine	Chemical	MESH:D002110
+15075340	94	130	alternative lengthening of telomeres	Disease	MESH:C536589
+15075340	142	164	promyelocytic leukemia	Gene	18854
+15075340	326	332	tumors	Disease	MESH:D009369
+15075340	407	443	alternative lengthening of telomeres	Disease	MESH:C536589
+15075340	445	448	ALT	Disease	MESH:C536589
+15075340	502	505	ALT	Disease	MESH:C536589
+15075340	581	584	ALT	Disease	MESH:C536589
+15075340	638	641	APB	Gene	215615
+15075340	643	646	ALT	Disease	MESH:C536589
+15075340	658	680	promyelocytic leukemia	Gene	18854
+15075340	682	685	PML	Gene	18854
+15075340	757	760	PML	Gene	18854
+15075340	949	952	APB	Gene	215615
+15075340	969	981	histone H2AX	Gene	15270
+15075340	983	993	gamma-H2AX	Gene	15270
+15075340	1152	1155	PML	Gene	18854
+15075340	1224	1227	ALT	Disease	MESH:C536589
+15075340	1434	1442	caffeine	Chemical	MESH:D002110
+15075340	1687	1690	ALT	Disease	MESH:C536589
+15075340	Association	18854	215615
+15075340	Association	MESH:D002110	MESH:C536589
+15075340	Association	MESH:C536589	18854
+15075340	Association	MESH:C536589	215615
+15075340	Association	MESH:D002110	18854
+
+16425280|t|Possible mechanisms of the cancer-preventive activities of green tea.
+16425280|a|The cancer-preventive activities of tea and some tea constituents, such as caffeine and (-)-epigallocatechin-3-gallate (EGCG), have been demonstrated in animal models. The mechanisms of action of the tea constituents have been extensively investigated, but the mechanisms for the cancer-preventive activity of tea are not clearly understood. This chapter discusses some of the reported studies on the green tea polyphenol, EGCG, and the major issues in the interpretation of these data. Among the different activities of EGCG observed in cell culture systems, we need to select the physiologically relevant ones based on the biological importance of the target as well as the effective concentration and whether the reaction can take place in vivo because of the limited bioavailability of EGCG. We also need to distinguish between primary and subsequent events. Possible artifacts should be recognized. The cancer-preventive mechanisms need to be validated in animal models or human samples.
+16425280	27	33	cancer	Disease	MESH:D009369
+16425280	59	68	green tea	Species	-
+16425280	74	80	cancer	Disease	MESH:D009369
+16425280	145	153	caffeine	Chemical	MESH:D002110
+16425280	158	188	(-)-epigallocatechin-3-gallate	Chemical	MESH:C045651
+16425280	190	194	EGCG	Chemical	MESH:C045651
+16425280	350	356	cancer	Disease	MESH:D009369
+16425280	471	480	green tea	Species	-
+16425280	481	491	polyphenol	Chemical	MESH:D059808
+16425280	493	497	EGCG	Chemical	MESH:C045651
+16425280	591	595	EGCG	Chemical	MESH:C045651
+16425280	860	864	EGCG	Chemical	MESH:C045651
+16425280	978	984	cancer	Disease	MESH:D009369
+16425280	1048	1053	human	Species	9606
+16425280	Negative_Correlation	MESH:C045651	MESH:D009369
+16425280	Negative_Correlation	MESH:D002110	MESH:D009369
+
+29570984|t|Effects of the Green Tea Polyphenol Epigallocatechin-3-Gallate on Glioma: A Critical Evaluation of the Literature.
+29570984|a|The review discusses the effects of Epigallocatechin-3-gallate Gallate (EGCG) on glioma as a basis for future research on clinical application of EGCG. Epidemiological studies on the effects of green tea or EGCG on the risk of glioma is inconclusive due to the limited number of studies, the inclusion of all tea types in these studies, and the focus on caffeine rather than EGCG. In vivo experiments using EGCG monotherapy are inconclusive. Nevertheless, EGCG induces cell death, prevents cellular proliferation, and limits invasion in multiple glioma cell lines. Furthermore, EGCG enhances the efficacy of anti-glioma therapies, including irradiation, temozolomide, carmustine, cisplatin, tamoxifen, and TNF-related apoptosis-inducing ligand, but reduces the effect of bortezomib. Pro-drugs, co-treatment, and encapsulation are being investigated to enhance clinical applicability of EGCG. Mechanisms of actions of EGCG have been partly elucidated. EGCG has both anti-oxidant and oxidant properties. EGCG inhibits pro-survival proteins, such as telomerase, survivin, GRP78, PEA15, and P-gp. EGCG inhibits signaling of PDGFR, IGF-1R, and 67LR. EGCG reduces invasiveness of cancer cells by inhibiting the activities of various metalloproteinases, cytokines, and chemokines. Last, EGCG inhibits some NADPH-producing enzymes, thus disturbing redox status and metabolism of glioma cells. In conclusion, EGCG may be a suitable adjuvant to potentiate anti-glioma therapies.
+29570984	25	35	Polyphenol	Chemical	MESH:D059808
+29570984	36	62	Epigallocatechin-3-Gallate	Chemical	MESH:C045651
+29570984	66	72	Glioma	Disease	MESH:D005910
+29570984	151	185	Epigallocatechin-3-gallate Gallate	Chemical	-
+29570984	187	191	EGCG	Chemical	-
+29570984	196	202	glioma	Disease	MESH:D005910
+29570984	261	265	EGCG	Chemical	-
+29570984	322	326	EGCG	Chemical	-
+29570984	342	348	glioma	Disease	MESH:D005910
+29570984	469	477	caffeine	Chemical	MESH:D002110
+29570984	490	494	EGCG	Chemical	-
+29570984	522	526	EGCG	Chemical	-
+29570984	571	575	EGCG	Chemical	-
+29570984	661	667	glioma	Disease	MESH:D005910
+29570984	693	697	EGCG	Chemical	-
+29570984	728	734	glioma	Disease	MESH:D005910
+29570984	769	781	temozolomide	Chemical	MESH:D000077204
+29570984	783	793	carmustine	Chemical	MESH:D002330
+29570984	795	804	cisplatin	Chemical	MESH:D002945
+29570984	806	815	tamoxifen	Chemical	MESH:D013629
+29570984	886	896	bortezomib	Chemical	MESH:D000069286
+29570984	1001	1005	EGCG	Chemical	-
+29570984	1032	1036	EGCG	Chemical	-
+29570984	1066	1070	EGCG	Chemical	-
+29570984	1117	1121	EGCG	Chemical	-
+29570984	1184	1189	GRP78	Gene	3309
+29570984	1191	1196	PEA15	Gene	8682
+29570984	1202	1206	P-gp	Gene	283871
+29570984	1208	1212	EGCG	Chemical	-
+29570984	1235	1240	PDGFR	Gene	5159
+29570984	1242	1248	IGF-1R	Gene	3480
+29570984	1254	1258	67LR	Gene	3921
+29570984	1260	1264	EGCG	Chemical	-
+29570984	1289	1295	cancer	Disease	MESH:D009369
+29570984	1395	1399	EGCG	Chemical	-
+29570984	1414	1419	NADPH	Chemical	MESH:D009249
+29570984	1486	1492	glioma	Disease	MESH:D005910
+29570984	1515	1519	EGCG	Chemical	-
+29570984	1566	1572	glioma	Disease	MESH:D005910
+29570984	Association	MESH:D009249	MESH:D005910
+29570984	Negative_Correlation	MESH:D000069286	MESH:D005910
+29570984	Negative_Correlation	MESH:D002330	MESH:D005910
+29570984	Negative_Correlation	MESH:D002945	MESH:D005910
+29570984	Association	MESH:D059808	MESH:D005910
+29570984	Negative_Correlation	MESH:D000077204	MESH:D005910
+29570984	Negative_Correlation	MESH:D013629	MESH:D005910
+29570984	Negative_Correlation	MESH:C045651	MESH:D005910
+
+29923368|t|Human electronegative LDL induces mitochondrial dysfunction and premature senescence of vascular cells in vivo.
+29923368|a|Dysregulation of plasma lipids is associated with age-related cardiovascular diseases. L5, the most electronegative subfraction of chromatographically resolved low-density lipoprotein (LDL), induces endothelial dysfunction, whereas the least electronegative subfraction, L1, does not. In this study, we examined the effects of L5 on endothelial senescence and its underlying mechanisms. C57B6/J mice were intravenously injected with L5 or L1 (2 mg kg-1  day-1 ) from human plasma. After 4 weeks, nuclear gammaH2AX deposition and senescence-associated beta-galactosidase staining indicative of DNA damage and premature senescence, respectively, were increased in the aortic endothelium of L5-treated but not L1-treated mice. Similar to that, in Syrian hamsters with elevated serum L5 levels induced by a high-fat diet, nuclear gammaH2AX deposition and senescence-associated beta-galactosidase staining were increased in the aortic endothelium. This phenomenon was blocked in the presence of N-acetyl-cysteine (free-radical scavenger) or caffeine (ATM blocker), as well as in lectin-like oxidized LDL receptor-1 (LOX-1) knockout mice. In cultured human aortic endothelial cells, L5 augmented mitochondrial oxygen consumption and mitochondrial free-radical production, which led to ATM activation, nuclear gammaH2AX deposition, Chk2 phosphorylation, and TP53 stabilization. L5 also decreased human telomerase reverse transcriptase (hTERT) protein levels and activity. Pharmacologic or genetic manipulation of the reactive oxygen species (ROS)/ATM/Chk2/TP53 pathway efficiently blocked L5-induced endothelial senescence. In conclusion, L5 may promote mitochondrial free-radical production and activate the DNA damage response to induce premature vascular endothelial senescence that leads to atherosclerosis. Novel therapeutic strategies that target L5-induced endothelial senescence may be used to prevent and treat atherosclerotic vascular disease.
+29923368	0	5	Human	Species	9606
+29923368	34	59	mitochondrial dysfunction	Disease	MESH:D028361
+29923368	136	142	lipids	Chemical	MESH:D008055
+29923368	174	197	cardiovascular diseases	Disease	MESH:D002318
+29923368	311	334	endothelial dysfunction	Disease	MESH:D014652
+29923368	439	441	L5	Chemical	-
+29923368	499	504	C57B6	CellLine	CVCL:A9HH
+29923368	507	511	mice	Species	10090
+29923368	579	584	human	Species	9606
+29923368	663	681	beta-galactosidase	Gene	12091
+29923368	800	802	L5	Chemical	-
+29923368	819	821	L1	Chemical	MESH:D000077543
+29923368	830	834	mice	Species	10090
+29923368	856	871	Syrian hamsters	Species	10036
+29923368	985	1003	beta-galactosidase	Gene	12091
+29923368	1102	1119	N-acetyl-cysteine	Chemical	MESH:D000111
+29923368	1121	1133	free-radical	Chemical	MESH:D005609
+29923368	1148	1156	caffeine	Chemical	MESH:D002110
+29923368	1158	1161	ATM	Gene	11920
+29923368	1186	1221	lectin-like oxidized LDL receptor-1	Gene	108078
+29923368	1223	1228	LOX-1	Gene	108078
+29923368	1239	1243	mice	Species	10090
+29923368	1257	1262	human	Species	9606
+29923368	1316	1322	oxygen	Chemical	MESH:D010100
+29923368	1353	1365	free-radical	Chemical	MESH:D005609
+29923368	1391	1394	ATM	Gene	472
+29923368	1437	1441	Chk2	Gene	11200
+29923368	1463	1467	TP53	Gene	7157
+29923368	1501	1506	human	Species	9606
+29923368	1507	1539	telomerase reverse transcriptase	Gene	7015
+29923368	1622	1645	reactive oxygen species	Chemical	MESH:D017382
+29923368	1647	1650	ROS	Chemical	MESH:D017382
+29923368	1652	1655	ATM	Gene	472
+29923368	1656	1660	Chk2	Gene	11200
+29923368	1661	1665	TP53	Gene	7157
+29923368	1694	1696	L5	Chemical	-
+29923368	1744	1746	L5	Chemical	-
+29923368	1773	1785	free-radical	Chemical	MESH:D005609
+29923368	1900	1915	atherosclerosis	Disease	MESH:D050197
+29923368	2025	2057	atherosclerotic vascular disease	Disease	MESH:D050197
+29923368	Negative_Correlation	MESH:D002110	12091
+29923368	Association	MESH:D017382	7157
+29923368	Negative_Correlation	MESH:D002110	11920
+29923368	Negative_Correlation	MESH:D000111	MESH:D005609
+29923368	Positive_Correlation	MESH:D005609	472
+29923368	Association	MESH:D017382	472
+29923368	Association	MESH:D017382	11200
+29923368	Association	MESH:D008055	MESH:D002318
+29923368	Positive_Correlation	MESH:D005609	11200
+29923368	Negative_Correlation	MESH:D000111	12091
+
+40363725|t|Antioxidant and Anticancer Mechanisms of Unique Polyphenols in Camellia ptilophylla: Focus on Gallocatechin-3,5-di-O-gallate and 1,2,4,6-Tetra-O-galloyl-beta-D-glucopyranose.
+40363725|a|Camellia ptilophylla Chang (C. ptilophylla), a unique low-caffeine tea species, is valued for its bioactive properties, especially antioxidant and anticancer activities, due to its distinct phytochemical profile. However, its precise constituents and mechanisms remain poorly understood. This study employs an integrated approach combining chromatographic separation, bioinformatic analysis, and cellular assays to systematically investigate the antioxidant and anticancer properties of C. ptilophylla and elucidate its underlying molecular mechanisms. Quantitative analysis revealed that in addition to trans-catechins, the unique polyphenolic compounds, gallocatechin-3,5-di-O-gallate (GC-3,5-diGA) and 1,2,4,6-tetra-O-galloyl-beta-D-glucopyranose (1,2,4,6-GA-glc), constituted significant proportions of C. ptilophylla extracts, with concentrations of 10.25 +- 0.29% and 6.60 +- 0.14%, respectively. Monomeric activity assessment demonstrated that both GC-3,5-diGA and 1,2,4,6-GA-glc exhibited pronounced antiproliferative effects against three cancer cell lines including the Lymph Node Carcinoma of the Prostate cell, human colon cancer cell, and human breast cancer cell. Notably, these compounds demonstrated potent antioxidant capacity, with 62.5 muM of GC-3,5-diGA and 15.63 muM of 1,2,4,6-GA-glc protecting against tBHP-induced oxidative stress in NIH3T3 cells comparable to 125 muM of epigallocatechin gallate and gallocatechin gallate in half-maximal inhibitory concentration. Mechanistic studies revealed that these polyphenols modulated antioxidant defenses and reactive oxygen species homeostasis via targets like fibroblast growth factor 2, telomerase reverse transcriptase, matrix metalloproteinase 9, and ATP-binding cassette subfamily G member 2, inducing oxidative stress and mitochondrial apoptosis to inhibit carcinogenesis. These findings enhance our understanding of the bioactive components responsible for the anticancer and antioxidant properties of C. ptilophylla and provide a scientific basis for the development of this dual-purpose plant for food and medicinal applications.
+40363725	16	26	Anticancer	Disease	-
+40363725	48	59	Polyphenols	Chemical	MESH:D059808
+40363725	63	83	Camellia ptilophylla	Species	319931
+40363725	94	124	Gallocatechin-3,5-di-O-gallate	Chemical	-
+40363725	129	173	1,2,4,6-Tetra-O-galloyl-beta-D-glucopyranose	Chemical	-
+40363725	203	217	C. ptilophylla	Species	319931
+40363725	233	241	caffeine	Chemical	MESH:D002110
+40363725	322	332	anticancer	Disease	-
+40363725	637	647	anticancer	Disease	-
+40363725	662	676	C. ptilophylla	Species	319931
+40363725	779	794	trans-catechins	Chemical	-
+40363725	807	829	polyphenolic compounds	Chemical	-
+40363725	831	861	gallocatechin-3,5-di-O-gallate	Chemical	-
+40363725	863	874	GC-3,5-diGA	Chemical	-
+40363725	880	924	1,2,4,6-tetra-O-galloyl-beta-D-glucopyranose	Chemical	-
+40363725	926	940	1,2,4,6-GA-glc	Chemical	-
+40363725	982	996	C. ptilophylla	Species	319931
+40363725	1131	1142	GC-3,5-diGA	Chemical	-
+40363725	1147	1161	1,2,4,6-GA-glc	Chemical	-
+40363725	1223	1229	cancer	Disease	MESH:D009369
+40363725	1255	1275	Lymph Node Carcinoma	Disease	MESH:D000072717
+40363725	1298	1303	human	Species	9606
+40363725	1304	1316	colon cancer	Disease	MESH:D015179
+40363725	1327	1332	human	Species	9606
+40363725	1333	1346	breast cancer	Disease	MESH:D001943
+40363725	1437	1448	GC-3,5-diGA	Chemical	-
+40363725	1466	1480	1,2,4,6-GA-glc	Chemical	-
+40363725	1500	1504	tBHP	Chemical	MESH:D020122
+40363725	1533	1539	NIH3T3	CellLine	CVCL:0594
+40363725	1571	1595	epigallocatechin gallate	Chemical	MESH:C045651
+40363725	1600	1621	gallocatechin gallate	Chemical	MESH:C417940
+40363725	1704	1715	polyphenols	Chemical	MESH:D059808
+40363725	1751	1774	reactive oxygen species	Chemical	MESH:D017382
+40363725	2006	2020	carcinogenesis	Disease	MESH:D063646
+40363725	2111	2121	anticancer	Disease	-
+40363725	2152	2166	C. ptilophylla	Species	319931
+40363725	Association	MESH:D017382	MESH:D059808
+40363725	Negative_Correlation	MESH:D059808	MESH:D063646

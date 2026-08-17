@@ -1,0 +1,222 @@
+{
+  "status": "complete",
+  "question_id": "PP015",
+  "domain": "rare disease",
+  "question": "What evidence supports a mechanistic path from cftr to inflammation through cystic fibrosis? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "CFTR AND (intestine OR intestinal) AND inflammation",
+  "effective_pubmed_query": "CFTR AND (intestine OR intestinal) AND inflammation",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "23142604",
+    "23788646",
+    "24548777",
+    "24685676",
+    "26923293",
+    "26976279",
+    "27473379",
+    "27588407",
+    "27703398",
+    "28215711",
+    "29933921",
+    "30546102",
+    "31636470",
+    "31679154",
+    "32326161",
+    "33201261",
+    "34339302",
+    "34884634",
+    "35160099",
+    "35331400",
+    "35523321",
+    "35743652",
+    "36117114",
+    "36289287",
+    "36600119",
+    "36967909",
+    "37003609",
+    "37546931",
+    "38043755",
+    "38073491",
+    "38179971",
+    "38233247",
+    "38554847",
+    "40047092",
+    "40247380",
+    "40379512",
+    "40824057",
+    "41347923",
+    "41498431"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports a mechanistic path from cftr to inflammation through cystic fibrosis? Distinguish evidence for each hop from overall inference.",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "integration_decision": {
+      "method": "three_stage_incremental_utility_router_v1",
+      "mode": "traditional_fallback",
+      "reason": "no_claim_safe_path",
+      "claim_safe_path_count": 0,
+      "incremental_path_count": 0,
+      "confirmatory_path_count": 0,
+      "citation_validation_pmids": [],
+      "policy": "three_stage"
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "disabled",
+      "reason": "integration_mode=traditional_fallback",
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "24548777",
+        "score": 0.622080468819494
+      },
+      {
+        "pmid": "23788646",
+        "score": 0.6161505158068649
+      },
+      {
+        "pmid": "23142604",
+        "score": 0.5951389582091333
+      },
+      {
+        "pmid": "33201261",
+        "score": 0.5936117834579364
+      },
+      {
+        "pmid": "35160099",
+        "score": 0.5935622200830467
+      },
+      {
+        "pmid": "38233247",
+        "score": 0.5723640199217096
+      },
+      {
+        "pmid": "36289287",
+        "score": 0.570988468815623
+      },
+      {
+        "pmid": "37003609",
+        "score": 0.5653260420455367
+      },
+      {
+        "pmid": "34339302",
+        "score": 0.5590574606502191
+      },
+      {
+        "pmid": "36967909",
+        "score": 0.5554398620188212
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "24548777",
+        "score": 0.622080468819494
+      },
+      {
+        "pmid": "23788646",
+        "score": 0.6161505158068649
+      },
+      {
+        "pmid": "23142604",
+        "score": 0.5951389582091333
+      },
+      {
+        "pmid": "33201261",
+        "score": 0.5936117834579364
+      },
+      {
+        "pmid": "35160099",
+        "score": 0.5935622200830467
+      },
+      {
+        "pmid": "38233247",
+        "score": 0.5723640199217096
+      },
+      {
+        "pmid": "36289287",
+        "score": 0.570988468815623
+      },
+      {
+        "pmid": "37003609",
+        "score": 0.5653260420455367
+      },
+      {
+        "pmid": "34339302",
+        "score": 0.5590574606502191
+      },
+      {
+        "pmid": "36967909",
+        "score": 0.5554398620188212
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Mechanistic chain from CFTR loss to inflammation in cystic‑fibrosis (CF)**  \n\n* **CFTR dysfunction → dehydrated/viscous mucus and impaired epithelial ion transport** – Mouse CF models lacking Cftr show mucus accumulation and altered fluid secretion in the gut, directly linking the ion‑channel defect to a primary barrier abnormality [PMID 24548777 (animal)]; review articles note that defective Cl⁻/HCO₃⁻ conductance yields insufficiently hydrated mucus that predisposes to tissue injury [PMID 33201261 (human/animal inference)].  \n\n* **Viscous mucus → bacterial overgrowth and dysbiosis** – In the same Cftr‑null mice, mucus stasis is accompanied by small‑bowel bacterial overgrowth and a shifted microbiota composition [PMID 24548777 (animal)]; targeted deletion of Cftr in epithelial versus immune cells shows that loss of CFTR in immune cells especially drives dysbiosis of the small intestine, confirming that the channel defect can directly remodel the gut microbiome [PMID 36289287 (animal)].  \n\n* **Dysbiosis / mucus stasis → innate‑immune activation and intestinal inflammation** – The Cftr‑deficient mice exhibit altered innate immune responses together with histologic inflammation, establishing a causal link from microbial imbalance to inflammatory signaling [PMID 24548777 (animal)]; in CF patients, chronic low‑grade intestinal inflammation is detectable even without overt GI symptoms, correlating with microbiota alterations and suggesting that the same pathway operates in humans [PMID 35160099 (human association)].  \n\n* **Inflammation → systemic and pulmonary disease (gut‑lung axis)** – Reviews summarize that intestinal inflammation can act as a driver of systemic inflammation, which may exacerbate lung pathology in CF, providing a mechanistic hypothesis for cross‑organ propagation [PMID 24548777 (inference)]; the gut‑lung axis literature underscores how microbial and inflammatory changes in the gut can influence respiratory outcomes [PMID 34339302 (human/animal hypothesis)].  \n\n* **Overall inference** – The convergence of animal knockout data (direct causation) with human observational studies (association) supports a stepwise mechanistic pathway: CFTR loss → dehydrated mucus → dysbiosis → innate‑immune activation → chronic intestinal inflammation, which may feed back systemically.  \n\n**Conclusion:** Multiple animal and human studies provide direct and associative evidence that CFTR deficiency initiates mucus and microbiota disturbances that culminate in intestinal inflammation in cystic fibrosis."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 3.2357871532440186e-05,
+    "vector_index": 3.62243215739727,
+    "kg_expansion": 8.784234523773193e-06,
+    "answer_traditional_rag": 30.306228443980217,
+    "total": 34.602576695382595
+  },
+  "token_usage": {
+    "total_tokens": 3846,
+    "input_tokens": 2713,
+    "output_tokens": 1133
+  },
+  "completed_at": "2026-08-16T18:05:57.290385+00:00"
+}

@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "Q046",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "7dc54cbec57e496fb60703a809326bf95f0103cf4e67343b3b17407efc2d0566",
+  "raw_response_sha256": "1013112e975c30ed34f30829cef866b2706b0d8031e2931faa348cf0b337b7a2",
+  "usage": {
+    "input_tokens": 2039,
+    "output_tokens": 469,
+    "total_tokens": 2508
+  },
+  "rated_at": "2026-08-13T04:38:38.939479+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q046-A",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, mechanistically detailed, distinguishes in vitro, animal, and human data. Slightly overstates in vitro evidence; lacks explicit citation links."
+      },
+      {
+        "answer_id": "Q046-B",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Accurately summarizes supplied literature, clearly states lack of direct evidence, and distinguishes indirect effects. Less detail on broader context."
+      },
+      {
+        "answer_id": "Q046-C",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Correctly identifies lack of direct evidence, clearly distinguishes cell types, and proposes a testable hypothesis. Slightly less comprehensive than A."
+      },
+      {
+        "answer_id": "Q046-D",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Accurately summarizes literature, distinguishes cell types, and proposes a mechanistic hypothesis. Slightly less detail than A."
+      }
+    ],
+    "preferred_item_id": "Q046-A",
+    "pairwise_reason": "A is the most comprehensive, providing mechanistic context, distinctions between experimental systems, and a nuanced summary of evidence gaps. B, C, and D are accurate but less detailed."
+  }
+}

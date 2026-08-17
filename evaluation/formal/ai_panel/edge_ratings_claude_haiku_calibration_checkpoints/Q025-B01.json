@@ -1,0 +1,26 @@
+{
+  "task": "edge",
+  "question_id": "Q025",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-haiku-4-5-20251001",
+  "input_sha256": "cdefc8a0dac304c7856deb7a09142bdb364e7c332a40400b582e699038ce8ba4",
+  "raw_response_sha256": "4b483f7c849602a7447a7d75d23d0e16ed10680a2fa888a349e1adfc71799075",
+  "rated_at": "2026-08-02T19:08:34.006149+00:00",
+  "result": {
+    "ratings": [
+      {
+        "edge_id": "Q025-E04",
+        "entity_valid": 1,
+        "relation_exists": 1,
+        "relation_type_correct": 0,
+        "direction_correct": 1,
+        "evidence_support": 1,
+        "confidence": 2,
+        "notes": "DMD causes muscle degeneration/inflammation, not 'muscular dystrophy duchenne'. Relation type should be 'causes_pathology' or similar, not generic 'causes'."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

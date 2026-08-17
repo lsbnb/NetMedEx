@@ -1,0 +1,226 @@
+{
+  "method": "bridge_withheld_eligibility_v1",
+  "batch_dir": "evaluation/formal/bridge_withheld_dev_v1",
+  "text_top_k": 10,
+  "question_count": 10,
+  "eligible_count": 2,
+  "questions": [
+    {
+      "question_id": "BW001",
+      "question": "What evidence-supported intermediates connect icariin to osteoblast differentiation?",
+      "corpus_path": "evaluation/formal/bridge_withheld_dev_v1/questions/BW001/corpus.pubtator",
+      "document_count": 9,
+      "text_top_k": 10,
+      "endpoint_phrases": [
+        "icariin",
+        "osteoblast differentiation"
+      ],
+      "source_node_ids": [
+        "MESH:C056599_Chemical"
+      ],
+      "target_node_ids": [],
+      "eligible_for_incremental_screen": false,
+      "ineligibility_reasons": [
+        "target_endpoint_not_represented",
+        "no_documents_outside_text_top_k"
+      ]
+    },
+    {
+      "question_id": "BW002",
+      "question": "Which evidence-supported intermediates connect curcumin to apoptosis?",
+      "corpus_path": "evaluation/formal/bridge_withheld_dev_v1/questions/BW002/corpus.pubtator",
+      "document_count": 15,
+      "text_top_k": 10,
+      "endpoint_phrases": [
+        "curcumin",
+        "apoptosis"
+      ],
+      "source_node_ids": [
+        "MESH:D003474_Chemical",
+        "curcumin longa l._species",
+        "curcumin nanoparticle_chemical"
+      ],
+      "target_node_ids": [],
+      "eligible_for_incremental_screen": false,
+      "ineligibility_reasons": [
+        "target_endpoint_not_represented"
+      ]
+    },
+    {
+      "question_id": "BW003",
+      "question": "Which evidence-supported intermediates connect CFTR dysfunction to intestinal inflammation?",
+      "corpus_path": "evaluation/formal/bridge_withheld_dev_v1/questions/BW003/corpus.pubtator",
+      "document_count": 15,
+      "text_top_k": 10,
+      "endpoint_phrases": [
+        "cftr dysfunction",
+        "intestinal inflammation"
+      ],
+      "source_node_ids": [
+        "1080_Gene",
+        "12638_Gene"
+      ],
+      "target_node_ids": [
+        "MESH:D007249_Disease",
+        "MESH:D007410_Disease",
+        "MESH:D007414_Disease",
+        "MESH:D007415_Disease"
+      ],
+      "eligible_for_incremental_screen": true,
+      "ineligibility_reasons": []
+    },
+    {
+      "question_id": "BW004",
+      "question": "Which evidence-supported intermediates connect SMN deficiency to mitochondrial dysfunction?",
+      "corpus_path": "evaluation/formal/bridge_withheld_dev_v1/questions/BW004/corpus.pubtator",
+      "document_count": 4,
+      "text_top_k": 10,
+      "endpoint_phrases": [
+        "smn deficiency",
+        "mitochondrial dysfunction"
+      ],
+      "source_node_ids": [
+        "smn_disease"
+      ],
+      "target_node_ids": [
+        "MESH:C537475_Disease",
+        "MESH:C565376_Disease",
+        "MESH:D028361_Disease"
+      ],
+      "eligible_for_incremental_screen": false,
+      "ineligibility_reasons": [
+        "no_documents_outside_text_top_k"
+      ]
+    },
+    {
+      "question_id": "BW005",
+      "question": "Which evidence-supported intermediates connect PD-1 blockade to immune-related adverse events?",
+      "corpus_path": "evaluation/formal/bridge_withheld_dev_v1/questions/BW005/corpus.pubtator",
+      "document_count": 15,
+      "text_top_k": 10,
+      "endpoint_phrases": [
+        "pd 1 blockade",
+        "immune related adverse event"
+      ],
+      "source_node_ids": [],
+      "target_node_ids": [
+        "MESH:D007154_Disease",
+        "MESH:D064420_Disease",
+        "immune_chemical",
+        "irae_disease"
+      ],
+      "eligible_for_incremental_screen": false,
+      "ineligibility_reasons": [
+        "source_endpoint_not_represented"
+      ]
+    },
+    {
+      "question_id": "BW006",
+      "question": "Which evidence-supported intermediates connect dystrophin deficiency to chronic inflammation?",
+      "corpus_path": "evaluation/formal/bridge_withheld_dev_v1/questions/BW006/corpus.pubtator",
+      "document_count": 4,
+      "text_top_k": 10,
+      "endpoint_phrases": [
+        "dystrophin deficiency",
+        "chronic inflammation"
+      ],
+      "source_node_ids": [],
+      "target_node_ids": [
+        "MESH:D007249_Disease"
+      ],
+      "eligible_for_incremental_screen": false,
+      "ineligibility_reasons": [
+        "source_endpoint_not_represented",
+        "no_documents_outside_text_top_k"
+      ]
+    },
+    {
+      "question_id": "BW007",
+      "question": "Which evidence-supported intermediates connect endothelial senescence to atherosclerosis?",
+      "corpus_path": "evaluation/formal/bridge_withheld_dev_v1/questions/BW007/corpus.pubtator",
+      "document_count": 7,
+      "text_top_k": 10,
+      "endpoint_phrases": [
+        "endothelial senescence",
+        "atherosclerosis"
+      ],
+      "source_node_ids": [
+        "MESH:D005642_Disease"
+      ],
+      "target_node_ids": [
+        "MESH:D050197_Disease"
+      ],
+      "eligible_for_incremental_screen": false,
+      "ineligibility_reasons": [
+        "no_documents_outside_text_top_k"
+      ]
+    },
+    {
+      "question_id": "BW008",
+      "question": "Which evidence-supported intermediates connect chronic hepatitis B infection to hepatocellular carcinoma?",
+      "corpus_path": "evaluation/formal/bridge_withheld_dev_v1/questions/BW008/corpus.pubtator",
+      "document_count": 11,
+      "text_top_k": 10,
+      "endpoint_phrases": [
+        "chronic hepatitis b infection",
+        "hepatocellular carcinoma"
+      ],
+      "source_node_ids": [
+        "10407_Species",
+        "11103_Species",
+        "MESH:D006509_Disease",
+        "MESH:D007239_Disease",
+        "MESH:D019694_Disease",
+        "hbv infection_species",
+        "hepatitis b surface antigen_species"
+      ],
+      "target_node_ids": [
+        "MESH:D006528_Disease"
+      ],
+      "eligible_for_incremental_screen": true,
+      "ineligibility_reasons": []
+    },
+    {
+      "question_id": "BW009",
+      "question": "哪些具有文獻證據的中介機制可連結 SGLT2 抑制劑與腎臟保護？",
+      "corpus_path": "evaluation/formal/bridge_withheld_dev_v1/questions/BW009/corpus.pubtator",
+      "document_count": 10,
+      "text_top_k": 10,
+      "endpoint_phrases": [
+        "sglt2 抑制劑",
+        "腎臟保護"
+      ],
+      "source_node_ids": [],
+      "target_node_ids": [],
+      "eligible_for_incremental_screen": false,
+      "ineligibility_reasons": [
+        "source_endpoint_not_represented",
+        "target_endpoint_not_represented",
+        "no_documents_outside_text_top_k"
+      ]
+    },
+    {
+      "question_id": "BW010",
+      "question": "Which evidence-supported intermediates connect gut microbiome dysbiosis to bone loss?",
+      "corpus_path": "evaluation/formal/bridge_withheld_dev_v1/questions/BW010/corpus.pubtator",
+      "document_count": 5,
+      "text_top_k": 10,
+      "endpoint_phrases": [
+        "gut microbiome dysbiosis",
+        "bone loss"
+      ],
+      "source_node_ids": [
+        "MESH:D064806_Disease"
+      ],
+      "target_node_ids": [
+        "MESH:D001847_Disease",
+        "MESH:D001851_Disease",
+        "MESH:D015431_Disease"
+      ],
+      "eligible_for_incremental_screen": false,
+      "ineligibility_reasons": [
+        "no_documents_outside_text_top_k"
+      ]
+    }
+  ]
+}

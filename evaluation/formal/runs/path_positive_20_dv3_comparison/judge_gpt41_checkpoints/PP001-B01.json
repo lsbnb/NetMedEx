@@ -1,0 +1,51 @@
+{
+  "task": "answer",
+  "question_id": "PP001",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "d95fae7ebe73eedc594818275504601adfd683d541e880072cdcdd05803e4d79",
+  "raw_response_sha256": "4a312ebc7aa709087904a4c4145ecbdda4fd6a5c6dfcb7561f712c4c6d92122c",
+  "usage": {
+    "input_tokens": 2290,
+    "output_tokens": 360,
+    "total_tokens": 2650
+  },
+  "rated_at": "2026-08-13T10:31:14.281156+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP001-A",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Accurately summarizes in vitro and in vivo evidence, but lacks explicit discussion of study limitations and some mechanistic detail."
+      },
+      {
+        "answer_id": "PP001-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, well-grounded, details mechanisms, limitations, and proposes future research. Clearly distinguishes evidence types and contexts."
+      },
+      {
+        "answer_id": "PP001-C",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Strong mechanistic and evidence summary, distinguishes models, but lacks explicit limitations discussion. Slightly less complete than B."
+      }
+    ],
+    "preferred_item_id": "PP001-B",
+    "pairwise_reason": "PP001-B is the most complete and balanced, providing detailed evidence, mechanistic insight, explicit study limitations, and future research directions. A lacks limitations; C omits explicit limitations."
+  }
+}

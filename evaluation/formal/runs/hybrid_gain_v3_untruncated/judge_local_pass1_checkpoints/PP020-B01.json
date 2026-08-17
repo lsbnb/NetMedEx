@@ -1,0 +1,91 @@
+{
+  "task": "answer",
+  "question_id": "PP020",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "8465bdeac438d4212e841a83d9afd63936c4d5d96c9b479e8342aba86e21d76d",
+  "raw_response_sha256": "5bfa220854a69b5970559f720d41315a333ed06d1f2016194a17b9a6684b8965",
+  "usage": {
+    "input_tokens": 7187,
+    "output_tokens": 659,
+    "total_tokens": 7846
+  },
+  "rated_at": "2026-08-16T21:06:00.691833+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP020-A",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Covers each hop with citations; final systemic link is correlational."
+      },
+      {
+        "answer_id": "PP020-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Thorough; clearly separates animal and human evidence; notes missing longitudinal proof."
+      },
+      {
+        "answer_id": "PP020-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Very comprehensive; cites multiple sources; acknowledges lack of single longitudinal study."
+      },
+      {
+        "answer_id": "PP020-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Strong evidence for each hop; includes animal data linking oral inflammation to systemic bone loss."
+      },
+      {
+        "answer_id": "PP020-E",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Adds extraneous graph info; hop distinctions less explicit."
+      },
+      {
+        "answer_id": "PP020-F",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Clear stepwise evidence; emphasizes self‑reinforcing loop; notes limited human longitudinal data."
+      },
+      {
+        "answer_id": "PP020-G",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Well‑structured hops; final systemic link mainly associative; includes graph synthesis."
+      }
+    ],
+    "preferred_item_id": "PP020-D",
+    "pairwise_reason": "PP020-D provides the most robust, citation‑backed evidence for each mechanistic hop, including animal data that directly links periodontal inflammation to systemic osteoporosis, making its argument the strongest."
+  }
+}

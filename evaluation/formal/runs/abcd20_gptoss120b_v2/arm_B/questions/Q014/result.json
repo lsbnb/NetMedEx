@@ -1,0 +1,147 @@
+{
+  "status": "complete",
+  "question_id": "Q014",
+  "domain": "autoimmune disease",
+  "question": "Which JAK inhibitors have evidence for modulating IL-6 or interferon signaling in rheumatoid arthritis?",
+  "question_type": "retrieval",
+  "pubmed_query": "rheumatoid arthritis JAK inhibitor tofacitinib baricitinib IL-6 interferon",
+  "effective_pubmed_query": "rheumatoid arthritis JAK inhibitor tofacitinib baricitinib IL-6 interferon",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "30002661",
+    "31375130",
+    "32561292",
+    "33741556",
+    "37014106",
+    "39354368"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "Which JAK inhibitors have evidence for modulating IL-6 or interferon signaling in rheumatoid arthritis?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "37014106",
+        "score": 0.7776569433529844
+      },
+      {
+        "pmid": "33741556",
+        "score": 0.6124324113588779
+      },
+      {
+        "pmid": "32561292",
+        "score": 0.6054664212977948
+      },
+      {
+        "pmid": "30002661",
+        "score": 0.5197049977184015
+      },
+      {
+        "pmid": "31375130",
+        "score": 0.5035357194522495
+      },
+      {
+        "pmid": "39354368",
+        "score": 0.46395007489142376
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "37014106",
+        "score": 0.7776569433529844
+      },
+      {
+        "pmid": "33741556",
+        "score": 0.6124324113588779
+      },
+      {
+        "pmid": "32561292",
+        "score": 0.6054664212977948
+      },
+      {
+        "pmid": "30002661",
+        "score": 0.5197049977184015
+      },
+      {
+        "pmid": "31375130",
+        "score": 0.5035357194522495
+      },
+      {
+        "pmid": "39354368",
+        "score": 0.46395007489142376
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Direct (human‑cell) evidence for IL‑6 or interferon (IFN) pathway modulation by individual JAK inhibitors in rheumatoid arthritis (RA)**  \n\n- **Tofacitinib** – In vitro studies show the broadest cytokine suppression, including complete inhibition of IL‑6‑induced STAT1/STAT3 phosphorylation and IFN‑α/γ‑induced STAT1 phosphorylation in peripheral blood mononuclear cells and dendritic cells from RA patients【PMID:37014106】.  \n\n- **Baricitinib** – Human monocyte‑derived dendritic cells and plasmacytoid dendritic cells exposed to baricitinib exhibit dose‑dependent blockade of IL‑6‑driven STAT1/STAT3 activation and of IFN‑α/γ‑driven STAT1 phosphorylation, confirming modulation of both pathways【PMID:30002661】.  \n\n- **Upadacitinib** – Ex vivo assays in healthy volunteers and RA blood reveal that therapeutic concentrations of upadacitinib inhibit JAK1‑dependent IFN‑α/pSTAT5 and IL‑6/pSTAT1 signaling to a degree comparable with tofacitinib and baricitinib【PMID:33741556】; the same cytokine‑stimulated pSTAT assays in a broader leukocyte panel confirm inhibition of IL‑6 and IFN‑γ signaling【PMID:31375130】.  \n\n- **Filgotinib** – In vitro pSTAT inhibition assays demonstrate that filgotinib suppresses IFN‑α‑induced STAT5 and IL‑6‑induced STAT1 phosphorylation with high JAK1 selectivity, achieving average daily target inhibition equivalent to tofacitinib and upadacitinib at approved doses【PMID:33741556】.  \n\n- **Peficitinib** – Concentration‑dependent blockade of STAT3 phosphorylation by peficitinib is observed after stimulation of RA‑derived fibroblast‑like synoviocytes with IFN‑α2b, IFN‑γ, IL‑6, oncostatin‑M and LIF, indicating simultaneous inhibition of IFN and IL‑6 signaling pathways【PMID:32561292】.  \n\n**Associative (clinical‑trial) evidence** – Phase III trials of all five approved JAK inhibitors in RA report clinical efficacy consistent with suppression of IL‑6 and IFN pathways, but the studies did not directly measure cytokine‑signalling biomarkers; the therapeutic benefit is therefore an indirect association with pathway modulation【PMID:37014106】.  \n\n**Testable hypothesis** – Given that in‑vitro potency translates only partially to in‑vivo selectivity, future mechanistic trials measuring longitudinal pSTAT levels in RA patients on each JAK inhibitor could confirm the predicted differential durability of IL‑6 versus IFN blockade and guide precision‑medicine dosing strategies【PMID:37014106】.  \n\n**Conclusion** – Human‑cell evidence demonstrates that tofacitinib, baricitinib, upadacitinib, filgotinib and peficitinib each modulate IL‑6 and/or interferon signaling in rheumatoid arthritis."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 4.8123300075531006e-05,
+    "vector_index": 1.1864486783742905,
+    "kg_expansion": 4.112720489501953e-05,
+    "answer_traditional_rag": 33.698747366666794,
+    "total": 35.4849898070097
+  },
+  "token_usage": {
+    "input_tokens": 3099,
+    "output_tokens": 1252,
+    "total_tokens": 4351
+  },
+  "completed_at": "2026-08-13T03:43:45.330264+00:00"
+}

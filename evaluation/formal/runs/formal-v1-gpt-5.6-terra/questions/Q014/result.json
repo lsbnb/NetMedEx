@@ -1,0 +1,96 @@
+{
+  "status": "complete",
+  "question_id": "Q014",
+  "domain": "autoimmune disease",
+  "question": "Which JAK inhibitors have evidence for modulating IL-6 or interferon signaling in rheumatoid arthritis?",
+  "pubmed_query": "rheumatoid arthritis JAK inhibitor tofacitinib baricitinib IL-6 interferon",
+  "language": "English",
+  "corpus_pmids": [
+    "30002661",
+    "31375130",
+    "32561292",
+    "33741556",
+    "37014106",
+    "39354368"
+  ],
+  "graph": {
+    "node_count": 19,
+    "edge_count": 24,
+    "path_count": 20,
+    "preferred_pmids": [
+      "31375130",
+      "32561292",
+      "37014106",
+      "39354368"
+    ]
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "37014106",
+        "score": 1.1664854150294766
+      },
+      {
+        "pmid": "32561292",
+        "score": 0.9081996319466923
+      },
+      {
+        "pmid": "31375130",
+        "score": 0.7553035791783742
+      },
+      {
+        "pmid": "39354368",
+        "score": 0.6959251123371356
+      },
+      {
+        "pmid": "33741556",
+        "score": 0.6124324113588779
+      },
+      {
+        "pmid": "30002661",
+        "score": 0.5197049977184015
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "37014106",
+        "score": 0.7776569433529844
+      },
+      {
+        "pmid": "33741556",
+        "score": 0.6124324113588779
+      },
+      {
+        "pmid": "32561292",
+        "score": 0.6054664212977948
+      },
+      {
+        "pmid": "30002661",
+        "score": 0.5197049977184015
+      },
+      {
+        "pmid": "31375130",
+        "score": 0.5035357194522495
+      },
+      {
+        "pmid": "39354368",
+        "score": 0.46395007489142376
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "## Direct evidence\n\n### IL-6 signaling\n- **Tofacitinib, baricitinib, upadacitinib, filgotinib, and peficitinib** have evidence of modulating IL-6/JAK-STAT signaling. A review of RA JAK inhibitors states that **all JAK inhibitors suppress IL-6 signaling in vitro**, while cautioning that selectivity can change with drug exposure. [PMID: 37014106]  \n  *Evidence type: in-vitro; RA-focused review.*\n\n- **Peficitinib** inhibited IL-6-induced STAT3 phosphorylation in rheumatoid arthritis fibroblast-like synoviocytes (RA-FLS), comparably with **tofacitinib** and **baricitinib**. Peficitinib and tofacitinib also reduced IL-6 production in 3D RA-FLS cultures. [PMID: 32561292]  \n  *Evidence type: human RA-derived cells, in vitro.*\n\n- **Baricitinib and tofacitinib** inhibited IL-6-induced STAT1 and STAT3 phosphorylation in human immune-cell experiments; baricitinib also reduced IL-6 production by B cells. [PMID: 30002661]  \n  *Evidence type: human cells, in vitro; not specifically RA patient cells in the described experiments.*\n\n- **Filgotinib, upadacitinib, tofacitinib, and baricitinib** each inhibited the JAK1-dependent IL-6/pSTAT1 pathway in blood from healthy donors and patients with RA. At modeled clinical exposures, filgotinib’s average IL-6-pathway inhibition was comparable to that of the other three agents. [PMID: 33741556]  \n  *Evidence type: human blood ex-vivo/in-vitro, including RA blood.*\n\n- **Baricitinib, upadacitinib, and tofacitinib** all inhibited IL-6 signaling in human leukocyte subpopulations, although the degree of inhibition differed by drug, cytokine, and cell type. [PMID: 31375130]  \n  *Evidence type: healthy-donor human PBMCs, in vitro.*\n\n### Interferon signaling\n- **Filgotinib** has direct evidence for interferon modulation: it inhibited JAK1-dependent **IFN-α/pSTAT5** signaling in healthy and RA blood, with ex-vivo pharmacodynamic confirmation of JAK1 selectivity in healthy volunteers. [PMID: 33741556]  \n  *Evidence type: human RA blood ex-vivo/in-vitro and healthy-volunteer ex-vivo pharmacodynamics.*\n\n- **Baricitinib and tofacitinib** inhibited IFN-α- and IFN-γ-induced STAT1 phosphorylation in naïve human CD4+ T cells. Baricitinib additionally reduced type-I IFN production by plasmacytoid dendritic cells. [PMID: 30002661]  \n  *Evidence type: human cells, in vitro.*\n\n- **Peficitinib** inhibited STAT3 phosphorylation induced by both **IFN-α2b** and **IFN-γ** in RA-FLS, with activity comparable to tofacitinib and baricitinib. [PMID: 32561292]  \n  *Evidence type: human RA-derived cells, in vitro.*\n\n- **Baricitinib, upadacitinib, and tofacitinib** all inhibited IFN-γ and IFN-α signaling in human leukocyte assays, but to differing extents. [PMID: 31375130]  \n  *Evidence type: healthy-donor human PBMCs, in vitro.*\n\n- The RA JAK-inhibitor review specifically characterizes **filgotinib** as suppressing interferon, and **baricitinib and upadacitinib** as tending toward suppression of interferon and the IL-12 family. [PMID: 37014106]  \n  *Evidence type: review synthesis, primarily in-vitro pharmacology.*\n\n## Association / interpretation\n- In RA-relevant systems, the strongest direct mechanistic evidence supports:\n  - **IL-6:** peficitinib, tofacitinib, baricitinib, filgotinib, and upadacitinib.\n  - **Interferons:** filgotinib, baricitinib, tofacitinib, upadacitinib, and peficitinib.  \n  These are pathway-modulation findings, largely based on cytokine-stimulated pSTAT assays rather than proof that suppression of IL-6 or interferon signaling alone mediates clinical RA efficacy. [PMID: 32561292; PMID: 33741556; PMID: 31375130]\n\n- Drug selectivity is relative rather than absolute: at sufficiently high concentrations, JAK inhibitors can inhibit additional JAK isoforms, making in-vivo pathway selectivity difficult to predict. [PMID: 37014106]\n\n## Testable hypothesis\n- In patients with RA whose synovial or blood profiles show high IL-6/STAT1-STAT3 or type-I/II interferon activity, response differences among JAK inhibitors may correlate with the magnitude and duration of inhibition of these pathway-specific pSTAT signatures. This is plausible from the reported pharmacology but is **not directly established by the supplied context**.",
+    "traditional_rag": "## Direct evidence\n\n### IL-6 signaling\n- **Tofacitinib, baricitinib, upadacitinib, filgotinib, and peficitinib** have evidence of inhibiting IL-6–related JAK/STAT signaling in RA-relevant experimental systems.\n  - A review reports that **all JAK inhibitors** suppress IL-6 signaling in vitro; tofacitinib had the broadest cytokine suppression through JAK pathways [PMID: 37014106].\n  - In blood from patients with RA and healthy donors, **filgotinib, upadacitinib, tofacitinib, and baricitinib** potently inhibited the JAK1-dependent IL-6/pSTAT1 pathway. At clinical exposures, filgotinib’s predicted IL-6/pSTAT1 inhibition was comparable with the listed doses of the other three agents [PMID: 33741556]. **Human ex-vivo/in-vitro evidence.**\n  - **Baricitinib, upadacitinib, and tofacitinib** all inhibited JAK1/2-dependent cytokine signaling, including IL-6, though to differing degrees [PMID: 31375130]. **Human in-vitro evidence.**\n  - In RA fibroblast-like synoviocytes (RA-FLS), **peficitinib** inhibited IL-6-induced STAT3 phosphorylation, comparably with tofacitinib and baricitinib; peficitinib and tofacitinib also reduced IL-6 production in 3D RA-FLS cultures [PMID: 32561292]. **Human RA cell in-vitro evidence.**\n  - **Baricitinib and tofacitinib** inhibited IL-6-induced STAT1 and STAT3 phosphorylation in naïve human CD4+ T cells [PMID: 30002661]. **Human in-vitro evidence.**\n\n### Interferon signaling\n- **Filgotinib** has specific evidence for suppression of interferon signaling, particularly JAK1-mediated IFN-alpha signaling [PMID: 37014106].\n  - In RA and healthy-donor blood, filgotinib inhibited IFN-alpha/pSTAT5; predicted inhibition at clinical exposure was comparable to tofacitinib, upadacitinib, and baricitinib, while retaining greater relative JAK1 selectivity [PMID: 33741556]. **Human ex-vivo/in-vitro evidence.**\n- **Baricitinib and upadacitinib** appear relatively inclined toward suppressing interferon and IL-12-family signaling according to a review [PMID: 37014106]. This is comparative/selectivity-oriented evidence rather than proof of superior clinical interferon suppression.\n- **Tofacitinib, baricitinib, and upadacitinib** inhibited interferon-related signaling in human leukocyte assays:\n  - All three inhibited JAK1/2-dependent **IFN-gamma** signaling and JAK1/TYK2-dependent **IFN-alpha** signaling, with differing magnitude [PMID: 31375130]. **Human in-vitro evidence.**\n  - Baricitinib and tofacitinib inhibited IFN-alpha- and IFN-gamma-induced STAT1 phosphorylation in naïve human CD4+ T cells [PMID: 30002661]. **Human in-vitro evidence.**\n- **Peficitinib** inhibited STAT3 phosphorylation induced by both IFN-alpha2b and IFN-gamma in RA-FLS [PMID: 32561292]. **Human RA cell in-vitro evidence.**\n\n## Association / comparative interpretation\n- The available evidence supports that **IL-6 and interferon pathways are modulated by multiple JAK inhibitors rather than being uniquely inhibited by one agent**. Differences depend on cytokine, cell population, pharmacologic exposure, and JAK selectivity [PMID: 33741556; PMID: 31375130].\n- **Filgotinib** is associated with comparatively greater JAK1 selectivity and less inhibition of JAK2- and JAK3-dependent pathways, while maintaining IL-6 and IFN-alpha pathway inhibition similar to other JAK inhibitors at studied clinical exposures [PMID: 33741556].\n- **Tofacitinib** is associated with broader cytokine-pathway suppression, whereas **baricitinib and upadacitinib** are described as tending toward interferon/IL-12-family suppression [PMID: 37014106].\n\n## Testable hypothesis\n- In RA patients, the degree of clinical response to each JAK inhibitor may correlate with baseline or on-treatment **IL-6- and interferon-responsive gene signatures**. This is biologically plausible from the pathway data, but the supplied context does not provide direct clinical biomarker-validation evidence.",
+    "general_llm": "In rheumatoid arthritis (RA), several JAK inhibitors have evidence—through their known kinase selectivity, cell-based pharmacology, and RA biomarker studies—of reducing signaling downstream of **IL-6** and/or **interferons (IFNs)**.\n\nA key distinction: JAK inhibitors primarily block **cytokine receptor signaling** (for example, STAT phosphorylation and interferon-stimulated gene expression). They do not necessarily reduce the circulating concentration of the cytokine itself; serum IL-6 can remain unchanged or occasionally increase despite reduced IL-6 signaling.\n\n| JAK inhibitor | Main JAK activity (simplified) | Evidence relevant to IL-6 signaling | Evidence relevant to IFN signaling in RA |\n|---|---|---|---|\n| **Tofacitinib** | JAK1/JAK3, with some JAK2 activity | Inhibits IL-6 receptor/gp130-associated JAK–STAT signaling, including IL-6-induced STAT3 activity in experimental systems. | Inhibits type I IFN (IFN-α/β) and type II IFN (IFN-γ) signaling; RA studies have reported suppression of interferon-responsive transcriptional programs. |\n| **Baricitinib** | JAK1/JAK2 | Strong mechanistic basis for inhibition of IL-6 signaling, which relies importantly on JAK1 and can involve JAK2/TYK2. | Particularly well supported for suppression of IFN signaling: type I IFN uses JAK1/TYK2, while IFN-γ uses JAK1/JAK2. Reduction of IFN-response gene signatures has been described in treated RA populations. |\n| **Upadacitinib** | JAK1-selective (relative, not absolute) | JAK1 is a major component of IL-6 receptor signaling; upadacitinib inhibits downstream IL-6/JAK–STAT responses. | JAK1 is required for both type I IFN and IFN-γ receptor signaling, so upadacitinib has a strong mechanistic and pharmacodynamic basis for attenuating IFN pathways. |\n| **Filgotinib** | JAK1-selective (relative) | Expected and experimentally supported to inhibit IL-6-associated JAK–STAT signaling through JAK1. | Expected to reduce both type I and type II IFN signaling because of JAK1 dependence; pharmacodynamic studies support modulation of IFN-related gene expression. |\n| **Peficitinib** | JAK1/JAK3 predominant, with activity across JAKs | Has pharmacologic capacity to inhibit IL-6 downstream signaling, largely through JAK1. | Can inhibit IFN-related pathways through JAK1; RA clinical use and biomarker evidence are less extensive internationally than for tofacitinib, baricitinib, or upadacitinib. |\n\n### Why these pathways are affected\n\n- **IL-6 signaling:** The IL-6 receptor complex signals through gp130 and activates primarily **JAK1**, with contributions from **JAK2** and/or **TYK2** depending on the cellular context. This makes JAK1-containing inhibitors especially relevant.\n- **Type I interferons (IFN-α/β):** Signal mainly through **JAK1 and TYK2**.\n- **Type II interferon (IFN-γ):** Signals through **JAK1 and JAK2**.\n\nTherefore, the best-established RA JAK inhibitors with activity relevant to *both* IL-6 and interferon signaling are **tofacitinib, baricitinib, upadacitinib, and filgotinib**. **Baricitinib** has particularly direct mechanistic relevance to IFN-γ signaling because of JAK2 inhibition, while the JAK1-selective agents strongly affect both IL-6 and IFN pathways because JAK1 is indispensable to those receptor systems.\n\nMore selective **TYK2 inhibitors** have a strong theoretical rationale for targeting type I IFN signaling, but they are not established RA therapies in the same way as the JAK inhibitors above, and their clinical evidence in RA is comparatively limited."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 1.0595745518803596,
+    "semantic_graph": 38.35433954000473,
+    "vector_index": 1.36324293166399,
+    "answer_netmedex_hybrid_rag": 9.821327321231365,
+    "answer_traditional_rag": 8.636490941047668,
+    "answer_general_llm": 15.099125035107136,
+    "total": 76.24029864370823
+  },
+  "completed_at": "2026-07-27T18:12:57.357446+00:00"
+}

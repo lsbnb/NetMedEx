@@ -1,0 +1,51 @@
+{
+  "task": "answer",
+  "question_id": "PP005",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "f46c037b5996dd1ca2c99f544a102a70dfe26f1381b10ef367b3232b1083a1d2",
+  "raw_response_sha256": "54b54832bd515f0a494b6c8fd268db244f6f0145b5fde5c26d2dfee385bda8cc",
+  "usage": {
+    "input_tokens": 2112,
+    "output_tokens": 380,
+    "total_tokens": 2492
+  },
+  "rated_at": "2026-08-13T10:31:29.066375+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP005-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurately summarizes human, animal, and in-vitro evidence, clearly details limitations, and provides a testable hypothesis. Mechanistic and contextual nuances are well addressed."
+      },
+      {
+        "answer_id": "PP005-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, well-grounded, and mechanistically coherent. Clearly distinguishes evidence types and limitations, and proposes a relevant hypothesis. No unsupported claims."
+      },
+      {
+        "answer_id": "PP005-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Thorough, accurate, and well-grounded. Clearly distinguishes evidence types and limitations, and addresses mechanistic and translational issues. No unsupported claims."
+      }
+    ],
+    "preferred_item_id": "tie",
+    "pairwise_reason": "All three answers are highly accurate, comprehensive, and well-grounded, with clear delineation of evidence types, mechanistic rationale, and study-context limitations. No significant differences in quality."
+  }
+}

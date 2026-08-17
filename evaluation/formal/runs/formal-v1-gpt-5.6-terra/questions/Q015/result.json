@@ -1,0 +1,71 @@
+{
+  "status": "complete",
+  "question_id": "Q015",
+  "domain": "infectious disease",
+  "question": "What host genes form a plausible 2-hop path between SARS-CoV-2 infection and coagulation abnormalities?",
+  "pubmed_query": "SARS-CoV-2 coagulation endothelial injury tissue factor complement cytokines",
+  "language": "English",
+  "corpus_pmids": [
+    "32735131",
+    "34177896",
+    "36265412"
+  ],
+  "graph": {
+    "node_count": 12,
+    "edge_count": 13,
+    "path_count": 0,
+    "preferred_pmids": []
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "32735131",
+        "score": 0.5861124611557457
+      },
+      {
+        "pmid": "34177896",
+        "score": 0.531532253077189
+      },
+      {
+        "pmid": "36265412",
+        "score": 0.4648777301690097
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "32735131",
+        "score": 0.5861124611557457
+      },
+      {
+        "pmid": "34177896",
+        "score": 0.531532253077189
+      },
+      {
+        "pmid": "36265412",
+        "score": 0.4648777301690097
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "## Direct evidence / mechanistic statements in the supplied context\n\n- **ACE2 → AGTR1**: SARS-CoV-2 is reported to downregulate **ACE2**, increasing angiotensin II; angiotensin II signaling through the angiotensin II type-1 receptor (**AGTR1**) is linked to platelet activation, thrombin generation, increased plasminogen activator inhibitor-1 expression, endothelial injury, and thrombosis.  \n  **Plausible path:** SARS-CoV-2 infection → **ACE2** downregulation / Ang II increase → **AGTR1** signaling → coagulation abnormalities.  \n  *Evidence type: human COVID-19-focused review/mechanistic synthesis; no primary experimental species designation in the supplied abstract.* [PMID: 34177896]\n\n- **F12**: SARS-CoV-2 RNA and neutrophil-extracellular-trap DNA are described as activating factor XII, encoded by **F12**. FXIIa and kallikrein then promote plasmin generation and participate in inflammatory/coagulation disturbances.  \n  **Plausible path:** SARS-CoV-2 infection → **F12** activation → altered fibrinolysis/immunothrombosis.  \n  *Evidence type: human COVID-19-focused mechanistic synthesis.* [PMID: 34177896]\n\n- **F3**: Tissue factor, encoded by **F3**, is identified as an initiator of extrinsic coagulation. The context states that clinical evidence supports a likely role for TF-dependent coagulation activation in COVID-19-associated coagulopathy.  \n  **Plausible path:** SARS-CoV-2 infection → **F3**/tissue-factor-dependent coagulation activation → thrombosis/COVID-19-associated coagulopathy.  \n  *Evidence type: clinical/review-level human COVID-19 evidence.* [PMID: 36265412]\n\n## Associations supporting candidate host-gene paths\n\n- **IL1B, IL6, TNF → F3**: IL-1β (**IL1B**), IL-6 (**IL6**), and TNF-α (**TNF**) are elevated in COVID-19 and are known, in other conditions, to induce tissue-factor expression on monocytes/macrophages and endothelial or epithelial cells.  \n  **Plausible path:** SARS-CoV-2 infection → **IL1B/IL6/TNF** elevation → **F3** induction → procoagulant activity/thrombosis.  \n  The link from these cytokines to TF induction is stated to be established in other conditions; their causal contribution in COVID-19 is therefore an association/candidate mechanism in this context. [PMID: 36265412]\n\n- **F3 in immune/endothelial injury pathways**: SARS-CoV-2 infection of immune and endothelial cells, endothelial injury, activated leukocytes, and intravascular tissue factor release are all linked to the procoagulant state of COVID-19.  \n  **Plausible path:** SARS-CoV-2 infection → endothelial/immune-cell activation involving **F3** → immunothrombosis. [PMID: 32735131]\n\n## Testable hypotheses\n\n- **PRR-pathway genes → F3**: Pattern-recognition-receptor pathways are listed as candidate triggers of abnormal TF expression, but no individual PRR gene is named in the supplied context. Thus, a path such as SARS-CoV-2 infection → a PRR-pathway gene → **F3** → coagulopathy is plausible but cannot be specified to a particular host gene from these records. [PMID: 36265412]\n\n- **Complement-pathway genes → F3/coagulation**: Complement activation is described as a candidate driver of TF-dependent procoagulant activity and as an exacerbating interface between inflammation and coagulation/fibrinolysis. However, no specific complement gene is provided. [PMID: 34177896; PMID: 36265412]\n\n### Most concise candidate 2-hop gene routes\n\n1. SARS-CoV-2 → **ACE2/AGTR1 axis** → platelet activation, thrombin generation, endothelial injury, thrombosis. [PMID: 34177896]  \n2. SARS-CoV-2 → **F12** → plasmin/fibrinolysis dysregulation and immunothrombosis. [PMID: 34177896]  \n3. SARS-CoV-2 → **F3** → extrinsic coagulation activation and thrombotic complications. [PMID: 36265412]  \n4. SARS-CoV-2 → **IL1B, IL6, or TNF** → **F3** induction → procoagulant state. This is best viewed as a cytokine-to-TF candidate chain rather than definitive COVID-19-specific causation. [PMID: 36265412]",
+    "traditional_rag": "## Direct evidence / mechanistic statements in the provided context\n\n- **ACE2 → AGTR1**: SARS-CoV-2 downregulates **ACE2**, increasing angiotensin II; angiotensin II acting through the angiotensin II type 1 receptor (**AGTR1**) is described as causing platelet activation, thrombin generation, endothelial injury, and plasminogen-activator-inhibitor-1 expression. Thus, a plausible two-host-gene route is:  \n  **SARS-CoV-2 infection → ACE2 downregulation → AGTR1 signaling → coagulation abnormalities/thrombosis.** [PMID: 34177896]  \n  *Evidence type:* COVID-19 mechanistic review; human clinical coagulopathy is discussed, but the abstract does not establish a direct human gene-level causal experiment.\n\n- **F12**: SARS-CoV-2 RNA and neutrophil-extracellular-trap DNA are reported to activate factor XII, encoded by **F12**, connecting infection-associated inflammatory material to kallikrein/kinin activity, plasmin generation, and coagulation/fibrinolysis dysregulation:  \n  **SARS-CoV-2 infection → F12 activation → thrombo-inflammatory coagulation abnormality.** [PMID: 34177896]  \n  *Evidence type:* Mechanistic statement in COVID-19 context; the abstract does not specify human versus experimental source for this particular link.\n\n## Association-supported two-hop candidates\n\n- **IL1B / IL6 / TNF → F3**: Pro-inflammatory cytokines—**IL1B**, **IL6**, and **TNF**—are highly elevated in COVID-19 and are known in other conditions to induce tissue factor, encoded by **F3**, on leukocytes, endothelium, and epithelium. Tissue factor initiates the extrinsic coagulation pathway. Plausible paths are:  \n  **SARS-CoV-2 infection → IL1B (or IL6 or TNF) elevation → F3 induction → coagulation activation.** [PMID: 36265412]  \n  *Evidence type:* Human COVID-19 association for elevated cytokines and CAC; the cytokine-to-F3 induction is stated as evidence from other conditions, not definitively established as the cause in COVID-19.\n\n- **ACE2 → SERPINE1**: The ACE2/angiotensin-II/AGTR1 axis is reported to induce plasminogen activator inhibitor-1 expression; the corresponding host gene is **SERPINE1**. Therefore:  \n  **SARS-CoV-2 infection → ACE2 downregulation/Ang II increase → SERPINE1 induction → impaired fibrinolytic balance and thrombosis.** [PMID: 34177896]  \n  This is more accurately an ACE2–AGTR1–SERPINE1 chain; if restricted to exactly two host-gene nodes, **ACE2 → AGTR1** is the best-supported pair.\n\n## Testable hypothesis\n\n- **NET-associated host pathways → F12 and F3:** SARS-CoV-2–associated NET formation may jointly promote **F12** activation and tissue-factor (**F3**)–dependent thrombin generation. A testable model is:  \n  **SARS-CoV-2 infection → NETosis-associated F12 activation and cytokine/PRR-associated F3 induction → immunothrombosis.** [PMID: 32735131; PMID: 34177896; PMID: 36265412]  \n  The provided context supports NETosis, tissue factor, and factor XII as plausible components, but does not establish a single definitive causal gene-to-gene pathway in humans.\n\nOverall, the most plausible host-gene pairs are **ACE2–AGTR1**, **IL1B–F3**, **IL6–F3**, **TNF–F3**, and the single key coagulation-gene link **F12**.",
+    "general_llm": "A plausible **two-hop host-gene bridge** is:\n\n**SARS-CoV-2 infection → ACE2/renin–angiotensin dysregulation → SERPINE1 (PAI-1) and F3 (tissue factor) → thrombosis/coagulation abnormalities**\n\nMore explicitly:\n\n1. **ACE2**\n   - SARS-CoV-2 uses ACE2 for entry and may reduce effective surface ACE2 activity in infected tissues.\n   - Reduced ACE2 can shift the renin–angiotensin system toward angiotensin II signaling, particularly through **AGTR1**.\n\n2. **AGTR1 / angiotensin II signaling**\n   - Angiotensin II–dominant signaling can promote endothelial activation, oxidative stress, inflammation, and a prothrombotic state.\n   - Downstream candidates include:\n     - **SERPINE1**: encodes plasminogen activator inhibitor-1 (PAI-1), which inhibits fibrinolysis and can favor clot persistence.\n     - **F3**: encodes tissue factor, a key initiator of the extrinsic coagulation pathway.\n     - **VWF**: endothelial release of von Willebrand factor contributes to platelet adhesion and microvascular thrombosis.\n\nThus, compact candidate paths are:\n\n- **SARS-CoV-2 → ACE2 → AGTR1/angiotensin II signaling → SERPINE1 → impaired fibrinolysis**\n- **SARS-CoV-2 → ACE2 → AGTR1/angiotensin II signaling → F3 → thrombin generation**\n- **SARS-CoV-2 → endothelial injury/activation → VWF → platelet-rich microthrombosis**\n\nOther plausible inflammation-centered two-gene bridges include:\n\n- **TLR7 or TLR3 → MYD88/TRIF inflammatory signaling → IL6/TNF → F3**\n- **NLRP3 → IL1B → endothelial/tissue-factor activation**\n- **C5AR1 complement signaling → F3 and neutrophil activation**\n- **PADI4-mediated NET formation → F3/VWF-associated immunothrombosis**\n\nAmong these, the most biologically coherent compact host-gene set is probably:\n\n**ACE2 – AGTR1 – SERPINE1/F3/VWF**\n\nwith **SERPINE1** representing reduced clot breakdown, **F3** representing coagulation initiation, and **VWF** representing endothelial/platelet activation. These are plausible mechanistic links rather than evidence that any single pathway alone explains COVID-19 coagulopathy, which is multifactorial and also involves endothelial injury, cytokines, complement, platelets, and neutrophil extracellular traps."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 1.0216978043317795,
+    "semantic_graph": 54.85151559114456,
+    "vector_index": 0.8822069242596626,
+    "answer_netmedex_hybrid_rag": 11.550901845097542,
+    "answer_traditional_rag": 12.59893374145031,
+    "answer_general_llm": 13.595523670315742,
+    "total": 105.21794536709785
+  },
+  "completed_at": "2026-07-27T18:14:42.611677+00:00",
+  "answer_repair_history": [
+    {
+      "system": "general_llm",
+      "model": "gpt-5.6-terra",
+      "repaired_at": "2026-07-30T11:08:06.424268+00:00"
+    }
+  ]
+}

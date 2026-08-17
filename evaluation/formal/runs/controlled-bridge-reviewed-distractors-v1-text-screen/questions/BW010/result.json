@@ -1,0 +1,176 @@
+{
+  "status": "complete",
+  "question_id": "BW010",
+  "domain": "hypothesis generation",
+  "question": "Which evidence-supported intermediates connect gut microbiome dysbiosis to bone loss?",
+  "question_type": "mechanism",
+  "pubmed_query": "gut microbiome dysbiosis IL-17 bone loss osteoporosis",
+  "effective_pubmed_query": "gut microbiome dysbiosis IL-17 bone loss osteoporosis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "35950704",
+    "33074224",
+    "35430804",
+    "29302038",
+    "39738035",
+    "30446387",
+    "33968085",
+    "35177222",
+    "38321650",
+    "33651651",
+    "36421397",
+    "33670115",
+    "38218095",
+    "37224131",
+    "40013938",
+    "28765474",
+    "12748652",
+    "37188819",
+    "38316760",
+    "38569557",
+    "38034017",
+    "41372218",
+    "37118283",
+    "39880362",
+    "39539387",
+    "40193598"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "30446387",
+        "score": 0.5759810579959832
+      },
+      {
+        "pmid": "29302038",
+        "score": 0.5664405975312596
+      },
+      {
+        "pmid": "33670115",
+        "score": 0.5359595235493947
+      },
+      {
+        "pmid": "33651651",
+        "score": 0.5184250501044546
+      },
+      {
+        "pmid": "38218095",
+        "score": 0.5140740553715926
+      },
+      {
+        "pmid": "37224131",
+        "score": 0.5074435999896921
+      },
+      {
+        "pmid": "38321650",
+        "score": 0.5062272665334768
+      },
+      {
+        "pmid": "36421397",
+        "score": 0.4843688613814621
+      },
+      {
+        "pmid": "33968085",
+        "score": 0.484171766705226
+      },
+      {
+        "pmid": "40013938",
+        "score": 0.478779527163575
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "30446387",
+        "score": 0.5759810579959832
+      },
+      {
+        "pmid": "29302038",
+        "score": 0.5664405975312596
+      },
+      {
+        "pmid": "33670115",
+        "score": 0.5359595235493947
+      },
+      {
+        "pmid": "33651651",
+        "score": 0.5184250501044546
+      },
+      {
+        "pmid": "38218095",
+        "score": 0.5140740553715926
+      },
+      {
+        "pmid": "37224131",
+        "score": 0.5074435999896921
+      },
+      {
+        "pmid": "38321650",
+        "score": 0.5062272665334768
+      },
+      {
+        "pmid": "36421397",
+        "score": 0.4843688613814621
+      },
+      {
+        "pmid": "33968085",
+        "score": 0.484171766705226
+      },
+      {
+        "pmid": "40013938",
+        "score": 0.478779527163575
+      }
+    ]
+  },
+  "answers": {},
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 1.7412006855010986e-05,
+    "vector_index": 2.0797409787774086,
+    "total": 2.6697538271546364
+  },
+  "token_usage": {},
+  "completed_at": "2026-08-09T18:47:08.353387+00:00"
+}

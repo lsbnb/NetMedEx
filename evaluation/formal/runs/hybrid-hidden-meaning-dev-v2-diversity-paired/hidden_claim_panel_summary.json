@@ -1,0 +1,31 @@
+{
+  "human_expert_review_claimed": false,
+  "candidate_claims": 9,
+  "questions_total": 3,
+  "questions_with_traceable_candidates": 3,
+  "validated_hidden_claims": 0,
+  "validated_hidden_claims_per_question": 0.0,
+  "questions_with_at_least_one_validated_hidden_claim_fraction": 0.0,
+  "validated_hidden_claim_precision": 0.0,
+  "unsupported_novelty_consensus_rate": 0.0,
+  "field_consensus_positive_rates": {
+    "hybrid_only": 0.0,
+    "path_traceable": 0.8888888888888888,
+    "evidence_support": 0.8888888888888888,
+    "relation_direction_correct": 0.8888888888888888,
+    "multi_document_or_hop": 0.6666666666666666,
+    "unsupported_novelty": 0.0
+  },
+  "krippendorff_alpha": {
+    "hybrid_only": null,
+    "path_traceable": 0.0,
+    "evidence_support": 0.0,
+    "relation_direction_correct": 0.0,
+    "multi_document_or_hop": 1.0,
+    "unsupported_novelty": 0.0,
+    "non_obviousness": 0.7763,
+    "research_utility": 0.4205
+  },
+  "primary_hypothesis_supported": false,
+  "note": "With zero validated Hybrid-only claims, the preregistered positive difference cannot be met even without estimating Text-only hidden claims."
+}

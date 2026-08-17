@@ -181,14 +181,24 @@ def verify_claim_to_path(
 
     for index in range(max(0, len(names) - 1)):
         hop_number = index + 1
+        # Canonical renderers label every hop.  When labels are present, audit the
+        # corresponding clause rather than the entire line; this handles repeated
+        # bridge names and cycles without mistaking an earlier occurrence for direction.
+        hop_match = re.search(
+            rf"\bHOP\s+{hop_number}\s*:\s*(.*?)(?=\s*;\s*HOP\s+\d+\s*:|$)",
+            claim_text,
+            flags=re.IGNORECASE,
+        )
+        hop_text = hop_match.group(1) if hop_match else claim_text
+        normalized_hop = _normalized_text(hop_text)
         source_aliases = [names[index]]
         target_aliases = [names[index + 1]]
         if index < len(node_aliases):
             source_aliases.extend(str(alias) for alias in node_aliases[index])
         if index + 1 < len(node_aliases):
             target_aliases.extend(str(alias) for alias in node_aliases[index + 1])
-        source_position = _entity_position(normalized_claim, source_aliases)
-        target_position = _entity_position(normalized_claim, target_aliases)
+        source_position = _entity_position(normalized_hop, source_aliases)
+        target_position = _entity_position(normalized_hop, target_aliases)
         relation = relations[index] if index < len(relations) else "associated_with"
         if source_position is None:
             reasons.append(f"hop_{hop_number}_source_missing")
@@ -200,13 +210,14 @@ def verify_claim_to_path(
             and source_position > target_position
         ):
             reasons.append(f"hop_{hop_number}_direction_mismatch")
-        if not _contains_relation(claim_text, relation):
+        if not _contains_relation(hop_text, relation):
             reasons.append(f"hop_{hop_number}_relation_mismatch")
 
         hop_pmids = {
             str(pmid) for pmid in (pmid_groups[index] if index < len(pmid_groups) else [])
         }
-        if not hop_pmids or not (hop_pmids & cited_pmids):
+        hop_cited_pmids = _extract_pmids(hop_text) if hop_match else cited_pmids
+        if not hop_pmids or not (hop_pmids & hop_cited_pmids):
             reasons.append(f"hop_{hop_number}_pmid_missing")
 
         quotes = quote_groups[index] if index < len(quote_groups) else []
@@ -226,7 +237,13 @@ def verify_claim_to_path(
 def verify_answer_graph_claims(answer: str, paths: list[dict]) -> dict:
     """Find PATH-cited lines in an answer and audit each as one atomic claim."""
     claim_lines = []
-    path_pattern = re.compile(r"\bPATH\b\s*[:#]?\s*([A-Za-z0-9_-]{6,})", re.IGNORECASE)
+    # A path identifier always contains at least one digit (hex signatures and IDs such
+    # as TH001-P01 both do).  Requiring a digit prevents ordinary prose such as
+    # "Path: dysbiosis to bone loss" from being misclassified as an explicit ID claim.
+    path_pattern = re.compile(
+        r"\bPATH\b\s*[:#]?\s*((?=[A-Za-z0-9_-]*\d)[A-Za-z0-9_-]{6,})",
+        re.IGNORECASE,
+    )
     for line in str(answer or "").splitlines():
         for match in path_pattern.finditer(line):
             claim_lines.append((line.strip(), match.group(1)))

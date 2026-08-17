@@ -1,0 +1,144 @@
+{
+  "status": "complete",
+  "question_id": "Q033",
+  "domain": "hepatology",
+  "question": "What evidence supports a link between ferroptosis and liver fibrosis?",
+  "pubmed_query": "ferroptosis liver fibrosis hepatic stellate cell iron lipid peroxidation",
+  "language": "English",
+  "corpus_pmids": [
+    "29957462",
+    "30081711",
+    "33869196",
+    "34129254",
+    "34522161",
+    "34607160",
+    "35646542",
+    "35785548",
+    "36370962",
+    "36398583",
+    "36703745",
+    "38351696",
+    "38871948",
+    "41351245",
+    "42173841"
+  ],
+  "graph": {
+    "node_count": 35,
+    "edge_count": 51,
+    "path_count": 20,
+    "preferred_pmids": [
+      "29957462",
+      "30081711",
+      "34129254",
+      "34522161",
+      "34607160",
+      "35646542",
+      "35785548",
+      "36370962",
+      "36398583",
+      "36703745",
+      "41351245"
+    ]
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "34522161",
+        "score": 0.9718859384275867
+      },
+      {
+        "pmid": "36703745",
+        "score": 0.9049385372134033
+      },
+      {
+        "pmid": "29957462",
+        "score": 0.8771797848764795
+      },
+      {
+        "pmid": "36370962",
+        "score": 0.818237319289353
+      },
+      {
+        "pmid": "30081711",
+        "score": 0.8076384919872466
+      },
+      {
+        "pmid": "35785548",
+        "score": 0.7856793192121947
+      },
+      {
+        "pmid": "34129254",
+        "score": 0.7712901995227015
+      },
+      {
+        "pmid": "41351245",
+        "score": 0.769107681237813
+      },
+      {
+        "pmid": "36398583",
+        "score": 0.7465812651944264
+      },
+      {
+        "pmid": "34607160",
+        "score": 0.7329503534647654
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "34522161",
+        "score": 0.6479239589517245
+      },
+      {
+        "pmid": "36703745",
+        "score": 0.6032923581422689
+      },
+      {
+        "pmid": "29957462",
+        "score": 0.5847865232509863
+      },
+      {
+        "pmid": "38871948",
+        "score": 0.5470644469946472
+      },
+      {
+        "pmid": "36370962",
+        "score": 0.545491546192902
+      },
+      {
+        "pmid": "38351696",
+        "score": 0.5435935904670393
+      },
+      {
+        "pmid": "30081711",
+        "score": 0.538425661324831
+      },
+      {
+        "pmid": "35785548",
+        "score": 0.5237862128081298
+      },
+      {
+        "pmid": "42173841",
+        "score": 0.5223636124517278
+      },
+      {
+        "pmid": "33869196",
+        "score": 0.5178286219519163
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "### Direct evidence\n\n- **Animal and in-vitro evidence supports an anti-fibrotic effect when ferroptosis is induced selectively in activated hepatic stellate cells (HSCs).** HSCs are central producers of extracellular matrix in fibrosis. In a rat CCl4 fibrosis model, magnesium isoglycyrrhizinate reduced injury and fibrotic scarring while inducing HSC iron and lipid-peroxide accumulation; the ferroptosis inhibitor ferrostatin-1 abolished the anti-fibrotic effect. HO-1 knockdown blocked HSC ferroptosis and worsened fibrosis [PMID: 29957462].  \n  - **Species/models:** rat in vivo; HSCs in vitro.\n\n- **Multiple independent experimental studies report the same intervention–mechanism–outcome pattern.** Dihydroartemisinin reduced fibrosis in vivo and eliminated activated HSCs in vitro with ferroptosis hallmarks (iron overload, lipid-ROS accumulation, glutathione depletion, and lipid peroxidation). Ferrostatin-1 or liproxstatin-1 impaired both ferroptosis and HSC suppression; ATG5/NCOA4-dependent autophagy/ferritinophagy was implicated [PMID: 34129254].  \n  - **Species/models:** animal in vivo and cultured HSCs.\n\n- **Other pharmacologic studies reinforce that link.** Decursin reduced CCl4-induced fibrosis and promoted ferroptosis markers in HSCs; ferroptosis inhibition negated its anti-fibrotic effect [PMID: 35785548]. Curcumol likewise promoted autophagy/NCOA4-associated iron release and ferroptosis in activated HSCs while reducing extracellular-matrix deposition [PMID: 36398583]. Daphnetin reduced collagen and fibrotic-gene expression in CCl4-treated mice and induced iron accumulation/lipid peroxidation in human LX-2 stellate cells; ferrostatin-1 or iron chelation partially reversed its anti-fibrotic activity [PMID: 41351245].  \n  - **Species/models:** mouse in vivo and human HSC line in vitro for daphnetin; model details for the other studies are experimental animal/HSC systems as reported.\n\n- **Genetic/mechanistic evidence connects HSC ferroptosis to fibrosis resolution.** In mice, sorafenib alleviated fibrosis by inducing HSC ferroptosis, whereas HSC-specific ELAVL1/HuR knockdown impaired this response. ELAVL1 promoted Beclin1-dependent autophagy/ferritinophagy and ferroptosis [PMID: 30081711]. Similarly, erastin reduced fibrosis in mice through HSC ferroptosis, and HSC-specific inhibition of m6A signaling impaired this effect; the proposed pathway involves YTHDF1-dependent stabilization of BECN1 mRNA and autophagy activation [PMID: 34607160].  \n  - **Species/models:** mouse in vivo; HSC mechanistic studies in vitro.\n\n- **Evidence also indicates that ferroptosis can be pro-fibrotic, depending on the affected liver cell population and context.** RSL3 or erastin caused ferroptotic HSC death in vitro but also increased plasminogen activator inhibitor-1 and c-JUN/AP-1 activity, a fibrogenic signaling pattern. Chronic iron-dextran administration in mice caused hepatic ferroptosis along with elevated alpha-SMA and PAI-1, liver injury, and fibrosis. This study also found lower GPX4 in fibrotic regions of cirrhotic human liver tissue [PMID: 36370962].  \n  - **Species/models:** mouse in vivo; HSCs and hepatocytes in vitro/primary-cell studies; **human association:** cirrhotic tissue GPX4 downregulation in fibrotic areas.\n\n### Association evidence\n\n- Ferroptosis is biologically plausible in liver fibrosis because it is defined by iron-dependent lipid peroxidation, glutathione/GPX4 dysfunction, and redox imbalance—processes repeatedly measured in fibrotic-liver and activated-HSC models [PMID: 34522161; PMID: 36703745].\n\n- Human data in the supplied context are limited and mainly mechanistic/observational: GPX4 was reduced in fibrotic regions of cirrhotic liver [PMID: 36370962]. Retrospective analyses of advanced fibrotic patients with hepatocellular carcinoma treated with sorafenib reported HSC ELAVL1 upregulation, ferritinophagy/autophagy activation, and ferroptosis-related changes [PMID: 30081711; PMID: 34607160]. These observations support association but do **not** establish clinical anti-fibrotic efficacy.\n\n### Testable hypothesis\n\n- **Cell-selective ferroptosis is the key determinant of therapeutic direction.** Inducing ferroptosis in *activated HSCs* may reduce fibrosis by removing matrix-producing cells, whereas widespread ferroptosis in hepatocytes or whole liver—such as with iron overload—may exacerbate injury and fibrosis [PMID: 29957462; PMID: 34129254; PMID: 36370962]. This predicts that HSC-targeted ferroptosis inducers, or therapies targeting ferritinophagy/autophagy pathways such as NCOA4, ELAVL1–BECN1, or m6A–YTHDF1–BECN1, could be anti-fibrotic while nonselective induction may be harmful [PMID: 30081711; PMID: 34607160; PMID: 36398583].\n\nOverall, the strongest evidence is **preclinical**: pharmacologic and genetic manipulation of ferroptosis repeatedly changes HSC activation and fibrosis severity. However, the relationship is context-dependent, and direct evidence of clinical benefit from ferroptosis-targeted therapy in human liver fibrosis is absent from the supplied context.",
+    "traditional_rag": "## Direct evidence\n\n### Animal and in-vitro evidence\nMultiple experimental studies support a functional connection between ferroptosis and liver fibrosis, particularly through effects on hepatic stellate cells (HSCs), the major extracellular-matrix-producing cells in fibrotic liver.\n\n- In a rat carbon-tetrachloride (CCl4) fibrosis model, magnesium isoglycyrrhizinate reduced liver injury and fibrotic scar formation while inducing iron and lipid-peroxide accumulation and ferroptotic morphology in HSCs. Blocking ferroptosis with ferrostatin-1 abolished its anti-fibrotic effect. HO-1 knockdown blocked HSC ferroptosis and worsened fibrosis, supporting a causal HO-1–HSC-ferroptosis–anti-fibrotic pathway. **Animal and in-vitro evidence** [PMID: 29957462].\n\n- In bile-duct-ligated mice, erastin reduced fibrosis while inducing ferroptosis in HSCs. HSC-specific ELAVL1/HuR knockdown impaired both sorafenib-induced HSC ferroptosis and the associated improvement in fibrosis. Mechanistically, ELAVL1 promoted BECN1-dependent autophagy/ferritinophagy, facilitating ferroptosis. **Animal and in-vitro evidence** [PMID: 30081711].\n\n- Decursin reduced CCl4-induced fibrosis in animals and caused a ferroptosis-compatible phenotype in HSCs: increased ferrous iron, lipid ROS, ROS, and PTGS2, with reduced GPX4 and glutathione. A ferroptosis inhibitor eliminated decursin’s anti-fibrotic effect in HSCs. **Animal and in-vitro evidence** [PMID: 35785548].\n\n- TRIM26 overexpression induced lipid peroxidation/ferroptosis in HSCs and reduced CCl4-induced fibrosis in mice. The proposed mechanism was ubiquitination and suppression of SLC7A11, a component of cellular lipid-ROS defense. **Animal and in-vitro evidence** [PMID: 33869196].\n\n- MafG was elevated in human and mouse fibrotic liver. In HSCs, MafG depletion increased ferroptosis, whereas overexpression protected against it. In bile-duct-ligated mice, erastin improved fibrosis, and HSC-targeted MafG knockdown enhanced erastin-induced HSC ferroptosis and fibrosis reduction. The proposed pathway is MafG/MYH9-driven LCN2 expression, which suppresses ferroptosis. **Animal, in-vitro, and human tissue-expression evidence** [PMID: 38871948].\n\n- In a CCl4 mouse model and human/rat HSC lines, carvedilol reduced fibrosis and HSC activation while producing mitochondrial shrinkage, iron accumulation, and lipid peroxidation; ferrostatin-1 reversed these effects. SAT1 overexpression induced ferroptosis and suppressed HSC activation, while SAT1 depletion abolished carvedilol’s effects. **Animal and in-vitro evidence** [PMID: 42173841].\n\n### Evidence that ferroptosis can accompany or promote fibrogenic injury\n- RSL3 or erastin caused ferroptotic death in HSCs, defined by reduced GPX4 and glutathione plus increased ROS and lipid peroxidation. However, RSL3 also increased plasminogen activator inhibitor-1 and c-JUN/AP-1 signaling, markers/pathways associated with fibrogenic activation. Chronic iron-dextran administration in mice caused hepatic ferroptosis together with increased alpha-SMA and plasminogen activator inhibitor-1, liver injury, and fibrosis. **Animal and in-vitro evidence** [PMID: 36370962].\n\nThis indicates that the relationship is context-dependent: ferroptosis in activated HSCs may reduce the fibrogenic cell population and improve fibrosis, whereas iron-driven ferroptosis involving liver cells more broadly may accompany injury and fibrogenic signaling.\n\n## Association evidence\n\n- In cirrhotic human liver tissue, GPX4 was downregulated in fibrotic regions, consistent with diminished anti-ferroptotic defense in areas of fibrosis. This is an association and does not establish that ferroptosis caused the fibrosis. **Human tissue evidence** [PMID: 36370962].\n\n- Primary human HSCs obtained from liver tissue of advanced fibrotic patients with hepatocellular carcinoma receiving sorafenib showed ELAVL1 upregulation, ferritinophagy activation, and ferroptosis induction. The context supports pathway relevance in human cells, but the retrospective observation does not prove a clinical anti-fibrotic effect of sorafenib through ferroptosis. **Human ex-vivo/retrospective evidence** [PMID: 30081711].\n\n- MafG was reported to be upregulated in both human and murine fibrotic liver, associating resistance of HSCs to ferroptosis with a pro-fibrotic state. **Human and animal association evidence** [PMID: 38871948].\n\n## Testable hypothesis\n\nA coherent, testable model is that **selective induction of ferroptosis in activated HSCs can be anti-fibrotic**, because it removes cells responsible for collagen and extracellular-matrix deposition. Candidate mechanisms include HO-1 signaling, ELAVL1/BECN1-mediated ferritinophagy, suppression of SLC7A11 by TRIM26, inhibition of MafG/MYH9/LCN2 signaling, and ATF4/SAT1-mediated GPX4/xCT reduction [PMID: 29957462; PMID: 30081711; PMID: 33869196; PMID: 38871948; PMID: 42173841].\n\nConversely, **nonselective ferroptosis in hepatocytes or widespread hepatic iron overload may aggravate liver injury and promote fibrogenic responses**, as suggested by iron-dextran experiments showing concurrent ferroptosis, injury, and fibrosis markers [PMID: 36370962]. Testing this requires cell-type-specific ferroptosis manipulation in fibrosis models, with independent assessment of HSC depletion, hepatocyte injury, collagen deposition, and liver function.\n\n## Overall conclusion\n\nThe strongest evidence is preclinical: pharmacologic or genetic induction of ferroptosis in activated HSCs repeatedly reduces fibrosis in rodent models, and ferroptosis inhibition often reverses these anti-fibrotic effects [PMID: 29957462; PMID: 30081711; PMID: 35785548; PMID: 33869196; PMID: 38871948; PMID: 42173841]. Human evidence currently consists mainly of tissue associations and ex-vivo observations rather than definitive clinical trials.",
+    "general_llm": "Ferroptosis is an iron-dependent form of regulated cell death driven by lipid peroxidation, particularly oxidation of polyunsaturated phospholipids. It is mechanistically linked to liver fibrosis because chronic liver injury, iron dysregulation, oxidative stress, inflammation, hepatocyte death, and hepatic stellate-cell activation all overlap with ferroptosis biology.\n\nThe evidence is strongest in experimental liver-disease models; evidence in humans is currently mostly associative rather than proving causality.\n\n## 1. Iron overload is associated with worse chronic liver injury and fibrosis\n\nIron can catalyze lipid oxidation through redox reactions, creating conditions favorable for ferroptosis. Clinically and experimentally:\n\n- Hepatic iron accumulation is observed in hereditary hemochromatosis and in subsets of people with chronic hepatitis, alcohol-associated liver disease, and metabolic dysfunction–associated steatotic liver disease (MASLD/MASH).\n- Increased hepatic iron often correlates with more inflammation, oxidative injury, and more advanced fibrosis.\n- In animal models, iron loading can aggravate fibrosis caused by other hepatic insults.\n\nHowever, iron excess alone is not synonymous with ferroptosis. Iron can contribute to injury through several mechanisms, including mitochondrial dysfunction, general oxidative stress, and immune effects. Thus, this evidence supports biological plausibility but does not by itself prove that ferroptosis causes fibrosis.\n\n## 2. Markers and pathways compatible with ferroptosis are found in experimental fibrotic liver disease\n\nRodent models of fibrosis—such as carbon tetrachloride injury, bile-duct ligation, high-fat or methionine/choline-deficient dietary models, and alcohol-related injury models—have reported changes consistent with ferroptosis, including:\n\n- Increased hepatic iron or labile iron pools\n- Increased lipid-peroxidation products, such as malondialdehyde and 4-hydroxynonenal\n- Depletion of glutathione\n- Reduced activity or expression of glutathione peroxidase 4 (GPX4), a major suppressor of ferroptosis\n- Altered expression of the cystine/glutamate transporter system \\(x_c^-\\), including SLC7A11\n- Increased expression or activity of enzymes that promote oxidation of polyunsaturated lipids, including ACSL4 in some models\n\nThese findings are consistent with ferroptosis but are not completely specific, since lipid peroxidation and glutathione depletion also occur in other forms of oxidative liver injury.\n\n## 3. Blocking ferroptosis can reduce liver injury and fibrosis in animal studies\n\nA key line of evidence is that interventions considered ferroptosis-inhibitory have improved outcomes in multiple preclinical liver-injury models. Examples include:\n\n- Iron chelation, such as with deferoxamine or related approaches\n- Lipid-radical trapping antioxidants, including ferrostatin-1 or liproxstatin-1 in experimental systems\n- Strategies that restore glutathione/GPX4-related antioxidant capacity\n- Genetic or pharmacologic manipulation of iron handling and lipid-peroxidation pathways\n\nIn several studies, these interventions decreased hepatocyte injury, inflammatory signaling, collagen deposition, alpha-smooth muscle actin expression, and other fibrosis-associated readouts.\n\nThe interpretation is that hepatocyte ferroptosis may promote fibrosis indirectly: dying hepatocytes release danger-associated signals and oxidized lipids, activating Kupffer cells/macrophages and stimulating hepatic stellate cells to produce extracellular matrix.\n\nImportant caveat: many agents used in these studies have antioxidant, anti-inflammatory, or metabolic actions beyond ferroptosis inhibition. Therefore, not every protective effect can be assigned uniquely to ferroptosis.\n\n## 4. Hepatocyte ferroptosis is a plausible driver of fibrogenesis\n\nThe most coherent mechanistic model is:\n\n1. Chronic metabolic, toxic, cholestatic, or viral stress makes hepatocytes susceptible to iron-dependent lipid peroxidation.\n2. Ferroptotic hepatocytes lose membrane integrity and release inflammatory and profibrotic signals.\n3. Liver macrophages and other immune cells respond to this injury.\n4. Hepatic stellate cells become activated.\n5. Activated stellate cells deposit collagen and other extracellular-matrix proteins, producing fibrosis.\n\nThis model fits the general principle that repeated hepatocyte death—whether apoptotic, necrotic, pyroptotic, or ferroptotic—can sustain the wound-healing response that ultimately becomes fibrosis.\n\n## 5. Ferroptosis in hepatic stellate cells may have the opposite effect\n\nAn important complexity is that ferroptosis may have different consequences depending on the cell type.\n\n- **Ferroptosis of hepatocytes** is generally expected to worsen inflammation and fibrosis.\n- **Ferroptosis of activated hepatic stellate cells** could be antifibrotic, because activated stellate cells are the main collagen-producing cells in the liver.\n\nSeveral cell-culture and animal studies suggest that inducing ferroptosis in activated stellate cells can reduce stellate-cell survival, activation markers, and collagen production. Some experimental antifibrotic drugs may partly work through this mechanism.\n\nThis creates a therapeutic challenge: systemic ferroptosis inhibition might protect hepatocytes but also preserve activated stellate cells, whereas systemic ferroptosis induction might eliminate stellate cells but worsen hepatocyte injury. Cell-selective delivery would likely be important for any future therapy.\n\n## 6. Genetic studies support a role for ferroptosis-control systems in liver homeostasis\n\nExperimental disruption of major ferroptosis-defense pathways, especially GPX4-related antioxidant protection, can cause severe lipid peroxidation and liver injury in animal systems. Conversely, preservation of glutathione metabolism, GPX4 function, or related defenses can be hepatoprotective in some models.\n\nThese studies support the conclusion that ferroptosis-regulating pathways matter in the liver. But severe genetic loss-of-function models may not perfectly represent the more gradual and heterogeneous process of human chronic fibrosis.\n\n## 7. Human evidence remains limited\n\nHuman studies have reported associations between:\n\n- Liver iron deposition and fibrosis severity\n- Oxidative-lipid damage markers and advanced liver disease\n- Altered expression of ferroptosis-related genes in cirrhosis, MASH, hepatocellular carcinoma, and chronic hepatitis datasets\n\nBut there are major limitations:\n\n- Most human data are cross-sectional and cannot establish whether ferroptosis causes fibrosis or is a consequence of liver injury.\n- There is no universally accepted clinical biomarker that definitively identifies ferroptosis in human liver tissue.\n- Lipid-peroxidation markers are not specific to ferroptosis.\n- There is not yet convincing clinical-trial evidence that a ferroptosis-targeting drug reverses or prevents liver fibrosis in humans.\n\n## Bottom line\n\nThe evidence supports ferroptosis as a biologically credible and experimentally supported contributor to liver fibrogenesis, especially through iron-dependent lipid peroxidation and death of hepatocytes that then drives inflammation and stellate-cell activation. In animal models, ferroptosis inhibition often reduces liver injury and fibrotic features.\n\nAt the same time, ferroptosis may be beneficial if selectively induced in activated hepatic stellate cells. Therefore, the relationship is cell-type- and disease-stage-dependent. The causal role and therapeutic value of targeting ferroptosis in human liver fibrosis remain promising but unproven."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 1.1111785247921944,
+    "semantic_graph": 101.0961575359106,
+    "vector_index": 1.7509737089276314,
+    "answer_netmedex_hybrid_rag": 13.274938061833382,
+    "answer_traditional_rag": 14.181987911462784,
+    "answer_general_llm": 23.500614777207375,
+    "total": 156.31992982327938
+  },
+  "completed_at": "2026-07-27T18:44:49.011104+00:00"
+}

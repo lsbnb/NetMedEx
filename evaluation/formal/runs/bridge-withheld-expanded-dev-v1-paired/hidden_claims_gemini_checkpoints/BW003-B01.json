@@ -1,0 +1,33 @@
+{
+  "task": "hidden_claim",
+  "question_id": "BW003",
+  "batch": 1,
+  "provider": "google",
+  "model": "gemini-3.1-pro-preview",
+  "input_sha256": "3fec1125e3b45c9162de79a8137998a4fc3dabf062795e36f6f36e6ae7423cff",
+  "raw_response_sha256": "4211fe700d1f51fcbb37e526a2e3818d133de95d580140d43e9b0bef65617016",
+  "usage": {
+    "input_tokens": 2477,
+    "output_tokens": 161,
+    "total_tokens": 3392
+  },
+  "rated_at": "2026-08-09T11:17:37.267271+00:00",
+  "result": {
+    "ratings": [
+      {
+        "hidden_claim_id": "BW003-HC01",
+        "hybrid_only": 0,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 1,
+        "non_obviousness": 3,
+        "research_utility": 4,
+        "unsupported_novelty": 0,
+        "notes": "The claim accurately reflects the provided evidence linking CFTR mutations to dysbiosis and subsequent inflammation. The comparison answer also covers this intermediary."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

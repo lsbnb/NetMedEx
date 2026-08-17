@@ -1,0 +1,88 @@
+system,question_id,run_id,output_source,answer
+netmedex_hybrid_rag,Q008,formal-v1-gpt-4.1-F_adaptive,fixed_formal_system_run,"Direct Evidence
+
+- Loss of CFTR function in intestinal epithelial cells is sufficient to induce intestinal dysbiosis and inflammation. Mouse models with epithelial-specific Cftr knockout show elevated fecal calprotectin (a marker of inflammation) and changes in gut microbiota, such as increased Proteobacteria, Peptostreptococcaceae, Clostridia spp., and mucolytic bacteria (e.g., Akkermansia, Ruminococcus gnavus), along with reductions in microbial diversity. These microbiome changes associate with increased intestinal inflammation even under regimens meant to prevent obstruction [PMID: 37546931, PMID: 38073491].  
+- Gut-specific loss of CFTR in mice increases gut permeability, promotes pro-inflammatory immune cell infiltration, and activates pathogen-related immune pathways. These changes are necessary for developing downstream inflammation and liver disease; restoring CFTR or modulating the microbiota can ameliorate inflammation. This supports a mechanism whereby defective CFTR leads to intestinal dysbiosis, increased permeability, and subsequent inflammation [PMID: 38554847].
+
+Association
+
+- Both cystic fibrosis and inflammatory bowel disease show parallels in increased Proteobacteria, reduced short-chain fatty acid producers, altered pH, and elevated inflammatory markers (e.g., calprotectin) in the intestine, pointing to shared host-microbiota inflammatory mechanisms driven by CFTR dysfunction in the former [PMID: 40824057].
+- CFTR dysfunction can disrupt the interaction with beta-catenin and lead to activation of the NF-kappaB/COX-2/PGE2 axis, promoting nuclear translocation of NF-kappaB and a pro-inflammatory state in the intestine, as shown in both CF mouse models and human intestinal epithelial cells [PMID: 27588407].
+- Restoration of CFTR function via modulators (Ivacaftor) can decrease intestinal inflammation and promote a healthier microbial composition, suggesting that restoration of mucosal barrier and microbial homeostasis may underlie reduction in inflammation [PMID: 30546102].
+
+Testable Hypotheses
+
+- Therapeutic approaches targeting intestinal dysbiosis or restoring epithelial CFTR could reduce inflammation in the CF gut, possibly interrupting the cycle of dysbiosis, increased permeability, and immune activation [PMID: 38554847, PMID: 30546102].
+- Disruption of the CFTR-beta-catenin axis is a candidate mechanism by which CFTR deficiency drives intestinal inflammation; pharmacologic activation of beta-catenin (e.g., GSK3 inhibitors) or proteasome inhibitors may prevent NF-kappaB activation and inflammation [PMID: 27588407].
+
+Graph-derived candidate insights
+
+- Epithelial-specific loss of CFTR causes intestinal inflammation (direct evidence; mouse model): PATH 994a71980a24b76f [PMID: 37546931]"
+traditional_rag,Q008,formal-v1-gpt-4.1-F_adaptive,fixed_formal_system_run,"Direct Evidence (human, animal, in vitro):
+1. Disrupted CFTR–β-catenin interaction and NF-κB activation: In mouse models and human intestinal epithelial cell lines, CFTR mutation disrupts its interaction with β-catenin, leading to β-catenin degradation, activation of the NF-κB pathway, increased COX-2 and PGE2 production, and promotion of intestinal inflammation. Activation of β-catenin can suppress this inflammatory cascade, while its inhibition induces NF-κB nuclear translocation and inflammation. Thus, the CFTR–β-catenin axis directly regulates NF-κB-mediated intestinal inflammation in CF [PMID: 27588407].
+
+2. Microbiota dysbiosis and intestinal inflammation: Mouse studies using intestinal epithelial-specific Cftr knockout show that loss of CFTR in the gut epithelium is sufficient to cause chronic intestinal inflammation (elevated fecal calprotectin) and significant dysbiosis of the gut microbiome (altered abundance of Proteobacteria, Clostridia, Akkermansia, etc.). These changes occur regardless of dietary differences and mirror findings in whole-body CFTR knockout mice [PMID: 37546931; PMID: 38073491]. Human studies report similar dysbiosis and inflammation with altered abundance of specific microbial taxa associated with increased inflammation [PMID: 30546102].
+
+3. Increased intestinal permeability: In CFTR knockout mice, defective CFTR in the gut leads to increased intestinal permeability, which, together with dysbiosis and mucosal inflammation, enables translocation of gut-derived inflammatory stimuli (e.g., LPS) and is necessary for downstream pathology (including liver inflammation) [PMID: 38554847].
+
+4. Reversal by CFTR modulator therapy: In humans with CF carrying gating CFTR mutations, modulator therapy (Ivacaftor) reduced intestinal inflammation (stool calprotectin levels), increased the abundance of beneficial bacteria (Akkermansia), and decreased Enterobacteriaceae, suggesting improved CFTR function ameliorates the inflammatory and microbial dysbiosis cascade in the CF gut [PMID: 30546102].
+
+Associations:
+- Dysbiosis and low-grade chronic intestinal inflammation are consistently associated in people with CF, suggested to stem from CFTR dysfunction; however, a direct causal pathway in humans is suggested but not fully proven [PMID: 35160099; PMID: 40824057].
+- Both CF and inflammatory bowel disease (IBD) share signatures of increased Proteobacteria, decreased short-chain fatty acid producers, disrupted barrier function, and similar inflammatory markers, indicating convergent host-microbe-driven inflammatory mechanisms, but CFTR-specific pathways are distinct [PMID: 40824057].
+- Breakdown in physical (mucosal) barriers, chronic inflammation, and dysbiosis are linked to downstream complications (e.g., gastrointestinal cancers) in CFTR-deficient conditions [PMID: 35743652].
+
+Testable Hypotheses:
+- Restoring or enhancing CFTR function in the intestinal epithelium will normalize β-catenin/NF-κB signaling, reduce intestinal inflammation, and correct dysbiosis.
+- Interventions targeting the microbiota or intestinal permeability may mitigate inflammation and associated complications in CF.
+- Specific pathogenic microbial shifts in the CF gut are secondary to, and sustained by, epithelial CFTR dysfunction and may represent targets to reduce inflammation.
+
+In summary, candidate mechanisms connecting CFTR variants to intestinal inflammation include: disruption of CFTR–β-catenin interaction leading to NF-κB-mediated inflammatory signaling; epithelial-intrinsic loss of ion transport altering the gut environment; resultant microbial dysbiosis; and increased intestinal permeability, each contributing to and amplifying inflammation in the intestine. These mechanisms are supported by both animal (mouse) and human evidence and are at least partly reversible with restoration of CFTR function [PMID: 27588407, 37546931, 38073491, 38554847, 30546102]."
+netmedex_hybrid_rag,Q011,formal-v1-gpt-4.1-F_adaptive,fixed_formal_system_run,"Direct Evidence
+
+- Several studies provide direct evidence that metformin inhibits mTOR signaling in cancer cells via activation of AMPK:
+  - In human bile duct cancer cells, metformin suppressed proliferation and induced apoptosis by inhibiting mTOR through activation (phosphorylation) of AMPK at Thr172, which leads to activation of TSC-2, a known mTOR inhibitor. This suggests a clear AMPK-mediated pathway for mTOR inhibition by metformin in these cancer cells [PMID: 31205529].
+  - In a rat model of esophageal squamous cell carcinoma and in human ESCC cells, metformin treatment activated AMPK and suppressed phosphorylation of mTOR and its downstream signaling targets. The anticancer activity was attributed to inhibition of the AMPK/mTOR pathway [PMID: 30445633].
+  - Review articles and preclinical studies reinforce the anticancer mechanism of metformin as involving activation of AMPK, which in turn inhibits mTOR signaling, resulting in reduced cell proliferation and induced apoptosis in multiple cancer models [PMID: 34062070, PMID: 35072253, PMID: 29167573, PMID: 26277279].
+
+Association
+
+- The anticancer efficacy of metformin is repeatedly associated with its effect on the AMPK/mTOR signaling axis in various malignancies, including breast, endometrial, colorectal, and esophageal cancers. The association is strong but is supported by both direct mechanistic studies and broader epidemiological observations.
+
+Testable Hypothesis
+
+- Further clinical trials could test whether AMPK-dependent inhibition of mTOR is required for metformin’s antitumor activity in specific cancer types, particularly under conditions of metabolic stress or hyperglycemia, which can modulate metformin’s effect [PMID: 31205529].
+
+Graph-derived candidate insights
+
+- Metformin inhibits mTOR in cancer cells via activation of the TSC-2 tumor suppressor, which is itself activated by AMPK phosphorylation. (Direct evidence; PATH 8ffca311e8d8a3fa; supporting PMID: 31205529)
+- Metformin suppresses carcinogenesis in esophageal squamous cell carcinoma through inhibition of the AMPK/mTOR signaling pathway. (Direct evidence; PATH 3540839339afb6d9; supporting PMID: 30445633)
+
+Summary: Multiple studies present direct evidence that metformin activates AMPK, which then inhibits mTOR signaling in cancer cells, and these effects are associated with reductions in proliferation, increased apoptosis, and suppressed tumorigenesis. This mechanism has been directly demonstrated in both in vitro and in vivo cancer models."
+traditional_rag,Q011,formal-v1-gpt-4.1-F_adaptive,fixed_formal_system_run,"Direct evidence:
+- Multiple preclinical studies (in vitro and in vivo) demonstrate that metformin activates AMPK and subsequently inhibits mTOR signaling in cancer cells. For instance, metformin reduced proliferation, induced cell cycle arrest, and downregulated mTOR and its downstream targets (S6 and 4EBP1) in colorectal cancer cells, effects attributed directly to AMPK activation and increased ROS, with suppression of the mTOR pathway specifically cited as a mechanism [PMID: 29167573]. Another study in a rat model of esophageal cancer found that metformin led to activation of AMPK and attenuated downstream signaling of p-mTOR and p-p70S6K, both in vivo and in vitro, with reduced cancer incidence and proliferation [PMID: 30445633].
+- In bile duct cancer cells, metformin inhibited proliferation and induced apoptosis by activating AMPK (phosphorylation at Thr172), leading to TSC-2 phosphorylation and subsequent mTOR inhibition [PMID: 31205529]. The role of AMPK was further validated by showing that hyperglycemia, which impairs AMPK activation, reduces the anticancer effects of metformin.
+- In acute lymphoblastic leukemia, metformin-induced apoptosis was shown to be AMPK-dependent using shRNA knockdown; it also involved rapamycin-sensitive mTOR inhibition as rapamycin rescued cells from metformin-induced death [PMID: 24009772].
+
+Associative or correlative evidence:
+- Reviews and broader studies support these experimental findings, repeatedly highlighting the AMPK/mTOR pathway as critical to the anticancer effects of metformin across cancer types [PMID: 34062070, PMID: 35072253, PMID: 26277279]. They summarize evidence that AMPK activation leads to mTOR inhibition, resulting in decreased cancer cell growth, proliferation, and survival.
+
+Testable hypothesis:
+- The effectiveness of combining metformin (an AMPK activator) with direct mTOR inhibitors is enhanced because both converge on the mTOR pathway, as demonstrated by more robust inhibition of mTORC1 and mTORC2 and greater suppression of cancer cell viability in colorectal cancer cell lines [PMID: 35731713].
+- The anticancer efficacy of metformin may be attenuated in hyperglycemic environments due to impaired AMPK activation, suggesting that glycemic control could influence its utility as an adjuvant in cancer therapy [PMID: 31205529].
+
+Summary table:
+
+| Evidence Type       | Model/System         | Finding                                                                                          | PMID         |
+|---------------------|---------------------|--------------------------------------------------------------------------------------------------|--------------|
+| Direct, in vitro    | Colorectal cancer   | Metformin → AMPK activation → mTOR pathway suppression → ↓proliferation                           | 29167573     |
+| Direct, in vivo     | Rat esophageal Ca   | Metformin → ↑AMPK, ↓p-mTOR/p-p70S6K (anticancer, chemopreventive effects)                        | 30445633     |
+| Direct, in vitro    | Bile duct cancer    | Metformin → AMPKThr172 activation → TSC-2 phosphorylation → mTOR inhibition                      | 31205529     |
+| Direct, in vitro    | ALL lymphoblasts    | Metformin-induced apoptosis is AMPK-dependent; mTOR inhibition is critical                        | 24009772     |
+| Review/Summary      | Multiple cancers    | AMPK/mTOR pathway is central to metformin's anticancer mode of action                            | 34062070     |
+| Review/Summary      | Multiple cancers    | Multiple pathways, including AMPK/mTOR, involved in metformin antitumor activity                 | 35072253     |
+| Combination therapy | Colorectal cancer   | Metformin + mTOR inhibitor enhances inhibition via both mTORC1 & mTORC2 blockade                 | 35731713     |
+
+No conflicting evidence was cited in the supplied context.
+
+In summary, robust preclinical direct evidence links metformin to AMPK-mediated inhibition of mTOR signaling in cancer cells, which underpins much of the observed anticancer activity. Evidence spans multiple cancer types, both in vitro and in animal models, and is supported by associative epidemiological and clinical observations."

@@ -1,0 +1,184 @@
+{
+  "status": "complete",
+  "question_id": "PP013",
+  "domain": "infectious disease",
+  "question": "What evidence supports a mechanistic path from chronic hepatitis b virus (hbv) infection to hcc through chronic liver inflammation? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "HBV hepatocellular carcinoma inflammation HBx integration fibrosis",
+  "effective_pubmed_query": "HBV hepatocellular carcinoma inflammation HBx integration fibrosis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "16461228",
+    "20413301",
+    "20485626",
+    "25646384",
+    "28097530",
+    "29052129",
+    "30611768",
+    "32839523",
+    "38064540",
+    "39290403",
+    "40544269"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports a mechanistic path from chronic hepatitis b virus (hbv) infection to hcc through chronic liver inflammation? Distinguish evidence for each hop from overall inference.",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "29052129",
+        "score": 0.6172901264506794
+      },
+      {
+        "pmid": "30611768",
+        "score": 0.5818450990629075
+      },
+      {
+        "pmid": "39290403",
+        "score": 0.567904215015645
+      },
+      {
+        "pmid": "20413301",
+        "score": 0.5621072051318786
+      },
+      {
+        "pmid": "20485626",
+        "score": 0.5497443051800831
+      },
+      {
+        "pmid": "16461228",
+        "score": 0.546792510215603
+      },
+      {
+        "pmid": "32839523",
+        "score": 0.5450913075479472
+      },
+      {
+        "pmid": "25646384",
+        "score": 0.5337705505936033
+      },
+      {
+        "pmid": "28097530",
+        "score": 0.5273220794144308
+      },
+      {
+        "pmid": "38064540",
+        "score": 0.5225777337219615
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "29052129",
+        "score": 0.6172901264506794
+      },
+      {
+        "pmid": "30611768",
+        "score": 0.5818450990629075
+      },
+      {
+        "pmid": "39290403",
+        "score": 0.567904215015645
+      },
+      {
+        "pmid": "20413301",
+        "score": 0.5621072051318786
+      },
+      {
+        "pmid": "20485626",
+        "score": 0.5497443051800831
+      },
+      {
+        "pmid": "16461228",
+        "score": 0.546792510215603
+      },
+      {
+        "pmid": "32839523",
+        "score": 0.5450913075479472
+      },
+      {
+        "pmid": "25646384",
+        "score": 0.5337705505936033
+      },
+      {
+        "pmid": "28097530",
+        "score": 0.5273220794144308
+      },
+      {
+        "pmid": "38064540",
+        "score": 0.5225777337219615
+      }
+    ]
+  },
+  "answers": {
+    "general_llm": "Chronic hepatitis B virus (HBV) infection sets in motion a cascade of liver‑cell alterations that culminate in hepatocellular carcinoma (HCC). The chain can be parsed into three mechanistic “hops,” each backed by distinct lines of evidence.\n\n**1. Persistent HBV replication → Ongoing hepatic inflammation**  \n*Established evidence* – Cohort studies of untreated HBeAg‑positive carriers show a dose‑response between serum HBV DNA levels and serum alanine‑aminotransferase (ALT) fluctuations, reflecting immune‑mediated hepatocyte injury. Liver‑biopsy series consistently demonstrate lymphocytic infiltrates, Kupffer‑cell activation and cytokine up‑regulation (e.g., IFN‑γ, TNF‑α) in patients with high‑replicative HBV. Experimental models (HBV‑transgenic mice, woodchuck hepatitis virus) recapitulate this inflammatory milieu, confirming that viral antigen expression is sufficient to trigger innate and adaptive immune responses.  \n\n*Uncertainty* – The relative contribution of direct viral protein toxicity (e.g., HBx) versus immune‑mediated damage remains debated, especially in the “immune tolerant” phase where viral load is high but ALT is normal.\n\n**2. Chronic inflammation → Fibrogenesis and genomic stress**  \n*Established evidence* – Longitudinal biopsy data show that the cumulative “inflammatory activity” score predicts progression to fibrosis and cirrhosis independent of age or alcohol intake. Molecularly, inflammatory cytokines stimulate hepatic stellate cell activation, extracellular‑matrix deposition, and expression of profibrotic mediators (TGF‑β, PDGF). Chronic oxidative stress generated by neutrophil‑derived ROS and NADPH‑oxidase activity creates DNA lesions (8‑oxo‑dG), while NF‑κB signalling drives anti‑apoptotic survival of damaged hepatocytes.  \n\n*Uncertainty* – The threshold of inflammatory burden required to initiate irreversible fibrotic remodeling varies among individuals; genetic polymorphisms (e.g., PNPLA3, TM6SF2) modulate susceptibility but are not fully quantified.\n\n**3. Fibrotic/cirrhotic niche + ongoing mutagenesis → Clonal expansion and HCC**  \n*Established evidence* – Epidemiologic data link cirrhosis to a >5 % annual HCC incidence in chronic HBV patients, markedly higher than in non‑cirrhotic livers. Whole‑genome sequencing of HBV‑related HCC reveals recurrent driver mutations (TP53, CTNNB1) and chromosomal rearrangements, many bearing signatures of oxidative damage. Integration of HBV DNA into host chromosomes can disrupt tumor‑suppressor loci or create chimeric transcripts (HBx‑fusion), providing a direct oncogenic hit that co‑operates with the inflammatory‑fibrotic microenvironment.  \n\n*Uncertainty* – A minority of HBV‑related HCC arise in non‑cirrhotic livers, suggesting that viral integration or epigenetic reprogramming can circumvent the fibrotic step; the precise frequency and mechanisms remain under investigation.\n\n**Overall inference** – The weight of prospective cohort, histologic, and molecular data supports a stepwise mechanistic pathway from chronic HBV‑driven inflammation through fibrogenesis to malignant transformation, although contributions of direct viral oncogenic mechanisms and host genetic modifiers are still being refined.  \n\n*Conclusion*: Chronic HBV infection promotes HCC chiefly by sustaining liver inflammation that drives fibrosis and genomic instability."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 5.085766315460205e-05,
+    "vector_index": 1.43199822306633,
+    "kg_expansion": 1.9878149032592773e-05,
+    "answer_general_llm": 20.81211332976818,
+    "total": 22.940729059278965
+  },
+  "token_usage": {
+    "total_tokens": 1039,
+    "input_tokens": 182,
+    "output_tokens": 857
+  },
+  "completed_at": "2026-08-13T05:44:12.366267+00:00"
+}

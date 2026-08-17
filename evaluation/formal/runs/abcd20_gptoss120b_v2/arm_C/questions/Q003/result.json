@@ -1,0 +1,198 @@
+{
+  "status": "complete",
+  "question_id": "Q003",
+  "domain": "metabolic disease",
+  "question": "What evidence links insulin resistance to inflammatory cytokines in human studies?",
+  "question_type": "direct_evidence",
+  "pubmed_query": "insulin resistance AND inflammatory cytokines AND humans",
+  "effective_pubmed_query": "insulin resistance AND inflammatory cytokines AND humans",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "12172480",
+    "17053832",
+    "18094066",
+    "24003928",
+    "29241747",
+    "31426593",
+    "31577826",
+    "32437299",
+    "33439300",
+    "34536157",
+    "34847640",
+    "37895163",
+    "39471690",
+    "39593091",
+    "39749338"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "routed_profile": "A_text_only",
+    "route_reason": "question_type=direct_evidence",
+    "question_type": "direct_evidence",
+    "graph_retrieval_query": "What evidence links insulin resistance to inflammatory cytokines in human studies?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "32437299",
+        "score": 0.6123151536067515
+      },
+      {
+        "pmid": "12172480",
+        "score": 0.6025437888221288
+      },
+      {
+        "pmid": "34536157",
+        "score": 0.5703837014267262
+      },
+      {
+        "pmid": "18094066",
+        "score": 0.5500758840519097
+      },
+      {
+        "pmid": "24003928",
+        "score": 0.5239153161143528
+      },
+      {
+        "pmid": "17053832",
+        "score": 0.5233060489058562
+      },
+      {
+        "pmid": "39749338",
+        "score": 0.5146218576478013
+      },
+      {
+        "pmid": "39471690",
+        "score": 0.5073398217683751
+      },
+      {
+        "pmid": "33439300",
+        "score": 0.5069387500055144
+      },
+      {
+        "pmid": "37895163",
+        "score": 0.5055957155978293
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "32437299",
+        "score": 0.6123151536067515
+      },
+      {
+        "pmid": "12172480",
+        "score": 0.6025437888221288
+      },
+      {
+        "pmid": "34536157",
+        "score": 0.5703837014267262
+      },
+      {
+        "pmid": "18094066",
+        "score": 0.5500758840519097
+      },
+      {
+        "pmid": "24003928",
+        "score": 0.5239153161143528
+      },
+      {
+        "pmid": "17053832",
+        "score": 0.5233060489058562
+      },
+      {
+        "pmid": "39749338",
+        "score": 0.5146218576478013
+      },
+      {
+        "pmid": "39471690",
+        "score": 0.5073398217683751
+      },
+      {
+        "pmid": "33439300",
+        "score": 0.5069387500055144
+      },
+      {
+        "pmid": "37895163",
+        "score": 0.5055957155978293
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "**Human evidence linking insulin resistance (IR) to inflammatory cytokines**\n\n- **Epidemiologic associations:** Large population‑based surveys consistently show that circulating markers of inflammation (e.g., high‑sensitivity C‑reactive protein, TNF‑α, IL‑6) are positively correlated with indices of IR such as HOMA‑IR and fasting insulin, independent of adiposity [PMID:12172480]. Similar associations are reported in cohorts with obesity, type‑2 diabetes, and atherosclerosis, supporting a systemic link between chronic inflammation and impaired insulin action [PMID:32437299].\n\n- **Cytokine‑driven signaling defects in human adipose and muscle:** Human adipocytes and skeletal‑muscle samples demonstrate that elevated TNF‑α induces SOCS‑3 expression, reduces IRS‑1 tyrosine phosphorylation, and blunts PI3‑K activation, directly compromising insulin signaling [PMID:12172480]. In muscle, low‑grade inflammation and cytokine exposure (TNF‑α, IL‑1β) are linked to oxidative stress and attenuation of insulin‑stimulated glucose uptake [PMID:18094066].\n\n- **Adipose‑tissue immune cell infiltration:** Histologic and transcriptomic analyses of human subcutaneous and visceral fat reveal increased macrophage infiltration and a shift toward a pro‑inflammatory (M1) phenotype, accompanied by higher local production of TNF‑α, IL‑6, and IL‑1β. These cytokine‑rich environments correlate with systemic IR measures [PMID:32437299; PMID:34536157].\n\n- **Disease‑specific examples:**  \n  • In polycystic ovary syndrome (PCOS), women exhibit elevated serum IL‑6 and TNF‑α, which are independently associated with higher HOMA‑IR scores, indicating that cytokine‑mediated inflammation contributes to the IR commonly seen in PCOS [PMID:39749338; PMID:33439300].  \n  • Vitamin D deficiency studies show inverse relationships between 25‑OH‑vitamin D levels, pro‑inflammatory cytokines, and IR, suggesting that modulation of cytokine balance can affect insulin sensitivity in humans [PMID:37895163].\n\n- **Mechanistic hypotheses derived from human data:**  \n  • **TLR4‑mediated pathway:** Human adipose tissue expresses TLR4, and circulating saturated fatty acids can activate this receptor, driving NF‑κB–dependent cytokine production that exacerbates IR [PMID:17053832].  \n  • **Adipokine‑cytokine cross‑talk:** Leptin, whose secretion rises with fat mass, promotes cytokine release from immune cells, creating a feed‑forward loop that amplifies inflammation and insulin resistance [PMID:12172480].\n\n- **Therapeutic relevance (human implication):** Anti‑inflammatory interventions (e.g., TNF‑α antagonists, TLR4 blockers, vitamin D supplementation) have shown variable effects on improving insulin sensitivity, underscoring the causal potential of cytokine pathways but also highlighting the need for targeted trials [PMID:37895163; PMID:32437299].\n\n**Conclusion:** A robust body of human evidence—epidemiologic correlations, tissue‑level cytokine signaling defects, and disease‑specific studies—demonstrates that inflammatory cytokines are closely linked to insulin resistance, supporting both associative and mechanistic relationships."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 0.00011339038610458374,
+    "vector_index": 1.8979720249772072,
+    "kg_expansion": 3.284960985183716e-05,
+    "answer_netmedex_hybrid_rag": 32.97935292869806,
+    "total": 35.516762122511864
+  },
+  "token_usage": {
+    "total_tokens": 4580,
+    "input_tokens": 3362,
+    "output_tokens": 1218
+  },
+  "completed_at": "2026-08-13T03:51:48.317231+00:00"
+}

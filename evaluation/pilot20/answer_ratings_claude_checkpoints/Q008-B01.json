@@ -1,0 +1,53 @@
+{
+  "task": "answer",
+  "question_id": "Q008",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "7965e153ede6ade2e4f8c6b81400acd13d659535deee455ead93be2583ed058a",
+  "raw_response_sha256": "ab15caa94caf235572649aed30f25f556b00dced2f27e1fc248841bedd03f73c",
+  "usage": {
+    "input_tokens": 3235,
+    "output_tokens": 488,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 3723
+  },
+  "rated_at": "2026-08-12T19:21:48.761955+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q008-A",
+        "correctness": 3,
+        "completeness": 3,
+        "relevance": 3,
+        "grounding": 3,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Covers key mechanisms but graph-derived multi-hop paths add noise. PMID citations appear plausible but some paths are speculative. Misses barrier dysfunction and antimicrobial peptide mechanisms."
+      },
+      {
+        "answer_id": "Q008-B",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Comprehensive mechanistic coverage including mucus, dysbiosis, barrier, innate immunity, cytokines, bile acids. No specific citations provided, limiting grounding verification, but mechanisms are well-established."
+      },
+      {
+        "answer_id": "Q008-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Best answer: specific PMIDs, evidence-type labeling, NF-κB/beta-catenin pathway detail, dysbiosis, permeability, human and animal evidence clearly distinguished. Summary table adds clarity."
+      }
+    ],
+    "preferred_item_id": "Q008-C",
+    "pairwise_reason": "Q008-C provides the most complete, well-grounded, and mechanistically coherent response with specific citations, evidence-type distinctions, molecular pathway detail, and a useful summary table, outperforming both A (noisy graph paths) and B (no citations)."
+  }
+}

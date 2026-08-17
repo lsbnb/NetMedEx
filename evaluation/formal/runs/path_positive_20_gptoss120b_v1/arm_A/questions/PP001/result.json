@@ -1,0 +1,174 @@
+{
+  "status": "complete",
+  "question_id": "PP001",
+  "domain": "osteoporosis",
+  "question": "What evidence supports the claim that icariin promotes osteogenic differentiation, and what are the important study-context limitations?",
+  "question_type": "mechanism",
+  "pubmed_query": "icariin AND (osteoblast OR osteogenesis) AND (microRNA OR miRNA)",
+  "effective_pubmed_query": "icariin AND (osteoblast OR osteogenesis) AND (microRNA OR miRNA)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "27492554",
+    "29500883",
+    "29904399",
+    "32911026",
+    "33743412",
+    "35292240",
+    "38045146",
+    "39588260",
+    "41484919"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports the claim that icariin promotes osteogenic differentiation, and what are the important study-context limitations?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "27492554",
+        "score": 0.633327811872088
+      },
+      {
+        "pmid": "33743412",
+        "score": 0.5862302414526778
+      },
+      {
+        "pmid": "29904399",
+        "score": 0.5771281986222854
+      },
+      {
+        "pmid": "35292240",
+        "score": 0.5741757243258253
+      },
+      {
+        "pmid": "29500883",
+        "score": 0.558228130795323
+      },
+      {
+        "pmid": "38045146",
+        "score": 0.5580190296773696
+      },
+      {
+        "pmid": "41484919",
+        "score": 0.5308068723750677
+      },
+      {
+        "pmid": "39588260",
+        "score": 0.517301487762988
+      },
+      {
+        "pmid": "32911026",
+        "score": 0.5018999076626148
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "27492554",
+        "score": 0.633327811872088
+      },
+      {
+        "pmid": "33743412",
+        "score": 0.5862302414526778
+      },
+      {
+        "pmid": "29904399",
+        "score": 0.5771281986222854
+      },
+      {
+        "pmid": "35292240",
+        "score": 0.5741757243258253
+      },
+      {
+        "pmid": "29500883",
+        "score": 0.558228130795323
+      },
+      {
+        "pmid": "38045146",
+        "score": 0.5580190296773696
+      },
+      {
+        "pmid": "41484919",
+        "score": 0.5308068723750677
+      },
+      {
+        "pmid": "39588260",
+        "score": 0.517301487762988
+      },
+      {
+        "pmid": "32911026",
+        "score": 0.5018999076626148
+      }
+    ]
+  },
+  "answers": {
+    "general_llm": "**Evidence that icariin promotes osteogenic differentiation**\n\n- **In‑vitro cell studies** consistently show that icariin (typically 1–50 µM) increases alkaline phosphatase activity, up‑regulates osteogenic transcription factors (Runx2, Osterix) and matrix proteins (osteocalcin, collagen‑I) in murine pre‑osteoblasts (MC3T3‑E1), human mesenchymal stem cells, and dental‑pulp‑derived stem cells. Mechanistic work links these effects to activation of BMP/Smad‑1/5/8, Wnt/β‑catenin, MAPK/ERK, and PI3K/Akt pathways, and to modest estrogen‑receptor‑α signaling.\n\n- **Pre‑clinical animal models** demonstrate that systemic or local delivery of icariin (often 10–50 mg kg⁻¹ day⁻¹ orally, or scaffold‑bound 0.1–1 % w/w) improves bone micro‑architecture and mechanical strength in ovariectomized rats, glucocorticoid‑induced osteopenic mice, and critical‑size calvarial defect models. Micro‑CT analyses report higher bone volume/total volume, trabecular thickness, and connectivity; biomechanical testing shows increased load‑to‑failure. Histology regularly reveals enhanced new bone formation at implant sites.\n\n**Important study‑context limitations**\n\n- **Pharmacokinetic and dosing gaps** – most reports use concentrations far above plasma levels achievable after oral administration; icariin’s poor oral bioavailability and rapid metabolism are rarely addressed, limiting translational relevance.\n\n- **Model specificity** – rodent osteoporosis models (ovariectomy, glucocorticoids) capture only select aspects of human bone loss, and skeletal site differences (e.g., long bone vs. cranial defect) are not always considered, so extrapolation to clinical disease is uncertain.\n\n- **Methodological heterogeneity** – variations in icariin purity, extraction method, and delivery vehicle (solution, hydrogel, nanoparticle) create inconsistent exposure conditions; standardization is lacking.\n\n- **Sparse human data** – only small pilot trials (often <30 participants) have examined oral icariin or flavonoid‑rich extracts for bone turnover markers, providing inconclusive efficacy and safety information; long‑term effects remain unknown.\n\n- **Potential off‑target actions** – estrogen‑like activity could confer unwanted systemic effects, yet comprehensive endocrine safety profiling has not been routinely performed.\n\nIn sum, robust cell and animal data support icariin’s osteogenic potential, but pharmacokinetic constraints, model limitations, and the paucity of rigorous human trials temper confidence in its clinical applicability."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 1.765042543411255e-05,
+    "vector_index": 3.7846356853842735,
+    "kg_expansion": 2.545863389968872e-05,
+    "answer_general_llm": 40.04466450214386,
+    "total": 44.37191207706928
+  },
+  "token_usage": {
+    "input_tokens": 169,
+    "output_tokens": 909,
+    "total_tokens": 1078
+  },
+  "completed_at": "2026-08-13T05:36:26.295887+00:00"
+}

@@ -1,0 +1,122 @@
+{
+  "status": "complete",
+  "question_id": "Q036",
+  "domain": "pharmacology",
+  "question": "Which natural compounds have evidence for modulating Nrf2 signaling in oxidative stress models?",
+  "pubmed_query": "Nrf2 oxidative stress natural compound sulforaphane curcumin resveratrol",
+  "language": "English",
+  "corpus_pmids": [
+    "21060289",
+    "23581983",
+    "26165427",
+    "31480567",
+    "37468211",
+    "37571283",
+    "37701897",
+    "40243461"
+  ],
+  "graph": {
+    "node_count": 20,
+    "edge_count": 16,
+    "path_count": 14,
+    "preferred_pmids": [
+      "23581983",
+      "26165427",
+      "31480567",
+      "37571283",
+      "40243461"
+    ]
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "26165427",
+        "score": 0.9437433030264086
+      },
+      {
+        "pmid": "31480567",
+        "score": 0.9194388585141178
+      },
+      {
+        "pmid": "37571283",
+        "score": 0.8546812635718448
+      },
+      {
+        "pmid": "23581983",
+        "score": 0.8502995108564302
+      },
+      {
+        "pmid": "40243461",
+        "score": 0.783409264316713
+      },
+      {
+        "pmid": "37701897",
+        "score": 0.6009057345518677
+      },
+      {
+        "pmid": "37468211",
+        "score": 0.5345804443514881
+      },
+      {
+        "pmid": "21060289",
+        "score": 0.47091499483282917
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "26165427",
+        "score": 0.6291622020176058
+      },
+      {
+        "pmid": "31480567",
+        "score": 0.6129592390094118
+      },
+      {
+        "pmid": "37701897",
+        "score": 0.6009057345518677
+      },
+      {
+        "pmid": "37571283",
+        "score": 0.5697875090478965
+      },
+      {
+        "pmid": "23581983",
+        "score": 0.5668663405709534
+      },
+      {
+        "pmid": "37468211",
+        "score": 0.5345804443514881
+      },
+      {
+        "pmid": "40243461",
+        "score": 0.5222728428778086
+      },
+      {
+        "pmid": "21060289",
+        "score": 0.47091499483282917
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "## Direct evidence from the supplied context\n\nThe strongest repeatedly cited natural **Nrf2-modulating (primarily activating)** compounds in oxidative-stress–relevant settings are:\n\n- **Sulforaphane** (broccoli-derived isothiocyanate): repeatedly described as a natural Keap1–Nrf2/Nrf2 activator and as the most extensively studied nutraceutical among a reviewed set of Nrf2-modulating compounds. [PMID: 26165427] [PMID: 23581983] [PMID: 37468211]  \n  - **Evidence type:** Preclinical literature/review synthesis; individual human trial evidence is not provided in this context.\n\n- **Curcumin** (turmeric-derived polyphenol): described as activating Nrf2 and promoting antioxidant pathways that may mitigate oxidative stress and hyperglycemia-associated damage. [PMID: 26165427] It is also identified as a widely known natural Keap1–Nrf2 activator. [PMID: 23581983]  \n  - **Evidence type:** Preclinical/review-level; no compound-specific human evidence is supplied.\n\n- **Resveratrol** (grape-derived polyphenol): reported as a natural Nrf2 activator/modulator in diabetes-related oxidative damage and in broader Keap1–Nrf2 literature. [PMID: 26165427] [PMID: 23581983] [PMID: 31480567]  \n  - **Evidence type:** Preclinical/review-level; no specific human oxidative-stress model is described.\n\n- **Quercetin**: listed among widely known natural Keap1–Nrf2 activators. [PMID: 23581983] In neuroprotection literature, quercetin is among nutraceutical antioxidants that may enhance endogenous antioxidant defenses through Nrf2-pathway activation. [PMID: 21060289]  \n  - **Evidence type:** In-vitro and in-vivo neurodegeneration/neuronal-cell-death models are discussed collectively, but the supplied context does not assign model details specifically to quercetin. [PMID: 21060289]\n\n- **Luteolin, apigenin, and corosolic acid**: reviewed as phytochemicals found to activate NRF2, including through potential reversal of hypermethylated NRF2 states. [PMID: 37571283]  \n  - **Evidence type:** Review-level, mechanistic/epigenetic evidence; no specific human, animal, or cell model details are supplied.\n\n- **Vitamin D**: included among micronutrients reported to activate Nrf2 and promote antioxidant pathways in diabetes-related oxidative stress/hyperglycemic damage. [PMID: 26165427]  \n  - **Evidence type:** Review-level; model and species details are absent.\n\n## Additional compounds associated with Nrf2/oxidative-stress modulation\n\nThese compounds are included in reviews of oxidative-stress and inflammatory disease contexts, but the supplied abstracts do **not** establish equally direct compound-specific Nrf2 activation for each one:\n\n- **EGCG/green-tea flavonoids**, **rosmarinic acid**, **carnosic acid**, and **allicin** are nutraceutical antioxidants proposed to act partly through increased endogenous antioxidant defenses, including Nrf2 activation. [PMID: 21060289]\n- In intestinal-inflammation/oxidative-stress contexts, reviewed candidates include **caffeic acid phenethyl ester, xanthohumol, genistein, alpinetin, proanthocyanidins, anthocyanins, silymarin, thymol, berberine, tamarind xyloglucan, ginger, flaxseed oil,** and **melatonin**. These are described as targeting cellular signaling pathways to reduce intestinal inflammation, in a review that highlights Nrf2 as a key antioxidant pathway; however, the abstract does not confirm that every listed agent directly activates Nrf2. [PMID: 37701897]\n- Other nutraceuticals reviewed as modulating Keap1–Nrf2 signaling include **fish-oil polyunsaturated fatty acids, lycopene, soybean-derived compounds, kaempferol, allicin, thymoquinone, gingerol,** and **piperine**. [PMID: 37468211]\n\n## Mechanistic interpretation\n\n**Direct mechanistic association:** Nrf2 controls antioxidant/cytoprotective gene programs and is restrained by Keap1. Electrophilic compounds can modify critical Keap1 thiols, reducing Keap1-mediated Nrf2 inhibition and thereby enabling Nrf2 signaling. [PMID: 23581983] Sulforaphane, curcumin, resveratrol, and quercetin are specifically named as natural Keap1–Nrf2 activators. [PMID: 23581983]\n\n**Association with oxidative-stress disease models:** In diabetes-related literature, activation of Nrf2 is associated with protection against oxidative stress and hyperglycemic damage and with reduced development of diabetic complications. [PMID: 26165427] In rheumatoid arthritis and inflammatory bowel disease reviews, curcumin, resveratrol, sulforaphane, and related antioxidants are associated with modulation of redox-sensitive pathways including Nrf2/HO-1. [PMID: 40243461] [PMID: 37701897]\n\n## Human versus animal/in-vitro evidence\n\n- **Human evidence:** The supplied context does not provide compound-specific human clinical trial results demonstrating Nrf2 modulation in oxidative-stress models. It explicitly notes the need for further high-quality research for nutraceutical Keap1–Nrf2 modulation. [PMID: 37468211]\n- **Animal/in-vitro evidence:** Neuroprotective natural-antioxidant literature reports activity in either **in-vitro neuronal cell-death** or **in-vivo neurodegeneration** models, with Nrf2 activation proposed as one mechanism; however, the supplied abstract does not map each compound to a specific species or model. [PMID: 21060289]\n- **Preclinical evidence overall:** The context supports substantial preclinical/review-level evidence, especially for sulforaphane, curcumin, and resveratrol, but lacks detailed primary-study model information. [PMID: 26165427] [PMID: 37468211]\n\n## Testable hypothesis\n\nIn matched oxidative-stress models, **sulforaphane, curcumin, resveratrol, and quercetin** should increase Nrf2 nuclear signaling and downstream antioxidant responses (for example, Nrf2/HO-1-related activity) more reproducibly than compounds merely listed as antioxidants. This should coincide with reduced oxidative injury, and the protective effect should diminish when Nrf2 signaling is inhibited or genetically disrupted. This is a mechanistic hypothesis supported by the pathway framework and review evidence, rather than a directly demonstrated comparison in the supplied context. [PMID: 23581983] [PMID: 40243461]",
+    "traditional_rag": "## Direct evidence of Nrf2 modulation in oxidative-stress–relevant models\n\n**Predominantly preclinical evidence (cell and animal models); the supplied context does not provide compound-specific human trial evidence.**\n\n- **Curcumin** — Reported as a natural Keap1–Nrf2 activator and as promoting antioxidant pathways that mitigate oxidative stress and hyperglycemic damage. [PMID: 23581983; PMID: 26165427]  \n- **Sulforaphane** — Reported to activate Nrf2; among the most extensively studied nutraceutical modulators of Keap1–Nrf2 signaling. [PMID: 26165427; PMID: 37468211]  \n- **Resveratrol** — Reported as a natural Keap1–Nrf2 activator and Nrf2-modulating polyphenol. [PMID: 23581983; PMID: 31480567]  \n- **Quercetin** — Listed as a widely known natural Keap1–Nrf2 activator. [PMID: 23581983]  \n- **Vitamin D** — Reported among micronutrients capable of activating Nrf2 and promoting antioxidant pathways in diabetes-related oxidative stress/hyperglycemic damage. [PMID: 26165427]  \n- **Luteolin, corosolic acid, and apigenin** — Reported to activate NRF2, including in the context of dietary phytochemicals that may reverse NRF2 promoter hypermethylation. [PMID: 37571283]  \n\n## Association or broader mechanistic support\n\nThese compounds are associated with antioxidant, anti-inflammatory, or oxidative-stress protection in the cited reviews, but the supplied abstracts do not always establish direct Nrf2 activation for each individual compound.\n\n- **EGCG (green-tea flavonoid), rosmarinic acid, carnosic acid, and allicin** — Have neuroprotective effects in in-vitro or in-vivo neuronal oxidative-injury/neurodegeneration models. The review states that compounds in these nutraceutical classes can increase endogenous antioxidant defenses *for example* through Nrf2 activation, but does not attribute direct Nrf2 activation to every listed compound individually. **In-vitro/animal evidence.** [PMID: 21060289]  \n- **Kaempferol, fish-oil polyunsaturated fatty acids, lycopene, soybean-derived nutraceuticals, thymoquinone, gingerol, and piperine** — Included among nutraceuticals reviewed for modulation of Keap1–Nrf2 signaling in carcinogenesis. The abstract notes that evidence is largely preclinical. **Preclinical evidence; compound-specific direction and oxidative-stress model details are not provided.** [PMID: 37468211]  \n- **Propolis** — Reported to modulate redox-sensitive pathways including Nrf2/HO-1 in rheumatoid arthritis–related oxidative stress. **No specific experimental system is described in the supplied abstract.** [PMID: 40243461]  \n- **IBD-associated candidate compounds** — Resveratrol, curcumin, quercetin, green-tea flavonoids, caffeic acid phenethyl ester, luteolin, xanthohumol, genistein, alpinetin, proanthocyanidins, anthocyanins, silymarin, thymol, berberine, tamarind xyloglucan, sulforaphane, ginger, and flaxseed oil are discussed as natural antioxidants targeting cellular signaling pathways relevant to intestinal inflammation and oxidative stress. However, direct Nrf2 modulation is not specifically assigned to each compound in the supplied abstract. [PMID: 37701897]  \n\n## Testable hypothesis\n\n- Compounds repeatedly identified as Nrf2 activators—especially **sulforaphane, curcumin, resveratrol, and quercetin**—could reduce oxidative injury by disrupting Keap1-mediated Nrf2 suppression and increasing expression of endogenous antioxidant-response genes. This mechanism is consistent with the cited reviews, but compound-, dose-, tissue-, and disease-specific efficacy should be tested in controlled studies. [PMID: 23581983; PMID: 26165427]  \n- Dietary polyphenols such as **sulforaphane, resveratrol, curcumin, luteolin, corosolic acid, and apigenin** may restore impaired NRF2 signaling through epigenetic reversal of NRF2 promoter hypermethylation; this is a mechanistic hypothesis requiring direct confirmation in relevant oxidative-stress models and humans. [PMID: 37571283]  \n\n## Human evidence\n\nThe supplied context mentions clinical interest in Nrf2 activators and calls for further high-quality clinical research, but it provides **no direct compound-specific human efficacy evidence** for modulation of Nrf2 signaling in oxidative-stress models. [PMID: 31480567; PMID: 37468211; PMID: 40243461]",
+    "general_llm": "Many natural compounds have **preclinical evidence** of increasing Nrf2 activity in cell and animal oxidative-stress models. Typical readouts are Nrf2 nuclear accumulation and induction of genes such as **HMOX1/HO-1, NQO1, GCLC/GCLM, GSTs, thioredoxin reductase,** and **SOD-related antioxidant defenses**. For many compounds, the most plausible mechanism is mild electrophilic or redox stress that disrupts the **KEAP1–Nrf2** inhibitory complex.\n\n## Natural compounds with relatively strong preclinical Nrf2 evidence\n\n| Compound/source | Common oxidative-stress models | Main evidence/mechanistic interpretation |\n|---|---|---|\n| **Sulforaphane** (broccoli sprouts, other crucifers) | Neurotoxicity, ischemia–reperfusion, inflammatory injury, liver and kidney injury, metabolic models | One of the best-characterized dietary Nrf2 activators. Its isothiocyanate group can modify reactive cysteines on KEAP1, permitting Nrf2 stabilization and transcription of cytoprotective genes. |\n| **Curcumin** (turmeric) | Neuronal, hepatic, renal, cardiac, diabetic, and inflammatory oxidative-stress models | Frequently associated with Nrf2 activation, increased HO-1/NQO1/GSH-synthesis enzymes, and lower lipid peroxidation. However, poor absorption and assay interference complicate translation. |\n| **Carnosic acid and carnosol** (rosemary, sage) | Neuronal oxidative injury, ischemia, toxin-induced injury | Electrophilic oxidation products can activate Nrf2/ARE signaling; particularly studied in neuroprotection models. |\n| **Resveratrol** (grapes, berries, peanuts) | Endothelial injury, neurotoxicity, metabolic and cardiac models | Can increase Nrf2-dependent antioxidant gene expression, often alongside AMPK/SIRT1 signaling. The relative contribution of direct Nrf2 activation versus indirect stress-response signaling varies by model. |\n| **Epigallocatechin gallate, EGCG** (green tea) | Liver, kidney, neuronal, cardiac, and inflammatory models | Often raises Nrf2 and downstream antioxidant enzymes at moderate exposures. At high concentrations it can itself be pro-oxidant, so effects are dose- and context-dependent. |\n| **Quercetin** (onions, apples, many plants) | Chemical-induced liver/kidney injury, vascular and neuronal oxidative stress | Reported to increase Nrf2, HO-1, NQO1, and glutathione-related defenses. It may act indirectly through redox-sensitive kinases and metabolites rather than as a selective Nrf2 agonist. |\n| **Luteolin, apigenin, and related flavones** (celery, parsley, chamomile, many herbs) | Neuroinflammation, cardiac injury, toxin-induced oxidative stress | Repeatedly linked to Nrf2/HO-1 induction in preclinical work; activity may coexist with inhibition of inflammatory pathways such as NF-κB. |\n| **Anthocyanins** (berries, purple vegetables) | Vascular, retinal, metabolic, and neurodegeneration models | Can enhance Nrf2-associated antioxidant defenses, although the active species in vivo may be metabolites rather than the parent anthocyanins. |\n| **Ellagic acid and urolithin-related metabolites** (pomegranate, walnuts, berries) | Gut, liver, metabolic, and neuronal models | Evidence for increased Nrf2/HO-1 signaling exists, especially for microbiome-derived metabolites; human relevance likely varies with gut microbial metabolism. |\n| **Caffeic acid phenethyl ester and related phenolics** (propolis, coffee-derived phenolics) | Inflammatory, neuronal, renal, and hepatic injury models | Frequently activate Nrf2/HO-1 in experimental systems; bioavailability and product composition can be variable. |\n\n## Other natural-product groups with supportive, mostly preclinical evidence\n\n- **Organosulfur compounds from garlic:**  \n  **Diallyl sulfide, diallyl disulfide, diallyl trisulfide, and S-allyl cysteine** have been reported to activate Nrf2-related antioxidant defenses in liver, cardiovascular, neurotoxicity, and toxin-exposure models.\n\n- **Ginger constituents:**  \n  **6-Shogaol, 6-gingerol, and zingerone** can increase Nrf2/HO-1 signaling in inflammatory and oxidative-injury models. Shogaols, which are more electrophilic than some gingerols, may be particularly capable of engaging KEAP1–Nrf2 signaling.\n\n- **Terpenoids/triterpenoids:**  \n  **Oleanolic acid, ursolic acid, glycyrrhetinic acid, boswellic-acid-containing preparations, and certain ginsenosides** have evidence for Nrf2-associated protection in experimental liver, kidney, metabolic, and neural injury models. Their mechanisms are often pleiotropic, not uniquely Nrf2-specific.\n\n- **Saponins and ginseng products:**  \n  Several **ginsenosides** and related compounds have been linked to Nrf2 activation in ischemic, metabolic, and neuroinflammatory models, though extracts differ substantially in composition.\n\n- **Berberine** (barberry, goldenseal, Coptis species):  \n  May enhance Nrf2 signaling in metabolic, cardiovascular, hepatic, and renal oxidative-stress models, often in conjunction with AMPK and anti-inflammatory pathways. It also has important drug-interaction potential.\n\n- **Withanolides** (ashwagandha):  \n  Extracts and individual withanolides have shown Nrf2/HO-1-related effects in cellular and animal studies. Evidence for a clinically meaningful Nrf2 effect in humans remains limited.\n\n- **Fucoidan and phlorotannins** (brown seaweeds), and **astaxanthin** (microalgae/seafood):  \n  Have been associated with Nrf2 activation and reduced oxidative injury in preclinical models. Product purity, formulation, and dose are major variables.\n\n## What is established versus uncertain\n\n### Fairly well established\n- The **KEAP1–Nrf2 pathway** is a major endogenous defense system against electrophilic and oxidative stress.\n- **Sulforaphane** has especially strong mechanistic support among dietary compounds for engaging this pathway.\n- Numerous natural compounds can increase Nrf2 target-gene expression in cultured cells and animal models.\n\n### Less certain\n- Whether a given supplement produces enough active compound in human tissues to activate Nrf2 meaningfully.\n- Whether observed clinical improvements are actually caused by Nrf2, rather than anti-inflammatory, metabolic, vascular, or other actions.\n- The optimal dose, formulation, treatment duration, and target population for most compounds.\n\n### Important caveats\n- “Antioxidant” activity in a chemical assay does **not** prove Nrf2 activation in living organisms.\n- Many studies infer Nrf2 activation from higher HO-1 or NQO1 expression; stronger causal evidence requires experiments such as **Nrf2 knockdown/knockout** or careful pathway inhibition.\n- Some phytochemicals are **hormetic**: low or moderate exposure can trigger adaptive Nrf2 signaling, while high exposure can cause oxidative damage or toxicity.\n- Chronic Nrf2 activation is not necessarily beneficial in every setting. Some cancer cells exploit Nrf2 signaling to tolerate oxidative stress and resist therapy.\n- Supplement extracts vary widely, and interactions are relevant for compounds such as berberine, concentrated green-tea extracts, garlic products, and curcumin formulations.\n\nIn short, **sulforaphane, curcumin, rosemary diterpenes, resveratrol, green-tea catechins, quercetin, ginger constituents, garlic organosulfurs, and several terpenoids** are among the most commonly supported natural modulators of Nrf2 in oxidative-stress models. The evidence is strongest at the mechanistic and preclinical level; human pathway-specific evidence is much more limited."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 1.0878978222608566,
+    "semantic_graph": 43.026586443185806,
+    "vector_index": 1.3868423849344254,
+    "answer_netmedex_hybrid_rag": 15.924412094056606,
+    "answer_traditional_rag": 10.195749148726463,
+    "answer_general_llm": 23.919964343309402,
+    "total": 96.13563337177038
+  },
+  "completed_at": "2026-07-27T18:49:38.686279+00:00",
+  "answer_repair_history": [
+    {
+      "system": "general_llm",
+      "model": "gpt-5.6-terra",
+      "repaired_at": "2026-07-30T11:10:36.689408+00:00"
+    }
+  ]
+}

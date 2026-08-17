@@ -1,0 +1,72 @@
+{
+  "input_dir": "evaluation/pilot20/runs/pilot20-gpt41-v1",
+  "metrics": {
+    "retrieval": {
+      "netmedex_hybrid_rag": {
+        "precision_at_5": 0.83,
+        "recall_at_10": 0.4712,
+        "ndcg_at_10": 0.6104,
+        "judged_at_10": 1.0,
+        "unjudged_at_10": 0.0,
+        "returned_at_10": 0.775,
+        "bpref": 0.4493,
+        "question_count": 20,
+        "bpref_evaluable_questions": 13
+      },
+      "traditional_rag": {
+        "precision_at_5": 0.83,
+        "recall_at_10": 0.4712,
+        "ndcg_at_10": 0.6078,
+        "judged_at_10": 1.0,
+        "unjudged_at_10": 0.0,
+        "returned_at_10": 0.775,
+        "bpref": 0.4493,
+        "question_count": 20,
+        "bpref_evaluable_questions": 13
+      },
+      "_paired_comparison": {
+        "systems": [
+          "netmedex_hybrid_rag",
+          "traditional_rag"
+        ],
+        "diff_direction": "netmedex_hybrid_rag minus traditional_rag",
+        "n_questions": 20,
+        "metrics": {
+          "precision_at_5": {
+            "mean_diff": 0.0,
+            "bootstrap_95ci": [
+              0.0,
+              0.0
+            ],
+            "sign_test_p": null,
+            "wins_first_system": 0,
+            "wins_second_system": 0,
+            "ties": 20
+          },
+          "recall_at_10": {
+            "mean_diff": 0.0,
+            "bootstrap_95ci": [
+              0.0,
+              0.0
+            ],
+            "sign_test_p": null,
+            "wins_first_system": 0,
+            "wins_second_system": 0,
+            "ties": 20
+          },
+          "ndcg_at_10": {
+            "mean_diff": 0.0026,
+            "bootstrap_95ci": [
+              0.0,
+              0.0079
+            ],
+            "sign_test_p": 1.0,
+            "wins_first_system": 1,
+            "wins_second_system": 0,
+            "ties": 19
+          }
+        }
+      }
+    }
+  }
+}

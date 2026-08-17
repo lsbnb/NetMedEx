@@ -1,0 +1,25 @@
+{
+  "question_id": "Q034",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-31T18:15:55.924509+00:00",
+  "ratings": [
+    {
+      "hypothesis_id": "Q034-A",
+      "novelty": 2,
+      "plausibility": 5,
+      "testability": 4,
+      "research_value": 4,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded hypothesis/2-hop quality pass, not a human expert review.] The answer provides a very solid summary of established mechanisms (VEGFR2-PLC-PKC-MAPK, Ang-2/Tie2, COX-2) linking VEGF to diabetic retinopathy. While highly plausible and testable, the hypotheses mostly restate common knowledge and current therapeutic trends rather than surfacing non-obvious or highly novel connections."
+    },
+    {
+      "hypothesis_id": "Q034-B",
+      "novelty": 3,
+      "plausibility": 5,
+      "testability": 5,
+      "research_value": 5,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded hypothesis/2-hop quality pass, not a human expert review.] In addition to standard VEGF pathways, this answer incorporates more specific and slightly less conventional molecular players like sCD146 and the MEK1/ERK/FosB axis. The proposed inflammatory feed-forward loop hypothesis involving sCD146 is highly specific, easily testable, and offers valuable new therapeutic angles for anti-VEGF resistant patients."
+    }
+  ],
+  "raw_response_sha256": "5e57149467fb3ec81269771136dcae4cfe7b3cb383f8a30219019a3f83337d00"
+}

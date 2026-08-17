@@ -1,0 +1,265 @@
+{
+  "question_id": "BW003",
+  "status": "eligible",
+  "corpus_strategy": "controlled_endpoint_isolated_shared_bridge",
+  "same_corpus_for_text_and_hybrid": true,
+  "mediators_withheld_from_system_query": true,
+  "source_patterns": [
+    "\\bCFTR\\b",
+    "\\bcystic\\s+fibrosis\\s+transmembrane\\b"
+  ],
+  "target_patterns": [
+    "\\bintestinal\\s+inflammation\\b",
+    "\\bgut\\s+inflammation\\b",
+    "\\bintestinal\\s+inflammatory\\b"
+  ],
+  "source_identifiers": [],
+  "target_identifiers": [],
+  "target_side_forbidden_source_patterns": [
+    "\\bCFTR\\b",
+    "\\bcystic\\s+fibrosis\\b"
+  ],
+  "target_side_forbidden_source_identifiers": [],
+  "eligible_mediators": [
+    "DUOX2"
+  ],
+  "mediator_audit": [
+    {
+      "name": "DUOX2",
+      "queries": {
+        "source": "(CFTR[Title/Abstract] OR cystic fibrosis[Title/Abstract]) AND (DUOX2[Title/Abstract] OR dual oxidase 2[Title/Abstract])",
+        "target": "(DUOX2[Title/Abstract] OR dual oxidase 2[Title/Abstract]) AND (intestinal inflammation[Title/Abstract] OR gut inflammation[Title/Abstract] OR colitis[Title/Abstract])"
+      },
+      "candidate_pmids": {
+        "source": [
+          "19358684",
+          "35081328",
+          "31992345",
+          "21289024",
+          "24414257"
+        ],
+        "target": [
+          "39169060",
+          "38070204",
+          "40093944",
+          "31172500",
+          "41897439",
+          "40327691",
+          "37957905",
+          "39298837",
+          "40860945",
+          "41212891",
+          "37891968",
+          "38866218",
+          "40842289",
+          "40892863",
+          "40791484",
+          "41418891",
+          "42527093",
+          "37530128",
+          "26301257",
+          "40467103",
+          "33127391",
+          "40428318",
+          "31871440",
+          "38269750",
+          "29272487",
+          "37322958",
+          "38797379",
+          "33930606",
+          "41966329",
+          "42316559"
+        ]
+      },
+      "accepted_pmids": {
+        "source": [
+          "19358684",
+          "35081328",
+          "31992345"
+        ],
+        "target": [
+          "41897439",
+          "39298837",
+          "37891968"
+        ]
+      },
+      "annotation_identifiers": {
+        "source": [
+          "100330288",
+          "50506"
+        ],
+        "target": [
+          "214593",
+          "50506"
+        ]
+      },
+      "shared_mediator_identifiers": [
+        "50506"
+      ],
+      "rejected_pmids": {
+        "source": {},
+        "target": {
+          "39169060": [
+            "fetch_missing"
+          ],
+          "38070204": [
+            "target_absent"
+          ],
+          "40093944": [
+            "target_absent"
+          ],
+          "31172500": [
+            "target_absent"
+          ],
+          "40327691": [
+            "target_absent"
+          ],
+          "37957905": [
+            "target_absent"
+          ],
+          "40860945": [
+            "target_absent"
+          ],
+          "41212891": [
+            "target_absent"
+          ]
+        }
+      },
+      "bridge_eligible": true
+    }
+  ],
+  "distractor_audit": {
+    "queries": {
+      "source": "(CFTR[Title/Abstract] OR cystic fibrosis[Title/Abstract])",
+      "target": "(intestinal inflammation[Title/Abstract] OR gut inflammation[Title/Abstract] OR colitis[Title/Abstract])"
+    },
+    "candidate_pmids": {
+      "source": [
+        "37558605",
+        "38388235",
+        "34934215",
+        "39971692",
+        "37371025",
+        "39051188",
+        "34268058",
+        "31899933",
+        "27704174",
+        "36266104",
+        "34175042",
+        "30888834",
+        "31643225",
+        "37037055",
+        "32678926",
+        "28603918",
+        "38542363",
+        "24534272",
+        "37628659",
+        "37730207",
+        "36967909",
+        "29750581",
+        "36979360",
+        "1281034",
+        "27734094",
+        "40533897",
+        "35453033",
+        "31169041",
+        "35406809",
+        "38699141"
+      ],
+      "target": [
+        "24415861",
+        "24510619",
+        "37236193",
+        "32101703",
+        "32758418",
+        "17406617",
+        "22331082",
+        "22903521",
+        "28877980",
+        "39468026",
+        "37813835",
+        "37640443",
+        "38346956",
+        "40713718",
+        "38649449",
+        "37884352",
+        "11830216",
+        "30483509",
+        "30509445",
+        "39543372",
+        "36479492",
+        "41187762",
+        "30718056",
+        "41372139",
+        "40195063",
+        "37447318",
+        "20222127",
+        "37494932",
+        "20864996",
+        "40471139"
+      ]
+    },
+    "accepted_pmids": {
+      "source": [
+        "37558605",
+        "38388235",
+        "34934215",
+        "39971692",
+        "37371025",
+        "39051188",
+        "34268058",
+        "31899933",
+        "27704174",
+        "36266104"
+      ],
+      "target": [
+        "24415861",
+        "37236193",
+        "32101703",
+        "32758418",
+        "17406617",
+        "22331082",
+        "22903521",
+        "28877980",
+        "39468026",
+        "37813835"
+      ]
+    },
+    "rejected_pmids": {
+      "source": {},
+      "target": {
+        "24510619": [
+          "target_absent"
+        ]
+      }
+    }
+  },
+  "fetched_pmids": [
+    "19358684",
+    "35081328",
+    "31992345",
+    "41897439",
+    "39298837",
+    "37891968",
+    "37558605",
+    "38388235",
+    "34934215",
+    "39971692",
+    "37371025",
+    "39051188",
+    "34268058",
+    "31899933",
+    "27704174",
+    "36266104",
+    "24415861",
+    "37236193",
+    "32101703",
+    "32758418",
+    "17406617",
+    "22331082",
+    "22903521",
+    "28877980",
+    "39468026",
+    "37813835"
+  ]
+}

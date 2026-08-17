@@ -1,0 +1,41 @@
+hidden_claim_id,question_id,question,candidate_claim,candidate_block,path_evidence_json,comparison_answer,rater_id,hybrid_only,path_traceable,evidence_support,relation_direction_correct,multi_document_or_hop,non_obviousness,research_utility,unsupported_novelty,preferred_answer_id,preferred_hypothesis_id,pairwise_reason,notes
+BW003-HC01,BW003,Which evidence-supported intermediates connect CFTR dysfunction to intestinal inflammation?,"CFTR loss induces dysbiosis, which in turn results in inflammation, indicating that microbiota disruption is a major intermediary in the pathway from CFTR dysfunction to intestinal inflammation. (GRAPH-INCREMENTAL-CANDIDATE, PATH 4b4f28e7b4bcde53, [PMID: 31961914, 26973296])","CFTR loss induces dysbiosis, which in turn results in inflammation, indicating that microbiota disruption is a major intermediary in the pathway from CFTR dysfunction to intestinal inflammation. (GRAPH-INCREMENTAL-CANDIDATE, PATH 4b4f28e7b4bcde53, [PMID: 31961914, 26973296])","[{""path_id"": ""BW003-P03"", ""path_signature"": ""4b4f28e7b4bcde53"", ""path_text"": ""cftr ->[causes] dysbiosis | dysbiosis ->[results_in] inflammation"", ""node_ids"": [""12638_Gene"", ""MESH:D064806_Disease"", ""MESH:D007249_Disease""], ""names"": [""cftr"", ""dysbiosis"", ""inflammation""], ""node_aliases"": [[""Cftr""], [""Dysbiosis""], [""Inflammation""]], ""relations"": [""causes"", ""results_in""], ""edge_pmids"": [[""31961914""], [""26973296""]], ""edge_is_directional"": [true, true], ""edge_evidence_quotes"": [[""we established a germ-free (GF) CF mouse model and demonstrated that CFTR gene mutations are sufficient to alter the GI microbiome.""], [""dysbiosis in CF results in systemic inflammation, chronic infection, and dysregulation of immune function""]], ""edge_evidence_complete"": [true, true], ""edge_supports"": [{""selected_relation"": ""causes"", ""selected_pmid"": ""31961914"", ""selected_quote"": ""we established a germ-free (GF) CF mouse model and demonstrated that CFTR gene mutations are sufficient to alter the GI microbiome."", ""selected_confidence"": 0.95, ""directional"": true, ""support_tier"": ""A"", ""support_reasons"": [""quote_present"", ""confidence_present"", ""confidence_ge_0.8"", ""directional_relation""]}, {""selected_relation"": ""results_in"", ""selected_pmid"": ""26973296"", ""selected_quote"": ""dysbiosis in CF results in systemic inflammation, chronic infection, and dysregulation of immune function"", ""selected_confidence"": 0.95, ""directional"": true, ""support_tier"": ""A"", ""support_reasons"": [""quote_present"", ""confidence_present"", ""confidence_ge_0.8"", ""directional_relation""]}], ""gate_tier"": ""A"", ""gate_reasons"": [""query_endpoint_alignment"", ""complete_hop_evidence"", ""plausible_bridge""], ""claim_safe"": true, ""retrieval_safe"": true, ""candidate_rank"": 14, ""rescue_triggered"": false, ""rescue_added"": false, ""rescue_outcome"": ""not_needed"", ""diversity_added"": false, ""incremental_value_class"": ""graph_incremental_candidate"", ""incremental_value_subtype"": ""retrieval_incremental_bridge_visible"", ""incremental_value_reasons"": [""tier_a_claim_safe"", ""two_hop"", ""support_outside_text_top_k"", ""bridge_visible_in_text""], ""supporting_pmids_outside_text_top_k"": [""26973296""], ""score"": 0.752, ""hop_count"": 2}]","Direct evidence (animal and in-vitro):
+
+1. **Activation of Proinflammatory Pathways and Cytokine Secretion:**  
+   - In human intestinal epithelial cell lines, genetic depletion of CFTR leads to increased basal and stimulated secretion of IL-6 and IL-8, key proinflammatory cytokines. This increase is mediated by greater activation of ERK1/2 MAPK, IkappaBalpha, and NF-kappaB pathways. Eosinophil infiltration is increased in the jejunal mucosa of Cftr-/- mice [PMID: 26549988].
+   - In DeltaF508cftr-/- mouse intestines and CFTR-knockdown cell lines, there is activation of the NF-kappaB/COX-2/PGE2 pathway and suppression of the beta-catenin pathway. CFTR interacts with beta-catenin; its deficiency destabilizes beta-catenin, promoting nuclear translocation of NF-kappaB and subsequent inflammatory response [PMID: 27588407].
+
+2. **Immune Cell Modulation and Infiltration:**  
+   - Increased mesenteric lymph node and spleen TH17+ cells were observed in CF mouse models, indicating that CFTR dysfunction affects adaptive immune responses [PMID: 31961914].
+   - Single-cell transcriptomics in Cftr null mice reveal increased hepatic neutrophils, macrophages, and T-cells, suggesting gut-derived stimuli due to prior intestinal changes are involved in systemic inflammation [PMID: 38554847].
+
+3. **Microbiota Dysbiosis and Barrier Dysfunction:**  
+   - Intestinal-specific Cftr knockout mice exhibit changes in gut microbiota (dysbiosis) and increased intestinal inflammation as measured by elevated fecal calprotectin. There is enrichment of inflammation-associated bacterial taxa (Proteobacteria, Clostridia, Enterobacteriaceae, Akkermansia) [PMID: 37546931, 38073491].
+   - Whole-body and gut-specific CFTR knockout models demonstrate increased intestinal permeability (barrier dysfunction) and mucosal inflammation, both of which are reversible with microbiota modulation or restoration of CFTR in the gut [PMID: 38554847].
+   - The gut microbiota was proven necessary for full expression of liver inflammation in these models, indicating microbiome-driven inflammatory signals downstream of CFTR loss [PMID: 38554847].
+
+4. **Interaction of Epithelial and Immune Cell Defects:**  
+   - CFTR deletion in both intestinal epithelial and immune cells differentially shapes gut microbial composition, with the immune cell defect predominantly affecting small intestine dysbiosis and epithelial defect affecting the large intestine [PMID: 36289287].
+
+Association:
+
+- CF patients and mouse models display chronic low-grade intestinal inflammation and altered gut microbiota. There is a suggested bidirectional relationship where inflammation could further alter the microbiome, compounding the effects of CFTR dysfunction [PMID: 35160099].
+
+Testable Hypothesis:
+
+- Modulation of the gut microbiota could reverse or prevent intestinal inflammation and permeability induced by CFTR dysfunction [PMID: 38554847, 35160099].
+- Stabilizing interactions between CFTR and beta-catenin or targeted inhibition of NF-kappaB signaling might attenuate inflammation in CF intestines [PMID: 27588407].
+
+Summary Table of Intermediates Linking CFTR Dysfunction to Intestinal Inflammation:
+| Intermediary          | Evidence Type         | PMID(s)       | Species/Model      |
+|-----------------------|----------------------|---------------|--------------------|
+| ↑ IL-6, IL-8, NF-kB   | Direct, in vitro/animal | 26549988, 27588407 | Human cell lines, mice |
+| ↑ TH17+ cells         | Direct, animal       | 31961914      | Mice               |
+| β-catenin destabilization → NF-kB activation | Direct, animal/in vitro | 27588407      | Mice, human cells     |
+| Dysbiosis (Proteobacteria, Clostridia, etc.) | Direct, animal | 37546931, 38073491 | Mice                  |
+| ↑ Intestinal permeability | Direct, animal   | 38554847      | Mice               |
+| Immune cell recruitment/infiltration | Direct, animal | 26549988, 38554847 | Mice          |
+| Epithelial & immune defect synergy | Direct, animal | 36289287 | Mice               |
+
+**Summary:**  
+There is direct evidence that CFTR dysfunction in intestinal epithelial cells increases production of proinflammatory cytokines (IL-6, IL-8), activates NF-kappaB signaling (in part via destabilization of beta-catenin), promotes immune cell infiltration (including TH17+ cells and eosinophils), disrupts the intestinal barrier (permeability), and drives dysbiosis, all of which are intermediates connecting loss of CFTR to intestinal inflammation [PMID: 26549988, 27588407, 31961914, 37546931, 38073491, 38554847]. Most evidence is from animal models and human cell lines, with strong mechanistic links established for each intermediate.",google:gemini-3.1-pro-preview,0,1,1,1,1,3,4,0,,,,The claim accurately reflects the provided evidence linking CFTR mutations to dysbiosis and subsequent inflammation. The comparison answer also covers this intermediary.

@@ -1,0 +1,181 @@
+{
+  "status": "complete",
+  "question_id": "Q021",
+  "domain": "nephrology",
+  "question": "What evidence links SGLT2 inhibitors to reduced kidney inflammation or fibrosis?",
+  "question_type": "direct_evidence",
+  "pubmed_query": "SGLT2 inhibitor empagliflozin dapagliflozin kidney inflammation fibrosis",
+  "effective_pubmed_query": "SGLT2 inhibitor empagliflozin dapagliflozin kidney inflammation fibrosis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "31936266",
+    "36513134",
+    "36534320",
+    "36768138",
+    "38634653",
+    "39676197",
+    "40279256",
+    "40429921",
+    "40829258",
+    "41285328"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "routed_profile": "A_text_only",
+    "route_reason": "question_type=direct_evidence: text retrieval task",
+    "question_type": "direct_evidence",
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "36534320",
+        "score": 0.6208449036383552
+      },
+      {
+        "pmid": "40279256",
+        "score": 0.6018225910681236
+      },
+      {
+        "pmid": "36513134",
+        "score": 0.6004093624720243
+      },
+      {
+        "pmid": "41285328",
+        "score": 0.5790602005351086
+      },
+      {
+        "pmid": "40429921",
+        "score": 0.5576846303935108
+      },
+      {
+        "pmid": "36768138",
+        "score": 0.5523617696828242
+      },
+      {
+        "pmid": "39676197",
+        "score": 0.5490827944796175
+      },
+      {
+        "pmid": "31936266",
+        "score": 0.5326700120804079
+      },
+      {
+        "pmid": "38634653",
+        "score": 0.5028084473728589
+      },
+      {
+        "pmid": "40829258",
+        "score": 0.4606643508812972
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "36534320",
+        "score": 0.6208449036383552
+      },
+      {
+        "pmid": "40279256",
+        "score": 0.6018225910681236
+      },
+      {
+        "pmid": "36513134",
+        "score": 0.6004093624720243
+      },
+      {
+        "pmid": "41285328",
+        "score": 0.5790602005351086
+      },
+      {
+        "pmid": "40429921",
+        "score": 0.5576846303935108
+      },
+      {
+        "pmid": "36768138",
+        "score": 0.5523617696828242
+      },
+      {
+        "pmid": "39676197",
+        "score": 0.5490827944796175
+      },
+      {
+        "pmid": "31936266",
+        "score": 0.5326700120804079
+      },
+      {
+        "pmid": "38634653",
+        "score": 0.5028084473728589
+      },
+      {
+        "pmid": "40829258",
+        "score": 0.4606643508812972
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "Direct Evidence (Human, Animal, and In Vitro):\n\n- Extensive clinical and preclinical studies have shown that SGLT2 inhibitors (SGLT2i) such as empagliflozin, dapagliflozin, and canagliflozin reduce kidney inflammation and fibrosis in both diabetic and non-diabetic chronic kidney disease (CKD) models. Mechanistically, these effects are attributed to the reduction of inflammation, hypoxia, oxidative stress, and renin-angiotensin system activation within the kidney. Most, but not all, studies report that SGLT2i ameliorate renal fibrosis through these pathways, indicating a class effect beneficial for CKD progression [PMID: 36534320, Review, mixed evidence].\n\n- Multiple reviews confirm that SGLT2i exert renal protection in part by suppressing inflammation and fibrosis, supporting their recommendation in non-diabetic CKD as well [PMID: 40279256, Review/Human].\n\n- SGLT2 inhibitors mediate renal protection via reduced macrophage-driven inflammation and fibrosis in diabetic and non-diabetic kidney injury. Mechanistically, SGLT2i suppress pro-inflammatory M1 macrophage activation, enhance anti-inflammatory M2 polarization, lower pro-inflammatory cytokines (e.g., IL-1β, IL-6, TNF-α), and modulate key pathways such as NF-κB, JAK/STAT, and AMPK/mTOR. Collectively, these effects reduce macrophage infiltration and fibrogenic processes in the kidney [PMID: 41285328, Review/Human and Animal].\n\n- In vitro, studies using human renal proximal tubular epithelial cells in a diabetic and inflammatory environment demonstrate that SGLT2i (empagliflozin, dapagliflozin) significantly reduce the expression of ICAM-1, a key adhesion molecule and regulator in inflammation and injury resolution. There is also a trend toward reduced pro-inflammatory cytokines [PMID: 36768138, In Vitro—Human Cells].\n\n- SGLT2i also reduce NLRP3 inflammasome activation, MyD88-dependent signaling, and pro-inflammatory cytokines (IL-1β, IL-6, TGF-β, MCP-1) in renal tissues. These effects, demonstrated in both experimental models and some clinical studies, directly relate to mitigation of inflammation and fibrosis in the kidney [PMID: 40429921, Review; PMID: 40829258, Review].\n\n- Experimental animal studies (mostly in non-diabetic rats) confirm that SGLT2i reduce fibrosis and inflammation, as well as proteinuria, supporting a direct renoprotective effect via anti-inflammatory and anti-fibrotic pathways [PMID: 38634653, Animal].\n\nAssociation:\n\n- Large clinical trials (e.g., CREDENCE, DAPA-CKD) have established that SGLT2 inhibitors slow CKD progression and reduce clinical markers associated with inflammation (e.g., albuminuria) in people with and without diabetes, though not all studies directly assess tissue-level fibrosis [PMID: 39676197, Human].\n\n- SGLT2i modulate metabolic and hemodynamic activity, but their anti-inflammatory and anti-fibrotic renal benefits occur independently of glucose lowering, supporting a direct association with reduced kidney injury [PMID: 36534320, 40279256].\n\nTestable Hypothesis:\n\n- Given their observed suppression of inflammatory mediators and fibrotic signaling pathways in cell, animal, and human studies, it is hypothesized that SGLT2i could confer benefit in CKD patients primarily through targeting kidney inflammation and fibrosis, even in normoglycemic conditions [PMID: 40279256, 41285328]. Ongoing head-to-head and combination studies (e.g., with mineralocorticoid receptor antagonists) may clarify additive or synergistic effects on renal fibrosis [PMID: 39676197].\n\nSummary Statement:\n\nThere is consistent evidence from preclinical (animal, in vitro cellular) and clinical studies that SGLT2 inhibitors reduce kidney inflammation and fibrosis by suppressing key inflammatory pathways (e.g., cytokines, macrophage infiltration, NLRP3, NF-κB), as well as directly impacting fibrogenic signaling. While this is well-supported in reviews and experimental models, some variability exists, and not all studies show uniformly beneficial effects or histological improvement [PMID: 36534320, 41285328, 40279256, 36768138, 40829258, 38634653].",
+    "traditional_rag": "Direct Evidence:\n- Several reviews summarize both preclinical (animal and in vitro) and clinical evidence linking SGLT2 inhibitors to reduced kidney inflammation and fibrosis. Mechanistically, SGLT2 inhibitors have been shown to impact inflammation, oxidative stress, and pathways involved in fibrogenesis:\n    - Most, but not all, studies reviewed report that SGLT2 inhibitors ameliorate renal fibrosis by reducing inflammation, hypoxia, oxidative stress, and activation of the renin-angiotensin system (RAS). Additional effects on klotho expression and other molecular pathways may contribute to these anti-fibrotic properties. Some studies, however, found no benefit, indicating that results can be model- or context-dependent (Direct evidence, includes animal/in-vitro and clinical data; [PMID: 36534320]).\n    - SGLT2 inhibitors promote renal protection by suppressing inflammation and fibrosis in both diabetic and non-diabetic kidney disease, based on translational studies and clinical trial data (Direct evidence, human and translational studies; [PMID: 40279256]).\n    - In vitro, SGLT2 inhibitors (empagliflozin, dapagliflozin) reduced the expression of the pro-inflammatory adhesion molecule ICAM-1 in human renal proximal tubular epithelial cells exposed to diabetic and inflammatory conditions, indicating a direct anti-inflammatory effect specific to certain inflammatory mediators (Direct evidence, in-vitro, human cells; [PMID: 36768138]).\n    - Experimental animal models (rats) of chronic kidney disease, hypertension, and heart failure have shown SGLT2 inhibitors to reduce fibrosis and inflammation in the kidney, supporting a pleiotropic mechanism beyond glucose lowering (Direct evidence, animal models; [PMID: 38634653]).\n    - SGLT2 inhibitors suppress pro-inflammatory M1 macrophage activation, promote anti-inflammatory M2 phenotype, reduce cytokine release (IL-1β, IL-6, TNF-α), and attenuate macrophage-driven inflammation and fibrosis in kidneys in both diabetic and non-diabetic injury (Direct evidence, animal and in vitro models; [PMID: 41285328]).\n    - SGLT2 inhibitors reduce pro-inflammatory cytokines (IL-1β, IL-6, IL-17, TGF-β, MCP-1) and modulate NLRP3 inflammasome and other profibrotic pathways in renal tissues (Direct evidence, animal and mechanistic studies plus clinical implication; [PMID: 40829258]).\n\nAssociation:\n- Clinical trials with SGLT2 inhibitors (e.g., CREDENCE, DAPA-CKD) in diabetic and non-diabetic chronic kidney disease patients show improved renal outcomes (e.g., reduced progression of kidney function decline), which is partly attributed to anti-inflammatory and anti-fibrotic effects as proposed by translational studies ([PMID: 40279256]; [PMID: 36513134]). However, direct histologic evidence of reduced renal fibrosis specifically in humans is not systematically reported in these trials.\n\nTestable Hypothesis:\n- While the reviewed studies and mechanistic findings strongly suggest SGLT2 inhibitors reduce kidney fibrosis and inflammation via multiple pathways (e.g., modulation of macrophage polarization, suppression of pro-inflammatory cytokines, inhibition of the NLRP3 inflammasome), further direct human renal biopsy evidence is needed to conclusively prove this in clinical populations.\n\nSummary Table:\n\n| Evidence Type         | Model/Source          | Highlights                                                   | Reference        |\n|----------------------|----------------------|--------------------------------------------------------------|------------------|\n| Direct - Animal      | Animal models        | ↓ renal fibrosis & inflammation, pathway modulation          | [PMID: 38634653] |\n| Direct - In vitro    | Human kidney cells   | ↓ ICAM-1 (inflammatory mediator) with SGLT2 inhibitors       | [PMID: 36768138] |\n| Direct - Molecular   | Animal/In-vitro      | ↓ pro-inflammatory cytokines, inflammasome activity, fibrosis| [PMID: 40829258] |\n| Association - Clinical| Humans (RCTs, review)| Improved kidney outcomes; mechanism attributed in part to anti-inflammation/fibrosis | [PMID: 40279256], [PMID: 36513134] |\n\nConclusion:\nThere is strong preclinical (animal, in vitro, mechanistic) and indirect clinical evidence linking SGLT2 inhibitors to reduced kidney inflammation and fibrosis, via suppression of inflammatory pathways, reduction in pro-inflammatory cytokines, modulation of macrophage activity, and attenuation of pro-fibrotic signals. Some in vitro human data supports direct anti-inflammatory action. However, while clinical outcome trials associate SGLT2 inhibition with improved kidney function, definitive histopathologic evidence of reduced renal fibrosis in humans is less established.",
+    "general_llm": "**Evidence summary:**\n\nSGLT2 inhibitors (sodium-glucose cotransporter-2 inhibitors) are antidiabetic drugs now widely used to slow progression of chronic kidney disease (CKD), both in diabetes and, increasingly, in non-diabetic kidney diseases. The link between SGLT2 inhibitors and decreased kidney inflammation or fibrosis is supported by preclinical studies (animal and cell models) and indirect evidence from biomarker analyses in clinical trials.\n\n**Established evidence:**\n\n1. **Preclinical studies:**\n   - In rodent models of diabetes and kidney injury, SGLT2 inhibitors (such as empagliflozin, dapagliflozin, and canagliflozin) repeatedly demonstrate reduced inflammatory cytokine expression (e.g., TNF-alpha, MCP-1, IL-6) in the kidney, less infiltration of macrophages, and decreased fibrosis markers (such as TGF-beta, collagen, and fibronectin).\n   - These effects are seen beyond the glucose-lowering action, indicating a likely direct effect on pathogenic mechanisms that drive inflammation and fibrosis.\n   - SGLT2 inhibition in animal models is associated with improved histological appearance—less glomerulosclerosis, tubular atrophy, and interstitial fibrosis.\n\n2. **Clinical trial biomarker evidence:**\n   - In large outcome studies (EMPA-REG OUTCOME, CREDENCE, DAPA-CKD, etc.), patients on SGLT2 inhibitors had slower decline in GFR and lower risk of CKD progression.\n   - Post hoc biomarker analyses in some human trials report reduced urine levels of inflammatory and fibrotic biomarkers (e.g., MCP-1, TNFR1/2, KIM-1) in treated subjects.\n   - Direct histological evidence from human kidney biopsies is lacking, but reduction in biomarkers associated with inflammation/fibrosis supports an effect.\n\n**Mechanistic hypotheses (less certain, but plausible):**\n   - SGLT2 inhibition reduces proximal tubular sodium and glucose reabsorption, improving tubuloglomerular feedback, which leads to less hyperfiltration and lower intraglomerular pressure—this reduces inflammatory and fibrotic signaling pathways.\n   - Other proposed mechanisms include amelioration of hypoxia, oxidative stress, and modulation of metabolic pathways that drive inflammation and fibrosis. \n   - SGLT2 inhibition may influence macrophage polarization and reduce inflammasome activation, as shown in some animal and in vitro studies.\n\n**Uncertainties:**\n   - Direct demonstration of reduced kidney fibrosis and inflammation in human renal tissue with SGLT2 inhibitor treatment is lacking (due to the rarity of repeat biopsies in trial participants).\n   - Long-term effects on \"hard\" histological endpoints in non-diabetic CKD need further study.\n\n**Conclusion:**\nThere is strong preclinical evidence and supportive biomarker data from clinical trials that SGLT2 inhibitors reduce kidney inflammation and fibrosis. The full translation of these findings to human histology remains to be definitively proven; however, current evidence underlies confidence in their role in lowering tubulointerstitial injury in CKD."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 4.733353853225708e-05,
+    "vector_index": 1.6666716560721397,
+    "answer_netmedex_hybrid_rag": 27.91317255795002,
+    "answer_traditional_rag": 11.031101204454899,
+    "answer_general_llm": 9.0198924690485,
+    "total": 50.13469487428665
+  },
+  "token_usage": {
+    "total_tokens": 11233,
+    "input_tokens": 8664,
+    "output_tokens": 2569
+  },
+  "completed_at": "2026-08-12T19:11:29.795040+00:00"
+}

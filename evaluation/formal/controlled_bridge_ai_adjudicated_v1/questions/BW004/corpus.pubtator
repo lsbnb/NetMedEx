@@ -1,0 +1,115 @@
+##USE-MESH-VOCABULARY
+34023917|t|Plastin 3 in health and disease: a matter of balance.
+34023917|a|For a long time, PLS3 (plastin 3, also known as T-plastin or fimbrin) has been considered a rather inconspicuous protein, involved in F-actin-binding and -bundling. However, in recent years, a plethora of discoveries have turned PLS3 into a highly interesting protein involved in many cellular processes, signaling pathways, and diseases. PLS3 is localized on the X-chromosome, but shows sex-specific, inter-individual and tissue-specific expression variability pointing towards skewed X-inactivation. PLS3 is expressed in all solid tissues but usually not in hematopoietic cells. When escaping X-inactivation, PLS3 triggers a plethora of different types of cancers. Elevated PLS3 levels are considered a prognostic biomarker for cancer and refractory response to therapies. When it is knocked out or mutated in humans and mice, it causes osteoporosis with bone fractures; it is the only protein involved in actin dynamics responsible for osteoporosis. Instead, when PLS3 is upregulated, it acts as a highly protective SMN-independent modifier in spinal muscular atrophy (SMA). Here, it seems to counteract reduced F-actin levels by restoring impaired endocytosis and disturbed calcium homeostasis caused by reduced SMN levels. In contrast, an upregulation of PLS3 on wild-type level might cause osteoarthritis. This emphasizes that the amount of PLS3 in our cells must be precisely balanced; both too much and too little can be detrimental. Actin-dynamics, regulated by PLS3 among others, are crucial in a lot of cellular processes including endocytosis, cell migration, axonal growth, neurotransmission, translation, and others. Also, PLS3 levels influence the infection with different bacteria, mycosis, and other pathogens.
+34023917	0	9	PLS3	Gene	5358
+34023917	71	75	PLS3	Gene	5358
+34023917	77	86	PLS3	Gene	5358
+34023917	102	111	PLS3	Gene	5358
+34023917	115	122	PLS1	Gene	5357
+34023917	283	287	PLS3	Gene	5358
+34023917	393	397	PLS3	Gene	5358
+34023917	556	560	PLS3	Gene	5358
+34023917	665	669	PLS3	Gene	5358
+34023917	712	719	Neoplasms	Disease	MESH:D009369
+34023917	730	734	PLS3	Gene	5358
+34023917	784	790	Neoplasms	Disease	MESH:D009369
+34023917	866	872	humans	Species	9606
+34023917	877	881	mice	Species	10090
+34023917	893	905	Osteoporosis	Disease	MESH:D010024
+34023917	911	925	Fractures Bone	Disease	MESH:D050723
+34023917	962	967	actin	Gene	-
+34023917	993	1005	Osteoporosis	Disease	MESH:D010024
+34023917	1021	1025	PLS3	Gene	5358
+34023917	1073	1076	Smn1	Gene	20595
+34023917	1101	1124	Muscular Atrophy Spinal	Disease	MESH:D009134
+34023917	1126	1129	Muscular Atrophy Spinal	Disease	MESH:D009134
+34023917	1232	1239	Calcium	Chemical	MESH:D002118
+34023917	1270	1273	Smn1	Gene	20595
+34023917	1314	1318	PLS3	Gene	5358
+34023917	1350	1364	Osteoarthritis	Disease	MESH:D010003
+34023917	1401	1405	PLS3	Gene	5358
+34023917	1496	1501	Actin	Gene	-
+34023917	1525	1529	PLS3	Gene	5358
+34023917	1691	1695	PLS3	Gene	5358
+34023917	1717	1726	Infections	Disease	MESH:D007239
+34023917	1752	1759	Eye Infections Fungal	Disease	MESH:D015821
+34023917	Association	MESH:D009134	20595
+34023917	Association	MESH:D007239	5358
+34023917	Association	MESH:D009134	5358
+34023917	Association	MESH:D015821	5358
+34023917	Positive_Correlation	MESH:D009369	5358
+34023917	Association	MESH:D050723	5358
+34023917	Association	MESH:D002118	20595
+34023917	Association	MESH:D010024	5358
+34023917	Association	20595	5358
+34023917	Association	MESH:D010003	5358
+
+39666039|t|Cytoskeleton dysfunction of motor neuron in spinal muscular atrophy.
+39666039|a|Spinal muscular atrophy (SMA) is a neurodegenerative disease caused by deletions or mutations of survival of motor neuron 1 (SMN1) gene. To date, the mechanism of selective cell death of motor neurons as a hallmark of SMA is still unclear. The severity of SMA is dependent on the amount of survival motor neuron (SMN) protein, which is an essential and ubiquitously expressed protein involved in various cellular processes including regulation of cytoskeletal dynamics. In this review, we discuss the effect of SMN ablation on cytoskeleton organization including actin dynamics, growth cone formation, axonal stability, neurite outgrowth, microtubule stability, synaptic vesicle dynamics and neurofilament protein release in SMA. We also summarized a list of critical proteins such as profilin-2 (PFN2), plastin-3 (PLS3), stathmin-1 (STMN1), microtubule-associated protein 1B (MAP1B) and neurofilament which play an important role in modulating cytoskeleton in SMA. Our aim is to highlight how cytoskeletal defects contribute to motor neuron degeneration in SMA disease progression and concentrating on cytoskeleton dynamics may be a promising approach to develop new therapy or biomarker.
+39666039	13	24	Heart Diseases	Disease	MESH:D006331
+39666039	44	67	Muscular Atrophy Spinal	Disease	MESH:D009134
+39666039	69	92	Muscular Atrophy Spinal	Disease	MESH:D009134
+39666039	94	97	Muscular Atrophy Spinal	Disease	MESH:D009134
+39666039	104	129	Neurodegenerative Diseases	Disease	MESH:D019636
+39666039	166	192	SMN1	Gene	6606
+39666039	194	198	SMN1	Gene	6606
+39666039	287	290	Muscular Atrophy Spinal	Disease	MESH:D009134
+39666039	325	328	Muscular Atrophy Spinal	Disease	MESH:D009134
+39666039	794	797	Muscular Atrophy Spinal	Disease	MESH:D009134
+39666039	854	864	PFN2	Gene	5217
+39666039	866	870	PFN2	Gene	5217
+39666039	873	882	PLS3	Gene	5358
+39666039	884	888	PLS3	Gene	5358
+39666039	891	901	STMN1	Gene	3925
+39666039	903	908	STMN1	Gene	3925
+39666039	911	944	MAP1B	Gene	4131
+39666039	946	951	MAP1B	Gene	4131
+39666039	1030	1033	Muscular Atrophy Spinal	Disease	MESH:D009134
+39666039	1098	1123	Nerve Degeneration	Disease	MESH:D009410
+39666039	1127	1138	Muscular Atrophy Spinal	Disease	MESH:D009134
+39666039	Association	MESH:D009134	4131
+39666039	Association	MESH:D009134	3925
+39666039	Association	MESH:D009134	5358
+39666039	Association	MESH:D009134	6606
+39666039	Association	MESH:D009134	5217
+
+24271012|t|Calcium binding is essential for plastin 3 function in Smn-deficient motoneurons.
+24271012|a|The actin-binding and bundling protein, plastin 3 (PLS3), was identified as a protective modifier of spinal muscular atrophy (SMA) in some patient populations and as a disease modifier in animal models of SMA. How it functions in this process, however, is not known. Because PLS3 is an actin-binding/bundling protein, we hypothesized it would likely act via modification of the actin cytoskeleton in axons and neuromuscular junctions to protect motoneurons in SMA. To test this, we examined the ability of other known actin cytoskeleton organizing proteins to modify motor axon outgrowth phenotypes in an smn morphant zebrafish model of SMA. While PLS3 can fully compensate for low levels of smn, cofilin 1, profilin 2 and alpha-actinin 1 did not affect smn morphant motor axon outgrowth. To determine how PLS3 functions in SMA, we generated deletion constructs of conserved PLS3 structural domains. The EF hands were essential for PLS3 rescue of smn morphant phenotypes, and mutation of the Ca(2+)-binding residues within the EF hands resulted in a complete loss of PLS3 rescue. These results indicate that Ca(2+) regulation is essential for the function of PLS3 in motor axons. Remarkably, PLS3 mutants lacking both actin-binding domains were still able to rescue motor axons in smn morphants, although not as well as full-length PLS3. Therefore, PLS3 function in this process may have an actin-independent component. 
+24271012	0	7	Calcium	Chemical	MESH:D002118
+24271012	33	42	pls3	Gene	436598
+24271012	55	58	smn1	Gene	30432
+24271012	122	131	PLS3	Gene	5358
+24271012	133	137	PLS3	Gene	5358
+24271012	183	206	Muscular Atrophy Spinal	Disease	MESH:D009134
+24271012	208	211	Muscular Atrophy Spinal	Disease	MESH:D009134
+24271012	221	228	patient	Species	9606
+24271012	287	290	Muscular Atrophy Spinal	Disease	MESH:D009134
+24271012	357	361	pls3	Gene	436598
+24271012	542	545	Muscular Atrophy Spinal	Disease	MESH:D009134
+24271012	687	690	smn1	Gene	30432
+24271012	700	709	zebrafish	Species	7955
+24271012	719	722	Muscular Atrophy Spinal	Disease	MESH:D009134
+24271012	730	734	pls3	Gene	436598
+24271012	774	777	smn1	Gene	30432
+24271012	779	788	cfl1	Gene	321496
+24271012	790	800	pfn2	Gene	394235
+24271012	805	820	actn1	Gene	560400
+24271012	836	839	smn1	Gene	30432
+24271012	888	892	pls3	Gene	436598
+24271012	906	909	Muscular Atrophy Spinal	Disease	MESH:D009134
+24271012	957	961	pls3	Gene	436598
+24271012	1014	1018	pls3	Gene	436598
+24271012	1029	1032	smn1	Gene	30432
+24271012	1074	1080	Ca(2+)	Chemical	-
+24271012	1149	1153	pls3	Gene	436598
+24271012	1190	1196	Ca(2+)	Chemical	-
+24271012	1241	1245	pls3	Gene	436598
+24271012	1274	1278	pls3	Gene	436598
+24271012	1363	1366	smn1	Gene	30432
+24271012	1414	1418	pls3	Gene	436598
+24271012	1431	1435	pls3	Gene	436598
+24271012	Association	MESH:D002118	436598
+24271012	Association	MESH:D009134	436598
+24271012	Association	30432	436598
+24271012	Association	MESH:D009134	30432
+24271012	Association	MESH:D009134	5358

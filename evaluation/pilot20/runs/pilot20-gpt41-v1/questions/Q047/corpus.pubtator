@@ -1,0 +1,39 @@
+##USE-MESH-VOCABULARY
+16177189|t|Cocoa-related flavonoids inhibit CFTR-mediated chloride transport across T84 human colon epithelia.
+16177189|a|Cocoa beans have historically been used as a treatment for diarrhea, leading us to hypothesize that polyphenols contained in cocoa inhibit intestinal Cl- secretion. In this study, the dose-dependent effects of flavonoid compounds present in cocoa, or molecularly closely related compounds, were tested on forskolin-stimulated cystic fibrosis transmembrane conductance regulator (CFTR)-mediated Cl- secretion across T84 colonic epithelia in Ussing chambers. Addition of cocoa extract or cocoa flavanols to the mucosal side of tissues caused partial inhibition following Michaelis-Menten kinetics and resulted in a rank order of maximum blocker effects as follows: epicatechin > catechin > or = standardized cocoa preparation > or = procyanidin B2. Half-maximal blocker concentrations (Ki) were not substantially different between the tested preparations and were in the range of 100 micromol/L. For comparison, the structurally related flavonoids, quercetin and luteolin, caused a total block of Cl- currents with Ki values similar to the cocoa flavanols tested. Morin and baicalein were less effective blockers. Effects of test compounds on mucosal redox potential did not correlate with blocker activity. These data indicate that cocoa flavanols target intestinal CFTR Cl- transport and may serve as mild inhibitors of cAMP-stimulated Cl- secretion in the intestine.
+16177189	14	24	flavonoids	Chemical	MESH:D005419
+16177189	33	37	CFTR	Gene	1080
+16177189	47	55	chloride	Chemical	MESH:D002712
+16177189	73	76	T84	CellLine	CVCL:0555
+16177189	77	82	human	Species	9606
+16177189	100	111	Cocoa beans	Species	-
+16177189	159	167	diarrhea	Disease	MESH:D003967
+16177189	200	211	polyphenols	Chemical	MESH:D059808
+16177189	225	230	cocoa	Species	3641
+16177189	310	319	flavonoid	Chemical	MESH:D005419
+16177189	341	346	cocoa	Species	3641
+16177189	405	414	forskolin	Chemical	MESH:D005576
+16177189	426	477	cystic fibrosis transmembrane conductance regulator	Gene	1080
+16177189	479	483	CFTR	Gene	1080
+16177189	515	518	T84	CellLine	CVCL:0555
+16177189	569	574	cocoa	Species	3641
+16177189	586	591	cocoa	Species	3641
+16177189	592	601	flavanols	Chemical	-
+16177189	763	774	epicatechin	Chemical	MESH:D002392
+16177189	777	785	catechin	Chemical	MESH:D002392
+16177189	806	811	cocoa	Species	3641
+16177189	831	845	procyanidin B2	Chemical	MESH:C479580
+16177189	1035	1045	flavonoids	Chemical	MESH:D005419
+16177189	1047	1056	quercetin	Chemical	MESH:D011794
+16177189	1061	1069	luteolin	Chemical	MESH:D047311
+16177189	1144	1153	flavanols	Chemical	-
+16177189	1162	1167	Morin	Chemical	MESH:C008548
+16177189	1172	1181	baicalein	Chemical	MESH:C006680
+16177189	1331	1336	cocoa	Species	3641
+16177189	1337	1346	flavanols	Chemical	-
+16177189	1365	1369	CFTR	Gene	1080
+16177189	1420	1424	cAMP	Chemical	-
+16177189	Association	MESH:D002712	1080
+16177189	Negative_Correlation	MESH:D002712	MESH:D005419
+16177189	Negative_Correlation	MESH:D005419	1080
+16177189	Positive_Correlation	MESH:D005576	1080

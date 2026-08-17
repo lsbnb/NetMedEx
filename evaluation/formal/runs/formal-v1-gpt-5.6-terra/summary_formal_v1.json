@@ -1,0 +1,72 @@
+{
+  "input_dir": "evaluation/formal/runs/formal-v1-gpt-5.6-terra",
+  "metrics": {
+    "retrieval": {
+      "netmedex_hybrid_rag": {
+        "precision_at_5": 0.104,
+        "recall_at_10": 0.0786,
+        "ndcg_at_10": 0.1019,
+        "judged_at_10": 0.0769,
+        "unjudged_at_10": 0.9231,
+        "returned_at_10": 0.798,
+        "bpref": 0.0857,
+        "question_count": 50,
+        "bpref_evaluable_questions": 5
+      },
+      "traditional_rag": {
+        "precision_at_5": 0.104,
+        "recall_at_10": 0.0863,
+        "ndcg_at_10": 0.1025,
+        "judged_at_10": 0.0829,
+        "unjudged_at_10": 0.9171,
+        "returned_at_10": 0.798,
+        "bpref": 0.1143,
+        "question_count": 50,
+        "bpref_evaluable_questions": 5
+      },
+      "_paired_comparison": {
+        "systems": [
+          "netmedex_hybrid_rag",
+          "traditional_rag"
+        ],
+        "diff_direction": "netmedex_hybrid_rag minus traditional_rag",
+        "n_questions": 50,
+        "metrics": {
+          "precision_at_5": {
+            "mean_diff": 0.0,
+            "bootstrap_95ci": [
+              -0.016,
+              0.016
+            ],
+            "sign_test_p": 1.0,
+            "wins_first_system": 2,
+            "wins_second_system": 2,
+            "ties": 46
+          },
+          "recall_at_10": {
+            "mean_diff": -0.0077,
+            "bootstrap_95ci": [
+              -0.0171,
+              0.0
+            ],
+            "sign_test_p": 0.25,
+            "wins_first_system": 0,
+            "wins_second_system": 3,
+            "ties": 47
+          },
+          "ndcg_at_10": {
+            "mean_diff": -0.0006,
+            "bootstrap_95ci": [
+              -0.0198,
+              0.0166
+            ],
+            "sign_test_p": 1.0,
+            "wins_first_system": 5,
+            "wins_second_system": 5,
+            "ties": 40
+          }
+        }
+      }
+    }
+  }
+}

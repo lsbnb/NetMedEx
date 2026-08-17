@@ -1,0 +1,26 @@
+{
+  "task": "edge",
+  "question_id": "Q018",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-haiku-4-5-20251001",
+  "input_sha256": "0a1c5a0565afd4fb0b11df8ab3d80ad71d1c67c7e11eec2412e6cff955fbdeec",
+  "raw_response_sha256": "6900a2c6908f9b702ed76f3bffd1c2d4d128ad7ef3fc6bcd9602c3ee130dcf47",
+  "rated_at": "2026-08-02T19:08:26.319069+00:00",
+  "result": {
+    "ratings": [
+      {
+        "edge_id": "Q018-E01",
+        "entity_valid": 1,
+        "relation_exists": 1,
+        "relation_type_correct": 1,
+        "direction_correct": 1,
+        "evidence_support": 1,
+        "confidence": 3,
+        "notes": "Both entities (immune, CTLA-4) are valid. Abstract explicitly states ICI therapy targets CTLA-4 and generates immune-related adverse events (irAEs). Association is clearly supported."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

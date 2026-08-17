@@ -1,0 +1,83 @@
+{
+  "task": "hidden_claim",
+  "question_id": "Q037",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-haiku-4-5-20251001",
+  "input_sha256": "a58368ba6f230f74dc0552dc92183639ba599b2ded0d326cae3a16bc89853041",
+  "raw_response_sha256": "582cb8790a6fb99f0dee06428b8ddf5d195f01f6ccd69cf30cbd826e0eb48ac3",
+  "usage": {
+    "input_tokens": 4026,
+    "output_tokens": 798,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 4824
+  },
+  "rated_at": "2026-08-05T02:42:36.642289+00:00",
+  "result": {
+    "ratings": [
+      {
+        "hidden_claim_id": "Q037-HC01",
+        "hybrid_only": 0,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 0,
+        "non_obviousness": 2,
+        "research_utility": 4,
+        "unsupported_novelty": 0,
+        "notes": "Single-hop path directly supported. Claim matches comparison answer's indirect mechanism section. Well-established mechanism."
+      },
+      {
+        "hidden_claim_id": "Q037-HC02",
+        "hybrid_only": 0,
+        "path_traceable": 0,
+        "evidence_support": 0,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 1,
+        "non_obviousness": 3,
+        "research_utility": 4,
+        "unsupported_novelty": 1,
+        "notes": "Path shows HBV→HCC→X, not integration mechanism. Claim requires insertional mutagenesis evidence absent from supplied path. Comparison answer supports integration but path does not."
+      },
+      {
+        "hidden_claim_id": "Q037-HC03",
+        "hybrid_only": 0,
+        "path_traceable": 0,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 1,
+        "non_obviousness": 2,
+        "research_utility": 4,
+        "unsupported_novelty": 0,
+        "notes": "Path signature does not trace HBx specifically; shows generic HBV→HCC. Evidence quotes support HBx role but path lacks HBx node. Comparison answer confirms mechanism."
+      },
+      {
+        "hidden_claim_id": "Q037-HC04",
+        "hybrid_only": 0,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 0,
+        "multi_document_or_hop": 0,
+        "non_obviousness": 4,
+        "research_utility": 3,
+        "unsupported_novelty": 1,
+        "notes": "Path shows association only (non-directional). Claim specifies causation via inflammatory mediators, not direct viral activity—unsupported speculation beyond evidence quote."
+      },
+      {
+        "hidden_claim_id": "Q037-HC05",
+        "hybrid_only": 0,
+        "path_traceable": 0,
+        "evidence_support": 0,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 0,
+        "non_obviousness": 3,
+        "research_utility": 4,
+        "unsupported_novelty": 1,
+        "notes": "Path shows only chronic HBV→HCC, lacks miRNA nodes/edges. Claim requires miRNA modulation mechanism; comparison answer cites PMID 38064540 but supplied path does not trace it."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

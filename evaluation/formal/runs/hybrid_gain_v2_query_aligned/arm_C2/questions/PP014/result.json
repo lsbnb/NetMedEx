@@ -1,0 +1,531 @@
+{
+  "status": "complete",
+  "question_id": "PP014",
+  "domain": "hypothesis generation",
+  "question": "What evidence supports a mechanistic path from dysbiosis to bone diseases through fatty acids volatile? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "gut microbiome dysbiosis IL-17 bone loss osteoporosis",
+  "effective_pubmed_query": "gut microbiome dysbiosis IL-17 bone loss osteoporosis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "35950704",
+    "33074224",
+    "35430804",
+    "29302038",
+    "39738035",
+    "30446387",
+    "33968085",
+    "35177222",
+    "38321650",
+    "33651651",
+    "36421397",
+    "33670115",
+    "38218095",
+    "37224131",
+    "40013938",
+    "28765474",
+    "12748652",
+    "37188819",
+    "38316760",
+    "38569557",
+    "38034017",
+    "41372218",
+    "37118283",
+    "39880362",
+    "39539387",
+    "40193598"
+  ],
+  "graph": {
+    "node_count": 166,
+    "edge_count": 267,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 1,
+    "pre_gate_candidate_count": 1,
+    "pre_gate_candidates": [
+      {
+        "path_id": "BW010-P01",
+        "path_signature": "fa3452511ed7b713",
+        "path_text": "dysbiosis ->[decreases] fatty acids volatile | fatty acids volatile ->[prevents] bone diseases",
+        "node_ids": [
+          "MESH:D064806_Disease",
+          "MESH:D005232_Chemical",
+          "MESH:D001847_Disease"
+        ],
+        "names": [
+          "dysbiosis",
+          "fatty acids volatile",
+          "bone diseases"
+        ],
+        "node_aliases": [
+          [
+            "Dysbiosis"
+          ],
+          [
+            "Fatty Acids Volatile"
+          ],
+          [
+            "Bone Diseases"
+          ]
+        ],
+        "relations": [
+          "decreases",
+          "prevents"
+        ],
+        "edge_pmids": [
+          [
+            "35430804"
+          ],
+          [
+            "29302038"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "decreased relative abundance of some representative SCFA producers, with the decreased hippocampal SCFAs as the further evidence"
+          ],
+          [
+            "Treatment of mice with SCFA as well as feeding with a high-fiber diet significantly increases bone mass and prevents postmenopausal and inflammation-induced bone loss."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "decreases",
+            "selected_pmid": "35430804",
+            "selected_quote": "decreased relative abundance of some representative SCFA producers, with the decreased hippocampal SCFAs as the further evidence",
+            "selected_confidence": 0.85,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "prevents",
+            "selected_pmid": "29302038",
+            "selected_quote": "Treatment of mice with SCFA as well as feeding with a high-fiber diet significantly increases bone mass and prevents postmenopausal and inflammation-induced bone loss.",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 7,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_incremental_candidate",
+        "incremental_value_subtype": "retrieval_incremental_bridge_novel",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "two_hop",
+          "support_outside_text_top_k",
+          "bridge_absent_from_text",
+          "query_path_aligned"
+        ],
+        "supporting_pmids_outside_text_top_k": [
+          "35430804"
+        ],
+        "score": 0.744,
+        "hop_count": 2,
+        "path_relevance_score": 0.872,
+        "graph_relevance_score": 0.744,
+        "query_endpoint_coverage": 1.0,
+        "requested_bridge_coverage": 1.0,
+        "query_bridge_precision": 1.0,
+        "query_path_alignment_score": 1.0,
+        "incremental_mechanism_score": 1.0,
+        "mechanism_utility_score": 0.9296
+      }
+    ],
+    "preferred_pmids": [
+      "29302038",
+      "35430804"
+    ],
+    "paths": [
+      {
+        "path_id": "PP014-P01",
+        "path_signature": "fa3452511ed7b713",
+        "path_text": "dysbiosis ->[decreases] fatty acids volatile | fatty acids volatile ->[prevents] bone diseases",
+        "node_ids": [
+          "MESH:D064806_Disease",
+          "MESH:D005232_Chemical",
+          "MESH:D001847_Disease"
+        ],
+        "names": [
+          "dysbiosis",
+          "fatty acids volatile",
+          "bone diseases"
+        ],
+        "node_aliases": [
+          [
+            "Dysbiosis"
+          ],
+          [
+            "Fatty Acids Volatile"
+          ],
+          [
+            "Bone Diseases"
+          ]
+        ],
+        "relations": [
+          "decreases",
+          "prevents"
+        ],
+        "edge_pmids": [
+          [
+            "35430804"
+          ],
+          [
+            "29302038"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "decreased relative abundance of some representative SCFA producers, with the decreased hippocampal SCFAs as the further evidence"
+          ],
+          [
+            "Treatment of mice with SCFA as well as feeding with a high-fiber diet significantly increases bone mass and prevents postmenopausal and inflammation-induced bone loss."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "decreases",
+            "selected_pmid": "35430804",
+            "selected_quote": "decreased relative abundance of some representative SCFA producers, with the decreased hippocampal SCFAs as the further evidence",
+            "selected_confidence": 0.85,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "prevents",
+            "selected_pmid": "29302038",
+            "selected_quote": "Treatment of mice with SCFA as well as feeding with a high-fiber diet significantly increases bone mass and prevents postmenopausal and inflammation-induced bone loss.",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 7,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_incremental_candidate",
+        "incremental_value_subtype": "retrieval_incremental_bridge_novel",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "two_hop",
+          "support_outside_text_top_k",
+          "bridge_absent_from_text",
+          "query_path_aligned"
+        ],
+        "supporting_pmids_outside_text_top_k": [
+          "35430804"
+        ],
+        "path_relevance_score": 0.872,
+        "graph_relevance_score": 0.744,
+        "query_endpoint_coverage": 1.0,
+        "requested_bridge_coverage": 1.0,
+        "query_bridge_precision": 1.0,
+        "query_path_alignment_score": 1.0,
+        "incremental_mechanism_score": 1.0,
+        "mechanism_utility_score": 0.9296,
+        "score": 0.744,
+        "hop_count": 2
+      }
+    ]
+  },
+  "evidence_exposure": {
+    "profile": "H_evidence_gated_four_hop",
+    "routed_profile": "H_evidence_gated_four_hop",
+    "selection_frozen_before_answers": true,
+    "source_result": "evaluation/formal/runs/controlled-bridge-reviewed-distractors-v1-bw010-retrieval/questions/BW010/result.json",
+    "expanded_reliable_pool": true,
+    "frozen_exposure_source": "evaluation/formal/path_positive_20_v1/frozen_exposures_expanded/PP014/result.json",
+    "frozen_candidate_path_count": 1,
+    "frozen_exposed_path_count": 1,
+    "exposed_pmids": [
+      "29302038",
+      "35430804"
+    ],
+    "exposed_paths": [
+      [
+        "dysbiosis",
+        "fatty acids volatile",
+        "bone diseases"
+      ]
+    ],
+    "exposed_edges": [
+      "dysbiosis ->[decreases] fatty acids volatile | fatty acids volatile ->[prevents] bone diseases"
+    ],
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 1,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [
+        "fatty acids volatile"
+      ],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "pre_gate_incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 1,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [
+        "fatty acids volatile"
+      ],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "integration_decision": {
+      "method": "three_stage_incremental_utility_router_v1",
+      "mode": "full_hybrid",
+      "reason": "claim_safe_incremental_path_available",
+      "claim_safe_path_count": 1,
+      "incremental_path_count": 1,
+      "confirmatory_path_count": 0,
+      "citation_validation_pmids": [
+        "29302038",
+        "35430804"
+      ],
+      "policy": "three_stage"
+    },
+    "answer_path_policy": "incremental",
+    "oracle_path_selection": {},
+    "answer_fallback_to_reranked_text": false,
+    "answer_context_path_signatures": [
+      "fa3452511ed7b713"
+    ],
+    "kg_expansion": {
+      "enabled": true,
+      "candidate_path_count": 1,
+      "queries": [
+        "\"dysbiosis\"[Title/Abstract] AND \"bone diseases\"[Title/Abstract]",
+        "\"dysbiosis\"[Title/Abstract] AND \"fatty acids volatile\"[Title/Abstract]",
+        "\"fatty acids volatile\"[Title/Abstract] AND \"bone diseases\"[Title/Abstract]"
+      ],
+      "added_pmids": [
+        "35602023",
+        "38302761",
+        "42597253",
+        "40201916",
+        "31480433",
+        "41207269",
+        "38674910",
+        "40443995",
+        "37505196",
+        "42051461",
+        "31032975",
+        "34591437"
+      ],
+      "added_document_count": 10,
+      "merge": {
+        "method": "bounded_expansion_slots_v1",
+        "expansion_slots": 2,
+        "min_margin": 0.03,
+        "original_tail_threshold": 0.4268210193607409,
+        "accepted_added_pmids": [
+          "35602023",
+          "42051461"
+        ]
+      }
+    },
+    "reranking": {
+      "method": "disabled",
+      "reason": "configuration",
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "35602023",
+        "score": 0.5241105394470341
+      },
+      {
+        "pmid": "42051461",
+        "score": 0.5177951721630578
+      },
+      {
+        "pmid": "29302038",
+        "score": 0.4915508947417828
+      },
+      {
+        "pmid": "33670115",
+        "score": 0.48133443685657457
+      },
+      {
+        "pmid": "38218095",
+        "score": 0.47320952704590186
+      },
+      {
+        "pmid": "30446387",
+        "score": 0.4717254864625779
+      },
+      {
+        "pmid": "38321650",
+        "score": 0.4578985986414476
+      },
+      {
+        "pmid": "33651651",
+        "score": 0.45320299667134967
+      },
+      {
+        "pmid": "37224131",
+        "score": 0.4471944924217276
+      },
+      {
+        "pmid": "36421397",
+        "score": 0.4412879898774147
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "29302038",
+        "score": 0.4915508947417828
+      },
+      {
+        "pmid": "33670115",
+        "score": 0.48133443685657457
+      },
+      {
+        "pmid": "38218095",
+        "score": 0.47320952704590186
+      },
+      {
+        "pmid": "30446387",
+        "score": 0.4717254864625779
+      },
+      {
+        "pmid": "38321650",
+        "score": 0.4578985986414476
+      },
+      {
+        "pmid": "33651651",
+        "score": 0.45320299667134967
+      },
+      {
+        "pmid": "37224131",
+        "score": 0.4471944924217276
+      },
+      {
+        "pmid": "36421397",
+        "score": 0.4412879898774147
+      },
+      {
+        "pmid": "33074224",
+        "score": 0.4309143537092215
+      },
+      {
+        "pmid": "12748652",
+        "score": 0.4268210193607409
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "**Evidence for each step of the mechanistic chain “dysbiosis → altered volatile fatty‑acid (SCFA) production → bone disease”**\n\n* **Dysbiosis reduces SCFA output** – Reviews of the “gut‑kidney‑bone axis” describe that gut‑microbiota dysbiosis in CKD‑MBD leads to **lower concentrations of short‑chain fatty acids** (especially propionate and butyrate) together with accumulation of uremic toxins, which together drive chronic low‑grade inflammation and abnormal bone remodeling【PMID:42051461】. A broader narrative on gut‑microbiota‑bone links also cites microbial dysbiosis as a source of altered metabolites, including SCFAs, that influence skeletal health【PMID:35602023】. (Human disease context; mechanistic association.)\n\n* **Reduced SCFA amplifies systemic inflammation that impairs bone homeostasis** – The same CKD‑MBD review notes that the loss of SCFA‑mediated barrier protection permits endotoxin translocation, heightening inflammatory signaling that “exacerbates renal injury and abnormal bone metabolism”【PMID:42051461】. This provides an **association** between low SCFA levels (a downstream effect of dysbiosis) and the inflammatory milieu that predisposes to bone loss. (Human/animal disease models; inferred mechanistic link.)\n\n* **SCFA directly inhibit osteoclastogenesis** – In mice, dietary or pharmacologic supplementation with **propionate or butyrate** increased bone mass and prevented both estrogen‑deficiency and inflammation‑induced bone loss. The protection correlated with **suppressed osteoclast differentiation** via metabolic reprogramming (enhanced glycolysis, down‑regulation of TRAF6 and NFATc1)【PMID:29302038】. (In‑vivo mouse evidence; causal mechanistic demonstration.)\n\n* **SCFA promote bone formation via T‑reg–mediated Wnt10b signaling** – Probiotic‑induced gut production of **butyrate** (or direct butyrate feeding) expanded intestinal and bone‑marrow regulatory T cells, which in turn drove CD8⁺ T‑cell secretion of the anabolic Wnt ligand **Wnt10b**. Loss of T‑regs or Wnt10b abolished the bone‑anabolic effect, establishing a **cell‑type‑specific causal pathway** linking SCFA to increased bone formation【PMID:30446387】. (In‑vivo mouse evidence; mechanistic proof.)\n\n* **Overall inference** – The combined data form a stepwise chain: gut dysbiosis → ↓ SCFA (propionate, butyrate) → heightened gut permeability/inflammation → disrupted osteoclast/osteoblast regulation → net bone loss or impaired bone acquisition. The animal studies provide **direct mechanistic proof** for the SCFA‑bone links, while the CKD‑MBD and broader microbiota‑bone reviews supply **human‑relevant associative evidence** linking dysbiosis to reduced SCFA and bone pathology.\n\n**Conclusion:** Multiple animal studies demonstrate that SCFAs produced by a balanced gut microbiota directly suppress bone resorption and stimulate formation, and clinical‑type reviews show that dysbiosis diminishes these fatty acids, creating an inflammatory environment that predisposes to bone disease."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 3.7103891372680664e-05,
+    "vector_index": 2.416215144097805,
+    "kg_expansion": 6.397604964673519,
+    "answer_netmedex_hybrid_rag": 92.61593805998564,
+    "total": 102.09097151458263
+  },
+  "token_usage": {
+    "total_tokens": 4998,
+    "input_tokens": 3828,
+    "output_tokens": 1170
+  },
+  "completed_at": "2026-08-16T19:48:15.174663+00:00"
+}

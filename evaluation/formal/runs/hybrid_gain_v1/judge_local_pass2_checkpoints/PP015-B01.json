@@ -1,0 +1,91 @@
+{
+  "task": "answer",
+  "question_id": "PP015",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "372bc1702e9bd29277039eb76982180fee9083785aefc97b555487dac9beb1cb",
+  "raw_response_sha256": "e30bafdebc409ba750f5d1ed2430feda482a44cc20b6371366ced3c0aae134cb",
+  "usage": {
+    "input_tokens": 6221,
+    "output_tokens": 655,
+    "total_tokens": 6876
+  },
+  "rated_at": "2026-08-16T19:12:30.167533+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP015-A",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 4,
+        "grounding": 3,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Provides main hops with citations, but some claims lack direct support and hop separation is limited."
+      },
+      {
+        "answer_id": "PP015-B",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 4,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Clear chain with human/animal evidence; includes hypothesis but citation usage sometimes ambiguous."
+      },
+      {
+        "answer_id": "PP015-C",
+        "correctness": 3,
+        "completeness": 3,
+        "relevance": 3,
+        "grounding": 2,
+        "mechanistic_coherence": 3,
+        "research_value": 2,
+        "notes": "Basic coverage; fewer details and limited citation support."
+      },
+      {
+        "answer_id": "PP015-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Explicit multi‑hop breakdown, strong human/animal evidence, well‑cited, clear inference distinction."
+      },
+      {
+        "answer_id": "PP015-E",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Detailed hops including dysbiosis; solid evidence but some citations may be less certain."
+      },
+      {
+        "answer_id": "PP015-F",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 4,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Comprehensive but hop labeling less explicit; citations solid."
+      },
+      {
+        "answer_id": "PP015-G",
+        "correctness": 3,
+        "completeness": 2,
+        "relevance": 3,
+        "grounding": 3,
+        "mechanistic_coherence": 3,
+        "research_value": 2,
+        "notes": "Brief overview; lacks detailed hop distinction and citation depth."
+      }
+    ],
+    "preferred_item_id": "PP015-D",
+    "pairwise_reason": "PP015-D offers the most thorough, clearly separated evidence for each mechanistic hop, with strong human and animal citations and explicit distinction between direct data and inferred links."
+  }
+}

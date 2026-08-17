@@ -1,0 +1,5270 @@
+{
+  "status": "complete",
+  "question_id": "BW006",
+  "domain": "neuromuscular disease",
+  "question": "Which evidence-supported intermediates connect dystrophin deficiency to chronic inflammation?",
+  "question_type": "mechanism",
+  "pubmed_query": "Duchenne muscular dystrophy dystrophin inflammation NF-kB macrophage fibrosis",
+  "effective_pubmed_query": "Duchenne muscular dystrophy dystrophin inflammation NF-kB macrophage fibrosis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "17380205",
+    "19897286",
+    "26803842",
+    "28192862"
+  ],
+  "graph": {
+    "node_count": 33,
+    "edge_count": 44,
+    "path_count": 3,
+    "pre_gate_candidate_count": 42,
+    "pre_gate_candidates": [
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "76fba80c4df4074a470d0cf1fdf57548de82b422"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D020388_Disease"
+        ],
+        "names": [
+          "inflammation",
+          "muscular dystrophy duchenne"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 1.006,
+        "base_score": 1.006,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 1,
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "2fee63b3c1e29dd7",
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_two_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": []
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "76fba80c4df4074a470d0cf1fdf57548de82b422",
+          "094d755e8f5bff59c124b201fa830f8636142d2b"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D020388_Disease",
+          "13405_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "muscular dystrophy duchenne",
+          "dmd"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ],
+          [
+            "Dmd"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "causes"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "19897286"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ],
+          [
+            "The primary cause of this disease is mutations in the dystrophin gene resulting in massive muscle degeneration and inflammation."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "19897286",
+            "selected_quote": "The primary cause of this disease is mutations in the dystrophin gene resulting in massive muscle degeneration and inflammation.",
+            "selected_confidence": 1.0,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.795,
+        "base_score": 0.715,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 2,
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "e2fbbb78a85ae2e2",
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "two_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": []
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "094d755e8f5bff59c124b201fa830f8636142d2b"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "13405_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "dmd"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Dmd"
+          ]
+        ],
+        "relations": [
+          "causes"
+        ],
+        "edge_pmids": [
+          [
+            "19897286"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The primary cause of this disease is mutations in the dystrophin gene resulting in massive muscle degeneration and inflammation."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "19897286",
+            "selected_quote": "The primary cause of this disease is mutations in the dystrophin gene resulting in massive muscle degeneration and inflammation.",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.779,
+        "base_score": 0.779,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 3,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "ad33f0a9d055960f"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "57d4d98fd6072af8b947cbf45216295e901af513"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "16150_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "ikbkb"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Ikbkb"
+          ]
+        ],
+        "relations": [
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "NF-kappaB functions in activated macrophages to promote inflammation and muscle necrosis"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "17380205",
+            "selected_quote": "NF-kappaB functions in activated macrophages to promote inflammation and muscle necrosis",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.779,
+        "base_score": 0.779,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 4,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "f89689851ff92088"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "4f92425a432e65e5a368728df76368fe10fbea3c"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:C045651_Chemical"
+        ],
+        "names": [
+          "inflammation",
+          "epigallocatechin gallate"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "epigallocatechin gallate"
+          ]
+        ],
+        "relations": [
+          "decreases"
+        ],
+        "edge_pmids": [
+          [
+            "19897286"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Early treatment of mdx mice with green tea extract significantly decreased serum creatine kinase by approximately 85% at age 42 days (P< or =0.05)."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "decreases",
+            "selected_pmid": "19897286",
+            "selected_quote": "Early treatment of mdx mice with green tea extract significantly decreased serum creatine kinase by approximately 85% at age 42 days (P< or =0.05).",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.779,
+        "base_score": 0.779,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 5,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "7981d9269825106e"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "500e0835f8ea67ad148f18312bb6baae6cdc2886"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D011794_Chemical"
+        ],
+        "names": [
+          "inflammation",
+          "quercetin"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Quercetin"
+          ]
+        ],
+        "relations": [
+          "decreases"
+        ],
+        "edge_pmids": [
+          [
+            "28192862"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice, while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice. Furthermore, quercetin decreased transforming growth factor-beta1, cyclooxygenase-2 (COX2) and macrophage-restricted F4/80 protein (F4/80) versus untreated mdx mice. The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "decreases",
+            "selected_pmid": "28192862",
+            "selected_quote": "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice, while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice. Furthermore, quercetin decreased transforming growth factor-beta1, cyclooxygenase-2 (COX2) and macrophage-restricted F4/80 protein (F4/80) versus untreated mdx mice. The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts.",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.774,
+        "base_score": 0.774,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 6,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "c97d62a32b9a04f2"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "094d755e8f5bff59c124b201fa830f8636142d2b",
+          "76fba80c4df4074a470d0cf1fdf57548de82b422"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "13405_Gene",
+          "MESH:D020388_Disease"
+        ],
+        "names": [
+          "inflammation",
+          "dmd",
+          "muscular dystrophy duchenne"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Dmd"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ]
+        ],
+        "relations": [
+          "causes",
+          "causes"
+        ],
+        "edge_pmids": [
+          [
+            "19897286"
+          ],
+          [
+            "19897286"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The primary cause of this disease is mutations in the dystrophin gene resulting in massive muscle degeneration and inflammation."
+          ],
+          [
+            "The primary cause of this disease is mutations in the dystrophin gene resulting in massive muscle degeneration and inflammation."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "19897286",
+            "selected_quote": "The primary cause of this disease is mutations in the dystrophin gene resulting in massive muscle degeneration and inflammation.",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          },
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "19897286",
+            "selected_quote": "The primary cause of this disease is mutations in the dystrophin gene resulting in massive muscle degeneration and inflammation.",
+            "selected_confidence": 1.0,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.703,
+        "base_score": 0.623,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 7,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "direction_contradicted_hop_2",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "a188c9cfd48a4484"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "57d4d98fd6072af8b947cbf45216295e901af513",
+          "93fd3898f235e7a7c7982243354bd555dbe90bc7"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "16150_Gene",
+          "MESH:D009136_Disease"
+        ],
+        "names": [
+          "inflammation",
+          "ikbkb",
+          "muscular dystrophies"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Ikbkb"
+          ],
+          [
+            "Muscular Dystrophies"
+          ]
+        ],
+        "relations": [
+          "promotes",
+          "inhibits"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "17380205"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "NF-kappaB functions in activated macrophages to promote inflammation and muscle necrosis"
+          ],
+          [
+            "NF-kappaB functions ... in skeletal muscle fibers to limit regeneration through the inhibition of muscle progenitor cells"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "17380205",
+            "selected_quote": "NF-kappaB functions in activated macrophages to promote inflammation and muscle necrosis",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          },
+          {
+            "selected_relation": "inhibits",
+            "selected_pmid": "17380205",
+            "selected_quote": "NF-kappaB functions ... in skeletal muscle fibers to limit regeneration through the inhibition of muscle progenitor cells",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.7,
+        "base_score": 0.62,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 8,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "720c4e692e9442d1"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "57d4d98fd6072af8b947cbf45216295e901af513",
+          "76fba80c4df4074a470d0cf1fdf57548de82b422"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "16150_Gene",
+          "MESH:D020388_Disease"
+        ],
+        "names": [
+          "inflammation",
+          "ikbkb",
+          "muscular dystrophy duchenne"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Ikbkb"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ]
+        ],
+        "relations": [
+          "promotes",
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "17380205"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "NF-kappaB functions in activated macrophages to promote inflammation and muscle necrosis"
+          ],
+          [
+            "Collectively, these results underscore the critical role of NF-kappaB in the progression of muscular dystrophy"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "17380205",
+            "selected_quote": "NF-kappaB functions in activated macrophages to promote inflammation and muscle necrosis",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          },
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "17380205",
+            "selected_quote": "Collectively, these results underscore the critical role of NF-kappaB in the progression of muscular dystrophy",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.699,
+        "base_score": 0.619,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 9,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "27a87ee79e6d0bdf"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "4f92425a432e65e5a368728df76368fe10fbea3c",
+          "76fba80c4df4074a470d0cf1fdf57548de82b422"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:C045651_Chemical",
+          "MESH:D020388_Disease"
+        ],
+        "names": [
+          "inflammation",
+          "epigallocatechin gallate",
+          "muscular dystrophy duchenne"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "epigallocatechin gallate"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ]
+        ],
+        "relations": [
+          "decreases",
+          "ameliorates"
+        ],
+        "edge_pmids": [
+          [
+            "19897286"
+          ],
+          [
+            "19897286"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Early treatment of mdx mice with green tea extract significantly decreased serum creatine kinase by approximately 85% at age 42 days (P< or =0.05)."
+          ],
+          [
+            "Early treatment with green tea extract decreases dystrophic muscle pathology potentially by regulating NF-kappaB activity in regenerating muscle fibers."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "decreases",
+            "selected_pmid": "19897286",
+            "selected_quote": "Early treatment of mdx mice with green tea extract significantly decreased serum creatine kinase by approximately 85% at age 42 days (P< or =0.05).",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          },
+          {
+            "selected_relation": "ameliorates",
+            "selected_pmid": "19897286",
+            "selected_quote": "Early treatment with green tea extract decreases dystrophic muscle pathology potentially by regulating NF-kappaB activity in regenerating muscle fibers.",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.699,
+        "base_score": 0.619,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 10,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "5b13fa1ccea78770"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "76fba80c4df4074a470d0cf1fdf57548de82b422",
+          "57d4d98fd6072af8b947cbf45216295e901af513"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D020388_Disease",
+          "16150_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "muscular dystrophy duchenne",
+          "ikbkb"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ],
+          [
+            "Ikbkb"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "17380205"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ],
+          [
+            "Collectively, these results underscore the critical role of NF-kappaB in the progression of muscular dystrophy"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "17380205",
+            "selected_quote": "Collectively, these results underscore the critical role of NF-kappaB in the progression of muscular dystrophy",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.699,
+        "base_score": 0.619,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 11,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_2",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "02e318ef838f284d"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "76fba80c4df4074a470d0cf1fdf57548de82b422",
+          "4f92425a432e65e5a368728df76368fe10fbea3c"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D020388_Disease",
+          "MESH:C045651_Chemical"
+        ],
+        "names": [
+          "inflammation",
+          "muscular dystrophy duchenne",
+          "epigallocatechin gallate"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ],
+          [
+            "epigallocatechin gallate"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "ameliorates"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "19897286"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ],
+          [
+            "Early treatment with green tea extract decreases dystrophic muscle pathology potentially by regulating NF-kappaB activity in regenerating muscle fibers."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "ameliorates",
+            "selected_pmid": "19897286",
+            "selected_quote": "Early treatment with green tea extract decreases dystrophic muscle pathology potentially by regulating NF-kappaB activity in regenerating muscle fibers.",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.699,
+        "base_score": 0.619,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 12,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_2",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "7bb1165b90d7616c"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "76fba80c4df4074a470d0cf1fdf57548de82b422",
+          "8d5bd77794fd65414cef13ce32cb5a77559cd8cd"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D020388_Disease",
+          "MESH:D006331_Disease"
+        ],
+        "names": [
+          "inflammation",
+          "muscular dystrophy duchenne",
+          "heart diseases"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ],
+          [
+            "Heart Diseases"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "causes"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "28192862"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ],
+          [
+            "Duchenne muscular dystrophy causes a decline in cardiac health, resulting in premature mortality."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "28192862",
+            "selected_quote": "Duchenne muscular dystrophy causes a decline in cardiac health, resulting in premature mortality.",
+            "selected_confidence": 1.0,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.699,
+        "base_score": 0.619,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 13,
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "2e172e4a0f345108",
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "two_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": []
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "57d4d98fd6072af8b947cbf45216295e901af513",
+          "ff725d478a8aec96b32b0cb9f0c76bb3366e619b"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "16150_Gene",
+          "MESH:D009135_Disease"
+        ],
+        "names": [
+          "inflammation",
+          "ikbkb",
+          "muscular diseases"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Ikbkb"
+          ],
+          [
+            "Muscular Diseases"
+          ]
+        ],
+        "relations": [
+          "promotes",
+          "inhibits"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "17380205"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "NF-kappaB functions in activated macrophages to promote inflammation and muscle necrosis"
+          ],
+          [
+            "NF-kappaB functions ... in skeletal muscle fibers to limit regeneration through the inhibition of muscle progenitor cells"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "17380205",
+            "selected_quote": "NF-kappaB functions in activated macrophages to promote inflammation and muscle necrosis",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          },
+          {
+            "selected_relation": "inhibits",
+            "selected_pmid": "17380205",
+            "selected_quote": "NF-kappaB functions ... in skeletal muscle fibers to limit regeneration through the inhibition of muscle progenitor cells",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.679,
+        "base_score": 0.599,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 14,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "8ed7b467728d61ec"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "57d4d98fd6072af8b947cbf45216295e901af513",
+          "dc935031126d8fcfc5389593f3482c76cdf68490"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "16150_Gene",
+          "MESH:D009410_Disease"
+        ],
+        "names": [
+          "inflammation",
+          "ikbkb",
+          "nerve degeneration"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Ikbkb"
+          ],
+          [
+            "Nerve Degeneration"
+          ]
+        ],
+        "relations": [
+          "promotes",
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "17380205"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "NF-kappaB functions in activated macrophages to promote inflammation and muscle necrosis"
+          ],
+          [
+            "NF-kappaB functions in activated macrophages to promote inflammation and muscle necrosis"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "17380205",
+            "selected_quote": "NF-kappaB functions in activated macrophages to promote inflammation and muscle necrosis",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          },
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "17380205",
+            "selected_quote": "NF-kappaB functions in activated macrophages to promote inflammation and muscle necrosis",
+            "selected_confidence": 0.85,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.654,
+        "base_score": 0.574,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 15,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "6cf4ed6f1805c7a9"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "4f92425a432e65e5a368728df76368fe10fbea3c",
+          "d7dbcaecf67b3c7f2cdcde5523575f4356cfae87"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:C045651_Chemical",
+          "18033_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "epigallocatechin gallate",
+          "nfkb1"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "epigallocatechin gallate"
+          ],
+          [
+            "Nfkb1"
+          ]
+        ],
+        "relations": [
+          "decreases",
+          "regulates"
+        ],
+        "edge_pmids": [
+          [
+            "19897286"
+          ],
+          [
+            "19897286"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Early treatment of mdx mice with green tea extract significantly decreased serum creatine kinase by approximately 85% at age 42 days (P< or =0.05)."
+          ],
+          [
+            "Early treatment with green tea extract decreases dystrophic muscle pathology potentially by regulating NF-kappaB activity in regenerating muscle fibers."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "decreases",
+            "selected_pmid": "19897286",
+            "selected_quote": "Early treatment of mdx mice with green tea extract significantly decreased serum creatine kinase by approximately 85% at age 42 days (P< or =0.05).",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          },
+          {
+            "selected_relation": "regulates",
+            "selected_pmid": "19897286",
+            "selected_quote": "Early treatment with green tea extract decreases dystrophic muscle pathology potentially by regulating NF-kappaB activity in regenerating muscle fibers.",
+            "selected_confidence": 0.85,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.64,
+        "base_score": 0.56,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 16,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "fb7b1d59825d498f"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "500e0835f8ea67ad148f18312bb6baae6cdc2886",
+          "fcb1274abcce37038caaefcbb0bb4dc884de6343"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D011794_Chemical",
+          "19017_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "quercetin",
+          "ppargc1a"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Quercetin"
+          ],
+          [
+            "Ppargc1a"
+          ]
+        ],
+        "relations": [
+          "decreases",
+          "upregulates"
+        ],
+        "edge_pmids": [
+          [
+            "28192862"
+          ],
+          [
+            "28192862"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice, while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice. Furthermore, quercetin decreased transforming growth factor-beta1, cyclooxygenase-2 (COX2) and macrophage-restricted F4/80 protein (F4/80) versus untreated mdx mice. The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts."
+          ],
+          [
+            "As a potential countermeasure, quercetin is a polyphenol possessing inherent anti-inflammatory and antioxidant effects that activate proliferator-activated gamma coactivator 1alpha (PGC-1alpha), increasing the abundance of mitochondrial biogenesis proteins."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "decreases",
+            "selected_pmid": "28192862",
+            "selected_quote": "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice, while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice. Furthermore, quercetin decreased transforming growth factor-beta1, cyclooxygenase-2 (COX2) and macrophage-restricted F4/80 protein (F4/80) versus untreated mdx mice. The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts.",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          },
+          {
+            "selected_relation": "upregulates",
+            "selected_pmid": "28192862",
+            "selected_quote": "As a potential countermeasure, quercetin is a polyphenol possessing inherent anti-inflammatory and antioxidant effects that activate proliferator-activated gamma coactivator 1alpha (PGC-1alpha), increasing the abundance of mitochondrial biogenesis proteins.",
+            "selected_confidence": 0.85,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.639,
+        "base_score": 0.559,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 17,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "00509e1c3eeab861"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "500e0835f8ea67ad148f18312bb6baae6cdc2886",
+          "902b1aaf34ffe00a8506f00dd6fb455dc3fab604"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D011794_Chemical",
+          "19225_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "quercetin",
+          "ptgs2"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Quercetin"
+          ],
+          [
+            "Ptgs2"
+          ]
+        ],
+        "relations": [
+          "decreases",
+          "downregulates"
+        ],
+        "edge_pmids": [
+          [
+            "28192862"
+          ],
+          [
+            "28192862"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice, while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice. Furthermore, quercetin decreased transforming growth factor-beta1, cyclooxygenase-2 (COX2) and macrophage-restricted F4/80 protein (F4/80) versus untreated mdx mice. The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts."
+          ],
+          [
+            "quercetin decreased ... cyclooxygenase-2 (COX2)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "decreases",
+            "selected_pmid": "28192862",
+            "selected_quote": "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice, while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice. Furthermore, quercetin decreased transforming growth factor-beta1, cyclooxygenase-2 (COX2) and macrophage-restricted F4/80 protein (F4/80) versus untreated mdx mice. The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts.",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          },
+          {
+            "selected_relation": "downregulates",
+            "selected_pmid": "28192862",
+            "selected_quote": "quercetin decreased ... cyclooxygenase-2 (COX2)",
+            "selected_confidence": 0.8,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.621,
+        "base_score": 0.541,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 18,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "d4650bc2f8cb41b5"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "500e0835f8ea67ad148f18312bb6baae6cdc2886",
+          "bea826c60e5fd45fb8c2e3f78be45342f73c9630"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D011794_Chemical",
+          "13733_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "quercetin",
+          "adgre1"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Quercetin"
+          ],
+          [
+            "Adgre1"
+          ]
+        ],
+        "relations": [
+          "decreases",
+          "downregulates"
+        ],
+        "edge_pmids": [
+          [
+            "28192862"
+          ],
+          [
+            "28192862"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice, while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice. Furthermore, quercetin decreased transforming growth factor-beta1, cyclooxygenase-2 (COX2) and macrophage-restricted F4/80 protein (F4/80) versus untreated mdx mice. The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts."
+          ],
+          [
+            "quercetin decreased ... macrophage-restricted F4/80 protein (F4/80)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "decreases",
+            "selected_pmid": "28192862",
+            "selected_quote": "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice, while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice. Furthermore, quercetin decreased transforming growth factor-beta1, cyclooxygenase-2 (COX2) and macrophage-restricted F4/80 protein (F4/80) versus untreated mdx mice. The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts.",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          },
+          {
+            "selected_relation": "downregulates",
+            "selected_pmid": "28192862",
+            "selected_quote": "quercetin decreased ... macrophage-restricted F4/80 protein (F4/80)",
+            "selected_confidence": 0.8,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.62,
+        "base_score": 0.54,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 19,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "6c92f3eba01dad05"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "500e0835f8ea67ad148f18312bb6baae6cdc2886",
+          "d7dbcaecf67b3c7f2cdcde5523575f4356cfae87"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D011794_Chemical",
+          "18033_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "quercetin",
+          "nfkb1"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Quercetin"
+          ],
+          [
+            "Nfkb1"
+          ]
+        ],
+        "relations": [
+          "decreases",
+          "downregulates"
+        ],
+        "edge_pmids": [
+          [
+            "28192862"
+          ],
+          [
+            "28192862"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice, while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice. Furthermore, quercetin decreased transforming growth factor-beta1, cyclooxygenase-2 (COX2) and macrophage-restricted F4/80 protein (F4/80) versus untreated mdx mice. The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts."
+          ],
+          [
+            "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "decreases",
+            "selected_pmid": "28192862",
+            "selected_quote": "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice, while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice. Furthermore, quercetin decreased transforming growth factor-beta1, cyclooxygenase-2 (COX2) and macrophage-restricted F4/80 protein (F4/80) versus untreated mdx mice. The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts.",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          },
+          {
+            "selected_relation": "downregulates",
+            "selected_pmid": "28192862",
+            "selected_quote": "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice",
+            "selected_confidence": 0.8,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.619,
+        "base_score": 0.539,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 20,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "acd779a1a8d63677"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "500e0835f8ea67ad148f18312bb6baae6cdc2886",
+          "b22388862f7149143811f42bfcc942217e21a995"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D011794_Chemical",
+          "21803_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "quercetin",
+          "tgfb1"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Quercetin"
+          ],
+          [
+            "Tgfb1"
+          ]
+        ],
+        "relations": [
+          "decreases",
+          "downregulates"
+        ],
+        "edge_pmids": [
+          [
+            "28192862"
+          ],
+          [
+            "28192862"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice, while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice. Furthermore, quercetin decreased transforming growth factor-beta1, cyclooxygenase-2 (COX2) and macrophage-restricted F4/80 protein (F4/80) versus untreated mdx mice. The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts."
+          ],
+          [
+            "quercetin decreased transforming growth factor-beta1"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "decreases",
+            "selected_pmid": "28192862",
+            "selected_quote": "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice, while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice. Furthermore, quercetin decreased transforming growth factor-beta1, cyclooxygenase-2 (COX2) and macrophage-restricted F4/80 protein (F4/80) versus untreated mdx mice. The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts.",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          },
+          {
+            "selected_relation": "downregulates",
+            "selected_pmid": "28192862",
+            "selected_quote": "quercetin decreased transforming growth factor-beta1",
+            "selected_confidence": 0.8,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.618,
+        "base_score": 0.538,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 21,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "path_signature": "8d8b0f75f5c29946"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "500e0835f8ea67ad148f18312bb6baae6cdc2886",
+          "a8796fe4d5339ffbb668dff150a61c4f90ca4191"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D011794_Chemical",
+          "12974_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "quercetin",
+          "cs"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Quercetin"
+          ],
+          [
+            "Cs"
+          ]
+        ],
+        "relations": [
+          "decreases",
+          "upregulates"
+        ],
+        "edge_pmids": [
+          [
+            "28192862"
+          ],
+          [
+            "28192862"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice, while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice. Furthermore, quercetin decreased transforming growth factor-beta1, cyclooxygenase-2 (COX2) and macrophage-restricted F4/80 protein (F4/80) versus untreated mdx mice. The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts."
+          ],
+          [
+            "Dietary quercetin enrichment increased cardiac protein abundance of PGC-1alpha, cytochrome c, electron transport chain complexes I-V, citrate synthase, superoxide dismutase 2 and glutathione peroxidase (GPX) versus untreated mdx mice."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "decreases",
+            "selected_pmid": "28192862",
+            "selected_quote": "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice, while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice. Furthermore, quercetin decreased transforming growth factor-beta1, cyclooxygenase-2 (COX2) and macrophage-restricted F4/80 protein (F4/80) versus untreated mdx mice. The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts.",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          },
+          {
+            "selected_relation": "upregulates",
+            "selected_pmid": "28192862",
+            "selected_quote": "Dietary quercetin enrichment increased cardiac protein abundance of PGC-1alpha, cytochrome c, electron transport chain complexes I-V, citrate synthase, superoxide dismutase 2 and glutathione peroxidase (GPX) versus untreated mdx mice.",
+            "selected_confidence": 0.8,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.616,
+        "base_score": 0.536,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 22,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "path_signature": "d75372dcfa648a0c"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "500e0835f8ea67ad148f18312bb6baae6cdc2886",
+          "76fba80c4df4074a470d0cf1fdf57548de82b422"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D011794_Chemical",
+          "MESH:D020388_Disease"
+        ],
+        "names": [
+          "inflammation",
+          "quercetin",
+          "muscular dystrophy duchenne"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Quercetin"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ]
+        ],
+        "relations": [
+          "decreases",
+          "ameliorates"
+        ],
+        "edge_pmids": [
+          [
+            "28192862"
+          ],
+          [
+            "28192862"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice, while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice. Furthermore, quercetin decreased transforming growth factor-beta1, cyclooxygenase-2 (COX2) and macrophage-restricted F4/80 protein (F4/80) versus untreated mdx mice. The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts."
+          ],
+          [
+            "The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "decreases",
+            "selected_pmid": "28192862",
+            "selected_quote": "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice, while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice. Furthermore, quercetin decreased transforming growth factor-beta1, cyclooxygenase-2 (COX2) and macrophage-restricted F4/80 protein (F4/80) versus untreated mdx mice. The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts.",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          },
+          {
+            "selected_relation": "ameliorates",
+            "selected_pmid": "28192862",
+            "selected_quote": "The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts.",
+            "selected_confidence": 0.7,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.61,
+        "base_score": 0.53,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 23,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "path_signature": "3c3bdca4b53a5f51"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "76fba80c4df4074a470d0cf1fdf57548de82b422",
+          "500e0835f8ea67ad148f18312bb6baae6cdc2886"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D020388_Disease",
+          "MESH:D011794_Chemical"
+        ],
+        "names": [
+          "inflammation",
+          "muscular dystrophy duchenne",
+          "quercetin"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ],
+          [
+            "Quercetin"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "ameliorates"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "28192862"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ],
+          [
+            "The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "ameliorates",
+            "selected_pmid": "28192862",
+            "selected_quote": "The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts.",
+            "selected_confidence": 0.7,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.61,
+        "base_score": 0.53,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 24,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_2",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "path_signature": "7759806649e51f73"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "500e0835f8ea67ad148f18312bb6baae6cdc2886",
+          "fa440faa106e456f503677d27b72e6196339d96c"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D011794_Chemical",
+          "14268_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "quercetin",
+          "fn1"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Quercetin"
+          ],
+          [
+            "Fn1"
+          ]
+        ],
+        "relations": [
+          "decreases",
+          "downregulates"
+        ],
+        "edge_pmids": [
+          [
+            "28192862"
+          ],
+          [
+            "28192862"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice, while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice. Furthermore, quercetin decreased transforming growth factor-beta1, cyclooxygenase-2 (COX2) and macrophage-restricted F4/80 protein (F4/80) versus untreated mdx mice. The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts."
+          ],
+          [
+            "In contrast, histological analyses provided evidence that quercetin feeding was associated with decreased fibronectin and indirect damage indices (Haematoxylin and Eosin) compared with untreated mdx mice."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "decreases",
+            "selected_pmid": "28192862",
+            "selected_quote": "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice, while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice. Furthermore, quercetin decreased transforming growth factor-beta1, cyclooxygenase-2 (COX2) and macrophage-restricted F4/80 protein (F4/80) versus untreated mdx mice. The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts.",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          },
+          {
+            "selected_relation": "downregulates",
+            "selected_pmid": "28192862",
+            "selected_quote": "In contrast, histological analyses provided evidence that quercetin feeding was associated with decreased fibronectin and indirect damage indices (Haematoxylin and Eosin) compared with untreated mdx mice.",
+            "selected_confidence": 0.7,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.58,
+        "base_score": 0.5,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 25,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "path_signature": "3a6c879302b3a5f4"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "76fba80c4df4074a470d0cf1fdf57548de82b422",
+          "401ad6884ac0e01030b983785b5b20d83ae0a164"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D020388_Disease",
+          "MESH:D040181_Disease"
+        ],
+        "names": [
+          "inflammation",
+          "muscular dystrophy duchenne",
+          "genetic diseases x-linked"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ],
+          [
+            "Genetic Diseases X-Linked"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "related_to"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "17380205"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ],
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "related_to",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.58,
+        "base_score": 0.58,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 26,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "293afbb0b936d14c"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "500e0835f8ea67ad148f18312bb6baae6cdc2886",
+          "4484b2288c2e6a8209fff07e5f40fc18c4724dec"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D011794_Chemical",
+          "MESH:D020257_Disease"
+        ],
+        "names": [
+          "inflammation",
+          "quercetin",
+          "ventricular remodeling"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Quercetin"
+          ],
+          [
+            "Ventricular Remodeling"
+          ]
+        ],
+        "relations": [
+          "decreases",
+          "ameliorates"
+        ],
+        "edge_pmids": [
+          [
+            "28192862"
+          ],
+          [
+            "28192862"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice, while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice. Furthermore, quercetin decreased transforming growth factor-beta1, cyclooxygenase-2 (COX2) and macrophage-restricted F4/80 protein (F4/80) versus untreated mdx mice. The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts."
+          ],
+          [
+            "histological evidence of remodelling suggests that quercetin consumption may have benefited hearts of mdx mice"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "decreases",
+            "selected_pmid": "28192862",
+            "selected_quote": "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice, while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice. Furthermore, quercetin decreased transforming growth factor-beta1, cyclooxygenase-2 (COX2) and macrophage-restricted F4/80 protein (F4/80) versus untreated mdx mice. The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts.",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          },
+          {
+            "selected_relation": "ameliorates",
+            "selected_pmid": "28192862",
+            "selected_quote": "histological evidence of remodelling suggests that quercetin consumption may have benefited hearts of mdx mice",
+            "selected_confidence": 0.7,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.577,
+        "base_score": 0.497,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 27,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "path_signature": "4a5de6a88f3e78ec"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "500e0835f8ea67ad148f18312bb6baae6cdc2886",
+          "372afdf5c7d0979c758265f4dcfae5a1104ad77f"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D011794_Chemical",
+          "18035_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "quercetin",
+          "nfkbia"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Quercetin"
+          ],
+          [
+            "Nfkbia"
+          ]
+        ],
+        "relations": [
+          "decreases",
+          "upregulates"
+        ],
+        "edge_pmids": [
+          [
+            "28192862"
+          ],
+          [
+            "28192862"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice, while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice. Furthermore, quercetin decreased transforming growth factor-beta1, cyclooxygenase-2 (COX2) and macrophage-restricted F4/80 protein (F4/80) versus untreated mdx mice. The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts."
+          ],
+          [
+            "while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "decreases",
+            "selected_pmid": "28192862",
+            "selected_quote": "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice, while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice. Furthermore, quercetin decreased transforming growth factor-beta1, cyclooxygenase-2 (COX2) and macrophage-restricted F4/80 protein (F4/80) versus untreated mdx mice. The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts.",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          },
+          {
+            "selected_relation": "upregulates",
+            "selected_pmid": "28192862",
+            "selected_quote": "while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice",
+            "selected_confidence": 0.7,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.576,
+        "base_score": 0.496,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 28,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "path_signature": "c8641f09bc2ade4e"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "76fba80c4df4074a470d0cf1fdf57548de82b422",
+          "93fd3898f235e7a7c7982243354bd555dbe90bc7"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D020388_Disease",
+          "MESH:D009136_Disease"
+        ],
+        "names": [
+          "inflammation",
+          "muscular dystrophy duchenne",
+          "muscular dystrophies"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ],
+          [
+            "Muscular Dystrophies"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "related_to"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "17380205"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ],
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "related_to",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 0.95,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.569,
+        "base_score": 0.569,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 29,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "676d88586d996f56"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "76fba80c4df4074a470d0cf1fdf57548de82b422",
+          "d5d3e15faeac4654be03912f40595c4bc7051611"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D020388_Disease",
+          "14609_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "muscular dystrophy duchenne",
+          "gjd4"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ],
+          [
+            "Gjd4"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "26803842"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ],
+          [
+            "Fast myofibers of mdx mice were found to express three connexins (39, 43 and 45) and high sarcolemma permeability, which was absent in myofibers of mdx Cx43(fl/fl)Cx45(fl/fl):Myo-Cre mice (deficient in skeletal muscle Cx43/Cx45 expression)."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "26803842",
+            "selected_quote": "Fast myofibers of mdx mice were found to express three connexins (39, 43 and 45) and high sarcolemma permeability, which was absent in myofibers of mdx Cx43(fl/fl)Cx45(fl/fl):Myo-Cre mice (deficient in skeletal muscle Cx43/Cx45 expression).",
+            "selected_confidence": 0.95,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.563,
+        "base_score": 0.563,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 30,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "f85a265ed48b00c0"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "76fba80c4df4074a470d0cf1fdf57548de82b422",
+          "8678e19d8a27c73d6c67103697f3c049830a2e17"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D020388_Disease",
+          "14611_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "muscular dystrophy duchenne",
+          "gja3"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ],
+          [
+            "Gja3"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "26803842"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ],
+          [
+            "Fast myofibers of mdx mice were found to express three connexins (39, 43 and 45) and high sarcolemma permeability, which was absent in myofibers of mdx Cx43(fl/fl)Cx45(fl/fl):Myo-Cre mice (deficient in skeletal muscle Cx43/Cx45 expression)."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "26803842",
+            "selected_quote": "Fast myofibers of mdx mice were found to express three connexins (39, 43 and 45) and high sarcolemma permeability, which was absent in myofibers of mdx Cx43(fl/fl)Cx45(fl/fl):Myo-Cre mice (deficient in skeletal muscle Cx43/Cx45 expression).",
+            "selected_confidence": 0.95,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.563,
+        "base_score": 0.563,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 31,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "a45c91efff40820b"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "76fba80c4df4074a470d0cf1fdf57548de82b422",
+          "2f25c6535b89a42668f1c3ecae240da0cf19e5fe"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D020388_Disease",
+          "14615_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "muscular dystrophy duchenne",
+          "gjc1"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ],
+          [
+            "Gjc1",
+            "Gjd4"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "26803842"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ],
+          [
+            "Fast myofibers of mdx mice were found to express three connexins (39, 43 and 45) and high sarcolemma permeability, which was absent in myofibers of mdx Cx43(fl/fl)Cx45(fl/fl):Myo-Cre mice (deficient in skeletal muscle Cx43/Cx45 expression)."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "26803842",
+            "selected_quote": "Fast myofibers of mdx mice were found to express three connexins (39, 43 and 45) and high sarcolemma permeability, which was absent in myofibers of mdx Cx43(fl/fl)Cx45(fl/fl):Myo-Cre mice (deficient in skeletal muscle Cx43/Cx45 expression).",
+            "selected_confidence": 0.95,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.563,
+        "base_score": 0.563,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 32,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "536ec1f018e32f71"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "76fba80c4df4074a470d0cf1fdf57548de82b422",
+          "4abd876fe0ea8afa9bf81594e94ccb4c14e544c2"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D020388_Disease",
+          "225152_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "muscular dystrophy duchenne",
+          "gjd4"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ],
+          [
+            "Gjd4"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "26803842"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ],
+          [
+            "Fast myofibers of mdx mice were found to express three connexins (39, 43 and 45) and high sarcolemma permeability, which was absent in myofibers of mdx Cx43(fl/fl)Cx45(fl/fl):Myo-Cre mice (deficient in skeletal muscle Cx43/Cx45 expression)."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "26803842",
+            "selected_quote": "Fast myofibers of mdx mice were found to express three connexins (39, 43 and 45) and high sarcolemma permeability, which was absent in myofibers of mdx Cx43(fl/fl)Cx45(fl/fl):Myo-Cre mice (deficient in skeletal muscle Cx43/Cx45 expression).",
+            "selected_confidence": 0.95,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.563,
+        "base_score": 0.563,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 33,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "f85a265ed48b00c0"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "76fba80c4df4074a470d0cf1fdf57548de82b422",
+          "ff725d478a8aec96b32b0cb9f0c76bb3366e619b"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D020388_Disease",
+          "MESH:D009135_Disease"
+        ],
+        "names": [
+          "inflammation",
+          "muscular dystrophy duchenne",
+          "muscular diseases"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ],
+          [
+            "Muscular Diseases"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "related_to"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "17380205"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ],
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "related_to",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 0.95,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.563,
+        "base_score": 0.563,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 34,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "810166da36fdb106"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "76fba80c4df4074a470d0cf1fdf57548de82b422",
+          "48745b3c66e9b3f4d1c5d838c146bf7841cbe0b9"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D020388_Disease",
+          "MESH:D009336_Disease"
+        ],
+        "names": [
+          "inflammation",
+          "muscular dystrophy duchenne",
+          "necrosis"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ],
+          [
+            "Necrosis"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "26803842"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ],
+          [
+            "Skeletal muscles of patients with Duchenne muscular dystrophy (DMD) show numerous alterations including inflammation, apoptosis, and necrosis of myofibers."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "26803842",
+            "selected_quote": "Skeletal muscles of patients with Duchenne muscular dystrophy (DMD) show numerous alterations including inflammation, apoptosis, and necrosis of myofibers.",
+            "selected_confidence": 0.95,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.563,
+        "base_score": 0.563,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 35,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "cb5c8860a50b105b"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "500e0835f8ea67ad148f18312bb6baae6cdc2886",
+          "8e477fd44483b9b6c3ad646430b10db8a4acd6c1"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D011794_Chemical",
+          "MESH:D059808_Chemical"
+        ],
+        "names": [
+          "inflammation",
+          "quercetin",
+          "polyphenols"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Quercetin"
+          ],
+          [
+            "Polyphenols"
+          ]
+        ],
+        "relations": [
+          "decreases",
+          "related_to"
+        ],
+        "edge_pmids": [
+          [
+            "28192862"
+          ],
+          [
+            "28192862"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice, while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice. Furthermore, quercetin decreased transforming growth factor-beta1, cyclooxygenase-2 (COX2) and macrophage-restricted F4/80 protein (F4/80) versus untreated mdx mice. The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts."
+          ],
+          [
+            "quercetin is a polyphenol possessing inherent anti-inflammatory and antioxidant effects"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "decreases",
+            "selected_pmid": "28192862",
+            "selected_quote": "The protein abundance of the inflammatory markers nuclear factor-kappaB, phosphorylated nuclear factor kappa beta (P-NFkappaB) and phosphorylated nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha (P-IKBalpha) was decreased by quercetin compared with untreated mdx mice, while preserving nuclear factor of kappa light polypeptide gene enhancer in B-cells inhibitor alpha( IKBalpha) compared with mdx mice. Furthermore, quercetin decreased transforming growth factor-beta1, cyclooxygenase-2 (COX2) and macrophage-restricted F4/80 protein (F4/80) versus untreated mdx mice. The data suggest that long-term quercetin enrichment does not impact physiological parameters of cardiac function but improves indices of mitochondrial biogenesis and antioxidant enzymes, facilitates dystrophin-associated glycoprotein complex (DGC) assembly and decreases inflammation in dystrophic hearts.",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          },
+          {
+            "selected_relation": "related_to",
+            "selected_pmid": "28192862",
+            "selected_quote": "quercetin is a polyphenol possessing inherent anti-inflammatory and antioxidant effects",
+            "selected_confidence": 0.9,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.546,
+        "base_score": 0.466,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 36,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "path_signature": "2eee4dfb2de7482d"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "76fba80c4df4074a470d0cf1fdf57548de82b422",
+          "404fcda73e945cf0d9295182551ae16a64aa9b29"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D020388_Disease",
+          "11747_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "muscular dystrophy duchenne",
+          "anxa5"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ],
+          [
+            "Anxa5"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "26803842"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ],
+          [
+            "These myofibers did not show elevated basal intracellular free Ca(2+) levels, immunoreactivity to phosphorylated p65 (active NF-kappaB), eNOS and annexin V/active Caspase 3 (marker of apoptosis) but presented dystrophin immunoreactivity."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "26803842",
+            "selected_quote": "These myofibers did not show elevated basal intracellular free Ca(2+) levels, immunoreactivity to phosphorylated p65 (active NF-kappaB), eNOS and annexin V/active Caspase 3 (marker of apoptosis) but presented dystrophin immunoreactivity.",
+            "selected_confidence": 0.9,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.546,
+        "base_score": 0.546,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 37,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "3b439d3a02b363d9"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "76fba80c4df4074a470d0cf1fdf57548de82b422",
+          "b32ede252af507144224bc7c637ae83ac68fa449"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D020388_Disease",
+          "12367_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "muscular dystrophy duchenne",
+          "casp3"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ],
+          [
+            "Casp3"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "26803842"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ],
+          [
+            "These myofibers did not show elevated basal intracellular free Ca(2+) levels, immunoreactivity to phosphorylated p65 (active NF-kappaB), eNOS and annexin V/active Caspase 3 (marker of apoptosis) but presented dystrophin immunoreactivity."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "26803842",
+            "selected_quote": "These myofibers did not show elevated basal intracellular free Ca(2+) levels, immunoreactivity to phosphorylated p65 (active NF-kappaB), eNOS and annexin V/active Caspase 3 (marker of apoptosis) but presented dystrophin immunoreactivity.",
+            "selected_confidence": 0.9,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.546,
+        "base_score": 0.546,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 38,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "94f73d4540c06b20"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "76fba80c4df4074a470d0cf1fdf57548de82b422",
+          "8372f4198ba7ccf7b6552d5f3e6eaa691388f647"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D020388_Disease",
+          "18127_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "muscular dystrophy duchenne",
+          "nos3"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ],
+          [
+            "Nos3"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "26803842"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ],
+          [
+            "These myofibers did not show elevated basal intracellular free Ca(2+) levels, immunoreactivity to phosphorylated p65 (active NF-kappaB), eNOS and annexin V/active Caspase 3 (marker of apoptosis) but presented dystrophin immunoreactivity."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "26803842",
+            "selected_quote": "These myofibers did not show elevated basal intracellular free Ca(2+) levels, immunoreactivity to phosphorylated p65 (active NF-kappaB), eNOS and annexin V/active Caspase 3 (marker of apoptosis) but presented dystrophin immunoreactivity.",
+            "selected_confidence": 0.9,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.546,
+        "base_score": 0.546,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 39,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "5c939b754e8cfea4"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "76fba80c4df4074a470d0cf1fdf57548de82b422",
+          "213dad49db8738b3b7048d34c5af1deca709e3dd"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D020388_Disease",
+          "19697_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "muscular dystrophy duchenne",
+          "rela"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ],
+          [
+            "Rela"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "26803842"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ],
+          [
+            "These myofibers did not show elevated basal intracellular free Ca(2+) levels, immunoreactivity to phosphorylated p65 (active NF-kappaB), eNOS and annexin V/active Caspase 3 (marker of apoptosis) but presented dystrophin immunoreactivity."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "26803842",
+            "selected_quote": "These myofibers did not show elevated basal intracellular free Ca(2+) levels, immunoreactivity to phosphorylated p65 (active NF-kappaB), eNOS and annexin V/active Caspase 3 (marker of apoptosis) but presented dystrophin immunoreactivity.",
+            "selected_confidence": 0.9,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.546,
+        "base_score": 0.546,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 40,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "bec3bcf78876502d"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "76fba80c4df4074a470d0cf1fdf57548de82b422",
+          "0f7ad50b041266c4302254964653ba87a7b68403"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D020388_Disease",
+          "ca(2+)_chemical"
+        ],
+        "names": [
+          "inflammation",
+          "muscular dystrophy duchenne",
+          "ca(2+)"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ],
+          [
+            "ca(2+)"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "26803842"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ],
+          [
+            "These myofibers did not show elevated basal intracellular free Ca(2+) levels, immunoreactivity to phosphorylated p65 (active NF-kappaB), eNOS and annexin V/active Caspase 3 (marker of apoptosis) but presented dystrophin immunoreactivity."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "26803842",
+            "selected_quote": "These myofibers did not show elevated basal intracellular free Ca(2+) levels, immunoreactivity to phosphorylated p65 (active NF-kappaB), eNOS and annexin V/active Caspase 3 (marker of apoptosis) but presented dystrophin immunoreactivity.",
+            "selected_confidence": 0.9,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.546,
+        "base_score": 0.546,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 41,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "b89eb0f615b6612a"
+      },
+      {
+        "path": [
+          "2ba06ca52b9b6352652457021f73522a4e6b7888",
+          "76fba80c4df4074a470d0cf1fdf57548de82b422",
+          "4484b2288c2e6a8209fff07e5f40fc18c4724dec"
+        ],
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D020388_Disease",
+          "MESH:D020257_Disease"
+        ],
+        "names": [
+          "inflammation",
+          "muscular dystrophy duchenne",
+          "ventricular remodeling"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ],
+          [
+            "Ventricular Remodeling"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "28192862"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ],
+          [
+            "Novel findings from this investigation, in comparison to prior published studies, suggest that mouse strain-dependent cardiac outcomes in performance and remodelling exist."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "28192862",
+            "selected_quote": "Novel findings from this investigation, in comparison to prior published studies, suggest that mouse strain-dependent cardiac outcomes in performance and remodelling exist.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.511,
+        "base_score": 0.511,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 42,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "b48bbab97fa1b87f"
+      }
+    ],
+    "preferred_pmids": [
+      "17380205",
+      "19897286",
+      "28192862"
+    ],
+    "paths": [
+      {
+        "path_id": "BW006-P01",
+        "path_signature": "2fee63b3c1e29dd7",
+        "path_text": "inflammation --[associated_with] muscular dystrophy duchenne",
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D020388_Disease"
+        ],
+        "names": [
+          "inflammation",
+          "muscular dystrophy duchenne"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_two_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 1.006,
+        "hop_count": 1
+      },
+      {
+        "path_id": "BW006-P02",
+        "path_signature": "e2fbbb78a85ae2e2",
+        "path_text": "inflammation --[associated_with] muscular dystrophy duchenne | muscular dystrophy duchenne ->[causes] dmd",
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D020388_Disease",
+          "13405_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "muscular dystrophy duchenne",
+          "dmd"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ],
+          [
+            "Dmd"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "causes"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "19897286"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ],
+          [
+            "The primary cause of this disease is mutations in the dystrophin gene resulting in massive muscle degeneration and inflammation."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "19897286",
+            "selected_quote": "The primary cause of this disease is mutations in the dystrophin gene resulting in massive muscle degeneration and inflammation.",
+            "selected_confidence": 1.0,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "two_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.795,
+        "hop_count": 2
+      },
+      {
+        "path_id": "BW006-P03",
+        "path_signature": "2e172e4a0f345108",
+        "path_text": "inflammation --[associated_with] muscular dystrophy duchenne | muscular dystrophy duchenne ->[causes] heart diseases",
+        "node_ids": [
+          "MESH:D007249_Disease",
+          "MESH:D020388_Disease",
+          "MESH:D006331_Disease"
+        ],
+        "names": [
+          "inflammation",
+          "muscular dystrophy duchenne",
+          "heart diseases"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation"
+          ],
+          [
+            "Muscular Dystrophy Duchenne"
+          ],
+          [
+            "Heart Diseases"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "causes"
+        ],
+        "edge_pmids": [
+          [
+            "17380205"
+          ],
+          [
+            "28192862"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration"
+          ],
+          [
+            "Duchenne muscular dystrophy causes a decline in cardiac health, resulting in premature mortality."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "17380205",
+            "selected_quote": "Duchenne muscular dystrophy (DMD) is a lethal X-linked disorder associated with dystrophin deficiency that results in chronic inflammation and severe skeletal muscle degeneration",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "28192862",
+            "selected_quote": "Duchenne muscular dystrophy causes a decline in cardiac health, resulting in premature mortality.",
+            "selected_confidence": 1.0,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 13,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "two_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.699,
+        "hop_count": 2
+      }
+    ]
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": true,
+    "max_hops": 2,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "gate_evidence_paths": true,
+    "gate_tier_counts": {
+      "A": 3,
+      "B": 0,
+      "C": 17
+    },
+    "rescue_triggered": false,
+    "rescue_added_paths": 0,
+    "rescue_outcomes": [
+      "not_needed"
+    ],
+    "pre_gate_candidate_count": 42,
+    "node_ids": [
+      "MESH:D007249_Disease"
+    ],
+    "exposed_pmids": [
+      "17380205",
+      "19897286",
+      "28192862"
+    ],
+    "exposed_paths": [
+      [
+        "inflammation",
+        "muscular dystrophy duchenne"
+      ],
+      [
+        "inflammation",
+        "muscular dystrophy duchenne",
+        "dmd"
+      ],
+      [
+        "inflammation",
+        "muscular dystrophy duchenne",
+        "heart diseases"
+      ]
+    ],
+    "exposed_edges": [
+      "inflammation --[associated_with] muscular dystrophy duchenne",
+      "inflammation --[associated_with] muscular dystrophy duchenne | muscular dystrophy duchenne ->[causes] dmd",
+      "inflammation --[associated_with] muscular dystrophy duchenne | muscular dystrophy duchenne ->[causes] heart diseases"
+    ],
+    "exposure_signature": "319a9f2a0bc885fe",
+    "routed_profile": "G_evidence_gated_two_hop",
+    "route_reason": "question_type=mechanism: evidence-gated multi-hop task",
+    "question_type": "mechanism",
+    "incremental_value": {
+      "method": "contrastive_bridge_coverage_v1",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 3,
+      "requirements": [
+        "tier_a_claim_safe",
+        "two_hop",
+        "support_outside_text_top_k",
+        "bridge_absent_from_question_and_text_context"
+      ]
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {
+        "17380205": {
+          "text_score": 0.466394,
+          "graph_score": 1.0,
+          "reranked_score": 0.653156
+        },
+        "19897286": {
+          "text_score": 0.464066,
+          "graph_score": 0.795,
+          "reranked_score": 0.579893
+        },
+        "28192862": {
+          "text_score": 0.412738,
+          "graph_score": 0.699,
+          "reranked_score": 0.51293
+        }
+      }
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "17380205",
+        "score": 0.6531559245613336
+      },
+      {
+        "pmid": "19897286",
+        "score": 0.5798927556605228
+      },
+      {
+        "pmid": "28192862",
+        "score": 0.5129296193856427
+      },
+      {
+        "pmid": "26803842",
+        "score": 0.4497065084294828
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "17380205",
+        "score": 0.46639373009435947
+      },
+      {
+        "pmid": "19897286",
+        "score": 0.4640657779392658
+      },
+      {
+        "pmid": "26803842",
+        "score": 0.4497065084294828
+      },
+      {
+        "pmid": "28192862",
+        "score": 0.41273787597791195
+      }
+    ]
+  },
+  "answers": {},
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 8.735081911087036,
+    "vector_index": 1.1656814590096474,
+    "total": 14.166972182691097
+  },
+  "token_usage": {
+    "input_tokens": 5514,
+    "output_tokens": 6774,
+    "total_tokens": 12288
+  },
+  "completed_at": "2026-08-09T10:53:54.618366+00:00"
+}

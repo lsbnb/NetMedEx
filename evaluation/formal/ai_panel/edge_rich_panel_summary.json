@@ -1,0 +1,48 @@
+{
+  "task": "edge",
+  "judges": [
+    "openai_gpt41",
+    "claude_haiku",
+    "gemini_pro"
+  ],
+  "rated_rows": 66,
+  "unique_items": 41,
+  "reliability": {
+    "entity_valid": {
+      "n_multi_rated_items": 23,
+      "rater_count": 2,
+      "fleiss_kappa": null,
+      "krippendorff_alpha": 0.0918
+    },
+    "relation_exists": {
+      "n_multi_rated_items": 23,
+      "rater_count": 2,
+      "fleiss_kappa": null,
+      "krippendorff_alpha": 0.6905
+    },
+    "relation_type_correct": {
+      "n_multi_rated_items": 23,
+      "rater_count": 2,
+      "fleiss_kappa": null,
+      "krippendorff_alpha": 0.4049
+    },
+    "direction_correct": {
+      "n_multi_rated_items": 23,
+      "rater_count": 2,
+      "fleiss_kappa": null,
+      "krippendorff_alpha": 1.0
+    },
+    "evidence_support": {
+      "n_multi_rated_items": 23,
+      "rater_count": 2,
+      "fleiss_kappa": null,
+      "krippendorff_alpha": 0.5602
+    },
+    "confidence": {
+      "n_multi_rated_items": 23,
+      "rater_count": 2,
+      "fleiss_kappa": null,
+      "krippendorff_alpha": 0.1235
+    }
+  }
+}

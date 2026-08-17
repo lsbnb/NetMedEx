@@ -1,0 +1,136 @@
+{
+  "run_id": "formal-v1-gpt-oss:120b-F_adaptive",
+  "benchmark_version": "formal-v1",
+  "status": "complete",
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "api": "chat_completions",
+  "sampling": {
+    "temperature": 1,
+    "note": "GPT-5.6 supports only its default temperature in Chat Completions."
+  },
+  "max_articles_per_question": 15,
+  "top_k": 10,
+  "answer_max_tokens": 1200,
+  "edge_method": "semantic",
+  "semantic_threshold": 0.5,
+  "claim_confidence_threshold": 0.8,
+  "edge_weight_cutoff": 1,
+  "hybrid_profile": "F_adaptive",
+  "query_file": "evaluation/formal/path_positive_20_v1/queries.csv",
+  "query_file_sha256": "b59f9020ee3a862e4e6f0bd5d1a6c9008d7b0d13b5ae7a43c2e7f888d4844527",
+  "expected_question_count": 20,
+  "questions_metadata_file": "evaluation/formal/path_positive_20_v1/questions.csv",
+  "questions_metadata_sha256": "8eac8c7c72e46882d8312abeb5d2bb2d104ef963d73cd96b22b1c482879c757a",
+  "gold_qrels_read_during_run": false,
+  "systems": [
+    "netmedex_hybrid_rag"
+  ],
+  "reuse_corpora_dir": "evaluation/formal/path_positive_20_v1/frozen_corpora",
+  "reuse_exposures_dir": "evaluation/formal/path_positive_20_v1/frozen_exposures",
+  "reuse_graphs_dir": null,
+  "persist_graph": false,
+  "graph_cache_dir": "evaluation/formal/runs/path_positive_20_gptoss120b_v1/graph_cache",
+  "kg_expansion_articles": 15,
+  "suppress_graph_answer_context": false,
+  "answer_generation": true,
+  "max_total_tokens_per_process": null,
+  "started_at": "2026-08-13T05:35:03.020576+00:00",
+  "attempts": [
+    {
+      "attempt_id": "attempt-001",
+      "started_at": "2026-08-13T05:35:03.020959+00:00",
+      "selected_questions": [
+        "PP001"
+      ],
+      "force": false,
+      "status": "complete_with_failures",
+      "completed_at": "2026-08-13T05:35:09.333701+00:00",
+      "completed_questions_after_attempt": 0,
+      "failed_questions_after_attempt": 1
+    },
+    {
+      "attempt_id": "attempt-002",
+      "started_at": "2026-08-13T05:37:54.861256+00:00",
+      "selected_questions": [
+        "PP001"
+      ],
+      "force": true,
+      "status": "complete",
+      "completed_at": "2026-08-13T05:38:33.031471+00:00",
+      "completed_questions_after_attempt": 1,
+      "failed_questions_after_attempt": 0
+    },
+    {
+      "attempt_id": "attempt-003",
+      "started_at": "2026-08-13T06:08:59.160558+00:00",
+      "selected_questions": [
+        "PP001",
+        "PP002",
+        "PP003",
+        "PP004",
+        "PP005",
+        "PP006",
+        "PP007",
+        "PP008",
+        "PP009",
+        "PP010",
+        "PP011",
+        "PP012",
+        "PP013",
+        "PP014",
+        "PP015",
+        "PP016",
+        "PP017",
+        "PP018",
+        "PP019",
+        "PP020"
+      ],
+      "force": false,
+      "status": "complete",
+      "completed_at": "2026-08-13T06:19:44.398992+00:00",
+      "completed_questions_after_attempt": 20,
+      "failed_questions_after_attempt": 0
+    },
+    {
+      "attempt_id": "attempt-004",
+      "started_at": "2026-08-13T06:24:59.324703+00:00",
+      "selected_questions": [
+        "PP008",
+        "PP017"
+      ],
+      "force": true,
+      "status": "complete",
+      "completed_at": "2026-08-13T06:26:13.424252+00:00",
+      "completed_questions_after_attempt": 20,
+      "failed_questions_after_attempt": 0
+    }
+  ],
+  "question_scope": [
+    "PP001",
+    "PP002",
+    "PP003",
+    "PP004",
+    "PP005",
+    "PP006",
+    "PP007",
+    "PP008",
+    "PP009",
+    "PP010",
+    "PP011",
+    "PP012",
+    "PP013",
+    "PP014",
+    "PP015",
+    "PP016",
+    "PP017",
+    "PP018",
+    "PP019",
+    "PP020"
+  ],
+  "last_resumed_at": "2026-08-13T06:24:59.324703+00:00",
+  "completed_questions": 20,
+  "failed_questions": 0,
+  "last_checkpoint_at": "2026-08-13T06:26:13.390333+00:00",
+  "completed_at": "2026-08-13T06:26:13.424212+00:00"
+}

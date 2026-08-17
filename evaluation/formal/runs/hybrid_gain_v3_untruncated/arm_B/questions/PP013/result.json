@@ -1,0 +1,218 @@
+{
+  "status": "complete",
+  "question_id": "PP013",
+  "domain": "infectious disease",
+  "question": "What evidence supports a mechanistic path from chronic hepatitis b virus (hbv) infection to hcc through chronic liver inflammation? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "HBV hepatocellular carcinoma inflammation HBx integration fibrosis",
+  "effective_pubmed_query": "HBV hepatocellular carcinoma inflammation HBx integration fibrosis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "16461228",
+    "20413301",
+    "20485626",
+    "25646384",
+    "28097530",
+    "29052129",
+    "30611768",
+    "32839523",
+    "38064540",
+    "39290403",
+    "40544269"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports a mechanistic path from chronic hepatitis b virus (hbv) infection to hcc through chronic liver inflammation? Distinguish evidence for each hop from overall inference.",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [
+        "chronic liver inflammation"
+      ],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "pre_gate_incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [
+        "chronic liver inflammation"
+      ],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "integration_decision": {
+      "method": "three_stage_incremental_utility_router_v1",
+      "mode": "traditional_fallback",
+      "reason": "no_claim_safe_path",
+      "claim_safe_path_count": 0,
+      "incremental_path_count": 0,
+      "confirmatory_path_count": 0,
+      "citation_validation_pmids": [],
+      "policy": "three_stage"
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "disabled",
+      "reason": "integration_mode=traditional_fallback",
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "29052129",
+        "score": 0.6172901264506794
+      },
+      {
+        "pmid": "30611768",
+        "score": 0.5818450990629075
+      },
+      {
+        "pmid": "39290403",
+        "score": 0.567904215015645
+      },
+      {
+        "pmid": "20413301",
+        "score": 0.5621072051318786
+      },
+      {
+        "pmid": "20485626",
+        "score": 0.5497443051800831
+      },
+      {
+        "pmid": "16461228",
+        "score": 0.546792510215603
+      },
+      {
+        "pmid": "32839523",
+        "score": 0.5450913075479472
+      },
+      {
+        "pmid": "25646384",
+        "score": 0.5337705505936033
+      },
+      {
+        "pmid": "28097530",
+        "score": 0.5273220794144308
+      },
+      {
+        "pmid": "38064540",
+        "score": 0.5225777337219615
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "29052129",
+        "score": 0.6172901264506794
+      },
+      {
+        "pmid": "30611768",
+        "score": 0.5818450990629075
+      },
+      {
+        "pmid": "39290403",
+        "score": 0.567904215015645
+      },
+      {
+        "pmid": "20413301",
+        "score": 0.5621072051318786
+      },
+      {
+        "pmid": "20485626",
+        "score": 0.5497443051800831
+      },
+      {
+        "pmid": "16461228",
+        "score": 0.546792510215603
+      },
+      {
+        "pmid": "32839523",
+        "score": 0.5450913075479472
+      },
+      {
+        "pmid": "25646384",
+        "score": 0.5337705505936033
+      },
+      {
+        "pmid": "28097530",
+        "score": 0.5273220794144308
+      },
+      {
+        "pmid": "38064540",
+        "score": 0.5225777337219615
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Evidence linking chronic HBV infection to HCC through a cascade of inflammation‑driven liver injury**\n\n- **Chronic HBV → Persistent hepatic inflammation** – Human studies show that host‑immune responses to long‑lasting HBV infection cause “recurrent liver inflammation” (PMID: 29052129) and that chronic inflammation is a hallmark of HBV carriers (PMID: 16461228, human).  \n\n- **Inflammation → Fibrosis/Cirrhosis** – Cytokine‑mediated inflammation drives fibrosis and cirrhosis, the predominant “major carcinogenic mechanism” of HBV‑associated HCC (PMID: 20485626, human review). The same review notes that inflammation “accelerates hepatocyte turnover” and “promotes accumulation of mutations” (PMID: 29052129).  \n\n- **Fibrosis/Cirrhosis → Hepatocyte regeneration & turnover** – In human chronic HBV, liver damage elicits repeated cycles of cell death and regeneration, increasing the turnover rate of hepatocytes (PMID: 16461228, human). This regenerative pressure is identified as a key step that “favors the accumulation of genetic alterations” (PMID: 16461228).  \n\n- **Regeneration → Genomic instability & mutation accumulation** – Chronic regeneration under inflammatory stress raises the mutational burden; HBV‑related tumors display “high genomic instability” and a markedly increased rate of chromosomal alterations compared with non‑HBV HCC (PMID: 16461228, human). The same source links prolonged inflammation to “accumulation of mutations” that precede malignancy (PMID: 29052129).  \n\n- **Mutation accumulation → HCC development** – The overall human evidence integrates the above steps, concluding that “recurrent liver inflammation… can lead to liver fibrosis and cirrhosis and accelerate hepatocyte turnover rate and promote accumulation of mutations,” ultimately culminating in HCC (PMID: 29052129). Animal models demonstrate that when inflammation is absent, HBV can still induce HCC via direct oncogenic actions (PMID: 39290403, mouse), underscoring that the inflammation‑driven route is a major but not exclusive pathway.\n\n**Conclusion:** Multiple human studies provide direct mechanistic evidence that chronic HBV‑induced inflammation drives fibrosis, regenerative turnover, and genomic instability, which together form the predominant pathway from infection to hepatocellular carcinoma."
+  },
+  "answer_finish_reasons": {
+    "traditional_rag": "stop"
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 5.64083456993103e-05,
+    "vector_index": 1.6109314188361168,
+    "kg_expansion": 1.2531876564025879e-05,
+    "answer_traditional_rag": 30.844996251165867,
+    "total": 33.0246606618166
+  },
+  "token_usage": {
+    "output_tokens": 1138,
+    "input_tokens": 3586,
+    "total_tokens": 4724
+  },
+  "completed_at": "2026-08-16T20:28:42.994399+00:00"
+}

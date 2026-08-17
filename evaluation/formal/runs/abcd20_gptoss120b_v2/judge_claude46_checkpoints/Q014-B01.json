@@ -1,0 +1,63 @@
+{
+  "task": "answer",
+  "question_id": "Q014",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "e15614fd602fc1e71712eedb19ad291d782eebd0ee6b98ede26ea0411e870bba",
+  "raw_response_sha256": "81317aabd2c173ff03ce73646999ffd4d4fdcc2836433cf154c6001accc55971",
+  "usage": {
+    "input_tokens": 4238,
+    "output_tokens": 599,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 4837
+  },
+  "rated_at": "2026-08-13T04:40:30.662606+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q014-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 2,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Mechanistically sound and well-organized, but no citations provided; claims about specific trials and biomarker sub-studies are unverifiable. Decernotinib note is a useful addition."
+      },
+      {
+        "answer_id": "Q014-B",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "PMIDs cited and evidence type clearly labeled. Minor issue: STAT5 downstream of IFN-α is less standard than STAT1. Good distinction of in-vitro vs. ex-vivo evidence."
+      },
+      {
+        "answer_id": "Q014-C",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Well-cited with same PMIDs as B/D; clear evidence hierarchy. Hypothesis section adds value. Minor redundancy with other answers but well-structured."
+      },
+      {
+        "answer_id": "Q014-D",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Most complete: distinguishes direct mechanistic from associative clinical evidence, cites PMIDs, includes peficitinib synoviocyte data, and proposes a precision-medicine hypothesis. Best overall."
+      }
+    ],
+    "preferred_item_id": "Q014-D",
+    "pairwise_reason": "Q014-D provides the most rigorous evidence hierarchy (direct mechanistic vs. associative clinical), consistent PMID citations, mechanistically coherent explanations, and a clinically actionable hypothesis, making it the most complete and well-grounded response."
+  }
+}

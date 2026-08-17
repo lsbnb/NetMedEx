@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "Q050",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "25360f688098c3a0493564a4720a05dcd801116afacfcebdf146bc7fdeb23323",
+  "raw_response_sha256": "2ae632253852d0299095a96858f94b676a03c95102171fd75495b3cda62e0e6e",
+  "usage": {
+    "input_tokens": 5069,
+    "output_tokens": 405,
+    "total_tokens": 5474
+  },
+  "rated_at": "2026-08-13T04:56:53.479875+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q050-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Clear hypothesis, predictions, mouse & human plans; grounded in known biology without dubious citations."
+      },
+      {
+        "answer_id": "Q050-B",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 2,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Detailed design but relies on likely fabricated PMIDs; specific metabolic claim needs verification."
+      },
+      {
+        "answer_id": "Q050-C",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Broad evidence list; some citations may be real, others questionable, reducing confidence."
+      },
+      {
+        "answer_id": "Q050-D",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 2,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Similar to B/C but with fewer details; citation credibility concerns lower grounding."
+      }
+    ],
+    "preferred_item_id": "Q050-A",
+    "pairwise_reason": "Answer A offers the most complete, well‑structured hypothesis and experimental plan, includes translational relevance, and avoids questionable citations, giving it the highest overall merit."
+  }
+}

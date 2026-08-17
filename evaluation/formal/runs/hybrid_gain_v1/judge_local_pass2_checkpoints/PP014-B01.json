@@ -1,0 +1,91 @@
+{
+  "task": "answer",
+  "question_id": "PP014",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "dfb64cc3636c48b081c0f597cc3f49f893128d5e7b6e7d89c3c18d25f084c02b",
+  "raw_response_sha256": "d5dc7248035d757442b8a86554fc85d29570b4063383620f81845423c8345ad9",
+  "usage": {
+    "input_tokens": 6583,
+    "output_tokens": 672,
+    "total_tokens": 7255
+  },
+  "rated_at": "2026-08-16T19:11:00.512994+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP014-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, clear hop‑by‑hop evidence with animal studies, reviews, mechanisms and testable hypothesis."
+      },
+      {
+        "answer_id": "PP014-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Similar coverage to A, adds extra review citation; clear but lacks explicit testable hypothesis."
+      },
+      {
+        "answer_id": "PP014-C",
+        "correctness": 5,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Detailed hops but answer truncated, missing concluding summary."
+      },
+      {
+        "answer_id": "PP014-D",
+        "correctness": 5,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Relies on reviews for dysbiosis→SCFA; truncated ending; less explicit hop separation."
+      },
+      {
+        "answer_id": "PP014-E",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Well‑structured hop list, combines animal data and reviews; fully complete."
+      },
+      {
+        "answer_id": "PP014-F",
+        "correctness": 5,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Includes human dysbiosis data; answer cut off, missing final conclusion."
+      },
+      {
+        "answer_id": "PP014-G",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Clear hop evidence, strong mechanistic links; fully complete."
+      }
+    ],
+    "preferred_item_id": "PP014-A",
+    "pairwise_reason": "PP014-A provides the most complete, clearly organized hop‑by‑hop evidence with direct animal data, mechanistic detail, supporting reviews, and an explicit testable hypothesis, making it the most useful answer."
+  }
+}

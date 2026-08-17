@@ -1,0 +1,91 @@
+{
+  "task": "answer",
+  "question_id": "PP017",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "97e24db80b06cfdb73bb1c024a3cc34cbbc8852de23b2c66f4eef442c2b8f74b",
+  "raw_response_sha256": "90f69881cae27d03e9a446b8447085ffa5182cc64b07cac265c692bd45413b98",
+  "usage": {
+    "input_tokens": 4226,
+    "output_tokens": 645,
+    "total_tokens": 4871
+  },
+  "rated_at": "2026-08-16T19:01:36.360711+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP017-A",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Accurate citations, clear hop distinction, but limited depth on animal evidence."
+      },
+      {
+        "answer_id": "PP017-B",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Accurate citations, clear hop distinction, but limited depth on animal evidence."
+      },
+      {
+        "answer_id": "PP017-C",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Accurate citations, clear hop distinction, but limited depth on animal evidence."
+      },
+      {
+        "answer_id": "PP017-D",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Accurate citations, clear hop distinction, but limited depth on animal evidence."
+      },
+      {
+        "answer_id": "PP017-E",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Accurate citations, clear hop distinction, but limited depth on animal evidence."
+      },
+      {
+        "answer_id": "PP017-F",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Accurate citations, clear hop distinction, but limited depth on animal evidence."
+      },
+      {
+        "answer_id": "PP017-G",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Accurate citations, clear hop distinction, but limited depth on animal evidence."
+      }
+    ],
+    "preferred_item_id": "tie",
+    "pairwise_reason": "All answers are virtually identical, providing correct citations and clear separation of evidence for each step, resulting in equal overall quality."
+  }
+}

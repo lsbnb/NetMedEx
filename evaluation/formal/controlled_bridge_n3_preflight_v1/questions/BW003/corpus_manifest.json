@@ -1,0 +1,134 @@
+{
+  "question_id": "BW003",
+  "status": "ineligible",
+  "corpus_strategy": "controlled_endpoint_isolated_shared_bridge",
+  "same_corpus_for_text_and_hybrid": true,
+  "mediators_withheld_from_system_query": true,
+  "source_patterns": [
+    "\\bCFTR\\b",
+    "\\bcystic\\s+fibrosis\\s+transmembrane\\b"
+  ],
+  "target_patterns": [
+    "\\bintestinal\\s+inflammation\\b",
+    "\\bgut\\s+inflammation\\b",
+    "\\bintestinal\\s+inflammatory\\b"
+  ],
+  "source_identifiers": [],
+  "target_identifiers": [],
+  "target_side_forbidden_source_patterns": [
+    "\\bCFTR\\b",
+    "\\bcystic\\s+fibrosis\\s+transmembrane\\b"
+  ],
+  "target_side_forbidden_source_identifiers": [],
+  "eligible_mediators": [],
+  "mediator_audit": [
+    {
+      "name": "ER stress",
+      "queries": {
+        "source": "CFTR[Title/Abstract] AND (ER stress[Title/Abstract] OR endoplasmic reticulum stress[Title/Abstract] OR unfolded protein response[Title/Abstract])",
+        "target": "(ER stress[Title/Abstract] OR endoplasmic reticulum stress[Title/Abstract] OR unfolded protein response[Title/Abstract]) AND intestinal inflammation[Title/Abstract]"
+      },
+      "candidate_pmids": {
+        "source": [
+          "37482689",
+          "40707916",
+          "39919755",
+          "16987996",
+          "40390263",
+          "34831204",
+          "40720746",
+          "41968658",
+          "33714781",
+          "35748162",
+          "40332143",
+          "38897882",
+          "38025192",
+          "28075361",
+          "34050864",
+          "21329791",
+          "40968569",
+          "29588456",
+          "21750546",
+          "33013490",
+          "33239626",
+          "40247380",
+          "39070132",
+          "18458236",
+          "27062250",
+          "32927272",
+          "39329905",
+          "36045259",
+          "29061306",
+          "36835664"
+        ],
+        "target": [
+          "31286804",
+          "36738733",
+          "39566817",
+          "34117211",
+          "33324392",
+          "19865077",
+          "20338921",
+          "35318552",
+          "38462652",
+          "22796794",
+          "21821022",
+          "23588234",
+          "37453186",
+          "21861319",
+          "26950312",
+          "34654459",
+          "41057521",
+          "20495455",
+          "28747426",
+          "40762957",
+          "38442474",
+          "34968000",
+          "39806198",
+          "37168865",
+          "41430778",
+          "37443813",
+          "28736290",
+          "28873384",
+          "37436421",
+          "40749794"
+        ]
+      },
+      "accepted_pmids": {
+        "source": [
+          "37482689",
+          "40707916",
+          "16987996"
+        ],
+        "target": [
+          "31286804",
+          "36738733",
+          "39566817"
+        ]
+      },
+      "annotation_identifiers": {
+        "source": [],
+        "target": []
+      },
+      "shared_mediator_identifiers": [],
+      "rejected_pmids": {
+        "source": {
+          "39919755": [
+            "mediator_absent"
+          ]
+        },
+        "target": {}
+      },
+      "bridge_eligible": false
+    }
+  ],
+  "distractor_audit": null,
+  "fetched_pmids": [
+    "37482689",
+    "40707916",
+    "16987996",
+    "31286804",
+    "36738733",
+    "39566817"
+  ]
+}

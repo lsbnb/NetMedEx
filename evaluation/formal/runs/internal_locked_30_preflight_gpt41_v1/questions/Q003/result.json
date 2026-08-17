@@ -1,0 +1,184 @@
+{
+  "status": "complete",
+  "question_id": "Q003",
+  "domain": "metabolic disease",
+  "question": "What evidence links insulin resistance to inflammatory cytokines in human studies?",
+  "question_type": "direct_evidence",
+  "pubmed_query": "insulin resistance AND inflammatory cytokines AND humans",
+  "effective_pubmed_query": "insulin resistance AND inflammatory cytokines AND humans",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "12172480",
+    "17053832",
+    "18094066",
+    "24003928",
+    "29241747",
+    "31426593",
+    "31577826",
+    "32437299",
+    "33439300",
+    "34536157",
+    "34847640",
+    "37895163",
+    "39471690",
+    "39593091",
+    "39749338"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "routed_profile": "A_text_only",
+    "route_reason": "question_type=direct_evidence",
+    "question_type": "direct_evidence",
+    "graph_retrieval_query": "What evidence links insulin resistance to inflammatory cytokines in human studies?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "32437299",
+        "score": 0.6123151536067515
+      },
+      {
+        "pmid": "12172480",
+        "score": 0.6025437888221288
+      },
+      {
+        "pmid": "34536157",
+        "score": 0.5703837014267262
+      },
+      {
+        "pmid": "18094066",
+        "score": 0.5500758840519097
+      },
+      {
+        "pmid": "24003928",
+        "score": 0.5239153161143528
+      },
+      {
+        "pmid": "17053832",
+        "score": 0.5233060489058562
+      },
+      {
+        "pmid": "39749338",
+        "score": 0.5146218576478013
+      },
+      {
+        "pmid": "39471690",
+        "score": 0.5073398217683751
+      },
+      {
+        "pmid": "33439300",
+        "score": 0.5069387500055144
+      },
+      {
+        "pmid": "37895163",
+        "score": 0.5055957155978293
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "32437299",
+        "score": 0.6123151536067515
+      },
+      {
+        "pmid": "12172480",
+        "score": 0.6025437888221288
+      },
+      {
+        "pmid": "34536157",
+        "score": 0.5703837014267262
+      },
+      {
+        "pmid": "18094066",
+        "score": 0.5500758840519097
+      },
+      {
+        "pmid": "24003928",
+        "score": 0.5239153161143528
+      },
+      {
+        "pmid": "17053832",
+        "score": 0.5233060489058562
+      },
+      {
+        "pmid": "39749338",
+        "score": 0.5146218576478013
+      },
+      {
+        "pmid": "39471690",
+        "score": 0.5073398217683751
+      },
+      {
+        "pmid": "33439300",
+        "score": 0.5069387500055144
+      },
+      {
+        "pmid": "37895163",
+        "score": 0.5055957155978293
+      }
+    ]
+  },
+  "answers": {},
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 2.0541250705718994e-05,
+    "vector_index": 4.486117646098137,
+    "kg_expansion": 1.5072524547576904e-05,
+    "total": 4.975061804056168
+  },
+  "token_usage": {},
+  "completed_at": "2026-08-13T10:35:52.058904+00:00"
+}

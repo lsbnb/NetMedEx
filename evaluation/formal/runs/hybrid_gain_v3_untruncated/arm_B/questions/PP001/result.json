@@ -1,0 +1,204 @@
+{
+  "status": "complete",
+  "question_id": "PP001",
+  "domain": "osteoporosis",
+  "question": "What evidence supports the claim that icariin promotes osteogenic differentiation, and what are the important study-context limitations?",
+  "question_type": "mechanism",
+  "pubmed_query": "icariin AND (osteoblast OR osteogenesis) AND (microRNA OR miRNA)",
+  "effective_pubmed_query": "icariin AND (osteoblast OR osteogenesis) AND (microRNA OR miRNA)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "27492554",
+    "29500883",
+    "29904399",
+    "32911026",
+    "33743412",
+    "35292240",
+    "38045146",
+    "39588260",
+    "41484919"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports the claim that icariin promotes osteogenic differentiation, and what are the important study-context limitations?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "pre_gate_incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "integration_decision": {
+      "method": "three_stage_incremental_utility_router_v1",
+      "mode": "traditional_fallback",
+      "reason": "no_claim_safe_path",
+      "claim_safe_path_count": 0,
+      "incremental_path_count": 0,
+      "confirmatory_path_count": 0,
+      "citation_validation_pmids": [],
+      "policy": "three_stage"
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "disabled",
+      "reason": "integration_mode=traditional_fallback",
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "27492554",
+        "score": 0.633327811872088
+      },
+      {
+        "pmid": "33743412",
+        "score": 0.5862302414526778
+      },
+      {
+        "pmid": "29904399",
+        "score": 0.5771281986222854
+      },
+      {
+        "pmid": "35292240",
+        "score": 0.5741757243258253
+      },
+      {
+        "pmid": "29500883",
+        "score": 0.558228130795323
+      },
+      {
+        "pmid": "38045146",
+        "score": 0.5580190296773696
+      },
+      {
+        "pmid": "41484919",
+        "score": 0.5308068723750677
+      },
+      {
+        "pmid": "39588260",
+        "score": 0.517301487762988
+      },
+      {
+        "pmid": "32911026",
+        "score": 0.5018999076626148
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "27492554",
+        "score": 0.633327811872088
+      },
+      {
+        "pmid": "33743412",
+        "score": 0.5862302414526778
+      },
+      {
+        "pmid": "29904399",
+        "score": 0.5771281986222854
+      },
+      {
+        "pmid": "35292240",
+        "score": 0.5741757243258253
+      },
+      {
+        "pmid": "29500883",
+        "score": 0.558228130795323
+      },
+      {
+        "pmid": "38045146",
+        "score": 0.5580190296773696
+      },
+      {
+        "pmid": "41484919",
+        "score": 0.5308068723750677
+      },
+      {
+        "pmid": "39588260",
+        "score": 0.517301487762988
+      },
+      {
+        "pmid": "32911026",
+        "score": 0.5018999076626148
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Direct experimental evidence**  \n- In mouse MC3T3‑E1 pre‑osteoblasts icariin (≤100 µM) increased alkaline phosphatase (ALP) activity, mineralized nodule formation (Alizarin‑Red S) and the protein levels of Runx2, BMP2 and OCN, confirming enhanced osteogenic differentiation in a dose‑ and time‑dependent manner【PMID:29904399】 (in‑vitro).  \n- In human bone‑marrow mesenchymal stem cells (hBMSCs) icariin raised ALP activity, BSP‑II and Runx2 expression while suppressing adipogenic markers (PPAR‑γ, C/EBP‑α), demonstrating a shift toward osteogenesis【PMID:33743412】 (human in‑vitro).  \n- In a rat osteoporosis model, oral icariin improved bone micro‑architecture and, when combined with miR‑335‑5p over‑expression, enhanced BMSC matrix mineralization, indicating functional bone‑forming effects in vivo【PMID:35292240】 (animal).  \n- In an LPS‑induced inflammatory bone‑loss cell model, icariin restored Runx2 protein (but not mRNA) and rescued ALP and mineralization, showing efficacy under catabolic stress【PMID:27492554】 (in‑vitro).  \n- In MC3T3‑E1 cells challenged with titanium particles, icariin (10⁻⁸ M) prevented particle‑induced suppression of ALP, BMP2, Runx2 and OCN, and this protection was lost after miR‑21‑5p knock‑down, linking the effect to a specific miRNA【PMID:29500883】 (in‑vitro).\n\n**Associative molecular findings**  \n- Icariin down‑regulates miR‑34c, leading to increased Runx2 protein and inhibition of JNK/p38/NF‑κB signaling in LPS‑treated cells【PMID:27492554】.  \n- Icariin up‑regulates miR‑23a‑mediated activation of Wnt/β‑catenin (β‑catenin, LRP5, TCF1) in hBMSCs; DKK1 blocks this effect, tying osteogenesis to canonical Wnt signaling【PMID:33743412】.  \n- Icariin elevates miR‑153, which in turn enhances Runx2 expression via direct 3′‑UTR interaction【PMID:29904399】.  \n- In rats, icariin increases miR‑335‑5p, which suppresses PTEN, thereby fostering BMSC osteogenesis【PMID:35292240】.  \n- Icariin induces the circRNA mmu_circ_0000349/miR‑138‑5p/JMJD3 axis, with concurrent rises in ALP and Runx2【PMID:38045146】.\n\n**Testable hypotheses derived from the data**  \n- *Hypothesis 1*: Icariin’s osteogenic boost is mediated principally by miR‑34c suppression; restoring miR‑34c should negate icariin’s effect on Runx2 protein and mineralization.  \n- *Hypothesis 2*: Activation of Wnt/β‑catenin by icariin requires miR‑23a down‑regulation; manipulating miR‑23a levels will modulate icariin‑driven osteogenesis.  \n- *Hypothesis 3*: The circRNA mmu_circ_0000349 acts as a sponge for miR‑138‑5p, and its over‑expression alone can mimic icariin’s promotion of osteoblast differentiation.\n\n**Key study‑context limitations**  \n- **Model scope**: The majority of evidence comes from cell lines (mouse MC3T3‑E1, human hBMSC) or short‑term rodent models; findings may not translate to human bone physiology or long‑term clinical outcomes.  \n- **Dose and exposure**: Effective concentrations range from nanomolar (10⁻⁸ M) to high micromolar (≤100 µM) without systematic pharmacokinetic profiling, raising uncertainty about achievable therapeutic levels in patients.  \n- **Mechanistic focus**: Many studies infer causality from correlation (e.g., miRNA changes) without exhaustive rescue experiments; off‑target or pleiotropic effects of icariin are not excluded.  \n- **Pathological context**: Several models involve induced stressors (LPS, titanium particles) that mimic disease states but differ from normal bone remodeling, limiting generalizability to healthy bone formation.  \n- **Lack of functional bone strength data**: In vivo work reports micro‑architectural improvement but seldom measures biomechanical strength or fracture resistance, which are critical clinical endpoints.\n\n**Conclusion** – Pre‑clinical data consistently show icariin enhances osteogenic markers and mineralization across in‑vitro and animal models, yet translation to humans requires addressing dosing, long‑term safety, and functional bone outcomes."
+  },
+  "answer_finish_reasons": {
+    "traditional_rag": "stop"
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 3.203749656677246e-05,
+    "vector_index": 3.2813055366277695,
+    "kg_expansion": 7.1302056312561035e-06,
+    "answer_traditional_rag": 49.167415246367455,
+    "total": 52.93655128777027
+  },
+  "token_usage": {
+    "output_tokens": 1833,
+    "input_tokens": 4590,
+    "total_tokens": 6423
+  },
+  "completed_at": "2026-08-16T20:21:54.453105+00:00"
+}

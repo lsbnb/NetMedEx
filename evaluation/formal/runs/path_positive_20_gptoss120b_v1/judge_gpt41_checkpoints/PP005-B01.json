@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP005",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "f3ba592447b3e09970c6ec1ba3e6b214ea2eff9914235793ac97b382afed75d8",
+  "raw_response_sha256": "4230112d8fc477d83990e4b40712bcf78d7270ca0f58e4dca9d3773a13210f4b",
+  "usage": {
+    "input_tokens": 2798,
+    "output_tokens": 483,
+    "total_tokens": 3281
+  },
+  "rated_at": "2026-08-13T06:27:54.285796+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP005-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurately summarizes human, animal, and in-vitro evidence; clearly details limitations; well-grounded with PMIDs; distinguishes evidence types and context."
+      },
+      {
+        "answer_id": "PP005-B",
+        "correctness": 2,
+        "completeness": 3,
+        "relevance": 4,
+        "grounding": 2,
+        "mechanistic_coherence": 2,
+        "research_value": 3,
+        "notes": "Describes increased cancer risk, which contradicts prevailing evidence; lacks citations; does not distinguish human/animal/in-vitro; mechanistic details absent."
+      },
+      {
+        "answer_id": "PP005-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Well-structured, accurate, and comprehensive; distinguishes evidence types; provides mechanistic and contextual limitations; includes a testable hypothesis."
+      },
+      {
+        "answer_id": "PP005-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate, well-grounded, and comprehensive; clearly distinguishes evidence types and limitations; includes mechanistic and clinical context."
+      }
+    ],
+    "preferred_item_id": "PP005-A",
+    "pairwise_reason": "PP005-A, C, and D are all strong, but A is slightly preferred for its clarity, breadth, and explicit discussion of study-context limitations. B is downgraded for incorrect directionality and lack of grounding."
+  }
+}

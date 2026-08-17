@@ -1,0 +1,176 @@
+{
+  "status": "complete",
+  "question_id": "BW007",
+  "domain": "vascular biology",
+  "question": "Which evidence-supported intermediates connect endothelial senescence to atherosclerosis?",
+  "question_type": "mechanism",
+  "pubmed_query": "endothelial senescence atherosclerosis oxidative stress inflammation SASP",
+  "effective_pubmed_query": "endothelial senescence atherosclerosis oxidative stress inflammation SASP",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "40167015",
+    "42389866",
+    "32246301",
+    "37385572",
+    "40660002",
+    "40418230",
+    "35853997",
+    "39180980",
+    "40049100",
+    "40355758",
+    "39176657",
+    "37883591",
+    "37030149",
+    "41407670",
+    "41037021",
+    "37684253",
+    "12490960",
+    "34389841",
+    "37897322",
+    "38085578",
+    "19942084",
+    "40397286",
+    "35899624",
+    "37220502",
+    "40026146",
+    "41303445"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "37883591",
+        "score": 0.6608232790190621
+      },
+      {
+        "pmid": "35853997",
+        "score": 0.6274521302299642
+      },
+      {
+        "pmid": "40418230",
+        "score": 0.6070141669790281
+      },
+      {
+        "pmid": "40660002",
+        "score": 0.5945013391433571
+      },
+      {
+        "pmid": "39180980",
+        "score": 0.5863186845829912
+      },
+      {
+        "pmid": "41037021",
+        "score": 0.5804829990942547
+      },
+      {
+        "pmid": "39176657",
+        "score": 0.5633734030599543
+      },
+      {
+        "pmid": "32246301",
+        "score": 0.557144055965142
+      },
+      {
+        "pmid": "40049100",
+        "score": 0.5558444350043438
+      },
+      {
+        "pmid": "37030149",
+        "score": 0.5556933205906748
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "37883591",
+        "score": 0.6608232790190621
+      },
+      {
+        "pmid": "35853997",
+        "score": 0.6274521302299642
+      },
+      {
+        "pmid": "40418230",
+        "score": 0.6070141669790281
+      },
+      {
+        "pmid": "40660002",
+        "score": 0.5945013391433571
+      },
+      {
+        "pmid": "39180980",
+        "score": 0.5863186845829912
+      },
+      {
+        "pmid": "41037021",
+        "score": 0.5804829990942547
+      },
+      {
+        "pmid": "39176657",
+        "score": 0.5633734030599543
+      },
+      {
+        "pmid": "32246301",
+        "score": 0.557144055965142
+      },
+      {
+        "pmid": "40049100",
+        "score": 0.5558444350043438
+      },
+      {
+        "pmid": "37030149",
+        "score": 0.5556933205906748
+      }
+    ]
+  },
+  "answers": {},
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 3.1463801860809326e-05,
+    "vector_index": 2.3040884137153625,
+    "total": 2.8471007123589516
+  },
+  "token_usage": {},
+  "completed_at": "2026-08-09T18:47:02.673132+00:00"
+}

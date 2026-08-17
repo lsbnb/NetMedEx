@@ -1,0 +1,184 @@
+{
+  "status": "complete",
+  "question_id": "Q027",
+  "domain": "endocrinology",
+  "question": "What evidence links vitamin D signaling to immune regulation in autoimmune thyroid disease?",
+  "question_type": "direct_evidence",
+  "pubmed_query": "vitamin D VDR autoimmune thyroid disease Hashimoto T cells cytokines",
+  "effective_pubmed_query": "vitamin D VDR autoimmune thyroid disease Hashimoto T cells cytokines",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "21278761",
+    "23065592",
+    "23894780",
+    "24563883",
+    "26593863",
+    "27018618",
+    "27043843",
+    "28070798",
+    "28092021",
+    "32666762",
+    "34015387",
+    "34621381",
+    "36916543",
+    "40822954",
+    "41226614"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "routed_profile": "A_text_only",
+    "route_reason": "question_type=direct_evidence",
+    "question_type": "direct_evidence",
+    "graph_retrieval_query": "What evidence links vitamin D signaling to immune regulation in autoimmune thyroid disease?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "32666762",
+        "score": 0.7326991420669492
+      },
+      {
+        "pmid": "21278761",
+        "score": 0.7047753216795625
+      },
+      {
+        "pmid": "41226614",
+        "score": 0.685653441242633
+      },
+      {
+        "pmid": "23894780",
+        "score": 0.6708494285107817
+      },
+      {
+        "pmid": "24563883",
+        "score": 0.662108802606821
+      },
+      {
+        "pmid": "40822954",
+        "score": 0.6588538297972774
+      },
+      {
+        "pmid": "27043843",
+        "score": 0.6515949773187513
+      },
+      {
+        "pmid": "36916543",
+        "score": 0.6498766908071232
+      },
+      {
+        "pmid": "28092021",
+        "score": 0.636694190613168
+      },
+      {
+        "pmid": "34015387",
+        "score": 0.627982255022792
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "32666762",
+        "score": 0.7326991420669492
+      },
+      {
+        "pmid": "21278761",
+        "score": 0.7047753216795625
+      },
+      {
+        "pmid": "41226614",
+        "score": 0.685653441242633
+      },
+      {
+        "pmid": "23894780",
+        "score": 0.6708494285107817
+      },
+      {
+        "pmid": "24563883",
+        "score": 0.662108802606821
+      },
+      {
+        "pmid": "40822954",
+        "score": 0.6588538297972774
+      },
+      {
+        "pmid": "27043843",
+        "score": 0.6515949773187513
+      },
+      {
+        "pmid": "36916543",
+        "score": 0.6498766908071232
+      },
+      {
+        "pmid": "28092021",
+        "score": 0.636694190613168
+      },
+      {
+        "pmid": "34015387",
+        "score": 0.627982255022792
+      }
+    ]
+  },
+  "answers": {},
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 2.133101224899292e-05,
+    "vector_index": 1.7656517028808594,
+    "kg_expansion": 9.12696123123169e-06,
+    "total": 2.262733392417431
+  },
+  "token_usage": {},
+  "completed_at": "2026-08-13T10:35:57.220576+00:00"
+}

@@ -1,0 +1,53 @@
+{
+  "task": "answer",
+  "question_id": "Q028",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "ae84e6a9f91531bb9e82c8ba413c50832ec50669f867e3e9a122376a808eabdb",
+  "raw_response_sha256": "286c33c25059cd4f2f19fd2bbd7d73acc5d09cd992b1a1c21172193d5212d29a",
+  "usage": {
+    "input_tokens": 3309,
+    "output_tokens": 494,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 3803
+  },
+  "rated_at": "2026-08-12T19:23:10.710922+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q028-A",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Comprehensive coverage with PMIDs. PTEN listed as mediator is conceptually off (it's a negative regulator/loss-of-function). MDR1 inclusion is tangential but cited. Good structured table."
+      },
+      {
+        "answer_id": "Q028-B",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Clear 2-hop framing with cited PMIDs. Slightly less complete than A (omits NF-κB path detail). Absent-evidence section adds value. Concise and well-organized."
+      },
+      {
+        "answer_id": "Q028-C",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 2,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Excellent mechanistic clarity including STAT3→BCL-XL and AKT→BAD paths. No PMIDs provided, reducing grounding score. STAT3 path is a valuable addition absent in A/B."
+      }
+    ],
+    "preferred_item_id": "Q028-A",
+    "pairwise_reason": "Q028-A provides the most complete coverage of 2-hop mediators with explicit PMID citations, structured summary table, and appropriate evidence-type labeling, making it the most grounded and comprehensive response despite minor conceptual issues with PTEN framing."
+  }
+}

@@ -1,0 +1,411 @@
+##USE-MESH-VOCABULARY
+15972960|t|Blocking of interleukin-17 during reactivation of experimental arthritis prevents joint inflammation and bone erosion by decreasing RANKL and interleukin-1.
+15972960|a|Rheumatoid arthritis is characterized by an intermittent course of disease with alternate periods of remission and relapse. T cells, and in particular the T-cell cytokine interleukin-17 (IL-17), are expected to be involved in arthritic flares. Here, we report that neutralizing endogenous IL-17 during reactivation of antigen-induced arthritis prevents joint inflammation and bone erosion. Synovial IL-17 mRNA expression was clearly up-regulated during primary arthritis and was further enhanced after antigen rechallenge. Neutralization of IL-17 significantly prevented joint swelling at day 1 of flare and significantly suppressed joint inflammation and cartilage proteoglycan depletion at day 4, as assessed by histology. Blocking IL-17 also clearly reduced bone erosions. Cathepsin K, a marker of osteoclast-like activity, and synovial RANKL mRNA expression were both suppressed. The degree of bone erosions strongly correlated with the severity of joint inflammation, suggesting that anti-IL-17 treatment reduced bone erosion by suppressing joint inflammation. Interestingly, blocking IL-17 suppressed synovial expression of both IL-1beta and tumor necrosis factor-alpha, whereas blocking IL-1 did not affect tumor necrosis factor-alpha levels. These data indicate that IL-17 is an important upstream mediator in joint pathology during flare-up of experimental arthritis.
+15972960	12	26	IL17A	Gene	3605
+15972960	63	72	Arthritis	Disease	MESH:D001168
+15972960	82	100	Inflammation	Disease	MESH:D007249
+15972960	105	117	Tooth Erosion	Disease	MESH:D014077
+15972960	132	137	TNFSF11	Gene	8600
+15972960	142	155	IL1A	Gene	3552
+15972960	157	177	Arthritis Rheumatoid	Disease	MESH:D001172
+15972960	328	342	IL17A	Gene	3605
+15972960	344	349	IL17A	Gene	3605
+15972960	383	392	Arthritis Psoriatic	Disease	MESH:D015535
+15972960	446	451	IL17A	Gene	3605
+15972960	491	500	Arthritis	Disease	MESH:D001168
+15972960	510	528	Inflammation	Disease	MESH:D007249
+15972960	533	545	Tooth Erosion	Disease	MESH:D014077
+15972960	556	561	IL17A	Gene	3605
+15972960	618	627	Arthritis	Disease	MESH:D001168
+15972960	698	703	IL17A	Gene	3605
+15972960	728	742	Joint Diseases	Disease	MESH:D007592
+15972960	790	808	Inflammation	Disease	MESH:D007249
+15972960	891	896	IL17A	Gene	3605
+15972960	918	931	Tooth Erosion	Disease	MESH:D014077
+15972960	933	944	CTSK	Gene	1513
+15972960	997	1002	TNFSF11	Gene	8600
+15972960	1055	1068	Tooth Erosion	Disease	MESH:D014077
+15972960	1110	1128	Inflammation	Disease	MESH:D007249
+15972960	1151	1156	IL17A	Gene	3605
+15972960	1175	1187	Tooth Erosion	Disease	MESH:D014077
+15972960	1203	1221	Inflammation	Disease	MESH:D007249
+15972960	1247	1252	IL17A	Gene	3605
+15972960	1292	1300	IL1B	Gene	3553
+15972960	1305	1332	TNF	Gene	7124
+15972960	1351	1355	IL1A	Gene	3552
+15972960	1371	1398	TNF	Gene	7124
+15972960	1432	1437	IL17A	Gene	3605
+15972960	1523	1532	Arthritis	Disease	MESH:D001168
+15972960	Positive_Correlation	MESH:D001168	3605
+15972960	Association	MESH:D007592	3605
+15972960	Association	3552	3605
+15972960	Association	MESH:D015535	3605
+15972960	Association	MESH:D007249	3605
+15972960	Association	MESH:D014077	3605
+15972960	Negative_Correlation	3605	8600
+15972960	Positive_Correlation	3553	3605
+15972960	Positive_Correlation	3605	7124
+
+26189496|t|Intravenous Immunoglobulin (IVIG) Attenuates TNF-Induced Pathologic Bone Resorption and Suppresses Osteoclastogenesis by Inducing A20 Expression.
+26189496|a|Investigations on the therapeutic effects of intravenous immunoglobulin (IVIG) have focused on the suppression of autoantibody and immune complex-mediated inflammatory pathogenesis. Inflammatory diseases such as rheumatoid arthritis are often accompanied by excessive bone erosion but the effect of IVIG on osteoclasts, bone-resorbing cells, has not been studied. Here, we investigate whether IVIG directly regulates osteoclast differentiation and has therapeutic potential for suppressing osteoclast-mediated pathologic bone resorption. IVIG or cross-linking of Fcgamma receptors with plate-bound IgG suppressed receptor activator of nuclear factor-kappa B ligand (RANKL)-induced osteoclastogenesis and expression of osteoclast-related genes such as integrin beta3 and cathepsin K in a dose-dependent manner. Mechanistically, IVIG or plate-bound IgG suppressed osteoclastogenesis by downregulating RANKL-induced expression of NFATC1, the master regulator of osteoclastogenesis. IVIG suppressed NFATC1 expression by attenuating RANKL-induced NF-kappaB signaling, explained in part by induction of the inflammatory signaling inhibitor A20. IVIG administration attenuated in vivo osteoclastogenesis and suppressed bone resorption in the tumor necrosis factor (TNF)-induced calvarial osteolysis model. Our findings show that, in addition to suppressing inflammation, IVIG directly inhibits osteoclastogenesis through a mechanism involving suppression of RANK signaling. Direct suppression of osteoclast differentiation may provide beneficial effects on preserving bone mass when IVIG is used to treat rheumatic disorders.
+26189496	45	48	TNF	Gene	7124
+26189496	57	83	Bone Resorption	Disease	MESH:D001862
+26189496	130	133	TNFAIP3	Gene	7128
+26189496	301	313	Inflammation	Disease	MESH:D007249
+26189496	328	349	Inflammation	Disease	MESH:D007249
+26189496	358	378	Arthritis Rheumatoid	Disease	MESH:D001172
+26189496	414	426	Tooth Erosion	Disease	MESH:D014077
+26189496	656	682	Bone Resorption	Disease	MESH:D001862
+26189496	759	810	TNFSF11	Gene	8600
+26189496	812	817	TNFSF11	Gene	8600
+26189496	897	911	ITGB3	Gene	3690
+26189496	916	927	CTSK	Gene	1513
+26189496	1045	1050	TNFSF11	Gene	8600
+26189496	1073	1079	NFATC1	Gene	4772
+26189496	1141	1147	NFATC1	Gene	4772
+26189496	1174	1179	TNFSF11	Gene	8600
+26189496	1188	1197	NFKB1	Gene	4790
+26189496	1247	1259	Inflammation	Disease	MESH:D007249
+26189496	1280	1283	TNFAIP3	Gene	7128
+26189496	1381	1402	TNF	Gene	7124
+26189496	1404	1407	TNF	Gene	7124
+26189496	1427	1437	Osteolysis	Disease	MESH:D010014
+26189496	1496	1508	Inflammation	Disease	MESH:D007249
+26189496	1744	1763	Rheumatic Diseases	Disease	MESH:D012216
+26189496	Positive_Correlation	MESH:D010014	7124
+26189496	Positive_Correlation	MESH:D001862	7124
+26189496	Positive_Correlation	4790	8600
+26189496	Association	MESH:D007249	7128
+26189496	Positive_Correlation	4772	8600
+
+27598995|t|Granzyme A Contributes to Inflammatory Arthritis in Mice Through Stimulation of Osteoclastogenesis.
+27598995|a|OBJECTIVE: Granzyme A (GzmA) levels are elevated in the plasma and synovium of patients with rheumatoid arthritis (RA), suggesting involvement of this protease in the pathogenesis of the disease. GzmA contributes to sepsis by regulating the production of proinflammatory cytokines. The purpose of this study was to evaluate the contribution of GzmA to the pathogenesis of RA in vivo and to examine the possibility that GzmA acting via tumor necrosis factor (TNF) stimulates osteoclastogenesis. METHODS: Inflammatory arthritis induced by type II collagen was evaluated in wild-type, GzmA-deficient, and perforin-deficient mice. The osteoclastogenic potential of GzmA was examined in vitro using bone marrow cells and colony-forming unit-granulocyte-macrophage (CFU-GM) cells and in vivo using GzmA-deficient mice. RESULTS: Gene deletion of GzmA attenuated collagen-induced arthritis, including serum levels of proinflammatory cytokines, joint damage, and bone erosion in affected mice, suggesting that osteoclast activity is reduced in the absence of GzmA. Accordingly, GzmA-treated bone marrow cells produced multinucleated cells that fulfilled the criteria for mature osteoclasts: tartrate-resistant acid phosphatase (TRAP) activity, beta integrin expression, calcitonin receptor expression, and resorptive activity on dentin slices. GzmA appeared to act without accessory cells, and its activity was not affected by osteoprotegerin, suggesting a minor contribution of RANKL. It also induced the expression and secretion of TNF. Neutralization of TNF or stimulation of CFU-GM cells from TNF-/- mice prevented GzmA-induced osteoclastogenesis. GzmA-deficient mice had reduced osteoclastogenesis in vivo (fewer calcitonin receptor-positive multinucleated cells and fewer transcripts for cathepsin K, matrix metalloproteinase 9, and TRAP in joints) and reduced serum levels of C-terminal telopeptide of type I collagen. CONCLUSION: GzmA contributes to the joint destruction of RA partly by promoting osteoclast differentiation.
+27598995	0	10	Gzma	Gene	14938
+27598995	26	48	Arthritis	Disease	MESH:D001168
+27598995	52	56	Mice	Species	10090
+27598995	111	121	GZMA	Gene	3001
+27598995	123	127	GZMA	Gene	3001
+27598995	179	187	patients	Species	9606
+27598995	193	213	Arthritis Rheumatoid	Disease	MESH:D001172
+27598995	215	217	Arthritis Rheumatoid	Disease	MESH:D001172
+27598995	296	300	Gzma	Gene	14938
+27598995	316	322	Sepsis	Disease	MESH:D018805
+27598995	444	448	Gzma	Gene	14938
+27598995	472	474	Arthritis Rheumatoid	Disease	MESH:D001172
+27598995	519	523	Gzma	Gene	14938
+27598995	535	556	Tnf	Gene	21926
+27598995	558	561	Tnf	Gene	21926
+27598995	603	625	Arthritis	Disease	MESH:D001168
+27598995	682	686	Gzma	Gene	14938
+27598995	721	725	mice	Species	10090
+27598995	761	765	Gzma	Gene	14938
+27598995	892	896	Gzma	Gene	14938
+27598995	907	911	mice	Species	10090
+27598995	939	943	Gzma	Gene	14938
+27598995	972	981	Arthritis	Disease	MESH:D001168
+27598995	1036	1048	Joint Diseases	Disease	MESH:D007592
+27598995	1054	1066	Tooth Erosion	Disease	MESH:D014077
+27598995	1079	1083	mice	Species	10090
+27598995	1150	1155	Gzma	Gene	14938
+27598995	1169	1173	Gzma	Gene	14938
+27598995	1282	1317	Acp5	Gene	11433
+27598995	1319	1323	Acp5	Gene	11433
+27598995	1361	1380	Calcr	Gene	12311
+27598995	1435	1439	Gzma	Gene	14938
+27598995	1518	1533	Tnfrsf11b	Gene	18383
+27598995	1570	1575	Tnfsf11	Gene	21943
+27598995	1625	1628	Tnf	Gene	21926
+27598995	1648	1651	Tnf	Gene	21926
+27598995	1688	1691	Tnf	Gene	21926
+27598995	1695	1699	mice	Species	10090
+27598995	1710	1714	Gzma	Gene	14938
+27598995	1743	1747	Gzma	Gene	14938
+27598995	1758	1762	mice	Species	10090
+27598995	1809	1828	Calcr	Gene	12311
+27598995	1885	1896	Ctsk	Gene	13038
+27598995	1898	1924	Mmp9	Gene	17395
+27598995	1930	1934	Acp5	Gene	11433
+27598995	2029	2033	Gzma	Gene	14938
+27598995	2053	2070	Liver Cirrhosis Biliary	Disease	MESH:D008105
+27598995	2074	2076	Arthritis Rheumatoid	Disease	MESH:D001172
+27598995	Negative_Correlation	MESH:D007592	14938
+27598995	Association	12311	14938
+27598995	Negative_Correlation	MESH:D014077	14938
+27598995	Association	MESH:D001168	14938
+27598995	Association	11433	14938
+27598995	Positive_Correlation	MESH:D001172	3001
+27598995	Association	MESH:D018805	14938
+27598995	Positive_Correlation	14938	21926
+
+28286757|t|Effect of Tumor Necrosis Factor Inhibitor Therapy on Osteoclasts Precursors in Rheumatoid Arthritis.
+28286757|a|Objective. Tumor necrosis factor (TNF) increases circulating osteoclast (OC) precursors numbers by promoting their proliferation and differentiation. The aim of this study was to assess the effect of TNF inhibitors (TNFi) on the differentiation and activity of OC in rheumatoid arthritis (RA) patients. Methods. Seventeen RA patients treated with TNFi were analyzed at baseline and after a minimum follow-up period of 6 months. Blood samples were collected to assess receptor activator of nuclear factor kappa-B ligand (RANKL) surface expression on circulating leukocytes and frequency and phenotype of monocyte subpopulations. Quantification of serum levels of bone turnover markers, in vitro OC differentiation assays, and qRT-PCR for OC specific genes was performed. Results. After TNFi therapy, patients had reduced RANKL surface expression in B-lymphocytes and the frequency of circulating classical CD14brightCD16- monocytes was decreased. Serum levels of sRANKL, sRANKL/OPG ratio, and CTX-I were reduced in RA patients after TNFi treatment. Moreover, after exposure to TNFi, osteoclast differentiation and activity were decreased, as well as the expression of TRAF6 and cathepsin K. Conclusion. We propose that TNFi arrests bone loss and erosion, through two pathways: direct reduction of osteoclast precursor numbers and inhibition of intracellular signaling pathways acting through TRAF6.
+28286757	79	99	Arthritis Rheumatoid	Disease	MESH:D001172
+28286757	112	133	TNF	Gene	7124
+28286757	135	138	TNF	Gene	7124
+28286757	301	304	TNF	Gene	7124
+28286757	368	388	Arthritis Rheumatoid	Disease	MESH:D001172
+28286757	390	392	Arthritis Rheumatoid	Disease	MESH:D001172
+28286757	394	402	patients	Species	9606
+28286757	423	425	Arthritis Rheumatoid	Disease	MESH:D001172
+28286757	426	434	patients	Species	9606
+28286757	568	619	TNFSF11	Gene	8600
+28286757	621	626	TNFSF11	Gene	8600
+28286757	900	908	patients	Species	9606
+28286757	921	926	TNFSF11	Gene	8600
+28286757	1078	1081	TNFRSF11B	Gene	4982
+28286757	1115	1117	Arthritis Rheumatoid	Disease	MESH:D001172
+28286757	1118	1126	patients	Species	9606
+28286757	1268	1273	TRAF6	Gene	7189
+28286757	1278	1290	CTSK	Gene	1513
+28286757	1332	1341	Bone Diseases	Disease	MESH:D001847
+28286757	1346	1353	Tooth Erosion	Disease	MESH:D014077
+28286757	1492	1497	TRAF6	Gene	7189
+
+29149648|t|Dried plum alleviates symptoms of inflammatory arthritis in TNF transgenic mice.
+29149648|a|Dried plum (DP), a rich source of polyphenols has been shown to have bone-preserving properties in both animal models of osteoporosis and postmenopausal women. We evaluated if DP alleviated the destruction of joints in transgenic mice (TG) that overexpress human tumor necrosis factor (TNF), a genetic model of rheumatoid arthritis (RA). A four-week treatment of 20% DP diet in TG slowed the onset of arthritis and reduced bone erosions in the joints compared to TG on a regular diet. This was associated with fewer tartrate-resistant acid phosphatase (TRAP) positive cells, suggesting decreased osteoclastogenesis. A DP diet also produced significant protection of articular cartilage and reduction of synovitis. Cultures of human synovial fibroblast in the presence of TNF showed a significant increase in inflammatory interleukin (IL)-1beta, chemokines (monocyte chemoattractant protein-1: MCP1 & macrophage inflammatory protein-1 alpha: MIP1alpha), cartilage matrix metalloproteinases (MMP1&3), and an osteoclastogenic cytokine (receptor activator of nuclear factor-kappaB ligand: RANKL) compared to controls. Addition of neochlorogenic acid (NC), a major polyphenol in DP to these cultures resulted in down-regulation of these genes. In the cultures of mouse bone marrow macrophage, NC also repressed TNF-induced formation of osteoclasts and mRNA levels of cathepsin K and MMP9 through inhibition of nuclear factor of activated T-cells, cytoplasmic 1 (NFATc1) expression and nuclear factor kappa B (NF-kappaB) activation. Our data suggested that dietary supplementation with DP inhibited TNF singling; leading to decreased erosions of bone and articular cartilage as well as synovitis.
+29149648	0	10	Dried plum	Chemical	-
+29149648	34	56	Arthritis	Disease	MESH:D001168
+29149648	60	63	Tnf	Gene	21926
+29149648	75	79	mice	Species	10090
+29149648	81	91	Dried plum	Chemical	-
+29149648	93	95	DP	Chemical	-
+29149648	115	126	Polyphenols	Chemical	MESH:D059808
+29149648	202	214	Osteoporosis	Disease	MESH:D010024
+29149648	234	239	women	Species	9606
+29149648	257	259	DP	Chemical	-
+29149648	311	315	mice	Species	10090
+29149648	338	343	human	Species	9606
+29149648	344	365	TNF	Gene	7124
+29149648	367	370	TNF	Gene	7124
+29149648	392	412	Arthritis Rheumatoid	Disease	MESH:D001172
+29149648	414	416	Arthritis Rheumatoid	Disease	MESH:D001172
+29149648	448	450	DP	Chemical	-
+29149648	482	491	Arthritis	Disease	MESH:D001168
+29149648	504	517	Tooth Erosion	Disease	MESH:D014077
+29149648	699	701	DP	Chemical	-
+29149648	784	793	Synovitis	Disease	MESH:D013585
+29149648	807	812	human	Species	9606
+29149648	852	855	TNF	Gene	7124
+29149648	889	901	Inflammation	Disease	MESH:D007249
+29149648	902	924	IL1B	Gene	3553
+29149648	938	972	CCL2	Gene	6347
+29149648	974	978	CCL2	Gene	6347
+29149648	981	1020	CCL3	Gene	6348
+29149648	1022	1031	CCL3	Gene	6348
+29149648	1071	1077	MMP13	Gene	4322
+29149648	1114	1164	Tnfsf11	Gene	21943
+29149648	1166	1171	Tnfsf11	Gene	21943
+29149648	1207	1226	5'-O-caffeoylquinic acid	Chemical	MESH:C473200
+29149648	1228	1230	5'-O-caffeoylquinic acid	Chemical	MESH:C473200
+29149648	1241	1251	Polyphenols	Chemical	MESH:D059808
+29149648	1255	1257	DP	Chemical	-
+29149648	1339	1344	mouse	Species	10090
+29149648	1369	1371	5'-O-caffeoylquinic acid	Chemical	MESH:C473200
+29149648	1387	1390	Tnf	Gene	21926
+29149648	1443	1454	Ctsk	Gene	13038
+29149648	1459	1463	Mmp9	Gene	17395
+29149648	1486	1536	Nfatc1	Gene	18018
+29149648	1538	1544	Nfatc1	Gene	18018
+29149648	1561	1583	Nfkb1	Gene	18033
+29149648	1585	1594	Nfkb1	Gene	18033
+29149648	1661	1663	DP	Chemical	-
+29149648	1674	1677	TNF	Gene	7124
+29149648	1709	1749	Cartilage Diseases	Disease	MESH:D002357
+29149648	1761	1770	Synovitis	Disease	MESH:D013585
+29149648	Positive_Correlation	4322	7124
+29149648	Positive_Correlation	6348	7124
+29149648	Positive_Correlation	3553	7124
+29149648	Negative_Correlation	MESH:C473200	6348
+29149648	Negative_Correlation	MESH:C473200	17395
+29149648	Negative_Correlation	MESH:C473200	21926
+29149648	Negative_Correlation	MESH:C473200	18018
+29149648	Positive_Correlation	MESH:D007249	7124
+29149648	Negative_Correlation	MESH:C473200	6347
+29149648	Negative_Correlation	MESH:C473200	13038
+29149648	Negative_Correlation	MESH:C473200	21943
+29149648	Negative_Correlation	MESH:C473200	18033
+29149648	Positive_Correlation	21943	7124
+29149648	Positive_Correlation	6347	7124
+
+30954617|t|Protective effects of Wang-Bi tablet on bone destruction in collagen-induced arthritis by regulating osteoclast-osteoblast functions.
+30954617|a|ETHNOPHARMACOLOGICAL RELEVANCE: Wang-bi tablet (WB) consists of 17 traditional Chinese medicines and has been used for treating rheumatoid arthritis (RA) in China for many years, however, its pharmacologic mechanism is not clear. AIM OF STUDY: The aim of this study was to investigate the therapeutic effect of WB on collagen-induced mouse arthritis and explored the underlying mechanism. MATERIALS AND METHODS: DBA/1 mice were used to establish a type II collagen-induced arthritis (CIA) model. From the day of arthritis onset, mice were treated daily by gavage with either total glucosides of paeony (TGP, 0.37  g/kg/d) or WB at a lower (1.11  g/kg/d, WBL) or higher dose of (3.33  g/kg/d, WBH) for 8 weeks. The severity of arthritis, levels of cytokines and the activation of signaling pathways were determined. RESULTS: Our results revealed that WB treatment effectively alleviated inflammatory symptoms and prevented bone erosions and joint destructions. It obviously decreased the serum concentration of pro-inflammatory cytokines TNF-alpha, IL-6 and IL-17alpha, while increased the concentration of anti-inflammatory cytokine IL-10. Interestingly, the proportion of splenic Treg cells were increased significantly. In vitro experiments showed that WB inhibited the differentiation of osteoclasts. Consistently, the mRNA levels of tartrate-resistant acid phosphatase (TRAP) and cathepsin K (CtsK), and the activation of NF-kappaB and JAK-STAT3 signaling pathways in the paws of CIA mice were inhibited by WB treatment. On the other hand, up-regulation of osteogenic genes Runx2, Osterix mRNA, and activation of Wnt/beta-catenin signaling pathway along with a decreased receptor activator of nuclear factor kappaB ligand (RANKL) expression were found in WB treated mice. CONCLUSION: Our results suggest that the therapeutic effect of Wang-bi tablet could be attributed to its inhibitory activity on NF-kappaB and STAT3 signaling pathway-mediated osteoclast differentiation, and its enhancement on Wnt/beta-catenin signaling pathway-mediated osteoblast functions.
+30954617	22	36	Wang-Bi tablet	Chemical	-
+30954617	40	56	Bone Diseases	Disease	MESH:D001847
+30954617	77	86	Arthritis	Disease	MESH:D001168
+30954617	166	180	Wang-bi tablet	Chemical	-
+30954617	213	230	Chinese medicines	Chemical	-
+30954617	262	282	Arthritis Rheumatoid	Disease	MESH:D001172
+30954617	284	286	Arthritis Rheumatoid	Disease	MESH:D001172
+30954617	468	473	mouse	Species	10090
+30954617	474	483	Arthritis	Disease	MESH:D001168
+30954617	546	551	6496	CellLine	CVCL:6496
+30954617	552	556	mice	Species	10090
+30954617	607	616	Arthritis	Disease	MESH:D001168
+30954617	618	621	Arthritis Experimental	Disease	MESH:D001169
+30954617	646	655	Arthritis	Disease	MESH:D001168
+30954617	663	667	mice	Species	10090
+30954617	715	735	glucosides of paeony	Chemical	-
+30954617	737	740	TGP	Chemical	-
+30954617	860	869	Arthritis	Disease	MESH:D001168
+30954617	1020	1032	Inflammation	Disease	MESH:D007249
+30954617	1056	1069	Tooth Erosion	Disease	MESH:D014077
+30954617	1074	1092	Liver Cirrhosis Biliary	Disease	MESH:D008105
+30954617	1148	1160	Inflammation	Disease	MESH:D007249
+30954617	1171	1180	Tnf	Gene	21926
+30954617	1182	1186	Il6	Gene	16193
+30954617	1191	1201	Il17a	Gene	16171
+30954617	1245	1257	Inflammation	Disease	MESH:D007249
+30954617	1267	1272	Il10	Gene	16153
+30954617	1471	1506	Acp5	Gene	11433
+30954617	1508	1512	Acp5	Gene	11433
+30954617	1518	1529	Ctsk	Gene	13038
+30954617	1531	1535	Ctsk	Gene	13038
+30954617	1560	1569	Nfkb1	Gene	18033
+30954617	1578	1583	Stat3	Gene	20848
+30954617	1618	1621	Arthritis Experimental	Disease	MESH:D001169
+30954617	1622	1626	mice	Species	10090
+30954617	1712	1717	Runx2	Gene	12393
+30954617	1719	1726	Sp7	Gene	170574
+30954617	1755	1767	Ctnnb1	Gene	12387
+30954617	1809	1859	Tnfsf11	Gene	21943
+30954617	1861	1866	Tnfsf11	Gene	21943
+30954617	1904	1908	mice	Species	10090
+30954617	1973	1987	Wang-bi tablet	Chemical	-
+30954617	2038	2047	Nfkb1	Gene	18033
+30954617	2052	2057	Stat3	Gene	20848
+30954617	2140	2152	Ctnnb1	Gene	12387
+30954617	Association	MESH:D007249	16171
+30954617	Negative_Correlation	MESH:D007249	16153
+30954617	Association	MESH:D007249	16193
+30954617	Association	MESH:D007249	21926
+30954617	Positive_Correlation	MESH:D001169	20848
+30954617	Positive_Correlation	MESH:D001169	18033
+
+34122118|t|ZhiJingSan Inhibits Osteoclastogenesis via Regulating RANKL/NF-kappaB Signaling Pathway and Ameliorates Bone Erosion in Collagen-Induced Mouse Arthritis.
+34122118|a|Bone erosion is the most evident pathological condition of rheumatoid arthritis (RA), which is the main cause of joint deformities and disability in RA patients. At present, the conventional RA drugs have not achieved satisfactory effect in improving bone erosion. ZhiJingSan (ZJS), which is a traditional Chinese prescription composed of scolopendra (dried body of Scolopendra subspinipes mutilans L. Koch, scolopendridae) and scorpion (dried body of Buthus martensii Karsch, Buthus), exhibits anti-rheumatism, analgesic and joint deformities improvement effects. This study aimed to assess the therapeutic effect of ZJS on RA bone erosion and to elucidate the underlying mechanism. The effect of ZJS on RA bone erosion was investigated in a murine model of bovine collagen-induced arthritis (CIA), and the underlying mechanism was investigated in vitro in an osteoclast differentiation cell model. Administration of ZJS delayed the onset of arthritis, alleviated joint inflammation, and attenuated bone erosion in the CIA mice. Meanwhile, ZJS decreased the serum levels of TNF-alpha, IL-6, and anti-bovine collagen II-specific antibodies. Furthermore, ZJS treatment reduced the number of osteoclasts and the expression of cathepsin K in the ankle joints of CIA mice. ZJS also inhibited receptor activator of NF-kappaB ligand (RANKL)-induced osteoclast differentiation and the expression of MMP9 and cathepsin K in vitro. Mechanistically, ZJS blocked RANKL-induced p65 phosphorylation, nucleation, and inhibited the expression of downstream NFATc1 and c-Fos in bone marrow-derived macrophages (BMMs). Taken together, ZJS exerts a therapeutic effect on bone erosion in CIA mice by inhibiting RANKL/NF-kappaB-mediated osteoclast differentiation, which suggested that ZJS is a promising prescription for treating RA bone erosion.
+34122118	0	10	ZhiJingSan	Chemical	-
+34122118	54	59	Tnfsf11	Gene	21943
+34122118	60	69	Nfkb1	Gene	18033
+34122118	104	116	Tooth Erosion	Disease	MESH:D014077
+34122118	137	142	Mouse	Species	10090
+34122118	143	152	Arthritis	Disease	MESH:D001168
+34122118	154	166	Tooth Erosion	Disease	MESH:D014077
+34122118	213	233	Arthritis Rheumatoid	Disease	MESH:D001172
+34122118	235	237	Arthritis Rheumatoid	Disease	MESH:D001172
+34122118	267	284	Joint Deformities Acquired	Disease	MESH:D016916
+34122118	303	305	Arthritis Rheumatoid	Disease	MESH:D001172
+34122118	306	314	patients	Species	9606
+34122118	345	347	Arthritis Rheumatoid	Disease	MESH:D001172
+34122118	405	417	Tooth Erosion	Disease	MESH:D014077
+34122118	419	429	ZhiJingSan	Chemical	-
+34122118	431	434	ZJS	Chemical	-
+34122118	520	560	Scolopendra subspinipes mutilans L. Koch	Species	-
+34122118	582	590	scorpion	Species	-
+34122118	606	629	Buthus martensii Karsch	Species	34649
+34122118	654	664	Rheumatic Diseases	Disease	MESH:D012216
+34122118	680	697	Joint Deformities Acquired	Disease	MESH:D016916
+34122118	772	775	ZJS	Chemical	-
+34122118	779	781	Arthritis Rheumatoid	Disease	MESH:D001172
+34122118	782	794	Tooth Erosion	Disease	MESH:D014077
+34122118	852	855	ZJS	Chemical	-
+34122118	859	861	Arthritis Rheumatoid	Disease	MESH:D001172
+34122118	862	874	Tooth Erosion	Disease	MESH:D014077
+34122118	897	903	murine	Species	10090
+34122118	913	919	bovine	Species	9913
+34122118	937	946	Arthritis	Disease	MESH:D001168
+34122118	948	951	Arthritis Experimental	Disease	MESH:D001169
+34122118	1072	1075	ZJS	Chemical	-
+34122118	1097	1106	Arthritis	Disease	MESH:D001168
+34122118	1119	1137	Inflammation	Disease	MESH:D007249
+34122118	1154	1166	Tooth Erosion	Disease	MESH:D014077
+34122118	1174	1177	Arthritis Experimental	Disease	MESH:D001169
+34122118	1178	1182	mice	Species	10090
+34122118	1195	1198	ZJS	Chemical	-
+34122118	1229	1238	Tnf	Gene	21926
+34122118	1240	1244	Il6	Gene	16193
+34122118	1255	1261	bovine	Species	9913
+34122118	1308	1311	ZJS	Chemical	-
+34122118	1378	1389	Ctsk	Gene	13038
+34122118	1413	1416	Arthritis Experimental	Disease	MESH:D001169
+34122118	1417	1421	mice	Species	10090
+34122118	1423	1426	ZJS	Chemical	-
+34122118	1442	1480	Tnfsf11	Gene	21943
+34122118	1482	1487	Tnfsf11	Gene	21943
+34122118	1546	1550	Mmp9	Gene	17395
+34122118	1555	1566	Ctsk	Gene	13038
+34122118	1594	1597	ZJS	Chemical	-
+34122118	1606	1611	Tnfsf11	Gene	21943
+34122118	1620	1623	Rela	Gene	19697
+34122118	1696	1702	Nfatc1	Gene	18018
+34122118	1707	1712	Fos	Gene	14281
+34122118	1772	1775	ZJS	Chemical	-
+34122118	1807	1819	Tooth Erosion	Disease	MESH:D014077
+34122118	1823	1826	Arthritis Experimental	Disease	MESH:D001169
+34122118	1827	1831	mice	Species	10090
+34122118	1846	1851	Tnfsf11	Gene	21943
+34122118	1852	1861	Nfkb1	Gene	18033
+34122118	1920	1923	ZJS	Chemical	-
+34122118	1965	1967	Arthritis Rheumatoid	Disease	MESH:D001172
+34122118	1968	1980	Tooth Erosion	Disease	MESH:D014077
+34122118	Positive_Correlation	19697	21943
+34122118	Association	18033	21943
+
+38232664|t|Lipid mediators obtained from docosahexaenoic acid by soybean lipoxygenase attenuate RANKL-induced osteoclast differentiation and rheumatoid arthritis.
+38232664|a|Rheumatoid arthritis (RA) is a chronic immune-mediated inflammatory disease characterized by persistent inflammation and joint destruction. A lipid mediator (LM, namely, 17S-monohydroxy docosahexaenoic acid, resolvin D5, and protectin DX in a ratio of 3:47:50) produced by soybean lipoxygenase from DHA, exhibits anti-inflammatory activity. In this study, we determined the effect of LM on collagen antibody-induced arthritis (CAIA) in mice and receptor activator of nuclear factor-kappaB ligand (RANKL)-induced osteoclast formation in RAW264.7 cells. LM effectively downregulated the expression of tartrate-resistant acid phosphatase (TRAP) and cathepsin K, inhibited osteoclast formation, and suppressed the NF-kappaB signaling pathway in vitro. In vivo, LM at 10 mug/kg/day significantly decreased paw swelling and inhibited progression of arthritis in CAIA mice. Moreover, proinflammatory cytokine (tumor necrosis factor-alpha, interleukin (IL)-6, IL-1beta, IL-17, and interferon-gamma) levels in serum were decreased, whereas IL-10 levels were increased following LM treatment. Furthermore, LM alleviated joint inflammation, cartilage erosion, and bone destruction in the ankles, which may be related to matrix metalloproteinase and Janus kinase (JAK)-signal transducer and activators of transcription (STAT) signaling pathway. Our findings suggest that LM attenuates arthritis severity, restores serum imbalances, and modifies joint damage. Thus, LM represents a promising therapy for relieving RA symptoms.
+38232664	0	5	Lipids	Chemical	MESH:D008055
+38232664	30	50	Docosahexaenoic Acids	Chemical	MESH:D004281
+38232664	54	61	soybean	Species	3847
+38232664	62	74	LOXB1	Gene	547836
+38232664	85	90	Tnfsf11	Gene	21943
+38232664	130	150	Arthritis Rheumatoid	Disease	MESH:D001172
+38232664	152	172	Arthritis Rheumatoid	Disease	MESH:D001172
+38232664	174	176	Arthritis Rheumatoid	Disease	MESH:D001172
+38232664	197	206	CD59 Deficiency	Disease	MESH:C567355
+38232664	207	227	Inflammation	Disease	MESH:D007249
+38232664	256	268	Inflammation	Disease	MESH:D007249
+38232664	273	290	Liver Cirrhosis Biliary	Disease	MESH:D008105
+38232664	294	299	Lipids	Chemical	MESH:D008055
+38232664	322	358	17S-monohydroxy docosahexaenoic acid	Chemical	-
+38232664	360	371	resolvin D5	Chemical	MESH:C572765
+38232664	377	389	10 17-dihydroxydocosa-4 7 11 13 15 19-hexaenoic acid	Chemical	MESH:C000591716
+38232664	425	432	soybean	Species	3847
+38232664	433	445	LOXB1	Gene	547836
+38232664	451	454	dehydroacetic acid	Chemical	MESH:C027493
+38232664	470	482	Inflammation	Disease	MESH:D007249
+38232664	568	577	Arthritis	Disease	MESH:D001168
+38232664	579	583	Arthritis Experimental	Disease	MESH:D001169
+38232664	588	592	mice	Species	10090
+38232664	597	647	Tnfsf11	Gene	21943
+38232664	649	654	Tnfsf11	Gene	21943
+38232664	688	696	0493	CellLine	CVCL:0493
+38232664	751	786	Acp5	Gene	11433
+38232664	788	792	Acp5	Gene	11433
+38232664	798	809	Ctsk	Gene	13038
+38232664	862	871	Nfkb1	Gene	18033
+38232664	957	965	Edema	Disease	MESH:D004487
+38232664	995	1004	Arthritis	Disease	MESH:D001168
+38232664	1008	1012	Arthritis Experimental	Disease	MESH:D001169
+38232664	1013	1017	mice	Species	10090
+38232664	1055	1082	Tnf	Gene	21926
+38232664	1104	1112	Il1b	Gene	16176
+38232664	1114	1119	Il17a	Gene	16171
+38232664	1125	1141	Ifng	Gene	15978
+38232664	1183	1188	Il10	Gene	16153
+38232664	1262	1280	Inflammation	Disease	MESH:D007249
+38232664	1282	1299	Cartilage Diseases	Disease	MESH:D002357
+38232664	1305	1321	Bone Diseases	Disease	MESH:D001847
+38232664	1525	1534	Arthritis	Disease	MESH:D001168
+38232664	1585	1597	Joint Diseases	Disease	MESH:D007592
+38232664	1653	1655	Arthritis Rheumatoid	Disease	MESH:D001172
+38232664	Association	MESH:D001172	547836
+38232664	Association	MESH:C572765	547836
+38232664	Negative_Correlation	MESH:C000591716	MESH:D007249
+38232664	Negative_Correlation	MESH:D004281	21943
+38232664	Negative_Correlation	MESH:D008055	MESH:D007249
+38232664	Association	MESH:C000591716	547836
+38232664	Negative_Correlation	MESH:C572765	MESH:D007249
+38232664	Association	MESH:D004281	547836
+38232664	Association	MESH:D004281	MESH:D001172
+38232664	Negative_Correlation	MESH:D008055	21943
+38232664	Association	MESH:D008055	MESH:D001172
+38232664	Negative_Correlation	21943	547836

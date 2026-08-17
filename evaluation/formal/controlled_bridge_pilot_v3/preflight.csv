@@ -1,0 +1,4 @@
+question_id,mediator,bridge_eligible,both_sides_exposed,graph_build_eligible,source_in_text_top_k,target_in_text_top_k,source_outside_text_top_k,target_outside_text_top_k,reasons
+BW008,HBx,0,0,0,27314335;39599784,,40512786,,missing_endpoint_isolated_side
+BW008,STAT1,1,0,1,30842274;37879404;40928246,,,34168004;38351096;39486886,exactly_one_bridge_side_withheld_from_text_top_k
+BW008,cirrhosis,1,1,0,24574713;40024530;41997336,34842182;39411648,,32020352,complete_bridge_visible_in_text_top_k

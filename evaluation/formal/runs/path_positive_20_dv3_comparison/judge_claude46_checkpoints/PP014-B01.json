@@ -1,0 +1,53 @@
+{
+  "task": "answer",
+  "question_id": "PP014",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "09304387d8df3f85171b55c45ad5d4c1aee72d6bdfa787db63c68d761326d82f",
+  "raw_response_sha256": "3db14abfb8aff4839219e0310fa94054010e817bc279efafe7c82448742b9f78",
+  "usage": {
+    "input_tokens": 2341,
+    "output_tokens": 494,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 2835
+  },
+  "rated_at": "2026-08-13T10:33:23.297992+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP014-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Clearly distinguishes each hop with citations. PMID:35430804 (graph hop1) not discussed directly; relies on 42051461/38321650 for dysbiosis→SCFA. Mechanistic detail on osteoclast and Treg pathways is strong."
+      },
+      {
+        "answer_id": "PP014-B",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Explicitly flags that no study directly links dysbiosis to clinical bone disease—good epistemic honesty. Hop-by-hop structure clear. Testable hypothesis adds value. Same citation base as others."
+      },
+      {
+        "answer_id": "PP014-C",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Structured similarly to A/B; includes graph-derived path with PMID:35430804 for hop1. Distinguishes animal vs human evidence. Hypothesis section adds modest value. Slightly redundant with A."
+      }
+    ],
+    "preferred_item_id": "PP014-B",
+    "pairwise_reason": "PP014-B explicitly acknowledges the inferential gap (no direct dysbiosis-to-clinical-bone-disease study), demonstrating superior epistemic transparency, while maintaining equivalent mechanistic detail and citation quality."
+  }
+}

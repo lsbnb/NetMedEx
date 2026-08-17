@@ -1,0 +1,56 @@
+{
+  "task": "edge",
+  "question_id": "Q001",
+  "batch": 3,
+  "provider": "google",
+  "model": "gemini-3.1-pro-preview",
+  "input_sha256": "b29d924a26fb0f595c47e70c892d78e29c5495f129255983ee9349d94f81d2fc",
+  "raw_response_sha256": "3ae3184510ddf0f68fc1f83f1b0d5dca7da70385f5f74746d2f13f9e530aa839",
+  "rated_at": "2026-08-02T18:49:53.417292+00:00",
+  "result": {
+    "ratings": [
+      {
+        "edge_id": "Q001-E09",
+        "entity_valid": 1,
+        "relation_exists": 1,
+        "relation_type_correct": 1,
+        "direction_correct": 1,
+        "evidence_support": 1,
+        "confidence": 3,
+        "notes": "The abstract explicitly states that ICA (icariin) improves osteoporosis by up-regulating miR-335-5p to inhibit PTEN."
+      },
+      {
+        "edge_id": "Q001-E10",
+        "entity_valid": 1,
+        "relation_exists": 1,
+        "relation_type_correct": 1,
+        "direction_correct": 1,
+        "evidence_support": 1,
+        "confidence": 3,
+        "notes": "The abstract mentions that icariin modulates the MITF/Rab27A signaling pathway, supporting the regulation of Rab27A."
+      },
+      {
+        "edge_id": "Q001-E11",
+        "entity_valid": 1,
+        "relation_exists": 1,
+        "relation_type_correct": 1,
+        "direction_correct": 1,
+        "evidence_support": 1,
+        "confidence": 3,
+        "notes": "The abstract clearly states that ICA (icariin) reduces the amount of VEGF (VEGFA) in serum induced by glucocorticoids."
+      },
+      {
+        "edge_id": "Q001-E12",
+        "entity_valid": 1,
+        "relation_exists": 1,
+        "relation_type_correct": 1,
+        "direction_correct": 1,
+        "evidence_support": 1,
+        "confidence": 3,
+        "notes": "The abstract demonstrates that icariin-treated exosomes promote the repair of infected bone defects, supporting the amelioration of bone diseases."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

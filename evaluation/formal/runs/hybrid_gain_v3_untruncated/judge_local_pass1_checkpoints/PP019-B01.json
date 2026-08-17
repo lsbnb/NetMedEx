@@ -1,0 +1,91 @@
+{
+  "task": "answer",
+  "question_id": "PP019",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "5196eb6c98fbc928fc5805a362bd3486705d17669d125529460c94e66d803656",
+  "raw_response_sha256": "c79b8fcabeb43b1ab2c2837aa104771c00966c8072832f018848c47b31a2beba",
+  "usage": {
+    "input_tokens": 7379,
+    "output_tokens": 653,
+    "total_tokens": 8032
+  },
+  "rated_at": "2026-08-16T21:05:04.980817+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP019-A",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive human/animal evidence, but some claims (e.g., probiotic trial) may lack solid citation."
+      },
+      {
+        "answer_id": "PP019-B",
+        "correctness": 3,
+        "completeness": 4,
+        "relevance": 4,
+        "grounding": 3,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Contains contradictory synthesis and unclear statements, reducing reliability."
+      },
+      {
+        "answer_id": "PP019-C",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Good coverage, but includes irrelevant graph data and speculative links."
+      },
+      {
+        "answer_id": "PP019-D",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Well‑structured, but citation authenticity uncertain; some statements are broad."
+      },
+      {
+        "answer_id": "PP019-E",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Clear mechanistic chain, strong experimental and clinical support, solid hypothesis."
+      },
+      {
+        "answer_id": "PP019-F",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Comprehensive but adds unnecessary graph insights; citation support moderate."
+      },
+      {
+        "answer_id": "PP019-G",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Detailed evidence with hypothesis, but extra graph content and similar citation issues."
+      }
+    ],
+    "preferred_item_id": "PP019-E",
+    "pairwise_reason": "PP019-E offers the most coherent mechanistic narrative, balances human and animal data, provides solid citations, and presents a clear, testable hypothesis without extraneous or contradictory material."
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "status": "complete",
+  "question_id": "Q006",
+  "domain": "cardiovascular",
+  "question": "What PubMed evidence supports statin effects on endothelial dysfunction?",
+  "question_type": "retrieval",
+  "pubmed_query": "statin AND endothelial dysfunction AND (eNOS OR nitric oxide OR flow-mediated dilation)",
+  "effective_pubmed_query": "statin AND endothelial dysfunction AND (eNOS OR nitric oxide OR flow-mediated dilation)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "10569303",
+    "14664903",
+    "15111011",
+    "15320839",
+    "15815580",
+    "15861315",
+    "17430168",
+    "18695354",
+    "21890489",
+    "22112351",
+    "24928320",
+    "28057795",
+    "35970408",
+    "38385489",
+    "39684569"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "routed_profile": "A_text_only",
+    "route_reason": "question_type=retrieval",
+    "question_type": "retrieval",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "38385489",
+        "score": 0.6283694694498091
+      },
+      {
+        "pmid": "15861315",
+        "score": 0.6054495750756469
+      },
+      {
+        "pmid": "15815580",
+        "score": 0.5907209382120614
+      },
+      {
+        "pmid": "17430168",
+        "score": 0.5675532396954148
+      },
+      {
+        "pmid": "35970408",
+        "score": 0.5512591823870605
+      },
+      {
+        "pmid": "28057795",
+        "score": 0.5455732682751196
+      },
+      {
+        "pmid": "24928320",
+        "score": 0.5389581892754258
+      },
+      {
+        "pmid": "22112351",
+        "score": 0.4952567898633927
+      },
+      {
+        "pmid": "15111011",
+        "score": 0.489571848274075
+      },
+      {
+        "pmid": "39684569",
+        "score": 0.4895005996939734
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "38385489",
+        "score": 0.6283694694498091
+      },
+      {
+        "pmid": "15861315",
+        "score": 0.6054495750756469
+      },
+      {
+        "pmid": "15815580",
+        "score": 0.5907209382120614
+      },
+      {
+        "pmid": "17430168",
+        "score": 0.5675532396954148
+      },
+      {
+        "pmid": "35970408",
+        "score": 0.5512591823870605
+      },
+      {
+        "pmid": "28057795",
+        "score": 0.5455732682751196
+      },
+      {
+        "pmid": "24928320",
+        "score": 0.5389581892754258
+      },
+      {
+        "pmid": "22112351",
+        "score": 0.4952567898633927
+      },
+      {
+        "pmid": "15111011",
+        "score": 0.489571848274075
+      },
+      {
+        "pmid": "39684569",
+        "score": 0.4895005996939734
+      }
+    ]
+  },
+  "answers": {},
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 0.0001628473401069641,
+    "vector_index": 1.7676782086491585,
+    "kg_expansion": 8.843839168548584e-06,
+    "total": 2.2718633264303207
+  },
+  "token_usage": {},
+  "completed_at": "2026-08-13T02:00:13.599393+00:00"
+}

@@ -1,0 +1,63 @@
+{
+  "task": "answer",
+  "question_id": "Q050",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "25360f688098c3a0493564a4720a05dcd801116afacfcebdf146bc7fdeb23323",
+  "raw_response_sha256": "ae13ecbda3a6766540396f38f90e88ea469496f345784a1814c19f096c94064b",
+  "usage": {
+    "input_tokens": 4697,
+    "output_tokens": 622,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 5319
+  },
+  "rated_at": "2026-08-13T04:42:45.997776+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q050-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Well-structured hypothesis with clear predictions and translational component. No specific citations; mechanistic pathway (Th17→RANKL→osteoclast) is established but lacks recent empirical grounding."
+      },
+      {
+        "answer_id": "Q050-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Excellent: specific mechanistic chain (Bifidobacterium→decanoic acid→Th17→IL-17A→osteoclast), multiple cited PMIDs, germ-free controls, falsifiable predictions, and clear interpretation framework."
+      },
+      {
+        "answer_id": "Q050-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Strong evidence base with multiple PMIDs, clear hypothesis, and solid experimental design. Slightly less detailed than Q050-B on germ-free decanoic acid controls; bile acid pathway adds breadth."
+      },
+      {
+        "answer_id": "Q050-D",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Well-grounded with cited PMIDs and specific metabolite mechanism. Experimental design is solid but lacks germ-free decanoic acid sufficiency arm present in Q050-B, reducing falsifiability."
+      }
+    ],
+    "preferred_item_id": "Q050-B",
+    "pairwise_reason": "Q050-B provides the most complete and falsifiable experimental design, including a germ-free decanoic acid sufficiency arm that directly tests mechanistic sufficiency, multiple intervention groups with clear predicted outcomes, and the strongest citation support for each step of the proposed causal chain."
+  }
+}

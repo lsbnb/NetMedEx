@@ -1,0 +1,78 @@
+{
+  "name": "netmedex-controlled-bridge-ai-consensus-v1",
+  "proposal_provider": "openai",
+  "review_provider": "anthropic",
+  "questions": {
+    "BW003": {
+      "source_patterns": [
+        "CFTR dysfunction"
+      ],
+      "target_patterns": [
+        "intestinal inflammation"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "gut inflammation",
+        "colitis"
+      ],
+      "max_candidates_per_query": 30,
+      "max_articles_per_side": 3,
+      "mediators": [
+        {
+          "name": "DUOX2",
+          "patterns": [
+            "DUOX2"
+          ],
+          "source_query": "CFTR dysfunction AND DUOX2 [Title/Abstract]",
+          "target_query": "DUOX2 AND intestinal inflammation [Title/Abstract]",
+          "rationale": "DUOX2 is a specific, non-hub oxidase.",
+          "relation_1": "CFTR dysfunction upregulates DUOX2",
+          "relation_2": "DUOX2 promotes intestinal inflammation",
+          "why_text_rag_may_miss": "DUOX2 is rarely linked to CFTR in general reviews.",
+          "falsifiable_hypothesis": "DUOX2 inhibition reduces inflammation in CFTR-deficient intestine."
+        }
+      ]
+    },
+    "BW006": {
+      "source_patterns": [
+        "dystrophin deficiency"
+      ],
+      "target_patterns": [
+        "chronic inflammation"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "muscle inflammation",
+        "myositis"
+      ],
+      "max_candidates_per_query": 30,
+      "max_articles_per_side": 3,
+      "mediators": [
+        {
+          "name": "HMGB1",
+          "patterns": [
+            "HMGB1"
+          ],
+          "source_query": "dystrophin deficiency AND HMGB1 [Title/Abstract]",
+          "target_query": "HMGB1 AND chronic inflammation [Title/Abstract]",
+          "rationale": "HMGB1 is a specific DAMP protein.",
+          "relation_1": "dystrophin deficiency increases HMGB1 release",
+          "relation_2": "HMGB1 sustains chronic inflammation",
+          "why_text_rag_may_miss": "HMGB1 is not a standard dystrophin-inflammation link.",
+          "falsifiable_hypothesis": "HMGB1 blockade reduces inflammation in dystrophin-deficient muscle."
+        },
+        {
+          "name": "Galectin-3",
+          "patterns": [
+            "Galectin-3"
+          ],
+          "source_query": "dystrophin deficiency AND Galectin-3 [Title/Abstract]",
+          "target_query": "Galectin-3 AND chronic inflammation [Title/Abstract]",
+          "rationale": "Galectin-3 is a specific lectin.",
+          "relation_1": "dystrophin deficiency upregulates Galectin-3",
+          "relation_2": "Galectin-3 promotes chronic inflammation",
+          "why_text_rag_may_miss": "Galectin-3 is rarely retrieved in top-k muscle inflammation answers.",
+          "falsifiable_hypothesis": "Galectin-3 inhibition reduces chronic inflammation in dystrophin-deficient models."
+        }
+      ]
+    }
+  }
+}

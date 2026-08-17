@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "Q004",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "b719686fd5f0a3cb2668528e986550bab5d355b099e6b80d0d626ce5cf74624b",
+  "raw_response_sha256": "27ed35e6aa0dade01d40497e2920e6cf53da2caa75741f3b79c9b18c251f8926",
+  "usage": {
+    "input_tokens": 4455,
+    "output_tokens": 407,
+    "total_tokens": 4862
+  },
+  "rated_at": "2026-08-13T04:45:36.041709+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q004-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Lists six plausible intermediates with citations; minor over‑generalizations but overall accurate."
+      },
+      {
+        "answer_id": "Q004-B",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Provides several pathways and explanations but lacks specific citations; CTNNB1 link less supported."
+      },
+      {
+        "answer_id": "Q004-C",
+        "correctness": 4,
+        "completeness": 2,
+        "relevance": 3,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 2,
+        "notes": "Identifies only p53 as confirmed; other candidates mentioned without detail."
+      },
+      {
+        "answer_id": "Q004-D",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Offers solid gene list with citations; omits some known routes like JNK or STAT3."
+      }
+    ],
+    "preferred_item_id": "Q004-A",
+    "pairwise_reason": "Answer A provides the most comprehensive, well‑grounded set of intermediate genes with clear two‑step mechanisms, surpassing the others in completeness and relevance."
+  }
+}

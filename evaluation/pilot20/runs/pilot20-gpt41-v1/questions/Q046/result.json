@@ -1,0 +1,154 @@
+{
+  "status": "complete",
+  "question_id": "Q046",
+  "domain": "method stress test",
+  "question": "Find evidence for a direct causal link between caffeine and telomerase activation in human immune cells.",
+  "question_type": "direct_evidence",
+  "pubmed_query": "caffeine telomerase activation human immune cells",
+  "effective_pubmed_query": "caffeine telomerase activation human immune cells",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "12429935",
+    "12446774",
+    "15075340",
+    "16425280",
+    "29570984",
+    "29923368",
+    "40363725"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "routed_profile": "A_text_only",
+    "route_reason": "question_type=direct_evidence: text retrieval task",
+    "question_type": "direct_evidence",
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "16425280",
+        "score": 0.46714774347740445
+      },
+      {
+        "pmid": "12446774",
+        "score": 0.4514523679080886
+      },
+      {
+        "pmid": "15075340",
+        "score": 0.4455472669186011
+      },
+      {
+        "pmid": "29570984",
+        "score": 0.4419264447044581
+      },
+      {
+        "pmid": "40363725",
+        "score": 0.44097210795989483
+      },
+      {
+        "pmid": "12429935",
+        "score": 0.4402041626819568
+      },
+      {
+        "pmid": "29923368",
+        "score": 0.38978444735238543
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "16425280",
+        "score": 0.46714774347740445
+      },
+      {
+        "pmid": "12446774",
+        "score": 0.4514523679080886
+      },
+      {
+        "pmid": "15075340",
+        "score": 0.4455472669186011
+      },
+      {
+        "pmid": "29570984",
+        "score": 0.4419264447044581
+      },
+      {
+        "pmid": "40363725",
+        "score": 0.44097210795989483
+      },
+      {
+        "pmid": "12429935",
+        "score": 0.4402041626819568
+      },
+      {
+        "pmid": "29923368",
+        "score": 0.38978444735238543
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "Direct Evidence:\nThere is currently no direct evidence from the supplied PubMed context for a causal link between caffeine administration and telomerase activation in human immune cells.\n\nAssociation:\nThe supplied articles discuss several related mechanisms, but not a direct activation of telomerase by caffeine:\n\n- Caffeine is mentioned as a component in studies regarding cancer prevention through green tea, but the green tea polyphenol EGCG (not caffeine) is highlighted as a telomerase inhibitor in glioma cells, not as an activator [PMID: 29570984]. No mention is made of telomerase activation by caffeine in immune cells.\n- Some studies describe caffeine as an inhibitor of checkpoint kinases (such as ATR and ATM), affecting cell cycle responses to DNA damage in human fibroblasts and other cell types [PMID: 12446774, PMID: 15075340, PMID: 12429935], but not leading to telomerase activation.\n- In a study of human aortic endothelial cells and mouse vascular tissue, caffeine is reported to inhibit ATM (ataxia telangiectasia mutated) signaling and block premature endothelial senescence induced by oxidized LDL (L5). This stressor (L5) was shown to decrease hTERT protein levels and activity, and caffeine's effect is through ATM inhibition, not telomerase activation [PMID: 29923368]. This is in vascular cells, not immune cells, and the inhibition is indirect via checkpoint pathways, not direct activation.\n- Other articles discuss polyphenols from tea (such as EGCG or those from Camellia ptilophylla) that may target telomerase reverse transcriptase, but these studies are in cancer cell lines or other cell types and do not attribute effects to caffeine [PMID: 40363725].\n\nTestable Hypothesis:\nGiven caffeine's known inhibitory effects on checkpoint kinases and its lack of reported function as a direct activator of telomerase in human immune cells (based on available context), one could hypothesize that any observed modulation of telomerase activity from caffeine might be secondary to broader cell-cycle or stress response changes rather than direct enzymatic activation. This remains to be directly tested in human immune cells.\n\nSummary:\n- No direct human, animal, or in vitro evidence in the supplied literature demonstrates that caffeine causes telomerase activation in human immune cells.\n- Caffeine is involved in cell cycle and DNA damage responses, sometimes via inhibition of checkpoint pathways, but not shown to increase telomerase activity.\n- The question remains unaddressed by current data, and any link is unproven in this context.",
+    "traditional_rag": "Direct Evidence:\nThere is no direct evidence in the provided context for a causal link between caffeine and telomerase activation in human immune cells.\n\nAssociation:\n- PMID: 12446774 describes the use of caffeine as an inhibitor of ATR and shows that caffeine abolished the S checkpoint response to UVC in human fibroblasts immortalized by ectopic expression of telomerase. However, this is related to DNA damage response and checkpoint control, not direct telomerase activation, and is not specific to immune cells.\n- PMID: 15075340 reports that caffeine significantly inhibited DNA synthesis at alternative lengthening of telomeres (ALT)-associated promyelocytic leukemia bodies in certain cell lines, but this relates to telomere maintenance in tumor cells dependent on recombination rather than telomerase activation or immune cells.\n- PMID: 29923368 finds that caffeine, as an ATM blocker, blocked the increase in DNA damage and senescence induced by electronegative LDL in mouse aorta and human endothelial cells. It also notes that L5 treatment decreased hTERT levels and activity, and caffeine (ATM blocker) was used to prevent this DNA damage response. This again pertains to vascular endothelial cells, not immune cells, and does not demonstrate caffeine activating telomerase.\n- PMID: 16425280 discusses cancer-preventive activities of tea and caffeine but does not describe effects of caffeine on telomerase activation in immune cells.\n\nTestable Hypothesis:\nGiven the absence of direct evidence, the following testable hypothesis can be formulated from associative findings: \"Caffeine may influence telomerase activity via modulation of DNA damage response pathways in human cells, but its effect on telomerase activation in human immune cells remains to be experimentally determined.\"\n\nSummary:\n- No direct evidence is provided for a causal link between caffeine and telomerase activation in human immune cells.\n- Available evidence describes caffeine's indirect effects on DNA damage response and telomere biology in other human cell types (fibroblasts, endothelial cells, tumor cells), but not its activation of telomerase, and not in immune cells [PMID: 12446774, 15075340, 29923368].\n- Human evidence is present, but none specific to the question.",
+    "general_llm": "Based on current scientific understanding up to 2024, **there is no well-established direct causal link between caffeine and telomerase activation in human immune cells**.\n\n**What is established:**\n- Telomerase activity in immune cells is crucial for telomere maintenance and cellular longevity.\n- Caffeine is a widely consumed stimulant with known effects on cellular signaling, DNA repair, and apoptosis in some contexts.\n\n**What is known about caffeine and telomerase:**\n- Some **in vitro and animal studies** have examined the relationship between caffeine and telomerase activity, but their findings are not consistent and are mostly outside the context of human immune cells.\n- In certain cell types, caffeine has been reported to suppress aspects of DNA damage response pathways, which could indirectly affect telomerase, but these effects have not been directly linked or consistently observed in human immune cells.\n- Some studies in yeast and non-immune human cells suggest caffeine may influence cell cycle checkpoints or stress responses, but again, these do not establish a direct causal mechanism involving telomerase activation.\n\n**What is uncertain or hypothetical:**\n- There are hypotheses that lifestyle factors, including diet and possibly caffeine intake, *might* affect telomere maintenance, but direct evidence in humans—especially showing that caffeine causally increases telomerase activity in immune cells—is lacking.\n- Epidemiological studies may assess associations between beverage intake and leukocyte telomere length, but such correlations do not prove a direct mechanistic effect of caffeine on telomerase activity.\n\n**In summary:**  \nNo direct, causal, and reproducibly established link exists between caffeine intake and telomerase activation in human immune cells according to current biomedical knowledge. Any such claims should be considered speculative and would require direct experimental evidence—such as controlled studies showing increased telomerase enzyme activity in human immune cells in response to caffeine—to be confirmed."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 9.466707706451416e-05,
+    "vector_index": 1.3876176998019218,
+    "answer_netmedex_hybrid_rag": 4.667790941894054,
+    "answer_traditional_rag": 4.794827990233898,
+    "answer_general_llm": 3.8769252747297287,
+    "total": 15.306998431682587
+  },
+  "token_usage": {
+    "total_tokens": 7386,
+    "input_tokens": 6020,
+    "output_tokens": 1366
+  },
+  "completed_at": "2026-08-12T19:19:09.107639+00:00"
+}

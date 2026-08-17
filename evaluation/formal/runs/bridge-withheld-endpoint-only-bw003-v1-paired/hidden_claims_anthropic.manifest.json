@@ -1,0 +1,26 @@
+{
+  "reviewer_type": "AI",
+  "human_expert_review_claimed": false,
+  "blinded": true,
+  "task": "hidden_claim",
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_file": "evaluation/formal/runs/bridge-withheld-endpoint-only-bw003-v1-paired/hidden_claims_blinded.csv",
+  "input_sha256": "da51ed51ce3d2ab113aa70e22eabd8a00da2d6385797241fc765332793f13452",
+  "output_file": "evaluation/formal/runs/bridge-withheld-endpoint-only-bw003-v1-paired/hidden_claims_anthropic.csv",
+  "question_count": 1,
+  "row_count": 2,
+  "estimated_prompt_chars": 11857,
+  "estimated_input_tokens_rough": 2964,
+  "actual_api_usage_from_checkpoints": {
+    "input_tokens": 3468,
+    "output_tokens": 334,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 3802
+  },
+  "completed_batches": 1,
+  "started_at": "2026-08-09T11:29:11.866763+00:00",
+  "completed_at": "2026-08-09T11:29:18.923414+00:00",
+  "status": "complete"
+}

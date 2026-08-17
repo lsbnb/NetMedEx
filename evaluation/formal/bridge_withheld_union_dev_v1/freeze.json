@@ -1,0 +1,42 @@
+{
+  "name": "netmedex-bridge-withheld-union-development-v1",
+  "status": "frozen_before_semantic_graph_generation",
+  "frozen_at": "2026-08-09T17:30:40.081655+00:00",
+  "independent_holdout": false,
+  "same_union_corpus_for_text_and_hybrid": true,
+  "text_context_top_k": 10,
+  "query_spec": "evaluation/formal/union_corpus_query_spec_v1.json",
+  "query_spec_sha256": "9a703ec9e894df3dcfd407ce93e5f915657734101d5b5905775fd4478d58bee3",
+  "questions": [
+    {
+      "question_id": "BW003",
+      "document_count": 58,
+      "requested_union_count": 59,
+      "stratum_unique_counts": {
+        "source": 20,
+        "target": 20,
+        "endpoint_pair": 20
+      },
+      "corpus_sha256": "1544ffe0392aa74d5af7dbbb7b11cc723dd33d4c84a9822251871cddd12bb2e9"
+    },
+    {
+      "question_id": "BW008",
+      "document_count": 60,
+      "requested_union_count": 60,
+      "stratum_unique_counts": {
+        "source": 20,
+        "target": 20,
+        "endpoint_pair": 20
+      },
+      "corpus_sha256": "d5845570c131671dcf792159fb664b90f70fd6ea45df12bc31ba714cabfebd79"
+    }
+  ],
+  "checksums": {
+    "queries.csv": "aa40e626c4180ad8977c79209560c4ff506764cd1d7e4cea8b6b4238848bca79",
+    "questions_metadata.csv": "6141d578a830613c561f407adf57f5a8040f49ebf22b46a0b940db8489945e07",
+    "questions/BW003/corpus.pubtator": "1544ffe0392aa74d5af7dbbb7b11cc723dd33d4c84a9822251871cddd12bb2e9",
+    "questions/BW003/corpus_manifest.json": "2a90d9318c54279bd76cccf718f474a589675803b3f83f53741b2851d49c9237",
+    "questions/BW008/corpus.pubtator": "d5845570c131671dcf792159fb664b90f70fd6ea45df12bc31ba714cabfebd79",
+    "questions/BW008/corpus_manifest.json": "78122bfdb049221df5c09cea16af6ab6aac062ed09473fdc57e5798084c5bf88"
+  }
+}

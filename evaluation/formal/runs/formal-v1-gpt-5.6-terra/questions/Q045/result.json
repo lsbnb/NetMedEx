@@ -1,0 +1,146 @@
+{
+  "status": "complete",
+  "question_id": "Q045",
+  "domain": "cross-species",
+  "question": "Which evidence for GLP-1 receptor agonists reducing neuroinflammation comes from human studies versus animal models?",
+  "pubmed_query": "GLP-1 receptor agonist neuroinflammation human animal microglia",
+  "language": "English",
+  "corpus_pmids": [
+    "29050859",
+    "33902708",
+    "34569615",
+    "34961526",
+    "39062586",
+    "40134421",
+    "40394225",
+    "41086442",
+    "41173224",
+    "41417476",
+    "41527082",
+    "42265098",
+    "42311464"
+  ],
+  "graph": {
+    "node_count": 29,
+    "edge_count": 34,
+    "path_count": 20,
+    "preferred_pmids": [
+      "29050859",
+      "33902708",
+      "34569615",
+      "39062586",
+      "40394225",
+      "41173224",
+      "41417476",
+      "42265098"
+    ]
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "42265098",
+        "score": 0.8238266771255784
+      },
+      {
+        "pmid": "41417476",
+        "score": 0.8056832988745455
+      },
+      {
+        "pmid": "34569615",
+        "score": 0.8035173911677477
+      },
+      {
+        "pmid": "39062586",
+        "score": 0.7544699645043472
+      },
+      {
+        "pmid": "29050859",
+        "score": 0.7439247005538768
+      },
+      {
+        "pmid": "33902708",
+        "score": 0.7084272922354801
+      },
+      {
+        "pmid": "40394225",
+        "score": 0.7061985335909109
+      },
+      {
+        "pmid": "41173224",
+        "score": 0.6701086017026192
+      },
+      {
+        "pmid": "42311464",
+        "score": 0.580028303025398
+      },
+      {
+        "pmid": "40134421",
+        "score": 0.5662677844086955
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "42311464",
+        "score": 0.580028303025398
+      },
+      {
+        "pmid": "40134421",
+        "score": 0.5662677844086955
+      },
+      {
+        "pmid": "42265098",
+        "score": 0.5492177847503856
+      },
+      {
+        "pmid": "41086442",
+        "score": 0.546640114272607
+      },
+      {
+        "pmid": "41417476",
+        "score": 0.537122199249697
+      },
+      {
+        "pmid": "34569615",
+        "score": 0.5356782607784984
+      },
+      {
+        "pmid": "39062586",
+        "score": 0.5029799763362315
+      },
+      {
+        "pmid": "29050859",
+        "score": 0.49594980036925124
+      },
+      {
+        "pmid": "33902708",
+        "score": 0.47228486149032006
+      },
+      {
+        "pmid": "40394225",
+        "score": 0.47079902239394056
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "## Direct evidence\n\n### Human studies\n- **No direct human clinical evidence of reduced neuroinflammation is provided in the supplied context.** The reviews state that clinical results for neurological outcomes are mixed or that larger human trials are needed, but they do not report human neuroinflammatory biomarker reductions (e.g., CSF cytokines, microglial imaging, or inflammatory transcriptional markers) attributable to GLP-1 receptor agonists [PMID: 41417476; PMID: 42311464; PMID: 40134421].\n- **Human cell evidence is not clinical human evidence:** GLP-1(9–36) reduced IL-6 in the human HMC3 microglial cell line after inflammatory stimulation. This supports an anti-inflammatory effect in vitro, but does not establish that GLP-1R agonists reduce neuroinflammation in human patients [PMID: 34569615].\n- Similarly, GLP-1/GIP dual and GLP-1/GIP/glucagon triple agonists decreased COX2, nitrite production, and pro-inflammatory cytokine release in human HMC3 microglial cells. These are **in-vitro human-cell** data, not human-subject evidence; moreover, the agents are multi-agonists rather than selective GLP-1R agonists [PMID: 39062586].\n\n### Animal models\n- **Mouse LPS neuroinflammation model:** Semaglutide prevented neutrophil infiltration into the brain, reduced excessive cytokine release, and suppressed neuroinflammation-associated transcriptional programs in microglia, endothelial cells, and some pericytes. This was shown in **male mice** [PMID: 42265098].\n- **Alzheimer mouse models:** NLY01 (an engineered exendin-4/GLP-1R agonist) blocked amyloid-beta-induced microglial activation, inhibited microglia-driven conversion of astrocytes to reactive astrocytes, and preserved neurons in 5xFAD and 3xTg-AD mice [PMID: 33902708].\n- **APP/PS1 mice and mouse microglia:** Semaglutide inhibited microglial NLRP3 activation, promoted M2-like microglial polarization, and attenuated neuroinflammation in APP/PS1 mice; parallel findings occurred in LPS+ATP-stimulated BV2 mouse microglia [PMID: 41173224].\n- **Transgenic AD mice:** GLP-1R agonists increased AMPK activity in microglia, inhibited neuroinflammation, and promoted amyloid-beta phagocytosis, with reduced plaque burden and improved memory in AD-model mice [PMID: 40394225].\n- **APP/PS1 mice, multi-agonist evidence:** A triple GLP-1/GIP/glucagon receptor agonist reduced activated microglia and astrocytes in cortex and hippocampus. This supports anti-neuroinflammatory activity in mice, but cannot isolate the contribution of GLP-1R activation because three receptors were targeted [PMID: 29050859].\n\n## Association evidence\n\n- In patients with Alzheimer disease, plasma GLP-1 levels were reported to be negatively correlated with amyloid-beta load. This is a **human association**, not evidence that administering a GLP-1R agonist reduces neuroinflammation [PMID: 40394225].\n- Semaglutide-responsive inflammatory pathways in male mice overlapped with inflammatory signatures reported in human neurodegenerative diseases, including Alzheimer disease. This supports potential relevance to human disease biology, but is not a demonstration of anti-neuroinflammatory drug effects in people [PMID: 42265098].\n- Reviews describe modest cognitive or motor improvements in some clinical trials, while other trials showed no meaningful disease-modifying effect. These clinical outcomes do not directly establish neuroinflammation reduction [PMID: 42311464].\n\n## Testable hypothesis\n\n- **Hypothesis:** In humans with neurodegenerative disease, CNS-penetrant GLP-1R agonists may reduce microglial and astrocytic inflammatory activation—potentially through AMPK activation, suppression of NLRP3/NF-kB signaling, and reduced inflammatory cytokine production—mirroring the animal and cell findings [PMID: 33902708; PMID: 40394225; PMID: 41173224].\n- This should be tested in adequately powered human trials using prespecified neuroinflammation endpoints, such as CSF/plasma inflammatory markers, microglial PET imaging, and disease-relevant transcriptomic or cellular biomarkers. The supplied context explicitly indicates that further large-scale human trials are needed [PMID: 41417476; PMID: 42311464].\n\n**Bottom line:** The supplied evidence for GLP-1R agonists reducing neuroinflammation is predominantly **preclinical**, especially in mouse models and microglial cell systems. There is **no direct human in-vivo evidence** in this context demonstrating that GLP-1R agonist treatment reduces neuroinflammation.",
+    "traditional_rag": "## Human evidence\n\n### Direct evidence in human participants\n- **No direct human clinical evidence of reduced neuroinflammation is provided in the supplied context.** Reviews note that clinical results for neurological outcomes (cognition or motor function) are mixed and that further clinical evidence—particularly in stroke—is needed; they do not report that GLP-1 receptor agonists (GLP-1RAs) reduced human brain inflammatory biomarkers, microglial activation, or neuroinflammation directly [PMID: 42311464; PMID: 40134421].\n- Clinical observations of preserved cognition or motor function have been reported in some trials, but these are **clinical outcomes rather than direct measures of neuroinflammation**, and other trials found no meaningful disease-modifying effect [PMID: 42311464].\n\n### Association (human)\n- In patients with Alzheimer’s disease, **plasma GLP-1 levels were negatively correlated with amyloid-beta burden**. This is an observational association, not evidence that treatment with a GLP-1RA reduces neuroinflammation [PMID: 40394225].\n\n### Human in-vitro evidence\n- In a **human microglial cell line (HMC3)**, the GLP-1 metabolite GLP-1(9–36) significantly reduced LPS-induced IL-6 levels. This supports an anti-inflammatory effect in human-derived microglial cells, but it is not evidence from treated human participants and concerns a metabolite rather than a standard GLP-1RA [PMID: 34569615].\n- In human HMC3 microglial cells, incretin multi-agonists reduced COX-2 expression, nitrite production, and pro-inflammatory cytokine release. However, these agents included GLP-1/GIP dual and GLP-1/GIP/glucagon triple agonists, so the isolated contribution of GLP-1 receptor activation cannot be determined from this evidence [PMID: 39062586].\n\n## Animal-model evidence\n\n### Direct evidence\n- **Male mouse LPS-neuroinflammation model:** Semaglutide prevented neutrophil infiltration into the brain, reduced excessive cytokine release, and suppressed neuroinflammation-associated transcriptional programs in microglia, endothelial cells, and a subset of pericytes. The proposed mechanism involved GLP-1R-expressing neurons in the dorsal vagal complex that regulated anti-inflammatory genes [PMID: 42265098].\n- **Alzheimer’s mouse models:** NLY01, an engineered exendin-4 GLP-1RA, inhibited beta-amyloid-induced microglial activation, blocked microglia-driven conversion of astrocytes to reactive astrocytes, and preserved neurons. In 5xFAD and 3xTg-AD mice, this was accompanied by improved spatial learning and memory [PMID: 33902708].\n- **Transgenic Alzheimer’s mice:** GLP-1RAs increased AMPK activity in microglia, inhibited neuroinflammation, and promoted amyloid-beta phagocytosis; plaque formation and memory deficits were also reduced [PMID: 40394225].\n- **APP/PS1 Alzheimer’s mice:** A triple GLP-1/GIP/glucagon receptor agonist reduced activated microglia and astrocytes and lowered oxidative stress in cortex and hippocampus. Because it activates three receptors, this supports anti-neuroinflammatory activity of an incretin multi-agonist rather than GLP-1R-selective activity alone [PMID: 29050859].\n\n### Broader preclinical evidence summarized in reviews\n- Reviews describe preclinical evidence that GLP-1RAs inhibit microglial NLRP3 inflammasome activation, promote anti-inflammatory/M2-like microglial polarization, regulate peripheral immune-cell responses, and reduce pro-inflammatory cytokines. These mechanisms are presented largely from animal and experimental models rather than confirmed human CNS studies [PMID: 42311464; PMID: 40134421; PMID: 41086442].\n\n## Testable hypothesis\n- The animal findings support the hypothesis that, in humans, CNS-penetrant GLP-1RAs could reduce neuroinflammation by suppressing microglial inflammatory signaling, limiting reactive astrocyte formation, reducing inflammatory-cell infiltration, and/or activating AMPK-related pathways. This requires confirmation using direct human biomarkers—such as CSF inflammatory markers, neuroimaging measures of microglial activation, or brain-derived cytokine measures—because the supplied context does not establish such an effect in human participants [PMID: 42311464; PMID: 40134421; PMID: 42265098; PMID: 33902708].",
+    "general_llm": "Evidence that GLP-1 receptor agonists (GLP-1RAs; e.g., exenatide, liraglutide, semaglutide, dulaglutide) reduce *neuroinflammation* is much stronger in animal and experimental models than in humans.\n\n## Human evidence: limited and mostly indirect\n\n### 1. Peripheral inflammatory markers\nIn people with obesity and/or type 2 diabetes, GLP-1RAs can lower circulating inflammatory markers such as C-reactive protein (CRP), and in some studies reduce inflammatory cytokines or markers of endothelial/immune activation. This supports an anti-inflammatory effect systemically, but it does **not** establish reduced inflammation within the brain.\n\nImportant limitations:\n- Changes may be caused partly by weight loss, improved glycemia, reduced visceral fat, and better cardiometabolic health rather than a direct brain GLP-1 receptor effect.\n- Blood cytokines are imperfect proxies for microglial activation or other CNS immune processes.\n\n### 2. Neurodegenerative disease trials\nSmall and early clinical studies have tested exenatide or liraglutide in Parkinson disease and Alzheimer disease, and newer large programs have evaluated GLP-1RAs for neurodegenerative outcomes. Some studies have reported signals in clinical, metabolic, or imaging-related endpoints, but they generally have **not demonstrated a clear reduction in CNS inflammatory activity in humans**.\n\nFor example:\n- In Parkinson disease, exenatide trials generated interest because of possible effects on disease-related biology and some clinical signals in early work. However, direct evidence that it suppresses human microglial activation or neuroinflammatory cytokines is lacking.\n- In Alzheimer disease, liraglutide and related agents have been assessed using cognition and brain imaging/metabolic endpoints. Results have not provided convincing direct proof of anti-neuroinflammatory action in the human brain.\n- Trials of semaglutide and other GLP-1RAs in neurodegeneration have not yet established neuroinflammation reduction as a confirmed mechanism of benefit.\n\n### 3. Human neuroimaging and cerebrospinal-fluid evidence\nDirect evidence would ideally come from:\n- PET imaging of microglial/immune activation,\n- CSF inflammatory mediators,\n- or brain-tissue biomarkers.\n\nSuch evidence remains sparse, inconsistent, and technically challenging. PET tracers commonly used for microglial activation have important specificity limitations, and CSF studies are generally small. Therefore, it is not currently established that GLP-1RAs meaningfully reduce microglial activation in living humans.\n\n### Bottom line for humans\nHuman studies support the possibility that GLP-1RAs improve systemic inflammatory and metabolic conditions that contribute to brain inflammation. But direct demonstration of reduced neuroinflammation in humans remains preliminary rather than established.\n\n---\n\n## Animal and preclinical evidence: substantial, but not fully translatable\n\nIn rodent and cell-based models, GLP-1RAs frequently reduce markers interpreted as neuroinflammation. This has been observed in models of diabetes/obesity, Alzheimer-like pathology, Parkinson-like neurotoxicity, stroke/ischemia, traumatic brain injury, and sometimes demyelinating or neuropathic conditions.\n\n### Common findings in animal models\n\n#### Reduced microglial activation\nGLP-1RAs often reduce activated microglial morphology and markers such as Iba1, CD68, and inflammatory signaling pathways. Many studies report a shift away from a pro-inflammatory phenotype.\n\n#### Reduced astrocyte reactivity\nSome models show reduced GFAP expression and other signs of reactive astrocytosis after treatment with exenatide, liraglutide, semaglutide, or related compounds.\n\n#### Lower inflammatory mediators\nReported reductions include:\n- TNF-alpha\n- IL-1 beta\n- IL-6\n- inducible nitric oxide synthase\n- cyclooxygenase-2\n- NF-kappa B–related signaling\n- NLRP3 inflammasome activity\n\nThese effects have been described in brain regions relevant to the model, such as hippocampus, cortex, substantia nigra, and hypothalamus.\n\n#### Effects on oxidative stress and mitochondrial dysfunction\nGLP-1RAs can reduce oxidative-stress markers, improve mitochondrial function, and decrease neuronal injury in animal models. Since oxidative stress and innate immune activation reinforce each other, these changes may contribute to an anti-inflammatory phenotype.\n\n#### Improved blood–brain barrier and vascular function\nIn some ischemia and metabolic disease models, GLP-1RAs improve blood–brain barrier integrity, reduce leukocyte-related inflammatory signaling, and lessen edema or tissue injury. These effects could secondarily reduce neuroinflammation.\n\n---\n\n## Why animal findings do not yet prove the same effect in humans\n\n1. **Models are simplified.** Toxin, transgenic, ischemia, and diet-induced rodent models reproduce only aspects of human neurodegenerative or metabolic brain disease.\n\n2. **Dose and exposure differ.** Experimental doses, routes, and timing—often preventive or given near an injury—may not resemble routine human treatment.\n\n3. **Weight loss and glycemic improvement are confounders.** In both animals and humans, better metabolic health can itself lower inflammatory signaling.\n\n4. **The relevant GLP-1 receptor biology is still being refined.** Determining exactly which brain cell types express functional GLP-1 receptors, and whether observed anti-inflammatory effects are direct on immune cells or indirect through neurons, metabolism, vasculature, or gut–brain signaling, remains an active area of research.\n\n5. **Inflammatory markers are not identical to clinical benefit.** Lower cytokines or microglial markers do not necessarily translate into slower neurodegeneration or improved cognition/function.\n\n---\n\n## Overall conclusion\n\n- **Animal models:** There is broad and fairly consistent preclinical evidence that GLP-1RAs can attenuate microglial/astrocyte activation, inflammatory cytokine signaling, oxidative stress, and injury-associated immune responses in the CNS.\n- **Human studies:** Evidence is currently indirect and much weaker. GLP-1RAs improve systemic inflammatory/metabolic risk factors, but direct proof that they reduce human brain inflammation is not yet established.\n- **Most defensible interpretation:** GLP-1RAs are plausible candidates for reducing neuroinflammation, particularly through combined metabolic, vascular, and possibly direct CNS actions, but this remains a translational hypothesis requiring better human CSF, PET, and biomarker-driven trials."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 1.077961802482605,
+    "semantic_graph": 71.96745193749666,
+    "vector_index": 1.6763597950339317,
+    "answer_netmedex_hybrid_rag": 10.910105891525745,
+    "answer_traditional_rag": 11.789232574403286,
+    "answer_general_llm": 17.19842153042555,
+    "total": 121.58551373332739
+  },
+  "completed_at": "2026-07-27T19:04:10.591510+00:00",
+  "answer_repair_history": [
+    {
+      "system": "general_llm",
+      "model": "gpt-5.6-terra",
+      "repaired_at": "2026-07-30T11:11:58.485758+00:00"
+    }
+  ]
+}

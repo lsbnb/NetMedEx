@@ -1,0 +1,173 @@
+{
+  "status": "complete",
+  "question_id": "Q005",
+  "domain": "neurodegeneration",
+  "question": "Does oxidative stress directly support a mechanistic link between amyloid beta and mitochondrial dysfunction?",
+  "question_type": "mechanism",
+  "pubmed_query": "amyloid beta AND oxidative stress AND mitochondrial dysfunction",
+  "effective_pubmed_query": "amyloid beta AND oxidative stress AND mitochondrial dysfunction",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "22697066",
+    "27766447",
+    "27809706",
+    "32967303",
+    "33476985",
+    "35269827",
+    "35522844",
+    "35660451",
+    "37227619",
+    "37597424",
+    "37956598",
+    "40023293",
+    "40864415",
+    "40902587",
+    "40931065"
+  ],
+  "graph": {
+    "node_count": 80,
+    "edge_count": 147,
+    "path_count": 0,
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": true,
+    "max_hops": 2,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "gate_evidence_paths": true,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "exposure_signature": "4f8698ecdef6d9b5",
+    "routed_profile": "G_evidence_gated_two_hop",
+    "route_reason": "question_type=mechanism: evidence-gated multi-hop task",
+    "question_type": "mechanism",
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "22697066",
+        "score": 0.6518603248807963
+      },
+      {
+        "pmid": "27766447",
+        "score": 0.6284797728166837
+      },
+      {
+        "pmid": "35522844",
+        "score": 0.6255463626160976
+      },
+      {
+        "pmid": "40864415",
+        "score": 0.6222238804425763
+      },
+      {
+        "pmid": "27809706",
+        "score": 0.6024005227894552
+      },
+      {
+        "pmid": "33476985",
+        "score": 0.5980470914403906
+      },
+      {
+        "pmid": "40023293",
+        "score": 0.588403187878819
+      },
+      {
+        "pmid": "37956598",
+        "score": 0.5670294003848598
+      },
+      {
+        "pmid": "37597424",
+        "score": 0.5659019729543693
+      },
+      {
+        "pmid": "32967303",
+        "score": 0.550660436103534
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "22697066",
+        "score": 0.6518603248807963
+      },
+      {
+        "pmid": "27766447",
+        "score": 0.6284797728166837
+      },
+      {
+        "pmid": "35522844",
+        "score": 0.6255463626160976
+      },
+      {
+        "pmid": "40864415",
+        "score": 0.6222238804425763
+      },
+      {
+        "pmid": "27809706",
+        "score": 0.6024005227894552
+      },
+      {
+        "pmid": "33476985",
+        "score": 0.5980470914403906
+      },
+      {
+        "pmid": "40023293",
+        "score": 0.588403187878819
+      },
+      {
+        "pmid": "37956598",
+        "score": 0.5670294003848598
+      },
+      {
+        "pmid": "37597424",
+        "score": 0.5659019729543693
+      },
+      {
+        "pmid": "32967303",
+        "score": 0.550660436103534
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "**Direct Evidence:**  \nYes, oxidative stress is directly implicated as a mechanistic link between amyloid beta (Aβ) and mitochondrial dysfunction in Alzheimer’s disease (AD). Multiple articles highlight that the accumulation of Aβ induces mitochondrial dysfunction, which in turn contributes to increased production of reactive oxygen species (ROS), leading to oxidative stress. This creates a pathological cycle in which Aβ toxicity impairs mitochondria, elevates ROS, and causes further neuronal damage:\n\n- **PMID: 22697066** (review, human/animal context): The mitochondrial toxicity induced by beta-amyloid may include increased permeability of mitochondrial membranes, disruption of calcium homeostasis, and the alteration of oxidative phosphorylation, all leading to overproduction of ROS. Dysfunctional mitochondria contribute to ROS, resulting in extensive oxidative damage and progression of amyloid pathology. Thus, oxidative stress is presented as both a consequence and an amplifier of Aβ-induced mitochondrial dysfunction.\n- **PMID: 40864415** (review, human and preclinical context): Aβ peptides interact directly with mitochondrial membranes and proteins to cause mitochondrial fragmentation, hinder mitochondrial transport, and increase ROS generation. This exacerbates oxidative damage and creates a vicious cycle of mitochondrial injury and oxidative stress.\n- **PMID: 40023293**: Factors such as oxidative stress and disturbances in energy metabolism are closely linked with mitochondrial dysfunction in AD, and these are associated with the pathogenic effects of amyloid-beta.\n\n**Association Evidence:**  \n- **PMID: 33476985**: Notes that elevated ROS/RNS production and defective mitochondrial dynamics are both a cause and a consequence of AD-related pathology. Amyloid-beta is linked to mitochondrial damage and oxidative stress, but the precise mechanistic interlink remains under investigation.\n- **PMID: 27809706**: States that oxidative stress and mitochondrial dysfunction are linked in neurodegenerative diseases, including AD, and that oxidative stress leads to protein misfolding (as seen with Aβ), but stops short of providing a direct mechanistic pathway.\n- **PMID: 37956598**: Both oxidative stress and mitochondrial dysfunction are involved in a vicious cycle with amyloid-beta and tau accumulation, further aggravating AD pathology.\n\n**Testable Hypotheses:**  \n- The exact sequence or relative dominance of Aβ versus mitochondrial dysfunction, or whether oxidative stress is a primary driver or a secondary consequence, remains debated, as highlighted by the \"Amyloid Cascade\" and \"Mitochondrial Cascade\" hypotheses [PMID: 35522844].\n- Uncovering specific molecular mediators of Aβ-induced mitochondrial ROS production and related neuronal injury will allow more targeted interventions.\n\n**Summary:**  \nThere is strong mechanistic evidence that oxidative stress forms a direct link between amyloid beta accumulation and mitochondrial dysfunction, mainly via Aβ-induced mitochondrial impairment and ROS overproduction, which perpetuates neural injury in Alzheimer’s disease [PMID: 22697066, PMID: 40864415, PMID: 40023293]. However, some aspects of the interplay remain to be fully elucidated, supporting ongoing research and hypothesis testing in both human and animal models.",
+    "traditional_rag": "Direct Evidence:\n- According to PMID: 22697066 (human/animal evidence), mitochondrial dysfunction can contribute to reactive oxygen species (ROS) production, leading to oxidative damage and the progression of amyloid pathology. Additionally, the mitochondrial toxicity induced by beta-amyloid is suggested to involve increased membrane permeability, disrupted calcium homeostasis, and altered oxidative phosphorylation—processes that lead to overproduction of ROS. While oxidative stress and amyloid toxicity are both said to leave neurons \"chemically vulnerable,\" the text notes that the mitochondrial toxicity induced by beta-amyloid \"is still not clear\" but may include these mechanisms. This suggests a possible mechanistic link involving oxidative stress as a mediator between amyloid beta and mitochondrial dysfunction, but stops short of direct, definitive proof.\n\n- PMID: 40864415 (review, likely includes both human and preclinical evidence) reports that amyloid-beta directly interacts with mitochondrial membranes and proteins, causing mitochondrial fragmentation and hindering transport, which increases ROS generation and oxidative damage. This description characterizes a cycle: mitochondrial dysfunction increases ROS, exacerbating amyloid-beta toxicity and furthering mitochondrial damage.\n\n- Animal and in-vitro evidence is detailed in PMID: 37597424, demonstrating that in a mouse model and cultured neurons, amyloid beta induces oxidative stress and mitochondrial dysfunction, and that the antioxidant luteolin can inhibit both processes and support neuronal survival.\n\nAssociation:\n- Several reviews (PMID: 33476985, PMID: 27809706, PMID: 32967303) note the close association among amyloid beta pathology, mitochondrial dysfunction, and oxidative stress. They describe how oxidative stress is a prominent feature in AD and suggest that these mechanisms are interconnected. However, these papers consistently state that causality and specific mechanistic directionality (i.e., whether oxidative stress is the mediator directly linking amyloid beta to mitochondrial dysfunction) remain unclear.\n\nTestable Hypothesis:\n- The context, especially from PMID: 22697066 and 40864415, supports the hypothesis that oxidative stress may mediate the toxic effects of amyloid beta on mitochondria. However, this is not conclusively established and is suggested as an area requiring further research.\n\nSummary Table:\n\n| Evidence Type         | Direct Mechanistic Evidence? | Association Shown? | Testable Hypothesis?                               |\n|----------------------|-----------------------------|--------------------|----------------------------------------------------|\n| Human/Review (PMID: 22697066) | Partial/Indirect                | Yes                | Yes: Oxidative stress may mediate mitochondrial toxicity of amyloid beta |\n| Review/Experimental Data (PMID: 40864415) | Partial/Indirect                | Yes                | Yes                                                |\n| Animal/In vitro (PMID: 37597424) | Yes (in model systems)              | Yes                | Yes                                                |\n| Other Reviews           | No, association only                | Yes                | Yes                                                |\n\nConclusion:\nThere is substantial associative evidence and plausible mechanistic proposals—particularly in animal and in vitro models—that oxidative stress is a mediator linking amyloid beta and mitochondrial dysfunction in Alzheimer's disease. Direct mechanistic human evidence is lacking, but the cycle of amyloid-beta toxicity, mitochondrial impairment, and oxidative stress is widely described and supported in preclinical systems [PMID: 22697066, 40864415, 37597424]. The data support a testable hypothesis rather than a definitive, mechanistic causal chain."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 24.483443461358547,
+    "vector_index": 3.9243926107883453,
+    "answer_netmedex_hybrid_rag": 6.911810837686062,
+    "answer_traditional_rag": 5.467919662594795,
+    "total": 47.19674564898014
+  },
+  "token_usage": {
+    "total_tokens": 51841,
+    "output_tokens": 20738,
+    "input_tokens": 31103
+  },
+  "completed_at": "2026-08-05T02:25:07.865464+00:00",
+  "zero_path_answer_repair": {
+    "reason": "Prevent fabricated graph-derived claims when evidence gate exposed no paths",
+    "model": "gpt-4.1",
+    "token_usage": {
+      "total_tokens": 7796,
+      "output_tokens": 1330,
+      "input_tokens": 6466
+    }
+  }
+}

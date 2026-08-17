@@ -1,0 +1,1244 @@
+{
+  "status": "complete",
+  "question_id": "PP011",
+  "domain": "infectious disease",
+  "question": "What evidence supports a mechanistic path from chronic hepatitis b virus (hbv) infection to hcc through liver fibrosis, hbv, chronic liver inflammation? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "HBV hepatocellular carcinoma inflammation HBx integration fibrosis",
+  "effective_pubmed_query": "HBV hepatocellular carcinoma inflammation HBx integration fibrosis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "16461228",
+    "20413301",
+    "20485626",
+    "25646384",
+    "28097530",
+    "29052129",
+    "30611768",
+    "32839523",
+    "38064540",
+    "39290403",
+    "40544269"
+  ],
+  "graph": {
+    "node_count": 59,
+    "edge_count": 126,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 3,
+    "pre_gate_candidate_count": 3,
+    "pre_gate_candidates": [
+      {
+        "path_id": "Q037-P01",
+        "path_signature": "499767e1e1703963",
+        "path_text": "chronic hepatitis b virus (hbv) infection ->[leads_to] liver fibrosis | liver fibrosis --[associated_with] hbv | hbv ->[causes] chronic liver inflammation | chronic liver inflammation ->[promotes] hcc",
+        "node_ids": [
+          "MESH:D019694_Disease",
+          "MESH:D008103_Disease",
+          "10407_Species",
+          "MESH:D007249_Disease",
+          "MESH:D006528_Disease"
+        ],
+        "names": [
+          "chronic hepatitis b virus (hbv) infection",
+          "liver fibrosis",
+          "hbv",
+          "chronic liver inflammation",
+          "hcc"
+        ],
+        "node_aliases": [
+          [
+            "CHB",
+            "Chronic hepatitis B virus (HBV) infection",
+            "chronic hepatitis B",
+            "chronic hepatitis B virus infected"
+          ],
+          [
+            "cirrhosis of the liver",
+            "liver cirrhosis",
+            "liver fibrosis"
+          ],
+          [
+            "HBV",
+            "Hepatitis B Virus",
+            "Hepatitis B virus",
+            "Hepatitis-B-virus",
+            "hepatitis B virus",
+            "hepatitis-B virus"
+          ],
+          [
+            "Chronic liver inflammation",
+            "chronic inflammation",
+            "chronic liver inflammation",
+            "hepatic inflammation",
+            "inflammation",
+            "inflammatory",
+            "liver inflammation"
+          ],
+          [
+            "HCC",
+            "Hepatocellular Carcinoma",
+            "Hepatocellular carcinoma",
+            "Liver cancer",
+            "hepatocellular carcinoma",
+            "hepatoma",
+            "liver cancer"
+          ]
+        ],
+        "relations": [
+          "leads_to",
+          "associated_with",
+          "causes",
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "29052129"
+          ],
+          [
+            "38064540"
+          ],
+          [
+            "25646384"
+          ],
+          [
+            "20485626"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          false,
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Recurrent liver inflammation caused by host immune responses during chronic HBV infection can lead to liver fibrosis and cirrhosis"
+          ],
+          [
+            "It infects hepatocytes and is associated with progression to liver fibrosis and cirrhosis, culminating in hepatocellular carcinoma (HCC)"
+          ],
+          [
+            "The hepatitis B virus (HBV) is a widespread human pathogen that causes liver inflammation, cirrhosis, and hepatocellular carcinoma (HCC)."
+          ],
+          [
+            "The predominant carcinogenic mechanisms of HBV-associated HCC are chronic inflammation and the effects of cytokines in the development of fibrosis and liver cell proliferation."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "leads_to",
+            "selected_pmid": "29052129",
+            "selected_quote": "Recurrent liver inflammation caused by host immune responses during chronic HBV infection can lead to liver fibrosis and cirrhosis",
+            "selected_confidence": 0.85,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "c28a35bb16feaf7b36241b4f7524358e5345607c",
+              "schema_version": 1,
+              "pmid": "29052129",
+              "source_id": "MESH:D019694_Disease",
+              "target_id": "MESH:D008103_Disease",
+              "relation": "leads_to",
+              "evidence": "Recurrent liver inflammation caused by host immune responses during chronic HBV infection can lead to liver fibrosis and cirrhosis",
+              "confidence": 0.85,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "38064540",
+            "selected_quote": "It infects hepatocytes and is associated with progression to liver fibrosis and cirrhosis, culminating in hepatocellular carcinoma (HCC)",
+            "selected_confidence": 0.95,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "25646384",
+            "selected_quote": "The hepatitis B virus (HBV) is a widespread human pathogen that causes liver inflammation, cirrhosis, and hepatocellular carcinoma (HCC).",
+            "selected_confidence": 1.0,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "41afe47cb8d42fd0e6bb2276c1975d299f0029cf",
+              "schema_version": 1,
+              "pmid": "25646384",
+              "source_id": "10407_Species",
+              "target_id": "MESH:D007249_Disease",
+              "relation": "causes",
+              "evidence": "The hepatitis B virus (HBV) is a widespread human pathogen that causes liver inflammation, cirrhosis, and hepatocellular carcinoma (HCC).",
+              "confidence": 1.0,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "20485626",
+            "selected_quote": "The predominant carcinogenic mechanisms of HBV-associated HCC are chronic inflammation and the effects of cytokines in the development of fibrosis and liver cell proliferation.",
+            "selected_confidence": 0.85,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "6649da56b4866de364f9e6456390264e881e3673",
+              "schema_version": 1,
+              "pmid": "20485626",
+              "source_id": "MESH:D007249_Disease",
+              "target_id": "MESH:D006528_Disease",
+              "relation": "promotes",
+              "evidence": "The predominant carcinogenic mechanisms of HBV-associated HCC are chronic inflammation and the effects of cytokines in the development of fibrosis and liver cell proliferation.",
+              "confidence": 0.85,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "bounded_mechanistic_multi_hop"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 61,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": true,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "bounded_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_visible_in_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.474,
+        "hop_count": 4
+      },
+      {
+        "path_id": "Q037-P03",
+        "path_signature": "c37d8f7746362201",
+        "path_text": "chronic hepatitis b virus (hbv) infection ->[causes] chronic liver inflammation | chronic liver inflammation ->[promotes] hcc",
+        "node_ids": [
+          "MESH:D019694_Disease",
+          "MESH:D007249_Disease",
+          "MESH:D006528_Disease"
+        ],
+        "names": [
+          "chronic hepatitis b virus (hbv) infection",
+          "chronic liver inflammation",
+          "hcc"
+        ],
+        "node_aliases": [
+          [
+            "CHB",
+            "Chronic hepatitis B virus (HBV) infection",
+            "chronic hepatitis B",
+            "chronic hepatitis B virus infected"
+          ],
+          [
+            "Chronic liver inflammation",
+            "chronic inflammation",
+            "chronic liver inflammation",
+            "hepatic inflammation",
+            "inflammation",
+            "inflammatory",
+            "liver inflammation"
+          ],
+          [
+            "HCC",
+            "Hepatocellular Carcinoma",
+            "Hepatocellular carcinoma",
+            "Liver cancer",
+            "hepatocellular carcinoma",
+            "hepatoma",
+            "liver cancer"
+          ]
+        ],
+        "relations": [
+          "causes",
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "29052129"
+          ],
+          [
+            "20485626"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Recurrent liver inflammation caused by host immune responses during chronic HBV infection can lead to liver fibrosis and cirrhosis"
+          ],
+          [
+            "The predominant carcinogenic mechanisms of HBV-associated HCC are chronic inflammation and the effects of cytokines in the development of fibrosis and liver cell proliferation."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "29052129",
+            "selected_quote": "Recurrent liver inflammation caused by host immune responses during chronic HBV infection can lead to liver fibrosis and cirrhosis",
+            "selected_confidence": 0.85,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "fd17ee2bd209fda82e631fbc56201bc66f4e26a7",
+              "schema_version": 1,
+              "pmid": "29052129",
+              "source_id": "MESH:D019694_Disease",
+              "target_id": "MESH:D007249_Disease",
+              "relation": "causes",
+              "evidence": "Recurrent liver inflammation caused by host immune responses during chronic HBV infection can lead to liver fibrosis and cirrhosis",
+              "confidence": 0.85,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "20485626",
+            "selected_quote": "The predominant carcinogenic mechanisms of HBV-associated HCC are chronic inflammation and the effects of cytokines in the development of fibrosis and liver cell proliferation.",
+            "selected_confidence": 0.85,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "6649da56b4866de364f9e6456390264e881e3673",
+              "schema_version": 1,
+              "pmid": "20485626",
+              "source_id": "MESH:D007249_Disease",
+              "target_id": "MESH:D006528_Disease",
+              "relation": "promotes",
+              "evidence": "The predominant carcinogenic mechanisms of HBV-associated HCC are chronic inflammation and the effects of cytokines in the development of fibrosis and liver cell proliferation.",
+              "confidence": 0.85,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 27,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": true,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "two_hop",
+          "all_support_in_text_top_k",
+          "bridge_visible_in_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.673,
+        "hop_count": 2
+      },
+      {
+        "path_id": "Q037-P04",
+        "path_signature": "e19ad74bac52fdf7",
+        "path_text": "chronic hepatitis b virus (hbv) infection ->[causes] hcc",
+        "node_ids": [
+          "MESH:D019694_Disease",
+          "MESH:D006528_Disease"
+        ],
+        "names": [
+          "chronic hepatitis b virus (hbv) infection",
+          "hcc"
+        ],
+        "node_aliases": [
+          [
+            "CHB",
+            "Chronic hepatitis B virus (HBV) infection",
+            "chronic hepatitis B",
+            "chronic hepatitis B virus infected"
+          ],
+          [
+            "HCC",
+            "Hepatocellular Carcinoma",
+            "Hepatocellular carcinoma",
+            "Liver cancer",
+            "hepatocellular carcinoma",
+            "hepatoma",
+            "liver cancer"
+          ]
+        ],
+        "relations": [
+          "causes"
+        ],
+        "edge_pmids": [
+          [
+            "32839523"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Hepatitis B virus (HBV) is the leading cause of hepatocellular carcinoma (HCC) worldwide."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "32839523",
+            "selected_quote": "Hepatitis B virus (HBV) is the leading cause of hepatocellular carcinoma (HCC) worldwide.",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "a07d79830f6d2b7e145eda107785a5b7afdecf50",
+              "schema_version": 1,
+              "pmid": "32839523",
+              "source_id": "MESH:D019694_Disease",
+              "target_id": "MESH:D006528_Disease",
+              "relation": "causes",
+              "evidence": "Hepatitis B virus (HBV) is the leading cause of hepatocellular carcinoma (HCC) worldwide.",
+              "confidence": 0.95,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.852,
+        "hop_count": 1
+      }
+    ],
+    "preferred_pmids": [
+      "20485626",
+      "25646384",
+      "29052129",
+      "32839523",
+      "38064540"
+    ],
+    "paths": [
+      {
+        "path_id": "PP011-P01",
+        "path_signature": "499767e1e1703963",
+        "path_text": "chronic hepatitis b virus (hbv) infection ->[leads_to] liver fibrosis | liver fibrosis --[associated_with] hbv | hbv ->[causes] chronic liver inflammation | chronic liver inflammation ->[promotes] hcc",
+        "node_ids": [
+          "MESH:D019694_Disease",
+          "MESH:D008103_Disease",
+          "10407_Species",
+          "MESH:D007249_Disease",
+          "MESH:D006528_Disease"
+        ],
+        "names": [
+          "chronic hepatitis b virus (hbv) infection",
+          "liver fibrosis",
+          "hbv",
+          "chronic liver inflammation",
+          "hcc"
+        ],
+        "node_aliases": [
+          [
+            "CHB",
+            "Chronic hepatitis B virus (HBV) infection",
+            "chronic hepatitis B",
+            "chronic hepatitis B virus infected"
+          ],
+          [
+            "cirrhosis of the liver",
+            "liver cirrhosis",
+            "liver fibrosis"
+          ],
+          [
+            "HBV",
+            "Hepatitis B Virus",
+            "Hepatitis B virus",
+            "Hepatitis-B-virus",
+            "hepatitis B virus",
+            "hepatitis-B virus"
+          ],
+          [
+            "Chronic liver inflammation",
+            "chronic inflammation",
+            "chronic liver inflammation",
+            "hepatic inflammation",
+            "inflammation",
+            "inflammatory",
+            "liver inflammation"
+          ],
+          [
+            "HCC",
+            "Hepatocellular Carcinoma",
+            "Hepatocellular carcinoma",
+            "Liver cancer",
+            "hepatocellular carcinoma",
+            "hepatoma",
+            "liver cancer"
+          ]
+        ],
+        "relations": [
+          "leads_to",
+          "associated_with",
+          "causes",
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "29052129"
+          ],
+          [
+            "38064540"
+          ],
+          [
+            "25646384"
+          ],
+          [
+            "20485626"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          false,
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Recurrent liver inflammation caused by host immune responses during chronic HBV infection can lead to liver fibrosis and cirrhosis"
+          ],
+          [
+            "It infects hepatocytes and is associated with progression to liver fibrosis and cirrhosis, culminating in hepatocellular carcinoma (HCC)"
+          ],
+          [
+            "The hepatitis B virus (HBV) is a widespread human pathogen that causes liver inflammation, cirrhosis, and hepatocellular carcinoma (HCC)."
+          ],
+          [
+            "The predominant carcinogenic mechanisms of HBV-associated HCC are chronic inflammation and the effects of cytokines in the development of fibrosis and liver cell proliferation."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "leads_to",
+            "selected_pmid": "29052129",
+            "selected_quote": "Recurrent liver inflammation caused by host immune responses during chronic HBV infection can lead to liver fibrosis and cirrhosis",
+            "selected_confidence": 0.85,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "c28a35bb16feaf7b36241b4f7524358e5345607c",
+              "schema_version": 1,
+              "pmid": "29052129",
+              "source_id": "MESH:D019694_Disease",
+              "target_id": "MESH:D008103_Disease",
+              "relation": "leads_to",
+              "evidence": "Recurrent liver inflammation caused by host immune responses during chronic HBV infection can lead to liver fibrosis and cirrhosis",
+              "confidence": 0.85,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "38064540",
+            "selected_quote": "It infects hepatocytes and is associated with progression to liver fibrosis and cirrhosis, culminating in hepatocellular carcinoma (HCC)",
+            "selected_confidence": 0.95,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "25646384",
+            "selected_quote": "The hepatitis B virus (HBV) is a widespread human pathogen that causes liver inflammation, cirrhosis, and hepatocellular carcinoma (HCC).",
+            "selected_confidence": 1.0,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "41afe47cb8d42fd0e6bb2276c1975d299f0029cf",
+              "schema_version": 1,
+              "pmid": "25646384",
+              "source_id": "10407_Species",
+              "target_id": "MESH:D007249_Disease",
+              "relation": "causes",
+              "evidence": "The hepatitis B virus (HBV) is a widespread human pathogen that causes liver inflammation, cirrhosis, and hepatocellular carcinoma (HCC).",
+              "confidence": 1.0,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "20485626",
+            "selected_quote": "The predominant carcinogenic mechanisms of HBV-associated HCC are chronic inflammation and the effects of cytokines in the development of fibrosis and liver cell proliferation.",
+            "selected_confidence": 0.85,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "6649da56b4866de364f9e6456390264e881e3673",
+              "schema_version": 1,
+              "pmid": "20485626",
+              "source_id": "MESH:D007249_Disease",
+              "target_id": "MESH:D006528_Disease",
+              "relation": "promotes",
+              "evidence": "The predominant carcinogenic mechanisms of HBV-associated HCC are chronic inflammation and the effects of cytokines in the development of fibrosis and liver cell proliferation.",
+              "confidence": 0.85,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "bounded_mechanistic_multi_hop"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 61,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": true,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "bounded_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_visible_in_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.474,
+        "hop_count": 4
+      },
+      {
+        "path_id": "PP011-P02",
+        "path_signature": "c37d8f7746362201",
+        "path_text": "chronic hepatitis b virus (hbv) infection ->[causes] chronic liver inflammation | chronic liver inflammation ->[promotes] hcc",
+        "node_ids": [
+          "MESH:D019694_Disease",
+          "MESH:D007249_Disease",
+          "MESH:D006528_Disease"
+        ],
+        "names": [
+          "chronic hepatitis b virus (hbv) infection",
+          "chronic liver inflammation",
+          "hcc"
+        ],
+        "node_aliases": [
+          [
+            "CHB",
+            "Chronic hepatitis B virus (HBV) infection",
+            "chronic hepatitis B",
+            "chronic hepatitis B virus infected"
+          ],
+          [
+            "Chronic liver inflammation",
+            "chronic inflammation",
+            "chronic liver inflammation",
+            "hepatic inflammation",
+            "inflammation",
+            "inflammatory",
+            "liver inflammation"
+          ],
+          [
+            "HCC",
+            "Hepatocellular Carcinoma",
+            "Hepatocellular carcinoma",
+            "Liver cancer",
+            "hepatocellular carcinoma",
+            "hepatoma",
+            "liver cancer"
+          ]
+        ],
+        "relations": [
+          "causes",
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "29052129"
+          ],
+          [
+            "20485626"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Recurrent liver inflammation caused by host immune responses during chronic HBV infection can lead to liver fibrosis and cirrhosis"
+          ],
+          [
+            "The predominant carcinogenic mechanisms of HBV-associated HCC are chronic inflammation and the effects of cytokines in the development of fibrosis and liver cell proliferation."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "29052129",
+            "selected_quote": "Recurrent liver inflammation caused by host immune responses during chronic HBV infection can lead to liver fibrosis and cirrhosis",
+            "selected_confidence": 0.85,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "fd17ee2bd209fda82e631fbc56201bc66f4e26a7",
+              "schema_version": 1,
+              "pmid": "29052129",
+              "source_id": "MESH:D019694_Disease",
+              "target_id": "MESH:D007249_Disease",
+              "relation": "causes",
+              "evidence": "Recurrent liver inflammation caused by host immune responses during chronic HBV infection can lead to liver fibrosis and cirrhosis",
+              "confidence": 0.85,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "20485626",
+            "selected_quote": "The predominant carcinogenic mechanisms of HBV-associated HCC are chronic inflammation and the effects of cytokines in the development of fibrosis and liver cell proliferation.",
+            "selected_confidence": 0.85,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "6649da56b4866de364f9e6456390264e881e3673",
+              "schema_version": 1,
+              "pmid": "20485626",
+              "source_id": "MESH:D007249_Disease",
+              "target_id": "MESH:D006528_Disease",
+              "relation": "promotes",
+              "evidence": "The predominant carcinogenic mechanisms of HBV-associated HCC are chronic inflammation and the effects of cytokines in the development of fibrosis and liver cell proliferation.",
+              "confidence": 0.85,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 27,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": true,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "two_hop",
+          "all_support_in_text_top_k",
+          "bridge_visible_in_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.673,
+        "hop_count": 2
+      },
+      {
+        "path_id": "PP011-P03",
+        "path_signature": "e19ad74bac52fdf7",
+        "path_text": "chronic hepatitis b virus (hbv) infection ->[causes] hcc",
+        "node_ids": [
+          "MESH:D019694_Disease",
+          "MESH:D006528_Disease"
+        ],
+        "names": [
+          "chronic hepatitis b virus (hbv) infection",
+          "hcc"
+        ],
+        "node_aliases": [
+          [
+            "CHB",
+            "Chronic hepatitis B virus (HBV) infection",
+            "chronic hepatitis B",
+            "chronic hepatitis B virus infected"
+          ],
+          [
+            "HCC",
+            "Hepatocellular Carcinoma",
+            "Hepatocellular carcinoma",
+            "Liver cancer",
+            "hepatocellular carcinoma",
+            "hepatoma",
+            "liver cancer"
+          ]
+        ],
+        "relations": [
+          "causes"
+        ],
+        "edge_pmids": [
+          [
+            "32839523"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Hepatitis B virus (HBV) is the leading cause of hepatocellular carcinoma (HCC) worldwide."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "32839523",
+            "selected_quote": "Hepatitis B virus (HBV) is the leading cause of hepatocellular carcinoma (HCC) worldwide.",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "a07d79830f6d2b7e145eda107785a5b7afdecf50",
+              "schema_version": 1,
+              "pmid": "32839523",
+              "source_id": "MESH:D019694_Disease",
+              "target_id": "MESH:D006528_Disease",
+              "relation": "causes",
+              "evidence": "Hepatitis B virus (HBV) is the leading cause of hepatocellular carcinoma (HCC) worldwide.",
+              "confidence": 0.95,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.852,
+        "hop_count": 1
+      }
+    ]
+  },
+  "evidence_exposure": {
+    "profile": "H_evidence_gated_four_hop",
+    "routed_profile": "H_evidence_gated_four_hop",
+    "selection_frozen_before_answers": true,
+    "source_result": "evaluation/formal/runs/abcd20_path_replay_v2/questions/Q037/result.json",
+    "expanded_reliable_pool": true,
+    "frozen_exposure_source": "evaluation/formal/path_positive_20_v1/frozen_exposures_expanded/PP011/result.json",
+    "frozen_candidate_path_count": 3,
+    "frozen_exposed_path_count": 3,
+    "exposed_pmids": [
+      "20485626",
+      "25646384",
+      "29052129",
+      "32839523",
+      "38064540"
+    ],
+    "exposed_paths": [
+      [
+        "chronic hepatitis b virus (hbv) infection",
+        "liver fibrosis",
+        "hbv",
+        "chronic liver inflammation",
+        "hcc"
+      ],
+      [
+        "chronic hepatitis b virus (hbv) infection",
+        "chronic liver inflammation",
+        "hcc"
+      ],
+      [
+        "chronic hepatitis b virus (hbv) infection",
+        "hcc"
+      ]
+    ],
+    "exposed_edges": [
+      "chronic hepatitis b virus (hbv) infection ->[leads_to] liver fibrosis | liver fibrosis --[associated_with] hbv | hbv ->[causes] chronic liver inflammation | chronic liver inflammation ->[promotes] hcc",
+      "chronic hepatitis b virus (hbv) infection ->[causes] chronic liver inflammation | chronic liver inflammation ->[promotes] hcc",
+      "chronic hepatitis b virus (hbv) infection ->[causes] hcc"
+    ],
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 3,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "answer_context_path_signatures": [
+      "499767e1e1703963",
+      "c37d8f7746362201"
+    ],
+    "kg_expansion": {
+      "enabled": true,
+      "candidate_path_count": 2,
+      "queries": [
+        "\"chronic hepatitis b virus (hbv) infection\"[Title/Abstract] AND \"hcc\"[Title/Abstract]",
+        "\"chronic hepatitis b virus (hbv) infection\"[Title/Abstract] AND \"liver fibrosis\"[Title/Abstract]",
+        "\"chronic hepatitis b virus (hbv) infection\"[Title/Abstract] AND \"hbv\"[Title/Abstract]",
+        "\"chronic hepatitis b virus (hbv) infection\"[Title/Abstract] AND \"chronic liver inflammation\"[Title/Abstract]",
+        "\"liver fibrosis\"[Title/Abstract] AND \"hcc\"[Title/Abstract]",
+        "\"hbv\"[Title/Abstract] AND \"hcc\"[Title/Abstract]"
+      ],
+      "added_pmids": [
+        "2162576",
+        "34270940",
+        "26840752",
+        "38116005",
+        "30126685",
+        "24966591",
+        "33305479",
+        "33924793",
+        "25241970",
+        "22090781",
+        "39094599",
+        "28251119",
+        "19207972",
+        "28357379",
+        "41198172"
+      ],
+      "added_document_count": 15,
+      "merge": {
+        "method": "bounded_expansion_slots_v1",
+        "expansion_slots": 2,
+        "min_margin": 0.03,
+        "original_tail_threshold": 0.5307733705345512,
+        "accepted_added_pmids": [
+          "19207972",
+          "39094599"
+        ]
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {
+        "32839523": {
+          "text_score": 0.545616,
+          "graph_score": 0.852,
+          "reranked_score": 0.65285
+        }
+      }
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "32839523",
+        "score": 0.6528501530822853
+      },
+      {
+        "pmid": "29052129",
+        "score": 0.6353372954966955
+      },
+      {
+        "pmid": "19207972",
+        "score": 0.6236938221351616
+      },
+      {
+        "pmid": "39094599",
+        "score": 0.6150685416636574
+      },
+      {
+        "pmid": "30611768",
+        "score": 0.5983343644247671
+      },
+      {
+        "pmid": "39290403",
+        "score": 0.5768435685847411
+      },
+      {
+        "pmid": "20413301",
+        "score": 0.5693310919186567
+      },
+      {
+        "pmid": "20485626",
+        "score": 0.5693294690328732
+      },
+      {
+        "pmid": "16461228",
+        "score": 0.5625305117825105
+      },
+      {
+        "pmid": "28097530",
+        "score": 0.543117985416578
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "29052129",
+        "score": 0.6353372954966955
+      },
+      {
+        "pmid": "30611768",
+        "score": 0.5983343644247671
+      },
+      {
+        "pmid": "39290403",
+        "score": 0.5768435685847411
+      },
+      {
+        "pmid": "20413301",
+        "score": 0.5693310919186567
+      },
+      {
+        "pmid": "20485626",
+        "score": 0.5693294690328732
+      },
+      {
+        "pmid": "16461228",
+        "score": 0.5625305117825105
+      },
+      {
+        "pmid": "32839523",
+        "score": 0.5456156201265928
+      },
+      {
+        "pmid": "28097530",
+        "score": 0.543117985416578
+      },
+      {
+        "pmid": "25646384",
+        "score": 0.5413345226169859
+      },
+      {
+        "pmid": "38064540",
+        "score": 0.5307733705345512
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "**HBV infection → chronic liver inflammation** – Human cohort and natural‑history studies show that persistent HBV replication provokes repeated immune‑mediated hepatocyte injury, producing a chronic inflammatory milieu【PMID:19207972】. Reviews of HBV‑associated hepatocarcinogenesis note that “recurrent liver inflammation caused by host immune responses during chronic HBV infection” is a central early event【PMID:29052129】.\n\n**Chronic inflammation → liver fibrosis/cirrhosis** – The same reviews describe how sustained inflammatory cytokine production drives collagen deposition and fibrotic remodeling, with inflammation “leading to liver fibrosis and cirrhosis”【PMID:20485626】. Experimental and clinical observations link the “immune clearance phase” of HBV to progression of fibrosis【PMID:19207972】, and mechanistic papers emphasize that cytokine‑driven hepatic stellate cell activation underlies this transition【PMID:20413301】.\n\n**Liver fibrosis/cirrhosis → HCC** – Epidemiologic and mechanistic data demonstrate that established fibrosis markedly elevates HCC risk; for example, “fibrosis…accelerate hepatocyte turnover rate and promote accumulation of mutations” culminating in carcinoma【PMID:29052129】. Reviews of HBV pathogenesis cite fibrosis as a prerequisite for most HBV‑related HCC cases, describing it as “a major step in the development of HCC”【PMID:28097530】.\n\n**Direct HBV oncogenic potential (contextual)** – While HBV can induce HCC without overt fibrosis in transgenic mice (STAT3‑dependent tumorigenesis)【PMID:39290403】, the majority of human cases follow the inflammation‑fibrosis‑cancer cascade, reinforcing the relevance of the three‑step pathway.\n\n**Overall inference** – The convergence of natural‑history, epidemiologic, and mechanistic studies across human and animal models provides consistent, step‑wise evidence linking chronic HBV infection → chronic inflammation → fibrosis → hepatocellular carcinoma.\n\n*Conclusion: Robust human and animal data support each sequential hop from chronic HBV infection through inflammation and fibrosis to HCC.*\n\nGraph-derived candidate insights\n- PATH 499767e1e1703963 — GRAPH-CONFIRMED; multi-hop inference; HOP 1: chronic hepatitis b virus (hbv) infection leads_to liver fibrosis [PMID: 29052129]; HOP 2: liver fibrosis associated_with hbv [PMID: 38064540]; HOP 3: hbv causes chronic liver inflammation [PMID: 25646384]; HOP 4: chronic liver inflammation promotes hcc [PMID: 20485626].\n- PATH c37d8f7746362201 — GRAPH-CONFIRMED; multi-hop inference; HOP 1: chronic hepatitis b virus (hbv) infection causes chronic liver inflammation [PMID: 29052129]; HOP 2: chronic liver inflammation promotes hcc [PMID: 20485626]."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 2,
+    "supported_claim_count": 2,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": false,
+    "claims": [
+      {
+        "claim_id": "HC-01",
+        "path_id": "499767e1e1703963",
+        "verdict": "supported",
+        "reasons": []
+      },
+      {
+        "claim_id": "HC-02",
+        "path_id": "c37d8f7746362201",
+        "verdict": "supported",
+        "reasons": []
+      }
+    ]
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 2.438575029373169e-05,
+    "vector_index": 1.7469251826405525,
+    "kg_expansion": 6.348604939877987,
+    "answer_netmedex_hybrid_rag": 30.96413180977106,
+    "total": 39.70616868138313
+  },
+  "token_usage": {
+    "output_tokens": 1136,
+    "input_tokens": 3550,
+    "total_tokens": 4686
+  },
+  "completed_at": "2026-08-13T07:01:37.183264+00:00"
+}

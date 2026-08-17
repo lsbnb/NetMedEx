@@ -1,0 +1,91 @@
+{
+  "task": "answer",
+  "question_id": "PP005",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "abea4b6ef27e8a0cb0ca6a0cb3dd2ae11248c9f71da328b1d48e2bc77c4eac2a",
+  "raw_response_sha256": "ca30e446f26479cadd42b79391f343eef85e88f9eb952b571b217d0d86747b45",
+  "usage": {
+    "input_tokens": 4847,
+    "output_tokens": 605,
+    "total_tokens": 5452
+  },
+  "rated_at": "2026-08-16T18:40:50.656042+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP005-A",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate summary; minor gaps (e.g., specific RCTs, bias types)."
+      },
+      {
+        "answer_id": "PP005-B",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Same as A; solid but could cite more trial data."
+      },
+      {
+        "answer_id": "PP005-C",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Identical content; comprehensive overview."
+      },
+      {
+        "answer_id": "PP005-D",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Identical to others; well‑grounded."
+      },
+      {
+        "answer_id": "PP005-E",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Same as A‑D; concise limitations."
+      },
+      {
+        "answer_id": "PP005-F",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Identical; no extra detail."
+      },
+      {
+        "answer_id": "PP005-G",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Same content; high quality."
+      }
+    ],
+    "preferred_item_id": "tie",
+    "pairwise_reason": "All answers are identical in content, citations, and structure; therefore no single answer is superior."
+  }
+}

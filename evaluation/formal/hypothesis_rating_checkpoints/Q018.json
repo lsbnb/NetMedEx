@@ -1,0 +1,25 @@
+{
+  "question_id": "Q018",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-31T17:43:10.741983+00:00",
+  "ratings": [
+    {
+      "hypothesis_id": "Q018-A",
+      "novelty": 4,
+      "plausibility": 5,
+      "testability": 4,
+      "research_value": 5,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded hypothesis/2-hop quality pass, not a human expert review.] Surfaces specific, non-obvious cellular mechanisms such as the aged-host ICOS+ CD4 T-cell/B-cell pathway and IL-17-producing gamma-delta T cells, which offer excellent novel targets for decoupling toxicity from efficacy."
+    },
+    {
+      "hypothesis_id": "Q018-B",
+      "novelty": 4,
+      "plausibility": 5,
+      "testability": 5,
+      "research_value": 5,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded hypothesis/2-hop quality pass, not a human expert review.] Highlights highly actionable and specific mechanisms, particularly the role of TNF/TNFR2 signaling in myocarditis and CXCL10 in neurologic irAEs, leading to very testable therapeutic hypotheses."
+    }
+  ],
+  "raw_response_sha256": "c5e720cb79779693af33f5426bde9d59b99b9685ead9c0b57a897d107f94c5f4"
+}

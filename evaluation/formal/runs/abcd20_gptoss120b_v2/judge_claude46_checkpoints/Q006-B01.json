@@ -1,0 +1,63 @@
+{
+  "task": "answer",
+  "question_id": "Q006",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "95e10851af02187cd20dbe44cbaadc7ef821aafff7d449fec4ed98bd765b1596",
+  "raw_response_sha256": "98538fb57dbcd59af43dbc40d5899cb758fe204da35edfd9eef9629d2463a1e4",
+  "usage": {
+    "input_tokens": 3259,
+    "output_tokens": 603,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 3862
+  },
+  "rated_at": "2026-08-13T04:39:46.080087+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q006-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Good coverage with specific PMIDs. PMID:15815580 cited for both animal and human observational—slightly conflated. Mechanistic pathways well described."
+      },
+      {
+        "answer_id": "Q006-B",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 2,
+        "mechanistic_coherence": 5,
+        "research_value": 3,
+        "notes": "Mechanistically strong and well-organized, but no PMIDs cited anywhere. Claims about specific trials and doses are unverifiable without citations. Penalized for grounding."
+      },
+      {
+        "answer_id": "Q006-C",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Most complete answer with additional PMID:22112351 and PMID:15111011. Well-structured across evidence types. Minor concern: PMID:22112351 not verified but plausible."
+      },
+      {
+        "answer_id": "Q006-D",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Solid answer with same core PMIDs as A and C. Dose-response hypothesis addition is valuable. Slightly less complete than C but well-organized and clearly labeled by evidence type."
+      }
+    ],
+    "preferred_item_id": "Q006-C",
+    "pairwise_reason": "Q006-C provides the broadest coverage with the most PMIDs, clearest evidence-type labeling, and includes additional references (PMID:22112351, PMID:15111011) not present in other answers, maximizing completeness and research value while maintaining mechanistic coherence."
+  }
+}

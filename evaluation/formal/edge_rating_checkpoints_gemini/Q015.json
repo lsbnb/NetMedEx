@@ -1,0 +1,99 @@
+{
+  "question_id": "Q015",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-31T19:28:22.151460+00:00",
+  "ratings": [
+    {
+      "edge_id": "Q015-E01",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title mentions COVID-19 but does not explicitly mention the SARS-CoV-2 virus, making this specific extraction unsupported by the provided text."
+    },
+    {
+      "edge_id": "Q015-E02",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Neither the SARS-CoV-2 virus nor vascular system injuries are mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q015-E03",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title mentions coagulopathy (blood coagulation disorders) but does not mention the SARS-CoV-2 virus."
+    },
+    {
+      "edge_id": "Q015-E04",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles explicitly mention 'COVID-19-Associated Coagulopathy', directly supporting an association between COVID-19 and blood coagulation disorders."
+    },
+    {
+      "edge_id": "Q015-E05",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles explicitly mention 'COVID-19-Associated Coagulopathy', directly supporting an association between blood coagulation disorders and COVID-19."
+    },
+    {
+      "edge_id": "Q015-E06",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title mentions 'Immunothrombosis', which is a specific form of thromboinflammation, supporting its association with COVID-19."
+    },
+    {
+      "edge_id": "Q015-E07",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title mentions immunothrombosis and coagulopathy, but does not mention thrombophilia."
+    },
+    {
+      "edge_id": "Q015-E08",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title does not mention complement or the complement system."
+    },
+    {
+      "edge_id": "Q015-E09",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title does not mention d-dimer."
+    },
+    {
+      "edge_id": "Q015-E10",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly links coagulopathy (a blood coagulation disorder) to an exacerbated immunothrombosis (thromboinflammation) response."
+    },
+    {
+      "edge_id": "Q015-E11",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title does not mention vascular system injuries."
+    },
+    {
+      "edge_id": "Q015-E12",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title does not mention complement."
+    },
+    {
+      "edge_id": "Q015-E13",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title does not mention d-dimer."
+    },
+    {
+      "edge_id": "Q015-E14",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly mentions 'Thromboplasminflammation in COVID-19 Coagulopathy', directly supporting the association."
+    },
+    {
+      "edge_id": "Q015-E15",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title does not mention vascular system injuries."
+    }
+  ],
+  "raw_response_sha256": "5c6ddb1b6529deea5f8e149afeb805ea1cf64829652f921b532baa6a3afdd178"
+}

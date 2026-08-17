@@ -1,0 +1,63 @@
+{
+  "task": "answer",
+  "question_id": "PP010",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "da99e3bb3c93a0f32f151cf8bb42300bce410c25eb72e22d79dc3c8ea043f0eb",
+  "raw_response_sha256": "38ffbb6900429de905e632d2f1ade1acc04cd201a1acfa1c3428f01e36ea686e",
+  "usage": {
+    "input_tokens": 2803,
+    "output_tokens": 593,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 3396
+  },
+  "rated_at": "2026-08-13T06:29:39.474325+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP010-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Clearly distinguishes each hop with specific PMIDs. Ivacaftor citation supports both hops. Truncated final sentence reduces completeness. Good mechanistic logic."
+      },
+      {
+        "answer_id": "PP010-B",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Best structured response; distinguishes hops clearly, adds Bacteroides/propionate mechanistic detail, cites multiple PMIDs per hop, includes causal inference labeling. Truncated but still superior."
+      },
+      {
+        "answer_id": "PP010-C",
+        "correctness": 3,
+        "completeness": 3,
+        "relevance": 4,
+        "grounding": 3,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Correctly identifies two hops but provides minimal mechanistic detail. Graph-path notation is unusual. Acknowledges inference gap honestly but lacks depth and additional citations."
+      },
+      {
+        "answer_id": "PP010-D",
+        "correctness": 3,
+        "completeness": 4,
+        "relevance": 3,
+        "grounding": 2,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Focuses on airway rather than gut dysbiosis; question context is gut. Claims about germ-free CF mice with CF-derived airway communities lack specific PMIDs; several assertions unverifiable."
+      }
+    ],
+    "preferred_item_id": "PP010-B",
+    "pairwise_reason": "PP010-B most rigorously distinguishes evidence for each mechanistic hop, provides the most citations per claim, adds a novel propionate/Bacteroides mechanistic layer, and explicitly labels causal vs. associative evidence, making it the most complete and grounded response."
+  }
+}

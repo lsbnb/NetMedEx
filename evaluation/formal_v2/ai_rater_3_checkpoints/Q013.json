@@ -1,0 +1,72 @@
+{
+  "question_id": "Q013",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-30T09:20:21.119965+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q013-C001",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract directly addresses the question by investigating the effects of PCSK9 inhibitors (evolocumab and alirocumab) on inflammatory markers (IL-6, NF-κB) and endothelial function (eNOS, monocyte binding) in human coronary artery endothelial cells."
+    },
+    {
+      "candidate_id": "Q013-C002",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The study directly evaluates the effect of the PCSK9 inhibitor evolocumab on the inflammatory marker hsCRP in the FOURIER trial, noting that hsCRP levels were not altered by the treatment."
+    },
+    {
+      "candidate_id": "Q013-C003",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This clinical trial substudy directly investigates the effect of the PCSK9 inhibitor alirocumab on endothelial function, assessed by flow-mediated dilation (FMD), in patients with acute myocardial infarction."
+    },
+    {
+      "candidate_id": "Q013-C004",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract directly addresses the question by demonstrating that PCSK9 inhibition (using evolocumab and Pep 2-8) improves endothelial function (eNOS, vasodilation) and modulates inflammatory pathways (TLR4/NF-κB/NLRP3) in a sepsis model."
+    },
+    {
+      "candidate_id": "Q013-C005",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "off_topic",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The study evaluates the LDL-lowering efficacy and safety of evolocumab in acute coronary syndromes but does not mention inflammatory markers or endothelial function."
+    },
+    {
+      "candidate_id": "Q013-C006",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The study directly analyzes the effect of evolocumab on endothelial function (measured by FMD, L-FMC, and VAR) in patients with cardiovascular disease."
+    },
+    {
+      "candidate_id": "Q013-C007",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "no_usable_evidence",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] No abstract is available to determine if the article addresses inflammatory markers or endothelial function."
+    },
+    {
+      "candidate_id": "Q013-C008",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The pilot study directly assesses the effect of evolocumab on inflammatory modulation (pro- and anti-inflammatory cytokines) in patients with acute coronary syndrome."
+    },
+    {
+      "candidate_id": "Q013-C009",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This review provides useful context on the pleiotropic effects of PCSK9 inhibitors, summarizing their ability to reduce systemic inflammatory markers and mitigate endothelial dysfunction in the context of neuroinflammation and stroke."
+    }
+  ],
+  "raw_response_sha256": "12ab18645f64a6a406e8effffe571e11d9c570495fd3ee4d5c80302473726b6f"
+}

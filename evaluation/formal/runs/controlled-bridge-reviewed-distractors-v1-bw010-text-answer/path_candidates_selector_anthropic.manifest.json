@@ -1,0 +1,26 @@
+{
+  "reviewer_type": "AI",
+  "human_expert_review_claimed": false,
+  "blinded": true,
+  "task": "hidden_claim",
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_file": "evaluation/formal/runs/controlled-bridge-reviewed-distractors-v1-bw010-text-answer/path_candidates_blinded.csv",
+  "input_sha256": "683c9cfa415690e335cf6ece926c5b3b5c392ca740f819ce0a092b63f372e41f",
+  "output_file": "evaluation/formal/runs/controlled-bridge-reviewed-distractors-v1-bw010-text-answer/path_candidates_selector_anthropic.csv",
+  "question_count": 1,
+  "row_count": 1,
+  "estimated_prompt_chars": 8094,
+  "estimated_input_tokens_rough": 2024,
+  "actual_api_usage_from_checkpoints": {
+    "input_tokens": 2213,
+    "output_tokens": 185,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 2398
+  },
+  "completed_batches": 1,
+  "started_at": "2026-08-09T18:51:18.831448+00:00",
+  "completed_at": "2026-08-09T18:51:24.329307+00:00",
+  "status": "complete"
+}

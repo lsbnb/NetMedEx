@@ -1,0 +1,91 @@
+{
+  "task": "answer",
+  "question_id": "PP007",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "c37b4c14a007737b3acfd901761688a1bcf23b3de2b034d8b43f8b684b2ae84b",
+  "raw_response_sha256": "b50fbaedd2a9b779d0dc41d1123ebbf0e3f10580c962ac4cdcfbd50a38dddf6d",
+  "usage": {
+    "input_tokens": 4917,
+    "output_tokens": 612,
+    "total_tokens": 5529
+  },
+  "rated_at": "2026-08-16T18:41:51.881153+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP007-A",
+        "correctness": 3,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Accurate but limited direct evidence; relies on single study and reviews."
+      },
+      {
+        "answer_id": "PP007-B",
+        "correctness": 3,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Same content as A; moderate grounding, missing explicit p53‑knockdown data."
+      },
+      {
+        "answer_id": "PP007-C",
+        "correctness": 3,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Identical to A/B; limited direct mechanistic proof."
+      },
+      {
+        "answer_id": "PP007-D",
+        "correctness": 3,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Same as others; good relevance but modest evidence depth."
+      },
+      {
+        "answer_id": "PP007-E",
+        "correctness": 3,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Identical; lacks detailed experimental validation of each hop."
+      },
+      {
+        "answer_id": "PP007-F",
+        "correctness": 3,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Same as above; moderate research value."
+      },
+      {
+        "answer_id": "PP007-G",
+        "correctness": 3,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Identical content; no advantage over other IDs."
+      }
+    ],
+    "preferred_item_id": "tie",
+    "pairwise_reason": "All answers contain identical text and ratings; none is superior."
+  }
+}

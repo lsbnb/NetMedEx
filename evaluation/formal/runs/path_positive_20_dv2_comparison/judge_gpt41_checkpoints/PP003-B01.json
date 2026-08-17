@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP003",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "0ba89c4995134d5fb46acb384ddb38e538209ac641a4f0ecbe5c53a8ba4bf06f",
+  "raw_response_sha256": "eb3b9b1ac5282b1fdc8193d0c0894c992637dba118ddce2bf5c2cb4837143e04",
+  "usage": {
+    "input_tokens": 2537,
+    "output_tokens": 483,
+    "total_tokens": 3020
+  },
+  "rated_at": "2026-08-13T07:09:20.901847+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP003-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Well-grounded, distinguishes human/animal/in-vitro, details mechanisms, limitations, and cites primary/review sources. No unsupported claims."
+      },
+      {
+        "answer_id": "PP003-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurately summarizes direct/associative evidence, mechanisms, and limitations. Clearly distinguishes model systems and human data. No unsupported claims."
+      },
+      {
+        "answer_id": "PP003-C",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Correct and well-grounded, but slightly less detail on study limitations and mechanistic diversity than A/B. Distinguishes evidence types."
+      },
+      {
+        "answer_id": "PP003-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, well-grounded, clearly distinguishes evidence types, mechanisms, and limitations. Includes graph-derived evidence. No unsupported claims."
+      }
+    ],
+    "preferred_item_id": "PP003-D",
+    "pairwise_reason": "All answers are correct and well-grounded, but D is the most comprehensive, clearly structured, and integrates both mechanistic and study-context limitations, including graph-derived evidence. A and B are also excellent; C is slightly less detailed."
+  }
+}

@@ -1,0 +1,37 @@
+##USE-MESH-VOCABULARY
+41630031|t|AKR1B10 reprograms neutrophils by histone lactylation to foster immune evasion in KRASG12C mutation colorectal cancer liver metastasis.
+41630031|a|BACKGROUND: The KRASG12C mutation is one of the special mutation types in patients with colorectal cancer liver metastasis (CRLM). Although several small molecule inhibitors specifically targeting KRASG12C mutation have been developed, they have only shown limited clinical benefits for CRLM patients. Thus, alternative approaches are still needed. METHODS: We screened out the differentially expressed gene Aldo-keto reductase family 1 member B10 (AKR1B10) between the KRASG12C mutation and wild-type CRLM through RNA sequencing, and characterized the tumor microenvironment (TME) changes of the KRASG12C mutation CRLM using multi-omics analysis. The role of AKR1B10 in the TME and its progression of KRASG12C mutation CRLM was confirmed by in vitro and in vivo experiments, and the molecular mechanism of lactate on neutrophils reprogramming was detected by immunofluorescence, western blot and Chip-qPCR. RESULTS: AKR1B10 was highly expressed in the KRASG12C mutation CRLM and was associated with a poor prognosis. Mechanistically, AKR1B10 promotes the recruitment of neutrophils in the TME by CXCL8/CXCR2 pathway. Meanwhile, AKR1B10 could promote the production of lactate by regulating crucial glycolytic enzymes. The increased lactate accumulation in the TME promoted histone lactylation of neutrophils, which induced PD-L1 transcription and prompted the reprogramming of neutrophils to an immunosuppressive phenotype. CONCLUSION: AKR1B10 facilitated immune evasion of KRASG12C mutation CRLM by recruiting and reprogramming neutrophils to remodel the immunosuppressive TME, providing a potential therapeutic target for KRASG12C mutation CRLM patients.
+41630031	0	7	AKR1B10	Gene	57016
+41630031	100	134	Colorectal Neoplasms	Disease	MESH:D015179
+41630031	210	218	patients	Species	9606
+41630031	224	258	Colorectal Neoplasms	Disease	MESH:D015179
+41630031	260	264	Colorectal Neoplasms	Disease	MESH:D015179
+41630031	423	427	Colorectal Neoplasms	Disease	MESH:D015179
+41630031	428	436	patients	Species	9606
+41630031	544	583	AKR1B10	Gene	57016
+41630031	585	592	AKR1B10	Gene	57016
+41630031	638	642	Colorectal Neoplasms	Disease	MESH:D015179
+41630031	689	694	Neoplasms	Disease	MESH:D009369
+41630031	751	755	Colorectal Neoplasms	Disease	MESH:D015179
+41630031	796	803	AKR1B10	Gene	57016
+41630031	856	860	Colorectal Neoplasms	Disease	MESH:D015179
+41630031	943	950	Lactic Acid	Chemical	MESH:D019344
+41630031	1053	1060	AKR1B10	Gene	57016
+41630031	1107	1111	Colorectal Neoplasms	Disease	MESH:D015179
+41630031	1171	1178	AKR1B10	Gene	57016
+41630031	1233	1238	CXCL8	Gene	3576
+41630031	1239	1244	CXCR2	Gene	3579
+41630031	1265	1272	AKR1B10	Gene	57016
+41630031	1305	1312	Lactic Acid	Chemical	MESH:D019344
+41630031	1369	1376	Lactic Acid	Chemical	MESH:D019344
+41630031	1460	1465	CD274	Gene	29126
+41630031	1573	1580	AKR1B10	Gene	57016
+41630031	1629	1633	Colorectal Neoplasms	Disease	MESH:D015179
+41630031	1779	1783	Colorectal Neoplasms	Disease	MESH:D015179
+41630031	1784	1792	patients	Species	9606
+41630031	Association	3579	57016
+41630031	Association	MESH:D019344	MESH:D015179
+41630031	Positive_Correlation	MESH:D019344	57016
+41630031	Positive_Correlation	MESH:D019344	29126
+41630031	Association	MESH:D015179	57016
+41630031	Association	3576	57016

@@ -1,0 +1,727 @@
+{
+  "status": "complete",
+  "question_id": "PP009",
+  "domain": "rare disease",
+  "question": "What evidence supports a mechanistic path from cystic fibrosis transmembrane regulator protein to intestinal inflammation through inflammation, cf, cftr? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "CFTR AND intestinal inflammation AND (NF-kB OR dysbiosis OR cytokines)",
+  "effective_pubmed_query": "CFTR AND intestinal inflammation AND (NF-kB OR dysbiosis OR cytokines)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "23788646",
+    "27588407",
+    "28155088",
+    "30546102",
+    "31636470",
+    "32326161",
+    "35160099",
+    "35743652",
+    "36600119",
+    "37546931",
+    "38073491",
+    "38179971",
+    "38554847",
+    "40247380",
+    "40824057"
+  ],
+  "graph": {
+    "node_count": 105,
+    "edge_count": 163,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 1,
+    "pre_gate_candidate_count": 1,
+    "pre_gate_candidates": [
+      {
+        "path_id": "Q008-P01",
+        "path_signature": "08b1ba895a663928",
+        "path_text": "cystic fibrosis transmembrane regulator protein ->[causes] inflammation | inflammation --[associated_with] cf | cf ->[causes] cftr | cftr ->[induces] intestinal inflammation",
+        "node_ids": [
+          "1080_Gene",
+          "MESH:D007249_Disease",
+          "MESH:D003550_Disease",
+          "12638_Gene",
+          "HP:4000055_Phenotype"
+        ],
+        "names": [
+          "cystic fibrosis transmembrane regulator protein",
+          "inflammation",
+          "cf",
+          "cftr",
+          "intestinal inflammation"
+        ],
+        "node_aliases": [
+          [
+            "CF transmembrane conductance regulator",
+            "CFTR",
+            "cystic fibrosis transmembrane conductance regulator",
+            "cystic fibrosis transmembrane regulator protein"
+          ],
+          [
+            "Chronic intestinal inflammation",
+            "Inflammation",
+            "Intestinal Inflammation",
+            "Intestinal inflammation",
+            "airway inflammation",
+            "gut inflammation",
+            "inflammation",
+            "inflammatory",
+            "intestinal and systemic inflammation",
+            "intestinal inflammation",
+            "liver inflammation"
+          ],
+          [
+            "CF",
+            "CF disease",
+            "CF-related diseases",
+            "CF.IMPORTANCEThe",
+            "CFLD",
+            "CFTR dysfunction",
+            "Cystic Fibrosis",
+            "Cystic Fibrosis Transmembrane Conductance Regulator",
+            "Cystic fibrosis",
+            "Cystic fibrosis-related liver disease",
+            "cystic fibrosis",
+            "cystic fibrosis-related liver disease"
+          ],
+          [
+            "CF transmembrane conductance regulator",
+            "CFTR",
+            "Cftr",
+            "cystic fibrosis transmembrane conductance regulator"
+          ],
+          [
+            "Intestinal Inflammation",
+            "Intestinal inflammation",
+            "intestinal inflammation"
+          ]
+        ],
+        "relations": [
+          "causes",
+          "associated_with",
+          "causes",
+          "induces"
+        ],
+        "edge_pmids": [
+          [
+            "23788646"
+          ],
+          [
+            "28155088"
+          ],
+          [
+            "37546931"
+          ],
+          [
+            "37546931"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          false,
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The same pathophysiologic triad of obstruction, infection, and inflammation that causes disease in the airways also causes disease in the intestines"
+          ],
+          [
+            "Intestinal inflammation, dysbiosis, and increased gastrointestinal malignancy risks are well-described in patients with cystic fibrosis (CF)."
+          ],
+          [
+            "Chronic intestinal inflammation is a manifestation of cystic fibrosis (CF), a disease caused by loss of the anion channel CFTR that is expressed in many tissues"
+          ],
+          [
+            "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis and inflammation"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "23788646",
+            "selected_quote": "The same pathophysiologic triad of obstruction, infection, and inflammation that causes disease in the airways also causes disease in the intestines",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "fc282fadad6c46929a6f5ca5b38080a2a50b7e88",
+              "schema_version": 1,
+              "pmid": "23788646",
+              "source_id": "1080_Gene",
+              "target_id": "MESH:D007249_Disease",
+              "relation": "causes",
+              "evidence": "The same pathophysiologic triad of obstruction, infection, and inflammation that causes disease in the airways also causes disease in the intestines",
+              "confidence": 0.9,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "28155088",
+            "selected_quote": "Intestinal inflammation, dysbiosis, and increased gastrointestinal malignancy risks are well-described in patients with cystic fibrosis (CF).",
+            "selected_confidence": 0.95,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "37546931",
+            "selected_quote": "Chronic intestinal inflammation is a manifestation of cystic fibrosis (CF), a disease caused by loss of the anion channel CFTR that is expressed in many tissues",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "f9fab2d5f538e5b9c113840d1f0f97b8120f4ee1",
+              "schema_version": 1,
+              "pmid": "37546931",
+              "source_id": "MESH:D003550_Disease",
+              "target_id": "12638_Gene",
+              "relation": "causes",
+              "evidence": "Chronic intestinal inflammation is a manifestation of cystic fibrosis (CF), a disease caused by loss of the anion channel CFTR that is expressed in many tissues",
+              "confidence": 0.95,
+              "study_type": "Animal",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "induces",
+            "selected_pmid": "37546931",
+            "selected_quote": "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis and inflammation",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "f39d57d073ca156deca4469ada0fe1bea07cb00e",
+              "schema_version": 1,
+              "pmid": "37546931",
+              "source_id": "12638_Gene",
+              "target_id": "HP:4000055_Phenotype",
+              "relation": "induces",
+              "evidence": "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis and inflammation",
+              "confidence": 0.95,
+              "study_type": "Animal",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "bounded_mechanistic_multi_hop"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 61,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": true,
+        "incremental_value_class": "graph_incremental_candidate",
+        "incremental_value_subtype": "retrieval_incremental_bridge_visible",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "bounded_multi_hop",
+          "support_outside_text_top_k",
+          "bridge_visible_in_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [
+          "28155088"
+        ],
+        "score": 0.502,
+        "hop_count": 4
+      }
+    ],
+    "preferred_pmids": [
+      "23788646",
+      "28155088",
+      "37546931"
+    ],
+    "paths": [
+      {
+        "path_id": "PP009-P01",
+        "path_signature": "08b1ba895a663928",
+        "path_text": "cystic fibrosis transmembrane regulator protein ->[causes] inflammation | inflammation --[associated_with] cf | cf ->[causes] cftr | cftr ->[induces] intestinal inflammation",
+        "node_ids": [
+          "1080_Gene",
+          "MESH:D007249_Disease",
+          "MESH:D003550_Disease",
+          "12638_Gene",
+          "HP:4000055_Phenotype"
+        ],
+        "names": [
+          "cystic fibrosis transmembrane regulator protein",
+          "inflammation",
+          "cf",
+          "cftr",
+          "intestinal inflammation"
+        ],
+        "node_aliases": [
+          [
+            "CF transmembrane conductance regulator",
+            "CFTR",
+            "cystic fibrosis transmembrane conductance regulator",
+            "cystic fibrosis transmembrane regulator protein"
+          ],
+          [
+            "Chronic intestinal inflammation",
+            "Inflammation",
+            "Intestinal Inflammation",
+            "Intestinal inflammation",
+            "airway inflammation",
+            "gut inflammation",
+            "inflammation",
+            "inflammatory",
+            "intestinal and systemic inflammation",
+            "intestinal inflammation",
+            "liver inflammation"
+          ],
+          [
+            "CF",
+            "CF disease",
+            "CF-related diseases",
+            "CF.IMPORTANCEThe",
+            "CFLD",
+            "CFTR dysfunction",
+            "Cystic Fibrosis",
+            "Cystic Fibrosis Transmembrane Conductance Regulator",
+            "Cystic fibrosis",
+            "Cystic fibrosis-related liver disease",
+            "cystic fibrosis",
+            "cystic fibrosis-related liver disease"
+          ],
+          [
+            "CF transmembrane conductance regulator",
+            "CFTR",
+            "Cftr",
+            "cystic fibrosis transmembrane conductance regulator"
+          ],
+          [
+            "Intestinal Inflammation",
+            "Intestinal inflammation",
+            "intestinal inflammation"
+          ]
+        ],
+        "relations": [
+          "causes",
+          "associated_with",
+          "causes",
+          "induces"
+        ],
+        "edge_pmids": [
+          [
+            "23788646"
+          ],
+          [
+            "28155088"
+          ],
+          [
+            "37546931"
+          ],
+          [
+            "37546931"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          false,
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The same pathophysiologic triad of obstruction, infection, and inflammation that causes disease in the airways also causes disease in the intestines"
+          ],
+          [
+            "Intestinal inflammation, dysbiosis, and increased gastrointestinal malignancy risks are well-described in patients with cystic fibrosis (CF)."
+          ],
+          [
+            "Chronic intestinal inflammation is a manifestation of cystic fibrosis (CF), a disease caused by loss of the anion channel CFTR that is expressed in many tissues"
+          ],
+          [
+            "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis and inflammation"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "23788646",
+            "selected_quote": "The same pathophysiologic triad of obstruction, infection, and inflammation that causes disease in the airways also causes disease in the intestines",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "fc282fadad6c46929a6f5ca5b38080a2a50b7e88",
+              "schema_version": 1,
+              "pmid": "23788646",
+              "source_id": "1080_Gene",
+              "target_id": "MESH:D007249_Disease",
+              "relation": "causes",
+              "evidence": "The same pathophysiologic triad of obstruction, infection, and inflammation that causes disease in the airways also causes disease in the intestines",
+              "confidence": 0.9,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "28155088",
+            "selected_quote": "Intestinal inflammation, dysbiosis, and increased gastrointestinal malignancy risks are well-described in patients with cystic fibrosis (CF).",
+            "selected_confidence": 0.95,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "37546931",
+            "selected_quote": "Chronic intestinal inflammation is a manifestation of cystic fibrosis (CF), a disease caused by loss of the anion channel CFTR that is expressed in many tissues",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "f9fab2d5f538e5b9c113840d1f0f97b8120f4ee1",
+              "schema_version": 1,
+              "pmid": "37546931",
+              "source_id": "MESH:D003550_Disease",
+              "target_id": "12638_Gene",
+              "relation": "causes",
+              "evidence": "Chronic intestinal inflammation is a manifestation of cystic fibrosis (CF), a disease caused by loss of the anion channel CFTR that is expressed in many tissues",
+              "confidence": 0.95,
+              "study_type": "Animal",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "induces",
+            "selected_pmid": "37546931",
+            "selected_quote": "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis and inflammation",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "f39d57d073ca156deca4469ada0fe1bea07cb00e",
+              "schema_version": 1,
+              "pmid": "37546931",
+              "source_id": "12638_Gene",
+              "target_id": "HP:4000055_Phenotype",
+              "relation": "induces",
+              "evidence": "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis and inflammation",
+              "confidence": 0.95,
+              "study_type": "Animal",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "bounded_mechanistic_multi_hop"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 61,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": true,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "bounded_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_visible_in_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.502,
+        "hop_count": 4
+      }
+    ]
+  },
+  "evidence_exposure": {
+    "profile": "H_evidence_gated_four_hop",
+    "routed_profile": "H_evidence_gated_four_hop",
+    "selection_frozen_before_answers": true,
+    "source_result": "evaluation/formal/runs/abcd20_path_replay_v2/questions/Q008/result.json",
+    "expanded_reliable_pool": true,
+    "frozen_exposure_source": "evaluation/formal/path_positive_20_v1/frozen_exposures_expanded/PP009/result.json",
+    "frozen_candidate_path_count": 1,
+    "frozen_exposed_path_count": 1,
+    "exposed_pmids": [
+      "23788646",
+      "28155088",
+      "37546931"
+    ],
+    "exposed_paths": [
+      [
+        "cystic fibrosis transmembrane regulator protein",
+        "inflammation",
+        "cf",
+        "cftr",
+        "intestinal inflammation"
+      ]
+    ],
+    "exposed_edges": [
+      "cystic fibrosis transmembrane regulator protein ->[causes] inflammation | inflammation --[associated_with] cf | cf ->[causes] cftr | cftr ->[induces] intestinal inflammation"
+    ],
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 1,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "answer_context_path_signatures": [
+      "08b1ba895a663928"
+    ],
+    "kg_expansion": {
+      "enabled": true,
+      "candidate_path_count": 1,
+      "queries": [
+        "\"cystic fibrosis transmembrane regulator protein\"[Title/Abstract] AND \"intestinal inflammation\"[Title/Abstract]",
+        "\"cystic fibrosis transmembrane regulator protein\"[Title/Abstract] AND \"cftr\"[Title/Abstract]",
+        "\"cftr\"[Title/Abstract] AND \"intestinal inflammation\"[Title/Abstract]"
+      ],
+      "added_pmids": [
+        "24548777",
+        "26335950",
+        "17291132",
+        "30359614",
+        "31654605",
+        "39043981",
+        "23142604",
+        "14570915",
+        "32592531",
+        "23578801",
+        "32776239",
+        "8593650",
+        "9033846",
+        "16763223",
+        "38043755"
+      ],
+      "added_document_count": 15,
+      "merge": {
+        "method": "bounded_expansion_slots_v1",
+        "expansion_slots": 2,
+        "min_margin": 0.03,
+        "original_tail_threshold": 0.5725831522383679,
+        "accepted_added_pmids": [
+          "24548777",
+          "23142604"
+        ]
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "24548777",
+        "score": 0.7026998308067858
+      },
+      {
+        "pmid": "23788646",
+        "score": 0.6730883315860757
+      },
+      {
+        "pmid": "23142604",
+        "score": 0.6369307568714327
+      },
+      {
+        "pmid": "35160099",
+        "score": 0.6327772669292235
+      },
+      {
+        "pmid": "36600119",
+        "score": 0.6004623110153584
+      },
+      {
+        "pmid": "38554847",
+        "score": 0.5987661016024862
+      },
+      {
+        "pmid": "37546931",
+        "score": 0.5873131011353302
+      },
+      {
+        "pmid": "38073491",
+        "score": 0.5853173785668725
+      },
+      {
+        "pmid": "40824057",
+        "score": 0.5821476554779539
+      },
+      {
+        "pmid": "27588407",
+        "score": 0.5764459460638804
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "23788646",
+        "score": 0.6730883315860757
+      },
+      {
+        "pmid": "35160099",
+        "score": 0.6327772669292235
+      },
+      {
+        "pmid": "36600119",
+        "score": 0.6004623110153584
+      },
+      {
+        "pmid": "38554847",
+        "score": 0.5987661016024862
+      },
+      {
+        "pmid": "37546931",
+        "score": 0.5873131011353302
+      },
+      {
+        "pmid": "38073491",
+        "score": 0.5853173785668725
+      },
+      {
+        "pmid": "40824057",
+        "score": 0.5821476554779539
+      },
+      {
+        "pmid": "27588407",
+        "score": 0.5764459460638804
+      },
+      {
+        "pmid": "38179971",
+        "score": 0.5754518561161818
+      },
+      {
+        "pmid": "28155088",
+        "score": 0.5725831522383679
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "**Evidence for each mechanistic hop from CFTR protein loss to intestinal inflammation**\n\n* **CFTR loss → altered intestinal environment (mucus stasis, dysmotility, dysbiosis, increased permeability).**  \n  – Mouse CFTR‑KO and intestinal‑specific Cftr‑KO models show mucus accumulation, bacterial over‑growth and a shift toward Proteobacteria/Enterobacteriaceae, together with heightened FITC‑dextran permeability【PMID:24548777】(animal).  \n  – Restoring CFTR only in the gut normalizes the microbiota and barrier, confirming that defective intestinal CFTR drives these changes【PMID:38554847】(animal).\n\n* **Altered environment → mucosal inflammation.**  \n  – Both global and epithelial‑specific Cftr‑KO mice exhibit elevated fecal calprotectin and histologic inflammation; the effect persists across two anti‑obstructive diets, indicating that CFTR loss alone is sufficient for intestinal inflammation【PMID:37546931】(animal).  \n  – Human CF patients, even without GI symptoms, display chronic low‑grade intestinal inflammation (elevated calprotectin, cytokines) and dysbiosis, mirroring the mouse phenotype【PMID:24548777】(human).\n\n* **Molecular signaling link: CFTR ↔ β‑catenin → NF‑κB activation.**  \n  – In ΔF508 mouse intestine and CFTR‑knockdown Caco‑2 cells, loss of CFTR destabilizes β‑catenin, permitting NF‑κB nuclear translocation and up‑regulation of COX‑2/PGE₂, a canonical inflammatory cascade【PMID:27588407】(human cell & mouse).  \n  – Pharmacologic β‑catenin activation suppresses NF‑κB–driven inflammation in these models, directly tying CFTR deficiency to inflammatory signaling【PMID:27588407】(human cell & mouse).\n\n* **Overall pathway inference.**  \n  The convergence of (i) CFTR‑dependent barrier/microbiota disruption, (ii) consequent mucosal inflammatory markers in both species, and (iii) a defined CFTR‑β‑catenin‑NF‑κB axis provides a mechanistic chain from CFTR protein loss to intestinal inflammation, rather than a mere correlation.\n\n**Conclusion:** Multiple animal studies and human observations collectively demonstrate that CFTR dysfunction initiates dysbiosis and barrier defects, which activate NF‑κB–driven inflammation, establishing a credible mechanistic route to intestinal inflammation.\n\nGraph-derived candidate insights\n- PATH 08b1ba895a663928 — GRAPH-CONFIRMED; multi-hop inference; HOP 1: cystic fibrosis transmembrane regulator protein causes inflammation [PMID: 23788646]; HOP 2: inflammation associated_with cf [PMID: 28155088]; HOP 3: cf causes cftr [PMID: 37546931]; HOP 4: cftr induces intestinal inflammation [PMID: 37546931]."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 1,
+    "supported_claim_count": 1,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": false,
+    "claims": [
+      {
+        "claim_id": "HC-01",
+        "path_id": "08b1ba895a663928",
+        "verdict": "supported",
+        "reasons": []
+      }
+    ]
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 9.577721357345581e-05,
+    "vector_index": 1.6866999045014381,
+    "kg_expansion": 6.443522058427334,
+    "answer_netmedex_hybrid_rag": 30.668850786983967,
+    "total": 39.27910586446524
+  },
+  "token_usage": {
+    "output_tokens": 1099,
+    "input_tokens": 4113,
+    "total_tokens": 5212
+  },
+  "completed_at": "2026-08-13T07:00:24.020466+00:00"
+}

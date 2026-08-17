@@ -1,0 +1,174 @@
+{
+  "status": "complete",
+  "question_id": "Q028",
+  "domain": "oncology",
+  "question": "Which genes mediate a 2-hop path between EGFR activation and resistance to apoptosis?",
+  "question_type": "two_hop_path",
+  "pubmed_query": "EGFR apoptosis resistance PI3K AKT BCL2 ERK cancer",
+  "effective_pubmed_query": "EGFR apoptosis resistance PI3K AKT BCL2 ERK cancer",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "16854453",
+    "21511051",
+    "26202948",
+    "28938696",
+    "29108234",
+    "29115423",
+    "36938944",
+    "40603821",
+    "42191394"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "Which genes mediate a 2-hop path between EGFR activation and resistance to apoptosis?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "28938696",
+        "score": 0.541119418038187
+      },
+      {
+        "pmid": "16854453",
+        "score": 0.5388080692542995
+      },
+      {
+        "pmid": "29108234",
+        "score": 0.49456609245227634
+      },
+      {
+        "pmid": "36938944",
+        "score": 0.4807177556348582
+      },
+      {
+        "pmid": "21511051",
+        "score": 0.47886433577259774
+      },
+      {
+        "pmid": "40603821",
+        "score": 0.46724870227848553
+      },
+      {
+        "pmid": "42191394",
+        "score": 0.4522195264244071
+      },
+      {
+        "pmid": "29115423",
+        "score": 0.451690204762154
+      },
+      {
+        "pmid": "26202948",
+        "score": 0.4383274411443844
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "28938696",
+        "score": 0.541119418038187
+      },
+      {
+        "pmid": "16854453",
+        "score": 0.5388080692542995
+      },
+      {
+        "pmid": "29108234",
+        "score": 0.49456609245227634
+      },
+      {
+        "pmid": "36938944",
+        "score": 0.4807177556348582
+      },
+      {
+        "pmid": "21511051",
+        "score": 0.47886433577259774
+      },
+      {
+        "pmid": "40603821",
+        "score": 0.46724870227848553
+      },
+      {
+        "pmid": "42191394",
+        "score": 0.4522195264244071
+      },
+      {
+        "pmid": "29115423",
+        "score": 0.451690204762154
+      },
+      {
+        "pmid": "26202948",
+        "score": 0.4383274411443844
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Direct evidence (2‑hop from EGFR to apoptosis resistance)**  \n\n- **EGFR → AKT → BCL‑2/BCL‑XL** – The review describes the “EGFR‑Akt‑NF‑κB signal pathway” that drives transcription of the anti‑apoptotic genes *BCL‑2*, *BCL‑XL* and *survivin*【PMID:28938696】. Here AKT (encoded by **AKT1/2/3**) is the first hop, and BCL‑2/BCL‑XL the second, conferring resistance to apoptosis.  \n\n- **EGFR → PI3K → BCL‑2** – In the discussion of the PI3K/AKT cascade, EGFR‑driven activation of PI3K leads to downstream up‑regulation of the anti‑apoptotic protein Bcl‑2【PMID:16854453】. PI3K (encoded by **PIK3CA** or **PIK3R1**) is the first hop; BCL‑2 the second.  \n\n- **EGFR → AKT → BIRC5 (survivin)** – Survivin is noted as a target of the PI3K/AKT axis that is modulated by EGFR signalling【PMID:21511051】. Thus AKT is the intermediary gene, and *BIRC5* (survivin) is the downstream effector that blocks apoptosis.  \n\n**Associations supporting the two‑hop route**  \n\n- **EGFR → NF‑κB → BCL‑2/BCL‑XL** – The same review links EGFR activation to NF‑κB, which then induces *BCL‑2* and *BCL‑XL* transcription【PMID:28938696】. NF‑κB (e.g., **RELA**) serves as the first hop; the BCL family genes the second.  \n\n- **EGFR → ERK → BCL‑2** – In the Raf/MEK/ERK pathway, EGFR signalling culminates in increased *Bcl‑2* expression【PMID:16854453】. ERK (encoded by **MAPK1/3**) is the first hop, BCL‑2 the second.  \n\n**Testable hypothesis (not yet directly shown in the supplied texts)**  \n\n- **EGFR → PTEN loss → AKT → BCL‑2** – While PTEN loss amplifies AKT signalling, it could act as an indirect first hop after EGFR activation, leading to BCL‑2‑mediated apoptosis resistance. This pathway is suggested by the down‑regulation of PTEN in EGFR‑targeted studies【PMID:29108234】 but lacks explicit two‑step evidence in the provided abstracts.  \n\n**Summary** – The genes most consistently mediating a two‑step connection from EGFR activation to apoptosis resistance are **AKT1/2/3**, **PIK3CA**, **RELA (NF‑κB)**, **MAPK1/3 (ERK)** as first‑hop intermediates, and **BCL‑2**, **BCL‑XL (BCL2L1)**, and **BIRC5 (survivin)** as the second‑hop effectors."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 4.791468381881714e-05,
+    "vector_index": 1.6082618162035942,
+    "kg_expansion": 2.7470290660858154e-05,
+    "answer_traditional_rag": 33.3947900980711,
+    "total": 35.52467857301235
+  },
+  "token_usage": {
+    "input_tokens": 4106,
+    "output_tokens": 1211,
+    "total_tokens": 5317
+  },
+  "completed_at": "2026-08-13T03:46:35.515972+00:00"
+}

@@ -1,0 +1,183 @@
+{
+  "status": "complete",
+  "question_id": "Q007",
+  "domain": "immunology",
+  "question": "Which immune cell types are associated with IL-17 in autoimmune disease networks?",
+  "question_type": "association",
+  "pubmed_query": "IL-17 AND autoimmune disease AND (Th17 OR gamma-delta T cells OR innate lymphoid cells)",
+  "effective_pubmed_query": "IL-17 AND autoimmune disease AND (Th17 OR gamma-delta T cells OR innate lymphoid cells)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "25130295",
+    "25145755",
+    "25467639",
+    "27576555",
+    "27757507",
+    "30502718",
+    "30891627",
+    "31295952",
+    "31866067",
+    "34635393",
+    "34875227",
+    "35872102",
+    "37579542",
+    "37670700",
+    "39875232"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "37670700",
+        "score": 0.6489564727053049
+      },
+      {
+        "pmid": "39875232",
+        "score": 0.648260609388039
+      },
+      {
+        "pmid": "27576555",
+        "score": 0.6447370752094542
+      },
+      {
+        "pmid": "37579542",
+        "score": 0.6238661637823004
+      },
+      {
+        "pmid": "25145755",
+        "score": 0.6154939066814366
+      },
+      {
+        "pmid": "30502718",
+        "score": 0.609906015627309
+      },
+      {
+        "pmid": "31295952",
+        "score": 0.6047502907644642
+      },
+      {
+        "pmid": "30891627",
+        "score": 0.5913348790953035
+      },
+      {
+        "pmid": "34875227",
+        "score": 0.5757831873542522
+      },
+      {
+        "pmid": "34635393",
+        "score": 0.5622326982713536
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "37670700",
+        "score": 0.6489564727053049
+      },
+      {
+        "pmid": "39875232",
+        "score": 0.648260609388039
+      },
+      {
+        "pmid": "27576555",
+        "score": 0.6447370752094542
+      },
+      {
+        "pmid": "37579542",
+        "score": 0.6238661637823004
+      },
+      {
+        "pmid": "25145755",
+        "score": 0.6154939066814366
+      },
+      {
+        "pmid": "30502718",
+        "score": 0.609906015627309
+      },
+      {
+        "pmid": "31295952",
+        "score": 0.6047502907644642
+      },
+      {
+        "pmid": "30891627",
+        "score": 0.5913348790953035
+      },
+      {
+        "pmid": "34875227",
+        "score": 0.5757831873542522
+      },
+      {
+        "pmid": "34635393",
+        "score": 0.5622326982713536
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "## Direct evidence\n\nThe immune cell types directly associated with IL-17 production or IL-17-driven autoimmune inflammation are:\n\n- **Th17 cells (IL-17-producing CD4+ T cells):** The principal cellular source associated with autoimmune tissue inflammation. They are characterized by **RORγt** expression and promote diseases such as rheumatoid arthritis, multiple sclerosis, psoriasis, and inflammatory bowel disease. [PMID: 27576555; PMID: 30891627]\n- **Th1-like Th17 cells:** A plastic Th17 subset that co-expresses **RORγt and T-bet** and produces both **IL-17 and IFN-γ**. They are associated with inflammatory bowel disease, multiple sclerosis, and rheumatoid arthritis. [PMID: 30502718]\n- **γδ T cells:** Innate-like T cells reported to produce type 17 cytokines, including IL-17, and to contribute to tissue inflammation. [PMID: 27576555; PMID: 37579542]\n- **Natural killer T (NKT) cells:** Identified as additional innate immune producers of type 17 cytokines/IL-17. [PMID: 27576555; PMID: 37579542]\n- **Innate lymphoid cells (ILCs), including type 3 ILCs:** These cells express the RORγt–IL-17 program and contribute to IL-17-associated inflammation. [PMID: 27576555; PMID: 34635393]\n- **CD8+ T cells:** Reported as additional IL-17A-producing cells, although the supplied context emphasizes their production rather than a specific autoimmune disease mechanism. [PMID: 37579542]\n\n## Associations\n\n- The **Th17/IL-23/IL-17 axis** is associated with immune-mediated inflammatory and autoimmune diseases, including psoriasis, rheumatoid arthritis, inflammatory bowel disease, multiple sclerosis, systemic lupus erythematosus, and related disorders. [PMID: 25145755; PMID: 31295952; PMID: 37670700]\n- **Intestinal Th17 cells** can include a stem-like, relatively homeostatic **TCF1+ IL-17+ SLAMF6+** population that gives rise to pathogenic **GM-CSF+ IFN-γ+ CXCR6+** effector T cells during CNS autoimmunity. This study provides evidence for a relationship between intestinal Th17 cells and pathogenic autoimmune effector T cells. [PMID: 34875227]\n- IL-17 production is linked to **neutrophil recruitment** and inflammatory tissue responses, but the supplied records do not identify neutrophils as a principal IL-17-producing cell type. [PMID: 37670700; PMID: 39875232]\n\n## Testable hypothesis\n\nThe records support the hypothesis that autoimmune disease networks are organized around a broader **RORγt+ type 17 cellular module**, centered on Th17 cells and extended to γδ T cells, NKT cells, ILCs/type 3 ILCs, and some CD8+ T cells. However, the supplied context does not provide direct network or graph evidence establishing the strength or direction of connections among these cell types.",
+    "traditional_rag": "### Direct evidence\n- **Th17 cells (RORγt⁺ CD4⁺ T cells):** The principal IL-17-producing adaptive immune cell type and a driver of autoimmune tissue inflammation. [PMID: 27576555]\n- **Th1-like Th17 cells:** A plastic Th17 subset that produces both **IL-17 and IFN-γ** and is associated with inflammatory bowel disease, multiple sclerosis, and rheumatoid arthritis. [PMID: 30502718]\n- **γδ T cells:** Innate-like T cells that produce type 17 cytokines and contribute to tissue inflammation. [PMID: 27576555]\n- **Natural killer T (NKT) cells:** Reported producers of IL-17/type 17 cytokines. [PMID: 27576555; PMID: 37579542]\n- **Innate lymphoid cells (ILCs), particularly type 3 ILCs:** Produce type 17 cytokines and are associated with inflammatory tissue responses; RORγt is expressed in type 3 ILCs in mice and humans. [PMID: 27576555; PMID: 34635393]\n- **CD8⁺ T cells:** Can also produce IL-17A. [PMID: 37579542]\n\n### Association with autoimmune disease networks\nThese IL-17-associated cell types are linked to autoimmune or immune-mediated inflammatory diseases including **multiple sclerosis, rheumatoid arthritis, psoriasis, inflammatory bowel disease, systemic lupus erythematosus, and related disorders**. [PMID: 37670700; PMID: 31295952]\n\n### Additional evidence\n- **Intestinal stem-like/homeostatic Th17 cells** are described in an in-vivo study as an IL-17⁺ reservoir that can give rise to pathogenic **GM-CSF⁺ IFN-γ⁺ effector T cells** during CNS autoimmunity (animal/model-based evidence as described in the abstract). [PMID: 34875227]\n- The context supports a **Th17–IL-23–IL-17 axis**, in which IL-23 activates or sustains Th17 responses contributing to inflammation and autoimmunity. [PMID: 39875232; PMID: 25145755]\n\n### Testable hypothesis\nThe context suggests that targeting IL-17-producing adaptive and innate-like cells—especially Th17/Th1-like Th17 cells, γδ T cells, NKT cells, and type 3 ILCs—could modify autoimmune disease networks, but it does **not** establish that each cell type is independently pathogenic in every autoimmune disease.",
+    "general_llm": "IL-17—especially IL-17A and IL-17F—is linked to several interacting immune-cell populations in autoimmune disease networks.\n\n### Main IL-17-producing cells\n\n- **Th17 CD4⁺ T cells**  \n  The canonical source. They are driven by cytokines such as IL-1β, IL-6, IL-21, and IL-23, and commonly produce IL-17A/F, IL-22, and sometimes GM-CSF. They are implicated in psoriasis, psoriatic arthritis, ankylosing spondylitis, multiple sclerosis models, inflammatory bowel disease, and rheumatoid arthritis subsets.\n\n- **Tc17 CD8⁺ T cells**  \n  IL-17-producing CD8⁺ cells that can contribute to tissue inflammation, particularly in psoriasis, spondyloarthritis, and some autoimmune mucosal diseases.\n\n- **γδ T cells**  \n  Often rapid, innate-like sources of IL-17, especially in skin, intestine, and entheses. They may respond to IL-1β and IL-23 without requiring conventional antigen-specific priming.\n\n- **MAIT cells**  \n  Mucosal-associated invariant T cells can produce IL-17 and are associated with inflammatory activity in disorders affecting the gut, joints, skin, and liver. Their role can be disease- and tissue-dependent.\n\n- **Invariant NKT and other unconventional T cells**  \n  Some subsets can produce IL-17, although their contribution is generally less dominant and more context-dependent than that of Th17 cells.\n\n- **ILC3s**  \n  Group 3 innate lymphoid cells produce IL-17 and/or IL-22, particularly at mucosal and barrier sites. They are implicated in intestinal inflammation, psoriasis-like inflammation, and spondyloarthritis-related tissues.\n\n- **Neutrophils and other myeloid cells**  \n  Neutrophils are usually regarded primarily as **responders** to IL-17 rather than major classical producers. However, IL-17-like activity or limited IL-17 production by neutrophils and other innate cells has been reported in certain inflammatory settings; the extent and significance remain less firmly established than for T cells and ILC3s.\n\n### Important IL-17-responsive or interacting cells\n\n- **Neutrophils**: IL-17 stimulates epithelial and stromal cells to produce CXCL1, CXCL2, CXCL5, and G-CSF, promoting neutrophil recruitment and survival.\n- **Monocytes/macrophages**: Provide IL-1β, IL-6, and IL-23, which support Th17 and other IL-17-producing cells; they also respond to IL-17 indirectly through tissue-derived mediators.\n- **Dendritic cells**: Particularly important upstream sources of IL-23 and IL-1β, shaping pathogenic Th17 responses.\n- **Epithelial cells and fibroblasts**: Major IL-17 targets. They produce chemokines, antimicrobial peptides, cytokines, and matrix-remodeling factors that amplify local inflammation.\n- **B cells**: Generally not central IL-17 producers, but they can support Th17 responses through antigen presentation, cytokine production, and organization of inflamed lymphoid tissues.\n- **Regulatory T cells**: Normally suppress IL-17 responses, but inflammatory conditions can produce plasticity between regulatory and Th17-like states.\n\n### Typical network structure\n\nA common autoimmune inflammatory circuit is:\n\n**Dendritic cells/macrophages → IL-1β + IL-6 + IL-23 → Th17, γδ T cells, MAIT cells, or ILC3s → IL-17A/F → epithelial cells, fibroblasts, and endothelium → chemokines and G-CSF → neutrophil recruitment and tissue inflammation.**\n\nIL-17 frequently cooperates with **TNF**, **IL-1β**, and sometimes **IFN-γ**. This cooperation is often more pathogenic than IL-17 acting alone.\n\nThe strongest and most therapeutically validated association is with **Th17/IL-17 pathways in psoriasis, psoriatic arthritis, and axial spondyloarthritis**. In diseases such as rheumatoid arthritis, multiple sclerosis, and inflammatory bowel disease, IL-17 involvement is more heterogeneous: it may be important in particular patients or tissues, while blockade of IL-17 can be ineffective or potentially harmful in some intestinal inflammatory settings."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 2.32011079788208e-05,
+    "vector_index": 2.078330844640732,
+    "answer_netmedex_hybrid_rag": 5.446484178304672,
+    "answer_traditional_rag": 4.749069534242153,
+    "answer_general_llm": 6.959294602274895,
+    "total": 19.76136264950037
+  },
+  "token_usage": {
+    "input_tokens": 6151,
+    "total_tokens": 8619,
+    "output_tokens": 2468
+  },
+  "completed_at": "2026-08-11T05:05:37.018656+00:00"
+}

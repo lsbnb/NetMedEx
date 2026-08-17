@@ -1,0 +1,26 @@
+{
+  "task": "edge",
+  "question_id": "Q011",
+  "batch": 2,
+  "provider": "anthropic",
+  "model": "claude-haiku-4-5-20251001",
+  "input_sha256": "1c9e3d3869e375077bead0617ac1d97ff8dccec4a8f0d1577126d8f6f118fabb",
+  "raw_response_sha256": "91b44a68d67a8bd751e52f3df2b62476bc489e486a3c500e487d8c1b5f79036d",
+  "rated_at": "2026-08-02T19:08:17.689998+00:00",
+  "result": {
+    "ratings": [
+      {
+        "edge_id": "Q011-E08",
+        "entity_valid": 1,
+        "relation_exists": 1,
+        "relation_type_correct": 1,
+        "direction_correct": 1,
+        "evidence_support": 1,
+        "confidence": 3,
+        "notes": "Both abstracts explicitly state metformin activates AMPK. PMID 34062070 directly describes AMPK activation as one of metformin's mechanisms. PMID 40140842 confirms metformin as AMPK activator with downstream mTOR inhibition in cancer cells."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "task": "hidden_claim",
+  "question_id": "Q037",
+  "batch": 1,
+  "provider": "google",
+  "model": "gemini-3.1-pro-preview",
+  "input_sha256": "5895bd22da05332e62118a460f887a61228326fceebb30d3ba7376711d9b4247",
+  "raw_response_sha256": "82ed1da80d16e218c7e3e853daed3f72e2bbd97f2cda8c7cf6649b5e92446e82",
+  "usage": {
+    "input_tokens": 4081,
+    "output_tokens": 471,
+    "total_tokens": 5730
+  },
+  "rated_at": "2026-08-09T10:35:17.653781+00:00",
+  "result": {
+    "ratings": [
+      {
+        "hidden_claim_id": "Q037-HC01",
+        "hybrid_only": 0,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 1,
+        "non_obviousness": 2,
+        "research_utility": 2,
+        "unsupported_novelty": 0,
+        "notes": "The claim is well-supported by the provided evidence and is explicitly covered in the comparison answer. It represents a well-established indirect mechanism of HBV-induced HCC."
+      },
+      {
+        "hidden_claim_id": "Q037-HC02",
+        "hybrid_only": 0,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 1,
+        "non_obviousness": 2,
+        "research_utility": 2,
+        "unsupported_novelty": 0,
+        "notes": "The claim accurately traces the path from HBV infection to fibrosis and then to HCC, supported by the quotes and present in the comparison answer."
+      },
+      {
+        "hidden_claim_id": "Q037-HC03",
+        "hybrid_only": 0,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 1,
+        "non_obviousness": 2,
+        "research_utility": 2,
+        "unsupported_novelty": 0,
+        "notes": "This claim is very similar to HC02 but uses a different second PMID. The evidence supports the progression from liver fibrosis to HCC. Covered in the comparison answer."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

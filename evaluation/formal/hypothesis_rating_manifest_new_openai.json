@@ -1,0 +1,13 @@
+{
+  "reviewer_type": "AI",
+  "role": "supplementary_hypothesis_quality_rater",
+  "provider": "openai",
+  "model": "gpt-5.6-sol",
+  "input_file": "evaluation/formal/hypothesis_ratings_worksheet_new_openai.csv",
+  "started_at": "2026-07-31T18:16:38.386392+00:00",
+  "completed_at": "2026-07-31T18:18:19.950370+00:00",
+  "row_count": 20,
+  "question_count": 10,
+  "status": "complete",
+  "notes": "Second, independent blinded AI rater for the hypothesis/two_hop_path stratum (cross-check against the Gemini 3.1 Pro pass). Supplementary AI rating, not a human expert review."
+}

@@ -1,0 +1,202 @@
+{
+  "question_id": "BW010",
+  "status": "eligible",
+  "corpus_strategy": "controlled_endpoint_isolated_shared_bridge",
+  "same_corpus_for_text_and_hybrid": true,
+  "mediators_withheld_from_system_query": true,
+  "source_patterns": [
+    "gut microbiome dysbiosis"
+  ],
+  "target_patterns": [
+    "bone loss"
+  ],
+  "source_identifiers": [],
+  "target_identifiers": [],
+  "source_side_forbidden_target_patterns": [],
+  "source_side_forbidden_target_identifiers": [],
+  "target_side_forbidden_source_patterns": [
+    "osteoporosis",
+    "skeletal disease"
+  ],
+  "target_side_forbidden_source_identifiers": [],
+  "eligible_mediators": [
+    "TNF-alpha"
+  ],
+  "mediator_audit": [
+    {
+      "name": "TNF-alpha",
+      "queries": {
+        "source": "gut microbiome dysbiosis[Title/Abstract] AND TNF-alpha [Title/Abstract]",
+        "target": "TNF-alpha[Title/Abstract] AND bone loss [Title/Abstract]"
+      },
+      "candidate_pmids": {
+        "source": [
+          "40714142",
+          "40673809",
+          "30622429",
+          "39568727",
+          "39986536",
+          "40202676",
+          "33215637",
+          "37686860",
+          "42137127",
+          "35197458",
+          "41638193",
+          "39370473",
+          "42353633",
+          "34422677",
+          "42349674",
+          "40167488",
+          "40547164",
+          "42324373",
+          "38329697",
+          "34733981",
+          "41983959"
+        ],
+        "target": [
+          "33359765",
+          "30351474",
+          "20173392",
+          "16237274",
+          "37619958",
+          "38719085",
+          "36196151",
+          "38810309",
+          "32708317",
+          "36031187",
+          "33861790",
+          "42131412",
+          "40981186",
+          "24625371",
+          "26557382",
+          "37092263",
+          "37429372",
+          "41041963",
+          "40234094",
+          "19109167",
+          "37199646",
+          "31886238",
+          "33586672",
+          "36483565",
+          "33179535",
+          "40059399",
+          "33007863",
+          "23542506",
+          "27421098",
+          "26503912"
+        ]
+      },
+      "accepted_pmids": {
+        "source": [
+          "40714142",
+          "40673809",
+          "30622429"
+        ],
+        "target": [
+          "33359765",
+          "30351474",
+          "16237274"
+        ]
+      },
+      "annotation_identifiers": {
+        "source": [
+          "7124"
+        ],
+        "target": [
+          "24835",
+          "7124"
+        ]
+      },
+      "shared_mediator_identifiers": [
+        "7124"
+      ],
+      "rejected_pmids": {
+        "source": {},
+        "target": {
+          "20173392": [
+            "source_leak"
+          ]
+        }
+      },
+      "bridge_eligible": true
+    },
+    {
+      "name": "RANKL",
+      "queries": {
+        "source": "gut microbiome dysbiosis[Title/Abstract] AND RANKL [Title/Abstract]",
+        "target": "RANKL[Title/Abstract] AND bone loss [Title/Abstract]"
+      },
+      "candidate_pmids": {
+        "source": [],
+        "target": [
+          "35181574",
+          "36358952",
+          "15785827",
+          "12379618",
+          "27881737",
+          "33070252",
+          "34904285",
+          "16356770",
+          "31653549",
+          "41151621",
+          "19731622",
+          "18673012",
+          "30621730",
+          "19076348",
+          "18301800",
+          "36849060",
+          "41125794",
+          "35929595",
+          "37470794",
+          "32870816",
+          "37932498",
+          "42151112",
+          "31964464",
+          "34212247",
+          "36408260",
+          "36921635",
+          "38358727",
+          "28575726",
+          "41469373",
+          "19604464"
+        ]
+      },
+      "accepted_pmids": {
+        "source": [],
+        "target": [
+          "35181574",
+          "15785827",
+          "12379618"
+        ]
+      },
+      "annotation_identifiers": {
+        "source": [],
+        "target": [
+          "8600"
+        ]
+      },
+      "shared_mediator_identifiers": [],
+      "rejected_pmids": {
+        "source": {},
+        "target": {
+          "36358952": [
+            "source_leak"
+          ]
+        }
+      },
+      "bridge_eligible": false
+    }
+  ],
+  "distractor_audit": null,
+  "fetched_pmids": [
+    "40714142",
+    "40673809",
+    "30622429",
+    "33359765",
+    "30351474",
+    "16237274",
+    "35181574",
+    "15785827",
+    "12379618"
+  ]
+}

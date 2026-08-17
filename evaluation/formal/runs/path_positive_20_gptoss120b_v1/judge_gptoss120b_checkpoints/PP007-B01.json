@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP007",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "d2434a777675f2ca83e99089f1eb1a7d5b7370db1dea4b9a2300330f49491c08",
+  "raw_response_sha256": "a921d20e37d9edee7953bcc3c8a53980f99f4c7ce8544c5a1eaec4f1754c09ce",
+  "usage": {
+    "input_tokens": 3453,
+    "output_tokens": 413,
+    "total_tokens": 3866
+  },
+  "rated_at": "2026-08-13T06:32:07.718703+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP007-A",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Cites key study; relies on single source; mitochondrial link speculative."
+      },
+      {
+        "answer_id": "PP007-B",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Clear hop distinction, adds hypothesis and test; still limited to one primary study."
+      },
+      {
+        "answer_id": "PP007-C",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Repeats same evidence; adequate but offers little beyond A/B."
+      },
+      {
+        "answer_id": "PP007-D",
+        "correctness": 3,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 2,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Detailed mechanistic steps; lacks citations, some claims may be unverified."
+      }
+    ],
+    "preferred_item_id": "PP007-B",
+    "pairwise_reason": "PP007-B provides well‑grounded citations, clearly separates the curcumin→p53 and p53→apoptosis hops, and adds a testable hypothesis, giving it the highest overall balance of accuracy and research value."
+  }
+}

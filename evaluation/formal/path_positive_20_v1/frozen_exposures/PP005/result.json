@@ -1,0 +1,206 @@
+{
+  "status": "complete",
+  "question_id": "PP005",
+  "graph": {
+    "node_count": 123,
+    "edge_count": 208,
+    "path_count": 1,
+    "paths": [
+      {
+        "path_id": "Q011-P01",
+        "path_signature": "6b5618526adbdfc6",
+        "path_text": "metformin --[associated_with] malignancy",
+        "node_ids": [
+          "MESH:D008687_Chemical",
+          "MESH:D009369_Disease"
+        ],
+        "names": [
+          "metformin",
+          "malignancy"
+        ],
+        "node_aliases": [
+          [
+            "MTF",
+            "Metformin",
+            "metformin"
+          ],
+          [
+            "Tumor",
+            "cancer",
+            "cancers",
+            "gynaecological tumours",
+            "malignancies",
+            "malignancy",
+            "malignant neoplasms",
+            "tumor",
+            "tumors",
+            "tumour",
+            "tumours"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "26277279"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Retrospective studies associate the use of metformin with a reduction in cancer incidence and cancer-related death"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "26277279",
+            "selected_quote": "Retrospective studies associate the use of metformin with a reduction in cancer incidence and cancer-related death",
+            "selected_confidence": 0.95,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.885,
+        "hop_count": 1
+      }
+    ],
+    "pre_gate_candidate_count": 1,
+    "pre_gate_candidates": [
+      {
+        "path_id": "Q011-P01",
+        "path_signature": "6b5618526adbdfc6",
+        "path_text": "metformin --[associated_with] malignancy",
+        "node_ids": [
+          "MESH:D008687_Chemical",
+          "MESH:D009369_Disease"
+        ],
+        "names": [
+          "metformin",
+          "malignancy"
+        ],
+        "node_aliases": [
+          [
+            "MTF",
+            "Metformin",
+            "metformin"
+          ],
+          [
+            "Tumor",
+            "cancer",
+            "cancers",
+            "gynaecological tumours",
+            "malignancies",
+            "malignancy",
+            "malignant neoplasms",
+            "tumor",
+            "tumors",
+            "tumour",
+            "tumours"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "26277279"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Retrospective studies associate the use of metformin with a reduction in cancer incidence and cancer-related death"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "26277279",
+            "selected_quote": "Retrospective studies associate the use of metformin with a reduction in cancer incidence and cancer-related death",
+            "selected_confidence": 0.95,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.885,
+        "hop_count": 1
+      }
+    ]
+  },
+  "evidence_exposure": {
+    "profile": "H_evidence_gated_four_hop",
+    "routed_profile": "H_evidence_gated_four_hop",
+    "selection_frozen_before_answers": true,
+    "source_result": "evaluation/formal/runs/abcd20_path_replay_v2/questions/Q011/result.json"
+  }
+}

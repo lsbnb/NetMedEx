@@ -1,0 +1,63 @@
+{
+  "task": "answer",
+  "question_id": "Q016",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "d42d3702321ae749a0b8cafe878ba8a8d2dd97defa9247502ba365a90cf90123",
+  "raw_response_sha256": "a43393f77bfbec2611064d7daf014d02cfa98df1fe627078a5c994bcb91bd029",
+  "usage": {
+    "input_tokens": 3719,
+    "output_tokens": 668,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 4387
+  },
+  "rated_at": "2026-08-13T04:40:54.809523+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q016-A",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 4,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Covers complex I, ROS, OXPHOS transcription, mTOR feedback well. Misses axonal transport, calcium, dynamics pathways. PMIDs cited appear plausible and appropriately qualified."
+      },
+      {
+        "answer_id": "Q016-B",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 5,
+        "notes": "Most comprehensive: covers splicing, axonal transport, calcium, ROS, dynamics, mitophagy, energy mismatch. No PMIDs cited; claims are plausible but unverifiable. Appropriately hedged."
+      },
+      {
+        "answer_id": "Q016-C",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 4,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Similar to A/D but adds dose-dependence and therapy-persistence observations. Misses transport, calcium, dynamics. Hypotheses are specific and testable. PMIDs cited appropriately."
+      },
+      {
+        "answer_id": "Q016-D",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 4,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Covers complex I, OXPHOS, membrane potential, ROS-SMN feedback loop well. Misses splicing, transport, calcium, dynamics. Largely overlaps A and C with similar PMIDs."
+      }
+    ],
+    "preferred_item_id": "Q016-B",
+    "pairwise_reason": "Q016-B is the most complete and clinically relevant answer, covering six distinct mechanistic pathways (splicing, axonal transport, calcium, ROS, dynamics/mitophagy, energy mismatch) with appropriate epistemic hedging. Although it lacks PMID citations, its breadth and mechanistic depth exceed the other answers, which focus narrowly on complex I/ROS/OXPHOS transcription while omitting transport, calcium, and mitochondrial dynamics pathways."
+  }
+}

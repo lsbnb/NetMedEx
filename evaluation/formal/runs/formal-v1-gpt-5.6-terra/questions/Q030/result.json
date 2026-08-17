@@ -1,0 +1,143 @@
+{
+  "status": "complete",
+  "question_id": "Q030",
+  "domain": "psychiatry",
+  "question": "Which inflammatory markers have been associated with major depressive disorder in human studies?",
+  "pubmed_query": "major depression inflammation CRP IL-6 TNF-alpha human",
+  "language": "English",
+  "corpus_pmids": [
+    "21145432",
+    "23123365",
+    "27885969",
+    "28445690",
+    "29489077",
+    "31427752",
+    "32158005",
+    "37264010",
+    "38820411",
+    "39089535",
+    "39615605",
+    "40264292",
+    "41090786",
+    "41373743",
+    "41443481"
+  ],
+  "graph": {
+    "node_count": 33,
+    "edge_count": 60,
+    "path_count": 20,
+    "preferred_pmids": [
+      "21145432",
+      "23123365",
+      "28445690",
+      "29489077",
+      "31427752",
+      "32158005",
+      "37264010",
+      "40264292",
+      "41090786",
+      "41443481"
+    ]
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "37264010",
+        "score": 0.9500191167863503
+      },
+      {
+        "pmid": "41443481",
+        "score": 0.9019652342047277
+      },
+      {
+        "pmid": "28445690",
+        "score": 0.8947491588068914
+      },
+      {
+        "pmid": "31427752",
+        "score": 0.8919061133776327
+      },
+      {
+        "pmid": "29489077",
+        "score": 0.870296639879653
+      },
+      {
+        "pmid": "40264292",
+        "score": 0.8396379969178804
+      },
+      {
+        "pmid": "41090786",
+        "score": 0.8297373401031617
+      },
+      {
+        "pmid": "32158005",
+        "score": 0.7966500576978615
+      },
+      {
+        "pmid": "21145432",
+        "score": 0.7563694349833319
+      },
+      {
+        "pmid": "23123365",
+        "score": 0.6769838879075134
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "39089535",
+        "score": 0.6540423601296357
+      },
+      {
+        "pmid": "37264010",
+        "score": 0.6333460778575669
+      },
+      {
+        "pmid": "39615605",
+        "score": 0.6063348655045007
+      },
+      {
+        "pmid": "41443481",
+        "score": 0.6013101561364852
+      },
+      {
+        "pmid": "28445690",
+        "score": 0.5964994392045943
+      },
+      {
+        "pmid": "31427752",
+        "score": 0.5946040755850884
+      },
+      {
+        "pmid": "29489077",
+        "score": 0.5801977599197686
+      },
+      {
+        "pmid": "38820411",
+        "score": 0.5742304163919538
+      },
+      {
+        "pmid": "40264292",
+        "score": 0.5597586646119203
+      },
+      {
+        "pmid": "41090786",
+        "score": 0.5531582267354411
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "## Direct evidence from human MDD studies\n\nThe inflammatory markers most consistently reported in the supplied human MDD literature are:\n\n- **C-reactive protein (CRP; including high-sensitivity CRP)** — used to identify a higher-inflammatory MDD subgroup; CRP-related strata showed corresponding differences in several circulating cytokines. MDD-associated immune-gene expression was also detectable even among participants with low CRP, indicating CRP does not capture all immune alterations in MDD. [PMID: 37264010]  \n- **Interleukin-6 (IL-6)** — associated with anhedonia in a large depression/anxiety cohort and with ECT outcome in treatment-resistant MDD; higher baseline IL-6 predicted lower depressive-symptom severity after ECT, particularly in women. [PMID: 41443481] [PMID: 29489077]  \n- **Tumor necrosis factor-alpha (TNF-α)** — examined as a peripheral inflammatory marker in MDD; in a meta-analysis, TNF-α declined significantly with antidepressant treatment among treatment responders, and the reduction was greater than in nonresponders. [PMID: 31427752]  \n- **Interleukin-8 (IL-8)** — lower pretreatment IL-8 was associated with antidepressant response in a meta-analysis of human MDD studies. [PMID: 31427752]  \n- **Glycoprotein acetyls (GlycA)** — positively associated with anhedonia and atypical, energy-related depressive symptoms in the NESDA cohort, with replication at 6-year follow-up. [PMID: 41443481]  \n\nAdditional cytokines/proteins that differed across CRP-defined MDD groups in BIODEP were **IL-7, IL-10, IL-12/IL-23p40, IL-16, IL-17A, and interferon-gamma (IFN-γ)**, as well as IL-6, IL-8, and TNF-α; these were generally higher in the CRP >3 mg/L group than in lower-CRP participants and/or controls. [PMID: 37264010]\n\n## Direct evidence: immune-cell and gene-expression markers in human MDD\n\n- **Neutrophil counts** differed across CRP-defined MDD groups. [PMID: 37264010]  \n- Whole-blood expression of **9 of 16 immune-related genes** differed between MDD cases and controls. The measured candidate genes were **A2M, AQP4, CCL2, CXCL12, CRP, FKBP5, IL1B, IL6, ISG15, MIF, glucocorticoid receptor (GR), P2RX7, SGK1, STAT1, TNF, and USP18**. The abstract does not specify which nine genes were differentially expressed, so individual gene-level case-control associations cannot be assigned from this context. [PMID: 37264010]\n\n## Association versus interpretation\n\n- These findings support **associations**, not proof that any marker causes MDD. Inflammation appears heterogeneous: some people with MDD show elevated systemic inflammatory proteins, whereas others show immune-related blood mRNA changes despite low CRP. [PMID: 37264010]  \n- Marker levels may also relate to **symptom dimensions and treatment response**, rather than serving as universal diagnostic markers for MDD. For example, IL-6 and GlycA were associated with anhedonia, while lower baseline IL-8 and treatment-associated TNF-α reduction were associated with antidepressant response. [PMID: 41443481] [PMID: 31427752]  \n- Antidepressant-treatment meta-analysis found decreases in **IL-4, IL-6, and IL-10**, and an SSRI-specific decrease in **IL-1β**, but no overall significant treatment effect on **IL-2, TNF-α, IFN-γ, or CRP**; heterogeneity limited certainty. [PMID: 28445690]\n\n## Testable hypothesis\n\nA clinically meaningful **inflammatory MDD subtype** may be identifiable by combined CRP, IL-6, TNF-α, IL-8/GlycA, leukocyte measures, and immune-gene-expression profiles, and may show distinctive anhedonia or treatment-response patterns. This remains a hypothesis requiring prospective, biomarker-stratified human studies. [PMID: 37264010] [PMID: 31427752] [PMID: 41443481]",
+    "traditional_rag": "## Direct evidence from human MDD studies\n\nThe inflammatory markers most consistently reported as associated with major depressive disorder (MDD) are:\n\n- **C-reactive protein (CRP):** Elevated in a subgroup of people with MDD. In a sex-stratified meta-analysis, CRP was higher in women with depression than healthy women, whereas this difference was not apparent in men. [PMID: 39089535] CRP also identified MDD patients with a broader dysregulated immuno-metabolic profile. [PMID: 39615605]\n\n- **Interleukin-6 (IL-6):** Increased in women with depression in meta-analysis. [PMID: 39089535] IL-6 was also associated with anhedonia in a large depression cohort. [PMID: 41443481] In treatment-resistant major depression, higher pretreatment IL-6 predicted lower depressive-symptom scores after electroconvulsive therapy, particularly in women. [PMID: 29489077]\n\n- **Tumor necrosis factor-alpha (TNF-alpha):** Elevated overall in depressed versus control participants in meta-analysis, although without a statistically significant sex difference. [PMID: 39089535] TNF-alpha changes were also related to antidepressant response: levels decreased significantly among treatment responders, and responders had greater TNF-alpha decreases than nonresponders. [PMID: 31427752]\n\n- **Interleukin-1beta (IL-1beta):** Included in depression biomarker meta-analysis, but the sex-specific meta-analysis identified only three eligible studies, limiting conclusions. [PMID: 39089535] In antidepressant-treatment studies, IL-1beta decreased significantly with selective serotonin reuptake inhibitors (SSRIs). [PMID: 28445690]\n\n- **Interleukin-8 (IL-8):** Lower baseline IL-8 was associated with subsequent antidepressant response; thus, IL-8 has been associated with treatment outcome in human MDD rather than clearly established as uniformly elevated in MDD. [PMID: 31427752]\n\n## Additional associated immune/inflammatory measures\n\n**Human evidence:**\n\n- In a blood gene-expression case-control study, MDD was associated with differential expression of **9 of 16 immune-related genes** assessed, including candidate genes such as **CCL2, CXCL12, IL1B, IL6, TNFA, MIF, STAT1, ISG15, P2RX7, and CRP**. The abstract does not specify which nine genes in the supplied text. These molecular differences persisted even among participants with low serum CRP. [PMID: 37264010]\n\n- Among MDD patients grouped by CRP concentration, higher-CRP groups showed differential regulation of circulating **IL-6, IL-7, IL-8, IL-10, IL-12/IL-23p40, IL-16, IL-17A, interferon-gamma (IFN-gamma), TNF-alpha**, and **neutrophil counts**. This supports association with systemic inflammatory burden within MDD, rather than proving each marker distinguishes MDD from healthy controls. [PMID: 37264010]\n\n- **Glycoprotein acetyls** were associated with anhedonia and atypical, energy-related depressive symptoms in a large cohort. [PMID: 41443481]\n\n## Association with depressive subtypes or symptoms\n\n- In current MDD, higher **CRP**, **IL-6**, **TNF-alpha**, and **glycoprotein acetyls** were studied as immuno-metabolic markers. Higher CRP and greater atypical, energy-related symptoms tracked with a generally more dysregulated inflammatory/metabolic profile; the abstract notes an exception for the association between atypical symptoms and TNF-alpha. [PMID: 39615605]\n\n- **IL-6** and **glycoprotein acetyls** were positively associated with anhedonia; the study did not report an anhedonia association with TNF-alpha in the supplied abstract. [PMID: 41443481]\n\n## Treatment-related associations\n\n- After antidepressant treatment, meta-analysis found decreases in **IL-4, IL-6, and IL-10** in MDD; **IL-1beta** decreased specifically with SSRIs. No significant overall treatment effect was found for **IL-2, TNF-alpha, IFN-gamma, or CRP** in that meta-analysis. [PMID: 28445690]\n\n- Another meta-analysis found that lower pretreatment **IL-8** predicted antidepressant response and that reduced **TNF-alpha** was associated with response. [PMID: 31427752]\n\n## Important qualification\n\nThese findings support **associations**, not a universal diagnostic inflammatory signature of MDD. Inflammation appears to characterize only a subset of depressed individuals, with heterogeneity by sex, symptom profile, CRP level, and treatment response. [PMID: 39089535; PMID: 39615605; PMID: 37264010]\n\n## Testable hypothesis\n\nA clinically meaningful inflammatory MDD subtype may be identifiable using a combination of **CRP, IL-6, TNF-alpha, glycoprotein acetyls, and symptom profiles**—especially atypical/energy-related symptoms or anhedonia—rather than any single marker alone. This hypothesis is supported by observed clustering of immuno-metabolic dysregulation but requires prospective validation for diagnosis and treatment selection. [PMID: 39615605; PMID: 41443481]",
+    "general_llm": "Human studies of major depressive disorder (MDD) have reported altered circulating inflammatory and immune markers, although results are heterogeneous and no marker is diagnostic of depression. The most consistently associated findings are modest elevations in low-grade systemic inflammation.\n\n### Markers with the most reproducible associations\n\n- **C-reactive protein (CRP), especially high-sensitivity CRP (hs-CRP)**  \n  Often higher on average in MDD than in non-depressed control groups. Elevations are particularly reported in subgroups with obesity, metabolic illness, atypical depressive features, severe symptoms, treatment resistance, or suicidal behavior. Many individuals with MDD nevertheless have normal CRP.\n\n- **Interleukin-6 (IL-6)**  \n  One of the most frequently replicated cytokine findings. Higher circulating IL-6 has been associated with current depressive episodes, chronic depression, and—in some longitudinal studies—later risk of depressive symptoms.\n\n- **Tumor necrosis factor-alpha (TNF-α)**  \n  Frequently reported as elevated in MDD, though effect sizes and reproducibility vary. Soluble TNF receptors may sometimes be more stable measures than circulating TNF-α itself.\n\n### Other markers reported in subsets of studies\n\n- **Interleukin-1 beta (IL-1β)**  \n  Biologically plausible and implicated in inflammatory signaling relevant to depression, but blood IL-1β is often near assay detection limits. Human peripheral-blood findings are less consistent than for CRP or IL-6.\n\n- **Interleukin-1 receptor antagonist (IL-1RA)**  \n  An anti-inflammatory regulator that can be increased in MDD, potentially reflecting activation of the IL-1 pathway.\n\n- **Soluble interleukin-2 receptor (sIL-2R; soluble CD25)**  \n  Has been reported as increased in some studies and may reflect T-cell/immune activation.\n\n- **Interferon-gamma (IFN-γ)**  \n  Some studies find elevated levels or altered IFN-γ-related immune responses, but evidence is inconsistent.\n\n- **Interleukin-8 (IL-8/CXCL8)** and **monocyte chemoattractant protein-1 (MCP-1/CCL2)**  \n  These chemokines have been associated with MDD in some cohorts, but findings vary substantially across studies.\n\n- **Interleukin-10 (IL-10)**  \n  Reports differ: some studies suggest lower anti-inflammatory IL-10, others higher levels, possibly as a compensatory response. It is not a reliable standalone MDD marker.\n\n- **Transforming growth factor-beta (TGF-β)**  \n  Alterations have been reported, but direction and clinical significance remain uncertain.\n\n- **Soluble TNF receptors (sTNFR1 and sTNFR2)**  \n  Often studied as indicators of TNF-pathway activation; some evidence supports elevation in depressive illness, but they are not routinely used clinically for MDD.\n\n### Acute-phase, innate-immune, and related markers\n\n- **Erythrocyte sedimentation rate (ESR)**  \n  Can be elevated in some depressed populations but is nonspecific and less studied than CRP.\n\n- **White blood cell count, neutrophil count, and neutrophil-to-lymphocyte ratio (NLR)**  \n  Modest increases in NLR and related blood-cell inflammatory indices have been reported in MDD. These are nonspecific and affected by many medical and lifestyle factors.\n\n- **Platelet-to-lymphocyte ratio (PLR)** and **systemic immune-inflammation index (SII)**  \n  Reported in some studies, but evidence is less mature and not specific to depression.\n\n- **Complement proteins**  \n  Altered complement activity or concentrations, including components such as C3 and C4, have been described in some cohorts, but results are not uniform.\n\n- **Adhesion molecules**, such as soluble ICAM-1 and VCAM-1  \n  Some studies suggest abnormalities, potentially linking inflammation and vascular risk, but these are not established clinical biomarkers of MDD.\n\n### Inflammation-linked metabolic pathways\n\n- **Kynurenine pathway measures**  \n  Inflammatory cytokines can influence tryptophan metabolism through indoleamine 2,3-dioxygenase (IDO). Studies have examined lower tryptophan, altered kynurenine/tryptophan ratios, and downstream metabolites such as quinolinic acid. These findings support a possible inflammation–glutamate–neurotoxicity pathway in some patients, but peripheral measures do not straightforwardly represent brain levels.\n\n- **Neopterin**  \n  A marker related to interferon-driven macrophage activation; reported as altered in some depression studies but not consistently enough for clinical use.\n\n### Important interpretation\n\nThe strongest overall evidence supports associations of MDD with **higher CRP, IL-6, and TNF-α**, on average. However:\n\n- These effects are generally **small to moderate at the group level**.\n- They are **not present in all people with MDD**; an “inflammatory” subtype may exist rather than inflammation being universal.\n- Obesity, smoking, diabetes, cardiovascular disease, autoimmune disease, infection, sleep disruption, trauma, socioeconomic stress, age, sex, medication use, and physical activity can all affect these markers.\n- Antidepressants and anti-inflammatory treatments may alter marker levels, but it remains uncertain whether measuring inflammatory markers routinely improves treatment selection in ordinary clinical practice.\n\nThus, inflammatory testing may be useful when evaluating possible medical contributors to depressive symptoms—such as infection, autoimmune disease, or metabolic disease—but inflammatory markers alone cannot diagnose MDD."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 1.342551976442337,
+    "semantic_graph": 71.5533679574728,
+    "vector_index": 1.8551792055368423,
+    "answer_netmedex_hybrid_rag": 9.784452237188816,
+    "answer_traditional_rag": 11.56571726500988,
+    "answer_general_llm": 17.74937303364277,
+    "total": 116.2576072588563
+  },
+  "completed_at": "2026-07-27T18:38:18.847953+00:00"
+}

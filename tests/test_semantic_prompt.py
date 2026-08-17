@@ -82,6 +82,31 @@ def test_graph_rag_marks_incomplete_support_as_tier_b():
     assert "confidence_missing" in support["support_reasons"]
 
 
+def test_graph_rag_keeps_aligned_low_confidence_quote_as_tier_b():
+    support = GraphRetriever._select_edge_support(
+        {
+            "relations": {"123": {"activates"}},
+            "evidences": {"123": {"activates": "A activated B."}},
+            "confidences": {"123": {"activates": 0.79}},
+        }
+    )
+
+    assert support["selected_quote"] == "A activated B."
+    assert support["support_tier"] == "B"
+    assert "confidence_below_0.8" in support["support_reasons"]
+
+
+def test_graph_rag_claim_threshold_is_configurable_to_0_7():
+    edge = {
+        "relations": {"123": {"activates"}},
+        "evidences": {"123": {"activates": "A activated B."}},
+        "confidences": {"123": {"activates": 0.75}},
+    }
+
+    assert GraphRetriever._select_edge_support(edge)["support_tier"] == "B"
+    assert GraphRetriever._select_edge_support(edge, 0.7)["support_tier"] == "A"
+
+
 def test_graph_rag_structured_path_fields_share_canonical_support():
     retriever = _graph_retriever_with_supported_edge()
 
@@ -1361,3 +1386,12 @@ def test_verification_regex_fallback_recovers_malformed_array():
     edges = extractor.analyze_article_relationships(article, nodes)
 
     assert edges[0].relation_type == "associated_with"
+
+
+def test_answer_claim_verifier_ignores_natural_language_path_label():
+    result = verify_answer_graph_claims(
+        "Path: dysbiosis leads to periodontitis and bone loss [PMID: 25918553].",
+        [],
+    )
+    assert result["path_cited_claim_count"] == 0
+    assert result["unsupported_claim_count"] == 0

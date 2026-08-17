@@ -1,0 +1,116 @@
+system,question_id,run_id,output_source,answer
+netmedex_hybrid_rag,PP014,formal-v1-gpt-oss:120b-F_adaptive,fixed_formal_system_run,"**Direct evidence (animal → mechanistic)**  
+- **Dysbiosis → ↓ SCFA** – In CKD‑MBD, gut dysbiosis is reported to “reduce short‑chain fatty acids” and drive bone pathology through the gut‑kidney‑bone axis【PMID:42051461】 (animal and human data summarized).  
+- **SCFA → bone protection** – Mice given propionate or butyrate (or a high‑fiber diet) show increased trabecular bone mass and prevention of post‑menopausal or inflammation‑induced bone loss; the effect is linked to inhibition of osteoclast differentiation via TRAF6/NFATc1 re‑programming【PMID:29302038】 (animal).  
+- **Butyrate → bone anabolism** – Oral butyrate (or probiotic‑induced gut butyrate) expands intestinal and bone‑marrow Treg cells, which drive CD8⁺‑cell Wnt10b production and stimulate bone formation【PMID:30446387】 (animal).
+
+**Associations (human/clinical)**  
+- Reviews of gut‑microbiota‑bone links cite multiple studies where dysbiosis correlates with osteoporosis, osteoarthritis, rheumatoid arthritis, and bone cancer, suggesting that altered microbial metabolites (including SCFA) are a common thread【PMID:35602023】.  
+
+**Testable hypothesis (inferred from the pathway)**  
+- **Hypothesis:** Restoring SCFA levels (e.g., via high‑fiber diet or targeted probiotics) will reverse dysbiosis‑induced bone loss in humans by normalizing osteoclast metabolism and enhancing Treg‑mediated Wnt signaling.  
+
+**Mechanistic chain summary**  
+1. Dysbiosis ⇒ reduced SCFA production (direct observation).  
+2. Reduced SCFA (or lack of protective SCFA) ⇒ enhanced osteoclast activity and diminished Treg‑Wnt10b‑driven bone formation (direct animal data).  
+3. Resulting imbalance leads to measurable bone loss or increased susceptibility to bone disease (association and prevention data).  
+
+*Thus, the cited work provides a step‑wise, experimentally supported route from gut dysbiosis through volatile fatty acids to bone disease.*
+
+Graph-derived candidate insights
+- PATH fa3452511ed7b713 — GRAPH-INCREMENTAL CANDIDATE; multi-hop inference; HOP 1: dysbiosis decreases fatty acids volatile [PMID: 35430804]; HOP 2: fatty acids volatile prevents bone diseases [PMID: 29302038]."
+netmedex_hybrid_rag,PP015,formal-v1-gpt-oss:120b-F_adaptive,fixed_formal_system_run,"**Evidence for the mechanistic chain CFTR → cystic fibrosis (CF) → inflammation**
+
+* **CFTR loss‑of‑function defines CF** – Human genetic studies show that pathogenic variants in the *CFTR* gene cause the autosomal‑recessive disease cystic fibrosis, producing a dysfunctional chloride/bicarbonate channel【PMID:34934215】. Therapeutic reviews emphasize that correcting the defective CFTR protein is the basis for disease‑modifying treatment, confirming that CFTR dysfunction is the root cause of CF【PMID:33201261】 (human).
+
+* **CFTR dysfunction leads to intestinal disease in CF** – In people with CF, chronic gut inflammation and dysbiosis are documented even when overt symptoms are absent, linking the disease state to inflammatory changes【PMID:24548777】 (human). Reviews of the CF intestine describe the same “obstruction–infection–inflammation” triad that drives intestinal pathology in CF patients【PMID:23788646】 (human).
+
+* **Animal models demonstrate that CFTR loss drives inflammation** – Mouse CF models with targeted *cftr* deletion develop mucus accumulation, bacterial overgrowth, and heightened innate immune responses that culminate in intestinal inflammation【PMID:24548777】 (mouse). Separate knockout studies show that loss of *cftr* in epithelial and immune cells perturbs the gut microbiota, a key driver of intestinal inflammation, with immune‑cell defects having a major impact on small‑intestinal dysbiosis【PMID:36289287】 (mouse).
+
+* **CF‑associated inflammation extends to the lung** – Clinical reviews note that CFTR dysfunction in the airway epithelium precipitates mucus stasis, infection, and neutrophilic inflammation, the principal cause of respiratory failure in CF【PMID:23142604】 (human). The same mechanistic theme is reiterated across CF literature, reinforcing that the disease state is intrinsically inflammatory【PMID:35160099】 (human).
+
+**Conclusion:** Human genetic data prove that CFTR loss creates cystic fibrosis, and both human clinical observations and mouse models consistently show that the resulting disease state—across gut and lung—drives measurable inflammation.
+
+Graph-derived candidate insights
+- PATH 57416f2f7b9449cc — GRAPH-INCREMENTAL CANDIDATE; multi-hop inference; HOP 1: cftr induces dysbiosis [PMID: 37546931]; HOP 2: dysbiosis associated_with inflammation [PMID: 36600119]."
+netmedex_hybrid_rag,PP016,formal-v1-gpt-oss:120b-F_adaptive,fixed_formal_system_run,"**Evidence that CFTR loss drives dysbiosis**  
+- **Animal (intestinal‑specific Cftr KO):** Mice lacking epithelial Cftr show altered β‑diversity with ↑Proteobacteria, Peptostreptococcaceae, Clostridia spp. and mucolytic Akkermansia, despite unchanged α‑diversity [PMID:37546931].  
+- **Animal (global Cftr KO & gut‑corrected rescue):** Whole‑body Cftr‑KO mice develop enrichment of Enterobacteriaceae and Enterococcus; restoring Cftr only in the gut normalises the microbiota, confirming the channel’s causal role [PMID:38554847].  
+- **Animal (epithelial + immune deletion):** Combined cftr deletion in epithelium and bone‑marrow‑derived immune cells reshapes the intestinal microbiome, with the epithelial defect chiefly affecting the large‑intestine community [PMID:36289287].  
+
+**Evidence that dysbiosis provokes inflammation**  
+- **Animal (iCftr KO):** Elevated fecal calprotectin (a marker of intestinal inflammation) co‑occurs with the dysbiotic shifts described above, linking microbial changes to mucosal inflammation [PMID:37546931; PMID:38073491].  
+- **Animal (CFTR‑KO liver disease model):** Dysbiosis (↑Enterobacteriaceae) coincides with increased gut permeability and mucosal inflammation; non‑absorbable antibiotics reduce both dysbiosis and hepatic inflammation, indicating a mechanistic contribution [PMID:38554847].  
+- **Human (ivacaftor therapy):** In CF patients, ivacaftor reduces Enterobacteriaceae abundance and fecal calprotectin concurrently; the inverse correlation (↓Enterobacteriaceae ↔ ↓calprotectin) supports a dysbiosis‑driven inflammatory axis [PMID:30546102].  
+
+**Combined mechanistic chain (CFTR → dysbiosis → inflammation)**  
+The animal studies provide *direct* manipulation of CFTR (knock‑out or rescue) with consequent microbiome alteration and measurable inflammatory markers, while the human ivacaftor data offer *association* consistent with the same directionality. Together they substantiate a causative pathway rather than a mere correlation.  
+
+**Testable hypothesis**  
+Restoring CFTR function selectively in intestinal epithelium of CFTR‑deficient mice will normalize the microbiota and abolish the rise in fecal calprotectin, even without systemic antibiotic treatment.  
+
+*Conclusion:* Robust animal and supporting human data delineate a mechanistic route from CFTR deficiency through gut dysbiosis to intestinal inflammation.
+
+Graph-derived candidate insights
+- PATH 9ed6292d75395474 — GRAPH-INCREMENTAL CANDIDATE; multi-hop inference; HOP 1: cftr causes cystic fibrosis [PMID: 36289287]; HOP 2: cystic fibrosis leads_to inflammation [PMID: 33201261]."
+netmedex_hybrid_rag,PP018,formal-v1-gpt-oss:120b-F_adaptive,fixed_formal_system_run,"**Direct mechanistic evidence**
+
+* **Dysbiosis precedes and drives periodontitis** – Metatranscriptome of sub‑gingival biofilms from progressing sites showed early up‑regulation of motility, lipid‑A, peptidoglycan and iron‑transport genes, and virulence factors from classic pathogens (e.g., *P. gingivalis*, *T. forsythia*) and from taxa not usually linked to disease, indicating a community‑wide shift that defines dysbiosis before clinical inflammation【PMID:25918553】.  
+* **Dysbiotic communities fuel inflammation** – Review of human and animal data describes how keystone/pathobiont‑driven dysbiosis creates a “self‑feeding” cycle: inflammatory mediators supply nutrients that select for inflammophilic bacteria, which in turn sustain the host response【PMID:24269668】【PMID:24976068】.  
+* **Periodontitis‑associated inflammation induces bone loss** – Animal studies demonstrate that colonization with periodontal bacteria triggers IL‑1, TNF‑α, prostaglandins and RANKL production, leading to osteoclast‑mediated alveolar bone resorption【PMID:25574929】.  
+* **Molecular link: LXR repression mediates P. gingivalis‑driven bone loss** – In vitro macrophage work showed *P. gingivalis* suppresses LXRα/β, and LXR‑deficient mice exhibit exaggerated cytokine responses and greater oral bone loss, establishing a concrete pathway from bacterial dysbiosis to bone destruction【PMID:25946408】.
+
+**Associative evidence**
+
+* Clinical observations consistently report that dysbiotic sub‑gingival microbiota (high *P. gingivalis*, *T. forsythia*) correlate with deeper pockets and radiographic bone loss in human periodontitis patients【PMID:24646638】【PMID:25918553】.  
+* Epidemiologic links between periodontitis and systemic bone loss (osteoporosis) support that local inflammatory bone loss can reflect or amplify systemic skeletal effects【PMID:26707036】.
+
+**Testable hypothesis**
+
+The dysbiosis‑→‑periodontitis‑→‑bone‑loss cascade can be interrogated by: (i) longitudinally tracking metatranscriptomic signatures of dysbiosis in humans, (ii) experimentally modulating specific pathobionts or LXR signaling in murine periodontitis models, and (iii) measuring downstream RANKL/osteoclast activity to confirm causality.
+
+**Conclusion** – Human and animal data provide direct mechanistic steps linking microbial dysbiosis to inflammation and to alveolar bone loss, with molecular mediators such as IL‑1, TNF‑α, RANKL and LXR pathways furnishing concrete links for experimental validation.
+
+Graph-derived candidate insights
+- PATH 5392416d32ad795a — GRAPH-INCREMENTAL CANDIDATE; multi-hop inference; HOP 1: dysbiosis leads_to periodontitis [PMID: 25918553]; HOP 2: periodontitis is_a inflammation [PMID: 25918553]; HOP 3: inflammation induces osteoporosis [PMID: 22179898]; HOP 4: osteoporosis causes bone loss [PMID: 20599675].
+- PATH 67837b72691d2015 — GRAPH-INCREMENTAL CANDIDATE; multi-hop inference; HOP 1: dysbiosis leads_to inflammation [PMID: 25918553]; HOP 2: inflammation associated_with inflammation [PMID: 24976068]; HOP 3: inflammation induces osteoporosis [PMID: 22179898]; HOP 4: osteoporosis causes bone loss [PMID: 20599675]."
+netmedex_hybrid_rag,PP019,formal-v1-gpt-oss:120b-F_adaptive,fixed_formal_system_run,"**Direct mechanistic evidence**
+
+- **Dysbiosis → Inflammation** – Oral pathobiont–driven dysbiosis in human periodontitis provokes a strong immunostimulatory response that (i) activates neutrophils, IL‑1, TNF and RANKL and (ii) fuels a self‑reinforcing “inflammophilic” biofilm (PMID 24646638, human; PMID 25574929, animal models)【PMID:24646638】【PMID:25574929】.  
+
+- **Inflammation → Bone loss/osteoporosis** – Osteo‑immunology studies show that cytokines produced by activated immune cells (IL‑1, TNF‑α, IL‑17) directly stimulate osteoclastogenesis, leading to alveolar bone loss in periodontitis and systemic bone loss in rheumatoid arthritis/ankylosing spondylitis (PMID 21996023, human/animal)【PMID:21996023】.  
+
+- **Dysbiosis → Inflammation → Bone loss (integrated path)** – In post‑menopausal women, gut dysbiosis (↑ endotoxin‑producing, ↓ SCFA‑producing bacteria) elevates circulating LPS and skews the Breg‑Treg‑Th17 axis toward pro‑inflammatory IL‑6/IL‑17, which accelerates trabecular thinning and fragility; probiotic Bacillus coagulans reverses these steps, confirming causality (clinical cohort + mouse model) (PMID 40275534)【PMID:40275534】.  
+
+**Associative evidence supporting each hop**
+
+- Systematic reviews link obesity‑driven dysbiosis, heightened systemic inflammation, and mandibular osteoporosis in both animal models and patients (PMID 35883424)【PMID:35883424】.  
+- Epidemiologic data associate chronic periodontitis (a dysbiosis‑driven disease) with lower femoral/vertebral BMD in post‑menopausal women (PMID 26707036)【PMID:26707036】.
+
+**Testable hypotheses emerging from the graph**
+
+- Targeting specific dysbiotic taxa (e.g., endotoxin‑producing *Enterobacteriaceae*) will reduce systemic IL‑17 levels and prevent osteoclast activation in estrogen‑deficient models.  
+- Modulating the Breg‑Treg axis pharmacologically (e.g., IL‑10 agonists) should uncouple dysbiosis‑induced inflammation from bone resorption without altering the microbial composition.
+
+**Conclusion** – Multiple human and animal studies provide direct mechanistic proof that microbial dysbiosis triggers inflammation, which in turn drives osteoclast‑mediated bone loss and osteoporosis, while interventional data substantiate each link of the pathway.
+
+Graph-derived candidate insights
+- PATH 5392416d32ad795a — GRAPH-INCREMENTAL CANDIDATE; multi-hop inference; HOP 1: dysbiosis leads_to periodontitis [PMID: 25918553]; HOP 2: periodontitis is_a inflammation [PMID: 25918553]; HOP 3: inflammation induces osteoporosis [PMID: 22179898]; HOP 4: osteoporosis causes bone loss [PMID: 20599675].
+- PATH 5724030babeb80f1 — GRAPH-INCREMENTAL CANDIDATE; multi-hop inference; HOP 1: dysbiosis leads_to periodontitis [PMID: 25918553]; HOP 2: periodontitis associated_with bone loss [PMID: 24646638]."
+netmedex_hybrid_rag,PP020,formal-v1-gpt-oss:120b-F_adaptive,fixed_formal_system_run,"**Evidence for each step of the dysbiosis → periodontitis → inflammation → bone loss pathway**
+
+- **Dysbiosis → periodontitis** – Human metatranscriptomics showed that shifts toward a metabolically active, pathogenic community (elevated peptidases, iron‑transport, lipid A synthesis) precede clinical progression of periodontitis【PMID:25918553】. Complementary animal work demonstrated that dysbiotic biofilms, not single species, trigger periodontal disease, confirming causality in vivo【PMID:25574929】 (animal).
+
+- **Periodontitis → local inflammation** – In mouse models, colonisation with *P. gingivalis* (a key dysbiotic pathobiont) suppresses LXRα/β, amplifying MyD88‑independent cytokine release and markedly increasing IL‑1β, TNF‑α, and RANKL expression, establishing a robust inflammatory milieu【PMID:25946408】 (animal, in‑vitro macrophage). Reviews of animal studies likewise identify IL‑1, TNF, prostaglandins, complement and RANKL as essential mediators linking bacterial dysbiosis to periodontal inflammation【PMID:25574929】.
+
+- **Inflammation → alveolar bone loss** – Elevated inflammatory mediators (IL‑1, TNF, RANKL) directly drive osteoclastogenesis and alveolar bone resorption in rodents, confirming the mechanistic link between the immune response and local bone loss【PMID:25574929】 (animal). The “inflammo‑philic” concept further shows that inflammation fuels dysbiotic bacterial expansion, creating a self‑reinforcing cycle that perpetuates bone destruction【PMID:24976068】 (human/animal inference).
+
+- **Local bone loss → systemic osteoporosis** – Epidemiological reviews report a consistent correlation between chronic periodontitis and reduced jaw‑bone density/osteoporosis, especially in post‑menopausal women【PMID:26707036】 (human association). No study in the supplied set provides direct mechanistic data linking periodontal inflammation to systemic bone remodeling; thus this step remains a testable hypothesis.
+
+- **Testable hypothesis** – Chronic periodontal inflammation may elevate systemic pro‑osteoclastogenic cytokines (e.g., IL‑1, TNF) that could accelerate systemic bone loss, a premise that warrants longitudinal or interventional studies in humans and animal models.
+
+**Conclusion:** Robust human and animal evidence supports dysbios
+
+Graph-derived candidate insights
+- PATH 5392416d32ad795a — GRAPH-INCREMENTAL CANDIDATE; multi-hop inference; HOP 1: dysbiosis leads_to periodontitis [PMID: 25918553]; HOP 2: periodontitis is_a inflammation [PMID: 25918553]; HOP 3: inflammation induces osteoporosis [PMID: 22179898]; HOP 4: osteoporosis causes bone loss [PMID: 20599675].
+- PATH 67837b72691d2015 — GRAPH-INCREMENTAL CANDIDATE; multi-hop inference; HOP 1: dysbiosis leads_to inflammation [PMID: 25918553]; HOP 2: inflammation associated_with inflammation [PMID: 24976068]; HOP 3: inflammation induces osteoporosis [PMID: 22179898]; HOP 4: osteoporosis causes bone loss [PMID: 20599675]."

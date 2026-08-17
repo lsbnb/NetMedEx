@@ -1,0 +1,85 @@
+{
+  "question_id": "Q016",
+  "model": "gpt-5.6-sol",
+  "rated_at": "2026-07-29T10:05:17.803959+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q016-C001",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Directly links low SMN in SMA motor neurons to complex I dysfunction, reduced ATP, increased ROS/protein carbonylation, and impaired translational initiation, with pyruvate rescue involving mTOR-dependent SMN synthesis."
+    },
+    {
+      "candidate_id": "Q016-C002",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Tests oxidative stress and mitochondrial bioenergetics as candidate consequences of SMN deficiency but finds little oxidative stress and no SMN-rescue effect on mitochondrial respiration in this iPSC system."
+    },
+    {
+      "candidate_id": "Q016-C003",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "SMN knockdown directly produces ATP depletion, increased mitochondrial membrane potential, altered cytochrome-c oxidase activity and oxygen consumption, and elevated free radicals in neural cells."
+    },
+    {
+      "candidate_id": "Q016-C004",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Identifies altered mitochondrial-bioenergetic gene expression and early defects in respiration, redox balance, membrane potential, transport, and network morphology in SMA motor neurons."
+    },
+    {
+      "candidate_id": "Q016-C005",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Directly demonstrates that SMN deficiency impairs mitochondrial axonal transport, abundance, morphology, and membrane potential in human spinal motor neurons; NAC mitigates these defects and degeneration."
+    },
+    {
+      "candidate_id": "Q016-C006",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Defines a muscle pathway in which SMN loss causes lysosomal dysfunction and ineffective mitochondrial clearance, leading to accumulation of abnormal mitochondria with impaired complexes I/IV, respiration, and excess ROS."
+    },
+    {
+      "candidate_id": "Q016-C007",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Shows the reverse or feedback direction: oxidative stress associated with paraquat-induced mitochondrial dysfunction promotes aberrant SMN2 exon skipping, potentially further lowering functional SMN."
+    },
+    {
+      "candidate_id": "Q016-C008",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Treated SMA patient muscle shows loss of oxidative-phosphorylation machinery and mitochondrial DNA alongside stress and denervation, but the study does not establish a mechanistic pathway from SMN deficiency."
+    },
+    {
+      "candidate_id": "Q016-C009",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Focused review of how SMN loss affects mitochondrial function in neuronal and muscular systems, including affected mitochondrial transcripts and potential contributions to SMA progression."
+    },
+    {
+      "candidate_id": "Q016-C010",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Connects SMA progression to dysregulated mitochondrial turnover, autophagosome accumulation, PINK1/Parkin/BNIP3 signals, abnormal OPA1 splicing, and mitochondrial fragmentation; exercise and urolithin A improve these pathways."
+    },
+    {
+      "candidate_id": "Q016-C011",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Provides a direct mechanism in muscle: SMN regulates MYOD1 and miR-1/miR-206, and loss of this axis impairs mitochondrial metabolic maturation, survival, and myotube formation; miRNA supplementation rescues the defects."
+    }
+  ],
+  "raw_response_sha256": "125724bd0c430f64fb1a0b4133ecd216d4a9a6a24e18414ae4de69f12d9b1ffd"
+}

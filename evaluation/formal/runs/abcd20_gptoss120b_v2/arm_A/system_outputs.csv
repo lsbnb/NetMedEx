@@ -1,0 +1,365 @@
+system,question_id,run_id,output_source,answer
+general_llm,Q001,formal-v1-gpt-oss:120b-A_text_only,fixed_formal_system_run,"Icariin, a flavonoid glycoside derived from *Epimedium* species, has repeatedly been shown to promote the maturation of osteoblasts and bone formation. A growing body of cellular and animal work indicates that many of these pro‑osteogenic actions are mediated through the regulation of microRNAs (miRNAs), which act as fine‑tuners of messenger‑RNA translation in pathways that control osteoblast lineage commitment.
+
+**Key miRNA‑related mechanisms reported for icariin**
+
+* **Up‑regulation of osteogenic miRNAs** – In cultured mouse pre‑osteoblasts (MC3T3‑E1) and human bone‑marrow mesenchymal stem cells (hBMSCs), treatment with icariin (typically 1–20 µM) increases the expression of miR‑21, miR‑29b, miR‑335‑5p and miR‑146a. These miRNAs suppress inhibitors of the BMP/SMAD and Wnt/β‑catenin cascades (e.g., SMAD7, DKK1, and SOST), thereby enhancing Runx2, Osterix and collagen‑type‑I transcription. Loss‑of‑function experiments using antagomirs partially reverse the icariin‑induced rise in alkaline phosphatase activity and mineralized nodule formation, supporting a causal link.
+
+* **Down‑regulation of anti‑osteogenic miRNAs** – Icariin reduces levels of miR‑133a, miR‑135, miR‑138 and miR‑214, all of which are known to target Runx2, Smad5 or the PI3K/Akt pathway. In vitro, siRNA‑mediated knock‑down of these miRNAs mimics icariin’s effects on alkaline phosphatase and osteocalcin expression, indicating that suppression of inhibitory miRNAs contributes to the overall osteogenic response.
+
+* **Activation of the PI3K/Akt‑FoxO axis via miR‑21** – Several studies report that icariin‑stimulated miR‑21 directly targets PTEN, a phosphatase that restrains PI3K/Akt signaling. By dampening PTEN, icariin sustains Akt phosphorylation, which in turn phosphorylates and inactivates FoxO1, a transcription factor that normally represses osteoblast differentiation. The net result is enhanced Runx2 activity.
+
+* **Modulation of the MAPK/ERK pathway through miR‑29b** – miR‑29b targets the MAPK phosphatase DUSP2. Icariin‑driven up‑regulation of miR‑29b lowers DUSP2 levels, prolonging ERK1/2 activation. Sustained ERK signaling promotes Osterix expression and matrix mineralization.
+
+* **Cross‑talk with the NF‑κB pathway via miR‑146a** – In inflammatory environments (e.g., LPS‑treated osteoblasts), icariin elevates miR‑146a, which suppresses TRAF6 and IRAK1, key adaptors of NF‑κB signaling. This diminishes the production of pro‑osteoclastogenic cytokines (IL‑6, TNF‑α) and indirectly favors osteoblast survival and function.
+
+* **In vivo corroboration** – In ovariectomized rat models of post‑menopausal osteoporosis, oral icariin (50‑100 mg kg⁻¹ day⁻¹) restores trabecular bone volume and improves mechanical strength. Bone tissue harvested from treated animals shows the same miRNA expression pattern observed in vitro (↑miR‑21/29b, ↓miR‑133a/214), together with increased Runx2 and collagen‑I protein levels, suggesting that the miRNA‑mediated mechanisms are operational in a physiological context.
+
+**Uncertainties and gaps**
+
+* Most evidence comes from short‑term cell‑culture experiments; long‑term epigenetic stability of the miRNA changes after icariin withdrawal has not been fully explored.  
+* The dose‑response relationship is not yet standardized across species, and supraphysiologic concentrations used in vitro may not be achievable in human bone tissue.  
+* Direct binding of icariin to the miRNA‑processing machinery (e.g., Drosha/Dicer) has not been demonstrated; the current view is that icariin influences upstream signaling (BMP, Wnt, PI3K) that secondarily alters miRNA transcription.  
+* Human clinical data are limited; while pilot trials have reported modest gains in bone mineral density with icariin‑containing supplements, miRNA profiling in participants has not been reported.  
+
+**Overall**, icariin appears to tip the miRNA network toward an osteogenic bias by up‑regulating miRNAs that amplify BMP/Wnt/PI3K‑Akt signaling and by down‑regulating miRNAs that inhibit Runx2 and related transcription factors, resulting in enhanced osteoblast differentiation and matrix mineralization.  
+
+**Conclusion**: Through coordinated modulation of multiple miRNAs, icariin promotes signaling pathways that drive osteoblast maturation and bone formation."
+general_llm,Q003,formal-v1-gpt-oss:120b-A_text_only,fixed_formal_system_run,"Human research over the past three decades consistently shows that chronic low‑grade inflammation accompanies insulin resistance (IR).  The strongest evidence comes from epidemiologic, interventional, and mechanistic studies that link circulating and tissue‑derived inflammatory cytokines—especially tumor‑necrosis factor‑α (TNF‑α), interleukin‑6 (IL‑6), and C‑reactive protein (CRP)—to impaired insulin signaling.
+
+**Key findings from human studies**
+
+- **Cross‑sectional associations** – Large population cohorts (e.g., the Framingham Offspring Study, NHANES) demonstrate that higher plasma levels of TNF‑α, IL‑6, and high‑sensitivity CRP correlate with elevated homeostatic model assessment of insulin resistance (HOMA‑IR) and reduced glucose disposal during euglycemic clamps. The relationships persist after adjusting for body‑mass index (BMI), age, and lifestyle factors, indicating an association that is not solely explained by adiposity.
+
+- **Weight‑loss and lifestyle interventions** – Caloric restriction, bariatric surgery, and structured exercise programs lower circulating TNF‑α, IL‑6, and CRP in parallel with improvements in insulin sensitivity. In randomized trials, a 10 %–15 % reduction in fat mass typically reduces CRP by 30 %–40 % and yields a 20 %–30 % increase in glucose uptake measured by clamp, supporting a causal link between reduced inflammation and restored insulin action.
+
+- **Anti‑inflammatory drug trials** – Small to medium‑sized randomized trials using agents that dampen inflammation have shown modest improvements in insulin metrics. For example, the use of the IL‑1 receptor antagonist anakinra in individuals with metabolic syndrome lowered fasting glucose and HOMA‑IR, while a short course of salicylates (salsalate) reduced CRP and improved peripheral insulin sensitivity. These data suggest that targeting inflammatory pathways can directly enhance insulin signaling, although the magnitude of effect is modest and long‑term safety remains uncertain.
+
+- **Adipose‑tissue biopsy evidence** – In obese and pre‑diabetic participants, per‑cutaneous needle biopsies reveal up‑regulation of TNF‑α and IL‑6 mRNA in subcutaneous and visceral fat, together with increased activation of the serine kinase JNK and inhibitory phosphorylation of insulin receptor substrate‑1 (IRS‑1). These molecular signatures correlate with systemic IR indices, providing tissue‑level mechanistic plausibility.
+
+- **Acute inflammatory challenges** – Experimental endotoxin (lipopolysaccharide) infusion in healthy volunteers induces a rapid rise in plasma TNF‑α, IL‑6, and CRP, accompanied within hours by a ~20 % decline in insulin‑mediated glucose disposal. The reversible nature of this effect underscores that inflammatory cytokines can acutely impair insulin action independent of changes in adiposity.
+
+- **Genetic and Mendelian‑randomization studies** – Polymorphisms that increase circulating IL‑6 or CRP levels are modestly associated with higher odds of type 2 diabetes, implying a directional relationship. However, the effect sizes are small and colocalization with IR phenotypes is not consistently demonstrated, leaving some uncertainty about causality.
+
+**What remains unresolved**
+
+- The relative contribution of each cytokine to IR in different tissues (muscle vs. liver vs. adipose) is still being quantified.
+- Long‑term outcomes of chronic anti‑inflammatory therapy on diabetes incidence are not yet established; existing trials are limited in duration and size.
+- Inter‑individual variability (e.g., genetic background, microbiome composition) may modulate the inflammation‑IR axis, an area of active investigation.
+
+**Conclusion**  
+Human evidence robustly links elevated inflammatory cytokines to insulin resistance, indicating that chronic low‑grade inflammation is both a correlate and likely a contributor to impaired insulin action."
+general_llm,Q004,formal-v1-gpt-oss:120b-A_text_only,fixed_formal_system_run,"Curcumin (the polyphenol from *Curcuma longa*) can trigger programmed cell death through several signaling cascades that involve at least two successive gene‑protein steps before the execution of apoptosis.  The most widely documented two‑hop routes are:
+
+- **RELA (NF‑κB p65) → BCL2** – Curcumin inhibits IκB kinase, causing loss of NF‑κB nuclear activity.  In many cancer cells reduced RELA activity lowers transcription of the anti‑apoptotic BCL2 gene, thereby permitting mitochondrial outer‑membrane permeabilization and caspase‑9 activation.  The RELA → BCL2 link is well‑established; the specific contribution of curcumin‑mediated NF‑κB repression to BCL2 down‑regulation has been reproduced in multiple cell‑type models.
+
+- **TP53 → BAX** – Curcumin can stabilize and activate the tumor‑suppressor p53 (TP53) by interfering with MDM2‑mediated ubiquitylation.  Activated p53 transcriptionally induces the pro‑apoptotic BCL2‑family member BAX, which triggers cytochrome c release.  Both the TP53 → BAX transcriptional axis and curcumin‑induced p53 activation have solid experimental support; the exact quantitative contribution of each step varies with cell context.
+
+- **MAPK8 (JNK1) → BIM (BCL2L11)** – Curcumin stimulates the stress‑activated protein kinase JNK1 (MAPK8) through reactive‑oxygen‑species generation.  JNK1 phosphorylates the transcription factor c‑JUN, which up‑regulates BIM, a potent BH3‑only activator of apoptosis.  The MAPK8 → BIM relationship is well documented; curcumin’s ability to engage this cascade has been shown in several neuronal and tumor models, although the dose‑dependence remains under investigation.
+
+- **AKT1 → BAD** – Curcumin suppresses the PI3K/AKT pathway, lowering AKT1 phosphorylation of the pro‑apoptotic protein BAD.  De‑phosphorylated BAD translocates to mitochondria, displaces BCL‑XL and promotes caspase activation.  The AKT1 → BAD step is a classic survival‑to‑death switch; curcumin’s inhibition of AKT1 has been repeatedly observed, though downstream BAD activation can be modulated by additional phosphatases, making this route partially context‑dependent.
+
+- **CTNNB1 (β‑catenin) → CYCS (Cytochrome c)** – Curcumin impairs Wnt/β‑catenin signaling, reducing transcription of mitochondrial anti‑apoptotic genes and facilitating cytochrome c release.  The CTNNB1 → CYCS connection is less direct than the others and rests on emerging data linking β‑catenin loss to mitochondrial destabilization; thus it is regarded as a plausible but not yet fully validated two‑hop path.
+
+- **STAT3 → MCL1** – In many malignancies curcumin blocks STAT3 phosphorylation, decreasing expression of the anti‑apoptotic protein MCL1.  Reduced MCL1 lowers the threshold for activation of downstream effectors such as BAX/BAK.  The STAT3 → MCL1 axis is well established; curcumin’s inhibitory effect on STAT3 is supported by numerous in‑vitro studies, though the downstream impact on apoptosis can be influenced by parallel survival pathways.
+
+**Take‑home:** The most consistently supported two‑hop routes linking curcumin to apoptosis involve NF‑κB → BCL2, p53 → BAX, JNK1 → BIM, and AKT1 → BAD; additional routes (β‑catenin → cytochrome c, STAT3 → MCL1) are plausible but require further validation."
+general_llm,Q006,formal-v1-gpt-oss:120b-A_text_only,fixed_formal_system_run,"A substantial body of peer‑reviewed literature—most of it indexed in PubMed—demonstrates that statins can improve endothelial function, primarily through restoration of nitric‑oxide (NO) bioavailability and reduction of oxidative stress. The key findings can be grouped as follows:
+
+* **Randomized controlled trials (RCTs) in dyslipidaemic and coronary‑artery‑disease patients** have repeatedly shown acute and chronic improvements in flow‑mediated dilation (FMD) after initiation of statins such as simvastatin, atorvastatin, or rosuvastatin. In several trials, a 4‑week course of simvastatin (20–40 mg daily) increased brachial artery FMD by 1–2 % absolute value, an effect that correlated with reductions in low‑density‑lipoprotein (LDL) and plasma markers of oxidative stress. Similar dose‑response benefits have been reported with high‑intensity atorvastatin (80 mg) in patients with stable angina, where endothelial function improved within 2 weeks independent of lipid lowering.
+
+* **Meta‑analyses of RCTs** encompassing more than 2,000 participants confirm a modest but statistically significant rise in FMD (≈1.5 % absolute increase) with statin therapy versus placebo. The pooled effect size is larger in studies that employed higher statin doses or longer treatment durations (>8 weeks), suggesting a dose‑ and time‑dependent relationship.
+
+* **Mechanistic studies in humans and animal models** have identified several pathways by which statins act on the endothelium. Statins up‑regulate endothelial nitric‑oxide synthase (eNOS) transcription and promote eNOS phosphorylation via the phosphatidylinositol‑3‑kinase/Akt cascade. They also decrease the expression of NADPH‑oxidase subunits, lowering superoxide production, and attenuate endothelin‑1 levels, thereby shifting the vascular tone toward vasodilation.
+
+* **Evidence in specific high‑risk groups** (e.g., diabetes, hypertension, chronic kidney disease) shows that statins can partially reverse endothelial dysfunction even when traditional risk factors remain. Small crossover trials in type 2 diabetes demonstrated that a 12‑week course of pravastatin improved FMD and reduced circulating asymmetric dimethylarginine, a marker of endothelial stress.
+
+* **Uncertainties and ongoing questions** remain regarding the minimal effective dose for endothelial benefits, the durability of the effect after statin discontinuation, and whether all statins are equally potent in this regard. Some studies report no significant change in FMD with low‑dose pravastatin, indicating that lipid‑independent effects may require a threshold intensity.
+
+Overall, PubMed‑indexed research—including RCTs, meta‑analyses, and mechanistic investigations—supports the concept that statins exert clinically relevant, lipid‑independent improvements in endothelial function, though optimal dosing strategies continue to be refined. **Statins are thus recognized as modulators of endothelial health beyond cholesterol lowering.**"
+general_llm,Q008,formal-v1-gpt-oss:120b-A_text_only,fixed_formal_system_run,"Cystic fibrosis transmembrane conductance regulator (CFTR) loss‑of‑function variants predispose the gut to chronic inflammation through several inter‑related pathways. Evidence comes from human cohort studies, CFTR‑deficient animal models, and in‑vitro work on intestinal epithelium. The most widely supported mechanisms are:
+
+* **Defective chloride/bicarbonate secretion → dehydrated, adherent mucus** – Without CFTR‑mediated ion flux, the intestinal lumen contains a viscid mucus layer that hampers normal peristalsis and limits diffusion of antimicrobial peptides. Histologic examinations of CF mouse and pig intestines show thickened mucus that traps bacteria and triggers neutrophil recruitment, a hallmark of early inflammation.
+
+* **Microbial dysbiosis** – CF patients and CFTR‑knockout mice consistently display reduced bacterial diversity, over‑representation of mucin‑degrading species (e.g., *Bacteroides* spp.) and loss of short‑chain‑fatty‑acid producers. These compositional shifts are correlated with elevated fecal calprotectin and with pro‑inflammatory cytokine profiles, suggesting that an altered microbiome can act as a driver of intestinal immune activation.
+
+* **Increased epithelial permeability and translocation of microbial products** – Tight‑junction proteins (occludin, claudins) are down‑regulated in CFTR‑deficient epithelia, and tracer studies in cultured human intestinal cells demonstrate higher paracellular flux. The resulting leakage of lipopolysaccharide and flagellin into the lamina propria engages Toll‑like receptors on resident macrophages and dendritic cells, amplifying NF‑κB–mediated cytokine release.
+
+* **Heightened innate immune signaling** – CFTR interacts directly with intracellular signalling hubs such as the NF‑κB complex. Loss of CFTR function removes an inhibitory checkpoint, leading to constitutive up‑regulation of IL‑8, IL‑1β and TNF‑α in intestinal epithelial cells and in lamina‑propria immune cells. These cytokines recruit neutrophils and perpetuate a self‑reinforcing inflammatory loop.
+
+* **Impaired autophagy and chronic endoplasmic‑reticulum stress** – Experimental work in CFTR‑null intestinal organoids shows accumulation of misfolded proteins and defective autophagic clearance. Although the causal link to inflammation is still being clarified, ER‑stress markers (e.g., CHOP, XBP1) are elevated in inflamed CF gut tissue, suggesting that unresolved stress may sensitize the epithelium to inflammatory triggers.
+
+* **Altered bile‑acid and pancreatic enzyme delivery** – Exocrine pancreatic insufficiency, common in CF, leads to maldigestion of fats and proteins, producing luminal irritants that can damage the mucosal surface. Bile‑acid composition also shifts in CF, and some bile‑acid metabolites have known pro‑inflammatory properties in the intestine.
+
+Collectively, these mechanisms form a network in which ion transport defects set the stage for mucus stasis, microbial imbalance, barrier breach, and exaggerated innate immunity, culminating in the intestinal inflammation observed in individuals carrying pathogenic CFTR variants.  
+
+**Conclusion:** Multiple, interlocking pathways link CFTR dysfunction to gut inflammation, with ion transport failure initiating a cascade that impacts mucus, microbes, barrier integrity and immune signaling."
+general_llm,Q010,formal-v1-gpt-oss:120b-A_text_only,fixed_formal_system_run,"骨質疏鬆的發病與骨細胞的「建」與「破」失衡密切相關，而 miRNA 可在轉錄後水平調控多條關鍵訊號通路。近年研究顯示，多種天然植物化合物能透過調節 miRNA，改善骨代謝。以下列出已具較多實驗證據的可能機制，並標示仍屬假說的部分：
+
+- **抑制促破骨 miRNA、活化促成骨 miRNA**：如 curcumin、resveratrol、icariin 能下調 miR‑34a、miR‑133a、miR‑155（促進 osteoclast 分化），並上調 miR‑21、miR‑29b、miR‑146a（促進 osteoblast 活性），從而改善 RANKL/OPG 平衡。此機制已在細胞與小鼠模型中多次觀測到。
+
+- **調節 Wnt/β‑catenin 路徑**：天然黃酮（genistein、daidzein）與綠茶兒茶素 EGCG 皆可提升 miR‑29系列表達，進一步抑制 DKK1、SOST 等 Wnt 抑制因子，使骨形成訊號增強。實驗數據顯示此效應在體外人類 MSC 及 OVX 大鼠骨骼中可觀測。
+
+- **干預 BMP/SMAD 系統**：藍莓多酚與蘆薈苷素報告能上調 miR‑196a/miR‑210，促進 BMP‑2/SMAD1/5/8 的活化，促進前體細胞向成骨細胞分化。此類調控在體外骨髓細胞培養中得到支持，但在臨床中的實際貢獻尚待驗證。
+
+- **抑制 NF‑κB 炎症回路**：天然萃取物如薑黃素與熊果苷可降低 miR‑155、miR‑223 的表達，減少 NF‑κB 介導的炎症因子（TNF‑α、IL‑1β）產生，間接減少破骨細胞活化。已有動物實驗證明骨密度提升，但是否完全透過 miRNA 仍不明朗。
+
+- **調節氧化壓力相關 miRNA**：如硒化合物與葡萄籽提取物可提升 miR‑125b、miR‑199a-3p，這些 miRNA 能減少 ROS 生成並保護骨細胞免於凋亡。此機制在體外抗氧化測試中成立，臨床意義仍屬探索階段。
+
+- **多重靶向與協同效應**：許多天然混合物（如中藥複方）同時影響多個 miRNA（例如同時降低 miR‑133a、miR‑155，提升 miR‑21、miR‑29b），可能產生協同調節骨代謝的效果。此概念已在部分動物模型中觀察到，但缺乏系統性機制解析。
+
+**結論**：天然物透過調節與骨代謝相關的 miRNA，可同時抑制破骨活性、促進成骨分化，提供潛在的骨質疏鬆防治策略。"
+general_llm,Q011,formal-v1-gpt-oss:120b-A_text_only,fixed_formal_system_run,"Metformin, a widely used antidiabetic drug, has been shown in multiple experimental systems to suppress the mechanistic target of rapamycin (mTOR) pathway in cancer cells through activation of the energy‑sensing kinase AMP‑activated protein kinase (AMPK). The most convincing data come from three complementary lines of inquiry:
+
+* **Biochemical activation of AMPK and downstream mTOR inhibition.**  In cultured tumor cell lines (e.g., breast‑cancer MCF‑7, prostate‑cancer LNCaP, colorectal‑cancer HCT116), micromolar concentrations of metformin raise the cellular AMP/ATP ratio by inhibiting mitochondrial complex I.  This triggers phosphorylation of AMPK at Thr172 and robust activation of its downstream substrates (ACC, TSC2).  Concomitantly, phosphorylation of mTORC1 targets—p‑S6K1 (Thr389) and p‑4EBP1 (Thr37/46)—drops markedly, indicating mTORC1 suppression.  The effect is largely abolished by the AMPK inhibitor compound C or by CRISPR‑mediated knockout of the catalytic α subunits, establishing causality.
+
+* **Requirement for the LKB1–AMPK axis.**  LKB1 is the principal upstream kinase that phosphorylates AMPK.  In LKB1‑deficient NSCLC cells (e.g., A549), metformin’s ability to inhibit mTOR signaling is blunted, whereas re‑introduction of wild‑type LKB1 restores sensitivity.  This genetic evidence links metformin’s action to the canonical LKB1‑AMPK pathway rather than to off‑target effects.
+
+* **In vivo tumor models.**  Mouse xenograft experiments using human cancer cells (breast, pancreatic, hepatocellular) demonstrate that oral metformin reduces tumour growth and lowers intratumoral p‑S6K1 levels.  Tumours derived from AMPK‑null or TSC2‑knockdown cells show a weaker response, reinforcing that AMPK‑mediated TSC2 activation is a key step in mTOR inhibition in vivo.
+
+* **Systemic metabolic contribution.**  Metformin lowers circulating insulin and insulin‑like growth factor‑1, which signal to mTOR via PI3K‑AKT.  In insulin‑sensitive mouse models, part of the tumour‑suppressive effect can be reproduced by insulin‑neutralising antibodies, indicating that both cell‑autonomous (AMPK) and endocrine (insulin) mechanisms cooperate.
+
+* **Clinical‑epidemiologic correlations.**  Retrospective cohort studies of diabetic patients have reported lower incidence and improved survival for several cancers (e.g., colorectal, breast) among metformin users.  While these observations do not prove a mechanistic link, they are consistent with the laboratory data that metformin can dampen mTOR signaling, a driver of malignant growth.
+
+* **Remaining uncertainties.**  The concentrations of metformin that produce clear AMPK activation in vitro often exceed the plasma levels achieved in patients, raising questions about translational relevance.  Moreover, metformin can inhibit mTOR through AMPK‑independent routes (e.g., REDD1 induction, Rag GTPase modulation), and the relative contribution of each pathway likely varies by tumour genotype and microenvironment.
+
+**Conclusion:**  A substantial body of pre‑clinical work demonstrates that metformin activates AMPK, leading to TSC2‑dependent inhibition of mTORC1 in cancer cells, although the magnitude of this effect in patients remains to be fully clarified."
+general_llm,Q014,formal-v1-gpt-oss:120b-A_text_only,fixed_formal_system_run,"Several JAK inhibitors that are approved—or in late‑stage development—for rheumatoid arthritis (RA) have been shown, by in‑vitro, ex‑vivo, or clinical studies, to dampen IL‑6–driven and/or interferon (IFN)–driven signaling. The evidence varies from mechanistic biomarker work to clinically observed changes in cytokine‑related disease activity measures.
+
+- **Tofacitinib (JAK1/3 ≈ JAK2 at higher doses)** – Early phase‑II synovial‑biopsy studies demonstrated reduced STAT3 phosphorylation and lower expression of IL‑6‑responsive genes after 2–4 weeks of therapy. In larger phase‑III trials, tofacitinib produced rapid declines in C‑reactive protein (CRP) and serum IL‑6 levels, consistent with IL‑6 pathway inhibition. Peripheral‑blood RNA profiling also showed suppression of type‑I IFN‑stimulated genes, indicating that tofacitinib can blunt IFN signaling at therapeutic doses.
+
+- **Baricitinib (JAK1/2 selective)** – Because JAK2 mediates IL‑6 receptor signaling, baricitinib directly interferes with IL‑6–induced STAT3 activation. Clinical trials reported dose‑dependent reductions in circulating IL‑6 and CRP, and a biomarker sub‑study showed decreased STAT3 phosphorylation in monocytes. Moreover, transcriptome analyses from phase‑III studies revealed marked down‑regulation of IFN‑response signatures (both type‑I and IFN‑γ‑induced genes), supporting effective IFN pathway blockade.
+
+- **Upadacitinib (JAK1 selective)** – JAK1 is a key kinase for both IL‑6 (via the gp130‑JAK1 complex) and type‑I IFN receptors. In phase‑II/III RA cohorts, upadacitinib markedly lowered serum IL‑6 and CRP, and peripheral blood mononuclear cells showed reduced phosphorylation of STAT1 and STAT3 after cytokine stimulation. RNA‑seq of patient blood samples identified a pronounced decrease in IFN‑stimulated gene expression, confirming IFN pathway modulation.
+
+- **Filgotinib (JAK1 selective, modest JAK2 activity)** – Pharmacodynamic data demonstrate that filgotinib suppresses IL‑6‑induced STAT3 activation in vitro and translates into lowered CRP and IL‑6 concentrations in patients. A mechanistic sub‑study of the FINCH trials reported diminished IFN‑signature scores after 12 weeks, suggesting that JAK1 inhibition also curtails IFN signaling, though the effect appears somewhat weaker than with broader JAK1/2 inhibitors.
+
+- **Peficitinib (pan‑JAK, with potency for JAK1/3 and some JAK2)** – Small open‑label studies in Japan indicated reductions in serum IL‑6 and CRP comparable to other JAK inhibitors. Ex‑vivo stimulation of patient leukocytes showed decreased STAT phosphorylation in response to both IL‑6 and IFN‑α, indicating concurrent modulation of the two pathways, but larger confirmatory trials are still pending.
+
+- **Other agents (e.g., decernotinib – JAK3 selective) have limited impact on IL‑6 or IFN signaling** because JAK3 is not a principal mediator for these cytokines. Consequently, clinical data do not show consistent reductions in IL‑6‑related biomarkers or IFN‑gene signatures with JAK3‑only inhibition.
+
+In summary, JAK inhibitors that target JAK1 (upadacitinib, filgotinib, tofacitinib) or combine JAK1/2 activity (baricitinib, tofacitinib at higher doses) have the most robust evidence for attenuating IL‑6 and interferon signaling in RA.  
+
+**Conclusion:** JAK1‑centric or JAK1/2‑inhibiting drugs are the primary agents that demonstrably modulate IL‑6 and IFN pathways in rheumatoid arthritis."
+general_llm,Q015,formal-v1-gpt-oss:120b-A_text_only,fixed_formal_system_run,"SARS‑CoV‑2 can disturb haemostasis not only by damaging the endothelium but also by rewiring host signalling networks that terminate in coagulation‑related effectors. A “2‑hop” path means:  
+
+1. a host gene that is directly altered (binding, transcriptional change, or signalling) by the virus; and  
+2. a second host gene that sits one step downstream of the first and has a known mechanistic link to the coagulation cascade.
+
+Below are the most plausible two‑hop chains that are supported by experimental data (or strong mechanistic inference) and those that remain speculative.
+
+* **ACE2 → AGTR1 → SERPINE1 (PAI‑1)** – Viral spike binding down‑regulates surface ACE2, tipping the renin‑angiotensin balance toward Ang‑II. Ang‑II acts through the angiotensin‑II type‑1 receptor (AGTR1) to activate MAPK/NF‑κB signalling, which transcriptionally induces SERPINE1. Elevated PAI‑1 blocks plasmin generation and promotes fibrin deposition, a hallmark of COVID‑19 coagulopathy.  
+  *Evidence*: ACE2 down‑regulation and Ang‑II elevation have been documented in COVID‑19 patients; AGTR1‑mediated PAI‑1 up‑regulation is a well‑characterised pathway in sepsis and acute lung injury.  
+
+* **TMPRSS2 → PAR2 (F2RL1) → F3 (tissue factor)** – TMPRSS2 protease activity is required for spike priming. TMPRSS2 can cleave and activate protease‑activated receptor‑2 (PAR2). PAR2 signalling in endothelial and monocyte/macrophage cells triggers rapid transcription of the tissue‑factor gene (F3). Tissue factor initiates extrinsic thrombin generation, driving disseminated micro‑thrombosis.  
+  *Evidence*: In vitro studies show TMPRSS2 can trans‑activate PAR2; PAR2‑driven TF expression is a recognized pro‑coagulant mechanism in viral infections.  
+
+* **NRP1 → VEGFA → VWF** – Neuropilin‑1 (NRP1) serves as a SARS‑CoV‑2 co‑receptor, enhancing viral entry into endothelial cells. NRP1 engagement potentiates VEGFA signalling, which up‑regulates von‑Willebrand factor (VWF) release from Weibel‑Palade bodies. Excess VWF promotes platelet adhesion and aggregation, contributing to the hyper‑coagulable state.  
+  *Evidence*: Elevated plasma VWF and soluble NRP1 have been reported in severe COVID‑19; VEGFA‑mediated VWF release is a classic endothelial response.  
+
+* **ORF‑3a (viral protein) → NLRP3 → IL‑6** – The viral accessory protein ORF‑3a activates the NLRP3 inflammasome. Activated NLRP3 drives IL‑1β and IL‑6 secretion. IL‑6, through STAT3 signalling, induces expression of coagulation factors such as fibrinogen (FGA/B/G) and P‑selectin (SELP), fostering platelet‑endothelial interaction and clot formation.  
+  *Evidence*: ORF‑3a‑induced NLRP3 activation has been demonstrated in cell culture; IL‑6‑mediated acute‑phase coagulant up‑regulation is a cornerstone of cytokine‑driven coagulopathy.  
+
+* **STAT1 → CXCL10 → THBD (thrombomodulin) down‑regulation** – Interferon signalling via STAT1 is strongly induced by SARS‑CoV‑2 RNA sensing. STAT1 up‑regulates the chemokine CXCL10, which, in endothelial cells, suppresses thrombomodulin (THBD) expression. Loss of thrombomodulin impairs protein C activation, reducing anticoagulant capacity and favouring clot propagation.  
+  *Evidence*: High CXCL10 levels correlate with severe disease; experimental models link CXCL10 to THBD suppression, though direct in‑vivo confirmation in COVID‑19 remains limited.  
+
+**Uncertain/hypothetical links** – Some additional candidates have been proposed but lack definitive mechanistic proof: (i) SARS‑CoV‑2‑induced hypoxia → HIF1A → PLAT (tPA) dysregulation; (ii) viral‑induced miR‑155 up‑regulation → SOCS1 → JAK/STAT‑mediated coagulation factor expression. These merit further investigation.
+
+**Conclusion** – Genes such as ACE2, TMPRSS2, NRP1, NLRP3, STAT1 and their downstream effectors (AGTR1, PAR2, VEGFA, IL‑6, CXCL10) constitute plausible two‑hop pathways tying SARS‑CoV‑2 infection to the coagulation abnormalities seen in COVID‑19."
+general_llm,Q016,formal-v1-gpt-oss:120b-A_text_only,fixed_formal_system_run,"Spinal muscular atrophy (SMA) is caused by loss‑of‑function mutations in the *SMN1* gene, which reduces the survival motor neuron (SMN) protein. Although the primary defect is in motor‑neuron development, a growing body of work links SMN deficiency to mitochondrial dysfunction through several intersecting pathways:
+
+* **Impaired RNA‑processing of nuclear‑encoded mitochondrial genes.** SMN is a core component of the spliceosomal snRNP assembly machinery. In SMA models, reduced SMN levels alter splicing of transcripts that encode key mitochondrial proteins (e.g., *COX6A2*, *ATP5A1*, and components of the mitofusin pathway). Experimental knock‑down of SMN reproduces abnormal exon inclusion/exclusion patterns, leading to decreased expression of these proteins and compromised oxidative phosphorylation. This mechanistic link is supported by RNA‑seq data from patient‑derived motor neurons, but the extent to which each splicing event contributes to disease phenotype remains under investigation.
+
+* **Disrupted axonal transport of mitochondria.** SMN interacts with cytoskeletal regulators such as profilin‑2a and kinesin‑1. Loss of SMN diminishes the efficiency of microtubule‑based transport, causing an uneven distribution of mitochondria along motor‑neuron axons. Live‑cell imaging in SMA mouse models shows reduced anterograde mitochondrial motility and accumulation of damaged organelles near the soma. While the transport defect is well documented, the causal relationship between transport failure and downstream bioenergetic collapse is still being clarified.
+
+* **Altered calcium homeostasis and excitotoxic stress.** SMN deficiency perturbs expression of calcium‑binding proteins (e.g., calbindin) and the plasma‑membrane calcium pump SERCA2. Elevated intracellular Ca²⁺ loads the mitochondrial calcium uniporter, prompting mitochondrial swelling, loss of membrane potential, and release of pro‑apoptotic factors. Pharmacologic buffering of Ca²⁺ partially rescues mitochondrial membrane potential in SMA motor neurons, suggesting a contributing role, although the precise signaling cascade remains unresolved.
+
+* **Enhanced oxidative stress and defective antioxidant responses.** Reduced SMN levels are associated with lower expression of NRF2‑target genes and glutathione‑synthesizing enzymes. Consequently, SMA motor neurons display increased reactive oxygen species (ROS), lipid peroxidation, and oxidative damage to mitochondrial DNA. Antioxidant treatment improves mitochondrial morphology and motor‑neuron survival in vivo, indicating that oxidative stress is a downstream effector, yet it is unclear whether ROS is a primary trigger or a secondary consequence of other mitochondrial insults.
+
+* **Perturbed mitochondrial dynamics and mitophagy.** SMN interacts indirectly with the mitochondrial fission protein DRP1 and the fusion proteins MFN1/2 through its role in regulating the expression of *DRP1* and *OPA1* transcripts. In SMA, there is a shift toward excessive fission, resulting in fragmented mitochondria with reduced respiration. Moreover, mitophagic clearance is impaired, as indicated by accumulation of PINK1/Parkin‑positive but LC3‑negative mitochondria, suggesting a blockade in autophagosome maturation. The mechanistic details of how SMN modulates these pathways are still being defined.
+
+* **Energy demand–supply mismatch in motor neurons.** Motor neurons have a high ATP requirement for synaptic transmission and axonal transport. The cumulative impact of splicing defects, transport deficits, calcium overload, oxidative damage, and dysregulated dynamics reduces ATP production while increasing consumption, creating a self‑reinforcing energetic crisis that accelerates neurodegeneration. This systemic view is widely accepted, though quantifying the relative contribution of each sub‑pathway remains an active research area.
+
+**Conclusion:** Multiple, interlinked mechanisms—including aberrant RNA splicing, transport defects, calcium dysregulation, oxidative stress, and altered mitochondrial dynamics—connect SMN deficiency to mitochondrial dysfunction in SMA."
+general_llm,Q021,formal-v1-gpt-oss:120b-A_text_only,fixed_formal_system_run,"Sodium‑glucose cotransporter‑2 (SGLT2) inhibitors were first recognized for their glycaemic and cardiovascular benefits, but a growing body of experimental and clinical work also points to anti‑inflammatory and anti‑fibrotic actions in the kidney.
+
+**Pre‑clinical evidence** – Multiple rodent models of diabetic and non‑diabetic kidney disease have shown that SGLT2 blockade lowers renal expression of pro‑inflammatory cytokines (TNF‑α, IL‑1β, MCP‑1) and suppresses activation of nuclear factor‑κB (NF‑κB). In streptozotocin‑diabetic mice treated with dapagliflozin or empagliflozin, tubular and glomerular macrophage infiltration was reduced, and histologic scoring revealed less interstitial collagen deposition. Similar anti‑fibrotic effects were reported in unilateral ureteral obstruction and 5/6 nephrectomy models, with decreased transforming growth factor‑β (TGF‑β) signaling and lower levels of fibronectin and type‑IV collagen.
+
+**Clinical trial outcomes** – Large outcome trials in patients with chronic kidney disease (CKD) – DAPA‑CKD, EMPA‑REG OUTCOME, and the CREDENCE trial – demonstrated slower declines in eGFR and lower rates of incident end‑stage renal disease. While the primary endpoints were clinical, secondary analyses consistently showed greater reductions in albuminuria, a surrogate of glomerular inflammation and structural injury. The magnitude of albuminuria reduction (≈30‑40 % with dapagliflozin) is comparable to that seen with drugs known to attenuate renal inflammation.
+
+**Biomarker data from humans** – Small mechanistic studies have measured urinary and plasma inflammatory mediators before and after SGLT2 inhibition. In patients with type 2 diabetes and albuminuria, dapagliflozin lowered urinary MCP‑1 and TGF‑β1 concentrations within weeks of therapy, suggesting early dampening of chemokine‑driven leukocyte recruitment and fibrogenic signaling. Similar declines in oxidative‑stress markers (8‑iso‑PGF2α) and circulating IL‑6 have been reported, reinforcing a systemic anti‑inflammatory milieu that may translate to the kidney.
+
+**Histologic insights** – Direct renal tissue evaluation is limited, but a few biopsy‑based investigations provide suggestive evidence. In a pilot study of patients with diabetic nephropathy who received empagliflozin for six months, repeat kidney biopsies showed reduced interstitial fibrosis scores and fewer CD68‑positive macrophages compared with baseline. Although sample sizes were small and not randomized, the findings align with animal data.
+
+**Mechanistic hypotheses** – The anti‑inflammatory/fibrotic actions are thought to be multifactorial: (1) restoration of tubuloglomerular feedback reduces intraglomerular pressure, limiting shear‑stress‑induced cytokine release; (2) improved metabolic substrate utilization lowers oxidative stress; (3) SGLT2 inhibition may shift cellular signaling toward AMP‑activated protein kinase activation, which antagonizes NF‑κB and TGF‑β pathways; and (4) modest weight loss and blood‑pressure reductions further attenuate systemic inflammation.
+
+Uncertainties remain. Most human evidence relies on surrogate biomarkers rather than hard histologic endpoints, and the relative contribution of hemodynamic versus direct cellular effects is still debated. Ongoing trials incorporating serial kidney biopsies and advanced imaging will be needed to clarify the extent to which SGLT2 inhibitors truly remodel the fibrotic kidney.
+
+**Conclusion:** Across animal models, biomarker studies, and large CKD trials, SGLT2 inhibitors consistently exhibit anti‑inflammatory and anti‑fibrotic signals that likely contribute to their renal protective effects."
+general_llm,Q025,formal-v1-gpt-oss:120b-A_text_only,fixed_formal_system_run,"Duchenne muscular dystrophy (DMD) is caused by loss‑of‑function mutations in the **DMD** gene, eliminating the structural protein dystrophin. Without dystrophin, muscle fibres are mechanically fragile, and repeated cycles of injury and incomplete repair generate a self‑perpetuating inflammatory milieu. The most widely supported mechanisms linking DMD to chronic inflammation are:
+
+* **Sarcolemmal disruption and danger‑associated molecular pattern (DAMP) release** – Mechanical tearing of the plasma membrane allows intracellular proteins such as HMGB1, ATP, and mitochondrial DNA to flood the extracellular space. These DAMPs are recognized by pattern‑recognition receptors on resident macrophages and dendritic cells, triggering NF‑κB‑driven transcription of pro‑inflammatory cytokines (e.g., TNF‑α, IL‑1β, IL‑6). This acute response is well documented in both mdx mice and human DMD biopsies and provides the initial spark for chronic inflammation.
+
+* **Complement activation** – The exposed sarcolemma and released DAMPs promote deposition of C3b and formation of the membrane‑attack complex (MAC). Complement fragments act as chemoattractants for neutrophils and monocytes, amplifying cell‑mediated damage. Complement inhibition has reduced pathology in experimental models, supporting a causal role, although the relative contribution of each pathway in patients remains under investigation.
+
+* **Aberrant macrophage polarization** – In healthy repair, an early M1‑type (pro‑inflammatory) macrophage response transitions to an M2‑type (anti‑inflammatory, pro‑regenerative) phase. In DMD, the M1 phenotype persists, driven by continual DAMP exposure and cytokine signaling, while M2 activation is blunted. This imbalance sustains tissue destruction and impairs satellite‑cell‑mediated regeneration. The persistence of M1‑dominant macrophages is a reproducible finding, although the precise molecular switches that prevent the M1‑to‑M2 shift are still being mapped.
+
+* **Oxidative stress and mitochondrial dysfunction** – Dystrophic fibres exhibit defective calcium handling, leading to mitochondrial calcium overload, reactive oxygen species (ROS) production, and activation of redox‑sensitive transcription factors such as AP‑1 and NF‑κB. ROS further oxidize lipids and proteins, generating neo‑antigens that reinforce immune activation. Antioxidant therapies mitigate some inflammatory markers in preclinical work, indicating a contributory role, though the extent to which oxidative stress alone drives chronic inflammation in patients is not fully resolved.
+
+* **Chronic activation of the NF‑κB pathway** – Genetic and pharmacologic inhibition of IκB kinase (IKK) in mdx mice reduces cytokine expression, immune cell infiltration, and fibrosis, underscoring NF‑κB as a central hub linking membrane injury, DAMP signaling, and cytokine production. Human muscle biopsies consistently show elevated nuclear NF‑κB, although the upstream triggers—mechanical stress, cytokines, or metabolic cues—are likely synergistic.
+
+* **Fibro‑adipogenic progenitor (FAP) expansion and cytokine cross‑talk** – Repeated injury expands FAPs, which secrete TGF‑β, IL‑13, and other profibrotic mediators. These cytokines attract additional immune cells and stimulate extracellular‑matrix deposition, sealing the loop between inflammation and fibrosis. The role of FAPs in perpetuating inflammation is supported by lineage‑tracing studies, yet the precise signals that lock FAPs into a pathogenic state remain a research focus.
+
+Collectively, loss of dystrophin triggers membrane fragility, DAMP release, complement and oxidative stress, and persistent NF‑κB activation; together these processes maintain an M1‑biased immune environment that hampers regeneration and drives fibrosis. **Chronic inflammation in DMD therefore arises from a convergence of mechanical, innate‑immune, and metabolic disturbances.**"
+general_llm,Q028,formal-v1-gpt-oss:120b-A_text_only,fixed_formal_system_run,"Evidence from cell‑culture, animal models and human tumours shows that activation of the epidermal growth factor receptor (EGFR) can protect cells from programmed death through a variety of short signalling cascades.  In a strict “2‑hop’’ sense the signal passes from EGFR to an immediate downstream effector and then to a second gene whose activity directly blocks apoptosis.  The most consistently documented routes are:
+
+* **EGFR → PIK3CA (p110α) → AKT1/AKT2** – PI3‑kinase catalytic subunit (PIK3CA) is recruited to phosphotyrosine sites on EGFR, generating PIP₃ that recruits and activates AKT kinases.  Activated AKT phosphorylates and inactivates several pro‑apoptotic proteins (e.g., BAD, FOXO transcription factors) and up‑regulates the transcription of anti‑apoptotic BCL‑2 family members.  This PI3K‑AKT axis is one of the most reproducibly observed survival pathways in EGFR‑driven cancers.
+
+* **EGFR → KRAS (or NRAS) → BCL2L1 (Bcl‑xL)** – EGFR‑stimulated adaptor proteins (GRB2/SOS) activate the small GTPase KRAS, which then signals through RAF‑MEK‑ERK to increase transcription of the BCL2L1 gene.  Bcl‑xL binds and sequesters Bax/Bak, directly preventing mitochondrial outer‑membrane permeabilisation.
+
+* **EGFR → STAT3 → MCL1** – Phosphorylated EGFR can recruit JAK kinases that phosphorylate STAT3.  Dimerised STAT3 translocates to the nucleus and drives expression of the anti‑apoptotic gene MCL1.  MCL1 rapidly neutralises Bak and BH3‑only proteins, conferring resistance to stress‑induced apoptosis.
+
+* **EGFR → PLCγ1 → PKCα (or PKCδ)** – PLCγ hydrolyses PIP₂ to produce DAG, which activates protein kinase C isoforms.  PKCα, in turn, can phosphorylate and stabilise the anti‑apoptotic protein BCL2 and also promote NF‑κB nuclear translocation, which up‑regulates multiple survival genes.
+
+* **EGFR → SHC1 → c‑MYC** – The adaptor SHC1 links EGFR to the RAS‑RAF‑MEK‑ERK cascade, culminating in ERK‑mediated activation of the transcription factor MYC.  MYC transcriptionally activates several survival genes, notably the BCL‑2 family member BCL2 itself and the inhibitor of apoptosis proteins (IAPs) such as XIAP.
+
+* **EGFR → SRC family kinases (SRC) → FAS‑associated protein with death domain (FADD) inhibition** – SRC is recruited to EGFR and phosphorylates the death‑effector FADD on tyrosine residues, impeding its ability to assemble the death‑inducing signalling complex (DISC).  Though FADD is not a classical “gene‑product’’ of a second hop, the SRC‑mediated post‑translational modification effectively creates a functional two‑step block to apoptosis.
+
+These pathways are supported by multiple experimental systems (e.g., knock‑down or pharmacologic inhibition of the intermediate node restores apoptosis in EGFR‑dependent lines).  However, context‑dependence is a major uncertainty: the relative contribution of each route varies with cell type, presence of co‑mutations (e.g., PTEN loss) and the extracellular milieu.  Moreover, some connections—particularly those involving PKC isoforms or SRC‑mediated FADD modulation—are less consistently reproduced across models and remain under active investigation.
+
+**In short, the most robust two‑step mediators linking EGFR activation to apoptosis resistance are PI3K‑AKT, KRAS‑BCL2L1, STAT3‑MCL1, PLCγ‑PKC, SHC‑MYC and SRC‑FADD pathways.**"
+general_llm,Q029,formal-v1-gpt-oss:120b-A_text_only,fixed_formal_system_run,"Endothelial cells that become senescent acquire a distinctive phenotype—persistent DNA‑damage signaling, activation of p53‑p21 and p16^INK4a pathways, loss of proliferative capacity, and a senescence‑associated secretory phenotype (SASP). The convergence of these changes creates a local environment that drives the initiation and progression of atherosclerotic lesions.
+
+**Key mechanisms linking endothelial senescence to atherosclerosis**
+
+- **Impaired vasodilatory and anti‑oxidant function** – Senescent endothelium shows reduced endothelial nitric‑oxide synthase (eNOS) expression and activity, lowering NO bioavailability. The resulting endothelial dysfunction promotes vasoconstriction, increases reactive‑oxygen species, and sensitises the vessel wall to oxidative modification of low‑density lipoprotein (LDL).
+
+- **Pro‑inflammatory SASP signaling** – Senescent cells secrete cytokines (IL‑6, IL‑1β, TNF‑α), chemokines (MCP‑1/CCL2), and matrix‑remodelling enzymes (MMP‑2, MMP‑9). These factors recruit monocytes, activate resident macrophages, and amplify local inflammation, all of which are hallmarks of early atheroma formation.
+
+- **Up‑regulation of adhesion molecules** – The SASP induces endothelial expression of VCAM‑1, ICAM‑1 and E‑selectin, fostering firm adhesion of circulating leukocytes. This step is a prerequisite for the transmigration of monocytes that differentiate into foam‑cell macrophages within the intima.
+
+- **Pro‑coagulant shift** – Senescent endothelium expresses tissue factor and down‑regulates thrombomodulin, creating a surface that favours thrombin generation and platelet adhesion. Microthrombi can seed plaque formation and contribute to plaque instability.
+
+- **Barrier dysfunction and lipid infiltration** – Loss of tight‑junction proteins (claudin‑5, ZO‑1) in senescent cells increases endothelial permeability, allowing modified LDL particles to penetrate the intima more readily. Accumulated lipids then become substrates for foam‑cell formation.
+
+- **Diminished reparative capacity** – Senescent endothelial cells are poor responders to shear‑stress‑induced proliferative cues and produce fewer pro‑angiogenic factors (e.g., VEGF‑A). Consequently, endothelial regeneration after injury is blunted, allowing senescent‑cell patches to expand and perpetuate a dysfunctional niche.
+
+**Evidence and remaining questions**  
+Animal models in which senescent endothelial cells are genetically ablated or cleared with senolytic drugs show reduced plaque size and a more stable plaque phenotype, supporting a causal role. Human atherosclerotic plaques frequently contain cells positive for SA‑β‑gal, p16^INK4a, and SASP markers, correlating with clinical severity. However, the precise contribution of individual SASP components, the extent to which senescence spreads via extracellular vesicles, and the interplay with metabolic stressors (e.g., hyperglycaemia) remain active areas of investigation.
+
+In summary, endothelial senescence creates a pro‑atherogenic milieu through loss of vasoprotective functions, chronic inflammation, enhanced leukocyte adhesion, coagulation, barrier breakdown, and impaired repair, thereby accelerating atherosclerosis."
+general_llm,Q037,formal-v1-gpt-oss:120b-A_text_only,fixed_formal_system_run,"Chronic infection with hepatitis B virus (HBV) drives hepatocellular carcinoma (HCC) through several inter‑related pathways that have been documented in epidemiologic, virologic and molecular studies.
+
+**1. Direct oncogenic activity of viral proteins**  
+HBV integrates its relaxed‑circular DNA into the host genome in a subset of infected hepatocytes. The integration event can disrupt tumor‑suppressor genes (e.g., *p53*) or place cellular oncogenes under viral‐promoter control, fostering clonal expansion. The HBV X protein (HBx) is the best‑characterized viral oncoprotein: it modulates transcription, interferes with DNA repair, and activates signaling cascades (e.g., NF‑κB, MAPK, Wnt/β‑catenin) that promote proliferation and inhibit apoptosis. HBx also perturbs mitochondrial function and generates reactive oxygen species (ROS), creating a mutagenic environment.
+
+**2. Chronic inflammation and immune‑mediated injury**  
+Persistent HBV replication triggers a lifelong immune response. Cytotoxic T‑cells and Kupffer‑cell–derived cytokines (TNF‑α, IL‑6, IFN‑γ) cause repeated cycles of hepatocyte death and regeneration. The associated oxidative stress, nitrogen species and DNA damage increase the likelihood of somatic mutations in surviving cells. The inflammatory milieu also induces epigenetic alterations (DNA methylation, histone modification) that silence tumor‑suppressor loci.
+
+**3. Fibrosis and cirrhosis as a premalignant scaffold**  
+Long‑standing necro‑inflammatory injury leads to extracellular‑matrix deposition and architectural distortion. Cirrhotic nodules alter the hepatic microenvironment, impairing normal cell‑cell communication and creating hypoxic zones that select for cells with survival advantages. Fibrosis‑associated hepatic stellate cells secrete growth factors (HGF, TGF‑β) that can further stimulate malignant transformation.
+
+**4. Dysregulated host signaling pathways**  
+HBV infection repeatedly activates pathways that control cell growth and survival:  
+* **Wnt/β‑catenin** – HBx stabilizes β‑catenin, driving transcription of proliferative genes.  
+* **PI3K/AKT/mTOR** – HBx can up‑regulate this axis, enhancing nutrient‑sensing and growth.  
+* **JAK/STAT** – Chronic cytokine exposure sustains STAT3 activation, which promotes angiogenesis and immune evasion.  
+
+**5. Epigenetic reprogramming**  
+Beyond direct DNA insertion, HBV influences the hepatic epigenome. Viral proteins recruit DNA methyltransferases and histone‑modifying enzymes, leading to silencing of genes such as *RASSF1A* or *SOCS1*. MicroRNA profiles are also altered; for example, HBx down‑regulates tumor‑suppressive miR‑122, facilitating oncogenic signaling.
+
+**6. Interaction with co‑risk factors**  
+HBV synergizes with other carcinogenic exposures (aflatoxin B1, alcohol, metabolic syndrome). Co‑carcinogens amplify DNA adduct formation or exacerbate metabolic stress, accelerating the conversion of premalignant lesions to overt HCC. This synergy is well documented epidemiologically, though the precise molecular cross‑talk remains an active research area.
+
+Overall, HBV promotes HCC through a combination of direct viral oncogenesis, sustained inflammatory injury, fibrotic remodeling, and widespread perturbation of host signaling and epigenetic regulation.  
+
+**Conclusion:** Chronic HBV infection creates a multistep, tumor‑promoting environment that culminates in hepatocellular carcinoma."
+general_llm,Q041,formal-v1-gpt-oss:120b-A_text_only,fixed_formal_system_run,"SGLT2 抑制劑在腎臟的保護作用已在多項臨床與實驗研究中觀察到，其中與抗發炎、抗纖維化相關的機制可概括如下：
+
+- **降低腎小管葡萄糖負荷與氧化壓力**：抑制 SGLT2 減少葡萄糖在近曲小管的重吸收，降低細胞內葡萄糖濃度與 NADPH 產生，從而減少活性氧 (ROS) 產生；ROS 抑制是已被多項動物模型證實的抗氧化與抗發炎基礎。
+
+- **調節腎臟局部炎症因子**：臨床與前瞻性試驗顯示使用 SGLT2 抑制劑後血清與尿液中的 TNF‑α、IL‑6、 MCP‑1 等促炎細胞因子濃度下降，此現象在短期試驗中已重複觀察，被視為確立的抗發炎證據。
+
+- **抑制 TGF‑β/Smad 路徑**：多項小鼠腎纖維化模型報告指出，SGLT2 抑制劑能降低轉化生長因子 β (TGF‑β) 的表達與其下游 Smad2/3 磷酸化，進而減少膠原蛋白與纖維連接蛋白的沉積；此機制在臨床組織切片中亦有初步證實，但仍屬於較新興的觀察。
+
+- **改變腎臟代謝與血流動態**：透過促進鈉排泄與降低腎小球過濾壓，SGLT2 抑制劑減少腎間質低氧與炎症誘導的血管收縮因子 (如 endothelin‑1)，間接降低發炎與纖維化的觸發；此機制在臨床血流動態測量中已有支持。
+
+- **激活 AMPK 與抑制 mTOR 信號**：實驗資料顯示 SGLT2 抑制劑可激活 AMP‑activated protein kinase (AMPK)，進而抑制 mechanistic target of rapamycin (mTOR) 路徑，減少細胞增殖與基質產生；此項機制在人體樣本中的直接證據尚有限，屬於推測階段。
+
+總結而言，SGLT2 抑制劑透過降低氧化壓力、調節炎症因子、阻斷 TGF‑β/Smad 纖維化路徑、改善腎臟血流與代謝，以及可能的 AMPK/mTOR 調控，多方位減少腎臟炎症與纖維化，進而提供腎保護。未來仍需更多臨床組織學證據來驗證部分尚在假設階段的機制。  
+
+**結論：SGLT2 抑制劑的抗發炎與抗纖維化作用是腎臟保護的核心機制之一。**"
+general_llm,Q043,formal-v1-gpt-oss:120b-A_text_only,fixed_formal_system_run,"**Key claims about NLRP3 inflammasome activation in Alzheimer’s disease (AD) and the type of evidence that underpins them**
+
+- **Increased NLRP3 and ASC protein in AD brains** – Post‑mortem tissue from individuals with AD consistently shows higher levels of NLRP3, the adaptor ASC, and the downstream cytokine IL‑1β compared with age‑matched controls. Immunohistochemistry localises the signal to microglia surrounding amyloid plaques, providing direct human evidence that the inflammasome is up‑regulated in the diseased brain.
+
+- **NLRP3 activity correlates with amyloid‑beta (Aβ) load and cognitive decline** – Quantitative analyses in human cohorts reveal a positive association between cortical NLRP3/IL‑1β expression and the burden of Aβ plaques measured by PET or histology, and higher inflammasome markers tend to co‑occur with lower Mini‑Mental State Examination scores. These correlative data come from human studies; causality cannot be inferred from them.
+
+- **Genetic variants in NLRP3 pathway modulate AD risk** – Genome‑wide association studies have identified single‑nucleotide polymorphisms in genes encoding NLRP3, CARD8, and IL‑1β that modestly alter AD susceptibility. The association signals are reproducible across large human datasets, establishing a genetic link, although functional consequences of the variants remain uncertain.
+
+- **NLRP3 deficiency protects mice from AD‑like pathology** – In transgenic mouse models that over‑express human APP/PSEN1, knockout of Nlrp3 or pharmacologic inhibition (e.g., MCC950) reduces Aβ plaque deposition, attenuates microglial activation, and improves performance in memory tests. These protective effects are robust in rodents but have not yet been demonstrated in humans.
+
+- **Inflammasome inhibition improves cognition in AD mouse models** – Acute or chronic treatment of APP/PSEN1 mice with NLRP3 inhibitors lowers IL‑1β levels, restores synaptic protein expression, and rescues spatial learning deficits. The therapeutic benefit is confined to experimental mouse systems; human clinical trials of specific NLRP3 blockers are still in early phases.
+
+- **Peripheral NLRP3 activation reflects central disease activity** – Elevated plasma IL‑1β and ASC specks have been reported in AD patients and correlate with disease severity, suggesting that systemic inflammasome readouts may mirror brain pathology. However, the source of these peripheral signals (central versus peripheral immune cells) is not fully resolved, and supporting data are principally observational in humans.
+
+**Overall assessment** – Human studies provide solid evidence that the NLRP3 inflammasome is up‑regulated in AD brains, correlates with pathological hallmarks, and may be influenced by genetic variation. Mouse models establish causality, showing that inflammasome blockade can mitigate amyloid pathology and cognitive deficits, but translation of these therapeutic effects to patients remains to be proven.  
+
+**Conclusion:** Human data confirm NLRP3 activation in AD, while mouse work demonstrates that inhibiting this pathway can be disease‑modifying in experimental settings."
+general_llm,Q046,formal-v1-gpt-oss:120b-A_text_only,fixed_formal_system_run,"**What the literature says about caffeine‑induced telomerase activation in human immune cells**
+
+1. **In‑vitro experiments with supraphysiologic caffeine concentrations** – A few cell‑culture studies have examined the effect of caffeine (often 10–100 µM, far above the ∼5 µM peak seen after a cup of coffee) on telomerase (hTERT) transcription. In human peripheral‑blood mononuclear cells (PBMCs) and isolated T‑lymphocytes, short‑term exposure (6–24 h) to high‑dose caffeine modestly increased hTERT mRNA levels and telomerase activity measured by the TRAP assay. The reported effect size was small (≈10–20 % rise over baseline) and was abolished when the ATM/ATR DNA‑damage response was pharmacologically blocked, suggesting a stress‑signalling pathway rather than a direct receptor‑mediated action.
+
+2. **Mechanistic clues from DNA‑damage‑response modulation** – Caffeine is a well‑known inhibitor of the ATM and ATR kinases. Inhibiting these kinases can relieve a checkpoint‑mediated repression of hTERT transcription that normally occurs after DNA damage. Consequently, caffeine‑treated immune cells sometimes show a transient boost in telomerase activity that mirrors the response to other ATM/ATR inhibitors (e.g., caffeine‑analog KU‑55933). However, this pathway is indirect; the caffeine molecule does not bind hTERT or its promoter.
+
+3. **Human intervention studies are scarce and indirect** – Small clinical trials that gave healthy volunteers caffeine (e.g., 200 mg coffee) and measured telomerase activity in circulating lymphocytes have produced mixed results. One crossover study reported a non‑significant trend toward higher telomerase activity 2 h after intake, while another found no change. Both trials were underpowered (n < 20) and did not control for diurnal variation in telomerase, which can confound interpretation.
+
+4. **Epidemiological associations between coffee consumption and leukocyte telomere length** – Large cohort analyses consistently show that habitual coffee drinkers have slightly longer leukocyte telomeres than non‑drinkers, after adjusting for age, smoking, and body‑mass index. These observations are correlational; they cannot distinguish whether caffeine, other coffee constituents (e.g., polyphenols), lifestyle factors, or reverse causation explain the link.
+
+5. **Evidence from related cell types** – In several cancer‑cell lines (e.g., HeLa, breast‑cancer MCF‑7), caffeine at millimolar concentrations can up‑regulate telomerase, but the cellular context (mutated p53, deregulated signaling) differs markedly from normal immune cells. Such findings are not directly transferable to physiologic immune‑cell biology.
+
+6. **Consensus and gaps** – The current body of work suggests that caffeine can **modestly and indirectly** raise telomerase activity in human immune cells under experimental conditions that involve high, non‑physiologic concentrations and manipulation of DNA‑damage pathways. No study has demonstrated a **direct, receptor‑mediated, dose‑responsive** activation of telomerase by caffeine at levels achieved by typical dietary intake, nor has a causal link been established in vivo.
+
+**Conclusion** – The available evidence does not support a robust, direct causal relationship between ordinary caffeine consumption and telomerase activation in human immune cells."
+general_llm,Q047,formal-v1-gpt-oss:120b-A_text_only,fixed_formal_system_run,"Quercetin is a dietary flavonoid that has been studied for its antioxidant, anti‑inflammatory, and ion‑channel‑modulating properties.  Several laboratories have examined its effect on the cystic fibrosis transmembrane conductance regulator (CFTR), but the data relevant to **CFTR up‑regulation in cystic‑fibrosis (CF) intestinal epithelium** are limited.
+
+* **In non‑CF intestinal cell lines** (e.g., T84, Caco‑2) quercetin can increase short‑circuit current and chloride secretion, an effect that is blocked by CFTR inhibitors.  These studies infer that quercetin stimulates CFTR activity, but they use cells that express wild‑type CFTR and do not address the defective ΔF508 or other CF mutations.
+
+* **In wild‑type mouse or rat intestinal tissue**, acute mucosal application of quercetin (often at micromolar concentrations) has been reported to enhance cAMP‑dependent CFTR‑mediated chloride transport.  Again, the models lack the CFTR mutations that define cystic fibrosis, so the findings cannot be extrapolated to a disease context.
+
+* **CF‑specific in‑vitro models** (e.g., CFTR‑ΔF508–expressing intestinal organoids, CF intestinal epithelial cell lines) have been used to test a range of correctors and potentiators.  To date, peer‑reviewed reports do not document a reproducible increase in CFTR protein expression, trafficking, or function after quercetin treatment in these systems.  Some unpublished conference abstracts have hinted at modest potentiation, but the evidence has not been validated with independent replication or functional assays such as forskolin‑induced swelling.
+
+* **Mechanistic hypotheses** propose that quercetin may act through protein‑kinase A activation, inhibition of phosphodiesterases, or modulation of oxidative stress pathways, all of which could indirectly favor CFTR gating.  These mechanisms remain speculative in the CF intestinal context because they have not been demonstrated with direct measurement of mutant CFTR rescue.
+
+* **Clinical or ex‑vivo human data** are absent.  No trial or biopsy study has shown that dietary quercetin or quercetin‑rich supplements raise CFTR mRNA or protein levels in the intestinal epithelium of individuals with cystic fibrosis.
+
+In summary, while quercetin can stimulate CFTR‑dependent chloride transport in normal intestinal models, **there is no direct, peer‑reviewed evidence that it up‑regulates mutant CFTR in cystic‑fibrosis intestinal epithelium**.  Further targeted studies are required to test this possibility."
+general_llm,Q050,formal-v1-gpt-oss:120b-A_text_only,fixed_formal_system_run,"**Background** – A growing body of work shows that the intestinal microbiome shapes systemic immunity. Certain dysbiotic states increase differentiation of intestinal Th17 cells, leading to higher circulating interleukin‑17 (IL‑17). IL‑17 is a potent stimulator of RANK‑L expression on stromal cells and directly promotes osteoclastogenesis, a central mechanism of osteoporosis and other bone‑loss disorders. Thus, a mechanistic bridge among gut dysbiosis, IL‑17, and skeletal resorption is plausible but not yet proven.
+
+**Testable hypothesis**  
+Gut microbiome dysbiosis drives an expansion of intestinal Th17 cells, elevating systemic IL‑17 levels that, in turn, amplify osteoclast activity and cause measurable bone loss.
+
+**Key predictions**  
+
+- Mice colonized with a dysbiotic fecal community will show (i) higher intestinal Th17 frequency, (ii) increased serum IL‑17, and (iii) reduced trabecular bone volume compared with mice colonized with a eubiotic community.  
+- Neutralizing IL‑17 in dysbiotic mice will normalize osteoclast numbers and restore bone density without substantially altering the microbial composition.  
+
+**Experimental approach (mouse model)**  
+
+1. **Microbiota manipulation** – Germ‑free C57BL/6 mice receive fecal transplants from (a) donors with a known dysbiotic profile (e.g., high Prevotella, low Bacteroides) and (b) healthy controls.  
+2. **Immune readouts** – After 4 weeks, quantify lamina propria Th17 cells by flow cytometry (CD4⁺ RORγt⁺ IL‑17⁺) and measure serum IL‑17 by ELISA.  
+3. **Bone assessment** – Perform μCT of the distal femur and lumbar vertebrae to obtain trabecular bone volume fraction (BV/TV) and cortical thickness; histomorphometry will assess osteoclast surface (Oc.S/BS).  
+4. **IL‑17 blockade** – A subset of dysbiotic mice receives a monoclonal anti‑IL‑17A antibody (or isotype control) biweekly for 4 weeks; repeat immune and bone analyses.  
+5. **Microbial verification** – 16S rRNA sequencing before and after treatment ensures that IL‑17 neutralization does not inadvertently reshape the microbiota, confirming that bone rescue is cytokine‑driven.  
+
+**Translational validation (human cohort)**  
+
+- Recruit post‑menopausal women stratified by gut‑microbiome composition (e.g., high Prevotella vs. high Bacteroides) using shotgun metagenomics.  
+- Correlate relative abundance of dysbiosis‑associated taxa with circulating IL‑17 levels and dual‑energy X‑ray absorptiometry (DEXA) T‑scores, adjusting for age, BMI, diet, and medication.  
+- A prospective sub‑study could test whether a short course of an IL‑17 inhibitor (already approved for psoriatic disease) stabilizes bone loss in participants with a dysbiotic signature.  
+
+**Potential implications**  
+
+If the hypothesis is confirmed, it would identify IL‑17 as a mechanistic effector linking gut dysbiosis to skeletal deterioration. This could open two therapeutic avenues: (1) microbiome‑targeted interventions (pre‑/pro‑biotics, selective antibiotics, or fecal transplant) to prevent Th17 skewing, and (2) repurposing IL‑17–blocking biologics for osteoporosis in patients with a dysbiotic gut profile.
+
+**Conclusion** – Demonstrating that dysbiotic microbiota amplify IL‑17–driven osteoclastogenesis would provide a causal framework for microbiome‑immune‑bone cross‑talk."

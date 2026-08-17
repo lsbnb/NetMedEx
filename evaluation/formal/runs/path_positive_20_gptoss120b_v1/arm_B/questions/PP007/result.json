@@ -1,0 +1,188 @@
+{
+  "status": "complete",
+  "question_id": "PP007",
+  "domain": "cancer",
+  "question": "What evidence supports a mechanistic path from curcumin to apoptosis through p53? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "curcumin AND apoptosis AND cancer AND (gene OR pathway)",
+  "effective_pubmed_query": "curcumin AND apoptosis AND cancer AND (gene OR pathway)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "15810876",
+    "29693253",
+    "30623450",
+    "30725357",
+    "31590362",
+    "32519340",
+    "35722665",
+    "37776274",
+    "38031951",
+    "38166505",
+    "38269517",
+    "38699926",
+    "39219410",
+    "41109942",
+    "41252742"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports a mechanistic path from curcumin to apoptosis through p53? Distinguish evidence for each hop from overall inference.",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "15810876",
+        "score": 0.5854452378113403
+      },
+      {
+        "pmid": "38031951",
+        "score": 0.5681875170095074
+      },
+      {
+        "pmid": "38699926",
+        "score": 0.5629459373170772
+      },
+      {
+        "pmid": "30623450",
+        "score": 0.5628830810904553
+      },
+      {
+        "pmid": "31590362",
+        "score": 0.5462055206514923
+      },
+      {
+        "pmid": "32519340",
+        "score": 0.5460979578471317
+      },
+      {
+        "pmid": "29693253",
+        "score": 0.5398538420128113
+      },
+      {
+        "pmid": "41109942",
+        "score": 0.5182263549103346
+      },
+      {
+        "pmid": "41252742",
+        "score": 0.5133090885593484
+      },
+      {
+        "pmid": "30725357",
+        "score": 0.5066911851667424
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "15810876",
+        "score": 0.5854452378113403
+      },
+      {
+        "pmid": "38031951",
+        "score": 0.5681875170095074
+      },
+      {
+        "pmid": "38699926",
+        "score": 0.5629459373170772
+      },
+      {
+        "pmid": "30623450",
+        "score": 0.5628830810904553
+      },
+      {
+        "pmid": "31590362",
+        "score": 0.5462055206514923
+      },
+      {
+        "pmid": "32519340",
+        "score": 0.5460979578471317
+      },
+      {
+        "pmid": "29693253",
+        "score": 0.5398538420128113
+      },
+      {
+        "pmid": "41109942",
+        "score": 0.5182263549103346
+      },
+      {
+        "pmid": "41252742",
+        "score": 0.5133090885593484
+      },
+      {
+        "pmid": "30725357",
+        "score": 0.5066911851667424
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Evidence linking curcumin → p53 → apoptosis (human in‑vitro studies)**  \n\n- **Curcumin up‑regulates p53 expression and activity** – In cancer cell lines, treatment with curcumin increased both the level and functional activity of the tumor‑suppressor p53, a change that was reported to suppress proliferation and promote cell death【PMID:30623450】 (human‑cell, in vitro).  \n\n- **p53 activation drives apoptosis** – The same study notes that elevated p53 “inhibits tumor cell proliferation and increases apoptosis,” indicating that the p53 increase directly contributes to the execution of programmed cell death【PMID:30623450】 (human‑cell, in vitro).  \n\n- **Curcumin‑induced apoptosis is mitochondrial‑mediated and aligns temporally with p53 up‑regulation** – A broader review of curcumin‑triggered apoptosis describes a primarily mitochondria‑mediated pathway across various tumor types【PMID:15810876】. Although this article does not name p53 explicitly, the concurrence of mitochondrial apoptosis with p53 up‑regulation in the same cellular context supports a mechanistic link whereby p53 may act upstream of mitochondrial events.  \n\n- **Overall mechanistic inference** – Combining the direct observation that curcumin elevates p53 (and that p53 elevation promotes apoptosis) with the well‑characterized mitochondrial apoptosis pathway triggered by curcumin yields a coherent stepwise model: curcumin → p53 activation/up‑regulation → transcription of pro‑apoptotic genes → mitochondrial outer‑membrane permeabilization → caspase activation → apoptosis.  \n\n**Conclusion** – In human cancer cell models, curcumin increases p53 levels, and this p53 activation is causally tied to the apoptotic response, providing mechanistic evidence for a curcumin → p53 → apoptosis pathway."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 2.3834407329559326e-05,
+    "vector_index": 1.8224840089678764,
+    "kg_expansion": 1.3746321201324463e-05,
+    "answer_traditional_rag": 21.880559779703617,
+    "total": 24.380472287535667
+  },
+  "token_usage": {
+    "total_tokens": 4527,
+    "output_tokens": 753,
+    "input_tokens": 3774
+  },
+  "completed_at": "2026-08-13T05:50:46.293171+00:00"
+}

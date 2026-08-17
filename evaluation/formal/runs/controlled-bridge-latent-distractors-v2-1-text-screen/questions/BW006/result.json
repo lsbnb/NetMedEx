@@ -1,0 +1,182 @@
+{
+  "status": "complete",
+  "question_id": "BW006",
+  "domain": "neuromuscular disease",
+  "question": "Which evidence-supported intermediates connect dystrophin deficiency to chronic inflammation?",
+  "question_type": "mechanism",
+  "pubmed_query": "Duchenne muscular dystrophy dystrophin inflammation NF-kB macrophage fibrosis",
+  "effective_pubmed_query": "Duchenne muscular dystrophy dystrophin inflammation NF-kB macrophage fibrosis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "35149132",
+    "34078746",
+    "32508664",
+    "37284446",
+    "28706906",
+    "37364421",
+    "41124255",
+    "29894670",
+    "40948348",
+    "40244022",
+    "41235339",
+    "38278025",
+    "3319190",
+    "39034316",
+    "39723578",
+    "37032509",
+    "40986346",
+    "41238533",
+    "11834588",
+    "12206793",
+    "30476171",
+    "40896584",
+    "22344059",
+    "28045398",
+    "27702700",
+    "39804962",
+    "20471889",
+    "35293669",
+    "30165972",
+    "12957434",
+    "30711692",
+    "31612076"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "30165972",
+        "score": 0.5284125405985337
+      },
+      {
+        "pmid": "39034316",
+        "score": 0.4890158947794283
+      },
+      {
+        "pmid": "11834588",
+        "score": 0.48839579316062565
+      },
+      {
+        "pmid": "37032509",
+        "score": 0.4842825952455879
+      },
+      {
+        "pmid": "41238533",
+        "score": 0.48218909478605587
+      },
+      {
+        "pmid": "32508664",
+        "score": 0.48196089861381936
+      },
+      {
+        "pmid": "40896584",
+        "score": 0.4815894376742822
+      },
+      {
+        "pmid": "34078746",
+        "score": 0.48139222221125505
+      },
+      {
+        "pmid": "41124255",
+        "score": 0.4773094172444833
+      },
+      {
+        "pmid": "29894670",
+        "score": 0.47319876952416906
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "30165972",
+        "score": 0.5284125405985337
+      },
+      {
+        "pmid": "39034316",
+        "score": 0.4890158947794283
+      },
+      {
+        "pmid": "11834588",
+        "score": 0.48839579316062565
+      },
+      {
+        "pmid": "37032509",
+        "score": 0.4842825952455879
+      },
+      {
+        "pmid": "41238533",
+        "score": 0.48218909478605587
+      },
+      {
+        "pmid": "32508664",
+        "score": 0.48196089861381936
+      },
+      {
+        "pmid": "40896584",
+        "score": 0.4815894376742822
+      },
+      {
+        "pmid": "34078746",
+        "score": 0.48139222221125505
+      },
+      {
+        "pmid": "41124255",
+        "score": 0.4773094172444833
+      },
+      {
+        "pmid": "29894670",
+        "score": 0.47319876952416906
+      }
+    ]
+  },
+  "answers": {},
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 0.000111408531665802,
+    "vector_index": 2.5931191742420197,
+    "total": 3.263610579073429
+  },
+  "token_usage": {},
+  "completed_at": "2026-08-09T19:09:49.591336+00:00"
+}

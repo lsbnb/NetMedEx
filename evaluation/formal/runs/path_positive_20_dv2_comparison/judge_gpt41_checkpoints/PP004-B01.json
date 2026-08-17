@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP004",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "a4985358c878814856c8bebbd31a98ad5b027222a1f901f3358a4cc231a0e24b",
+  "raw_response_sha256": "ac80eb66c8a6c079164be398f89c431ca1cf53625648163b0917254b7fd4c2f1",
+  "usage": {
+    "input_tokens": 2946,
+    "output_tokens": 452,
+    "total_tokens": 3398
+  },
+  "rated_at": "2026-08-13T07:09:26.178988+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP004-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, well-grounded, distinguishes animal/human, details limitations, and provides mechanistic and translational context."
+      },
+      {
+        "answer_id": "PP004-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate, well-referenced, clearly separates evidence types, and discusses mechanistic and translational limitations."
+      },
+      {
+        "answer_id": "PP004-C",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Accurate and well-grounded but less detail on therapeutic evidence and mechanistic nuance than A/B."
+      },
+      {
+        "answer_id": "PP004-D",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Accurate, well-grounded, but slightly less detailed on limitations and human translational context than A/B."
+      }
+    ],
+    "preferred_item_id": "tie",
+    "pairwise_reason": "A and B are equally strong: both provide comprehensive, well-referenced, mechanistically coherent, and nuanced answers with clear distinction of evidence types and limitations. C and D are strong but less complete."
+  }
+}

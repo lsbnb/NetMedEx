@@ -1,0 +1,188 @@
+{
+  "status": "complete",
+  "question_id": "PP005",
+  "domain": "oncology",
+  "question": "What evidence supports the claim that metformin associated_with malignancy, and what are the important study-context limitations?",
+  "question_type": "mechanism",
+  "pubmed_query": "metformin AMPK mTOR cancer apoptosis proliferation",
+  "effective_pubmed_query": "metformin AMPK mTOR cancer apoptosis proliferation",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "24009772",
+    "24750786",
+    "25710562",
+    "26277279",
+    "29167573",
+    "29662316",
+    "30445633",
+    "31205529",
+    "33886150",
+    "34062070",
+    "34576192",
+    "35072253",
+    "35731713",
+    "37371530",
+    "40140842"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports the claim that metformin associated_with malignancy, and what are the important study-context limitations?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "35072253",
+        "score": 0.5901113219754985
+      },
+      {
+        "pmid": "29167573",
+        "score": 0.5661660653669234
+      },
+      {
+        "pmid": "26277279",
+        "score": 0.5421098967371007
+      },
+      {
+        "pmid": "31205529",
+        "score": 0.5130344451545963
+      },
+      {
+        "pmid": "33886150",
+        "score": 0.512666992774535
+      },
+      {
+        "pmid": "37371530",
+        "score": 0.506625927746597
+      },
+      {
+        "pmid": "29662316",
+        "score": 0.4940480302617234
+      },
+      {
+        "pmid": "30445633",
+        "score": 0.49352324168319467
+      },
+      {
+        "pmid": "34062070",
+        "score": 0.49342381604366425
+      },
+      {
+        "pmid": "24009772",
+        "score": 0.49075455708165183
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "35072253",
+        "score": 0.5901113219754985
+      },
+      {
+        "pmid": "29167573",
+        "score": 0.5661660653669234
+      },
+      {
+        "pmid": "26277279",
+        "score": 0.5421098967371007
+      },
+      {
+        "pmid": "31205529",
+        "score": 0.5130344451545963
+      },
+      {
+        "pmid": "33886150",
+        "score": 0.512666992774535
+      },
+      {
+        "pmid": "37371530",
+        "score": 0.506625927746597
+      },
+      {
+        "pmid": "29662316",
+        "score": 0.4940480302617234
+      },
+      {
+        "pmid": "30445633",
+        "score": 0.49352324168319467
+      },
+      {
+        "pmid": "34062070",
+        "score": 0.49342381604366425
+      },
+      {
+        "pmid": "24009772",
+        "score": 0.49075455708165183
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Evidence that metformin is associated with malignancy (generally a reduced cancer risk or better outcomes)**  \n\n- **Human epidemiology/association** – Retrospective cohort analyses repeatedly link metformin use with lower cancer incidence and cancer‑related mortality across multiple tumor sites【PMID:26277279】. A narrative review of pre‑clinical, epidemiologic and clinical studies in women further reports consistent reductions in the incidence, morbidity and mortality of breast, endometrial, ovarian and cervical cancers among metformin‑treated diabetic patients【PMID:35072253】.  \n\n- **Animal chemoprevention** – In a rat model of esophageal squamous cell carcinoma induced by N‑nitroso‑N‑methylbenzylamine, metformin markedly decreased tumor incidence and precancerous lesions, indicating in‑vivo anti‑carcinogenic activity【PMID:30445633】.  \n\n- **In‑vitro mechanistic support (human cancer cells)** – Metformin transiently arrests colorectal cancer cell proliferation via AMPK activation or ROS‑mediated mTOR inhibition, reduces stem‑cell markers (CD44, LGR5) and impairs colony formation, providing a biologic basis that could translate to reduced malignancy risk【PMID:29167573】. Similar anti‑proliferative and pro‑apoptotic effects are observed in bile‑duct, pancreatic, cervical and acute lymphoblastic leukemia cell lines through AMPK/mTOR and IGF‑1R pathways【PMIDs:31205529,33886150,37371530,24009772】.  \n\n**Key study‑context limitations**  \n\n- **Retrospective design & confounding** – Observational cohorts cannot fully separate metformin’s effect from diabetes severity, concomitant medications, lifestyle factors, or health‑care access; selection bias may inflate apparent protective associations【PMID:26277279】.  \n- **Population restriction** – Most human data derive from diabetic patients; it is unclear whether the same risk reduction applies to non‑diabetic individuals.  \n- **Heterogeneity of cancers** – Evidence spans diverse tumor types with different biology; pooled analyses may mask site‑specific effects.  \n- **In‑vitro concentration mismatch** – Many cell‑culture studies employ metformin concentrations (10–30 mM) far above therapeutic plasma levels (~10–40 µM), raising questions about physiological relevance【PMID:26277279】.  \n- **Hyperglycemia‑dependent attenuation** – Experimental data show that high glucose blunts AMPK activation and IGF‑1R inhibition by metformin, suggesting that metabolic context critically influences efficacy【PMID:31205529】.  \n\n**Conclusion** – Human observational data and animal models suggest that metformin use is linked to reduced cancer risk or improved outcomes, but the evidence is limited by retrospective designs, population confounding, dosing disparities, and tumor heterogeneity."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 3.528594970703125e-05,
+    "vector_index": 1.9200010672211647,
+    "kg_expansion": 1.31949782371521e-05,
+    "answer_traditional_rag": 30.7224690169096,
+    "total": 33.29759657382965
+  },
+  "token_usage": {
+    "total_tokens": 5061,
+    "output_tokens": 1105,
+    "input_tokens": 3956
+  },
+  "completed_at": "2026-08-13T05:49:46.102595+00:00"
+}

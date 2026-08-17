@@ -1,0 +1,3699 @@
+{
+  "status": "complete",
+  "question_id": "Q004",
+  "domain": "cancer",
+  "question": "Which genes mediate a possible 2-hop path between curcumin and apoptosis?",
+  "question_type": "two_hop_path",
+  "pubmed_query": "curcumin AND apoptosis AND cancer AND (gene OR pathway)",
+  "effective_pubmed_query": "curcumin AND apoptosis AND cancer AND (gene OR pathway)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "15810876",
+    "29693253",
+    "30623450",
+    "30725357",
+    "31590362",
+    "32519340",
+    "35722665",
+    "37776274",
+    "38031951",
+    "38166505",
+    "38269517",
+    "38699926",
+    "39219410",
+    "41109942",
+    "41252742"
+  ],
+  "graph": {
+    "node_count": 40,
+    "edge_count": 51,
+    "path_count": 2,
+    "pre_gate_candidate_count": 29,
+    "pre_gate_candidates": [
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "a006a4b7863cef84fc2ea833257b659e8d891d85"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "MESH:D009369_Disease"
+        ],
+        "names": [
+          "curcumin",
+          "cancer"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "Cancer",
+            "Tumor",
+            "cancer",
+            "cancers",
+            "malignancies",
+            "malignant tumor",
+            "malignant tumors",
+            "tumor",
+            "tumors",
+            "tumour"
+          ]
+        ],
+        "relations": [
+          "suppresses"
+        ],
+        "edge_pmids": [
+          [
+            "29693253"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin exerts its anti-cancer effect by suppressing the initiation, progression, and metastasis of a variety of cancers and appears to inhibit carcinogenesis by affecting two main processes: angiogenesis and tumor growth."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "suppresses",
+            "selected_pmid": "29693253",
+            "selected_quote": "Curcumin exerts its anti-cancer effect by suppressing the initiation, progression, and metastasis of a variety of cancers and appears to inhibit carcinogenesis by affecting two main processes: angiogenesis and tumor growth.",
+            "selected_confidence": 0.94,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "f9d66a3a46c17c7050aca64a3adafacd2b1ad095",
+              "schema_version": 1,
+              "pmid": "29693253",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "MESH:D009369_Disease",
+              "relation": "suppresses",
+              "evidence": "Curcumin exerts its anti-cancer effect by suppressing the initiation, progression, and metastasis of a variety of cancers and appears to inhibit carcinogenesis by affecting two main processes: angiogenesis and tumor growth.",
+              "confidence": 0.94,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 1.035,
+        "base_score": 1.035,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 1,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "973affdc41d637e9"
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "4e994f6622154685932c37183c71af853f967773"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "GO:0006915_BiologicalProcess"
+        ],
+        "names": [
+          "curcumin",
+          "apoptosis"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "Apoptosis",
+            "apoptosis",
+            "apoptosis signaling"
+          ]
+        ],
+        "relations": [
+          "induces"
+        ],
+        "edge_pmids": [
+          [
+            "32519340"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin also can induce autophagy, apoptosis, and cell cycle arrest to reduce the viability and proliferation of lung cancer cells."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "induces",
+            "selected_pmid": "32519340",
+            "selected_quote": "Curcumin also can induce autophagy, apoptosis, and cell cycle arrest to reduce the viability and proliferation of lung cancer cells.",
+            "selected_confidence": 0.97,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "731df76f0afd84dc4252b0497fee2852011fda72",
+              "schema_version": 1,
+              "pmid": "32519340",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "GO:0006915_BiologicalProcess",
+              "relation": "induces",
+              "evidence": "Curcumin also can induce autophagy, apoptosis, and cell cycle arrest to reduce the viability and proliferation of lung cancer cells.",
+              "confidence": 0.97,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 1.029,
+        "base_score": 0.949,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": true,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 2,
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "f304e9bf2cf16017",
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": []
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "1aeec1f954cb4b36fa773afe64433721a2d6999b"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "GO:0023052_BiologicalProcess"
+        ],
+        "names": [
+          "curcumin",
+          "signaling"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "signaling",
+            "signalling"
+          ]
+        ],
+        "relations": [
+          "targets"
+        ],
+        "edge_pmids": [
+          [
+            "31590362"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The present review focuses on the cell signaling pathways involved in cancer development and proliferation, and which are targeted by curcumin."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "targets",
+            "selected_pmid": "31590362",
+            "selected_quote": "The present review focuses on the cell signaling pathways involved in cancer development and proliferation, and which are targeted by curcumin.",
+            "selected_confidence": 0.93,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "afac724d489a72024617595de22bb11d04a95c75",
+              "schema_version": 1,
+              "pmid": "31590362",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "GO:0023052_BiologicalProcess",
+              "relation": "targets",
+              "evidence": "The present review focuses on the cell signaling pathways involved in cancer development and proliferation, and which are targeted by curcumin.",
+              "confidence": 0.93,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.949,
+        "base_score": 0.949,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 3,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "cf6fe0fbd2d401af"
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "57fe186ed1cefb0f04ec39da53554d88defad20f"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "R-HSA-109581_Pathway"
+        ],
+        "names": [
+          "curcumin",
+          "apoptosis"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "Apoptosis",
+            "apoptosis"
+          ]
+        ],
+        "relations": [
+          "induces"
+        ],
+        "edge_pmids": [
+          [
+            "38269517"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin can target multiple signaling pathways involved in cancer development/progression or induce cancer cell death through apoptosis."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "induces",
+            "selected_pmid": "38269517",
+            "selected_quote": "Curcumin can target multiple signaling pathways involved in cancer development/progression or induce cancer cell death through apoptosis.",
+            "selected_confidence": 0.86,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "6fe146cdbd44fea13d730ecba153078a3d02b236",
+              "schema_version": 1,
+              "pmid": "38269517",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "R-HSA-109581_Pathway",
+              "relation": "induces",
+              "evidence": "Curcumin can target multiple signaling pathways involved in cancer development/progression or induce cancer cell death through apoptosis.",
+              "confidence": 0.86,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.947,
+        "base_score": 0.867,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": true,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 4,
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "e2e3629b23a98a25",
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "support_outside_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [
+          "38269517"
+        ]
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "2ba06ca52b9b6352652457021f73522a4e6b7888"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "MESH:D007249_Disease"
+        ],
+        "names": [
+          "curcumin",
+          "inflammatory"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "inflammatory"
+          ]
+        ],
+        "relations": [
+          "ameliorates"
+        ],
+        "edge_pmids": [
+          [
+            "32519340"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin is a naturally occurring nutraceutical compound derived from Curcuma longa (turmeric) that has great pharmacological effects, such as anti-inflammatory, neuroprotective, and antidiabetic."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "ameliorates",
+            "selected_pmid": "32519340",
+            "selected_quote": "Curcumin is a naturally occurring nutraceutical compound derived from Curcuma longa (turmeric) that has great pharmacological effects, such as anti-inflammatory, neuroprotective, and antidiabetic.",
+            "selected_confidence": 0.71,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "e809fed18bb3d59ad70cf8df2317a8cbfae11c9e",
+              "schema_version": 1,
+              "pmid": "32519340",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "MESH:D007249_Disease",
+              "relation": "ameliorates",
+              "evidence": "Curcumin is a naturally occurring nutraceutical compound derived from Curcuma longa (turmeric) that has great pharmacological effects, such as anti-inflammatory, neuroprotective, and antidiabetic.",
+              "confidence": 0.71,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.909,
+        "base_score": 0.909,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 5,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "8efcff0c709e7f10"
+      },
+      {
+        "path": [
+          "57fe186ed1cefb0f04ec39da53554d88defad20f",
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2"
+        ],
+        "node_ids": [
+          "R-HSA-109581_Pathway",
+          "MESH:D003474_Chemical"
+        ],
+        "names": [
+          "apoptosis",
+          "curcumin"
+        ],
+        "node_aliases": [
+          [
+            "Apoptosis",
+            "apoptosis"
+          ],
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ]
+        ],
+        "relations": [
+          "induces"
+        ],
+        "edge_pmids": [
+          [
+            "38269517"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin can target multiple signaling pathways involved in cancer development/progression or induce cancer cell death through apoptosis."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "induces",
+            "selected_pmid": "38269517",
+            "selected_quote": "Curcumin can target multiple signaling pathways involved in cancer development/progression or induce cancer cell death through apoptosis.",
+            "selected_confidence": 0.86,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "6fe146cdbd44fea13d730ecba153078a3d02b236",
+              "schema_version": 1,
+              "pmid": "38269517",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "R-HSA-109581_Pathway",
+              "relation": "induces",
+              "evidence": "Curcumin can target multiple signaling pathways involved in cancer development/progression or induce cancer cell death through apoptosis.",
+              "confidence": 0.86,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.867,
+        "base_score": 0.867,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 6,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "43b3cbfcd91c257f"
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "7e4687a144ba587a566c57e2dcdff0cfc664c83b"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "MESH:D009362_Disease"
+        ],
+        "names": [
+          "curcumin",
+          "metastasis"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "Metastasis",
+            "metastasis"
+          ]
+        ],
+        "relations": [
+          "suppresses"
+        ],
+        "edge_pmids": [
+          [
+            "29693253"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin exerts its anti-cancer effect by suppressing the initiation, progression, and metastasis of a variety of cancers and appears to inhibit carcinogenesis by affecting two main processes: angiogenesis and tumor growth."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "suppresses",
+            "selected_pmid": "29693253",
+            "selected_quote": "Curcumin exerts its anti-cancer effect by suppressing the initiation, progression, and metastasis of a variety of cancers and appears to inhibit carcinogenesis by affecting two main processes: angiogenesis and tumor growth.",
+            "selected_confidence": 0.97,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "086e569b2158f1433c871fca0baeca6c03d16505",
+              "schema_version": 1,
+              "pmid": "29693253",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "MESH:D009362_Disease",
+              "relation": "suppresses",
+              "evidence": "Curcumin exerts its anti-cancer effect by suppressing the initiation, progression, and metastasis of a variety of cancers and appears to inhibit carcinogenesis by affecting two main processes: angiogenesis and tumor growth.",
+              "confidence": 0.97,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.855,
+        "base_score": 0.855,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 7,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "9643e64429f64e3a"
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "53fd12e53e45537b22e0fd2d5a435c5241bc1903"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "GO:0001525_BiologicalProcess"
+        ],
+        "names": [
+          "curcumin",
+          "angiogenesis"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "angiogenesis"
+          ]
+        ],
+        "relations": [
+          "inhibits"
+        ],
+        "edge_pmids": [
+          [
+            "30725357"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "These results suggested that curcumin can suppress multiple signaling pathways and inhibit cancer cell proliferation, invasion, metastasis, and angiogenesis."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "inhibits",
+            "selected_pmid": "30725357",
+            "selected_quote": "These results suggested that curcumin can suppress multiple signaling pathways and inhibit cancer cell proliferation, invasion, metastasis, and angiogenesis.",
+            "selected_confidence": 0.94,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "6de960cdfc21dae31a69bbafd9c0f465724c8c66",
+              "schema_version": 1,
+              "pmid": "30725357",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "GO:0001525_BiologicalProcess",
+              "relation": "inhibits",
+              "evidence": "These results suggested that curcumin can suppress multiple signaling pathways and inhibit cancer cell proliferation, invasion, metastasis, and angiogenesis.",
+              "confidence": 0.94,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.784,
+        "base_score": 0.784,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 8,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "b1535f693d99dcc2"
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "5cf1d4040429488e008abd0f679408c554dd1f4d"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "GO:0016049_BiologicalProcess"
+        ],
+        "names": [
+          "curcumin",
+          "cell growth"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "cell growth"
+          ]
+        ],
+        "relations": [
+          "inhibits"
+        ],
+        "edge_pmids": [
+          [
+            "38166505"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin, an antitumor agent, has been shown to inhibit cell growth and metastasis in osteosarcoma."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "inhibits",
+            "selected_pmid": "38166505",
+            "selected_quote": "Curcumin, an antitumor agent, has been shown to inhibit cell growth and metastasis in osteosarcoma.",
+            "selected_confidence": 0.96,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "668cba48d0efa0d160e3441aede98d310321740b",
+              "schema_version": 1,
+              "pmid": "38166505",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "GO:0016049_BiologicalProcess",
+              "relation": "inhibits",
+              "evidence": "Curcumin, an antitumor agent, has been shown to inhibit cell growth and metastasis in osteosarcoma.",
+              "confidence": 0.96,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.784,
+        "base_score": 0.784,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 9,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "52254acb062a776c"
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "1ba87c0716dfbf21f07e8a44e56391d6696cdc43"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "MESH:D008175_Disease"
+        ],
+        "names": [
+          "curcumin",
+          "lung cancer"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "Lung cancer",
+            "lung cancer"
+          ]
+        ],
+        "relations": [
+          "treats"
+        ],
+        "edge_pmids": [
+          [
+            "32519340"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "In the present review, we describe the antitumor activity of curcumin against lung cancer."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "treats",
+            "selected_pmid": "32519340",
+            "selected_quote": "In the present review, we describe the antitumor activity of curcumin against lung cancer.",
+            "selected_confidence": 0.94,
+            "directional": true,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.765,
+        "base_score": 0.765,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 10,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "079f89db00014a59"
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "094753b38c2b6eb44fdafff79e76f6f04556e4dd"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "MESH:D063646_Disease"
+        ],
+        "names": [
+          "curcumin",
+          "carcinogenesis"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "carcinogenesis"
+          ]
+        ],
+        "relations": [
+          "inhibits"
+        ],
+        "edge_pmids": [
+          [
+            "29693253"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin exerts its anti-cancer effect by suppressing the initiation, progression, and metastasis of a variety of cancers and appears to inhibit carcinogenesis by affecting two main processes: angiogenesis and tumor growth."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "inhibits",
+            "selected_pmid": "29693253",
+            "selected_quote": "Curcumin exerts its anti-cancer effect by suppressing the initiation, progression, and metastasis of a variety of cancers and appears to inhibit carcinogenesis by affecting two main processes: angiogenesis and tumor growth.",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "3e60b87cd44caf0a9931dfd9cc53afa5ce955ded",
+              "schema_version": 1,
+              "pmid": "29693253",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "MESH:D063646_Disease",
+              "relation": "inhibits",
+              "evidence": "Curcumin exerts its anti-cancer effect by suppressing the initiation, progression, and metastasis of a variety of cancers and appears to inhibit carcinogenesis by affecting two main processes: angiogenesis and tumor growth.",
+              "confidence": 0.95,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.765,
+        "base_score": 0.765,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 11,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "67ba95c0eaa3c52b"
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "db7a90db7481aed926f8d24fe673c76fb01b4f8f"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "MESH:D013274_Disease"
+        ],
+        "names": [
+          "curcumin",
+          "gastric cancer"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "Gastric Cancer",
+            "Gastric cancer",
+            "gastric cancer"
+          ]
+        ],
+        "relations": [
+          "inhibits"
+        ],
+        "edge_pmids": [
+          [
+            "30725357"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "According to the studies, curcumin can inhibit gastric cancer by several mechanisms including decreasing proliferation, inducing apoptosis, and reducing chemo-resistance in gastric cancer cells."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "inhibits",
+            "selected_pmid": "30725357",
+            "selected_quote": "According to the studies, curcumin can inhibit gastric cancer by several mechanisms including decreasing proliferation, inducing apoptosis, and reducing chemo-resistance in gastric cancer cells.",
+            "selected_confidence": 0.91,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "3174517ad0780a50202e907a84e08c530ee2f095",
+              "schema_version": 1,
+              "pmid": "30725357",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "MESH:D013274_Disease",
+              "relation": "inhibits",
+              "evidence": "According to the studies, curcumin can inhibit gastric cancer by several mechanisms including decreasing proliferation, inducing apoptosis, and reducing chemo-resistance in gastric cancer cells.",
+              "confidence": 0.91,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.724,
+        "base_score": 0.724,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 12,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "f2ca8f6bf28a0c80"
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "a76a4b73bfb8339bf70df3945b155a9fec27a208"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "GO:0006914_BiologicalProcess"
+        ],
+        "names": [
+          "curcumin",
+          "autophagy"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "Autophagy",
+            "autophagy"
+          ]
+        ],
+        "relations": [
+          "induces"
+        ],
+        "edge_pmids": [
+          [
+            "32519340"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin also can induce autophagy, apoptosis, and cell cycle arrest to reduce the viability and proliferation of lung cancer cells."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "induces",
+            "selected_pmid": "32519340",
+            "selected_quote": "Curcumin also can induce autophagy, apoptosis, and cell cycle arrest to reduce the viability and proliferation of lung cancer cells.",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "9b7a48d5ac09021a1345f4a3ad809cc50254d43c",
+              "schema_version": 1,
+              "pmid": "32519340",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "GO:0006914_BiologicalProcess",
+              "relation": "induces",
+              "evidence": "Curcumin also can induce autophagy, apoptosis, and cell cycle arrest to reduce the viability and proliferation of lung cancer cells.",
+              "confidence": 0.95,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.702,
+        "base_score": 0.702,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 13,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "24756659a12c712e"
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "985a218b3d34344dbe8ab623bf1e6d4da6bb8065"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "GO:0008219_BiologicalProcess"
+        ],
+        "names": [
+          "curcumin",
+          "cell death"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "cell death"
+          ]
+        ],
+        "relations": [
+          "induces"
+        ],
+        "edge_pmids": [
+          [
+            "38269517"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin can target multiple signaling pathways involved in cancer development/progression or induce cancer cell death through apoptosis."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "induces",
+            "selected_pmid": "38269517",
+            "selected_quote": "Curcumin can target multiple signaling pathways involved in cancer development/progression or induce cancer cell death through apoptosis.",
+            "selected_confidence": 0.92,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "052644c14a6a65cf59ebb93d9c6503a5928f9f58",
+              "schema_version": 1,
+              "pmid": "38269517",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "GO:0008219_BiologicalProcess",
+              "relation": "induces",
+              "evidence": "Curcumin can target multiple signaling pathways involved in cancer development/progression or induce cancer cell death through apoptosis.",
+              "confidence": 0.92,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.702,
+        "base_score": 0.702,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 14,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "b98e802def9360ca"
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "b17953a2a4d7f3af0683ba26d7fcdb3189364702"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "GO:0008283_BiologicalProcess"
+        ],
+        "names": [
+          "curcumin",
+          "cell proliferation"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "cell proliferation"
+          ]
+        ],
+        "relations": [
+          "inhibits"
+        ],
+        "edge_pmids": [
+          [
+            "30725357"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "These results suggested that curcumin can suppress multiple signaling pathways and inhibit cancer cell proliferation, invasion, metastasis, and angiogenesis."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "inhibits",
+            "selected_pmid": "30725357",
+            "selected_quote": "These results suggested that curcumin can suppress multiple signaling pathways and inhibit cancer cell proliferation, invasion, metastasis, and angiogenesis.",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "d3da9fce44510f7ec5b438c44ff069e710213524",
+              "schema_version": 1,
+              "pmid": "30725357",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "GO:0008283_BiologicalProcess",
+              "relation": "inhibits",
+              "evidence": "These results suggested that curcumin can suppress multiple signaling pathways and inhibit cancer cell proliferation, invasion, metastasis, and angiogenesis.",
+              "confidence": 0.95,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.702,
+        "base_score": 0.702,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 15,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "a7547975a9411265"
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "9d46254d1caf4b7a49cd0ad9ba9ed6d1498ee6ce"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "GO:0051726_BiologicalProcess"
+        ],
+        "names": [
+          "curcumin",
+          "cell cycle arrest"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "cell cycle arrest"
+          ]
+        ],
+        "relations": [
+          "induces"
+        ],
+        "edge_pmids": [
+          [
+            "32519340"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin also can induce autophagy, apoptosis, and cell cycle arrest to reduce the viability and proliferation of lung cancer cells."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "induces",
+            "selected_pmid": "32519340",
+            "selected_quote": "Curcumin also can induce autophagy, apoptosis, and cell cycle arrest to reduce the viability and proliferation of lung cancer cells.",
+            "selected_confidence": 0.97,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "abafae34e34852b8b1fcc4d0f1959fdc96aa4940",
+              "schema_version": 1,
+              "pmid": "32519340",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "GO:0051726_BiologicalProcess",
+              "relation": "induces",
+              "evidence": "Curcumin also can induce autophagy, apoptosis, and cell cycle arrest to reduce the viability and proliferation of lung cancer cells.",
+              "confidence": 0.97,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.702,
+        "base_score": 0.702,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 16,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "50bdcbb3396d7f0b"
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "133aba0252bcdf25b28f6d7b27443d253f5009cd"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "map04151_Pathway"
+        ],
+        "names": [
+          "curcumin",
+          "pi3k/akt pathway"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "PI3K/AKT pathway",
+            "PI3K/AKT/mTOR pathway",
+            "PI3K/Akt/mTOR"
+          ]
+        ],
+        "relations": [
+          "targets"
+        ],
+        "edge_pmids": [
+          [
+            "29693253"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "In the current review, we focus upon curcumin's targeting of PI3K/AKT in different malignancies to effect inhibition of cancer development and progression."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "targets",
+            "selected_pmid": "29693253",
+            "selected_quote": "In the current review, we focus upon curcumin's targeting of PI3K/AKT in different malignancies to effect inhibition of cancer development and progression.",
+            "selected_confidence": 0.98,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "ab1a6d87cd2e739896d4256cb446d925adec153f",
+              "schema_version": 1,
+              "pmid": "29693253",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "map04151_Pathway",
+              "relation": "targets",
+              "evidence": "In the current review, we focus upon curcumin's targeting of PI3K/AKT in different malignancies to effect inhibition of cancer development and progression.",
+              "confidence": 0.98,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.702,
+        "base_score": 0.702,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 17,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "df2ca2f17a273f80"
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "65751c7d51c59f5bd089d3ce165a70801ce2c06a"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "MESH:D015179_Disease"
+        ],
+        "names": [
+          "curcumin",
+          "crc"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "CRC",
+            "Colon Cancer",
+            "Colorectal cancer",
+            "colon cancer",
+            "colorectal cancer"
+          ]
+        ],
+        "relations": [
+          "suppresses"
+        ],
+        "edge_pmids": [
+          [
+            "38031951"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          []
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "suppresses",
+            "selected_pmid": "38031951",
+            "selected_quote": null,
+            "selected_confidence": 0.78,
+            "directional": true,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_missing",
+              "confidence_present",
+              "directional_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.697,
+        "base_score": 0.697,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 18,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "c0afa126a70fd0d9"
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "1e6d6489a25aeab09e44ce27c47405fe6f630f19"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "HP:0002664_Phenotype"
+        ],
+        "names": [
+          "curcumin",
+          "tumor"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "Tumor",
+            "tumor",
+            "tumour"
+          ]
+        ],
+        "relations": [
+          "targets"
+        ],
+        "edge_pmids": [
+          [
+            "38269517"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin is a natural compound derived from turmeric and can target malignant tumor molecules involved in cancer propagation."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "targets",
+            "selected_pmid": "38269517",
+            "selected_quote": "Curcumin is a natural compound derived from turmeric and can target malignant tumor molecules involved in cancer propagation.",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "07db73929017bbd76a2efbf0ccef2705d224bb53",
+              "schema_version": 1,
+              "pmid": "38269517",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "HP:0002664_Phenotype",
+              "relation": "targets",
+              "evidence": "Curcumin is a natural compound derived from turmeric and can target malignant tumor molecules involved in cancer propagation.",
+              "confidence": 0.9,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.697,
+        "base_score": 0.697,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 19,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "75fcc70ed3ad391b"
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "cece856dd18a285d0327d6b5dbd38cb96811c15d"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "HP:0012126_Phenotype"
+        ],
+        "names": [
+          "curcumin",
+          "gastric cancer"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "Gastric Cancer",
+            "Gastric cancer",
+            "gastric cancer"
+          ]
+        ],
+        "relations": [
+          "inhibits"
+        ],
+        "edge_pmids": [
+          [
+            "30725357"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "According to the studies, curcumin can inhibit gastric cancer by several mechanisms including decreasing proliferation, inducing apoptosis, and reducing chemo-resistance in gastric cancer cells."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "inhibits",
+            "selected_pmid": "30725357",
+            "selected_quote": "According to the studies, curcumin can inhibit gastric cancer by several mechanisms including decreasing proliferation, inducing apoptosis, and reducing chemo-resistance in gastric cancer cells.",
+            "selected_confidence": 0.88,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "8210106e1f4d98698e15fd76a1471baa3f77ece0",
+              "schema_version": 1,
+              "pmid": "30725357",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "HP:0012126_Phenotype",
+              "relation": "inhibits",
+              "evidence": "According to the studies, curcumin can inhibit gastric cancer by several mechanisms including decreasing proliferation, inducing apoptosis, and reducing chemo-resistance in gastric cancer cells.",
+              "confidence": 0.88,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.687,
+        "base_score": 0.687,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 20,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "f2ca8f6bf28a0c80"
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "b1653232a0c925e8c576a8f14d4c96905c8b50c3"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "114548_Gene"
+        ],
+        "names": [
+          "curcumin",
+          "nlrp3"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "NLRP3"
+          ]
+        ],
+        "relations": [
+          "activates"
+        ],
+        "edge_pmids": [
+          [
+            "38031951"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          []
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "activates",
+            "selected_pmid": "38031951",
+            "selected_quote": null,
+            "selected_confidence": 0.75,
+            "directional": true,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_missing",
+              "confidence_present",
+              "directional_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.681,
+        "base_score": 0.681,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 21,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "path_signature": "b981910000959f2f"
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "fe72570b722860e343a7fb1508f8b809bd2b3483"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "GO:0032502_BiologicalProcess"
+        ],
+        "names": [
+          "curcumin",
+          "development"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "development"
+          ]
+        ],
+        "relations": [
+          "inhibits"
+        ],
+        "edge_pmids": [
+          [
+            "29693253"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "In the current review, we focus upon curcumin's targeting of PI3K/AKT in different malignancies to effect inhibition of cancer development and progression."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "inhibits",
+            "selected_pmid": "29693253",
+            "selected_quote": "In the current review, we focus upon curcumin's targeting of PI3K/AKT in different malignancies to effect inhibition of cancer development and progression.",
+            "selected_confidence": 0.83,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "601d726f3c2e658d68637d7016455f3f131cb736",
+              "schema_version": 1,
+              "pmid": "29693253",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "GO:0032502_BiologicalProcess",
+              "relation": "inhibits",
+              "evidence": "In the current review, we focus upon curcumin's targeting of PI3K/AKT in different malignancies to effect inhibition of cancer development and progression.",
+              "confidence": 0.83,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.663,
+        "base_score": 0.663,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 22,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "path_signature": "ec8feca84adf43b5"
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "76a14bf8d0aa45ac9ed22cff2ea2d28d15cfa3c1"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "GO:0040007_BiologicalProcess"
+        ],
+        "names": [
+          "curcumin",
+          "growth"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "growth"
+          ]
+        ],
+        "relations": [
+          "inhibits"
+        ],
+        "edge_pmids": [
+          [
+            "29693253"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin exerts its anti-cancer effect by suppressing the initiation, progression, and metastasis of a variety of cancers and appears to inhibit carcinogenesis by affecting two main processes: angiogenesis and tumor growth."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "inhibits",
+            "selected_pmid": "29693253",
+            "selected_quote": "Curcumin exerts its anti-cancer effect by suppressing the initiation, progression, and metastasis of a variety of cancers and appears to inhibit carcinogenesis by affecting two main processes: angiogenesis and tumor growth.",
+            "selected_confidence": 0.83,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "fd709966e2b9952da95e13f068ca3579a3f9871b",
+              "schema_version": 1,
+              "pmid": "29693253",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "GO:0040007_BiologicalProcess",
+              "relation": "inhibits",
+              "evidence": "Curcumin exerts its anti-cancer effect by suppressing the initiation, progression, and metastasis of a variety of cancers and appears to inhibit carcinogenesis by affecting two main processes: angiogenesis and tumor growth.",
+              "confidence": 0.83,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.663,
+        "base_score": 0.663,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 23,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "path_signature": "bbe3d7048f6e73c3"
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "df61bbc0aed6fbbabe9cc1fc432aa981ba0417e7"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "phenolic_chemical"
+        ],
+        "names": [
+          "curcumin",
+          "phenolic"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "phenolic"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "41252742"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin, a highly hydrophobic phenolic compound, has demonstrated potent anticancer activity."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "41252742",
+            "selected_quote": "Curcumin, a highly hydrophobic phenolic compound, has demonstrated potent anticancer activity.",
+            "selected_confidence": 0.99,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.654,
+        "base_score": 0.654,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 24,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "path_signature": "c3f0fbfc0cb20b99"
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "e96e35bab38674a773e2395b9dd54720fe928ee5"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "polyphenolic compound_chemical"
+        ],
+        "names": [
+          "curcumin",
+          "polyphenolic compound"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "polyphenolic compound"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "29693253"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin, a polyphenolic compound derived from turmeric"
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "29693253",
+            "selected_quote": "Curcumin, a polyphenolic compound derived from turmeric",
+            "selected_confidence": 0.98,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.65,
+        "base_score": 0.65,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 25,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "path_signature": "871a5d006eb978ce"
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "8e477fd44483b9b6c3ad646430b10db8a4acd6c1"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "MESH:D059808_Chemical"
+        ],
+        "names": [
+          "curcumin",
+          "polyphenol"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "polyphenol"
+          ]
+        ],
+        "relations": [
+          "related_to"
+        ],
+        "edge_pmids": [
+          [
+            "31590362"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin, a polyphenol extracted from Curcuma longa in 1815"
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "related_to",
+            "selected_pmid": "31590362",
+            "selected_quote": "Curcumin, a polyphenol extracted from Curcuma longa in 1815",
+            "selected_confidence": 0.98,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.648,
+        "base_score": 0.648,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 26,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "path_signature": "a22366f5663a1833"
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "e4a12d8e53e9bd2abd03d1dace4a86884bdac506"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "pigment in_chemical"
+        ],
+        "names": [
+          "curcumin",
+          "pigment in"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "pigment in"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "15810876"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin (diferuloyl methane), the yellow pigment in turmeric (Curcuma longa)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "15810876",
+            "selected_quote": "Curcumin (diferuloyl methane), the yellow pigment in turmeric (Curcuma longa)",
+            "selected_confidence": 0.96,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.642,
+        "base_score": 0.642,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 27,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "path_signature": "1499105836813d48"
+      },
+      {
+        "path": [
+          "9f537742ccef93f2bd67b4a3b35346ad2c6b39f2",
+          "e2273e95e33d3b46b3f97ff361891f0036581ec8"
+        ],
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "MESH:C005466_Chemical"
+        ],
+        "names": [
+          "curcumin",
+          "ursolic acid"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "UA",
+            "ursolic acid"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "37776274"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Studies have pointed to a synergistic combination of curcumin (CURC) and ursolic acid (UA)."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "37776274",
+            "selected_quote": "Studies have pointed to a synergistic combination of curcumin (CURC) and ursolic acid (UA).",
+            "selected_confidence": 0.92,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.626,
+        "base_score": 0.626,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 28,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "path_signature": "fa55a863749cb570"
+      },
+      {
+        "path": [
+          "57fe186ed1cefb0f04ec39da53554d88defad20f",
+          "985a218b3d34344dbe8ab623bf1e6d4da6bb8065"
+        ],
+        "node_ids": [
+          "R-HSA-109581_Pathway",
+          "GO:0008219_BiologicalProcess"
+        ],
+        "names": [
+          "apoptosis",
+          "cell death"
+        ],
+        "node_aliases": [
+          [
+            "Apoptosis",
+            "apoptosis"
+          ],
+          [
+            "cell death"
+          ]
+        ],
+        "relations": [
+          "results_in"
+        ],
+        "edge_pmids": [
+          [
+            "38269517"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin can target multiple signaling pathways involved in cancer development/progression or induce cancer cell death through apoptosis."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "results_in",
+            "selected_pmid": "38269517",
+            "selected_quote": "Curcumin can target multiple signaling pathways involved in cancer development/progression or induce cancer cell death through apoptosis.",
+            "selected_confidence": 0.83,
+            "directional": true,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.603,
+        "base_score": 0.603,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "MESH:D003474_Chemical"
+          ],
+          "target_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "GO:0006915_BiologicalProcess",
+            "MESH:D003474_Chemical",
+            "R-HSA-109581_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 29,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "path_signature": "241f4fe6563b7b1f"
+      }
+    ],
+    "preferred_pmids": [
+      "32519340",
+      "38269517"
+    ],
+    "paths": [
+      {
+        "path_id": "Q004-P01",
+        "path_signature": "f304e9bf2cf16017",
+        "path_text": "curcumin ->[induces] apoptosis",
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "GO:0006915_BiologicalProcess"
+        ],
+        "names": [
+          "curcumin",
+          "apoptosis"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "Apoptosis",
+            "apoptosis",
+            "apoptosis signaling"
+          ]
+        ],
+        "relations": [
+          "induces"
+        ],
+        "edge_pmids": [
+          [
+            "32519340"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin also can induce autophagy, apoptosis, and cell cycle arrest to reduce the viability and proliferation of lung cancer cells."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "induces",
+            "selected_pmid": "32519340",
+            "selected_quote": "Curcumin also can induce autophagy, apoptosis, and cell cycle arrest to reduce the viability and proliferation of lung cancer cells.",
+            "selected_confidence": 0.97,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "731df76f0afd84dc4252b0497fee2852011fda72",
+              "schema_version": 1,
+              "pmid": "32519340",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "GO:0006915_BiologicalProcess",
+              "relation": "induces",
+              "evidence": "Curcumin also can induce autophagy, apoptosis, and cell cycle arrest to reduce the viability and proliferation of lung cancer cells.",
+              "confidence": 0.97,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 1.029,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q004-P02",
+        "path_signature": "e2e3629b23a98a25",
+        "path_text": "curcumin ->[induces] apoptosis",
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "R-HSA-109581_Pathway"
+        ],
+        "names": [
+          "curcumin",
+          "apoptosis"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "Apoptosis",
+            "apoptosis"
+          ]
+        ],
+        "relations": [
+          "induces"
+        ],
+        "edge_pmids": [
+          [
+            "38269517"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin can target multiple signaling pathways involved in cancer development/progression or induce cancer cell death through apoptosis."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "induces",
+            "selected_pmid": "38269517",
+            "selected_quote": "Curcumin can target multiple signaling pathways involved in cancer development/progression or induce cancer cell death through apoptosis.",
+            "selected_confidence": 0.86,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "6fe146cdbd44fea13d730ecba153078a3d02b236",
+              "schema_version": 1,
+              "pmid": "38269517",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "R-HSA-109581_Pathway",
+              "relation": "induces",
+              "evidence": "Curcumin can target multiple signaling pathways involved in cancer development/progression or induce cancer cell death through apoptosis.",
+              "confidence": 0.86,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 4,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "support_outside_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [
+          "38269517"
+        ],
+        "score": 0.947,
+        "hop_count": 1
+      }
+    ]
+  },
+  "evidence_exposure": {
+    "profile": "C_one_hop",
+    "label": "C. 1-hop Graph RAG",
+    "use_node_rag": true,
+    "max_hops": 1,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "gate_evidence_paths": false,
+    "gate_tier_counts": {
+      "A": 2,
+      "B": 0,
+      "C": 18
+    },
+    "rescue_triggered": false,
+    "rescue_added_paths": 0,
+    "rescue_outcomes": [
+      "not_needed"
+    ],
+    "pre_gate_candidate_count": 29,
+    "node_ids": [
+      "MESH:D003474_Chemical",
+      "R-HSA-109581_Pathway"
+    ],
+    "exposed_pmids": [
+      "32519340",
+      "38269517"
+    ],
+    "exposed_paths": [
+      [
+        "curcumin",
+        "apoptosis"
+      ],
+      [
+        "curcumin",
+        "apoptosis"
+      ]
+    ],
+    "exposed_edges": [
+      "curcumin ->[induces] apoptosis",
+      "curcumin ->[induces] apoptosis"
+    ],
+    "exposure_signature": "aa79243785fea0d6",
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 2,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {
+        "32519340": {
+          "text_score": 0.568149,
+          "graph_score": 1.0,
+          "reranked_score": 0.719297
+        },
+        "38269517": {
+          "text_score": 0.516396,
+          "graph_score": 0.947,
+          "reranked_score": 0.667107
+        }
+      }
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "32519340",
+        "score": 0.7192968848920861
+      },
+      {
+        "pmid": "38269517",
+        "score": 0.6671074727160331
+      },
+      {
+        "pmid": "15810876",
+        "score": 0.6283762240060298
+      },
+      {
+        "pmid": "30623450",
+        "score": 0.5989199374620973
+      },
+      {
+        "pmid": "38699926",
+        "score": 0.5920934711462523
+      },
+      {
+        "pmid": "31590362",
+        "score": 0.5889506597903633
+      },
+      {
+        "pmid": "38031951",
+        "score": 0.5878472991607736
+      },
+      {
+        "pmid": "29693253",
+        "score": 0.5629028543574971
+      },
+      {
+        "pmid": "38166505",
+        "score": 0.5339987675885987
+      },
+      {
+        "pmid": "30725357",
+        "score": 0.5255523475601428
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "15810876",
+        "score": 0.6283762240060298
+      },
+      {
+        "pmid": "30623450",
+        "score": 0.5989199374620973
+      },
+      {
+        "pmid": "38699926",
+        "score": 0.5920934711462523
+      },
+      {
+        "pmid": "31590362",
+        "score": 0.5889506597903633
+      },
+      {
+        "pmid": "38031951",
+        "score": 0.5878472991607736
+      },
+      {
+        "pmid": "32519340",
+        "score": 0.5681490536801325
+      },
+      {
+        "pmid": "29693253",
+        "score": 0.5629028543574971
+      },
+      {
+        "pmid": "38166505",
+        "score": 0.5339987675885987
+      },
+      {
+        "pmid": "30725357",
+        "score": 0.5255523475601428
+      },
+      {
+        "pmid": "41109942",
+        "score": 0.5241625285947177
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "## Direct evidence\n\n- Curcumin induces apoptosis in cancer cells, but the supplied evidence does not identify a complete gene-mediated 2-hop path [PMID: 32519340; PMID: 38269517].\n- In vitro, curcumin increased apoptosis in colorectal-cancer cell lines [PMID: 38031951].\n- In vitro and animal xenograft evidence links curcumin-induced apoptosis with altered Nrf2/GPX4 signaling in osteosarcoma [PMID: 38166505].\n\n## Associations\n\n- The supplied review associates curcumin-mediated apoptosis with increased p53 activity, inhibition of NF-κB and COX-2, reduced PI3K signaling, increased MAPK expression, and effects on the antiapoptotic protein Bcl-2; these are associations rather than a supplied gene-specific 2-hop path [PMID: 30623450].\n- Potential gene candidates therefore include **TP53**, **BCL2**, **NFE2L2** (Nrf2), and **GPX4**, but the context does not establish any of them as a complete curcumin → gene → apoptosis path.\n\n## Testable hypothesis\n\n- A testable hypothesis is that curcumin promotes apoptosis partly through **TP53** activation and **BCL2** suppression, with **NFE2L2/GPX4** signaling potentially contributing in osteosarcoma; direct perturbation and rescue experiments are required [PMID: 30623450; PMID: 38166505].\n\n## Graph-derived candidate insights\n\nNo eligible graph-derived candidate insight is reported: the supplied CLAIM-SAFE paths are GRAPH-CONFIRMED one-hop relations, curcumin → induces → apoptosis, and provide no complete two-hop path containing a gene.",
+    "traditional_rag": "### Direct evidence for a possible 2-hop path\n\n- **p53 (TP53):** Curcumin can upregulate p53 activity/expression, and p53 is described as increasing apoptosis. Thus: **curcumin → p53 → apoptosis**. This is reported mainly in cancer-cell studies summarized in a review, not as direct human clinical evidence [PMID: 30623450].\n- **Bcl-2 (BCL2):** Curcumin inhibits NF-κB and COX-2, which are associated with overexpression of the antiapoptotic gene/protein Bcl-2. Therefore, a possible path is **curcumin → Bcl-2 → apoptosis**, with curcumin-associated Bcl-2 suppression favoring apoptosis [PMID: 30623450].\n- **Nrf2 and GPX4:** In osteosarcoma cells and xenograft mice, curcumin altered the Nrf2/GPX4 pathway and increased apoptosis; pharmacologic manipulation of Nrf2/ferroptosis partly reversed curcumin’s effects. This supports a possible **curcumin → Nrf2/GPX4 → apoptosis** path, although the study also implicates ferroptosis [PMID: 38166505].\n\n### Association rather than firmly established 2-hop mediation\n\n- **NF-κB:** Curcumin inhibits NF-κB, which is linked to antiapoptotic gene expression, including Bcl-2. The supplied context supports **curcumin → NF-κB → apoptosis** as an indirect association, but does not establish NF-κB alone as the direct mediator [PMID: 30623450].\n- **PI3K/AKT:** Curcumin attenuates antiapoptotic PI3K signaling, and PI3K/AKT is associated with cancer-cell survival and apoptosis resistance. A possible path is **curcumin → PI3K/AKT → apoptosis**, but the abstracts do not identify a specific PI3K or AKT gene as the mediator [PMID: 30623450; PMID: 29693253].\n- **MAPKs:** Curcumin is reported to increase MAPK expression and ROS production, which can contribute to apoptosis; however, no specific MAPK gene or direct 2-hop relationship is established in the supplied text [PMID: 30623450].\n\n### Testable hypothesis\n\nThe strongest gene-level candidates for testing as curcumin–apoptosis mediators are **TP53/p53**, **BCL2**, and the **Nrf2–GPX4 axis**. Knockdown or pharmacologic inhibition of each candidate, followed by measurement of curcumin-induced apoptotic markers, would test whether the proposed 2-hop paths are causal.\n\nNo direct human evidence for these specific gene-mediated paths is provided; the evidence is predominantly from reviews of cancer-cell studies and, for Nrf2/GPX4, in-vitro osteosarcoma cells plus a mouse xenograft model.",
+    "general_llm": "A **2-hop path** can be represented as:\n\n**curcumin → gene → apoptosis**\n\nNo single canonical set exists because the result depends on whether the curcumin–gene edge means direct binding, transcriptional regulation, altered expression, or association. Common biologically plausible intermediary genes include:\n\n| Gene | Example path | Role |\n|---|---|---|\n| **TP53** | Curcumin → **TP53** → apoptosis | Stress-induced transcriptional activation of pro-apoptotic genes |\n| **BAX** | Curcumin → **BAX** → apoptosis | Promotes mitochondrial outer-membrane permeabilization |\n| **BCL2** | Curcumin → **BCL2** → apoptosis | Anti-apoptotic regulator; curcumin often decreases BCL2 expression or activity |\n| **CASP3** | Curcumin → **CASP3** → apoptosis | Executioner caspase |\n| **CASP8** | Curcumin → **CASP8** → apoptosis | Initiator caspase in the extrinsic pathway |\n| **CASP9** | Curcumin → **CASP9** → apoptosis | Initiator caspase in the intrinsic/mitochondrial pathway |\n| **APAF1** | Curcumin → **APAF1** → apoptosis | Apoptosome component |\n| **CYCS** | Curcumin → **CYCS** → apoptosis | Mitochondrial cytochrome c release and apoptosome activation |\n| **AKT1** | Curcumin → **AKT1** → apoptosis | Survival kinase; inhibition can facilitate apoptosis |\n| **MTOR** | Curcumin → **MTOR** → apoptosis | Growth and survival signaling |\n| **RELA** | Curcumin → **RELA** → apoptosis | NF-κB transcriptional subunit; inhibition can reduce survival signaling |\n| **NFKB1** | Curcumin → **NFKB1** → apoptosis | NF-κB pathway regulator |\n| **STAT3** | Curcumin → **STAT3** → apoptosis | Pro-survival and anti-apoptotic transcription factor |\n| **MAPK8** | Curcumin → **MAPK8** → apoptosis | JNK pathway component |\n| **MAPK14** | Curcumin → **MAPK14** → apoptosis | p38 MAPK stress-response signaling |\n| **TNF** | Curcumin → **TNF** → apoptosis | Cytokine capable of activating death-receptor signaling |\n\nThe most direct and commonly proposed paths are therefore:\n\n- **Curcumin → TP53 → apoptosis**\n- **Curcumin → BAX → apoptosis**\n- **Curcumin → BCL2 → apoptosis**\n- **Curcumin → CASP3 → apoptosis**\n- **Curcumin → CASP8/CASP9 → apoptosis**\n- **Curcumin → AKT1 → apoptosis**\n- **Curcumin → RELA/NFKB1 → apoptosis**\n\nThese should be viewed as **context-dependent candidate paths**, not universal mechanisms. Curcumin’s effects vary by cell type, concentration, exposure time, and disease model; in many studies, the evidence shows altered expression or pathway activity rather than direct physical interaction with the gene product."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 1,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 1,
+    "no_path_citations_detected": false,
+    "claims": [
+      {
+        "claim_id": "HC-01",
+        "path_id": "containing",
+        "verdict": "unsupported",
+        "reasons": [
+          "path_not_found"
+        ]
+      }
+    ]
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 0.0014138594269752502,
+    "vector_index": 1.8210685402154922,
+    "answer_netmedex_hybrid_rag": 7.891495272517204,
+    "answer_traditional_rag": 8.57170782983303,
+    "answer_general_llm": 7.949697472155094,
+    "total": 30.981951497495174
+  },
+  "token_usage": {
+    "total_tokens": 10748,
+    "output_tokens": 3177,
+    "input_tokens": 7571
+  },
+  "completed_at": "2026-08-11T05:41:53.348336+00:00"
+}

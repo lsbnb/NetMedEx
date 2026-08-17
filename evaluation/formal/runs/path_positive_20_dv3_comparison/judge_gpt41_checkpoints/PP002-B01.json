@@ -1,0 +1,51 @@
+{
+  "task": "answer",
+  "question_id": "PP002",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "feaaa19388036bf2ff9bc163f4fb6eed6e85c4809b0a4da807796055f1094068",
+  "raw_response_sha256": "f72190b869a8ac2049f8df7ca1abc566aa469641f543c4703e9ff1349fb17bf7",
+  "usage": {
+    "input_tokens": 2342,
+    "output_tokens": 371,
+    "total_tokens": 2713
+  },
+  "rated_at": "2026-08-13T10:31:18.426393+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP002-A",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Accurate, well-grounded, mechanistically detailed; clearly distinguishes in-vitro evidence and limitations, but less detail on animal/clinical data than B."
+      },
+      {
+        "answer_id": "PP002-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Most comprehensive: covers in-vitro, animal, molecular mechanisms, and limitations. Clearly distinguishes evidence types and translational gaps."
+      },
+      {
+        "answer_id": "PP002-C",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Accurate and well-grounded, but less mechanistic depth and incomplete hypothesis. Good on limitations, but less comprehensive than B."
+      }
+    ],
+    "preferred_item_id": "PP002-B",
+    "pairwise_reason": "PP002-B is preferred for its superior completeness, mechanistic detail, and clear distinction between in-vitro, animal, and translational evidence. It best addresses both evidence and limitations."
+  }
+}

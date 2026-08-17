@@ -1,0 +1,63 @@
+{
+  "task": "answer",
+  "question_id": "PP015",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "d83912bbc5f89cc4735f416cec843d280d4e4bf0c3459b62b7ec5fa6a1557188",
+  "raw_response_sha256": "7d14dd9441e33bb9cfa4159677526d5faaefebae41f7597e661a1cac205d8133",
+  "usage": {
+    "input_tokens": 2783,
+    "output_tokens": 622,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 3405
+  },
+  "rated_at": "2026-08-13T06:30:49.930322+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP015-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 4,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Good hop-by-hop structure focusing on gut axis. PMID citations plausible but not independently verified. Distinguishes animal vs human evidence well. Misses canonical airway pathway."
+      },
+      {
+        "answer_id": "PP015-B",
+        "correctness": 3,
+        "completeness": 2,
+        "relevance": 3,
+        "grounding": 3,
+        "mechanistic_coherence": 2,
+        "research_value": 2,
+        "notes": "Extremely superficial; treats 'cystic fibrosis' as a mechanistic hop rather than explaining intermediate mechanisms. Minimal mechanistic detail. Graph-path framing adds little scientific value."
+      },
+      {
+        "answer_id": "PP015-C",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 4,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Similar to A but adds gut-lung axis and testable hypothesis. Distinguishes animal/human/association evidence per hop. PMID34339302 for gut-lung axis is plausible. Misses airway-centric pathway."
+      },
+      {
+        "answer_id": "PP015-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Best answer: covers canonical airway pathway with mechanistic detail per hop, multiple model systems, CFTR modulator evidence, and honest caveat about direct vs indirect signaling. No fabricated citations apparent."
+      }
+    ],
+    "preferred_item_id": "PP015-D",
+    "pairwise_reason": "PP015-D provides the most mechanistically rigorous, complete, and well-grounded answer, covering each hop (ASL dehydration, mucociliary failure, bacterial colonization, innate immune activation) with specific experimental evidence from multiple model systems and human data, including CFTR modulator validation."
+  }
+}

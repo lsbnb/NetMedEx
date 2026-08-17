@@ -1,0 +1,215 @@
+{
+  "status": "complete",
+  "question_id": "PP019",
+  "domain": "osteoimmunology",
+  "question": "What evidence supports a mechanistic path from dysbiosis to bone loss through inflammation, inflammation, osteoporosis? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "(\"gut microbiome\"[Title/Abstract] OR dysbiosis[Title/Abstract]) AND (inflammation[Title/Abstract] OR cytokine*[Title/Abstract] OR immune[Title/Abstract]) AND (\"1900\"[Date - Publication] : \"2015\"[Date - Publication])",
+  "effective_pubmed_query": "(\"gut microbiome\"[Title/Abstract] OR dysbiosis[Title/Abstract]) AND (inflammation[Title/Abstract] OR cytokine*[Title/Abstract] OR immune[Title/Abstract]) AND (\"1900\"[Date - Publication] : \"2015\"[Date - Publication])",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "15133327",
+    "16313350",
+    "17191007",
+    "18240539",
+    "19803549",
+    "20485900",
+    "20599675",
+    "21996023",
+    "22179898",
+    "22863002",
+    "23134607",
+    "23238181",
+    "24176761",
+    "24231662",
+    "24269668",
+    "24407713",
+    "24629344",
+    "24646638",
+    "24798552",
+    "24808362",
+    "24829482",
+    "24976068",
+    "25019175",
+    "25163502",
+    "25447398",
+    "25574929",
+    "25883837",
+    "25918553",
+    "25946408",
+    "26102296",
+    "26155460",
+    "26210164",
+    "26215995",
+    "26252398",
+    "26357876",
+    "26387645",
+    "26424567",
+    "26449893",
+    "26509049",
+    "26604935",
+    "26605783",
+    "26707036"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports a mechanistic path from dysbiosis to bone loss through inflammation, inflammation, osteoporosis? Distinguish evidence for each hop from overall inference.",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "25574929",
+        "score": 0.5354088432305305
+      },
+      {
+        "pmid": "24646638",
+        "score": 0.5213559754559072
+      },
+      {
+        "pmid": "26707036",
+        "score": 0.5147809766622844
+      },
+      {
+        "pmid": "21996023",
+        "score": 0.5130588100882999
+      },
+      {
+        "pmid": "24269668",
+        "score": 0.5128647392836126
+      },
+      {
+        "pmid": "24798552",
+        "score": 0.5032394441058963
+      },
+      {
+        "pmid": "24976068",
+        "score": 0.499985993300864
+      },
+      {
+        "pmid": "26252398",
+        "score": 0.4976515728043279
+      },
+      {
+        "pmid": "26604935",
+        "score": 0.4968084679212797
+      },
+      {
+        "pmid": "20485900",
+        "score": 0.4946483027150851
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "25574929",
+        "score": 0.5354088432305305
+      },
+      {
+        "pmid": "24646638",
+        "score": 0.5213559754559072
+      },
+      {
+        "pmid": "26707036",
+        "score": 0.5147809766622844
+      },
+      {
+        "pmid": "21996023",
+        "score": 0.5130588100882999
+      },
+      {
+        "pmid": "24269668",
+        "score": 0.5128647392836126
+      },
+      {
+        "pmid": "24798552",
+        "score": 0.5032394441058963
+      },
+      {
+        "pmid": "24976068",
+        "score": 0.499985993300864
+      },
+      {
+        "pmid": "26252398",
+        "score": 0.4976515728043279
+      },
+      {
+        "pmid": "26604935",
+        "score": 0.4968084679212797
+      },
+      {
+        "pmid": "20485900",
+        "score": 0.4946483027150851
+      }
+    ]
+  },
+  "answers": {
+    "general_llm": "**Evidence linking gut dysbiosis, systemic inflammation, and skeletal loss**\n\n- **Dysbiosis → heightened inflammatory signaling** – Germ‑free mice colonized with feces from patients with inflammatory bowel disease develop increased intestinal permeability, elevated circulating lipopolysaccharide (LPS) and higher levels of interleukin‑6 (IL‑6) and tumor‑necrosis factor‑α (TNF‑α) than mice receiving healthy donor microbiota. Similar patterns are seen in human cohorts where reduced microbial diversity (loss of *Firmicutes*, enrichment of *Proteobacteria*) correlates with serum LPS‑binding protein and C‑reactive protein. These data provide mechanistic proof that an altered gut community can breach the mucosal barrier and trigger systemic pro‑inflammatory cytokines.\n\n- **Inflammation → osteoclast‑driven bone resorption** – IL‑6, TNF‑α, and IL‑1β are well‑established stimulators of the RANKL/OPG axis. In vitro, treatment of osteoclast precursors with these cytokines markedly increases RANK expression and promotes multinucleated, bone‑resorbing cells. In vivo, mouse models of chronic low‑grade inflammation (e.g., adipose‑derived TNF‑α overexpression) exhibit accelerated trabecular bone loss, higher serum C‑telopeptide, and up‑regulated osteoclast gene signatures. Clinical studies show that rheumatoid arthritis patients with sustained high IL‑6/CRP have faster peri‑articular bone erosion, confirming that systemic inflammation directly drives osteoclast activity.\n\n- **Bone loss → osteoporosis phenotype** – Quantitative micro‑CT and densitometry in the above animal models demonstrate reductions in bone volume/total volume, trabecular number, and cortical thickness that meet accepted criteria for osteoporotic bone (≈30 % BMD loss). Human longitudinal cohorts link inflammatory biomarkers (elevated CRP, IL‑6) to faster annual decreases in femoral neck and lumbar spine BMD, independent of age, sex, and lifestyle factors. Moreover, therapeutic blockade of TNF‑α (e.g., with etanercept) or IL‑6 signaling (tocilizumab) modestly improves BMD in patients with chronic inflammatory diseases, implying that curtailing inflammation can halt or reverse the transition from bone loss to overt osteoporosis.\n\n- **Overall mechanistic inference** – The convergence of (i) gut‑derived endotoxin and cytokine surge, (ii) cytokine‑mediated activation of the RANKL pathway, and (iii) measurable reductions in bone mass solidifies a stepwise causal chain: dysbiotic microbiota → systemic inflammatory milieu → enhanced osteoclastogenesis → clinically relevant osteoporosis. While each link is supported by experimental and translational data, the precise contribution of specific microbial taxa and the threshold of inflammation required to trigger irreversible bone loss remain areas of active investigation.\n\n**Conclusion:** Robust pre‑clinical and clinical evidence links gut dysbiosis‑induced inflammation to osteoclast‑driven bone loss that culminates in osteoporosis."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 5.125999450683594e-05,
+    "vector_index": 3.8743980452418327,
+    "kg_expansion": 1.9140541553497314e-05,
+    "answer_general_llm": 19.49633525311947,
+    "total": 23.970216616988182
+  },
+  "token_usage": {
+    "total_tokens": 983,
+    "input_tokens": 178,
+    "output_tokens": 805
+  },
+  "completed_at": "2026-08-13T05:46:57.975273+00:00"
+}

@@ -1,0 +1,174 @@
+{
+  "status": "complete",
+  "question_id": "Q028",
+  "domain": "oncology",
+  "question": "Which genes mediate a 2-hop path between EGFR activation and resistance to apoptosis?",
+  "question_type": "two_hop_path",
+  "pubmed_query": "EGFR apoptosis resistance PI3K AKT BCL2 ERK cancer",
+  "effective_pubmed_query": "EGFR apoptosis resistance PI3K AKT BCL2 ERK cancer",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "16854453",
+    "21511051",
+    "26202948",
+    "28938696",
+    "29108234",
+    "29115423",
+    "36938944",
+    "40603821",
+    "42191394"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "Which genes mediate a 2-hop path between EGFR activation and resistance to apoptosis?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "28938696",
+        "score": 0.541119418038187
+      },
+      {
+        "pmid": "16854453",
+        "score": 0.5388080692542995
+      },
+      {
+        "pmid": "29108234",
+        "score": 0.49456609245227634
+      },
+      {
+        "pmid": "36938944",
+        "score": 0.4807177556348582
+      },
+      {
+        "pmid": "21511051",
+        "score": 0.47886433577259774
+      },
+      {
+        "pmid": "40603821",
+        "score": 0.46724870227848553
+      },
+      {
+        "pmid": "42191394",
+        "score": 0.4522195264244071
+      },
+      {
+        "pmid": "29115423",
+        "score": 0.451690204762154
+      },
+      {
+        "pmid": "26202948",
+        "score": 0.4383274411443844
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "28938696",
+        "score": 0.541119418038187
+      },
+      {
+        "pmid": "16854453",
+        "score": 0.5388080692542995
+      },
+      {
+        "pmid": "29108234",
+        "score": 0.49456609245227634
+      },
+      {
+        "pmid": "36938944",
+        "score": 0.4807177556348582
+      },
+      {
+        "pmid": "21511051",
+        "score": 0.47886433577259774
+      },
+      {
+        "pmid": "40603821",
+        "score": 0.46724870227848553
+      },
+      {
+        "pmid": "42191394",
+        "score": 0.4522195264244071
+      },
+      {
+        "pmid": "29115423",
+        "score": 0.451690204762154
+      },
+      {
+        "pmid": "26202948",
+        "score": 0.4383274411443844
+      }
+    ]
+  },
+  "answers": {
+    "general_llm": "Evidence from cell‑culture, animal models and human tumours shows that activation of the epidermal growth factor receptor (EGFR) can protect cells from programmed death through a variety of short signalling cascades.  In a strict “2‑hop’’ sense the signal passes from EGFR to an immediate downstream effector and then to a second gene whose activity directly blocks apoptosis.  The most consistently documented routes are:\n\n* **EGFR → PIK3CA (p110α) → AKT1/AKT2** – PI3‑kinase catalytic subunit (PIK3CA) is recruited to phosphotyrosine sites on EGFR, generating PIP₃ that recruits and activates AKT kinases.  Activated AKT phosphorylates and inactivates several pro‑apoptotic proteins (e.g., BAD, FOXO transcription factors) and up‑regulates the transcription of anti‑apoptotic BCL‑2 family members.  This PI3K‑AKT axis is one of the most reproducibly observed survival pathways in EGFR‑driven cancers.\n\n* **EGFR → KRAS (or NRAS) → BCL2L1 (Bcl‑xL)** – EGFR‑stimulated adaptor proteins (GRB2/SOS) activate the small GTPase KRAS, which then signals through RAF‑MEK‑ERK to increase transcription of the BCL2L1 gene.  Bcl‑xL binds and sequesters Bax/Bak, directly preventing mitochondrial outer‑membrane permeabilisation.\n\n* **EGFR → STAT3 → MCL1** – Phosphorylated EGFR can recruit JAK kinases that phosphorylate STAT3.  Dimerised STAT3 translocates to the nucleus and drives expression of the anti‑apoptotic gene MCL1.  MCL1 rapidly neutralises Bak and BH3‑only proteins, conferring resistance to stress‑induced apoptosis.\n\n* **EGFR → PLCγ1 → PKCα (or PKCδ)** – PLCγ hydrolyses PIP₂ to produce DAG, which activates protein kinase C isoforms.  PKCα, in turn, can phosphorylate and stabilise the anti‑apoptotic protein BCL2 and also promote NF‑κB nuclear translocation, which up‑regulates multiple survival genes.\n\n* **EGFR → SHC1 → c‑MYC** – The adaptor SHC1 links EGFR to the RAS‑RAF‑MEK‑ERK cascade, culminating in ERK‑mediated activation of the transcription factor MYC.  MYC transcriptionally activates several survival genes, notably the BCL‑2 family member BCL2 itself and the inhibitor of apoptosis proteins (IAPs) such as XIAP.\n\n* **EGFR → SRC family kinases (SRC) → FAS‑associated protein with death domain (FADD) inhibition** – SRC is recruited to EGFR and phosphorylates the death‑effector FADD on tyrosine residues, impeding its ability to assemble the death‑inducing signalling complex (DISC).  Though FADD is not a classical “gene‑product’’ of a second hop, the SRC‑mediated post‑translational modification effectively creates a functional two‑step block to apoptosis.\n\nThese pathways are supported by multiple experimental systems (e.g., knock‑down or pharmacologic inhibition of the intermediate node restores apoptosis in EGFR‑dependent lines).  However, context‑dependence is a major uncertainty: the relative contribution of each route varies with cell type, presence of co‑mutations (e.g., PTEN loss) and the extracellular milieu.  Moreover, some connections—particularly those involving PKC isoforms or SRC‑mediated FADD modulation—are less consistently reproduced across models and remain under active investigation.\n\n**In short, the most robust two‑step mediators linking EGFR activation to apoptosis resistance are PI3K‑AKT, KRAS‑BCL2L1, STAT3‑MCL1, PLCγ‑PKC, SHC‑MYC and SRC‑FADD pathways.**"
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 1.981109380722046e-05,
+    "vector_index": 4.01142230629921,
+    "kg_expansion": 0.00010400265455245972,
+    "answer_general_llm": 32.09658508747816,
+    "total": 36.65204647183418
+  },
+  "token_usage": {
+    "input_tokens": 164,
+    "total_tokens": 1464,
+    "output_tokens": 1300
+  },
+  "completed_at": "2026-08-13T04:22:21.377684+00:00"
+}

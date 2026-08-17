@@ -1,0 +1,47 @@
+{
+  "name": "netmedex-controlled-bridge-bw009-distractors-v1",
+  "questions": {
+    "BW009": {
+      "source_patterns": [
+        "\\bSGLT2\\s+inhibitor\\b",
+        "\\bSGLT2i\\b",
+        "\\bempagliflozin\\b",
+        "\\bdapagliflozin\\b",
+        "\\bcanagliflozin\\b",
+        "\\bSodium.glucose\\s+cotransporter.?2\\b"
+      ],
+      "target_patterns": [
+        "\\brenal\\s+protection\\b",
+        "\\bnephroprotection\\b",
+        "\\bkidney\\s+protection\\b",
+        "\\brenoprotection\\b",
+        "\\brenoprotective\\b"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "\\bSGLT2\\b",
+        "\\bempagliflozin\\b",
+        "\\bdapagliflozin\\b",
+        "\\bcanagliflozin\\b"
+      ],
+      "max_candidates_per_query": 30,
+      "max_articles_per_side": 3,
+      "max_distractors_per_side": 10,
+      "source_distractor_query": "(SGLT2 inhibitor[Title/Abstract] OR empagliflozin[Title/Abstract] OR dapagliflozin[Title/Abstract] OR canagliflozin[Title/Abstract])",
+      "target_distractor_query": "(renal protection[Title/Abstract] OR nephroprotection[Title/Abstract] OR kidney protection[Title/Abstract] OR renoprotection[Title/Abstract])",
+      "mediators": [
+        {
+          "name": "ketone bodies",
+          "patterns": [
+            "\\bketone\\s+bod\\w+\\b",
+            "\\bbeta.hydroxybutyrate\\b",
+            "\\bBHB\\b",
+            "\\bketosis\\b"
+          ],
+          "source_query": "SGLT2 inhibitor[Title/Abstract] AND (ketone bodies[Title/Abstract] OR beta-hydroxybutyrate[Title/Abstract] OR BHB[Title/Abstract])",
+          "target_query": "(ketone bodies[Title/Abstract] OR beta-hydroxybutyrate[Title/Abstract] OR BHB[Title/Abstract]) AND renal protection[Title/Abstract]",
+          "rationale": "AI-proposed N=3/U=4 bridge retained only for deterministic controlled-corpus testing."
+        }
+      ]
+    }
+  }
+}

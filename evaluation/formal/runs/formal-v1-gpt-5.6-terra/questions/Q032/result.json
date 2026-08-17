@@ -1,0 +1,73 @@
+{
+  "status": "complete",
+  "question_id": "Q032",
+  "domain": "pulmonology",
+  "question": "Which cytokines link asthma exacerbation to airway remodeling?",
+  "pubmed_query": "asthma airway remodeling IL-13 IL-17 TGF-beta eosinophils",
+  "language": "English",
+  "corpus_pmids": [
+    "30364003",
+    "37834157",
+    "38579176",
+    "41919890"
+  ],
+  "graph": {
+    "node_count": 8,
+    "edge_count": 4,
+    "path_count": 0,
+    "preferred_pmids": []
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "41919890",
+        "score": 0.5654297271264596
+      },
+      {
+        "pmid": "38579176",
+        "score": 0.5383355637215596
+      },
+      {
+        "pmid": "37834157",
+        "score": 0.519504097811791
+      },
+      {
+        "pmid": "30364003",
+        "score": 0.4878307040768711
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "41919890",
+        "score": 0.5654297271264596
+      },
+      {
+        "pmid": "38579176",
+        "score": 0.5383355637215596
+      },
+      {
+        "pmid": "37834157",
+        "score": 0.519504097811791
+      },
+      {
+        "pmid": "30364003",
+        "score": 0.4878307040768711
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "## Direct evidence\n\n### IL-17/IL-17A — strongest link in the supplied evidence\n- **Animal evidence (mouse model of chronic allergic asthma with LPS-induced exacerbation):** IL-17 blockade reduced airway hyperresponsiveness and remodeling-associated markers, including TGF-β, MMP-9, MMP-12, TIMP-1, collagens I/III, fibronectin, and proteoglycans. This supports IL-17 as a mechanistic cytokine linking exacerbated inflammation to structural airway remodeling. [PMID: 41919890]\n- **Animal and in-vitro evidence:** In OVA-asthmatic mice, improvement in airway remodeling accompanied reduced IL-17A and TGF-β/Smad2 signaling. In cultured mouse CD4+ T cells, TGF-β plus IL-6 promoted IL-17 production, placing IL-17A downstream of a remodeling-relevant cytokine milieu. [PMID: 38579176]\n\n### TGF-β — direct remodeling-associated cytokine\n- **Animal evidence:** TGF-β expression was reduced together with collagen, fibronectin, MMPs, and other remodeling markers after IL-17 blockade in exacerbated allergic airway inflammation. [PMID: 41919890]\n- **Animal/in-vitro evidence:** TGF-β1/Smad2 signaling tracked with IL-17A and airway remodeling in OVA-induced asthma; TGF-β together with IL-6 increased IL-17 release by CD4+ T cells in vitro. [PMID: 38579176]\n\n## Association evidence\n\nThe following cytokines were reduced in interventions that also improved airway inflammation/exacerbation-related physiology and remodeling, but the supplied studies do **not** establish each as an independent causal bridge to remodeling:\n\n- **IL-4, IL-5, and IL-13:** Reduced alongside improved airway remodeling and inflammation in allergic mouse asthma models. [PMID: 41919890; PMID: 30364003]\n- **IL-6:** Reduced with improved remodeling in OVA-asthma; additionally, IL-6 cooperated with TGF-β to promote IL-17 production in CD4+ T-cell culture. [PMID: 38579176; PMID: 41919890]\n- **TNF-α:** Present among inflammatory/remodeling measurements in mouse asthma–COPD overlap and reduced by one intervention, but its specific causal role in remodeling during asthma exacerbation is not isolated. [PMID: 37834157]\n- **IL-1β, IL-10, and IFN-γ:** These changed in experimental asthma or asthma–COPD overlap models together with inflammatory and remodeling outcomes, but direct remodeling causality is not demonstrated in the supplied context. [PMID: 38579176; PMID: 37834157; PMID: 30364003]\n\n## Testable hypothesis\n\nIn exacerbated allergic asthma, an **IL-6 + TGF-β → Th17/IL-17A** axis may promote remodeling through downstream NF-κB/Rho-kinase signaling and induction of matrix-remodeling mediators such as MMP-9, MMP-12, TIMP-1, and extracellular-matrix proteins. This is supported by convergent mouse and in-vitro observations, but requires direct causal testing in human exacerbations. [PMID: 41919890; PMID: 38579176]\n\n## Human evidence\n\nNo human evidence identifying cytokines that causally link asthma exacerbations to airway remodeling was provided in the supplied context.",
+    "traditional_rag": "### Direct evidence\n\n- **IL-17/IL-17A** is the cytokine with the strongest direct evidence linking exacerbated allergic airway inflammation to remodeling. In an **LPS-exacerbated chronic allergic asthma mouse model**, anti-IL-17 treatment reduced airway hyperresponsiveness and remodeling markers, including collagen types I/III, fibronectin, proteoglycans, MMP-9, MMP-12, TIMP-1, and TGF-β. This supports a functional role for IL-17 in coupling exacerbation-associated inflammation to airway structural change. **Animal evidence (mouse).** [PMID: 41919890]\n\n- In another **OVA-asthma mouse model**, improvement in airway remodeling occurred alongside suppression of IL-17A and TGF-β1/Smad2 signaling. CD4+ T-cell experiments further showed that TGF-β plus IL-6 promoted IL-17 production, supporting a plausible TGF-β/IL-6→IL-17A axis. **Animal and in-vitro mouse-cell evidence.** [PMID: 38579176]\n\n### Association evidence\n\n- **TGF-β** is consistently associated with remodeling-related changes, particularly collagen deposition and matrix remodeling, in experimental allergic airway disease. It was reduced together with remodeling markers after IL-17 blockade in LPS-exacerbated asthma. **Animal evidence; association within intervention studies.** [PMID: 41919890]\n\n- **IL-4, IL-5, IL-13, and IL-6** were reduced in parallel with airway inflammation and remodeling in mouse asthma studies. This links them to the remodeling phenotype, but the supplied studies do not establish that each cytokine independently drives remodeling during an exacerbation. **Animal evidence; association.** [PMID: 41919890; PMID: 38579176; PMID: 30364003]\n\n- **TNF-α**, **IFN-γ**, **IL-1β**, and **IL-10** also changed alongside inflammatory and remodeling outcomes in experimental asthma or asthma–COPD overlap models, but the context provides no direct evidence that they mechanistically connect asthma exacerbations to remodeling. **Animal evidence; association only.** [PMID: 37834157; PMID: 38579176]\n\n### Testable hypothesis\n\nA supported mechanistic model is that exacerbation stimuli such as LPS amplify an **IL-17–NF-κB/Rho-kinase** inflammatory pathway, with downstream induction of matrix-regulating factors—including **TGF-β, MMP-9, MMP-12, and TIMP-1**—leading to collagen and extracellular-matrix accumulation. Th2 cytokines (**IL-4, IL-5, IL-13**) and **IL-6** may reinforce this process, while **IL-10** may counter-regulate it. This requires direct mechanistic testing in humans. [PMID: 41919890; PMID: 38579176]\n\n### Human evidence\n\nNo human evidence was provided in the supplied context.",
+    "general_llm": "Airway remodeling in asthma refers to relatively persistent structural changes such as subepithelial fibrosis, increased airway smooth-muscle mass, goblet-cell/mucus-gland hyperplasia, epithelial injury, and angiogenesis. Exacerbations can intensify these processes through repeated inflammatory injury and repair.\n\nKey cytokines linking exacerbations to remodeling include:\n\n| Cytokine/pathway | Main role during exacerbation | Remodeling links |\n|---|---|---|\n| **TGF-β (especially TGF-β1)** | Released/activated by epithelial cells, eosinophils, macrophages, and other cells after airway injury | The best-established profibrotic mediator: promotes fibroblast-to-myofibroblast differentiation, collagen and extracellular-matrix deposition, subepithelial fibrosis, and smooth-muscle changes. |\n| **IL-13** | Central type-2 cytokine, often elevated in allergic/eosinophilic exacerbations | Drives mucus hypersecretion, goblet-cell metaplasia, epithelial dysfunction, airway smooth-muscle hyperresponsiveness, and can promote fibrotic remodeling partly through TGF-β-related pathways. |\n| **IL-4** | Supports type-2 inflammation and IgE-mediated allergic responses | Contributes to mucus production, fibroblast activation, and extracellular-matrix remodeling; its remodeling role overlaps substantially with IL-13. |\n| **IL-5** | Major eosinophil survival, maturation, and recruitment factor | Links eosinophilic exacerbations to remodeling indirectly: eosinophils release TGF-β and cytotoxic granule proteins that injure epithelium and favor fibrosis. |\n| **IL-33, TSLP, and IL-25** (“epithelial alarmins”) | Released by damaged airway epithelium, including during viral or allergen-triggered exacerbations; activate type-2 innate lymphoid cells and Th2 cells | Amplify IL-4/IL-5/IL-13 production and eosinophilic inflammation, thereby supporting mucus changes and fibrotic remodeling. TSLP and IL-33 may also have more direct effects on structural airway cells. |\n| **IL-17A/F** | More prominent in neutrophilic, severe, infection-associated, or corticosteroid-poorly responsive exacerbations | Associated with neutrophil recruitment, epithelial activation, mucus production, and airway smooth-muscle/fibroblast activation. The causal role in human remodeling is plausible but less firmly established than for TGF-β and type-2 pathways. |\n| **TNF-α** | Produced by macrophages, mast cells, and other inflammatory cells during exacerbations | Can enhance airway smooth-muscle inflammation, matrix remodeling, and interactions with TGF-β and IL-17 pathways. Evidence supports involvement, but it is not a dominant remodeling target in most asthma phenotypes. |\n| **IL-6** | Often increased during viral and neutrophilic exacerbations | May promote persistent inflammation and structural-cell activation; its direct contribution to remodeling is still less certain and likely phenotype-dependent. |\n| **GM-CSF** | Supports survival and activation of eosinophils and other myeloid cells | May prolong inflammatory cell activity and thereby indirectly sustain epithelial injury and profibrotic signaling. |\n\n### Overall interpretation\n- **TGF-β1 is the most directly established cytokine connecting airway inflammation and structural remodeling.**\n- In **type-2/eosinophilic asthma**, the main upstream network is **TSLP/IL-33/IL-25 → IL-4, IL-5, IL-13**, with eosinophils and epithelial injury helping activate **TGF-β**.\n- In **neutrophilic or severe asthma**, **IL-17, TNF-α, and IL-6** may be more relevant, particularly during infection-associated exacerbations, although their exact causal importance in long-term remodeling remains less certain.\n- Remodeling is not caused by cytokines alone: repeated epithelial injury, mechanical stress from bronchoconstriction, growth factors such as VEGF, proteases, and abnormal repair responses also contribute."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 1.0223673656582832,
+    "semantic_graph": 43.17977361381054,
+    "vector_index": 1.1531085446476936,
+    "answer_netmedex_hybrid_rag": 8.427138954401016,
+    "answer_traditional_rag": 8.247686676681042,
+    "answer_general_llm": 14.943321280181408,
+    "total": 78.7098036184907
+  },
+  "completed_at": "2026-07-27T18:42:12.624397+00:00"
+}

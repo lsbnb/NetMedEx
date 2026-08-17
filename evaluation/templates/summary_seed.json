@@ -1,0 +1,101 @@
+{
+  "input_dir": "evaluation/templates",
+  "metrics": {
+    "retrieval": {
+      "general_llm": {
+        "precision_at_5": 0.2,
+        "recall_at_10": 0.1773,
+        "ndcg_at_10": 0.3066
+      },
+      "netmedex_hybrid_rag": {
+        "precision_at_5": 0.76,
+        "recall_at_10": 0.6371,
+        "ndcg_at_10": 0.809
+      },
+      "traditional_rag": {
+        "precision_at_5": 0.36,
+        "recall_at_10": 0.3088,
+        "ndcg_at_10": 0.4636
+      }
+    },
+    "claims": {
+      "general_llm": {
+        "claim_count": 5,
+        "citation_support_rate": 0.0,
+        "lenient_support_rate": 0.1,
+        "hallucination_rate": 0.8
+      },
+      "netmedex_hybrid_rag": {
+        "claim_count": 13,
+        "citation_support_rate": 0.9231,
+        "lenient_support_rate": 0.9615,
+        "hallucination_rate": 0.0
+      },
+      "traditional_rag": {
+        "claim_count": 4,
+        "citation_support_rate": 0.5,
+        "lenient_support_rate": 0.75,
+        "hallucination_rate": 0.0
+      }
+    },
+    "relation_quality": {
+      "netmedex_hybrid_rag": {
+        "edge_count": 1,
+        "biological_precision": 1.0,
+        "relation_type_precision": 1.0
+      }
+    },
+    "answer_quality": {
+      "netmedex_hybrid_rag": {
+        "correctness": 4.0,
+        "completeness": 4.0,
+        "relevance": 5.0,
+        "overall_mean": 4.3333
+      }
+    },
+    "hypothesis_value": {
+      "netmedex_hybrid_rag": {
+        "novelty": 4.0,
+        "plausibility": 4.0,
+        "testability": 4.0,
+        "research_value": 4.0,
+        "overall_mean": 4.0
+      }
+    },
+    "efficiency": {
+      "manual_pubmed": {
+        "task_count": 1,
+        "median_elapsed_minutes": 120.0,
+        "mean_elapsed_minutes": 120.0,
+        "completion_rate": 1.0
+      },
+      "netmedex_hybrid_rag": {
+        "task_count": 1,
+        "median_elapsed_minutes": 25.0,
+        "mean_elapsed_minutes": 25.0,
+        "completion_rate": 1.0,
+        "time_saved_vs_manual": 0.7917
+      }
+    },
+    "performance": {
+      "netmedex_hybrid_rag": {
+        "run_count": 1,
+        "build_seconds_median": 30.0,
+        "build_seconds_p90": 30.0,
+        "index_seconds_median": 8.0,
+        "query_seconds_median": 12.0,
+        "query_seconds_p90": 12.0,
+        "failure_rate": 0.0
+      }
+    },
+    "user_acceptance": {
+      "netmedex_hybrid_rag": {
+        "respondent_count": 1,
+        "sus_mean": 75.0,
+        "ease_of_use_mean": 4.0,
+        "trust_mean": 4.0,
+        "intent_to_continue_mean": 4.0
+      }
+    }
+  }
+}

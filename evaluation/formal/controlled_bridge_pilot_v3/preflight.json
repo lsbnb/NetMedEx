@@ -1,0 +1,105 @@
+{
+  "top_k": 10,
+  "question_count": 1,
+  "graph_build_eligible_question_count": 1,
+  "questions": [
+    {
+      "question_id": "BW008",
+      "document_count": 15,
+      "endpoint_leaks": [],
+      "eligible_mediators": [
+        "STAT1"
+      ],
+      "graph_build_eligible": true,
+      "mediators": [
+        {
+          "mediator": "HBx",
+          "bridge_eligible": false,
+          "source_pmids": [
+            "27314335",
+            "39599784",
+            "40512786"
+          ],
+          "target_pmids": [],
+          "source_in_text_top_k": [
+            "27314335",
+            "39599784"
+          ],
+          "target_in_text_top_k": [],
+          "source_outside_text_top_k": [
+            "40512786"
+          ],
+          "target_outside_text_top_k": [],
+          "both_sides_exposed": false,
+          "graph_build_eligible": false,
+          "reasons": [
+            "missing_endpoint_isolated_side"
+          ]
+        },
+        {
+          "mediator": "STAT1",
+          "bridge_eligible": true,
+          "source_pmids": [
+            "30842274",
+            "37879404",
+            "40928246"
+          ],
+          "target_pmids": [
+            "34168004",
+            "38351096",
+            "39486886"
+          ],
+          "source_in_text_top_k": [
+            "30842274",
+            "37879404",
+            "40928246"
+          ],
+          "target_in_text_top_k": [],
+          "source_outside_text_top_k": [],
+          "target_outside_text_top_k": [
+            "34168004",
+            "38351096",
+            "39486886"
+          ],
+          "both_sides_exposed": false,
+          "graph_build_eligible": true,
+          "reasons": [
+            "exactly_one_bridge_side_withheld_from_text_top_k"
+          ]
+        },
+        {
+          "mediator": "cirrhosis",
+          "bridge_eligible": true,
+          "source_pmids": [
+            "24574713",
+            "40024530",
+            "41997336"
+          ],
+          "target_pmids": [
+            "32020352",
+            "34842182",
+            "39411648"
+          ],
+          "source_in_text_top_k": [
+            "24574713",
+            "40024530",
+            "41997336"
+          ],
+          "target_in_text_top_k": [
+            "34842182",
+            "39411648"
+          ],
+          "source_outside_text_top_k": [],
+          "target_outside_text_top_k": [
+            "32020352"
+          ],
+          "both_sides_exposed": true,
+          "graph_build_eligible": false,
+          "reasons": [
+            "complete_bridge_visible_in_text_top_k"
+          ]
+        }
+      ]
+    }
+  ]
+}

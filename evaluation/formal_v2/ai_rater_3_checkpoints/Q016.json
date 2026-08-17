@@ -1,0 +1,86 @@
+{
+  "question_id": "Q016",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-30T09:23:02.196762+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q016-C001",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The article directly addresses the question by identifying mitochondrial complex I dysfunction as a pathway connecting SMN deficiency to impaired energy homeostasis, increased ROS, and subsequent impaired translational initiation in SMA motor neurons."
+    },
+    {
+      "candidate_id": "Q016-C002",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The study provides useful adjacent evidence by testing a specific pathway (oxidative stress) and finding that SMN deficiency does not induce astrocyte reactivity through an oxidative stress-mediated process, which informs the boundaries of the SMN-mitochondrial relationship."
+    },
+    {
+      "candidate_id": "Q016-C003",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This paper directly addresses the question by showing that Smn knockdown leads to changes in cytochrome c oxidase activity, reduced ATP, and increased free radical production, outlining a mechanistic link to mitochondrial dysfunction."
+    },
+    {
+      "candidate_id": "Q016-C004",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The article directly answers the question by identifying altered expression of bioenergetics genes, impaired mitochondrial transport, and increased fragmentation as pathways connecting SMN deficiency to mitochondrial dysfunction."
+    },
+    {
+      "candidate_id": "Q016-C005",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This study directly addresses the question by demonstrating that SMN deficiency impairs mitochondrial axonal transport and morphology, leading to reduced mitochondrial health in SMA motor neurons."
+    },
+    {
+      "candidate_id": "Q016-C006",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The article directly addresses the question by showing that SMN loss leads to the down-regulation of mitochondrial and lysosomal genes, resulting in impaired complex I and IV activity and defective mitophagy."
+    },
+    {
+      "candidate_id": "Q016-C007",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This paper provides useful adjacent evidence by exploring the reverse relationship: how oxidative stress (often linked to mitochondrial dysfunction) triggers aberrant splicing of the SMN2 gene."
+    },
+    {
+      "candidate_id": "Q016-C008",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The study provides useful clinical context by showing a loss of oxidative phosphorylation machinery and decreased mtDNA in SMA patient muscle, though it focuses more on characterizing the dysfunction post-treatment rather than delineating the direct molecular pathways from SMN loss."
+    },
+    {
+      "candidate_id": "Q016-C009",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This is a review article that summarizes the effects of SMN loss on mitochondrial functions and collects transcripts encoding mitochondrial proteins affected in SMA, providing excellent review-level context."
+    },
+    {
+      "candidate_id": "Q016-C010",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The article directly addresses the question by detailing pathways of mitochondrial dysregulation in SMA, including abnormal OPA1 splicing, autophagic dysregulation, and the build-up of damaged mitochondria markers like PINK1 and Parkin."
+    },
+    {
+      "candidate_id": "Q016-C011",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] This study directly answers the question by identifying the MYOD-miRNA (miR-1 and miR-206) axis as a specific transcriptional pathway connecting SMN deficiency to mitochondrial dysfunction during myogenesis."
+    }
+  ],
+  "raw_response_sha256": "73f4f48636a8466556a6981e7e148f1e4f6908d670c6f60a27e6deab89339cd1"
+}

@@ -1,0 +1,744 @@
+{
+  "status": "complete",
+  "question_id": "PP019",
+  "domain": "osteoimmunology",
+  "question": "What evidence supports a mechanistic path from dysbiosis to bone loss through inflammation, inflammation, osteoporosis? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "(\"gut microbiome\"[Title/Abstract] OR dysbiosis[Title/Abstract]) AND (inflammation[Title/Abstract] OR cytokine*[Title/Abstract] OR immune[Title/Abstract]) AND (\"1900\"[Date - Publication] : \"2015\"[Date - Publication])",
+  "effective_pubmed_query": "(\"gut microbiome\"[Title/Abstract] OR dysbiosis[Title/Abstract]) AND (inflammation[Title/Abstract] OR cytokine*[Title/Abstract] OR immune[Title/Abstract]) AND (\"1900\"[Date - Publication] : \"2015\"[Date - Publication])",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "15133327",
+    "16313350",
+    "17191007",
+    "18240539",
+    "19803549",
+    "20485900",
+    "20599675",
+    "21996023",
+    "22179898",
+    "22863002",
+    "23134607",
+    "23238181",
+    "24176761",
+    "24231662",
+    "24269668",
+    "24407713",
+    "24629344",
+    "24646638",
+    "24798552",
+    "24808362",
+    "24829482",
+    "24976068",
+    "25019175",
+    "25163502",
+    "25447398",
+    "25574929",
+    "25883837",
+    "25918553",
+    "25946408",
+    "26102296",
+    "26155460",
+    "26210164",
+    "26215995",
+    "26252398",
+    "26357876",
+    "26387645",
+    "26424567",
+    "26449893",
+    "26509049",
+    "26604935",
+    "26605783",
+    "26707036"
+  ],
+  "graph": {
+    "node_count": 223,
+    "edge_count": 452,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 1,
+    "pre_gate_candidate_count": 1,
+    "pre_gate_candidates": [
+      {
+        "path_id": "TH001-P02",
+        "path_signature": "67837b72691d2015",
+        "path_text": "dysbiosis ->[leads_to] inflammation | inflammation --[associated_with] inflammation | inflammation ->[induces] osteoporosis | osteoporosis ->[causes] bone loss",
+        "node_ids": [
+          "MESH:D064806_Disease",
+          "GO:0006954_BiologicalProcess",
+          "MESH:D007249_Disease",
+          "MESH:D010024_Disease",
+          "MESH:D001847_Disease"
+        ],
+        "names": [
+          "dysbiosis",
+          "inflammation",
+          "inflammation",
+          "osteoporosis",
+          "bone loss"
+        ],
+        "node_aliases": [
+          [
+            "Dysbiosis",
+            "PSD",
+            "dysbiosis",
+            "intestinal dysbiosis"
+          ],
+          [
+            "Inflammation",
+            "inflammation",
+            "inflammatory response"
+          ],
+          [
+            "Inflammation",
+            "airway inflammation",
+            "chronic inflammation",
+            "gut inflammation",
+            "inflammation",
+            "inflammatory",
+            "inflammatory conditions",
+            "inflammatory disease",
+            "inflammatory diseases",
+            "inflammatory disorders",
+            "oral inflammatory diseases",
+            "periodontal inflammation"
+          ],
+          [
+            "GIO",
+            "Osteoporosis",
+            "osteoporosis",
+            "postmenopausal osteoporosis"
+          ],
+          [
+            "Bone loss",
+            "bone destruction",
+            "bone disease",
+            "bone loss",
+            "bone turnover",
+            "oral bone loss"
+          ]
+        ],
+        "relations": [
+          "leads_to",
+          "associated_with",
+          "induces",
+          "causes"
+        ],
+        "edge_pmids": [
+          [
+            "25918553"
+          ],
+          [
+            "24976068"
+          ],
+          [
+            "22179898"
+          ],
+          [
+            "20599675"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          false,
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The current model to explain periodontitis progression proposes that changes in the relative abundance of members of the oral microbiome lead to dysbiosis in the host-microbiome crosstalk and then to inflammation and bone loss."
+          ],
+          [
+            "periodontitis-associated communities are 'inflammo-philic' (=loving or attracted to inflammation) in that they have evolved to not only endure inflammation but also to take advantage of it"
+          ],
+          [
+            "inflammatory states ... conspire to ... induce osteoporosis"
+          ],
+          [
+            "postmenopausal osteoporosis and hyperparathyroidism, two common forms of bone loss caused primarily by an expansion of the osteoclastic pool only partially compensated by a stimulation of bone formation"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "leads_to",
+            "selected_pmid": "25918553",
+            "selected_quote": "The current model to explain periodontitis progression proposes that changes in the relative abundance of members of the oral microbiome lead to dysbiosis in the host-microbiome crosstalk and then to inflammation and bone loss.",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "a7bdcc7e00005fc755167ad6717b933d8fe926a1",
+              "schema_version": 1,
+              "pmid": "25918553",
+              "source_id": "MESH:D064806_Disease",
+              "target_id": "GO:0006954_BiologicalProcess",
+              "relation": "leads_to",
+              "evidence": "The current model to explain periodontitis progression proposes that changes in the relative abundance of members of the oral microbiome lead to dysbiosis in the host-microbiome crosstalk and then to inflammation and bone loss.",
+              "confidence": 0.9,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "24976068",
+            "selected_quote": "periodontitis-associated communities are 'inflammo-philic' (=loving or attracted to inflammation) in that they have evolved to not only endure inflammation but also to take advantage of it",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "induces",
+            "selected_pmid": "22179898",
+            "selected_quote": "inflammatory states ... conspire to ... induce osteoporosis",
+            "selected_confidence": 0.85,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "6bce3ff14e506844cdecc4bbd652dd8621388abc",
+              "schema_version": 1,
+              "pmid": "22179898",
+              "source_id": "MESH:D007249_Disease",
+              "target_id": "MESH:D010024_Disease",
+              "relation": "induces",
+              "evidence": "inflammatory states ... conspire to ... induce osteoporosis",
+              "confidence": 0.85,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "20599675",
+            "selected_quote": "postmenopausal osteoporosis and hyperparathyroidism, two common forms of bone loss caused primarily by an expansion of the osteoclastic pool only partially compensated by a stimulation of bone formation",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "19bd9fbc507cf9c139a248801f7aebc62b68449c",
+              "schema_version": 1,
+              "pmid": "20599675",
+              "source_id": "MESH:D010024_Disease",
+              "target_id": "MESH:D001847_Disease",
+              "relation": "causes",
+              "evidence": "postmenopausal osteoporosis and hyperparathyroidism, two common forms of bone loss caused primarily by an expansion of the osteoclastic pool only partially compensated by a stimulation of bone formation",
+              "confidence": 0.95,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "bounded_mechanistic_multi_hop"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 61,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": true,
+        "incremental_value_class": "graph_incremental_candidate",
+        "incremental_value_subtype": "retrieval_incremental_bridge_visible",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "bounded_multi_hop",
+          "support_outside_text_top_k",
+          "bridge_visible_in_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [
+          "20599675",
+          "22179898",
+          "24976068"
+        ],
+        "score": 0.522,
+        "hop_count": 4
+      }
+    ],
+    "preferred_pmids": [
+      "20599675",
+      "22179898",
+      "24976068",
+      "25918553"
+    ],
+    "paths": [
+      {
+        "path_id": "PP019-P01",
+        "path_signature": "67837b72691d2015",
+        "path_text": "dysbiosis ->[leads_to] inflammation | inflammation --[associated_with] inflammation | inflammation ->[induces] osteoporosis | osteoporosis ->[causes] bone loss",
+        "node_ids": [
+          "MESH:D064806_Disease",
+          "GO:0006954_BiologicalProcess",
+          "MESH:D007249_Disease",
+          "MESH:D010024_Disease",
+          "MESH:D001847_Disease"
+        ],
+        "names": [
+          "dysbiosis",
+          "inflammation",
+          "inflammation",
+          "osteoporosis",
+          "bone loss"
+        ],
+        "node_aliases": [
+          [
+            "Dysbiosis",
+            "PSD",
+            "dysbiosis",
+            "intestinal dysbiosis"
+          ],
+          [
+            "Inflammation",
+            "inflammation",
+            "inflammatory response"
+          ],
+          [
+            "Inflammation",
+            "airway inflammation",
+            "chronic inflammation",
+            "gut inflammation",
+            "inflammation",
+            "inflammatory",
+            "inflammatory conditions",
+            "inflammatory disease",
+            "inflammatory diseases",
+            "inflammatory disorders",
+            "oral inflammatory diseases",
+            "periodontal inflammation"
+          ],
+          [
+            "GIO",
+            "Osteoporosis",
+            "osteoporosis",
+            "postmenopausal osteoporosis"
+          ],
+          [
+            "Bone loss",
+            "bone destruction",
+            "bone disease",
+            "bone loss",
+            "bone turnover",
+            "oral bone loss"
+          ]
+        ],
+        "relations": [
+          "leads_to",
+          "associated_with",
+          "induces",
+          "causes"
+        ],
+        "edge_pmids": [
+          [
+            "25918553"
+          ],
+          [
+            "24976068"
+          ],
+          [
+            "22179898"
+          ],
+          [
+            "20599675"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          false,
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The current model to explain periodontitis progression proposes that changes in the relative abundance of members of the oral microbiome lead to dysbiosis in the host-microbiome crosstalk and then to inflammation and bone loss."
+          ],
+          [
+            "periodontitis-associated communities are 'inflammo-philic' (=loving or attracted to inflammation) in that they have evolved to not only endure inflammation but also to take advantage of it"
+          ],
+          [
+            "inflammatory states ... conspire to ... induce osteoporosis"
+          ],
+          [
+            "postmenopausal osteoporosis and hyperparathyroidism, two common forms of bone loss caused primarily by an expansion of the osteoclastic pool only partially compensated by a stimulation of bone formation"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "leads_to",
+            "selected_pmid": "25918553",
+            "selected_quote": "The current model to explain periodontitis progression proposes that changes in the relative abundance of members of the oral microbiome lead to dysbiosis in the host-microbiome crosstalk and then to inflammation and bone loss.",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "a7bdcc7e00005fc755167ad6717b933d8fe926a1",
+              "schema_version": 1,
+              "pmid": "25918553",
+              "source_id": "MESH:D064806_Disease",
+              "target_id": "GO:0006954_BiologicalProcess",
+              "relation": "leads_to",
+              "evidence": "The current model to explain periodontitis progression proposes that changes in the relative abundance of members of the oral microbiome lead to dysbiosis in the host-microbiome crosstalk and then to inflammation and bone loss.",
+              "confidence": 0.9,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "24976068",
+            "selected_quote": "periodontitis-associated communities are 'inflammo-philic' (=loving or attracted to inflammation) in that they have evolved to not only endure inflammation but also to take advantage of it",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "induces",
+            "selected_pmid": "22179898",
+            "selected_quote": "inflammatory states ... conspire to ... induce osteoporosis",
+            "selected_confidence": 0.85,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "6bce3ff14e506844cdecc4bbd652dd8621388abc",
+              "schema_version": 1,
+              "pmid": "22179898",
+              "source_id": "MESH:D007249_Disease",
+              "target_id": "MESH:D010024_Disease",
+              "relation": "induces",
+              "evidence": "inflammatory states ... conspire to ... induce osteoporosis",
+              "confidence": 0.85,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "20599675",
+            "selected_quote": "postmenopausal osteoporosis and hyperparathyroidism, two common forms of bone loss caused primarily by an expansion of the osteoclastic pool only partially compensated by a stimulation of bone formation",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "19bd9fbc507cf9c139a248801f7aebc62b68449c",
+              "schema_version": 1,
+              "pmid": "20599675",
+              "source_id": "MESH:D010024_Disease",
+              "target_id": "MESH:D001847_Disease",
+              "relation": "causes",
+              "evidence": "postmenopausal osteoporosis and hyperparathyroidism, two common forms of bone loss caused primarily by an expansion of the osteoclastic pool only partially compensated by a stimulation of bone formation",
+              "confidence": 0.95,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "bounded_mechanistic_multi_hop"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 61,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": true,
+        "incremental_value_class": "graph_incremental_candidate",
+        "incremental_value_subtype": "retrieval_incremental_bridge_visible",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "bounded_multi_hop",
+          "support_outside_text_top_k",
+          "bridge_visible_in_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [
+          "20599675",
+          "22179898",
+          "25918553"
+        ],
+        "score": 0.522,
+        "hop_count": 4
+      }
+    ]
+  },
+  "evidence_exposure": {
+    "profile": "H_evidence_gated_four_hop",
+    "routed_profile": "H_evidence_gated_four_hop",
+    "selection_frozen_before_answers": true,
+    "source_result": "evaluation/temporal_holdout_pilot/discovery_run_v2_date_audited/questions/TH001/result.json",
+    "frozen_exposure_source": "evaluation/formal/path_positive_20_v1/frozen_exposures/PP019/result.json",
+    "frozen_candidate_path_count": 1,
+    "frozen_exposed_path_count": 1,
+    "exposed_pmids": [
+      "20599675",
+      "22179898",
+      "24976068",
+      "25918553"
+    ],
+    "exposed_paths": [
+      [
+        "dysbiosis",
+        "inflammation",
+        "inflammation",
+        "osteoporosis",
+        "bone loss"
+      ]
+    ],
+    "exposed_edges": [
+      "dysbiosis ->[leads_to] inflammation | inflammation --[associated_with] inflammation | inflammation ->[induces] osteoporosis | osteoporosis ->[causes] bone loss"
+    ],
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 1,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "answer_context_path_signatures": [
+      "67837b72691d2015"
+    ],
+    "kg_expansion": {
+      "enabled": true,
+      "candidate_path_count": 1,
+      "queries": [
+        "\"dysbiosis\"[Title/Abstract] AND \"bone loss\"[Title/Abstract]",
+        "\"dysbiosis\"[Title/Abstract] AND \"osteoporosis\"[Title/Abstract]",
+        "\"osteoporosis\"[Title/Abstract] AND \"bone loss\"[Title/Abstract]"
+      ],
+      "added_pmids": [
+        "38919613",
+        "35883424",
+        "29926944",
+        "36883660",
+        "29926499",
+        "30359170",
+        "32085888",
+        "36304447",
+        "37722518",
+        "40275534",
+        "35189698",
+        "40000617",
+        "40444392",
+        "41331982",
+        "28965190"
+      ],
+      "added_document_count": 15,
+      "merge": {
+        "method": "bounded_expansion_slots_v1",
+        "expansion_slots": 2,
+        "min_margin": 0.03,
+        "original_tail_threshold": 0.4946483027150851,
+        "accepted_added_pmids": [
+          "40275534",
+          "35883424"
+        ]
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "40275534",
+        "score": 0.5506091837685771
+      },
+      {
+        "pmid": "25574929",
+        "score": 0.5354088432305305
+      },
+      {
+        "pmid": "35883424",
+        "score": 0.5309846624094126
+      },
+      {
+        "pmid": "24646638",
+        "score": 0.5213559754559072
+      },
+      {
+        "pmid": "26707036",
+        "score": 0.5147809766622844
+      },
+      {
+        "pmid": "21996023",
+        "score": 0.5130588100882999
+      },
+      {
+        "pmid": "24269668",
+        "score": 0.5128647392836126
+      },
+      {
+        "pmid": "24798552",
+        "score": 0.5032394441058963
+      },
+      {
+        "pmid": "24976068",
+        "score": 0.499985993300864
+      },
+      {
+        "pmid": "26252398",
+        "score": 0.4976515728043279
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "25574929",
+        "score": 0.5354088432305305
+      },
+      {
+        "pmid": "24646638",
+        "score": 0.5213559754559072
+      },
+      {
+        "pmid": "26707036",
+        "score": 0.5147809766622844
+      },
+      {
+        "pmid": "21996023",
+        "score": 0.5130588100882999
+      },
+      {
+        "pmid": "24269668",
+        "score": 0.5128647392836126
+      },
+      {
+        "pmid": "24798552",
+        "score": 0.5032394441058963
+      },
+      {
+        "pmid": "24976068",
+        "score": 0.499985993300864
+      },
+      {
+        "pmid": "26252398",
+        "score": 0.4976515728043279
+      },
+      {
+        "pmid": "26604935",
+        "score": 0.4968084679212797
+      },
+      {
+        "pmid": "20485900",
+        "score": 0.4946483027150851
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "**Direct mechanistic evidence**\n\n*Dysbiosis → Inflammation* – In post‑menopausal osteoporosis (PMO) patients and a pre‑clinical PMO model, an increase in endotoxin‑producing gut bacteria together with loss of short‑chain‑fatty‑acid producers correlated with heightened systemic inflammation and accelerated bone loss【PMID:40275534】 (human + animal).\n\n*Inflammation → Inflammation (self‑reinforcement)* – Periodontitis‑associated microbial communities are “inflammo‑philic”, thriving in and amplifying the inflammatory milieu; anti‑inflammatory treatment in animal periodontitis models reduced bacterial load and protected bone【PMID:24976068】 (animal).\n\n*Inflammation → Osteoporosis* – Chronic inflammatory states (e.g., rheumatoid arthritis, inflammatory bowel disease) up‑regulate osteoclastogenic cytokines (TNF‑α, IL‑1β) that directly induce systemic osteoporosis【PMID:22179898】 (human).\n\n*Osteoporosis → Bone loss* – Post‑menopausal osteoporosis is characterized by expansion of the osteoclast pool that drives generalized bone loss, confirmed by bone density and fracture data【PMID:20599675】 (human).\n\n**Associative evidence supporting the pathway**\n\n- Animal period"
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 2.6367604732513428e-05,
+    "vector_index": 3.9302751049399376,
+    "kg_expansion": 6.649570643901825,
+    "answer_netmedex_hybrid_rag": 33.4358796775341,
+    "total": 44.56368005275726
+  },
+  "token_usage": {
+    "input_tokens": 4161,
+    "output_tokens": 1200,
+    "total_tokens": 5361
+  },
+  "completed_at": "2026-08-13T06:18:58.994177+00:00"
+}

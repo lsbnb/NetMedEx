@@ -1,0 +1,223 @@
+{
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "reviewer_type": "AI corpus-spec proposer",
+  "human_expert_review_claimed": false,
+  "proposal_strategy": "latent_hidden",
+  "generated_at": "2026-08-09T19:03:48.747973+00:00",
+  "input_sha256": "f116ca6b1e99cd73cdc66554160c50217c737e3023a8bfaa2ac9a0efb9cb635f",
+  "raw_response_sha256": "0bce345627618fcb4ad77be418789033142a8dbb644c2ef1bec3a4a2cb0ce442",
+  "usage": {
+    "input_tokens": 625,
+    "output_tokens": 1917,
+    "total_tokens": 2542
+  },
+  "questions": [
+    {
+      "question_id": "BW001",
+      "source_patterns": [
+        "icariin"
+      ],
+      "target_patterns": [
+        "osteoblast differentiation"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "bone formation",
+        "osteogenesis"
+      ],
+      "mediators": [
+        {
+          "name": "miR-153",
+          "patterns": [
+            "miR-153"
+          ],
+          "source_query": "icariin AND miR-153 [Title/Abstract]",
+          "target_query": "miR-153 AND osteoblast differentiation [Title/Abstract]",
+          "rationale": "miR-153 is a specific, non-canonical mediator.",
+          "relation_1": "icariin upregulates miR-153",
+          "relation_2": "miR-153 promotes osteoblast differentiation",
+          "why_text_rag_may_miss": "miRNA-mediated effects are rarely explicit in top-k text retrieval.",
+          "falsifiable_hypothesis": "Icariin-induced osteoblast differentiation is impaired by miR-153 inhibition."
+        },
+        {
+          "name": "SIRT1",
+          "patterns": [
+            "SIRT1"
+          ],
+          "source_query": "icariin AND SIRT1 [Title/Abstract]",
+          "target_query": "SIRT1 AND osteoblast differentiation [Title/Abstract]",
+          "rationale": "SIRT1 bridges phytochemical and differentiation.",
+          "relation_1": "icariin activates SIRT1",
+          "relation_2": "SIRT1 enhances osteoblast differentiation",
+          "why_text_rag_may_miss": "SIRT1 is not a textbook osteogenesis mediator for icariin.",
+          "falsifiable_hypothesis": "SIRT1 inhibition blocks icariin-induced osteoblast differentiation."
+        }
+      ]
+    },
+    {
+      "question_id": "BW003",
+      "source_patterns": [
+        "CFTR dysfunction"
+      ],
+      "target_patterns": [
+        "intestinal inflammation"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "gut inflammation",
+        "colitis"
+      ],
+      "mediators": [
+        {
+          "name": "DUOX2",
+          "patterns": [
+            "DUOX2"
+          ],
+          "source_query": "CFTR dysfunction AND DUOX2 [Title/Abstract]",
+          "target_query": "DUOX2 AND intestinal inflammation [Title/Abstract]",
+          "rationale": "DUOX2 is a specific, non-hub oxidase.",
+          "relation_1": "CFTR dysfunction upregulates DUOX2",
+          "relation_2": "DUOX2 promotes intestinal inflammation",
+          "why_text_rag_may_miss": "DUOX2 is rarely linked to CFTR in general reviews.",
+          "falsifiable_hypothesis": "DUOX2 inhibition reduces inflammation in CFTR-deficient intestine."
+        },
+        {
+          "name": "MUC2",
+          "patterns": [
+            "MUC2"
+          ],
+          "source_query": "CFTR dysfunction AND MUC2 [Title/Abstract]",
+          "target_query": "MUC2 AND intestinal inflammation [Title/Abstract]",
+          "rationale": "MUC2 is a specific mucin gene.",
+          "relation_1": "CFTR dysfunction impairs MUC2 secretion",
+          "relation_2": "MUC2 deficiency triggers intestinal inflammation",
+          "why_text_rag_may_miss": "MUC2 is not a standard mediator in CFTR-inflammation links.",
+          "falsifiable_hypothesis": "Restoring MUC2 mitigates inflammation in CFTR-deficient models."
+        }
+      ]
+    },
+    {
+      "question_id": "BW004",
+      "source_patterns": [
+        "SMN deficiency"
+      ],
+      "target_patterns": [
+        "mitochondrial dysfunction"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "mitochondrial impairment",
+        "energy metabolism"
+      ],
+      "mediators": [
+        {
+          "name": "Stasimon",
+          "patterns": [
+            "Stasimon"
+          ],
+          "source_query": "SMN deficiency AND Stasimon [Title/Abstract]",
+          "target_query": "Stasimon AND mitochondrial dysfunction [Title/Abstract]",
+          "rationale": "Stasimon is a specific, non-canonical protein.",
+          "relation_1": "SMN deficiency downregulates Stasimon",
+          "relation_2": "Stasimon loss impairs mitochondrial function",
+          "why_text_rag_may_miss": "Stasimon is rarely mentioned outside specialized literature.",
+          "falsifiable_hypothesis": "Stasimon restoration rescues mitochondrial function in SMN-deficient cells."
+        },
+        {
+          "name": "PGC-1α",
+          "patterns": [
+            "PGC-1α",
+            "PGC1A"
+          ],
+          "source_query": "SMN deficiency AND PGC-1α [Title/Abstract]",
+          "target_query": "PGC-1α AND mitochondrial dysfunction [Title/Abstract]",
+          "rationale": "PGC-1α is a specific transcriptional coactivator.",
+          "relation_1": "SMN deficiency reduces PGC-1α expression",
+          "relation_2": "PGC-1α loss leads to mitochondrial dysfunction",
+          "why_text_rag_may_miss": "PGC-1α is not a textbook SMN target.",
+          "falsifiable_hypothesis": "PGC-1α overexpression rescues mitochondrial defects in SMN-deficient models."
+        }
+      ]
+    },
+    {
+      "question_id": "BW005",
+      "source_patterns": [
+        "PD-1 blockade"
+      ],
+      "target_patterns": [
+        "immune-related adverse events"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "autoimmunity",
+        "immune toxicity"
+      ],
+      "mediators": [
+        {
+          "name": "CXCL9",
+          "patterns": [
+            "CXCL9"
+          ],
+          "source_query": "PD-1 blockade AND CXCL9 [Title/Abstract]",
+          "target_query": "CXCL9 AND immune-related adverse events [Title/Abstract]",
+          "rationale": "CXCL9 is a specific chemokine.",
+          "relation_1": "PD-1 blockade increases CXCL9",
+          "relation_2": "CXCL9 promotes immune-related adverse events",
+          "why_text_rag_may_miss": "CXCL9 is not a canonical irAE mediator.",
+          "falsifiable_hypothesis": "CXCL9 neutralization reduces irAEs during PD-1 blockade."
+        },
+        {
+          "name": "Granzyme B",
+          "patterns": [
+            "Granzyme B"
+          ],
+          "source_query": "PD-1 blockade AND Granzyme B [Title/Abstract]",
+          "target_query": "Granzyme B AND immune-related adverse events [Title/Abstract]",
+          "rationale": "Granzyme B is a cytotoxic effector.",
+          "relation_1": "PD-1 blockade upregulates Granzyme B",
+          "relation_2": "Granzyme B mediates tissue damage in irAEs",
+          "why_text_rag_may_miss": "Granzyme B is rarely linked to irAEs in general summaries.",
+          "falsifiable_hypothesis": "Granzyme B inhibition reduces irAEs in PD-1 blockade."
+        }
+      ]
+    },
+    {
+      "question_id": "BW006",
+      "source_patterns": [
+        "dystrophin deficiency"
+      ],
+      "target_patterns": [
+        "chronic inflammation"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "muscle inflammation",
+        "myositis"
+      ],
+      "mediators": [
+        {
+          "name": "HMGB1",
+          "patterns": [
+            "HMGB1"
+          ],
+          "source_query": "dystrophin deficiency AND HMGB1 [Title/Abstract]",
+          "target_query": "HMGB1 AND chronic inflammation [Title/Abstract]",
+          "rationale": "HMGB1 is a specific DAMP protein.",
+          "relation_1": "dystrophin deficiency increases HMGB1 release",
+          "relation_2": "HMGB1 sustains chronic inflammation",
+          "why_text_rag_may_miss": "HMGB1 is not a standard dystrophin-inflammation link.",
+          "falsifiable_hypothesis": "HMGB1 blockade reduces inflammation in dystrophin-deficient muscle."
+        },
+        {
+          "name": "Galectin-3",
+          "patterns": [
+            "Galectin-3"
+          ],
+          "source_query": "dystrophin deficiency AND Galectin-3 [Title/Abstract]",
+          "target_query": "Galectin-3 AND chronic inflammation [Title/Abstract]",
+          "rationale": "Galectin-3 is a specific lectin.",
+          "relation_1": "dystrophin deficiency upregulates Galectin-3",
+          "relation_2": "Galectin-3 promotes chronic inflammation",
+          "why_text_rag_may_miss": "Galectin-3 is rarely retrieved in top-k muscle inflammation answers.",
+          "falsifiable_hypothesis": "Galectin-3 inhibition reduces chronic inflammation in dystrophin-deficient models."
+        }
+      ]
+    }
+  ]
+}

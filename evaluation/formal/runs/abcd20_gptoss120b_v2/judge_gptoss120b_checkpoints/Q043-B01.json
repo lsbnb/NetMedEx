@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "Q043",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "c0debbafadbafb2f9f41da8571cad6d08dbb7f7e3894b7b12a5343d57d74e64d",
+  "raw_response_sha256": "02e5cfbcc063183d9bc5f0c35bd040d1dc9f25b32787036b71147ac617bbac9f",
+  "usage": {
+    "input_tokens": 4054,
+    "output_tokens": 400,
+    "total_tokens": 4454
+  },
+  "rated_at": "2026-08-13T04:54:55.454405+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q043-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate human and mouse claims, well‑cited, clearly separates evidence types."
+      },
+      {
+        "answer_id": "Q043-B",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 2,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Correct but lacks explicit citations; adds genetics and peripheral data."
+      },
+      {
+        "answer_id": "Q043-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, well‑cited, includes mechanistic mouse data and hypothesis."
+      },
+      {
+        "answer_id": "Q043-D",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate and cited; slightly less exhaustive than A/C but still strong."
+      }
+    ],
+    "preferred_item_id": "Q043-A",
+    "pairwise_reason": "Answer A cleanly separates human versus mouse evidence, cites key studies, and stays focused on the asked claim classification, making it the most direct and useful response."
+  }
+}

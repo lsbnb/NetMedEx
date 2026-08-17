@@ -1,0 +1,26 @@
+{
+  "reviewer_type": "AI",
+  "human_expert_review_claimed": false,
+  "blinded": true,
+  "task": "hidden_claim",
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_file": "evaluation/formal/runs/bridge-withheld-union-dev-v1-bw008-text-answer/path_candidates_blinded.csv",
+  "input_sha256": "7a22f988c181d43447fec7e28feff35730fd78656b282ea2bfcb84662076abf1",
+  "output_file": "evaluation/formal/runs/bridge-withheld-union-dev-v1-bw008-text-answer/path_candidates_selector_anthropic.csv",
+  "question_count": 1,
+  "row_count": 2,
+  "estimated_prompt_chars": 11589,
+  "estimated_input_tokens_rough": 2897,
+  "actual_api_usage_from_checkpoints": {
+    "input_tokens": 3401,
+    "output_tokens": 339,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 3740
+  },
+  "completed_batches": 1,
+  "started_at": "2026-08-09T17:38:50.931437+00:00",
+  "completed_at": "2026-08-09T17:38:58.199687+00:00",
+  "status": "complete"
+}

@@ -1,0 +1,56 @@
+{
+  "task": "edge",
+  "question_id": "Q001",
+  "batch": 5,
+  "provider": "google",
+  "model": "gemini-3.1-pro-preview",
+  "input_sha256": "f3389f4197ae8f1994f510a0f37d02c1fe1cf38423ef95ba137afc38e0360f70",
+  "raw_response_sha256": "541d3aaac6db5ae6e469627dac988d05b8b8a3992d6b73ff28b6c0dd76fb7f94",
+  "rated_at": "2026-08-02T18:50:16.085177+00:00",
+  "result": {
+    "ratings": [
+      {
+        "edge_id": "Q001-E17",
+        "entity_valid": 1,
+        "relation_exists": 1,
+        "relation_type_correct": 1,
+        "direction_correct": 0,
+        "evidence_support": 0,
+        "confidence": 3,
+        "notes": "The abstract states that glucocorticoids (steroids) induce the overexpression of miRNA-335, not the other way around. The direction of the relationship is incorrect."
+      },
+      {
+        "edge_id": "Q001-E18",
+        "entity_valid": 1,
+        "relation_exists": 1,
+        "relation_type_correct": 1,
+        "direction_correct": 0,
+        "evidence_support": 0,
+        "confidence": 3,
+        "notes": "The text indicates that miR-153 upregulates Runx2 (via luciferase activity), which is the opposite direction of the proposed edge."
+      },
+      {
+        "edge_id": "Q001-E19",
+        "entity_valid": 0,
+        "relation_exists": 0,
+        "relation_type_correct": 0,
+        "direction_correct": 0,
+        "evidence_support": 0,
+        "confidence": 3,
+        "notes": "The target entity '0409' is not mentioned in the text and appears to be an invalid or incorrectly extracted entity (possibly a mis-extraction of mmu_circ_0000349)."
+      },
+      {
+        "edge_id": "Q001-E20",
+        "entity_valid": 0,
+        "relation_exists": 0,
+        "relation_type_correct": 0,
+        "direction_correct": 0,
+        "evidence_support": 0,
+        "confidence": 3,
+        "notes": "The target entity '0409' is invalid and not found in the provided text. While KDM6B (JMJD3) is mentioned, the relationship cannot be validated with an ungrounded entity."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

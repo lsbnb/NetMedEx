@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "Q047",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "d10d8fbf281491bb6ddb2872994fde7af8a3d5a5e8d5aed67c849d5dc57f53c8",
+  "raw_response_sha256": "1270ee406109ffb97162a50f1416be7fbcee0e0dab1355b05b91fcba9d06e102",
+  "usage": {
+    "input_tokens": 1590,
+    "output_tokens": 494,
+    "total_tokens": 2084
+  },
+  "rated_at": "2026-08-13T04:38:42.299322+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q047-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurately cites direct evidence of inhibition, not upregulation, in human in-vitro models; clearly distinguishes evidence types and proposes testable hypotheses."
+      },
+      {
+        "answer_id": "Q047-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Correctly summarizes direct in-vitro evidence for inhibition, not upregulation, and clearly addresses lack of evidence in CF tissue; mechanistically coherent."
+      },
+      {
+        "answer_id": "Q047-C",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 4,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Accurately states lack of direct evidence in CF models, but overstates stimulatory effects in normal tissue and omits key inhibitory data from PMID:16177189."
+      },
+      {
+        "answer_id": "Q047-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Directly addresses the question, correctly cites the key study, and clearly states the lack of evidence for upregulation in CF tissue."
+      }
+    ],
+    "preferred_item_id": "Q047-A",
+    "pairwise_reason": "A, B, and D are all highly accurate, but A is preferred for its clarity, explicit distinction of evidence types, and well-articulated testable hypothesis. C is less grounded and omits key inhibitory evidence."
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "task": "answer",
+  "question_id": "PP018",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "b82eb4425586ca43c8bce106a4fa4ae23e719f21b513cc6d4cfdc06a12fbdfdb",
+  "raw_response_sha256": "7adb38419bbd226d8787c8e2285c45cb9ad0af2f2025daada5c5e439daff1cd3",
+  "usage": {
+    "input_tokens": 6181,
+    "output_tokens": 655,
+    "total_tokens": 6836
+  },
+  "rated_at": "2026-08-16T19:03:42.308445+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP018-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 3,
+        "grounding": 4,
+        "mechanistic_coherence": 3,
+        "research_value": 4,
+        "notes": "Accurate citations, but adds unrelated osteoporosis hops, diluting focus."
+      },
+      {
+        "answer_id": "PP018-B",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 4,
+        "grounding": 4,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Clear chain, but citation formatting error and less explicit periodontitis‑inflammation step."
+      },
+      {
+        "answer_id": "PP018-C",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 3,
+        "grounding": 4,
+        "mechanistic_coherence": 3,
+        "research_value": 4,
+        "notes": "Well‑cited, yet includes extra osteoporosis hops not asked."
+      },
+      {
+        "answer_id": "PP018-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensively separates each hop with human, animal, in‑vitro data; clear mechanistic links."
+      },
+      {
+        "answer_id": "PP018-E",
+        "correctness": 3,
+        "completeness": 1,
+        "relevance": 2,
+        "grounding": 2,
+        "mechanistic_coherence": 1,
+        "research_value": 1,
+        "notes": "Truncated; missing step 3 and many details."
+      },
+      {
+        "answer_id": "PP018-F",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 3,
+        "grounding": 4,
+        "mechanistic_coherence": 3,
+        "research_value": 4,
+        "notes": "Good evidence but mixes systemic osteoporosis association, slightly off‑topic."
+      },
+      {
+        "answer_id": "PP018-G",
+        "correctness": 3,
+        "completeness": 2,
+        "relevance": 3,
+        "grounding": 3,
+        "mechanistic_coherence": 2,
+        "research_value": 2,
+        "notes": "Detailed but cut off before full conclusion; incomplete."
+      }
+    ],
+    "preferred_item_id": "PP018-D",
+    "pairwise_reason": "PP018-D provides the most complete, directly relevant, and well‑grounded mechanistic pathway, clearly distinguishing human, animal, and in‑vitro evidence for each hop."
+  }
+}

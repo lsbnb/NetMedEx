@@ -1,0 +1,78 @@
+{
+  "question_id": "Q025",
+  "model": "gpt-5.6-sol",
+  "rated_at": "2026-07-29T10:09:54.873647+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q025-C001",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Human DMD study documents systemic IL-1, TNF-alpha, IL-6, and CRP patterns in relation to muscle function and nutritional status, but it is primarily associative and does not establish a mechanism sustaining chronic inflammation."
+    },
+    {
+      "candidate_id": "Q025-C002",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Directly identifies CCR2-dependent recruitment of inflammatory Ly6C-high monocytes and proinflammatory macrophage skewing as drivers of inflammation and pathology in mdx muscle; genetic and pharmacological inhibition improves outcomes."
+    },
+    {
+      "candidate_id": "Q025-C003",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Direct mechanistic evidence that fibrin deposition after muscle-vascular damage sustains leukocyte alphaMbeta2-integrin-mediated inflammatory programs, degeneration, and impaired regeneration in dystrophic muscle."
+    },
+    {
+      "candidate_id": "Q025-C004",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Green tea extract reduces mdx pathology and NF-kappaB staining, supporting NF-kappaB as an inflammation-associated pathway, but the intervention study does not clearly establish how DMD initiates or sustains chronic inflammation."
+    },
+    {
+      "candidate_id": "Q025-C005",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Quercetin lowers NF-kappaB-related proteins, COX-2, TGF-beta1, and macrophage marker F4/80 in mdx hearts. This is useful intervention-based support for inflammatory pathways but provides indirect mechanistic evidence."
+    },
+    {
+      "candidate_id": "Q025-C006",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Focused review directly describes neutrophil mechanisms that may prolong DMD inflammation, including proinflammatory cytokines, myeloperoxidase, neutrophil elastase, oxidative stress, worsened muscle damage, and impaired regeneration."
+    },
+    {
+      "candidate_id": "Q025-C007",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Shows that connexin hemichannels contribute to sarcolemmal permeability, calcium elevation, NF-kappaB activation, apoptosis, and necrosis in mdx myofibers. This supports an upstream damage/NF-kappaB segment, although macrophage infiltration was unchanged."
+    },
+    {
+      "candidate_id": "Q025-C008",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Human DMD muscle study directly characterizes persistent inflammatory and oxidative pathways, including NF-kappaB activation and increased TNF-alpha, IL-6, and glutathione peroxidase, and relates them to age, necrosis, and regeneration."
+    },
+    {
+      "candidate_id": "Q025-C009",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Provides direct causal evidence that persistent IKK/NF-kappaB signaling in macrophages promotes inflammation and necrosis, while signaling in myofibers limits progenitor-mediated regeneration; genetic and pharmacological inhibition improves mdx pathology."
+    },
+    {
+      "candidate_id": "Q025-C010",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Focused review connects dystrophin loss and repeated myonecrosis to associated inflammation and oxidative damage, with particular attention to neutrophils and protein thiol oxidation. It supplies directly relevant mechanism-level context."
+    }
+  ],
+  "raw_response_sha256": "aacb0185d2a16698ec17d7408ea36de6a9998aedfc8594ea5196c42fa3ef5f94"
+}

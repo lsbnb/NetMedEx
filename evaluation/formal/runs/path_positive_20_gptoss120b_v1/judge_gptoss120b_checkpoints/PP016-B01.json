@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP016",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "d7a5a4da26d7f19b83cb1db1f8e723ba8cf46824ab90b55cc0ec627420cb54b3",
+  "raw_response_sha256": "d194d8ce21d8abcbe5f99444d0576668a90b47f8b2e1b75146e7f7c151f42877",
+  "usage": {
+    "input_tokens": 3662,
+    "output_tokens": 395,
+    "total_tokens": 4057
+  },
+  "rated_at": "2026-08-13T06:38:31.789101+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP016-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Well‑cited animal and human data distinguishing each hop; strong causal experiments."
+      },
+      {
+        "answer_id": "PP016-B",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Accurate but brief; lacks human evidence, still clear chain."
+      },
+      {
+        "answer_id": "PP016-C",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 4,
+        "grounding": 2,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Airway focus, many speculative statements, no explicit citations."
+      },
+      {
+        "answer_id": "PP016-D",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Includes review correlations; second hop less causal than A."
+      }
+    ],
+    "preferred_item_id": "PP016-A",
+    "pairwise_reason": "PP016-A provides the most comprehensive, well‑grounded evidence for each mechanistic hop, includes both animal and human data, and clearly distinguishes causal experiments from associative observations."
+  }
+}

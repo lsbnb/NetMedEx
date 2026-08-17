@@ -1,0 +1,858 @@
+{
+  "status": "complete",
+  "question_id": "Q005",
+  "domain": "neurodegeneration",
+  "question": "Does oxidative stress directly support a mechanistic link between amyloid beta and mitochondrial dysfunction?",
+  "question_type": "mechanism",
+  "pubmed_query": "amyloid beta AND oxidative stress AND mitochondrial dysfunction",
+  "effective_pubmed_query": "amyloid beta AND oxidative stress AND mitochondrial dysfunction",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "22697066",
+    "27766447",
+    "27809706",
+    "32967303",
+    "33476985",
+    "35269827",
+    "35522844",
+    "35660451",
+    "37227619",
+    "37597424",
+    "37956598",
+    "40023293",
+    "40864415",
+    "40902587",
+    "40931065"
+  ],
+  "graph": {
+    "node_count": 25,
+    "edge_count": 26,
+    "path_count": 0,
+    "pre_gate_candidate_count": 6,
+    "pre_gate_candidates": [
+      {
+        "path": [
+          "b12d1ca8a085876db7cc6d343804ce0efb9d4e95",
+          "98a54be9697bf4c12d3a44ce1b48ede4f4f6e08e"
+        ],
+        "node_ids": [
+          "351_Gene",
+          "MESH:D000544_Disease"
+        ],
+        "names": [
+          "amyloid-beta",
+          "ad"
+        ],
+        "node_aliases": [
+          [
+            "Abeta",
+            "Amyloid-beta",
+            "amyloid beta",
+            "amyloid-beta"
+          ],
+          [
+            "AD",
+            "Alzheimer diseases",
+            "Alzheimer&#x0027;s disease",
+            "Alzheimer's",
+            "Alzheimer's Disease",
+            "Alzheimer's disease",
+            "LOAD"
+          ]
+        ],
+        "relations": [
+          "causes"
+        ],
+        "edge_pmids": [
+          [
+            "35522844"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Conventional thinking has dictated that AD is driven by amyloid beta pathology, per the Amyloid Cascade Hypothesis."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "35522844",
+            "selected_quote": "Conventional thinking has dictated that AD is driven by amyloid beta pathology, per the Amyloid Cascade Hypothesis.",
+            "selected_confidence": 0.65,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "4e3e8a54588e8ad7191ffa5a05689472a2d3836a",
+              "schema_version": 1,
+              "pmid": "35522844",
+              "source_id": "351_Gene",
+              "target_id": "MESH:D000544_Disease",
+              "relation": "causes",
+              "evidence": "Conventional thinking has dictated that AD is driven by amyloid beta pathology, per the Amyloid Cascade Hypothesis.",
+              "confidence": 0.65,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.818,
+        "base_score": 0.818,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "351_Gene"
+          ],
+          "target_anchor_ids": [
+            "MESH:D028361_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "351_Gene",
+            "MESH:D028361_Disease"
+          ],
+          "mechanism_requested": false,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 1,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "d1e1e975def661d3"
+      },
+      {
+        "path": [
+          "5b8023139851eaf4ca93f2c8b91f54139e577abd",
+          "98a54be9697bf4c12d3a44ce1b48ede4f4f6e08e"
+        ],
+        "node_ids": [
+          "MESH:C564971_Disease",
+          "MESH:D000544_Disease"
+        ],
+        "names": [
+          "mitochondria",
+          "ad"
+        ],
+        "node_aliases": [
+          [
+            "Mitochondria",
+            "mitochondria"
+          ],
+          [
+            "AD",
+            "Alzheimer diseases",
+            "Alzheimer&#x0027;s disease",
+            "Alzheimer's",
+            "Alzheimer's Disease",
+            "Alzheimer's disease",
+            "LOAD"
+          ]
+        ],
+        "relations": [
+          "increases"
+        ],
+        "edge_pmids": [
+          [
+            "22697066"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Increasing evidence suggests that compromised mitochondrial function contributes to the aging process and thus may increase the risk of AD."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "increases",
+            "selected_pmid": "22697066",
+            "selected_quote": "Increasing evidence suggests that compromised mitochondrial function contributes to the aging process and thus may increase the risk of AD.",
+            "selected_confidence": 0.86,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "0d9ea8f0955a8a119c1d996eccafb7d7f784f37e",
+              "schema_version": 1,
+              "pmid": "22697066",
+              "source_id": "MESH:C564971_Disease",
+              "target_id": "MESH:D000544_Disease",
+              "relation": "increases",
+              "evidence": "Increasing evidence suggests that compromised mitochondrial function contributes to the aging process and thus may increase the risk of AD.",
+              "confidence": 0.86,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.723,
+        "base_score": 0.723,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "351_Gene"
+          ],
+          "target_anchor_ids": [
+            "MESH:D028361_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "351_Gene",
+            "MESH:D028361_Disease"
+          ],
+          "mechanism_requested": false,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 2,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "e9c8360cc7503091"
+      },
+      {
+        "path": [
+          "de3f806a75ac777a78ef8ba666c641b3244c584a",
+          "d6a30f974730e1ce5b695abb8f61019f75dcfc1b"
+        ],
+        "node_ids": [
+          "HP:0001427_Phenotype",
+          "MESH:D028361_Disease"
+        ],
+        "names": [
+          "mitochondrial",
+          "mitochondrial toxicity"
+        ],
+        "node_aliases": [
+          [
+            "Mitochondrial",
+            "mitochondrial"
+          ],
+          [
+            "Mitochondrial Dysfunction",
+            "Mitochondrial damage",
+            "Mitochondrial dysfunction",
+            "impaired mitochondrial function",
+            "mitochondrial damage",
+            "mitochondrial deficiency",
+            "mitochondrial dysfunction",
+            "mitochondrial dysfunctioning",
+            "mitochondrial impairments",
+            "mitochondrial toxicity"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "27766447"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Recent studies have demonstrated a relationship between abnormalities in mitochondrial dynamics and impaired mitochondrial function"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "27766447",
+            "selected_quote": "Recent studies have demonstrated a relationship between abnormalities in mitochondrial dynamics and impaired mitochondrial function",
+            "selected_confidence": 0.91,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.708,
+        "base_score": 0.668,
+        "anchor_bonus": 0.04,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "351_Gene"
+          ],
+          "target_anchor_ids": [
+            "MESH:D028361_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "351_Gene",
+            "MESH:D028361_Disease"
+          ],
+          "mechanism_requested": false,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": true,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 3,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "cd5bbfb05a753ace"
+      },
+      {
+        "path": [
+          "de3f806a75ac777a78ef8ba666c641b3244c584a",
+          "42497c66c58e9ad359d6dcf1187a2951cf97d524"
+        ],
+        "node_ids": [
+          "HP:0001427_Phenotype",
+          "MESH:D019636_Disease"
+        ],
+        "names": [
+          "mitochondrial",
+          "neurodegenerative diseases"
+        ],
+        "node_aliases": [
+          [
+            "Mitochondrial",
+            "mitochondrial"
+          ],
+          [
+            "NDDs",
+            "neurodegeneration",
+            "neurodegenerative disease",
+            "neurodegenerative diseases",
+            "neurodegenerative disorder",
+            "neurodegenerative disorders",
+            "neurodegenerative illness"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "27766447"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "This paper reviews the current knowledge on signaling mechanisms involved in mitochondrial dynamics and the significance of mitochondrial dynamics in controlling associated functions in neurodegenerative diseases, particularly in AD."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "27766447",
+            "selected_quote": "This paper reviews the current knowledge on signaling mechanisms involved in mitochondrial dynamics and the significance of mitochondrial dynamics in controlling associated functions in neurodegenerative diseases, particularly in AD.",
+            "selected_confidence": 0.69,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.573,
+        "base_score": 0.573,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "351_Gene"
+          ],
+          "target_anchor_ids": [
+            "MESH:D028361_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "351_Gene",
+            "MESH:D028361_Disease"
+          ],
+          "mechanism_requested": false,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 4,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "b6956d8e0e857c21"
+      },
+      {
+        "path": [
+          "de3f806a75ac777a78ef8ba666c641b3244c584a",
+          "985a218b3d34344dbe8ab623bf1e6d4da6bb8065"
+        ],
+        "node_ids": [
+          "HP:0001427_Phenotype",
+          "GO:0008219_BiologicalProcess"
+        ],
+        "names": [
+          "mitochondrial",
+          "cell death"
+        ],
+        "node_aliases": [
+          [
+            "Mitochondrial",
+            "mitochondrial"
+          ],
+          [
+            "cell death"
+          ]
+        ],
+        "relations": [
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "27766447"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Recent studies have demonstrated a relationship between abnormalities in mitochondrial dynamics and impaired mitochondrial function, clarifying the effects of morphofunctional aberrations which promote neuronal cell death in AD."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "27766447",
+            "selected_quote": "Recent studies have demonstrated a relationship between abnormalities in mitochondrial dynamics and impaired mitochondrial function, clarifying the effects of morphofunctional aberrations which promote neuronal cell death in AD.",
+            "selected_confidence": 0.67,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "fa9ca1377ebb08e46812520c4948ee2ff896ffe3",
+              "schema_version": 1,
+              "pmid": "27766447",
+              "source_id": "HP:0001427_Phenotype",
+              "target_id": "GO:0008219_BiologicalProcess",
+              "relation": "promotes",
+              "evidence": "Recent studies have demonstrated a relationship between abnormalities in mitochondrial dynamics and impaired mitochondrial function, clarifying the effects of morphofunctional aberrations which promote neuronal cell death in AD.",
+              "confidence": 0.67,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.524,
+        "base_score": 0.524,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "351_Gene"
+          ],
+          "target_anchor_ids": [
+            "MESH:D028361_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "351_Gene",
+            "MESH:D028361_Disease"
+          ],
+          "mechanism_requested": false,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 5,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "f1c198395e725b66"
+      },
+      {
+        "path": [
+          "de3f806a75ac777a78ef8ba666c641b3244c584a",
+          "1aeec1f954cb4b36fa773afe64433721a2d6999b"
+        ],
+        "node_ids": [
+          "HP:0001427_Phenotype",
+          "GO:0023052_BiologicalProcess"
+        ],
+        "names": [
+          "mitochondrial",
+          "signaling"
+        ],
+        "node_aliases": [
+          [
+            "Mitochondrial",
+            "mitochondrial"
+          ],
+          [
+            "signaling",
+            "signalling"
+          ]
+        ],
+        "relations": [
+          "regulates"
+        ],
+        "edge_pmids": [
+          [
+            "27766447"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Several possible signaling pathways have been suggested for a better understanding of the mechanism behind the key molecules regulating mitochondrial morphologies."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "regulates",
+            "selected_pmid": "27766447",
+            "selected_quote": "Several possible signaling pathways have been suggested for a better understanding of the mechanism behind the key molecules regulating mitochondrial morphologies.",
+            "selected_confidence": 0.64,
+            "directional": true,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "directional_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.511,
+        "base_score": 0.511,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "351_Gene"
+          ],
+          "target_anchor_ids": [
+            "MESH:D028361_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "351_Gene",
+            "MESH:D028361_Disease"
+          ],
+          "mechanism_requested": false,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 6,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "83a537a0899248b2"
+      }
+    ],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "C_one_hop",
+    "label": "C. 1-hop Graph RAG",
+    "use_node_rag": true,
+    "max_hops": 1,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "gate_evidence_paths": false,
+    "gate_tier_counts": {
+      "A": 0,
+      "B": 0,
+      "C": 6
+    },
+    "rescue_triggered": true,
+    "rescue_added_paths": 0,
+    "rescue_outcomes": [
+      "no_usable_path"
+    ],
+    "pre_gate_candidate_count": 6,
+    "node_ids": [
+      "MESH:C564971_Disease",
+      "HP:0001427_Phenotype",
+      "351_Gene"
+    ],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "exposure_signature": "fe46638f9e83fcc9",
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "22697066",
+        "score": 0.6518603248807963
+      },
+      {
+        "pmid": "27766447",
+        "score": 0.6284797728166837
+      },
+      {
+        "pmid": "35522844",
+        "score": 0.6255463626160976
+      },
+      {
+        "pmid": "40864415",
+        "score": 0.6222238804425763
+      },
+      {
+        "pmid": "27809706",
+        "score": 0.6024005227894552
+      },
+      {
+        "pmid": "33476985",
+        "score": 0.5980470914403906
+      },
+      {
+        "pmid": "40023293",
+        "score": 0.588403187878819
+      },
+      {
+        "pmid": "37956598",
+        "score": 0.5670294003848598
+      },
+      {
+        "pmid": "37597424",
+        "score": 0.5659019729543693
+      },
+      {
+        "pmid": "32967303",
+        "score": 0.550660436103534
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "22697066",
+        "score": 0.6518603248807963
+      },
+      {
+        "pmid": "27766447",
+        "score": 0.6284797728166837
+      },
+      {
+        "pmid": "35522844",
+        "score": 0.6255463626160976
+      },
+      {
+        "pmid": "40864415",
+        "score": 0.6222238804425763
+      },
+      {
+        "pmid": "27809706",
+        "score": 0.6024005227894552
+      },
+      {
+        "pmid": "33476985",
+        "score": 0.5980470914403906
+      },
+      {
+        "pmid": "40023293",
+        "score": 0.588403187878819
+      },
+      {
+        "pmid": "37956598",
+        "score": 0.5670294003848598
+      },
+      {
+        "pmid": "37597424",
+        "score": 0.5659019729543693
+      },
+      {
+        "pmid": "32967303",
+        "score": 0.550660436103534
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "**Conclusion:** Yes—oxidative stress supports a plausible mechanistic link between amyloid-beta (Aβ) and mitochondrial dysfunction, but the supplied context supports a **bidirectional, self-amplifying relationship** more strongly than a single proven linear causal pathway.\n\n### Direct evidence\n\n- **Animal and primary-neuron evidence:** In triple-transgenic AD mice and hippocampus-derived primary neurons, luteolin reduced **Aβ-induced oxidative stress, mitochondrial dysfunction, and neuronal apoptosis** through a PPARγ-dependent mechanism; blocking or knocking down PPARγ eliminated luteolin’s effects in cultured neurons. This experimentally links Aβ exposure/pathology with oxidative stress and mitochondrial impairment, although it tests a protective intervention rather than proving every molecular intermediate from Aβ to mitochondrial injury [PMID: 37597424].\n\n- **Mechanistic evidence summarized in reviews (model system not specified in the supplied abstracts):** Aβ-associated mitochondrial toxicity may involve increased mitochondrial-membrane permeability, disrupted calcium homeostasis, and altered oxidative phosphorylation, with consequent ROS overproduction [PMID: 22697066]. Aβ and tau are also described as interacting with mitochondrial membranes/proteins, causing fragmentation and impaired axonal mitochondrial transport, which increases ROS and oxidative damage [PMID: 40864415].\n\n### Association\n\n- Mitochondrial dysfunction can increase ROS production; ROS-mediated macromolecular oxidative damage is described as contributing to progression of amyloid pathology. Thus, mitochondrial impairment may both result from and promote Aβ pathology [PMID: 22697066].\n\n- Oxidative stress and mitochondrial dysfunction are reported to increase Aβ levels/pathology, while Aβ can itself cause redox imbalance, consistent with a vicious cycle rather than a unidirectional sequence [PMID: 37956598].\n\n- Disrupted mitochondrial fission–fusion dynamics is associated with impaired energy production and ROS generation in AD, but the exact molecular machinery connecting Aβ to these dynamic abnormalities remains unresolved [PMID: 27766447].\n\n- Oxidative stress, mitochondrial dysfunction, and calcium dysregulation induced by misfolded Aβ and tau are jointly implicated in progressive neuronal loss. Mitochondrial calcium overload and permeability-transition-pore opening provide a plausible route from Aβ-related redox stress to cell death [PMID: 32967303].\n\n### Testable hypothesis\n\nA testable model is:\n\n**Aβ interaction with mitochondrial membranes/proteins → impaired oxidative phosphorylation and/or calcium handling → elevated mitochondrial ROS → oxidative injury to mitochondrial lipids, proteins, and DNA → further respiratory dysfunction and increased Aβ pathology.**\n\nThis predicts that, in Aβ-exposed neurons, selective suppression of mitochondrial ROS or prevention of mitochondrial calcium overload should preserve oxidative-phosphorylation function, reduce mitochondrial damage, and potentially attenuate downstream Aβ-associated toxicity. The provided context supports this model conceptually, but does not establish its complete causal order in humans [PMID: 22697066; PMID: 32967303; PMID: 40864415].\n\n### Evidence limitations\n\n- **Human evidence:** The supplied context discusses AD brains and clinical relevance, but provides no direct human interventional evidence demonstrating that oxidative stress is the necessary mediator between Aβ and mitochondrial dysfunction.\n- Several supplied records are reviews and explicitly state that the exact mechanisms or overall relationships remain unclear [PMID: 22697066; PMID: 27766447; PMID: 33476985].",
+    "traditional_rag": "**Direct evidence**\n\n- **Animal and in-vitro evidence:** A study in 3xTg-AD mice and hippocampus-derived primary neurons reported that amyloid-beta was associated with oxidative stress, mitochondrial dysfunction, and neuronal apoptosis. Luteolin reduced these abnormalities through a PPARγ-dependent mechanism; blocking or silencing PPARγ eliminated luteolin’s effects. This supports an experimentally manipulable Aβ–oxidative stress–mitochondrial injury pathway, although it does not by itself prove that oxidative stress is the sole mediator of Aβ mitochondrial toxicity. [PMID: 37597424]\n\n- **Mechanistic evidence summarized in reviews:** Aβ-associated mitochondrial toxicity has been proposed to involve altered oxidative phosphorylation, increased mitochondrial membrane permeability, disrupted calcium homeostasis, and consequent excess ROS production. ROS can then cause oxidative macromolecular damage and promote amyloid pathology, consistent with a self-reinforcing cycle. [PMID: 22697066]\n\n**Association**\n\n- In AD, mitochondrial dysfunction and oxidative stress are repeatedly reported together with Aβ pathology. Mitochondrial impairment can increase ROS, while oxidative stress and mitochondrial dysfunction can increase Aβ-related pathology; Aβ can also promote redox imbalance. [PMID: 22697066; PMID: 37956598]\n\n- Aβ and tau pathology are linked to mitochondrial calcium dysregulation, impaired bioenergetics, ROS production, permeability-transition pore opening, and neuronal death. [PMID: 32967303]\n\n- **Human relevance:** The supplied reviews discuss mitochondrial structural and respiratory-chain abnormalities in AD brains, but the provided context does not supply direct human causal experiments showing that oxidative stress mediates Aβ-induced mitochondrial dysfunction. [PMID: 40864415]\n\n**Testable hypothesis**\n\nOxidative stress directly supports a plausible mechanistic bridge between Aβ and mitochondrial dysfunction: Aβ disrupts mitochondrial respiration, membranes, and/or calcium handling; this raises ROS; ROS oxidatively damages mitochondrial proteins, lipids, and DNA, worsening bioenergetic failure and potentially increasing amyloid pathology. This constitutes a feed-forward Aβ–mitochondria–ROS cycle. [PMID: 22697066; PMID: 37956598]\n\n**Conclusion**\n\nYes—oxidative stress supports a mechanistic link between Aβ and mitochondrial dysfunction, particularly in preclinical/neuronal evidence and mechanistic synthesis. However, the supplied context also explicitly notes that the precise mitochondrial toxicity mechanism induced by Aβ remains unclear, and it does not establish definitive human causality or prove that oxidative stress is required in every Aβ-driven mitochondrial defect. [PMID: 22697066; PMID: 33476985]",
+    "general_llm": "Yes. Oxidative stress provides substantial mechanistic support for a link between amyloid-β (Aβ) and mitochondrial dysfunction, although the relationship is best viewed as a self-reinforcing cycle rather than a simple one-way pathway.\n\n**Proposed sequence:**\n\n1. **Aβ can impair mitochondria**\n   - Aβ, particularly soluble oligomeric forms, has been reported to associate with mitochondrial membranes and mitochondrial proteins.\n   - It can disrupt electron-transport-chain activity—commonly implicating complexes I and IV—reduce ATP production, alter mitochondrial calcium handling, and promote opening of the mitochondrial permeability transition pore.\n   - These changes increase electron leakage from the respiratory chain, generating reactive oxygen species (ROS).\n\n2. **Mitochondrial ROS causes oxidative injury**\n   - Excess ROS can oxidize mitochondrial DNA, membrane lipids such as cardiolipin, and respiratory-chain proteins.\n   - Oxidative damage further compromises oxidative phosphorylation, mitochondrial dynamics (fission/fusion), axonal transport of mitochondria, and mitophagy.\n   - Because mitochondria are both a source and a target of ROS, this can become an amplifying loop.\n\n3. **Oxidative stress can also promote Aβ pathology**\n   - Oxidative stress may increase amyloidogenic processing of amyloid precursor protein, including through altered regulation of β-secretase activity.\n   - ROS and redox-active metals can favor Aβ aggregation and can make Aβ-associated toxicity more severe.\n   - Thus, mitochondrial dysfunction can increase oxidative stress, which may in turn increase Aβ production or aggregation and worsen mitochondrial injury.\n\nThere is also evidence for more specific interactions: Aβ has been proposed to interfere with mitochondrial protein import and to interact with mitochondrial targets involved in redox regulation and metabolism. These findings give biological plausibility to oxidative stress as a mediator between Aβ exposure and mitochondrial failure.\n\nHowever, several cautions are important:\n\n- Much of the mechanistic evidence comes from cultured neurons, isolated mitochondria, and animal models; proving the precise order of events in human Alzheimer disease is difficult.\n- Oxidative stress is not unique to Aβ and occurs in aging, inflammation, vascular disease, metabolic disease, and tau pathology.\n- It remains uncertain whether oxidative stress is an initiating event in most patients, a downstream consequence of early disease, or both.\n\nOverall, established experimental evidence supports oxidative stress as a major mediator and amplifier of the Aβ–mitochondrial dysfunction connection. It is unlikely to be the only mechanism, but it is a plausible central component of the pathogenic feedback loop."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 90.25294626504183,
+    "vector_index": 1.9839207231998444,
+    "answer_netmedex_hybrid_rag": 7.6521787494421005,
+    "answer_traditional_rag": 6.122143238782883,
+    "answer_general_llm": 8.18331427872181,
+    "total": 118.84829773008823
+  },
+  "token_usage": {
+    "total_tokens": 99931,
+    "output_tokens": 57747,
+    "input_tokens": 42184
+  },
+  "completed_at": "2026-08-11T04:51:40.147776+00:00"
+}

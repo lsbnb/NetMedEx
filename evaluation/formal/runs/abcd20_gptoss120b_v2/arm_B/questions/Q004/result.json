@@ -1,0 +1,188 @@
+{
+  "status": "complete",
+  "question_id": "Q004",
+  "domain": "cancer",
+  "question": "Which genes mediate a possible 2-hop path between curcumin and apoptosis?",
+  "question_type": "two_hop_path",
+  "pubmed_query": "curcumin AND apoptosis AND cancer AND (gene OR pathway)",
+  "effective_pubmed_query": "curcumin AND apoptosis AND cancer AND (gene OR pathway)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "15810876",
+    "29693253",
+    "30623450",
+    "30725357",
+    "31590362",
+    "32519340",
+    "35722665",
+    "37776274",
+    "38031951",
+    "38166505",
+    "38269517",
+    "38699926",
+    "39219410",
+    "41109942",
+    "41252742"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "Which genes mediate a possible 2-hop path between curcumin and apoptosis?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "15810876",
+        "score": 0.6283762240060298
+      },
+      {
+        "pmid": "30623450",
+        "score": 0.5989199374620973
+      },
+      {
+        "pmid": "38699926",
+        "score": 0.5920934711462523
+      },
+      {
+        "pmid": "31590362",
+        "score": 0.5889506597903633
+      },
+      {
+        "pmid": "38031951",
+        "score": 0.5878472991607736
+      },
+      {
+        "pmid": "32519340",
+        "score": 0.5681490536801325
+      },
+      {
+        "pmid": "29693253",
+        "score": 0.5629028543574971
+      },
+      {
+        "pmid": "38166505",
+        "score": 0.5339987675885987
+      },
+      {
+        "pmid": "30725357",
+        "score": 0.5255523475601428
+      },
+      {
+        "pmid": "41109942",
+        "score": 0.5241625285947177
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "15810876",
+        "score": 0.6283762240060298
+      },
+      {
+        "pmid": "30623450",
+        "score": 0.5989199374620973
+      },
+      {
+        "pmid": "38699926",
+        "score": 0.5920934711462523
+      },
+      {
+        "pmid": "31590362",
+        "score": 0.5889506597903633
+      },
+      {
+        "pmid": "38031951",
+        "score": 0.5878472991607736
+      },
+      {
+        "pmid": "32519340",
+        "score": 0.5681490536801325
+      },
+      {
+        "pmid": "29693253",
+        "score": 0.5629028543574971
+      },
+      {
+        "pmid": "38166505",
+        "score": 0.5339987675885987
+      },
+      {
+        "pmid": "30725357",
+        "score": 0.5255523475601428
+      },
+      {
+        "pmid": "41109942",
+        "score": 0.5241625285947177
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Genes that can plausibly sit on a two‑step (curcumin → gene A → gene B → apoptosis) cascade**\n\n* **TP53 (p53)** – Curcumin up‑regulates p53 expression in cancer cells, and p53 is a master transcriptional activator of pro‑apoptotic genes such as BAX, PUMA and NOXA, driving mitochondrial apoptosis【PMID:30623450】.  \n\n* **NFKB1/RELA (NF‑κB)** – Curcumin inhibits NF‑κB activity; this suppression lowers transcription of the anti‑apoptotic gene **BCL2**, thereby removing a survival block and permitting apoptosis【PMID:30623450】.  \n\n* **PTGS2 (COX‑2)** – Curcumin’s inhibition of COX‑2 reduces prostaglandin‑mediated survival signaling, which in turn decreases **BCL2** expression and sensitizes cells to apoptosis【PMID:30623450】.  \n\n* **PIK3CA/AKT1 (PI3K‑AKT pathway)** – Curcumin attenuates PI3K signaling; reduced AKT phosphorylation releases the pro‑apoptotic protein **BAD** from inhibition and facilitates caspase activation, culminating in apoptosis【PMID:30623450】【PMID:29693253】.  \n\n* **MAPK1/3 (ERK1/2)** – Curcumin increases MAPK expression and activity; activated MAPKs can phosphorylate p53 and other transcription factors that up‑regulate pro‑apoptotic genes (e.g., BAX), creating a second‑step link to apoptosis【PMID:30623450】.  \n\n* **NFE2L2 (Nrf2) → GPX4** – In osteosarcoma, curcumin down‑modulates Nrf2, which reduces GPX4 levels, heightening lipid‑peroxide stress and triggering apoptosis (and ferroptosis)【PMID:38166505】.\n\n**Evidence type** – All cited findings come from human cancer‑cell (in‑vitro) studies, with some in‑vivo xenograft confirmation for the Nrf2‑GPX4 axis【PMID:38166505】. Direct downstream apoptotic effectors (e.g., BAX, caspases) are not always named in the abstracts but are well‑established transcriptional targets of the listed regulators.\n\n**Conclusion** – Curcumin can influence apoptosis through at least six gene‑mediated two‑hop pathways involving TP53, NF‑κB/BCL2, COX‑2/BCL2, PI3K/AKT/BAD, MAPKs/p53 and Nrf2/GPX4."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 2.4221837520599365e-05,
+    "vector_index": 2.0440738648176193,
+    "kg_expansion": 4.057586193084717e-05,
+    "answer_traditional_rag": 41.37481968104839,
+    "total": 44.07719687372446
+  },
+  "token_usage": {
+    "input_tokens": 3716,
+    "output_tokens": 1540,
+    "total_tokens": 5256
+  },
+  "completed_at": "2026-08-13T03:40:30.679783+00:00"
+}

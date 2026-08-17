@@ -1,0 +1,987 @@
+{
+  "status": "complete",
+  "question_id": "Q001",
+  "domain": "osteoporosis",
+  "question": "How may icariin influence osteoblast differentiation through miRNA-related mechanisms?",
+  "question_type": "mechanism",
+  "pubmed_query": "icariin AND (osteoblast OR osteogenesis) AND (microRNA OR miRNA)",
+  "effective_pubmed_query": "icariin AND (osteoblast OR osteogenesis) AND (microRNA OR miRNA)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "27492554",
+    "29500883",
+    "29904399",
+    "32911026",
+    "33743412",
+    "35292240",
+    "38045146",
+    "39588260",
+    "41484919"
+  ],
+  "graph": {
+    "node_count": 52,
+    "edge_count": 73,
+    "path_count": 20,
+    "preferred_pmids": [
+      "29500883",
+      "29904399",
+      "32911026",
+      "33743412",
+      "35292240",
+      "38045146",
+      "39588260",
+      "41484919"
+    ],
+    "paths": [
+      {
+        "path_id": "Q001-P01",
+        "path_signature": "397f0951824c83bf",
+        "path_text": "icariin ->[upregulates] runx2",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "12393_Gene"
+        ],
+        "names": [
+          "icariin",
+          "runx2"
+        ],
+        "relations": [
+          "upregulates"
+        ],
+        "edge_pmids": [
+          [
+            "29500883",
+            "29904399",
+            "38045146"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "icariin stimulation alone ... upregulated the levels of Runt-related transcription factor 2 (Runx2)",
+            "miR-153 and Runx2 expression levels were increased following treatment with icariin.",
+            "With the increase in icariin concentration and time for treatment, the expression levels of mmu_circ_0000349, JMJD3, ALP, and RUNX2 also increased"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 1.003,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P02",
+        "path_signature": "8729a64a7f9c0541",
+        "path_text": "icariin ->[treats] osteoporosis",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "MESH:D010024_Disease"
+        ],
+        "names": [
+          "icariin",
+          "osteoporosis"
+        ],
+        "relations": [
+          "treats"
+        ],
+        "edge_pmids": [
+          [
+            "29904399",
+            "35292240"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The current study provided evidence suggesting that icariin should be considered as an effective candidate for the management of osteoporosis."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.883,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P03",
+        "path_signature": "d80a6df3b7a1cb8f",
+        "path_text": "icariin ->[upregulates] mir215",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "387211_Gene"
+        ],
+        "names": [
+          "icariin",
+          "mir215"
+        ],
+        "relations": [
+          "upregulates"
+        ],
+        "edge_pmids": [
+          [
+            "29500883"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "icariin stimulation alone ... upregulated the levels of ... miR-21-5p"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.775,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P04",
+        "path_signature": "a74c8c801331bc9e",
+        "path_text": "icariin ->[regulates] mir335",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "100314182_Gene"
+        ],
+        "names": [
+          "icariin",
+          "mir335"
+        ],
+        "relations": [
+          "regulates"
+        ],
+        "edge_pmids": [
+          [
+            "32911026"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "ICA could regulate the overexpression of miRNA-335 induced by glucocorticoids"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.766,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P05",
+        "path_signature": "df2390d76f1863b5",
+        "path_text": "icariin ->[upregulates] mir153",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "387171_Gene"
+        ],
+        "names": [
+          "icariin",
+          "mir153"
+        ],
+        "relations": [
+          "upregulates"
+        ],
+        "edge_pmids": [
+          [
+            "29904399"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "miR-153 and Runx2 expression levels were increased following treatment with icariin."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.764,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P06",
+        "path_signature": "23863a4208321d75",
+        "path_text": "icariin ->[downregulates] cebpa",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "1050_Gene"
+        ],
+        "names": [
+          "icariin",
+          "cebpa"
+        ],
+        "relations": [
+          "downregulates"
+        ],
+        "edge_pmids": [
+          [
+            "33743412"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "ICA inhibited hBMSC adipogenic differentiation ... by downregulating the expression of ... CCAAT enhancer-binding protein-alpha (C/EBP-alpha)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.763,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P07",
+        "path_signature": "03f954b037a315a2",
+        "path_text": "icariin ->[upregulates] alp",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "11691_Gene"
+        ],
+        "names": [
+          "icariin",
+          "alp"
+        ],
+        "relations": [
+          "upregulates"
+        ],
+        "edge_pmids": [
+          [
+            "29500883"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "icariin stimulation alone increased ALP activity"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.763,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P08",
+        "path_signature": "d9195ee37b28ded3",
+        "path_text": "icariin ->[upregulates] bglap2",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "12097_Gene"
+        ],
+        "names": [
+          "icariin",
+          "bglap2"
+        ],
+        "relations": [
+          "upregulates"
+        ],
+        "edge_pmids": [
+          [
+            "29500883"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "icariin stimulation alone ... upregulated the levels of osteocalcin (OCN)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.763,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P09",
+        "path_signature": "f62473198acaceb9",
+        "path_text": "icariin ->[upregulates] bmp2",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "12156_Gene"
+        ],
+        "names": [
+          "icariin",
+          "bmp2"
+        ],
+        "relations": [
+          "upregulates"
+        ],
+        "edge_pmids": [
+          [
+            "29500883"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "icariin stimulation alone ... upregulated the levels of bone morphogenetic protein 2 (BMP2)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.763,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P10",
+        "path_signature": "088239628a74013b",
+        "path_text": "icariin ->[regulates] kdm6b",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "216850_Gene"
+        ],
+        "names": [
+          "icariin",
+          "kdm6b"
+        ],
+        "relations": [
+          "regulates"
+        ],
+        "edge_pmids": [
+          [
+            "38045146"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "qPCR and Western blotting confirmed the effect of icariin on the mmu_circ_0000349/mmu-miR-138-5p/JMJD3 axis and osteogenic differentiation."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.763,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P11",
+        "path_signature": "4d481bc08ef77ede",
+        "path_text": "icariin ->[upregulates] ibsp",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "3381_Gene"
+        ],
+        "names": [
+          "icariin",
+          "ibsp"
+        ],
+        "relations": [
+          "upregulates"
+        ],
+        "edge_pmids": [
+          [
+            "33743412"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "ICA significantly promoted hBMSC osteogenic differentiation by upregulating alkaline phosphatase activity and the expression of bone sialoprotein II (BSPII)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.763,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P12",
+        "path_signature": "fc012bb6b3c01611",
+        "path_text": "icariin ->[downregulates] pparg",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "5468_Gene"
+        ],
+        "names": [
+          "icariin",
+          "pparg"
+        ],
+        "relations": [
+          "downregulates"
+        ],
+        "edge_pmids": [
+          [
+            "33743412"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "ICA inhibited hBMSC adipogenic differentiation ... by downregulating the expression of peroxisome proliferator-activated receptor-gamma (PPAR-gamma)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.763,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P13",
+        "path_signature": "96ef361bee4561b4",
+        "path_text": "icariin ->[upregulates] runx2",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "860_Gene"
+        ],
+        "names": [
+          "icariin",
+          "runx2"
+        ],
+        "relations": [
+          "upregulates"
+        ],
+        "edge_pmids": [
+          [
+            "33743412"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "ICA significantly promoted hBMSC osteogenic differentiation by upregulating alkaline phosphatase activity and the expression of bone sialoprotein II (BSPII) and runt-related transcription factor-2 (Runx-2)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.763,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P14",
+        "path_signature": "53d87299b55fd2f5",
+        "path_text": "icariin ->[prevents] onfh",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "onfh_disease"
+        ],
+        "names": [
+          "icariin",
+          "onfh"
+        ],
+        "relations": [
+          "prevents"
+        ],
+        "edge_pmids": [
+          [
+            "32911026"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "ICA can prevent the occurrence of steroid-associated ONFH in rats"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.763,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P15",
+        "path_signature": "378060a6b66c80aa",
+        "path_text": "icariin ->[activates] ctnnb1",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "1499_Gene"
+        ],
+        "names": [
+          "icariin",
+          "ctnnb1"
+        ],
+        "relations": [
+          "activates"
+        ],
+        "edge_pmids": [
+          [
+            "33743412"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "ICA mediated its effects on hBMSCs by activating the Wnt/beta-catenin signaling pathway."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.758,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P16",
+        "path_signature": "51e6bb9f3a4a5d50",
+        "path_text": "icariin ->[regulates] mitf",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "25094_Gene"
+        ],
+        "names": [
+          "icariin",
+          "mitf"
+        ],
+        "relations": [
+          "regulates"
+        ],
+        "edge_pmids": [
+          [
+            "39588260"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Icariin increased the presence of MVBs in the cytoplasm through modulation of the MITF/Rab27A signaling pathway"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.758,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P17",
+        "path_signature": "6db281f13beda6ad",
+        "path_text": "icariin ->[upregulates] lrp5",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "4041_Gene"
+        ],
+        "names": [
+          "icariin",
+          "lrp5"
+        ],
+        "relations": [
+          "upregulates"
+        ],
+        "edge_pmids": [
+          [
+            "33743412"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "ICA mediated its effects on hBMSCs by activating the Wnt/beta-catenin signaling pathway. It did so by upregulating ... low density lipoprotein receptor-related protein 5 (LRP5)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.758,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P18",
+        "path_signature": "c7eba57ba5cfb60a",
+        "path_text": "icariin ->[downregulates] mmp3",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "4314_Gene"
+        ],
+        "names": [
+          "icariin",
+          "mmp3"
+        ],
+        "relations": [
+          "downregulates"
+        ],
+        "edge_pmids": [
+          [
+            "41484919"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "ICA exerts its anti-osteoporotic effect by downregulating the miR-376c-3p-mediated Mmp3 expression"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.758,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P19",
+        "path_signature": "1d682bdf3d028e21",
+        "path_text": "icariin ->[regulates] rab27a",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "50645_Gene"
+        ],
+        "names": [
+          "icariin",
+          "rab27a"
+        ],
+        "relations": [
+          "regulates"
+        ],
+        "edge_pmids": [
+          [
+            "39588260"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Icariin increased the presence of MVBs in the cytoplasm through modulation of the MITF/Rab27A signaling pathway"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.758,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P20",
+        "path_signature": "19946c68deef1a1e",
+        "path_text": "icariin ->[upregulates] tcf7",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "6932_Gene"
+        ],
+        "names": [
+          "icariin",
+          "tcf7"
+        ],
+        "relations": [
+          "upregulates"
+        ],
+        "edge_pmids": [
+          [
+            "33743412"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "ICA mediated its effects on hBMSCs by activating the Wnt/beta-catenin signaling pathway. It did so by upregulating ... T cell factor 1 (TCF1)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.758,
+        "hop_count": 1
+      }
+    ]
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": true,
+    "max_hops": 2,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "gate_evidence_paths": true,
+    "node_ids": [
+      "MESH:C056599_Chemical",
+      "5970_Gene"
+    ],
+    "exposed_pmids": [
+      "29500883",
+      "29904399",
+      "32911026",
+      "33743412",
+      "35292240",
+      "38045146",
+      "39588260",
+      "41484919"
+    ],
+    "exposed_paths": [
+      [
+        "icariin",
+        "runx2"
+      ],
+      [
+        "icariin",
+        "osteoporosis"
+      ],
+      [
+        "icariin",
+        "mir215"
+      ],
+      [
+        "icariin",
+        "mir335"
+      ],
+      [
+        "icariin",
+        "mir153"
+      ],
+      [
+        "icariin",
+        "cebpa"
+      ],
+      [
+        "icariin",
+        "alp"
+      ],
+      [
+        "icariin",
+        "bglap2"
+      ],
+      [
+        "icariin",
+        "bmp2"
+      ],
+      [
+        "icariin",
+        "kdm6b"
+      ],
+      [
+        "icariin",
+        "ibsp"
+      ],
+      [
+        "icariin",
+        "pparg"
+      ],
+      [
+        "icariin",
+        "runx2"
+      ],
+      [
+        "icariin",
+        "onfh"
+      ],
+      [
+        "icariin",
+        "ctnnb1"
+      ],
+      [
+        "icariin",
+        "mitf"
+      ],
+      [
+        "icariin",
+        "lrp5"
+      ],
+      [
+        "icariin",
+        "mmp3"
+      ],
+      [
+        "icariin",
+        "rab27a"
+      ],
+      [
+        "icariin",
+        "tcf7"
+      ]
+    ],
+    "exposed_edges": [
+      "icariin ->[upregulates] runx2",
+      "icariin ->[treats] osteoporosis",
+      "icariin ->[upregulates] mir215",
+      "icariin ->[regulates] mir335",
+      "icariin ->[upregulates] mir153",
+      "icariin ->[downregulates] cebpa",
+      "icariin ->[upregulates] alp",
+      "icariin ->[upregulates] bglap2",
+      "icariin ->[upregulates] bmp2",
+      "icariin ->[regulates] kdm6b",
+      "icariin ->[upregulates] ibsp",
+      "icariin ->[downregulates] pparg",
+      "icariin ->[upregulates] runx2",
+      "icariin ->[prevents] onfh",
+      "icariin ->[activates] ctnnb1",
+      "icariin ->[regulates] mitf",
+      "icariin ->[upregulates] lrp5",
+      "icariin ->[downregulates] mmp3",
+      "icariin ->[regulates] rab27a",
+      "icariin ->[upregulates] tcf7"
+    ],
+    "exposure_signature": "737b40a6166ed3a4",
+    "routed_profile": "G_evidence_gated_two_hop",
+    "route_reason": "question_type=mechanism: evidence-gated multi-hop task",
+    "question_type": "mechanism",
+    "frozen_exposure_source": "evaluation/formal/runs/adaptive-replay-small-gpt41/questions/Q001/result.json",
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {
+        "29904399": {
+          "text_score": 0.686049,
+          "graph_score": 1.0,
+          "reranked_score": 0.795932
+        },
+        "38045146": {
+          "text_score": 0.66512,
+          "graph_score": 1.0,
+          "reranked_score": 0.782328
+        },
+        "35292240": {
+          "text_score": 0.647618,
+          "graph_score": 0.883,
+          "reranked_score": 0.730002
+        },
+        "29500883": {
+          "text_score": 0.644747,
+          "graph_score": 1.0,
+          "reranked_score": 0.769086
+        },
+        "33743412": {
+          "text_score": 0.608988,
+          "graph_score": 0.763,
+          "reranked_score": 0.662892
+        },
+        "32911026": {
+          "text_score": 0.575273,
+          "graph_score": 0.766,
+          "reranked_score": 0.642028
+        },
+        "39588260": {
+          "text_score": 0.566081,
+          "graph_score": 0.758,
+          "reranked_score": 0.633252
+        }
+      }
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "29904399",
+        "score": 0.7959317737116298
+      },
+      {
+        "pmid": "38045146",
+        "score": 0.782328196745579
+      },
+      {
+        "pmid": "29500883",
+        "score": 0.7690857020100966
+      },
+      {
+        "pmid": "35292240",
+        "score": 0.7300018170093989
+      },
+      {
+        "pmid": "27492554",
+        "score": 0.690733273900378
+      },
+      {
+        "pmid": "41484919",
+        "score": 0.663339298051586
+      },
+      {
+        "pmid": "33743412",
+        "score": 0.662892323419202
+      },
+      {
+        "pmid": "32911026",
+        "score": 0.6420276863569216
+      },
+      {
+        "pmid": "39588260",
+        "score": 0.6332523889731065
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "27492554",
+        "score": 0.690733273900378
+      },
+      {
+        "pmid": "29904399",
+        "score": 0.6860488826332767
+      },
+      {
+        "pmid": "38045146",
+        "score": 0.6651203026855061
+      },
+      {
+        "pmid": "41484919",
+        "score": 0.663339298051586
+      },
+      {
+        "pmid": "35292240",
+        "score": 0.6476181800144599
+      },
+      {
+        "pmid": "29500883",
+        "score": 0.6447472338616872
+      },
+      {
+        "pmid": "33743412",
+        "score": 0.6089881898756954
+      },
+      {
+        "pmid": "32911026",
+        "score": 0.5752733636260333
+      },
+      {
+        "pmid": "39588260",
+        "score": 0.5660805984201639
+      }
+    ]
+  },
+  "answers": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 2.251565456390381e-05,
+    "vector_index": 3.633690021932125,
+    "total": 4.124571725726128
+  },
+  "token_usage": {},
+  "completed_at": "2026-08-03T18:10:31.948075+00:00"
+}

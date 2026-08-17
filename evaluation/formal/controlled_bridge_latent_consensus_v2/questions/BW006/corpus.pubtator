@@ -1,0 +1,344 @@
+##USE-MESH-VOCABULARY
+37284446|t|The STAT1/HMGB1/NF-kappaB pathway in chronic inflammation and kidney injury after cisplatin exposure.
+37284446|a|Rationale: Cisplatin, a potent chemotherapeutic drug, induces side effects in normal tissues including the kidney. To reduce the side effects, repeated low-dose cisplatin (RLDC) is commonly used in clinical setting. While RLDC reduces acute nephrotoxicity to certain extents, a significant portion of patients later develop chronic kidney problems, underscoring the need for novel therapeutics to alleviate the long-term sequelae of RLDC therapy. Methods: In vivo, the role of HMGB1 was examined by testing HMGB1 neutralizing antibodies in RLDC mice. In vitro, the effects of HMGB1 knockdown on RLDC-induced nuclear factor-kappaB (NF-kappaB) activation and fibrotic phenotype changes were tested in proximal tubular cells. To study signal transducer and activator of transcription 1 (STAT1), siRNA knockdown and its pharmacological inhibitor Fludarabine were used. We also searched the Gene Expression Omnibus (GEO) database for transcriptional expression profiles and evaluated kidney biopsy samples from CKD patients to verify the STAT1/HMGB1/NF-kappaB signaling axis. Results: We found that RLDC induced kidney tubule damage, interstitial inflammation, and fibrosis in mice, accompanied by up-regulation of HMGB1. Blockage of HMGB1with neutralizing antibodies and Glycyrrhizin suppressed NF-kappaB activation and associated production of pro-inflammatory cytokines, reduced tubular injury and renal fibrosis, and improved renal function after RLDC treatment. Consistently, knockdown of HMGB1 decreased NF-kappaB activation and prevented the fibrotic phenotype in RLDC-treated renal tubular cells. At the upstream, knockdown of STAT1 suppressed HMGB1 transcription and cytoplasmic accumulation in renal tubular cells, suggesting a critical role of STAT1 in HMGB1 activation. Upregulation of STAT1/HMGB1/NF-kappaB along with inflammatory cytokines was also verified in kidney tissues of CKD patients. Conclusion: These results unravel the STAT1/HMGB1/NF-kappaB pathway that contributes to persistent inflammation and chronic kidney problems after cisplatin nephrotoxicity, suggesting new therapeutic targets for kidney protection in cancer patients receiving cisplatin chemotherapy.
+37284446	4	9	Stat1	Gene	20846
+37284446	10	15	HMGB1	Gene	3146
+37284446	16	25	NFKB1	Gene	4790
+37284446	37	57	Inflammation	Disease	MESH:D007249
+37284446	62	75	Kidney Diseases	Disease	MESH:D007674
+37284446	82	91	Cisplatin	Chemical	MESH:D002945
+37284446	113	122	Cisplatin	Chemical	MESH:D002945
+37284446	263	272	Cisplatin	Chemical	MESH:D002945
+37284446	274	278	RLDC	Chemical	-
+37284446	324	328	RLDC	Chemical	-
+37284446	343	357	nephrotoxicity	Disease	-
+37284446	403	411	patients	Species	9606
+37284446	426	449	Renal Insufficiency Chronic	Disease	MESH:D051436
+37284446	535	539	RLDC	Chemical	-
+37284446	579	584	Hmgb1	Gene	15289
+37284446	609	614	Hmgb1	Gene	15289
+37284446	642	646	RLDC	Chemical	-
+37284446	647	651	mice	Species	10090
+37284446	678	683	Hmgb1	Gene	15289
+37284446	697	701	L016	CellLine	CVCL:L016
+37284446	710	731	Nfkb1	Gene	18033
+37284446	733	742	NFKB1	Gene	4790
+37284446	759	767	fibrotic	Disease	-
+37284446	834	884	Stat1	Gene	20846
+37284446	886	891	Stat1	Gene	20846
+37284446	944	955	fludarabine	Chemical	MESH:C024352
+37284446	1108	1111	Chronic Kidney Disease-Mineral and Bone Disorder	Disease	MESH:D012080
+37284446	1112	1120	patients	Species	9606
+37284446	1135	1140	STAT1	Gene	6772
+37284446	1141	1146	HMGB1	Gene	3146
+37284446	1147	1156	NFKB1	Gene	4790
+37284446	1196	1200	RLDC	Chemical	-
+37284446	1209	1229	Kidney Diseases	Disease	MESH:D007674
+37284446	1244	1256	Inflammation	Disease	MESH:D007249
+37284446	1262	1270	Fibrosis	Disease	MESH:D005355
+37284446	1274	1278	mice	Species	10090
+37284446	1312	1317	Hmgb1	Gene	15289
+37284446	1369	1381	Glycyrrhizic Acid	Chemical	MESH:D019695
+37284446	1393	1402	Nfkb1	Gene	18033
+37284446	1447	1459	Inflammation	Disease	MESH:D007249
+37284446	1479	1493	Adenocarcinoma	Disease	MESH:D000230
+37284446	1498	1512	Fibrosis	Disease	MESH:D005355
+37284446	1548	1552	RLDC	Chemical	-
+37284446	1591	1596	HMGB1	Gene	3146
+37284446	1607	1616	Nfkb1	Gene	18033
+37284446	1646	1654	fibrotic	Disease	-
+37284446	1668	1672	RLDC	Chemical	-
+37284446	1732	1737	STAT1	Gene	6772
+37284446	1749	1754	HMGB1	Gene	3146
+37284446	1852	1857	STAT1	Gene	6772
+37284446	1861	1866	HMGB1	Gene	3146
+37284446	1895	1900	STAT1	Gene	6772
+37284446	1901	1906	HMGB1	Gene	3146
+37284446	1907	1916	NFKB1	Gene	4790
+37284446	1928	1940	Inflammation	Disease	MESH:D007249
+37284446	1990	1993	Chronic Kidney Disease-Mineral and Bone Disorder	Disease	MESH:D012080
+37284446	1994	2002	patients	Species	9606
+37284446	2042	2047	Stat1	Gene	20846
+37284446	2048	2053	HMGB1	Gene	3146
+37284446	2054	2063	NFKB1	Gene	4790
+37284446	2103	2115	Inflammation	Disease	MESH:D007249
+37284446	2120	2143	Renal Insufficiency Chronic	Disease	MESH:D051436
+37284446	2150	2159	Cisplatin	Chemical	MESH:D002945
+37284446	2160	2174	nephrotoxicity	Disease	-
+37284446	2236	2242	Neoplasms	Disease	MESH:D009369
+37284446	2243	2251	patients	Species	9606
+37284446	2262	2271	Cisplatin	Chemical	MESH:D002945
+37284446	Negative_Correlation	MESH:D019695	MESH:D007249
+37284446	Association	MESH:D007249	20846
+37284446	Positive_Correlation	MESH:D002945	MESH:D051436
+37284446	Negative_Correlation	MESH:D002945	MESH:D009369
+37284446	Association	MESH:D051436	3146
+37284446	Positive_Correlation	3146	6772
+37284446	Negative_Correlation	MESH:D019695	MESH:D000230
+37284446	Association	MESH:D007249	3146
+37284446	Positive_Correlation	MESH:D002945	MESH:D007249
+37284446	Positive_Correlation	MESH:D002945	MESH:D007674
+37284446	Negative_Correlation	MESH:D019695	MESH:D005355
+37284446	Association	MESH:D007674	4790
+37284446	Association	MESH:D007249	4790
+37284446	Negative_Correlation	MESH:D019695	18033
+37284446	Association	MESH:D051436	20846
+37284446	Association	MESH:D007674	3146
+37284446	Association	MESH:D007674	15289
+37284446	Association	MESH:D005355	15289
+37284446	Association	20846	4790
+37284446	Positive_Correlation	MESH:D012080	4790
+37284446	Association	MESH:D007674	20846
+37284446	Positive_Correlation	18033	3146
+37284446	Association	4790	6772
+37284446	Association	20846	3146
+37284446	Positive_Correlation	MESH:D002945	4790
+37284446	Negative_Correlation	MESH:C024352	20846
+37284446	Association	MESH:D051436	4790
+37284446	Association	3146	4790
+37284446	Positive_Correlation	MESH:D002945	3146
+37284446	Association	MESH:D007249	15289
+37284446	Positive_Correlation	15289	4790
+
+28706906|t|Mesothelioma: recent highlights.
+28706906|a|Recent discoveries have elucidated some of the mechanisms responsible for the development of mesothelioma. These discoveries are: (I) the critical role of chronic inflammation in promoting mesothelioma growth, driven by the release of high mobility group box protein-1 (HMGB1) following asbestos deposition in tissues and its potential role as a biomarker to identify asbestos exposed individuals and mesothelioma patients; (II) the discovery that inherited heterozygous germline mutations of the deubiquitylase BRCA-associated protein 1 (BAP1) cause a high incidence of mesothelioma in some families; and that (III) germline BAP1 mutations lower the threshold of asbestos required to cause mesothelioma in mice, evidence of gene X environment interaction. These findings together with the identification of novel serum biomarkers, including HMGB1, Fibulin-3, etc., promise to revolutionize screening and treatment of this malignancy in the coming years.
+28706906	0	12	Mesothelioma	Disease	MESH:D008654
+28706906	126	138	Mesothelioma	Disease	MESH:D008654
+28706906	188	208	Inflammation	Disease	MESH:D007249
+28706906	222	234	Mesothelioma	Disease	MESH:D008654
+28706906	268	301	HMGB1	Gene	3146
+28706906	303	308	HMGB1	Gene	3146
+28706906	320	328	Asbestos	Chemical	MESH:D001194
+28706906	401	409	Asbestos	Chemical	MESH:D001194
+28706906	434	446	Mesothelioma	Disease	MESH:D008654
+28706906	447	455	patients	Species	9606
+28706906	545	570	BAP1	Gene	8314
+28706906	572	576	BAP1	Gene	8314
+28706906	604	616	Mesothelioma	Disease	MESH:D008654
+28706906	659	663	Bap1	Gene	104416
+28706906	697	705	Asbestos	Chemical	MESH:D001194
+28706906	724	736	Mesothelioma	Disease	MESH:D008654
+28706906	740	744	mice	Species	10090
+28706906	875	880	HMGB1	Gene	3146
+28706906	882	891	Efemp1	Gene	216616
+28706906	956	966	Neoplasms	Disease	MESH:D009369
+28706906	Association	MESH:D009369	216616
+28706906	Association	MESH:D001194	104416
+28706906	Association	MESH:D008654	104416
+28706906	Positive_Correlation	MESH:D001194	3146
+28706906	Association	MESH:D008654	3146
+28706906	Association	MESH:D008654	8314
+28706906	Positive_Correlation	MESH:D001194	MESH:D008654
+
+31379812|t|Johnny on the Spot-Chronic Inflammation Is Driven by HMGB1.
+31379812|a|Although much has been made of the role of HMGB1 acting as an acute damage associated molecular pattern (DAMP) molecule, prompting the response to tissue damage or injury, it is also released at sites of chronic inflammation including sites of infection, autoimmunity, and cancer. As such, the biology is distinguished from homeostasis and acute inflammation by the recruitment and persistence of myeloid derived suppressor cells, T regulatory cells, fibrosis and/or exuberant angiogenesis depending on the antecedents and the other individual inflammatory partners that HMGB1 binds and focuses, including IL-1beta, CXCL12/SDF1, LPS, DNA, RNA, and sRAGE. High levels of HMGB1 released into the extracellular milieu and its persistence in the microenvironment can contribute to the pathogenesis of many if not all autoimmune disorders and is a key factor that drives inflammation further and worsens symptoms. HMGB1 is also pivotal in the maintenance of chronic inflammation and a "wound healing" type of immune response that ultimately contributes to the onset of carcinogenesis and tumor progression. Exosomes carrying HMGB1 and other instructive molecules are released and shape the response of various cells in the chronic inflammatory environment. Understanding the defining roles of REDOX, DAMPs and PAMPs, and the host response in chronic inflammation requires an alternative means for positing HMGB1's central role in limiting and focusing inflammation, distinguishing chronic from acute inflammation.
+31379812	19	39	Inflammation	Disease	MESH:D007249
+31379812	53	58	HMGB1	Gene	3146
+31379812	103	108	HMGB1	Gene	3146
+31379812	264	284	Inflammation	Disease	MESH:D007249
+31379812	304	313	Infections	Disease	MESH:D007239
+31379812	315	327	Autoimmune Diseases	Disease	MESH:D001327
+31379812	333	339	Neoplasms	Disease	MESH:D009369
+31379812	400	418	Inflammation	Disease	MESH:D007249
+31379812	511	519	Fibrosis	Disease	MESH:D005355
+31379812	604	616	Inflammation	Disease	MESH:D007249
+31379812	631	636	HMGB1	Gene	3146
+31379812	666	674	IL1B	Gene	3553
+31379812	676	682	CXCL12	Gene	6387
+31379812	683	687	CXCL12	Gene	6387
+31379812	689	692	Lipopolysaccharides	Chemical	MESH:D008070
+31379812	730	735	HMGB1	Gene	3146
+31379812	873	893	Autoimmune Diseases	Disease	MESH:D001327
+31379812	926	938	Inflammation	Disease	MESH:D007249
+31379812	969	974	HMGB1	Gene	3146
+31379812	1013	1033	Inflammation	Disease	MESH:D007249
+31379812	1124	1138	Carcinogenesis	Disease	MESH:D063646
+31379812	1143	1148	Neoplasms	Disease	MESH:D009369
+31379812	1180	1185	HMGB1	Gene	3146
+31379812	1286	1298	Inflammation	Disease	MESH:D007249
+31379812	1355	1360	dinitrophenyl-aminopropyl-methylamine	Chemical	MESH:C116255
+31379812	1397	1417	Inflammation	Disease	MESH:D007249
+31379812	1461	1466	HMGB1	Gene	3146
+31379812	1507	1519	Inflammation	Disease	MESH:D007249
+31379812	1536	1567	Inflammation	Disease	MESH:D007249
+31379812	Association	MESH:D009369	3146
+31379812	Association	MESH:D008070	MESH:D007249
+31379812	Association	MESH:D063646	3146
+31379812	Association	MESH:D007249	6387
+31379812	Association	MESH:D007249	3553
+31379812	Association	MESH:D008070	3146
+31379812	Association	3146	6387
+31379812	Association	MESH:D007249	3146
+31379812	Association	3146	3553
+31379812	Association	MESH:D001327	3146
+
+40244022|t|Cardiovascular Biomarkers: Tools for Precision Diagnosis and Prognosis.
+40244022|a|The present study provides a detailed review of cardiovascular biomarkers critical for the diagnosis, prognosis, and pathophysiology of cardiovascular diseases, the leading cause of global morbidity and mortality. These biomarkers aid in detecting disease onset, progression, and therapeutic responses, providing insights into molecular mechanisms. Enzyme markers like AST, CK-MB, LDH, CA-III, and HBDH are pivotal for detecting myocardial injury during acute events. Protein markers such as CRP, H-FABP, and MPO shed light on inflammation and oxidative stress. Cardiac Troponins, the gold standard for myocardial infarction diagnosis, exhibit high specificity and sensitivity, while IMA and GPBB indicate ischemia and early myocardial damage. Peptide markers, including BNP and NT-proBNP, are crucial for heart failure diagnosis and management, reflecting ventricular stress and remodeling. Novel peptides like MR-proANP and MR-proADM aid in assessing disease severity. Lipid markers such as lipoprotein-associated phospholipase A2 and oxylipins provide insights into lipid metabolism and atherosclerosis. Inflammatory and stress-related biomarkers, including TNFalpha, IL-6, GDF-15, and Pentraxin 3, illuminate chronic inflammation in CVDs. Hormonal markers like copeptin and endothelin-1 highlight neurohormonal activation, while emerging markers such as ST2, galectin-3, PAPP-A, and TMAO elucidate fibrosis, remodeling, and metabolic dysregulation. The inclusion of microRNAs and long non-coding RNAs represents a breakthrough in biomarker research, offering sensitive tools for early detection, risk stratification, and therapeutic targeting. This review emphasizes the diagnostic and prognostic utility of these biomarkers, advancing cardiovascular care through personalized medicine.
+40244022	208	231	Cardiovascular Diseases	Disease	MESH:D002318
+40244022	441	444	SLC17A5	Gene	26503
+40244022	458	464	CA3	Gene	761
+40244022	501	518	Cardiomyopathies	Disease	MESH:D009202
+40244022	564	567	CRP	Gene	1401
+40244022	569	575	FABP3	Gene	2170
+40244022	581	584	MPO	Gene	4353
+40244022	599	611	Inflammation	Disease	MESH:D007249
+40244022	675	696	Myocardial Infarction	Disease	MESH:D009203
+40244022	756	759	IMA	Chemical	-
+40244022	764	768	GPBB	Disease	-
+40244022	778	786	Ischemia	Disease	MESH:D007511
+40244022	797	814	Cardiomyopathies	Disease	MESH:D009202
+40244022	843	846	NPPB	Gene	4879
+40244022	878	891	Heart Failure	Disease	MESH:D006333
+40244022	1043	1048	Lipids	Chemical	MESH:D008055
+40244022	1065	1104	PLA2G7	Gene	7941
+40244022	1109	1118	Oxylipins	Chemical	MESH:D054883
+40244022	1141	1146	Lipids	Chemical	MESH:D008055
+40244022	1162	1177	Atherosclerosis	Disease	MESH:D050197
+40244022	1179	1191	Inflammation	Disease	MESH:D007249
+40244022	1233	1241	TNF	Gene	7124
+40244022	1243	1247	IL6	Gene	3569
+40244022	1249	1255	GDF15	Gene	9518
+40244022	1261	1272	PTX3	Gene	5806
+40244022	1285	1305	Inflammation	Disease	MESH:D007249
+40244022	1309	1313	CVDs	Disease	-
+40244022	1337	1345	AVP	Gene	551
+40244022	1350	1362	EDN1	Gene	1906
+40244022	1430	1433	ST2	Gene	6761
+40244022	1435	1445	LGALS3	Gene	3958
+40244022	1447	1453	PAPPA	Gene	5069
+40244022	1459	1463	trimethyloxamine	Chemical	MESH:C005855
+40244022	1474	1482	Fibrosis	Disease	MESH:D005355
+40244022	1500	1523	Chronobiology Disorders	Disease	MESH:D021081
+40244022	Association	MESH:D007249	7124
+40244022	Association	MESH:D007249	3569
+40244022	Association	MESH:D021081	5069
+40244022	Association	MESH:D050197	7941
+40244022	Association	MESH:D007249	4353
+40244022	Association	MESH:C005855	MESH:D021081
+40244022	Association	MESH:D008055	7941
+40244022	Association	MESH:D005355	6761
+40244022	Association	MESH:D007249	2170
+40244022	Association	MESH:D008055	MESH:D054883
+40244022	Association	MESH:D005355	5069
+40244022	Association	MESH:D006333	4879
+40244022	Association	MESH:D008055	MESH:D050197
+40244022	Association	MESH:D021081	6761
+40244022	Association	MESH:C005855	MESH:D005355
+40244022	Association	MESH:D007249	1401
+40244022	Association	MESH:D054883	MESH:D050197
+40244022	Association	MESH:D007249	9518
+40244022	Association	MESH:D007249	5806
+40244022	Association	MESH:D005355	3958
+40244022	Association	MESH:D009202	761
+40244022	Association	MESH:D009202	26503
+40244022	Association	MESH:D021081	3958
+
+41235339|t|Pathophysiology and emerging biomarkers of cardiovascular-renal-hepato-metabolic syndrome.
+41235339|a|Cardiovascular-Renal-Hepatic-Metabolic (CRHM) syndrome characterizes a complex, interrelated disease framework that encompasses cardiovascular disease, chronic kidney disease (CKD), metabolic dysfunction-associated steatotic liver disease, and metabolic disorders such as obesity, type 2 diabetes mellitus, dyslipidemia, and hypertension. The syndrome extends the concept of cardiovascular-Kidney-Metabolic syndrome by incorporating the liver's pivotal role in systemic metabolic dysfunction. This syndrome progresses through a cycle of chronic inflammation, insulin resistance, oxidative stress, and endothelial dysfunction, driving multi-organ failure and increasing morbidity and mortality. Understanding the mechanistic keystones of this syndrome is critical for refining risk stratification and therapeutic interventions. Traditional inflammatory markers, such as C-reactive protein, interleukin-6, and tumor necrosis factor-alpha, have limitations in predicting long-term disease progression. Emerging biomarkers offer novel insights into systemic disease mechanisms and personalized medicine. Soluble urokinase plasminogen activator receptor has been identified as a stable and predictive marker of systemic inflammation, with strong associations with CKD, atherosclerosis, and coronary artery disease. Galectin-3 is a key regulator of fibrosis and inflammation across multiple organ systems, while Growth Differentiation Factor-15 has been implicated in mitochondrial dysfunction and cardiovascular aging. Furthermore, microRNAs such as miR-126 and miR-423-5p show promise as biomarkers for vascular integrity and heart failure progression, respectively. These biomarkers not only aid in early detection but also guide targeted interventions. Elevated levels of these markers support the use of sodium-glucose cotransporter 2 inhibitors for cardiorenal protection, and glucagon-like peptide-1 receptor agonists or dual glucose-dependent insulinotropic polypeptide and glucagon-like peptide 1 receptor agonists for metabolic and liver-related complications. Despite these advancements, the clinical integration of novel biomarkers remains limited. This review analyzes the pathophysiological mechanisms underlying CRHM syndrome and explores key biomarkers poised to enhance risk assessment and patient monitoring.
+41235339	43	89	Metabolic Syndrome	Disease	MESH:D024821
+41235339	91	145	Metabolic Syndrome	Disease	MESH:D024821
+41235339	219	241	Cardiovascular Diseases	Disease	MESH:D002318
+41235339	243	265	Renal Insufficiency Chronic	Disease	MESH:D051436
+41235339	267	270	Renal Insufficiency Chronic	Disease	MESH:D051436
+41235339	273	294	Metabolic Diseases	Disease	MESH:D008659
+41235339	306	329	Liver Diseases	Disease	MESH:D008107
+41235339	335	354	Metabolic Diseases	Disease	MESH:D008659
+41235339	363	370	Obesity	Disease	MESH:D009765
+41235339	372	396	Diabetes Mellitus Type 2	Disease	MESH:D003924
+41235339	398	410	Dyslipidemias	Disease	MESH:D050171
+41235339	416	428	Hypertension	Disease	MESH:D006973
+41235339	488	506	Metabolic Syndrome	Disease	MESH:D024821
+41235339	561	582	Metabolic Diseases	Disease	MESH:D008659
+41235339	636	648	Inflammation	Disease	MESH:D007249
+41235339	650	668	Insulin Resistance	Disease	MESH:D007333
+41235339	692	715	Vascular Diseases	Disease	MESH:D014652
+41235339	725	744	Multiple Organ Failure	Disease	MESH:D009102
+41235339	930	942	Inflammation	Disease	MESH:D007249
+41235339	960	978	CRP	Gene	1401
+41235339	980	993	IL6	Gene	3569
+41235339	999	1026	TNF	Gene	7124
+41235339	1199	1239	PLAUR	Gene	5329
+41235339	1297	1318	Inflammation	Disease	MESH:D007249
+41235339	1350	1353	Renal Insufficiency Chronic	Disease	MESH:D051436
+41235339	1355	1370	Atherosclerosis	Disease	MESH:D050197
+41235339	1376	1399	Coronary Artery Disease	Disease	MESH:D003324
+41235339	1401	1411	LGALS3	Gene	3958
+41235339	1434	1442	Fibrosis	Disease	MESH:D005355
+41235339	1447	1459	Inflammation	Disease	MESH:D007249
+41235339	1497	1529	GDF15	Gene	9518
+41235339	1553	1578	Mitochondrial Diseases	Disease	MESH:D028361
+41235339	1636	1643	MIR126	Gene	406913
+41235339	1713	1726	Heart Failure	Disease	MESH:D006333
+41235339	1894	1935	sodium-glucose cotransporter 2 inhibitors	Chemical	-
+41235339	1968	2000	GLP1R	Gene	2740
+41235339	2018	2062	GIP	Gene	2695
+41235339	2067	2099	GLP1R	Gene	2740
+41235339	2113	2126	Metabolic Diseases	Disease	MESH:D008659
+41235339	2127	2154	Liver Diseases	Disease	MESH:D008107
+41235339	2312	2325	Metabolic Syndrome	Disease	MESH:D024821
+41235339	2392	2399	patient	Species	9606
+41235339	Association	MESH:D051436	5329
+41235339	Association	MESH:D007249	3958
+41235339	Association	MESH:D003324	5329
+41235339	Association	MESH:D007249	7124
+41235339	Association	MESH:D005355	3958
+41235339	Association	MESH:D008107	2740
+41235339	Association	MESH:D008107	2695
+41235339	Association	MESH:D050197	5329
+41235339	Association	MESH:D007249	5329
+41235339	Association	MESH:D006333	406913
+41235339	Association	MESH:D028361	9518
+
+38278025|t|Astragalus polysaccharide ameliorates CD8+ T cell dysfunction through STAT3/Gal-3/LAG3 pathway in inflammation-induced colorectal cancer.
+38278025|a|Chronic inflammation can promote cancer development as observed in inflammation-induced colorectal cancer (CRC). However, the poor treatment outcomes emphasize the need for effective treatment. Astragalus polysaccharide (APS), a vital component of the natural drug Astragalus, has anti-tumor effects by inhibiting cancer cell proliferation and enhancing immune function. In this study, we found that APS effectively suppressed CRC development through activating CD8+ T cells and reversing its inhibitory state in the tumor microenvironment (TME) of AOM/DSS inflammation-induced CRC mice. Network pharmacology and clinical databases suggested that the STAT3/ Galectin-3(Gal-3)/LAG3 pathway might be APS's potential target for treating CRC and associated with CD8+ T cell dysfunction. In vivo experiments showed that APS significantly reduced phosphorylated STAT3 and Gal-3 levels in tumor cells, as well as LAG3 in CD8+ T cells. Co-culture experiments with MC38 and CD8+ T cells demonstrated that APS decreased the expression of co-inhibitory receptor LAG3 in CD8+ T cells by targeting STAT3/Gal-3 in MC38 cells. Mechanism investigations revealed that APS specifically improved CD8+ T cell function through modulation of the STAT3/Gal-3/LAG3 pathway to inhibit CRC development, providing insights for future clinical development of natural anti-tumor drugs and immunotherapies as a novel strategy combined with immune checkpoint inhibitors (ICIs).
+38278025	0	25	Astragalus polysaccharide	Chemical	-
+38278025	70	75	Stat3	Gene	20848
+38278025	76	81	Lgals3	Gene	16854
+38278025	82	86	Lag3	Gene	16768
+38278025	98	110	Inflammation	Disease	MESH:D007249
+38278025	119	136	Colorectal Neoplasms	Disease	MESH:D015179
+38278025	138	158	Inflammation	Disease	MESH:D007249
+38278025	171	177	Neoplasms	Disease	MESH:D009369
+38278025	205	217	Inflammation	Disease	MESH:D007249
+38278025	226	243	Colorectal Neoplasms	Disease	MESH:D015179
+38278025	245	248	Colorectal Neoplasms	Disease	MESH:D015179
+38278025	332	357	Astragalus polysaccharide	Chemical	-
+38278025	359	362	APS	Chemical	-
+38278025	403	413	Astragalus	Species	20400
+38278025	424	429	Neoplasms	Disease	MESH:D009369
+38278025	452	458	Neoplasms	Disease	MESH:D009369
+38278025	538	541	APS	Chemical	-
+38278025	565	568	Colorectal Neoplasms	Disease	MESH:D015179
+38278025	655	660	Neoplasms	Disease	MESH:D009369
+38278025	687	690	Azoxymethane	Chemical	MESH:D001397
+38278025	695	707	Inflammation	Disease	MESH:D007249
+38278025	716	719	Colorectal Neoplasms	Disease	MESH:D015179
+38278025	720	724	mice	Species	10090
+38278025	789	794	Stat3	Gene	20848
+38278025	796	806	Lgals3	Gene	16854
+38278025	807	812	Lgals3	Gene	16854
+38278025	814	818	Lag3	Gene	16768
+38278025	836	839	APS	Chemical	-
+38278025	872	875	Colorectal Neoplasms	Disease	MESH:D015179
+38278025	953	956	APS	Chemical	-
+38278025	994	999	Stat3	Gene	20848
+38278025	1004	1009	Lgals3	Gene	16854
+38278025	1020	1025	Neoplasms	Disease	MESH:D009369
+38278025	1044	1048	Lag3	Gene	16768
+38278025	1094	1098	B288	CellLine	CVCL:B288
+38278025	1134	1137	APS	Chemical	-
+38278025	1189	1193	Lag3	Gene	16768
+38278025	1223	1228	Stat3	Gene	20848
+38278025	1229	1234	Lgals3	Gene	16854
+38278025	1238	1242	B288	CellLine	CVCL:B288
+38278025	1289	1292	APS	Chemical	-
+38278025	1362	1367	Stat3	Gene	20848
+38278025	1368	1373	Lgals3	Gene	16854
+38278025	1374	1378	Lag3	Gene	16768
+38278025	1398	1401	Colorectal Neoplasms	Disease	MESH:D015179
+38278025	1482	1487	Neoplasms	Disease	MESH:D009369
+38278025	Association	MESH:D015179	16768
+38278025	Association	MESH:D015179	16854
+38278025	Association	MESH:D009369	16854
+38278025	Positive_Correlation	MESH:D001397	MESH:D015179
+38278025	Association	MESH:D015179	20848

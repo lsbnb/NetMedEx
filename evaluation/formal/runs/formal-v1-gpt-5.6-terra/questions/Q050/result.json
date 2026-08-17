@@ -1,0 +1,84 @@
+{
+  "status": "complete",
+  "question_id": "Q050",
+  "domain": "hypothesis generation",
+  "question": "Generate a testable hypothesis connecting gut microbiome dysbiosis, IL-17, and bone loss.",
+  "pubmed_query": "gut microbiome dysbiosis IL-17 bone loss osteoporosis",
+  "language": "English",
+  "corpus_pmids": [
+    "31209247",
+    "35060590",
+    "40270955",
+    "41144501",
+    "41950603"
+  ],
+  "graph": {
+    "node_count": 19,
+    "edge_count": 21,
+    "path_count": 4,
+    "preferred_pmids": [
+      "40270955"
+    ]
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "40270955",
+        "score": 0.7009187709509779
+      },
+      {
+        "pmid": "41144501",
+        "score": 0.6094163844409286
+      },
+      {
+        "pmid": "31209247",
+        "score": 0.5866305893091177
+      },
+      {
+        "pmid": "35060590",
+        "score": 0.552745460944804
+      },
+      {
+        "pmid": "41950603",
+        "score": 0.5464483949860675
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "41144501",
+        "score": 0.6094163844409286
+      },
+      {
+        "pmid": "31209247",
+        "score": 0.5866305893091177
+      },
+      {
+        "pmid": "35060590",
+        "score": 0.552745460944804
+      },
+      {
+        "pmid": "41950603",
+        "score": 0.5464483949860675
+      },
+      {
+        "pmid": "40270955",
+        "score": 0.46727918063398527
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "## Testable hypothesis\n\n**Gut microbiome dysbiosis promotes bone loss by increasing microbiota-derived decanoic acid, which drives CD4+ T-cell differentiation toward Th17 cells and elevates systemic IL-17A; IL-17A then contributes causally to impaired bone homeostasis. Restoration of protective taxa (for example, *Bifidobacterium pseudolongum*) or neutralization of IL-17A should reduce bone loss.** [PMID: 41144501]\n\n## Direct evidence\n\n- **Animal evidence—male hyperglycemic mice:** Hyperglycemia-associated dysbiosis, including reduced *B. pseudolongum*, coincided with reduced gut microbial diversity and osteoporosis. Fecal microbiota transfer from hyperglycemic mice caused osteoporosis in recipient mice even without hyperglycemia, supporting a microbiota-dependent effect. [PMID: 41144501]\n- **Animal evidence—mechanistic intervention:** In this model, fecal decanoic acid and recipient serum decanoic acid were increased; decanoic acid promoted naïve CD4+ T-cell differentiation into Th17 cells and increased IL-17A. Anti-IL-17A treatment mitigated osteoporosis in recipients of hyperglycemic-mouse microbiota. [PMID: 41144501]\n- **Animal evidence—postmenopausal/ovariectomy rat model:** Correction of gut dysbiosis with *Isaria felina* was accompanied by improved bone loss, rebalancing of Th17/Treg responses, and lower IL-17 and TNF-α. [PMID: 40270955]\n- **Animal evidence—colitis-associated osteoporosis model:** Probiotic *Bifidobacterium lactis* BL-99 altered gut microbiota, reduced IL-17 and other inflammatory cytokines, improved intestinal-barrier markers, and improved trabecular bone measures. [PMID: 35060590]\n\n## Association-level supporting evidence\n\n- In sickle-cell disease male mice, depletion of the intestinal microbiome reduced intestinal **IL17** expression and partially rescued bone loss, primarily alongside improved osteoblast function; however, this study does not establish IL-17 as the direct mediator of the bone phenotype. [PMID: 31209247]\n- In an LPS-induced inflammatory bone-loss preclinical model, deoxycholic acid improved gut integrity and dysbiosis, reduced IL-17 and other inflammatory mediators, and improved bone parameters. This supports a gut-metabolite/inflammation/bone association, although the supplied context does not establish IL-17 as the sole causal intermediary. [PMID: 41950603]\n- The graph records IL-17 as associated with TNF-α and inflammatory status, but these are explicitly nondirectional association edges and should not be interpreted as proof of a causal pathway. [PMID: 40270955]\n\n## Proposed experiment\n\n**Model:** Use germ-free or antibiotic-conditioned mice colonized with fecal microbiota from hyperglycemic osteoporotic donors versus normoglycemic controls.\n\n**Arms:**\n1. Control-donor FMT  \n2. Hyperglycemic-donor FMT  \n3. Hyperglycemic-donor FMT + anti-IL-17A antibody  \n4. Hyperglycemic-donor FMT + *B. pseudolongum* supplementation  \n5. Hyperglycemic-donor FMT + *B. pseudolongum* plus exogenous decanoic acid  \n6. Control-donor FMT + decanoic acid  \n\n**Primary measurements:**\n- Bone mineral density, trabecular bone volume/fraction, cortical microarchitecture, osteoclast and osteoblast indices.\n- Fecal microbiome composition and *B. pseudolongum* abundance.\n- Fecal and serum decanoic acid.\n- Lamina propria/splenic Th17-cell frequency and serum IL-17A.\n- Intestinal permeability and barrier-protein expression.\n\n**Predicted outcomes:**\n- Hyperglycemic-donor FMT will increase decanoic acid, Th17 cells, IL-17A, and bone loss relative to control-donor FMT.\n- IL-17A blockade will preserve bone despite persistent dysbiosis or elevated decanoic acid, placing IL-17A downstream of the microbiome/metabolite signal.\n- *B. pseudolongum* will lower decanoic acid, Th17/IL-17A responses, and bone loss.\n- Decanoic acid supplementation will reverse the protection conferred by *B. pseudolongum* and induce the Th17/IL-17A–bone-loss phenotype in control-FMT recipients.\n\n## Interpretation criterion\n\nThe hypothesis would be strongly supported if (1) dysbiotic microbiota transfer induces bone loss, (2) this is accompanied by elevated decanoic acid and Th17/IL-17A signaling, (3) IL-17A neutralization rescues bone outcomes, and (4) restoration of *B. pseudolongum* is protective but that protection is lost after decanoic acid replacement. This proposed pathway is supported currently by **animal evidence**; no direct human causal evidence is provided in the supplied context.",
+    "traditional_rag": "### Direct evidence\n\n- **Mouse evidence:** In hyperglycemic male mice, gut dysbiosis with depletion of *Bifidobacterium pseudolongum* was associated with osteoporosis. Transfer of microbiota from hyperglycemic mice caused bone loss in recipient mice independently of blood glucose, increased serum IL-17A, and increased decanoic acid. Decanoic acid promoted naïve CD4+ T-cell differentiation into Th17 cells and increased IL-17A production. IL-17A neutralization mitigated osteoporosis in microbiota-transfer recipients. [PMID: 41144501]\n\n- **Mouse evidence:** In a sickle-cell disease model, intestinal microbiome depletion reduced intestinal *IL17* expression and partially rescued bone loss, principally by improving osteoblast function. [PMID: 31209247]\n\n- **Mouse evidence:** In colitis-associated osteoporosis, probiotic-induced changes in gut microbiota coincided with reduced IL-17 and improved trabecular bone parameters. [PMID: 35060590]\n\n### Association\n\n- Gut dysbiosis, impaired intestinal barrier function, elevated inflammatory cytokines including IL-17/IL-17A, and bone loss co-occur across hyperglycemic, sickle-cell disease, colitis, and ovariectomy-related rodent models. [PMID: 41144501; PMID: 31209247; PMID: 35060590; PMID: 40270955]\n\n- No direct human causal evidence connecting gut dysbiosis, IL-17, and bone loss is provided in the supplied context.\n\n### Testable hypothesis\n\n**In hyperglycemia-associated osteoporosis, loss of protective gut taxa—particularly *Bifidobacterium pseudolongum*—increases microbiota-derived decanoic acid, which expands intestinal/systemic Th17 cells and raises IL-17A; IL-17A then promotes low-turnover bone loss by suppressing osteoblast activity.**\n\n### Experimental predictions\n\n1. Hyperglycemic mice with reduced *B. pseudolongum* will have higher fecal decanoic acid, greater Th17-cell abundance, higher circulating IL-17A, and lower bone mass than normoglycemic controls.  \n2. Fecal microbiota transfer from hyperglycemic donors will reproduce these metabolite, immune, and bone phenotypes in normoglycemic recipients.  \n3. Restoring *B. pseudolongum* or reducing decanoic acid exposure will lower Th17/IL-17A activity and preserve osteoblast-associated bone formation and bone microarchitecture.  \n4. IL-17A neutralization will prevent or attenuate bone loss despite persistence of the dysbiotic microbiota, placing IL-17A downstream of dysbiosis and upstream of bone loss. [PMID: 41144501]",
+    "general_llm": "### Testable hypothesis\n\n**Gut microbiome dysbiosis promotes bone loss by increasing intestinal Th17-cell differentiation and systemic IL-17A signaling, which enhances osteoclast formation through increased RANKL expression and inflammatory bone-marrow remodeling.**\n\n### Proposed mechanism\n\n1. **Dysbiosis** reduces protective microbial metabolites (for example, short-chain fatty acids) and/or expands pro-inflammatory taxa.\n2. This alters intestinal barrier integrity and antigen exposure, favoring differentiation or expansion of **IL-17–producing Th17 cells** in the gut.\n3. Gut-derived Th17 cells, or IL-17A entering the circulation, increase IL-17 signaling in bone marrow and bone-associated stromal/immune cells.\n4. IL-17A increases expression of pro-osteoclastogenic mediators, particularly **RANKL**, and may synergize with TNF and IL-1 family cytokines.\n5. Increased RANKL-to-osteoprotegerin signaling drives osteoclast differentiation and activity, causing reduced trabecular bone mass and/or cortical bone deterioration.\n\n### Specific predictions\n\nCompared with mice receiving microbiota from healthy donors, germ-free or antibiotic-conditioned mice receiving fecal microbiota from donors with dysbiosis should show:\n\n- Higher intestinal and bone-marrow frequencies of **CD4+ IL-17A+ Th17 cells**.\n- Increased circulating or tissue IL-17A, although systemic IL-17A may not always be readily detectable.\n- Increased bone-marrow or bone expression of **Tnfsf11 (RANKL)** and a higher RANKL/osteoprotegerin ratio.\n- Increased osteoclast number, osteoclast surface, and serum bone-resorption markers.\n- Lower trabecular bone volume fraction and/or reduced cortical thickness by micro-CT.\n\n### Critical causal tests\n\nThe bone-loss phenotype induced by dysbiotic microbiota should be reduced or absent when:\n\n- Recipient mice lack **IL-17A** or have pharmacologic IL-17A/IL-17 receptor blockade.\n- Th17-cell generation is impaired, for example through T-cell-specific disruption of the Th17 lineage program.\n- RANKL signaling is inhibited.\n- Dysbiosis is corrected by a defined microbial consortium, dietary intervention, or metabolite supplementation that restores barrier-supporting microbial functions.\n\n### Example experimental design\n\nUse ovariectomized and sham-operated mice, because estrogen deficiency is a clinically relevant setting in which inflammatory bone loss may become more apparent.\n\n1. Deplete resident microbiota or use germ-free female recipients.\n2. Transplant fecal microbiota from either healthy control donors or donors with experimentally induced dysbiosis.\n3. Randomize recipients to vehicle or IL-17A-neutralizing treatment.\n4. After 6–12 weeks, assess:\n   - fecal microbial composition and microbial metabolites;\n   - intestinal permeability;\n   - intestinal and bone-marrow Th17 cells by flow cytometry;\n   - IL-17A, RANKL, osteoprotegerin, TNF, and IL-1-related signals;\n   - osteoclast activity and bone formation indices;\n   - bone microarchitecture by micro-CT and histomorphometry.\n\n### Interpretation\n\nA strong result would be: **dysbiotic microbiota transfer causes both a Th17/IL-17 increase and bone loss, while IL-17 blockade prevents the bone phenotype despite persistence of much of the altered microbiota.** This would support IL-17 as a mechanistic mediator rather than merely a biomarker of dysbiosis.\n\nImportant uncertainty: IL-17 can have context-dependent effects in bone biology, and dysbiosis may influence bone through additional pathways, including nutrient absorption, short-chain fatty acids, bile-acid signaling, estrogen metabolism, and other inflammatory cytokines. Therefore, IL-17 blockade should be interpreted as testing one potentially important causal pathway, not necessarily the only route from microbiome disruption to bone loss."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 1.0160772427916527,
+    "semantic_graph": 44.873847618699074,
+    "vector_index": 1.0071471258997917,
+    "answer_netmedex_hybrid_rag": 10.667988628149033,
+    "answer_traditional_rag": 6.517922282218933,
+    "answer_general_llm": 12.976862348616123,
+    "total": 78.58404937386513
+  },
+  "completed_at": "2026-07-27T19:07:41.813208+00:00"
+}

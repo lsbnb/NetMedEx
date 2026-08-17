@@ -1,0 +1,51 @@
+{
+  "task": "answer",
+  "question_id": "PP019",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "d6d114e11cf69bd223750a3bef22b1b93ec2286730f53063fd953d4b206d8ea6",
+  "raw_response_sha256": "3000a93fbb955bc8b06c7d36fc5c0b183b4df7921bfc0e52abcd84dcf59f4d8a",
+  "usage": {
+    "input_tokens": 2416,
+    "output_tokens": 358,
+    "total_tokens": 2774
+  },
+  "rated_at": "2026-08-13T10:33:39.460173+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP019-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Strong mechanistic detail, clear hop-by-hop evidence, human/animal distinction, testable hypotheses, and well-grounded citations."
+      },
+      {
+        "answer_id": "PP019-B",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Mechanistic links and evidence for each hop are clear; slightly less detail on testable hypotheses and integration than A."
+      },
+      {
+        "answer_id": "PP019-C",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Accurate, well-grounded, and mechanistically coherent; less explicit about integrated pathway and testable hypotheses."
+      }
+    ],
+    "preferred_item_id": "PP019-A",
+    "pairwise_reason": "PP019-A provides the most comprehensive, mechanistically detailed, and well-grounded answer, with explicit evidence for each hop, clear human/animal distinction, and research hypotheses."
+  }
+}

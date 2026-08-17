@@ -1,0 +1,51 @@
+{
+  "task": "answer",
+  "question_id": "PP006",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "ca3e21059dfd095d227e2445e22c98ad987c78f3cb419d2d7ae7db1021bd804f",
+  "raw_response_sha256": "608a58d3c0fb3dd204e9b5d23f541166bb4cdbf10a2e72d2364a0410462468dd",
+  "usage": {
+    "input_tokens": 2161,
+    "output_tokens": 391,
+    "total_tokens": 2552
+  },
+  "rated_at": "2026-08-13T10:31:32.321205+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP006-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurately details each mechanistic hop, cites evidence, and proposes a testable hypothesis. Clear distinction of steps and strong mechanistic logic."
+      },
+      {
+        "answer_id": "PP006-B",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 4,
+        "research_value": 5,
+        "notes": "Correct and well-grounded, but less explicit in stepwise mechanistic explanation. Graph insights add value but are less mechanistically detailed."
+      },
+      {
+        "answer_id": "PP006-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Thorough, stepwise mechanistic explanation with clear evidence for each hop. Proposes a nuanced testable hypothesis. Highly coherent and well-grounded."
+      }
+    ],
+    "preferred_item_id": "PP006-C",
+    "pairwise_reason": "PP006-C provides the clearest, most detailed stepwise mechanistic explanation, distinguishing evidence for each hop and proposing a nuanced hypothesis. PP006-A is also excellent but slightly less explicit in the causal chain. PP006-B is correct but less mechanistically detailed."
+  }
+}

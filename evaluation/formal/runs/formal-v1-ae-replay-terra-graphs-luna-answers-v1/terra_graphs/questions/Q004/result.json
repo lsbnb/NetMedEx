@@ -1,0 +1,204 @@
+{
+  "status": "complete",
+  "question_id": "Q004",
+  "domain": "cancer",
+  "question": "Which genes mediate a possible 2-hop path between curcumin and apoptosis?",
+  "question_type": "two_hop_path",
+  "pubmed_query": "curcumin AND apoptosis AND cancer AND (gene OR pathway)",
+  "effective_pubmed_query": "curcumin AND apoptosis AND cancer AND (gene OR pathway)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "15810876",
+    "29693253",
+    "30623450",
+    "30725357",
+    "31590362",
+    "32519340",
+    "35722665",
+    "37776274",
+    "38031951",
+    "38166505",
+    "38269517",
+    "38699926",
+    "39219410",
+    "41109942",
+    "41252742"
+  ],
+  "graph": {
+    "node_count": 40,
+    "edge_count": 51,
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [
+      "15810876",
+      "29693253",
+      "30623450",
+      "30725357",
+      "31590362",
+      "32519340",
+      "35722665",
+      "37776274",
+      "38031951",
+      "38166505",
+      "38269517",
+      "38699926",
+      "39219410",
+      "41109942",
+      "41252742"
+    ],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "B_entity_validated",
+    "label": "B. Text + normalized entities",
+    "use_node_rag": true,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [
+      "MESH:D003474_Chemical",
+      "R-HSA-109581_Pathway"
+    ],
+    "exposed_pmids": [
+      "15810876",
+      "29693253",
+      "30623450",
+      "30725357",
+      "31590362",
+      "32519340",
+      "35722665",
+      "37776274",
+      "38031951",
+      "38166505",
+      "38269517",
+      "38699926",
+      "39219410",
+      "41109942",
+      "41252742"
+    ],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "15810876",
+        "score": 0.6283762240060298
+      },
+      {
+        "pmid": "30623450",
+        "score": 0.5989199374620973
+      },
+      {
+        "pmid": "38699926",
+        "score": 0.5920934711462523
+      },
+      {
+        "pmid": "31590362",
+        "score": 0.5889506597903633
+      },
+      {
+        "pmid": "38031951",
+        "score": 0.5878472991607736
+      },
+      {
+        "pmid": "32519340",
+        "score": 0.5681490536801325
+      },
+      {
+        "pmid": "29693253",
+        "score": 0.5629028543574971
+      },
+      {
+        "pmid": "38166505",
+        "score": 0.5339987675885987
+      },
+      {
+        "pmid": "30725357",
+        "score": 0.5255523475601428
+      },
+      {
+        "pmid": "41109942",
+        "score": 0.5241625285947177
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "15810876",
+        "score": 0.6283762240060298
+      },
+      {
+        "pmid": "30623450",
+        "score": 0.5989199374620973
+      },
+      {
+        "pmid": "38699926",
+        "score": 0.5920934711462523
+      },
+      {
+        "pmid": "31590362",
+        "score": 0.5889506597903633
+      },
+      {
+        "pmid": "38031951",
+        "score": 0.5878472991607736
+      },
+      {
+        "pmid": "32519340",
+        "score": 0.5681490536801325
+      },
+      {
+        "pmid": "29693253",
+        "score": 0.5629028543574971
+      },
+      {
+        "pmid": "38166505",
+        "score": 0.5339987675885987
+      },
+      {
+        "pmid": "30725357",
+        "score": 0.5255523475601428
+      },
+      {
+        "pmid": "41109942",
+        "score": 0.5241625285947177
+      }
+    ]
+  },
+  "answers": {},
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 95.67262878268957,
+    "vector_index": 2.0778276547789574,
+    "total": 102.07391127198935
+  },
+  "token_usage": {
+    "total_tokens": 85873,
+    "input_tokens": 34716,
+    "output_tokens": 51157
+  },
+  "completed_at": "2026-08-11T05:19:17.632517+00:00"
+}

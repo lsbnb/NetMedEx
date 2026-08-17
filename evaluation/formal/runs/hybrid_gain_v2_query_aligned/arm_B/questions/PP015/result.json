@@ -1,0 +1,243 @@
+{
+  "status": "complete",
+  "question_id": "PP015",
+  "domain": "rare disease",
+  "question": "What evidence supports a mechanistic path from cftr to inflammation through cystic fibrosis? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "CFTR AND (intestine OR intestinal) AND inflammation",
+  "effective_pubmed_query": "CFTR AND (intestine OR intestinal) AND inflammation",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "23142604",
+    "23788646",
+    "24548777",
+    "24685676",
+    "26923293",
+    "26976279",
+    "27473379",
+    "27588407",
+    "27703398",
+    "28215711",
+    "29933921",
+    "30546102",
+    "31636470",
+    "31679154",
+    "32326161",
+    "33201261",
+    "34339302",
+    "34884634",
+    "35160099",
+    "35331400",
+    "35523321",
+    "35743652",
+    "36117114",
+    "36289287",
+    "36600119",
+    "36967909",
+    "37003609",
+    "37546931",
+    "38043755",
+    "38073491",
+    "38179971",
+    "38233247",
+    "38554847",
+    "40047092",
+    "40247380",
+    "40379512",
+    "40824057",
+    "41347923",
+    "41498431"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports a mechanistic path from cftr to inflammation through cystic fibrosis? Distinguish evidence for each hop from overall inference.",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [
+        "cystic fibrosis"
+      ],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "pre_gate_incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [
+        "cystic fibrosis"
+      ],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "integration_decision": {
+      "method": "three_stage_incremental_utility_router_v1",
+      "mode": "traditional_fallback",
+      "reason": "no_claim_safe_path",
+      "claim_safe_path_count": 0,
+      "incremental_path_count": 0,
+      "confirmatory_path_count": 0,
+      "citation_validation_pmids": [],
+      "policy": "three_stage"
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "disabled",
+      "reason": "integration_mode=traditional_fallback",
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "24548777",
+        "score": 0.622080468819494
+      },
+      {
+        "pmid": "23788646",
+        "score": 0.6161505158068649
+      },
+      {
+        "pmid": "23142604",
+        "score": 0.5951389582091333
+      },
+      {
+        "pmid": "33201261",
+        "score": 0.5936117834579364
+      },
+      {
+        "pmid": "35160099",
+        "score": 0.5935622200830467
+      },
+      {
+        "pmid": "38233247",
+        "score": 0.5723640199217096
+      },
+      {
+        "pmid": "36289287",
+        "score": 0.570988468815623
+      },
+      {
+        "pmid": "37003609",
+        "score": 0.5653260420455367
+      },
+      {
+        "pmid": "34339302",
+        "score": 0.5590574606502191
+      },
+      {
+        "pmid": "36967909",
+        "score": 0.5554398620188212
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "24548777",
+        "score": 0.622080468819494
+      },
+      {
+        "pmid": "23788646",
+        "score": 0.6161505158068649
+      },
+      {
+        "pmid": "23142604",
+        "score": 0.5951389582091333
+      },
+      {
+        "pmid": "33201261",
+        "score": 0.5936117834579364
+      },
+      {
+        "pmid": "35160099",
+        "score": 0.5935622200830467
+      },
+      {
+        "pmid": "38233247",
+        "score": 0.5723640199217096
+      },
+      {
+        "pmid": "36289287",
+        "score": 0.570988468815623
+      },
+      {
+        "pmid": "37003609",
+        "score": 0.5653260420455367
+      },
+      {
+        "pmid": "34339302",
+        "score": 0.5590574606502191
+      },
+      {
+        "pmid": "36967909",
+        "score": 0.5554398620188212
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Evidence linking CFTR dysfunction to inflammation in cystic fibrosis, step‑by‑step**\n\n- **CFTR loss‑of‑function creates dehydrated, sticky mucus** – The CFTR protein is a cAMP‑activated Cl⁻/HCO₃⁻ channel; when mutated it “leads to a dysfunctional chloride channel and a defective CFTR protein” that causes “retention of insufficiently hydrated mucus” in the intestine and airway (human and mouse evidence)【PMID:33201261】.  \n\n- **Mucus accumulation drives bacterial overgrowth and dysbiosis** – In CF mouse models, CFTR loss produces “mucus accumulation, disturbed motility, small‑bowel bacterial overgrowth and inflammation”【PMID:24548777】 (animal).  A separate mouse study showed that “CFTR deletion in both epithelial and immune cells collectively influence the intestinal microbiota,” with a dominant immune‑cell effect in the small intestine【PMID:36289287】 (animal).  Human CF patients, even without GI symptoms, display “chronic intestinal inflammation and abnormal balance of the microbiota”【PMID:24548777】 (human association).\n\n- **Dysbiosis and mucus obstruction provoke altered innate immunity and local inflammation** – The same mouse work reports “altered innate immune responses” accompanying the bacterial overgrowth【PMID:24548777】 (animal).  Reviews of CF cohorts describe “chronic low‑grade inflammation” as a hallmark of the CF intestine, attributing it to “CFTR dysfunction, a high‑fat diet, and the use of antibiotics” that together remodel the microbiome【PMID:35160099】 (human association).  \n\n- **Local gut inflammation can seed systemic inflammation** – The authors of the mouse‑human study argue that “chronic gut inflammation may be a driver for systemic inflammation” in CF, suggesting a mechanistic bridge from intestinal immune activation to whole‑body inflammatory burden【PMID:24548777】 (inference supported by observed gut inflammation).  \n\n- **Overall mechanistic inference** – The repeated “obstruction, infection, and inflammation” triad described for both airway and intestinal disease in CF integrates the above hops into a coherent pathway, but the individual steps are substantiated by the specific animal and human data cited above【PMID:23788646】 (conceptual synthesis).\n\n**Conclusion:** Animal models and human observations collectively demonstrate that CFTR deficiency leads to dehydrated mucus, secondary dysbiosis, innate immune dysregulation, and intestinal inflammation, which can in turn contribute to systemic inflammatory disease in cystic fibrosis."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 4.489719867706299e-05,
+    "vector_index": 3.1625515669584274,
+    "kg_expansion": 1.7911195755004883e-05,
+    "answer_traditional_rag": 29.79063705354929,
+    "total": 33.549205370247364
+  },
+  "token_usage": {
+    "input_tokens": 2713,
+    "total_tokens": 3842,
+    "output_tokens": 1129
+  },
+  "completed_at": "2026-08-16T19:38:57.339910+00:00"
+}

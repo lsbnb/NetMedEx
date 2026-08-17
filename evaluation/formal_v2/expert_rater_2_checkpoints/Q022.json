@@ -1,0 +1,71 @@
+{
+  "question_id": "Q022",
+  "model": "gpt-5.6-sol",
+  "rated_at": "2026-07-29T10:08:28.900445+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q022-C001",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Directly links AF-associated atrial fibrosis to FMOD-regulated TLR4/MyD88/NLRP3 inflammasome signaling, caspase-1/IL-1β activation, and downstream TGF-β1/Smad signaling."
+    },
+    {
+      "candidate_id": "Q022-C002",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Provides experimental and clinical evidence that IL-6 activates atrial pSTAT3/STAT3 signaling, elicits early profibrotic changes, and increases susceptibility to postoperative AF."
+    },
+    {
+      "candidate_id": "Q022-C003",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Direct intervention study showing that TLR4 silencing suppresses the NLRP3–TGF-β pathway, fibroblast proliferation, collagen expression, atrial fibrosis, and AF susceptibility."
+    },
+    {
+      "candidate_id": "Q022-C004",
+      "relevance": 1,
+      "confidence": 2,
+      "exclusion_reason": "",
+      "reviewer_notes": "Relevant review of NLRP3 inflammatory signaling in AF across cardiomyocytes, myofibroblasts, and immune cells, but the abstract does not explicitly detail the inflammasome-to-atrial-fibrosis mechanism."
+    },
+    {
+      "candidate_id": "Q022-C005",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Directly shows that BMP2 reduces atrial fibrosis and AF susceptibility by inhibiting fibroblast NLRP3/ASC/caspase-1 inflammasome signaling and IL-1β/IL-6 production."
+    },
+    {
+      "candidate_id": "Q022-C006",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Focused review of inflammation–fibrosis interactions in AF, explicitly identifying RAAS, TGF-β/Smad, TNF-α/NF-κB, and IL-6/STAT3 pathways."
+    },
+    {
+      "candidate_id": "Q022-C007",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Offers broader cardiovascular-aging context for inflammatory and fibrotic pathways including NF-κB, NLRP3, IL-6, RAAS, and TGF-β; AF is only one of several diseases considered."
+    },
+    {
+      "candidate_id": "Q022-C008",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Direct causal evidence that fibroblast-restricted NLRP3 inflammasome activation induces proarrhythmic atrial fibrosis, slowed conduction, and an AF-promoting substrate."
+    },
+    {
+      "candidate_id": "Q022-C009",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Human atrial biopsy evidence associates AF severity with TGF-β1, fibroblast abundance, and collagen V, supporting a profibrotic pathway but not directly testing an inflammatory mechanism."
+    }
+  ],
+  "raw_response_sha256": "449a36b2d3253c77fd532e681d345744bbb1e8f0801008eeac268ecd7d0d441a"
+}

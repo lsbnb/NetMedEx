@@ -1,0 +1,953 @@
+{
+  "status": "complete",
+  "question_id": "Q001",
+  "domain": "osteoporosis",
+  "question": "How may icariin influence osteoblast differentiation through miRNA-related mechanisms?",
+  "question_type": "mechanism",
+  "pubmed_query": "icariin AND (osteoblast OR osteogenesis) AND (microRNA OR miRNA)",
+  "effective_pubmed_query": "icariin AND (osteoblast OR osteogenesis) AND (microRNA OR miRNA)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "27492554",
+    "29500883",
+    "29904399",
+    "32911026",
+    "33743412",
+    "35292240",
+    "38045146",
+    "39588260",
+    "41484919"
+  ],
+  "graph": {
+    "node_count": 52,
+    "edge_count": 73,
+    "path_count": 20,
+    "preferred_pmids": [
+      "29500883",
+      "29904399",
+      "32911026",
+      "33743412",
+      "35292240",
+      "38045146",
+      "39588260",
+      "41484919"
+    ],
+    "paths": [
+      {
+        "path_id": "Q001-P01",
+        "path_signature": "397f0951824c83bf",
+        "path_text": "icariin ->[upregulates] runx2",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "12393_Gene"
+        ],
+        "names": [
+          "icariin",
+          "runx2"
+        ],
+        "relations": [
+          "upregulates"
+        ],
+        "edge_pmids": [
+          [
+            "29500883",
+            "29904399",
+            "38045146"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "icariin stimulation alone ... upregulated the levels of Runt-related transcription factor 2 (Runx2)",
+            "miR-153 and Runx2 expression levels were increased following treatment with icariin.",
+            "With the increase in icariin concentration and time for treatment, the expression levels of mmu_circ_0000349, JMJD3, ALP, and RUNX2 also increased"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 1.003,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P02",
+        "path_signature": "8729a64a7f9c0541",
+        "path_text": "icariin ->[treats] osteoporosis",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "MESH:D010024_Disease"
+        ],
+        "names": [
+          "icariin",
+          "osteoporosis"
+        ],
+        "relations": [
+          "treats"
+        ],
+        "edge_pmids": [
+          [
+            "29904399",
+            "35292240"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The current study provided evidence suggesting that icariin should be considered as an effective candidate for the management of osteoporosis."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.883,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P03",
+        "path_signature": "d80a6df3b7a1cb8f",
+        "path_text": "icariin ->[upregulates] mir215",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "387211_Gene"
+        ],
+        "names": [
+          "icariin",
+          "mir215"
+        ],
+        "relations": [
+          "upregulates"
+        ],
+        "edge_pmids": [
+          [
+            "29500883"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "icariin stimulation alone ... upregulated the levels of ... miR-21-5p"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.775,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P04",
+        "path_signature": "a74c8c801331bc9e",
+        "path_text": "icariin ->[regulates] mir335",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "100314182_Gene"
+        ],
+        "names": [
+          "icariin",
+          "mir335"
+        ],
+        "relations": [
+          "regulates"
+        ],
+        "edge_pmids": [
+          [
+            "32911026"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "ICA could regulate the overexpression of miRNA-335 induced by glucocorticoids"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.766,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P05",
+        "path_signature": "df2390d76f1863b5",
+        "path_text": "icariin ->[upregulates] mir153",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "387171_Gene"
+        ],
+        "names": [
+          "icariin",
+          "mir153"
+        ],
+        "relations": [
+          "upregulates"
+        ],
+        "edge_pmids": [
+          [
+            "29904399"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "miR-153 and Runx2 expression levels were increased following treatment with icariin."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.764,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P06",
+        "path_signature": "23863a4208321d75",
+        "path_text": "icariin ->[downregulates] cebpa",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "1050_Gene"
+        ],
+        "names": [
+          "icariin",
+          "cebpa"
+        ],
+        "relations": [
+          "downregulates"
+        ],
+        "edge_pmids": [
+          [
+            "33743412"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "ICA inhibited hBMSC adipogenic differentiation ... by downregulating the expression of ... CCAAT enhancer-binding protein-alpha (C/EBP-alpha)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.763,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P07",
+        "path_signature": "03f954b037a315a2",
+        "path_text": "icariin ->[upregulates] alp",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "11691_Gene"
+        ],
+        "names": [
+          "icariin",
+          "alp"
+        ],
+        "relations": [
+          "upregulates"
+        ],
+        "edge_pmids": [
+          [
+            "29500883"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "icariin stimulation alone increased ALP activity"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.763,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P08",
+        "path_signature": "d9195ee37b28ded3",
+        "path_text": "icariin ->[upregulates] bglap2",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "12097_Gene"
+        ],
+        "names": [
+          "icariin",
+          "bglap2"
+        ],
+        "relations": [
+          "upregulates"
+        ],
+        "edge_pmids": [
+          [
+            "29500883"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "icariin stimulation alone ... upregulated the levels of osteocalcin (OCN)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.763,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P09",
+        "path_signature": "f62473198acaceb9",
+        "path_text": "icariin ->[upregulates] bmp2",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "12156_Gene"
+        ],
+        "names": [
+          "icariin",
+          "bmp2"
+        ],
+        "relations": [
+          "upregulates"
+        ],
+        "edge_pmids": [
+          [
+            "29500883"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "icariin stimulation alone ... upregulated the levels of bone morphogenetic protein 2 (BMP2)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.763,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P10",
+        "path_signature": "088239628a74013b",
+        "path_text": "icariin ->[regulates] kdm6b",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "216850_Gene"
+        ],
+        "names": [
+          "icariin",
+          "kdm6b"
+        ],
+        "relations": [
+          "regulates"
+        ],
+        "edge_pmids": [
+          [
+            "38045146"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "qPCR and Western blotting confirmed the effect of icariin on the mmu_circ_0000349/mmu-miR-138-5p/JMJD3 axis and osteogenic differentiation."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.763,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P11",
+        "path_signature": "4d481bc08ef77ede",
+        "path_text": "icariin ->[upregulates] ibsp",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "3381_Gene"
+        ],
+        "names": [
+          "icariin",
+          "ibsp"
+        ],
+        "relations": [
+          "upregulates"
+        ],
+        "edge_pmids": [
+          [
+            "33743412"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "ICA significantly promoted hBMSC osteogenic differentiation by upregulating alkaline phosphatase activity and the expression of bone sialoprotein II (BSPII)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.763,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P12",
+        "path_signature": "fc012bb6b3c01611",
+        "path_text": "icariin ->[downregulates] pparg",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "5468_Gene"
+        ],
+        "names": [
+          "icariin",
+          "pparg"
+        ],
+        "relations": [
+          "downregulates"
+        ],
+        "edge_pmids": [
+          [
+            "33743412"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "ICA inhibited hBMSC adipogenic differentiation ... by downregulating the expression of peroxisome proliferator-activated receptor-gamma (PPAR-gamma)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.763,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P13",
+        "path_signature": "96ef361bee4561b4",
+        "path_text": "icariin ->[upregulates] runx2",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "860_Gene"
+        ],
+        "names": [
+          "icariin",
+          "runx2"
+        ],
+        "relations": [
+          "upregulates"
+        ],
+        "edge_pmids": [
+          [
+            "33743412"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "ICA significantly promoted hBMSC osteogenic differentiation by upregulating alkaline phosphatase activity and the expression of bone sialoprotein II (BSPII) and runt-related transcription factor-2 (Runx-2)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.763,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P14",
+        "path_signature": "53d87299b55fd2f5",
+        "path_text": "icariin ->[prevents] onfh",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "onfh_disease"
+        ],
+        "names": [
+          "icariin",
+          "onfh"
+        ],
+        "relations": [
+          "prevents"
+        ],
+        "edge_pmids": [
+          [
+            "32911026"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "ICA can prevent the occurrence of steroid-associated ONFH in rats"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.763,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P15",
+        "path_signature": "378060a6b66c80aa",
+        "path_text": "icariin ->[activates] ctnnb1",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "1499_Gene"
+        ],
+        "names": [
+          "icariin",
+          "ctnnb1"
+        ],
+        "relations": [
+          "activates"
+        ],
+        "edge_pmids": [
+          [
+            "33743412"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "ICA mediated its effects on hBMSCs by activating the Wnt/beta-catenin signaling pathway."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.758,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P16",
+        "path_signature": "51e6bb9f3a4a5d50",
+        "path_text": "icariin ->[regulates] mitf",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "25094_Gene"
+        ],
+        "names": [
+          "icariin",
+          "mitf"
+        ],
+        "relations": [
+          "regulates"
+        ],
+        "edge_pmids": [
+          [
+            "39588260"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Icariin increased the presence of MVBs in the cytoplasm through modulation of the MITF/Rab27A signaling pathway"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.758,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P17",
+        "path_signature": "6db281f13beda6ad",
+        "path_text": "icariin ->[upregulates] lrp5",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "4041_Gene"
+        ],
+        "names": [
+          "icariin",
+          "lrp5"
+        ],
+        "relations": [
+          "upregulates"
+        ],
+        "edge_pmids": [
+          [
+            "33743412"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "ICA mediated its effects on hBMSCs by activating the Wnt/beta-catenin signaling pathway. It did so by upregulating ... low density lipoprotein receptor-related protein 5 (LRP5)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.758,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P18",
+        "path_signature": "c7eba57ba5cfb60a",
+        "path_text": "icariin ->[downregulates] mmp3",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "4314_Gene"
+        ],
+        "names": [
+          "icariin",
+          "mmp3"
+        ],
+        "relations": [
+          "downregulates"
+        ],
+        "edge_pmids": [
+          [
+            "41484919"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "ICA exerts its anti-osteoporotic effect by downregulating the miR-376c-3p-mediated Mmp3 expression"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.758,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P19",
+        "path_signature": "1d682bdf3d028e21",
+        "path_text": "icariin ->[regulates] rab27a",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "50645_Gene"
+        ],
+        "names": [
+          "icariin",
+          "rab27a"
+        ],
+        "relations": [
+          "regulates"
+        ],
+        "edge_pmids": [
+          [
+            "39588260"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Icariin increased the presence of MVBs in the cytoplasm through modulation of the MITF/Rab27A signaling pathway"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.758,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q001-P20",
+        "path_signature": "19946c68deef1a1e",
+        "path_text": "icariin ->[upregulates] tcf7",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "6932_Gene"
+        ],
+        "names": [
+          "icariin",
+          "tcf7"
+        ],
+        "relations": [
+          "upregulates"
+        ],
+        "edge_pmids": [
+          [
+            "33743412"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "ICA mediated its effects on hBMSCs by activating the Wnt/beta-catenin signaling pathway. It did so by upregulating ... T cell factor 1 (TCF1)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.758,
+        "hop_count": 1
+      }
+    ]
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": true,
+    "max_hops": 2,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "gate_evidence_paths": true,
+    "node_ids": [
+      "MESH:C056599_Chemical",
+      "5970_Gene"
+    ],
+    "exposed_pmids": [
+      "29500883",
+      "29904399",
+      "32911026",
+      "33743412",
+      "35292240",
+      "38045146",
+      "39588260",
+      "41484919"
+    ],
+    "exposed_paths": [
+      [
+        "icariin",
+        "runx2"
+      ],
+      [
+        "icariin",
+        "osteoporosis"
+      ],
+      [
+        "icariin",
+        "mir215"
+      ],
+      [
+        "icariin",
+        "mir335"
+      ],
+      [
+        "icariin",
+        "mir153"
+      ],
+      [
+        "icariin",
+        "cebpa"
+      ],
+      [
+        "icariin",
+        "alp"
+      ],
+      [
+        "icariin",
+        "bglap2"
+      ],
+      [
+        "icariin",
+        "bmp2"
+      ],
+      [
+        "icariin",
+        "kdm6b"
+      ],
+      [
+        "icariin",
+        "ibsp"
+      ],
+      [
+        "icariin",
+        "pparg"
+      ],
+      [
+        "icariin",
+        "runx2"
+      ],
+      [
+        "icariin",
+        "onfh"
+      ],
+      [
+        "icariin",
+        "ctnnb1"
+      ],
+      [
+        "icariin",
+        "mitf"
+      ],
+      [
+        "icariin",
+        "lrp5"
+      ],
+      [
+        "icariin",
+        "mmp3"
+      ],
+      [
+        "icariin",
+        "rab27a"
+      ],
+      [
+        "icariin",
+        "tcf7"
+      ]
+    ],
+    "exposed_edges": [
+      "icariin ->[upregulates] runx2",
+      "icariin ->[treats] osteoporosis",
+      "icariin ->[upregulates] mir215",
+      "icariin ->[regulates] mir335",
+      "icariin ->[upregulates] mir153",
+      "icariin ->[downregulates] cebpa",
+      "icariin ->[upregulates] alp",
+      "icariin ->[upregulates] bglap2",
+      "icariin ->[upregulates] bmp2",
+      "icariin ->[regulates] kdm6b",
+      "icariin ->[upregulates] ibsp",
+      "icariin ->[downregulates] pparg",
+      "icariin ->[upregulates] runx2",
+      "icariin ->[prevents] onfh",
+      "icariin ->[activates] ctnnb1",
+      "icariin ->[regulates] mitf",
+      "icariin ->[upregulates] lrp5",
+      "icariin ->[downregulates] mmp3",
+      "icariin ->[regulates] rab27a",
+      "icariin ->[upregulates] tcf7"
+    ],
+    "exposure_signature": "737b40a6166ed3a4",
+    "routed_profile": "G_evidence_gated_two_hop",
+    "route_reason": "question_type=mechanism: evidence-gated multi-hop task",
+    "question_type": "mechanism"
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "29904399",
+        "score": 1.029073323949915
+      },
+      {
+        "pmid": "38045146",
+        "score": 0.9976804540282592
+      },
+      {
+        "pmid": "41484919",
+        "score": 0.995008947077379
+      },
+      {
+        "pmid": "35292240",
+        "score": 0.9714272700216899
+      },
+      {
+        "pmid": "29500883",
+        "score": 0.9671208507925309
+      },
+      {
+        "pmid": "33743412",
+        "score": 0.9134822848135431
+      },
+      {
+        "pmid": "32911026",
+        "score": 0.8629100454390499
+      },
+      {
+        "pmid": "39588260",
+        "score": 0.8491208976302458
+      },
+      {
+        "pmid": "27492554",
+        "score": 0.690733273900378
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "27492554",
+        "score": 0.690733273900378
+      },
+      {
+        "pmid": "29904399",
+        "score": 0.6860488826332767
+      },
+      {
+        "pmid": "38045146",
+        "score": 0.6651203026855061
+      },
+      {
+        "pmid": "41484919",
+        "score": 0.663339298051586
+      },
+      {
+        "pmid": "35292240",
+        "score": 0.6476181800144599
+      },
+      {
+        "pmid": "29500883",
+        "score": 0.6447472338616872
+      },
+      {
+        "pmid": "33743412",
+        "score": 0.6089881898756954
+      },
+      {
+        "pmid": "32911026",
+        "score": 0.5752733636260333
+      },
+      {
+        "pmid": "39588260",
+        "score": 0.5660805984201639
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "Direct evidence (in vitro and in vivo):\n\n- miR-153/Runx2 pathway: Icariin promotes osteoblast differentiation and proliferation in MC3T3-E1 cells via upregulation of miR-153, which subsequently increases Runt-related transcription factor 2 (Runx2) expression. The effect is strengthened when both icariin and miR-153 mimics are used, and icariin can counteract the inhibitory effects of miR-153 inhibitors. This demonstrates a direct, miRNA-mediated mechanism for icariin's pro-osteogenic action involving the miR-153/Runx2 axis [PMID: 29904399, human cell line evidence].\n\n- mmu_circ_0000349/miR-138-5p/JMJD3 axis: In MC3T3-E1 cells, icariin upregulates mmu_circ_0000349 (a circular RNA) and downregulates miR-138-5p, thereby increasing JMJD3 expression and promoting osteogenic differentiation markers (ALP, RUNX2). Overexpression of mmu_circ_0000349 or treatment with icariin enhances osteoblast differentiation, with miR-138-5p acting as a negative modulator in this pathway. Icariin thus supports osteogenesis by manipulating a circRNA/miRNA network [PMID: 38045146, murine cell line evidence].\n\n- miR-335-5p/PTEN pathway: In bone marrow stem cells (BMSCs), icariin upregulates miR-335-5p, which suppresses PTEN, promoting osteogenic differentiation and improving osteoporosis (OP) pathology in rats. Overexpression of miR-335-5p or icariin treatment can ameliorate OP in vivo, confirming the functional significance of this miRNA-mediated mechanism [PMID: 35292240, animal and in vitro evidence].\n\n- miR-21-5p/BMP2, Runx2 pathway: Icariin counters inhibition of osteogenic differentiation caused by titanium particles via upregulation of miR-21-5p in MC3T3-E1 cells. miR-21-5p promotes expression of osteogenic genes (BMP2, Runx2, OCN) and increases ALP activity and mineralization. Importantly, knockdown of miR-21-5p reduces the osteogenic effect of icariin, confirming its necessity in this pathway [PMID: 29500883, in vitro].\n\n- miR-23a/Wnt/β-catenin pathway: Icariin stimulates osteogenesis and suppresses adipogenesis in human bone mesenchymal stem cells (hBMSCs), in part, via miR-23a-mediated activation of the Wnt/β-catenin signaling pathway. Inhibition of miR-23a or icariin treatment activates Wnt signaling, promoting osteogenesis and inhibiting adipogenesis [PMID: 33743412, human cell line evidence].\n\n- miR-34c/Runx2 pathway: In a model of LPS-induced bone loss, icariin restores bone formation and decreases miR-34c expression. Overexpression of miR-34c inhibits osteogenic genes (ALP, Runx2, OPN, BMP2), but icariin downregulates miR-34c, rescuing osteogenic differentiation and mineralization [PMID: 27492554, in vitro].\n\n- miR-331-3p/FGF23/DKK1 pathway (exosome-mediated): Icariin increases miR-331-3p content in osteoclast-derived exosomes, which then stimulates osteoblast differentiation and function by targeting FGF23, decreasing DKK1, and upregulating ALP. This effect is demonstrated both in vitro and in rat models of infected bone defects [PMID: 39588260, animal and cellular evidence].\n\nAssociation and Testable Hypothesis:\n- The diversity of miRNA targets regulated by icariin suggests a broad scope for its epigenetic modulation in bone biology. The close association between specific miRNAs (e.g., miR-21-5p, miR-153, miR-335-5p, miR-23a, miR-138-5p, miR-34c, miR-331-3p) and enhanced osteogenic markers (ALP, Runx2, BMP2, OCN) or signaling pathways (Wnt/β-catenin, PI3K/PTEN) indicates that icariin’s pro-osteogenic effects are mediated mainly via miRNA-controlled regulatory networks.\n\n- Testable hypothesis: Pharmacological modulation of these miRNAs (e.g., via mimics or inhibitors), in combination with icariin, could synergistically enhance or inhibit osteoblast differentiation, providing a basis for future therapeutic approaches in osteoporosis or defect healing.\n\nSummary:\nDirect human, animal, and in-vitro evidence demonstrates that icariin influences osteoblast differentiation via multiple miRNA-related mechanisms, mostly by upregulating pro-osteogenic miRNAs or downregulating anti-osteogenic ones, affecting key targets such as Runx2, PTEN, BMP2, and modulating signaling pathways (Wnt/β-catenin, PI3K/PTEN)[PMID: 29904399, 38045146, 35292240, 29500883, 33743412, 27492554, 39588260].",
+    "traditional_rag": "Direct evidence (in-vitro/human/animal):\n- Icariin promotes osteoblast differentiation through various miRNA-related mechanisms:\n    1. Downregulation of miR-34c: In an in vitro osteogenic model, icariin reverses LPS-induced upregulation of miR-34c. Overexpression of miR-34c inhibits key osteogenic markers (ALP, Runx2, OPN, BMP2), and icariin-induced osteogenic differentiation and mineral nodule formation are negated by miR-34c overexpression. Icariin, therefore, restores osteoblast function partly by downregulating miR-34c, which relieves the inhibition on osteogenic factors, even though icariin does not alter Runx2 mRNA but does restore its protein level [PMID: 27492554]. (In vitro evidence)\n    2. Upregulation of miR-153: In MC3T3-E1 cells, icariin increases both miR-153 and Runx2 expression. miR-153 enhances Runx2 levels, and inhibition of miR-153 suppresses icariin’s osteogenic effects, which can be rescued by icariin. Thus, icariin induces osteoblast differentiation via enhancing the miR-153/Runx2 axis [PMID: 29904399]. (In vitro evidence)\n    3. Regulation via the mmu_circ_0000349/mmu-miR-138-5p/JMJD3 axis: In MC3T3-E1 cells, icariin increases expression of a particular circRNA (mmu_circ_0000349), which acts as a sponge for mmu-miR-138-5p, leading to increased JMJD3, ALP, and RUNX2. Icariin lowers miR-138-5p expression, thereby promoting osteogenic differentiation through this pathway [PMID: 38045146]. (In vitro, mouse cell line)\n    4. Upregulation of miR-335-5p: In bone marrow-derived mesenchymal stem cells (BMSCs) and in an osteoporosis rat model, icariin increases miR-335-5p. miR-335-5p inhibits PTEN, allowing osteogenic differentiation. Overexpression of PTEN reverses the effect, confirming the regulatory axis [PMID: 35292240]. (In vitro and in vivo, rat data)\n    5. Upregulation of miR-21-5p: In MC3T3-E1 cells under titanium particle-induced osteolysis stress, icariin increases miR-21-5p, which reverses inhibitory effects on ALP activity, matrix mineralization, and expression of osteogenic markers. Knockdown of miR-21-5p blocks icariin’s positive effect on osteogenic differentiation [PMID: 29500883]. (In vitro evidence)\n    6. Downregulation of miR-23a: In human bone mesenchymal stem cells, icariin promotes osteogenesis and suppresses adipogenesis by downregulating miR-23a, leading to activation of the Wnt/β-catenin pathway, upregulation of osteogenic markers, and downregulation of adipogenic factors [PMID: 33743412]. (In vitro, human cells)\n\nAssociations (animal/human observational/correlative):\n- miR-335: Icariin regulates abnormal overexpression of miRNA-335 in rat bone microvascular endothelial cells (BMECs) following steroid-induced osteonecrosis, supporting improved migration, angiogenesis, and survival of BMECs. While this is more focused on bone vascular health, miR-335 is also involved in osteogenic regulation [PMID: 32911026]. (Animal model)\n- Osteoclast-derived exosomal miR-331-3p: Icariin increases miR-331-3p levels in osteoclast exosomes, which stimulates osteoblast function by affecting FGF23 and DKK1, ultimately increasing ALP and bone healing in vivo [PMID: 39588260]. (Animal and in vitro evidence)\n\nTestable hypotheses:\n- Icariin may generally promote osteogenic differentiation through modulation of multiple miRNAs, targeting suppressive (e.g., miR-34c, miR-138-5p, miR-23a) and stimulatory (e.g., miR-153, miR-335-5p, miR-21-5p, miR-331-3p) pathways, thus coordinating transcription factor expression and signal transduction relevant to osteoblast maturation and function.\n\nSummary Table:\n\n| miRNA           | Direction by Icariin | Cellular Outcome (Mechanism)                      | Supporting Evidence             |\n|-----------------|---------------------|---------------------------------------------------|---------------------------------|\n| miR-34c         | Downregulated       | Restores Runx2 protein, ALP, OPN, BMP2            | [PMID: 27492554] (in vitro)     |\n| miR-153         | Upregulated         | Increases Runx2, enhances differentiation         | [PMID: 29904399] (in vitro)     |\n| miR-138-5p      | Downregulated       | Increases JMJD3, ALP, RUNX2 via circRNA sponge    | [PMID: 38045146] (in vitro)     |\n| miR-335-5p      | Upregulated         | Inhibits PTEN, promotes osteogenic differentiation| [PMID: 35292240], [PMID: 32911026] (in vitro and in vivo animal) |\n| miR-21-5p       | Upregulated         | Enhances BMP2, Runx2, OCN; opposes osteolysis     | [PMID: 29500883] (in vitro)     |\n| miR-23a         | Downregulated       | Activates Wnt/β-catenin, promotes osteogenesis    | [PMID: 33743412] (in vitro, human cells)|\n| miR-331-3p (exosomal) | Upregulated   | Stimulates osteoblast via FGF23/DKK1 axis         | [PMID: 39588260] (in vivo/in vitro)|\n\nEvidence is primarily in vitro and in animal models; human direct evidence is currently lacking.\n\nNo evidence from the context was found regarding icariin’s effects on osteoblast differentiation via miRNA mechanisms in human in vivo studies."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 20.607150055468082,
+    "vector_index": 3.9348674416542053,
+    "answer_netmedex_hybrid_rag": 10.048117749392986,
+    "answer_traditional_rag": 17.677949711680412,
+    "total": 58.342167645692825
+  },
+  "token_usage": {
+    "input_tokens": 23179,
+    "output_tokens": 10884,
+    "total_tokens": 34063
+  },
+  "completed_at": "2026-08-03T10:01:12.733113+00:00"
+}

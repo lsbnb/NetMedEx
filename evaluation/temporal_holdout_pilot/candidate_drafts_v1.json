@@ -1,0 +1,47 @@
+{
+  "cutoff_year": 2015,
+  "validation_start_year": 2016,
+  "validation_end_year": 2025,
+  "created_before_future_search": true,
+  "candidates": [
+    {
+      "candidate_id": "TC001",
+      "question_id": "TH002",
+      "a": "KRAS",
+      "a_query": "KRAS",
+      "b": "cancer",
+      "c": "CTLA-4",
+      "c_query": "CTLA-4",
+      "hypothesis": "KRAS status may influence the CTLA-4 immune-checkpoint axis or response to CTLA-4 blockade in cancer.",
+      "path_pmids": ["23246410", "25341119"],
+      "path_relations": ["KRAS promotes cancer", "CTLA-4 is targeted to overcome tumor-mediated immunosuppression"],
+      "prediction_class": "association_or_treatment_response"
+    },
+    {
+      "candidate_id": "TC002",
+      "question_id": "TH002",
+      "a": "KRAS",
+      "a_query": "KRAS",
+      "b": "cancer",
+      "c": "PD-1",
+      "c_query": "PD-1",
+      "hypothesis": "KRAS status may influence the PD-1 immune-checkpoint axis or response to PD-1 blockade in cancer.",
+      "path_pmids": ["23246410", "25341119"],
+      "path_relations": ["KRAS promotes cancer", "PD-1 is targeted to overcome tumor-mediated immunosuppression"],
+      "prediction_class": "association_or_treatment_response"
+    },
+    {
+      "candidate_id": "TC003",
+      "question_id": "TH001",
+      "a": "celiac disease",
+      "a_query": "celiac disease",
+      "b": "dysbiosis",
+      "c": "periodontitis",
+      "c_query": "periodontitis",
+      "hypothesis": "Celiac disease may be associated with periodontitis through microbiome dysbiosis.",
+      "path_pmids": ["26605783", "23134607", "24646638"],
+      "path_relations": ["celiac disease promotes or is associated with dysbiosis", "dysbiosis causes or is associated with periodontitis"],
+      "prediction_class": "association"
+    }
+  ]
+}

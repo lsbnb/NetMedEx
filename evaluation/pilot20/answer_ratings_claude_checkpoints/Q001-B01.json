@@ -1,0 +1,53 @@
+{
+  "task": "answer",
+  "question_id": "Q001",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "0912f3ad7b7568f6c14281932eae8ffd9e24d9fee071191a061684f9b8dd6432",
+  "raw_response_sha256": "f78e3dfc3d23a6689ea0b10de8472a0a8439588a26f0332c35713738b7c281bc",
+  "usage": {
+    "input_tokens": 4338,
+    "output_tokens": 493,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 4831
+  },
+  "rated_at": "2026-08-12T19:21:11.764806+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q001-A",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, well-cited, covers 7 miRNA axes with PMIDs. Minor concern: miR-153 described as upregulating Runx2 via 3'UTR targeting is mechanistically unusual and warrants scrutiny."
+      },
+      {
+        "answer_id": "Q001-B",
+        "correctness": 3,
+        "completeness": 2,
+        "relevance": 4,
+        "grounding": 2,
+        "mechanistic_coherence": 3,
+        "research_value": 2,
+        "notes": "Vague, lacks citations, mentions miR-133 without evidence, miR-34c/SATB2 claim differs from literature (Runx2/BMP2 more established). Insufficient specificity for research use."
+      },
+      {
+        "answer_id": "Q001-C",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Excellent structured response with summary table, 7 PMIDs, clear mechanistic pathways, appropriate caveats about rodent vs. human evidence. Best overall answer."
+      }
+    ],
+    "preferred_item_id": "Q001-C",
+    "pairwise_reason": "Q001-C matches Q001-A in depth and citations but adds a structured summary table, clearer mechanistic descriptions, and better grounding transparency, making it more useful for research purposes. Q001-B is substantially weaker with no citations and vague claims."
+  }
+}

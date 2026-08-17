@@ -1,0 +1,11 @@
+system,arm,question_id,run_id,label,question_type,routed_profile,route_reason,use_node_rag,max_hops,gate_directional_paths,gate_multi_document_paths,gate_evidence_paths,node_ids,exposed_pmids,exposed_edges,exposed_paths,exposure_signature
+netmedex_hybrid_rag,A_text_only,Q001,formal-v1-gpt-5.6-terra-A_text_only,A. Text-only RAG,mechanism,A_text_only,fixed profile,False,0,False,False,,,,,,
+netmedex_hybrid_rag,A_text_only,Q002,formal-v1-gpt-5.6-terra-A_text_only,A. Text-only RAG,retrieval,A_text_only,fixed profile,False,0,False,False,,,,,,
+netmedex_hybrid_rag,A_text_only,Q003,formal-v1-gpt-5.6-terra-A_text_only,A. Text-only RAG,direct_evidence,A_text_only,fixed profile,False,0,False,False,,,,,,
+netmedex_hybrid_rag,A_text_only,Q004,formal-v1-gpt-5.6-terra-A_text_only,A. Text-only RAG,two_hop_path,A_text_only,fixed profile,False,0,False,False,,,,,,
+netmedex_hybrid_rag,A_text_only,Q005,formal-v1-gpt-5.6-terra-A_text_only,A. Text-only RAG,mechanism,A_text_only,fixed profile,False,0,False,False,,,,,,
+netmedex_hybrid_rag,A_text_only,Q006,formal-v1-gpt-5.6-terra-A_text_only,A. Text-only RAG,retrieval,A_text_only,fixed profile,False,0,False,False,,,,,,
+netmedex_hybrid_rag,A_text_only,Q007,formal-v1-gpt-5.6-terra-A_text_only,A. Text-only RAG,association,A_text_only,fixed profile,False,0,False,False,,,,,,
+netmedex_hybrid_rag,A_text_only,Q008,formal-v1-gpt-5.6-terra-A_text_only,A. Text-only RAG,hypothesis,A_text_only,fixed profile,False,0,False,False,,,,,,
+netmedex_hybrid_rag,A_text_only,Q009,formal-v1-gpt-5.6-terra-A_text_only,A. Text-only RAG,retrieval,A_text_only,fixed profile,False,0,False,False,,,,,,
+netmedex_hybrid_rag,A_text_only,Q010,formal-v1-gpt-5.6-terra-A_text_only,A. Text-only RAG,multilingual_mechanism,A_text_only,fixed profile,False,0,False,False,,,,,,

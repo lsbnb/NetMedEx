@@ -1,0 +1,25 @@
+{
+  "question_id": "Q022",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-31T18:14:59.819651+00:00",
+  "ratings": [
+    {
+      "hypothesis_id": "Q022-A",
+      "novelty": 2,
+      "plausibility": 5,
+      "testability": 5,
+      "research_value": 3,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded hypothesis/2-hop quality pass, not a human expert review.] Identifies canonical inflammatory and fibrotic pathways (NF-kB, NLRP3, TGF-b). While highly plausible and testable, the proposed mechanism is well-established common knowledge rather than a novel connection."
+    },
+    {
+      "hypothesis_id": "Q022-B",
+      "novelty": 2,
+      "plausibility": 5,
+      "testability": 5,
+      "research_value": 4,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded hypothesis/2-hop quality pass, not a human expert review.] Highlights the same canonical pathways but adds specific, testable therapeutic interventions (senolytics, Nrf2 activators, IL-1b inhibitors), increasing its translational research value despite low novelty."
+    }
+  ],
+  "raw_response_sha256": "9f5dba2b040c0959ce1f4ef6bb3f262b6e6ffa0d4aec9c0a385f32e1f9322149"
+}

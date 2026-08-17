@@ -1,0 +1,26 @@
+{
+  "task": "edge",
+  "question_id": "Q008",
+  "batch": 2,
+  "provider": "anthropic",
+  "model": "claude-haiku-4-5-20251001",
+  "input_sha256": "ffe0393ecc264c3f3945e5ec6c9795ca03323a18358ed5fd214083162e6ce8f7",
+  "raw_response_sha256": "1b68a3ac17da291b6a0e4e3af6296d621f7d1f6287e2fbb208cb6f2dfecd6662",
+  "rated_at": "2026-08-02T19:08:13.774977+00:00",
+  "result": {
+    "ratings": [
+      {
+        "edge_id": "Q008-E05",
+        "entity_valid": 1,
+        "relation_exists": 1,
+        "relation_type_correct": 0,
+        "direction_correct": 1,
+        "evidence_support": 1,
+        "confidence": 2,
+        "notes": "CFTR may function as tumor suppressor per murine studies, but relation to intestinal inflammation mechanism unclear. Evidence supports CFTR-malignancy link, not direct suppression."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

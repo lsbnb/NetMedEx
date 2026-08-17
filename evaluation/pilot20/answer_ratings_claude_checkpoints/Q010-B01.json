@@ -1,0 +1,53 @@
+{
+  "task": "answer",
+  "question_id": "Q010",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "6f2039c7ce227515bc691b89e21e4dfe1f1db77b64537c127f8745d077437937",
+  "raw_response_sha256": "f22af5bfce950e17ba43f0d3f34d9dc2e90686a3e7f5c05132f4533b89f11e8a",
+  "usage": {
+    "input_tokens": 4990,
+    "output_tokens": 514,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 5504
+  },
+  "rated_at": "2026-08-12T19:21:59.950849+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q010-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Highly specific, cites 8 PMIDs with accurate mechanistic details (miR-29a-3p/NFIA/Wnt, miR-214/Wnt, miR-34c/Runx2). Clearly distinguishes evidence levels."
+      },
+      {
+        "answer_id": "Q010-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Equally thorough, same PMIDs cited with accurate mechanisms. Adds miR-375-3p/LRP5 and circRNA context. Slightly better structured with explicit evidence gaps noted."
+      },
+      {
+        "answer_id": "Q010-C",
+        "correctness": 3,
+        "completeness": 2,
+        "relevance": 4,
+        "grounding": 1,
+        "mechanistic_coherence": 3,
+        "research_value": 2,
+        "notes": "Generic overview without specific citations. Mentions miR-21, miR-133a without grounding. No PMIDs provided. Lacks the specificity of A and B."
+      }
+    ],
+    "preferred_item_id": "Q010-B",
+    "pairwise_reason": "Q010-B and Q010-A are nearly equivalent in quality, but Q010-B adds miR-375-3p/LRP5 evidence (PMID:28158288), circRNA context, and explicitly addresses cross-species plant exosome miRNA questions, providing marginally broader mechanistic coverage with clearer evidence-gap acknowledgment."
+  }
+}

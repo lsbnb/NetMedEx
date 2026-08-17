@@ -1,0 +1,24 @@
+{
+  "reviewer_type": "AI",
+  "human_expert_review_claimed": false,
+  "blinded": true,
+  "task": "answer",
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_file": "evaluation/formal/runs/hybrid_gain_v3_untruncated/blinded_answers_pass1.csv",
+  "input_sha256": "3b35aa3bf24408b194a809871ac7723c63976bec65e12d65290ac87ecec7bd25",
+  "output_file": "evaluation/formal/runs/hybrid_gain_v3_untruncated/judge_local_pass1.csv",
+  "question_count": 4,
+  "row_count": 28,
+  "estimated_prompt_chars": 88823,
+  "estimated_input_tokens_rough": 22206,
+  "actual_api_usage_from_checkpoints": {
+    "input_tokens": 26828,
+    "output_tokens": 2618,
+    "total_tokens": 29446
+  },
+  "completed_batches": 4,
+  "started_at": "2026-08-16T21:02:27.361079+00:00",
+  "completed_at": "2026-08-16T21:06:00.739571+00:00",
+  "status": "complete"
+}

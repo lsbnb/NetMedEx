@@ -8,6 +8,7 @@ from itertools import islice
 import networkx as nx
 
 from netmedex.claim_verifier import relation_supported_by_text
+from netmedex.community import CommunityDetector, GraphCommunity
 from netmedex.graph_schema import graph_schema_status
 from netmedex.relation_types import is_directional_relation
 from netmedex.utils import generate_stable_id
@@ -56,7 +57,14 @@ class GraphRetriever:
         ("肾脏", " kidney "),
     )
 
-    def __init__(self, graph: nx.Graph, node_rag=None):
+    DEFAULT_CLAIM_CONFIDENCE_THRESHOLD = 0.8
+
+    def __init__(
+        self,
+        graph: nx.Graph,
+        node_rag=None,
+        claim_confidence_threshold: float = DEFAULT_CLAIM_CONFIDENCE_THRESHOLD,
+    ):
         """
         Initialize the Graph Retriever.
 
@@ -65,6 +73,9 @@ class GraphRetriever:
             node_rag: Optional NodeRAG instance for semantic search.
         """
         self.graph = graph
+        if not 0.0 <= float(claim_confidence_threshold) <= 1.0:
+            raise ValueError("claim_confidence_threshold must be between 0 and 1")
+        self.claim_confidence_threshold = float(claim_confidence_threshold)
         self.schema_status = graph_schema_status(graph)
         if self.schema_status["rebuild_required"]:
             logger.warning(
@@ -75,6 +86,7 @@ class GraphRetriever:
         self.node_rag = node_rag
         self.last_candidate_audit: list[dict] = []
         self._build_node_index()
+        self.community_detector: CommunityDetector = CommunityDetector(self.graph)
 
     def _build_node_index(self):
         """Build a case-insensitive index of node names to IDs."""
@@ -123,6 +135,61 @@ class GraphRetriever:
                     logger.info(f"  + Semantic match: {meta.get('name')} (Score: {score:.2f})")
 
         return list(matched_nodes)
+
+    def find_relevant_communities(
+        self,
+        query: str,
+        matched_node_ids: list[str] | None = None,
+        top_k: int = 2,
+    ) -> list[tuple[GraphCommunity, float]]:
+        """
+        Identify top macro-level topological communities relevant to the user query.
+        """
+        return self.community_detector.match_communities(
+            query=query, matched_node_ids=matched_node_ids, top_k=top_k
+        )
+
+    def get_macro_community_context(
+        self,
+        query: str | None = None,
+        relevant_nodes: list[str] | None = None,
+        top_k: int = 2,
+    ) -> str:
+        """
+        Extract textual overview for top-ranked macro-level functional communities.
+        """
+        q = query or ""
+        matched = self.find_relevant_communities(
+            query=q, matched_node_ids=relevant_nodes, top_k=top_k
+        )
+        if not matched:
+            return ""
+
+        lines = ["### Macro-Level Functional Communities:"]
+        for comm, score in matched:
+            lines.append(
+                f"- **[{comm.title}]** (Relevance: {score:.2f}, Nodes: {comm.node_count}, Edges: {comm.edge_count})"
+            )
+            hub_parts = []
+            if comm.gene_hubs:
+                hub_parts.append(f"Genes: {', '.join(comm.gene_hubs)}")
+            if comm.disease_hubs:
+                hub_parts.append(f"Diseases: {', '.join(comm.disease_hubs)}")
+            if comm.drug_hubs:
+                hub_parts.append(f"Chemicals/Drugs: {', '.join(comm.drug_hubs)}")
+            if comm.phenotype_hubs:
+                hub_parts.append(f"Phenotypes/Pathways: {', '.join(comm.phenotype_hubs)}")
+            elif comm.top_hubs and not hub_parts:
+                hub_parts.append(f"Top Hubs: {', '.join(comm.top_hubs)}")
+
+            if hub_parts:
+                lines.append(f"  - **Hub Entities**: {'; '.join(hub_parts)}")
+            lines.append(f"  - **Functional Summary**: {comm.summary}")
+            if comm.top_pmids:
+                pmid_str = ", ".join(f"[PMID:{p}]" for p in comm.top_pmids[:3])
+                lines.append(f"  - **Key PMIDs**: {pmid_str}")
+
+        return "\n".join(lines)
 
     def get_subgraph_context(
         self, relevant_nodes: list[str], query: str | None = None, max_hops: int = 2
@@ -223,7 +290,15 @@ class GraphRetriever:
             if not any(path["retrieval_safe"] for path in structured_paths):
                 context_lines.append("No query-aligned graph paths passed the retrieval gate.")
 
-        return "\n".join(context_lines), structured_paths
+        # Inject Macro-Level Functional Communities
+        macro_community_context = self.get_macro_community_context(
+            query=query, relevant_nodes=valid_nodes, top_k=2
+        )
+        if macro_community_context:
+            context_lines.append("")
+            context_lines.append(macro_community_context)
+
+        return "\n".join(context_lines), (structured_paths if candidate_records else [])
 
     @staticmethod
     def _select_gated_candidate_paths(
@@ -310,7 +385,9 @@ class GraphRetriever:
         for index in range(len(path) - 1):
             u, v = path[index], path[index + 1]
             support = (
-                self._select_edge_support(self.graph.edges[u, v])
+                self._select_edge_support(
+                    self.graph.edges[u, v], self.claim_confidence_threshold
+                )
                 if self.graph.has_edge(u, v)
                 else self._empty_edge_support()
             )
@@ -433,9 +510,17 @@ class GraphRetriever:
         rel_types = set()
         pmid_count = 0
         if "relations" in edge_data:
-            pmid_count = len(edge_data["relations"])
-            for pmid_rels in edge_data["relations"].values():
-                rel_types.update(pmid_rels)
+            rels_obj = edge_data["relations"]
+            if isinstance(rels_obj, dict):
+                pmid_count = len(rels_obj)
+                for pmid_rels in rels_obj.values():
+                    if isinstance(pmid_rels, (list, set)):
+                        rel_types.update(pmid_rels)
+                    elif pmid_rels:
+                        rel_types.add(pmid_rels)
+            elif isinstance(rels_obj, (list, set)):
+                pmid_count = len(edge_data.get("pmids", [])) or 1
+                rel_types.update(rels_obj)
 
         strength_mult = 1.0
         if any(is_directional_relation(t) for t in rel_types):
@@ -835,7 +920,10 @@ class GraphRetriever:
             )
             if not bridge_matches and anchors["mechanism_requested"]:
                 supports = [
-                    self._select_edge_support(self.graph.edges[path[i], path[i + 1]])
+                    self._select_edge_support(
+                        self.graph.edges[path[i], path[i + 1]],
+                        self.claim_confidence_threshold,
+                    )
                     for i in range(len(path) - 1)
                 ]
                 bridge_matches = any(support["directional"] for support in supports)
@@ -1244,7 +1332,10 @@ class GraphRetriever:
                 ):
                     continue
                 supports = [
-                    self._select_edge_support(self.graph.edges[path[i], path[i + 1]])
+                    self._select_edge_support(
+                        self.graph.edges[path[i], path[i + 1]],
+                        self.claim_confidence_threshold,
+                    )
                     for i in range(len(path) - 1)
                 ]
                 if not all(support["support_tier"] == "A" for support in supports):
@@ -1301,7 +1392,9 @@ class GraphRetriever:
             u_name = self.graph.nodes[u].get("name", u)
             v_name = self.graph.nodes[v].get("name", v)
             edge_data = self.graph[u][v]
-            support = self._select_edge_support(edge_data)
+            support = self._select_edge_support(
+                edge_data, self.claim_confidence_threshold
+            )
             directionality = "[DIRECTIONAL]" if support["directional"] else "[SYMMETRIC]"
             pmid = (
                 f" [PMID:{support['selected_pmid']}]" if support["selected_pmid"] else ""
@@ -1396,7 +1489,11 @@ class GraphRetriever:
         return candidates
 
     @classmethod
-    def _select_edge_support(cls, edge_data: dict) -> dict:
+    def _select_edge_support(
+        cls,
+        edge_data: dict,
+        claim_confidence_threshold: float = DEFAULT_CLAIM_CONFIDENCE_THRESHOLD,
+    ) -> dict:
         """Select one deterministic, internally aligned evidence bundle for an edge."""
         candidates = cls._iter_edge_support_candidates(edge_data)
         if not candidates:
@@ -1421,10 +1518,15 @@ class GraphRetriever:
             reasons.append("quote_present")
         else:
             reasons.append("quote_missing")
+        threshold = float(claim_confidence_threshold)
+        if not 0.0 <= threshold <= 1.0:
+            raise ValueError("claim_confidence_threshold must be between 0 and 1")
         if selected["selected_confidence"] is not None:
             reasons.append("confidence_present")
-            if selected["selected_confidence"] >= 0.8:
-                reasons.append("confidence_ge_0.8")
+            if selected["selected_confidence"] >= threshold:
+                reasons.append(f"confidence_ge_{threshold:g}")
+            else:
+                reasons.append(f"confidence_below_{threshold:g}")
         else:
             reasons.append("confidence_missing")
         if selected["directional"]:
@@ -1443,6 +1545,7 @@ class GraphRetriever:
             "A"
             if selected["selected_quote"]
             and selected["selected_confidence"] is not None
+            and selected["selected_confidence"] >= threshold
             and selected["quote_relation_aligned"]
             else "B"
         )

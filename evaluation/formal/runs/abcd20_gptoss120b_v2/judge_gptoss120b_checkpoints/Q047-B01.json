@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "Q047",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "d10d8fbf281491bb6ddb2872994fde7af8a3d5a5e8d5aed67c849d5dc57f53c8",
+  "raw_response_sha256": "56a7377dd454ed331d6bf8420ea6c6b2559ccd53e98e0432da30d06c256bf906",
+  "usage": {
+    "input_tokens": 2693,
+    "output_tokens": 419,
+    "total_tokens": 3112
+  },
+  "rated_at": "2026-08-13T04:56:13.024168+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q047-A",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Accurately reports inhibition, cites PMID, no up‑regulation evidence; concise but covers key points."
+      },
+      {
+        "answer_id": "Q047-B",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Same core info as A, slightly less detail; still correct and well‑grounded."
+      },
+      {
+        "answer_id": "Q047-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive overview, notes lack of CF‑specific data, discusses mechanisms; minor citation gaps."
+      },
+      {
+        "answer_id": "Q047-D",
+        "correctness": 5,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Very brief, only mentions one study; correct but limited scope."
+      }
+    ],
+    "preferred_item_id": "Q047-C",
+    "pairwise_reason": "Answer C provides the most complete and nuanced synthesis, highlighting both existing non‑CF findings and the specific gap in CF intestinal epithelium data, offering mechanistic hypotheses and clear research directions."
+  }
+}

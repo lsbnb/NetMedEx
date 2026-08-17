@@ -1,0 +1,99 @@
+{
+  "question_id": "Q029",
+  "model": "gpt-5.6-sol",
+  "rated_at": "2026-07-29T10:12:48.322676+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q029-C001",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Directly identifies senescent endothelial cells in human atherosclerotic lesions and shows that telomere dysfunction-induced senescence increases ICAM-1 and decreases eNOS activity, linking senescence to pro-atherogenic endothelial dysfunction."
+    },
+    {
+      "candidate_id": "Q029-C002",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Direct causal study: endothelial-specific progeria accelerates atherosclerosis in ApoE-deficient mice. It identifies epigenetically enhanced VCAM-1/NF-kB responsiveness and increased monocyte adhesion as mechanisms."
+    },
+    {
+      "candidate_id": "Q029-C003",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Provides relevant in vitro evidence that oxidative stress induces endothelial senescence and a pro-inflammatory SASP through NF-kB, MAPK, and mTOR signaling, but does not directly test atherosclerosis."
+    },
+    {
+      "candidate_id": "Q029-C004",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Shows ethanol-induced endothelial senescence, oxidative stress, and SASP involving NF-kB and MAPKs. These are plausible pro-atherogenic mechanisms, but plaque development or atherosclerosis is not directly studied."
+    },
+    {
+      "candidate_id": "Q029-C005",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Review directly describes mechanisms in diabetic atherosclerosis: hyperglycemia and lipotoxicity induce endothelial and other vascular-cell senescence through oxidative stress, mitochondrial dysfunction, and NLRP3, while SASP promotes inflammation and plaque instability."
+    },
+    {
+      "candidate_id": "Q029-C006",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Review addresses how senescent-cell accumulation and SASP increase inflammation and oxidative stress, promote endothelial dysfunction, and thereby contribute to atherosclerosis, including senescence-targeted interventions."
+    },
+    {
+      "candidate_id": "Q029-C007",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Useful broad review of vascular senescence pathways, including p53/p21, p16/Rb, SASP, oxidative stress, and endothelial dysfunction, but the abstract does not specifically develop their mechanistic connection to atherosclerosis."
+    },
+    {
+      "candidate_id": "Q029-C008",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Directly links endothelial senescence, impaired autophagy, oxidative stress, and SASP to atherosclerotic lesions. Mechanistic experiments implicate MKRN2-dependent PI3K/AKT/mTOR signaling and test an intervention in ApoE-deficient mice and HUVECs."
+    },
+    {
+      "candidate_id": "Q029-C009",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Directly reviews SASP-mediated inflammation, immune dysfunction, and paracrine spread of senescence in atherosclerosis, but covers SASP from multiple senescent cell types rather than specifically endothelial senescence."
+    },
+    {
+      "candidate_id": "Q029-C010",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "wrong_context",
+      "reviewer_notes": "Focuses on atherosclerosis-associated cerebromicrovascular senescence as a driver of vascular cognitive impairment, BBB disruption, and neurovascular dysfunction rather than mechanisms by which endothelial senescence causes atherosclerosis."
+    },
+    {
+      "candidate_id": "Q029-C011",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Provides broad review-level context on shared aging and atherosclerosis mechanisms, including endothelial dysfunction, mitochondrial oxidative stress, SASP, inflammation, and vascular injury, but is not centered specifically on endothelial senescence."
+    },
+    {
+      "candidate_id": "Q029-C012",
+      "relevance": 1,
+      "confidence": 2,
+      "exclusion_reason": "",
+      "reviewer_notes": "Review specifically covers endothelial senescence mechanisms and possible consequences for vascular disease development and progression, but the abstract does not explicitly identify atherosclerosis-specific mechanisms."
+    },
+    {
+      "candidate_id": "Q029-C013",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Demonstrates that endothelial telomere dysfunction induces senescence, inflammatory signaling, oxidative stress, and impaired endothelial function. These are informative mechanistic intermediates, but atherosclerosis itself is not tested."
+    }
+  ],
+  "raw_response_sha256": "74c0b5e32f83899a6c47944ad01f0ba46f92ca53a6b2a2aa8475d5e2f8dbfea6"
+}

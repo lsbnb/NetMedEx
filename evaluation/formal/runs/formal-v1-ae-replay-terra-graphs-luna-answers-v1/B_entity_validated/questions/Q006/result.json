@@ -1,0 +1,207 @@
+{
+  "status": "complete",
+  "question_id": "Q006",
+  "domain": "cardiovascular",
+  "question": "What PubMed evidence supports statin effects on endothelial dysfunction?",
+  "question_type": "retrieval",
+  "pubmed_query": "statin AND endothelial dysfunction AND (eNOS OR nitric oxide OR flow-mediated dilation)",
+  "effective_pubmed_query": "statin AND endothelial dysfunction AND (eNOS OR nitric oxide OR flow-mediated dilation)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "10569303",
+    "14664903",
+    "15111011",
+    "15320839",
+    "15815580",
+    "15861315",
+    "17430168",
+    "18695354",
+    "21890489",
+    "22112351",
+    "24928320",
+    "28057795",
+    "35970408",
+    "38385489",
+    "39684569"
+  ],
+  "graph": {
+    "node_count": 48,
+    "edge_count": 63,
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [
+      "10569303",
+      "15320839",
+      "15815580",
+      "15861315",
+      "17430168",
+      "18695354",
+      "22112351",
+      "24928320",
+      "35970408",
+      "39684569"
+    ],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "B_entity_validated",
+    "label": "B. Text + normalized entities",
+    "use_node_rag": true,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [
+      "MESH:D014652_Disease"
+    ],
+    "exposed_pmids": [
+      "10569303",
+      "15320839",
+      "15815580",
+      "15861315",
+      "17430168",
+      "18695354",
+      "22112351",
+      "24928320",
+      "35970408",
+      "39684569"
+    ],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "38385489",
+        "score": 0.6283694694498091
+      },
+      {
+        "pmid": "15861315",
+        "score": 0.6054495750756469
+      },
+      {
+        "pmid": "15815580",
+        "score": 0.5907209382120614
+      },
+      {
+        "pmid": "17430168",
+        "score": 0.5675532396954148
+      },
+      {
+        "pmid": "35970408",
+        "score": 0.5512591823870605
+      },
+      {
+        "pmid": "28057795",
+        "score": 0.5455732682751196
+      },
+      {
+        "pmid": "24928320",
+        "score": 0.5389581892754258
+      },
+      {
+        "pmid": "22112351",
+        "score": 0.4952567898633927
+      },
+      {
+        "pmid": "15111011",
+        "score": 0.489571848274075
+      },
+      {
+        "pmid": "39684569",
+        "score": 0.4895005996939734
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "38385489",
+        "score": 0.6283694694498091
+      },
+      {
+        "pmid": "15861315",
+        "score": 0.6054495750756469
+      },
+      {
+        "pmid": "15815580",
+        "score": 0.5907209382120614
+      },
+      {
+        "pmid": "17430168",
+        "score": 0.5675532396954148
+      },
+      {
+        "pmid": "35970408",
+        "score": 0.5512591823870605
+      },
+      {
+        "pmid": "28057795",
+        "score": 0.5455732682751196
+      },
+      {
+        "pmid": "24928320",
+        "score": 0.5389581892754258
+      },
+      {
+        "pmid": "22112351",
+        "score": 0.4952567898633927
+      },
+      {
+        "pmid": "15111011",
+        "score": 0.489571848274075
+      },
+      {
+        "pmid": "39684569",
+        "score": 0.4895005996939734
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "## Direct evidence\n\n- **Randomized-trial meta-analysis in humans:** A systematic review and dose–response meta-analysis of **35 randomized placebo-controlled trials involving 2,178 participants** found that statin therapy significantly improved brachial artery flow-mediated dilation (FMD), with a weighted mean difference of **1.7 percentage points (95% CI 1.3–2.2; p < 0.001)**. FMD is an established measure of endothelium-dependent vascular function. The analysis had substantial heterogeneity (**I² = 97.9%**), so the magnitude of benefit varied across studies. The greatest dose-response signal was reported for atorvastatin 20 mg/day and simvastatin 80 mg/day. **Human randomized-trial evidence supports improved endothelial function, although heterogeneity warrants caution.** [PMID: 38385489]\n\n- **Short-term human intervention study:** In a small study of women with endometriosis, 7 days of atorvastatin 10 mg improved acetylcholine-induced cutaneous vasodilation and nitric-oxide-dependent vasodilation. The study included six women with endometriosis who received the intervention, so it provides supportive but limited evidence because of the small sample and specialized population. [PMID: 35970408]\n\n## Associations and proposed mechanisms\n\n- Reviews describe endothelial dysfunction as involving reduced nitric oxide (NO) bioavailability, oxidative stress, inflammation, and impaired vasomotion. Statins are reported to exert vascular effects that may extend beyond LDL-cholesterol reduction, including enhancement of endothelial NO signaling. [PMID: 15861315; PMID: 17430168]\n\n- Statins have been associated with increased endothelial NO synthase activity or expression, improved NO bioavailability, antioxidant effects, and anti-inflammatory actions. [PMID: 15815580; PMID: 15111011]\n\n- A proposed molecular explanation is inhibition of isoprenoid production and downstream Rho/Rac, Rho-kinase, and NADPH-oxidase pathways, which may affect endothelial NO synthase, reactive oxygen species, and inflammatory signaling. The clinical importance of these cholesterol-independent effects remains uncertain. [PMID: 28057795]\n\n- Reviews of hypertension and vascular disease report that statins can improve endothelial dysfunction, but emphasize that confirmation of whether this translates into improved cardiovascular prognosis is still needed. [PMID: 22112351]\n\n## Animal and in-vitro evidence\n\n- The supplied context describes **animal models of stroke** in which statins improved cerebral blood flow and provided protection partly through endothelial NO synthase upregulation. [PMID: 15815580]\n\n- **Cell-culture and animal studies** suggest that statins alter endothelial NO synthase expression and reduce oxidative and inflammatory pathways. These findings support biological plausibility but are not equivalent to direct clinical evidence in humans. [PMID: 28057795]\n\n## Testable hypothesis\n\nStatins may improve endothelial dysfunction through both LDL-cholesterol lowering and cholesterol-independent effects that increase NO bioavailability while reducing oxidative stress and inflammation. This hypothesis is supported by improved FMD in randomized trials, but the supplied records do not establish how much of the benefit is independent of lipid lowering or whether FMD improvement consistently improves long-term cardiovascular outcomes.",
+    "traditional_rag": "### Direct evidence\n\n- **Human randomized-trial evidence:** A systematic review and dose–response meta-analysis of **35 randomized placebo-controlled trials (41 treatment arms; 2,178 participants)** found that statins significantly improved brachial artery flow-mediated dilation (FMD), with a weighted mean difference of **1.7 percentage points (95% CI 1.3–2.2; p < 0.001)**. FMD is used as a measure of endothelium-dependent vascular function. The analysis showed substantial heterogeneity, and the largest dose-associated improvements were reported with atorvastatin 20 mg/day and simvastatin 80 mg/day. [PMID: 38385489]  \n  - **Evidence type:** Human randomized trials; direct evidence for improved endothelial function measured by FMD.\n\n- **Human mechanistic vascular study:** In a small study of women with endometriosis, endothelial-dependent cutaneous vasodilation and nitric-oxide-dependent dilation were impaired compared with healthy controls. After **7 days of atorvastatin 10 mg**, both acetylcholine-induced and NO-dependent vasodilation improved. [PMID: 35970408]  \n  - **Evidence type:** Human interventional study; direct but limited by the very small sample size and lack of a reported randomized placebo-controlled design.\n\n### Association and review-level evidence\n\n- A review describes endothelial dysfunction as related to reduced NO activity and cardiovascular risk, and summarizes evidence that statins may have both cholesterol-dependent and cholesterol-independent effects on the endothelium. [PMID: 15861315]\n\n- Reviews report that statins are among the pharmacological treatments associated with improved endothelial function, particularly in high-risk cardiovascular settings and hypertension. [PMID: 17430168; PMID: 22112351; PMID: 24928320]\n\n- Statin-associated vascular effects described in reviews include increased NO bioavailability, improved endothelial NO synthase activity or expression, reduced oxidative stress, and reduced inflammation. [PMID: 15815580; PMID: 15111011]\n\n### Testable mechanistic hypothesis\n\n- The proposed “pleiotropic” mechanism is that statin inhibition of isoprenoid production alters prenylation of small GTPases such as Rho and Rac, which may affect endothelial NO synthase, NADPH oxidase activity, reactive oxygen species, and inflammatory signaling. [PMID: 28057795]  \n  - **Evidence type:** Mechanistic evidence from **cell-culture and animal studies**, as described in the review; the clinical contribution independent of LDL-cholesterol lowering remains uncertain.\n\n### Bottom line\n\nThe strongest PubMed evidence is human randomized-trial evidence showing a statistically significant improvement in FMD with statins, although heterogeneity between trials is very high. Small human studies and reviews support improved NO-mediated endothelial vasodilation, while the precise LDL-independent molecular mechanisms remain a testable hypothesis rather than conclusively established clinical causation.",
+    "general_llm": "PubMed-indexed evidence supports the conclusion that statins can improve **endothelial dysfunction**, particularly in patients with hypercholesterolemia, coronary artery disease, diabetes, or other high-risk states. The strongest evidence concerns improvement in **endothelium-dependent vasodilation**, rather than proof that this mechanism alone explains cardiovascular outcome reduction.\n\n### Main clinical evidence\n\n- **Flow-mediated dilation (FMD):** Numerous randomized trials report improved brachial-artery FMD after treatment with pravastatin, simvastatin, atorvastatin, rosuvastatin, or fluvastatin. Improvements have generally been observed over weeks to months and are often greater in patients with baseline endothelial impairment.\n- **Coronary endothelial function:** Invasive studies using intracoronary acetylcholine demonstrated improved endothelium-dependent coronary vasomotion after lipid-lowering therapy. A landmark example is the **TREND study**, published by Anderson and colleagues in *New England Journal of Medicine* in 1995, in which pravastatin improved coronary endothelial responses in patients with coronary artery disease.\n- **Meta-analyses:** PubMed-indexed systematic reviews and meta-analyses of randomized trials generally find a modest but statistically significant improvement in FMD with statin therapy. The effect is usually larger in people with cardiovascular disease or dyslipidemia than in healthy individuals.\n\n### Proposed mechanisms\n\nThe literature supports several mechanisms beyond simply lowering LDL cholesterol:\n\n1. **Increased endothelial nitric-oxide synthase activity and nitric oxide bioavailability**\n2. **Reduced vascular oxidative stress and superoxide-mediated nitric-oxide inactivation**\n3. **Improved endothelial-cell signaling through the PI3K/Akt/eNOS pathway**\n4. **Reduced expression of inflammatory and adhesion molecules**\n5. **Improved endothelial repair and progenitor-cell function**\n6. **Reduced Rho/Rho-kinase signaling**, which may enhance eNOS activity\n7. **Improved endothelial response to ischemia and reduced thrombogenicity**\n\nExperimental and mechanistic studies, including work by **Laufs and colleagues**, showed that statins can increase eNOS expression and activity independently of LDL reduction in cellular and animal models.\n\n### Evidence for effects independent of LDL lowering\n\nSome clinical studies found endothelial improvement before substantial LDL reduction or despite similar LDL reductions between treatment groups. This supports a possible “pleiotropic” effect. However, this interpretation is not definitive:\n\n- Many studies were small.\n- Endothelial-function measures have substantial methodological variability.\n- The apparent LDL-independent effects may partly reflect rapid biological consequences of LDL lowering, regression to the mean, or differences in baseline risk.\n- Trials designed specifically to separate LDL-mediated from LDL-independent effects are limited.\n\n### Important limitations\n\n- **FMD is a surrogate measure**, not a clinical outcome.\n- Results vary according to statin, dose, duration, baseline endothelial function, and measurement technique.\n- Improvement in FMD does not establish that statins prevent myocardial infarction specifically through endothelial effects.\n- Large outcome trials clearly show cardiovascular benefit from statins, but those benefits likely result from multiple mechanisms: LDL reduction, plaque stabilization, reduced inflammation, prevention of thrombosis, and possibly improved endothelial function.\n\n### Bottom line\n\nThe PubMed literature provides reasonably consistent evidence that statins improve endothelial-dependent vasodilation and several biological markers of endothelial health. The evidence is strongest for improvement in **brachial FMD and coronary vasomotor responses**, while the extent to which these effects are independent of LDL lowering—and their contribution to reduced cardiovascular events—remains uncertain."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 0.0030542686581611633,
+    "vector_index": 1.9098614379763603,
+    "answer_netmedex_hybrid_rag": 5.886509269475937,
+    "answer_traditional_rag": 5.010455131530762,
+    "answer_general_llm": 10.750368900597095,
+    "total": 27.571438752114773
+  },
+  "token_usage": {
+    "input_tokens": 7006,
+    "total_tokens": 9636,
+    "output_tokens": 2630
+  },
+  "completed_at": "2026-08-11T05:36:28.821104+00:00"
+}

@@ -1,0 +1,123 @@
+{
+  "question_id": "Q048",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-31T19:33:26.493733+00:00",
+  "ratings": [
+    {
+      "edge_id": "Q048-E01",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles indicate melatonin promotes restoration of bone defects and acts as a cytoprotective agent in bone, supporting that it prevents or treats bone diseases."
+    },
+    {
+      "edge_id": "Q048-E02",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles explicitly state melatonin improves postmenopausal osteoporosis and is a potential therapy for it, supporting an association."
+    },
+    {
+      "edge_id": "Q048-E03",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles mention melatonin induces apoptosis 'via the BMAL1/ROS/MAPK-p38 pathway', which implies activation or utilization of MAPK14 (p38), not inhibition."
+    },
+    {
+      "edge_id": "Q048-E04",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The gene TNFRSF11B (osteoprotegerin) is not mentioned in any of the supporting titles."
+    },
+    {
+      "edge_id": "Q048-E05",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title states melatonin induces apoptosis 'via the BMAL1... pathway', implying it positively regulates or activates ARNTL (BMAL1)."
+    },
+    {
+      "edge_id": "Q048-E06",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The gene CTNNB1 (beta-catenin) is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q048-E07",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title states melatonin attenuates osteoclastogenesis through NFATc1 signaling pathways, implying it modulates (likely inhibits, given the context of RANKL) NFATc1."
+    },
+    {
+      "edge_id": "Q048-E08",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly states melatonin acts 'via Inhibition of Atp6v0d2', which matches 'downregulates'."
+    },
+    {
+      "edge_id": "Q048-E09",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title mentions 'MAPK' generally, but does not specifically mention MAPK8 (JNK)."
+    },
+    {
+      "edge_id": "Q048-E10",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] IL1B is not mentioned in the supporting title, even though pyroptosis is mentioned."
+    },
+    {
+      "edge_id": "Q048-E11",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] IL18 is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q048-E12",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly mentions 'inhibition of TNFalpha/NF-kappaB signaling', supporting the inhibition of NFKB1."
+    },
+    {
+      "edge_id": "Q048-E13",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly mentions 'inhibition of TNFalpha/NF-kappaB signaling', supporting the inhibition of TNF."
+    },
+    {
+      "edge_id": "Q048-E14",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] TNFSF11 (RANKL) is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q048-E15",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Inflammation is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q048-E16",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Bone fractures are not mentioned in the supporting title, which discusses zebrafish scales."
+    },
+    {
+      "edge_id": "Q048-E17",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The target '0493' is an extraction artifact and is not a meaningful biological entity supported by the title."
+    },
+    {
+      "edge_id": "Q048-E18",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Melatonin prevents cadmium-induced osteoporosis, meaning it prevents the effects of cadmium, not cadmium itself."
+    },
+    {
+      "edge_id": "Q048-E19",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly states that 'Melatonin suppresses the plasma calcium level'."
+    }
+  ],
+  "raw_response_sha256": "e2112360fcb6714a5366e548e382a9ea09397899279f398748d6536a69087cd5"
+}

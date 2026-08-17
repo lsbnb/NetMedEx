@@ -1,0 +1,4247 @@
+{
+  "status": "complete",
+  "question_id": "Q009",
+  "domain": "pharmacology",
+  "question": "Which chemicals have evidence for modulating the JAK/STAT pathway in skeletal muscle contexts?",
+  "question_type": "retrieval",
+  "pubmed_query": "JAK STAT AND skeletal muscle AND (inhibitor OR compound OR chemical)",
+  "effective_pubmed_query": "JAK STAT AND skeletal muscle AND (inhibitor OR compound OR chemical)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "26972840",
+    "27330885",
+    "29897957",
+    "31114509",
+    "32885495",
+    "33523949",
+    "33601387",
+    "34821076",
+    "35565236",
+    "39122555",
+    "39381601",
+    "40296760",
+    "40536399",
+    "40617409",
+    "41344510"
+  ],
+  "graph": {
+    "node_count": 53,
+    "edge_count": 52,
+    "path_count": 9,
+    "pre_gate_candidate_count": 24,
+    "pre_gate_candidates": [
+      {
+        "path": [
+          "689f5a2e58ac36b6d6e3bd50b50691cc4bc9cee4",
+          "742c296d187c025ba06b09f84758880e4d663e5f"
+        ],
+        "node_ids": [
+          "map04630_Pathway",
+          "GO:0042592_BiologicalProcess"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "homeostasis"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "homeostasis"
+          ]
+        ],
+        "relations": [
+          "regulates"
+        ],
+        "edge_pmids": [
+          [
+            "26972840"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "regulates",
+            "selected_pmid": "26972840",
+            "selected_quote": "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis.",
+            "selected_confidence": 0.92,
+            "directional": true,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.901,
+        "base_score": 0.901,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 1,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "0dd715856096157e",
+        "incremental_value_class": "not_claim_safe",
+        "incremental_value_subtype": "excluded",
+        "incremental_value_reasons": [
+          "not_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": []
+      },
+      {
+        "path": [
+          "689f5a2e58ac36b6d6e3bd50b50691cc4bc9cee4",
+          "0b6d7492316d88803cc13ec84c9a0adcbfc5ff16"
+        ],
+        "node_ids": [
+          "map04630_Pathway",
+          "MESH:D003920_Disease"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "diabetes"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "Diabetes mellitus",
+            "diabetes"
+          ]
+        ],
+        "relations": [
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "26972840"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "26972840",
+            "selected_quote": "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes.",
+            "selected_confidence": 0.84,
+            "directional": true,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.864,
+        "base_score": 0.864,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 2,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "c3a885a8e2b75d5a",
+        "incremental_value_class": "not_claim_safe",
+        "incremental_value_subtype": "excluded",
+        "incremental_value_reasons": [
+          "not_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": []
+      },
+      {
+        "path": [
+          "689f5a2e58ac36b6d6e3bd50b50691cc4bc9cee4",
+          "76551e37e6aea9bae410d4e3ff9a1e0135086fea"
+        ],
+        "node_ids": [
+          "map04630_Pathway",
+          "MESH:D009765_Disease"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "obesity"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "obesity"
+          ]
+        ],
+        "relations": [
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "26972840"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "26972840",
+            "selected_quote": "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes.",
+            "selected_confidence": 0.84,
+            "directional": true,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.864,
+        "base_score": 0.864,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 3,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "ae4ac236bce81df0",
+        "incremental_value_class": "not_claim_safe",
+        "incremental_value_subtype": "excluded",
+        "incremental_value_reasons": [
+          "not_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": []
+      },
+      {
+        "path": [
+          "689f5a2e58ac36b6d6e3bd50b50691cc4bc9cee4",
+          "1aeec1f954cb4b36fa773afe64433721a2d6999b"
+        ],
+        "node_ids": [
+          "map04630_Pathway",
+          "GO:0023052_BiologicalProcess"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "signaling"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "Signaling",
+            "signaling",
+            "signalling"
+          ]
+        ],
+        "relations": [
+          "related_to"
+        ],
+        "edge_pmids": [
+          [
+            "26972840"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "related_to",
+            "selected_pmid": "26972840",
+            "selected_quote": "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis.",
+            "selected_confidence": 0.94,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.841,
+        "base_score": 0.841,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 4,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "989c648b676dfd38",
+        "incremental_value_class": "not_claim_safe",
+        "incremental_value_subtype": "excluded",
+        "incremental_value_reasons": [
+          "not_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": []
+      },
+      {
+        "path": [
+          "689f5a2e58ac36b6d6e3bd50b50691cc4bc9cee4",
+          "c23f058ee7cf0afc242dc27666a93d7f3b2a4101"
+        ],
+        "node_ids": [
+          "map04630_Pathway",
+          "MESH:C479163_Chemical"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "tofacitinib"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "Tofacitinib",
+            "tofacitinib"
+          ]
+        ],
+        "relations": [
+          "inhibits"
+        ],
+        "edge_pmids": [
+          [
+            "39122555"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "JAK inhibition with tofacitinib rapidly increases contractile force in human skeletal muscle."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "inhibits",
+            "selected_pmid": "39122555",
+            "selected_quote": "JAK inhibition with tofacitinib rapidly increases contractile force in human skeletal muscle.",
+            "selected_confidence": 0.97,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "74c74e026a4f5f478df853b1f1b24ad0f5ede73f",
+              "schema_version": 1,
+              "pmid": "39122555",
+              "source_id": "MESH:C479163_Chemical",
+              "target_id": "map04630_Pathway",
+              "relation": "inhibits",
+              "evidence": "JAK inhibition with tofacitinib rapidly increases contractile force in human skeletal muscle.",
+              "confidence": 0.97,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.826,
+        "base_score": 0.826,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 5,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "c45c164d7298f310"
+      },
+      {
+        "path": [
+          "689f5a2e58ac36b6d6e3bd50b50691cc4bc9cee4",
+          "fab68706472f65f6c6f6f66043e9e7f8bf6e730e"
+        ],
+        "node_ids": [
+          "map04630_Pathway",
+          "MESH:C555157_Chemical"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "sgi-1252"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "SGI-1252"
+          ]
+        ],
+        "relations": [
+          "inhibits"
+        ],
+        "edge_pmids": [
+          [
+            "29897957"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Preclinical characterization of the JAK/STAT inhibitor SGI-1252"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "inhibits",
+            "selected_pmid": "29897957",
+            "selected_quote": "Preclinical characterization of the JAK/STAT inhibitor SGI-1252",
+            "selected_confidence": 0.98,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "e653fc9842aaf71babb9174160c2d32ed11fe269",
+              "schema_version": 1,
+              "pmid": "29897957",
+              "source_id": "MESH:C555157_Chemical",
+              "target_id": "map04630_Pathway",
+              "relation": "inhibits",
+              "evidence": "Preclinical characterization of the JAK/STAT inhibitor SGI-1252",
+              "confidence": 0.98,
+              "study_type": "Animal",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.826,
+        "base_score": 0.826,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 6,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "abf0098cc7c7ae9c"
+      },
+      {
+        "path": [
+          "689f5a2e58ac36b6d6e3bd50b50691cc4bc9cee4",
+          "fab68706472f65f6c6f6f66043e9e7f8bf6e730e",
+          "42d656f82567ed7c0696465e5dc4d9e73e3faf30"
+        ],
+        "node_ids": [
+          "map04630_Pathway",
+          "MESH:C555157_Chemical",
+          "20848_Gene"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "sgi-1252",
+          "stat3"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "SGI-1252"
+          ],
+          [
+            "STAT3"
+          ]
+        ],
+        "relations": [
+          "inhibits",
+          "decreases"
+        ],
+        "edge_pmids": [
+          [
+            "29897957"
+          ],
+          [
+            "29897957"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Preclinical characterization of the JAK/STAT inhibitor SGI-1252"
+          ],
+          [
+            "SGI-1252 treatment reduced gastrocnemius STAT3 phosphorylation 53% (94.79 +- 45.9 vs 44.5 +- 6.1 MFI)."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "inhibits",
+            "selected_pmid": "29897957",
+            "selected_quote": "Preclinical characterization of the JAK/STAT inhibitor SGI-1252",
+            "selected_confidence": 0.98,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "e653fc9842aaf71babb9174160c2d32ed11fe269",
+              "schema_version": 1,
+              "pmid": "29897957",
+              "source_id": "MESH:C555157_Chemical",
+              "target_id": "map04630_Pathway",
+              "relation": "inhibits",
+              "evidence": "Preclinical characterization of the JAK/STAT inhibitor SGI-1252",
+              "confidence": 0.98,
+              "study_type": "Animal",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "decreases",
+            "selected_pmid": "29897957",
+            "selected_quote": "SGI-1252 treatment reduced gastrocnemius STAT3 phosphorylation 53% (94.79 +- 45.9 vs 44.5 +- 6.1 MFI).",
+            "selected_confidence": 0.93,
+            "directional": true,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.736,
+        "base_score": 0.656,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 7,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_2",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "c4c698771dc33191"
+      },
+      {
+        "path": [
+          "689f5a2e58ac36b6d6e3bd50b50691cc4bc9cee4",
+          "fab68706472f65f6c6f6f66043e9e7f8bf6e730e",
+          "35324d425eabc4c0e853a143d0dd985fffc740c2"
+        ],
+        "node_ids": [
+          "map04630_Pathway",
+          "MESH:C555157_Chemical",
+          "4654_Gene"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "sgi-1252",
+          "myod"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "SGI-1252"
+          ],
+          [
+            "MyoD"
+          ]
+        ],
+        "relations": [
+          "inhibits",
+          "suppresses"
+        ],
+        "edge_pmids": [
+          [
+            "29897957"
+          ],
+          [
+            "29897957"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Preclinical characterization of the JAK/STAT inhibitor SGI-1252"
+          ],
+          [
+            "SGI-1252 treatment suppressed MyoD (p = 0.013) and Myogenin (p<0.0001) expression in human primary myoblasts, resulting in reduced myogenic differentiation (p = 0.039)."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "inhibits",
+            "selected_pmid": "29897957",
+            "selected_quote": "Preclinical characterization of the JAK/STAT inhibitor SGI-1252",
+            "selected_confidence": 0.98,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "e653fc9842aaf71babb9174160c2d32ed11fe269",
+              "schema_version": 1,
+              "pmid": "29897957",
+              "source_id": "MESH:C555157_Chemical",
+              "target_id": "map04630_Pathway",
+              "relation": "inhibits",
+              "evidence": "Preclinical characterization of the JAK/STAT inhibitor SGI-1252",
+              "confidence": 0.98,
+              "study_type": "Animal",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "suppresses",
+            "selected_pmid": "29897957",
+            "selected_quote": "SGI-1252 treatment suppressed MyoD (p = 0.013) and Myogenin (p<0.0001) expression in human primary myoblasts, resulting in reduced myogenic differentiation (p = 0.039).",
+            "selected_confidence": 0.96,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "34fd09d1768e41f679ddbde04af1542db4a960d1",
+              "schema_version": 1,
+              "pmid": "29897957",
+              "source_id": "MESH:C555157_Chemical",
+              "target_id": "4654_Gene",
+              "relation": "suppresses",
+              "evidence": "SGI-1252 treatment suppressed MyoD (p = 0.013) and Myogenin (p<0.0001) expression in human primary myoblasts, resulting in reduced myogenic differentiation (p = 0.039).",
+              "confidence": 0.96,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.722,
+        "base_score": 0.642,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 8,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "e9b131adcb8795eb"
+      },
+      {
+        "path": [
+          "689f5a2e58ac36b6d6e3bd50b50691cc4bc9cee4",
+          "fab68706472f65f6c6f6f66043e9e7f8bf6e730e",
+          "9243fa3f8d0ba25092282f0ebadd891e469185a8"
+        ],
+        "node_ids": [
+          "map04630_Pathway",
+          "MESH:C555157_Chemical",
+          "4656_Gene"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "sgi-1252",
+          "myogenin"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "SGI-1252"
+          ],
+          [
+            "Myogenin"
+          ]
+        ],
+        "relations": [
+          "inhibits",
+          "suppresses"
+        ],
+        "edge_pmids": [
+          [
+            "29897957"
+          ],
+          [
+            "29897957"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Preclinical characterization of the JAK/STAT inhibitor SGI-1252"
+          ],
+          [
+            "SGI-1252 treatment suppressed MyoD (p = 0.013) and Myogenin (p<0.0001) expression in human primary myoblasts, resulting in reduced myogenic differentiation (p = 0.039)."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "inhibits",
+            "selected_pmid": "29897957",
+            "selected_quote": "Preclinical characterization of the JAK/STAT inhibitor SGI-1252",
+            "selected_confidence": 0.98,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "e653fc9842aaf71babb9174160c2d32ed11fe269",
+              "schema_version": 1,
+              "pmid": "29897957",
+              "source_id": "MESH:C555157_Chemical",
+              "target_id": "map04630_Pathway",
+              "relation": "inhibits",
+              "evidence": "Preclinical characterization of the JAK/STAT inhibitor SGI-1252",
+              "confidence": 0.98,
+              "study_type": "Animal",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "suppresses",
+            "selected_pmid": "29897957",
+            "selected_quote": "SGI-1252 treatment suppressed MyoD (p = 0.013) and Myogenin (p<0.0001) expression in human primary myoblasts, resulting in reduced myogenic differentiation (p = 0.039).",
+            "selected_confidence": 0.97,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "078406b80a4a75882651748069b7cfc43a4bc875",
+              "schema_version": 1,
+              "pmid": "29897957",
+              "source_id": "MESH:C555157_Chemical",
+              "target_id": "4656_Gene",
+              "relation": "suppresses",
+              "evidence": "SGI-1252 treatment suppressed MyoD (p = 0.013) and Myogenin (p<0.0001) expression in human primary myoblasts, resulting in reduced myogenic differentiation (p = 0.039).",
+              "confidence": 0.97,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.722,
+        "base_score": 0.642,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 9,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "34900941ea43dd93"
+      },
+      {
+        "path": [
+          "689f5a2e58ac36b6d6e3bd50b50691cc4bc9cee4",
+          "fab68706472f65f6c6f6f66043e9e7f8bf6e730e",
+          "9b1bb32e4e24a3f3b6435916b26cd6966fe928fd"
+        ],
+        "node_ids": [
+          "map04630_Pathway",
+          "MESH:C555157_Chemical",
+          "18509_Gene"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "sgi-1252",
+          "pax7"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "SGI-1252"
+          ],
+          [
+            "Pax7"
+          ]
+        ],
+        "relations": [
+          "inhibits",
+          "increases"
+        ],
+        "edge_pmids": [
+          [
+            "29897957"
+          ],
+          [
+            "29897957"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Preclinical characterization of the JAK/STAT inhibitor SGI-1252"
+          ],
+          [
+            "SGI-1252 treatment reduced gastrocnemius STAT3 phosphorylation 53% (94.79 +- 45.9 vs 44.5 +- 6.1 MFI) and significantly increased the concentration of Pax7+ satellite cells (2589.2 +- 105.5 vs 2859.4 +- 177.5 SC/mm3) in the gastrocnemius."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "inhibits",
+            "selected_pmid": "29897957",
+            "selected_quote": "Preclinical characterization of the JAK/STAT inhibitor SGI-1252",
+            "selected_confidence": 0.98,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "e653fc9842aaf71babb9174160c2d32ed11fe269",
+              "schema_version": 1,
+              "pmid": "29897957",
+              "source_id": "MESH:C555157_Chemical",
+              "target_id": "map04630_Pathway",
+              "relation": "inhibits",
+              "evidence": "Preclinical characterization of the JAK/STAT inhibitor SGI-1252",
+              "confidence": 0.98,
+              "study_type": "Animal",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "increases",
+            "selected_pmid": "29897957",
+            "selected_quote": "SGI-1252 treatment reduced gastrocnemius STAT3 phosphorylation 53% (94.79 +- 45.9 vs 44.5 +- 6.1 MFI) and significantly increased the concentration of Pax7+ satellite cells (2589.2 +- 105.5 vs 2859.4 +- 177.5 SC/mm3) in the gastrocnemius.",
+            "selected_confidence": 0.89,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "b9a13d37bb8b6deae153e0ca4c5103e15e51772c",
+              "schema_version": 1,
+              "pmid": "29897957",
+              "source_id": "MESH:C555157_Chemical",
+              "target_id": "18509_Gene",
+              "relation": "increases",
+              "evidence": "SGI-1252 treatment reduced gastrocnemius STAT3 phosphorylation 53% (94.79 +- 45.9 vs 44.5 +- 6.1 MFI) and significantly increased the concentration of Pax7+ satellite cells (2589.2 +- 105.5 vs 2859.4 +- 177.5 SC/mm3) in the gastrocnemius.",
+              "confidence": 0.89,
+              "study_type": "Animal",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.714,
+        "base_score": 0.634,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 10,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "f975282cd66077bb"
+      },
+      {
+        "path": [
+          "689f5a2e58ac36b6d6e3bd50b50691cc4bc9cee4",
+          "f34f68b76bb992337563aa1e109147fbda27e394"
+        ],
+        "node_ids": [
+          "map04630_Pathway",
+          "GO:0007610_BiologicalProcess"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "behavior"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "behavior"
+          ]
+        ],
+        "relations": [
+          "regulates"
+        ],
+        "edge_pmids": [
+          [
+            "29897957"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Recent studies have highlighted the JAK/STAT signaling pathway in the regulation of muscle satellite cell behavior."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "regulates",
+            "selected_pmid": "29897957",
+            "selected_quote": "Recent studies have highlighted the JAK/STAT signaling pathway in the regulation of muscle satellite cell behavior.",
+            "selected_confidence": 0.8,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "8bccf78dfe624de2517a72a4d221f27841a2cb54",
+              "schema_version": 1,
+              "pmid": "29897957",
+              "source_id": "map04630_Pathway",
+              "target_id": "GO:0007610_BiologicalProcess",
+              "relation": "regulates",
+              "evidence": "Recent studies have highlighted the JAK/STAT signaling pathway in the regulation of muscle satellite cell behavior.",
+              "confidence": 0.8,
+              "study_type": "Animal",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.703,
+        "base_score": 0.703,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 11,
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "d331169d1f3475f0",
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": []
+      },
+      {
+        "path": [
+          "689f5a2e58ac36b6d6e3bd50b50691cc4bc9cee4",
+          "fab68706472f65f6c6f6f66043e9e7f8bf6e730e",
+          "25620ad2e98fc33407e8912bbefac5d315a23c7a"
+        ],
+        "node_ids": [
+          "map04630_Pathway",
+          "MESH:C555157_Chemical",
+          "MESH:D005221_Disease"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "sgi-1252",
+          "fatigue"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "SGI-1252"
+          ],
+          [
+            "fatigue"
+          ]
+        ],
+        "relations": [
+          "inhibits",
+          "increases"
+        ],
+        "edge_pmids": [
+          [
+            "29897957"
+          ],
+          [
+            "29897957"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Preclinical characterization of the JAK/STAT inhibitor SGI-1252"
+          ],
+          [
+            "Following treatment, fatigue in the gastrocnemius-soleus-plantaris complex was greater in the SGI-1252 mice during a 300 second tetanic contraction bout (p = 0.035)."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "inhibits",
+            "selected_pmid": "29897957",
+            "selected_quote": "Preclinical characterization of the JAK/STAT inhibitor SGI-1252",
+            "selected_confidence": 0.98,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "e653fc9842aaf71babb9174160c2d32ed11fe269",
+              "schema_version": 1,
+              "pmid": "29897957",
+              "source_id": "MESH:C555157_Chemical",
+              "target_id": "map04630_Pathway",
+              "relation": "inhibits",
+              "evidence": "Preclinical characterization of the JAK/STAT inhibitor SGI-1252",
+              "confidence": 0.98,
+              "study_type": "Animal",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "increases",
+            "selected_pmid": "29897957",
+            "selected_quote": "Following treatment, fatigue in the gastrocnemius-soleus-plantaris complex was greater in the SGI-1252 mice during a 300 second tetanic contraction bout (p = 0.035).",
+            "selected_confidence": 0.84,
+            "directional": true,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.693,
+        "base_score": 0.613,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 12,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_2",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "fafe49328fc44763"
+      },
+      {
+        "path": [
+          "689f5a2e58ac36b6d6e3bd50b50691cc4bc9cee4",
+          "fab68706472f65f6c6f6f66043e9e7f8bf6e730e",
+          "1a42f7c1f55007d4e0dab766d054a2d279fe35f5"
+        ],
+        "node_ids": [
+          "map04630_Pathway",
+          "MESH:C555157_Chemical",
+          "GO:0016310_BiologicalProcess"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "sgi-1252",
+          "phosphorylation"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "SGI-1252"
+          ],
+          [
+            "phosphorylation"
+          ]
+        ],
+        "relations": [
+          "inhibits",
+          "decreases"
+        ],
+        "edge_pmids": [
+          [
+            "29897957"
+          ],
+          [
+            "29897957"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Preclinical characterization of the JAK/STAT inhibitor SGI-1252"
+          ],
+          [
+            "SGI-1252 treatment reduced gastrocnemius STAT3 phosphorylation 53% (94.79 +- 45.9 vs 44.5 +- 6.1 MFI)."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "inhibits",
+            "selected_pmid": "29897957",
+            "selected_quote": "Preclinical characterization of the JAK/STAT inhibitor SGI-1252",
+            "selected_confidence": 0.98,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "e653fc9842aaf71babb9174160c2d32ed11fe269",
+              "schema_version": 1,
+              "pmid": "29897957",
+              "source_id": "MESH:C555157_Chemical",
+              "target_id": "map04630_Pathway",
+              "relation": "inhibits",
+              "evidence": "Preclinical characterization of the JAK/STAT inhibitor SGI-1252",
+              "confidence": 0.98,
+              "study_type": "Animal",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "decreases",
+            "selected_pmid": "29897957",
+            "selected_quote": "SGI-1252 treatment reduced gastrocnemius STAT3 phosphorylation 53% (94.79 +- 45.9 vs 44.5 +- 6.1 MFI).",
+            "selected_confidence": 0.91,
+            "directional": true,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.673,
+        "base_score": 0.593,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 13,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_2",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "683477341b498d26"
+      },
+      {
+        "path": [
+          "689f5a2e58ac36b6d6e3bd50b50691cc4bc9cee4",
+          "c23f058ee7cf0afc242dc27666a93d7f3b2a4101",
+          "87e3ca9b464904f8ab204df8b32f08003948c7a2"
+        ],
+        "node_ids": [
+          "map04630_Pathway",
+          "MESH:C479163_Chemical",
+          "4638_Gene"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "tofacitinib",
+          "mylk"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "Tofacitinib",
+            "tofacitinib"
+          ],
+          [
+            "MYLK"
+          ]
+        ],
+        "relations": [
+          "inhibits",
+          "upregulates"
+        ],
+        "edge_pmids": [
+          [
+            "39122555"
+          ],
+          [
+            "39122555"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "JAK inhibition with tofacitinib rapidly increases contractile force in human skeletal muscle."
+          ],
+          [
+            "The increased force was associated with reduced muscle protein oxidation and FoxO-ubiquitination-proteasome signaling, and increased levels of smooth muscle MYLK."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "inhibits",
+            "selected_pmid": "39122555",
+            "selected_quote": "JAK inhibition with tofacitinib rapidly increases contractile force in human skeletal muscle.",
+            "selected_confidence": 0.97,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "74c74e026a4f5f478df853b1f1b24ad0f5ede73f",
+              "schema_version": 1,
+              "pmid": "39122555",
+              "source_id": "MESH:C479163_Chemical",
+              "target_id": "map04630_Pathway",
+              "relation": "inhibits",
+              "evidence": "JAK inhibition with tofacitinib rapidly increases contractile force in human skeletal muscle.",
+              "confidence": 0.97,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "upregulates",
+            "selected_pmid": "39122555",
+            "selected_quote": "The increased force was associated with reduced muscle protein oxidation and FoxO-ubiquitination-proteasome signaling, and increased levels of smooth muscle MYLK.",
+            "selected_confidence": 0.78,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "ad62644f3ef86ee37488b9676222fb58852bc7b8",
+              "schema_version": 1,
+              "pmid": "39122555",
+              "source_id": "MESH:C479163_Chemical",
+              "target_id": "4638_Gene",
+              "relation": "upregulates",
+              "evidence": "The increased force was associated with reduced muscle protein oxidation and FoxO-ubiquitination-proteasome signaling, and increased levels of smooth muscle MYLK.",
+              "confidence": 0.78,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.665,
+        "base_score": 0.585,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 14,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "c94fbc9b79328aea"
+      },
+      {
+        "path": [
+          "689f5a2e58ac36b6d6e3bd50b50691cc4bc9cee4",
+          "0b6d7492316d88803cc13ec84c9a0adcbfc5ff16",
+          "ac843e5750950846c5d4b7576858de8ff2f678d8"
+        ],
+        "node_ids": [
+          "map04630_Pathway",
+          "MESH:D003920_Disease",
+          "MESH:D006943_Disease"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "diabetes",
+          "hyperglycemia"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "Diabetes mellitus",
+            "diabetes"
+          ],
+          [
+            "hyperglycemia"
+          ]
+        ],
+        "relations": [
+          "promotes",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "26972840"
+          ],
+          [
+            "26972840"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes."
+          ],
+          [
+            "Diabetes mellitus are complex, multi-organ metabolic pathologies characterized by hyperglycemia."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "26972840",
+            "selected_quote": "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes.",
+            "selected_confidence": 0.84,
+            "directional": true,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_mismatch"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "26972840",
+            "selected_quote": "Diabetes mellitus are complex, multi-organ metabolic pathologies characterized by hyperglycemia.",
+            "selected_confidence": 0.96,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.66,
+        "base_score": 0.58,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 15,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_1",
+          "incomplete_evidence_hop_2",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "c4747e454d671cfb",
+        "incremental_value_class": "not_claim_safe",
+        "incremental_value_subtype": "excluded",
+        "incremental_value_reasons": [
+          "not_claim_safe",
+          "two_hop",
+          "all_support_in_text_top_k",
+          "bridge_visible_in_text"
+        ],
+        "supporting_pmids_outside_text_top_k": []
+      },
+      {
+        "path": [
+          "689f5a2e58ac36b6d6e3bd50b50691cc4bc9cee4",
+          "76551e37e6aea9bae410d4e3ff9a1e0135086fea",
+          "98522e66871f65c6ad3ed80e55995a8d1dd41907"
+        ],
+        "node_ids": [
+          "map04630_Pathway",
+          "MESH:D009765_Disease",
+          "3569_Gene"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "obesity",
+          "il-6"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "obesity"
+          ],
+          [
+            "IL-6",
+            "Interleukin-6",
+            "interleukin-6"
+          ]
+        ],
+        "relations": [
+          "promotes",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "26972840"
+          ],
+          [
+            "32885495"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes."
+          ],
+          [
+            "Interleukin-6 (IL-6) is a pleiotropic cytokine that has been shown to be produced acutely by skeletal muscle in response to exercise, yet chronically elevated with obesity and aging."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "26972840",
+            "selected_quote": "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes.",
+            "selected_confidence": 0.84,
+            "directional": true,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_mismatch"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "32885495",
+            "selected_quote": "Interleukin-6 (IL-6) is a pleiotropic cytokine that has been shown to be produced acutely by skeletal muscle in response to exercise, yet chronically elevated with obesity and aging.",
+            "selected_confidence": 0.91,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.651,
+        "base_score": 0.571,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 16,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_1",
+          "incomplete_evidence_hop_2",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "ce70028fa36c1a12",
+        "incremental_value_class": "not_claim_safe",
+        "incremental_value_subtype": "excluded",
+        "incremental_value_reasons": [
+          "not_claim_safe",
+          "two_hop",
+          "all_support_in_text_top_k",
+          "bridge_visible_in_text"
+        ],
+        "supporting_pmids_outside_text_top_k": []
+      },
+      {
+        "path": [
+          "689f5a2e58ac36b6d6e3bd50b50691cc4bc9cee4",
+          "fab68706472f65f6c6f6f66043e9e7f8bf6e730e",
+          "e6d15aa76f06a8a56d7c713f7bcf4be1b34b546e"
+        ],
+        "node_ids": [
+          "map04630_Pathway",
+          "MESH:C555157_Chemical",
+          "HP:0012378_Phenotype"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "sgi-1252",
+          "fatigue"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "SGI-1252"
+          ],
+          [
+            "fatigue"
+          ]
+        ],
+        "relations": [
+          "inhibits",
+          "increases"
+        ],
+        "edge_pmids": [
+          [
+            "29897957"
+          ],
+          [
+            "29897957"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Preclinical characterization of the JAK/STAT inhibitor SGI-1252"
+          ],
+          [
+            "Following treatment, fatigue in the gastrocnemius-soleus-plantaris complex was greater in the SGI-1252 mice during a 300 second tetanic contraction bout (p = 0.035)."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "inhibits",
+            "selected_pmid": "29897957",
+            "selected_quote": "Preclinical characterization of the JAK/STAT inhibitor SGI-1252",
+            "selected_confidence": 0.98,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "e653fc9842aaf71babb9174160c2d32ed11fe269",
+              "schema_version": 1,
+              "pmid": "29897957",
+              "source_id": "MESH:C555157_Chemical",
+              "target_id": "map04630_Pathway",
+              "relation": "inhibits",
+              "evidence": "Preclinical characterization of the JAK/STAT inhibitor SGI-1252",
+              "confidence": 0.98,
+              "study_type": "Animal",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "increases",
+            "selected_pmid": "29897957",
+            "selected_quote": "Following treatment, fatigue in the gastrocnemius-soleus-plantaris complex was greater in the SGI-1252 mice during a 300 second tetanic contraction bout (p = 0.035).",
+            "selected_confidence": 0.84,
+            "directional": true,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.646,
+        "base_score": 0.566,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 17,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_2",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "fafe49328fc44763"
+      },
+      {
+        "path": [
+          "689f5a2e58ac36b6d6e3bd50b50691cc4bc9cee4",
+          "a6b1f3686994dd282baf4c3d1f93c9d2fea69735"
+        ],
+        "node_ids": [
+          "map04630_Pathway",
+          "HP:0000819_Phenotype"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "diabetes mellitus"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "Diabetes mellitus"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "26972840"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "26972840",
+            "selected_quote": "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.639,
+        "base_score": 0.639,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 18,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "fccf834a8f9cab2e",
+        "incremental_value_class": "not_claim_safe",
+        "incremental_value_subtype": "excluded",
+        "incremental_value_reasons": [
+          "not_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": []
+      },
+      {
+        "path": [
+          "689f5a2e58ac36b6d6e3bd50b50691cc4bc9cee4",
+          "b41986678c0b4f00e8b83d37ee0b40c346c46deb"
+        ],
+        "node_ids": [
+          "map04630_Pathway",
+          "HP:0001513_Phenotype"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "obesity"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "obesity"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "26972840"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "26972840",
+            "selected_quote": "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.639,
+        "base_score": 0.639,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 19,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "3f73ddabd14bee2c",
+        "incremental_value_class": "not_claim_safe",
+        "incremental_value_subtype": "excluded",
+        "incremental_value_reasons": [
+          "not_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": []
+      },
+      {
+        "path": [
+          "689f5a2e58ac36b6d6e3bd50b50691cc4bc9cee4",
+          "c23f058ee7cf0afc242dc27666a93d7f3b2a4101",
+          "b0b1a8bafa1304279a24c22a6e82b904b82dc14a"
+        ],
+        "node_ids": [
+          "map04630_Pathway",
+          "MESH:C479163_Chemical",
+          "GO:0018158_BiologicalProcess"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "tofacitinib",
+          "protein oxidation"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "Tofacitinib",
+            "tofacitinib"
+          ],
+          [
+            "protein oxidation"
+          ]
+        ],
+        "relations": [
+          "inhibits",
+          "decreases"
+        ],
+        "edge_pmids": [
+          [
+            "39122555"
+          ],
+          [
+            "39122555"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "JAK inhibition with tofacitinib rapidly increases contractile force in human skeletal muscle."
+          ],
+          [
+            "The increased force was associated with reduced muscle protein oxidation and FoxO-ubiquitination-proteasome signaling, and increased levels of smooth muscle MYLK."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "inhibits",
+            "selected_pmid": "39122555",
+            "selected_quote": "JAK inhibition with tofacitinib rapidly increases contractile force in human skeletal muscle.",
+            "selected_confidence": 0.97,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "74c74e026a4f5f478df853b1f1b24ad0f5ede73f",
+              "schema_version": 1,
+              "pmid": "39122555",
+              "source_id": "MESH:C479163_Chemical",
+              "target_id": "map04630_Pathway",
+              "relation": "inhibits",
+              "evidence": "JAK inhibition with tofacitinib rapidly increases contractile force in human skeletal muscle.",
+              "confidence": 0.97,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "decreases",
+            "selected_pmid": "39122555",
+            "selected_quote": "The increased force was associated with reduced muscle protein oxidation and FoxO-ubiquitination-proteasome signaling, and increased levels of smooth muscle MYLK.",
+            "selected_confidence": 0.8,
+            "directional": true,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.635,
+        "base_score": 0.555,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 20,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_2",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "0429debf525f64ce"
+      },
+      {
+        "path": [
+          "689f5a2e58ac36b6d6e3bd50b50691cc4bc9cee4",
+          "0b6d7492316d88803cc13ec84c9a0adcbfc5ff16",
+          "76551e37e6aea9bae410d4e3ff9a1e0135086fea"
+        ],
+        "node_ids": [
+          "map04630_Pathway",
+          "MESH:D003920_Disease",
+          "MESH:D009765_Disease"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "diabetes",
+          "obesity"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "Diabetes mellitus",
+            "diabetes"
+          ],
+          [
+            "obesity"
+          ]
+        ],
+        "relations": [
+          "promotes",
+          "co_occurs_with"
+        ],
+        "edge_pmids": [
+          [
+            "26972840"
+          ],
+          [
+            "26972840"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes."
+          ],
+          [
+            "We also consider the therapeutic implications of targeting the JAK/STAT pathway in treatment of obesity and diabetes."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "26972840",
+            "selected_quote": "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes.",
+            "selected_confidence": 0.84,
+            "directional": true,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_mismatch"
+            ]
+          },
+          {
+            "selected_relation": "co_occurs_with",
+            "selected_pmid": "26972840",
+            "selected_quote": "We also consider the therapeutic implications of targeting the JAK/STAT pathway in treatment of obesity and diabetes.",
+            "selected_confidence": 0.88,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.633,
+        "base_score": 0.553,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 21,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_1",
+          "incomplete_evidence_hop_2",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "c1ca82a365d6fcba"
+      },
+      {
+        "path": [
+          "689f5a2e58ac36b6d6e3bd50b50691cc4bc9cee4",
+          "76551e37e6aea9bae410d4e3ff9a1e0135086fea",
+          "0b6d7492316d88803cc13ec84c9a0adcbfc5ff16"
+        ],
+        "node_ids": [
+          "map04630_Pathway",
+          "MESH:D009765_Disease",
+          "MESH:D003920_Disease"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "obesity",
+          "diabetes"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "obesity"
+          ],
+          [
+            "Diabetes mellitus",
+            "diabetes"
+          ]
+        ],
+        "relations": [
+          "promotes",
+          "co_occurs_with"
+        ],
+        "edge_pmids": [
+          [
+            "26972840"
+          ],
+          [
+            "26972840"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes."
+          ],
+          [
+            "We also consider the therapeutic implications of targeting the JAK/STAT pathway in treatment of obesity and diabetes."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "26972840",
+            "selected_quote": "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes.",
+            "selected_confidence": 0.84,
+            "directional": true,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_mismatch"
+            ]
+          },
+          {
+            "selected_relation": "co_occurs_with",
+            "selected_pmid": "26972840",
+            "selected_quote": "We also consider the therapeutic implications of targeting the JAK/STAT pathway in treatment of obesity and diabetes.",
+            "selected_confidence": 0.88,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.633,
+        "base_score": 0.553,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 22,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_1",
+          "incomplete_evidence_hop_2",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "1643135a7f8e2aa8"
+      },
+      {
+        "path": [
+          "689f5a2e58ac36b6d6e3bd50b50691cc4bc9cee4",
+          "1aeec1f954cb4b36fa773afe64433721a2d6999b",
+          "babb3f1517378fbce10f89b6c6f869b2c36ae73e"
+        ],
+        "node_ids": [
+          "map04630_Pathway",
+          "GO:0023052_BiologicalProcess",
+          "6772_Gene"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "signaling",
+          "stat1"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "Signaling",
+            "signaling",
+            "signalling"
+          ],
+          [
+            "STAT1",
+            "signal transducer and activator of transcription 1"
+          ]
+        ],
+        "relations": [
+          "related_to",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "26972840"
+          ],
+          [
+            "33523949"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis."
+          ],
+          [
+            "E-stim altered the myobundle secretome, induced myofiber hypertrophy, and attenuated the IFN-gamma-induced myobundle wasting and weakness, in part by down-regulating JAK (Janus kinase)/STAT1 (signal transducer and activator of transcription 1) signaling pathway amplified by IFN-gamma."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "related_to",
+            "selected_pmid": "26972840",
+            "selected_quote": "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis.",
+            "selected_confidence": 0.94,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "33523949",
+            "selected_quote": "E-stim altered the myobundle secretome, induced myofiber hypertrophy, and attenuated the IFN-gamma-induced myobundle wasting and weakness, in part by down-regulating JAK (Janus kinase)/STAT1 (signal transducer and activator of transcription 1) signaling pathway amplified by IFN-gamma.",
+            "selected_confidence": 0.82,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.551,
+        "base_score": 0.551,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 23,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_1",
+          "incomplete_evidence_hop_2",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "326afb3499a4e34c"
+      },
+      {
+        "path": [
+          "689f5a2e58ac36b6d6e3bd50b50691cc4bc9cee4",
+          "a6b1f3686994dd282baf4c3d1f93c9d2fea69735",
+          "ffd4bbb51c6da8d2435ce5c35fa364e0d6a3019c"
+        ],
+        "node_ids": [
+          "map04630_Pathway",
+          "HP:0000819_Phenotype",
+          "HP:0003074_Phenotype"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "diabetes mellitus",
+          "hyperglycemia"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "Diabetes mellitus"
+          ],
+          [
+            "hyperglycemia"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "26972840"
+          ],
+          [
+            "26972840"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes."
+          ],
+          [
+            "Diabetes mellitus are complex, multi-organ metabolic pathologies characterized by hyperglycemia."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "26972840",
+            "selected_quote": "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "26972840",
+            "selected_quote": "Diabetes mellitus are complex, multi-organ metabolic pathologies characterized by hyperglycemia.",
+            "selected_confidence": 0.96,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.484,
+        "base_score": 0.484,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "map04630_Pathway"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 24,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_1",
+          "incomplete_evidence_hop_2",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "e8c80753c7c89262"
+      }
+    ],
+    "preferred_pmids": [
+      "26972840",
+      "29897957",
+      "32885495"
+    ],
+    "paths": [
+      {
+        "path_id": "Q009-P01",
+        "path_signature": "0dd715856096157e",
+        "path_text": "jak/stat pathway ->[regulates] homeostasis",
+        "node_ids": [
+          "map04630_Pathway",
+          "GO:0042592_BiologicalProcess"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "homeostasis"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "homeostasis"
+          ]
+        ],
+        "relations": [
+          "regulates"
+        ],
+        "edge_pmids": [
+          [
+            "26972840"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "regulates",
+            "selected_pmid": "26972840",
+            "selected_quote": "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis.",
+            "selected_confidence": 0.92,
+            "directional": true,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "candidate_rank": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "not_claim_safe",
+        "incremental_value_subtype": "excluded",
+        "incremental_value_reasons": [
+          "not_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.901,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q009-P02",
+        "path_signature": "c3a885a8e2b75d5a",
+        "path_text": "jak/stat pathway ->[promotes] diabetes",
+        "node_ids": [
+          "map04630_Pathway",
+          "MESH:D003920_Disease"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "diabetes"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "Diabetes mellitus",
+            "diabetes"
+          ]
+        ],
+        "relations": [
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "26972840"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "26972840",
+            "selected_quote": "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes.",
+            "selected_confidence": 0.84,
+            "directional": true,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "candidate_rank": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "not_claim_safe",
+        "incremental_value_subtype": "excluded",
+        "incremental_value_reasons": [
+          "not_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.864,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q009-P03",
+        "path_signature": "ae4ac236bce81df0",
+        "path_text": "jak/stat pathway ->[promotes] obesity",
+        "node_ids": [
+          "map04630_Pathway",
+          "MESH:D009765_Disease"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "obesity"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "obesity"
+          ]
+        ],
+        "relations": [
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "26972840"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "26972840",
+            "selected_quote": "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes.",
+            "selected_confidence": 0.84,
+            "directional": true,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "candidate_rank": 3,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "not_claim_safe",
+        "incremental_value_subtype": "excluded",
+        "incremental_value_reasons": [
+          "not_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.864,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q009-P04",
+        "path_signature": "989c648b676dfd38",
+        "path_text": "jak/stat pathway --[related_to] signaling",
+        "node_ids": [
+          "map04630_Pathway",
+          "GO:0023052_BiologicalProcess"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "signaling"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "Signaling",
+            "signaling",
+            "signalling"
+          ]
+        ],
+        "relations": [
+          "related_to"
+        ],
+        "edge_pmids": [
+          [
+            "26972840"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "related_to",
+            "selected_pmid": "26972840",
+            "selected_quote": "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis.",
+            "selected_confidence": 0.94,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "candidate_rank": 4,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "not_claim_safe",
+        "incremental_value_subtype": "excluded",
+        "incremental_value_reasons": [
+          "not_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.841,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q009-P05",
+        "path_signature": "d331169d1f3475f0",
+        "path_text": "jak/stat pathway ->[regulates] behavior",
+        "node_ids": [
+          "map04630_Pathway",
+          "GO:0007610_BiologicalProcess"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "behavior"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "behavior"
+          ]
+        ],
+        "relations": [
+          "regulates"
+        ],
+        "edge_pmids": [
+          [
+            "29897957"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Recent studies have highlighted the JAK/STAT signaling pathway in the regulation of muscle satellite cell behavior."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "regulates",
+            "selected_pmid": "29897957",
+            "selected_quote": "Recent studies have highlighted the JAK/STAT signaling pathway in the regulation of muscle satellite cell behavior.",
+            "selected_confidence": 0.8,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "8bccf78dfe624de2517a72a4d221f27841a2cb54",
+              "schema_version": 1,
+              "pmid": "29897957",
+              "source_id": "map04630_Pathway",
+              "target_id": "GO:0007610_BiologicalProcess",
+              "relation": "regulates",
+              "evidence": "Recent studies have highlighted the JAK/STAT signaling pathway in the regulation of muscle satellite cell behavior.",
+              "confidence": 0.8,
+              "study_type": "Animal",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 11,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.703,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q009-P06",
+        "path_signature": "c4747e454d671cfb",
+        "path_text": "jak/stat pathway ->[promotes] diabetes | diabetes --[associated_with] hyperglycemia",
+        "node_ids": [
+          "map04630_Pathway",
+          "MESH:D003920_Disease",
+          "MESH:D006943_Disease"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "diabetes",
+          "hyperglycemia"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "Diabetes mellitus",
+            "diabetes"
+          ],
+          [
+            "hyperglycemia"
+          ]
+        ],
+        "relations": [
+          "promotes",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "26972840"
+          ],
+          [
+            "26972840"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes."
+          ],
+          [
+            "Diabetes mellitus are complex, multi-organ metabolic pathologies characterized by hyperglycemia."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "26972840",
+            "selected_quote": "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes.",
+            "selected_confidence": 0.84,
+            "directional": true,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_mismatch"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "26972840",
+            "selected_quote": "Diabetes mellitus are complex, multi-organ metabolic pathologies characterized by hyperglycemia.",
+            "selected_confidence": 0.96,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_1",
+          "incomplete_evidence_hop_2",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "candidate_rank": 15,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "not_claim_safe",
+        "incremental_value_subtype": "excluded",
+        "incremental_value_reasons": [
+          "not_claim_safe",
+          "two_hop",
+          "all_support_in_text_top_k",
+          "bridge_visible_in_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.66,
+        "hop_count": 2
+      },
+      {
+        "path_id": "Q009-P07",
+        "path_signature": "ce70028fa36c1a12",
+        "path_text": "jak/stat pathway ->[promotes] obesity | obesity --[associated_with] il-6",
+        "node_ids": [
+          "map04630_Pathway",
+          "MESH:D009765_Disease",
+          "3569_Gene"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "obesity",
+          "il-6"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "obesity"
+          ],
+          [
+            "IL-6",
+            "Interleukin-6",
+            "interleukin-6"
+          ]
+        ],
+        "relations": [
+          "promotes",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "26972840"
+          ],
+          [
+            "32885495"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes."
+          ],
+          [
+            "Interleukin-6 (IL-6) is a pleiotropic cytokine that has been shown to be produced acutely by skeletal muscle in response to exercise, yet chronically elevated with obesity and aging."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false,
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "26972840",
+            "selected_quote": "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes.",
+            "selected_confidence": 0.84,
+            "directional": true,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_mismatch"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "32885495",
+            "selected_quote": "Interleukin-6 (IL-6) is a pleiotropic cytokine that has been shown to be produced acutely by skeletal muscle in response to exercise, yet chronically elevated with obesity and aging.",
+            "selected_confidence": 0.91,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_1",
+          "incomplete_evidence_hop_2",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "candidate_rank": 16,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "not_claim_safe",
+        "incremental_value_subtype": "excluded",
+        "incremental_value_reasons": [
+          "not_claim_safe",
+          "two_hop",
+          "all_support_in_text_top_k",
+          "bridge_visible_in_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.651,
+        "hop_count": 2
+      },
+      {
+        "path_id": "Q009-P08",
+        "path_signature": "fccf834a8f9cab2e",
+        "path_text": "jak/stat pathway --[associated_with] diabetes mellitus",
+        "node_ids": [
+          "map04630_Pathway",
+          "HP:0000819_Phenotype"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "diabetes mellitus"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "Diabetes mellitus"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "26972840"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "26972840",
+            "selected_quote": "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "candidate_rank": 18,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "not_claim_safe",
+        "incremental_value_subtype": "excluded",
+        "incremental_value_reasons": [
+          "not_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.639,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q009-P09",
+        "path_signature": "3f73ddabd14bee2c",
+        "path_text": "jak/stat pathway --[associated_with] obesity",
+        "node_ids": [
+          "map04630_Pathway",
+          "HP:0001513_Phenotype"
+        ],
+        "names": [
+          "jak/stat pathway",
+          "obesity"
+        ],
+        "node_aliases": [
+          [
+            "JAK-STAT pathway",
+            "JAK/STAT Pathway",
+            "JAK/STAT Signaling Pathway",
+            "JAK/STAT pathway",
+            "JAK/STAT signaling pathway"
+          ],
+          [
+            "obesity"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "26972840"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "26972840",
+            "selected_quote": "Emerging evidence shows that the highly conserved and potent JAK/STAT signaling pathway is required for normal homeostasis, and, when dysregulated, contributes to the development of obesity and diabetes.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "candidate_rank": 19,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "not_claim_safe",
+        "incremental_value_subtype": "excluded",
+        "incremental_value_reasons": [
+          "not_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.639,
+        "hop_count": 1
+      }
+    ]
+  },
+  "evidence_exposure": {
+    "profile": "D_two_hop",
+    "label": "D. 2-hop Graph RAG",
+    "use_node_rag": true,
+    "max_hops": 2,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "gate_evidence_paths": false,
+    "gate_tier_counts": {
+      "A": 1,
+      "B": 8,
+      "C": 11
+    },
+    "rescue_triggered": false,
+    "rescue_added_paths": 0,
+    "rescue_outcomes": [
+      "not_needed"
+    ],
+    "pre_gate_candidate_count": 24,
+    "node_ids": [
+      "map04630_Pathway"
+    ],
+    "exposed_pmids": [
+      "26972840",
+      "29897957",
+      "32885495"
+    ],
+    "exposed_paths": [
+      [
+        "jak/stat pathway",
+        "homeostasis"
+      ],
+      [
+        "jak/stat pathway",
+        "diabetes"
+      ],
+      [
+        "jak/stat pathway",
+        "obesity"
+      ],
+      [
+        "jak/stat pathway",
+        "signaling"
+      ],
+      [
+        "jak/stat pathway",
+        "behavior"
+      ],
+      [
+        "jak/stat pathway",
+        "diabetes",
+        "hyperglycemia"
+      ],
+      [
+        "jak/stat pathway",
+        "obesity",
+        "il-6"
+      ],
+      [
+        "jak/stat pathway",
+        "diabetes mellitus"
+      ],
+      [
+        "jak/stat pathway",
+        "obesity"
+      ]
+    ],
+    "exposed_edges": [
+      "jak/stat pathway ->[regulates] homeostasis",
+      "jak/stat pathway ->[promotes] diabetes",
+      "jak/stat pathway ->[promotes] obesity",
+      "jak/stat pathway --[related_to] signaling",
+      "jak/stat pathway ->[regulates] behavior",
+      "jak/stat pathway ->[promotes] diabetes | diabetes --[associated_with] hyperglycemia",
+      "jak/stat pathway ->[promotes] obesity | obesity --[associated_with] il-6",
+      "jak/stat pathway --[associated_with] diabetes mellitus",
+      "jak/stat pathway --[associated_with] obesity"
+    ],
+    "exposure_signature": "c6b11187a3d21828",
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 1,
+      "not_claim_safe_count": 8,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "31114509",
+        "score": 0.6972914004632977
+      },
+      {
+        "pmid": "29897957",
+        "score": 0.621531819670738
+      },
+      {
+        "pmid": "39122555",
+        "score": 0.5901123182751286
+      },
+      {
+        "pmid": "33523949",
+        "score": 0.584064724831667
+      },
+      {
+        "pmid": "26972840",
+        "score": 0.5752253359755117
+      },
+      {
+        "pmid": "34821076",
+        "score": 0.545118334351403
+      },
+      {
+        "pmid": "32885495",
+        "score": 0.5426608690431954
+      },
+      {
+        "pmid": "40617409",
+        "score": 0.5331137480788594
+      },
+      {
+        "pmid": "33601387",
+        "score": 0.5300416685675089
+      },
+      {
+        "pmid": "40536399",
+        "score": 0.49457871821892874
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "31114509",
+        "score": 0.6972914004632977
+      },
+      {
+        "pmid": "29897957",
+        "score": 0.621531819670738
+      },
+      {
+        "pmid": "39122555",
+        "score": 0.5901123182751286
+      },
+      {
+        "pmid": "33523949",
+        "score": 0.584064724831667
+      },
+      {
+        "pmid": "26972840",
+        "score": 0.5752253359755117
+      },
+      {
+        "pmid": "34821076",
+        "score": 0.545118334351403
+      },
+      {
+        "pmid": "32885495",
+        "score": 0.5426608690431954
+      },
+      {
+        "pmid": "40617409",
+        "score": 0.5331137480788594
+      },
+      {
+        "pmid": "33601387",
+        "score": 0.5300416685675089
+      },
+      {
+        "pmid": "40536399",
+        "score": 0.49457871821892874
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "## Direct evidence\n\n- **SGI-1252** — animal evidence: oral treatment in mice reduced gastrocnemius STAT3 phosphorylation by 53% and increased satellite-cell content; in-vitro evidence: it suppressed MyoD/Myogenin expression and myogenic differentiation in human primary myoblasts [PMID: 29897957].\n- **Tofacitinib** — human evidence: 48-hour treatment increased contractile force in diaphragm and serratus-anterior skeletal-muscle fibers and was associated with inhibition of JAK/STAT signaling [PMID: 39122555].\n- **AG490** — animal and in-vitro evidence: the JAK2 inhibitor reduced IL-6-induced STAT3/Socs3 signaling and myotube atrophy in C2C12 cells, and attenuated STAT3 activation and muscle atrophy in septic mice [PMID: 34821076].\n- **Scutellarein** — animal and in-vitro evidence: it inhibited JAK kinase activity, reduced JAK/STAT activation, and mitigated muscle atrophy in C2C12 and human iPSC-derived muscle cells and in two mouse cancer-cachexia models [PMID: 40617409].\n- **MitoQ** — in-vitro evidence: mitochondrial-targeted antioxidant treatment partly attenuated IL-6-induced STAT3 activation in differentiated skeletal-muscle myotubes [PMID: 32885495].\n\n## Association\n\nIL-6 activates canonical JAK/STAT signaling in skeletal-muscle cells and contributes to mitochondrial changes and, in sepsis, myotube and muscle atrophy [PMIDs: 32885495, 34821076]. IFN-γ activates JAK/STAT1 signaling in engineered human skeletal muscle, while JAK/STAT inhibitors prevent IFN-γ-induced myopathy [PMID: 33523949]. These cytokines are pathway-active stimuli rather than pathway-selective therapeutic chemicals.\n\n## Testable hypothesis\n\nThe supplied context supports testing whether combined JAK/STAT inhibition and mitochondrial redox modulation produces greater protection against inflammatory or cachexia-associated skeletal-muscle wasting than either approach alone; direct evidence for this combination is absent.\n\n## Graph-derived candidate insights\n\nNo eligible graph-derived candidate insight is reported: the only supplied GATE TIER A; CLAIM-SAFE path has one hop, so its required second relation and target are incomplete.",
+    "traditional_rag": "## Direct evidence of chemical modulation\n\n- **SGI-1252** — A JAK/STAT inhibitor tested in **mice** and **human primary myoblasts in vitro**. In mouse gastrocnemius, it reduced STAT3 phosphorylation by 53%, increased type II fiber size, muscle mass, and Pax7+ satellite-cell content. In human myoblasts, it suppressed MyoD/Myogenin expression and myogenic differentiation. [PMID: 29897957]\n\n- **Tofacitinib** — A JAK inhibitor tested in **humans**. Forty-eight hours of treatment increased single-fiber contractile force in diaphragm and serratus anterior muscle by approximately 15.7%, with reduced protein oxidation and FoxO–ubiquitin–proteasome signaling. [PMID: 39122555]\n\n- **AG490** — A JAK2 inhibitor tested in **septic mice** and **C2C12 myotubes in vitro**. It reduced STAT3 phosphorylation, decreased IL-6-induced atrophy signaling, and attenuated tibialis anterior muscle wasting in septic mice. [PMID: 34821076]\n\n- **Scutellarein** — A natural compound identified as a JAK kinase inhibitor in **C2C12 cells, human iPSC-derived muscle cells, and mouse cancer-cachexia models**. It inhibited JAK/STAT activation, reduced myotube atrophy and muscle wasting, and improved muscle strength and function in mice. [PMID: 40617409]\n\n- **Interleukin-6 (IL-6)** — A cytokine that activates the gp130/JAK2/STAT3 pathway in **C2C12 myotubes, mouse skeletal muscle, and human clinical muscle samples**. IL-6 induced STAT3 phosphorylation, SOCS3 expression, mitochondrial ROS/respiration changes, and myotube atrophy; pathway inhibition reduced these effects. [PMID: 34821076; PMID: 32885495]\n\n- **Interferon-γ (IFN-γ)** — A cytokine that activated JAK/STAT1 in **engineered human skeletal-muscle myobundles in vitro**, producing atrophy and contractile weakness. JAK/STAT inhibitors prevented the IFN-γ-induced myopathy. [PMID: 33523949]\n\n## Evidence of modulation or association, but not clearly direct\n\n- **MitoQ** — A mitochondria-targeted antioxidant tested in **skeletal-muscle myotubes in vitro**. It partly attenuated IL-6-induced STAT3 activation, suggesting that mitochondrial ROS may amplify IL-6/JAK/STAT signaling; MitoQ was not shown to be a direct JAK/STAT inhibitor. [PMID: 32885495]\n\n- **TNF-α** — Used with IFN-γ to induce atrophy in **C2C12 and human iPSC-derived muscle cells**. The supplied abstract attributes the protective effect of scutellarein to JAK/STAT inhibition, but does not establish TNF-α as an independent direct JAK/STAT modulator. [PMID: 40617409]\n\n- **Metyrapone** — Tested in **rats** subjected to sleep deprivation. Treatment altered IL-6 and p-STAT3 responses, but p-STAT3 remained increased; this supports an association with stress-related pathway changes rather than clear therapeutic modulation. [PMID: 33601387]\n\n- **Alk5 inhibitor and oxytocin** — Tested in **old mice** undergoing eccentric exercise. Their combination prevented exercise-associated muscle inflammation/fibrosis and restored proteomic changes in a setting involving dysregulated JAK/STAT signaling, but direct JAK/STAT biochemical modulation was not demonstrated in the supplied abstract. [PMID: 40536399]\n\n## Testable hypothesis\n\n- The supplied review proposes that **specific JAK/STAT inhibitors** and **epigenetic-modulating drugs** could be therapeutic in skeletal-muscle disease, but it does not identify additional specific chemicals or provide direct skeletal-muscle evidence for them. [PMID: 31114509]",
+    "general_llm": "Several classes of chemicals have been reported to modulate JAK/STAT signaling in skeletal-muscle cells, regenerating muscle, or muscle disease models. The strength of evidence varies considerably; many findings are from cultured C2C12 or primary myoblasts rather than human skeletal muscle.\n\n### Endogenous ligands and cytokines\n\n| Chemical | Main pathway reported in muscle | Typical context |\n|---|---|---|\n| **Interleukin-6 (IL-6)** | JAK1/JAK2–STAT3, sometimes STAT1 | Exercise, myoblast proliferation, regeneration, inflammation, cancer cachexia, muscle atrophy |\n| **Leukemia inhibitory factor (LIF)** | gp130–JAK–STAT3 | Satellite-cell activation, myoblast survival and regeneration |\n| **Oncostatin M (OSM)** | gp130/LIFR–JAK–STAT3 | Muscle inflammation, regeneration, and remodeling |\n| **Growth hormone (GH)** | JAK2–STAT5, particularly STAT5A/STAT5B | Myofiber signaling, growth, and metabolic effects |\n| **Interferon-γ (IFN-γ)** | JAK1/JAK2–STAT1 | Inflammatory muscle injury, myositis, and impaired myogenesis |\n| **Type I interferons (IFN-α/β)** | JAK1/TYK2–STAT1/STAT2 | Antiviral and inflammatory responses in muscle |\n| **Interleukin-4 and interleukin-13** | JAK–STAT6 | Myoblast fusion and alternative macrophage-associated muscle repair |\n| **Interleukin-10 (IL-10)** | Mainly JAK1/TYK2–STAT3 | Anti-inflammatory effects during muscle injury and regeneration |\n| **Leptin** | JAK2–STAT3, with metabolic cross-talk | Skeletal-muscle glucose and lipid metabolism; obesity-related signaling |\n| **Angiotensin II** | Reported JAK2–STAT3 activation downstream of AT1 receptors | Muscle wasting, fibrosis, and cardiovascular or disuse-related remodeling |\n\n**IL-6, LIF, OSM, GH, and interferons** have the most consistently described direct links to JAK/STAT signaling in skeletal-muscle systems. Their effects are highly dependent on concentration, exposure duration, muscle-cell type, and whether the setting is regenerative or inflammatory.\n\n### Pharmacological JAK inhibitors\n\nThese compounds have been used to test whether muscle effects depend on JAK signaling:\n\n- **Ruxolitinib** — JAK1/JAK2 inhibitor; used experimentally to suppress cytokine-driven STAT3 or STAT1 signaling.\n- **Tofacitinib** — mainly JAK1/JAK3, with activity involving JAK2-dependent cytokine pathways at relevant concentrations.\n- **Baricitinib** — JAK1/JAK2 inhibitor.\n- **Fedratinib** — relatively JAK2-focused inhibitor.\n- **AG490** — older, relatively nonspecific JAK2 inhibitor, widely used in cell studies.\n- **Pyridone 6** — broad JAK inhibitor used experimentally.\n\nIn muscle research, these agents have generally been used to establish pathway involvement in cytokine-induced inflammation, atrophy, or myogenic responses. Evidence for direct therapeutic benefit in human skeletal-muscle disease remains limited.\n\n### Experimental STAT inhibitors\n\n- **Stattic** — commonly used as a STAT3 inhibitor; affects STAT3 phosphorylation, dimerization, or nuclear function.\n- **S3I-201** — experimental STAT3 inhibitor.\n- **C188-9** and **BP-1-102** — STAT3-directed experimental inhibitors.\n- **Niclosamide** — can reduce STAT3 signaling, but has multiple other cellular targets.\n- **Cucurbitacin I (JSI-124)** — often used as a STAT3 inhibitor, but is not highly specific.\n- **WP1066** — inhibits STAT3-associated signaling and upstream JAK activity, with substantial off-target effects.\n- **Fludarabine** — sometimes used experimentally to inhibit STAT1 signaling.\n- **AS1517499** — reported STAT6 inhibitor, used mainly in inflammatory and immune-cell studies; skeletal-muscle evidence is less extensive.\n\nResults obtained with these compounds should be interpreted cautiously because many have nonspecific cytotoxic, redox, mitochondrial, or kinase effects.\n\n### Natural products and repurposed compounds\n\nA number of compounds have been reported to suppress cytokine-induced JAK/STAT signaling in muscle or muscle-disease models:\n\n- **Curcumin** — often reported to reduce JAK2/STAT3 or STAT3 activity in inflammatory or atrophy models.\n- **Resveratrol** — can attenuate IL-6/JAK/STAT3-associated responses, although AMPK, SIRT1, and antioxidant pathways are also important.\n- **Quercetin** — reported to inhibit inflammatory JAK/STAT signaling in some muscle and cachexia models.\n- **Epigallocatechin gallate (EGCG)** — may reduce STAT3-related inflammatory signaling, but evidence is context-dependent.\n- **Berberine** — reported to modulate JAK/STAT3 in metabolic and inflammatory muscle models.\n- **Metformin** — can indirectly alter cytokine–JAK/STAT signaling through AMPK and metabolic effects; it should not be considered a selective JAK/STAT inhibitor.\n- **N-acetylcysteine** — may blunt redox-sensitive cytokine and STAT activation, but acts indirectly.\n\nFor these compounds, the evidence usually shows changes in STAT phosphorylation or expression together with broader anti-inflammatory or metabolic effects; it does not necessarily demonstrate direct interaction with a JAK or STAT protein.\n\n### Important qualifications\n\n1. **STAT3 is not uniformly harmful in muscle.** Persistent IL-6/JAK/STAT3 activation is associated with inflammation, cachexia, fibrosis, or impaired differentiation in several models, but transient STAT3 signaling can support survival and regeneration.\n2. **STAT5 signaling downstream of GH is distinct from IL-6/STAT3 signaling**, despite both using JAK kinases.\n3. **Phosphorylation changes alone are not sufficient proof of functional pathway dependence.** Genetic knockdown, receptor blockade, or rescue experiments provide stronger evidence.\n4. **Many “STAT3 inhibitors” are pharmacologically nonspecific**, especially AG490, stattic, cucurbitacin I, niclosamide, and WP1066.\n5. **Human skeletal-muscle evidence is much thinner than cell-culture or rodent evidence.** The strongest translationally relevant observations concern cytokine signaling, inflammatory myopathies, cachexia, muscular dystrophy, and exercise-associated IL-6 responses, rather than established JAK/STAT-targeted treatments for ordinary muscle growth or regeneration."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 0.002285972237586975,
+    "vector_index": 1.6925629079341888,
+    "answer_netmedex_hybrid_rag": 12.942666798830032,
+    "answer_traditional_rag": 8.764127217233181,
+    "answer_general_llm": 17.978006087243557,
+    "total": 45.67525763064623
+  },
+  "token_usage": {
+    "output_tokens": 4941,
+    "input_tokens": 9447,
+    "total_tokens": 14388
+  },
+  "completed_at": "2026-08-11T05:51:12.275635+00:00"
+}

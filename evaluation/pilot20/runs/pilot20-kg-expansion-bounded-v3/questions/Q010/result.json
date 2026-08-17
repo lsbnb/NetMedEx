@@ -1,0 +1,193 @@
+{
+  "status": "complete",
+  "question_id": "Q010",
+  "domain": "multilingual",
+  "question": "請找出與骨質疏鬆、miRNA、天然物治療相關的可能機制。",
+  "question_type": "multilingual_mechanism",
+  "pubmed_query": "osteoporosis AND microRNA AND (natural product OR phytochemical) AND osteogenesis",
+  "effective_pubmed_query": "osteoporosis AND microRNA AND (natural product OR phytochemical) AND osteogenesis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "Traditional Chinese",
+  "corpus_pmids": [
+    "27492554",
+    "28158288",
+    "28361330",
+    "30827108",
+    "31131457",
+    "38795694",
+    "40024453",
+    "40266676",
+    "40350835",
+    "40358879",
+    "41196108",
+    "41961168"
+  ],
+  "graph": {
+    "node_count": 92,
+    "edge_count": 160,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": true,
+    "max_hops": 4,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": true,
+    "gate_evidence_paths": true,
+    "gate_tier_counts": {
+      "A": 0,
+      "B": 0,
+      "C": 0
+    },
+    "rescue_triggered": false,
+    "rescue_added_paths": 0,
+    "rescue_outcomes": [],
+    "pre_gate_candidate_count": 0,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "exposure_signature": "cdeec80ea79808c4",
+    "routed_profile": "H_evidence_gated_four_hop",
+    "route_reason": "question_type=multilingual_mechanism: bounded evidence-gated multi-hop task",
+    "question_type": "multilingual_mechanism",
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    },
+    "frozen_exposure_source": "evaluation/pilot20/runs/pilot20-gpt41-v1/questions/Q010/result.json",
+    "frozen_candidate_path_count": 0,
+    "frozen_exposed_path_count": 0,
+    "kg_expansion": {
+      "enabled": true,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "28158288",
+        "score": 0.37199336030222757
+      },
+      {
+        "pmid": "38795694",
+        "score": 0.3714197375977801
+      },
+      {
+        "pmid": "40350835",
+        "score": 0.36869828961533774
+      },
+      {
+        "pmid": "41961168",
+        "score": 0.3600909726138641
+      },
+      {
+        "pmid": "31131457",
+        "score": 0.35453840294392625
+      },
+      {
+        "pmid": "27492554",
+        "score": 0.3525113097585859
+      },
+      {
+        "pmid": "40024453",
+        "score": 0.35132081692168105
+      },
+      {
+        "pmid": "30827108",
+        "score": 0.34564720054712794
+      },
+      {
+        "pmid": "40266676",
+        "score": 0.34286514923730294
+      },
+      {
+        "pmid": "40358879",
+        "score": 0.3413258751629654
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "28158288",
+        "score": 0.37199336030222757
+      },
+      {
+        "pmid": "38795694",
+        "score": 0.3714197375977801
+      },
+      {
+        "pmid": "40350835",
+        "score": 0.36869828961533774
+      },
+      {
+        "pmid": "41961168",
+        "score": 0.3600909726138641
+      },
+      {
+        "pmid": "31131457",
+        "score": 0.35453840294392625
+      },
+      {
+        "pmid": "27492554",
+        "score": 0.3525113097585859
+      },
+      {
+        "pmid": "40024453",
+        "score": 0.35132081692168105
+      },
+      {
+        "pmid": "30827108",
+        "score": 0.34564720054712794
+      },
+      {
+        "pmid": "40266676",
+        "score": 0.34286514923730294
+      },
+      {
+        "pmid": "40358879",
+        "score": 0.3413258751629654
+      }
+    ]
+  },
+  "answers": {},
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 6.237626075744629e-05,
+    "vector_index": 1.6261619329452515,
+    "kg_expansion": 2.1763145923614502e-05,
+    "total": 2.144726514816284
+  },
+  "token_usage": {},
+  "completed_at": "2026-08-12T20:34:43.520249+00:00"
+}

@@ -1,0 +1,533 @@
+{
+  "status": "complete",
+  "question_id": "Q003",
+  "domain": "metabolic disease",
+  "question": "What evidence links insulin resistance to inflammatory cytokines in human studies?",
+  "question_type": "direct_evidence",
+  "pubmed_query": "insulin resistance AND inflammatory cytokines AND humans",
+  "effective_pubmed_query": "insulin resistance AND inflammatory cytokines AND humans",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "12172480",
+    "17053832",
+    "18094066",
+    "24003928",
+    "29241747",
+    "31426593",
+    "31577826",
+    "32437299",
+    "33439300",
+    "34536157",
+    "34847640",
+    "37895163",
+    "39471690",
+    "39593091",
+    "39749338"
+  ],
+  "graph": {
+    "node_count": 43,
+    "edge_count": 53,
+    "path_count": 0,
+    "pre_gate_candidate_count": 3,
+    "pre_gate_candidates": [
+      {
+        "path": [
+          "7233eb57c8475f61016088c77aa29b578d9cc520",
+          "532f3fa7575a812aa59dafc5876b483c3b7d2aea"
+        ],
+        "node_ids": [
+          "map04931_Pathway",
+          "MESH:D007333_Disease"
+        ],
+        "names": [
+          "insulin resistance",
+          "insulin insensitivity"
+        ],
+        "node_aliases": [
+          [
+            "Insulin Resistance",
+            "Insulin resistance",
+            "insulin resistance"
+          ],
+          [
+            "IR",
+            "Insulin Resistance",
+            "Insulin resistance",
+            "insulin insensitivity",
+            "insulin resistance",
+            "insulin resistance syndrome",
+            "resistance to insulin"
+          ]
+        ],
+        "relations": [
+          "related_to"
+        ],
+        "edge_pmids": [
+          [
+            "39471690"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The study assessed the impact on ATM phenotype, inflammatory markers, and key metabolic indicators."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "related_to",
+            "selected_pmid": "39471690",
+            "selected_quote": "The study assessed the impact on ATM phenotype, inflammatory markers, and key metabolic indicators.",
+            "selected_confidence": 0.96,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.722,
+        "base_score": 0.722,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "HP:0000855_Phenotype",
+            "MESH:D007333_Disease",
+            "map04931_Pathway"
+          ],
+          "target_anchor_ids": [
+            "9606_Species",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "9606_Species",
+            "HP:0000855_Phenotype",
+            "MESH:D007249_Disease",
+            "MESH:D007333_Disease",
+            "map04931_Pathway"
+          ],
+          "mechanism_requested": false,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 1,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "6b2c9cda91970206"
+      },
+      {
+        "path": [
+          "7233eb57c8475f61016088c77aa29b578d9cc520",
+          "f8fb9e02f82e91fce0f22a12c96a8994a66ff51f"
+        ],
+        "node_ids": [
+          "map04931_Pathway",
+          "MESH:D011085_Disease"
+        ],
+        "names": [
+          "insulin resistance",
+          "pcos"
+        ],
+        "node_aliases": [
+          [
+            "Insulin Resistance",
+            "Insulin resistance",
+            "insulin resistance"
+          ],
+          [
+            "PCOS",
+            "Polycystic ovarian syndrome",
+            "Polycystic ovary syndrome",
+            "polycystic ovarian syndrome",
+            "polycystic ovary syndrome"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "33439300"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Experimental evidence infers that PCOS women are prone to cardiovascular problems and insulin resistance."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "33439300",
+            "selected_quote": "Experimental evidence infers that PCOS women are prone to cardiovascular problems and insulin resistance.",
+            "selected_confidence": 0.87,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.683,
+        "base_score": 0.683,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "HP:0000855_Phenotype",
+            "MESH:D007333_Disease",
+            "map04931_Pathway"
+          ],
+          "target_anchor_ids": [
+            "9606_Species",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "9606_Species",
+            "HP:0000855_Phenotype",
+            "MESH:D007249_Disease",
+            "MESH:D007333_Disease",
+            "map04931_Pathway"
+          ],
+          "mechanism_requested": false,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 2,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "54efe4d2d78ab071"
+      },
+      {
+        "path": [
+          "554c80f338f706be20c318d211389cc043415a54",
+          "f8fb9e02f82e91fce0f22a12c96a8994a66ff51f"
+        ],
+        "node_ids": [
+          "9606_Species",
+          "MESH:D011085_Disease"
+        ],
+        "names": [
+          "humans",
+          "pcos"
+        ],
+        "node_aliases": [
+          [
+            "human",
+            "humans",
+            "patients",
+            "women"
+          ],
+          [
+            "PCOS",
+            "Polycystic ovarian syndrome",
+            "Polycystic ovary syndrome",
+            "polycystic ovarian syndrome",
+            "polycystic ovary syndrome"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "33439300"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Polycystic ovarian syndrome (PCOS) is the most prevalent metabolic disorder in reproductive-age women."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "33439300",
+            "selected_quote": "Polycystic ovarian syndrome (PCOS) is the most prevalent metabolic disorder in reproductive-age women.",
+            "selected_confidence": 0.88,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.645,
+        "base_score": 0.645,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "HP:0000855_Phenotype",
+            "MESH:D007333_Disease",
+            "map04931_Pathway"
+          ],
+          "target_anchor_ids": [
+            "9606_Species",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "9606_Species",
+            "HP:0000855_Phenotype",
+            "MESH:D007249_Disease",
+            "MESH:D007333_Disease",
+            "map04931_Pathway"
+          ],
+          "mechanism_requested": false,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 3,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "06063e545ec2a47d"
+      }
+    ],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "C_one_hop",
+    "label": "C. 1-hop Graph RAG",
+    "use_node_rag": true,
+    "max_hops": 1,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "gate_evidence_paths": false,
+    "gate_tier_counts": {
+      "A": 0,
+      "B": 0,
+      "C": 3
+    },
+    "rescue_triggered": true,
+    "rescue_added_paths": 0,
+    "rescue_outcomes": [
+      "no_usable_path"
+    ],
+    "pre_gate_candidate_count": 3,
+    "node_ids": [
+      "map04931_Pathway",
+      "9606_Species"
+    ],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "exposure_signature": "fe46638f9e83fcc9",
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "32437299",
+        "score": 0.6123151536067515
+      },
+      {
+        "pmid": "12172480",
+        "score": 0.6025437888221288
+      },
+      {
+        "pmid": "34536157",
+        "score": 0.5703837014267262
+      },
+      {
+        "pmid": "18094066",
+        "score": 0.5500758840519097
+      },
+      {
+        "pmid": "24003928",
+        "score": 0.5239153161143528
+      },
+      {
+        "pmid": "17053832",
+        "score": 0.5233060489058562
+      },
+      {
+        "pmid": "39749338",
+        "score": 0.5146218576478013
+      },
+      {
+        "pmid": "39471690",
+        "score": 0.5073398217683751
+      },
+      {
+        "pmid": "33439300",
+        "score": 0.5069387500055144
+      },
+      {
+        "pmid": "37895163",
+        "score": 0.5055957155978293
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "32437299",
+        "score": 0.6123151536067515
+      },
+      {
+        "pmid": "12172480",
+        "score": 0.6025437888221288
+      },
+      {
+        "pmid": "34536157",
+        "score": 0.5703837014267262
+      },
+      {
+        "pmid": "18094066",
+        "score": 0.5500758840519097
+      },
+      {
+        "pmid": "24003928",
+        "score": 0.5239153161143528
+      },
+      {
+        "pmid": "17053832",
+        "score": 0.5233060489058562
+      },
+      {
+        "pmid": "39749338",
+        "score": 0.5146218576478013
+      },
+      {
+        "pmid": "39471690",
+        "score": 0.5073398217683751
+      },
+      {
+        "pmid": "33439300",
+        "score": 0.5069387500055144
+      },
+      {
+        "pmid": "37895163",
+        "score": 0.5055957155978293
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "## Direct evidence in humans\n\n- **Population-level evidence supports an association between systemic inflammation and insulin resistance/metabolic dysregulation.** A review reports that population studies found strong associations between inflammatory indices and abnormal carbohydrate and lipid metabolism, obesity, and atherosclerosis—conditions closely linked to insulin resistance. It specifically identifies **TNF-α, IL-1, and IL-6** as central inflammatory mediators. [PMID: 12172480]  \n  **Evidence type:** Human observational/population evidence, as summarized in a review.\n\n- **Obesity in humans is associated with inflammatory activation in insulin-responsive tissues.** Inflammation and inflammatory immune-cell accumulation/polarization have been recognized in adipose tissue, skeletal muscle, liver, gut, pancreatic islets, and brain in obesity; this inflammatory state may contribute to obesity-related insulin resistance and type 2 diabetes. [PMID: 32437299]  \n  **Evidence type:** Human-relevant evidence summarized in a review; the abstract does not provide individual human study effect sizes or establish causality.\n\n- **In PCOS, elevated pro-inflammatory cytokines and insulin resistance co-occur.** A review reports higher IL-6 and TNF-α and increased immune-cell infiltration in organ systems of women with PCOS. It describes reciprocal interactions among pro-inflammatory cytokines, obesity, and insulin resistance that may worsen metabolic and reproductive dysfunction. [PMID: 39749338]  \n  **Evidence type:** Human clinical-condition evidence summarized in a review; association rather than proof that cytokines cause insulin resistance.\n\n## Association evidence and proposed mechanisms\n\n- **TNF-α is the cytokine with the clearest proposed mechanistic link.** TNF-α is produced by both immune cells and adipocytes and has been proposed to impair insulin sensitivity. The described mechanisms include induction of SOCS-3, reduced insulin receptor substrate-1 (IRS-1) tyrosine phosphorylation and association with PI3K p85, and negative regulation of PPAR-γ. [PMID: 12172480]  \n  **Evidence type:** Mechanistic synthesis in a review; the supplied context does not establish that these molecular effects were demonstrated specifically in human participants.\n\n- **Low-grade inflammation is repeatedly associated with skeletal-muscle insulin resistance.** Inflammatory cytokines and oxidative stress are described as likely contributors to the connection between chronic inflammation and impaired muscle insulin signaling. Since skeletal muscle normally accounts for more than 75% of insulin-mediated glucose disposal, this is a biologically important proposed route to whole-body insulin resistance. [PMID: 18094066]  \n  **Evidence type:** Review-level mechanistic association; human-specific causal evidence is not detailed in the abstract.\n\n- **Adipose-tissue inflammation is a plausible intermediary.** Obesity-associated macrophage recruitment, chemokine/adipocytokine secretion, and adipose dysfunction are proposed to raise the risk of insulin resistance. [PMID: 34536157]  \n  **Evidence type:** Review-level association/mechanistic framework; not direct human causal proof in the supplied context.\n\n- **Human tissue observations are suggestive but indirect.** Temporal regulation of 12-/15-lipoxygenase isoforms has been reported in human adipose tissue and islets during obesity and diabetes development. The same review notes possible roles for IL-12 in islets and IL-17A in atherosclerosis, but does not provide direct evidence that these cytokines drive insulin resistance in humans. [PMID: 24003928]  \n  **Evidence type:** Human tissue association; indirect for insulin resistance.\n\n## Animal or in-vitro evidence relevant to causality\n\n- **TLR4-mediated inflammatory signaling provides experimental support, mainly in mice.** Fatty acids activated TLR4-related inflammatory signaling in adipocytes and macrophages. TLR4-deficient mice were protected from lipid-infusion–induced suppression of muscle insulin signaling and were partially protected from high-fat-diet insulin resistance. [PMID: 17053832]  \n  **Evidence type:** Animal and cell/tissue experimental evidence. The abstract notes inflammatory pathway activation in obese humans, but the causal insulin-resistance experiments were in mice.\n\n- **Anti-inflammatory improvement of insulin sensitivity has been demonstrated in obese mice.** Tirzepatide reduced pro-inflammatory adipose macrophage infiltration and inflammatory cytokines while improving insulin sensitivity in diet-induced obese mouse models. [PMID: 39471690]  \n  **Evidence type:** Animal evidence only; it cannot establish the same cytokine-to-insulin-resistance causal relationship in humans.\n\n## Testable hypothesis\n\nIn humans with obesity or PCOS, elevated **TNF-α and IL-6**—particularly when accompanied by adipose immune-cell activation—may predict or contribute to reduced insulin sensitivity through impaired IRS-1/PI3K insulin signaling. A rigorous test would require longitudinal human studies or randomized cytokine-/inflammation-targeted interventions measuring clamp-based insulin sensitivity and cytokine changes. The supplied context supports this as a **hypothesis**, but does not provide definitive human interventional evidence that lowering a specific cytokine reverses insulin resistance. [PMID: 12172480] [PMID: 32437299] [PMID: 39749338]\n\n**Overall conclusion:** The supplied PubMed context supports a consistent **human association** between insulin resistance and chronic inflammatory cytokine activity—most notably TNF-α and IL-6—in obesity and PCOS. However, direct human causal evidence for any individual cytokine is not provided here; much of the mechanistic and intervention-level support derives from reviews, animal models, and cellular studies.",
+    "traditional_rag": "## Direct evidence in humans\n\n- **Population-level evidence:** A review reports that population studies show a strong association between inflammatory indices and abnormal carbohydrate/lipid metabolism, obesity, and atherosclerosis—conditions commonly characterized by insulin resistance. It identifies **TNF-α, IL-1, and IL-6** as central inflammatory mediators. [PMID: 12172480]  \n  - **Evidence type:** Human observational/population evidence, as summarized in a review.\n  - **Limitation:** The supplied abstract does not provide effect sizes, specific cohorts, or demonstrate causality.\n\n- **Obesity-associated tissue inflammation in humans:** Inflammatory activation and immune-cell accumulation/polarization have been recognized in obesity across metabolically relevant tissues, including adipose tissue, skeletal muscle, liver, gut, pancreatic islets, and brain. This inflammation may contribute to metabolic dysfunction leading to insulin resistance and type 2 diabetes. [PMID: 32437299]  \n  - **Evidence type:** Human-relevant evidence summarized in a review; the abstract refers to obese humans as well as broader mechanistic literature.\n  - **Limitation:** “May contribute” indicates that causation remains incompletely established.\n\n- **PCOS-related human evidence:** In women with polycystic ovary syndrome, increased infiltration by immune cells and elevated **IL-6** and **TNF-α** have been detected in affected organ systems. The review describes bidirectional interactions among inflammatory cytokines, obesity, and insulin resistance that may worsen metabolic and reproductive dysfunction. [PMID: 39749338]  \n  - **Evidence type:** Human disease-specific evidence summarized in a review.\n  - **Limitation:** The context does not establish whether cytokine elevations cause insulin resistance independently of obesity, hormonal imbalance, or other PCOS-related factors.\n\n## Association versus causation\n\n- **Association:** The available human-oriented context consistently supports an association between chronic low-grade inflammation—particularly involving TNF-α and IL-6—and insulin-resistant states such as obesity, type 2 diabetes, and PCOS. [PMID: 12172480; PMID: 32437299; PMID: 39749338]\n\n- **Causal/mechanistic support:** The proposed mechanism is that TNF-α can impair insulin signaling through sustained induction of **SOCS-3**, reducing insulin receptor substrate-1 (IRS-1) tyrosine phosphorylation and its interaction with PI3K, and through negative regulation of PPAR-γ. [PMID: 12172480]  \n  - **Evidence type:** Mechanistic evidence discussed in a review; the abstract does not specify that these mechanistic findings were demonstrated in human participants.\n  - Thus, this supports biological plausibility but is not definitive human causal proof.\n\n## Interventional evidence in humans\n\n- The context states that therapies targeting inflammation have provided insight into obesity-linked type 2 diabetes and cardiovascular disease, but their effects require further testing and confirmation in clinical trials. [PMID: 32437299]  \n- Therefore, **the supplied records do not provide definitive human clinical-trial evidence that lowering a specific inflammatory cytokine reverses insulin resistance.**\n\n## Animal evidence (not direct human evidence)\n\n- In mice, deletion of **TLR4** reduced inflammatory signaling and protected against lipid infusion–induced impairment of insulin signaling and high-fat-diet insulin resistance. [PMID: 17053832]\n- Mouse knockout studies of 12/15-lipoxygenase were reported to protect against insulin resistance and hyperglycemia. [PMID: 24003928]\n- Tirzepatide improved insulin sensitivity in obese mice while reducing pro-inflammatory adipose macrophages and inflammatory cytokines. [PMID: 39471690]\n\nThese animal findings strengthen the hypothesis that inflammatory pathways can drive insulin resistance, but they cannot alone establish the same causal relationship in humans.\n\n## Testable hypothesis\n\nIn humans with obesity or PCOS, elevated TNF-α and IL-6—and/or adipose-tissue immune-cell inflammation—contribute causally to insulin resistance by disrupting IRS-1/PI3K-related insulin signaling. A rigorous test would require controlled human interventions that selectively reduce these inflammatory pathways while measuring insulin sensitivity independently of changes in weight, diet, and adiposity.",
+    "general_llm": "Human evidence supports a close association between insulin resistance and inflammatory signaling, but it is stronger for a biologic link than for the claim that any single circulating cytokine is the universal primary cause of insulin resistance.\n\n## Main cytokines implicated\n\nThe most studied pro-inflammatory cytokines are:\n\n- **Tumor necrosis factor-alpha (TNF-α)**\n- **Interleukin-6 (IL-6)**\n- **Interleukin-1 beta (IL-1β)**\n\nRelated inflammatory measures often studied include:\n\n- **C-reactive protein (CRP)** — not itself a cytokine; a liver-produced acute-phase protein largely stimulated by IL-6\n- Soluble TNF receptors, especially **sTNFR1** and **sTNFR2**\n- Chemokines and macrophage markers in adipose tissue\n\nAn important counter-regulatory adipose-derived factor is **adiponectin**, which is generally lower in insulin-resistant states and has anti-inflammatory and insulin-sensitizing associations.\n\n## 1. Cross-sectional human studies: inflammatory markers correlate with insulin resistance\n\nIn people with obesity, metabolic syndrome, fatty liver disease, or type 2 diabetes, higher circulating CRP, IL-6, TNF-related markers, and soluble TNF receptors are commonly associated with:\n\n- Higher fasting insulin and HOMA-IR\n- Lower insulin sensitivity measured by oral glucose testing\n- Lower glucose disposal during hyperinsulinemic-euglycemic clamp studies, the reference method for measuring insulin sensitivity\n\nThese relationships often persist after adjustment for some conventional risk factors, but they are usually weakened after accounting for **total adiposity, visceral fat, liver fat, physical inactivity, and smoking**. Thus, much of the association may reflect the fact that excess dysfunctional adipose tissue contributes to both inflammation and insulin resistance.\n\nAmong circulating markers, **CRP and IL-6 are robust epidemiologic predictors**, whereas measurement of circulating TNF-α itself is more variable because blood levels are low, transient, and may not reflect TNF action within tissues.\n\n## 2. Prospective cohort studies: inflammation predicts future type 2 diabetes\n\nLarge longitudinal studies have repeatedly found that people with higher baseline concentrations of CRP, IL-6, and TNF-receptor measures have a greater subsequent risk of developing type 2 diabetes.\n\nThis supports the idea that low-grade inflammation can precede overt diabetes. However:\n\n- The risk estimates are substantially reduced after adjusting for body mass index and central obesity.\n- These markers may identify early metabolic dysfunction rather than directly cause it.\n- Associations with future diabetes do not distinguish impaired insulin action from impaired beta-cell insulin secretion, both of which matter in type 2 diabetes.\n\nSo prospective studies support inflammatory activation as an early marker—and possibly contributor—to diabetes risk, but do not by themselves prove direct causation.\n\n## 3. Adipose-tissue studies provide stronger local evidence\n\nHuman adipose-tissue biopsies show that obesity-associated insulin resistance is linked to a more inflammatory tissue environment. Findings include:\n\n- Greater infiltration of adipose tissue by macrophages and other immune cells\n- Higher expression of TNF-α, IL-6, IL-1β, and inflammatory chemokines in adipose tissue\n- Associations between adipose macrophage/inflammatory gene expression and systemic insulin resistance\n- More inflammation in visceral than subcutaneous adipose tissue in many studies\n\nEx vivo experiments using human adipocytes, adipose tissue, muscle cells, or hepatocytes show that inflammatory cytokines can impair insulin signaling. Proposed mechanisms include activation of pathways such as **JNK**, **IKK/NF-κB**, and **SOCS proteins**, which can reduce effective insulin receptor substrate signaling.\n\nThese experiments establish biologic plausibility, although isolated-cell concentrations of cytokines may not perfectly reproduce the chronic, low-level exposure found in human obesity.\n\n## 4. Experimental inflammation in humans can induce insulin resistance\n\nControlled human endotoxemia studies are an important line of evidence. Administration of a small dose of bacterial lipopolysaccharide to healthy volunteers causes a transient inflammatory response with rises in cytokines such as TNF-α and IL-6. During this response, studies commonly find:\n\n- Reduced insulin sensitivity\n- Increased lipolysis and circulating fatty acids\n- Altered hepatic glucose metabolism\n- Changes in skeletal-muscle insulin signaling\n\nThis is relatively strong evidence that an acute inflammatory response can cause insulin resistance in humans. However, endotoxin activates many pathways simultaneously, so it does not prove that one specific cytokine—such as IL-6 or TNF-α—is solely responsible.\n\n## 5. Weight loss and lifestyle interventions improve both inflammation and insulin sensitivity\n\nCalorie restriction, physical activity, and bariatric surgery generally:\n\n- Improve insulin sensitivity\n- Lower CRP and often IL-6/TNF-related inflammatory markers\n- Reduce adipose tissue macrophage/inflammatory gene signatures\n- Increase adiponectin\n\nThe parallel improvement is consistent with a causal relationship. But these interventions also change fat mass, liver fat, diet, gut-derived signals, sleep, activity, and medication use. Therefore, they cannot isolate cytokine reduction as the reason insulin sensitivity improves.\n\nA relevant nuance is that **acute IL-6 release during exercise is not necessarily harmful**. Skeletal muscle releases IL-6 during exercise, and this may have metabolic and anti-inflammatory effects distinct from chronic elevations of IL-6 associated with visceral obesity. The context, duration, and source of cytokine production matter.\n\n## 6. Cytokine-blocking drug trials give mixed but informative results\n\nDrug trials are the closest test of causality, but results have not shown that blocking one cytokine reliably reverses common obesity-related insulin resistance.\n\n### TNF-α inhibition\nTNF inhibitors used for inflammatory diseases can lower CRP and systemic inflammation. Some studies in rheumatoid arthritis, psoriasis, or other inflammatory disorders report improved insulin sensitivity, while others find little or no clear metabolic benefit. Trials in uncomplicated obesity or type 2 diabetes have generally not established TNF blockade as a reliable insulin-sensitizing treatment.\n\nPossible explanations include:\n\n- TNF signaling may be more important locally in adipose tissue than in blood.\n- Established insulin resistance is driven by multiple pathways, not TNF alone.\n- Effects may differ between severe autoimmune inflammation and low-grade metabolic inflammation.\n\n### IL-1 blockade\nIL-1 pathway inhibition has shown modest glycemic benefits in some people with type 2 diabetes, sometimes including improved beta-cell function or reduced inflammatory markers. The effect on whole-body insulin sensitivity has been less consistent. This suggests IL-1 may be particularly relevant to pancreatic islet inflammation in some patients rather than being a universal driver of peripheral insulin resistance.\n\n### IL-6 blockade\nEvidence from IL-6 receptor blockade is complex and heterogeneous. Effects on glucose metabolism can differ by disease state, body composition, and treatment duration. At present, human data do not support a simple conclusion that IL-6 is uniformly “bad” for insulin sensitivity.\n\n## 7. The relationship is probably bidirectional\n\nThe best overall human interpretation is that inflammation and insulin resistance can amplify one another:\n\n1. Excess caloric intake, visceral fat accumulation, ectopic liver/muscle fat, hypoxia in expanding adipose tissue, and immune-cell recruitment increase inflammatory signaling.\n2. Cytokines and related pathways can impair insulin action in liver, skeletal muscle, and adipose tissue.\n3. Insulin resistance increases lipolysis, circulating fatty acids, hyperglycemia, and cellular stress.\n4. Those metabolic abnormalities can further activate inflammatory pathways.\n\nThus, inflammation may be both a contributor to and a consequence of insulin resistance.\n\n## Key limitations of the evidence\n\n- Many human studies use **HOMA-IR**, which is less precise than clamp-based measures.\n- Plasma cytokine levels may not represent cytokine activity in adipose tissue, liver, muscle, or pancreatic islets.\n- Obesity, particularly visceral and hepatic fat, is a major confounder and potential common cause.\n- Cytokines are pleiotropic: the same cytokine may have harmful effects in chronic adipose inflammation but adaptive effects during exercise or infection.\n- Genetic and drug-intervention evidence has not identified one cytokine pathway as the dominant causal explanation for typical insulin resistance.\n\n## Bottom line\n\nHuman studies consistently show that insulin resistance is associated with elevated inflammatory cytokine activity—especially TNF-related signaling, IL-6, IL-1-related pathways, and CRP—and that this inflammation can precede type 2 diabetes. Adipose-tissue studies and experimental endotoxemia provide biologically credible evidence that inflammatory activation can impair insulin action. However, clinical blockade of individual cytokines has produced mixed results, indicating that human insulin resistance is multifactorial and that inflammatory cytokines are important contributors rather than a single, universally sufficient cause."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 101.78490766137838,
+    "vector_index": 1.735663689672947,
+    "answer_netmedex_hybrid_rag": 12.246890604496002,
+    "answer_traditional_rag": 9.487620614469051,
+    "answer_general_llm": 27.986330397427082,
+    "total": 159.6244582682848
+  },
+  "token_usage": {
+    "total_tokens": 107276,
+    "output_tokens": 63383,
+    "input_tokens": 43893
+  },
+  "completed_at": "2026-08-11T04:47:32.026501+00:00"
+}

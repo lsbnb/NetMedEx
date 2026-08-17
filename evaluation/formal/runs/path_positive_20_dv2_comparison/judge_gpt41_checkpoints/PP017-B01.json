@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP017",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "d0b1c1eaf97551b70f97237a813966117feb08985b55073cd38cfe697f2edb83",
+  "raw_response_sha256": "56d805c27b2391d1bbad9460f84fec0464fc318afcd9a3807ba7c2c373a2187e",
+  "usage": {
+    "input_tokens": 2633,
+    "output_tokens": 530,
+    "total_tokens": 3163
+  },
+  "rated_at": "2026-08-13T07:11:23.140772+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP017-A",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Accurate, well-grounded, and relevant. Mechanistic detail is present but less explicit than others. Lacks some nuance on viral phase and mechanistic steps."
+      },
+      {
+        "answer_id": "PP017-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Distinguishes evidence for each hop, cites human data, and provides detailed mechanistic steps. Explicitly addresses viral phase and pathogenesis."
+      },
+      {
+        "answer_id": "PP017-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Strong, well-grounded, and comprehensive. Distinguishes evidence for each hop, includes mechanistic and interventional data, and references in-vitro/animal evidence."
+      },
+      {
+        "answer_id": "PP017-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Thorough, distinguishes evidence for each hop, and provides mechanistic and testable hypotheses. Integrates human and molecular evidence."
+      }
+    ],
+    "preferred_item_id": "PP017-C",
+    "pairwise_reason": "PP017-C is preferred for its comprehensive coverage, clear distinction of evidence for each hop, inclusion of mechanistic, interventional, and in-vitro/animal data, and explicit testable hypothesis. PP017-D is similarly strong but slightly less clear in mechanistic stepwise explanation. PP017-B is also excellent but less detailed on intervention and animal data. PP017-A is accurate but less mechanistically explicit."
+  }
+}

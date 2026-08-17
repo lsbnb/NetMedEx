@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP005",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "126440dacfe9ced86d1b1ed7b4174dee9a05ec9c6e21eb72c237d94271b9a8ff",
+  "raw_response_sha256": "733ac0096ad43cdb0f9fa64fed04b734a388303a746c0ce464da5765d2b812a6",
+  "usage": {
+    "input_tokens": 2746,
+    "output_tokens": 487,
+    "total_tokens": 3233
+  },
+  "rated_at": "2026-08-13T07:09:38.401622+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP005-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, well-grounded, distinguishes evidence types, details limitations, and proposes a testable hypothesis. Mechanistic and clinical context are clearly explained."
+      },
+      {
+        "answer_id": "PP005-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Accurate, well-referenced, clearly separates evidence types, and thoroughly discusses limitations. Mechanistic and clinical context are well-integrated."
+      },
+      {
+        "answer_id": "PP005-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Clear, precise, and well-supported. Distinguishes evidence types, addresses limitations, and proposes a relevant hypothesis. Mechanistic and clinical aspects are well-linked."
+      },
+      {
+        "answer_id": "PP005-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Thorough, accurate, and well-referenced. Clearly separates evidence types, details limitations, and includes a testable hypothesis. Mechanistic and clinical context are well-explained."
+      }
+    ],
+    "preferred_item_id": "tie",
+    "pairwise_reason": "All answers are equally correct, comprehensive, well-grounded, and relevant. Each clearly distinguishes evidence types, addresses key limitations, and integrates mechanistic and clinical context with high research value."
+  }
+}

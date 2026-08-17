@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "Q041",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "79d33775708c85d33687993972fd71cd6962e4ffb939dba4824c7b1c2dd44d98",
+  "raw_response_sha256": "7664e6b4723ed4a96a54dd40d5cfec6152b9919ac7e6c9cc947602728a1158d0",
+  "usage": {
+    "input_tokens": 3906,
+    "output_tokens": 376,
+    "total_tokens": 4282
+  },
+  "rated_at": "2026-08-13T04:54:17.191269+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q041-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, well‑cited mechanisms with testable hypothesis."
+      },
+      {
+        "answer_id": "Q041-B",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Accurate but slightly less extensive evidence; solid hypothesis."
+      },
+      {
+        "answer_id": "Q041-C",
+        "correctness": 3,
+        "completeness": 3,
+        "relevance": 4,
+        "grounding": 2,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Broad overview, limited specific evidence."
+      },
+      {
+        "answer_id": "Q041-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Detailed, well‑referenced mechanisms, includes novel hypotheses."
+      }
+    ],
+    "preferred_item_id": "tie",
+    "pairwise_reason": "Answers A and D are equally comprehensive, well‑grounded, and mechanistically coherent, offering the highest research value among the submissions."
+  }
+}

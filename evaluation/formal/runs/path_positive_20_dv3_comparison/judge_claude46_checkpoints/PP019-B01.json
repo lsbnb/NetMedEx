@@ -1,0 +1,53 @@
+{
+  "task": "answer",
+  "question_id": "PP019",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "d6d114e11cf69bd223750a3bef22b1b93ec2286730f53063fd953d4b206d8ea6",
+  "raw_response_sha256": "1649127b4ffb11ec363c7e1dcff04f4634b49cbd36c1be3a21b359eb61456e53",
+  "usage": {
+    "input_tokens": 2791,
+    "output_tokens": 484,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 3275
+  },
+  "rated_at": "2026-08-13T10:34:14.052478+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP019-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Good hop-by-hop structure; PMID 40275534 claim of 'confirming causality' overstated for clinical cohort. Some PMIDs not verifiable as cited. Testable hypotheses add value."
+      },
+      {
+        "answer_id": "PP019-B",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Clear hop separation; PMID 24976068 cited but not verified. Largely mirrors PP019-A content without adding novel mechanistic depth or hypotheses. Solid but derivative."
+      },
+      {
+        "answer_id": "PP019-C",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Best distinction between direct/associative evidence per hop. Includes cytokine blockade as experimental validation. PMID 24269268 adds human specificity. Hypothesis generation strongest here."
+      }
+    ],
+    "preferred_item_id": "PP019-C",
+    "pairwise_reason": "PP019-C most rigorously distinguishes direct experimental evidence from association at each mechanistic hop, includes cytokine blockade interventional data as causal validation, and generates the clearest testable hypotheses, making it most scientifically rigorous and research-valuable."
+  }
+}

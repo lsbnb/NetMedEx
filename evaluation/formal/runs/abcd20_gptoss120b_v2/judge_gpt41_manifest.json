@@ -1,0 +1,24 @@
+{
+  "reviewer_type": "AI",
+  "human_expert_review_claimed": false,
+  "blinded": true,
+  "task": "answer",
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_file": "evaluation/formal/runs/abcd20_gptoss120b_v2/blinded_answer_worksheet.csv",
+  "input_sha256": "71a6e0d015bc7cecdd331ed4970a0fbed2d8872380c91de3f75dbce1aeda01b3",
+  "output_file": "evaluation/formal/runs/abcd20_gptoss120b_v2/judge_gpt41.csv",
+  "question_count": 20,
+  "row_count": 80,
+  "estimated_prompt_chars": 233927,
+  "estimated_input_tokens_rough": 58482,
+  "actual_api_usage_from_checkpoints": {
+    "input_tokens": 62815,
+    "output_tokens": 9982,
+    "total_tokens": 72797
+  },
+  "completed_batches": 20,
+  "started_at": "2026-08-13T04:37:26.658223+00:00",
+  "completed_at": "2026-08-13T04:38:46.088926+00:00",
+  "status": "complete"
+}

@@ -1,0 +1,91 @@
+{
+  "task": "answer",
+  "question_id": "PP018",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "34cd41d94a2e6fb4c7e4332b0e68e2b7be6d01a809f6fcb2265be804d41b2ccd",
+  "raw_response_sha256": "fccb2d4fe9992f4b07d34e836fd9e0fee65099ea69bbf316fe3d5ead8da3bd14",
+  "usage": {
+    "input_tokens": 6004,
+    "output_tokens": 650,
+    "total_tokens": 6654
+  },
+  "rated_at": "2026-08-16T20:10:45.900612+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP018-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Comprehensive, cites human/animal evidence; includes some extraneous osteoporosis hops."
+      },
+      {
+        "answer_id": "PP018-B",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Concise but less detailed; missing human bone loss evidence."
+      },
+      {
+        "answer_id": "PP018-C",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 4,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Thorough, adds irrelevant osteoporosis steps; clear evidence per hop."
+      },
+      {
+        "answer_id": "PP018-D",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Well‑structured, strong citations; extra graph info but core chain solid."
+      },
+      {
+        "answer_id": "PP018-E",
+        "correctness": 3,
+        "completeness": 2,
+        "relevance": 4,
+        "grounding": 3,
+        "mechanistic_coherence": 3,
+        "research_value": 2,
+        "notes": "Truncated, missing later content; incomplete coverage."
+      },
+      {
+        "answer_id": "PP018-F",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Similar to A, solid evidence; synthesis repeats but clear."
+      },
+      {
+        "answer_id": "PP018-G",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Extensive, integrates human, animal, in‑vitro data; clear mechanistic steps."
+      }
+    ],
+    "preferred_item_id": "PP018-G",
+    "pairwise_reason": "PP018-G provides the most complete, accurate, and well‑grounded mechanistic evidence across all hops, with clear human, animal, and cellular data supporting each step."
+  }
+}

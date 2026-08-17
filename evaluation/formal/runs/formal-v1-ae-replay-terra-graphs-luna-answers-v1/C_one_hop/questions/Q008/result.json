@@ -1,0 +1,2828 @@
+{
+  "status": "complete",
+  "question_id": "Q008",
+  "domain": "rare disease",
+  "question": "What candidate mechanisms connect CFTR variants to intestinal inflammation?",
+  "question_type": "hypothesis",
+  "pubmed_query": "CFTR AND intestinal inflammation AND (NF-kB OR dysbiosis OR cytokines)",
+  "effective_pubmed_query": "CFTR AND intestinal inflammation AND (NF-kB OR dysbiosis OR cytokines)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "23788646",
+    "27588407",
+    "28155088",
+    "30546102",
+    "31636470",
+    "32326161",
+    "35160099",
+    "35743652",
+    "36600119",
+    "37546931",
+    "38073491",
+    "38179971",
+    "38554847",
+    "40247380",
+    "40824057"
+  ],
+  "graph": {
+    "node_count": 30,
+    "edge_count": 44,
+    "path_count": 0,
+    "pre_gate_candidate_count": 23,
+    "pre_gate_candidates": [
+      {
+        "path": [
+          "489362aa9cdfdf9d2fa249b17316e571913f2852",
+          "2ba06ca52b9b6352652457021f73522a4e6b7888"
+        ],
+        "node_ids": [
+          "MESH:D003550_Disease",
+          "MESH:D007249_Disease"
+        ],
+        "names": [
+          "cf",
+          "inflammation"
+        ],
+        "node_aliases": [
+          [
+            "CF",
+            "CF disease",
+            "CF-related diseases",
+            "CF.IMPORTANCEThe",
+            "CFLD",
+            "CFTR dysfunction",
+            "Cystic Fibrosis",
+            "Cystic Fibrosis Transmembrane Conductance Regulator",
+            "Cystic fibrosis",
+            "Cystic fibrosis-related liver disease",
+            "cystic fibrosis",
+            "cystic fibrosis-related liver disease"
+          ],
+          [
+            "Chronic intestinal inflammation",
+            "Inflammation",
+            "Intestinal Inflammation",
+            "Intestinal inflammation",
+            "airway inflammation",
+            "gut inflammation",
+            "inflammation",
+            "inflammatory",
+            "intestinal and systemic inflammation",
+            "intestinal inflammation",
+            "liver inflammation"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "28155088"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Intestinal inflammation, dysbiosis, and increased gastrointestinal malignancy risks are well-described in patients with cystic fibrosis (CF)."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "28155088",
+            "selected_quote": "Intestinal inflammation, dysbiosis, and increased gastrointestinal malignancy risks are well-described in patients with cystic fibrosis (CF).",
+            "selected_confidence": 0.98,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 1.051,
+        "base_score": 1.011,
+        "anchor_bonus": 0.04,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene"
+          ],
+          "target_anchor_ids": [
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene",
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": true,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 1,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "1886848407570711"
+      },
+      {
+        "path": [
+          "489362aa9cdfdf9d2fa249b17316e571913f2852",
+          "e11ba50664c917a9a5f1fc6e9164408ca8bfe543"
+        ],
+        "node_ids": [
+          "MESH:D003550_Disease",
+          "1080_Gene"
+        ],
+        "names": [
+          "cf",
+          "cystic fibrosis transmembrane regulator protein"
+        ],
+        "node_aliases": [
+          [
+            "CF",
+            "CF disease",
+            "CF-related diseases",
+            "CF.IMPORTANCEThe",
+            "CFLD",
+            "CFTR dysfunction",
+            "Cystic Fibrosis",
+            "Cystic Fibrosis Transmembrane Conductance Regulator",
+            "Cystic fibrosis",
+            "Cystic fibrosis-related liver disease",
+            "cystic fibrosis",
+            "cystic fibrosis-related liver disease"
+          ],
+          [
+            "CF transmembrane conductance regulator",
+            "CFTR",
+            "cystic fibrosis transmembrane conductance regulator",
+            "cystic fibrosis transmembrane regulator protein"
+          ]
+        ],
+        "relations": [
+          "causes"
+        ],
+        "edge_pmids": [
+          [
+            "32326161"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Cystic fibrosis (CF), caused by biallelic inactivating mutations in the cystic fibrosis transmembrane conductance regulator (CFTR) gene"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "32326161",
+            "selected_quote": "Cystic fibrosis (CF), caused by biallelic inactivating mutations in the cystic fibrosis transmembrane conductance regulator (CFTR) gene",
+            "selected_confidence": 0.98,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "6af65d96eb67a6da51e7a75f21547e3fcb514a42",
+              "schema_version": 1,
+              "pmid": "32326161",
+              "source_id": "1080_Gene",
+              "target_id": "MESH:D003550_Disease",
+              "relation": "causes",
+              "evidence": "Cystic fibrosis (CF), caused by biallelic inactivating mutations in the cystic fibrosis transmembrane conductance regulator (CFTR) gene",
+              "confidence": 0.98,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 1.027,
+        "base_score": 1.027,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene"
+          ],
+          "target_anchor_ids": [
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene",
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 2,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "34a2ee877456d4e6"
+      },
+      {
+        "path": [
+          "489362aa9cdfdf9d2fa249b17316e571913f2852",
+          "12e768709952d295606bd741bdc467b543cfa643"
+        ],
+        "node_ids": [
+          "MESH:D003550_Disease",
+          "MESH:D064806_Disease"
+        ],
+        "names": [
+          "cf",
+          "dysbiosis"
+        ],
+        "node_aliases": [
+          [
+            "CF",
+            "CF disease",
+            "CF-related diseases",
+            "CF.IMPORTANCEThe",
+            "CFLD",
+            "CFTR dysfunction",
+            "Cystic Fibrosis",
+            "Cystic Fibrosis Transmembrane Conductance Regulator",
+            "Cystic fibrosis",
+            "Cystic fibrosis-related liver disease",
+            "cystic fibrosis",
+            "cystic fibrosis-related liver disease"
+          ],
+          [
+            "Dysbiosis",
+            "Fecal Dysbiosis",
+            "Fecal dysbiosis",
+            "Gut Dysbiosis",
+            "bacterial dysbiosis",
+            "dysbiosis",
+            "gut dysbiosis",
+            "intestinal dysbiosis",
+            "microbiome dysbiosis"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "36600119"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Cystic Fibrosis (CF) is associated with gut dysbiosis, local and systemic inflammation, and impaired immune function."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "36600119",
+            "selected_quote": "Cystic Fibrosis (CF) is associated with gut dysbiosis, local and systemic inflammation, and impaired immune function.",
+            "selected_confidence": 0.98,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.914,
+        "base_score": 0.914,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene"
+          ],
+          "target_anchor_ids": [
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene",
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 3,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "d5c30888378d6949"
+      },
+      {
+        "path": [
+          "a8377fca2efcb45a9512929b64210915b82b4b35",
+          "489362aa9cdfdf9d2fa249b17316e571913f2852"
+        ],
+        "node_ids": [
+          "12638_Gene",
+          "MESH:D003550_Disease"
+        ],
+        "names": [
+          "cftr",
+          "cf"
+        ],
+        "node_aliases": [
+          [
+            "CF transmembrane conductance regulator",
+            "CFTR",
+            "Cftr",
+            "cystic fibrosis transmembrane conductance regulator"
+          ],
+          [
+            "CF",
+            "CF disease",
+            "CF-related diseases",
+            "CF.IMPORTANCEThe",
+            "CFLD",
+            "CFTR dysfunction",
+            "Cystic Fibrosis",
+            "Cystic Fibrosis Transmembrane Conductance Regulator",
+            "Cystic fibrosis",
+            "Cystic fibrosis-related liver disease",
+            "cystic fibrosis",
+            "cystic fibrosis-related liver disease"
+          ]
+        ],
+        "relations": [
+          "causes"
+        ],
+        "edge_pmids": [
+          [
+            "37546931"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Chronic intestinal inflammation is a manifestation of cystic fibrosis (CF), a disease caused by loss of the anion channel CFTR that is expressed in many tissues."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "37546931",
+            "selected_quote": "Chronic intestinal inflammation is a manifestation of cystic fibrosis (CF), a disease caused by loss of the anion channel CFTR that is expressed in many tissues.",
+            "selected_confidence": 0.94,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "aeeea0e69cd2033a0b3a12966290dd3bdf0c5350",
+              "schema_version": 1,
+              "pmid": "37546931",
+              "source_id": "12638_Gene",
+              "target_id": "MESH:D003550_Disease",
+              "relation": "causes",
+              "evidence": "Chronic intestinal inflammation is a manifestation of cystic fibrosis (CF), a disease caused by loss of the anion channel CFTR that is expressed in many tissues.",
+              "confidence": 0.94,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.858,
+        "base_score": 0.858,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene"
+          ],
+          "target_anchor_ids": [
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene",
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 4,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "e7a38061c543b627"
+      },
+      {
+        "path": [
+          "489362aa9cdfdf9d2fa249b17316e571913f2852",
+          "a8377fca2efcb45a9512929b64210915b82b4b35"
+        ],
+        "node_ids": [
+          "MESH:D003550_Disease",
+          "12638_Gene"
+        ],
+        "names": [
+          "cf",
+          "cftr"
+        ],
+        "node_aliases": [
+          [
+            "CF",
+            "CF disease",
+            "CF-related diseases",
+            "CF.IMPORTANCEThe",
+            "CFLD",
+            "CFTR dysfunction",
+            "Cystic Fibrosis",
+            "Cystic Fibrosis Transmembrane Conductance Regulator",
+            "Cystic fibrosis",
+            "Cystic fibrosis-related liver disease",
+            "cystic fibrosis",
+            "cystic fibrosis-related liver disease"
+          ],
+          [
+            "CF transmembrane conductance regulator",
+            "CFTR",
+            "Cftr",
+            "cystic fibrosis transmembrane conductance regulator"
+          ]
+        ],
+        "relations": [
+          "causes"
+        ],
+        "edge_pmids": [
+          [
+            "37546931"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Chronic intestinal inflammation is a manifestation of cystic fibrosis (CF), a disease caused by loss of the anion channel CFTR that is expressed in many tissues."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "37546931",
+            "selected_quote": "Chronic intestinal inflammation is a manifestation of cystic fibrosis (CF), a disease caused by loss of the anion channel CFTR that is expressed in many tissues.",
+            "selected_confidence": 0.94,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "aeeea0e69cd2033a0b3a12966290dd3bdf0c5350",
+              "schema_version": 1,
+              "pmid": "37546931",
+              "source_id": "12638_Gene",
+              "target_id": "MESH:D003550_Disease",
+              "relation": "causes",
+              "evidence": "Chronic intestinal inflammation is a manifestation of cystic fibrosis (CF), a disease caused by loss of the anion channel CFTR that is expressed in many tissues.",
+              "confidence": 0.94,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.858,
+        "base_score": 0.858,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene"
+          ],
+          "target_anchor_ids": [
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene",
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 5,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "a68c099893862bde"
+      },
+      {
+        "path": [
+          "a27210b9f96b15483759dd379ec6f4110423afd4",
+          "489362aa9cdfdf9d2fa249b17316e571913f2852"
+        ],
+        "node_ids": [
+          "GO:0006954_BiologicalProcess",
+          "MESH:D003550_Disease"
+        ],
+        "names": [
+          "inflammation",
+          "cf"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation",
+            "inflammation",
+            "inflammatory response"
+          ],
+          [
+            "CF",
+            "CF disease",
+            "CF-related diseases",
+            "CF.IMPORTANCEThe",
+            "CFLD",
+            "CFTR dysfunction",
+            "Cystic Fibrosis",
+            "Cystic Fibrosis Transmembrane Conductance Regulator",
+            "Cystic fibrosis",
+            "Cystic fibrosis-related liver disease",
+            "cystic fibrosis",
+            "cystic fibrosis-related liver disease"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "36600119"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Cystic Fibrosis (CF) is associated with gut dysbiosis, local and systemic inflammation, and impaired immune function."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "36600119",
+            "selected_quote": "Cystic Fibrosis (CF) is associated with gut dysbiosis, local and systemic inflammation, and impaired immune function.",
+            "selected_confidence": 0.98,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.78,
+        "base_score": 0.78,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene"
+          ],
+          "target_anchor_ids": [
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene",
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 6,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "634005dec22da3ba"
+      },
+      {
+        "path": [
+          "489362aa9cdfdf9d2fa249b17316e571913f2852",
+          "a27210b9f96b15483759dd379ec6f4110423afd4"
+        ],
+        "node_ids": [
+          "MESH:D003550_Disease",
+          "GO:0006954_BiologicalProcess"
+        ],
+        "names": [
+          "cf",
+          "inflammation"
+        ],
+        "node_aliases": [
+          [
+            "CF",
+            "CF disease",
+            "CF-related diseases",
+            "CF.IMPORTANCEThe",
+            "CFLD",
+            "CFTR dysfunction",
+            "Cystic Fibrosis",
+            "Cystic Fibrosis Transmembrane Conductance Regulator",
+            "Cystic fibrosis",
+            "Cystic fibrosis-related liver disease",
+            "cystic fibrosis",
+            "cystic fibrosis-related liver disease"
+          ],
+          [
+            "Inflammation",
+            "inflammation",
+            "inflammatory response"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "36600119"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Cystic Fibrosis (CF) is associated with gut dysbiosis, local and systemic inflammation, and impaired immune function."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "36600119",
+            "selected_quote": "Cystic Fibrosis (CF) is associated with gut dysbiosis, local and systemic inflammation, and impaired immune function.",
+            "selected_confidence": 0.98,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.78,
+        "base_score": 0.78,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene"
+          ],
+          "target_anchor_ids": [
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene",
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 7,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "ed5460926fecbb8e"
+      },
+      {
+        "path": [
+          "489362aa9cdfdf9d2fa249b17316e571913f2852",
+          "dc573e836e1da27a64f76d4fbbc895976df16e53"
+        ],
+        "node_ids": [
+          "MESH:D003550_Disease",
+          "HP:4000055_Phenotype"
+        ],
+        "names": [
+          "cf",
+          "intestinal inflammation"
+        ],
+        "node_aliases": [
+          [
+            "CF",
+            "CF disease",
+            "CF-related diseases",
+            "CF.IMPORTANCEThe",
+            "CFLD",
+            "CFTR dysfunction",
+            "Cystic Fibrosis",
+            "Cystic Fibrosis Transmembrane Conductance Regulator",
+            "Cystic fibrosis",
+            "Cystic fibrosis-related liver disease",
+            "cystic fibrosis",
+            "cystic fibrosis-related liver disease"
+          ],
+          [
+            "Intestinal Inflammation",
+            "Intestinal inflammation",
+            "intestinal inflammation"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "30546102"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Next to progressive airway disease, CF is also associated with intestinal inflammation and dysbiosis."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "30546102",
+            "selected_quote": "Next to progressive airway disease, CF is also associated with intestinal inflammation and dysbiosis.",
+            "selected_confidence": 0.91,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.757,
+        "base_score": 0.717,
+        "anchor_bonus": 0.04,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene"
+          ],
+          "target_anchor_ids": [
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene",
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": true,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 8,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "f3ecad9d868ee083"
+      },
+      {
+        "path": [
+          "a8377fca2efcb45a9512929b64210915b82b4b35",
+          "6c43c47665cefc342fdd46230c7de7361d4de13c"
+        ],
+        "node_ids": [
+          "12638_Gene",
+          "12387_Gene"
+        ],
+        "names": [
+          "cftr",
+          "beta-catenin"
+        ],
+        "node_aliases": [
+          [
+            "CF transmembrane conductance regulator",
+            "CFTR",
+            "Cftr",
+            "cystic fibrosis transmembrane conductance regulator"
+          ],
+          [
+            "beta-catenin"
+          ]
+        ],
+        "relations": [
+          "interacts_with"
+        ],
+        "edge_pmids": [
+          [
+            "27588407"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "CFTR co-localizes and interacts with beta-catenin"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "interacts_with",
+            "selected_pmid": "27588407",
+            "selected_quote": "CFTR co-localizes and interacts with beta-catenin",
+            "selected_confidence": 0.97,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.754,
+        "base_score": 0.754,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene"
+          ],
+          "target_anchor_ids": [
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene",
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 9,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "d8948b311286314e"
+      },
+      {
+        "path": [
+          "dc573e836e1da27a64f76d4fbbc895976df16e53",
+          "9a0522504493965fd8e7b9339dd2269eb0ec2a0b"
+        ],
+        "node_ids": [
+          "HP:4000055_Phenotype",
+          "MESH:C545203_Chemical"
+        ],
+        "names": [
+          "intestinal inflammation",
+          "ivacaftor"
+        ],
+        "node_aliases": [
+          [
+            "Intestinal Inflammation",
+            "Intestinal inflammation",
+            "intestinal inflammation"
+          ],
+          [
+            "Ivacaftor",
+            "ivacaftor"
+          ]
+        ],
+        "relations": [
+          "decreases"
+        ],
+        "edge_pmids": [
+          [
+            "30546102"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "In summary, changes in the gut microbiome and decrease in intestinal inflammation was associated with Ivacaftor treatment among individuals with CF carrying at least one gating CFTR mutation."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "decreases",
+            "selected_pmid": "30546102",
+            "selected_quote": "In summary, changes in the gut microbiome and decrease in intestinal inflammation was associated with Ivacaftor treatment among individuals with CF carrying at least one gating CFTR mutation.",
+            "selected_confidence": 0.88,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "6c1e81950e7654d4b8a54cf29d6a006467eae1b8",
+              "schema_version": 1,
+              "pmid": "30546102",
+              "source_id": "MESH:C545203_Chemical",
+              "target_id": "HP:4000055_Phenotype",
+              "relation": "decreases",
+              "evidence": "In summary, changes in the gut microbiome and decrease in intestinal inflammation was associated with Ivacaftor treatment among individuals with CF carrying at least one gating CFTR mutation.",
+              "confidence": 0.88,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.723,
+        "base_score": 0.723,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene"
+          ],
+          "target_anchor_ids": [
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene",
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 10,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "56e1a1e789b4305b"
+      },
+      {
+        "path": [
+          "a27210b9f96b15483759dd379ec6f4110423afd4",
+          "2ba06ca52b9b6352652457021f73522a4e6b7888"
+        ],
+        "node_ids": [
+          "GO:0006954_BiologicalProcess",
+          "MESH:D007249_Disease"
+        ],
+        "names": [
+          "inflammation",
+          "inflammation"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation",
+            "inflammation",
+            "inflammatory response"
+          ],
+          [
+            "Chronic intestinal inflammation",
+            "Inflammation",
+            "Intestinal Inflammation",
+            "Intestinal inflammation",
+            "airway inflammation",
+            "gut inflammation",
+            "inflammation",
+            "inflammatory",
+            "intestinal and systemic inflammation",
+            "intestinal inflammation",
+            "liver inflammation"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "23788646"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The same pathophysiologic triad of obstruction, infection, and inflammation that causes disease in the airways also causes disease in the intestines."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "23788646",
+            "selected_quote": "The same pathophysiologic triad of obstruction, infection, and inflammation that causes disease in the airways also causes disease in the intestines.",
+            "selected_confidence": 0.96,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.722,
+        "base_score": 0.682,
+        "anchor_bonus": 0.04,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene"
+          ],
+          "target_anchor_ids": [
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene",
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": true,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 11,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "aa14ad0c68fe7c21"
+      },
+      {
+        "path": [
+          "dc573e836e1da27a64f76d4fbbc895976df16e53",
+          "489362aa9cdfdf9d2fa249b17316e571913f2852"
+        ],
+        "node_ids": [
+          "HP:4000055_Phenotype",
+          "MESH:D003550_Disease"
+        ],
+        "names": [
+          "intestinal inflammation",
+          "cf"
+        ],
+        "node_aliases": [
+          [
+            "Intestinal Inflammation",
+            "Intestinal inflammation",
+            "intestinal inflammation"
+          ],
+          [
+            "CF",
+            "CF disease",
+            "CF-related diseases",
+            "CF.IMPORTANCEThe",
+            "CFLD",
+            "CFTR dysfunction",
+            "Cystic Fibrosis",
+            "Cystic Fibrosis Transmembrane Conductance Regulator",
+            "Cystic fibrosis",
+            "Cystic fibrosis-related liver disease",
+            "cystic fibrosis",
+            "cystic fibrosis-related liver disease"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "30546102"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Next to progressive airway disease, CF is also associated with intestinal inflammation and dysbiosis."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "30546102",
+            "selected_quote": "Next to progressive airway disease, CF is also associated with intestinal inflammation and dysbiosis.",
+            "selected_confidence": 0.91,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.717,
+        "base_score": 0.717,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene"
+          ],
+          "target_anchor_ids": [
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene",
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 12,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "9683a68d650b949e"
+      },
+      {
+        "path": [
+          "489362aa9cdfdf9d2fa249b17316e571913f2852",
+          "3a43315b2c694a4ade5ef3eabbbf007b49b86c69"
+        ],
+        "node_ids": [
+          "MESH:D003550_Disease",
+          "MESH:D030342_Disease"
+        ],
+        "names": [
+          "cf",
+          "autosomal recessive multisystem disease"
+        ],
+        "node_aliases": [
+          [
+            "CF",
+            "CF disease",
+            "CF-related diseases",
+            "CF.IMPORTANCEThe",
+            "CFLD",
+            "CFTR dysfunction",
+            "Cystic Fibrosis",
+            "Cystic Fibrosis Transmembrane Conductance Regulator",
+            "Cystic fibrosis",
+            "Cystic fibrosis-related liver disease",
+            "cystic fibrosis",
+            "cystic fibrosis-related liver disease"
+          ],
+          [
+            "autosomal recessive multisystem disease"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "35160099"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Cystic fibrosis (CF) is a life-limiting autosomal recessive multisystem disease."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "35160099",
+            "selected_quote": "Cystic fibrosis (CF) is a life-limiting autosomal recessive multisystem disease.",
+            "selected_confidence": 0.98,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.701,
+        "base_score": 0.701,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene"
+          ],
+          "target_anchor_ids": [
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene",
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 13,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "52e5ee39aef83203"
+      },
+      {
+        "path": [
+          "489362aa9cdfdf9d2fa249b17316e571913f2852",
+          "dde86ec91f791280cad77275289b90e35bcd716f"
+        ],
+        "node_ids": [
+          "MESH:D003550_Disease",
+          "cholangiopathy_disease"
+        ],
+        "names": [
+          "cf",
+          "cholangiopathy"
+        ],
+        "node_aliases": [
+          [
+            "CF",
+            "CF disease",
+            "CF-related diseases",
+            "CF.IMPORTANCEThe",
+            "CFLD",
+            "CFTR dysfunction",
+            "Cystic Fibrosis",
+            "Cystic Fibrosis Transmembrane Conductance Regulator",
+            "Cystic fibrosis",
+            "Cystic fibrosis-related liver disease",
+            "cystic fibrosis",
+            "cystic fibrosis-related liver disease"
+          ],
+          [
+            "cholangiopathy"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "38554847"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Cystic fibrosis-related liver disease (CFLD) is a chronic cholangiopathy that increases morbidity and mortality in patients with CF."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "38554847",
+            "selected_quote": "Cystic fibrosis-related liver disease (CFLD) is a chronic cholangiopathy that increases morbidity and mortality in patients with CF.",
+            "selected_confidence": 0.98,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.701,
+        "base_score": 0.701,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene"
+          ],
+          "target_anchor_ids": [
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene",
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 14,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "5f1abd2be25635f2"
+      },
+      {
+        "path": [
+          "489362aa9cdfdf9d2fa249b17316e571913f2852",
+          "333b85cf5d75dc602d3f017143bcf870ed74c427"
+        ],
+        "node_ids": [
+          "MESH:D003550_Disease",
+          "MESH:D015212_Disease"
+        ],
+        "names": [
+          "cf",
+          "inflammatory bowel disease"
+        ],
+        "node_aliases": [
+          [
+            "CF",
+            "CF disease",
+            "CF-related diseases",
+            "CF.IMPORTANCEThe",
+            "CFLD",
+            "CFTR dysfunction",
+            "Cystic Fibrosis",
+            "Cystic Fibrosis Transmembrane Conductance Regulator",
+            "Cystic fibrosis",
+            "Cystic fibrosis-related liver disease",
+            "cystic fibrosis",
+            "cystic fibrosis-related liver disease"
+          ],
+          [
+            "IBD",
+            "inflammatory bowel disease"
+          ]
+        ],
+        "relations": [
+          "related_to"
+        ],
+        "edge_pmids": [
+          [
+            "40824057"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Cystic fibrosis (CF) and inflammatory bowel disease (IBD) represent distinct pathologies with unique genetic underpinnings; yet, they share remarkable similarities in gut microbiota dysbiosis and intestinal physiology."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "related_to",
+            "selected_pmid": "40824057",
+            "selected_quote": "Cystic fibrosis (CF) and inflammatory bowel disease (IBD) represent distinct pathologies with unique genetic underpinnings; yet, they share remarkable similarities in gut microbiota dysbiosis and intestinal physiology.",
+            "selected_confidence": 0.96,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.692,
+        "base_score": 0.692,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene"
+          ],
+          "target_anchor_ids": [
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene",
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 15,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "c709fb7b26e9ddec"
+      },
+      {
+        "path": [
+          "a27210b9f96b15483759dd379ec6f4110423afd4",
+          "819c789d617c9bbf519cece6ad7b0342a7a124fc"
+        ],
+        "node_ids": [
+          "GO:0006954_BiologicalProcess",
+          "MESH:D007239_Disease"
+        ],
+        "names": [
+          "inflammation",
+          "infection"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation",
+            "inflammation",
+            "inflammatory response"
+          ],
+          [
+            "infection"
+          ]
+        ],
+        "relations": [
+          "co_occurs_with"
+        ],
+        "edge_pmids": [
+          [
+            "23788646"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The same pathophysiologic triad of obstruction, infection, and inflammation that causes disease in the airways also causes disease in the intestines."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "co_occurs_with",
+            "selected_pmid": "23788646",
+            "selected_quote": "The same pathophysiologic triad of obstruction, infection, and inflammation that causes disease in the airways also causes disease in the intestines.",
+            "selected_confidence": 0.9,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.648,
+        "base_score": 0.648,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene"
+          ],
+          "target_anchor_ids": [
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene",
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 16,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "6a9263f139dd3661"
+      },
+      {
+        "path": [
+          "489362aa9cdfdf9d2fa249b17316e571913f2852",
+          "5f31a045a46020701eca7f941f9d8700cfbe508e"
+        ],
+        "node_ids": [
+          "MESH:D003550_Disease",
+          "MESH:D029424_Disease"
+        ],
+        "names": [
+          "cf",
+          "airway disease"
+        ],
+        "node_aliases": [
+          [
+            "CF",
+            "CF disease",
+            "CF-related diseases",
+            "CF.IMPORTANCEThe",
+            "CFLD",
+            "CFTR dysfunction",
+            "Cystic Fibrosis",
+            "Cystic Fibrosis Transmembrane Conductance Regulator",
+            "Cystic fibrosis",
+            "Cystic fibrosis-related liver disease",
+            "cystic fibrosis",
+            "cystic fibrosis-related liver disease"
+          ],
+          [
+            "airway disease"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "30546102"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Next to progressive airway disease, CF is also associated with intestinal inflammation and dysbiosis."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "30546102",
+            "selected_quote": "Next to progressive airway disease, CF is also associated with intestinal inflammation and dysbiosis.",
+            "selected_confidence": 0.84,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.64,
+        "base_score": 0.64,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene"
+          ],
+          "target_anchor_ids": [
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene",
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 17,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "c4ca6279aa8d31c3"
+      },
+      {
+        "path": [
+          "a27210b9f96b15483759dd379ec6f4110423afd4",
+          "9a0522504493965fd8e7b9339dd2269eb0ec2a0b"
+        ],
+        "node_ids": [
+          "GO:0006954_BiologicalProcess",
+          "MESH:C545203_Chemical"
+        ],
+        "names": [
+          "inflammation",
+          "ivacaftor"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation",
+            "inflammation",
+            "inflammatory response"
+          ],
+          [
+            "Ivacaftor",
+            "ivacaftor"
+          ]
+        ],
+        "relations": [
+          "decreases"
+        ],
+        "edge_pmids": [
+          [
+            "30546102"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "In summary, changes in the gut microbiome and decrease in intestinal inflammation was associated with Ivacaftor treatment among individuals with CF carrying at least one gating CFTR mutation."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "decreases",
+            "selected_pmid": "30546102",
+            "selected_quote": "In summary, changes in the gut microbiome and decrease in intestinal inflammation was associated with Ivacaftor treatment among individuals with CF carrying at least one gating CFTR mutation.",
+            "selected_confidence": 0.82,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "de1a4b2dd0b30eb90fc4589eb4f47472b71e291a",
+              "schema_version": 1,
+              "pmid": "30546102",
+              "source_id": "MESH:C545203_Chemical",
+              "target_id": "GO:0006954_BiologicalProcess",
+              "relation": "decreases",
+              "evidence": "In summary, changes in the gut microbiome and decrease in intestinal inflammation was associated with Ivacaftor treatment among individuals with CF carrying at least one gating CFTR mutation.",
+              "confidence": 0.82,
+              "study_type": "Human",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.634,
+        "base_score": 0.634,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene"
+          ],
+          "target_anchor_ids": [
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene",
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 18,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "d791b22da4823688"
+      },
+      {
+        "path": [
+          "489362aa9cdfdf9d2fa249b17316e571913f2852",
+          "819c789d617c9bbf519cece6ad7b0342a7a124fc"
+        ],
+        "node_ids": [
+          "MESH:D003550_Disease",
+          "MESH:D007239_Disease"
+        ],
+        "names": [
+          "cf",
+          "infection"
+        ],
+        "node_aliases": [
+          [
+            "CF",
+            "CF disease",
+            "CF-related diseases",
+            "CF.IMPORTANCEThe",
+            "CFLD",
+            "CFTR dysfunction",
+            "Cystic Fibrosis",
+            "Cystic Fibrosis Transmembrane Conductance Regulator",
+            "Cystic fibrosis",
+            "Cystic fibrosis-related liver disease",
+            "cystic fibrosis",
+            "cystic fibrosis-related liver disease"
+          ],
+          [
+            "infection"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "23788646"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The same pathophysiologic triad of obstruction, infection, and inflammation that causes disease in the airways also causes disease in the intestines."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "23788646",
+            "selected_quote": "The same pathophysiologic triad of obstruction, infection, and inflammation that causes disease in the airways also causes disease in the intestines.",
+            "selected_confidence": 0.82,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.632,
+        "base_score": 0.632,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene"
+          ],
+          "target_anchor_ids": [
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene",
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 19,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "e615f33ff7b1b180"
+      },
+      {
+        "path": [
+          "a27210b9f96b15483759dd379ec6f4110423afd4",
+          "be78066df19c158d893b967661d64dbf658d3bab"
+        ],
+        "node_ids": [
+          "GO:0006954_BiologicalProcess",
+          "3458_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "ifngamma"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation",
+            "inflammation",
+            "inflammatory response"
+          ],
+          [
+            "IFNgamma"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "40247380"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Gliadin-dependent UPR induction directly triggers the expression of TG2 and pro-inflammatory cytokines, dysregulates intestinal permeability, and reduces CFTR expression in intestinal epithelial cells of celiac disease patients."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "40247380",
+            "selected_quote": "Gliadin-dependent UPR induction directly triggers the expression of TG2 and pro-inflammatory cytokines, dysregulates intestinal permeability, and reduces CFTR expression in intestinal epithelial cells of celiac disease patients.",
+            "selected_confidence": 0.82,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.613,
+        "base_score": 0.613,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene"
+          ],
+          "target_anchor_ids": [
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene",
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 20,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "6924cd6aadf98ae7"
+      },
+      {
+        "path": [
+          "a27210b9f96b15483759dd379ec6f4110423afd4",
+          "99d9f48a7916a06e5108e490d6e60017871c491e"
+        ],
+        "node_ids": [
+          "GO:0006954_BiologicalProcess",
+          "3600_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "il-15"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation",
+            "inflammation",
+            "inflammatory response"
+          ],
+          [
+            "IL-15"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "40247380"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Gliadin-dependent UPR induction directly triggers the expression of TG2 and pro-inflammatory cytokines, dysregulates intestinal permeability, and reduces CFTR expression in intestinal epithelial cells of celiac disease patients."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "40247380",
+            "selected_quote": "Gliadin-dependent UPR induction directly triggers the expression of TG2 and pro-inflammatory cytokines, dysregulates intestinal permeability, and reduces CFTR expression in intestinal epithelial cells of celiac disease patients.",
+            "selected_confidence": 0.82,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.613,
+        "base_score": 0.613,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene"
+          ],
+          "target_anchor_ids": [
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene",
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 21,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "path_signature": "685012e074269996"
+      },
+      {
+        "path": [
+          "a27210b9f96b15483759dd379ec6f4110423afd4",
+          "16246b23cc4b58ecc0d2671eb3f4859b2c50c779"
+        ],
+        "node_ids": [
+          "GO:0006954_BiologicalProcess",
+          "3605_Gene"
+        ],
+        "names": [
+          "inflammation",
+          "il-17 a."
+        ],
+        "node_aliases": [
+          [
+            "Inflammation",
+            "inflammation",
+            "inflammatory response"
+          ],
+          [
+            "IL-17 A."
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "40247380"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Gliadin-dependent UPR induction directly triggers the expression of TG2 and pro-inflammatory cytokines, dysregulates intestinal permeability, and reduces CFTR expression in intestinal epithelial cells of celiac disease patients."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "40247380",
+            "selected_quote": "Gliadin-dependent UPR induction directly triggers the expression of TG2 and pro-inflammatory cytokines, dysregulates intestinal permeability, and reduces CFTR expression in intestinal epithelial cells of celiac disease patients.",
+            "selected_confidence": 0.82,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.613,
+        "base_score": 0.613,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene"
+          ],
+          "target_anchor_ids": [
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene",
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 22,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "path_signature": "347f7d67f34673bd"
+      },
+      {
+        "path": [
+          "a27210b9f96b15483759dd379ec6f4110423afd4",
+          "12e768709952d295606bd741bdc467b543cfa643"
+        ],
+        "node_ids": [
+          "GO:0006954_BiologicalProcess",
+          "MESH:D064806_Disease"
+        ],
+        "names": [
+          "inflammation",
+          "dysbiosis"
+        ],
+        "node_aliases": [
+          [
+            "Inflammation",
+            "inflammation",
+            "inflammatory response"
+          ],
+          [
+            "Dysbiosis",
+            "Fecal Dysbiosis",
+            "Fecal dysbiosis",
+            "Gut Dysbiosis",
+            "bacterial dysbiosis",
+            "dysbiosis",
+            "gut dysbiosis",
+            "intestinal dysbiosis",
+            "microbiome dysbiosis"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "36600119"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "In several diseases, alteration of the gut microbiota influences local and systemic inflammation and disease outcomes."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "36600119",
+            "selected_quote": "In several diseases, alteration of the gut microbiota influences local and systemic inflammation and disease outcomes.",
+            "selected_confidence": 0.66,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "score": 0.544,
+        "base_score": 0.544,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene"
+          ],
+          "target_anchor_ids": [
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "1080_Gene",
+            "12638_Gene",
+            "HP:4000055_Phenotype",
+            "MESH:D007249_Disease"
+          ],
+          "mechanism_requested": true,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": true,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 23,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "path_signature": "0d9ea5d00b822f8f"
+      }
+    ],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "C_one_hop",
+    "label": "C. 1-hop Graph RAG",
+    "use_node_rag": true,
+    "max_hops": 1,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "gate_evidence_paths": false,
+    "gate_tier_counts": {
+      "A": 0,
+      "B": 0,
+      "C": 20
+    },
+    "rescue_triggered": true,
+    "rescue_added_paths": 0,
+    "rescue_outcomes": [
+      "no_usable_path"
+    ],
+    "pre_gate_candidate_count": 23,
+    "node_ids": [
+      "HP:4000055_Phenotype",
+      "MESH:D003550_Disease",
+      "GO:0006954_BiologicalProcess",
+      "12638_Gene"
+    ],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "exposure_signature": "fe46638f9e83fcc9",
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "23788646",
+        "score": 0.5924575339096969
+      },
+      {
+        "pmid": "37546931",
+        "score": 0.586425232829002
+      },
+      {
+        "pmid": "38554847",
+        "score": 0.5814075891617623
+      },
+      {
+        "pmid": "27588407",
+        "score": 0.5784967622252719
+      },
+      {
+        "pmid": "40824057",
+        "score": 0.5755874865591056
+      },
+      {
+        "pmid": "38073491",
+        "score": 0.568924114835398
+      },
+      {
+        "pmid": "40247380",
+        "score": 0.5654743603804582
+      },
+      {
+        "pmid": "35160099",
+        "score": 0.5584148611196817
+      },
+      {
+        "pmid": "30546102",
+        "score": 0.5492994941873619
+      },
+      {
+        "pmid": "35743652",
+        "score": 0.5424239095130753
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "23788646",
+        "score": 0.5924575339096969
+      },
+      {
+        "pmid": "37546931",
+        "score": 0.586425232829002
+      },
+      {
+        "pmid": "38554847",
+        "score": 0.5814075891617623
+      },
+      {
+        "pmid": "27588407",
+        "score": 0.5784967622252719
+      },
+      {
+        "pmid": "40824057",
+        "score": 0.5755874865591056
+      },
+      {
+        "pmid": "38073491",
+        "score": 0.568924114835398
+      },
+      {
+        "pmid": "40247380",
+        "score": 0.5654743603804582
+      },
+      {
+        "pmid": "35160099",
+        "score": 0.5584148611196817
+      },
+      {
+        "pmid": "30546102",
+        "score": 0.5492994941873619
+      },
+      {
+        "pmid": "35743652",
+        "score": 0.5424239095130753
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "## Direct evidence\n\n- **Defective epithelial CFTR causes an inflammatory intestinal environment.** CFTR dysfunction alters intestinal epithelial ion transport and the intraluminal environment, contributing to the shared CF triad of **obstruction, infection, and inflammation** [PMID: 23788646].\n\n- **Epithelial CFTR loss is sufficient to produce dysbiosis and inflammation in mice.** Intestinal-specific *Cftr* knockout mice developed elevated fecal calprotectin and altered microbial composition, including expansion of Proteobacteria, Enterobacteriaceae, several *Clostridium* species, and mucolytic organisms. This indicates that the intestinal epithelium itself is a major mediator, independent of CFTR loss in other tissues [PMID: 37546931; PMID: 38073491].  \n  **Evidence type:** animal.\n\n- **Microbiota-driven inflammation and barrier dysfunction.** In CFTR-knockout mice, dysbiosis was accompanied by increased intestinal permeability and mucosal inflammation. Restoration of intestinal CFTR prevented these abnormalities, while nonabsorbable antibiotics improved permeability and downstream inflammation [PMID: 38554847].  \n  **Evidence type:** animal.\n\n- **Loss of a CFTR–β-catenin interaction may activate NF-κB.** In ΔF508-CFTR mouse intestine and CFTR-knockdown human intestinal epithelial cells, CFTR deficiency was associated with reduced β-catenin signaling and activation of the **NF-κB/COX-2/PGE2** inflammatory pathway. CFTR interacted with β-catenin; β-catenin activation suppressed NF-κB signaling, whereas β-catenin suppression promoted NF-κB nuclear translocation [PMID: 27588407].  \n  **Evidence type:** animal and in vitro human intestinal epithelial cells.\n\n## Human associations\n\n- **CF is associated with intestinal dysbiosis and inflammation.** Reviews describe increased Proteobacteria, loss of anaerobic short-chain-fatty-acid producers, altered intestinal metabolism, lower intestinal pH, and elevated fecal inflammatory markers such as calprotectin, S100A12, and lactoferrin [PMID: 35160099; PMID: 40824057].\n\n- **CFTR modulation links improved CFTR function with reduced inflammation and microbial normalization.** In 16 people with CF carrying at least one gating variant, ivacaftor was followed by lower stool calprotectin, increased *Akkermansia*, and reduced Enterobacteriaceae; the microbial changes correlated with lower inflammatory markers [PMID: 30546102]. This supports a CFTR–gut microbiota–inflammation relationship, although it is an observational treatment association rather than proof of a single mechanism.\n\n## Testable hypotheses\n\n1. **Abnormal ion and bicarbonate secretion may alter mucus, luminal pH, hydration, and transit**, promoting obstruction and creating conditions favorable to inflammatory or mucolytic microbes [PMID: 23788646; PMID: 35160099; PMID: 40824057].\n\n2. **CFTR-dependent changes in the epithelial barrier may permit greater microbial or microbial-product exposure to mucosal immune cells**, amplifying inflammation. Increased permeability and gut-derived inflammatory signals are directly demonstrated in CFTR-deficient mice, but the full sequence in humans remains to be established [PMID: 38554847].\n\n3. **Dysbiosis may provide a feed-forward loop:** CFTR deficiency changes the intestinal habitat, dysbiotic organisms or metabolites stimulate inflammation, and inflammation further disrupts barrier function and microbial ecology [PMID: 35160099; PMID: 37546931].\n\n4. **Cell-intrinsic signaling defects may cooperate with luminal mechanisms.** Disruption of CFTR–β-catenin signaling could directly release NF-κB-mediated inflammatory signaling in intestinal epithelial cells, independently of—and potentially synergistically with—dysbiosis and barrier disruption [PMID: 27588407].\n\n5. **CFTR variant effects may be tissue- and mutation-dependent.** The supplied context establishes mechanisms for CFTR dysfunction or loss, but does not provide variant-by-variant evidence showing that particular CFTR alleles produce distinct intestinal inflammatory pathways.",
+    "traditional_rag": "## Direct evidence\n\n1. **Defective epithelial ion transport and intestinal obstruction**\n   - CFTR dysfunction alters intestinal chloride and bicarbonate secretion and the intraluminal environment. This can promote thickened contents, impaired clearance, and obstruction; obstruction, infection, and inflammation form a shared pathophysiologic triad in CF intestines. This mechanism is described in CF patients and supported extensively by mouse models, although the abstract does not define variant-specific effects [PMID: 23788646].\n\n2. **Epithelial CFTR loss causing dysbiosis and inflammation**\n   - In mice with intestinal-epithelial-specific *Cftr* deletion, CFTR loss alone was sufficient to increase fecal calprotectin and alter microbial composition. Reported changes included enrichment of Proteobacteria, Enterobacteriaceae, several *Clostridium* species, mucolytic organisms, and—in some dietary conditions—loss of microbial diversity [PMID: 37546931; PMID: 38073491].\n   - This supports a mechanism in which CFTR variants impair the intestinal epithelial environment, select for potentially inflammatory or mucin-degrading microbes, and thereby sustain mucosal inflammation. This is **animal evidence**.\n\n3. **Increased intestinal permeability and translocation of microbial stimuli**\n   - CFTR-knockout mice had dysbiosis, increased intestinal permeability, and mucosal inflammation. Correcting CFTR specifically in the gut prevented these abnormalities, while nonabsorbable antibiotics improved permeability and inflammation [PMID: 38554847].\n   - These findings support a pathway of defective intestinal CFTR → barrier dysfunction → greater exposure to microbial products → inflammatory signaling. The evidence is **animal evidence**, including a gut-correction experiment.\n\n4. **Disruption of CFTR–β-catenin signaling and activation of NF-κB**\n   - In ΔF508 CF mouse intestine and CFTR-knockdown human intestinal epithelial cells, the NF-κB/COX-2/PGE2 inflammatory pathway was activated while β-catenin signaling was suppressed. CFTR normally interacted with and stabilized β-catenin; CFTR mutation or knockdown disrupted this interaction and promoted NF-κB nuclear translocation. Activating β-catenin suppressed the inflammatory pathway [PMID: 27588407].\n   - This is **animal and in-vitro human-cell evidence** for a cell-intrinsic signaling mechanism linking CFTR defects to inflammation.\n\n5. **Altered microbial communities as an inflammatory stimulus**\n   - Human CF studies associate intestinal inflammation with dysbiosis, including increased Enterobacteriaceae and reduced beneficial anaerobic short-chain-fatty-acid producers. In individuals carrying at least one gating mutation, ivacaftor was associated with increased *Akkermansia*, decreased Enterobacteriaceae, and lower stool calprotectin [PMID: 30546102].\n   - This provides **human association and treatment-response evidence**, but does not prove that the microbiome changes are caused directly by a particular CFTR variant.\n\n6. **Potential contribution of CFTR in leukocytes**\n   - CFTR is expressed not only in epithelia but also in leukocytes, so variants could potentially alter immune-cell inflammatory responses directly. However, the supplied studies primarily demonstrate epithelial mechanisms, and they do not establish the leukocyte contribution quantitatively [PMID: 37546931; PMID: 38073491].\n\n## Associations\n\n- CF is associated with chronic low-grade intestinal inflammation, dysbiosis, altered intestinal pH and bile-acid profiles, and elevated fecal inflammatory markers such as calprotectin, S100A12, and lactoferrin [PMID: 35160099; PMID: 40824057].\n- Dysbiosis and inflammation may reinforce each other bidirectionally: epithelial dysfunction changes the gut habitat, while inflammatory changes further modify barrier function and microbial composition [PMID: 35160099].\n- CFTR modulator treatment has been associated with reduced intestinal inflammation and a more favorable microbiota in some patients, supporting—but not proving—a causal relationship between residual CFTR function, microbial ecology, and inflammation [PMID: 30546102].\n\n## Testable hypotheses\n\n- **Variant-severity hypothesis:** CFTR variants causing greater loss of chloride/bicarbonate secretion will produce more severe mucus dehydration, obstruction, dysbiosis, and barrier disruption.\n- **Cell-type hypothesis:** Epithelial CFTR defects are sufficient for much of the intestinal inflammatory phenotype, but leukocyte CFTR defects may add a direct immune component.\n- **Microbiome-mediated hypothesis:** Variant-dependent changes in mucus properties, luminal pH, bile acids, and transit select inflammatory or mucolytic organisms, which then activate mucosal immune pathways.\n- **Barrier-signaling hypothesis:** CFTR variants may promote inflammation through two parallel routes—greater microbial access caused by permeability defects and direct activation of NF-κB through loss of CFTR–β-catenin regulation.\n- **Modulator-response hypothesis:** Restoration of CFTR function should reduce inflammation most effectively when it corrects both epithelial barrier/transport defects and the associated dysbiosis; the extent may vary by mutation class.\n\nDirect human evidence connecting a specific CFTR variant to a specific intestinal inflammatory mechanism is limited in the supplied context. Most mechanistic evidence comes from CFTR-knockout or knockdown models, while human studies mainly show associations and responses to CFTR modulation.",
+    "general_llm": "CFTR variants could promote intestinal inflammation through several interacting mechanisms. The strongest model is **an epithelial-transport defect that secondarily alters mucus, luminal ecology, barrier function, and immune activation**, rather than a single direct pro-inflammatory effect.\n\n### 1. Reduced chloride and bicarbonate secretion\n\nCFTR is an apical chloride and bicarbonate channel in intestinal epithelial cells. Loss of function can cause:\n\n- Reduced fluid secretion and dehydrated intestinal contents\n- Less alkaline secretion, particularly in the duodenum\n- More viscous luminal material and impaired clearance\n- A less favorable environment for digestive enzymes and epithelial protection\n\nThis mechanism is well established in intestinal physiology. Its connection to inflammation is supported by the frequent coexistence of mucus retention, intestinal stasis, obstructive disease, and inflammatory abnormalities in cystic fibrosis, although the degree to which each directly causes inflammation varies.\n\n### 2. Abnormal mucus properties and clearance\n\nCFTR dysfunction can reduce hydration and, in some regions, bicarbonate-dependent expansion of mucins. The resulting mucus may be:\n\n- More concentrated and adherent\n- Less effectively detached from the epithelium\n- More prone to retention in the ileum, appendix, and colon\n- More likely to trap bacteria and bacterial products near epithelial cells\n\nPersistent contact between microbes and the epithelial surface could activate pattern-recognition receptors and promote secretion of cytokines such as IL-6, IL-8/CXCL8, and TNF-related mediators. This is a strong mechanistic hypothesis, supported by animal and ex vivo studies, although human intestinal inflammation is heterogeneous.\n\n### 3. Altered intestinal motility and stasis\n\nDehydrated contents, thick mucus, smooth-muscle effects, and altered enteric physiology can slow transit. Stasis may lead to:\n\n- Distal intestinal obstruction syndrome\n- Small-intestinal bacterial overgrowth\n- Greater exposure to bacterial products\n- Local mechanical injury and mucosal inflammation\n\nIn this model, inflammation is partly secondary to impaired clearance rather than directly caused by the CFTR variant in immune cells.\n\n### 4. Changes in the intestinal microbiome\n\nCFTR-related changes in pH, mucus, transit, pancreatic enzyme delivery, antibiotic exposure, and diet can reshape the gut microbiota. Reported changes include reduced diversity and altered relative abundance of taxa, but the specific microbial signature is not uniform across studies.\n\nPotential inflammatory consequences include:\n\n- Increased microbial products such as lipopolysaccharide and flagellin\n- Reduced production of potentially protective short-chain fatty acids\n- Altered bile-acid metabolism\n- Increased bacterial translocation across a stressed mucosal barrier\n- Dysregulated epithelial and myeloid-cell pattern-recognition signaling\n\nMicrobiome alterations are likely important, but cause and effect remain difficult to separate from pancreatic insufficiency, antibiotics, CFTR modulator therapy, and nutritional status.\n\n### 5. Impaired epithelial barrier function\n\nCFTR deficiency may influence tight-junction organization, epithelial ion balance, cell volume, mucus-layer integrity, and epithelial repair. A compromised barrier could increase penetration of:\n\n- Bacteria\n- Microbial metabolites\n- Proteases\n- Dietary antigens\n\nThis would promote innate immune activation. Evidence for altered barrier function exists, but it is not as definitive or consistent as the evidence for defective secretion and mucus clearance. Some apparent barrier defects may be secondary to dysbiosis, inflammation, malnutrition, or medications.\n\n### 6. Direct effects on epithelial inflammatory signaling\n\nCFTR loss may alter intracellular signaling in epithelial cells, including pathways involving:\n\n- NF-κB\n- MAP kinases\n- Oxidative stress\n- Inflammasome activation\n- Antimicrobial peptide expression\n\nSome experimental systems report exaggerated inflammatory responses to microbial stimulation in CFTR-deficient epithelia, whereas others suggest that inflammation is largely driven by the abnormal luminal environment. Thus, a cell-autonomous epithelial signaling defect is plausible but remains context-dependent.\n\n### 7. Altered antimicrobial defense\n\nCFTR-dependent ion transport affects the ionic composition and pH of mucosal secretions. This can influence the activity of antimicrobial peptides and proteins. Reduced antimicrobial effectiveness could permit greater bacterial persistence at the mucosal surface.\n\nThis mechanism is particularly well established in airway disease; its exact quantitative importance in the intestine is less certain, because intestinal antimicrobial defense involves additional systems, including Paneth-cell products, mucus, bile acids, and the microbiota.\n\n### 8. Pancreatic insufficiency, bile acids, and malabsorption\n\nMany people with severe CFTR variants have exocrine pancreatic insufficiency. Inadequate pancreatic enzymes and altered bicarbonate delivery can cause:\n\n- Maldigestion and increased luminal nutrients available to bacteria\n- Abnormal fatty acids and bile-acid handling\n- Changes in microbial composition\n- Mucosal irritation and altered immune signaling\n- Nutritional deficiencies that impair barrier repair\n\nSome intestinal inflammation attributed to CFTR may therefore be an indirect consequence of pancreatic disease. Bile-acid abnormalities may also affect epithelial receptors and immune pathways, but this remains an active area of investigation.\n\n### 9. Immune-cell effects: possible but unsettled\n\nCFTR expression has been reported in some immune-cell populations, including macrophages and other myeloid cells. CFTR dysfunction could theoretically alter phagocytosis, cytokine release, or inflammasome responses.\n\nHowever, the extent and functional importance of immune-cell-autonomous CFTR defects in human intestinal inflammation are still uncertain. The more firmly supported explanation is that abnormal epithelial and luminal conditions drive secondary immune activation.\n\n### 10. Effects of CFTR variant class and modifiers\n\nInflammatory risk is unlikely to be identical for all variants:\n\n- Severe, minimal-function variants generally produce greater intestinal transport abnormalities.\n- Residual-function variants may have milder or later gastrointestinal disease.\n- CFTR variants can influence disease through effects on pancreatic function, intestinal secretion, and response to modulators.\n- Modifier genes, diet, antibiotic exposure, pancreatic enzyme replacement, infection history, and CFTR modulator treatment can substantially alter the phenotype.\n\n### Overall model\n\nA useful integrated sequence is:\n\n**CFTR dysfunction → reduced chloride/bicarbonate and fluid secretion → concentrated mucus, abnormal pH, and slower transit → dysbiosis and impaired barrier function → microbial and epithelial innate-immune activation → chronic or episodic intestinal inflammation.**\n\nThe best-established links are defective secretion, mucus retention, altered transit, and the effects of pancreatic insufficiency. Direct CFTR-dependent immune signaling, specific microbiome changes, and inflammasome mechanisms are plausible and supported by experimental evidence, but their importance in individual patients remains uncertain."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 0.0016158968210220337,
+    "vector_index": 2.0877608209848404,
+    "answer_netmedex_hybrid_rag": 8.132483720779419,
+    "answer_traditional_rag": 9.275776639580727,
+    "answer_general_llm": 14.391681522130966,
+    "total": 38.48774453997612
+  },
+  "token_usage": {
+    "total_tokens": 12720,
+    "output_tokens": 3911,
+    "input_tokens": 8809
+  },
+  "completed_at": "2026-08-11T05:44:01.545774+00:00"
+}

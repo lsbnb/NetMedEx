@@ -5,9 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.4.0] - 2026-07-31
+## [1.4.0] - 2026-08-18
 
 ### Added
+
+- **Three-Tier Multi-Granularity Hybrid RAG**:
+  - **Community Detection & Macro-Level GraphRAG (`netmedex/community.py`)**: Integrated Louvain topological modularity clustering to identify functional communities, extracting top biological hubs (genes, diseases, chemicals, phenotypes), key relations, top PMIDs, and automated functional summaries for macro-level context injection.
+  - **Macro-Level Context Integration in `GraphRetriever` (`netmedex/graph_rag.py`)**: Added `find_relevant_communities` and `get_macro_community_context` to inject `### Macro-Level Functional Communities` alongside micro-level 2-hop paths.
+  - **Upgraded Chat Prompt Framework (`netmedex/chat.py`)**:
+    - Layer 1 structured 3-level indented list (Evidence Source, Key Finding, Direct Quote) with standardized `[PMID:xxxxxxxx]` citations.
+    - Layer 3 strict 8-column causal mechanism evaluation table with polarity and step-by-step confidence assessment.
+    - Multilingual prompt synchronization for English, Traditional Chinese, Japanese, and Korean.
+  - **Quantitative Benchmarks in Manuscript (v1.4)**:
+    - Formally integrated 50-question / 877-judgment benchmark results into manuscript docx and markdown (Novelty +0.21, Research Value +0.21, 50% blinded first-choice preference, 100% citation traceability, and pre-2015 temporal holdout prospective validation).
 
 - **Relation-Direction Verification (2nd LLM, opt-in)**: `SemanticRelationshipExtractor` and
   `PubTatorGraphBuilder` gained `verify_relations`/`verifier_llm_client` parameters. When enabled,

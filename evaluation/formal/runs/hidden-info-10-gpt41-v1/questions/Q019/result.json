@@ -1,0 +1,1072 @@
+{
+  "status": "complete",
+  "question_id": "Q019",
+  "domain": "metabolism",
+  "question": "Which adipokines connect obesity to nonalcoholic fatty liver disease?",
+  "question_type": "association",
+  "pubmed_query": "obesity NAFLD adiponectin leptin resistin inflammation",
+  "effective_pubmed_query": "obesity NAFLD adiponectin leptin resistin inflammation",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "19355912",
+    "19664840",
+    "20370672",
+    "20498498",
+    "23108307",
+    "24249635",
+    "26464753",
+    "26654761",
+    "29416297",
+    "30005625",
+    "30293065",
+    "33671547",
+    "36009862",
+    "36753306",
+    "37801761"
+  ],
+  "graph": {
+    "node_count": 55,
+    "edge_count": 132,
+    "path_count": 20,
+    "preferred_pmids": [
+      "19355912",
+      "19664840",
+      "20498498",
+      "23108307",
+      "24249635",
+      "26464753",
+      "26654761",
+      "29416297",
+      "30005625",
+      "33671547",
+      "36009862",
+      "36753306",
+      "37801761"
+    ],
+    "paths": [
+      {
+        "path_id": "Q019-P01",
+        "path_signature": "332aa2f850dd44c2",
+        "path_text": "obesity --[associated_with] non-alcoholic fatty liver disease",
+        "node_ids": [
+          "MESH:D009765_Disease",
+          "MESH:D065626_Disease"
+        ],
+        "names": [
+          "obesity",
+          "non-alcoholic fatty liver disease"
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "19355912",
+            "20498498",
+            "23108307"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "its incidence is paralleling the increasing numbers of overweight and obese individuals worldwide",
+            "adipokines may be a link between obesity, insulin resistance, and NAFLD"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 1.069,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q019-P02",
+        "path_signature": "4bf2b606bccb9d46",
+        "path_text": "non-alcoholic fatty liver disease --[associated_with] obesity",
+        "node_ids": [
+          "MESH:D065626_Disease",
+          "MESH:D009765_Disease"
+        ],
+        "names": [
+          "non-alcoholic fatty liver disease",
+          "obesity"
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "19355912",
+            "20498498",
+            "23108307"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "its incidence is paralleling the increasing numbers of overweight and obese individuals worldwide",
+            "adipokines may be a link between obesity, insulin resistance, and NAFLD"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 1.069,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q019-P03",
+        "path_signature": "081c2968ee3f68ce",
+        "path_text": "non-alcoholic fatty liver disease --[associated_with] inflammation",
+        "node_ids": [
+          "MESH:D065626_Disease",
+          "MESH:D007249_Disease"
+        ],
+        "names": [
+          "non-alcoholic fatty liver disease",
+          "inflammation"
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "26464753",
+            "29416297",
+            "30005625"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "These processes favor the development of hepatic steatosis and inflammation within the liver, which precede HCC development",
+            "Insulin resistance, abdominal obesity, and inflammation play important roles in the pathogenesis of nonalcoholic fatty liver disease (NAFLD).",
+            "The use of additional biomarkers of inflammation and metabolism did not improve NAFLD prediction"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.942,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q019-P04",
+        "path_signature": "6868533cf22520b7",
+        "path_text": "non-alcoholic fatty liver disease --[associated_with] insulin resistance",
+        "node_ids": [
+          "MESH:D065626_Disease",
+          "MESH:D007333_Disease"
+        ],
+        "names": [
+          "non-alcoholic fatty liver disease",
+          "insulin resistance"
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "19355912",
+            "20498498",
+            "26464753"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Adipocytokines and other recognized cytokines produced partially by inflammatory cells infiltrating adipose tissue, play an important role in the pathogenesis of IR and NAFLD, through complex and interactive paracrine and endocrine mechanisms",
+            "adipokines may be a link between obesity, insulin resistance, and NAFLD",
+            "IR associated with MS, NAFLD, and type 2 diabetes mellitus lead to the release of multiple pro-inflammatory cytokines"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.914,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q019-P05",
+        "path_signature": "aa534caadcea5e48",
+        "path_text": "non-alcoholic fatty liver disease ->[leads_to] carcinoma hepatocellular",
+        "node_ids": [
+          "MESH:D065626_Disease",
+          "MESH:D006528_Disease"
+        ],
+        "names": [
+          "non-alcoholic fatty liver disease",
+          "carcinoma hepatocellular"
+        ],
+        "relations": [
+          "leads_to"
+        ],
+        "edge_pmids": [
+          [
+            "23108307",
+            "26464753",
+            "30005625"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "obesity-related disorders such as non-alcoholic fatty liver diseases (NAFLD) and their complications, including hepatocellular carcinoma (HCC)",
+            "the development of HCC in nonalcoholic fatty liver disease (NAFLD) without cirrhosis is increasingly recognized",
+            "non-alcoholic steatohepatitis (NASH), the latter of which may cause cirrhosis and hepatocellular carcinoma (HCC)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.863,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q019-P06",
+        "path_signature": "4266640bbf6cfec9",
+        "path_text": "non-alcoholic fatty liver disease --[associated_with] adipoq",
+        "node_ids": [
+          "MESH:D065626_Disease",
+          "9370_Gene"
+        ],
+        "names": [
+          "non-alcoholic fatty liver disease",
+          "adipoq"
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "23108307",
+            "29416297",
+            "30005625"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Lack of adiponectin as observed in NAFLD drives steatosis and inflammation in the liver",
+            "Several adipokines, particularly adiponectin but also leptin, resistin, irisin, ghrelin, and visfatin modulate these pathogenetic mechanisms and appear to play a role in the development of hepatic steatosis and the progression to steatohepatitis and cirrhosis.",
+            "we evaluated to which degree the use of more novel biomarkers (adiponectin, leptin, resistin, C-reactive protein, TNF-alpha, IL-6, IL-8 and interferon-gamma) could improve prediction models [for NAFLD]"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.844,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q019-P07",
+        "path_signature": "6525ec81c2929110",
+        "path_text": "fatty liver ->[causes] adipoq",
+        "node_ids": [
+          "MESH:D005234_Disease",
+          "9370_Gene"
+        ],
+        "names": [
+          "fatty liver",
+          "adipoq"
+        ],
+        "relations": [
+          "causes"
+        ],
+        "edge_pmids": [
+          [
+            "23108307",
+            "29416297"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Lack of adiponectin as observed in NAFLD drives steatosis and inflammation in the liver"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.784,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q019-P08",
+        "path_signature": "b8664f797943f516",
+        "path_text": "obesity ->[leads_to] carcinoma hepatocellular",
+        "node_ids": [
+          "MESH:D009765_Disease",
+          "MESH:D006528_Disease"
+        ],
+        "names": [
+          "obesity",
+          "carcinoma hepatocellular"
+        ],
+        "relations": [
+          "leads_to"
+        ],
+        "edge_pmids": [
+          [
+            "23108307",
+            "33671547"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "obesity-related disorders such as non-alcoholic fatty liver diseases (NAFLD) and their complications, including hepatocellular carcinoma (HCC)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.774,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q019-P09",
+        "path_signature": "1e81e55e845653fd",
+        "path_text": "obesity ->[triggers] inflammation",
+        "node_ids": [
+          "MESH:D009765_Disease",
+          "MESH:D007249_Disease"
+        ],
+        "names": [
+          "obesity",
+          "inflammation"
+        ],
+        "relations": [
+          "triggers"
+        ],
+        "edge_pmids": [
+          [
+            "33671547",
+            "36009862"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "AT is considered an endocrine organ owing to its ability to secrete adipokines, such as leptin, adiponectin, resistin, and a plethora of inflammatory cytokines, which modulate insulin sensitivity and trigger chronic low-grade inflammation in different organs."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.774,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q019-P10",
+        "path_signature": "d7463025e5ce8301",
+        "path_text": "non-alcoholic fatty liver disease ->[ameliorates] weight loss",
+        "node_ids": [
+          "MESH:D065626_Disease",
+          "MESH:D015431_Disease"
+        ],
+        "names": [
+          "non-alcoholic fatty liver disease",
+          "weight loss"
+        ],
+        "relations": [
+          "ameliorates"
+        ],
+        "edge_pmids": [
+          [
+            "19664840",
+            "37801761"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Bariatric surgery improved insulin resistance, abnormal liver function tests and liver histology."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.761,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q019-P11",
+        "path_signature": "1b0e93abc022d752",
+        "path_text": "non-alcoholic fatty liver disease ->[ameliorates] cotadutide",
+        "node_ids": [
+          "MESH:D065626_Disease",
+          "MESH:C000624433_Chemical"
+        ],
+        "names": [
+          "non-alcoholic fatty liver disease",
+          "cotadutide"
+        ],
+        "relations": [
+          "ameliorates"
+        ],
+        "edge_pmids": [
+          [
+            "36753306"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "cotadutide lessened liver fat accumulation ... In addition, cotadutide shows beneficial effects on liver lipid metabolism, mitigating steatosis, inflammation, and ER stress"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.76,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q019-P12",
+        "path_signature": "81d3464cfb5f3e3a",
+        "path_text": "fatty liver ->[ameliorates] cotadutide",
+        "node_ids": [
+          "MESH:D005234_Disease",
+          "MESH:C000624433_Chemical"
+        ],
+        "names": [
+          "fatty liver",
+          "cotadutide"
+        ],
+        "relations": [
+          "ameliorates"
+        ],
+        "edge_pmids": [
+          [
+            "36753306"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "cotadutide lessened liver fat accumulation"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.756,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q019-P13",
+        "path_signature": "97ff4564a6be1443",
+        "path_text": "non-alcoholic fatty liver disease ->[ameliorates] resolvin d1",
+        "node_ids": [
+          "MESH:D065626_Disease",
+          "MESH:C518399_Chemical"
+        ],
+        "names": [
+          "non-alcoholic fatty liver disease",
+          "resolvin d1"
+        ],
+        "relations": [
+          "ameliorates"
+        ],
+        "edge_pmids": [
+          [
+            "24249635"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "RvD1 acts as a facilitator of the hepatic resolution process by reducing the inflammatory component of obesity-induced NASH"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.755,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q019-P14",
+        "path_signature": "0d0987e005ec21c9",
+        "path_text": "non-alcoholic fatty liver disease ->[leads_to] liver cirrhosis",
+        "node_ids": [
+          "MESH:D065626_Disease",
+          "MESH:D008103_Disease"
+        ],
+        "names": [
+          "non-alcoholic fatty liver disease",
+          "liver cirrhosis"
+        ],
+        "relations": [
+          "leads_to"
+        ],
+        "edge_pmids": [
+          [
+            "20498498"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "15% of them develop liver cirrhosis within a five-year period"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.755,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q019-P15",
+        "path_signature": "0514d4987cfd4cb7",
+        "path_text": "non-alcoholic fatty liver disease ->[leads_to] carcinogenesis",
+        "node_ids": [
+          "MESH:D065626_Disease",
+          "MESH:D063646_Disease"
+        ],
+        "names": [
+          "non-alcoholic fatty liver disease",
+          "carcinogenesis"
+        ],
+        "relations": [
+          "leads_to"
+        ],
+        "edge_pmids": [
+          [
+            "33671547"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Obesity is rapidly dispersing all around the world and is closely associated with a high risk of metabolic diseases such as insulin resistance, dyslipidemia, and nonalcoholic fatty liver disease (NAFLD), leading to carcinogenesis, especially hepatocellular carcinoma (HCC)."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.755,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q019-P16",
+        "path_signature": "9b3a86078725db88",
+        "path_text": "non-alcoholic fatty liver disease --[is_a] liver diseases",
+        "node_ids": [
+          "MESH:D065626_Disease",
+          "MESH:D008107_Disease"
+        ],
+        "names": [
+          "non-alcoholic fatty liver disease",
+          "liver diseases"
+        ],
+        "relations": [
+          "is_a"
+        ],
+        "edge_pmids": [
+          [
+            "26654761"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Non-alcoholic fatty liver disease (NAFLD) is currently considered the main cause of chronic liver disease worldwide"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.736,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q019-P17",
+        "path_signature": "aab560f0b3e3fe2f",
+        "path_text": "fatty liver --[resolves] weight loss",
+        "node_ids": [
+          "MESH:D005234_Disease",
+          "MESH:D015431_Disease"
+        ],
+        "names": [
+          "fatty liver",
+          "weight loss"
+        ],
+        "relations": [
+          "resolves"
+        ],
+        "edge_pmids": [
+          [
+            "24249635"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "weight loss resolves steatosis but not inflammation"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.732,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q019-P18",
+        "path_signature": "81f7324fac68f756",
+        "path_text": "fatty liver --[associated_with] non-alcoholic fatty liver disease",
+        "node_ids": [
+          "MESH:D005234_Disease",
+          "MESH:D065626_Disease"
+        ],
+        "names": [
+          "fatty liver",
+          "non-alcoholic fatty liver disease"
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "26464753",
+            "30005625"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "These processes favor the development of hepatic steatosis and inflammation within the liver, which precede HCC development",
+            "Non-alcoholic fatty liver disease (NAFLD) comprises non-progressive steatosis and non-alcoholic steatohepatitis (NASH)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.728,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q019-P19",
+        "path_signature": "a8742a168094a8b7",
+        "path_text": "non-alcoholic fatty liver disease --[associated_with] fatty liver",
+        "node_ids": [
+          "MESH:D065626_Disease",
+          "MESH:D005234_Disease"
+        ],
+        "names": [
+          "non-alcoholic fatty liver disease",
+          "fatty liver"
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "26464753",
+            "30005625"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "These processes favor the development of hepatic steatosis and inflammation within the liver, which precede HCC development",
+            "Non-alcoholic fatty liver disease (NAFLD) comprises non-progressive steatosis and non-alcoholic steatohepatitis (NASH)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.728,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q019-P20",
+        "path_signature": "6aad38abbf777994",
+        "path_text": "non-alcoholic fatty liver disease --[associated_with] overweight",
+        "node_ids": [
+          "MESH:D065626_Disease",
+          "MESH:D050177_Disease"
+        ],
+        "names": [
+          "non-alcoholic fatty liver disease",
+          "overweight"
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "19355912",
+            "30005625"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "its incidence is paralleling the increasing numbers of overweight and obese individuals worldwide",
+            "we evaluated whether a combination of blood-based biomarkers and anthropometric parameters can be used to predict NAFLD among overweight and obese adults"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.728,
+        "hop_count": 1
+      }
+    ]
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": true,
+    "max_hops": 1,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "gate_evidence_paths": false,
+    "node_ids": [
+      "MESH:D009765_Disease",
+      "MESH:D005234_Disease",
+      "MESH:D065626_Disease"
+    ],
+    "exposed_pmids": [
+      "19355912",
+      "19664840",
+      "20498498",
+      "23108307",
+      "24249635",
+      "26464753",
+      "26654761",
+      "29416297",
+      "30005625",
+      "33671547",
+      "36009862",
+      "36753306",
+      "37801761"
+    ],
+    "exposed_paths": [
+      [
+        "obesity",
+        "non-alcoholic fatty liver disease"
+      ],
+      [
+        "non-alcoholic fatty liver disease",
+        "obesity"
+      ],
+      [
+        "non-alcoholic fatty liver disease",
+        "inflammation"
+      ],
+      [
+        "non-alcoholic fatty liver disease",
+        "insulin resistance"
+      ],
+      [
+        "non-alcoholic fatty liver disease",
+        "carcinoma hepatocellular"
+      ],
+      [
+        "non-alcoholic fatty liver disease",
+        "adipoq"
+      ],
+      [
+        "fatty liver",
+        "adipoq"
+      ],
+      [
+        "obesity",
+        "carcinoma hepatocellular"
+      ],
+      [
+        "obesity",
+        "inflammation"
+      ],
+      [
+        "non-alcoholic fatty liver disease",
+        "weight loss"
+      ],
+      [
+        "non-alcoholic fatty liver disease",
+        "cotadutide"
+      ],
+      [
+        "fatty liver",
+        "cotadutide"
+      ],
+      [
+        "non-alcoholic fatty liver disease",
+        "resolvin d1"
+      ],
+      [
+        "non-alcoholic fatty liver disease",
+        "liver cirrhosis"
+      ],
+      [
+        "non-alcoholic fatty liver disease",
+        "carcinogenesis"
+      ],
+      [
+        "non-alcoholic fatty liver disease",
+        "liver diseases"
+      ],
+      [
+        "fatty liver",
+        "weight loss"
+      ],
+      [
+        "fatty liver",
+        "non-alcoholic fatty liver disease"
+      ],
+      [
+        "non-alcoholic fatty liver disease",
+        "fatty liver"
+      ],
+      [
+        "non-alcoholic fatty liver disease",
+        "overweight"
+      ]
+    ],
+    "exposed_edges": [
+      "obesity --[associated_with] non-alcoholic fatty liver disease",
+      "non-alcoholic fatty liver disease --[associated_with] obesity",
+      "non-alcoholic fatty liver disease --[associated_with] inflammation",
+      "non-alcoholic fatty liver disease --[associated_with] insulin resistance",
+      "non-alcoholic fatty liver disease ->[leads_to] carcinoma hepatocellular",
+      "non-alcoholic fatty liver disease --[associated_with] adipoq",
+      "fatty liver ->[causes] adipoq",
+      "obesity ->[leads_to] carcinoma hepatocellular",
+      "obesity ->[triggers] inflammation",
+      "non-alcoholic fatty liver disease ->[ameliorates] weight loss",
+      "non-alcoholic fatty liver disease ->[ameliorates] cotadutide",
+      "fatty liver ->[ameliorates] cotadutide",
+      "non-alcoholic fatty liver disease ->[ameliorates] resolvin d1",
+      "non-alcoholic fatty liver disease ->[leads_to] liver cirrhosis",
+      "non-alcoholic fatty liver disease ->[leads_to] carcinogenesis",
+      "non-alcoholic fatty liver disease --[is_a] liver diseases",
+      "fatty liver --[resolves] weight loss",
+      "fatty liver --[associated_with] non-alcoholic fatty liver disease",
+      "non-alcoholic fatty liver disease --[associated_with] fatty liver",
+      "non-alcoholic fatty liver disease --[associated_with] overweight"
+    ],
+    "exposure_signature": "2f68c473bb1eb224",
+    "routed_profile": "C_one_hop",
+    "route_reason": "question_type=association: graph association task",
+    "question_type": "association",
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {
+        "20498498": {
+          "text_score": 0.662715,
+          "graph_score": 1.0,
+          "reranked_score": 0.780765
+        },
+        "29416297": {
+          "text_score": 0.635036,
+          "graph_score": 0.942,
+          "reranked_score": 0.742473
+        },
+        "36009862": {
+          "text_score": 0.622838,
+          "graph_score": 0.774,
+          "reranked_score": 0.675745
+        },
+        "33671547": {
+          "text_score": 0.601649,
+          "graph_score": 0.774,
+          "reranked_score": 0.661972
+        },
+        "19355912": {
+          "text_score": 0.586633,
+          "graph_score": 1.0,
+          "reranked_score": 0.731311
+        },
+        "23108307": {
+          "text_score": 0.584445,
+          "graph_score": 1.0,
+          "reranked_score": 0.729889
+        },
+        "37801761": {
+          "text_score": 0.564869,
+          "graph_score": 0.761,
+          "reranked_score": 0.633515
+        },
+        "19664840": {
+          "text_score": 0.560001,
+          "graph_score": 0.761,
+          "reranked_score": 0.63035
+        },
+        "26464753": {
+          "text_score": 0.554708,
+          "graph_score": 0.942,
+          "reranked_score": 0.690261
+        },
+        "24249635": {
+          "text_score": 0.548384,
+          "graph_score": 0.755,
+          "reranked_score": 0.6207
+        },
+        "30005625": {
+          "text_score": 0.531966,
+          "graph_score": 0.942,
+          "reranked_score": 0.675478
+        },
+        "36753306": {
+          "text_score": 0.508836,
+          "graph_score": 0.76,
+          "reranked_score": 0.596743
+        }
+      }
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "20498498",
+        "score": 0.780764595189275
+      },
+      {
+        "pmid": "29416297",
+        "score": 0.7424734439110299
+      },
+      {
+        "pmid": "19355912",
+        "score": 0.7313112696719787
+      },
+      {
+        "pmid": "23108307",
+        "score": 0.729889022785384
+      },
+      {
+        "pmid": "26464753",
+        "score": 0.6902605072291863
+      },
+      {
+        "pmid": "36009862",
+        "score": 0.6757447769438892
+      },
+      {
+        "pmid": "30005625",
+        "score": 0.6754778111483034
+      },
+      {
+        "pmid": "33671547",
+        "score": 0.6619720508894735
+      },
+      {
+        "pmid": "37801761",
+        "score": 0.63351497429183
+      },
+      {
+        "pmid": "19664840",
+        "score": 0.630350465164779
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "20498498",
+        "score": 0.6627147618296538
+      },
+      {
+        "pmid": "29416297",
+        "score": 0.6350360675554306
+      },
+      {
+        "pmid": "36009862",
+        "score": 0.6228381183752142
+      },
+      {
+        "pmid": "26654761",
+        "score": 0.6114904564505909
+      },
+      {
+        "pmid": "33671547",
+        "score": 0.6016493090607284
+      },
+      {
+        "pmid": "19355912",
+        "score": 0.586632722572275
+      },
+      {
+        "pmid": "23108307",
+        "score": 0.5844446504390525
+      },
+      {
+        "pmid": "37801761",
+        "score": 0.5648691912182001
+      },
+      {
+        "pmid": "19664840",
+        "score": 0.5600007156381216
+      },
+      {
+        "pmid": "26464753",
+        "score": 0.5547084726602867
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "**Direct Evidence**\n\n- Multiple adipokines are implicated as mediators linking obesity to nonalcoholic fatty liver disease (NAFLD). These include:\n  - **Adiponectin**: Decreased in NAFLD and has anti-inflammatory and anti-diabetic properties; lack of adiponectin drives steatosis and liver inflammation. [PMID: 23108307, 20498498, 29416297, 30005625]\n  - **Leptin**: Has roles in immunity and inflammation; found elevated in obesity and associated with NAFLD development, though its precise effect in NAFLD remains incompletely resolved. [PMID: 23108307, 29416297, 20498498, 30005625, 19664840]\n  - **Resistin**: Increased in obesity and NAFLD; promotes insulin resistance and hepatic inflammation. [PMID: 20498498, 29416297, 23108307, 30005625, 19664840]\n  - **Visfatin (PBEF/Nampt)**: Decreases with weight loss and may contribute to the inflammatory milieu in NAFLD. [PMID: 20498498, 29416297, 19664840]\n  - **Tumor Necrosis Factor-alpha (TNF-α)** and **Interleukin-6 (IL-6)**: Elevated in obesity and NAFLD, these classic pro-inflammatory cytokines are included among adipokines that link these conditions. [PMID: 20498498, 30005625]\n- Other adipokines (ghrelin, omentin, vaspin, chemerin, adipocyte fatty-acid-binding protein, retinol-binding protein 4) are discussed as candidates, but their roles require further clarification. [PMID: 20498498, 29416297, 36009862]\n\n**Associations**\n\n- Obesity is associated with increased levels of pro-inflammatory adipokines (leptin, resistin, visfatin, TNF-α, IL-6) and decreased anti-inflammatory adipokines (adiponectin), promoting insulin resistance and NAFLD development. [PMID: 20498498, 29416297, 23108307, 30005625, 33671547]\n- Bariatric surgery and weight loss are associated with an improved (more anti-inflammatory) adipokine profile and amelioration of NAFLD features in humans. [PMID: 19664840]\n\n**Testable Hypothesis**\n\n- Targeting specific adipokines to correct their imbalance (i.e., increasing adiponectin or reducing leptin/resistin/visfatin/TNF-α/IL-6) may attenuate or reverse NAFLD progression in people with obesity. This is supported by mechanistic suggestions but requires dedicated intervention trials. [PMID: 20498498, 29416297, 36009862]\n\n---\n\n### Graph-derived candidate insights\n\n- **Claim:** Adiponectin levels are decreased in NAFLD and this deficiency contributes to hepatic steatosis and inflammation (PATH 4266640bbf6cfec9, direct evidence, [PMID: 23108307, 29416297, 30005625]).\n- **Claim:** Increased levels of leptin and resistin in obesity are associated with the development and severity of NAFLD (PATH 4266640bbf6cfec9, direct evidence, [PMID: 29416297, 20498498, 30005625, 23108307]).\n- **Claim:** TNF-α and IL-6, cytokines produced by adipose tissue, link obesity and insulin resistance to hepatic inflammation in NAFLD (PATH 4266640bbf6cfec9, direct evidence, [PMID: 20498498, 30005625]).\n- **Claim:** Visfatin is elevated in obesity and NAFLD; its levels decrease with weight loss, suggesting a contributory role (PATH 4266640bbf6cfec9, direct evidence, [PMID: 20498498, 29416297, 19664840]).\n- **Claim:** Obesity is associated with NAFLD primarily through adipokine-mediated effects on inflammation and insulin resistance (PATH 332aa2f850dd44c2, direct evidence, [PMID: 19355912, 20498498, 23108307]).\n\n---\n\n**Summary:**  \nThe most substantiated adipokines connecting obesity to NAFLD are decreased adiponectin and increased leptin, resistin, visfatin, TNF-α, and IL-6. These factors collectively promote insulin resistance and hepatic inflammation, constituting key mechanistic bridges between obesity and NAFLD in human studies.",
+    "traditional_rag": "Direct Evidence (Human studies):\nMultiple adipokines are implicated as mediators linking obesity to nonalcoholic fatty liver disease (NAFLD).\n\n- The key adipokines with the strongest direct evidence are:\n\n  - Tumor necrosis factor-alpha (TNF-α)\n  - Interleukin-6 (IL-6)\n  - Resistin\n  - Adiponectin (notably, its levels are decreased)\n  - Leptin\n\n  Increased levels of TNF-α, IL-6, and resistin, and decreased adiponectin, promote inflammation in the liver and play a role in NAFLD pathogenesis [PMID: 20498498, PMID: 26464753]. Leptin is also frequently mentioned, though its precise role is less clear.\n\n- Additional adipokines associated with NAFLD pathogenesis include:\n  - Visfatin (also known as Nampt/PBEF)\n  - Retinol-binding protein-4 (RBP4)\n  - Omentin\n  - Vaspin\n  - Ghrelin\n  - Chemerin\n  - Adipocyte fatty-acid-binding protein (AFABP)\n\n  The roles of these adipokines are under investigation and less clearly defined, but there is accumulating evidence that they influence NAFLD via metabolic and inflammatory pathways [PMID: 29416297, PMID: 36009862].\n\nAssociation:\n- Obesity is associated with dysregulation of the adipokines listed above, and this altered adipokine profile contributes to insulin resistance, hepatic steatosis, and liver inflammation, which are central to NAFLD pathogenesis [PMID: 19355912, PMID: 33671547].\n- A lack of adiponectin is considered to drive steatosis and inflammation in the liver, whereas increased leptin may have pro-inflammatory effects [PMID: 23108307, PMID: 19664840].\n\nTestable Hypotheses:\n- Targeting specific adipokines, such as increasing adiponectin or modulating leptin, resistin, and TNF-α, could be therapeutic strategies for NAFLD [PMID: 29416297, PMID: 36009862].\n- Changes in circulating adipokines (e.g., increased adiponectin or decreased visfatin and leptin after weight loss) may mediate improvements in NAFLD [PMID: 19664840, PMID: 37801761].\n\nSummary Table (Human Evidence):\n| Adipokine                   | Obesity Effect         | NAFLD Connection                   |\n|-----------------------------|-----------------------|------------------------------------|\n| TNF-α, IL-6, Resistin       | Increased             | Pro-inflammatory, ↑ NAFLD          |\n| Adiponectin                 | Decreased             | Anti-inflammatory, ↓ NAFLD         |\n| Leptin                      | Increased             | Role less clear, pro-inflammatory  |\n| Visfatin, RBP4, Omentin,    | Variable              | Under investigation                |\n| Vaspin, Ghrelin, Chemerin,  |                       |                                    |\n| Adipocyte fatty-acid binding |                       |                                    |\n| protein (AFABP)             |                       |                                    |\n\nReferences:\n- [PMID: 20498498]\n- [PMID: 29416297]\n- [PMID: 36009862]\n- [PMID: 19355912]\n- [PMID: 33671547]\n- [PMID: 19664840]\n- [PMID: 23108307]\n- [PMID: 26464753]\n- [PMID: 37801761]\n\nAnimal or In-vitro Evidence:\n- The provided context focuses primarily on human studies, reviews, and clinical associations; animal or in-vitro mechanistic evidence is not detailed.\n\nSummary:\nThe adipokines most directly connecting obesity to NAFLD in humans include increased TNF-α, IL-6, resistin, leptin, and decreased adiponectin, with emerging roles for visfatin, RBP4, omentin, vaspin, ghrelin, chemerin, and AFABP [e.g., PMID: 20498498, PMID: 29416297, PMID: 36009862]."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 40.853155605494976,
+    "vector_index": 1.6340809687972069,
+    "answer_netmedex_hybrid_rag": 7.541869200766087,
+    "answer_traditional_rag": 8.404466062784195,
+    "total": 63.64522622525692
+  },
+  "token_usage": {
+    "input_tokens": 28953,
+    "total_tokens": 55166,
+    "output_tokens": 26213
+  },
+  "completed_at": "2026-08-05T02:31:05.942420+00:00"
+}

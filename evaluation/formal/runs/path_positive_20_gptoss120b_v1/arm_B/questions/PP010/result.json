@@ -1,0 +1,188 @@
+{
+  "status": "complete",
+  "question_id": "PP010",
+  "domain": "rare disease",
+  "question": "What evidence supports a mechanistic path from cftr to inflammation through dysbiosis? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "CFTR AND intestinal inflammation AND (NF-kB OR dysbiosis OR cytokines)",
+  "effective_pubmed_query": "CFTR AND intestinal inflammation AND (NF-kB OR dysbiosis OR cytokines)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "23788646",
+    "27588407",
+    "28155088",
+    "30546102",
+    "31636470",
+    "32326161",
+    "35160099",
+    "35743652",
+    "36600119",
+    "37546931",
+    "38073491",
+    "38179971",
+    "38554847",
+    "40247380",
+    "40824057"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports a mechanistic path from cftr to inflammation through dysbiosis? Distinguish evidence for each hop from overall inference.",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "36600119",
+        "score": 0.5475427747395207
+      },
+      {
+        "pmid": "38554847",
+        "score": 0.5428355718932244
+      },
+      {
+        "pmid": "35160099",
+        "score": 0.5366646953708156
+      },
+      {
+        "pmid": "40824057",
+        "score": 0.5269386496090286
+      },
+      {
+        "pmid": "37546931",
+        "score": 0.5253108787767682
+      },
+      {
+        "pmid": "38073491",
+        "score": 0.5232141520043379
+      },
+      {
+        "pmid": "28155088",
+        "score": 0.5221417038922942
+      },
+      {
+        "pmid": "30546102",
+        "score": 0.5164803345032928
+      },
+      {
+        "pmid": "23788646",
+        "score": 0.5050432633207548
+      },
+      {
+        "pmid": "38179971",
+        "score": 0.5021925630001544
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "36600119",
+        "score": 0.5475427747395207
+      },
+      {
+        "pmid": "38554847",
+        "score": 0.5428355718932244
+      },
+      {
+        "pmid": "35160099",
+        "score": 0.5366646953708156
+      },
+      {
+        "pmid": "40824057",
+        "score": 0.5269386496090286
+      },
+      {
+        "pmid": "37546931",
+        "score": 0.5253108787767682
+      },
+      {
+        "pmid": "38073491",
+        "score": 0.5232141520043379
+      },
+      {
+        "pmid": "28155088",
+        "score": 0.5221417038922942
+      },
+      {
+        "pmid": "30546102",
+        "score": 0.5164803345032928
+      },
+      {
+        "pmid": "23788646",
+        "score": 0.5050432633207548
+      },
+      {
+        "pmid": "38179971",
+        "score": 0.5021925630001544
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Direct evidence that CFTR loss creates dysbiosis**  \n- **Animal (whole‑body CFTR‑KO)**: CFTR‑KO mice develop a gut microbiota enriched for Enterobacteriaceae and Enterococcus, together with increased gut permeability and mucosal inflammation; gut‑corrected CFTR‑KO‑GC mice retain a normal, diverse microbiota and show no dysbiosis【PMID:38554847】.  \n- **Animal (intestinal‑specific Cftr KO)**: iCftr‑KO mice display altered β‑diversity and over‑representation of Proteobacteria, Enterobacteriaceae, Clostridia, and mucolytic Akkermansia (or loss of Akkermansia), mirroring the dysbiosis seen in global CFTR loss【PMID:37546931】.  \n- **Human systematic review**: Across 38 studies, CF patients consistently show reduced microbial diversity and a shift toward pro‑inflammatory taxa, attributed in part to CFTR dysfunction alongside diet, antibiotics, and pancreatic insufficiency【PMID:36600119】.  \n\n**Evidence that dysbiosis drives intestinal inflammation**  \n- **Animal**: In CFTR‑KO mice, the dysbiotic expansion of Enterobacteriaceae correlates with higher fecal calprotectin and histologic neutrophil/macrophage infiltration; antibiotics that blunt dysbiosis simultaneously restore barrier function and lower liver inflammation【PMID:38554847】.  \n- **Animal (iCftr‑KO)**: Elevated fecal calprotectin is observed in iCftr‑KO mice relative to WT, concurrent with the dysbiotic signatures described above【PMID:37546931】.  \n- **Human (ivacaftor study)**: After ivacaftor treatment, a decrease in Enterobacteriaceae abundance parallels a significant fall in stool calprotectin, linking specific taxa to the inflammatory marker【PMID:30546102】.  \n\n**Evidence that restoring CFTR or the microbiota reverses both dysbiosis and inflammation**  \n- **Animal**: Gut‑specific CFTR restoration (CFTR‑KO‑GC) normalizes the microbiota and prevents peri‑portal liver inflammation, indicating that CFTR activity upstream of the microbiota is required for the inflammatory phenotype【PMID:38554847】.  \n- **Human**: Ivacaftor (a CFTR potentiator) raises Akkermansia levels and reduces Enterobacteriaceae, accompanied by lower calprotectin, supporting a causal chain from CFTR correction → microbiome shift → reduced"
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 3.6053359508514404e-05,
+    "vector_index": 1.7629214450716972,
+    "kg_expansion": 9.395182132720947e-06,
+    "answer_traditional_rag": 33.65769229084253,
+    "total": 35.929049924016
+  },
+  "token_usage": {
+    "total_tokens": 5702,
+    "output_tokens": 1200,
+    "input_tokens": 4502
+  },
+  "completed_at": "2026-08-13T05:52:28.123262+00:00"
+}

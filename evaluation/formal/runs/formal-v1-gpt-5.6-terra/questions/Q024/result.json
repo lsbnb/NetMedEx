@@ -1,0 +1,142 @@
+{
+  "status": "complete",
+  "question_id": "Q024",
+  "domain": "stem cell biology",
+  "question": "Which factors regulate mesenchymal stem cell osteogenic differentiation through BMP signaling?",
+  "pubmed_query": "mesenchymal stem cell osteogenesis BMP2 SMAD Runx2",
+  "language": "English",
+  "corpus_pmids": [
+    "25469313",
+    "27335248",
+    "29094227",
+    "29533735",
+    "31129811",
+    "31939626",
+    "32684523",
+    "33096960",
+    "34645714",
+    "35164786",
+    "35289496",
+    "37948991",
+    "38501359",
+    "38951811",
+    "40599055"
+  ],
+  "graph": {
+    "node_count": 54,
+    "edge_count": 64,
+    "path_count": 14,
+    "preferred_pmids": [
+      "31129811",
+      "40599055"
+    ]
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "31129811",
+        "score": 0.8288890983688038
+      },
+      {
+        "pmid": "40599055",
+        "score": 0.7850928034164224
+      },
+      {
+        "pmid": "25469313",
+        "score": 0.6392927745642714
+      },
+      {
+        "pmid": "27335248",
+        "score": 0.6363842641801635
+      },
+      {
+        "pmid": "33096960",
+        "score": 0.6103418969270697
+      },
+      {
+        "pmid": "34645714",
+        "score": 0.5867036624077082
+      },
+      {
+        "pmid": "32684523",
+        "score": 0.5844485798469035
+      },
+      {
+        "pmid": "31939626",
+        "score": 0.5686456287552769
+      },
+      {
+        "pmid": "29533735",
+        "score": 0.5617049952766097
+      },
+      {
+        "pmid": "38951811",
+        "score": 0.5559416865536612
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "25469313",
+        "score": 0.6392927745642714
+      },
+      {
+        "pmid": "27335248",
+        "score": 0.6363842641801635
+      },
+      {
+        "pmid": "33096960",
+        "score": 0.6103418969270697
+      },
+      {
+        "pmid": "34645714",
+        "score": 0.5867036624077082
+      },
+      {
+        "pmid": "32684523",
+        "score": 0.5844485798469035
+      },
+      {
+        "pmid": "31939626",
+        "score": 0.5686456287552769
+      },
+      {
+        "pmid": "29533735",
+        "score": 0.5617049952766097
+      },
+      {
+        "pmid": "38951811",
+        "score": 0.5559416865536612
+      },
+      {
+        "pmid": "31129811",
+        "score": 0.5525927322458691
+      },
+      {
+        "pmid": "35289496",
+        "score": 0.54931271311705
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "BMP signaling regulates mesenchymal stem-cell (MSC) osteogenesis principally through the **BMP2–BMP receptor–SMAD1/5/8–RUNX2** axis. The following factors modulate this pathway:\n\n### Direct evidence\n\n- **miR-494 — inhibitory regulator.** miR-494 directly targets **BMPR2** and **RUNX2**, reducing BMP2-induced osteogenic differentiation. Its inhibition promotes BMP2-driven osteogenesis and partly rescues impairment under simulated microgravity. A miR-494–MYOD positive-feedback loop may also influence MSC lineage choice. **Evidence:** C2C12 cells in vitro and osteoblasts from tail-suspended rats (animal). [PMID: 31129811]\n\n- **Gremlin-2 (GREM2) — inhibitory BMP antagonist.** GREM2 suppresses BMP2-induced osteogenesis; GREM2 knockdown increases osteogenic gene expression, ALP activity, calcification, and BMP2/Smad/Runx2 signaling, whereas GREM2 overexpression has the opposite effect. **Evidence:** human bone-marrow MSCs in vitro and a femoral-defect model in vivo (species not specified in supplied context). [PMID: 27335248]\n\n- **piRNA-36741 — positive regulator.** The piR-36741–PIWIL4 complex binds **METTL3** and prevents METTL3-mediated m6A modification of **BMP2 mRNA**, thereby increasing BMP2 expression and Smad activity. Silencing either piR-36741 or METTL3 impairs osteogenic differentiation; BMP2 overexpression rescues the effect of piR-36741 silencing. **Evidence:** primary human BMSCs in vitro; piR-36741 mimic also mitigated ovariectomy-induced osteoporosis in mice (animal). [PMID: 34645714]\n\n- **Benzo[a]pyrene (BaP) — inhibitory environmental factor.** BaP activates **AhR**, lowers **BMPRII** expression and BMP2-induced SMAD1/5/8 phosphorylation, and excessively activates **Hey1**, thereby suppressing RUNX2, osteocalcin, osteopontin, and osteogenesis. AhR blockade reverses this inhibition. **Evidence:** MSC cell lines in vitro and BMP2-induced ectopic osteogenesis in vivo (animal). [PMID: 32684523]\n\n- **BMP2 level and SMAD1/5/8 activity — positive determinants.** MSCs from patients with ossification of the posterior longitudinal ligament have elevated BMP2 and overactivated SMAD1/5/8, associated with increased osteogenesis; BMP2 knockdown or pharmacologic SMAD1/5/8 inhibition reverses this phenotype. **Evidence:** human donor- and patient-derived BMSCs in vitro. [PMID: 33096960]\n\n- **Brief low-dose BMP2 preconditioning — positive intervention.** A 15-minute exposure of human bone-marrow MSCs to 10–20 ng/mL BMP2 increased SMAD1 expression, SMAD1/5/8 phosphorylation, RUNX2, collagen I, ALP, and osteocalcin after BMP2 removal. Continuous BMP2 exposure did not produce the same osteogenic-marker benefits. **Evidence:** human MSCs in vitro. [PMID: 25469313]\n\n- **KR-12-a6 — positive regulator.** This antimicrobial-peptide analogue enhances BMP2 expression, SMAD1/5 phosphorylation, and osteogenic differentiation markers. A selective BMP/SMAD inhibitor blocks these effects. **Evidence:** human BMSCs in vitro. [PMID: 31939626]\n\n- **Toxoplasma gondii excretory proteins (TgEP) — positive regulator.** TgEP increases BMP2, SMAD1, phosphorylated SMAD1/5, ALP, RUNX2, and OSX, promoting osteogenic differentiation. It also enhanced bone-defect repair in rats. **Evidence:** human BMSCs in vitro and rat bone-defect model in vivo. [PMID: 38951811]\n\n### Associations and context-dependent regulators\n\n- **Mechanical unloading / microgravity — inhibitory context.** Simulated microgravity increases miR-494, which suppresses BMPR2/RUNX2-dependent BMP signaling. [PMID: 31129811] Real space microgravity decreases BMP2, SMAD1/5/9 activity, and RUNX2 in human MSCs while favoring adipogenesis. **Evidence:** human BMSCs exposed to space microgravity. [PMID: 29533735]\n\n- **Integrin/FAK/ERK signaling — associated positive pathway under normal gravity.** Space microgravity reduced FAK and ERK1/2 activity together with BMP2/SMAD signaling and RUNX2. This supports coordinated regulation of osteogenesis by BMP2/SMAD and integrin/FAK/ERK pathways, but the supplied evidence does not establish that FAK/ERK directly regulates BMP signaling. **Evidence:** human BMSCs in space microgravity. [PMID: 29533735]\n\n- **MM@MDL3 scaffold (mineralized lotus-stalk scaffold containing MnCO microspheres) — pro-osteogenic biomaterial.** The scaffold promoted MSC osteogenic differentiation accompanied by activation of BMP2/SMAD/RUNX2 signaling and improved rat calvarial bone regeneration. Its released CO and Mn²⁺ were also linked to M2 macrophage polarization and reduced inflammation. **Evidence:** in-vitro MSC studies and rat calvarial-defect model. [PMID: 40599055]\n\n### Testable hypotheses\n\n- **Targeting miR-494 or GREM2** may enhance BMP2 responsiveness in MSC-based bone regeneration, particularly during mechanical unloading or other contexts with weak BMP signaling. This is supported by direct preclinical experiments but lacks clinical validation in the supplied context. [PMID: 31129811; PMID: 27335248]\n\n- **Manipulating RNA epitranscriptomic control of BMP2**—for example, increasing piR-36741 activity or modifying the piR-36741/PIWIL4/METTL3 axis—may increase BMP2 availability and osteogenesis. Human in-vitro and mouse evidence support this, but therapeutic safety and efficacy in humans are not provided. [PMID: 34645714]\n\n- **Combining biomaterials or osteoinductive agents with BMP-pathway activation** (e.g., KR-12-a6, TgEP, or MM@MDL3) could improve MSC osteogenesis while potentially avoiding high-dose BMP2 exposure. This remains a preclinical hypothesis; no human clinical evidence is supplied. [PMID: 31939626; PMID: 38951811; PMID: 40599055]",
+    "traditional_rag": "## Direct evidence\n\n### Positive regulators of BMP-dependent osteogenesis\n\n- **BMP2 exposure pattern and dose:** A brief, low-dose BMP2 preconditioning pulse (10–20 ng/mL for 15 minutes) increased osteogenic differentiation of **human bone-marrow MSCs in vitro**, increasing RUNX2, collagen I, ALP, osteocalcin, SMAD1 expression, and SMAD1/5/8 phosphorylation. Continuous BMP2 did not produce the same osteogenic-marker increase in this study. [PMID: 25469313]\n\n- **Gremlin-2 suppression:** Gremlin-2 (Grem2) is a BMP antagonist. Silencing Grem2 increased BMP2-induced osteogenesis of **human bone-marrow MSCs**, while Grem2 overexpression inhibited it. The effect involved the BMP2–Smad–Runx2 pathway and was also supported in a femoral-defect model. [PMID: 27335248]\n\n- **piRNA-36741:** In **primary human BMSCs in vitro**, piRNA-36741 promoted osteogenic differentiation by forming a complex with PIWIL4 and interacting with METTL3. This reduced METTL3-mediated m6A modification of BMP2 transcripts, thereby increasing BMP2 expression and Smad activity. BMP2 overexpression reversed the anti-osteogenic effects of piRNA-36741 silencing. A piRNA-36741 mimic also alleviated ovariectomy-associated osteoporosis in mice. [PMID: 34645714]\n\n- **KR-12-a6 peptide:** KR-12-a6 promoted ALP activity, mineralization, and expression of RUNX2, ALP, COL1A1, BSP, BMP2, OSX, OCN, and OPN in **human BMSCs in vitro**. It increased Smad1/5 phosphorylation, whereas a selective BMP/SMAD inhibitor suppressed these effects. [PMID: 31939626]\n\n- **Toxoplasma gondii excretory proteins (TgEP):** TgEP increased BMP2, Smad1, phosphorylated Smad1/5, and osteogenic markers in **human BMSCs in vitro**. In a rat bone-defect model, TgEP-containing hydrogel improved bone repair. [PMID: 38951811]\n\n- **BMP2 combined with a magnesium-aluminate scaffold:** In **human bone-marrow MSCs in vitro**, a magnesium-aluminate composite scaffold plus BMP2 produced greater osteogenic gene activation than BMP2 alone. The scaffold condition was associated with activation of BMP2, SMAD, TGF, WNT, and Notch signaling and increased RUNX2; calcium and magnesium released from the scaffold were proposed contributors. [PMID: 35289496]\n\n### Negative regulators of BMP-dependent osteogenesis\n\n- **Gremlin-2:** BMP2 itself increased Grem2 expression in human BMSCs, and Grem2 overexpression suppressed BMP2-induced osteogenesis, consistent with a negative-feedback BMP antagonist role. [PMID: 27335248]\n\n- **Benzo[a]pyrene (BaP) through aryl hydrocarbon receptor (AhR):** BaP suppressed BMP2-induced osteogenic differentiation, osteogenic markers, and Smad1/5/8 phosphorylation in MSC models **in vitro** and inhibited BMP2-induced ectopic bone formation **in vivo**. BaP reduced BMPRII expression and increased Hey1; blocking AhR reversed BaP’s inhibitory effect. [PMID: 32684523]\n\n- **miR-494:** miR-494 inhibited BMP2-induced osteogenesis by directly targeting **BMPR2** and **RUNX2**, key components of the BMPR–SMAD–RUNX2 axis. miR-494 inhibition promoted BMP2-induced osteogenesis and partly rescued defective differentiation in simulated microgravity. Evidence includes C2C12 cells in vitro and osteoblasts from tail-suspended rats. [PMID: 31129811]\n\n- **Space microgravity/mechanical unloading:** Real space microgravity inhibited osteogenesis of **human bone-marrow MSCs**, decreased BMP2 expression and SMAD1/5/9 activity, and reduced RUNX2 expression/activity. It also reduced integrin/FAK/ERK activity and shifted cells toward adipogenesis. [PMID: 29533735]\n\n- **BMP2 knockdown or pharmacologic Smad1/5/8 inhibition:** In MSCs from patients with ossification of the posterior longitudinal ligament, increased BMP2 and overactivated Smad1/5/8 were linked to enhanced osteogenesis. BMP2 knockdown or LDN193189-mediated Smad1/5/8 inhibition reversed this enhanced differentiation. **Human patient-derived MSC evidence in vitro.** [PMID: 33096960]\n\n## Associations reported\n\n- Enhanced osteogenesis in MSCs from patients with ossification of the posterior longitudinal ligament was associated with increased BMP2 and increased Smad1/5/8 activity relative to healthy-donor MSCs. [PMID: 33096960]\n\n- During osteogenic differentiation of human BMSCs, piRNA-36741 and METTL3 expression increased; their experimental inhibition reduced osteogenic markers and mineralization. [PMID: 34645714]\n\n- Microgravity-associated osteogenic impairment coincided with reduced BMP2/SMAD signaling and enhanced adipogenic signaling involving p38 MAPK and AKT. [PMID: 29533735]\n\n- The BMP2/scaffold condition was associated with broader activation of BMP, SMAD, TGF, WNT, and Notch pathway genes than BMP2 alone. [PMID: 35289496]\n\n## Testable hypothesis\n\nA convergent therapeutic strategy would be to enhance BMP2–BMPRII–SMAD1/5/8–RUNX2 signaling while removing inhibitory inputs—such as Grem2, miR-494, or BaP/AhR-mediated BMPRII loss—and to combine this with optimized short-pulse BMP2 delivery or osteoconductive scaffolds. This is a synthesis across studies rather than a directly tested combined intervention. [PMID: 25469313] [PMID: 27335248] [PMID: 32684523] [PMID: 31129811] [PMID: 35289496]",
+    "general_llm": "Mesenchymal stem/stromal cell (MSC) osteogenic differentiation is strongly regulated by the bone morphogenetic protein (BMP) pathway. The net effect depends on BMP ligand availability, receptor expression, intracellular signaling, extracellular antagonists, and crosstalk with other pathways.\n\n## Core BMP pathway components\n\n- **BMP ligands:**  \n  **BMP-2, BMP-4, BMP-6, BMP-7, and BMP-9** are important osteoinductive ligands in MSCs. BMP-2 and BMP-7 are widely established promoters of osteoblast differentiation. BMP-9 is often considered one of the most potent osteogenic BMPs in experimental MSC systems.\n\n- **BMP receptors:**  \n  BMPs bind complexes of type I and type II serine/threonine kinase receptors. Relevant receptors include:\n  - Type I: **ALK1, ALK2 (ACVR1), ALK3 (BMPR1A), ALK6 (BMPR1B)**\n  - Type II: **BMPR2, ACVR2A, ACVR2B**\n  \n  Receptor abundance and receptor subtype usage influence whether a particular BMP produces a strong osteogenic response.\n\n- **Canonical Smad signaling:**  \n  Activated receptors phosphorylate **Smad1, Smad5, and Smad8/9**. These associate with **Smad4**, enter the nucleus, and increase expression of osteogenic genes, including:\n  - **RUNX2**\n  - **SP7/Osterix**\n  - **ALPL** (alkaline phosphatase)\n  - **COL1A1**\n  - **BGLAP/osteocalcin**\n  - **IBSP** and other matrix/mineralization genes\n\n- **Inhibitory Smads:**  \n  **Smad6 and Smad7** suppress BMP signaling by limiting receptor-mediated Smad activation or promoting receptor turnover. Increased Smad6/7 generally inhibits BMP-driven osteogenesis.\n\n## Extracellular BMP regulators\n\nSeveral secreted proteins bind BMPs outside the cell and reduce their ability to activate receptors:\n\n- **Noggin**\n- **Gremlin-1 and Gremlin-2**\n- **Chordin**\n- **Follistatin and follistatin-like proteins**\n- **Sclerostin** in certain bone-related contexts\n\nHigh levels of these antagonists can reduce BMP-induced alkaline phosphatase activity, RUNX2 expression, matrix deposition, and mineralization. Conversely, reducing BMP antagonist activity can enhance osteogenesis.\n\nNot all BMPs are equally sensitive to the same antagonists. For example, BMP-9 can retain osteogenic activity in settings where some other BMP ligands are more effectively neutralized, although this depends on the experimental system.\n\n## Intracellular non-Smad BMP pathways\n\nBMP receptors can also activate signaling pathways that cooperate with, or sometimes restrain, osteogenic differentiation:\n\n- **p38 MAPK:** commonly supports BMP-induced osteogenesis and RUNX2 activity.\n- **ERK1/2 MAPK:** effects are context-dependent; ERK can support proliferation and early differentiation in some settings but may inhibit osteogenesis in others.\n- **JNK:** can modulate osteogenic transcriptional responses, often in a context-dependent manner.\n- **PI3K–AKT–mTOR:** frequently supports survival, protein synthesis, and osteogenesis downstream of or in cooperation with BMP signaling.\n- **RhoA/ROCK and cytoskeletal signaling:** may influence BMP responsiveness by changing cell shape, tension, and transcriptional co-regulator activity.\n\n## Major transcriptional regulators downstream of BMP signaling\n\n- **RUNX2:** the central osteogenic transcription factor. BMP-Smad signaling promotes RUNX2 expression and function. RUNX2 is particularly important for commitment to the osteoblast lineage.\n- **Osterix/SP7:** acts downstream of, and in cooperation with, RUNX2; required for maturation of osteoblast-lineage cells.\n- **DLX5:** often induced by BMPs and promotes RUNX2 and osteogenic gene expression.\n- **MSX2:** can participate in BMP-responsive osteogenic programs, although its effects depend on timing and cell type.\n- **ATF4:** contributes to osteoblast maturation and matrix-related gene expression.\n\n## Crosstalk with other signaling pathways\n\nBMP signaling rarely acts alone in MSC differentiation.\n\n- **Wnt/β-catenin signaling:** often cooperates with BMP signaling to promote osteogenesis. Wnt activity can enhance RUNX2-related transcription, while BMPs can alter expression of Wnt ligands, receptors, and inhibitors. Excessive or poorly timed signaling may not always be beneficial, so the relationship is context-dependent.\n\n- **TGF-β signaling:** has complex effects. It can support early progenitor proliferation and matrix production but may inhibit terminal osteoblast maturation or alter BMP-Smad responses depending on dose, timing, and cell source.\n\n- **Notch signaling:** can restrain or support BMP-mediated osteogenesis depending on activation level and differentiation stage. Persistent Notch activation is often associated with reduced osteoblast maturation.\n\n- **Hedgehog signaling:** particularly Indian hedgehog and Sonic hedgehog pathways can promote osteogenic commitment and may increase BMP pathway activity.\n\n- **FGF signaling:** can modulate BMP receptor and Smad activity. Its effect varies by FGF ligand, duration of exposure, and MSC source.\n\n- **Parathyroid hormone (PTH):** intermittent PTH signaling can support bone formation and may enhance osteogenic responses involving BMP pathways; continuous exposure can have different effects.\n\n- **Estrogen signaling:** can favor osteogenesis in part through interactions with BMP/Smad and RUNX2 pathways. Estrogen deficiency may weaken osteogenic capacity.\n\n## Mechanical and biomaterial-related factors\n\nPhysical cues can regulate MSC osteogenesis partly by changing BMP signaling or BMP sensitivity:\n\n- **Matrix stiffness:** stiffer matrices generally favor osteogenic commitment and can enhance BMP-Smad and RUNX2 signaling.\n- **Mechanical loading, stretch, compression, and fluid shear:** may increase expression of BMP-2, BMP-4, BMP-7, or BMP receptors and activate Smad/MAPK pathways.\n- **Surface topography and scaffold composition:** nanostructured, rough, calcium phosphate-containing, or osteoconductive biomaterials can enhance BMP-related osteogenesis.\n- **Cell shape and cytoskeletal tension:** spreading and actomyosin tension can promote osteogenic differentiation, partly through cooperation between mechanotransduction pathways and BMP signaling.\n\n## Oxygen tension, metabolism, and oxidative stress\n\n- **Hypoxia/HIF signaling:** effects are variable. Mild or early hypoxia may preserve MSC proliferation and alter BMP responsiveness, whereas persistent hypoxia can impair terminal mineralization in many conditions.\n- **Reactive oxygen species (ROS):** moderate signaling levels may participate in differentiation, but excessive oxidative stress commonly suppresses BMP-Smad signaling and osteogenesis.\n- **Mitochondrial function and energy metabolism:** adequate oxidative metabolism generally supports later osteoblast differentiation and mineralization.\n\n## Inflammatory and immune factors\n\nInflammatory mediators can substantially alter BMP-dependent osteogenesis:\n\n- **TNF-α, IL-1β, and chronic high IL-6 signaling:** often inhibit osteogenesis by suppressing BMP-Smad/RUNX2 activity, increasing inhibitory pathways, or promoting MSC senescence.\n- **NF-κB activation:** commonly antagonizes osteogenic differentiation and can interfere with BMP-driven transcription.\n- **Anti-inflammatory and pro-repair macrophage-derived signals:** may support BMP-mediated bone formation in regenerative environments.\n- The effect of inflammation is highly dependent on intensity and duration: a brief early inflammatory phase can be compatible with repair, whereas persistent inflammation is usually harmful.\n\n## Epigenetic and post-transcriptional regulators\n\n- **MicroRNAs:** multiple microRNAs regulate BMP receptors, Smads, RUNX2, and BMP antagonists. Depending on the specific microRNA, the result can be enhanced or inhibited osteogenesis. For example, microRNAs targeting inhibitory molecules such as Smad6, Smad7, or BMP antagonists may enhance BMP responses; those targeting RUNX2, BMP receptors, or Smad1/5 tend to inhibit them.\n- **Long noncoding RNAs and circular RNAs:** can influence BMP signaling by regulating microRNA availability or transcriptional programs.\n- **DNA methylation and histone modifications:** can determine whether BMP-responsive osteogenic genes such as RUNX2 and SP7 are accessible for transcription. Aging and disease can shift these epigenetic states toward reduced osteogenic responsiveness.\n\n## Donor and cell-intrinsic factors\n\nBMP responsiveness differs substantially among MSC preparations because of:\n\n- Tissue source: bone marrow, adipose tissue, umbilical cord, dental pulp, and periosteal MSCs differ in BMP receptor expression and osteogenic potential.\n- Donor age: aging is often associated with reduced BMP responsiveness, higher oxidative stress, senescence, and altered antagonist expression.\n- Disease status: osteoporosis, diabetes, obesity, chronic inflammation, glucocorticoid exposure, and renal disease can impair BMP-mediated osteogenesis.\n- MSC passage number and senescence: prolonged culture can reduce receptor signaling and mineralization capacity.\n\n## Summary\n\nThe strongest direct drivers of BMP-mediated MSC osteogenesis are osteogenic BMP ligands—especially BMP-2, BMP-7, and BMP-9—acting through BMP receptors and the **Smad1/5/8–Smad4–RUNX2/Osterix** axis. This response is inhibited by extracellular antagonists such as **noggin, gremlin, and chordin**, and by intracellular inhibitors such as **Smad6 and Smad7**. Wnt signaling, mechanical stimulation, appropriate scaffold properties, p38 MAPK, PI3K/AKT signaling, and favorable hormonal or metabolic conditions often enhance the response. Chronic inflammation, oxidative stress, senescence, excessive BMP antagonism, and some inhibitory microRNAs or epigenetic changes commonly reduce it."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 1.0747968703508377,
+    "semantic_graph": 86.2083959877491,
+    "vector_index": 1.7963691726326942,
+    "answer_netmedex_hybrid_rag": 14.591091938316822,
+    "answer_traditional_rag": 13.910966515541077,
+    "answer_general_llm": 25.527831874787807,
+    "total": 142.71226619929075
+  },
+  "completed_at": "2026-07-27T18:31:24.132214+00:00",
+  "answer_repair_history": [
+    {
+      "system": "general_llm",
+      "model": "gpt-5.6-terra",
+      "repaired_at": "2026-07-30T11:09:55.254752+00:00"
+    }
+  ]
+}

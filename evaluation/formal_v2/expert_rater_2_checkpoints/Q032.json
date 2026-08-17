@@ -1,0 +1,92 @@
+{
+  "question_id": "Q032",
+  "model": "gpt-5.6-sol",
+  "rated_at": "2026-07-29T10:14:29.462153+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q032-C001",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Review identifies TGF-beta and Th2 cytokines IL-5 and IL-13 as mediators of airway remodeling, but does not specifically connect exacerbations to remodeling."
+    },
+    {
+      "candidate_id": "Q032-C002",
+      "relevance": 1,
+      "confidence": 2,
+      "exclusion_reason": "",
+      "reviewer_notes": "In an OVA mouse model, inhibition of TGF-beta1/Smad2 and IL-17A signaling coincided with fewer asthma-attack symptoms and improved remodeling, but an exacerbation-to-remodeling mechanism was not specifically tested."
+    },
+    {
+      "candidate_id": "Q032-C003",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Directly tests IL-17 blockade in LPS-exacerbated allergic airway inflammation and demonstrates reduced TGF-beta, matrix-remodeling markers, collagen, and other airway-remodeling outcomes."
+    },
+    {
+      "candidate_id": "Q032-C004",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Shows that treatment concurrently reduces IL-4, IL-5, IL-13, IL-17, TGF-beta and extracellular-matrix remodeling in chronic allergic inflammation, but lacks an asthma-exacerbation model."
+    },
+    {
+      "candidate_id": "Q032-C005",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Provides the exacerbation side of the mechanism, implicating IL-5, GM-CSF, CXCL10, IL-8 and Th2 cytokines in eosinophilic or neutrophilic exacerbations, but does not evaluate airway remodeling."
+    },
+    {
+      "candidate_id": "Q032-C006",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Human biopsy study links IL-17F, and more broadly Th17 cytokines, to frequent exacerbations and neutrophilic severe asthma, but does not assess remodeling outcomes."
+    },
+    {
+      "candidate_id": "Q032-C007",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Direct intervention study in LPS-exacerbated asthma shows that IL-17 inhibition attenuates bronchial vascular remodeling, TGF-beta and multiple matrix-remodeling markers."
+    },
+    {
+      "candidate_id": "Q032-C008",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "ACO mouse study jointly measures cytokines including IL-4, IL-5, IL-13, IL-17 and TGF-beta with collagen remodeling, but uses asthma-COPD overlap rather than asthma exacerbation."
+    },
+    {
+      "candidate_id": "Q032-C009",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Review directly identifies IL-4 and especially IL-13 as drivers of structural airway remodeling and discusses how targeting them reduces severe-asthma exacerbations, while noting uncertain reversal of established remodeling."
+    },
+    {
+      "candidate_id": "Q032-C010",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Focused review of TGF-beta and IL-13 in allergic airway remodeling, including context-dependent mechanistic evidence, but it does not specifically address exacerbations."
+    },
+    {
+      "candidate_id": "Q032-C011",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Describes IL-13 as an effector linking persistent Th2 inflammation to TGF-beta activation, fibrosis and disease progression, but not specifically exacerbation-driven remodeling."
+    },
+    {
+      "candidate_id": "Q032-C012",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Human bronchial-biopsy evidence associates active TGF-beta/Smad2 signaling with basement-membrane thickening, supporting TGF-beta in remodeling but providing no exacerbation data."
+    }
+  ],
+  "raw_response_sha256": "db9344093955eecbf3bfce03070710b9fa6e13972b30865c61a44be7d49c0115"
+}

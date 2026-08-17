@@ -1,0 +1,104 @@
+{
+  "question_id": "BW006",
+  "status": "ineligible",
+  "corpus_strategy": "controlled_endpoint_isolated_shared_bridge",
+  "same_corpus_for_text_and_hybrid": true,
+  "mediators_withheld_from_system_query": true,
+  "source_patterns": [
+    "\\bdystrophin\\s+deficiency\\b",
+    "\\bdystrophin.deficient\\b",
+    "\\bDMD\\b(?=.*dystrophin|.*muscular)",
+    "\\bDuchenne\\b"
+  ],
+  "target_patterns": [
+    "\\bchronic\\s+inflammation\\b",
+    "\\bskeletal\\s+muscle\\s+inflammation\\b",
+    "\\bmuscle\\s+inflammatory\\b"
+  ],
+  "source_identifiers": [],
+  "target_identifiers": [],
+  "target_side_forbidden_source_patterns": [
+    "\\bdystrophin\\b",
+    "\\bDuchenne\\b",
+    "\\bDMD\\b"
+  ],
+  "target_side_forbidden_source_identifiers": [],
+  "eligible_mediators": [],
+  "mediator_audit": [
+    {
+      "name": "NLRP3 inflammasome",
+      "queries": {
+        "source": "dystrophin deficiency[Title/Abstract] AND (NLRP3[Title/Abstract] OR inflammasome[Title/Abstract])",
+        "target": "(NLRP3[Title/Abstract] OR inflammasome[Title/Abstract]) AND chronic inflammation[Title/Abstract]"
+      },
+      "candidate_pmids": {
+        "source": [
+          "26465071"
+        ],
+        "target": [
+          "39448830",
+          "21217695",
+          "39712248",
+          "38030687",
+          "35513901",
+          "40938771",
+          "32032542",
+          "34834004",
+          "35754962",
+          "29959312",
+          "34861190",
+          "28093447",
+          "36895045",
+          "37582052",
+          "40928616",
+          "40754685",
+          "34285037",
+          "34904398",
+          "41983141",
+          "41151577",
+          "38994035",
+          "39879983",
+          "30619282",
+          "40258472",
+          "32739011",
+          "41491073",
+          "41369412",
+          "38166847",
+          "35278849",
+          "32948742"
+        ]
+      },
+      "accepted_pmids": {
+        "source": [],
+        "target": [
+          "39448830",
+          "21217695",
+          "39712248"
+        ]
+      },
+      "annotation_identifiers": {
+        "source": [],
+        "target": [
+          "114548",
+          "216799"
+        ]
+      },
+      "shared_mediator_identifiers": [],
+      "rejected_pmids": {
+        "source": {
+          "26465071": [
+            "target_leak"
+          ]
+        },
+        "target": {}
+      },
+      "bridge_eligible": false
+    }
+  ],
+  "distractor_audit": null,
+  "fetched_pmids": [
+    "39448830",
+    "21217695",
+    "39712248"
+  ]
+}

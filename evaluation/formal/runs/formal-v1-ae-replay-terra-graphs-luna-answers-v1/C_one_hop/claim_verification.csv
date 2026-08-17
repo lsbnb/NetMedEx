@@ -1,0 +1,11 @@
+question_id,run_id,claim_id,path_id,verdict,reasons
+Q001,formal-v1-gpt-5.6-luna-C_one_hop,HC-01,0cb47f259e214f24,unsupported,hop_1_source_missing;hop_1_target_missing;hop_1_relation_mismatch;hop_1_pmid_missing
+Q002,formal-v1-gpt-5.6-luna-C_one_hop,HC-01,65e20457af215c29,unsupported,path_not_tier_a_claim_safe;hop_1_source_missing;hop_1_target_missing;hop_1_relation_mismatch;hop_1_pmid_missing;hop_1_quote_relation_mismatch
+Q003,formal-v1-gpt-5.6-luna-C_one_hop,,,no_path_citation,no_path_citations_detected
+Q004,formal-v1-gpt-5.6-luna-C_one_hop,HC-01,containing,unsupported,path_not_found
+Q005,formal-v1-gpt-5.6-luna-C_one_hop,HC-01,31f26bea18c6474b,supported,
+Q006,formal-v1-gpt-5.6-luna-C_one_hop,,,no_path_citation,no_path_citations_detected
+Q007,formal-v1-gpt-5.6-luna-C_one_hop,,,no_path_citation,no_path_citations_detected
+Q008,formal-v1-gpt-5.6-luna-C_one_hop,,,no_path_citation,no_path_citations_detected
+Q009,formal-v1-gpt-5.6-luna-C_one_hop,HC-01,contains,unsupported,path_not_found
+Q010,formal-v1-gpt-5.6-luna-C_one_hop,,,no_path_citation,no_path_citations_detected

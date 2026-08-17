@@ -1,0 +1,209 @@
+{
+  "status": "complete",
+  "question_id": "PP014",
+  "domain": "hypothesis generation",
+  "question": "What evidence supports a mechanistic path from dysbiosis to bone diseases through fatty acids volatile? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "gut microbiome dysbiosis IL-17 bone loss osteoporosis",
+  "effective_pubmed_query": "gut microbiome dysbiosis IL-17 bone loss osteoporosis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "35950704",
+    "33074224",
+    "35430804",
+    "29302038",
+    "39738035",
+    "30446387",
+    "33968085",
+    "35177222",
+    "38321650",
+    "33651651",
+    "36421397",
+    "33670115",
+    "38218095",
+    "37224131",
+    "40013938",
+    "28765474",
+    "12748652",
+    "37188819",
+    "38316760",
+    "38569557",
+    "38034017",
+    "41372218",
+    "37118283",
+    "39880362",
+    "39539387",
+    "40193598"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports a mechanistic path from dysbiosis to bone diseases through fatty acids volatile? Distinguish evidence for each hop from overall inference.",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "integration_decision": {
+      "method": "three_stage_incremental_utility_router_v1",
+      "mode": "traditional_fallback",
+      "reason": "no_claim_safe_path",
+      "claim_safe_path_count": 0,
+      "incremental_path_count": 0,
+      "confirmatory_path_count": 0,
+      "citation_validation_pmids": [],
+      "policy": "three_stage"
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "disabled",
+      "reason": "integration_mode=traditional_fallback",
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "29302038",
+        "score": 0.4915508947417828
+      },
+      {
+        "pmid": "33670115",
+        "score": 0.48133443685657457
+      },
+      {
+        "pmid": "38218095",
+        "score": 0.47320952704590186
+      },
+      {
+        "pmid": "30446387",
+        "score": 0.4717254864625779
+      },
+      {
+        "pmid": "38321650",
+        "score": 0.4578985986414476
+      },
+      {
+        "pmid": "33651651",
+        "score": 0.45320299667134967
+      },
+      {
+        "pmid": "37224131",
+        "score": 0.4471944924217276
+      },
+      {
+        "pmid": "36421397",
+        "score": 0.4412879898774147
+      },
+      {
+        "pmid": "33074224",
+        "score": 0.4309143537092215
+      },
+      {
+        "pmid": "12748652",
+        "score": 0.4268210193607409
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "29302038",
+        "score": 0.4915508947417828
+      },
+      {
+        "pmid": "33670115",
+        "score": 0.48133443685657457
+      },
+      {
+        "pmid": "38218095",
+        "score": 0.47320952704590186
+      },
+      {
+        "pmid": "30446387",
+        "score": 0.4717254864625779
+      },
+      {
+        "pmid": "38321650",
+        "score": 0.4578985986414476
+      },
+      {
+        "pmid": "33651651",
+        "score": 0.45320299667134967
+      },
+      {
+        "pmid": "37224131",
+        "score": 0.4471944924217276
+      },
+      {
+        "pmid": "36421397",
+        "score": 0.4412879898774147
+      },
+      {
+        "pmid": "33074224",
+        "score": 0.4309143537092215
+      },
+      {
+        "pmid": "12748652",
+        "score": 0.4268210193607409
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Mechanistic chain from gut dysbiosis → volatile fatty‑acid (SCFA) alterations → bone disease**\n\n* **Dysbiosis reduces SCFA output** – Diet‑induced gut dysbiosis weakens tight‑junction integrity and “significantly … reduces production of metabolites, such as short‑chain fatty acids” (animal diet models)【PMID:38321650】. Antibiotic‑driven dysbiosis in children also lowers microbial diversity and is known to diminish SCFA‑producing taxa, providing indirect support for a loss of SCFA after dysbiosis【PMID:33651651】. *(Inference from metagenomic/clinical studies; human/animal)*  \n\n* **SCFA (butyrate, propionate) re‑program osteoclast metabolism** – In mice, oral SCFA or a high‑fiber diet ↑ bone mass by **inhibiting osteoclast differentiation**; propionate and butyrate shift osteoclasts toward glycolysis, down‑regulating TRAF6 and NFATc1 (key osteoclast genes)【PMID:29302038】. In vitro osteoclast precursors show the same metabolic and transcriptional suppression. *(Direct mechanistic evidence; animal + in‑vitro)*  \n\n* **SCFA shape immune regulators that drive bone formation** – Gut‑derived butyrate expands intestinal and bone‑marrow T‑reg cells; T‑reg interaction with CD8⁺ T cells induces a NFAT1‑SMAD3 complex that drives **Wnt10b secretion**, a potent anabolic Wnt ligand, resulting in increased trabecular bone in mice【PMID:30446387】. *(Direct mechanistic evidence; animal)*  \n\n* **Resulting bone phenotype** – Both studies demonstrate that SCFA treatment **prevents post‑menopausal‑type and inflammation‑induced bone loss** and **increases trabecular bone volume** via reduced resorption (29302038) or enhanced formation (30446387) in mouse models【PMID:29302038】【PMID:30446387】. *(Outcome evidence; animal)*  \n\n* **Overall inference** – Combining dysbiosis‑induced SCFA deficiency (diet/antibiotic studies) with SCFA‑driven osteoclast inhibition and T‑reg‑mediated osteoblast activation builds a plausible mechanistic pathway: *gut dysbiosis → ↓/altered SCFA → immune‑metabolic remodeling of bone cells → altered bone remodeling → bone disease*. No direct human interventional data yet, but the animal and cellular data provide the core mechanistic links.  \n\n**Conclusion:** Experimental mouse and cell‑culture work shows that gut dysbiosis‑driven changes in volatile fatty acids can"
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 4.3198466300964355e-05,
+    "vector_index": 2.382836490869522,
+    "kg_expansion": 1.1868774890899658e-05,
+    "answer_traditional_rag": 33.12490164488554,
+    "total": 36.04885143041611
+  },
+  "token_usage": {
+    "total_tokens": 5080,
+    "input_tokens": 3880,
+    "output_tokens": 1200
+  },
+  "completed_at": "2026-08-16T18:05:22.663856+00:00"
+}

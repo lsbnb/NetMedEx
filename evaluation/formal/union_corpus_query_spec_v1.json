@@ -1,0 +1,18 @@
+{
+  "name": "bridge-withheld-union-corpus-query-spec-v1",
+  "per_stratum_articles": 20,
+  "questions": {
+    "BW003": {
+      "source": "CFTR AND (mutation OR dysfunction)",
+      "target": "\"intestinal inflammation\"",
+      "endpoint_pair": "CFTR AND (intestine OR intestinal) AND inflammation",
+      "forbidden_mediators": ["dysbiosis", "nf-kb", "nf-kappa", "cytokine", "permeability"]
+    },
+    "BW008": {
+      "source": "(\"hepatitis B\" OR HBV) AND chronic",
+      "target": "\"hepatocellular carcinoma\"",
+      "endpoint_pair": "(\"hepatitis B virus\" OR HBV) AND \"hepatocellular carcinoma\"",
+      "forbidden_mediators": ["inflammation", "fibrosis", "cirrhosis", "hbx", "integration"]
+    }
+  }
+}

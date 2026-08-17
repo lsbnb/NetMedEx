@@ -1,0 +1,991 @@
+{
+  "status": "complete",
+  "question_id": "PP007",
+  "domain": "cancer",
+  "question": "What evidence supports a mechanistic path from curcumin to apoptosis through p53? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "curcumin AND apoptosis AND cancer AND (gene OR pathway)",
+  "effective_pubmed_query": "curcumin AND apoptosis AND cancer AND (gene OR pathway)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "15810876",
+    "29693253",
+    "30623450",
+    "30725357",
+    "31590362",
+    "32519340",
+    "35722665",
+    "37776274",
+    "38031951",
+    "38166505",
+    "38269517",
+    "38699926",
+    "39219410",
+    "41109942",
+    "41252742"
+  ],
+  "graph": {
+    "node_count": 89,
+    "edge_count": 126,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 3,
+    "pre_gate_candidate_count": 3,
+    "pre_gate_candidates": [
+      {
+        "path_id": "Q004-P01",
+        "path_signature": "365a23ddd1189115",
+        "path_text": "curcumin ->[upregulates] p53 | p53 ->[increases] apoptosis",
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "7157_Gene",
+          "GO:0006915_BiologicalProcess"
+        ],
+        "names": [
+          "curcumin",
+          "p53",
+          "apoptosis"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "p53"
+          ],
+          [
+            "Apoptosis",
+            "apoptosis",
+            "apoptosis signaling"
+          ]
+        ],
+        "relations": [
+          "upregulates",
+          "increases"
+        ],
+        "edge_pmids": [
+          [
+            "30623450"
+          ],
+          [
+            "30623450"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin can also upregulate the expression and activity of p53 that inhibits tumor cell proliferation and increases apoptosis."
+          ],
+          [
+            "Curcumin can also upregulate the expression and activity of p53 that inhibits tumor cell proliferation and increases apoptosis."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "upregulates",
+            "selected_pmid": "30623450",
+            "selected_quote": "Curcumin can also upregulate the expression and activity of p53 that inhibits tumor cell proliferation and increases apoptosis.",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "b989f5409d77f80c6c7785cc5bfb00fd674d9a38",
+              "schema_version": 1,
+              "pmid": "30623450",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "7157_Gene",
+              "relation": "upregulates",
+              "evidence": "Curcumin can also upregulate the expression and activity of p53 that inhibits tumor cell proliferation and increases apoptosis.",
+              "confidence": 0.9,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "increases",
+            "selected_pmid": "30623450",
+            "selected_quote": "Curcumin can also upregulate the expression and activity of p53 that inhibits tumor cell proliferation and increases apoptosis.",
+            "selected_confidence": 0.8,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "c85944f0cf386410bd19847463128d16d13bb8df",
+              "schema_version": 1,
+              "pmid": "30623450",
+              "source_id": "7157_Gene",
+              "target_id": "GO:0006915_BiologicalProcess",
+              "relation": "increases",
+              "evidence": "Curcumin can also upregulate the expression and activity of p53 that inhibits tumor cell proliferation and increases apoptosis.",
+              "confidence": 0.8,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 57,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": true,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "two_hop",
+          "all_support_in_text_top_k",
+          "bridge_visible_in_text",
+          "query_path_aligned"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.621,
+        "hop_count": 2,
+        "path_relevance_score": 0.8105,
+        "graph_relevance_score": 0.621,
+        "query_endpoint_coverage": 1.0,
+        "requested_bridge_coverage": 1.0,
+        "query_bridge_precision": 1.0,
+        "query_path_alignment_score": 1.0,
+        "incremental_mechanism_score": 0.1,
+        "mechanism_utility_score": 0.490775
+      },
+      {
+        "path_id": "Q004-P02",
+        "path_signature": "a48c9071e59e7e2d",
+        "path_text": "curcumin ->[induces] apoptosis",
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "GO:0006915_BiologicalProcess"
+        ],
+        "names": [
+          "curcumin",
+          "apoptosis"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "Apoptosis",
+            "apoptosis",
+            "apoptosis signaling"
+          ]
+        ],
+        "relations": [
+          "induces"
+        ],
+        "edge_pmids": [
+          [
+            "15810876"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin-induced apoptosis mainly involves the mitochondria-mediated pathway in various cancer cells of different tissues of origin."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "induces",
+            "selected_pmid": "15810876",
+            "selected_quote": "Curcumin-induced apoptosis mainly involves the mitochondria-mediated pathway in various cancer cells of different tissues of origin.",
+            "selected_confidence": 0.98,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "5f108510d54ee516d41b802e332eee0ff20dbc5f",
+              "schema_version": 1,
+              "pmid": "15810876",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "GO:0006915_BiologicalProcess",
+              "relation": "induces",
+              "evidence": "Curcumin-induced apoptosis mainly involves the mitochondria-mediated pathway in various cancer cells of different tissues of origin.",
+              "confidence": 0.98,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text",
+          "query_path_misaligned"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 1.029,
+        "hop_count": 1,
+        "path_relevance_score": 0.8,
+        "graph_relevance_score": 1.0,
+        "query_endpoint_coverage": 1.0,
+        "requested_bridge_coverage": 0.0,
+        "query_bridge_precision": 1.0,
+        "query_path_alignment_score": 0.6,
+        "incremental_mechanism_score": 0.25,
+        "mechanism_utility_score": 0.5525
+      },
+      {
+        "path_id": "Q004-P03",
+        "path_signature": "f304e9bf2cf16017",
+        "path_text": "curcumin ->[induces] apoptosis",
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "R-HSA-109581_Pathway"
+        ],
+        "names": [
+          "curcumin",
+          "apoptosis"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "Apoptosis",
+            "apoptosis"
+          ]
+        ],
+        "relations": [
+          "induces"
+        ],
+        "edge_pmids": [
+          [
+            "32519340"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin also can induce autophagy, apoptosis, and cell cycle arrest to reduce the viability and proliferation of lung cancer cells"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "induces",
+            "selected_pmid": "32519340",
+            "selected_quote": "Curcumin also can induce autophagy, apoptosis, and cell cycle arrest to reduce the viability and proliferation of lung cancer cells",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "8858c7d0ff5f03876b05d844feb5e817efa796f4",
+              "schema_version": 1,
+              "pmid": "32519340",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "R-HSA-109581_Pathway",
+              "relation": "induces",
+              "evidence": "Curcumin also can induce autophagy, apoptosis, and cell cycle arrest to reduce the viability and proliferation of lung cancer cells",
+              "confidence": 0.9,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 4,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text",
+          "query_path_misaligned"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.849,
+        "hop_count": 1,
+        "path_relevance_score": 0.7245,
+        "graph_relevance_score": 0.849,
+        "query_endpoint_coverage": 1.0,
+        "requested_bridge_coverage": 0.0,
+        "query_bridge_precision": 1.0,
+        "query_path_alignment_score": 0.6,
+        "incremental_mechanism_score": 0.25,
+        "mechanism_utility_score": 0.510975
+      }
+    ],
+    "preferred_pmids": [
+      "15810876",
+      "30623450",
+      "32519340"
+    ],
+    "paths": [
+      {
+        "path_id": "PP007-P01",
+        "path_signature": "365a23ddd1189115",
+        "path_text": "curcumin ->[upregulates] p53 | p53 ->[increases] apoptosis",
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "7157_Gene",
+          "GO:0006915_BiologicalProcess"
+        ],
+        "names": [
+          "curcumin",
+          "p53",
+          "apoptosis"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "p53"
+          ],
+          [
+            "Apoptosis",
+            "apoptosis",
+            "apoptosis signaling"
+          ]
+        ],
+        "relations": [
+          "upregulates",
+          "increases"
+        ],
+        "edge_pmids": [
+          [
+            "30623450"
+          ],
+          [
+            "30623450"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin can also upregulate the expression and activity of p53 that inhibits tumor cell proliferation and increases apoptosis."
+          ],
+          [
+            "Curcumin can also upregulate the expression and activity of p53 that inhibits tumor cell proliferation and increases apoptosis."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "upregulates",
+            "selected_pmid": "30623450",
+            "selected_quote": "Curcumin can also upregulate the expression and activity of p53 that inhibits tumor cell proliferation and increases apoptosis.",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "b989f5409d77f80c6c7785cc5bfb00fd674d9a38",
+              "schema_version": 1,
+              "pmid": "30623450",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "7157_Gene",
+              "relation": "upregulates",
+              "evidence": "Curcumin can also upregulate the expression and activity of p53 that inhibits tumor cell proliferation and increases apoptosis.",
+              "confidence": 0.9,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "increases",
+            "selected_pmid": "30623450",
+            "selected_quote": "Curcumin can also upregulate the expression and activity of p53 that inhibits tumor cell proliferation and increases apoptosis.",
+            "selected_confidence": 0.8,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "c85944f0cf386410bd19847463128d16d13bb8df",
+              "schema_version": 1,
+              "pmid": "30623450",
+              "source_id": "7157_Gene",
+              "target_id": "GO:0006915_BiologicalProcess",
+              "relation": "increases",
+              "evidence": "Curcumin can also upregulate the expression and activity of p53 that inhibits tumor cell proliferation and increases apoptosis.",
+              "confidence": 0.8,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 57,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": true,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "two_hop",
+          "all_support_in_text_top_k",
+          "bridge_visible_in_text",
+          "query_path_aligned"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "path_relevance_score": 0.8105,
+        "graph_relevance_score": 0.621,
+        "query_endpoint_coverage": 1.0,
+        "requested_bridge_coverage": 1.0,
+        "query_bridge_precision": 1.0,
+        "query_path_alignment_score": 1.0,
+        "incremental_mechanism_score": 0.1,
+        "mechanism_utility_score": 0.490775,
+        "score": 0.621,
+        "hop_count": 2
+      },
+      {
+        "path_id": "PP007-P02",
+        "path_signature": "a48c9071e59e7e2d",
+        "path_text": "curcumin ->[induces] apoptosis",
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "GO:0006915_BiologicalProcess"
+        ],
+        "names": [
+          "curcumin",
+          "apoptosis"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "Apoptosis",
+            "apoptosis",
+            "apoptosis signaling"
+          ]
+        ],
+        "relations": [
+          "induces"
+        ],
+        "edge_pmids": [
+          [
+            "15810876"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin-induced apoptosis mainly involves the mitochondria-mediated pathway in various cancer cells of different tissues of origin."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "induces",
+            "selected_pmid": "15810876",
+            "selected_quote": "Curcumin-induced apoptosis mainly involves the mitochondria-mediated pathway in various cancer cells of different tissues of origin.",
+            "selected_confidence": 0.98,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "5f108510d54ee516d41b802e332eee0ff20dbc5f",
+              "schema_version": 1,
+              "pmid": "15810876",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "GO:0006915_BiologicalProcess",
+              "relation": "induces",
+              "evidence": "Curcumin-induced apoptosis mainly involves the mitochondria-mediated pathway in various cancer cells of different tissues of origin.",
+              "confidence": 0.98,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text",
+          "query_path_misaligned"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "path_relevance_score": 0.8,
+        "graph_relevance_score": 1.0,
+        "query_endpoint_coverage": 1.0,
+        "requested_bridge_coverage": 0.0,
+        "query_bridge_precision": 1.0,
+        "query_path_alignment_score": 0.6,
+        "incremental_mechanism_score": 0.25,
+        "mechanism_utility_score": 0.5525,
+        "score": 1.029,
+        "hop_count": 1
+      },
+      {
+        "path_id": "PP007-P03",
+        "path_signature": "f304e9bf2cf16017",
+        "path_text": "curcumin ->[induces] apoptosis",
+        "node_ids": [
+          "MESH:D003474_Chemical",
+          "R-HSA-109581_Pathway"
+        ],
+        "names": [
+          "curcumin",
+          "apoptosis"
+        ],
+        "node_aliases": [
+          [
+            "CUR",
+            "CURC",
+            "Curcumin",
+            "curcumin",
+            "diferuloyl methane"
+          ],
+          [
+            "Apoptosis",
+            "apoptosis"
+          ]
+        ],
+        "relations": [
+          "induces"
+        ],
+        "edge_pmids": [
+          [
+            "32519340"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Curcumin also can induce autophagy, apoptosis, and cell cycle arrest to reduce the viability and proliferation of lung cancer cells"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "induces",
+            "selected_pmid": "32519340",
+            "selected_quote": "Curcumin also can induce autophagy, apoptosis, and cell cycle arrest to reduce the viability and proliferation of lung cancer cells",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "8858c7d0ff5f03876b05d844feb5e817efa796f4",
+              "schema_version": 1,
+              "pmid": "32519340",
+              "source_id": "MESH:D003474_Chemical",
+              "target_id": "R-HSA-109581_Pathway",
+              "relation": "induces",
+              "evidence": "Curcumin also can induce autophagy, apoptosis, and cell cycle arrest to reduce the viability and proliferation of lung cancer cells",
+              "confidence": 0.9,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 4,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text",
+          "query_path_misaligned"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "path_relevance_score": 0.7245,
+        "graph_relevance_score": 0.849,
+        "query_endpoint_coverage": 1.0,
+        "requested_bridge_coverage": 0.0,
+        "query_bridge_precision": 1.0,
+        "query_path_alignment_score": 0.6,
+        "incremental_mechanism_score": 0.25,
+        "mechanism_utility_score": 0.510975,
+        "score": 0.849,
+        "hop_count": 1
+      }
+    ]
+  },
+  "evidence_exposure": {
+    "profile": "H_evidence_gated_four_hop",
+    "routed_profile": "H_evidence_gated_four_hop",
+    "selection_frozen_before_answers": true,
+    "source_result": "evaluation/formal/runs/abcd20_path_replay_v2/questions/Q004/result.json",
+    "expanded_reliable_pool": true,
+    "frozen_exposure_source": "evaluation/formal/path_positive_20_v1/frozen_exposures_expanded/PP007/result.json",
+    "frozen_candidate_path_count": 3,
+    "frozen_exposed_path_count": 3,
+    "exposed_pmids": [
+      "15810876",
+      "30623450",
+      "32519340"
+    ],
+    "exposed_paths": [
+      [
+        "curcumin",
+        "p53",
+        "apoptosis"
+      ],
+      [
+        "curcumin",
+        "apoptosis"
+      ],
+      [
+        "curcumin",
+        "apoptosis"
+      ]
+    ],
+    "exposed_edges": [
+      "curcumin ->[upregulates] p53 | p53 ->[increases] apoptosis",
+      "curcumin ->[induces] apoptosis",
+      "curcumin ->[induces] apoptosis"
+    ],
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 3,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [
+        "p53"
+      ],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "pre_gate_incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 3,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [
+        "p53"
+      ],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "integration_decision": {
+      "method": "three_stage_incremental_utility_router_v1",
+      "mode": "citation_validation",
+      "reason": "claim_safe_confirmation_only",
+      "claim_safe_path_count": 3,
+      "incremental_path_count": 0,
+      "confirmatory_path_count": 3,
+      "citation_validation_pmids": [
+        "15810876",
+        "30623450",
+        "32519340"
+      ],
+      "policy": "three_stage"
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "disabled",
+      "reason": "integration_mode=citation_validation",
+      "boosted_pmids": {}
+    },
+    "fallback_answer_reused": {
+      "source": "evaluation/formal/runs/hybrid_gain_v2_query_aligned/arm_B/questions/PP007/result.json",
+      "source_system": "traditional_rag",
+      "mode": "citation_validation"
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "15810876",
+        "score": 0.5854452378113403
+      },
+      {
+        "pmid": "38031951",
+        "score": 0.5681875170095074
+      },
+      {
+        "pmid": "38699926",
+        "score": 0.5629459373170772
+      },
+      {
+        "pmid": "30623450",
+        "score": 0.5628830810904553
+      },
+      {
+        "pmid": "31590362",
+        "score": 0.5462055206514923
+      },
+      {
+        "pmid": "32519340",
+        "score": 0.5460979578471317
+      },
+      {
+        "pmid": "29693253",
+        "score": 0.5398538420128113
+      },
+      {
+        "pmid": "41109942",
+        "score": 0.5182263549103346
+      },
+      {
+        "pmid": "41252742",
+        "score": 0.5133090885593484
+      },
+      {
+        "pmid": "30725357",
+        "score": 0.5066911851667424
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "15810876",
+        "score": 0.5854452378113403
+      },
+      {
+        "pmid": "38031951",
+        "score": 0.5681875170095074
+      },
+      {
+        "pmid": "38699926",
+        "score": 0.5629459373170772
+      },
+      {
+        "pmid": "30623450",
+        "score": 0.5628830810904553
+      },
+      {
+        "pmid": "31590362",
+        "score": 0.5462055206514923
+      },
+      {
+        "pmid": "32519340",
+        "score": 0.5460979578471317
+      },
+      {
+        "pmid": "29693253",
+        "score": 0.5398538420128113
+      },
+      {
+        "pmid": "41109942",
+        "score": 0.5182263549103346
+      },
+      {
+        "pmid": "41252742",
+        "score": 0.5133090885593484
+      },
+      {
+        "pmid": "30725357",
+        "score": 0.5066911851667424
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "**Direct evidence**\n\n• Curcumin induces apoptosis in diverse human cancer cell lines (e.g., thymocytes, colorectal, gastric, lung) through mitochondrial and intrinsic pathways【PMID:15810876】, 【PMID:38031951】, 【PMID:30725357】 (in‑vitro human cells).  \n\n**Link 1: Curcumin → p53 up‑regulation**\n\n• A review of mechanistic studies reports that curcumin “up‑regulates the expression and activity of p53” which “inhibits tumor cell proliferation and increases apoptosis”【PMID:30623450】 (in‑vitro human tumor models). This is a direct molecular association observed after curcumin treatment.\n\n**Link 2: p53 → Apoptosis**\n\n• The same source states that p53 activation “inhibits tumor cell proliferation and increases apoptosis,” indicating that p53 functions as a pro‑apoptotic transcription factor in the context of curcumin‑treated cells【PMID:30623450】 (human cell‑based evidence).  \n\n**Association (overall pathway inference)**\n\n• Multiple studies confirm that curcumin‑treated cancer cells show increased Sub‑G1 (apoptotic) fractions and activation of intrinsic apoptotic markers, while the p53‑dependent transcriptional program is a known route to such death. Together, the evidence supports a mechanistic cascade: curcumin → p53 up‑regulation → p53‑mediated apoptotic signaling → cell death【PMID:15810876】【PMID:30623450】 (in‑vitro human evidence).  \n\n**Testable hypothesis**\n\n• If p53 is knocked down or inhibited in curcumin‑treated cells, the apoptotic response should be attenuated, directly testing the curcumin → p53 → apoptosis axis.  \n\n**Conclusion** – The literature provides direct in‑vitro human evidence that curcumin up‑regulates p53, and that p53 activation drives apoptosis, supporting a mechanistic pathway from curcumin to cell death via p53."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 3.775954246520996e-05,
+    "vector_index": 1.7796488404273987,
+    "kg_expansion": 5.889683961868286e-05,
+    "answer_netmedex_hybrid_rag": 0.0,
+    "total": 2.2786467373371124
+  },
+  "token_usage": {},
+  "completed_at": "2026-08-16T19:46:20.042760+00:00"
+}

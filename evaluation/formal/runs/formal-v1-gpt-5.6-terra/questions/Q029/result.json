@@ -1,0 +1,106 @@
+{
+  "status": "complete",
+  "question_id": "Q029",
+  "domain": "vascular biology",
+  "question": "What mechanisms connect endothelial senescence to atherosclerosis?",
+  "pubmed_query": "endothelial senescence atherosclerosis oxidative stress inflammation SASP",
+  "language": "English",
+  "corpus_pmids": [
+    "37107335",
+    "39119148",
+    "40113668",
+    "40418230",
+    "40681353",
+    "41587514",
+    "42065920"
+  ],
+  "graph": {
+    "node_count": 28,
+    "edge_count": 45,
+    "path_count": 20,
+    "preferred_pmids": [
+      "37107335",
+      "40113668",
+      "40418230",
+      "40681353",
+      "42065920"
+    ]
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "40681353",
+        "score": 0.9938739638467622
+      },
+      {
+        "pmid": "42065920",
+        "score": 0.9600754453818316
+      },
+      {
+        "pmid": "40418230",
+        "score": 0.9327631550417321
+      },
+      {
+        "pmid": "37107335",
+        "score": 0.8403167888895493
+      },
+      {
+        "pmid": "40113668",
+        "score": 0.8400646967168649
+      },
+      {
+        "pmid": "39119148",
+        "score": 0.6086081043050243
+      },
+      {
+        "pmid": "41587514",
+        "score": 0.600091695491705
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "40681353",
+        "score": 0.6625826425645082
+      },
+      {
+        "pmid": "42065920",
+        "score": 0.6400502969212211
+      },
+      {
+        "pmid": "40418230",
+        "score": 0.6218421033611548
+      },
+      {
+        "pmid": "39119148",
+        "score": 0.6086081043050243
+      },
+      {
+        "pmid": "41587514",
+        "score": 0.600091695491705
+      },
+      {
+        "pmid": "37107335",
+        "score": 0.5602111925930329
+      },
+      {
+        "pmid": "40113668",
+        "score": 0.5600431311445766
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "## Direct evidence\n\n- **Oxidative stress and impaired autophagy can induce endothelial senescence and worsen atherosclerosis.** In ApoE−/− mice, poliumoside reduced aortic senescence markers/SA-β-gal staining, improved autophagy dysfunction, and reduced atherosclerotic lesions. In HUVECs exposed to H₂O₂, it reduced oxidative stress, senescence markers (p16, p21, p53), and SASP output. Mechanistically, the reported pathway was MKRN2-dependent inhibition of PI3K/AKT/mTOR phosphorylation, restoring autophagy; MKRN2 knockdown weakened these effects. **Animal plus human endothelial-cell in-vitro evidence** [PMID: 41587514].\n\n- **DNA damage/oxidative stress–linked endothelial senescence drives a pro-inflammatory secretory state.** In ethanol-exposed endothelial cells, colchicine reduced oxidative stress, p21 expression, and SASP; restored the DNA-repair proteins KU70/KU80; and inhibited NF-κB and MAPK activation. This supports a chain of endothelial injury → defective DNA-repair/oxidative stress → senescence → NF-κB/MAPK-associated SASP. **In-vitro endothelial-cell evidence; no atherosclerosis lesion endpoint in this study** [PMID: 37107335].\n\n## Association and mechanistic synthesis\n\n- **Endothelial senescence is linked to endothelial dysfunction, a central atherogenic vascular phenotype.** Senescent endothelial cells lose proliferative and functional capacity, while vascular senescence is associated with endothelial dysfunction, arterial stiffness, atherosclerosis, and cardiovascular risk. DNA damage, oxidative stress, and chronic inflammation converge on p53/p21 and p16/Rb senescence pathways [PMID: 40418230]. **Predominantly review-level evidence; human and experimental evidence are discussed, but the supplied abstract does not assign each mechanism to a specific model.**\n\n- **SASP is a plausible amplifier from senescent endothelium to plaque progression.** Senescent vascular cells remain metabolically active and release inflammatory SASP factors, increasing inflammation and oxidative stress; these processes promote vascular injury and atherosclerosis [PMID: 39119148; PMID: 40681353]. In diabetic atherosclerosis, hyperglycemia and lipotoxicity are described as causing oxidative stress, mitochondrial dysfunction, and NLRP3 inflammasome activation in endothelial cells, smooth-muscle cells, and macrophages; the resultant SASP amplifies vascular inflammation and is associated with plaque instability [PMID: 42065920]. **Review-level association/synthesis.**\n\n- **Mitochondrial dysfunction and inflammasome signaling may connect metabolic stress to endothelial senescence.** The supplied evidence identifies oxidative stress, mitochondrial dysfunction, and NLRP3 inflammasome activation as stress-senescence mechanisms in diabetic atherosclerosis [PMID: 42065920]. This is consistent with the broader aging/atherosclerosis framework in which mitochondrial oxidative stress, immune senescence, SASP, endothelial dysfunction, and smooth-muscle phenotypic switching jointly sustain chronic inflammation and vascular injury [PMID: 40681353]. **Association; endothelial-specific causal proof is not provided in the supplied abstracts.**\n\n## Integrated mechanism\n\nA context-supported model is:\n\n1. **Atherogenic stresses**—aging-associated chronic inflammation, oxidative stress, DNA damage, metabolic stress (hyperglycemia/lipotoxicity), and possibly impaired autophagy—promote endothelial senescence through p53/p21 and p16/Rb programs [PMID: 40418230; PMID: 42065920; PMID: 41587514].  \n2. **Senescent endothelial cells become dysfunctional** and generate SASP, with NF-κB/MAPK signaling implicated in at least one endothelial in-vitro model [PMID: 37107335].  \n3. **SASP-driven inflammation and oxidative stress amplify vascular injury**, recruit or activate other vascular/immune compartments, and coexist with VSMC phenotypic changes and immune senescence, promoting plaque progression and potentially instability [PMID: 40681353; PMID: 42065920].  \n4. This can form a **self-reinforcing aging–atherosclerosis cycle**, in which atherosclerosis-associated vascular injury further sustains senescence and chronic inflammation [PMID: 40681353].\n\n## Testable hypotheses\n\n- Endothelial-selective restoration of autophagy, particularly through the **MKRN2–PI3K/AKT/mTOR axis**, will reduce endothelial SASP and plaque burden independently of systemic lipid lowering. This is supported by mouse/HUVEC findings but requires endothelial-specific causal testing [PMID: 41587514].\n\n- Blocking **NF-κB/MAPK-dependent SASP** after endothelial senescence has already developed will reduce vascular inflammation and improve plaque stability. The supplied endothelial-cell study supports suppression of these signals and SASP, but does not directly establish plaque-stability effects [PMID: 37107335].\n\n- In diabetes, endothelial-targeted interruption of **oxidative stress–mitochondrial dysfunction–NLRP3** signaling will prevent the propagation of senescence to macrophages and VSMCs and thereby slow diabetic atherosclerosis. This is a coherent hypothesis from the review evidence, not direct endothelial-specific proof in the supplied context [PMID: 42065920].\n\n**Evidence absent from the supplied context:** direct demonstrations of specific endothelial adhesion molecules, nitric-oxide/eNOS loss, leukocyte recruitment, or LDL retention as the immediate downstream mediators between endothelial senescence and plaque formation.",
+    "traditional_rag": "## Direct evidence\n\n### Human evidence\n- Endothelial senescence is characterized by loss of endothelial proliferative/functional capacity and is associated with **endothelial dysfunction**, an age-related arterial phenotype that contributes to atherosclerosis. Senescent vascular cells remain metabolically active and release pro-inflammatory SASP factors, increasing inflammation and oxidative stress. [PMID: 39119148; PMID: 40418230]\n- In clinical/vascular-aging literature, vascular senescence is linked with atherosclerosis and elevated cardiovascular risk; however, the supplied records are principally reviews and do not establish a specific causal effect size in humans. [PMID: 40418230]\n\n### Animal evidence\n- In ApoE-deficient mice, reducing endothelial/vascular senescence was accompanied by smaller atherosclerotic lesions. Poliumoside reduced aortic senescence markers and SA-β-gal staining, improved autophagy dysfunction, and attenuated atherosclerotic lesions. [PMID: 41587514]\n- This supports a mechanistic sequence in which endothelial senescence, particularly when coupled to defective autophagy and oxidative stress, promotes lesion development in an experimental atherosclerosis model. [PMID: 41587514]\n\n### In-vitro evidence\n- Oxidative stress can induce endothelial senescence. In HUVECs, H₂O₂-induced senescence increased p16, p21, and p53, increased SASP output, impaired autophagy, and increased oxidative stress. The PI3K/AKT/mTOR pathway and MKRN2 were implicated in this autophagy–senescence axis. [PMID: 41587514]\n- Ethanol-exposed endothelial cells developed oxidative stress, p21 elevation, impaired DNA-repair protein expression (KU70/KU80), activation of NF-κB and MAPKs, and a heightened SASP. [PMID: 37107335]\n- These findings identify oxidative stress, DNA-damage/repair failure, p53/p21 and p16/Rb senescence programs, NF-κB/MAPK inflammatory signaling, and impaired autophagy as mechanisms that generate or maintain endothelial senescence. [PMID: 37107335; PMID: 41587514; PMID: 40418230]\n\n## Mechanistic connections to atherosclerosis\n\n1. **Oxidative stress and mitochondrial dysfunction induce endothelial senescence.**  \n   Aging-related oxidative stress, DNA damage, and chronic inflammation converge on endothelial senescence pathways. In diabetes, hyperglycemia and lipotoxicity are proposed to accelerate this process through oxidative stress, mitochondrial dysfunction, and NLRP3 inflammasome activation. [PMID: 40418230; PMID: 42065920]\n\n2. **Senescence programs produce persistent endothelial dysfunction.**  \n   Activation of p53/p21 and p16/Rb pathways causes stable cell-cycle arrest and loss of endothelial functional capacity. Endothelial dysfunction is an established arterial aging phenotype that contributes to atherosclerosis progression. [PMID: 40418230; PMID: 39119148]\n\n3. **SASP sustains vascular inflammation.**  \n   Senescent endothelial cells secrete inflammatory SASP mediators. This raises vascular inflammation and oxidative stress, promotes vascular injury, and can reinforce senescence in surrounding cells. In diabetic atherosclerosis, SASP is proposed to amplify chronic vascular inflammation and promote plaque instability. [PMID: 39119148; PMID: 40681353; PMID: 42065920]\n\n4. **Inflammatory signaling links endothelial stress to plaque formation and rupture.**  \n   NF-κB and MAPK activation accompany endothelial senescence and SASP induction in vitro. Vessel accumulation of senescent cells is reported to contribute to vascular “inflammaging,” plaque formation, and plaque rupture. [PMID: 37107335]\n\n5. **Autophagy failure can reinforce senescence and lesion progression.**  \n   Experimental evidence in HUVECs and ApoE-deficient mice links impaired autophagy to endothelial senescence and atherosclerosis. Modulation of the MKRN2–PI3K/AKT/mTOR axis restored autophagy, reduced senescence-associated changes, and reduced lesions in mice. [PMID: 41587514]\n\n6. **Cross-talk with other vascular and immune cells may worsen plaques.**  \n   Atherosclerosis and aging share endothelial dysfunction, vascular smooth-muscle-cell phenotypic switching, immune senescence, mitochondrial oxidative stress, and SASP signaling. Together these pathways promote chronic inflammation and vascular injury. [PMID: 40681353] In diabetic atherosclerosis, senescence is also proposed in smooth-muscle cells and macrophages, potentially contributing to inflammation and plaque instability. [PMID: 42065920]\n\n## Association\n\n- Aging is a major independent risk factor for atherosclerosis, and endothelial dysfunction, arterial stiffness, vascular senescence, and atherosclerosis commonly co-occur. [PMID: 39119148; PMID: 40418230; PMID: 40681353]\n- The relationship may be bidirectional: atherosclerosis-associated vascular injury may accelerate systemic and vascular aging/senescence, creating a self-reinforcing cycle. [PMID: 40681353]\n- In diabetic atherosclerosis, stress-induced senescence is proposed as a central disease mechanism beyond conventional metabolic and lipid pathways. [PMID: 42065920]\n\n## Testable hypothesis\n\nEndothelial senescence promotes atherosclerosis through a feed-forward circuit: oxidative/metabolic stress and DNA damage activate p53/p21 and p16/Rb programs and impair autophagy; senescent endothelial cells then generate SASP via pathways including NF-κB/MAPK, producing chronic inflammation, oxidative injury, dysfunction of the endothelial barrier, and secondary senescence in vascular smooth-muscle and immune cells. This environment would favor plaque initiation, growth, and instability. This integrated model is supported by the supplied animal and in-vitro evidence, but requires direct causal validation in humans. [PMID: 37107335; PMID: 41587514; PMID: 40681353; PMID: 42065920]",
+    "general_llm": "Endothelial senescence is a state in which endothelial cells permanently lose proliferative capacity and adopt a dysfunctional, inflammatory phenotype. It is thought to promote atherosclerosis through several interconnected mechanisms.\n\n## 1. Loss of normal endothelial protective functions\n\nHealthy endothelium limits leukocyte adhesion, regulates vascular tone, resists thrombosis, and maintains a selective barrier. Senescent endothelial cells show:\n\n- **Reduced nitric oxide (NO) bioavailability**, due in part to impaired endothelial nitric oxide synthase activity and increased oxidative stress. Lower NO promotes vasoconstriction, platelet activation, inflammation, and smooth-muscle-cell proliferation.\n- **Increased reactive oxygen species (ROS)**, from mitochondrial dysfunction, NADPH oxidases, uncoupled eNOS, and other sources. ROS can oxidize LDL, damage DNA, and further reinforce senescence.\n- **Reduced endothelial repair capacity**, because senescent cells no longer divide effectively and may impair the function of endothelial progenitor or neighboring endothelial cells.\n\nThese changes make the arterial wall more susceptible to lipid deposition and inflammatory injury.\n\n## 2. Increased leukocyte recruitment and vascular inflammation\n\nSenescent endothelial cells often develop a pro-inflammatory secretory program, commonly called the **senescence-associated secretory phenotype (SASP)**. This can include cytokines, chemokines, growth factors, proteases, and procoagulant mediators.\n\nImportant consequences include increased endothelial expression of adhesion molecules such as:\n\n- **VCAM-1**\n- **ICAM-1**\n- **E-selectin** and related selectins\n\nThis facilitates monocyte rolling, adhesion, and migration into the intima. Once present, monocytes can become macrophages, take up modified lipoproteins, and form foam cells—central events in early atheroma development.\n\nSenescent endothelial cells can also release chemokines such as MCP-1/CCL2 and inflammatory cytokines including IL-6 and IL-1–related signals, although the exact SASP composition varies by vascular bed and trigger.\n\n## 3. Increased permeability and entry of atherogenic lipoproteins\n\nEndothelial senescence can disrupt cell junctions, the glycocalyx, and cytoskeletal organization. This may increase permeability to circulating LDL and other plasma components.\n\nIn addition, senescence-associated oxidative stress favors:\n\n- Retention and modification of LDL within the arterial wall\n- Formation of oxidized LDL\n- Amplification of local inflammatory signaling\n\nDisturbed flow regions—such as arterial branches and curvatures—are particularly vulnerable because they combine low or oscillatory shear stress with inflammatory endothelial signaling. These are also the classic sites of atherosclerotic plaque formation.\n\n## 4. Feed-forward oxidative stress and DNA damage\n\nAtherosclerotic risk factors can induce endothelial senescence, including:\n\n- Aging\n- Hyperlipidemia and oxidized LDL\n- Hypertension\n- Diabetes and hyperglycemia\n- Cigarette smoke\n- Chronic inflammation\n- Disturbed shear stress\n\nThese exposures cause oxidative stress, mitochondrial injury, telomere dysfunction, and DNA damage responses involving pathways such as p53–p21 and p16INK4a–Rb. Once senescence develops, the resulting ROS and inflammatory mediators can damage neighboring cells, producing a self-reinforcing cycle of endothelial dysfunction, inflammation, and plaque growth.\n\n## 5. Effects on vascular smooth muscle cells and plaque structure\n\nThrough secreted cytokines, growth factors, and matrix-remodeling enzymes, senescent endothelial cells may influence vascular smooth muscle cells (VSMCs). Potential effects include altered VSMC migration, proliferation, phenotype switching, and extracellular matrix remodeling.\n\nThis may contribute to plaque progression. In advanced lesions, inflammatory and proteolytic signaling can weaken the fibrous cap, although plaque instability is influenced by senescence in several cell types—not only endothelial cells, but also macrophages, smooth muscle cells, and other vascular cells.\n\n## 6. Prothrombotic changes\n\nSenescent endothelium can shift from an antithrombotic toward a prothrombotic state. Reported features include impaired NO and prostacyclin signaling, increased tissue-factor-related activity, reduced anticoagulant surface properties, and greater platelet adhesion. If an atherosclerotic plaque erodes or ruptures, these changes may facilitate thrombosis and acute cardiovascular events.\n\n## 7. Impaired angiogenic and regenerative responses\n\nEndothelial senescence reduces angiogenic competence and vascular repair. In plaques, dysfunctional neovascularization may contribute to fragile microvessels, intraplaque hemorrhage, and lesion progression, though the precise role of endothelial senescence in this process in humans remains incompletely defined.\n\n## Bidirectional relationship\n\nThe relationship is not one-way:\n\n- **Endothelial senescence can promote atherosclerosis.**\n- **The atherosclerotic environment can accelerate endothelial senescence.**\n\nFor example, oxidized lipids, inflammation, hypoxia, and disturbed flow within or near plaques can increase endothelial DNA damage and senescence-associated signaling.\n\n## Strength of evidence and remaining uncertainty\n\nThere is strong experimental and mechanistic support for the idea that endothelial dysfunction and senescence-related pathways contribute to atherosclerosis. Human studies also associate vascular aging and markers of endothelial senescence with cardiovascular disease.\n\nHowever, some uncertainties remain:\n\n- Senescence markers are not perfectly specific, especially in human tissue.\n- The relative contribution of endothelial senescence versus senescence of macrophages, VSMCs, or other cells varies across disease stages.\n- Removing senescent cells or modifying senescence pathways has shown promise in preclinical models, but it is not yet established as a routine clinical treatment for atherosclerosis.\n\nIn short, endothelial senescence promotes atherosclerosis by converting the endothelial lining from a barrier that is anti-inflammatory, vasodilatory, and antithrombotic into one that is permeable, inflammatory, oxidatively stressed, leukocyte-adhesive, and poorly reparative."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 1.0174794048070908,
+    "semantic_graph": 36.04168827831745,
+    "vector_index": 1.2368376329541206,
+    "answer_netmedex_hybrid_rag": 14.899466514587402,
+    "answer_traditional_rag": 11.751927502453327,
+    "answer_general_llm": 16.64711368829012,
+    "total": 83.24328055977821
+  },
+  "completed_at": "2026-07-27T18:36:22.523438+00:00"
+}

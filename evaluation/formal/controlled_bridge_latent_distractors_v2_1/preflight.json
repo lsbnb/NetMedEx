@@ -1,0 +1,126 @@
+{
+  "top_k": 10,
+  "question_count": 2,
+  "graph_build_eligible_question_count": 2,
+  "questions": [
+    {
+      "question_id": "BW003",
+      "document_count": 26,
+      "endpoint_leaks": [],
+      "eligible_mediators": [
+        "DUOX2"
+      ],
+      "graph_build_eligible": true,
+      "mediators": [
+        {
+          "mediator": "DUOX2",
+          "bridge_eligible": true,
+          "source_pmids": [
+            "19358684",
+            "31992345",
+            "35081328"
+          ],
+          "target_pmids": [
+            "37891968",
+            "39298837",
+            "41897439"
+          ],
+          "source_in_text_top_k": [
+            "31992345"
+          ],
+          "target_in_text_top_k": [],
+          "source_outside_text_top_k": [
+            "19358684",
+            "35081328"
+          ],
+          "target_outside_text_top_k": [
+            "37891968",
+            "39298837",
+            "41897439"
+          ],
+          "both_sides_exposed": false,
+          "graph_build_eligible": true,
+          "reasons": [
+            "exactly_one_bridge_side_withheld_from_text_top_k"
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "BW006",
+      "document_count": 32,
+      "endpoint_leaks": [],
+      "eligible_mediators": [
+        "HMGB1",
+        "Galectin-3"
+      ],
+      "graph_build_eligible": true,
+      "mediators": [
+        {
+          "mediator": "HMGB1",
+          "bridge_eligible": true,
+          "source_pmids": [
+            "32508664",
+            "34078746",
+            "35149132"
+          ],
+          "target_pmids": [
+            "28706906",
+            "37284446",
+            "37364421"
+          ],
+          "source_in_text_top_k": [
+            "32508664",
+            "34078746"
+          ],
+          "target_in_text_top_k": [],
+          "source_outside_text_top_k": [
+            "35149132"
+          ],
+          "target_outside_text_top_k": [
+            "28706906",
+            "37284446",
+            "37364421"
+          ],
+          "both_sides_exposed": false,
+          "graph_build_eligible": true,
+          "reasons": [
+            "exactly_one_bridge_side_withheld_from_text_top_k"
+          ]
+        },
+        {
+          "mediator": "Galectin-3",
+          "bridge_eligible": true,
+          "source_pmids": [
+            "29894670",
+            "40948348",
+            "41124255"
+          ],
+          "target_pmids": [
+            "38278025",
+            "40244022",
+            "41235339"
+          ],
+          "source_in_text_top_k": [
+            "29894670",
+            "41124255"
+          ],
+          "target_in_text_top_k": [],
+          "source_outside_text_top_k": [
+            "40948348"
+          ],
+          "target_outside_text_top_k": [
+            "38278025",
+            "40244022",
+            "41235339"
+          ],
+          "both_sides_exposed": false,
+          "graph_build_eligible": true,
+          "reasons": [
+            "exactly_one_bridge_side_withheld_from_text_top_k"
+          ]
+        }
+      ]
+    }
+  ]
+}

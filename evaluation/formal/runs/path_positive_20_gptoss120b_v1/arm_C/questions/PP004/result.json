@@ -1,0 +1,422 @@
+{
+  "status": "complete",
+  "question_id": "PP004",
+  "domain": "immunology",
+  "question": "What evidence supports the claim that il-17 promotes autoimmune disease, and what are the important study-context limitations?",
+  "question_type": "mechanism",
+  "pubmed_query": "IL-17 AND autoimmune disease AND (Th17 OR gamma-delta T cells OR innate lymphoid cells)",
+  "effective_pubmed_query": "IL-17 AND autoimmune disease AND (Th17 OR gamma-delta T cells OR innate lymphoid cells)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "25130295",
+    "25145755",
+    "25467639",
+    "27576555",
+    "27757507",
+    "30502718",
+    "30891627",
+    "31295952",
+    "31866067",
+    "34635393",
+    "34875227",
+    "35872102",
+    "37579542",
+    "37670700",
+    "39875232"
+  ],
+  "graph": {
+    "node_count": 35,
+    "edge_count": 41,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 1,
+    "pre_gate_candidate_count": 1,
+    "pre_gate_candidates": [
+      {
+        "path_id": "Q007-P01",
+        "path_signature": "decd42689d2018ff",
+        "path_text": "il-17 ->[promotes] autoimmune disease",
+        "node_ids": [
+          "3605_Gene",
+          "MESH:D001327_Disease"
+        ],
+        "names": [
+          "il-17",
+          "autoimmune disease"
+        ],
+        "node_aliases": [
+          [
+            "IL-17",
+            "IL-17A",
+            "IL-17A.",
+            "Interleukin 17A",
+            "interleukin (IL)-17",
+            "interleukin 17"
+          ],
+          [
+            "autoimmune",
+            "autoimmune disease",
+            "autoimmune diseases",
+            "autoimmune disorders",
+            "autoimmunity",
+            "inflammatory and autoimmune diseases"
+          ]
+        ],
+        "relations": [
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "27576555"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Consequently, multiple independent research groups identified IL-17-expressing RORgammat+CD4+ T cell population as a distinct subset of helper T cells which promotes autoimmune tissue inflammation."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "27576555",
+            "selected_quote": "Consequently, multiple independent research groups identified IL-17-expressing RORgammat+CD4+ T cell population as a distinct subset of helper T cells which promotes autoimmune tissue inflammation.",
+            "selected_confidence": 0.92,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "08957ad2ba21d6551e82311cc864c3943b91e088",
+              "schema_version": 1,
+              "pmid": "27576555",
+              "source_id": "3605_Gene",
+              "target_id": "MESH:D001327_Disease",
+              "relation": "promotes",
+              "evidence": "Consequently, multiple independent research groups identified IL-17-expressing RORgammat+CD4+ T cell population as a distinct subset of helper T cells which promotes autoimmune tissue inflammation.",
+              "confidence": 0.92,
+              "study_type": "Animal",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 1.085,
+        "hop_count": 1
+      }
+    ],
+    "preferred_pmids": [
+      "27576555"
+    ],
+    "paths": [
+      {
+        "path_id": "PP004-P01",
+        "path_signature": "decd42689d2018ff",
+        "path_text": "il-17 ->[promotes] autoimmune disease",
+        "node_ids": [
+          "3605_Gene",
+          "MESH:D001327_Disease"
+        ],
+        "names": [
+          "il-17",
+          "autoimmune disease"
+        ],
+        "node_aliases": [
+          [
+            "IL-17",
+            "IL-17A",
+            "IL-17A.",
+            "Interleukin 17A",
+            "interleukin (IL)-17",
+            "interleukin 17"
+          ],
+          [
+            "autoimmune",
+            "autoimmune disease",
+            "autoimmune diseases",
+            "autoimmune disorders",
+            "autoimmunity",
+            "inflammatory and autoimmune diseases"
+          ]
+        ],
+        "relations": [
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "27576555"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Consequently, multiple independent research groups identified IL-17-expressing RORgammat+CD4+ T cell population as a distinct subset of helper T cells which promotes autoimmune tissue inflammation."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "27576555",
+            "selected_quote": "Consequently, multiple independent research groups identified IL-17-expressing RORgammat+CD4+ T cell population as a distinct subset of helper T cells which promotes autoimmune tissue inflammation.",
+            "selected_confidence": 0.92,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "08957ad2ba21d6551e82311cc864c3943b91e088",
+              "schema_version": 1,
+              "pmid": "27576555",
+              "source_id": "3605_Gene",
+              "target_id": "MESH:D001327_Disease",
+              "relation": "promotes",
+              "evidence": "Consequently, multiple independent research groups identified IL-17-expressing RORgammat+CD4+ T cell population as a distinct subset of helper T cells which promotes autoimmune tissue inflammation.",
+              "confidence": 0.92,
+              "study_type": "Animal",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 1.085,
+        "hop_count": 1
+      }
+    ]
+  },
+  "evidence_exposure": {
+    "profile": "H_evidence_gated_four_hop",
+    "routed_profile": "H_evidence_gated_four_hop",
+    "selection_frozen_before_answers": true,
+    "source_result": "evaluation/formal/runs/formal-v1-ae-replay-terra-graphs-luna-answers-v1/D_two_hop/questions/Q007/result.json",
+    "frozen_exposure_source": "evaluation/formal/path_positive_20_v1/frozen_exposures/PP004/result.json",
+    "frozen_candidate_path_count": 1,
+    "frozen_exposed_path_count": 1,
+    "exposed_pmids": [
+      "27576555"
+    ],
+    "exposed_paths": [
+      [
+        "il-17",
+        "autoimmune disease"
+      ]
+    ],
+    "exposed_edges": [
+      "il-17 ->[promotes] autoimmune disease"
+    ],
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 1,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "answer_context_path_signatures": [
+      "decd42689d2018ff"
+    ],
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {
+        "27576555": {
+          "text_score": 0.628956,
+          "graph_score": 1.0,
+          "reranked_score": 0.758821
+        }
+      }
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "27576555",
+        "score": 0.7588213139403834
+      },
+      {
+        "pmid": "39875232",
+        "score": 0.6428737346639783
+      },
+      {
+        "pmid": "37670700",
+        "score": 0.6401198955034989
+      },
+      {
+        "pmid": "25145755",
+        "score": 0.6110701599455642
+      },
+      {
+        "pmid": "37579542",
+        "score": 0.5986343875685466
+      },
+      {
+        "pmid": "30891627",
+        "score": 0.597142926599063
+      },
+      {
+        "pmid": "31295952",
+        "score": 0.5881686063500287
+      },
+      {
+        "pmid": "30502718",
+        "score": 0.5817665738575354
+      },
+      {
+        "pmid": "34635393",
+        "score": 0.5809794882632885
+      },
+      {
+        "pmid": "34875227",
+        "score": 0.552855221382927
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "39875232",
+        "score": 0.6428737346639783
+      },
+      {
+        "pmid": "37670700",
+        "score": 0.6401198955034989
+      },
+      {
+        "pmid": "27576555",
+        "score": 0.62895586760059
+      },
+      {
+        "pmid": "25145755",
+        "score": 0.6110701599455642
+      },
+      {
+        "pmid": "37579542",
+        "score": 0.5986343875685466
+      },
+      {
+        "pmid": "30891627",
+        "score": 0.597142926599063
+      },
+      {
+        "pmid": "31295952",
+        "score": 0.5881686063500287
+      },
+      {
+        "pmid": "30502718",
+        "score": 0.5817665738575354
+      },
+      {
+        "pmid": "34635393",
+        "score": 0.5809794882632885
+      },
+      {
+        "pmid": "34875227",
+        "score": 0.552855221382927
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "**Direct experimental evidence (animal models)**  \n- In mice that lack classic Th1 and Th2 responses, IL‑17‑expressing RORγt⁺ CD4⁺ T cells drive tissue inflammation, showing that IL‑17 can substitute for other helper subsets to generate autoimmunity【PMID:27576555】 (animal).  \n- Mouse studies of experimental autoimmune encephalomyelitis and arthritis demonstrate that pathogenic Th17 cells, and the cytokines they secrete (IL‑17, GM‑CSF, IFN‑γ), are required for disease development; blocking IL‑17 ameliorates pathology【PMID:30891627】 (animal).  \n- Single‑cell fate‑mapping of intestinal Th17 cells revealed a stem‑like IL‑17⁺ population that migrates to the CNS and differentiates into encephalitogenic GM‑CSF⁺ IFN‑γ⁺ effectors, directly linking IL‑17⁺ precursors to extra‑intestinal autoimmunity【PMID:34875227】 (animal).\n\n**Human disease association**  \n- Elevated IL‑17A levels have been documented in a spectrum of autoimmune disorders—including multiple sclerosis, rheumatoid arthritis, psoriasis, psoriatic arthritis, ankylosing spondylitis, systemic lupus erythematosus, Hashimoto’s thyroiditis, and graft‑versus‑host disease—suggesting a correlative role in human autoimmunity【PMID:37670700】 (human).  \n\n**Therapeutic validation (human clinical data)**  \n- FDA‑approved antibodies that neutralize IL‑17A (secukinumab, ixekizumab) or block the IL‑17 receptor (brodalumab) improve outcomes in several IL‑17‑driven autoimmune diseases (psoriasis, psoriatic arthritis, ankylosing spondylitis, hidradenitis suppurativa), providing indirect proof that IL‑17 contributes to disease pathology【PMID:39875232】【PMID:25145755】 (human).  \n\n**Mechanistic insights supporting pathogenicity**  \n- IL‑23‑driven activation of Th17 cells and the broader IL‑23/IL‑17 axis sustain chronic inflammation in barrier tissues; innate lymphoid cells and γδ‑T cells also generate IL‑17, amplifying autoimmune responses【PMID:27576555】【PMID:25145755】.  \n- Plasticity of Th17 cells toward a Th1‑like phenotype (co‑producing IL‑17 and IFN‑γ) has been linked to heightened autoimmunity in multiple sclerosis, inflammatory bowel disease, and rheumatoid arthritis【PMID:30502718】.\n\n**Key study‑context limitations**  \n- **Predominantly pre‑clinical evidence**: Most mechanistic data arise from mouse models; extrapolation to human disease requires caution.  \n- **Correlative human data**: Elevated IL‑17 in patients is associative; causality is not definitively proven.  \n- **Cellular heterogeneity**: IL‑17 is produced by diverse innate and adaptive cells, making it difficult to attribute disease effects to a single source.  \n- **Dual‑role nature**: IL‑17 is essential for host defense against bacteria and fungi; blockade"
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 4.16487455368042e-05,
+    "vector_index": 2.1984968930482864,
+    "kg_expansion": 1.3694167137145996e-05,
+    "answer_netmedex_hybrid_rag": 32.40392903983593,
+    "total": 35.120903953909874
+  },
+  "token_usage": {
+    "input_tokens": 3172,
+    "output_tokens": 1200,
+    "total_tokens": 4372
+  },
+  "completed_at": "2026-08-13T05:59:54.878946+00:00"
+}

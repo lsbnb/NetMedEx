@@ -1,0 +1,71 @@
+{
+  "question_id": "Q013",
+  "model": "gpt-5.6-sol",
+  "rated_at": "2026-07-29T10:03:46.402687+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q013-C001",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Direct endothelial-cell study of evolocumab and alirocumab showing reduced IL-6, E-selectin, ICAM-1, NF-κB signaling, and monocyte adhesion, with effects involving eNOS."
+    },
+    {
+      "candidate_id": "Q013-C002",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Large randomized FOURIER analysis directly reports that evolocumab did not alter hsCRP at 48 weeks, although baseline hsCRP identified residual inflammatory risk."
+    },
+    {
+      "candidate_id": "Q013-C003",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Randomized AMI substudy directly assessed endothelial function by FMD; adding alirocumab to high-intensity statin produced no additional FMD improvement at 52 weeks."
+    },
+    {
+      "candidate_id": "Q013-C004",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Direct in vitro and mouse sepsis experiments found PCSK9 inhibition reduced inflammatory pathway activity and preserved eNOS, VE-cadherin, and endothelium-dependent vasodilation."
+    },
+    {
+      "candidate_id": "Q013-C005",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "no_usable_evidence",
+      "reviewer_notes": "Trial assessed LDL-C lowering, feasibility, and safety during ACS but did not report inflammatory markers or endothelial-function outcomes."
+    },
+    {
+      "candidate_id": "Q013-C006",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Randomized controlled study directly assessed endothelial function. Evolocumab improved vasoactive range at 8 weeks, while FMD and low-flow-mediated constriction did not change."
+    },
+    {
+      "candidate_id": "Q013-C007",
+      "relevance": 0,
+      "confidence": 2,
+      "exclusion_reason": "too_broad",
+      "reviewer_notes": "The title concerns pleiotropic effects generally, and no abstract is available to establish evidence specifically about inflammation or endothelial function."
+    },
+    {
+      "candidate_id": "Q013-C008",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Direct pilot intervention study in hospitalized ACS patients found that a single evolocumab dose altered systemic inflammation, decreasing both pro- and anti-inflammatory cytokines within 72 hours."
+    },
+    {
+      "candidate_id": "Q013-C009",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Review-level context focused on acute ischemic stroke and neuroinflammation; it describes inflammatory pathways and reports reductions in systemic hsCRP and IL-6, with limited direct evidence concerning vascular endothelial function."
+    }
+  ],
+  "raw_response_sha256": "4898441b8bd62df973c253d215eee74edeb223bdd7934b8615aeea20b5dbe6f5"
+}

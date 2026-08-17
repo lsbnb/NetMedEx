@@ -1,0 +1,188 @@
+{
+  "status": "complete",
+  "question_id": "Q003",
+  "domain": "metabolic disease",
+  "question": "What evidence links insulin resistance to inflammatory cytokines in human studies?",
+  "question_type": "direct_evidence",
+  "pubmed_query": "insulin resistance AND inflammatory cytokines AND humans",
+  "effective_pubmed_query": "insulin resistance AND inflammatory cytokines AND humans",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "12172480",
+    "17053832",
+    "18094066",
+    "24003928",
+    "29241747",
+    "31426593",
+    "31577826",
+    "32437299",
+    "33439300",
+    "34536157",
+    "34847640",
+    "37895163",
+    "39471690",
+    "39593091",
+    "39749338"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence links insulin resistance to inflammatory cytokines in human studies?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "32437299",
+        "score": 0.6123151536067515
+      },
+      {
+        "pmid": "12172480",
+        "score": 0.6025437888221288
+      },
+      {
+        "pmid": "34536157",
+        "score": 0.5703837014267262
+      },
+      {
+        "pmid": "18094066",
+        "score": 0.5500758840519097
+      },
+      {
+        "pmid": "24003928",
+        "score": 0.5239153161143528
+      },
+      {
+        "pmid": "17053832",
+        "score": 0.5233060489058562
+      },
+      {
+        "pmid": "39749338",
+        "score": 0.5146218576478013
+      },
+      {
+        "pmid": "39471690",
+        "score": 0.5073398217683751
+      },
+      {
+        "pmid": "33439300",
+        "score": 0.5069387500055144
+      },
+      {
+        "pmid": "37895163",
+        "score": 0.5055957155978293
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "32437299",
+        "score": 0.6123151536067515
+      },
+      {
+        "pmid": "12172480",
+        "score": 0.6025437888221288
+      },
+      {
+        "pmid": "34536157",
+        "score": 0.5703837014267262
+      },
+      {
+        "pmid": "18094066",
+        "score": 0.5500758840519097
+      },
+      {
+        "pmid": "24003928",
+        "score": 0.5239153161143528
+      },
+      {
+        "pmid": "17053832",
+        "score": 0.5233060489058562
+      },
+      {
+        "pmid": "39749338",
+        "score": 0.5146218576478013
+      },
+      {
+        "pmid": "39471690",
+        "score": 0.5073398217683751
+      },
+      {
+        "pmid": "33439300",
+        "score": 0.5069387500055144
+      },
+      {
+        "pmid": "37895163",
+        "score": 0.5055957155978293
+      }
+    ]
+  },
+  "answers": {
+    "general_llm": "Human research over the past three decades consistently shows that chronic low‑grade inflammation accompanies insulin resistance (IR).  The strongest evidence comes from epidemiologic, interventional, and mechanistic studies that link circulating and tissue‑derived inflammatory cytokines—especially tumor‑necrosis factor‑α (TNF‑α), interleukin‑6 (IL‑6), and C‑reactive protein (CRP)—to impaired insulin signaling.\n\n**Key findings from human studies**\n\n- **Cross‑sectional associations** – Large population cohorts (e.g., the Framingham Offspring Study, NHANES) demonstrate that higher plasma levels of TNF‑α, IL‑6, and high‑sensitivity CRP correlate with elevated homeostatic model assessment of insulin resistance (HOMA‑IR) and reduced glucose disposal during euglycemic clamps. The relationships persist after adjusting for body‑mass index (BMI), age, and lifestyle factors, indicating an association that is not solely explained by adiposity.\n\n- **Weight‑loss and lifestyle interventions** – Caloric restriction, bariatric surgery, and structured exercise programs lower circulating TNF‑α, IL‑6, and CRP in parallel with improvements in insulin sensitivity. In randomized trials, a 10 %–15 % reduction in fat mass typically reduces CRP by 30 %–40 % and yields a 20 %–30 % increase in glucose uptake measured by clamp, supporting a causal link between reduced inflammation and restored insulin action.\n\n- **Anti‑inflammatory drug trials** – Small to medium‑sized randomized trials using agents that dampen inflammation have shown modest improvements in insulin metrics. For example, the use of the IL‑1 receptor antagonist anakinra in individuals with metabolic syndrome lowered fasting glucose and HOMA‑IR, while a short course of salicylates (salsalate) reduced CRP and improved peripheral insulin sensitivity. These data suggest that targeting inflammatory pathways can directly enhance insulin signaling, although the magnitude of effect is modest and long‑term safety remains uncertain.\n\n- **Adipose‑tissue biopsy evidence** – In obese and pre‑diabetic participants, per‑cutaneous needle biopsies reveal up‑regulation of TNF‑α and IL‑6 mRNA in subcutaneous and visceral fat, together with increased activation of the serine kinase JNK and inhibitory phosphorylation of insulin receptor substrate‑1 (IRS‑1). These molecular signatures correlate with systemic IR indices, providing tissue‑level mechanistic plausibility.\n\n- **Acute inflammatory challenges** – Experimental endotoxin (lipopolysaccharide) infusion in healthy volunteers induces a rapid rise in plasma TNF‑α, IL‑6, and CRP, accompanied within hours by a ~20 % decline in insulin‑mediated glucose disposal. The reversible nature of this effect underscores that inflammatory cytokines can acutely impair insulin action independent of changes in adiposity.\n\n- **Genetic and Mendelian‑randomization studies** – Polymorphisms that increase circulating IL‑6 or CRP levels are modestly associated with higher odds of type 2 diabetes, implying a directional relationship. However, the effect sizes are small and colocalization with IR phenotypes is not consistently demonstrated, leaving some uncertainty about causality.\n\n**What remains unresolved**\n\n- The relative contribution of each cytokine to IR in different tissues (muscle vs. liver vs. adipose) is still being quantified.\n- Long‑term outcomes of chronic anti‑inflammatory therapy on diabetes incidence are not yet established; existing trials are limited in duration and size.\n- Inter‑individual variability (e.g., genetic background, microbiome composition) may modulate the inflammation‑IR axis, an area of active investigation.\n\n**Conclusion**  \nHuman evidence robustly links elevated inflammatory cytokines to insulin resistance, indicating that chronic low‑grade inflammation is both a correlate and likely a contributor to impaired insulin action."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 0.00017130374908447266,
+    "vector_index": 1.9332253187894821,
+    "kg_expansion": 3.440678119659424e-05,
+    "answer_general_llm": 25.55493637174368,
+    "total": 27.978534169495106
+  },
+  "token_usage": {
+    "total_tokens": 1187,
+    "input_tokens": 159,
+    "output_tokens": 1028
+  },
+  "completed_at": "2026-08-13T03:29:53.794080+00:00"
+}

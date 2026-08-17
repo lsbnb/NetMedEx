@@ -1,0 +1,162 @@
+{
+  "status": "complete",
+  "question_id": "BW010",
+  "domain": "hypothesis generation",
+  "question": "Which evidence-supported intermediates connect gut microbiome dysbiosis to bone loss?",
+  "question_type": "mechanism",
+  "pubmed_query": "gut microbiome dysbiosis IL-17 bone loss osteoporosis",
+  "effective_pubmed_query": "gut microbiome dysbiosis IL-17 bone loss osteoporosis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "35950704",
+    "33074224",
+    "35430804",
+    "29302038",
+    "39738035",
+    "30446387",
+    "34886561",
+    "38321650",
+    "34140089",
+    "40275534",
+    "36196151",
+    "28847904"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "28847904",
+        "score": 0.7057855963117382
+      },
+      {
+        "pmid": "40275534",
+        "score": 0.6481183909347882
+      },
+      {
+        "pmid": "30446387",
+        "score": 0.5759810579959832
+      },
+      {
+        "pmid": "29302038",
+        "score": 0.5664405975312596
+      },
+      {
+        "pmid": "36196151",
+        "score": 0.537119207170137
+      },
+      {
+        "pmid": "34886561",
+        "score": 0.513358815414311
+      },
+      {
+        "pmid": "34140089",
+        "score": 0.508282455501318
+      },
+      {
+        "pmid": "38321650",
+        "score": 0.5062272665334768
+      },
+      {
+        "pmid": "35430804",
+        "score": 0.47793668470213224
+      },
+      {
+        "pmid": "35950704",
+        "score": 0.47503134651206275
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "28847904",
+        "score": 0.7057855963117382
+      },
+      {
+        "pmid": "40275534",
+        "score": 0.6481183909347882
+      },
+      {
+        "pmid": "30446387",
+        "score": 0.5759810579959832
+      },
+      {
+        "pmid": "29302038",
+        "score": 0.5664405975312596
+      },
+      {
+        "pmid": "36196151",
+        "score": 0.537119207170137
+      },
+      {
+        "pmid": "34886561",
+        "score": 0.513358815414311
+      },
+      {
+        "pmid": "34140089",
+        "score": 0.508282455501318
+      },
+      {
+        "pmid": "38321650",
+        "score": 0.5062272665334768
+      },
+      {
+        "pmid": "35430804",
+        "score": 0.47793668470213224
+      },
+      {
+        "pmid": "35950704",
+        "score": 0.47503134651206275
+      }
+    ]
+  },
+  "answers": {},
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 1.5370547771453857e-05,
+    "vector_index": 1.6030602529644966,
+    "total": 2.0873905792832375
+  },
+  "token_usage": {},
+  "completed_at": "2026-08-09T18:44:35.845806+00:00"
+}

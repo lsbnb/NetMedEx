@@ -1,0 +1,184 @@
+{
+  "status": "complete",
+  "question_id": "Q037",
+  "domain": "infectious disease",
+  "question": "What mechanisms connect chronic hepatitis B infection to hepatocellular carcinoma?",
+  "question_type": "mechanism",
+  "pubmed_query": "HBV hepatocellular carcinoma inflammation HBx integration fibrosis",
+  "effective_pubmed_query": "HBV hepatocellular carcinoma inflammation HBx integration fibrosis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "16461228",
+    "20413301",
+    "20485626",
+    "25646384",
+    "28097530",
+    "29052129",
+    "30611768",
+    "32839523",
+    "38064540",
+    "39290403",
+    "40544269"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What mechanisms connect chronic hepatitis B infection to hepatocellular carcinoma?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "29052129",
+        "score": 0.6640307106984431
+      },
+      {
+        "pmid": "20485626",
+        "score": 0.6567556570803315
+      },
+      {
+        "pmid": "30611768",
+        "score": 0.6451303246839866
+      },
+      {
+        "pmid": "20413301",
+        "score": 0.626674208424519
+      },
+      {
+        "pmid": "16461228",
+        "score": 0.6079774661672162
+      },
+      {
+        "pmid": "25646384",
+        "score": 0.586565163099866
+      },
+      {
+        "pmid": "28097530",
+        "score": 0.583534778409373
+      },
+      {
+        "pmid": "32839523",
+        "score": 0.5546418131796564
+      },
+      {
+        "pmid": "38064540",
+        "score": 0.5486900288244154
+      },
+      {
+        "pmid": "39290403",
+        "score": 0.5455492475666515
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "29052129",
+        "score": 0.6640307106984431
+      },
+      {
+        "pmid": "20485626",
+        "score": 0.6567556570803315
+      },
+      {
+        "pmid": "30611768",
+        "score": 0.6451303246839866
+      },
+      {
+        "pmid": "20413301",
+        "score": 0.626674208424519
+      },
+      {
+        "pmid": "16461228",
+        "score": 0.6079774661672162
+      },
+      {
+        "pmid": "25646384",
+        "score": 0.586565163099866
+      },
+      {
+        "pmid": "28097530",
+        "score": 0.583534778409373
+      },
+      {
+        "pmid": "32839523",
+        "score": 0.5546418131796564
+      },
+      {
+        "pmid": "38064540",
+        "score": 0.5486900288244154
+      },
+      {
+        "pmid": "39290403",
+        "score": 0.5455492475666515
+      }
+    ]
+  },
+  "answers": {
+    "general_llm": "Chronic infection with hepatitis B virus (HBV) drives hepatocellular carcinoma (HCC) through several inter‑related pathways that have been documented in epidemiologic, virologic and molecular studies.\n\n**1. Direct oncogenic activity of viral proteins**  \nHBV integrates its relaxed‑circular DNA into the host genome in a subset of infected hepatocytes. The integration event can disrupt tumor‑suppressor genes (e.g., *p53*) or place cellular oncogenes under viral‐promoter control, fostering clonal expansion. The HBV X protein (HBx) is the best‑characterized viral oncoprotein: it modulates transcription, interferes with DNA repair, and activates signaling cascades (e.g., NF‑κB, MAPK, Wnt/β‑catenin) that promote proliferation and inhibit apoptosis. HBx also perturbs mitochondrial function and generates reactive oxygen species (ROS), creating a mutagenic environment.\n\n**2. Chronic inflammation and immune‑mediated injury**  \nPersistent HBV replication triggers a lifelong immune response. Cytotoxic T‑cells and Kupffer‑cell–derived cytokines (TNF‑α, IL‑6, IFN‑γ) cause repeated cycles of hepatocyte death and regeneration. The associated oxidative stress, nitrogen species and DNA damage increase the likelihood of somatic mutations in surviving cells. The inflammatory milieu also induces epigenetic alterations (DNA methylation, histone modification) that silence tumor‑suppressor loci.\n\n**3. Fibrosis and cirrhosis as a premalignant scaffold**  \nLong‑standing necro‑inflammatory injury leads to extracellular‑matrix deposition and architectural distortion. Cirrhotic nodules alter the hepatic microenvironment, impairing normal cell‑cell communication and creating hypoxic zones that select for cells with survival advantages. Fibrosis‑associated hepatic stellate cells secrete growth factors (HGF, TGF‑β) that can further stimulate malignant transformation.\n\n**4. Dysregulated host signaling pathways**  \nHBV infection repeatedly activates pathways that control cell growth and survival:  \n* **Wnt/β‑catenin** – HBx stabilizes β‑catenin, driving transcription of proliferative genes.  \n* **PI3K/AKT/mTOR** – HBx can up‑regulate this axis, enhancing nutrient‑sensing and growth.  \n* **JAK/STAT** – Chronic cytokine exposure sustains STAT3 activation, which promotes angiogenesis and immune evasion.  \n\n**5. Epigenetic reprogramming**  \nBeyond direct DNA insertion, HBV influences the hepatic epigenome. Viral proteins recruit DNA methyltransferases and histone‑modifying enzymes, leading to silencing of genes such as *RASSF1A* or *SOCS1*. MicroRNA profiles are also altered; for example, HBx down‑regulates tumor‑suppressive miR‑122, facilitating oncogenic signaling.\n\n**6. Interaction with co‑risk factors**  \nHBV synergizes with other carcinogenic exposures (aflatoxin B1, alcohol, metabolic syndrome). Co‑carcinogens amplify DNA adduct formation or exacerbate metabolic stress, accelerating the conversion of premalignant lesions to overt HCC. This synergy is well documented epidemiologically, though the precise molecular cross‑talk remains an active research area.\n\nOverall, HBV promotes HCC through a combination of direct viral oncogenesis, sustained inflammatory injury, fibrotic remodeling, and widespread perturbation of host signaling and epigenetic regulation.  \n\n**Conclusion:** Chronic HBV infection creates a multistep, tumor‑promoting environment that culminates in hepatocellular carcinoma."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 4.477053880691528e-05,
+    "vector_index": 1.583190217614174,
+    "kg_expansion": 1.1064112186431885e-05,
+    "answer_general_llm": 22.286675952374935,
+    "total": 24.402375638484955
+  },
+  "token_usage": {
+    "total_tokens": 1076,
+    "input_tokens": 159,
+    "output_tokens": 917
+  },
+  "completed_at": "2026-08-13T03:36:15.641909+00:00"
+}

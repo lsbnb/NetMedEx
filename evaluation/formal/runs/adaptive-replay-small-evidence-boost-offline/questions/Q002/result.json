@@ -1,0 +1,153 @@
+{
+  "status": "complete",
+  "question_id": "Q002",
+  "domain": "osteoporosis",
+  "question": "Which miRNAs are most frequently linked to osteoporosis-related osteogenesis in the retrieved literature?",
+  "question_type": "retrieval",
+  "pubmed_query": "osteoporosis AND (osteogenesis OR osteoblast) AND (microRNA OR miRNA)",
+  "effective_pubmed_query": "osteoporosis AND (osteogenesis OR osteoblast) AND (microRNA OR miRNA)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "23223004",
+    "23605904",
+    "27904930",
+    "33255179",
+    "33434305",
+    "34311172",
+    "34502371",
+    "35285389",
+    "35831436",
+    "36319624",
+    "36835184",
+    "37215980",
+    "38106447",
+    "39343927",
+    "41369394"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "path_count": 0,
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "routed_profile": "A_text_only",
+    "route_reason": "question_type=retrieval: text retrieval task",
+    "question_type": "retrieval",
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "23605904",
+        "score": 0.6878191953775143
+      },
+      {
+        "pmid": "23223004",
+        "score": 0.673443956361859
+      },
+      {
+        "pmid": "33434305",
+        "score": 0.6728323793075085
+      },
+      {
+        "pmid": "33255179",
+        "score": 0.6696897919625486
+      },
+      {
+        "pmid": "27904930",
+        "score": 0.6549998012811549
+      },
+      {
+        "pmid": "34311172",
+        "score": 0.6521114659752776
+      },
+      {
+        "pmid": "35831436",
+        "score": 0.6478742683656301
+      },
+      {
+        "pmid": "41369394",
+        "score": 0.6446218588584857
+      },
+      {
+        "pmid": "36835184",
+        "score": 0.6365394674050232
+      },
+      {
+        "pmid": "35285389",
+        "score": 0.6333969364853043
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "23605904",
+        "score": 0.6878191953775143
+      },
+      {
+        "pmid": "23223004",
+        "score": 0.673443956361859
+      },
+      {
+        "pmid": "33434305",
+        "score": 0.6728323793075085
+      },
+      {
+        "pmid": "33255179",
+        "score": 0.6696897919625486
+      },
+      {
+        "pmid": "27904930",
+        "score": 0.6549998012811549
+      },
+      {
+        "pmid": "34311172",
+        "score": 0.6521114659752776
+      },
+      {
+        "pmid": "35831436",
+        "score": 0.6478742683656301
+      },
+      {
+        "pmid": "41369394",
+        "score": 0.6446218588584857
+      },
+      {
+        "pmid": "36835184",
+        "score": 0.6365394674050232
+      },
+      {
+        "pmid": "35285389",
+        "score": 0.6333969364853043
+      }
+    ]
+  },
+  "answers": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 5.04031777381897e-05,
+    "vector_index": 1.3880223855376244,
+    "total": 2.0904519334435463
+  },
+  "token_usage": {},
+  "completed_at": "2026-08-03T18:10:34.048971+00:00"
+}

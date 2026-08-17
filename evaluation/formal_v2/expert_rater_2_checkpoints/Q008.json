@@ -1,0 +1,141 @@
+{
+  "question_id": "Q008",
+  "model": "gpt-5.6-sol",
+  "rated_at": "2026-07-29T10:00:21.675337+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q008-C001",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Directly reviews mechanisms by which CFTR dysfunction alters intestinal pH, mucus hydration, pancreatic enzyme availability, motility, and microbiota, collectively promoting GI inflammation."
+    },
+    {
+      "candidate_id": "Q008-C002",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Mechanistically links ER stress, reduced CFTR expression, permeability changes, and inflammatory cytokines in celiac epithelial models, but tests acquired CFTR downregulation rather than CFTR variants causing inflammation."
+    },
+    {
+      "candidate_id": "Q008-C003",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Provides comparative review-level context on CF intestinal dysbiosis, low pH, bile-acid abnormalities, and inflammatory markers, but does not establish a specific causal pathway from CFTR variants."
+    },
+    {
+      "candidate_id": "Q008-C004",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "wrong_context",
+      "reviewer_notes": "Examines inflammasome responses in bronchial cells and peripheral blood cells rather than intestinal inflammation; CFTR inhibition did not alter the measured cytokine response."
+    },
+    {
+      "candidate_id": "Q008-C005",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Direct mechanistic study showing that defective CFTR–beta-catenin interaction destabilizes beta-catenin and activates NF-kappaB/COX-2/PGE2 inflammatory signaling in CF mouse intestine and intestinal epithelial cells."
+    },
+    {
+      "candidate_id": "Q008-C006",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Cancer-focused review that includes relevant downstream mechanisms of CFTR deficiency, including barrier failure, dysbiosis, inflammation, and Wnt/beta-catenin and NF-kappaB dysregulation."
+    },
+    {
+      "candidate_id": "Q008-C007",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Human before-and-after study links pharmacologic restoration of mutant CFTR activity to reduced fecal calprotectin and microbiome changes, supporting a CFTR–microbiota–intestinal inflammation pathway."
+    },
+    {
+      "candidate_id": "Q008-C008",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Directly reviews candidate links among CFTR dysfunction, intestinal dysbiosis, reduced short-chain fatty acids, and intestinal inflammation in CF."
+    },
+    {
+      "candidate_id": "Q008-C009",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Dedicated review of CF intestinal inflammation and microbiota alterations, describing CFTR dysfunction, diet, antibiotics, and bidirectional microbiome–inflammation interactions as candidate mechanisms."
+    },
+    {
+      "candidate_id": "Q008-C010",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "duplicate",
+      "reviewer_notes": "Appears to be an earlier duplicate record of Q008-C017, reporting the same intestinal epithelial-specific Cftr knockout experiment."
+    },
+    {
+      "candidate_id": "Q008-C011",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Shows that CFTR loss is associated with dehydrated mucus, acidification, motility changes, pro-inflammatory mucosa-associated microbes, loss of beneficial metabolite-producing bacteria, and altered epithelial cell composition."
+    },
+    {
+      "candidate_id": "Q008-C012",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Broad GI cancer and ion-channel review that briefly identifies CFTR deficiency leading to mucus obstruction, microbial dysbiosis, and intestinal inflammation."
+    },
+    {
+      "candidate_id": "Q008-C013",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Systematic review directly characterizes CF-related gut dysbiosis and its candidate determinants, including CFTR dysfunction, and reports enrichment of pro-inflammatory and depletion of anti-inflammatory bacteria."
+    },
+    {
+      "candidate_id": "Q008-C014",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Tests a specific microbiome-metabolite mechanism: reduced Bacteroides-derived propionate in CF may remove anti-inflammatory signaling in CFTR-defective intestinal epithelial cells and alter inflammatory responses."
+    },
+    {
+      "candidate_id": "Q008-C015",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Direct review of how intestinal CFTR dysfunction changes tissues and the luminal environment, framing obstruction, infection, and inflammation as the principal pathogenic triad."
+    },
+    {
+      "candidate_id": "Q008-C016",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Mechanistic mouse study shows that intestinal CFTR deficiency sustains dysbiosis, mucosal inflammation, and increased permeability; gut-specific CFTR correction or antibiotics ameliorated these abnormalities."
+    },
+    {
+      "candidate_id": "Q008-C017",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Directly demonstrates that intestinal epithelial-specific Cftr loss is sufficient to elevate fecal calprotectin and induce dysbiosis under two anti-obstructive dietary regimens."
+    },
+    {
+      "candidate_id": "Q008-C018",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Colorectal-cancer-focused review that summarizes relevant candidate consequences of CFTR loss, including barrier disruption, dysbiosis, immune infiltration, stress responses, and intestinal inflammation."
+    },
+    {
+      "candidate_id": "Q008-C019",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Directly tests CFTR depletion in human intestinal epithelial cells, finding increased IL-6/IL-8 responses through ERK1/2, IκBalpha, and NF-kappaB signaling, with supportive jejunal eosinophil infiltration in Cftr-null mice."
+    }
+  ],
+  "raw_response_sha256": "c5c778842a4a4bcfdd5330b3ac56fe001b03b7603448bbad11ed95cf3c26b5cd"
+}

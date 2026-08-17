@@ -1,0 +1,524 @@
+{
+  "status": "complete",
+  "question_id": "Q002",
+  "domain": "osteoporosis",
+  "question": "Which miRNAs are most frequently linked to osteoporosis-related osteogenesis in the retrieved literature?",
+  "question_type": "retrieval",
+  "pubmed_query": "osteoporosis AND (osteogenesis OR osteoblast) AND (microRNA OR miRNA)",
+  "effective_pubmed_query": "osteoporosis AND (osteogenesis OR osteoblast) AND (microRNA OR miRNA)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "23223004",
+    "23605904",
+    "27904930",
+    "33255179",
+    "33434305",
+    "34311172",
+    "34502371",
+    "35285389",
+    "35831436",
+    "36319624",
+    "36835184",
+    "37215980",
+    "38106447",
+    "39343927",
+    "41369394"
+  ],
+  "graph": {
+    "node_count": 40,
+    "edge_count": 41,
+    "path_count": 0,
+    "pre_gate_candidate_count": 3,
+    "pre_gate_candidates": [
+      {
+        "path": [
+          "6008612c2acca50eb519b53274a145b2802de336",
+          "b93efd03f9f79046c8e22ebb745b77037b068f92"
+        ],
+        "node_ids": [
+          "HP:0000939_Phenotype",
+          "MESH:D010024_Disease"
+        ],
+        "names": [
+          "osteoporosis",
+          "osteoporosis"
+        ],
+        "node_aliases": [
+          [
+            "Osteoporosis",
+            "osteoporosis"
+          ],
+          [
+            "OP",
+            "Osteoporosis",
+            "osteoporosis",
+            "postmenopausal osteoporosis"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "35831436"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "In addition, in vivo overexpression of miR-1224-5p significantly promoted fracture healing and ameliorated the progression of osteoporosis caused by estrogen deficiency or aging."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "35831436",
+            "selected_quote": "In addition, in vivo overexpression of miR-1224-5p significantly promoted fracture healing and ameliorated the progression of osteoporosis caused by estrogen deficiency or aging.",
+            "selected_confidence": 0.9,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.985,
+        "base_score": 0.985,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "HP:0000939_Phenotype",
+            "MESH:D010024_Disease"
+          ],
+          "target_anchor_ids": [
+            "GO:0001503_BiologicalProcess"
+          ],
+          "mechanism_anchor_ids": [
+            "406940_Gene",
+            "406996_Gene"
+          ],
+          "context_anchor_ids": [
+            "406940_Gene",
+            "406996_Gene",
+            "GO:0001503_BiologicalProcess",
+            "HP:0000939_Phenotype",
+            "MESH:D010024_Disease"
+          ],
+          "mechanism_requested": false,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 1,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "11e6542b69577c3d"
+      },
+      {
+        "path": [
+          "59e521a76e1580cebef5e19d2370ae3f7191e497",
+          "b93efd03f9f79046c8e22ebb745b77037b068f92"
+        ],
+        "node_ids": [
+          "op_disease",
+          "MESH:D010024_Disease"
+        ],
+        "names": [
+          "op",
+          "osteoporosis"
+        ],
+        "node_aliases": [
+          [
+            "op"
+          ],
+          [
+            "OP",
+            "Osteoporosis",
+            "osteoporosis",
+            "postmenopausal osteoporosis"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "35285389"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "miR-582-3p was up-regulated in OP tissues and down-regulated in osteogenic differentiated C2C12 cells compared with that in the control group."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "35285389",
+            "selected_quote": "miR-582-3p was up-regulated in OP tissues and down-regulated in osteogenic differentiated C2C12 cells compared with that in the control group.",
+            "selected_confidence": 0.96,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.786,
+        "base_score": 0.786,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "HP:0000939_Phenotype",
+            "MESH:D010024_Disease"
+          ],
+          "target_anchor_ids": [
+            "GO:0001503_BiologicalProcess"
+          ],
+          "mechanism_anchor_ids": [
+            "406940_Gene",
+            "406996_Gene"
+          ],
+          "context_anchor_ids": [
+            "406940_Gene",
+            "406996_Gene",
+            "GO:0001503_BiologicalProcess",
+            "HP:0000939_Phenotype",
+            "MESH:D010024_Disease"
+          ],
+          "mechanism_requested": false,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": false,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 2,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "5f747222b1970fcf"
+      },
+      {
+        "path": [
+          "6008612c2acca50eb519b53274a145b2802de336",
+          "aa2f5ed3936aa02d630d949925223a4883b72be1"
+        ],
+        "node_ids": [
+          "HP:0000939_Phenotype",
+          "GO:0001649_BiologicalProcess"
+        ],
+        "names": [
+          "osteoporosis",
+          "osteogenic differentiation"
+        ],
+        "node_aliases": [
+          [
+            "Osteoporosis",
+            "osteoporosis"
+          ],
+          [
+            "Osteogenic differentiation",
+            "osteoblast differentiation",
+            "osteogenic differentiation"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "35285389"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "MicroRNA-582-3p regulates osteoporosis through regulating homeobox A10 and osteoblast differentiation."
+          ]
+        ],
+        "edge_evidence_complete": [
+          false
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "35285389",
+            "selected_quote": "MicroRNA-582-3p regulates osteoporosis through regulating homeobox A10 and osteoblast differentiation.",
+            "selected_confidence": 0.72,
+            "directional": false,
+            "quote_relation_aligned": false,
+            "support_tier": "B",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "symmetric_relation",
+              "quote_relation_mismatch"
+            ]
+          }
+        ],
+        "score": 0.573,
+        "base_score": 0.573,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "HP:0000939_Phenotype",
+            "MESH:D010024_Disease"
+          ],
+          "target_anchor_ids": [
+            "GO:0001503_BiologicalProcess"
+          ],
+          "mechanism_anchor_ids": [
+            "406940_Gene",
+            "406996_Gene"
+          ],
+          "context_anchor_ids": [
+            "406940_Gene",
+            "406996_Gene",
+            "GO:0001503_BiologicalProcess",
+            "HP:0000939_Phenotype",
+            "MESH:D010024_Disease"
+          ],
+          "mechanism_requested": false,
+          "negative_mechanism_requested": false,
+          "explicit_endpoint_query": false,
+          "unresolved_source_endpoint": false,
+          "unresolved_target_endpoint": false,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 3,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "poor_endpoint_alignment",
+          "incomplete_evidence_hop_1"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": true,
+        "rescue_added": false,
+        "rescue_outcome": "no_usable_path",
+        "diversity_added": false,
+        "path_signature": "c405fab3f8ca1535"
+      }
+    ],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "C_one_hop",
+    "label": "C. 1-hop Graph RAG",
+    "use_node_rag": true,
+    "max_hops": 1,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "gate_evidence_paths": false,
+    "gate_tier_counts": {
+      "A": 0,
+      "B": 0,
+      "C": 3
+    },
+    "rescue_triggered": true,
+    "rescue_added_paths": 0,
+    "rescue_outcomes": [
+      "no_usable_path"
+    ],
+    "pre_gate_candidate_count": 3,
+    "node_ids": [
+      "op_disease",
+      "HP:0000939_Phenotype"
+    ],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "exposure_signature": "fe46638f9e83fcc9",
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "23605904",
+        "score": 0.6878191953775143
+      },
+      {
+        "pmid": "23223004",
+        "score": 0.673443956361859
+      },
+      {
+        "pmid": "33434305",
+        "score": 0.6728323793075085
+      },
+      {
+        "pmid": "33255179",
+        "score": 0.6696897919625486
+      },
+      {
+        "pmid": "27904930",
+        "score": 0.6549998012811549
+      },
+      {
+        "pmid": "34311172",
+        "score": 0.6521114659752776
+      },
+      {
+        "pmid": "35831436",
+        "score": 0.6478742683656301
+      },
+      {
+        "pmid": "41369394",
+        "score": 0.6446218588584857
+      },
+      {
+        "pmid": "36835184",
+        "score": 0.6365394674050232
+      },
+      {
+        "pmid": "35285389",
+        "score": 0.6333969364853043
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "23605904",
+        "score": 0.6878191953775143
+      },
+      {
+        "pmid": "23223004",
+        "score": 0.673443956361859
+      },
+      {
+        "pmid": "33434305",
+        "score": 0.6728323793075085
+      },
+      {
+        "pmid": "33255179",
+        "score": 0.6696897919625486
+      },
+      {
+        "pmid": "27904930",
+        "score": 0.6549998012811549
+      },
+      {
+        "pmid": "34311172",
+        "score": 0.6521114659752776
+      },
+      {
+        "pmid": "35831436",
+        "score": 0.6478742683656301
+      },
+      {
+        "pmid": "41369394",
+        "score": 0.6446218588584857
+      },
+      {
+        "pmid": "36835184",
+        "score": 0.6365394674050232
+      },
+      {
+        "pmid": "35285389",
+        "score": 0.6333969364853043
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "## Frequency in the retrieved literature\n\n**miR-214 is the most frequently mentioned miRNA**, appearing in **2 of the 10 retrieved records**. It is linked to osteogenesis/osteoblast regulation and osteoporosis in both a primary study and a review. [PMID: 23223004; PMID: 34311172]\n\nAll other explicitly named miRNAs appear in **one retrieved record each**.\n\n### Direct evidence\n\n- **miR-214 — 2 records**\n  - **Human association:** Elevated miR-214 in bone specimens from aged fracture patients correlated with lower bone formation. [PMID: 23223004]\n  - **Animal and in-vitro evidence:** In ovariectomized, hindlimb-unloaded, and transgenic mouse models, osteoblast-directed inhibition of miR-214 increased bone formation; in cultured osteoblasts, miR-214 suppressed osteoblast activity and matrix mineralization by directly targeting **ATF4**. [PMID: 23223004]\n  - A review also identifies miR-214 in lncRNA–miRNA regulatory interactions relevant to osteogenesis. [PMID: 34311172]\n\n- **miR-15b — 1 record**\n  - **Animal and in-vitro evidence:** miR-15b was increased in ovariectomy-induced osteoporotic mouse tissue. Silencing miR-15b improved bone mineral density and biomechanical measures; mechanistically, miR-15b inhibited osteoblast differentiation and autophagy through the **USP7/KDM6B** axis. [PMID: 33434305]\n\n- **miR-1224-5p — 1 record**\n  - **Animal and in-vitro evidence:** Overexpression promoted osteoblast differentiation, reduced osteoclast differentiation, enhanced fracture healing, and ameliorated estrogen-deficiency- and aging-associated osteoporosis in mouse models. The reported target was **ADCY2** in the Rap1-signaling pathway. [PMID: 35831436]\n\n- **miR-582-3p — 1 record**\n  - **Tissue/cell evidence; species not specified in the supplied abstract:** miR-582-3p was upregulated in osteoporosis tissue and suppressed osteogenic markers in osteogenically differentiated C2C12 cells by targeting **HOXA10**. [PMID: 35285389]\n\n- **miR-218 — 1 record**\n  - **Review-level osteogenesis evidence:** Reported as temporally upregulated during osteoblastogenesis, but the supplied context does not provide osteoporosis-model or human osteoporosis-specific experimental evidence for miR-218. [PMID: 23605904]\n\n- **miR-148a — 1 record**\n  - **Review-level bone-remodeling evidence:** Reported as temporally upregulated during osteoclastogenesis, rather than specifically osteogenesis. [PMID: 23605904]\n\n### Association evidence\n\nAdditional miRNAs named only in a review of non-coding RNA interactions in osteogenesis include **miR-30, miR-24-3p, miR-33a, and miR-140-5p**, each appearing once in this retrieval set. The supplied context does not provide direct osteoporosis-model evidence for these individual miRNAs. [PMID: 34311172]\n\n### Testable hypothesis\n\nBecause **miR-214** is the only miRNA repeated across the retrieved abstracts and has convergent human correlation plus mouse and osteoblast mechanistic data, it is the strongest candidate in this retrieval set for further evaluation as an osteoporosis-related anti-osteogenic target. [PMID: 23223004; PMID: 34311172]",
+    "traditional_rag": "## Most frequently linked miRNA\n\n- **miR-214** is the most frequently mentioned miRNA in this retrieved set, appearing in **two records**. It is linked to impaired osteogenesis/bone formation: elevated miR-214 correlated with lower bone formation in bone samples from aged fracture patients, and osteoblast-targeted miR-214 inhibition improved bone formation in osteoporosis-related mouse models. Mechanistically, miR-214 directly targets **ATF4** and suppresses osteoblast activity. **Human association; mouse and in-vitro functional evidence** [PMID: 23223004]. It is also cited in osteogenesis-related lncRNA–miRNA interactions (MALAT1/miR-214 and KCNQ1OT1/miR-214) [PMID: 34311172].\n\n## miRNAs linked once each in the retrieved literature\n\n### Direct functional osteoporosis/osteogenesis evidence\n- **miR-15b**: Upregulated in ovariectomy-induced osteoporotic mouse tissue; its silencing improved bone mineral density and mechanical measures. It inhibited osteoblast differentiation and autophagy through the **USP7/KDM6B** axis. **Mouse and in-vitro evidence** [PMID: 33434305].\n- **miR-1224-5p**: Promoted osteoblast differentiation and inhibited osteoclast differentiation by targeting **ADCY2** in the Rap1 pathway. Overexpression improved estrogen-deficiency- and age-related osteoporosis in mice. **Mouse and in-vitro evidence** [PMID: 35831436].\n- **miR-582-3p**: Reported as upregulated in osteoporosis tissues and as inhibiting osteoblast-marker expression through targeting **HOXA10**. The model includes C2C12 cells, which are murine cells. **In-vitro evidence; the species/source of the osteoporosis tissues is not specified in the abstract** [PMID: 35285389].\n\n### Osteogenesis/bone-remodeling links, but not direct osteoporosis-model evidence in the provided abstract\n- **miR-218**: Temporally upregulated during osteoblastogenesis and described as promoting differentiation through suppression of inhibitory pathways. **Review-level evidence; model not specified** [PMID: 23605904].\n- **miR-148a**: Temporally upregulated during osteoclastogenesis and described as promoting differentiation. This concerns bone remodeling rather than osteoblast-mediated osteogenesis specifically. **Review-level evidence; model not specified** [PMID: 23605904].\n\n## Association versus testable hypothesis\n\n- **Association:** Elevated **miR-214** in human fracture bone was associated with lower bone formation [PMID: 23223004]. miR-15b and miR-582-3p were reported as increased in osteoporosis-associated tissues/models [PMID: 33434305; PMID: 35285389].\n- **Testable hypothesis:** Because miR-214, miR-15b, and miR-582-3p suppress osteoblast-related programs, while miR-1224-5p promotes osteoblastogenesis and limits osteoclastogenesis, inhibiting the former group or restoring miR-1224-5p could support anabolic osteoporosis treatment. This is supported mainly by animal and cell models; robust clinical therapeutic evidence is absent from the supplied context [PMID: 23223004; PMID: 33434305; PMID: 35831436; PMID: 35285389].\n\n**Bottom line:** By recurrence in these ten retrieved records, **miR-214** is the leading miRNA. The next most directly supported osteoporosis-related osteogenesis regulators are **miR-15b**, **miR-1224-5p**, and **miR-582-3p**, each appearing once.",
+    "general_llm": "I do not have access to the specific “retrieved literature” set, so I cannot determine which miRNAs were *most frequent* within that corpus. Across the broader osteoporosis/osteogenic-differentiation literature, however, the miRNAs most repeatedly discussed include:\n\n- **miR-21** — commonly linked to osteoblast survival and differentiation, although its effects can vary by cell type and disease context.\n- **miR-29 family (especially miR-29b)** — generally associated with osteogenesis and extracellular-matrix/collagen regulation.\n- **miR-34a** — often reported as an inhibitor of osteoblast differentiation and bone formation; increased expression has been associated with age-related skeletal decline in experimental models.\n- **miR-133a** — frequently described as anti-osteogenic, in part through repression of osteogenic transcriptional programs such as RUNX2-related pathways.\n- **miR-204 and miR-211** — recurrent inhibitors of osteogenic differentiation, commonly linked to suppression of **RUNX2**.\n- **miR-214** — widely studied in osteoporosis; often associated with impaired osteoblast activity and, in some settings, increased osteoclast-related bone resorption.\n- **miR-188** — implicated in age-related osteoporosis by influencing the balance between osteogenic and adipogenic differentiation of mesenchymal stem cells.\n- **miR-2861** — reported to promote osteoblast differentiation, including through targeting regulators that restrain RUNX2 activity.\n- **miR-335-5p** — commonly associated with promotion of osteogenic differentiation, often through Wnt-related signaling.\n- **miR-20a** and **miR-218** — frequently reported as pro-osteogenic miRNAs, with links to BMP and Wnt/β-catenin signaling.\n- **miR-27a** — often described as supportive of osteogenic differentiation, though findings are context-dependent.\n- **miR-138** — generally reported to suppress osteoblast differentiation.\n- **miR-196a** — has been associated with enhanced osteogenesis in mesenchymal stromal-cell models.\n\nA practical short list of the most recurrent osteoporosis-related osteogenesis miRNAs is therefore: **miR-21, miR-29b, miR-34a, miR-133a, miR-204/211, miR-214, miR-188, miR-2861, miR-335, miR-20a, and miR-218**.\n\nImportantly, “linked to osteoporosis” does not necessarily mean a miRNA is a validated clinical biomarker or therapeutic target. Many findings come from cell culture and animal models, and the direction of change or functional effect can differ between circulating miRNA studies, bone tissue studies, osteoblasts, osteoclasts, and mesenchymal stem cells."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 85.906081199646,
+    "vector_index": 1.8734740689396858,
+    "answer_netmedex_hybrid_rag": 10.172764495015144,
+    "answer_traditional_rag": 9.797521844506264,
+    "answer_general_llm": 8.234465099871159,
+    "total": 120.63955986499786
+  },
+  "token_usage": {
+    "total_tokens": 89753,
+    "output_tokens": 49485,
+    "input_tokens": 40268
+  },
+  "completed_at": "2026-08-11T04:44:52.385974+00:00"
+}

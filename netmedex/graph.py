@@ -217,7 +217,11 @@ class PubTatorGraphBuilder:
             elif provider == "openai":
                 max_workers = 7
             elif provider == "local":
-                max_workers = 4
+                # Large on-prem models commonly expose one generation slot. Sending
+                # four concurrent semantic-extraction prompts causes queue timeouts
+                # and lowers completed-article coverage. Operators with a batched
+                # vLLM/SGLang endpoint can override this via NETMEDEX_SEMANTIC_WORKERS.
+                max_workers = 1
             else:
                 max_workers = 5
             configured_workers = os.getenv("NETMEDEX_SEMANTIC_WORKERS")

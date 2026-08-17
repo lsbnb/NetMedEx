@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP001",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "018c63dee20115873721a44c4279820374e106eaa2763c7eab5129925ea3d7da",
+  "raw_response_sha256": "09e835df3b16e783b0d12cd5b7c44e37e13cebb5ba4de816c4b29b2239af6d95",
+  "usage": {
+    "input_tokens": 2673,
+    "output_tokens": 447,
+    "total_tokens": 3120
+  },
+  "rated_at": "2026-08-13T06:27:39.408924+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP001-A",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Well-grounded, mechanistically detailed, cites primary studies, distinguishes models. Lacks explicit discussion of limitations."
+      },
+      {
+        "answer_id": "PP001-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Balanced summary of evidence and limitations, clearly distinguishes model types, but lacks specific study citations for grounding."
+      },
+      {
+        "answer_id": "PP001-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Highly detailed, well-cited, clearly distinguishes evidence types and limitations, mechanistically coherent, high research value."
+      },
+      {
+        "answer_id": "PP001-D",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Accurate, well-cited, mechanistically clear, but limitation discussion is minimal and incomplete."
+      }
+    ],
+    "preferred_item_id": "PP001-C",
+    "pairwise_reason": "PP001-C provides the most comprehensive, well-cited, and mechanistically detailed summary of both evidence and study-context limitations, clearly distinguishing between in vitro, animal, and human data."
+  }
+}

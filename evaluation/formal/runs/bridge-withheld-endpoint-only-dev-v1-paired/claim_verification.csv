@@ -1,0 +1,3 @@
+question_id,run_id,claim_id,path_id,verdict,reasons
+BW008,formal-v1-gpt-4.1-F_adaptive,HC-01,a609d4cf28573564,unsupported,hop_1_target_missing;hop_1_quote_relation_mismatch;hop_2_source_missing;hop_2_quote_relation_mismatch
+BW008,formal-v1-gpt-4.1-F_adaptive,HC-02,2cbb4102ba82674a,unsupported,hop_1_direction_mismatch;hop_1_quote_relation_mismatch;hop_2_target_missing;hop_2_relation_mismatch

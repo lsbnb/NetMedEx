@@ -1,0 +1,91 @@
+{
+  "task": "answer",
+  "question_id": "PP020",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "51db088d5d72fcfae297dee1ee47d47f5835b1c468989ee80e80954825ee8137",
+  "raw_response_sha256": "cd89c7792538a3b72cb3140522f8f5e6ee77d4608a8a4b42be1e2a584faa309a",
+  "usage": {
+    "input_tokens": 6689,
+    "output_tokens": 658,
+    "total_tokens": 7347
+  },
+  "rated_at": "2026-08-16T20:12:45.944571+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP020-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Comprehensive hop-specific evidence with human and mouse data; clear citations; strong mechanistic links."
+      },
+      {
+        "answer_id": "PP020-B",
+        "correctness": 4,
+        "completeness": 2,
+        "relevance": 3,
+        "grounding": 3,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Truncated answer; missing later hops; incomplete coverage."
+      },
+      {
+        "answer_id": "PP020-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Thorough, model‑type breakdown; cites human, animal, in‑vitro; clear mechanistic chain."
+      },
+      {
+        "answer_id": "PP020-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Complete evidence list; some redundancy; solid but less synthesis."
+      },
+      {
+        "answer_id": "PP020-E",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Detailed evidence and hypotheses; includes extra graph data but still clear."
+      },
+      {
+        "answer_id": "PP020-F",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive with gaps highlighted; strong mechanistic detail and future directions."
+      },
+      {
+        "answer_id": "PP020-G",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Well‑structured evidence; mostly associative for systemic link; good citations."
+      }
+    ],
+    "preferred_item_id": "PP020-C",
+    "pairwise_reason": "PP020-C provides the most complete, clearly organized evidence for each hop, distinguishes model types, and links mechanistic data to systemic osteoporosis, surpassing the other answers."
+  }
+}

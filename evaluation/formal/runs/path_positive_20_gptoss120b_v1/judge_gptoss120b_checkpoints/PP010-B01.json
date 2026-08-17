@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP010",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "da99e3bb3c93a0f32f151cf8bb42300bce410c25eb72e22d79dc3c8ea043f0eb",
+  "raw_response_sha256": "01e2f74e4a18f0ddd27124b6b0a298085fadeab3cbaab8170570ed5fafced682",
+  "usage": {
+    "input_tokens": 3476,
+    "output_tokens": 409,
+    "total_tokens": 3885
+  },
+  "rated_at": "2026-08-13T06:34:20.868878+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP010-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, well‑cited animal and human data for each hop plus rescue experiments."
+      },
+      {
+        "answer_id": "PP010-B",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Accurate but truncated; missing full description of propionate experiment."
+      },
+      {
+        "answer_id": "PP010-C",
+        "correctness": 5,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Correct but limited to two studies; no rescue evidence."
+      },
+      {
+        "answer_id": "PP010-D",
+        "correctness": 3,
+        "completeness": 3,
+        "relevance": 3,
+        "grounding": 2,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Focuses on airway rather than gut; lacks specific citations."
+      }
+    ],
+    "preferred_item_id": "PP010-A",
+    "pairwise_reason": "PP010-A provides the most complete, well‑grounded, and mechanistically clear evidence for each step of the CFTR→dysbiosis→inflammation pathway, including rescue data, making it superior to the other responses."
+  }
+}

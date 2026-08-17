@@ -1,0 +1,170 @@
+{
+  "status": "complete",
+  "question_id": "Q010",
+  "domain": "multilingual",
+  "question": "請找出與骨質疏鬆、miRNA、天然物治療相關的可能機制。",
+  "question_type": "multilingual_mechanism",
+  "pubmed_query": "osteoporosis AND microRNA AND (natural product OR phytochemical) AND osteogenesis",
+  "effective_pubmed_query": "osteoporosis AND microRNA AND (natural product OR phytochemical) AND osteogenesis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "Traditional Chinese",
+  "corpus_pmids": [
+    "27492554",
+    "28158288",
+    "28361330",
+    "30827108",
+    "31131457",
+    "38795694",
+    "40024453",
+    "40266676",
+    "40350835",
+    "40358879",
+    "41196108",
+    "41961168"
+  ],
+  "graph": {
+    "node_count": 68,
+    "edge_count": 100,
+    "path_count": 0,
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": true,
+    "max_hops": 2,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "gate_evidence_paths": true,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "exposure_signature": "4f8698ecdef6d9b5",
+    "routed_profile": "G_evidence_gated_two_hop",
+    "route_reason": "question_type=multilingual_mechanism: evidence-gated multi-hop task",
+    "question_type": "multilingual_mechanism",
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "28158288",
+        "score": 0.37199336030222757
+      },
+      {
+        "pmid": "38795694",
+        "score": 0.3714197375977801
+      },
+      {
+        "pmid": "40350835",
+        "score": 0.36869828961533774
+      },
+      {
+        "pmid": "41961168",
+        "score": 0.3600909726138641
+      },
+      {
+        "pmid": "31131457",
+        "score": 0.35453840294392625
+      },
+      {
+        "pmid": "27492554",
+        "score": 0.3525113097585859
+      },
+      {
+        "pmid": "40024453",
+        "score": 0.35132081692168105
+      },
+      {
+        "pmid": "30827108",
+        "score": 0.34564720054712794
+      },
+      {
+        "pmid": "40266676",
+        "score": 0.34286514923730294
+      },
+      {
+        "pmid": "40358879",
+        "score": 0.3413258751629654
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "28158288",
+        "score": 0.37199336030222757
+      },
+      {
+        "pmid": "38795694",
+        "score": 0.3714197375977801
+      },
+      {
+        "pmid": "40350835",
+        "score": 0.36869828961533774
+      },
+      {
+        "pmid": "41961168",
+        "score": 0.3600909726138641
+      },
+      {
+        "pmid": "31131457",
+        "score": 0.35453840294392625
+      },
+      {
+        "pmid": "27492554",
+        "score": 0.3525113097585859
+      },
+      {
+        "pmid": "40024453",
+        "score": 0.35132081692168105
+      },
+      {
+        "pmid": "30827108",
+        "score": 0.34564720054712794
+      },
+      {
+        "pmid": "40266676",
+        "score": 0.34286514923730294
+      },
+      {
+        "pmid": "40358879",
+        "score": 0.3413258751629654
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "直接證據  \n1. 多種天然物透過miRNA參與骨質疏鬆的治療機制：\n\n- Zhuang-Gu-Fang（壯骨方）：可透過肌源細胞及其外泌體miRNA（miR-5100、miR-126a-3p、miR-450b-5p與miR-669a-5p），上調促骨生成相關miRNA或下調抑制骨生成miRNA，促進骨髓間質幹細胞（BMSC）的成骨分化，提高骨形成標誌蛋白OCN與Osterix表達，減緩老年性骨質疏鬆進程。[PMID: 38795694]（動物及細胞證據）\n\n- 補腎健脾活血湯：干預後可影響miR-140-5p/BCL2L1路徑，調節HFOB1.19成骨細胞的凋亡與自噬，並透過BMP2相關路徑促進成骨蛋白（OCN、OPN、RUNX2、TGF-β1）表達，有潛力作為調控凋亡、自噬降低骨質疏鬆的天然處方。[PMID: 40350835]（細胞及動物血清干預證據）\n\n- QiangGuYin（強骨飲）：藉由提升破骨細胞外泌體中miR-27b-3p含量，進一步下調DKK2並活化β-catenin訊號，減緩破骨細胞外泌體對成骨分化的抑制，從而改善骨質疏鬆。[PMID: 41961168]（細胞、動物與臨床相關參數）\n\n- 熟地黃水提物：提高血清外泌體及股骨組織中的miR-29a-3p，該miRNA可透過抑制NFIA，降低其促進SFRP1表達（Wnt訊號抑制劑）的作用，因此活化Wnt訊號路徑，促進成骨分化與骨質重建。[PMID: 40024453]（動物模型、細胞實驗）\n\n- 龜版提取物（Plastrum Testudinis）：可減少miR-214表達、活化Wnt/β-catenin訊號，進一步促進BMSC成骨分化與骨形成。當miR-214 mimic協同DKK1阻斷Wnt時，龜版提取物可逆轉此效應，表明通過miR-214及Wnt路徑促進骨形成。[PMID: 40358879]（動物及細胞證據）\n\n- 淫羊藿來源外泌體（EELNs）：動物與細胞實驗證明EELNs攜帶特定小分子及miRNA，可促進骨髓間質幹細胞成骨，並可能調控PI3K/Akt/mTOR等多條經典成骨訊號路徑，有潛力治療雌激素缺乏相關骨質疏鬆（含miRNA調控）。[PMID: 40266676]\n\n- 黃酮類天然物Icariine（淫羊藿素）：可下調炎症反應誘導的miR-34c表達，進而上調Runx2、ALP、OPN、BMP2等成骨基因表現，並抑制JNK、p38和NF-κB訊號，恢復骨質損失。[PMID: 27492554]（細胞與小鼠模型）\n\n- 枇杷葉三萜類Ursolic Acid：可直接靶向外運蛋白Exportin 5，阻斷如let-7g-5p等miRNA成熟，抑制破骨細胞分化與骨吸收，延緩骨質疏鬆。[PMID: 30827108]（細胞與分子證據）\n\n關聯性  \n- 多數上述天然物與骨質疏鬆的關係，都是通過調節某些miRNA進而影響經典成骨（Wnt/β-catenin、PI3K/Akt/mTOR、NF-κB等）與凋亡、自噬與成骨分化相關路徑，而間接達到治療骨質疏鬆的效果。\n- 一些miRNA已被多項研究證實為骨質代謝關鍵調控因子（如miR-214、miR-140-5p、miR-29a-3p、miR-34c等），部分miRNA及其下游標的（如LRP5、β-catenin、DKK2、NFIA/BCL2L1等）可作為未來骨質疏鬆治療分子靶點。\n\n可驗證假說  \n- 調控特定miRNA或其外泌體運送可成為天然物預防或治療骨質疏鬆的新策略，如體外調控肌源細胞/破骨細胞/骨髓幹細胞外泌體中miRNA組成，看是否能顯著促進成骨或抑制骨吸收。\n- 部分miRNA可能同時調控骨形成與骨吸收路徑，未來可進一步探討天然物如何協同調控多個miRNA（如同時上調促成骨miRNA，下調促破骨miRNA）以獲得更佳治療效果。\n\n總結  \n現有多項細胞、動物甚至接近臨床的直接證據顯示：天然物（如壯骨方、補腎健脾活血湯、強骨飲、熟地黃等）能透過調控關鍵miRNA及其靶標，作用於成骨、骨吸收及相關訊號通路，大幅改善骨質疏鬆狀況。這類miRNA－天然物機制，有潛力成為未來骨質疏鬆分子治療新方向。[PMID: 38795694][PMID: 40350835][PMID: 41961168][PMID: 40024453][PMID: 40358879][PMID: 40266676][PMID: 27492554][PMID: 30827108]",
+    "traditional_rag": "【直接證據】\n1. 骨質疏鬆與miRNA之間的直接分子機制常見於Wnt/β-catenin訊號調控路徑。研究顯示miR-375-3p可直接靶向並抑制LRP5及β-catenin，進一步降低成骨作用。LRP5功能缺失亦已在動物模式確定會造成骨量下降，骨小梁變薄且連接性減弱，顯示miR-375-3p–LRP5/β-catenin為骨質疏鬆新興分子標靶及潛在治療策略[PMID:28158288]（人類組織及小鼠模式）。\n\n2. 多種天然物介入骨質疏鬆動物模型時被證明可調節miRNA並促進骨生成：\n   - 壯骨方（ZGF）可經肌細胞及其外泌體中的miRNA（如miR-5100、miR-126a-3p、miR-450b-5p上調，miR-669a-5p下調）調控骨髓間質幹細胞成骨分化，並提升與成骨相關的蛋白OCN、Osterix表達，最終改善SAMP6衰老型小鼠骨代謝及骨質疏鬆[PMID:38795694]（動物、細胞及外泌體）。\n\n   - 補腎健脾活血湯能透過miR-140-5p/BCL2L1通路，調節成骨細胞凋亡與自噬。miR-140-5p促進HFOB1.19細胞凋亡並抑制自噬，該湯劑能逆轉miR-140-5p的成骨抑制作用，主要效應經由促進BMP2途徑[PMID:40350835]（細胞與藥物含藥血清）。\n\n   - 羌骨飲（QiangGuYin, QGY）能升高破骨細胞外泌體miR-27b-3p含量，抑制DKK2（Wnt途徑負調控分子），活化β-catenin信號軸，改善PMOP大鼠骨質疏鬆。miR-27b-3p抑制與骨量指標顯著相關，為QGY促進成骨的主要機制[PMID:41961168]（動物、細胞及外泌體）。\n\n   - 熟地黃水提物（Rehmanniae Radix Praeparata, RRP）能提高去卵巢大鼠血清外泌體中miR-29a-3p，抑制NFIA促進Wnt訊號活化與成骨，優化骨小梁結構與骨蛋白表現，明確為miR-29a-3p/NFIA/Wnt軸[PMID:40024453]（動物模式、體外細胞驗證）。\n\n   - 龜板提取物（Plastrum Testudinis, PT）同樣在去卵巢大鼠模型驗證其可抑制miR-214，調節Wnt/β-catenin途徑，逆轉成骨抑制，促進骨形成蛋白表現。細胞層面證實miR-214 mimic可抑制Wnt活化且被PT有效逆轉[PMID:40358879]（動物、細胞試驗）。\n\n   - 淫羊藿草外泌體（EELNs）富含特定miRNAs及小分子代謝物，透過激活PI3K/Akt/mTOR等成骨相關途徑促進骨髓間質幹細胞成骨分化，修復OVX大鼠骨缺損，體內外均有效，顯示天然物miRNA介入骨質疏鬆治療前景[PMID:40266676]（動物、細胞、外泌體）。\n\n   - 淫羊藿甙（Icariine）可下調炎症（LPS）誘導升高的miR-34c，恢復Runx2蛋白等成骨轉錄因子表達，阻斷p38、JNK及NF-κB路徑惡性循環並促進成骨功能[PMID:27492554]（細胞、動物模式）。\n\n   - 枇杷葉來源的熊果酸可標靶核輸出蛋白Exportin 5（XPO5），下調let-7g-5p成熟miRNA表達，抑制破骨細胞分化，提供miRNA相關抑制骨吸收途徑新見解[PMID:30827108]（細胞、siRNA敲低、天然物作用）。\n\n【關聯／假說】\n1. 文獻亦回顧性總結環狀RNA（circRNA）作為成骨調控網絡中的關鍵分子，其與miRNA信號交互可作為未來骨質疏鬆新療法靶點，然目前仍以基礎研究為主[PMID:31131457]。\n\n【可測試假說／未明確證據】\n- 雖然多數研究於小鼠、細胞或外泌體層級獲得證實，臨床上人類直接應用仍需進一步試驗驗證其安全性及有效性。\n- 環狀RNA、miRNA作為生物標誌及基因治療工具用途值得持續探索。\n\n【未找到的證據】\n- 目前尚無臨床直接驗證miRNA經由天然物介入治療骨質疏鬆的大型臨床隨機試驗證據。\n\n【總結】\n骨質疏鬆的miRNA相關機制主要圍繞Wnt/β-catenin、PI3K/Akt/mTOR等成骨訊號路徑，miRNA可正負調控相關蛋白（包含LRP5、β-catenin、NFIA、BCL2L1等），直接影響間質幹細胞成骨分化。多種中藥（壯骨方、補腎健脾活血湯、羌骨飲、熟地黃、龜板、淫羊藿、枇杷葉提取物）可調節骨相關miRNA表達，促進成骨、抑制骨吸收，在細胞及動物層級具體證據明確。但臨床應用之過程與療效還有待更高級別臨床研究驗證。"
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 25.971894405782223,
+    "vector_index": 1.5262232199311256,
+    "answer_netmedex_hybrid_rag": 12.372455894947052,
+    "answer_traditional_rag": 14.39674237370491,
+    "total": 59.823019094765186
+  },
+  "token_usage": {
+    "total_tokens": 54134,
+    "output_tokens": 16631,
+    "input_tokens": 37503
+  },
+  "completed_at": "2026-08-05T02:26:57.064180+00:00",
+  "zero_path_answer_repair": {
+    "reason": "Prevent fabricated graph-derived claims when evidence gate exposed no paths",
+    "model": "gpt-4.1",
+    "token_usage": {
+      "total_tokens": 13459,
+      "output_tokens": 3053,
+      "input_tokens": 10406
+    }
+  }
+}

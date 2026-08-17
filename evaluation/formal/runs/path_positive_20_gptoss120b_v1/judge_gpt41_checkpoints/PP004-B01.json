@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP004",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "81af7d34ab0f1656e516f77d61f1639567a7853501a713f6287efa8d867aba1f",
+  "raw_response_sha256": "63de8f72a4ff5851a1bd6b3291087fa9d23da1799d164f3a5f2fb74a83739ce6",
+  "usage": {
+    "input_tokens": 2887,
+    "output_tokens": 482,
+    "total_tokens": 3369
+  },
+  "rated_at": "2026-08-13T06:27:49.930392+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP004-A",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Accurate, well-grounded, and mechanistically coherent. Limitations are clearly stated, but lacks direct mention of clinical trial evidence."
+      },
+      {
+        "answer_id": "PP004-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Strong on both animal and human evidence, including clinical trials. Limitations are nuanced and context-specific. Mechanistic and translational aspects are well integrated."
+      },
+      {
+        "answer_id": "PP004-C",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, covers genetic, animal, clinical, and mechanistic data. Lacks explicit citations but content is accurate and nuanced regarding context-dependence."
+      },
+      {
+        "answer_id": "PP004-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Thorough, well-cited, covers animal, human, and mechanistic evidence. Limitations are clearly articulated. Slightly truncated ending but otherwise complete."
+      }
+    ],
+    "preferred_item_id": "PP004-D",
+    "pairwise_reason": "PP004-D is the most comprehensive, well-grounded, and balanced in its discussion of evidence and limitations, with clear distinction between animal and human data and explicit mechanistic detail."
+  }
+}

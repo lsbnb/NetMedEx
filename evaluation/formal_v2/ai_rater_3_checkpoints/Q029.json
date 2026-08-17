@@ -1,0 +1,100 @@
+{
+  "question_id": "Q029",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-30T09:32:44.974403+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q029-C001",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract directly addresses the question by identifying a mechanism (telomere shortening leading to increased ICAM-1 and decreased eNOS activity) that connects endothelial cell senescence to atherogenesis."
+    },
+    {
+      "candidate_id": "Q029-C002",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The study directly investigates the causal implication of endothelial cell senescence in atherosclerosis, identifying an epigenetic mechanism (H3K4me3 alteration leading to increased NF-κB accessibility and VCAM-1 induction) that drives the pathology."
+    },
+    {
+      "candidate_id": "Q029-C003",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Provides useful adjacent evidence by demonstrating how oxidative stress induces endothelial senescence and SASP (which leads to atherosclerosis), and how colchicine blocks this via NF-κB and MAPKs."
+    },
+    {
+      "candidate_id": "Q029-C004",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Offers adjacent evidence focusing on ethanol-induced endothelial senescence and SASP, which contribute to plaque formation, and the protective mechanisms of colchicine."
+    },
+    {
+      "candidate_id": "Q029-C005",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Provides review-level context on the mechanisms (e.g., NLRP3 inflammasome, SASP) linking cellular senescence, including endothelial cells, to diabetic atherosclerosis."
+    },
+    {
+      "candidate_id": "Q029-C006",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] A review article that discusses the mechanisms by which senescent cells promote endothelial dysfunction and atherosclerosis, providing good background context."
+    },
+    {
+      "candidate_id": "Q029-C007",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Provides review-level context on vascular senescence mechanisms (p53/p21, p16/Rb, SASP) and their contribution to cardiovascular diseases like atherosclerosis."
+    },
+    {
+      "candidate_id": "Q029-C008",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Directly addresses the question by testing a mechanistic link (autophagy dysfunction via the MKRN2-mediated PI3K/AKT/mTOR pathway) connecting endothelial senescence to atherosclerosis in an experimental model."
+    },
+    {
+      "candidate_id": "Q029-C009",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Provides review-level context specifically focusing on the role of the Senescence-Associated Secretory Phenotype (SASP) in promoting atherosclerosis."
+    },
+    {
+      "candidate_id": "Q029-C010",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "wrong_context",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Off-topic for the specific question; it focuses on how atherosclerosis induces cerebromicrovascular senescence leading to cognitive impairment, rather than mechanisms by which endothelial senescence causes atherosclerosis."
+    },
+    {
+      "candidate_id": "Q029-C011",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Provides review-level context on the bidirectional relationship between aging and atherosclerosis, discussing shared mechanisms like endothelial dysfunction and SASP."
+    },
+    {
+      "candidate_id": "Q029-C012",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] A review article providing context on the mechanisms of vascular endothelial senescence and its consequences for vascular diseases."
+    },
+    {
+      "candidate_id": "Q029-C013",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] Provides adjacent evidence by demonstrating that telomere dysfunction induces endothelial senescence and vascular impairment, though it does not explicitly model atherosclerosis."
+    }
+  ],
+  "raw_response_sha256": "fa7b7f3ef930bf34a3fecff3f90dadd1f95034cb6919453767245ed2ffec393e"
+}

@@ -1,0 +1,583 @@
+{
+  "question_id": "BW008",
+  "corpus_strategy": "controlled_endpoint_isolated_shared_bridge",
+  "same_corpus_for_text_and_hybrid": true,
+  "mediators_withheld_from_system_query": true,
+  "source_patterns": [
+    "\\bchronic hepatitis b\\b",
+    "\\bchronic hbv\\b",
+    "\\bchb\\b"
+  ],
+  "target_patterns": [
+    "\\bhepatocellular carcinoma\\b",
+    "\\bhccs?\\b"
+  ],
+  "source_identifiers": [
+    "MESH:D019694"
+  ],
+  "target_identifiers": [
+    "MESH:D006528"
+  ],
+  "target_side_forbidden_source_patterns": [
+    "\\bhepatitis b(?: virus)?\\b",
+    "\\bhbv\\b",
+    "\\bchb\\b"
+  ],
+  "target_side_forbidden_source_identifiers": [
+    "MESH:D019694",
+    "10407"
+  ],
+  "eligible_mediators": [
+    "STAT1",
+    "cirrhosis"
+  ],
+  "mediator_audit": [
+    {
+      "name": "HBx",
+      "queries": {
+        "source": "(\"chronic hepatitis B\"[Title/Abstract] OR \"chronic HBV\"[Title/Abstract] OR CHB[Title/Abstract]) AND (HBx[Title/Abstract] OR \"HBV X protein\"[Title/Abstract])",
+        "target": "(\"hepatocellular carcinoma\"[Title/Abstract] OR HCC[Title/Abstract]) AND (HBx[Title/Abstract] OR \"HBV X protein\"[Title/Abstract])"
+      },
+      "candidate_pmids": {
+        "source": [
+          "35632728",
+          "38971531",
+          "37290591",
+          "38311121",
+          "40512786",
+          "41443982",
+          "16461228",
+          "29052129",
+          "39599784",
+          "27314335",
+          "26983541",
+          "32185454",
+          "20185200",
+          "29065733",
+          "19874379",
+          "34920100",
+          "32987030",
+          "34704004",
+          "36140311",
+          "23749671",
+          "27658781",
+          "8682608",
+          "28820498",
+          "26747833",
+          "39290403",
+          "33923385",
+          "32890439",
+          "35780008",
+          "36165017",
+          "11868782"
+        ],
+        "target": [
+          "37159932",
+          "23981576",
+          "38962270",
+          "41438340",
+          "40577282",
+          "41112515",
+          "39290403",
+          "39868653",
+          "27880978",
+          "32664401",
+          "35203390",
+          "37715221",
+          "36160029",
+          "28498550",
+          "28820498",
+          "39652575",
+          "38587834",
+          "25132741",
+          "31739577",
+          "37746253",
+          "27785261",
+          "25099228",
+          "40863326",
+          "12505283",
+          "38058068",
+          "40860202",
+          "42229379",
+          "38426692",
+          "40717222",
+          "40544238"
+        ]
+      },
+      "accepted_pmids": {
+        "source": [
+          "40512786",
+          "39599784",
+          "27314335"
+        ],
+        "target": []
+      },
+      "rejected_pmids": {
+        "source": {
+          "35632728": [
+            "target_leak"
+          ],
+          "38971531": [
+            "target_leak"
+          ],
+          "37290591": [
+            "mediator_absent"
+          ],
+          "38311121": [
+            "mediator_absent"
+          ],
+          "41443982": [
+            "mediator_absent"
+          ],
+          "16461228": [
+            "target_leak"
+          ],
+          "29052129": [
+            "target_leak"
+          ]
+        },
+        "target": {
+          "37159932": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "23981576": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "38962270": [
+            "source_leak"
+          ],
+          "41438340": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "40577282": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "41112515": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "39290403": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "39868653": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "27880978": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "32664401": [
+            "source_leak"
+          ],
+          "35203390": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "37715221": [
+            "source_leak"
+          ],
+          "36160029": [
+            "source_leak"
+          ],
+          "28498550": [
+            "source_leak"
+          ],
+          "28820498": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "39652575": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "38587834": [
+            "source_leak"
+          ],
+          "25132741": [
+            "source_leak"
+          ],
+          "31739577": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "37746253": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "27785261": [
+            "source_leak"
+          ],
+          "25099228": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "40863326": [
+            "source_leak"
+          ],
+          "12505283": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "38058068": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "40860202": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "42229379": [
+            "source_leak"
+          ],
+          "38426692": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "40717222": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "40544238": [
+            "mediator_absent",
+            "source_leak"
+          ]
+        }
+      },
+      "bridge_eligible": false
+    },
+    {
+      "name": "STAT1",
+      "queries": {
+        "source": "(\"chronic hepatitis B\"[Title/Abstract] OR \"chronic HBV\"[Title/Abstract] OR CHB[Title/Abstract]) AND STAT1[Title/Abstract]",
+        "target": "(\"hepatocellular carcinoma\"[Title/Abstract] OR HCC[Title/Abstract]) AND STAT1[Title/Abstract]"
+      },
+      "candidate_pmids": {
+        "source": [
+          "30126685",
+          "37879404",
+          "40928246",
+          "39633459",
+          "30842274",
+          "27341035",
+          "37197593",
+          "36122437",
+          "28328926",
+          "39369463",
+          "32628668",
+          "34041839",
+          "32248821",
+          "22147985",
+          "17226901",
+          "35144643",
+          "27276529",
+          "29790851",
+          "32581092",
+          "26996068",
+          "23698745",
+          "31019054",
+          "28496097",
+          "22996189",
+          "37994664",
+          "37741128",
+          "17065208",
+          "41645267",
+          "32302624",
+          "34737296"
+        ],
+        "target": [
+          "39256398",
+          "38351096",
+          "39260826",
+          "39486886",
+          "34021034",
+          "38720319",
+          "34168004",
+          "40781069",
+          "41112038",
+          "40055704",
+          "40883414",
+          "35267462",
+          "38070755",
+          "30456450",
+          "23665184",
+          "33641284",
+          "39187545",
+          "40846083",
+          "38429602",
+          "40023249",
+          "38308318",
+          "30126685",
+          "41398194",
+          "37390758",
+          "41476054",
+          "33759138",
+          "26617467",
+          "40472682",
+          "37235794",
+          "23588992"
+        ]
+      },
+      "accepted_pmids": {
+        "source": [
+          "37879404",
+          "40928246",
+          "30842274"
+        ],
+        "target": [
+          "38351096",
+          "39486886",
+          "34168004"
+        ]
+      },
+      "rejected_pmids": {
+        "source": {
+          "30126685": [
+            "target_leak"
+          ],
+          "39633459": [
+            "target_leak"
+          ]
+        },
+        "target": {
+          "39256398": [
+            "mediator_absent"
+          ],
+          "39260826": [
+            "mediator_absent"
+          ],
+          "34021034": [
+            "source_leak"
+          ],
+          "38720319": [
+            "mediator_absent"
+          ]
+        }
+      },
+      "bridge_eligible": true
+    },
+    {
+      "name": "cirrhosis",
+      "queries": {
+        "source": "(\"chronic hepatitis B\"[Title/Abstract] OR \"chronic HBV\"[Title/Abstract] OR CHB[Title/Abstract]) AND (cirrhosis[Title/Abstract] OR cirrhotic[Title/Abstract])",
+        "target": "(\"hepatocellular carcinoma\"[Title/Abstract] OR HCC[Title/Abstract]) AND (cirrhosis[Title/Abstract] OR cirrhotic[Title/Abstract])"
+      },
+      "candidate_pmids": {
+        "source": [
+          "39568126",
+          "38906440",
+          "37157776",
+          "28928275",
+          "36519342",
+          "35708793",
+          "31903714",
+          "36297173",
+          "24574713",
+          "22450894",
+          "40024530",
+          "25359547",
+          "40863123",
+          "39086536",
+          "27350724",
+          "35588690",
+          "19100228",
+          "32087191",
+          "31077059",
+          "41713830",
+          "40643591",
+          "33083255",
+          "39053226",
+          "41233830",
+          "32217150",
+          "25132755",
+          "38051538",
+          "41997336",
+          "26755867",
+          "16409142"
+        ],
+        "target": [
+          "34239263",
+          "36671526",
+          "25086932",
+          "34842182",
+          "40575339",
+          "35949723",
+          "34542582",
+          "36687125",
+          "39411648",
+          "32020352",
+          "41607858",
+          "40724821",
+          "41179727",
+          "35568002",
+          "34453963",
+          "34027591",
+          "24400224",
+          "28674415",
+          "39197286",
+          "30829446",
+          "30705715",
+          "41713830",
+          "38145321",
+          "39642746",
+          "38073766",
+          "30362090",
+          "26546291",
+          "28461073",
+          "30788586",
+          "25319854"
+        ]
+      },
+      "accepted_pmids": {
+        "source": [
+          "24574713",
+          "40024530",
+          "41997336"
+        ],
+        "target": [
+          "34842182",
+          "39411648",
+          "32020352"
+        ]
+      },
+      "rejected_pmids": {
+        "source": {
+          "39568126": [
+            "target_leak"
+          ],
+          "38906440": [
+            "mediator_absent"
+          ],
+          "37157776": [
+            "mediator_absent",
+            "target_leak"
+          ],
+          "28928275": [
+            "mediator_absent"
+          ],
+          "36519342": [
+            "mediator_absent"
+          ],
+          "35708793": [
+            "target_leak"
+          ],
+          "31903714": [
+            "mediator_absent",
+            "target_leak"
+          ],
+          "36297173": [
+            "target_leak"
+          ],
+          "22450894": [
+            "mediator_absent"
+          ],
+          "25359547": [
+            "mediator_absent",
+            "target_leak"
+          ],
+          "40863123": [
+            "target_leak"
+          ],
+          "39086536": [
+            "mediator_absent"
+          ],
+          "27350724": [
+            "target_leak"
+          ],
+          "35588690": [
+            "mediator_absent",
+            "target_leak"
+          ],
+          "19100228": [
+            "mediator_absent"
+          ],
+          "32087191": [
+            "mediator_absent",
+            "target_leak"
+          ],
+          "31077059": [
+            "mediator_absent",
+            "target_leak"
+          ],
+          "41713830": [
+            "mediator_absent",
+            "target_leak"
+          ],
+          "40643591": [
+            "mediator_absent",
+            "target_leak"
+          ],
+          "33083255": [
+            "mediator_absent"
+          ],
+          "39053226": [
+            "mediator_absent"
+          ],
+          "41233830": [
+            "mediator_absent"
+          ],
+          "32217150": [
+            "mediator_absent",
+            "target_leak"
+          ],
+          "25132755": [
+            "mediator_absent",
+            "target_leak"
+          ],
+          "38051538": [
+            "mediator_absent",
+            "target_leak"
+          ]
+        },
+        "target": {
+          "34239263": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "36671526": [
+            "mediator_absent"
+          ],
+          "25086932": [
+            "mediator_absent"
+          ],
+          "40575339": [
+            "mediator_absent",
+            "source_leak"
+          ],
+          "35949723": [
+            "mediator_absent"
+          ],
+          "34542582": [
+            "source_leak"
+          ],
+          "36687125": [
+            "mediator_absent"
+          ]
+        }
+      },
+      "bridge_eligible": true
+    }
+  ],
+  "fetched_pmids": [
+    "40512786",
+    "39599784",
+    "27314335",
+    "37879404",
+    "40928246",
+    "30842274",
+    "38351096",
+    "39486886",
+    "34168004",
+    "24574713",
+    "40024530",
+    "41997336",
+    "34842182",
+    "39411648",
+    "32020352"
+  ]
+}

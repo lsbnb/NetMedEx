@@ -1,0 +1,162 @@
+{
+  "status": "complete",
+  "question_id": "BW006",
+  "domain": "neuromuscular disease",
+  "question": "Which evidence-supported intermediates connect dystrophin deficiency to chronic inflammation?",
+  "question_type": "mechanism",
+  "pubmed_query": "Duchenne muscular dystrophy dystrophin inflammation NF-kB macrophage fibrosis",
+  "effective_pubmed_query": "Duchenne muscular dystrophy dystrophin inflammation NF-kB macrophage fibrosis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "35149132",
+    "34078746",
+    "32508664",
+    "37284446",
+    "28706906",
+    "37364421",
+    "41124255",
+    "29894670",
+    "40948348",
+    "40244022",
+    "41235339",
+    "38278025"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "32508664",
+        "score": 0.48196089861381936
+      },
+      {
+        "pmid": "34078746",
+        "score": 0.48139222221125505
+      },
+      {
+        "pmid": "41124255",
+        "score": 0.4773094172444833
+      },
+      {
+        "pmid": "29894670",
+        "score": 0.47319876952416906
+      },
+      {
+        "pmid": "35149132",
+        "score": 0.468902575837035
+      },
+      {
+        "pmid": "37364421",
+        "score": 0.44226572950525295
+      },
+      {
+        "pmid": "40948348",
+        "score": 0.43316998892780434
+      },
+      {
+        "pmid": "41235339",
+        "score": 0.41559567790023066
+      },
+      {
+        "pmid": "37284446",
+        "score": 0.41322339208860664
+      },
+      {
+        "pmid": "40244022",
+        "score": 0.40630027831586113
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "32508664",
+        "score": 0.48196089861381936
+      },
+      {
+        "pmid": "34078746",
+        "score": 0.48139222221125505
+      },
+      {
+        "pmid": "41124255",
+        "score": 0.4773094172444833
+      },
+      {
+        "pmid": "29894670",
+        "score": 0.47319876952416906
+      },
+      {
+        "pmid": "35149132",
+        "score": 0.468902575837035
+      },
+      {
+        "pmid": "37364421",
+        "score": 0.44226572950525295
+      },
+      {
+        "pmid": "40948348",
+        "score": 0.43316998892780434
+      },
+      {
+        "pmid": "41235339",
+        "score": 0.41559567790023066
+      },
+      {
+        "pmid": "37284446",
+        "score": 0.41322339208860664
+      },
+      {
+        "pmid": "40244022",
+        "score": 0.40630027831586113
+      }
+    ]
+  },
+  "answers": {},
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 4.2498111724853516e-05,
+    "vector_index": 1.3872804641723633,
+    "total": 1.907250590622425
+  },
+  "token_usage": {},
+  "completed_at": "2026-08-09T19:08:28.328877+00:00"
+}

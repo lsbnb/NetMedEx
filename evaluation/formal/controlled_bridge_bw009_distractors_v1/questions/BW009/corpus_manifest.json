@@ -1,0 +1,274 @@
+{
+  "question_id": "BW009",
+  "status": "eligible",
+  "corpus_strategy": "controlled_endpoint_isolated_shared_bridge",
+  "same_corpus_for_text_and_hybrid": true,
+  "mediators_withheld_from_system_query": true,
+  "source_patterns": [
+    "\\bSGLT2\\s+inhibitor\\b",
+    "\\bSGLT2i\\b",
+    "\\bempagliflozin\\b",
+    "\\bdapagliflozin\\b",
+    "\\bcanagliflozin\\b",
+    "\\bSodium.glucose\\s+cotransporter.?2\\b"
+  ],
+  "target_patterns": [
+    "\\brenal\\s+protection\\b",
+    "\\bnephroprotection\\b",
+    "\\bkidney\\s+protection\\b",
+    "\\brenoprotection\\b",
+    "\\brenoprotective\\b"
+  ],
+  "source_identifiers": [],
+  "target_identifiers": [],
+  "target_side_forbidden_source_patterns": [
+    "\\bSGLT2\\b",
+    "\\bempagliflozin\\b",
+    "\\bdapagliflozin\\b",
+    "\\bcanagliflozin\\b"
+  ],
+  "target_side_forbidden_source_identifiers": [],
+  "eligible_mediators": [
+    "ketone bodies"
+  ],
+  "mediator_audit": [
+    {
+      "name": "ketone bodies",
+      "queries": {
+        "source": "SGLT2 inhibitor[Title/Abstract] AND (ketone bodies[Title/Abstract] OR beta-hydroxybutyrate[Title/Abstract] OR BHB[Title/Abstract])",
+        "target": "(ketone bodies[Title/Abstract] OR beta-hydroxybutyrate[Title/Abstract] OR BHB[Title/Abstract]) AND renal protection[Title/Abstract]"
+      },
+      "candidate_pmids": {
+        "source": [
+          "33197224",
+          "32665641",
+          "38160540",
+          "38776437",
+          "37148170",
+          "34350876",
+          "33648515",
+          "37266465",
+          "36255460",
+          "25359155",
+          "39421941",
+          "40139871",
+          "42261991",
+          "40420397",
+          "42375347",
+          "30073768",
+          "35120993",
+          "40616115",
+          "33512450",
+          "33230620",
+          "41145428",
+          "38190779",
+          "40629004",
+          "38699792",
+          "39922424",
+          "40331922",
+          "28570924",
+          "35863986",
+          "27878313",
+          "31456521"
+        ],
+        "target": [
+          "38757723",
+          "33648515",
+          "26982719",
+          "34860594",
+          "41801188",
+          "42392584",
+          "42144570"
+        ]
+      },
+      "accepted_pmids": {
+        "source": [
+          "32665641",
+          "38160540",
+          "38776437"
+        ],
+        "target": [
+          "38757723",
+          "26982719",
+          "41801188"
+        ]
+      },
+      "annotation_identifiers": {
+        "source": [
+          "MESH:D007657",
+          "MESH:D020155"
+        ],
+        "target": [
+          "MESH:D007657",
+          "MESH:D020155"
+        ]
+      },
+      "shared_mediator_identifiers": [
+        "MESH:D007657",
+        "MESH:D020155"
+      ],
+      "rejected_pmids": {
+        "source": {
+          "33197224": [
+            "source_absent"
+          ]
+        },
+        "target": {
+          "33648515": [
+            "source_leak"
+          ],
+          "34860594": [
+            "source_leak"
+          ]
+        }
+      },
+      "bridge_eligible": true
+    }
+  ],
+  "distractor_audit": {
+    "queries": {
+      "source": "(SGLT2 inhibitor[Title/Abstract] OR empagliflozin[Title/Abstract] OR dapagliflozin[Title/Abstract] OR canagliflozin[Title/Abstract])",
+      "target": "(renal protection[Title/Abstract] OR nephroprotection[Title/Abstract] OR kidney protection[Title/Abstract] OR renoprotection[Title/Abstract])"
+    },
+    "candidate_pmids": {
+      "source": [
+        "38696170",
+        "39836397",
+        "28105986",
+        "34302978",
+        "36607775",
+        "27059700",
+        "38179304",
+        "38918063",
+        "38277989",
+        "39836391",
+        "30954510",
+        "35124914",
+        "41147324",
+        "37436535",
+        "31643612",
+        "28692750",
+        "41343213",
+        "27541294",
+        "31741440",
+        "31770362",
+        "27417322",
+        "26824365",
+        "38695073",
+        "29349558",
+        "29704192",
+        "28926495",
+        "40569464",
+        "39056245",
+        "38255143",
+        "25254045"
+      ],
+      "target": [
+        "38523127",
+        "31159279",
+        "27028833",
+        "40857352",
+        "33749325",
+        "35077036",
+        "35380212",
+        "40486517",
+        "21981881",
+        "35151596",
+        "32472034",
+        "37179821",
+        "26024384",
+        "41067166",
+        "34457077",
+        "40546164",
+        "40814625",
+        "39503220",
+        "26823549",
+        "38715182",
+        "42281854",
+        "31090379",
+        "28382507",
+        "39503219",
+        "27642570",
+        "39261206",
+        "38418074",
+        "27108948",
+        "34150796",
+        "12658010"
+      ]
+    },
+    "accepted_pmids": {
+      "source": [
+        "38696170",
+        "39836397",
+        "28105986",
+        "34302978",
+        "36607775",
+        "27059700",
+        "38179304",
+        "38918063",
+        "38277989",
+        "39836391"
+      ],
+      "target": [
+        "31159279",
+        "27028833",
+        "40857352",
+        "40486517",
+        "21981881",
+        "32472034",
+        "37179821",
+        "26024384",
+        "41067166",
+        "34457077"
+      ]
+    },
+    "rejected_pmids": {
+      "source": {},
+      "target": {
+        "38523127": [
+          "source_leak"
+        ],
+        "33749325": [
+          "source_leak"
+        ],
+        "35077036": [
+          "source_leak"
+        ],
+        "35380212": [
+          "source_leak"
+        ],
+        "35151596": [
+          "target_absent"
+        ]
+      }
+    }
+  },
+  "fetched_pmids": [
+    "32665641",
+    "38160540",
+    "38776437",
+    "38757723",
+    "26982719",
+    "41801188",
+    "38696170",
+    "39836397",
+    "28105986",
+    "34302978",
+    "36607775",
+    "27059700",
+    "38179304",
+    "38918063",
+    "38277989",
+    "39836391",
+    "31159279",
+    "27028833",
+    "40857352",
+    "40486517",
+    "21981881",
+    "32472034",
+    "37179821",
+    "26024384",
+    "41067166",
+    "34457077"
+  ]
+}

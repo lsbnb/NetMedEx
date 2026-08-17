@@ -1,0 +1,87 @@
+{
+  "question_id": "Q025",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-31T19:30:15.744712+00:00",
+  "ratings": [
+    {
+      "edge_id": "Q025-E01",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles mention NF-kappaB (a key inflammatory mediator) immunostaining in mdx mice (a model of Duchenne muscular dystrophy), supporting an association between inflammation and DMD."
+    },
+    {
+      "edge_id": "Q025-E02",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] While inflammation (NF-kappaB) is related to DMD pathology, the title does not state that inflammation 'leads to' DMD, which is a genetic disease."
+    },
+    {
+      "edge_id": "Q025-E03",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The relation direction is inverted. The title states that green tea extract (epigallocatechin gallate) decreases NF-kappaB (inflammation), not that inflammation decreases epigallocatechin gallate."
+    },
+    {
+      "edge_id": "Q025-E04",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title does not mention the DMD gene causing Duchenne muscular dystrophy, nor does it explicitly mention the acronym DMD."
+    },
+    {
+      "edge_id": "Q025-E05",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly states that green tea extract (whose main active component is epigallocatechin gallate) decreases NF-kappaB immunostaining."
+    },
+    {
+      "edge_id": "Q025-E06",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title states that green tea extract (epigallocatechin gallate) decreases muscle pathology in mdx mice, which supports that it ameliorates Duchenne muscular dystrophy."
+    },
+    {
+      "edge_id": "Q025-E07",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title does not mention DMD causing DMD, which is a tautology or confusion between the gene and the disease, and is unsupported by the text."
+    },
+    {
+      "edge_id": "Q025-E08",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The relation direction is inverted. Green tea extract (epigallocatechin gallate) ameliorates Duchenne muscular dystrophy pathology, not the other way around."
+    },
+    {
+      "edge_id": "Q025-E09",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title does not mention death or mortality associated with Duchenne muscular dystrophy."
+    },
+    {
+      "edge_id": "Q025-E10",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title mentions 'muscle pathology' but does not specifically mention 'muscular atrophy' or that DMD causes it."
+    },
+    {
+      "edge_id": "Q025-E11",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title mentions NF-kappaB immunostaining in regenerating muscle fibers of mdx mice, supporting an association between DMD and NFKB1."
+    },
+    {
+      "edge_id": "Q025-E12",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title does not mention inborn genetic diseases."
+    },
+    {
+      "edge_id": "Q025-E13",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title does not mention X-linked genetic diseases."
+    }
+  ],
+  "raw_response_sha256": "a92b4bcb6c0bd8add7a351bc17b9469bc8842d87b4b1ec682e81f89ff54de25b"
+}

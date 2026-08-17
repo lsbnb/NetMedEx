@@ -1,0 +1,26 @@
+{
+  "task": "edge",
+  "question_id": "Q048",
+  "batch": 2,
+  "provider": "anthropic",
+  "model": "claude-haiku-4-5-20251001",
+  "input_sha256": "7f2e47295fa1d1228c4c2d50d3eebb9c3bde54418fe6047c48d7e62d3abc5482",
+  "raw_response_sha256": "ca2532c1880c43a98236607175513461fe43a8e305aae2a9c43da4e07021aa59",
+  "rated_at": "2026-08-02T19:08:45.963863+00:00",
+  "result": {
+    "ratings": [
+      {
+        "edge_id": "Q048-E05",
+        "entity_valid": 1,
+        "relation_exists": 1,
+        "relation_type_correct": 1,
+        "direction_correct": 1,
+        "evidence_support": 1,
+        "confidence": 3,
+        "notes": "Abstract clearly states melatonin increased BMAL1 expression in RAW264.7 cells. However, question asks about miR-21 pathway; this edge involves BMAL1/ROS/MAPK-p38 instead."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

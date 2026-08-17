@@ -1,0 +1,129 @@
+{
+  "question_id": "Q029",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-08-01T05:05:28.214579+00:00",
+  "ratings": [
+    {
+      "edge_id": "Q029-E01",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Inflammation is not explicitly mentioned in the provided titles, making this edge unsupported by the text."
+    },
+    {
+      "edge_id": "Q029-E02",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The broad term 'cardiovascular diseases' is not explicitly mentioned in the supporting titles."
+    },
+    {
+      "edge_id": "Q029-E03",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The entities are related, but the direction is inverted. The title states that poliumoside attenuates atherosclerosis, not that atherosclerosis ameliorates poliumoside."
+    },
+    {
+      "edge_id": "Q029-E04",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title questions if microvascular aging 'accompanies' atherosclerosis in cognitive impairment, which supports an association but does not support the causal 'enhances' relation."
+    },
+    {
+      "edge_id": "Q029-E05",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] NAD is not mentioned in the supporting titles."
+    },
+    {
+      "edge_id": "Q029-E06",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Vascular system injuries are not mentioned in the supporting titles."
+    },
+    {
+      "edge_id": "Q029-E07",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Neither atherosclerosis nor inflammaging are mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q029-E08",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly links cerebromicrovascular senescence (a cerebrovascular disorder) as accompanying atherosclerosis."
+    },
+    {
+      "edge_id": "Q029-E09",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The phrase 'Diabetic Atherosclerosis' directly supports an association between atherosclerosis and diabetes."
+    },
+    {
+      "edge_id": "Q029-E10",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Hyperglycemia is not explicitly mentioned in the supporting titles."
+    },
+    {
+      "edge_id": "Q029-E11",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Lipids are not mentioned in the supporting titles."
+    },
+    {
+      "edge_id": "Q029-E12",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Lipotoxicity is not mentioned in the supporting titles."
+    },
+    {
+      "edge_id": "Q029-E13",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] NAD is not mentioned in the supporting titles."
+    },
+    {
+      "edge_id": "Q029-E14",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] NAD is not mentioned in the supporting titles."
+    },
+    {
+      "edge_id": "Q029-E15",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title states ethanol induces senescence/SASP, not that inflammation induces ethanol, which is biologically nonsensical."
+    },
+    {
+      "edge_id": "Q029-E16",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The entities are related, but the direction is wrong. The title implies vascular issues cause cognitive impairment, not the reverse."
+    },
+    {
+      "edge_id": "Q029-E17",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The phrase 'vascular cognitive impairment' supports that cerebrovascular disorders cause or contribute to cognition disorders."
+    },
+    {
+      "edge_id": "Q029-E18",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The entities are related, but the direction is wrong. Cognitive disorders do not cause cerebral small vessel diseases."
+    },
+    {
+      "edge_id": "Q029-E19",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Neither inflammaging nor thrombosis are mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q029-E20",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] TP53 is not mentioned in the supporting titles."
+    }
+  ],
+  "raw_response_sha256": "8799d7f159b0eeea9e037f3cb4f635b58da4beb181fb44712c992d7f700df597"
+}

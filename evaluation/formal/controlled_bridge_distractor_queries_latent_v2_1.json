@@ -1,0 +1,10 @@
+{
+  "BW003": {
+    "source_distractor_query": "(CFTR[Title/Abstract] OR cystic fibrosis[Title/Abstract])",
+    "target_distractor_query": "(intestinal inflammation[Title/Abstract] OR gut inflammation[Title/Abstract] OR colitis[Title/Abstract])"
+  },
+  "BW006": {
+    "source_distractor_query": "(dystrophin[Title/Abstract] OR Duchenne[Title/Abstract] OR mdx[Title/Abstract])",
+    "target_distractor_query": "(chronic inflammation[Title/Abstract] OR skeletal muscle inflammation[Title/Abstract] OR muscle inflammatory[Title/Abstract])"
+  }
+}

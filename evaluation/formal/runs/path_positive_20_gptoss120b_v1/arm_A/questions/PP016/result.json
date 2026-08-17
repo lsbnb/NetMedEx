@@ -1,0 +1,212 @@
+{
+  "status": "complete",
+  "question_id": "PP016",
+  "domain": "rare disease",
+  "question": "What evidence supports a mechanistic path from cftr to inflammation through dysbiosis? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "CFTR AND (intestine OR intestinal) AND inflammation",
+  "effective_pubmed_query": "CFTR AND (intestine OR intestinal) AND inflammation",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "23142604",
+    "23788646",
+    "24548777",
+    "24685676",
+    "26923293",
+    "26976279",
+    "27473379",
+    "27588407",
+    "27703398",
+    "28215711",
+    "29933921",
+    "30546102",
+    "31636470",
+    "31679154",
+    "32326161",
+    "33201261",
+    "34339302",
+    "34884634",
+    "35160099",
+    "35331400",
+    "35523321",
+    "35743652",
+    "36117114",
+    "36289287",
+    "36600119",
+    "36967909",
+    "37003609",
+    "37546931",
+    "38043755",
+    "38073491",
+    "38179971",
+    "38233247",
+    "38554847",
+    "40047092",
+    "40247380",
+    "40379512",
+    "40824057",
+    "41347923",
+    "41498431"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports a mechanistic path from cftr to inflammation through dysbiosis? Distinguish evidence for each hop from overall inference.",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "36289287",
+        "score": 0.563714812965818
+      },
+      {
+        "pmid": "24548777",
+        "score": 0.5621057173325782
+      },
+      {
+        "pmid": "36600119",
+        "score": 0.5475427747395207
+      },
+      {
+        "pmid": "38554847",
+        "score": 0.5428355718932244
+      },
+      {
+        "pmid": "35160099",
+        "score": 0.5366646953708156
+      },
+      {
+        "pmid": "40824057",
+        "score": 0.5269386496090286
+      },
+      {
+        "pmid": "37546931",
+        "score": 0.5253108787767682
+      },
+      {
+        "pmid": "38073491",
+        "score": 0.5232141520043379
+      },
+      {
+        "pmid": "34339302",
+        "score": 0.5199081636523517
+      },
+      {
+        "pmid": "30546102",
+        "score": 0.5164803345032928
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "36289287",
+        "score": 0.563714812965818
+      },
+      {
+        "pmid": "24548777",
+        "score": 0.5621057173325782
+      },
+      {
+        "pmid": "36600119",
+        "score": 0.5475427747395207
+      },
+      {
+        "pmid": "38554847",
+        "score": 0.5428355718932244
+      },
+      {
+        "pmid": "35160099",
+        "score": 0.5366646953708156
+      },
+      {
+        "pmid": "40824057",
+        "score": 0.5269386496090286
+      },
+      {
+        "pmid": "37546931",
+        "score": 0.5253108787767682
+      },
+      {
+        "pmid": "38073491",
+        "score": 0.5232141520043379
+      },
+      {
+        "pmid": "34339302",
+        "score": 0.5199081636523517
+      },
+      {
+        "pmid": "30546102",
+        "score": 0.5164803345032928
+      }
+    ]
+  },
+  "answers": {
+    "general_llm": "**Evidence linking CFTR dysfunction to inflammation via dysbiosis**\n\n- **CFTR loss → altered airway surface liquid and mucus, fostering dysbiosis**  \n  *Established*: In CF mouse, ferret and pig models, genetic deletion or pharmacologic inhibition of CFTR reduces airway surface liquid depth and impairs mucociliary clearance, leading to early colonisation by *Pseudomonas aeruginosa* and a loss of anaerobic commensals. Human sputum studies using longitudinal 16S‑rRNA sequencing show that individuals with severe CFTR mutations have markedly lower bacterial diversity and a rapid shift toward proteobacteria within the first years of life, even before overt infection. These data demonstrate a causal connection between the ion‑transport defect and community restructuring.\n\n- **Dysbiosis → heightened innate immune activation**  \n  *Established*: Germ‑free CF mice colonised with a dysbiotic CF airway microbiota develop pronounced neutrophilic inflammation, elevated bronchial IL‑8, IL‑1β, and neutrophil elastase, whereas colonisation with a “healthy” microbiota produces a milder response. In patients, cross‑sectional metabolomic profiling shows that loss of short‑chain fatty‑acid–producing taxa (e.g., *Prevotella*, *Veillonella*) correlates with increased airway levels of prostaglandin‑E2 and oxidative stress markers, linking specific community changes to inflammatory mediators.\n\n- **CFTR modulators reverse dysbiosis and dampen inflammation**  \n  *Established*: Clinical trials of highly effective modulators (e.g., elexacaftor/tezacaftor/ivacaftor) report restoration of airway surface liquid pH, increased microbial diversity, and a reduction in sputum neutrophil elastase and total cell counts after 3–6 months. Parallel mouse studies show that pharmacologic restoration of CFTR function normalises mucus viscosity, prevents overgrowth of *P. aeruginosa*, and attenuates NF‑κB signaling, supporting a mechanistic chain.\n\n- **Antibiotic or probiotic manipulation of the microbiota modifies inflammatory tone**  \n  *Suggestive*: Short‑course inhaled antibiotics targeting dominant pathogens lower IL‑8 and neutrophil counts, but the effect is transient and often followed by re‑emergence of resistant strains, indicating that community composition—not just pathogen load—drives inflammation. Small pilot trials with oral probiotics (e.g., *Lactobacillus rhamnosus*) show modest increases in microbial diversity and slight reductions in sputum IL‑1β, but larger, controlled studies are needed to confirm causality.\n\n- **Integrated multi‑omics point to metabolite‑mediated signaling as the bridge**  \n  *Hypothesis*: Recent metatranscriptomic and metabolomic analyses reveal that dysbiotic CF airways produce reduced levels of anti‑inflammatory metabolites (e.g., indole‑3‑propionic acid) and increased protease‑activating peptides, which can directly stimulate epithelial TLR4 and inflammasome pathways. While these correlations are robust, experimental validation of the specific metabolite‑immune links remains pending.\n\n**Conclusion:** A convergent body of genetic, animal, and clinical data supports a mechanistic cascade in which CFTR deficiency reshapes the airway microbiome, and the resulting dysbiosis drives neutrophilic inflammation."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 5.323439836502075e-05,
+    "vector_index": 3.3390943482518196,
+    "kg_expansion": 2.323836088180542e-05,
+    "answer_general_llm": 26.789747059345245,
+    "total": 30.725107185542583
+  },
+  "token_usage": {
+    "total_tokens": 1277,
+    "input_tokens": 174,
+    "output_tokens": 1103
+  },
+  "completed_at": "2026-08-13T05:45:34.773851+00:00"
+}

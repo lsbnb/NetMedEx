@@ -1,0 +1,63 @@
+{
+  "task": "answer",
+  "question_id": "PP020",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "9048b59501463ed6a096d9a6987207ee73348577af783e3da5a588ce2f7e4a97",
+  "raw_response_sha256": "7adc5a9eb9f32f16d145e915d54ffb9e71cfd160635fcad7b12b6e83c2386b68",
+  "usage": {
+    "input_tokens": 2711,
+    "output_tokens": 613,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 3324
+  },
+  "rated_at": "2026-08-13T06:31:48.432501+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP020-A",
+        "correctness": 3,
+        "completeness": 3,
+        "relevance": 4,
+        "grounding": 3,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Correctly identifies hops but conflates periodontitis with inflammation as a single step. PMIDs cited plausibly but mechanistic detail thin. Osteoporosis→bone loss is tautological."
+      },
+      {
+        "answer_id": "PP020-B",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Best mechanistic detail per hop: TLR/NF-κB, RANKL/OPG, CTX-I, rodent femur data. No PMIDs cited, reducing grounding score. Clearly distinguishes human vs animal evidence and inference."
+      },
+      {
+        "answer_id": "PP020-C",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Good PMID grounding and LXR mechanistic detail. Answer appears truncated, missing systemic osteoporosis hop. Distinguishes human/animal/in-vitro evidence well."
+      },
+      {
+        "answer_id": "PP020-D",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Good structure distinguishing direct vs association vs hypothesis. Bidirectional inflammation-dysbiosis noted. Systemic osteoporosis hop labeled hypothesis, appropriately cautious. PMIDs provided."
+      }
+    ],
+    "preferred_item_id": "PP020-B",
+    "pairwise_reason": "PP020-B provides the most complete, mechanistically detailed, and epistemically careful account of each hop, explicitly distinguishing human epidemiology from animal causal models and in-vitro pathway data, despite lacking PMID citations."
+  }
+}

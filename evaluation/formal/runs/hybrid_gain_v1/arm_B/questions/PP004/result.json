@@ -1,0 +1,198 @@
+{
+  "status": "complete",
+  "question_id": "PP004",
+  "domain": "immunology",
+  "question": "What evidence supports the claim that il-17 promotes autoimmune disease, and what are the important study-context limitations?",
+  "question_type": "mechanism",
+  "pubmed_query": "IL-17 AND autoimmune disease AND (Th17 OR gamma-delta T cells OR innate lymphoid cells)",
+  "effective_pubmed_query": "IL-17 AND autoimmune disease AND (Th17 OR gamma-delta T cells OR innate lymphoid cells)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "25130295",
+    "25145755",
+    "25467639",
+    "27576555",
+    "27757507",
+    "30502718",
+    "30891627",
+    "31295952",
+    "31866067",
+    "34635393",
+    "34875227",
+    "35872102",
+    "37579542",
+    "37670700",
+    "39875232"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports the claim that il-17 promotes autoimmune disease, and what are the important study-context limitations?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "integration_decision": {
+      "method": "three_stage_incremental_utility_router_v1",
+      "mode": "traditional_fallback",
+      "reason": "no_claim_safe_path",
+      "claim_safe_path_count": 0,
+      "incremental_path_count": 0,
+      "confirmatory_path_count": 0,
+      "citation_validation_pmids": [],
+      "policy": "three_stage"
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "disabled",
+      "reason": "integration_mode=traditional_fallback",
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "39875232",
+        "score": 0.6428737346639783
+      },
+      {
+        "pmid": "37670700",
+        "score": 0.6401198955034989
+      },
+      {
+        "pmid": "27576555",
+        "score": 0.62895586760059
+      },
+      {
+        "pmid": "25145755",
+        "score": 0.6110701599455642
+      },
+      {
+        "pmid": "37579542",
+        "score": 0.5986343875685466
+      },
+      {
+        "pmid": "30891627",
+        "score": 0.597142926599063
+      },
+      {
+        "pmid": "31295952",
+        "score": 0.5881686063500287
+      },
+      {
+        "pmid": "30502718",
+        "score": 0.5817665738575354
+      },
+      {
+        "pmid": "34635393",
+        "score": 0.5809794882632885
+      },
+      {
+        "pmid": "34875227",
+        "score": 0.552855221382927
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "39875232",
+        "score": 0.6428737346639783
+      },
+      {
+        "pmid": "37670700",
+        "score": 0.6401198955034989
+      },
+      {
+        "pmid": "27576555",
+        "score": 0.62895586760059
+      },
+      {
+        "pmid": "25145755",
+        "score": 0.6110701599455642
+      },
+      {
+        "pmid": "37579542",
+        "score": 0.5986343875685466
+      },
+      {
+        "pmid": "30891627",
+        "score": 0.597142926599063
+      },
+      {
+        "pmid": "31295952",
+        "score": 0.5881686063500287
+      },
+      {
+        "pmid": "30502718",
+        "score": 0.5817665738575354
+      },
+      {
+        "pmid": "34635393",
+        "score": 0.5809794882632885
+      },
+      {
+        "pmid": "34875227",
+        "score": 0.552855221382927
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Direct experimental evidence** – In mice, experimental autoimmune diseases that develop in the absence of Th1/Th2 responses are driven by IL‑17‑producing RORγt⁺ CD4⁺ T cells, establishing Th17 cells as a pathogenic subset that promotes tissue inflammation [PMID: 27576555] (animal). A fate‑mapping study of intestinal Th17 cells showed that a stem‑like IL‑17⁺ population migrates to the CNS and, under IL‑23 stimulation, gives rise to GM‑CSF⁺ IFN‑γ⁺ encephalitogenic cells that trigger multiple‑sclerosis‑like autoimmunity [PMID: 34875227] (animal).\n\n**Human clinical/association evidence** – Elevated IL‑17A levels are reported in patients with rheumatoid arthritis, psoriasis, psoriatic arthritis, ankylosing spondylitis, multiple sclerosis and systemic lupus erythematosus, linking dysregulated IL‑17 production to disease pathology [PMID: 37670700] (human association). FDA‑approved antibodies that block IL‑17A (secukinumab, ixekizumab) or its receptor (brodalumab) markedly improve clinical outcomes in ankylosing spondylitis, psoriatic arthritis and plaque psoriasis, indicating that IL‑17 activity sustains these autoimmune conditions [PMID: 39875232] (human therapeutic trial).\n\n**Mechanistic hypothesis supported by data** – The IL‑23–IL‑17 axis is proposed to drive autoimmunity by stabilizing pathogenic Th17 cells and inducing downstream cytokines (GM‑CSF, IFN‑γ) that mediate tissue damage; targeting either cytokine or the signaling pathway yields therapeutic benefit [PMID: 25145755] (human and animal inference).\n\n**Study‑context limitations** –  \n- Most cited articles are reviews that synthesize prior work rather than present new primary data, limiting assessment of experimental rigor.  \n- Animal studies rely on induced models (e.g., IL‑23‑driven encephalitis) that may not fully recapitulate human disease heterogeneity.  \n- Human evidence is often correlative (elevated IL‑17 levels) or derived from clinical trials of IL‑17 blockade, which cannot alone prove that IL‑17 initiates disease rather than amplifies an established response.  \n- IL‑17 has pleiotropic functions, including protective anti‑microbial roles; blockade may obscure its net contribution in specific contexts.  \n\n**Conclusion** – Cumulative animal and human data support a pathogenic role for IL‑17 in autoimmune disease, but the evidence is constrained by reliance on disease models, correlation, and therapeutic‐response observations rather than definitive mechanistic proof."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 2.2172927856445312e-05,
+    "vector_index": 1.7184543311595917,
+    "kg_expansion": 2.33575701713562e-05,
+    "answer_traditional_rag": 27.601603515446186,
+    "total": 29.790246807038784
+  },
+  "token_usage": {
+    "total_tokens": 4146,
+    "input_tokens": 3137,
+    "output_tokens": 1009
+  },
+  "completed_at": "2026-08-16T17:59:44.593409+00:00"
+}

@@ -1,0 +1,129 @@
+{
+  "status": "complete",
+  "question_id": "Q016",
+  "domain": "rare disease",
+  "question": "What pathways connect SMN deficiency to mitochondrial dysfunction in spinal muscular atrophy?",
+  "question_type": "mechanism",
+  "pubmed_query": "SMN1 spinal muscular atrophy mitochondria oxidative stress motor neuron",
+  "effective_pubmed_query": "SMN1 spinal muscular atrophy mitochondria oxidative stress motor neuron",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "19437551",
+    "33353564",
+    "36142791",
+    "39264856"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What pathways connect SMN deficiency to mitochondrial dysfunction in spinal muscular atrophy?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "36142791",
+        "score": 0.6912948568440194
+      },
+      {
+        "pmid": "33353564",
+        "score": 0.6341533185102801
+      },
+      {
+        "pmid": "39264856",
+        "score": 0.6260787843786604
+      },
+      {
+        "pmid": "19437551",
+        "score": 0.5840803206805811
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "36142791",
+        "score": 0.6912948568440194
+      },
+      {
+        "pmid": "33353564",
+        "score": 0.6341533185102801
+      },
+      {
+        "pmid": "39264856",
+        "score": 0.6260787843786604
+      },
+      {
+        "pmid": "19437551",
+        "score": 0.5840803206805811
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Direct evidence of mechanistic links**\n\n- **Complex I dysfunction → ATP loss & ROS rise** – Proteomic analysis of SMA motor neurons revealed reduced activity of mitochondrial complex I, lowering basal ATP and elevating ROS. The oxidative stress triggers protein carbonylation and impairs translational initiation; pyruvate rescues ATP, reduces ROS and restores SMN synthesis in an mTOR‑dependent manner【PMID:33353564】 (in‑vitro human motor‑neuron model).\n\n- **Mitochondrial hyperpolarisation as compensatory response** – siRNA‑mediated Smn knock‑down in NSC‑34 (mouse motor‑neuron‑like) cells decreased ATP (‑14 % to ‑26 %) and produced a higher mitochondrial membrane potential, which in turn generated excess free radicals. The subsequent rise in cytochrome c oxidase activity reflects a futile attempt to restore oxidative phosphorylation, ultimately leading to cellular injury【PMID:19437551】 (animal cell line).\n\n- **Transcriptional down‑regulation of OXPHOS machinery** – RNA‑seq of paravertebral muscle from treated type II SMA patients showed a consistent loss of oxidative‑phosphorylation gene expression, reduced mitochondrial DNA copy number, and markers of cellular stress. This links systemic SMN deficiency to a tissue‑wide deficit in mitochondrial biogenesis and function【PMID:39264856】 (human tissue).\n\n**Associations supporting pathway connectivity**\n\n- **SMN‑dependent regulation of mitochondrial‑protein transcripts** – A review compiled multiple SMA models reporting altered expression of genes encoding mitochondrial proteins, suggesting that SMN directly or indirectly sustains mitochondrial transcript pools【PMID:36142791】 (cross‑species synthesis).\n\n- **ROS‑mediated inhibition of translation initiation** – The same study on motor neurons demonstrated that elevated ROS specifically suppresses the initiation phase of protein synthesis, creating a feedback loop where reduced SMN synthesis further exacerbates mitochondrial dysfunction【PMID:33353564】.\n\n**Testable hypotheses derived from the evidence**\n\n- **mTOR‑centric rescue hypothesis** – Enhancing mTOR signaling (e.g., with pyruvate or other metabolic modulators) may break the ROS‑translation feedback, restoring both SMN levels and mitochondrial function.\n\n- **Age‑related mitochondrial decline as a second hit** – In adults with relatively low baseline SMN, age‑associated mitochondrial deterioration might act as a trigger for late‑onset SMA phenotypes; interventions that boost mitochondrial biogenesis could therefore be therapeutic.\n\n**Conclusion**: SMN deficiency drives mitochondrial dysfunction through impaired complex I activity, compensatory hyperpolarisation‑induced ROS, transcriptional loss of OXPHOS components, and ROS‑dependent inhibition of SMN translation, forming interconnected pathological loops."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 4.380941390991211e-05,
+    "vector_index": 1.1709081456065178,
+    "kg_expansion": 2.4221837520599365e-05,
+    "answer_traditional_rag": 29.758334398269653,
+    "total": 31.459666080772877
+  },
+  "token_usage": {
+    "input_tokens": 1517,
+    "output_tokens": 1169,
+    "total_tokens": 2686
+  },
+  "completed_at": "2026-08-13T03:44:48.525225+00:00"
+}

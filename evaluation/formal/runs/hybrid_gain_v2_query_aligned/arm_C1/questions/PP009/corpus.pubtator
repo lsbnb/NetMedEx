@@ -1,0 +1,761 @@
+##USE-MESH-VOCABULARY
+23788646|t|The cystic fibrosis intestine.
+23788646|a|The clinical manifestations of cystic fibrosis (CF) result from dysfunction of the cystic fibrosis transmembrane regulator protein (CFTR). The majority of people with CF have a limited life span as a consequence of CFTR dysfunction in the respiratory tract. However, CFTR dysfunction in the gastrointestinal (GI) tract occurs earlier in ontogeny and is present in all patients, regardless of genotype. The same pathophysiologic triad of obstruction, infection, and inflammation that causes disease in the airways also causes disease in the intestines. This article describes the effects of CFTR dysfunction on the intestinal tissues and the intraluminal environment. Mouse models of CF have greatly advanced our understanding of the GI manifestations of CF, which can be directly applied to understanding CF disease in humans. 
+23788646	4	19	cystic fibrosis	Disease	MESH:D003550
+23788646	62	77	cystic fibrosis	Disease	MESH:D003550
+23788646	79	81	CF	Disease	MESH:D003550
+23788646	114	161	cystic fibrosis transmembrane regulator protein	Gene	1080
+23788646	163	167	CFTR	Gene	1080
+23788646	198	200	CF	Disease	MESH:D003550
+23788646	246	262	CFTR dysfunction	Disease	MESH:D003550
+23788646	298	314	CFTR dysfunction	Disease	MESH:D003550
+23788646	399	407	patients	Species	9606
+23788646	481	490	infection	Disease	MESH:D007239
+23788646	496	508	inflammation	Disease	MESH:D007249
+23788646	621	637	CFTR dysfunction	Disease	MESH:D003550
+23788646	698	703	Mouse	Species	10090
+23788646	714	716	CF	Disease	MESH:D003550
+23788646	785	787	CF	Disease	MESH:D003550
+23788646	836	846	CF disease	Disease	MESH:D003550
+23788646	850	856	humans	Species	9606
+23788646	Association	MESH:D003550	1080
+
+27588407|t|Defective CFTR- beta-catenin interaction promotes NF-kappaB nuclear translocation and intestinal inflammation in cystic fibrosis.
+27588407|a|While inflammation with aberrant activation of NF-kappaB pathway is a hallmark of cystic fibrosis (CF), the molecular mechanisms underlying the link between CFTR defect and activation of NF-kappaB-mediated pro-inflammatory response remain elusive. Here, we investigated the link between CFTR defect and NF-kappaB activation in DeltaF508cftr-/- mouse intestine and human intestinal epithelial cell lines. Our results show that the NF-kappaB/COX-2/PGE2 pathway is activated whereas the beta-catenin pathway is suppressed in CF mouse intestine and CFTR-knockdown cells. Activation of beta-catenin pathway by GSK3 inhibitors suppresses CFTR mutation/knockdown-induced NF-kappaB/COX-2/PGE2 pathway in DeltaF508 mouse intestine and CFTR-knockdown cells. In contrast, suppression of beta-catenin signaling induces the nuclear translocation of NF-kappaB. In addition, CFTR co-localizes and interacts with beta-catenin while CFTR mutation disrupts the interaction between NF-kappaB and beta-catenin in mouse intestine. Treatment with proteasome inhibitor MG132 completely reverses the reduced expression of beta-catenin in Caco-2 cells. Collectively, these results indicate that CFTR stabilizes beta-catenin and prevents its degradation, defect of which results in the activation of NF-kappaB-mediated inflammatory cascade. The present study has demonstrated a previously unsuspected interaction between CFTR and beta-catenin that regulates NF-kappaB nuclear translocation in mouse intestine. Therefore, our study provides novel insights into the physiological function of CFTR and pathogenesis of CF-related diseases in addition to the NF-kappaB-mediated intestinal inflammation seen in CF.
+27588407	10	14	CFTR	Gene	12638
+27588407	16	28	beta-catenin	Gene	12387
+27588407	50	59	NF-kappaB	Gene	4790
+27588407	86	109	intestinal inflammation	Disease	MESH:D007249
+27588407	113	128	cystic fibrosis	Disease	MESH:D003550
+27588407	136	148	inflammation	Disease	MESH:D007249
+27588407	177	186	NF-kappaB	Gene	18033
+27588407	212	227	cystic fibrosis	Disease	MESH:D003550
+27588407	229	231	CF	Disease	MESH:D003550
+27588407	287	291	CFTR	Gene	12638
+27588407	317	326	NF-kappaB	Gene	18033
+27588407	340	352	inflammatory	Disease	MESH:D007249
+27588407	417	421	CFTR	Gene	12638
+27588407	433	442	NF-kappaB	Gene	18033
+27588407	474	479	mouse	Species	10090
+27588407	494	499	human	Species	9606
+27588407	560	569	NF-kappaB	Gene	18033
+27588407	570	575	COX-2	Gene	17709
+27588407	614	626	beta-catenin	Gene	12387
+27588407	652	654	CF	Disease	MESH:D003550
+27588407	655	660	mouse	Species	10090
+27588407	675	679	CFTR	Gene	12638
+27588407	711	723	beta-catenin	Gene	12387
+27588407	735	739	GSK3	Gene	56637
+27588407	762	766	CFTR	Gene	12638
+27588407	794	803	NF-kappaB	Gene	18033
+27588407	804	809	COX-2	Gene	17709
+27588407	810	814	PGE2	Chemical	MESH:D015232
+27588407	836	841	mouse	Species	10090
+27588407	856	860	CFTR	Gene	12638
+27588407	906	918	beta-catenin	Gene	12387
+27588407	966	976	NF-kappaB.	Gene	18033
+27588407	990	994	CFTR	Gene	12638
+27588407	1027	1039	beta-catenin	Gene	1499
+27588407	1046	1050	CFTR	Gene	12638
+27588407	1093	1102	NF-kappaB	Gene	18033
+27588407	1107	1119	beta-catenin	Gene	12387
+27588407	1123	1128	mouse	Species	10090
+27588407	1176	1181	MG132	Chemical	MESH:C072553
+27588407	1228	1240	beta-catenin	Gene	1499
+27588407	1244	1250	Caco-2	CellLine	CVCL:0025
+27588407	1300	1304	CFTR	Gene	12638
+27588407	1316	1328	beta-catenin	Gene	1499
+27588407	1404	1413	NF-kappaB	Gene	4790
+27588407	1423	1435	inflammatory	Disease	MESH:D007249
+27588407	1525	1529	CFTR	Gene	12638
+27588407	1534	1546	beta-catenin	Gene	12387
+27588407	1562	1571	NF-kappaB	Gene	18033
+27588407	1597	1602	mouse	Species	10090
+27588407	1694	1698	CFTR	Gene	12638
+27588407	1719	1738	CF-related diseases	Disease	MESH:D003550
+27588407	1758	1767	NF-kappaB	Gene	18033
+27588407	1777	1800	intestinal inflammation	Disease	MESH:D007249
+27588407	1809	1811	CF	Disease	MESH:D003550
+27588407	Association	MESH:D003550	4790
+27588407	Association	1499	4790
+27588407	Association	17709	18033
+27588407	Association	MESH:D015232	12387
+27588407	Association	MESH:D007249	12638
+27588407	Association	12387	4790
+27588407	Association	MESH:D003550	12638
+27588407	Negative_Correlation	12638	17709
+27588407	Association	MESH:D015232	12638
+27588407	Association	MESH:D007249	18033
+27588407	Negative_Correlation	MESH:C072553	1499
+27588407	Positive_Correlation	MESH:D003550	17709
+27588407	Association	12638	1499
+27588407	Association	12387	12638
+27588407	Association	12638	4790
+27588407	Negative_Correlation	12387	17709
+27588407	Positive_Correlation	12638	18033
+27588407	Association	12387	56637
+27588407	Association	MESH:D003550	18033
+27588407	Association	MESH:D015232	56637
+27588407	Association	MESH:D007249	4790
+27588407	Association	MESH:D007249	12387
+27588407	Negative_Correlation	12387	18033
+27588407	Association	12638	56637
+27588407	Association	MESH:D003550	12387
+
+28155088|t|The Enigmatic Gut in Cystic Fibrosis: Linking Inflammation, Dysbiosis, and the Increased Risk of Malignancy.
+28155088|a|PURPOSE OF REVIEW: Intestinal inflammation, dysbiosis, and increased gastrointestinal malignancy risks are well-described in patients with cystic fibrosis (CF). However, there is limited understanding of their pathophysiology. This review aims to discuss these issues and assess potential links between them. RECENT FINDINGS: Evidence of links between intestinal inflammation and dysbiosis (an imbalance in intestinal microbial populations) exist. Recent studies have demonstrated reduction in intestinal inflammation with probiotic administration. Both bacterial dysbiosis and gut inflammation contribute to the suboptimal nutritional status seen in children with CF. Short-chain fatty acids may be reduced in the gut lumen as a result of bacterial imbalances and may promote inflammation. Inflammation and bacterial dysbiosis in CF may also contribute to emerging adult complications such as gastrointestinal malignancy. An increase in carcinogenic microbes and reduction in microbes protective against cancer have been found in CF, linking bacterial dysbiosis and cancer. Murine studies suggest the CF gene, cystic fibrosis transmembrane conductance regulator (CFTR) gene, itself may be a tumour suppressor gene. The pathophysiology of interactions among intestinal inflammation, dysbiosis, and malignancy in CF is not clearly understood and requires further research.
+28155088	21	36	Cystic Fibrosis	Disease	MESH:D003550
+28155088	46	58	Inflammation	Disease	MESH:D007249
+28155088	60	69	Dysbiosis	Disease	MESH:D064806
+28155088	97	107	Malignancy	Disease	MESH:D009369
+28155088	128	151	Intestinal inflammation	Disease	MESH:D007249
+28155088	153	162	dysbiosis	Disease	MESH:D064806
+28155088	178	205	gastrointestinal malignancy	Disease	MESH:D005770
+28155088	234	242	patients	Species	9606
+28155088	248	263	cystic fibrosis	Disease	MESH:D003550
+28155088	265	267	CF	Disease	MESH:D003550
+28155088	461	484	intestinal inflammation	Disease	MESH:D007249
+28155088	489	498	dysbiosis	Disease	MESH:D064806
+28155088	603	626	intestinal inflammation	Disease	MESH:D007249
+28155088	663	682	bacterial dysbiosis	Disease	MESH:D064806
+28155088	687	703	gut inflammation	Disease	MESH:D007249
+28155088	774	776	CF	Disease	MESH:D003550
+28155088	778	801	Short-chain fatty acids	Chemical	MESH:D005232
+28155088	886	898	inflammation	Disease	MESH:D007249
+28155088	900	912	Inflammation	Disease	MESH:D007249
+28155088	917	936	bacterial dysbiosis	Disease	MESH:D064806
+28155088	940	942	CF	Disease	MESH:D003550
+28155088	1003	1030	gastrointestinal malignancy	Disease	MESH:D005770
+28155088	1047	1059	carcinogenic	Disease	MESH:D011230
+28155088	1114	1120	cancer	Disease	MESH:D009369
+28155088	1140	1142	CF	Disease	MESH:D003550
+28155088	1152	1171	bacterial dysbiosis	Disease	MESH:D064806
+28155088	1176	1182	cancer	Disease	MESH:D009369
+28155088	1184	1190	Murine	Species	10090
+28155088	1211	1213	CF	Disease	MESH:D003550
+28155088	1220	1271	cystic fibrosis transmembrane conductance regulator	Gene	12638
+28155088	1273	1277	CFTR	Gene	12638
+28155088	1301	1307	tumour	Disease	MESH:D009369
+28155088	1367	1390	intestinal inflammation	Disease	MESH:D007249
+28155088	1392	1401	dysbiosis	Disease	MESH:D064806
+28155088	1407	1417	malignancy	Disease	MESH:D009369
+28155088	1421	1423	CF	Disease	MESH:D003550
+28155088	Negative_Correlation	MESH:D009369	12638
+28155088	Association	MESH:D003550	12638
+28155088	Association	MESH:D005232	MESH:D007249
+
+30546102|t|Impact of CFTR modulation with Ivacaftor on Gut Microbiota and Intestinal Inflammation.
+30546102|a|Cystic fibrosis (CF) is caused by mutations in the cystic fibrosis transmembrane conductance regulator (CFTR) gene. Next to progressive airway disease, CF is also associated with intestinal inflammation and dysbiosis. Ivacaftor, a CFTR potentiator, has improved pulmonary and nutritional status but its effects on the intestinal microbiota and inflammation are unclear. Hence, we assessed the changes on the intestinal microbial communities (16S rRNA variable 3 gene region) and inflammatory markers (calprotectin and M2-pyruvate kinase [M2-PK]) in 16 CF individuals (8 children and 8 adults) before and after (median 6.1 months) ivacaftor. Stool calprotectin significantly decreased following ivacaftor (median [IQR]: 154.4 [102.1-284.2] vs. 87.5 [19.5-190.2] mg/kg, P = 0.03). There was a significant increase in Akkermansia with ivacaftor. Increased abundance of Akkermansia was associated with normal stool M2-PK concentrations, and decreased abundances of Enterobacteriaceae correlated with decreased stool calprotectin concentrations. In summary, changes in the gut microbiome and decrease in intestinal inflammation was associated with Ivacaftor treatment among individuals with CF carrying at least one gating CFTR mutation. Thus, CFTR-modifying therapy may adequately improve the aberrant pathophysiology and milieu of the CF gut to favor a more healthy microbiota, which in turn reduces intestinal inflammation.
+30546102	10	14	CFTR	Gene	1080
+30546102	31	40	Ivacaftor	Chemical	MESH:C545203
+30546102	63	86	Intestinal Inflammation	Disease	MESH:D007249
+30546102	88	103	Cystic fibrosis	Disease	MESH:D003550
+30546102	105	107	CF	Disease	MESH:D003550
+30546102	139	190	cystic fibrosis transmembrane conductance regulator	Gene	1080
+30546102	192	196	CFTR	Gene	1080
+30546102	224	238	airway disease	Disease	MESH:D029424
+30546102	240	242	CF	Disease	MESH:D003550
+30546102	267	290	intestinal inflammation	Disease	MESH:D007249
+30546102	295	304	dysbiosis	Disease	MESH:D064806
+30546102	306	315	Ivacaftor	Chemical	MESH:C545203
+30546102	319	323	CFTR	Gene	1080
+30546102	432	444	inflammation	Disease	MESH:D007249
+30546102	567	579	inflammatory	Disease	MESH:D007249
+30546102	640	642	CF	Disease	MESH:D003550
+30546102	718	727	ivacaftor	Chemical	MESH:C545203
+30546102	782	791	ivacaftor	Chemical	MESH:C545203
+30546102	903	914	Akkermansia	Disease	-
+30546102	920	929	ivacaftor	Chemical	MESH:C545203
+30546102	954	965	Akkermansia	Disease	-
+30546102	999	1004	M2-PK	Chemical	-
+30546102	1187	1210	intestinal inflammation	Disease	MESH:D007249
+30546102	1231	1240	Ivacaftor	Chemical	MESH:C545203
+30546102	1274	1276	CF	Disease	MESH:D003550
+30546102	1306	1310	CFTR	Gene	1080
+30546102	1327	1331	CFTR	Gene	1080
+30546102	1420	1422	CF	Disease	MESH:D003550
+30546102	1485	1508	intestinal inflammation	Disease	MESH:D007249
+30546102	Negative_Correlation	MESH:C545203	MESH:D007249
+30546102	Association	MESH:D003550	1080
+30546102	Negative_Correlation	MESH:C545203	MESH:D003550
+30546102	Association	MESH:D007249	1080
+30546102	Association	MESH:C545203	1080
+
+31636470|t|Role of ion channels in gastrointestinal cancer.
+31636470|a|In their seminal papers Hanahan and Weinberg described oncogenic processes a normal cell undergoes to be transformed into a cancer cell. The functions of ion channels in the gastrointestinal (GI) tract influence a variety of cellular processes, many of which overlap with these hallmarks of cancer. In this review we focus on the roles of the calcium (Ca2+), sodium (Na+), potassium (K+), chloride (Cl-) and zinc (Zn2+) transporters in GI cancer, with a special emphasis on the roles of the KCNQ1 K+ channel and CFTR Cl- channel in colorectal cancer (CRC). Ca2+ is a ubiquitous second messenger, serving as a signaling molecule for a variety of cellular processes such as control of the cell cycle, apoptosis, and migration. Various members of the TRP superfamily, including TRPM8, TRPM7, TRPM6 and TRPM2, have been implicated in GI cancers, especially through overexpression in pancreatic adenocarcinomas and down-regulation in colon cancer. Voltage-gated sodium channels (VGSCs) are classically associated with the initiation and conduction of action potentials in electrically excitable cells such as neurons and muscle cells. The VGSC NaV1.5 is abundantly expressed in human colorectal CRC cell lines as well as being highly expressed in primary CRC samples. Studies have demonstrated that conductance through NaV1.5 contributes significantly to CRC cell invasiveness and cancer progression. Zn2+ transporters of the ZIP/SLC39A and ZnT/SLC30A families are dysregulated in all major GI organ cancers, in particular, ZIP4 up-regulation in pancreatic cancer (PC). More than 70 K+ channel genes, clustered in four families, are found expressed in the GI tract, where they regulate a range of cellular processes, including gastrin secretion in the stomach and anion secretion and fluid balance in the intestinal tract. Several distinct types of K+ channels are found dysregulated in the GI tract. Notable are hERG1 upregulation in PC, gastric cancer (GC) and CRC, leading to enhanced cancer angiogenesis and invasion, and KCNQ1 down-regulation in CRC, where KCNQ1 expression is associated with enhanced disease-free survival in stage II, III, and IV disease. Cl- channels are critical for a range of cellular and tissue processes in the GI tract, especially fluid balance in the colon. Most notable is CFTR, whose deficiency leads to mucus blockage, microbial dysbiosis and inflammation in the intestinal tract. CFTR is a tumor suppressor in several GI cancers. Cystic fibrosis patients are at a significant risk for CRC and low levels of CFTR expression are associated with poor overall disease-free survival in sporadic CRC. Two other classes of chloride channels that are dysregulated in GI cancers are the chloride intracellular channels (CLIC1, 3 & 4) and the chloride channel accessory proteins (CLCA1,2,4). CLIC1 & 4 are upregulated in PC, GC, gallbladder cancer, and CRC, while the CLCA proteins have been reported to be down-regulated in CRC. In summary, it is clear, from the diverse influences of ion channels, that their aberrant expression and/or activity can contribute to malignant transformation and tumor progression. Further, because ion channels are often localized to the plasma membrane and subject to multiple layers of regulation, they represent promising clinical targets for therapeutic intervention including the repurposing of current drugs.
+31636470	24	47	gastrointestinal cancer	Disease	MESH:D005770
+31636470	173	179	cancer	Disease	MESH:D009369
+31636470	340	346	cancer	Disease	MESH:D009369
+31636470	392	399	calcium	Chemical	MESH:D002118
+31636470	401	405	Ca2+	Chemical	-
+31636470	408	414	sodium	Chemical	MESH:D012964
+31636470	422	431	potassium	Chemical	MESH:D011188
+31636470	438	446	chloride	Chemical	MESH:D002712
+31636470	463	467	Zn2+	Chemical	-
+31636470	485	494	GI cancer	Disease	MESH:D005770
+31636470	540	545	KCNQ1	Gene	3784
+31636470	561	565	CFTR	Gene	1080
+31636470	581	598	colorectal cancer	Disease	MESH:D015179
+31636470	600	603	CRC	Disease	MESH:D015179
+31636470	606	610	Ca2+	Chemical	-
+31636470	824	829	TRPM8	Gene	79054
+31636470	831	836	TRPM7	Gene	54822
+31636470	838	843	TRPM6	Gene	140803
+31636470	848	853	TRPM2	Gene	7226
+31636470	879	889	GI cancers	Disease	MESH:D005770
+31636470	928	954	pancreatic adenocarcinomas	Disease	MESH:D010190
+31636470	978	990	colon cancer	Disease	MESH:D015179
+31636470	1188	1194	NaV1.5	Gene	6331
+31636470	1222	1227	human	Species	9606
+31636470	1228	1242	colorectal CRC	Disease	MESH:D015179
+31636470	1299	1302	CRC	Disease	MESH:D015179
+31636470	1363	1369	NaV1.5	Gene	6331
+31636470	1399	1402	CRC	Disease	MESH:D015179
+31636470	1425	1431	cancer	Disease	MESH:D009369
+31636470	1470	1473	ZIP	Gene	1613
+31636470	1535	1551	GI organ cancers	Disease	MESH:D005770
+31636470	1568	1572	ZIP4	Gene	55630
+31636470	1590	1607	pancreatic cancer	Disease	MESH:D010190
+31636470	1609	1611	PC	Disease	MESH:D010190
+31636470	1771	1778	gastrin	Gene	2520
+31636470	1957	1962	hERG1	Gene	3757
+31636470	1979	1981	PC	Disease	MESH:D010190
+31636470	1983	1997	gastric cancer	Disease	MESH:D013274
+31636470	1999	2001	GC	Disease	MESH:D013274
+31636470	2007	2010	CRC	Disease	MESH:D015179
+31636470	2032	2038	cancer	Disease	MESH:D009369
+31636470	2070	2075	KCNQ1	Gene	3784
+31636470	2095	2098	CRC	Disease	MESH:D015179
+31636470	2106	2111	KCNQ1	Gene	3784
+31636470	2350	2354	CFTR	Gene	1080
+31636470	2422	2434	inflammation	Disease	MESH:D007249
+31636470	2460	2464	CFTR	Gene	1080
+31636470	2470	2475	tumor	Disease	MESH:D009369
+31636470	2498	2508	GI cancers	Disease	MESH:D005770
+31636470	2510	2525	Cystic fibrosis	Disease	MESH:D003550
+31636470	2526	2534	patients	Species	9606
+31636470	2565	2568	CRC	Disease	MESH:D015179
+31636470	2587	2591	CFTR	Gene	1080
+31636470	2670	2673	CRC	Disease	MESH:D015179
+31636470	2739	2749	GI cancers	Disease	MESH:D005770
+31636470	2791	2803	CLIC1, 3 & 4	Gene	1192;9022;25932
+31636470	2850	2859	CLCA1,2,4	Gene	1179;9635;22802
+31636470	2862	2871	CLIC1 & 4	Gene	1192;1193;9022;25932
+31636470	2891	2893	PC	Disease	MESH:D010190
+31636470	2895	2897	GC	Disease	MESH:D013274
+31636470	2899	2917	gallbladder cancer	Disease	MESH:D005706
+31636470	2923	2926	CRC	Disease	MESH:D015179
+31636470	2995	2998	CRC	Disease	MESH:D015179
+31636470	3164	3169	tumor	Disease	MESH:D009369
+31636470	Association	1192	9022
+31636470	Positive_Correlation	MESH:D010190	140803
+31636470	Association	1179	1193
+31636470	Association	MESH:D007249	25932
+31636470	Association	MESH:D003550	9022
+31636470	Association	MESH:D005770	7226
+31636470	Association	MESH:D010190	55630
+31636470	Association	25932	9635
+31636470	Association	1179	22802
+31636470	Association	MESH:D005706	25932
+31636470	Association	MESH:D007249	9635
+31636470	Negative_Correlation	MESH:D013274	3784
+31636470	Association	25932	9022
+31636470	Association	MESH:D005706	1179
+31636470	Positive_Correlation	MESH:D010190	3757
+31636470	Positive_Correlation	MESH:D010190	7226
+31636470	Association	MESH:D003550	1192
+31636470	Association	MESH:D007249	9022
+31636470	Association	MESH:D005770	79054
+31636470	Association	1179	9022
+31636470	Association	MESH:D005770	140803
+31636470	Association	MESH:D015179	3784
+31636470	Association	1192	9635
+31636470	Positive_Correlation	MESH:D013274	3757
+31636470	Positive_Correlation	MESH:D010190	79054
+31636470	Association	MESH:D010190	1613
+31636470	Association	1193	9022
+31636470	Association	22802	9635
+31636470	Association	1179	1192
+31636470	Association	1193	9635
+31636470	Association	MESH:D007249	1192
+31636470	Negative_Correlation	MESH:D015179	54822
+31636470	Association	MESH:D003550	9635
+31636470	Positive_Correlation	MESH:D009369	3757
+31636470	Association	1192	25932
+31636470	Association	1193	25932
+31636470	Association	MESH:D005770	54822
+31636470	Association	MESH:D007249	22802
+31636470	Positive_Correlation	MESH:D010190	54822
+31636470	Association	1192	1193
+31636470	Association	1193	22802
+31636470	Negative_Correlation	MESH:D015179	140803
+31636470	Association	22802	25932
+31636470	Association	1179	9635
+31636470	Association	1179	25932
+31636470	Association	1192	22802
+31636470	Association	MESH:D007249	1193
+31636470	Association	MESH:D003550	25932
+31636470	Association	MESH:D003550	1179
+31636470	Association	MESH:D015179	6331
+31636470	Negative_Correlation	MESH:D015179	7226
+31636470	Negative_Correlation	MESH:D015179	79054
+31636470	Association	MESH:D005706	9022
+31636470	Association	MESH:D009369	6331
+31636470	Association	MESH:D003550	1193
+31636470	Association	MESH:D003550	22802
+31636470	Association	MESH:D005706	1193
+31636470	Association	MESH:D005706	9635
+31636470	Association	MESH:D005706	22802
+31636470	Association	MESH:D005770	1613
+31636470	Association	MESH:D015179	1080
+31636470	Association	MESH:D007249	1179
+31636470	Association	9022	9635
+31636470	Association	22802	9022
+31636470	Association	MESH:D005706	1192
+
+32326161|t|Cystic Fibrosis, CFTR, and Colorectal Cancer.
+32326161|a|Cystic fibrosis (CF), caused by biallelic inactivating mutations in the cystic fibrosis transmembrane conductance regulator (CFTR) gene, has recently been categorized as a familial colorectal cancer (CRC) syndrome. CF patients are highly susceptible to early, aggressive colorectal tumor development. Endoscopic screening studies have revealed that by the age of forty 50% of CF patients will develop adenomas, with 25% developing aggressive advanced adenomas, some of which will have already advanced to adenocarcinomas. This enhanced risk has led to new CF colorectal cancer screening recommendations, lowering the initiation of endoscopic screening to age forty in CF patients, and to age thirty in organ transplant recipients. The enhanced risk for CRC also extends to the millions of people (more than 10 million in the US) who are heterozygous carriers of CFTR gene mutations. Further, lowered expression of CFTR is reported in sporadic CRC, where downregulation of CFTR is associated with poor survival. Mechanisms underlying the actions of CFTR as a tumor suppressor are not clearly understood. Dysregulation of Wnt/beta-catenin signaling and disruption of intestinal stem cell homeostasis and intestinal barrier integrity, as well as intestinal dysbiosis, immune cell infiltration, stress responses, and intestinal inflammation have all been reported in human CF patients and in animal models. Notably, the development of new drug modalities to treat non-gastrointestinal pathologies in CF patients, especially pulmonary disease, offers hope that these drugs could be repurposed for gastrointestinal cancers.
+32326161	0	15	Cystic Fibrosis	Disease	MESH:D003550
+32326161	17	21	CFTR	Gene	1080
+32326161	27	44	Colorectal Cancer	Disease	MESH:D015179
+32326161	46	61	Cystic fibrosis	Disease	MESH:D003550
+32326161	63	65	CF	Disease	MESH:D003550
+32326161	118	169	cystic fibrosis transmembrane conductance regulator	Gene	1080
+32326161	171	175	CFTR	Gene	1080
+32326161	218	259	familial colorectal cancer (CRC) syndrome	Disease	MESH:D015179
+32326161	261	263	CF	Disease	MESH:D003550
+32326161	264	272	patients	Species	9606
+32326161	317	333	colorectal tumor	Disease	MESH:D015179
+32326161	422	424	CF	Disease	MESH:D003550
+32326161	425	433	patients	Species	9606
+32326161	447	455	adenomas	Disease	MESH:D000236
+32326161	497	505	adenomas	Disease	MESH:D000236
+32326161	551	566	adenocarcinomas	Disease	MESH:D000230
+32326161	602	604	CF	Disease	MESH:D003550
+32326161	605	622	colorectal cancer	Disease	MESH:D015179
+32326161	714	716	CF	Disease	MESH:D003550
+32326161	717	725	patients	Species	9606
+32326161	908	912	CFTR	Gene	1080
+32326161	960	964	CFTR	Gene	1080
+32326161	1018	1022	CFTR	Gene	1080
+32326161	1094	1098	CFTR	Gene	1080
+32326161	1104	1109	tumor	Disease	MESH:D009369
+32326161	1170	1182	beta-catenin	Gene	1499
+32326161	1211	1221	intestinal	Disease	MESH:D007410
+32326161	1248	1258	intestinal	Disease	MESH:D007410
+32326161	1289	1299	intestinal	Disease	MESH:D007410
+32326161	1300	1309	dysbiosis	Disease	MESH:D064806
+32326161	1359	1369	intestinal	Disease	MESH:D007410
+32326161	1370	1382	inflammation	Disease	MESH:D007249
+32326161	1409	1414	human	Species	9606
+32326161	1415	1417	CF	Disease	MESH:D003550
+32326161	1418	1426	patients	Species	9606
+32326161	1510	1538	gastrointestinal pathologies	Disease	MESH:D005767
+32326161	1542	1544	CF	Disease	MESH:D003550
+32326161	1545	1553	patients	Species	9606
+32326161	1566	1583	pulmonary disease	Disease	MESH:D008171
+32326161	1638	1662	gastrointestinal cancers	Disease	MESH:D005770
+32326161	Association	MESH:D007410	1499
+32326161	Association	MESH:D003550	1499
+32326161	Association	MESH:D003550	1080
+32326161	Association	MESH:D015179	1080
+32326161	Negative_Correlation	MESH:D009369	1080
+32326161	Association	MESH:D007249	1499
+
+35160099|t|Intestinal Inflammation and Alterations in the Gut Microbiota in Cystic Fibrosis: A Review of the Current Evidence, Pathophysiology and Future Directions.
+35160099|a|Cystic fibrosis (CF) is a life-limiting autosomal recessive multisystem disease. While its burden of morbidity and mortality is classically associated with pulmonary disease, CF also profoundly affects the gastrointestinal (GI) tract. Chronic low-grade inflammation and alterations to the gut microbiota are hallmarks of the CF intestine. The etiology of these manifestations is likely multifactorial, resulting from cystic fibrosis transmembrane conductance regulator (CFTR) dysfunction, a high-fat CF diet, and the use of antibiotics. There may also be a bidirectional pathophysiological link between intestinal inflammation and changes to the gut microbiome. Additionally, a growing body of evidence suggests that these GI manifestations may have significant clinical associations with growth and nutrition, quality of life, and respiratory function in CF. As such, the potential utility of GI therapies and long-term GI outcomes are areas of interest in CF. Further research involving microbial modulation and multi-omics techniques may reveal novel insights. This article provides an overview of the current evidence, pathophysiology, and future research and therapeutic considerations pertaining to intestinal inflammation and alterations in the gut microbiota in CF.
+35160099	0	23	Intestinal Inflammation	Disease	MESH:D007249
+35160099	65	80	Cystic Fibrosis	Disease	MESH:D003550
+35160099	155	170	Cystic fibrosis	Disease	MESH:D003550
+35160099	172	174	CF	Disease	MESH:D003550
+35160099	195	234	autosomal recessive multisystem disease	Disease	MESH:D030342
+35160099	311	328	pulmonary disease	Disease	MESH:D008171
+35160099	330	332	CF	Disease	MESH:D003550
+35160099	408	420	inflammation	Disease	MESH:D007249
+35160099	480	482	CF	Disease	MESH:D003550
+35160099	572	623	cystic fibrosis transmembrane conductance regulator	Gene	1080
+35160099	625	629	CFTR	Gene	1080
+35160099	655	657	CF	Disease	MESH:D003550
+35160099	758	781	intestinal inflammation	Disease	MESH:D007249
+35160099	1011	1013	CF	Disease	MESH:D003550
+35160099	1113	1115	CF	Disease	MESH:D003550
+35160099	1360	1383	intestinal inflammation	Disease	MESH:D007249
+35160099	1425	1427	CF	Disease	MESH:D003550
+35160099	Association	MESH:D003550	1080
+
+35743652|t|CFTR and Gastrointestinal Cancers: An Update.
+35743652|a|Cystic Fibrosis (CF) is a disease caused by mutations in the CFTR gene that severely affects the lungs as well as extra-pulmonary tissues, including the gastrointestinal (GI) tract. CFTR dysfunction resulting from either mutations or the downregulation of its expression has been shown to promote carcinogenesis. An example is the enhanced risk for several types of cancer in patients with CF, especially cancers of the GI tract. CFTR also acts as a tumor suppressor in diverse sporadic epithelial cancers in many tissues, primarily due to the silencing of CFTR expression via multiple mechanisms, but especially due to epigenetic regulation. This review provides an update on the latest research linking CFTR-deficiency to GI cancers, in both CF patients and in sporadic GI cancers, with a particular focus on cancer of the intestinal tract. It will discuss changes in the tissue landscape linked to CFTR-deficiency that may promote cancer development such as breakdowns in physical barriers, microbial dysbiosis and inflammation. It will also discuss molecular pathways and mechanisms that act upstream to modulate CFTR expression, such as by epigenetic silencing, as well as molecular pathways that act downstream of CFTR-deficiency, such as the dysregulation of the Wnt/beta-catenin and NF-kappaB signaling pathways. Finally, it will discuss the emerging CFTR modulator drugs that have shown promising results in improving CFTR function in CF patients. The potential impact of these modulator drugs on the treatment and prevention of GI cancers can provide a new example of personalized cancer medicine.
+35743652	0	4	CFTR	Gene	1080
+35743652	9	33	Gastrointestinal Cancers	Disease	MESH:D005770
+35743652	46	61	Cystic Fibrosis	Disease	MESH:D003550
+35743652	63	65	CF	Disease	MESH:D003550
+35743652	107	111	CFTR	Gene	1080
+35743652	343	357	carcinogenesis	Disease	MESH:D063646
+35743652	412	418	cancer	Disease	MESH:D009369
+35743652	422	430	patients	Species	9606
+35743652	436	438	CF	Disease	MESH:D003550
+35743652	451	474	cancers of the GI tract	Disease	MESH:D005770
+35743652	476	480	CFTR	Gene	1080
+35743652	496	501	tumor	Disease	MESH:D009369
+35743652	533	551	epithelial cancers	Disease	MESH:D009369
+35743652	603	607	CFTR	Gene	1080
+35743652	751	766	CFTR-deficiency	Disease	MESH:D007153
+35743652	770	780	GI cancers	Disease	MESH:D005770
+35743652	790	792	CF	Disease	MESH:D003550
+35743652	793	801	patients	Species	9606
+35743652	818	828	GI cancers	Disease	MESH:D005770
+35743652	857	887	cancer of the intestinal tract	Disease	MESH:D007414
+35743652	947	962	CFTR-deficiency	Disease	MESH:D007153
+35743652	980	986	cancer	Disease	MESH:D009369
+35743652	1064	1076	inflammation	Disease	MESH:D007249
+35743652	1163	1167	CFTR	Gene	1080
+35743652	1266	1281	CFTR-deficiency	Disease	MESH:D007153
+35743652	1320	1332	beta-catenin	Gene	1499
+35743652	1337	1346	NF-kappaB	Gene	4790
+35743652	1405	1409	CFTR	Gene	1080
+35743652	1473	1477	CFTR	Gene	1080
+35743652	1490	1492	CF	Disease	MESH:D003550
+35743652	1493	1501	patients	Species	9606
+35743652	1584	1594	GI cancers	Disease	MESH:D005770
+35743652	1637	1643	cancer	Disease	MESH:D009369
+35743652	Association	MESH:D005770	1080
+35743652	Association	MESH:D007153	4790
+35743652	Negative_Correlation	MESH:D009369	1080
+35743652	Association	MESH:D007153	1080
+35743652	Association	MESH:D003550	1080
+35743652	Association	MESH:D007153	1499
+
+36600119|t|Cystic Fibrosis-Related Gut Dysbiosis: A Systematic Review.
+36600119|a|BACKGROUND AND AIMS: Cystic Fibrosis (CF) is associated with gut dysbiosis, local and systemic inflammation, and impaired immune function. Gut microbiota dysbiosis results from changes in the complex gut milieu in response to CF transmembrane conductance regulator (CFTR) dysfunction, pancreatic malabsorption, diet, medications, and environmental influences. In several diseases, alteration of the gut microbiota influences local and systemic inflammation and disease outcomes. We conducted a systematic review of the gut microbiota in CF and explored factors influencing dysbiosis. METHODS: An electronic search of three databases was conducted in January 2019, and re-run in June 2021. Human, animal, and in vitro studies were included. The primary outcome was differences in the gut microbiota between people with CF (pwCF) and healthy controls. Secondary outcomes included the relationship between the gut microbiota and other factors, including diet, medication, inflammation, and pulmonary function in pwCF. RESULTS: Thirty-eight studies were identified. The literature confirmed the presence of CF-related gut dysbiosis, characterized by reduced diversity and several taxonomic changes. There was a relative increase of bacteria associated with a pro-inflammatory response coupled with a reduction of those considered anti-inflammatory. However, studies linking gut dysbiosis to systemic and lung inflammation were limited. Causes of gut dysbiosis were multifactorial, and findings were variable. Data on the impact of CFTR modulators on the gut microbiota were limited. CONCLUSIONS: CF-related gut dysbiosis is evident in pwCF. Whether this influences local and systemic disease and is amenable to interventions with diet and drugs, such as CFTR modulators, requires further investigation.
+36600119	0	15	Cystic Fibrosis	Disease	MESH:D003550
+36600119	24	37	Gut Dysbiosis	Disease	MESH:D064806
+36600119	81	96	Cystic Fibrosis	Disease	MESH:D003550
+36600119	98	100	CF	Disease	MESH:D003550
+36600119	121	134	gut dysbiosis	Disease	MESH:D064806
+36600119	155	167	inflammation	Disease	MESH:D007249
+36600119	189	197	function	Disease	MESH:D003291
+36600119	214	223	dysbiosis	Disease	MESH:D064806
+36600119	286	324	CF transmembrane conductance regulator	Gene	1080
+36600119	326	330	CFTR	Gene	1080
+36600119	345	369	pancreatic malabsorption	Disease	MESH:D010195
+36600119	504	516	inflammation	Disease	MESH:D007249
+36600119	597	599	CF	Disease	MESH:D003550
+36600119	633	642	dysbiosis	Disease	MESH:D064806
+36600119	749	754	Human	Species	9606
+36600119	878	880	CF	Disease	MESH:D003550
+36600119	1029	1041	inflammation	Disease	MESH:D007249
+36600119	1057	1065	function	Disease	MESH:D003291
+36600119	1163	1165	CF	Disease	MESH:D003550
+36600119	1174	1187	gut dysbiosis	Disease	MESH:D064806
+36600119	1288	1296	bacteria	Species	629395
+36600119	1319	1331	inflammatory	Disease	MESH:D007249
+36600119	1391	1403	inflammatory	Disease	MESH:D007249
+36600119	1430	1443	gut dysbiosis	Disease	MESH:D064806
+36600119	1460	1477	lung inflammation	Disease	MESH:D011014
+36600119	1502	1515	gut dysbiosis	Disease	MESH:D064806
+36600119	1587	1591	CFTR	Gene	1080
+36600119	1652	1654	CF	Disease	MESH:D003550
+36600119	1663	1676	gut dysbiosis	Disease	MESH:D064806
+36600119	1810	1814	CFTR	Gene	1080
+
+37546931|t|Fecal Dysbiosis and Inflammation in Intestinal-Specific Cftr Knockout Mice on Regimens Preventing Intestinal Obstruction.
+37546931|a|Chronic intestinal inflammation is a poorly understood manifestation of Cystic Fibrosis (CF), which may be refractory to ion channel CFTR modulator therapy. People with CF exhibit intestinal dysbiosis which has potential for stimulating intestinal and systemic inflammation. CFTR is expressed in organ epithelia and in the leukocyte population. Here, we investigate the contribution of intestinal epithelial-specific loss of Cftr (iCftr KO) to dysbiosis and inflammation in mice treated with either of two anti-obstructive dietary regimens necessary to maintain CF mouse models (PEG laxative or a liquid diet, LiqD). Feces collected from iCftr KO mice and their wildtype (WT) sex-matched littermates were used to measure fecal calprotectin and to perform 16S rRNA sequencing to characterize the gut microbiome. Fecal calprotectin was elevated in iCftr KO relative to WT samples of mice consuming either PEG or LiqD. PEG iCftr KO mice did not show a change in alpha-diversity versus WT but demonstrated a significant difference in microbial composition (beta-diversity) with increases in phylum Proteobacteria , family Peptostreptococcaceae , four genera of Clostridia including C. innocuum , and mucolytic genus Akkermansia . Fecal microbiome analysis of LiqD iCftr KO mice showed both decreased alpha-diversity and differences in microbial composition with increases in Proteobacteria family Enterobacteriaceae , Firmicutes families Clostridiaceae and Peptostreptococcaceae , and enrichment of Clostridium perfringens , C. innocuum , C. difficile , mucolytic Ruminococcus gnavus , and reduction of Akkermansia . It was concluded that epithelial-specific loss of Cftr is a major driver of CF intestinal dysbiosis and inflammation with significant similarities to previous studies of global Cftr KO mice. New and noteworthy: Chronic intestinal inflammation is a manifestation of cystic fibrosis (CF), a disease caused by loss of the anion channel CFTR that is expressed in many tissues. This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis and inflammation. Studies were performed on mice consuming either dietary regimen (PEG laxative or liquid diet) routinely used to prevent obstruction in CF mice.
+37546931	0	15	Fecal Dysbiosis	Disease	MESH:D064806
+37546931	20	32	Inflammation	Disease	MESH:D007249
+37546931	56	60	Cftr	Gene	12638
+37546931	109	120	Obstruction	Disease	MESH:D000402
+37546931	122	153	Chronic intestinal inflammation	Disease	MESH:D007249
+37546931	194	209	Cystic Fibrosis	Disease	MESH:D003550
+37546931	211	213	CF	Disease	MESH:D003550
+37546931	255	259	CFTR	Gene	12638
+37546931	291	293	CF	Disease	MESH:D003550
+37546931	302	322	intestinal dysbiosis	Disease	MESH:D064806
+37546931	359	395	intestinal and systemic inflammation	Disease	MESH:D007249
+37546931	397	401	CFTR	Gene	12638
+37546931	547	551	Cftr	Gene	12638
+37546931	566	575	dysbiosis	Disease	MESH:D064806
+37546931	580	592	inflammation	Disease	MESH:D007249
+37546931	684	686	CF	Disease	MESH:D003550
+37546931	701	713	PEG laxative	Chemical	-
+37546931	1025	1028	PEG	Chemical	-
+37546931	1032	1037	LiqD.	Chemical	-
+37546931	1038	1041	PEG	Chemical	-
+37546931	1785	1789	Cftr	Gene	12638
+37546931	1811	1813	CF	Disease	MESH:D003550
+37546931	1814	1834	intestinal dysbiosis	Disease	MESH:D064806
+37546931	1839	1851	inflammation	Disease	MESH:D007249
+37546931	1912	1916	Cftr	Gene	12638
+37546931	1946	1977	Chronic intestinal inflammation	Disease	MESH:D007249
+37546931	2000	2015	cystic fibrosis	Disease	MESH:D003550
+37546931	2017	2019	CF	Disease	MESH:D003550
+37546931	2068	2072	CFTR	Gene	12638
+37546931	2174	2178	CFTR	Gene	12638
+37546931	2222	2242	intestinal dysbiosis	Disease	MESH:D064806
+37546931	2247	2259	inflammation	Disease	MESH:D007249
+37546931	2326	2338	PEG laxative	Chemical	-
+37546931	2381	2392	obstruction	Disease	MESH:D000402
+37546931	2396	2398	CF	Disease	MESH:D003550
+37546931	Association	MESH:D064806	12638
+37546931	Association	MESH:D003550	12638
+37546931	Association	MESH:D007249	12638
+37546931	Association	MESH:D000402	12638
+
+38073491|t|Fecal dysbiosis and inflammation in intestinal-specific Cftr knockout mice on regimens preventing intestinal obstruction.
+38073491|a|Chronic intestinal inflammation is a poorly understood manifestation of cystic fibrosis (CF), which may be refractory to ion channel CF transmembrane conductance regulator (CFTR) modulator therapy. People with CF exhibit intestinal dysbiosis, which has the potential for stimulating intestinal and systemic inflammation. CFTR is expressed in organ epithelia, leukocytes, and other tissues. Here, we investigate the contribution of intestinal epithelium-specific loss of Cftr [iCftr knockout (KO)] to dysbiosis and inflammation in mice treated with either of two antiobstructive dietary regimens necessary to maintain CF mouse models [polyethylene glycol (PEG) laxative or a liquid diet (LiqD)]. Feces collected from iCftr KO mice and their wild-type (WT) sex-matched littermates were used to measure fecal calprotectin to evaluate inflammation and to perform 16S rRNA sequencing to characterize the gut microbiome. Fecal calprotectin was elevated in iCftr KO relative to WT mice that consumed either PEG or LiqD. PEG iCftr KO mice did not show a change in alpha diversity versus WT mice but demonstrated a significant difference in microbial composition (beta diversity) with included increases in the phylum Proteobacteria, the family Peptostreptococcaceae, four genera of Clostridia including C. innocuum, and the mucolytic genus Akkermansia. Fecal microbiome analysis of LiqD-fed iCftr KO mice showed both decreased alpha diversity and differences in microbial composition with increases in the Proteobacteria family Enterobacteriaceae, Firmicutes families Clostridiaceae and Peptostreptococcaceae, and enrichment of Clostridium perfringens, C. innocuum, C. difficile, mucolytic Ruminococcus gnavus, and reduction of Akkermansia. It was concluded that epithelium-specific loss of Cftr is a major driver of CF intestinal dysbiosis and inflammation with significant similarities to previous studies of pan Cftr KO mice.NEW & NOTEWORTHY Chronic intestinal inflammation is a manifestation of cystic fibrosis (CF), a disease caused by loss of the anion channel CF transmembrane conductance regulator (CFTR) that is expressed in many tissues. This study shows that intestinal epithelial cell-specific loss of CFTR [inducible Cftr knockout (KO)] in mice is sufficient to induce intestinal dysbiosis and inflammation. Experiments were performed on mice consuming two dietary regimens routinely used to prevent obstruction in CF mice.
+38073491	0	15	Fecal dysbiosis	Disease	MESH:D064806
+38073491	20	32	inflammation	Disease	MESH:D007249
+38073491	56	60	Cftr	Gene	12638
+38073491	70	74	mice	Species	10090
+38073491	98	120	intestinal obstruction	Disease	MESH:D007415
+38073491	122	153	Chronic intestinal inflammation	Disease	MESH:D007249
+38073491	194	209	cystic fibrosis	Disease	MESH:D003550
+38073491	211	213	CF	Disease	MESH:D003550
+38073491	295	299	CFTR	Gene	12638
+38073491	332	334	CF	Disease	MESH:D003550
+38073491	343	363	intestinal dysbiosis	Disease	MESH:D064806
+38073491	405	441	intestinal and systemic inflammation	Disease	MESH:D007249
+38073491	443	447	CFTR	Gene	12638
+38073491	592	596	Cftr	Gene	12638
+38073491	622	631	dysbiosis	Disease	MESH:D064806
+38073491	636	648	inflammation	Disease	MESH:D007249
+38073491	652	656	mice	Species	10090
+38073491	739	741	CF	Disease	MESH:D003550
+38073491	742	747	mouse	Species	10090
+38073491	756	775	polyethylene glycol	Chemical	MESH:D011092
+38073491	777	780	PEG	Chemical	MESH:D011092
+38073491	847	851	mice	Species	10090
+38073491	953	965	inflammation	Disease	MESH:D007249
+38073491	1096	1100	mice	Species	10090
+38073491	1122	1125	PEG	Chemical	MESH:D011092
+38073491	1129	1134	LiqD.	Chemical	-
+38073491	1135	1138	PEG	Chemical	MESH:D011092
+38073491	1148	1152	mice	Species	10090
+38073491	1204	1208	mice	Species	10090
+38073491	1417	1428	C. innocuum	Species	1522
+38073491	1454	1465	Akkermansia	Species	239934
+38073491	1514	1518	mice	Species	10090
+38073491	1742	1765	Clostridium perfringens	Species	1502
+38073491	1767	1778	C. innocuum	Species	1522
+38073491	1780	1792	C. difficile	Species	1496
+38073491	1804	1823	Ruminococcus gnavus	Species	33038
+38073491	1842	1853	Akkermansia	Species	239934
+38073491	1905	1909	Cftr	Gene	12638
+38073491	1931	1933	CF	Disease	MESH:D003550
+38073491	1934	1954	intestinal dysbiosis	Disease	MESH:D064806
+38073491	1959	1971	inflammation	Disease	MESH:D007249
+38073491	2029	2033	Cftr	Gene	12638
+38073491	2037	2041	mice	Species	10090
+38073491	2059	2090	Chronic intestinal inflammation	Disease	MESH:D007249
+38073491	2113	2128	cystic fibrosis	Disease	MESH:D003550
+38073491	2130	2132	CF	Disease	MESH:D003550
+38073491	2181	2219	CF transmembrane conductance regulator	Gene	12638
+38073491	2221	2225	CFTR	Gene	12638
+38073491	2328	2332	CFTR	Gene	12638
+38073491	2344	2348	Cftr	Gene	12638
+38073491	2367	2371	mice	Species	10090
+38073491	2396	2416	intestinal dysbiosis	Disease	MESH:D064806
+38073491	2421	2433	inflammation	Disease	MESH:D007249
+38073491	2465	2469	mice	Species	10090
+38073491	2542	2544	CF	Disease	MESH:D003550
+38073491	2545	2549	mice	Species	10090
+38073491	Negative_Correlation	MESH:D011092	MESH:D007249
+38073491	Association	MESH:D007415	12638
+38073491	Association	MESH:D064806	12638
+38073491	Association	MESH:D003550	12638
+38073491	Negative_Correlation	MESH:D011092	MESH:D007415
+38073491	Negative_Correlation	MESH:D011092	MESH:D003550
+
+38179971|t|Intestinal Bacteroides modulates inflammation, systemic cytokines, and microbial ecology via propionate in a mouse model of cystic fibrosis.
+38179971|a|Persons with cystic fibrosis (CF), starting in early life, show intestinal microbiome dysbiosis characterized in part by a decreased relative abundance of the genus Bacteroides. Bacteroides is a major producer of the intestinal short chain fatty acid propionate. We demonstrate here that cystic fibrosis transmembrane conductance regulator-defective (CFTR-/-) Caco-2 intestinal epithelial cells are responsive to the anti-inflammatory effects of propionate. Furthermore, Bacteroides isolates inhibit the IL-1beta-induced inflammatory response of CFTR-/- Caco-2 intestinal epithelial cells and do so in a propionate-dependent manner. The introduction of Bacteroides-supplemented stool from infants with cystic fibrosis into the gut of CftrF508del mice results in higher propionate in the stool as well as the reduction in several systemic pro-inflammatory cytokines. Bacteroides supplementation also reduced the fecal relative abundance of Escherichia coli, indicating a potential interaction between these two microbes, consistent with previous clinical studies. For a Bacteroides propionate mutant in the mouse model, pro-inflammatory cytokine KC is higher in the airway and serum compared with the wild-type (WT) strain, with no significant difference in the absolute abundance of these two strains. Taken together, our data indicate the potential multiple roles of Bacteroides-derived propionate in the modulation of systemic and airway inflammation and mediating the intestinal ecology of infants and children with CF. The roles of Bacteroides and the propionate it produces may help explain the observed gut-lung axis in CF and could guide the development of probiotics to mitigate systemic and airway inflammation for persons with CF.IMPORTANCEThe composition of the gut microbiome in persons with CF is correlated with lung health outcomes, a phenomenon referred to as the gut-lung axis. Here, we demonstrate that the intestinal microbe Bacteroides decreases inflammation through the production of the short-chain fatty acid propionate. Supplementing the levels of Bacteroides in an animal model of CF is associated with reduced systemic inflammation and reduction in the relative abundance of the opportunistically pathogenic group Escherichia/Shigella in the gut. Taken together, these data demonstrate a key role for Bacteroides and microbially produced propionate in modulating inflammation, gut microbial ecology, and the gut-lung axis in cystic fibrosis. These data support the role of Bacteroides as a potential probiotic in CF.
+38179971	11	22	Bacteroides	Species	816
+38179971	33	45	inflammation	Disease	MESH:D007249
+38179971	93	103	propionate	Chemical	MESH:D011422
+38179971	109	114	mouse	Species	10090
+38179971	124	139	cystic fibrosis	Disease	MESH:D003550
+38179971	154	169	cystic fibrosis	Disease	MESH:D003550
+38179971	171	173	CF	Disease	MESH:D003550
+38179971	216	236	microbiome dysbiosis	Disease	MESH:D064806
+38179971	306	317	Bacteroides	Species	816
+38179971	319	330	Bacteroides	Species	816
+38179971	369	391	short chain fatty acid	Chemical	MESH:D005232
+38179971	392	402	propionate	Chemical	MESH:D011422
+38179971	492	496	CFTR	Gene	1080
+38179971	501	507	Caco-2	CellLine	CVCL:0025
+38179971	563	575	inflammatory	Disease	MESH:D007249
+38179971	587	597	propionate	Chemical	MESH:D011422
+38179971	612	623	Bacteroides	Species	816
+38179971	645	653	IL-1beta	Gene	3553
+38179971	662	674	inflammatory	Disease	MESH:D007249
+38179971	687	691	CFTR	Gene	1080
+38179971	695	701	Caco-2	CellLine	CVCL:0025
+38179971	745	755	propionate	Chemical	MESH:D011422
+38179971	843	858	cystic fibrosis	Disease	MESH:D003550
+38179971	879	886	F508del	ProteinMutation	tmVar:p|DEL|508|F;HGVS:p.F508del;VariantGroup:0;CorrespondingGene:1080;RS#:113993960;CorrespondingSpecies:9606;CA#:118639
+38179971	887	891	mice	Species	10090
+38179971	910	920	propionate	Chemical	MESH:D011422
+38179971	983	995	inflammatory	Disease	MESH:D007249
+38179971	1007	1018	Bacteroides	Species	816
+38179971	1080	1096	Escherichia coli	Species	562
+38179971	1247	1252	mouse	Species	10090
+38179971	1264	1276	inflammatory	Disease	MESH:D007249
+38179971	1509	1520	Bacteroides	Species	816
+38179971	1529	1539	propionate	Chemical	MESH:D011422
+38179971	1574	1593	airway inflammation	Disease	MESH:D007249
+38179971	1660	1662	CF	Disease	MESH:D003550
+38179971	1677	1688	Bacteroides	Species	816
+38179971	1697	1707	propionate	Chemical	MESH:D011422
+38179971	1767	1769	CF	Disease	MESH:D003550
+38179971	1841	1860	airway inflammation	Disease	MESH:D007249
+38179971	1878	1894	CF.IMPORTANCEThe	Disease	MESH:D003550
+38179971	1945	1947	CF	Disease	MESH:D003550
+38179971	2085	2096	Bacteroides	Species	816
+38179971	2107	2119	inflammation	Disease	MESH:D007249
+38179971	2150	2183	short-chain fatty acid propionate	Chemical	-
+38179971	2213	2224	Bacteroides	Species	816
+38179971	2247	2249	CF	Disease	MESH:D003550
+38179971	2286	2298	inflammation	Disease	MESH:D007249
+38179971	2381	2392	Escherichia	Species	562
+38179971	2393	2401	Shigella	Species	620
+38179971	2468	2479	Bacteroides	Species	816
+38179971	2505	2515	propionate	Chemical	MESH:D011422
+38179971	2530	2542	inflammation	Disease	MESH:D007249
+38179971	2592	2607	cystic fibrosis	Disease	MESH:D003550
+38179971	2640	2651	Bacteroides	Species	816
+38179971	2680	2682	CF	Disease	MESH:D003550
+38179971	Negative_Correlation	MESH:D011422	MESH:D007249
+38179971	Negative_Correlation	MESH:D011422	3553
+38179971	Positive_Correlation	MESH:D007249	3553
+
+38554847|t|Prominent role of gut dysbiosis in the pathogenesis of cystic fibrosis-related liver disease in mice.
+38554847|a|BACKGROUND & AIMS: Cystic fibrosis-related liver disease (CFLD) is a chronic cholangiopathy that increases morbidity and mortality in patients with CF. Current treatments are unsatisfactory, and incomplete understanding of CFLD pathogenesis hampers therapeutic development. We have previously shown that mouse CF cholangiocytes respond with excessive inflammation to LPS. Thus, we investigated the role of the gut-liver axis in the pathogenesis of CFLD. METHODS: Wild-type (WT), whole-body CFTR knockout (CFTR-KO) and gut-corrected (CFTR-KO-GC) mice were studied. Liver changes were assessed by immunohistochemistry and single-cell transcriptomics (scRNAseq), inflammatory mediators were analyzed by proteome array, faecal microbiota by 16S rRNAseq and gut permeability by FITC-dextran assay. RESULTS: The livers of CFTR-KO mice showed ductular proliferation and periportal inflammation, whereas livers of CFTR-KO-GC mice had no evident pathology. scRNAseq analysis of periportal cells showed increased presence of neutrophils, macrophages and T-cells and activation of pro-inflammatory and pathogen-mediated immune pathways in CFTR-KO livers, consistent with a response to gut-derived stimuli. CFTR-KO mice exhibited gut dysbiosis with enrichment of Enterobacteriaceae and Enterococcus spp., which was associated with increased intestinal permeability and mucosal inflammation, whereas gut dysbiosis and inflammation were absent in CFTR-KO-GC mice. Treatment with nonabsorbable antibiotics ameliorated intestinal permeability and liver inflammation in CFTR-KO mice. Faecal microbiota transfer from CFTR-KO to germ-free WT mice did not result in dysbiosis nor liver pathology, indicating that defective intestinal CFTR is required to maintain dysbiosis. CONCLUSION: Defective CFTR in the gut sustains a pathogenic microbiota, creates an inflammatory milieu, and alters intestinal permeability. These changes are necessary for the development of cholangiopathy. Restoring CFTR in the intestine or modulating the microbiota could be a promising strategy to prevent or attenuate liver disease. IMPACT AND IMPLICATIONS: Severe cystic fibrosis-related liver disease (CFLD) affects 10% of the patients and contributes to increased morbidity and mortality of CF patients. Treatment options remain limited due to a lack of understanding of the disease pathophysiology. The Cystic Fibrosis Transmembrane Conductance Regulator (CFTR) mediates Cl- and HCO3- secretion in the biliary epithelium and its defective function is thought to cause cholestasis and excessive inflammatory responses in CF. However, our study in CFTR-knockout mice demonstrates that microbial dysbiosis, combined with increased intestinal permeability caused by defective CFTR in the intestinal mucosa, acts as a necessary co-factor for the development of CFLD-like liver pathology in mice. These findings uncover a major role for the gut microbiota in CFLD pathogenesis and call for further investigation and clinical validation to develop targeted therapeutic strategies acting on the gut-liver axis in CF.
+38554847	18	31	gut dysbiosis	Disease	MESH:D064806
+38554847	55	92	cystic fibrosis-related liver disease	Disease	MESH:D003550
+38554847	96	100	mice	Species	10090
+38554847	121	158	Cystic fibrosis-related liver disease	Disease	MESH:D003550
+38554847	160	164	CFLD	Disease	MESH:D003550
+38554847	179	193	cholangiopathy	Disease	-
+38554847	236	244	patients	Species	9606
+38554847	250	252	CF	Disease	MESH:D003550
+38554847	325	329	CFLD	Disease	MESH:D003550
+38554847	406	411	mouse	Species	10090
+38554847	412	414	CF	Disease	MESH:D003550
+38554847	453	465	inflammation	Disease	MESH:D007249
+38554847	469	472	LPS	Chemical	MESH:D008070
+38554847	516	521	liver	Disease	MESH:D017093
+38554847	550	554	CFLD	Disease	MESH:D003550
+38554847	592	596	CFTR	Gene	12638
+38554847	607	611	CFTR	Gene	12638
+38554847	635	639	CFTR	Gene	12638
+38554847	643	645	GC	Disease	-
+38554847	647	651	mice	Species	10090
+38554847	666	671	Liver	Disease	MESH:D017093
+38554847	762	774	inflammatory	Disease	MESH:D007249
+38554847	875	887	FITC-dextran	Chemical	MESH:C015219
+38554847	918	922	CFTR	Gene	12638
+38554847	926	930	mice	Species	10090
+38554847	976	988	inflammation	Disease	MESH:D007249
+38554847	1008	1012	CFTR	Gene	12638
+38554847	1016	1018	GC	Disease	-
+38554847	1019	1023	mice	Species	10090
+38554847	1130	1141	macrophages	Disease	MESH:D055501
+38554847	1176	1188	inflammatory	Disease	MESH:D007249
+38554847	1230	1234	CFTR	Gene	12638
+38554847	1297	1301	CFTR	Gene	12638
+38554847	1305	1309	mice	Species	10090
+38554847	1320	1333	gut dysbiosis	Disease	MESH:D064806
+38554847	1467	1479	inflammation	Disease	MESH:D007249
+38554847	1489	1502	gut dysbiosis	Disease	MESH:D064806
+38554847	1507	1519	inflammation	Disease	MESH:D007249
+38554847	1535	1539	CFTR	Gene	12638
+38554847	1543	1545	GC	Disease	-
+38554847	1546	1550	mice	Species	10090
+38554847	1633	1651	liver inflammation	Disease	MESH:D007249
+38554847	1655	1659	CFTR	Gene	12638
+38554847	1663	1667	mice	Species	10090
+38554847	1701	1705	CFTR	Gene	12638
+38554847	1725	1729	mice	Species	10090
+38554847	1748	1757	dysbiosis	Disease	MESH:D064806
+38554847	1762	1767	liver	Disease	MESH:D017093
+38554847	1816	1820	CFTR	Gene	12638
+38554847	1845	1854	dysbiosis	Disease	MESH:D064806
+38554847	1878	1882	CFTR	Gene	12638
+38554847	1939	1951	inflammatory	Disease	MESH:D007249
+38554847	2047	2061	cholangiopathy	Disease	-
+38554847	2073	2077	CFTR	Gene	12638
+38554847	2178	2191	liver disease	Disease	MESH:D008107
+38554847	2225	2262	cystic fibrosis-related liver disease	Disease	MESH:D003550
+38554847	2264	2268	CFLD	Disease	MESH:D003550
+38554847	2289	2297	patients	Species	9606
+38554847	2354	2356	CF	Disease	MESH:D003550
+38554847	2357	2365	patients	Species	9606
+38554847	2467	2518	Cystic Fibrosis Transmembrane Conductance Regulator	Disease	MESH:D003550
+38554847	2520	2524	CFTR	Gene	12638
+38554847	2535	2538	Cl-	Chemical	MESH:D002713
+38554847	2543	2548	HCO3-	Chemical	MESH:D001639
+38554847	2632	2643	cholestasis	Disease	MESH:D002779
+38554847	2658	2670	inflammatory	Disease	MESH:D007249
+38554847	2684	2686	CF	Disease	MESH:D003550
+38554847	2710	2714	CFTR	Gene	12638
+38554847	2724	2728	mice	Species	10090
+38554847	2757	2766	dysbiosis	Disease	MESH:D064806
+38554847	2836	2840	CFTR	Gene	12638
+38554847	2920	2935	CFLD-like liver	Disease	MESH:D008103
+38554847	2949	2953	mice	Species	10090
+38554847	3017	3021	CFLD	Disease	MESH:D003550
+38554847	3155	3160	liver	Disease	MESH:D017093
+38554847	3169	3171	CF	Disease	MESH:D003550
+38554847	Association	MESH:D008070	MESH:D003550
+38554847	Association	MESH:D055501	12638
+
+40247380|t|Gliadin-dependent UPR induction directly triggers the expression of TG2 and pro-inflammatory cytokines, dysregulates intestinal permeability, and reduces CFTR expression in intestinal epithelial cells of celiac disease patients.
+40247380|a|BACKGROUND: Celiac disease (CD) is an autoimmune disorder that primarily affects the gut of genetically predisposed individuals and is triggered by gliadin peptides (PT) produced by the digestion of gluten. Although inappropriate activation of the immune system is thought to be the main trigger of CD, the interaction between PT and intestinal epithelial cells (IECs) remains a key step. Recently, the possible involvement of ER stress in the pathogenesis of CD has been pointed out, although its role is still largely unclear. Therefore, discovering the molecular mechanism(s) activated in IECs exposed to PT represents a unique opportunity to better understand the disease and define new potential therapeutic targets. METHODS: In this study we used three different experimental set-ups: intestinal biopsies from CD patients and non-CD control subjects, an in vitro model, based on human CaCo-2 cells, and an ex vivo model, based on our recently described mouse gut-ex-vivo system (GEVS), with the latter two systems were studied after stimulation with gliadin peptides (PT). To understand the signaling pathways involved we monitor the expression of a number of proteins by qPCR, Western blotting, IF, ELISA or a combination of tests. Specifically, we have analyzed the level of CD, ER stress, tissue permeability, and inflammation markers. RESULTS: Indeed, our study demonstrated a prompt induction of the transcription factors ATF4, ATF6 and XBP1 in IECs upon PT exposure. Thus, the upregulation of TG2 and downregulation of CFTR were prevented by ER stress inhibition/buffering by a pharmacological chaperone, also leading to restored physiological expression of OCL, CLD-2 and CLD-15, while preventing the expression of IFNgamma, IL-15 and IL-17 A. CONCLUSION: Overall, our analysis has highlighted the key role of ER stress in the pathogenesis of CD and identified the chemical chaperones as a new potential valuable therapeutic treatment for CD patients.
+40247380	80	92	inflammatory	Disease	MESH:D007249
+40247380	154	158	CFTR	Gene	1080
+40247380	204	218	celiac disease	Disease	MESH:D002446
+40247380	219	227	patients	Species	9606
+40247380	241	255	Celiac disease	Disease	MESH:D002446
+40247380	257	259	CD	Disease	MESH:D002446
+40247380	267	286	autoimmune disorder	Disease	MESH:D001327
+40247380	528	530	CD	Disease	MESH:D002446
+40247380	689	691	CD	Disease	MESH:D002446
+40247380	1045	1047	CD	Disease	MESH:D002446
+40247380	1048	1056	patients	Species	9606
+40247380	1065	1067	CD	Disease	MESH:D002446
+40247380	1114	1119	human	Species	9606
+40247380	1120	1126	CaCo-2	CellLine	CVCL:0025
+40247380	1188	1193	mouse	Species	10090
+40247380	1512	1514	CD	Disease	MESH:D002446
+40247380	1552	1564	inflammation	Disease	MESH:D007249
+40247380	1662	1666	ATF4	Gene	468
+40247380	1668	1672	ATF6	Gene	22926
+40247380	1677	1681	XBP1	Gene	7494
+40247380	1760	1764	CFTR	Gene	1080
+40247380	1957	1965	IFNgamma	Gene	3458
+40247380	1967	1972	IL-15	Gene	3600
+40247380	1977	1985	IL-17 A.	Gene	3605
+40247380	2085	2087	CD	Disease	MESH:D002446
+40247380	2181	2183	CD	Disease	MESH:D002446
+40247380	2184	2192	patients	Species	9606
+40247380	Association	MESH:D002446	1080
+
+40824057|t|Cystic fibrosis and inflammatory bowel disease: parallels in gut physiology and microbiota.
+40824057|a|Cystic fibrosis (CF) and inflammatory bowel disease (IBD) represent distinct pathologies with unique genetic underpinnings; yet, they share remarkable similarities in gut microbiota dysbiosis and intestinal physiology. This review comprehensively examines the parallels and differences between these conditions, focusing on microbial signatures, inflammatory markers, and physiological features. Both diseases exhibit increased levels of Proteobacteria, decreased anaerobic short-chain fatty acid producers, and altered intestinal metabolic profiles. Common physiological characteristics include intestinal inflammation with elevated inflammatory markers (calprotectin, S100A12, lactoferrin), lower intestinal pH, and similar bile acid dysregulation patterns. However, key differences emerge in mucus characteristics, disease onset timing, and current treatment approaches. The gut microbiota plays a crucial role in both conditions, with shared signatures of dysbiosis suggesting similar intestinal environmental shifts and potential common therapeutic targets. Recent advances in CFTR modulator therapy have shown promising effects on the CF gut microbiome, while IBD treatments demonstrate variable efficacy. Understanding these similarities and differences is crucial for developing targeted therapies that could benefit both populations. This review highlights the complex interplay between host genetics, environmental factors, and the gut microbiota, emphasizing the need for further research to disentangle these relationships. We also discuss how the information provided here can be used to build and validate in vitro models to study the dysbiotic microbial communities and their causes in these diseases, to develop more effective treatments.
+40824057	0	15	Cystic fibrosis	Disease	MESH:D003550
+40824057	20	46	inflammatory bowel disease	Disease	MESH:D015212
+40824057	92	107	Cystic fibrosis	Disease	MESH:D003550
+40824057	109	111	CF	Disease	MESH:D003550
+40824057	117	143	inflammatory bowel disease	Disease	MESH:D015212
+40824057	145	148	IBD	Disease	MESH:D015212
+40824057	274	283	dysbiosis	Disease	MESH:D064806
+40824057	438	450	inflammatory	Disease	MESH:D007249
+40824057	566	588	short-chain fatty acid	Chemical	MESH:D005232
+40824057	688	711	intestinal inflammation	Disease	MESH:D007249
+40824057	726	738	inflammatory	Disease	MESH:D007249
+40824057	762	769	S100A12	Gene	6283
+40824057	818	827	bile acid	Chemical	MESH:D001647
+40824057	1052	1061	dysbiosis	Disease	MESH:D064806
+40824057	1174	1178	CFTR	Gene	1080
+40824057	1233	1235	CF	Disease	MESH:D003550
+40824057	1258	1261	IBD	Disease	MESH:D015212
+40824057	Positive_Correlation	MESH:D007249	6283
+40824057	Association	MESH:D003550	1080

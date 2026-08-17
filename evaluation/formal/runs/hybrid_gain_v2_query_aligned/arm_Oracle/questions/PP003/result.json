@@ -1,0 +1,442 @@
+{
+  "status": "complete",
+  "question_id": "PP003",
+  "domain": "neurodegeneration",
+  "question": "What evidence supports the claim that amyloid-beta related_to mitochondrial toxicity, and what are the important study-context limitations?",
+  "question_type": "mechanism",
+  "pubmed_query": "amyloid beta AND oxidative stress AND mitochondrial dysfunction",
+  "effective_pubmed_query": "amyloid beta AND oxidative stress AND mitochondrial dysfunction",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "22697066",
+    "27766447",
+    "27809706",
+    "32967303",
+    "33476985",
+    "35269827",
+    "35522844",
+    "35660451",
+    "37227619",
+    "37597424",
+    "37956598",
+    "40023293",
+    "40864415",
+    "40902587",
+    "40931065"
+  ],
+  "graph": {
+    "node_count": 33,
+    "edge_count": 42,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 1,
+    "pre_gate_candidate_count": 1,
+    "pre_gate_candidates": [
+      {
+        "path_id": "Q005-P01",
+        "path_signature": "31f26bea18c6474b",
+        "path_text": "amyloid-beta --[related_to] mitochondrial toxicity",
+        "node_ids": [
+          "351_Gene",
+          "MESH:D028361_Disease"
+        ],
+        "names": [
+          "amyloid-beta",
+          "mitochondrial toxicity"
+        ],
+        "node_aliases": [
+          [
+            "Abeta",
+            "Amyloid-beta",
+            "amyloid beta",
+            "amyloid-beta"
+          ],
+          [
+            "Mitochondrial Dysfunction",
+            "Mitochondrial damage",
+            "Mitochondrial dysfunction",
+            "impaired mitochondrial function",
+            "mitochondrial damage",
+            "mitochondrial deficiency",
+            "mitochondrial dysfunction",
+            "mitochondrial dysfunctioning",
+            "mitochondrial impairments",
+            "mitochondrial toxicity"
+          ]
+        ],
+        "relations": [
+          "related_to"
+        ],
+        "edge_pmids": [
+          [
+            "33476985"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Mitochondrial damage has been related to amyloid-beta or tau pathology or to the presence of specific presenilin-1 mutations."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "related_to",
+            "selected_pmid": "33476985",
+            "selected_quote": "Mitochondrial damage has been related to amyloid-beta or tau pathology or to the presence of specific presenilin-1 mutations.",
+            "selected_confidence": 0.85,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 3,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text",
+          "query_path_aligned"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.759,
+        "hop_count": 1,
+        "path_relevance_score": 0.8795,
+        "graph_relevance_score": 0.759,
+        "query_endpoint_coverage": 1.0,
+        "requested_bridge_coverage": 1.0,
+        "query_bridge_precision": 1.0,
+        "query_path_alignment_score": 1.0,
+        "incremental_mechanism_score": 0.25,
+        "mechanism_utility_score": 0.596225
+      }
+    ],
+    "preferred_pmids": [
+      "33476985"
+    ],
+    "paths": [
+      {
+        "path_id": "PP003-P01",
+        "path_signature": "31f26bea18c6474b",
+        "path_text": "amyloid-beta --[related_to] mitochondrial toxicity",
+        "node_ids": [
+          "351_Gene",
+          "MESH:D028361_Disease"
+        ],
+        "names": [
+          "amyloid-beta",
+          "mitochondrial toxicity"
+        ],
+        "node_aliases": [
+          [
+            "Abeta",
+            "Amyloid-beta",
+            "amyloid beta",
+            "amyloid-beta"
+          ],
+          [
+            "Mitochondrial Dysfunction",
+            "Mitochondrial damage",
+            "Mitochondrial dysfunction",
+            "impaired mitochondrial function",
+            "mitochondrial damage",
+            "mitochondrial deficiency",
+            "mitochondrial dysfunction",
+            "mitochondrial dysfunctioning",
+            "mitochondrial impairments",
+            "mitochondrial toxicity"
+          ]
+        ],
+        "relations": [
+          "related_to"
+        ],
+        "edge_pmids": [
+          [
+            "33476985"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Mitochondrial damage has been related to amyloid-beta or tau pathology or to the presence of specific presenilin-1 mutations."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "related_to",
+            "selected_pmid": "33476985",
+            "selected_quote": "Mitochondrial damage has been related to amyloid-beta or tau pathology or to the presence of specific presenilin-1 mutations.",
+            "selected_confidence": 0.85,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 3,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text",
+          "query_path_aligned"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "path_relevance_score": 0.8795,
+        "graph_relevance_score": 0.759,
+        "query_endpoint_coverage": 1.0,
+        "requested_bridge_coverage": 1.0,
+        "query_bridge_precision": 1.0,
+        "query_path_alignment_score": 1.0,
+        "incremental_mechanism_score": 0.25,
+        "mechanism_utility_score": 0.596225,
+        "score": 0.759,
+        "hop_count": 1
+      }
+    ]
+  },
+  "evidence_exposure": {
+    "profile": "H_evidence_gated_four_hop",
+    "routed_profile": "H_evidence_gated_four_hop",
+    "selection_frozen_before_answers": true,
+    "source_result": "evaluation/formal/runs/formal-v1-ae-replay-terra-graphs-luna-answers-v1/D_two_hop/questions/Q005/result.json",
+    "expanded_reliable_pool": true,
+    "frozen_exposure_source": "evaluation/formal/path_positive_20_v1/frozen_exposures_expanded/PP003/result.json",
+    "frozen_candidate_path_count": 1,
+    "frozen_exposed_path_count": 1,
+    "exposed_pmids": [
+      "33476985"
+    ],
+    "exposed_paths": [
+      [
+        "amyloid-beta",
+        "mitochondrial toxicity"
+      ]
+    ],
+    "exposed_edges": [
+      "amyloid-beta --[related_to] mitochondrial toxicity"
+    ],
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 1,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "pre_gate_incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 1,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "integration_decision": {
+      "method": "three_stage_incremental_utility_router_v1",
+      "mode": "citation_validation",
+      "reason": "claim_safe_confirmation_only",
+      "claim_safe_path_count": 1,
+      "incremental_path_count": 0,
+      "confirmatory_path_count": 1,
+      "citation_validation_pmids": [
+        "33476985"
+      ],
+      "policy": "three_stage"
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "disabled",
+      "reason": "integration_mode=citation_validation",
+      "boosted_pmids": {}
+    },
+    "fallback_answer_reused": {
+      "source": "evaluation/formal/runs/hybrid_gain_v2_query_aligned/arm_B/questions/PP003/result.json",
+      "source_system": "traditional_rag",
+      "mode": "citation_validation"
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "22697066",
+        "score": 0.6085394501285545
+      },
+      {
+        "pmid": "35522844",
+        "score": 0.6019543944957456
+      },
+      {
+        "pmid": "27766447",
+        "score": 0.566146711739603
+      },
+      {
+        "pmid": "40023293",
+        "score": 0.5602891518336001
+      },
+      {
+        "pmid": "40864415",
+        "score": 0.5406613720969151
+      },
+      {
+        "pmid": "27809706",
+        "score": 0.5379686779730235
+      },
+      {
+        "pmid": "33476985",
+        "score": 0.5359119468749663
+      },
+      {
+        "pmid": "37597424",
+        "score": 0.5172413623006965
+      },
+      {
+        "pmid": "32967303",
+        "score": 0.5171747462171082
+      },
+      {
+        "pmid": "37956598",
+        "score": 0.5149355790951062
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "22697066",
+        "score": 0.6085394501285545
+      },
+      {
+        "pmid": "35522844",
+        "score": 0.6019543944957456
+      },
+      {
+        "pmid": "27766447",
+        "score": 0.566146711739603
+      },
+      {
+        "pmid": "40023293",
+        "score": 0.5602891518336001
+      },
+      {
+        "pmid": "40864415",
+        "score": 0.5406613720969151
+      },
+      {
+        "pmid": "27809706",
+        "score": 0.5379686779730235
+      },
+      {
+        "pmid": "33476985",
+        "score": 0.5359119468749663
+      },
+      {
+        "pmid": "37597424",
+        "score": 0.5172413623006965
+      },
+      {
+        "pmid": "32967303",
+        "score": 0.5171747462171082
+      },
+      {
+        "pmid": "37956598",
+        "score": 0.5149355790951062
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "**Direct experimental evidence**  \n- In triple‑transgenic AD mice (3 × Tg‑AD) and in hippocampal primary neurons, luteolin reduced “Abeta‑induced oxidative stress, mitochondrial dysfunction and neuronal apoptosis” (PMID 37597424) – an in‑vivo mouse model and an in‑vitro neuron culture that demonstrate that exposure to amyloid‑β can impair mitochondrial integrity.  \n\n- Several reviews report that Abeta “interacts directly with mitochondrial membranes and proteins to cause mitochondrial fragmentation and hinder mitochondrial transport along neuronal axons” (PMID 40864415). Although this is a synthesis of multiple studies, the underlying primary data come from cell‑based assays and rodent brain tissue where Abeta was shown to bind mitochondrial components.\n\n**Associative/observational evidence**  \n- Post‑mortem and imaging studies of AD brains repeatedly note “mitochondrial alterations… linked to amyloid pathology” and that dysfunctional mitochondria contribute to reactive‑oxygen‑species production which “leads… to the progression of amyloid pathology” (PMID 22697066). These observations describe a correlation between amyloid burden and mitochondrial damage in human tissue.  \n\n- Reviews of the “mitochondrial cascade hypothesis” emphasise that baseline mitochondrial function influences the rate of cognitive decline and that amyloid‑beta may be downstream of primary mitochondrial defects (PMID 35522844). This frames amyloid‑beta as associated with, but not necessarily the cause of, mitochondrial toxicity.\n\n**Testable mechanistic hypotheses** (derived from the cited literature)  \n- **Membrane permeability hypothesis:** Abeta increases mitochondrial outer‑membrane permeability, disrupting calcium homeostasis and oxidative phosphorylation (PMID 22697066).  \n- **Calcium‑overload hypothesis:** Abeta‑driven mitochondrial Ca²⁺ dysregulation opens the permeability‑transition pore, leading to neuronal death (PMID 32967303).  \n- **Dynamics‑disruption hypothesis:** Abeta perturbs the balance of mitochondrial fission/fusion, causing fragmented mitochondria and impaired bioenergetics (PMID 27766447).  \n\n**Key study‑context limitations**  \n- **Reliance on reviews:** The majority of cited records are narrative reviews (PMIDs 22697066, 35522844, 27766447, 40023293, 40864415, 33476985, 32967303) that synthesize primary data but do not present new experimental results, limiting the strength of causal inference.  \n- **Model‑specific constraints:** The mouse‑model (3 × Tg‑AD) and primary‑neuron findings (PMID 37597424) may not fully replicate human AD pathology; species differences, transgene overexpression, and acute Abeta exposure can exaggerate effects.  \n- **In‑vitro conditions:** Cell‑culture studies often use supraphysiologic concentrations of synthetic Abeta peptides, which can produce non‑physiological mitochondrial stress.  \n- **Cross‑sectional human data:** Human observations (PMID 22697066) are largely post‑mortem or imaging‑based, showing association but not temporal directionality between amyloid accumulation and mitochondrial damage.  \n- **Mechanistic ambiguity:** Multiple, sometimes conflicting, pathways (permeability, calcium,"
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 2.6971101760864258e-05,
+    "vector_index": 1.4245342761278152,
+    "kg_expansion": 1.3008713722229004e-05,
+    "answer_netmedex_hybrid_rag": 0.0,
+    "total": 1.8976222574710846
+  },
+  "token_usage": {},
+  "completed_at": "2026-08-16T20:00:59.611368+00:00"
+}

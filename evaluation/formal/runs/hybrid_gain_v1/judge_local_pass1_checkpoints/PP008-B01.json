@@ -1,0 +1,91 @@
+{
+  "task": "answer",
+  "question_id": "PP008",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "b341a9f9279c8d5d270059ca1371304152eec248e692b239c42e5a34df3d7b91",
+  "raw_response_sha256": "80da1ff1f61b2c81d17dc04d6e7bba4b9365ee7194ddc6d362e322219cfe8dec",
+  "usage": {
+    "input_tokens": 4762,
+    "output_tokens": 616,
+    "total_tokens": 5378
+  },
+  "rated_at": "2026-08-16T18:42:23.216210+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP008-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Accurate citations, covers both hops and bridge, but lacks direct triple‑hop study."
+      },
+      {
+        "answer_id": "PP008-B",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Same content as A; well‑structured but no new evidence."
+      },
+      {
+        "answer_id": "PP008-C",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Identical to A/B; solid summary, missing direct causal data."
+      },
+      {
+        "answer_id": "PP008-D",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Repeats same evidence; clear but no additional insight."
+      },
+      {
+        "answer_id": "PP008-E",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Duplicate of others; adequately addresses question."
+      },
+      {
+        "answer_id": "PP008-F",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Same as previous entries; no unique contribution."
+      },
+      {
+        "answer_id": "PP008-G",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Identical to others; well‑organized but lacks novel data."
+      }
+    ],
+    "preferred_item_id": "tie",
+    "pairwise_reason": "All answers contain identical content and scoring; none outperforms another."
+  }
+}

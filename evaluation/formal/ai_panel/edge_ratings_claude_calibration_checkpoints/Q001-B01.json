@@ -1,0 +1,36 @@
+{
+  "task": "edge",
+  "question_id": "Q001",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "b0b1bc36e81b2f1052a0aa0b4c059df893ef2fe02ca7eef333a39034f2688399",
+  "raw_response_sha256": "ff9b11b6e78885c2c705ccfd4ca346ea0080e0ab1fd65d9bfe20ef339f7da5b5",
+  "rated_at": "2026-08-02T19:05:24.941039+00:00",
+  "result": {
+    "ratings": [
+      {
+        "edge_id": "Q001-E01",
+        "entity_valid": 1,
+        "relation_exists": 1,
+        "relation_type_correct": 1,
+        "direction_correct": 1,
+        "evidence_support": 1,
+        "confidence": 3,
+        "notes": "Both abstracts clearly support icariin upregulating RUNX2. PMID 29904399 explicitly states 'miR-153 and Runx2 expression levels were increased following treatment with icariin' and describes the miR-153/Runx2 pathway. PMID 38045146 confirms increased RUNX2 expression with increasing icariin concentration via the circRNA/miR-138-5p/JMJD3 axis. Both entities are valid and the upregulation direction is correct."
+      },
+      {
+        "edge_id": "Q001-E05",
+        "entity_valid": 1,
+        "relation_exists": 1,
+        "relation_type_correct": 1,
+        "direction_correct": 1,
+        "evidence_support": 1,
+        "confidence": 3,
+        "notes": "JMJD3 is encoded by KDM6B; the abstract from PMID 38045146 explicitly states 'With the increase in icariin concentration and time for treatment, the expression levels of mmu_circ_0000349, JMJD3, ALP, and RUNX2 also increased.' This directly supports icariin upregulating JMJD3/KDM6B. Entity validity is confirmed as JMJD3 is the protein product of KDM6B. Direction and relation type are correct."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

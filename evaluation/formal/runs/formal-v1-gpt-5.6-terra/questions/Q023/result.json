@@ -1,0 +1,149 @@
+{
+  "status": "complete",
+  "question_id": "Q023",
+  "domain": "cancer biology",
+  "question": "What is the evidence that hypoxia induces epithelial-mesenchymal transition through HIF-1alpha?",
+  "pubmed_query": "hypoxia HIF-1alpha epithelial mesenchymal transition cancer metastasis",
+  "language": "English",
+  "corpus_pmids": [
+    "26057751",
+    "26861406",
+    "30279729",
+    "30737895",
+    "31933745",
+    "32322559",
+    "32735882",
+    "34589393",
+    "34905218",
+    "38476024",
+    "38904007",
+    "39386828",
+    "40225580",
+    "40355012",
+    "41129727"
+  ],
+  "graph": {
+    "node_count": 41,
+    "edge_count": 63,
+    "path_count": 20,
+    "preferred_pmids": [
+      "26057751",
+      "26861406",
+      "30279729",
+      "30737895",
+      "32322559",
+      "34589393",
+      "34905218",
+      "39386828",
+      "41129727"
+    ]
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "32322559",
+        "score": 0.9830399616000016
+      },
+      {
+        "pmid": "34905218",
+        "score": 0.8816128211488785
+      },
+      {
+        "pmid": "39386828",
+        "score": 0.8475158008615584
+      },
+      {
+        "pmid": "26057751",
+        "score": 0.8291735105974558
+      },
+      {
+        "pmid": "26861406",
+        "score": 0.8217633559683928
+      },
+      {
+        "pmid": "30737895",
+        "score": 0.7484679735493863
+      },
+      {
+        "pmid": "41129727",
+        "score": 0.7327747519799557
+      },
+      {
+        "pmid": "30279729",
+        "score": 0.7056789522475833
+      },
+      {
+        "pmid": "34589393",
+        "score": 0.5360823477324619
+      },
+      {
+        "pmid": "38904007",
+        "score": 0.5199218587061665
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "32322559",
+        "score": 0.655359974400001
+      },
+      {
+        "pmid": "34905218",
+        "score": 0.587741880765919
+      },
+      {
+        "pmid": "39386828",
+        "score": 0.5650105339077056
+      },
+      {
+        "pmid": "26057751",
+        "score": 0.5527823403983039
+      },
+      {
+        "pmid": "26861406",
+        "score": 0.5478422373122619
+      },
+      {
+        "pmid": "38904007",
+        "score": 0.5199218587061665
+      },
+      {
+        "pmid": "30737895",
+        "score": 0.4989786490329242
+      },
+      {
+        "pmid": "41129727",
+        "score": 0.4885165013199705
+      },
+      {
+        "pmid": "31933745",
+        "score": 0.4864551374214446
+      },
+      {
+        "pmid": "38476024",
+        "score": 0.47929436162595396
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "## Direct evidence\n\n- **Colorectal cancer (human cancer cell models; in vitro and in vivo):** HIF-1α overexpression induced EMT, migration, invasion, and metastasis-associated behavior. Mechanistically, HIF-1α bound hypoxia-response elements in the proximal **ZEB1** promoter, increased ZEB1 transcription, and ZEB1 inhibition abrogated HIF-1α–induced EMT and invasion. The EMT pattern included increased vimentin and reduced E-cadherin. This is direct mechanistic evidence for a HIF-1α → ZEB1 → EMT pathway. [PMID: 26057751]\n\n- **Colorectal cancer (human CRC cells and xenograft models):** Under hypoxia, chrysophanol suppressed EMT in vitro and in vivo, with the proposed mechanism being inhibition of HIF-1α through PI3K/Akt signaling. HIF-1α shRNA was used to examine the role of HIF-1α, supporting HIF-1α as a functional component of hypoxia-induced EMT in this setting. [PMID: 30737895]\n\n- **Hepatocellular carcinoma (human HCC cells; in vitro and mouse lung-metastasis model):** HIF-1α directly bound two hypoxia-response elements in the **VASP** promoter and transcriptionally increased VASP. VASP then activated AKT/ERK signaling, altered EMT phenotype, increased MMP expression, and promoted migration, invasion, and metastasis. Thus, this supports hypoxia/HIF-1α–driven EMT through a HIF-1α → VASP → AKT/ERK pathway. [PMID: 30279729]\n\n- **Breast cancer (4T1 murine mammary carcinoma cells; in vitro and mouse metastasis model):** HIF-1α knockdown reduced cell migration and lung metastasis, increased E-cadherin, and decreased vimentin, consistent with EMT suppression. This provides functional evidence that HIF-1α supports EMT-associated metastatic phenotypes, although the abstract does not explicitly state that hypoxia was experimentally imposed. [PMID: 39386828]\n\n- **Gastric cancer (gastric cancer cells and multiple xenograft models):** Hypoxia increased RORγ, which stabilized HIF-1α by preventing its PHD3/VHL-mediated hydroxylation and ubiquitination. The RORγ–HIF-1α complex activated hypoxia-response and EMT-related target genes; disrupting this interaction reduced HIF-1α function, tumor growth, and peritoneal metastasis. This supports a hypoxia → RORγ/HIF-1α → EMT/metastasis mechanism. [PMID: 41129727]\n\n- **Head and neck squamous-cell carcinoma (human HNSCC cell lines; xenograft tumor model):** Hypoxia increased ROS-mediated HIF-1α expression, while CoQ0 reduced HIF-1α, migration/invasion, and EMT-marker changes—raising E-cadherin and lowering Twist, N-cadherin, Snail, MMP-2, and MMP-9. HIF-1α silencing altered the reported CoQ0 anti-metastatic effects under hypoxia. This supports HIF-1α involvement in the hypoxia–EMT program, though pharmacologic intervention may have effects beyond HIF-1α. [PMID: 38904007]\n\n## Association and supportive evidence\n\n- A review of the cancer literature concludes that hypoxia-induced EMT is extensively studied and identifies HIF-1α as a major, though not exclusive, mediator; other signaling routes may also contribute. [PMID: 32322559]\n\n- In colorectal cancer tissues, HIF-1α expression correlated positively with ZEB1 and vimentin and negatively with E-cadherin in normal epithelium, primary tumors, and metastatic lesions. These human-tissue findings are associative but align with the experimentally demonstrated HIF-1α–ZEB1 mechanism. [PMID: 26057751]\n\n- Hypoxia-induced TET1 is reported to act as a co-activator of HIF-1α transcriptional regulation and to promote EMT through modulation of HIF-1α downstream genes. This supports an epigenetic amplification layer rather than proving that HIF-1α alone is sufficient in every tumor type. [PMID: 26861406]\n\n## Testable hypothesis / systems-model evidence\n\n- A computational HIF-1α network model predicts that worsening hypoxia induces EMT through sequential activation of three positive-feedback loops involving HIF-1α and **SNAIL**, **TWIST**, and **miR-210**. This offers a plausible network-level explanation for switch-like EMT under progressive hypoxia, but it is modeling evidence rather than direct experimental proof. [PMID: 34905218]\n\n## Overall conclusion\n\nAcross several cancer models, the strongest mechanistic evidence supports the sequence:\n\n**Hypoxia → HIF-1α stabilization/activation → transcriptional activation of EMT regulators or effectors (e.g., ZEB1, VASP; potentially SNAIL/TWIST/miR-210 networks) → reduced epithelial features such as E-cadherin and increased mesenchymal/invasive features such as vimentin, MMPs, migration, invasion, and metastasis.**\n\nThe clearest direct causal experiment in the supplied context is HIF-1α binding and activating the **ZEB1** promoter, with ZEB1 loss reversing HIF-1α-induced EMT in colorectal cancer. [PMID: 26057751] Evidence provided is predominantly from cancer cell systems and mouse/xenograft models; no direct clinical interventional human evidence is supplied.",
+    "traditional_rag": "**Direct evidence**\n\n- **Colorectal cancer, in-vitro and in-vivo:** HIF-1α overexpression promoted EMT, migration, invasion, and metastasis. Mechanistically, HIF-1α bound hypoxia-response elements in the proximal **ZEB1** promoter, increased ZEB1 transcription, and ZEB1 inhibition abrogated HIF-1α-induced EMT and invasion. This provides relatively direct causal evidence for a HIF-1α→ZEB1→EMT pathway. [PMID: 26057751]\n\n- **Colorectal cancer, cell culture and xenograft models:** Under hypoxic conditions, chrysophanol suppressed EMT in vitro and in vivo; the study used HIF-1α shRNA and attributed the anti-EMT effect to inhibition of HIF-1α through PI3K/Akt signaling. This supports HIF-1α as a required mediator of hypoxia-associated EMT in these models, although the abstract does not provide full rescue/epistasis details. [PMID: 30737895]\n\n- **Mouse breast-cancer model (4T1 cells and mice):** HIF-1α knockdown reduced cell migration in vitro and lung metastasis in vivo, increased E-cadherin, and decreased vimentin, consistent with EMT suppression. Knockdown also reduced MMP-2 and MMP-9. Thus, HIF-1α is functionally required for EMT-like marker changes and metastatic behavior in this mouse model. [PMID: 39386828]\n\n- **Head and neck squamous-cell carcinoma, in-vitro, plus xenograft growth:** Hypoxia increased ROS-mediated HIF-1α expression. CoQ0 reduced HIF-1α and reduced migration/invasion, increased E-cadherin, and reduced Twist, N-cadherin, Snail, MMP-2, and MMP-9. The abstract further states that HIF-1α silencing reversed CoQ0-associated effects on N-cadherin, Snail, and MMP-9 under hypoxia, implicating HIF-1α in the hypoxic EMT/metastasis program. [PMID: 38904007]\n\n- **Gastric cancer, cell/xenograft evidence:** Hypoxia induced RORγ, which stabilized HIF-1α by reducing its PHD3/VHL-dependent hydroxylation and ubiquitination. The RORγ–HIF-1α complex activated genes involved in hypoxic response and EMT, and RORγ antagonism promoted HIF-1α degradation while inhibiting tumor growth and peritoneal metastasis in xenografts. This supports an upstream hypoxia–RORγ–HIF-1α axis driving EMT-associated metastasis. [PMID: 41129727]\n\n**Associative evidence**\n\n- In colorectal tissues, HIF-1α and ZEB1 expression correlated positively with vimentin and negatively with E-cadherin in normal epithelium, primary tumors, and metastatic tumors. These human-tissue correlations are consistent with EMT but do not independently prove that hypoxia or HIF-1α causes EMT in patients. [PMID: 26057751]\n\n- A review concludes that hypoxia-induced EMT is an active research area and identifies HIF-1α as the most extensively studied mediator, while emphasizing that other mediators may also contribute. Therefore, the literature does not support HIF-1α as the sole pathway from hypoxia to EMT. [PMID: 32322559]\n\n- In benign prostatic hyperplasia cell experiments, a stromal-cell conditioned medium induced spindle-like morphology, reduced E-cadherin/cytokeratin, increased vimentin, α-SMA, and Snail, and increased invasion. Anti-HIF-1α treatment reversed these marker changes and reduced phospho-Smad3. This supports HIF-1α-associated EMT/Smad3 signaling, but the abstract does not clearly establish that experimentally imposed hypoxia was the initiating stimulus. [PMID: 31933745]\n\n- Hypoxia-induced TET1 expression has been reported to act as a co-activator of HIF-1α transcriptional regulation and to promote EMT, linking epigenetic regulation with the HIF-1α EMT program. This is summarized in a review rather than presented as a specific primary experiment in the supplied context. [PMID: 26861406]\n\n**Testable mechanistic hypotheses**\n\n- Hypoxia may induce EMT in a **stepwise threshold-dependent** manner: a computational HIF-1α-network model predicts sequential activation of three positive-feedback loops involving HIF-1α with **SNAIL**, **TWIST**, and **miR-210** as hypoxia worsens. This is a model-based prediction, not direct biological proof. [PMID: 34905218]\n\n- HIF-1α may act through multiple EMT transcription-factor nodes rather than one universal downstream effector. Direct ZEB1 regulation is supported in colorectal cancer, whereas SNAIL, TWIST, miR-210, and potentially TET1/epigenetic mechanisms are candidate context-dependent routes. [PMID: 26057751; PMID: 34905218; PMID: 26861406]\n\n**Overall conclusion**\n\nThe supplied context provides substantial **preclinical** evidence—mostly cancer-cell culture, mouse tumor/xenograft, and mouse metastasis models—that hypoxia-associated HIF-1α activation can induce EMT-like molecular and functional changes. The strongest causal mechanism is direct HIF-1α activation of **ZEB1** in colorectal cancer, with ZEB1 inhibition blocking HIF-1α-driven EMT. [PMID: 26057751] HIF-1α loss or pharmacologic suppression also generally reverses epithelial/mesenchymal marker changes and invasive/metastatic phenotypes in several models. [PMID: 39386828; PMID: 30737895; PMID: 38904007]\n\nHowever, **direct human clinical evidence that hypoxia induces EMT through HIF-1α in patients is not established by the supplied abstracts**; the human evidence described is primarily tissue-level association. Moreover, non-HIF pathways may contribute to hypoxia-induced EMT. [PMID: 32322559; PMID: 26057751]",
+    "general_llm": "Hypoxia can promote epithelial–mesenchymal transition (EMT), and a substantial body of cell-culture and tumor-model evidence indicates that HIF-1α is an important mediator in many settings. However, the effect is context-dependent, frequently represents a partial or hybrid EMT rather than complete conversion, and is not exclusively HIF-1α-dependent.\n\n## Core mechanistic rationale\n\nUnder normal oxygen, HIF-1α is rapidly hydroxylated and degraded. Low oxygen stabilizes HIF-1α, allowing it to dimerize with HIF-1β/ARNT and activate hypoxia-response genes. Several of those downstream programs can reduce epithelial adhesion and promote migration, invasion, matrix remodeling, and mesenchymal-like gene expression.\n\nTypical hypoxia-associated EMT changes include:\n\n- Reduced **E-cadherin (CDH1)** and epithelial junctional organization\n- Increased **vimentin**, **N-cadherin**, fibronectin, and matrix-remodeling enzymes\n- Increased motility, invasion, resistance to anoikis, and stem-like properties\n- Induction of EMT-associated transcription factors such as **TWIST**, **SNAIL/SLUG**, and, in some contexts, **ZEB1/2**\n\n## Evidence supporting a causal role for HIF-1α\n\n### 1. Hypoxia produces EMT-like phenotypes in epithelial and carcinoma cells\n\nMany epithelial cancer cell lines, including models of breast, lung, colon, pancreatic, liver, ovarian, and head-and-neck cancer, develop EMT-like molecular and functional changes when cultured at low oxygen tension. These changes often occur alongside stabilization of HIF-1α.\n\nThis establishes that hypoxia is sufficient to drive an EMT-associated program in susceptible cells, although hypoxia itself activates pathways beyond HIF.\n\n### 2. Genetic depletion of HIF-1α often blocks or attenuates hypoxic EMT\n\nA stronger line of evidence comes from HIF-1α loss-of-function experiments. In many models, HIF-1α knockdown, knockout, or interference with HIF transcriptional activity reduces hypoxia-induced:\n\n- Loss of E-cadherin\n- Induction of vimentin or N-cadherin\n- Cell migration and invasion\n- Expression of key EMT transcription factors\n- Metastatic behavior in some animal tumor models\n\nConversely, forced expression of stabilized HIF-1α, or experimental HIF activation under normoxic conditions, can reproduce parts of the EMT-like phenotype in selected systems. Such gain- and loss-of-function findings support a causal contribution rather than a simple correlation.\n\n### 3. HIF-1α can directly activate EMT-promoting transcriptional regulators\n\nThe best-supported direct link is activation of **TWIST1**. HIF-1α can bind hypoxia-response elements in regulatory regions of the TWIST1 gene in certain tumor cells, increasing TWIST1 expression. TWIST1 then represses epithelial traits and promotes motility, invasion, and metastatic competence.\n\nHIF-1α has also been reported to increase expression or activity of:\n\n- **SNAIL (SNAI1)** and **SLUG (SNAI2)**\n- **ZEB family** regulators in some contexts\n- **TGF-β signaling components**\n- **Notch signaling**\n- **Lysyl oxidase (LOX/LOXL proteins)**, which remodel extracellular matrix and can reinforce invasive and EMT-related phenotypes\n\nNot every one of these relationships is direct transcriptional regulation by HIF-1α. Some are indirect and depend on cell type, oncogenic mutations, inflammatory signaling, or extracellular matrix conditions.\n\n### 4. HIF-1α promotes extracellular-matrix and signaling conditions that reinforce EMT\n\nHIF-1α induces genes that alter the tumor microenvironment, including glucose-metabolism genes, angiogenic factors, and extracellular matrix-modifying enzymes. For example, LOX-family induction can stiffen or reorganize matrix, activate integrin-associated signaling, and support invasion. HIF-1α can also cooperate with TGF-β, NF-κB, Wnt/β-catenin, PI3K–AKT, and Notch pathways, all of which may stabilize EMT states.\n\nThus, HIF-1α may drive EMT both by directly inducing EMT transcription factors and by creating conditions that make the EMT program self-reinforcing.\n\n### 5. Animal-model evidence supports relevance to invasion and metastasis\n\nIn several xenograft and genetically manipulated tumor models, hypoxic/HIF-1α-high tumors show more invasive behavior and metastatic dissemination. Reducing HIF-1α can diminish metastatic efficiency in some models, often with accompanying reduction in EMT-associated gene expression.\n\nThis supports biological relevance in vivo, though it does not prove that every HIF-dependent metastatic effect is caused specifically by EMT. HIF-1α also affects angiogenesis, metabolism, immune interactions, survival, and extracellular-matrix remodeling, each of which can influence metastasis independently.\n\n## Important limitations and uncertainties\n\n### EMT is not an all-or-none process\n\nModern evidence suggests that many cancer cells occupy **partial or hybrid epithelial–mesenchymal states**. Hypoxia/HIF-1α may shift cells toward such a state without causing complete loss of epithelial identity. Therefore, observing a few marker changes alone is not sufficient evidence of bona fide EMT.\n\n### HIF-1α is not the only hypoxia effector\n\nHypoxia can act through:\n\n- **HIF-2α**, sometimes with overlapping and sometimes opposing effects\n- Reactive oxygen species\n- Endoplasmic-reticulum stress and the unfolded-protein response\n- Metabolic alterations, acidosis, and lactate\n- NF-κB, TGF-β, Notch, and other signaling systems\n\nAccordingly, the statement “hypoxia induces EMT through HIF-1α” is well supported in many experimental systems, but it is too strong as a universal rule.\n\n### Pharmacologic studies alone are less definitive\n\nDrugs that inhibit HIF signaling can have off-target effects, and chemicals used to mimic hypoxia may not reproduce true low-oxygen biology. The most convincing studies combine oxygen-controlled experiments with HIF-1α genetic perturbation, rescue experiments, transcriptional analysis, and functional assays.\n\n### Human tumor correlations are supportive but not proof\n\nHuman tumors commonly contain hypoxic regions with high HIF-1α and EMT-associated gene signatures. These correlations are consistent with the model but cannot by themselves establish causation, because aggressive tumors may independently develop both hypoxia and mesenchymal traits.\n\n### Fibrosis requires special caution\n\nHypoxia and HIF-1α contribute to fibrotic signaling in several organs. However, the older idea that large numbers of epithelial cells fully undergo EMT and become collagen-producing myofibroblasts in vivo is not strongly supported by lineage-tracing studies in several fibrotic diseases. In fibrosis, epithelial cells may instead undergo partial EMT, become dysfunctional, and release profibrotic signals without becoming the main source of myofibroblasts.\n\n## Bottom line\n\nThe evidence is strongest that, in many carcinoma and epithelial-cell models, hypoxia stabilizes HIF-1α and HIF-1α promotes EMT-associated transcriptional, morphological, and invasive programs—particularly through regulators such as TWIST1 and through cooperation with TGF-β, Notch, extracellular-matrix remodeling, and related pathways. Genetic HIF-1α loss-of-function experiments provide the key causal support.\n\nBut HIF-1α is neither necessary nor sufficient for hypoxia-associated EMT in every tissue or tumor. The outcome depends on cell lineage, duration and severity of hypoxia, oncogenic background, microenvironment, and the contributions of HIF-2α and HIF-independent stress pathways."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 1.1148749589920044,
+    "semantic_graph": 75.95086798071861,
+    "vector_index": 1.8314021602272987,
+    "answer_netmedex_hybrid_rag": 12.988757081329823,
+    "answer_traditional_rag": 14.324890866875648,
+    "answer_general_llm": 23.27470973134041,
+    "total": 131.8792062997818
+  },
+  "completed_at": "2026-07-27T18:29:01.353789+00:00",
+  "answer_repair_history": [
+    {
+      "system": "general_llm",
+      "model": "gpt-5.6-terra",
+      "repaired_at": "2026-07-30T11:09:29.639169+00:00"
+    }
+  ]
+}

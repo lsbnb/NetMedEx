@@ -1,0 +1,58 @@
+{
+  "task": "answer",
+  "judges": [
+    "claude"
+  ],
+  "rated_rows": 60,
+  "unique_items": 60,
+  "reliability": {
+    "correctness": {
+      "n_multi_rated_items": 0,
+      "rater_count": 0,
+      "fleiss_kappa": null,
+      "krippendorff_alpha": null
+    },
+    "completeness": {
+      "n_multi_rated_items": 0,
+      "rater_count": 0,
+      "fleiss_kappa": null,
+      "krippendorff_alpha": null
+    },
+    "relevance": {
+      "n_multi_rated_items": 0,
+      "rater_count": 0,
+      "fleiss_kappa": null,
+      "krippendorff_alpha": null
+    },
+    "grounding": {
+      "n_multi_rated_items": 0,
+      "rater_count": 0,
+      "fleiss_kappa": null,
+      "krippendorff_alpha": null
+    },
+    "mechanistic_coherence": {
+      "n_multi_rated_items": 0,
+      "rater_count": 0,
+      "fleiss_kappa": null,
+      "krippendorff_alpha": null
+    },
+    "research_value": {
+      "n_multi_rated_items": 0,
+      "rater_count": 0,
+      "fleiss_kappa": null,
+      "krippendorff_alpha": null
+    }
+  },
+  "pairwise_preferences": {
+    "raw_judge_votes": {
+      "netmedex_hybrid_rag": 10,
+      "traditional_rag": 7,
+      "general_llm": 3
+    },
+    "question_level_consensus": {
+      "netmedex_hybrid_rag": 10,
+      "traditional_rag": 7,
+      "general_llm": 3
+    }
+  }
+}

@@ -1,0 +1,495 @@
+{
+  "status": "complete",
+  "question_id": "PP008",
+  "domain": "hypothesis generation",
+  "question": "What evidence supports a mechanistic path from dysbiosis to bone diseases through serotonin? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "gut microbiome dysbiosis IL-17 bone loss osteoporosis",
+  "effective_pubmed_query": "gut microbiome dysbiosis IL-17 bone loss osteoporosis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "36608535",
+    "38474387",
+    "40903540",
+    "37904311",
+    "36982891",
+    "21320797",
+    "33968085",
+    "35177222",
+    "38321650",
+    "33651651",
+    "36421397",
+    "33670115",
+    "38218095",
+    "37224131",
+    "40013938",
+    "28765474",
+    "12748652",
+    "37188819",
+    "38316760",
+    "38569557",
+    "38034017",
+    "41372218",
+    "37118283",
+    "39880362",
+    "39539387",
+    "40193598"
+  ],
+  "graph": {
+    "node_count": 209,
+    "edge_count": 297,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 1,
+    "pre_gate_candidate_count": 1,
+    "pre_gate_candidates": [
+      {
+        "path_id": "BW010-P01",
+        "path_signature": "6c6fb0bc25292607",
+        "path_text": "dysbiosis ->[decreases] serotonin | serotonin ->[treats] bone diseases",
+        "node_ids": [
+          "MESH:D064806_Disease",
+          "MESH:D012701_Chemical",
+          "MESH:D001847_Disease"
+        ],
+        "names": [
+          "dysbiosis",
+          "serotonin",
+          "bone diseases"
+        ],
+        "node_aliases": [
+          [
+            "Dysbiosis"
+          ],
+          [
+            "Serotonin"
+          ],
+          [
+            "Bone Diseases"
+          ]
+        ],
+        "relations": [
+          "decreases",
+          "treats"
+        ],
+        "edge_pmids": [
+          [
+            "38474387"
+          ],
+          [
+            "21320797"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "alterations in tryptophan metabolism, culminating in decreased serotonin synthesis"
+          ],
+          [
+            "pharmacologically manipulating serotonin production could therefore become a novel strategy to treat bone loss disorders"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "decreases",
+            "selected_pmid": "38474387",
+            "selected_quote": "alterations in tryptophan metabolism, culminating in decreased serotonin synthesis",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "treats",
+            "selected_pmid": "21320797",
+            "selected_quote": "pharmacologically manipulating serotonin production could therefore become a novel strategy to treat bone loss disorders",
+            "selected_confidence": 0.8,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 9,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_incremental_candidate",
+        "incremental_value_subtype": "retrieval_incremental_bridge_visible",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "two_hop",
+          "support_outside_text_top_k",
+          "bridge_visible_in_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [
+          "21320797"
+        ],
+        "score": 0.73,
+        "hop_count": 2
+      }
+    ],
+    "preferred_pmids": [
+      "21320797",
+      "38474387"
+    ],
+    "paths": [
+      {
+        "path_id": "PP008-P01",
+        "path_signature": "6c6fb0bc25292607",
+        "path_text": "dysbiosis ->[decreases] serotonin | serotonin ->[treats] bone diseases",
+        "node_ids": [
+          "MESH:D064806_Disease",
+          "MESH:D012701_Chemical",
+          "MESH:D001847_Disease"
+        ],
+        "names": [
+          "dysbiosis",
+          "serotonin",
+          "bone diseases"
+        ],
+        "node_aliases": [
+          [
+            "Dysbiosis"
+          ],
+          [
+            "Serotonin"
+          ],
+          [
+            "Bone Diseases"
+          ]
+        ],
+        "relations": [
+          "decreases",
+          "treats"
+        ],
+        "edge_pmids": [
+          [
+            "38474387"
+          ],
+          [
+            "21320797"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "alterations in tryptophan metabolism, culminating in decreased serotonin synthesis"
+          ],
+          [
+            "pharmacologically manipulating serotonin production could therefore become a novel strategy to treat bone loss disorders"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "decreases",
+            "selected_pmid": "38474387",
+            "selected_quote": "alterations in tryptophan metabolism, culminating in decreased serotonin synthesis",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "treats",
+            "selected_pmid": "21320797",
+            "selected_quote": "pharmacologically manipulating serotonin production could therefore become a novel strategy to treat bone loss disorders",
+            "selected_confidence": 0.8,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 9,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "two_hop",
+          "all_support_in_text_top_k",
+          "bridge_visible_in_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.73,
+        "hop_count": 2
+      }
+    ]
+  },
+  "evidence_exposure": {
+    "profile": "H_evidence_gated_four_hop",
+    "routed_profile": "H_evidence_gated_four_hop",
+    "selection_frozen_before_answers": true,
+    "source_result": "evaluation/formal/runs/controlled-bridge-bw010-distractors-v1-retrieval/questions/BW010/result.json",
+    "expanded_reliable_pool": true,
+    "frozen_exposure_source": "evaluation/formal/path_positive_20_v1/frozen_exposures_expanded/PP008/result.json",
+    "frozen_candidate_path_count": 1,
+    "frozen_exposed_path_count": 1,
+    "exposed_pmids": [
+      "21320797",
+      "38474387"
+    ],
+    "exposed_paths": [
+      [
+        "dysbiosis",
+        "serotonin",
+        "bone diseases"
+      ]
+    ],
+    "exposed_edges": [
+      "dysbiosis ->[decreases] serotonin | serotonin ->[treats] bone diseases"
+    ],
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 1,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "answer_context_path_signatures": [
+      "6c6fb0bc25292607"
+    ],
+    "kg_expansion": {
+      "enabled": true,
+      "candidate_path_count": 1,
+      "queries": [
+        "\"dysbiosis\"[Title/Abstract] AND \"bone diseases\"[Title/Abstract]",
+        "\"dysbiosis\"[Title/Abstract] AND \"serotonin\"[Title/Abstract]",
+        "\"serotonin\"[Title/Abstract] AND \"bone diseases\"[Title/Abstract]"
+      ],
+      "added_pmids": [
+        "35602023",
+        "38674910",
+        "41207269",
+        "38302761",
+        "40201916",
+        "31480433",
+        "40443995",
+        "37505196",
+        "42051461",
+        "28965190",
+        "35456041",
+        "40844856",
+        "40482955",
+        "36555276",
+        "40218978"
+      ],
+      "added_document_count": 15,
+      "merge": {
+        "method": "bounded_expansion_slots_v1",
+        "expansion_slots": 2,
+        "min_margin": 0.03,
+        "original_tail_threshold": 0.4194283028584857,
+        "accepted_added_pmids": [
+          "28965190",
+          "35602023"
+        ]
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {
+        "21320797": {
+          "text_score": 0.550149,
+          "graph_score": 0.73,
+          "reranked_score": 0.613097
+        },
+        "38474387": {
+          "text_score": 0.444229,
+          "graph_score": 0.73,
+          "reranked_score": 0.544249
+        }
+      }
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "21320797",
+        "score": 0.6130966800916927
+      },
+      {
+        "pmid": "38474387",
+        "score": 0.5442487549995954
+      },
+      {
+        "pmid": "28965190",
+        "score": 0.5101803960301501
+      },
+      {
+        "pmid": "35602023",
+        "score": 0.482133695041504
+      },
+      {
+        "pmid": "12748652",
+        "score": 0.43399148707828133
+      },
+      {
+        "pmid": "37904311",
+        "score": 0.4333818949701638
+      },
+      {
+        "pmid": "36608535",
+        "score": 0.4259267195113307
+      },
+      {
+        "pmid": "39880362",
+        "score": 0.42345192291189426
+      },
+      {
+        "pmid": "41372218",
+        "score": 0.42235085054379773
+      },
+      {
+        "pmid": "36982891",
+        "score": 0.42117733830495435
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "21320797",
+        "score": 0.5501487386026042
+      },
+      {
+        "pmid": "38474387",
+        "score": 0.4442288538455314
+      },
+      {
+        "pmid": "12748652",
+        "score": 0.43399148707828133
+      },
+      {
+        "pmid": "37904311",
+        "score": 0.4333818949701638
+      },
+      {
+        "pmid": "36608535",
+        "score": 0.4259267195113307
+      },
+      {
+        "pmid": "39880362",
+        "score": 0.42345192291189426
+      },
+      {
+        "pmid": "41372218",
+        "score": 0.42235085054379773
+      },
+      {
+        "pmid": "36982891",
+        "score": 0.42117733830495435
+      },
+      {
+        "pmid": "33651651",
+        "score": 0.4205072138478609
+      },
+      {
+        "pmid": "36421397",
+        "score": 0.4194283028584857
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "**Evidence for each step of the dysbiosis → serotonin → bone disease pathway**\n\n- **Dysbiosis alters tryptophan metabolism and lowers serotonin synthesis.**  In major‑depressive‑disorder patients, gut‑microbiota dysbiosis is reported to “induce alterations in tryptophan metabolism, culminating in decreased serotonin synthesis”【PMID:38474387】. (Human observational evidence.)\n\n- **Gut microbiota regulates the amount of peripheral (gut‑derived) serotonin.**  Reviews of gut‑bone interactions note that “GM can improve bone health also increasing calcium absorption and modulating the production of gut serotonin, a molecule... suggested to act as a bone‑mass regulator”【PMID:28965190】. (Animal/in‑vitro mechanistic evidence from microbiota‑modulation studies.)\n\n- **Peripheral (gut‑derived) serotonin inhibits bone formation.**  Direct experimental data show that “peripheral serotonin is a potent inhibitor of bone formation” and that manipulating its production could treat bone‑loss disorders【PMID:21320797】. (Rodent studies and cellular assays.)\n\n- **Resulting bone phenotype: dysbiosis‑associated bone loss.**  The same gut‑bone review links dysbiosis to “influences bone turnover and density” and implicates serotonin as a mediator of this effect【PMID:28965190】. (Correlative animal data linking altered microbiota, serotonin changes, and reduced bone mass.)\n\n**Overall interpretation** – Human and animal studies provide separate pieces: (1) dysbiosis can reduce serotonin synthesis, (2) the gut microbiota determines peripheral serotonin levels, and (3) peripheral serotonin directly suppresses bone formation, together supporting a mechanistic chain from microbial imbalance to bone disease via serotonin.\n\nGraph-derived candidate insights\n- PATH 6c6fb0bc25292607 — GRAPH-CONFIRMED; multi-hop inference; HOP 1: dysbiosis decreases serotonin [PMID: 38474387]; HOP 2: serotonin treats bone diseases [PMID: 21320797]."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 1,
+    "supported_claim_count": 1,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": false,
+    "claims": [
+      {
+        "claim_id": "HC-01",
+        "path_id": "6c6fb0bc25292607",
+        "verdict": "supported",
+        "reasons": []
+      }
+    ]
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 2.326071262359619e-05,
+    "vector_index": 3.079891875386238,
+    "kg_expansion": 22.40308676660061,
+    "answer_netmedex_hybrid_rag": 23.97806815057993,
+    "total": 50.273373655974865
+  },
+  "token_usage": {
+    "output_tokens": 854,
+    "input_tokens": 3524,
+    "total_tokens": 4378
+  },
+  "completed_at": "2026-08-13T06:59:44.714918+00:00"
+}

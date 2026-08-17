@@ -1,0 +1,715 @@
+##USE-MESH-VOCABULARY
+26057751|t|HIF-1alpha Promotes Epithelial-Mesenchymal Transition and Metastasis through Direct Regulation of ZEB1 in Colorectal Cancer.
+26057751|a|It is well recognized that hypoxia-inducible factor 1 alpha (HIF-1alpha) is involved in cancer metastasis, chemotherapy and poor prognosis. We previously found that deferoxamine, a hypoxia-mimetic agent, induces epithelial-mesenchymal transition (EMT) in colorectal cancer. Therefore, here we explored a new molecular mechanism for HIF-1alpha contributing to EMT and cancer metastasis through binding to ZEB1. In this study, we showed that overexpression of HIF-1alpha with adenovirus infection promoted EMT, cell invasion and migration in vitro and in vivo. On a molecular level, HIF-1alpha directly binding to the proximal promoter of ZEB1 via hypoxia response element (HRE) sites thus increasing the transactivity and expression of ZEB1. In addition, inhibition of ZEB1 was able to abrogate the HIF-1alpha-induced EMT and cell invasion. HIF-1alpha expression was highly correlated with the expression of ZEB1 in normal colorectal epithelium, primary and metastatic CRC tissues. Interestingly, both HIF-1alpha and ZEB1 were positively associated with Vimentin, an important mesenchymal marker of EMT, whereas negatively associated with E-cadherin expression. These findings suggest that HIF-1alpha enhances EMT and cancer metastasis by binding to ZEB1 promoter in CRC. HIF-1alpha and ZEB1 are both widely considered as tumor-initiating factors, but our results demonstrate that ZEB1 is a direct downstream of HIF-1alpha, suggesting a novel molecular mechanism for HIF-1alpha-inducing EMT and cancer metastasis. 
+26057751	0	10	HIF1A	Gene	3091
+26057751	98	102	ZEB1	Gene	6935
+26057751	106	123	Colorectal Neoplasms	Disease	MESH:D015179
+26057751	152	184	HIF1A	Gene	3091
+26057751	186	196	HIF1A	Gene	3091
+26057751	213	230	Neoplasms	Disease	MESH:D009369
+26057751	290	302	Deferoxamine	Chemical	MESH:D003676
+26057751	306	313	Hypoxia	Disease	MESH:D000860
+26057751	380	397	Colorectal Neoplasms	Disease	MESH:D015179
+26057751	457	467	HIF1A	Gene	3091
+26057751	492	509	Neoplasms	Disease	MESH:D009369
+26057751	529	533	ZEB1	Gene	6935
+26057751	583	593	HIF1A	Gene	3091
+26057751	599	609	adenovirus	Species	10508
+26057751	706	716	HIF1A	Gene	3091
+26057751	762	766	ZEB1	Gene	6935
+26057751	771	778	Hypoxia	Disease	MESH:D000860
+26057751	860	864	ZEB1	Gene	6935
+26057751	893	897	ZEB1	Gene	6935
+26057751	923	933	HIF1A	Gene	3091
+26057751	965	975	HIF1A	Gene	3091
+26057751	1032	1036	ZEB1	Gene	6935
+26057751	1093	1096	Colorectal Neoplasms	Disease	MESH:D015179
+26057751	1126	1136	HIF1A	Gene	3091
+26057751	1141	1145	ZEB1	Gene	6935
+26057751	1178	1186	VIM	Gene	7431
+26057751	1263	1273	CDH1	Gene	999
+26057751	1314	1324	HIF1A	Gene	3091
+26057751	1342	1359	Neoplasms	Disease	MESH:D009369
+26057751	1374	1378	ZEB1	Gene	6935
+26057751	1391	1394	Colorectal Neoplasms	Disease	MESH:D015179
+26057751	1396	1406	HIF1A	Gene	3091
+26057751	1411	1415	ZEB1	Gene	6935
+26057751	1446	1451	Neoplasms	Disease	MESH:D009369
+26057751	1505	1509	ZEB1	Gene	6935
+26057751	1536	1546	HIF1A	Gene	3091
+26057751	1591	1601	HIF1A	Gene	3091
+26057751	1619	1636	Neoplasms	Disease	MESH:D009369
+26057751	Association	MESH:D003676	MESH:D015179
+26057751	Positive_Correlation	3091	6935
+26057751	Association	MESH:D015179	6935
+26057751	Association	MESH:D015179	3091
+26057751	Association	6935	7431
+26057751	Association	MESH:D009369	3091
+26057751	Association	MESH:D009369	6935
+26057751	Negative_Correlation	3091	999
+26057751	Association	MESH:D003676	MESH:D000860
+26057751	Association	3091	7431
+26057751	Association	6935	999
+
+26861406|t|Hypoxia, Epithelial-Mesenchymal Transition, and TET-Mediated Epigenetic Changes.
+26861406|a|Tumor hypoxia is a pathophysiologic outcome of disrupted microcirculation with inadequate supply of oxygen, leading to enhanced proliferation, epithelial-mesenchymal transition (EMT), metastasis, and chemo-resistance. Epigenetic changes induced by hypoxia are well documented, and they lead to tumor progression. Recent advances show that DNA demethylation mediated by the Ten-eleven translocation (TET) proteins induces major epigenetic changes and controls key steps of cancer development. TET enzymes serve as 5mC (5-methylcytosine)-specific dioxygenases and cause DNA demethylation. Hypoxia activates the expression of TET1, which also serves as a co-activator of HIF-1alpha transcriptional regulation to modulate HIF-1alpha downstream target genes and promote epithelial-mesenchymal transition. As HIF is a negative prognostic factor for tumor progression, hypoxia-activated prodrugs (HAPs) may provide a favorable therapeutic approach to lessen hypoxia-induced malignancy. 
+26861406	0	7	Hypoxia	Disease	MESH:D000860
+26861406	81	94	Hypoxia	Disease	MESH:D000860
+26861406	181	187	Oxygen	Chemical	MESH:D010100
+26861406	265	275	Neoplasm Metastasis	Disease	MESH:D009362
+26861406	329	336	Hypoxia	Disease	MESH:D000860
+26861406	375	380	Neoplasms	Disease	MESH:D009369
+26861406	553	559	Neoplasms	Disease	MESH:D009369
+26861406	668	675	Hypoxia	Disease	MESH:D000860
+26861406	704	708	TET1	Gene	80312
+26861406	749	759	HIF1A	Gene	3091
+26861406	799	809	HIF1A	Gene	3091
+26861406	924	929	Neoplasms	Disease	MESH:D009369
+26861406	943	950	Hypoxia	Disease	MESH:D000860
+26861406	1032	1039	Hypoxia	Disease	MESH:D000860
+26861406	1048	1058	Neoplasms	Disease	MESH:D009369
+26861406	Positive_Correlation	MESH:D000860	80312
+26861406	Association	MESH:D000860	3091
+26861406	Association	3091	80312
+
+30279729|t|Hypoxia-induced up-regulation of VASP promotes invasiveness and metastasis of hepatocellular carcinoma.
+30279729|a|Rational: Patients with hepatocellular carcinoma (HCC) have a poor prognosis mostly due to intrahepatic as well as distal metastasis. Vasodilator-stimulated phosphoprotein (VASP), a regulator of actin cytoskeleton and cell migration, is overexpressed in HCC and correlated with its malignant features and poor prognosis. Very little is known about its function in HCC. Methods: qRT-PCR, Western blot and IHC were used to detect the VASP expression in tissues and cells. Transwell and wound healing assays were used to measure the migration and invasion of HCC cells. Immunoblotting and immunofluorescence were used for detection of epithelial-to-mesenchymal transition (EMT) progression in HCC cells. A lung metastasis mouse model was used to evaluate metastasis of HCC in vivo. The putative targets of miR-204 were disclosed by public databases and a dual-luciferase reporter assay. IP was used to show the interaction between VASP and CRKL. ChIP was used to analyze the binding of HIF-1alpha to VASP promoter region. Results: Our data involving both gain- and loss-of-function studies revealed that VASP activated AKT and ERK signaling and promoted HCC migration and invasion in vitro and in vivo by altering the EMT phenotype and expression of MMPs. We investigated the positive correlation between VASP and an adapter protein, CRKL. VASP dynamically co-localized at the SH3N domain of CRKL and mediated its function. Mechanistically, VASP overexpression at the transcriptional level was mediated by HIF-1alpha through direct binding to two hypoxia response elements (HRE) in the VASP promoter region. Furthermore, we identified hypoxia-induced down-regulation of miR-204, which functioned as the regulator of VASP overexpression at the post-transcriptional level. Also, hypoxia-activated p-Smad3 dependent TGF-beta signaling indirectly promoted VASP expression. Conclusion: A variety of hypoxia-induced molecular mechanisms contributed to the upregulation of VASP at transcriptional and post-transcriptional levels. These mechanisms involved CRKL, HIF-1alpha, miR-204, and TGF-beta activating the AKT and ERK signaling to promote EMT and expression of MMPs. Taken together, our results defined VASP as an oncogene of HCC pathogenesis and metastasis with the potential to serve as a prognostic biomarker.
+30279729	0	7	Hypoxia	Disease	MESH:D000860
+30279729	33	37	VASP	Gene	7408
+30279729	64	102	Neoplasm Metastasis	Disease	MESH:D009362
+30279729	114	122	Patients	Species	9606
+30279729	128	152	Carcinoma Hepatocellular	Disease	MESH:D006528
+30279729	154	157	Carcinoma Hepatocellular	Disease	MESH:D006528
+30279729	226	236	Neoplasm Metastasis	Disease	MESH:D009362
+30279729	238	275	VASP	Gene	7408
+30279729	277	281	VASP	Gene	7408
+30279729	358	361	Carcinoma Hepatocellular	Disease	MESH:D006528
+30279729	468	471	Carcinoma Hepatocellular	Disease	MESH:D006528
+30279729	536	540	VASP	Gene	7408
+30279729	660	663	Carcinoma Hepatocellular	Disease	MESH:D006528
+30279729	794	797	Carcinoma Hepatocellular	Disease	MESH:D006528
+30279729	807	822	Neoplasm Metastasis	Disease	MESH:D009362
+30279729	823	828	mouse	Species	10090
+30279729	856	873	Neoplasm Metastasis	Disease	MESH:D009362
+30279729	907	914	MIR204	Gene	406987
+30279729	1032	1036	VASP	Gene	7408
+30279729	1041	1045	CRKL	Gene	1399
+30279729	1087	1097	Hif1a	Gene	15251
+30279729	1101	1105	VASP	Gene	7408
+30279729	1205	1209	VASP	Gene	7408
+30279729	1220	1223	Akt1	Gene	11651
+30279729	1228	1231	Mapk1	Gene	26413
+30279729	1255	1258	Carcinoma Hepatocellular	Disease	MESH:D006528
+30279729	1406	1410	VASP	Gene	7408
+30279729	1435	1439	Crkl	Gene	12929
+30279729	1441	1445	VASP	Gene	7408
+30279729	1493	1497	Crkl	Gene	12929
+30279729	1542	1546	VASP	Gene	7408
+30279729	1607	1617	HIF1A	Gene	3091
+30279729	1648	1655	Hypoxia	Disease	MESH:D000860
+30279729	1687	1691	VASP	Gene	7408
+30279729	1736	1743	Hypoxia	Disease	MESH:D000860
+30279729	1771	1778	MIR204	Gene	406987
+30279729	1817	1821	VASP	Gene	7408
+30279729	1878	1885	Hypoxia	Disease	MESH:D000860
+30279729	1898	1903	SMAD3	Gene	4088
+30279729	1914	1922	TGFB1	Gene	7040
+30279729	1953	1957	VASP	Gene	7408
+30279729	1995	2002	Hypoxia	Disease	MESH:D000860
+30279729	2067	2071	VASP	Gene	7408
+30279729	2150	2154	CRKL	Gene	1399
+30279729	2156	2166	HIF1A	Gene	3091
+30279729	2168	2175	MIR204	Gene	406987
+30279729	2181	2189	TGFB1	Gene	7040
+30279729	2205	2208	Akt1	Gene	11651
+30279729	2213	2216	Mapk1	Gene	26413
+30279729	2302	2306	VASP	Gene	7408
+30279729	2325	2328	Carcinoma Hepatocellular	Disease	MESH:D006528
+30279729	2346	2356	Neoplasm Metastasis	Disease	MESH:D009362
+30279729	Positive_Correlation	11651	7040
+30279729	Positive_Correlation	MESH:D006528	7408
+30279729	Association	1399	7408
+30279729	Positive_Correlation	26413	406987
+30279729	Positive_Correlation	26413	7408
+30279729	Association	MESH:D000860	3091
+30279729	Association	11651	3091
+30279729	Association	4088	7408
+30279729	Association	26413	3091
+30279729	Positive_Correlation	MESH:D000860	7408
+30279729	Association	406987	7408
+30279729	Positive_Correlation	MESH:D000860	7040
+30279729	Association	MESH:D009362	7408
+30279729	Association	15251	7408
+30279729	Positive_Correlation	1399	26413
+30279729	Positive_Correlation	26413	7040
+30279729	Association	12929	7408
+30279729	Association	7040	7408
+30279729	Association	3091	7408
+30279729	Positive_Correlation	11651	7408
+30279729	Positive_Correlation	11651	1399
+30279729	Association	4088	7040
+30279729	Positive_Correlation	MESH:D000860	4088
+30279729	Positive_Correlation	11651	406987
+30279729	Negative_Correlation	MESH:D000860	406987
+
+30737895|t|Chrysophanol Suppresses Hypoxia-Induced Epithelial-Mesenchymal Transition in Colorectal Cancer Cells.
+30737895|a|Colorectal cancer (CRC) is a common human malignancy, accounting for 600,000 death cases annually worldwide. Chrysophanol is a naturally occurring anthraquinone compound and exhibits anti-neoplastic activities. This study aims to explore the biological effects of chrysophanol on CRC metastasis and the relevant underlying mechanism. Cell proliferation assay, wound scratch assay, and Transwell invasion assay were used to examine the effect of chrysophanol on proliferation, migration, and invasion of CRC cells. Hypoxia-inducible factor-1alpha (HIF-1alpha) shRNA was utilized to transfect CRC cells to examine the role of HIF-1alpha in chrysophanol suppression of hypoxia-induced epithelial to mesenchymal transition (EMT). The suppression effect of chrysophanol on hypoxia-induced EMT in vivo was also validated in xenograft tumor models. In the present study, our findings indicated that chrysophanol has the capability to suppress hypoxia-induced EMT in CRC in vitro and in vivo, and the possible mechanism involved is the inhibition of HIF-1alpha via modulating PI3k/Akt signaling pathway. Collectively, the results indicated that chrysophanol can be used as an EMT and cancer metastasis inhibitor in the treatment of CRC. Anat Rec, 302:1561-1570, 2019.   2019 American Association for Anatomy.
+30737895	0	12	chrysophanic acid	Chemical	MESH:C027113
+30737895	24	31	Hypoxia	Disease	MESH:D000860
+30737895	77	94	Colorectal Neoplasms	Disease	MESH:D015179
+30737895	102	119	Colorectal Neoplasms	Disease	MESH:D015179
+30737895	121	124	Colorectal Neoplasms	Disease	MESH:D015179
+30737895	138	143	human	Species	9606
+30737895	144	154	Neoplasms	Disease	MESH:D009369
+30737895	179	184	Death	Disease	MESH:D003643
+30737895	211	223	chrysophanic acid	Chemical	MESH:C027113
+30737895	249	262	Anthraquinones	Chemical	MESH:D000880
+30737895	366	378	chrysophanic acid	Chemical	MESH:C027113
+30737895	382	396	Colorectal Neoplasms	Disease	MESH:D015179
+30737895	547	559	chrysophanic acid	Chemical	MESH:C027113
+30737895	605	608	Colorectal Neoplasms	Disease	MESH:D015179
+30737895	616	647	HIF1A	Gene	3091
+30737895	649	659	HIF1A	Gene	3091
+30737895	693	696	Colorectal Neoplasms	Disease	MESH:D015179
+30737895	726	736	HIF1A	Gene	3091
+30737895	740	752	chrysophanic acid	Chemical	MESH:C027113
+30737895	768	775	Hypoxia	Disease	MESH:D000860
+30737895	854	866	chrysophanic acid	Chemical	MESH:C027113
+30737895	870	877	Hypoxia	Disease	MESH:D000860
+30737895	930	935	Neoplasms	Disease	MESH:D009369
+30737895	994	1006	chrysophanic acid	Chemical	MESH:C027113
+30737895	1038	1045	Hypoxia	Disease	MESH:D000860
+30737895	1061	1064	Colorectal Neoplasms	Disease	MESH:D015179
+30737895	1144	1154	HIF1A	Gene	3091
+30737895	1175	1178	AKT1	Gene	207
+30737895	1239	1251	chrysophanic acid	Chemical	MESH:C027113
+30737895	1278	1295	Neoplasms	Disease	MESH:D009369
+30737895	1326	1329	Colorectal Neoplasms	Disease	MESH:D015179
+30737895	Negative_Correlation	MESH:C027113	MESH:D009369
+30737895	Association	MESH:D015179	3091
+30737895	Negative_Correlation	MESH:C027113	3091
+30737895	Negative_Correlation	MESH:C027113	MESH:D000860
+30737895	Association	207	3091
+30737895	Association	MESH:C027113	207
+30737895	Negative_Correlation	MESH:C027113	MESH:D015179
+
+31933745|t|Hypoxia-inducible factor 1alpha (HIF-1alpha) mediates the epithelial-mesenchymal transition in benign prostatic hyperplasia.
+31933745|a|BACKGROUND: Epithelial-mesenchymal transition (EMT) based cancer cell invasion and metastasis has been thoroughly studied in prostate cancer. It was well known that EMT markers which have been found in benign prostatic hyperplasia (BPH) tissues, but system descriptions have not been described. METHODS: First, in order to construct the epithelial cells to mesenchymal cell transformation model, BPH-1 cells were cultured with supernatant of prostate matrix normal prostate stromal WPMY-1 cells, after obtaining the culture medium through a filter. After that, we observed the morphology of cells cultured for a period of time by microscopy, detected cell invasion ability by transwell assay, detected cell proliferation ability by MTT, and detected EMT marker expression by western. Finally, we treated the cells with anti-HIF-1alpha drugs to study their effects on EMT, and then tested several related proteins simultaneously. RESULTS: The results showed that the morphology of BPH-1 cells gradually changed to fusiform after cultured with WSCM. At the same time, E-cadherin and cytokeratin levels were significantly lower than those in normal medium. Simultaneous detection of vimentin (SMA) and Snail was positive compared to normal cultured cells. At the same time, the cells were cultured with WSCM and the invasive ability was up-regulated. After treatment with anti-HIF-1alpha drug, E-cadherin and CK5/8 protein expression was up-regulated, but vimentin, alpha-SMA, and Snail expression was down-regulated, and in addition, p-Smad3 protein expression was also down-regulated after anti-HIF-1alpha drug was added. CONCLUSION: The above results indicated that WSCM-1 stromal cell supernatant WSCM can induced BPH-1 cell interstitialization, and at the same time, by inducing EMT, secreting HIF-1alpha activates Smad3 signaling. Our study shows that inhibition of HIF-1alpha expression provides a new reference for clinical treatment of BPH.
+31933745	0	31	HIF1A	Gene	3091
+31933745	33	43	HIF1A	Gene	3091
+31933745	95	123	Prostatic Hyperplasia	Disease	MESH:D011470
+31933745	183	189	Neoplasms	Disease	MESH:D009369
+31933745	208	218	Neoplasm Metastasis	Disease	MESH:D009362
+31933745	250	265	Prostatic Neoplasms	Disease	MESH:D011471
+31933745	327	355	Prostatic Hyperplasia	Disease	MESH:D011470
+31933745	357	360	Prostatic Hyperplasia	Disease	MESH:D011470
+31933745	521	526	1091	CellLine	CVCL:1091
+31933745	607	613	3814	CellLine	CVCL:3814
+31933745	857	860	monooxyethylene trimethylolpropane tristearate	Chemical	MESH:C070243
+31933745	949	959	HIF1A	Gene	3091
+31933745	1105	1110	1091	CellLine	CVCL:1091
+31933745	1167	1171	WSCM	Chemical	-
+31933745	1191	1201	CDH1	Gene	999
+31933745	1305	1313	VIM	Gene	7431
+31933745	1315	1318	SMN1	Gene	6606
+31933745	1324	1329	SNAI1	Gene	6615
+31933745	1425	1429	WSCM	Chemical	-
+31933745	1499	1509	HIF1A	Gene	3091
+31933745	1516	1526	CDH1	Gene	999
+31933745	1531	1536	KRT5	Gene	3852;3856
+31933745	1578	1586	VIM	Gene	7431
+31933745	1588	1597	ACTA1	Gene	58
+31933745	1603	1608	SNAI1	Gene	6615
+31933745	1659	1664	SMAD3	Gene	4088
+31933745	1719	1729	HIF1A	Gene	3091
+31933745	1791	1797	C7RB	CellLine	CVCL:C7RB
+31933745	1823	1827	WSCM	Chemical	-
+31933745	1840	1845	1091	CellLine	CVCL:1091
+31933745	1921	1931	HIF1A	Gene	3091
+31933745	1942	1947	SMAD3	Gene	4088
+31933745	1994	2004	HIF1A	Gene	3091
+31933745	2067	2070	Prostatic Hyperplasia	Disease	MESH:D011470
+31933745	Positive_Correlation	3091	6615
+31933745	Positive_Correlation	3091	3852
+31933745	Positive_Correlation	3091	4088
+31933745	Positive_Correlation	3091	7431
+31933745	Positive_Correlation	3091	58
+31933745	Positive_Correlation	3091	3856
+31933745	Negative_Correlation	3091	999
+31933745	Association	MESH:D011470	3091
+
+32322559|t|Hypoxia-Induced Epithelial-Mesenchymal Transition in Cancers: HIF-1alpha and Beyond.
+32322559|a|Metastasis is the main cause of cancer-related mortality. Although the actual process of metastasis remains largely elusive, epithelial-mesenchymal transition (EMT) has been considered as a major event in metastasis. Besides, hypoxia is common in solid cancers and has been considered as an important factor for adverse treatment outcomes including metastasis. Since EMT and hypoxia potentially share several signaling pathways, many recent studies focused on investigate the issue of hypoxia-induced EMT. Among all potential mediators of hypoxia-induced EMT, hypoxia-inducible factor-1alpha (HIF-1alpha) has been studied extensively. Moreover, there are other potential mediators that may also contribute to the process. This review aims to summarize the recent reports on hypoxia-induced EMT by HIF-1alpha or other potential mediators and provide insights for further investigations on this issue. Ultimately, better understanding of hypoxia-induced EMT may allow us to develop anti-metastatic strategies and improve treatment outcomes.
+32322559	0	7	Hypoxia	Disease	MESH:D000860
+32322559	53	60	Neoplasms	Disease	MESH:D009369
+32322559	62	72	HIF1A	Gene	3091
+32322559	85	95	Neoplasm Metastasis	Disease	MESH:D009362
+32322559	117	123	Neoplasms	Disease	MESH:D009369
+32322559	174	184	Neoplasm Metastasis	Disease	MESH:D009362
+32322559	290	300	Neoplasm Metastasis	Disease	MESH:D009362
+32322559	311	318	Hypoxia	Disease	MESH:D000860
+32322559	338	345	Neoplasms	Disease	MESH:D009369
+32322559	434	444	Neoplasm Metastasis	Disease	MESH:D009362
+32322559	460	467	Hypoxia	Disease	MESH:D000860
+32322559	570	577	Hypoxia	Disease	MESH:D000860
+32322559	624	631	Hypoxia	Disease	MESH:D000860
+32322559	645	676	HIF1A	Gene	3091
+32322559	678	688	HIF1A	Gene	3091
+32322559	859	866	Hypoxia	Disease	MESH:D000860
+32322559	882	892	HIF1A	Gene	3091
+32322559	1021	1028	Hypoxia	Disease	MESH:D000860
+32322559	Association	MESH:D000860	3091
+
+32735882|t|Isoflurane promotes epithelial-to-mesenchymal transition and metastasis of bladder cancer cells through HIF-1alpha-beta-catenin/Notch1 pathways.
+32735882|a|AIMS: Epithelial-to-mesenchymal transition (EMT) facilitates cell migration and invasion, and contributes to metastasis in bladder cancer. Within the perioperative period, anesthetic such as isoflurane have been found to affect cancer prognosis. In the study, we reported the tumor-promoting effect of isoflurane in bladder cancer. MATERIALS AND METHODS: Human bladder cancer cell lines T24 and BIU-87 were exposed to isoflurane at different concentrations. The immunofluorescent staining of Ki67, Annexin V-FITC/PI staining, Transwell invasion assays and wound-healing assays were performed to assess cell proliferation, apoptosis, invasion and migration. Expressions of EMT markers (E-cadherin, N-cadherin and Vimentin) and metastatic markers (Snail-1, Slug-1 and MMP-2/9) were determined by immunoblotting. Orthotopic tumor models and mice given tail vein injection of T24 cells were developed with or without 4-h exposure to 2% isoflurane. KEY FINDINGS: We found isoflurane promoted bladder cancer cell proliferation, invasion and migration but reduce apoptosis in a concentration-dependent manner. In addition, isoflurane was shown to increase HIF-1alpha and its nuclear accumulation in bladder cancer cells. HIF-1alpha knockdown inhibited bladder cancer cell proliferation and delayed EMT, which was reversed in the presence of 4-h exposure to 2% isoflurane. Likewise, we found isoflurane modulated beta-catenin/Notch1 pathways via HIF-1alpha. In vivo studies showed that isoflurane exposure accelerated formation of orthotopic bladder tumor and promoted hepatic metastases from carcinoma of the bladder. SIGNIFICANCE: Taken together, our study demonstrates that a frequently used anesthetic can exert a protumorigenic effect on bladder cancer. Isoflurane may serve as an important contributory factor to high recurrence following surgery.
+32735882	0	10	Isoflurane	Chemical	MESH:D007530
+32735882	61	71	Neoplasm Metastasis	Disease	MESH:D009362
+32735882	75	89	Urinary Bladder Neoplasms	Disease	MESH:D001749
+32735882	104	114	HIF1A	Gene	3091
+32735882	115	127	CTNNB1	Gene	1499
+32735882	128	134	NOTCH1	Gene	4851
+32735882	254	264	Neoplasm Metastasis	Disease	MESH:D009362
+32735882	268	282	Urinary Bladder Neoplasms	Disease	MESH:D001749
+32735882	336	346	Isoflurane	Chemical	MESH:D007530
+32735882	373	379	Neoplasms	Disease	MESH:D009369
+32735882	421	426	Neoplasms	Disease	MESH:D009369
+32735882	447	457	Isoflurane	Chemical	MESH:D007530
+32735882	461	475	Urinary Bladder Neoplasms	Disease	MESH:D001749
+32735882	500	505	Human	Species	9606
+32735882	506	520	Urinary Bladder Neoplasms	Disease	MESH:D001749
+32735882	532	535	0554	CellLine	CVCL:0554
+32735882	540	546	6881	CellLine	CVCL:6881
+32735882	563	573	Isoflurane	Chemical	MESH:D007530
+32735882	830	840	CDH1	Gene	999
+32735882	842	852	CDH2	Gene	1000
+32735882	857	865	VIM	Gene	7431
+32735882	891	898	SNAI1	Gene	6615
+32735882	911	918	MMP2	Gene	4313;4318
+32735882	966	971	Neoplasms	Disease	MESH:D009369
+32735882	983	987	mice	Species	10090
+32735882	1017	1020	0554	CellLine	CVCL:0554
+32735882	1077	1087	Isoflurane	Chemical	MESH:D007530
+32735882	1112	1122	Isoflurane	Chemical	MESH:D007530
+32735882	1132	1146	Urinary Bladder Neoplasms	Disease	MESH:D001749
+32735882	1261	1271	Isoflurane	Chemical	MESH:D007530
+32735882	1294	1304	HIF1A	Gene	3091
+32735882	1337	1351	Urinary Bladder Neoplasms	Disease	MESH:D001749
+32735882	1359	1369	HIF1A	Gene	3091
+32735882	1390	1404	Urinary Bladder Neoplasms	Disease	MESH:D001749
+32735882	1498	1508	Isoflurane	Chemical	MESH:D007530
+32735882	1529	1539	Isoflurane	Chemical	MESH:D007530
+32735882	1550	1562	CTNNB1	Gene	1499
+32735882	1563	1569	NOTCH1	Gene	4851
+32735882	1583	1593	HIF1A	Gene	3091
+32735882	1623	1633	Isoflurane	Chemical	MESH:D007530
+32735882	1679	1692	Urinary Bladder Neoplasms	Disease	MESH:D001749
+32735882	1706	1724	Neoplasm Metastasis	Disease	MESH:D009362
+32735882	1730	1754	Urinary Bladder Neoplasms	Disease	MESH:D001749
+32735882	1880	1894	Urinary Bladder Neoplasms	Disease	MESH:D001749
+32735882	1896	1906	Isoflurane	Chemical	MESH:D007530
+32735882	Association	MESH:D001749	3091
+32735882	Association	MESH:D007530	4851
+32735882	Positive_Correlation	MESH:D007530	MESH:D001749
+32735882	Association	MESH:D001749	4851
+32735882	Association	3091	4851
+32735882	Positive_Correlation	MESH:D007530	3091
+32735882	Association	MESH:D001749	1499
+32735882	Association	1499	3091
+32735882	Association	MESH:D007530	1499
+32735882	Positive_Correlation	MESH:D007530	MESH:D009369
+32735882	Positive_Correlation	MESH:D007530	MESH:D009362
+
+34589393|t|Integrins as attractive targets for cancer therapeutics.
+34589393|a|Integrins are transmembrane receptors that have been implicated in the biology of various human physiological and pathological processes. These molecules facilitate cell-extracellular matrix and cell-cell interactions, and they have been implicated in fibrosis, inflammation, thrombosis, and tumor metastasis. The role of integrins in tumor progression makes them promising targets for cancer treatment, and certain integrin antagonists, such as antibodies and synthetic peptides, have been effectively utilized in the clinic for cancer therapy. Here, we discuss the evidence and knowledge on the contribution of integrins to cancer biology. Furthermore, we summarize the clinical attempts targeting this family in anti-cancer therapy development.
+34589393	36	42	Neoplasms	Disease	MESH:D009369
+34589393	147	152	human	Species	9606
+34589393	309	317	Fibrosis	Disease	MESH:D005355
+34589393	319	331	Inflammation	Disease	MESH:D007249
+34589393	333	343	Thrombosis	Disease	MESH:D013927
+34589393	349	365	Neoplasm Metastasis	Disease	MESH:D009362
+34589393	392	397	Neoplasms	Disease	MESH:D009369
+34589393	443	449	Neoplasms	Disease	MESH:D009369
+34589393	587	593	Neoplasms	Disease	MESH:D009369
+34589393	683	689	Neoplasms	Disease	MESH:D009369
+34589393	777	783	Neoplasms	Disease	MESH:D009369
+
+34905218|t|Regulation of epithelial-to-mesenchymal transition in hypoxia by the HIF-1alpha network.
+34905218|a|Epithelial-to-mesenchymal transition (EMT) plays a significant role in cancer metastasis. A series of models have focused on EMT regulation by TGF-beta network. However, how EMT is regulated under hypoxia is less understood. We developed a model of HIF-1alpha network to explore the potential link between EMT and the network topology. Our results revealed that three positive feedback loops, composed of HIF-1alpha and its three targets SNAIL, TWIST, and miR-210, should be sequentially activated to induce EMT under aggravating hypoxia. We suggested that the number of the positive feedback loops is critical for determining the number of stable states in EMT. Our work may advance the understanding of the significance of network topology in the regulation of EMT.
+34905218	54	61	Hypoxia	Disease	MESH:D000860
+34905218	69	79	HIF1A	Gene	3091
+34905218	160	177	Neoplasms	Disease	MESH:D009369
+34905218	232	240	TGFB1	Gene	7040
+34905218	286	293	Hypoxia	Disease	MESH:D000860
+34905218	338	348	HIF1A	Gene	3091
+34905218	494	504	HIF1A	Gene	3091
+34905218	527	532	SNAI1	Gene	6615
+34905218	534	539	TWIST1	Gene	7291
+34905218	545	552	MIR210	Gene	406992
+34905218	619	626	Hypoxia	Disease	MESH:D000860
+34905218	Association	3091	406992
+34905218	Association	MESH:D000860	7291
+34905218	Association	3091	7291
+34905218	Association	MESH:D000860	406992
+34905218	Positive_Correlation	MESH:D000860	6615
+34905218	Association	MESH:D000860	3091
+34905218	Association	3091	6615
+
+38476024|t|CARM1 drives triple-negative breast cancer progression by coordinating with HIF1A.
+38476024|a|Coactivator-associated arginine methyltransferase 1 (CARM1) promotes the development and metastasis of estrogen receptor alpha (ERalpha)-positive breast cancer. The function of CARM1 in triple-negative breast cancer (TNBC) is still unclear and requires further exploration. Here, we report that CARM1 promotes proliferation, epithelial-mesenchymal transition (EMT), and stemness in TNBC. CARM1 is upregulated in multiple cancers and its expression correlates with breast cancer progression. Genome-wide analysis of CARM1 showed that CARM1 is recruited by hypoxia-inducible factor 1 subunit alpha (HIF1A) and occupy the promoters of CDK4, Cyclin D1, beta-catenin, HIF1A, MALAT1, and SIX1 critically involved in cell cycle, HIF-1 signaling pathway, Wnt signaling pathway, VEGF signaling pathway, thereby modulating the proliferation and invasion of TNBC cells. We demonstrated that CARM1 is physically associated with and directly interacts with HIF1A. Moreover, we found that ellagic acid, an inhibitor of CARM1, can suppress the proliferation and metastasis of TNBC by directly inhibiting CDK4 expression. Our research has determined the molecular basis of CARM1 carcinogenesis in TNBC and its effective natural inhibitor, which may provide new ideas and drugs for cancer therapy.
+38476024	0	5	CARM1	Gene	10498
+38476024	13	42	Triple Negative Breast Neoplasms	Disease	MESH:D064726
+38476024	76	82	HIF1A	Gene	3091
+38476024	83	134	CARM1	Gene	10498
+38476024	136	141	CARM1	Gene	10498
+38476024	172	182	Neoplasm Metastasis	Disease	MESH:D009362
+38476024	186	209	ESR1	Gene	2099
+38476024	211	218	ESR1	Gene	2099
+38476024	229	242	Breast Neoplasms	Disease	MESH:D001943
+38476024	260	265	CARM1	Gene	10498
+38476024	269	298	Triple Negative Breast Neoplasms	Disease	MESH:D064726
+38476024	300	304	Triple Negative Breast Neoplasms	Disease	MESH:D064726
+38476024	378	383	CARM1	Gene	10498
+38476024	465	469	Triple Negative Breast Neoplasms	Disease	MESH:D064726
+38476024	471	476	CARM1	Gene	10498
+38476024	504	511	Neoplasms	Disease	MESH:D009369
+38476024	547	560	Breast Neoplasms	Disease	MESH:D001943
+38476024	598	603	CARM1	Gene	10498
+38476024	616	621	CARM1	Gene	10498
+38476024	680	685	HIF1A	Gene	3091
+38476024	715	719	CDK4	Gene	1019
+38476024	721	730	CCND1	Gene	595
+38476024	732	744	CTNNB1	Gene	1499
+38476024	746	751	HIF1A	Gene	3091
+38476024	753	759	MALAT1	Gene	378938
+38476024	765	769	SIX1	Gene	6495
+38476024	805	810	HIF1A	Gene	3091
+38476024	853	857	VEGFA	Gene	7422
+38476024	930	934	Triple Negative Breast Neoplasms	Disease	MESH:D064726
+38476024	963	968	CARM1	Gene	10498
+38476024	1027	1033	HIF1A	Gene	3091
+38476024	1058	1070	Ellagic Acid	Chemical	MESH:D004610
+38476024	1088	1093	CARM1	Gene	10498
+38476024	1130	1140	Neoplasm Metastasis	Disease	MESH:D009362
+38476024	1144	1148	Triple Negative Breast Neoplasms	Disease	MESH:D064726
+38476024	1172	1176	CDK4	Gene	1019
+38476024	1240	1245	CARM1	Gene	10498
+38476024	1246	1260	Carcinogenesis	Disease	MESH:D063646
+38476024	1264	1268	Triple Negative Breast Neoplasms	Disease	MESH:D064726
+38476024	1348	1354	Neoplasms	Disease	MESH:D009369
+38476024	Negative_Correlation	MESH:D004610	MESH:D009362
+38476024	Association	MESH:D009362	1019
+38476024	Association	10498	1499
+38476024	Association	MESH:D064726	3091
+38476024	Association	10498	378938
+38476024	Positive_Correlation	MESH:D009369	10498
+38476024	Association	MESH:D064726	6495
+38476024	Negative_Correlation	MESH:D004610	1019
+38476024	Association	MESH:D009362	10498
+38476024	Association	MESH:D064726	1019
+38476024	Association	10498	595
+38476024	Negative_Correlation	MESH:D004610	MESH:D064726
+38476024	Association	10498	3091
+38476024	Association	MESH:D064726	7422
+38476024	Association	MESH:D001943	2099
+38476024	Association	10498	7422
+38476024	Negative_Correlation	MESH:D004610	10498
+38476024	Association	MESH:D064726	1499
+38476024	Association	6495	7422
+38476024	Association	1019	10498
+38476024	Association	10498	6495
+38476024	Association	MESH:D064726	10498
+38476024	Association	10498	2099
+38476024	Association	MESH:D009362	2099
+38476024	Association	MESH:D063646	10498
+38476024	Positive_Correlation	MESH:D001943	10498
+38476024	Association	MESH:D064726	378938
+
+38904007|t|Coenzyme Q0 inhibited the NLRP3 inflammasome, metastasis/EMT, and Warburg effect by suppressing hypoxia-induced HIF-1alpha expression in HNSCC cells.
+38904007|a|Coenzyme Q0 (CoQ0), a quinone derivative from Antrodia camphorata, has antitumor capabilities. This study investigated the antitumor effect of noncytotoxic CoQ0, which included NLRP3 inflammasome inhibition, anti-EMT/metastasis, and metabolic reprogramming via HIF-1alpha inhibition, in HNSCC cells under normoxia and hypoxia. CoQ0 suppressed hypoxia-induced ROS-mediated HIF-1alpha expression in OECM-1 and SAS cells. Under normoxia and hypoxia, the inflammatory NLRP3, ASC/caspase-1, NFkappaB, and IL-1beta expression was reduced by CoQ0. CoQ0 reduced migration/invasion by enhancing epithelial marker E-cadherin and suppressing mesenchymal markers Twist, N-cadherin, Snail, and MMP-9, and MMP-2 expression. CoQ0 inhibited glucose uptake, lactate accumulation, GLUT1 levels, and HIF-1alpha-target gene (HK-2, PFK-1, and LDH-A) expressions that are involved in aerobic glycolysis. Notably, CoQ0 reduced ECAR as well as glycolysis, glycolytic capability, and glycolytic reserve and enhanced OCR, basal respiration, ATP generation, maximal respiration, and spare capacity in OECM-1 cells. Metabolomic analysis using LC-ESI-MS showed that CoQ0 treatment decreased the levels of glycolytic intermediates, including lactate, 2/3-phosphoglycerate, fructose 1,6-bisphosphate, and phosphoenolpyruvate, and increased the levels of TCA cycle metabolites, including citrate, isocitrate, and succinate. HIF-1alpha silencing reversed CoQ0-mediated anti-metastasis (N-Cadherin, Snail, and MMP-9) and metabolic reprogramming (GLUT1, HK-2, and PKM-2) under hypoxia. CoQ0 prevents cancer stem-like characteristics (upregulated CD24 expression and downregulated CD44, ALDH1, and OCT4) under normoxia and/or hypoxia. Further, in IL-6-treated SG cells, CoQ0 attenuated fibrosis by inhibiting TGF-beta and Collagen I expression and suppressed EMT by downregulating Slug and upregulating E-cadherin expression. Interesting, CoQ0 inhibited the growth of OECM-1 tumors in xenografted mice. Our results advocate CoQ0 for the therapeutic application against HNSCC.
+38904007	0	11	Coenzyme Q0	Chemical	-
+38904007	26	31	DFNA34	Gene	114548
+38904007	112	122	HIF1A	Gene	3091
+38904007	150	161	Coenzyme Q0	Chemical	-
+38904007	163	167	CoQ0	Chemical	-
+38904007	172	179	quinone	Chemical	MESH:C004532
+38904007	306	310	CoQ0	Chemical	-
+38904007	327	332	DFNA34	Gene	114548
+38904007	411	421	HIF1A	Gene	3091
+38904007	477	481	CoQ0	Chemical	-
+38904007	509	512	ROS	Chemical	-
+38904007	522	532	HIF1A	Gene	3091
+38904007	614	619	DFNA34	Gene	114548
+38904007	621	624	PYCARD	Gene	29108
+38904007	625	634	CASP1	Gene	834
+38904007	636	644	NFKB1	Gene	4790
+38904007	650	658	IL1B	Gene	3553
+38904007	685	689	CoQ0	Chemical	-
+38904007	691	695	CoQ0	Chemical	-
+38904007	754	764	CDH1	Gene	999
+38904007	801	806	TWIST1	Gene	7291
+38904007	808	818	CDH2	Gene	1000
+38904007	820	825	SNAI1	Gene	6615
+38904007	831	836	MMP9	Gene	4318
+38904007	842	847	MMP2	Gene	4313
+38904007	860	864	CoQ0	Chemical	-
+38904007	875	882	Glucose	Chemical	MESH:D005947
+38904007	891	898	Lactic Acid	Chemical	MESH:D019344
+38904007	913	918	CSE	Gene	6513
+38904007	931	941	HIF1A	Gene	3091
+38904007	955	959	HK2	Gene	3099
+38904007	961	966	PFKM	Gene	5213
+38904007	972	977	LDHA	Gene	3939
+38904007	1041	1045	CoQ0	Chemical	-
+38904007	1165	1168	Adenosine Triphosphate	Chemical	MESH:D000255
+38904007	1287	1291	CoQ0	Chemical	-
+38904007	1362	1369	Lactic Acid	Chemical	MESH:D019344
+38904007	1371	1391	2/3-phosphoglycerate	Chemical	-
+38904007	1393	1418	fructose-1 6-diphosphate	Chemical	MESH:C029063
+38904007	1424	1443	Phosphoenolpyruvate	Chemical	MESH:D010728
+38904007	1473	1476	Trichloroacetic Acid	Chemical	MESH:D014238
+38904007	1506	1513	Citric Acid	Chemical	MESH:D019343
+38904007	1515	1525	isocitric acid	Chemical	MESH:C034219
+38904007	1531	1540	Succinic Acid	Chemical	MESH:D019802
+38904007	1542	1552	HIF1A	Gene	3091
+38904007	1572	1576	CoQ0	Chemical	-
+38904007	1603	1613	CDH2	Gene	1000
+38904007	1615	1620	SNAI1	Gene	6615
+38904007	1626	1631	MMP9	Gene	4318
+38904007	1662	1667	CSE	Gene	6513
+38904007	1669	1673	HK2	Gene	3099
+38904007	1679	1684	PKM	Gene	5315
+38904007	1701	1705	CoQ0	Chemical	-
+38904007	1761	1765	CD24	Gene	100133941
+38904007	1795	1799	CD44	Gene	960
+38904007	1801	1806	ALDH1A1	Gene	216
+38904007	1812	1816	POU5F1	Gene	5460
+38904007	1861	1865	IL6	Gene	3569
+38904007	1884	1888	CoQ0	Chemical	-
+38904007	1923	1931	TGFB1	Gene	7040
+38904007	1995	1999	SNAI2	Gene	6591
+38904007	2017	2027	CDH1	Gene	999
+38904007	2053	2057	CoQ0	Chemical	-
+38904007	2111	2115	mice	Species	10090
+38904007	2138	2142	CoQ0	Chemical	-
+38904007	Association	MESH:D014238	MESH:D019343
+38904007	Association	3091	5315
+38904007	Association	MESH:D014238	MESH:D019802
+38904007	Association	3091	3939
+38904007	Association	3091	3099
+38904007	Association	3091	5213
+38904007	Association	3091	4318
+38904007	Association	3091	6615
+38904007	Association	3091	6513
+38904007	Association	MESH:C034219	MESH:D014238
+
+39386828|t|HIF-1alpha knockdown suppresses breast cancer metastasis via epithelial mesenchymal transition Abrogation.
+39386828|a|Lung metastasis, a leading cause of breast cancer mortality, lacks effective therapeutic options. Hypoxia-inducible factor 1-alpha (HIF-1alpha) plays important roles in breast cancer progression, but its direct impact on lung metastasis remains unclear. Herein, in this study, we investigated the role of HIF-1alpha in breast cancer lung metastasis and the potential of targeting it for therapeutic benefit. HIF-1alpha expression was knocked down in the 4T1 mouse mammary carcinoma cell line using a lentiviral vector. HIF-1alpha knockdown significantly reduced the migratory ability of 4T1 cells in vitro and lung metastasis in a mouse model. Mechanistically, HIF-1alpha knockdown decreased the expression of matrix metalloproteinases (MMP-2 and MMP-9) that degrade the extracellular matrix and suppressed the epithelial-to-mesenchymal transition (EMT) by increasing E-cadherin and decreasing vimentin expression. The findings of this study demonstrate that HIF-1alpha knockdown effectively inhibits lung metastasis of 4T1 cells both in vitro and in vivo by suppressing EMT. These results underscore a promising new approach for managing breast cancer metastasis.
+39386828	0	10	Hif1a	Gene	15251
+39386828	32	56	Breast Neoplasms	Disease	MESH:D001943
+39386828	107	122	Neoplasm Metastasis	Disease	MESH:D009362
+39386828	143	156	Breast Neoplasms	Disease	MESH:D001943
+39386828	205	237	Hif1a	Gene	15251
+39386828	239	249	Hif1a	Gene	15251
+39386828	276	289	Breast Neoplasms	Disease	MESH:D001943
+39386828	328	343	Neoplasm Metastasis	Disease	MESH:D009362
+39386828	412	422	Hif1a	Gene	15251
+39386828	426	455	Breast Neoplasms	Disease	MESH:D001943
+39386828	515	525	Hif1a	Gene	15251
+39386828	561	564	0125	CellLine	CVCL:0125
+39386828	565	570	mouse	Species	10090
+39386828	626	636	Hif1a	Gene	15251
+39386828	694	697	0125	CellLine	CVCL:0125
+39386828	717	732	Neoplasm Metastasis	Disease	MESH:D009362
+39386828	738	743	mouse	Species	10090
+39386828	768	778	Hif1a	Gene	15251
+39386828	844	849	Mmp2	Gene	17390
+39386828	854	859	Mmp9	Gene	17395
+39386828	975	985	Cdh1	Gene	12550
+39386828	1001	1009	Vim	Gene	22352
+39386828	1066	1076	Hif1a	Gene	15251
+39386828	1108	1123	Neoplasm Metastasis	Disease	MESH:D009362
+39386828	1127	1130	0125	CellLine	CVCL:0125
+39386828	1246	1270	Breast Neoplasms	Disease	MESH:D001943
+39386828	Association	MESH:D001943	15251
+39386828	Association	MESH:D009362	15251
+39386828	Positive_Correlation	15251	22352
+39386828	Positive_Correlation	15251	17390
+39386828	Negative_Correlation	12550	15251
+39386828	Positive_Correlation	15251	17395
+
+40225580|t|FOS-driven inflammatory CAFs promote colorectal cancer liver metastasis via the SFRP1-FGFR2-HIF1 axis.
+40225580|a|Rationale: Cancer-associated fibroblasts (CAFs) exhibit diverse functions, yet their roles in colorectal cancer liver metastasis (CRLM) remain poorly understood. Methods: Through integrated analysis of single-cell RNA sequencing and spatial transcriptomics from colorectal cancer patients (CRCP: non-metastatic primary tumors; CRCM: metastatic primary tumors with liver metastases), combined with in vitro and in vivo models to investigate the role of CAFs in CRLM. In vitro experiments included six groups to reveal the role of SFRP1-producing CAFs, comprising PBS (control) and recombinant human SFRP1 (rhSFRP1) treated SW480 cells, PBS (control) and recombinant mouse SFRP1 (rmSFRP1) treated CT26 cells, and conditioned medium (CM) derived from CAF-NC and CAF-Sfrp1 treated CT26 cells. Preclinical models were further employed to elucidate the role of SFRP1 in CRLM. Subcutaneous xenografts models were constructed from PBS (control) and rhSFRP1 treated SW480 cells. For orthotopic tumor metastasis models, CT26 cells were pre-cultured with CAF-NC or CAF-Sfrp1 and then orthotopically injected into BALB/c mice. Results: We identified an inflammatory CAF subtype (CFD+ iCAFs) associated with poor clinical outcomes, advanced staging, and metastasis. Transcriptional regulation analysis revealed FOS-mediated differentiation of CFD+ iCAFs drives SFRP1 overexpression. In vitro and in vivo experiments confirmed that SFRP1-producing CAFs promote tumor stemness and epithelial-mesenchymal transition (EMT). Mechanistically, SFRP1 from CFD+ iCAFs binds FGFR2, activating the HIF1 signaling pathway to enhance tumor stemness, EMT, and CRLM progression. Conclusion: This study highlights CFD+ iCAFs as key regulators of tumor-stromal interactions and identifies SFRP1 as a potential therapeutic target in CRLM.
+40225580	0	3	Fos	Gene	14281
+40225580	11	23	Inflammation	Disease	MESH:D007249
+40225580	37	71	Colorectal Neoplasms	Disease	MESH:D015179
+40225580	80	85	Sfrp1	Gene	20377
+40225580	86	91	Fgfr2	Gene	14183
+40225580	114	120	Neoplasms	Disease	MESH:D009369
+40225580	197	231	Colorectal Neoplasms	Disease	MESH:D015179
+40225580	233	237	Colorectal Neoplasms	Disease	MESH:D015179
+40225580	365	382	Colorectal Neoplasms	Disease	MESH:D015179
+40225580	383	391	patients	Species	9606
+40225580	414	421	Peritonitis	Disease	MESH:D010538
+40225580	422	428	Neoplasms	Disease	MESH:D009369
+40225580	430	434	CRCM	Disease	-
+40225580	447	454	Peritonitis	Disease	MESH:D010538
+40225580	455	461	Neoplasms	Disease	MESH:D009369
+40225580	467	483	Neoplasm Metastasis	Disease	MESH:D009362
+40225580	563	567	Colorectal Neoplasms	Disease	MESH:D015179
+40225580	632	637	Sfrp1	Gene	20377
+40225580	665	668	Lead	Chemical	MESH:D007854
+40225580	695	700	human	Species	9606
+40225580	701	706	Sfrp1	Gene	20377
+40225580	725	730	0546	CellLine	CVCL:0546
+40225580	738	741	Lead	Chemical	MESH:D007854
+40225580	768	773	mouse	Species	10090
+40225580	774	779	Sfrp1	Gene	20377
+40225580	798	802	7254	CellLine	CVCL:7254
+40225580	866	871	Sfrp1	Gene	20377
+40225580	880	884	7254	CellLine	CVCL:7254
+40225580	958	963	Sfrp1	Gene	20377
+40225580	967	971	Colorectal Neoplasms	Disease	MESH:D015179
+40225580	1026	1029	Lead	Chemical	MESH:D007854
+40225580	1060	1065	0546	CellLine	CVCL:0546
+40225580	1088	1104	Neoplasm Metastasis	Disease	MESH:D009362
+40225580	1113	1117	7254	CellLine	CVCL:7254
+40225580	1161	1166	Sfrp1	Gene	20377
+40225580	1209	1211	9103	CellLine	CVCL:9103
+40225580	1212	1216	mice	Species	10090
+40225580	1244	1256	Inflammation	Disease	MESH:D007249
+40225580	1270	1273	Cfd	Gene	11537
+40225580	1344	1354	Neoplasm Metastasis	Disease	MESH:D009362
+40225580	1401	1404	Fos	Gene	14281
+40225580	1433	1436	Cfd	Gene	11537
+40225580	1451	1456	Sfrp1	Gene	20377
+40225580	1521	1526	Sfrp1	Gene	20377
+40225580	1550	1555	Neoplasms	Disease	MESH:D009369
+40225580	1627	1632	Sfrp1	Gene	20377
+40225580	1638	1641	Cfd	Gene	11537
+40225580	1655	1660	Fgfr2	Gene	14183
+40225580	1711	1716	Neoplasms	Disease	MESH:D009369
+40225580	1736	1740	Colorectal Neoplasms	Disease	MESH:D015179
+40225580	1788	1791	Cfd	Gene	11537
+40225580	1820	1825	Neoplasms	Disease	MESH:D009369
+40225580	1862	1867	Sfrp1	Gene	20377
+40225580	1905	1909	Colorectal Neoplasms	Disease	MESH:D015179
+40225580	Association	MESH:D009362	11537
+40225580	Association	MESH:D007249	14183
+40225580	Association	14183	14281
+40225580	Association	14183	20377
+40225580	Association	MESH:D015179	11537
+40225580	Association	MESH:D015179	20377
+40225580	Association	MESH:D015179	14281
+40225580	Association	MESH:D009369	20377
+40225580	Association	MESH:D007249	20377
+40225580	Association	11537	14281
+40225580	Positive_Correlation	14281	20377
+40225580	Association	MESH:D015179	14183
+40225580	Positive_Correlation	11537	20377
+40225580	Association	MESH:D007249	14281
+
+40355012|t|Nervous system in hepatocellular carcinoma: Correlation, mechanisms, therapeutic implications, and future perspectives.
+40355012|a|Hepatocellular carcinoma (HCC) is a highly heterogeneous and complex cancer influenced by both the tumor microenvironment and multi-level regulation of the nervous system. Increasing evidence highlights critical roles of the central nervous system (CNS) and peripheral nervous system (PNS) in modulating HCC progression. Psychological stress and emotional disturbances, representing CNS dysregulation, directly accelerate tumor growth, metastasis, and impair anti-tumor immunity in HCC. PNS involvement, particularly autonomic innervation, extensively reshapes the hepatic tumor microenvironment; specifically, sympathetic activation promotes immune suppression, tumor cell proliferation, epithelial-mesenchymal transition (EMT), and cancer stemness via beta-adrenergic signaling and hypoxia-inducible factor 1-alpha (HIF-1alpha) stabilization, whereas parasympathetic signals generally exert anti-inflammatory and tumor-suppressive effects mediated by acetylcholine. Neurotransmitters including epinephrine, norepinephrine, dopamine, serotonin, and acetylcholine precisely regulate critical pathways such as AKT/mTOR, ERK, and NF-kappaB, thereby driving malignant cell behaviors, immune evasion, and chemoresistance. Neuro-targeted pharmacological interventions (e.g., SSRIs, beta-blockers, dopamine antagonists) and behavioral therapies have shown efficacy in preclinical studies, underscoring their therapeutic potential. Additionally, neural-associated biomarkers like NEDD9, CNTN1, and nerve growth factor (NGF) exhibit prognostic significance, supporting their future clinical application. By systematically integrating neuroscience with oncology, this review identifies innovative neural-based therapeutic strategies, highlights key mechanistic insights, and outlines promising directions for future research and personalized clinical management of HCC.
+40355012	18	42	Carcinoma Hepatocellular	Disease	MESH:D006528
+40355012	120	144	Carcinoma Hepatocellular	Disease	MESH:D006528
+40355012	146	149	Carcinoma Hepatocellular	Disease	MESH:D006528
+40355012	189	195	Neoplasms	Disease	MESH:D009369
+40355012	219	224	Neoplasms	Disease	MESH:D009369
+40355012	424	427	Carcinoma Hepatocellular	Disease	MESH:D006528
+40355012	503	520	Central Nervous System Diseases	Disease	MESH:D002493
+40355012	542	547	Neoplasms	Disease	MESH:D009369
+40355012	556	566	Neoplasm Metastasis	Disease	MESH:D009362
+40355012	584	589	Neoplasms	Disease	MESH:D009369
+40355012	602	605	Carcinoma Hepatocellular	Disease	MESH:D006528
+40355012	685	698	Neoplasms	Disease	MESH:D009369
+40355012	783	788	Neoplasms	Disease	MESH:D009369
+40355012	854	860	Neoplasms	Disease	MESH:D009369
+40355012	904	936	HIF1A	Gene	3091
+40355012	938	948	HIF1A	Gene	3091
+40355012	1018	1030	Inflammation	Disease	MESH:D007249
+40355012	1035	1040	Neoplasms	Disease	MESH:D009369
+40355012	1073	1086	Acetylcholine	Chemical	MESH:D000109
+40355012	1116	1127	Epinephrine	Chemical	MESH:D004837
+40355012	1129	1143	Norepinephrine	Chemical	MESH:D009638
+40355012	1145	1153	Dopamine	Chemical	MESH:D004298
+40355012	1155	1164	Serotonin	Chemical	MESH:D012701
+40355012	1170	1183	Acetylcholine	Chemical	MESH:D000109
+40355012	1229	1232	AKT1	Gene	207
+40355012	1233	1237	MTOR	Gene	2475
+40355012	1239	1242	MAPK1	Gene	5594
+40355012	1248	1257	NFKB1	Gene	4790
+40355012	1593	1598	NEDD9	Gene	4739
+40355012	1600	1605	CNTN1	Gene	1272
+40355012	1611	1630	NGF	Gene	4803
+40355012	1632	1635	NGF	Gene	4803
+40355012	1976	1979	Carcinoma Hepatocellular	Disease	MESH:D006528
+40355012	Association	MESH:D004837	2475
+40355012	Association	MESH:D000109	5594
+40355012	Association	MESH:D004298	5594
+40355012	Association	MESH:D012701	2475
+40355012	Negative_Correlation	MESH:D000109	MESH:D009369
+40355012	Association	MESH:D009638	207
+40355012	Association	MESH:D004837	207
+40355012	Association	MESH:D009638	2475
+40355012	Association	MESH:D004837	5594
+40355012	Association	MESH:D009638	4790
+40355012	Association	MESH:D004837	4790
+40355012	Association	MESH:D012701	207
+40355012	Association	MESH:D006528	4803
+40355012	Association	MESH:D009638	5594
+40355012	Association	MESH:D012701	4790
+40355012	Association	MESH:D000109	2475
+40355012	Association	MESH:D004298	2475
+40355012	Association	MESH:D000109	207
+40355012	Association	MESH:D012701	5594
+40355012	Negative_Correlation	MESH:D000109	MESH:D007249
+40355012	Association	MESH:D000109	4790
+40355012	Association	MESH:D009369	3091
+40355012	Association	MESH:D004298	207
+40355012	Association	MESH:D004298	4790
+
+41129727|t|RORgamma Hijacks HIF-1alpha to Promote Peritoneal Metastasis of Gastric Cancer.
+41129727|a|Peritoneal metastasis (PM) is the most common and lethal form of metastasis in gastric cancer (GCa), highlighting an urgent need for treatment strategies. Here, we identified RORgamma as a key driver of PM in GCa tumors. Integrative bioinformatics and immunohistochemical analyses revealed aberrant upregulation of RORgamma in GCa tumors, particularly in metastatic lesions. Functionally, elevated RORgamma promoted GCa cell adaptation to hypoxia and accelerated PM formation in vivo. The hypoxic microenvironment in GCa stimulated RORgamma expression, which in turn enhanced HIF-1alpha stability, establishing a positive feedforward loop. Mechanistically, RORgamma interacted with HIF-1alpha and protected it from binding PHD3 and VHL, resulting in markedly decreased HIF-1alpha hydroxylation and ubiquitylation and increased HIF-1alpha accumulation, nuclear translocation, and transactivation. The RORgamma-HIF-1alpha complex bound and activated target genes involved in hypoxic response and epithelial-to-mesenchymal transition (EMT), thereby driving GCa tumor growth and PM. Disruption of the RORgamma-HIF-1alpha interaction using RORgamma antagonists markedly promoted HIF-1alpha degradation and diminished its function. Importantly, in multiple GCa xenograft models, RORgamma inhibition effectively blocked tumor growth and PM while sensitizing tumors to chemotherapy. Thus, this study uncovers a mechanism of hypoxia-mediated metastasis through a RORgamma-HIF-1alpha reciprocal regulatory loop and offers a potential therapeutic option against PM in advanced cancer.
+41129727	17	27	HIF1A	Gene	3091
+41129727	39	60	Peritonitis	Disease	MESH:D010538
+41129727	64	78	Stomach Neoplasms	Disease	MESH:D013274
+41129727	80	101	Peritonitis	Disease	MESH:D010538
+41129727	103	105	Peritonitis	Disease	MESH:D010538
+41129727	145	155	Neoplasm Metastasis	Disease	MESH:D009362
+41129727	159	173	Stomach Neoplasms	Disease	MESH:D013274
+41129727	175	178	Stomach Neoplasms	Disease	MESH:D013274
+41129727	283	285	Peritonitis	Disease	MESH:D010538
+41129727	289	292	Stomach Neoplasms	Disease	MESH:D013274
+41129727	293	299	Neoplasms	Disease	MESH:D009369
+41129727	407	410	Stomach Neoplasms	Disease	MESH:D013274
+41129727	411	417	Neoplasms	Disease	MESH:D009369
+41129727	496	499	1611	CellLine	CVCL:1611
+41129727	519	526	Hypoxia	Disease	MESH:D000860
+41129727	543	545	Peritonitis	Disease	MESH:D010538
+41129727	569	576	Hypoxia Brain	Disease	MESH:D002534
+41129727	597	600	Stomach Neoplasms	Disease	MESH:D013274
+41129727	656	666	HIF1A	Gene	3091
+41129727	762	772	HIF1A	Gene	3091
+41129727	803	807	EGLN3	Gene	112399
+41129727	812	815	VHL	Gene	7428
+41129727	849	859	HIF1A	Gene	3091
+41129727	907	917	HIF1A	Gene	3091
+41129727	989	999	HIF1A	Gene	3091
+41129727	1053	1060	Hypoxia Brain	Disease	MESH:D002534
+41129727	1134	1137	Stomach Neoplasms	Disease	MESH:D013274
+41129727	1138	1143	Neoplasms	Disease	MESH:D009369
+41129727	1155	1157	Peritonitis	Disease	MESH:D010538
+41129727	1186	1196	HIF1A	Gene	3091
+41129727	1254	1264	HIF1A	Gene	3091
+41129727	1331	1334	Stomach Neoplasms	Disease	MESH:D013274
+41129727	1393	1398	Neoplasms	Disease	MESH:D009369
+41129727	1410	1412	Peritonitis	Disease	MESH:D010538
+41129727	1431	1437	Neoplasms	Disease	MESH:D009369
+41129727	1496	1503	Hypoxia	Disease	MESH:D000860
+41129727	1513	1523	Neoplasm Metastasis	Disease	MESH:D009362
+41129727	1543	1553	HIF1A	Gene	3091
+41129727	1631	1633	Peritonitis	Disease	MESH:D010538
+41129727	1646	1652	Neoplasms	Disease	MESH:D009369
+41129727	Association	MESH:D013274	3091
+41129727	Association	MESH:D010538	3091
+41129727	Association	MESH:D002534	3091

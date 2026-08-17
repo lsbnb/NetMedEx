@@ -1,0 +1,76 @@
+{
+  "run_id": "formal-v1-gpt-5.6-luna-C_one_hop",
+  "benchmark_version": "formal-v1",
+  "status": "complete",
+  "provider": "openai",
+  "model": "gpt-5.6-luna",
+  "api": "chat_completions",
+  "sampling": {
+    "temperature": 1,
+    "note": "GPT-5.6 supports only its default temperature in Chat Completions."
+  },
+  "max_articles_per_question": 15,
+  "top_k": 10,
+  "edge_method": "semantic",
+  "semantic_threshold": 0.5,
+  "edge_weight_cutoff": 1,
+  "hybrid_profile": "C_one_hop",
+  "query_file": "evaluation/formal/formal_run_queries_q001_q010.csv",
+  "query_file_sha256": "6ea65fe06f174174b43256860ec1fd513f7755d3f069cbb0949e04875aaebd75",
+  "expected_question_count": 10,
+  "questions_metadata_file": "evaluation/formal/questions.csv",
+  "questions_metadata_sha256": "a66af12d6234861447104ab09fa610aa8ba9af818f60e55ea34946b4cd085164",
+  "gold_qrels_read_during_run": false,
+  "systems": [
+    "netmedex_hybrid_rag",
+    "traditional_rag",
+    "general_llm"
+  ],
+  "reuse_corpora_dir": "evaluation/formal/runs/formal-v1-gpt-5.6-terra/questions",
+  "reuse_exposures_dir": null,
+  "reuse_graphs_dir": "evaluation/formal/runs/formal-v1-ae-replay-terra-graphs-luna-answers-v1/terra_graphs/questions",
+  "persist_graph": false,
+  "answer_generation": true,
+  "max_total_tokens_per_process": null,
+  "started_at": "2026-08-11T05:39:31.093904+00:00",
+  "attempts": [
+    {
+      "attempt_id": "attempt-001",
+      "started_at": "2026-08-11T05:39:31.094264+00:00",
+      "selected_questions": [
+        "Q001",
+        "Q002",
+        "Q003",
+        "Q004",
+        "Q005",
+        "Q006",
+        "Q007",
+        "Q008",
+        "Q009",
+        "Q010"
+      ],
+      "force": false,
+      "status": "complete",
+      "completed_at": "2026-08-11T05:46:02.124308+00:00",
+      "completed_questions_after_attempt": 10,
+      "failed_questions_after_attempt": 0
+    }
+  ],
+  "question_scope": [
+    "Q001",
+    "Q002",
+    "Q003",
+    "Q004",
+    "Q005",
+    "Q006",
+    "Q007",
+    "Q008",
+    "Q009",
+    "Q010"
+  ],
+  "last_resumed_at": "2026-08-11T05:39:31.094264+00:00",
+  "completed_questions": 10,
+  "failed_questions": 0,
+  "last_checkpoint_at": "2026-08-11T05:46:02.081256+00:00",
+  "completed_at": "2026-08-11T05:46:02.124277+00:00"
+}

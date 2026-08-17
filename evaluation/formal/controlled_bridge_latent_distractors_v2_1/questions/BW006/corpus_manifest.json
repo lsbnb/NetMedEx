@@ -1,0 +1,347 @@
+{
+  "question_id": "BW006",
+  "status": "eligible",
+  "corpus_strategy": "controlled_endpoint_isolated_shared_bridge",
+  "same_corpus_for_text_and_hybrid": true,
+  "mediators_withheld_from_system_query": true,
+  "source_patterns": [
+    "\\bdystrophin\\s+deficiency\\b",
+    "\\bdystrophin.deficient\\b",
+    "\\bDMD\\b(?=.*dystrophin|.*muscular)",
+    "\\bDuchenne\\b",
+    "\\bmdx\\b"
+  ],
+  "target_patterns": [
+    "\\bchronic\\s+inflammation\\b",
+    "\\bskeletal\\s+muscle\\s+inflammation\\b",
+    "\\bmuscle\\s+inflammatory\\b"
+  ],
+  "source_identifiers": [],
+  "target_identifiers": [],
+  "target_side_forbidden_source_patterns": [
+    "\\bdystrophin\\b",
+    "\\bDuchenne\\b",
+    "\\bDMD\\b",
+    "\\bmdx\\b"
+  ],
+  "target_side_forbidden_source_identifiers": [],
+  "eligible_mediators": [
+    "HMGB1",
+    "Galectin-3"
+  ],
+  "mediator_audit": [
+    {
+      "name": "HMGB1",
+      "queries": {
+        "source": "(dystrophin[Title/Abstract] OR Duchenne[Title/Abstract] OR mdx[Title/Abstract]) AND (HMGB1[Title/Abstract] OR high mobility group box 1[Title/Abstract])",
+        "target": "(HMGB1[Title/Abstract] OR high mobility group box 1[Title/Abstract]) AND (chronic inflammation[Title/Abstract] OR inflammatory signaling[Title/Abstract])"
+      },
+      "candidate_pmids": {
+        "source": [
+          "39158383",
+          "35149132",
+          "34078746",
+          "32508664",
+          "27229112",
+          "29238012",
+          "30085099",
+          "25552658"
+        ],
+        "target": [
+          "37284446",
+          "28706906",
+          "37364421",
+          "28926869",
+          "23296615",
+          "41354099",
+          "35269471",
+          "30685821",
+          "35471628",
+          "41135776",
+          "29106804",
+          "33085519",
+          "32851715",
+          "37554278",
+          "31379812",
+          "41167615",
+          "37251376",
+          "28806702",
+          "37513606",
+          "38881893",
+          "32206569",
+          "36745211",
+          "33041002",
+          "14871456",
+          "42415063",
+          "36094155",
+          "33784425",
+          "37880686",
+          "41054886",
+          "33647575"
+        ]
+      },
+      "accepted_pmids": {
+        "source": [
+          "35149132",
+          "34078746",
+          "32508664"
+        ],
+        "target": [
+          "37284446",
+          "28706906",
+          "37364421"
+        ]
+      },
+      "annotation_identifiers": {
+        "source": [
+          "15289",
+          "3146"
+        ],
+        "target": [
+          "15289",
+          "25459",
+          "3146"
+        ]
+      },
+      "shared_mediator_identifiers": [
+        "15289",
+        "3146"
+      ],
+      "rejected_pmids": {
+        "source": {
+          "39158383": [
+            "fetch_missing"
+          ]
+        },
+        "target": {}
+      },
+      "bridge_eligible": true
+    },
+    {
+      "name": "Galectin-3",
+      "queries": {
+        "source": "(dystrophin[Title/Abstract] OR Duchenne[Title/Abstract] OR mdx[Title/Abstract]) AND (Galectin-3[Title/Abstract] OR LGALS3[Title/Abstract])",
+        "target": "(Galectin-3[Title/Abstract] OR LGALS3[Title/Abstract]) AND (chronic inflammation[Title/Abstract] OR inflammatory signaling[Title/Abstract])"
+      },
+      "candidate_pmids": {
+        "source": [
+          "41124255",
+          "41532585",
+          "29894670",
+          "40948348",
+          "34630276",
+          "28281577",
+          "19223608",
+          "33110978"
+        ],
+        "target": [
+          "40244022",
+          "41235339",
+          "38278025",
+          "33287402",
+          "37705214",
+          "19594635",
+          "41859377",
+          "35053194",
+          "41487996",
+          "40976498",
+          "37127708",
+          "29373564",
+          "40564142",
+          "33612037",
+          "30261763",
+          "38430280",
+          "30726855",
+          "37175823",
+          "16424226",
+          "36612048",
+          "41306973",
+          "34126898",
+          "22942212",
+          "36583887",
+          "37467891",
+          "40937212",
+          "24379606",
+          "41121618",
+          "34589834",
+          "33154744"
+        ]
+      },
+      "accepted_pmids": {
+        "source": [
+          "41124255",
+          "29894670",
+          "40948348"
+        ],
+        "target": [
+          "40244022",
+          "41235339",
+          "38278025"
+        ]
+      },
+      "annotation_identifiers": {
+        "source": [
+          "16854",
+          "3958"
+        ],
+        "target": [
+          "16854",
+          "3958"
+        ]
+      },
+      "shared_mediator_identifiers": [
+        "16854",
+        "3958"
+      ],
+      "rejected_pmids": {
+        "source": {
+          "41532585": [
+            "mediator_absent"
+          ]
+        },
+        "target": {}
+      },
+      "bridge_eligible": true
+    }
+  ],
+  "distractor_audit": {
+    "queries": {
+      "source": "(dystrophin[Title/Abstract] OR Duchenne[Title/Abstract] OR mdx[Title/Abstract])",
+      "target": "(chronic inflammation[Title/Abstract] OR skeletal muscle inflammation[Title/Abstract] OR muscle inflammatory[Title/Abstract])"
+    },
+    "candidate_pmids": {
+      "source": [
+        "3319190",
+        "39034316",
+        "39723578",
+        "37032509",
+        "40986346",
+        "41238533",
+        "11834588",
+        "12206793",
+        "30476171",
+        "40896584",
+        "40562489",
+        "37670674",
+        "39337383",
+        "12206810",
+        "41104521",
+        "15031985",
+        "27854202",
+        "37362434",
+        "22079415",
+        "40966282",
+        "32573804",
+        "31091530",
+        "36967847",
+        "25740330",
+        "25669899",
+        "40447687",
+        "28171583",
+        "28785010",
+        "39808494",
+        "37980539"
+      ],
+      "target": [
+        "22344059",
+        "28045398",
+        "27702700",
+        "39804962",
+        "20471889",
+        "37576974",
+        "35293669",
+        "30165972",
+        "12957434",
+        "30711692",
+        "31612076",
+        "34567015",
+        "28091823",
+        "15747298",
+        "39177291",
+        "39141348",
+        "37153550",
+        "12101979",
+        "40738769",
+        "20600166",
+        "35869487",
+        "37013479",
+        "39228969",
+        "34733167",
+        "23981574",
+        "32632958",
+        "37126103",
+        "36091828",
+        "35668914",
+        "36119037"
+      ]
+    },
+    "accepted_pmids": {
+      "source": [
+        "3319190",
+        "39034316",
+        "39723578",
+        "37032509",
+        "40986346",
+        "41238533",
+        "11834588",
+        "12206793",
+        "30476171",
+        "40896584"
+      ],
+      "target": [
+        "22344059",
+        "28045398",
+        "27702700",
+        "39804962",
+        "20471889",
+        "35293669",
+        "30165972",
+        "12957434",
+        "30711692",
+        "31612076"
+      ]
+    },
+    "rejected_pmids": {
+      "source": {},
+      "target": {
+        "37576974": [
+          "target_absent"
+        ]
+      }
+    }
+  },
+  "fetched_pmids": [
+    "35149132",
+    "34078746",
+    "32508664",
+    "37284446",
+    "28706906",
+    "37364421",
+    "41124255",
+    "29894670",
+    "40948348",
+    "40244022",
+    "41235339",
+    "38278025",
+    "3319190",
+    "39034316",
+    "39723578",
+    "37032509",
+    "40986346",
+    "41238533",
+    "11834588",
+    "12206793",
+    "30476171",
+    "40896584",
+    "22344059",
+    "28045398",
+    "27702700",
+    "39804962",
+    "20471889",
+    "35293669",
+    "30165972",
+    "12957434",
+    "30711692",
+    "31612076"
+  ]
+}

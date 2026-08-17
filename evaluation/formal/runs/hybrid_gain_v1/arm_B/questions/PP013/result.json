@@ -1,0 +1,194 @@
+{
+  "status": "complete",
+  "question_id": "PP013",
+  "domain": "infectious disease",
+  "question": "What evidence supports a mechanistic path from chronic hepatitis b virus (hbv) infection to hcc through chronic liver inflammation? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "HBV hepatocellular carcinoma inflammation HBx integration fibrosis",
+  "effective_pubmed_query": "HBV hepatocellular carcinoma inflammation HBx integration fibrosis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "16461228",
+    "20413301",
+    "20485626",
+    "25646384",
+    "28097530",
+    "29052129",
+    "30611768",
+    "32839523",
+    "38064540",
+    "39290403",
+    "40544269"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports a mechanistic path from chronic hepatitis b virus (hbv) infection to hcc through chronic liver inflammation? Distinguish evidence for each hop from overall inference.",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "integration_decision": {
+      "method": "three_stage_incremental_utility_router_v1",
+      "mode": "traditional_fallback",
+      "reason": "no_claim_safe_path",
+      "claim_safe_path_count": 0,
+      "incremental_path_count": 0,
+      "confirmatory_path_count": 0,
+      "citation_validation_pmids": [],
+      "policy": "three_stage"
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "disabled",
+      "reason": "integration_mode=traditional_fallback",
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "29052129",
+        "score": 0.6172901264506794
+      },
+      {
+        "pmid": "30611768",
+        "score": 0.5818450990629075
+      },
+      {
+        "pmid": "39290403",
+        "score": 0.567904215015645
+      },
+      {
+        "pmid": "20413301",
+        "score": 0.5621072051318786
+      },
+      {
+        "pmid": "20485626",
+        "score": 0.5497443051800831
+      },
+      {
+        "pmid": "16461228",
+        "score": 0.546792510215603
+      },
+      {
+        "pmid": "32839523",
+        "score": 0.5450913075479472
+      },
+      {
+        "pmid": "25646384",
+        "score": 0.5337705505936033
+      },
+      {
+        "pmid": "28097530",
+        "score": 0.5273220794144308
+      },
+      {
+        "pmid": "38064540",
+        "score": 0.5225777337219615
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "29052129",
+        "score": 0.6172901264506794
+      },
+      {
+        "pmid": "30611768",
+        "score": 0.5818450990629075
+      },
+      {
+        "pmid": "39290403",
+        "score": 0.567904215015645
+      },
+      {
+        "pmid": "20413301",
+        "score": 0.5621072051318786
+      },
+      {
+        "pmid": "20485626",
+        "score": 0.5497443051800831
+      },
+      {
+        "pmid": "16461228",
+        "score": 0.546792510215603
+      },
+      {
+        "pmid": "32839523",
+        "score": 0.5450913075479472
+      },
+      {
+        "pmid": "25646384",
+        "score": 0.5337705505936033
+      },
+      {
+        "pmid": "28097530",
+        "score": 0.5273220794144308
+      },
+      {
+        "pmid": "38064540",
+        "score": 0.5225777337219615
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Mechanistic chain linking chronic HBV infection to HCC through persistent liver inflammation**\n\n* **Chronic HBV infection drives ongoing hepatic inflammation.** Human studies repeatedly note that immune‑mediated attacks on HBV‑infected hepatocytes produce “recurrent liver inflammation” [PMID: 29052129] and that “induction of chronic liver inflammation and regeneration” is a hallmark of HBV‑related carcinogenesis [PMID: 20413301]. These observations are derived from patient cohorts and are therefore **human evidence** of the infection‑inflammation link.\n\n* **Sustained inflammation promotes fibrosis and cirrhosis.** The same reviews describe how cytokine‑driven inflammation leads to “fibrosis and cirrhosis” [PMID: 20485626] and how “chronic liver inflammation and hepatic regeneration” create a pro‑fibrotic milieu [PMID: 16461228]. This is **human associative evidence**, supported by histopathologic data from chronic‑HBV patients.\n\n* **Fibrosis‑associated regeneration accelerates hepatocyte turnover and mutagenesis.** 29052129 explicitly states that inflammation “accelerates hepatocyte turnover rate and promote accumulation of mutations.” 16461228 adds that immune‑induced regeneration “favours the accumulation of genetic alterations in infected hepatocytes.” Both are **human mechanistic observations** linking tissue repair to genomic instability.\n\n* **Accumulated mutations and genomic instability culminate in HCC.** Long‑term HBV infection is identified as a “vigorous prognosticator” for HCC [PMID: 30611768], and 16461228 reports that HBV‑related tumors show a “significantly increased…chromosomal alterations,” implicating mutation burden in tumor emergence. This constitutes **human associative evidence** linking the mutation step to cancer development.\n\n* **Testable hypothesis: interrupting the inflammation‑fibrosis‑regeneration loop will reduce HCC risk.** The consensus across these reviews suggests that anti‑inflammatory or antifibrotic interventions (e.g., antiviral therapy) should blunt hepatocyte turnover and downstream mutagenesis, a premise currently examined in clinical trials. This hypothesis is **derived from"
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 2.8289854526519775e-05,
+    "vector_index": 1.6168222650885582,
+    "kg_expansion": 1.6868114471435547e-05,
+    "answer_traditional_rag": 35.50994247198105,
+    "total": 37.616873890161514
+  },
+  "token_usage": {
+    "total_tokens": 4786,
+    "input_tokens": 3586,
+    "output_tokens": 1200
+  },
+  "completed_at": "2026-08-16T18:04:46.594218+00:00"
+}

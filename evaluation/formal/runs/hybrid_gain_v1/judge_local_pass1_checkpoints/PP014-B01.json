@@ -1,0 +1,91 @@
+{
+  "task": "answer",
+  "question_id": "PP014",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "9dfae14135b7f0db4bfb1a84f113de9bb1734de22175bc128d558762205783c2",
+  "raw_response_sha256": "dc13e3c9d83d16e580ad0990f185caa3628e8aa56dac219889eecd88f0f20c04",
+  "usage": {
+    "input_tokens": 5672,
+    "output_tokens": 664,
+    "total_tokens": 6336
+  },
+  "rated_at": "2026-08-16T18:50:50.690999+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP014-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive stepwise evidence, primary animal studies, clear distinction of hops, limited human data."
+      },
+      {
+        "answer_id": "PP014-B",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Concise overview, includes reviews, less detail on human evidence."
+      },
+      {
+        "answer_id": "PP014-C",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Clear primary evidence for steps, brief on phenotype, limited human data."
+      },
+      {
+        "answer_id": "PP014-D",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Similar to B, relies on reviews for dysbiosis, solid mechanistic data."
+      },
+      {
+        "answer_id": "PP014-E",
+        "correctness": 5,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Emphasizes reviews, fewer primary dysbiosis studies, moderate completeness."
+      },
+      {
+        "answer_id": "PP014-F",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Extensive primary and clinical evidence, clear hops, strong mechanistic link."
+      },
+      {
+        "answer_id": "PP014-G",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Good coverage, includes reviews, slightly less primary dysbiosis data."
+      }
+    ],
+    "preferred_item_id": "PP014-F",
+    "pairwise_reason": "PP014-F provides the most complete and well‑grounded chain: primary animal data for each hop, a human dysbiosis observation, and clear mechanistic links, giving highest research value."
+  }
+}

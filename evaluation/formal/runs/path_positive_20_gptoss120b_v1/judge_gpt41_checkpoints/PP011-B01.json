@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP011",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "08dd4d039a3e5cbbdbd60fe8c9f1dad64d43dcedf49b079c896982ba92b8c869",
+  "raw_response_sha256": "b3e5cd3b1e0af5b1e3fbe00ebe77cc11c8918fbfd286a244a0cce6c954529604",
+  "usage": {
+    "input_tokens": 2881,
+    "output_tokens": 502,
+    "total_tokens": 3383
+  },
+  "rated_at": "2026-08-13T06:28:23.532292+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP011-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Clearly distinguishes each mechanistic hop, cites human/animal evidence, and provides PMIDs. Mechanistic and direct/indirect routes are well explained."
+      },
+      {
+        "answer_id": "PP011-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Excellent mechanistic breakdown, distinguishes evidence types, and integrates clinical, cellular, and molecular data. Lacks explicit PMIDs but otherwise well grounded."
+      },
+      {
+        "answer_id": "PP011-C",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 4,
+        "grounding": 3,
+        "mechanistic_coherence": 3,
+        "research_value": 4,
+        "notes": "Distinguishes some hops but lacks detail and omits evidence for key steps. Notes missing PMIDs. Mechanistic explanation is less developed."
+      },
+      {
+        "answer_id": "PP011-D",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive, labels evidence types, details each mechanistic hop, and proposes testable hypotheses. Strong mechanistic and translational insight."
+      }
+    ],
+    "preferred_item_id": "PP011-D",
+    "pairwise_reason": "PP011-D is the most comprehensive, clearly distinguishes evidence for each mechanistic hop, labels evidence types, and proposes testable hypotheses. PP011-A is also strong but less explicit about testable predictions. PP011-B is excellent but lacks explicit PMIDs. PP011-C is less complete and detailed."
+  }
+}

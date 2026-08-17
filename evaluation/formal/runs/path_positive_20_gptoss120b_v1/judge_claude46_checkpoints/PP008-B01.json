@@ -1,0 +1,63 @@
+{
+  "task": "answer",
+  "question_id": "PP008",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "f09f7e672a536752d9761467fe8762898957e6a9e02ea0b259163ef9a5ed1069",
+  "raw_response_sha256": "05cd05d3db3482ccbcaed819e28fb1ccc12e3e490fe25926ad308038d8a3ed55",
+  "usage": {
+    "input_tokens": 2800,
+    "output_tokens": 638,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 3438
+  },
+  "rated_at": "2026-08-13T06:29:09.443738+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP008-A",
+        "correctness": 3,
+        "completeness": 2,
+        "relevance": 4,
+        "grounding": 3,
+        "mechanistic_coherence": 3,
+        "research_value": 2,
+        "notes": "Correctly identifies two hops but conflates direction: dysbiosis lowering serotonin removes inhibition on bone formation, which would increase not decrease bone mass. Minimal citations, shallow mechanistic treatment."
+      },
+      {
+        "answer_id": "PP008-B",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Correctly distinguishes peripheral vs central serotonin effects, acknowledges missing direct bridge, adds SSRI clinical data, and proposes testable hypothesis. Good hop-by-hop evidence separation with appropriate caveats."
+      },
+      {
+        "answer_id": "PP008-C",
+        "correctness": 2,
+        "completeness": 4,
+        "relevance": 4,
+        "grounding": 2,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Contains fabricated or unverifiable claims (VSL#3 bone study, Enterococcus cortical thickness experiment, celiac 5-HIAA fracture data) without PMIDs. Narrative is plausible but poorly grounded; penalized for unsupported specifics."
+      },
+      {
+        "answer_id": "PP008-D",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Best structured: four distinct hops with citations, correctly distinguishes peripheral inhibitory vs central anabolic serotonin, includes SSRI clinical data, and synthesizes coherent overall path with appropriate directionality."
+      }
+    ],
+    "preferred_item_id": "PP008-D",
+    "pairwise_reason": "PP008-D provides the most complete, mechanistically coherent, and well-grounded hop-by-hop analysis, correctly distinguishing peripheral vs central serotonin roles and supporting each step with cited evidence, outperforming PP008-B which is close but less structured."
+  }
+}

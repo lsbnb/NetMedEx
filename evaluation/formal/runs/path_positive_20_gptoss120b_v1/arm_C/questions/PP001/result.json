@@ -1,0 +1,394 @@
+{
+  "status": "complete",
+  "question_id": "PP001",
+  "domain": "osteoporosis",
+  "question": "What evidence supports the claim that icariin promotes osteogenic differentiation, and what are the important study-context limitations?",
+  "question_type": "mechanism",
+  "pubmed_query": "icariin AND (osteoblast OR osteogenesis) AND (microRNA OR miRNA)",
+  "effective_pubmed_query": "icariin AND (osteoblast OR osteogenesis) AND (microRNA OR miRNA)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "27492554",
+    "29500883",
+    "29904399",
+    "32911026",
+    "33743412",
+    "35292240",
+    "38045146",
+    "39588260",
+    "41484919"
+  ],
+  "graph": {
+    "node_count": 65,
+    "edge_count": 90,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 1,
+    "pre_gate_candidate_count": 1,
+    "pre_gate_candidates": [
+      {
+        "path_id": "Q001-P02",
+        "path_signature": "90b8236c9fc91254",
+        "path_text": "icariin ->[promotes] osteogenic differentiation",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "GO:0001649_BiologicalProcess"
+        ],
+        "names": [
+          "icariin",
+          "osteogenic differentiation"
+        ],
+        "node_aliases": [
+          [
+            "ICA",
+            "Icariin",
+            "icariin"
+          ],
+          [
+            "osteoblast differentiation",
+            "osteogenic differentiation"
+          ]
+        ],
+        "relations": [
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "38045146"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Icariin promoted osteogenic differentiation by regulating the mmu_circ_0000349/mmu-miR-138-5p/JMJD3 pathway"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "38045146",
+            "selected_quote": "Icariin promoted osteogenic differentiation by regulating the mmu_circ_0000349/mmu-miR-138-5p/JMJD3 pathway",
+            "selected_confidence": 0.98,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "cef7d5cd52b8b8c64f48f071a78391b3df942047",
+              "schema_version": 1,
+              "pmid": "38045146",
+              "source_id": "MESH:C056599_Chemical",
+              "target_id": "GO:0001649_BiologicalProcess",
+              "relation": "promotes",
+              "evidence": "Icariin promoted osteogenic differentiation by regulating the mmu_circ_0000349/mmu-miR-138-5p/JMJD3 pathway",
+              "confidence": 0.98,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 1.023,
+        "hop_count": 1
+      }
+    ],
+    "preferred_pmids": [
+      "38045146"
+    ],
+    "paths": [
+      {
+        "path_id": "PP001-P01",
+        "path_signature": "90b8236c9fc91254",
+        "path_text": "icariin ->[promotes] osteogenic differentiation",
+        "node_ids": [
+          "MESH:C056599_Chemical",
+          "GO:0001649_BiologicalProcess"
+        ],
+        "names": [
+          "icariin",
+          "osteogenic differentiation"
+        ],
+        "node_aliases": [
+          [
+            "ICA",
+            "Icariin",
+            "icariin"
+          ],
+          [
+            "osteoblast differentiation",
+            "osteogenic differentiation"
+          ]
+        ],
+        "relations": [
+          "promotes"
+        ],
+        "edge_pmids": [
+          [
+            "38045146"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Icariin promoted osteogenic differentiation by regulating the mmu_circ_0000349/mmu-miR-138-5p/JMJD3 pathway"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "promotes",
+            "selected_pmid": "38045146",
+            "selected_quote": "Icariin promoted osteogenic differentiation by regulating the mmu_circ_0000349/mmu-miR-138-5p/JMJD3 pathway",
+            "selected_confidence": 0.98,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "selected_mechanism_event": {
+              "event_id": "cef7d5cd52b8b8c64f48f071a78391b3df942047",
+              "schema_version": 1,
+              "pmid": "38045146",
+              "source_id": "MESH:C056599_Chemical",
+              "target_id": "GO:0001649_BiologicalProcess",
+              "relation": "promotes",
+              "evidence": "Icariin promoted osteogenic differentiation by regulating the mmu_circ_0000349/mmu-miR-138-5p/JMJD3 pathway",
+              "confidence": 0.98,
+              "study_type": "Cell-line",
+              "grounding_status": "directional_quote_aligned"
+            },
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 1.023,
+        "hop_count": 1
+      }
+    ]
+  },
+  "evidence_exposure": {
+    "profile": "H_evidence_gated_four_hop",
+    "routed_profile": "H_evidence_gated_four_hop",
+    "selection_frozen_before_answers": true,
+    "source_result": "evaluation/formal/runs/abcd20_path_replay_v2/questions/Q001/result.json",
+    "frozen_exposure_source": "evaluation/formal/path_positive_20_v1/frozen_exposures/PP001/result.json",
+    "frozen_candidate_path_count": 1,
+    "frozen_exposed_path_count": 1,
+    "exposed_pmids": [
+      "38045146"
+    ],
+    "exposed_paths": [
+      [
+        "icariin",
+        "osteogenic differentiation"
+      ]
+    ],
+    "exposed_edges": [
+      "icariin ->[promotes] osteogenic differentiation"
+    ],
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 1,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "answer_context_path_signatures": [
+      "90b8236c9fc91254"
+    ],
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {
+        "38045146": {
+          "text_score": 0.558019,
+          "graph_score": 1.0,
+          "reranked_score": 0.712712
+        }
+      }
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "38045146",
+        "score": 0.7127123692902902
+      },
+      {
+        "pmid": "27492554",
+        "score": 0.633327811872088
+      },
+      {
+        "pmid": "33743412",
+        "score": 0.5862302414526778
+      },
+      {
+        "pmid": "29904399",
+        "score": 0.5771281986222854
+      },
+      {
+        "pmid": "35292240",
+        "score": 0.5741757243258253
+      },
+      {
+        "pmid": "29500883",
+        "score": 0.558228130795323
+      },
+      {
+        "pmid": "41484919",
+        "score": 0.5308068723750677
+      },
+      {
+        "pmid": "39588260",
+        "score": 0.517301487762988
+      },
+      {
+        "pmid": "32911026",
+        "score": 0.5018999076626148
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "27492554",
+        "score": 0.633327811872088
+      },
+      {
+        "pmid": "33743412",
+        "score": 0.5862302414526778
+      },
+      {
+        "pmid": "29904399",
+        "score": 0.5771281986222854
+      },
+      {
+        "pmid": "35292240",
+        "score": 0.5741757243258253
+      },
+      {
+        "pmid": "29500883",
+        "score": 0.558228130795323
+      },
+      {
+        "pmid": "38045146",
+        "score": 0.5580190296773696
+      },
+      {
+        "pmid": "41484919",
+        "score": 0.5308068723750677
+      },
+      {
+        "pmid": "39588260",
+        "score": 0.517301487762988
+      },
+      {
+        "pmid": "32911026",
+        "score": 0.5018999076626148
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "**Direct experimental evidence that icariin (ICA) promotes osteogenic differentiation**\n\n- **Mouse MC3T3‑E1 pre‑osteoblasts** – ICA dose‑ and time‑dependently raised circRNA mmu_circ_0000349, JMJD3, ALP and RUNX2 expression and increased ALP activity and mineralized nodules; inhibition of the circRNA reversed these effects, implicating the mmu_circ_0000349/miR‑138‑5p/JMJD3 axis as a mechanistic driver of ICA‑induced osteogenesis【PMID:38045146】. *(in‑vitro, murine)*  \n- **LPS‑injured MC3T3‑E1 cells** – ICA restored ALP activity, RUNX2 protein, OPN and BMP2 levels, and rescued mineral nodule formation in a dose‑dependent manner; the effect was abolished by miR‑34c over‑expression, indicating ICA acts through down‑regulation of miR‑34c and inhibition of JNK/p38/NF‑κB signaling【PMID:27492554】. *(in‑vitro, murine)*  \n- **Human bone‑derived mesenchymal stem cells (hBMSCs)** – ICA enhanced ALP activity, BSP‑II and RUNX2 expression and suppressed adipogenic markers (PPARγ, C/EBPα); these outcomes required activation of Wnt/β‑catenin signalling and were blocked by miR‑23a over‑expression, establishing a miR‑23a‑mediated pathway for ICA‑driven osteogenesis【PMID:33743412】. *(in‑vitro, human)*  \n- **MC3T3‑E1 cells (miR‑153/Runx2 axis)** – ICA increased cell proliferation, ALP activity, mineralisation and up‑regulated miR‑153 and RUNX2; luciferase assays confirmed miR‑153 directly targets the Runx2 3′‑UTR, supporting a miR‑153/Runx2 mechanism【PMID:29904399】. *(in‑vitro, murine)*  \n- **Osteoporotic rat model + BMSC culture** – Oral ICA (or miR‑335‑5p over‑expression) restored bone micro‑architecture in ovariectomised rats and rescued BMSC mineralisation; ICA acted by up‑regulating miR‑335‑5p, which suppressed PTEN to promote osteogenesis【PMID:35292240】. *(in‑vivo, rodent + in‑vitro)*  \n\n**Associative observations / supporting trends**\n\n- ICA consistently up‑regulated canonical osteogenic markers (ALP, RUNX2, BMP2, OCN) across species and cell types, while down‑regulating osteoclast‑linked miRNAs (miR‑34c, miR‑138‑5p) or adipogenic cues (PPARγ).  \n- Protective effects were observed in stress models (LPS, Ti particles) where"
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 2.2351741790771484e-05,
+    "vector_index": 3.7382728531956673,
+    "kg_expansion": 3.6388635635375977e-05,
+    "answer_netmedex_hybrid_rag": 34.082162633538246,
+    "total": 38.52801143378019
+  },
+  "token_usage": {
+    "output_tokens": 1200,
+    "total_tokens": 5825,
+    "input_tokens": 4625
+  },
+  "completed_at": "2026-08-13T05:37:50.544718+00:00"
+}

@@ -1,0 +1,193 @@
+{
+  "status": "complete",
+  "question_id": "Q021",
+  "domain": "nephrology",
+  "question": "What evidence links SGLT2 inhibitors to reduced kidney inflammation or fibrosis?",
+  "question_type": "direct_evidence",
+  "pubmed_query": "SGLT2 inhibitor empagliflozin dapagliflozin kidney inflammation fibrosis",
+  "effective_pubmed_query": "SGLT2 inhibitor empagliflozin dapagliflozin kidney inflammation fibrosis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "31936266",
+    "36513134",
+    "36534320",
+    "36768138",
+    "38634653",
+    "39676197",
+    "40279256",
+    "40429921",
+    "40829258",
+    "41285328"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "routed_profile": "A_text_only",
+    "route_reason": "question_type=direct_evidence",
+    "question_type": "direct_evidence",
+    "graph_retrieval_query": "What evidence links SGLT2 inhibitors to reduced kidney inflammation or fibrosis?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "36534320",
+        "score": 0.6208449036383552
+      },
+      {
+        "pmid": "40279256",
+        "score": 0.6018225910681236
+      },
+      {
+        "pmid": "36513134",
+        "score": 0.6004093624720243
+      },
+      {
+        "pmid": "41285328",
+        "score": 0.5790602005351086
+      },
+      {
+        "pmid": "40429921",
+        "score": 0.5576846303935108
+      },
+      {
+        "pmid": "36768138",
+        "score": 0.5523617696828242
+      },
+      {
+        "pmid": "39676197",
+        "score": 0.5490827944796175
+      },
+      {
+        "pmid": "31936266",
+        "score": 0.5326700120804079
+      },
+      {
+        "pmid": "38634653",
+        "score": 0.5028084473728589
+      },
+      {
+        "pmid": "40829258",
+        "score": 0.4606643508812972
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "36534320",
+        "score": 0.6208449036383552
+      },
+      {
+        "pmid": "40279256",
+        "score": 0.6018225910681236
+      },
+      {
+        "pmid": "36513134",
+        "score": 0.6004093624720243
+      },
+      {
+        "pmid": "41285328",
+        "score": 0.5790602005351086
+      },
+      {
+        "pmid": "40429921",
+        "score": 0.5576846303935108
+      },
+      {
+        "pmid": "36768138",
+        "score": 0.5523617696828242
+      },
+      {
+        "pmid": "39676197",
+        "score": 0.5490827944796175
+      },
+      {
+        "pmid": "31936266",
+        "score": 0.5326700120804079
+      },
+      {
+        "pmid": "38634653",
+        "score": 0.5028084473728589
+      },
+      {
+        "pmid": "40829258",
+        "score": 0.4606643508812972
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "**Direct experimental evidence**\n\n- **In‑vitro human proximal tubular cells** – Empagliflozin (500 nM) and dapagliflozin (500 nM) lowered the inflammation‑driven adhesion molecule ICAM‑1 protein by ~23 % and modestly reduced cytokine (IL‑1β, IL‑6, TNF‑α, MCP‑1) mRNA expression in primary human renal tubular cells cultured in high‑glucose/ cytokine media【PMID:36768138】 (in‑vitro). A parallel study reported that dapagliflozin decreased oxidative stress in the same cell model, while neither drug altered IL‑6 mRNA or KIM‑1/NGAL protein levels【PMID:31936266】 (in‑vitro).\n\n**Animal / pre‑clinical evidence**\n\n- **Rodent CKD models** – Multiple experimental studies in diabetic and non‑diabetic rats showed that SGLT2‑inhibition reduced renal interstitial fibrosis and inflammatory cell infiltration, linked to lowered hypoxia, oxidative stress, and renin‑angiotensin‑system activation【PMID:36534320】 (animal). A recent review of non‑diabetic rat models of hypertension, CKD and heart failure corroborated these findings, noting consistent decreases in tissue TGF‑β, collagen deposition, and pro‑inflammatory cytokines after gliflozin treatment【PMID:38634653】 (animal).\n\n- **Macrophage‑mediated mechanisms** – Dapagliflozin, empagliflozin and canagliflozin were shown to shift renal macrophages from a pro‑inflammatory M1 phenotype toward an anti‑inflammatory M2 phenotype, suppress NF‑κB signaling and reduce renal IL‑1β, IL‑6 and TNF‑α production; these immunomodulatory actions were linked to attenuation of renal fibrosis in both diabetic and non‑diabetic kidney injury models【PMID:41285328】 (animal/in‑vitro).\n\n**Human clinical associations**\n\n- **Large outcome trials and meta‑analyses** – Post‑marketing cardiovascular outcome trials (e.g., CREDENCE, DAPA‑CKD) demonstrated that SGLT2‑inhibitors lower the risk of progressive CKD, albuminuria, and end‑stage renal disease. Review articles interpret these benefits as a class effect that “suppresses inflammation and fibrosis” in patients with and without diabetes【PMID:40279256】, and link them to mechanistic pathways such as RAS inhibition, hypoxia reduction, and metabolic reprogramming【PMID:36513134】 (human association).\n\n**Testable mechanistic hypothesis**\n\n- The anti‑fibrotic kidney effect of SGLT2‑inhibitors may be mediated by a cascade: (1) reduced tubular glucose and sodium reabsorption → (2) activation of tubuloglomerular feedback → (3) lower intraglomerular pressure and renal hypoxia → (4) downstream suppression of oxidative stress, NF‑κB and TGF‑β signaling, and (5) promotion of anti‑inflammatory macrophage (M2) polarization, ultimately decreasing collagen deposition and fibrosis【PMID:36534320】 (hypothesis).\n\n**Conclusion**  \nAcross cell‑culture, animal, and clinical data, SGLT2 inhibitors consistently demonstrate anti‑inflammatory and anti‑fibrotic actions in the kidney, supporting their role in slowing CKD progression."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 8.53314995765686e-05,
+    "vector_index": 1.1949716284871101,
+    "kg_expansion": 8.858740329742432e-06,
+    "answer_netmedex_hybrid_rag": 42.203103229403496,
+    "total": 43.88052996248007
+  },
+  "token_usage": {
+    "total_tokens": 5972,
+    "input_tokens": 4420,
+    "output_tokens": 1552
+  },
+  "completed_at": "2026-08-13T03:59:18.016934+00:00"
+}

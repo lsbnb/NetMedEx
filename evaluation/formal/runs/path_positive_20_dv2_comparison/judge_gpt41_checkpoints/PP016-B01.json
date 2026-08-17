@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "question_id": "PP016",
+  "batch": 1,
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "input_sha256": "f80ebee4c8c139bb8cbd67140834d19e22078418fbcffcda845f759171c8c5fb",
+  "raw_response_sha256": "1a770fe24b71e8b61d1094c11e99e4ce12f4253b76163933343050f65992073c",
+  "usage": {
+    "input_tokens": 2483,
+    "output_tokens": 450,
+    "total_tokens": 2933
+  },
+  "rated_at": "2026-08-13T07:11:15.928549+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP016-A",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Strong animal evidence for both hops, clear mechanistic chain, but lacks explicit human data."
+      },
+      {
+        "answer_id": "PP016-B",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Distinguishes animal and human evidence for each hop, cites direct and associative data, and integrates reviews and interventions."
+      },
+      {
+        "answer_id": "PP016-C",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Clearly distinguishes evidence for each hop, includes human and animal data, but less detail on intervention or causality."
+      },
+      {
+        "answer_id": "PP016-D",
+        "correctness": 5,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 5,
+        "mechanistic_coherence": 5,
+        "research_value": 4,
+        "notes": "Strong mechanistic and intervention evidence, both animal and human, but less explicit about stepwise inference."
+      }
+    ],
+    "preferred_item_id": "PP016-B",
+    "pairwise_reason": "PP016-B most thoroughly distinguishes evidence for each mechanistic hop, integrates both animal and human studies, includes intervention data, and references systematic reviews, making it the most complete and well-grounded answer."
+  }
+}

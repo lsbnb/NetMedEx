@@ -1,0 +1,83 @@
+{
+  "task": "hidden_claim",
+  "question_id": "Q008",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-haiku-4-5-20251001",
+  "input_sha256": "f5f0ab842cfe2947ae0b0e6e056f54bec3af50419ed16f6f02aeff4267e24e0d",
+  "raw_response_sha256": "fac41f7900bbc37c71b33b4bf3e4ca863616d289a0a35025ec7b409add337305",
+  "usage": {
+    "input_tokens": 3487,
+    "output_tokens": 858,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 4345
+  },
+  "rated_at": "2026-08-05T02:42:14.293847+00:00",
+  "result": {
+    "ratings": [
+      {
+        "hidden_claim_id": "Q008-HC01",
+        "hybrid_only": 0,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 1,
+        "non_obviousness": 4,
+        "research_utility": 5,
+        "unsupported_novelty": 0,
+        "notes": "Direct animal evidence (iCftr KO) clearly supports CFTR loss induces dysbiosis and inflammation. Multiple PMIDs confirm epithelial-specific mechanism. Strong mechanistic foundation."
+      },
+      {
+        "hidden_claim_id": "Q008-HC02",
+        "hybrid_only": 0,
+        "path_traceable": 0,
+        "evidence_support": 0,
+        "relation_direction_correct": 0,
+        "multi_document_or_hop": 0,
+        "non_obviousness": 3,
+        "research_utility": 4,
+        "unsupported_novelty": 1,
+        "notes": "Claim specifies NF-κB mechanistic link, but supplied path evidence only shows CFTR→inflammation without NF-κB intermediate. PMID 27588407 cited but quote absent from path. Requires explicit NF-κB evidence."
+      },
+      {
+        "hidden_claim_id": "Q008-HC03",
+        "hybrid_only": 0,
+        "path_traceable": 0,
+        "evidence_support": 0,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 1,
+        "non_obviousness": 3,
+        "research_utility": 4,
+        "unsupported_novelty": 1,
+        "notes": "Claims multi-hop (CFTR→dysbiosis→inflammation) but path evidence only shows CFTR→dysbiosis. Second hop (dysbiosis→inflammation) lacks explicit supporting quote and PMID linkage in provided evidence."
+      },
+      {
+        "hidden_claim_id": "Q008-HC04",
+        "hybrid_only": 0,
+        "path_traceable": 0,
+        "evidence_support": 0,
+        "relation_direction_correct": 0,
+        "multi_document_or_hop": 0,
+        "non_obviousness": 4,
+        "research_utility": 4,
+        "unsupported_novelty": 1,
+        "notes": "Claim adds specific mechanistic detail (SCFA depletion, Bacteroides loss, propionate) not present in supplied path evidence. PMID 38179971 cited but no supporting quote provided. Unsupported novelty."
+      },
+      {
+        "hidden_claim_id": "Q008-HC05",
+        "hybrid_only": 0,
+        "path_traceable": 1,
+        "evidence_support": 1,
+        "relation_direction_correct": 1,
+        "multi_document_or_hop": 1,
+        "non_obviousness": 4,
+        "research_utility": 5,
+        "unsupported_novelty": 0,
+        "notes": "Epithelial-specific sufficiency claim directly supported by iCftr KO evidence. Quotes explicitly state epithelial-specific loss is sufficient. Strong mechanistic and translational value."
+      }
+    ],
+    "preferred_item_id": "",
+    "pairwise_reason": ""
+  }
+}

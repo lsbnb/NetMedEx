@@ -1,0 +1,27 @@
+{
+  "input_dir": "evaluation/formal/runs/adaptive-replay-small-evidence-boost-offline",
+  "metrics": {
+    "retrieval": {
+      "netmedex_hybrid_rag": {
+        "precision_at_5": 1.0,
+        "recall_at_10": 0.553,
+        "ndcg_at_10": 0.8194,
+        "judged_at_10": 1.0,
+        "unjudged_at_10": 0.0,
+        "returned_at_10": 0.9667,
+        "bpref": 0.6023,
+        "bpref_evaluable_questions": 2
+      },
+      "traditional_rag": {
+        "precision_at_5": 1.0,
+        "recall_at_10": 0.553,
+        "ndcg_at_10": 0.7961,
+        "judged_at_10": 1.0,
+        "unjudged_at_10": 0.0,
+        "returned_at_10": 0.9667,
+        "bpref": 0.6023,
+        "bpref_evaluable_questions": 2
+      }
+    }
+  }
+}

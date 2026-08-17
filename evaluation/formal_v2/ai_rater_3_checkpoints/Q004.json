@@ -1,0 +1,135 @@
+{
+  "question_id": "Q004",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-29T10:49:27.927513+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q004-C001",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "no_usable_evidence",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract discusses curcumin targeting the PI3K/AKT pathway but does not mention apoptosis, thus failing to provide evidence for the requested 2-hop path."
+    },
+    {
+      "candidate_id": "Q004-C002",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "too_broad",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract mentions that curcumin modulates proapoptotic and antiapoptotic proteins but does not name any specific genes mediating this relationship."
+    },
+    {
+      "candidate_id": "Q004-C003",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "no_usable_evidence",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract lists several signaling pathways modulated by curcumin but does not mention apoptosis as an outcome."
+    },
+    {
+      "candidate_id": "Q004-C004",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract directly states that curcumin induces apoptosis by regulating the Nrf2/GPX4 signaling pathway, providing specific genes for the 2-hop path."
+    },
+    {
+      "candidate_id": "Q004-C005",
+      "relevance": 1,
+      "confidence": 2,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract provides adjacent evidence by linking a combination treatment of curcumin and resveratrol to the PI3K/AKT/mTOR pathway and apoptotic markers."
+    },
+    {
+      "candidate_id": "Q004-C006",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract directly identifies multiple genes and pathways (p53, NF-kappaB, COX-2, Bcl-2, PI3K, MAPKs) that mediate curcumin-induced apoptosis."
+    },
+    {
+      "candidate_id": "Q004-C007",
+      "relevance": 1,
+      "confidence": 2,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract provides useful adjacent context by identifying NF-kappaB and Akt as target pathways for a combination of curcumin and ursolic acid in relation to apoptosis."
+    },
+    {
+      "candidate_id": "Q004-C008",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract directly names specific genes (Bcl-2, Bax, caspases, etc.) whose expression or activation is modulated by curcumin to induce apoptosis."
+    },
+    {
+      "candidate_id": "Q004-C009",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract directly addresses the 2-hop path, stating that curcumin inhibits the STAT3 signaling pathway, thereby inducing apoptosis."
+    },
+    {
+      "candidate_id": "Q004-C010",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract provides review-level context, listing pathways (PI3K/Akt/mTOR, NF-kappaB) and apoptosis as therapeutic outcomes of curcumin, though the direct causal link is broadly stated."
+    },
+    {
+      "candidate_id": "Q004-C011",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "too_broad",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract discusses curcumin-induced apoptosis and the involvement of pro- and antiapoptotic molecules but fails to name any specific genes."
+    },
+    {
+      "candidate_id": "Q004-C012",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract directly identifies the NF-kappaB and PI3K/Akt signaling pathways as mediators of curcumin-induced apoptosis."
+    },
+    {
+      "candidate_id": "Q004-C013",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "too_broad",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract mentions that curcumin targets multiple signaling pathways and induces apoptosis but does not specify any genes."
+    },
+    {
+      "candidate_id": "Q004-C014",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract provides useful adjacent evidence by listing molecular pathways affected by curcumin (NF-kappaB, mTOR, PI3/Akt) alongside its ability to induce apoptosis."
+    },
+    {
+      "candidate_id": "Q004-C015",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "too_broad",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract discusses curcumin's modulation of apoptosis but does not name any specific genes or pathways mediating this effect."
+    },
+    {
+      "candidate_id": "Q004-C016",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "no_usable_evidence",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract mentions curcumin induces apoptosis and separately discusses NLRP3 in the context of pyroptosis, failing to provide a specific gene mediating apoptosis."
+    },
+    {
+      "candidate_id": "Q004-C017",
+      "relevance": 0,
+      "confidence": 3,
+      "exclusion_reason": "too_broad",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract states that curcumin suppresses multiple signaling pathways and induces apoptosis but lacks specific gene names."
+    },
+    {
+      "candidate_id": "Q004-C018",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract directly addresses the question by identifying the AMPK/mTOR/ULK1 signaling pathway as the mediator of curcumin-induced apoptosis."
+    }
+  ],
+  "raw_response_sha256": "bad46648e01d51a6d280100a54804c9e6d157fb56af92992b243f81adecc3a0a"
+}

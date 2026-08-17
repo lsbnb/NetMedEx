@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 def _init_cli_llm_client(args, usage_context: str):
     from dotenv import load_dotenv
 
-    from webapp.llm import LLMClient
+    from webapp.llm import LLMClient, gemini_api_disabled
 
     load_dotenv()
     llm_client = LLMClient()
@@ -41,6 +41,12 @@ def _init_cli_llm_client(args, usage_context: str):
             )
             sys.exit(1)
     elif provider == "google":
+        if gemini_api_disabled():
+            logger.error(
+                "Google/Gemini API is disabled by DISABLE_GEMINI_API. "
+                "Use --llm_provider local instead."
+            )
+            sys.exit(1)
         api_key = api_key or os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
         base_url = base_url or "https://generativelanguage.googleapis.com/v1beta/openai/"
         if not api_key:

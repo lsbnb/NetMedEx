@@ -1,0 +1,970 @@
+{
+  "status": "complete",
+  "question_id": "PP015",
+  "domain": "rare disease",
+  "question": "What evidence supports a mechanistic path from cftr to inflammation through cystic fibrosis? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "CFTR AND (intestine OR intestinal) AND inflammation",
+  "effective_pubmed_query": "CFTR AND (intestine OR intestinal) AND inflammation",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "23142604",
+    "23788646",
+    "24548777",
+    "24685676",
+    "26923293",
+    "26976279",
+    "27473379",
+    "27588407",
+    "27703398",
+    "28215711",
+    "29933921",
+    "30546102",
+    "31636470",
+    "31679154",
+    "32326161",
+    "33201261",
+    "34339302",
+    "34884634",
+    "35160099",
+    "35331400",
+    "35523321",
+    "35743652",
+    "36117114",
+    "36289287",
+    "36600119",
+    "36967909",
+    "37003609",
+    "37546931",
+    "38043755",
+    "38073491",
+    "38179971",
+    "38233247",
+    "38554847",
+    "40047092",
+    "40247380",
+    "40379512",
+    "40824057",
+    "41347923",
+    "41498431"
+  ],
+  "graph": {
+    "node_count": 172,
+    "edge_count": 296,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 3,
+    "pre_gate_candidate_count": 3,
+    "pre_gate_candidates": [
+      {
+        "path_id": "BW003-P01",
+        "path_signature": "daf58598d61d93bf",
+        "path_text": "cftr ->[induces] inflammation",
+        "node_ids": [
+          "12638_Gene",
+          "MESH:D007249_Disease"
+        ],
+        "names": [
+          "cftr",
+          "inflammation"
+        ],
+        "node_aliases": [
+          [
+            "Cftr"
+          ],
+          [
+            "Inflammation"
+          ]
+        ],
+        "relations": [
+          "induces"
+        ],
+        "edge_pmids": [
+          [
+            "37546931"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis and inflammation."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "induces",
+            "selected_pmid": "37546931",
+            "selected_quote": "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis and inflammation.",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 3,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "support_outside_text_top_k",
+          "bridge_absent_from_text",
+          "query_path_misaligned"
+        ],
+        "supporting_pmids_outside_text_top_k": [
+          "37546931"
+        ],
+        "score": 0.799,
+        "hop_count": 1,
+        "path_relevance_score": 0.6995,
+        "graph_relevance_score": 0.799,
+        "query_endpoint_coverage": 1.0,
+        "requested_bridge_coverage": 0.0,
+        "query_bridge_precision": 1.0,
+        "query_path_alignment_score": 0.6,
+        "incremental_mechanism_score": 0.7,
+        "mechanism_utility_score": 0.699725
+      },
+      {
+        "path_id": "BW003-P02",
+        "path_signature": "9ed6292d75395474",
+        "path_text": "cftr ->[causes] cystic fibrosis | cystic fibrosis ->[leads_to] inflammation",
+        "node_ids": [
+          "12638_Gene",
+          "MESH:D003550_Disease",
+          "MESH:D007249_Disease"
+        ],
+        "names": [
+          "cftr",
+          "cystic fibrosis",
+          "inflammation"
+        ],
+        "node_aliases": [
+          [
+            "Cftr"
+          ],
+          [
+            "Cystic Fibrosis"
+          ],
+          [
+            "Inflammation"
+          ]
+        ],
+        "relations": [
+          "causes",
+          "leads_to"
+        ],
+        "edge_pmids": [
+          [
+            "36289287"
+          ],
+          [
+            "33201261"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Cystic fibrosis (CF) is a life-threatening genetic disorder, caused by mutations in the CF transmembrane-conductance regulator gene (cftr)"
+          ],
+          [
+            "This leads to inflammation and infection, fibrosis and progressive tissue destruction."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "36289287",
+            "selected_quote": "Cystic fibrosis (CF) is a life-threatening genetic disorder, caused by mutations in the CF transmembrane-conductance regulator gene (cftr)",
+            "selected_confidence": 1.0,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "leads_to",
+            "selected_pmid": "33201261",
+            "selected_quote": "This leads to inflammation and infection, fibrosis and progressive tissue destruction.",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 8,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "two_hop",
+          "all_support_in_text_top_k",
+          "bridge_visible_in_text",
+          "query_path_aligned"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.707,
+        "hop_count": 2,
+        "path_relevance_score": 0.8535,
+        "graph_relevance_score": 0.707,
+        "query_endpoint_coverage": 1.0,
+        "requested_bridge_coverage": 1.0,
+        "query_bridge_precision": 1.0,
+        "query_path_alignment_score": 1.0,
+        "incremental_mechanism_score": 0.3,
+        "mechanism_utility_score": 0.604425
+      },
+      {
+        "path_id": "BW003-P03",
+        "path_signature": "57416f2f7b9449cc",
+        "path_text": "cftr ->[induces] dysbiosis | dysbiosis --[associated_with] inflammation",
+        "node_ids": [
+          "12638_Gene",
+          "MESH:D064806_Disease",
+          "MESH:D007249_Disease"
+        ],
+        "names": [
+          "cftr",
+          "dysbiosis",
+          "inflammation"
+        ],
+        "node_aliases": [
+          [
+            "Cftr"
+          ],
+          [
+            "Dysbiosis"
+          ],
+          [
+            "Inflammation"
+          ]
+        ],
+        "relations": [
+          "induces",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "37546931"
+          ],
+          [
+            "36600119"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis and inflammation."
+          ],
+          [
+            "Gut microbiota dysbiosis results from changes in the complex gut milieu in response to CF transmembrane conductance regulator (CFTR) dysfunction, pancreatic malabsorption, diet, medications, and environmental influences. In several diseases, alteration of the gut microbiota influences local and systemic inflammation and disease outcomes."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "induces",
+            "selected_pmid": "37546931",
+            "selected_quote": "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis and inflammation.",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "36600119",
+            "selected_quote": "Gut microbiota dysbiosis results from changes in the complex gut milieu in response to CF transmembrane conductance regulator (CFTR) dysfunction, pancreatic malabsorption, diet, medications, and environmental influences. In several diseases, alteration of the gut microbiota influences local and systemic inflammation and disease outcomes.",
+            "selected_confidence": 0.85,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 10,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "two_hop",
+          "support_outside_text_top_k",
+          "bridge_visible_in_text",
+          "query_path_misaligned"
+        ],
+        "supporting_pmids_outside_text_top_k": [
+          "36600119",
+          "37546931"
+        ],
+        "score": 0.689,
+        "hop_count": 2,
+        "path_relevance_score": 0.5445,
+        "graph_relevance_score": 0.689,
+        "query_endpoint_coverage": 1.0,
+        "requested_bridge_coverage": 0.0,
+        "query_bridge_precision": 0.0,
+        "query_path_alignment_score": 0.4,
+        "incremental_mechanism_score": 0.75,
+        "mechanism_utility_score": 0.636975
+      }
+    ],
+    "preferred_pmids": [
+      "33201261",
+      "36289287",
+      "36600119",
+      "37546931"
+    ],
+    "paths": [
+      {
+        "path_id": "PP015-P01",
+        "path_signature": "daf58598d61d93bf",
+        "path_text": "cftr ->[induces] inflammation",
+        "node_ids": [
+          "12638_Gene",
+          "MESH:D007249_Disease"
+        ],
+        "names": [
+          "cftr",
+          "inflammation"
+        ],
+        "node_aliases": [
+          [
+            "Cftr"
+          ],
+          [
+            "Inflammation"
+          ]
+        ],
+        "relations": [
+          "induces"
+        ],
+        "edge_pmids": [
+          [
+            "37546931"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis and inflammation."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "induces",
+            "selected_pmid": "37546931",
+            "selected_quote": "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis and inflammation.",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 3,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_multi_hop",
+          "support_outside_text_top_k",
+          "bridge_absent_from_text",
+          "query_path_misaligned"
+        ],
+        "supporting_pmids_outside_text_top_k": [
+          "37546931"
+        ],
+        "path_relevance_score": 0.6995,
+        "graph_relevance_score": 0.799,
+        "query_endpoint_coverage": 1.0,
+        "requested_bridge_coverage": 0.0,
+        "query_bridge_precision": 1.0,
+        "query_path_alignment_score": 0.6,
+        "incremental_mechanism_score": 0.7,
+        "mechanism_utility_score": 0.699725,
+        "score": 0.799,
+        "hop_count": 1
+      },
+      {
+        "path_id": "PP015-P02",
+        "path_signature": "9ed6292d75395474",
+        "path_text": "cftr ->[causes] cystic fibrosis | cystic fibrosis ->[leads_to] inflammation",
+        "node_ids": [
+          "12638_Gene",
+          "MESH:D003550_Disease",
+          "MESH:D007249_Disease"
+        ],
+        "names": [
+          "cftr",
+          "cystic fibrosis",
+          "inflammation"
+        ],
+        "node_aliases": [
+          [
+            "Cftr"
+          ],
+          [
+            "Cystic Fibrosis"
+          ],
+          [
+            "Inflammation"
+          ]
+        ],
+        "relations": [
+          "causes",
+          "leads_to"
+        ],
+        "edge_pmids": [
+          [
+            "36289287"
+          ],
+          [
+            "33201261"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Cystic fibrosis (CF) is a life-threatening genetic disorder, caused by mutations in the CF transmembrane-conductance regulator gene (cftr)"
+          ],
+          [
+            "This leads to inflammation and infection, fibrosis and progressive tissue destruction."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "36289287",
+            "selected_quote": "Cystic fibrosis (CF) is a life-threatening genetic disorder, caused by mutations in the CF transmembrane-conductance regulator gene (cftr)",
+            "selected_confidence": 1.0,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "leads_to",
+            "selected_pmid": "33201261",
+            "selected_quote": "This leads to inflammation and infection, fibrosis and progressive tissue destruction.",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 8,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "two_hop",
+          "all_support_in_text_top_k",
+          "bridge_visible_in_text",
+          "query_path_aligned"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "path_relevance_score": 0.8535,
+        "graph_relevance_score": 0.707,
+        "query_endpoint_coverage": 1.0,
+        "requested_bridge_coverage": 1.0,
+        "query_bridge_precision": 1.0,
+        "query_path_alignment_score": 1.0,
+        "incremental_mechanism_score": 0.3,
+        "mechanism_utility_score": 0.604425,
+        "score": 0.707,
+        "hop_count": 2
+      },
+      {
+        "path_id": "PP015-P03",
+        "path_signature": "57416f2f7b9449cc",
+        "path_text": "cftr ->[induces] dysbiosis | dysbiosis --[associated_with] inflammation",
+        "node_ids": [
+          "12638_Gene",
+          "MESH:D064806_Disease",
+          "MESH:D007249_Disease"
+        ],
+        "names": [
+          "cftr",
+          "dysbiosis",
+          "inflammation"
+        ],
+        "node_aliases": [
+          [
+            "Cftr"
+          ],
+          [
+            "Dysbiosis"
+          ],
+          [
+            "Inflammation"
+          ]
+        ],
+        "relations": [
+          "induces",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "37546931"
+          ],
+          [
+            "36600119"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis and inflammation."
+          ],
+          [
+            "Gut microbiota dysbiosis results from changes in the complex gut milieu in response to CF transmembrane conductance regulator (CFTR) dysfunction, pancreatic malabsorption, diet, medications, and environmental influences. In several diseases, alteration of the gut microbiota influences local and systemic inflammation and disease outcomes."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "induces",
+            "selected_pmid": "37546931",
+            "selected_quote": "This study shows that intestinal epithelial cell-specific loss of CFTR (iCftr KO) in mice is sufficient to induce intestinal dysbiosis and inflammation.",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation",
+              "quote_relation_aligned"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "36600119",
+            "selected_quote": "Gut microbiota dysbiosis results from changes in the complex gut milieu in response to CF transmembrane conductance regulator (CFTR) dysfunction, pancreatic malabsorption, diet, medications, and environmental influences. In several diseases, alteration of the gut microbiota influences local and systemic inflammation and disease outcomes.",
+            "selected_confidence": 0.85,
+            "directional": false,
+            "quote_relation_aligned": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation",
+              "quote_relation_aligned"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 10,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_subtype": "confirmation_only",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "two_hop",
+          "support_outside_text_top_k",
+          "bridge_visible_in_text",
+          "query_path_misaligned"
+        ],
+        "supporting_pmids_outside_text_top_k": [
+          "36600119",
+          "37546931"
+        ],
+        "path_relevance_score": 0.5445,
+        "graph_relevance_score": 0.689,
+        "query_endpoint_coverage": 1.0,
+        "requested_bridge_coverage": 0.0,
+        "query_bridge_precision": 0.0,
+        "query_path_alignment_score": 0.4,
+        "incremental_mechanism_score": 0.75,
+        "mechanism_utility_score": 0.636975,
+        "score": 0.689,
+        "hop_count": 2
+      }
+    ]
+  },
+  "evidence_exposure": {
+    "profile": "H_evidence_gated_four_hop",
+    "routed_profile": "H_evidence_gated_four_hop",
+    "selection_frozen_before_answers": true,
+    "source_result": "evaluation/formal/runs/bridge-withheld-endpoint-only-bw003-v1-retrieval/questions/BW003/result.json",
+    "expanded_reliable_pool": true,
+    "frozen_exposure_source": "evaluation/formal/path_positive_20_v1/frozen_exposures_expanded/PP015/result.json",
+    "frozen_candidate_path_count": 3,
+    "frozen_exposed_path_count": 3,
+    "exposed_pmids": [
+      "33201261",
+      "36289287",
+      "36600119",
+      "37546931"
+    ],
+    "exposed_paths": [
+      [
+        "cftr",
+        "inflammation"
+      ],
+      [
+        "cftr",
+        "cystic fibrosis",
+        "inflammation"
+      ],
+      [
+        "cftr",
+        "dysbiosis",
+        "inflammation"
+      ]
+    ],
+    "exposed_edges": [
+      "cftr ->[induces] inflammation",
+      "cftr ->[causes] cystic fibrosis | cystic fibrosis ->[leads_to] inflammation",
+      "cftr ->[induces] dysbiosis | dysbiosis --[associated_with] inflammation"
+    ],
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 3,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [
+        "cystic fibrosis"
+      ],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "pre_gate_incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 3,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [
+        "cystic fibrosis"
+      ],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "integration_decision": {
+      "method": "three_stage_incremental_utility_router_v1",
+      "mode": "citation_validation",
+      "reason": "claim_safe_confirmation_only",
+      "claim_safe_path_count": 3,
+      "incremental_path_count": 0,
+      "confirmatory_path_count": 3,
+      "citation_validation_pmids": [
+        "33201261",
+        "36289287",
+        "36600119",
+        "37546931"
+      ],
+      "policy": "three_stage"
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 1,
+      "queries": [
+        "\"cftr\"[Title/Abstract] AND \"cystic fibrosis\"[Title/Abstract]"
+      ],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "disabled",
+      "reason": "integration_mode=citation_validation",
+      "boosted_pmids": {}
+    },
+    "fallback_answer_reused": {
+      "source": "evaluation/formal/runs/hybrid_gain_v3_untruncated/arm_B/questions/PP015/result.json",
+      "source_system": "traditional_rag",
+      "mode": "citation_validation"
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "24548777",
+        "score": 0.622080468819494
+      },
+      {
+        "pmid": "23788646",
+        "score": 0.6161505158068649
+      },
+      {
+        "pmid": "23142604",
+        "score": 0.5951389582091333
+      },
+      {
+        "pmid": "33201261",
+        "score": 0.5936117834579364
+      },
+      {
+        "pmid": "35160099",
+        "score": 0.5935622200830467
+      },
+      {
+        "pmid": "38233247",
+        "score": 0.5723640199217096
+      },
+      {
+        "pmid": "36289287",
+        "score": 0.570988468815623
+      },
+      {
+        "pmid": "37003609",
+        "score": 0.5653260420455367
+      },
+      {
+        "pmid": "34339302",
+        "score": 0.5590574606502191
+      },
+      {
+        "pmid": "36967909",
+        "score": 0.5554398620188212
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "24548777",
+        "score": 0.622080468819494
+      },
+      {
+        "pmid": "23788646",
+        "score": 0.6161505158068649
+      },
+      {
+        "pmid": "23142604",
+        "score": 0.5951389582091333
+      },
+      {
+        "pmid": "33201261",
+        "score": 0.5936117834579364
+      },
+      {
+        "pmid": "35160099",
+        "score": 0.5935622200830467
+      },
+      {
+        "pmid": "38233247",
+        "score": 0.5723640199217096
+      },
+      {
+        "pmid": "36289287",
+        "score": 0.570988468815623
+      },
+      {
+        "pmid": "37003609",
+        "score": 0.5653260420455367
+      },
+      {
+        "pmid": "34339302",
+        "score": 0.5590574606502191
+      },
+      {
+        "pmid": "36967909",
+        "score": 0.5554398620188212
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "**Mechanistic chain from CFTR loss‑of‑function to inflammation in cystic fibrosis**\n\n* **CFTR dysfunction → altered epithelial ion transport, dehydrated mucus and obstructive pathology** – Mouse models with targeted CFTR deletion show mucus accumulation, disturbed motility and small‑bowel bacterial overgrowth, all downstream of the channel defect【PMID:24548777】 (animal). Reviews of human and murine disease note that the same “obstruction‑infection‑inflammation” triad seen in airways also drives intestinal disease【PMID:23788646】【PMID:23142604】 (human/animal synthesis).\n\n* **Epithelial (and immune‑cell) CFTR loss → dysbiosis of the gut microbiota** – In cftr‑knockout mice, 16S rRNA sequencing revealed that loss of CFTR in epithelial cells reshapes the large‑intestinal microbiota, while loss in immune cells drives dysbiosis in the small intestine【PMID:36289287】 (animal). The same mouse studies also report bacterial overgrowth as a consequence of mucus stasis【PMID:24548777】.\n\n* **Dysbiosis and bacterial overgrowth → activation of innate immune pathways and local inflammation** – The intestinal inflammation observed in CF mice is described as “altered innate immune responses” that accompany dysbiosis and overgrowth【PMID:24548777】 (animal). Human studies of people with CF, even without GI symptoms, demonstrate chronic low‑grade intestinal inflammation that co‑occurs with an abnormal microbiota【PMID:35160099】 (human).\n\n* **Local gut inflammation → systemic and extra‑intestinal inflammatory sequelae** – The authors of the gut‑inflammation review propose that chronic intestinal inflammation can act as a driver for systemic inflammation in CF【PMID:24548777】 (inference from animal/human data). The gut‑lung axis literature further links intestinal microbial and inflammatory changes to lung immune dysregulation in CF patients【PMID:34339302】 (human).\n\n* **Overall inference: CFTR loss → epithelial/mucosal dysfunction → dysbiosis → innate immune activation → local and systemic inflammation** – The convergent evidence from murine genetic models, human observational studies, and mechanistic reviews collectively map each step, supporting a causal cascade rather than a mere association.\n\n**Conclusion:** Multiple animal and human studies delineate a stepwise pathway from CFTR deficiency to intestinal dysbiosis and innate immune activation, establishing inflammation as a mechanistic consequence of CFTR loss in cystic fibrosis."
+  },
+  "answer_finish_reasons": {
+    "netmedex_hybrid_rag": "reused_fallback"
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 3.8295984268188477e-05,
+    "vector_index": 3.2546011805534363,
+    "kg_expansion": 0.00016269832849502563,
+    "answer_netmedex_hybrid_rag": 0.0,
+    "total": 3.801663175225258
+  },
+  "token_usage": {
+    "total_tokens": 0,
+    "input_tokens": 0,
+    "output_tokens": 0
+  },
+  "completed_at": "2026-08-16T20:34:10.878577+00:00"
+}

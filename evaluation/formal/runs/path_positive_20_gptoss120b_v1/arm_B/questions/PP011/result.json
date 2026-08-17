@@ -1,0 +1,184 @@
+{
+  "status": "complete",
+  "question_id": "PP011",
+  "domain": "infectious disease",
+  "question": "What evidence supports a mechanistic path from chronic hepatitis b virus (hbv) infection to hcc through liver fibrosis, hbv, chronic liver inflammation? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "HBV hepatocellular carcinoma inflammation HBx integration fibrosis",
+  "effective_pubmed_query": "HBV hepatocellular carcinoma inflammation HBx integration fibrosis",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "16461228",
+    "20413301",
+    "20485626",
+    "25646384",
+    "28097530",
+    "29052129",
+    "30611768",
+    "32839523",
+    "38064540",
+    "39290403",
+    "40544269"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports a mechanistic path from chronic hepatitis b virus (hbv) infection to hcc through liver fibrosis, hbv, chronic liver inflammation? Distinguish evidence for each hop from overall inference.",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "29052129",
+        "score": 0.6353372954966955
+      },
+      {
+        "pmid": "30611768",
+        "score": 0.5983343644247671
+      },
+      {
+        "pmid": "39290403",
+        "score": 0.5768435685847411
+      },
+      {
+        "pmid": "20413301",
+        "score": 0.5693310919186567
+      },
+      {
+        "pmid": "20485626",
+        "score": 0.5693294690328732
+      },
+      {
+        "pmid": "16461228",
+        "score": 0.5625305117825105
+      },
+      {
+        "pmid": "32839523",
+        "score": 0.5456156201265928
+      },
+      {
+        "pmid": "28097530",
+        "score": 0.543117985416578
+      },
+      {
+        "pmid": "25646384",
+        "score": 0.5413345226169859
+      },
+      {
+        "pmid": "38064540",
+        "score": 0.5307733705345512
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "29052129",
+        "score": 0.6353372954966955
+      },
+      {
+        "pmid": "30611768",
+        "score": 0.5983343644247671
+      },
+      {
+        "pmid": "39290403",
+        "score": 0.5768435685847411
+      },
+      {
+        "pmid": "20413301",
+        "score": 0.5693310919186567
+      },
+      {
+        "pmid": "20485626",
+        "score": 0.5693294690328732
+      },
+      {
+        "pmid": "16461228",
+        "score": 0.5625305117825105
+      },
+      {
+        "pmid": "32839523",
+        "score": 0.5456156201265928
+      },
+      {
+        "pmid": "28097530",
+        "score": 0.543117985416578
+      },
+      {
+        "pmid": "25646384",
+        "score": 0.5413345226169859
+      },
+      {
+        "pmid": "38064540",
+        "score": 0.5307733705345512
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Direct evidence** – Chronic HBV infection provokes persistent immune‑mediated liver inflammation, which in turn drives fibrosis/cirrhosis and creates a proliferative milieu that favors malignant transformation. Human studies describe “recurrent liver inflammation caused by host immune responses… can lead to liver fibrosis and cirrhosis and accelerate hepatocyte turnover”【PMID: 29052129】. A second review emphasizes that “HBV induces immune reactions that lead to repeated hepatic inflammation, fibrosis and a deficient immune micro‑environment”【PMID: 28097530】, and chronic inflammation–derived cytokines are identified as the predominant carcinogenic mechanism in humans【PMID: 20485626】.  \n\nExperimental animal work shows that HBV proteins alone can cause HCC without detectable inflammation, demonstrating a direct oncogenic step. HBV‑transgenic mice develop tumors in 38 % of cases despite the absence of active hepatitis; tumor emergence is abolished by hepatocyte‑specific STAT3 knockout, implicating HBV‑driven STAT3 activation as sufficient for cancer【PMID: 39290403】 (animal).  \n\n**Association** – Epidemiologic and mechanistic links connect each segment of the pathway. Chronic HBV infection correlates with higher rates of cirrhosis and HCC, and the fraction of HBV‑related HCC arising after fibrosis exceeds 50 % worldwide【PMID: 29052129】. Integration of HBV DNA into host chromosomes “disrupts…genes…important in cell growth” and is observed in many HBV‑related tumours, supporting an association between viral integration, genomic instability and cancer【PMID: 16461228】. HBx and truncated pre‑S2/S proteins are repeatedly cited as “HBV‑encoded oncoproteins” that transactivate proliferative pathways, an association reinforced by in‑vitro studies of HBx‑mediated signaling【PMID: 30611768】.  \n\n**Testable hypotheses** – 1) **Inflammation‑fibrosis axis**: anti‑inflammatory or anti‑fibrotic therapies will reduce HBV‑associated HCC incidence, predicting a measurable decline in tumor rates in treated cohorts. 2) **STAT3 dependence**: pharmacologic STAT3 inhibition should prevent HCC in HBV‑transgenic mice lacking overt inflammation, offering a mechanistic test of the STAT3‑driven oncogenic route【PMID: 39290403】. 3) **HBx truncation impact**: restoring full‑length HBx in HBx‑truncated mice should rescue DNA‑damage responses and increase tumour frequency, testing the role of the C‑terminal domain in oncogenesis【PMID: 39290403】.  \n\n**Evidence type labeling** – Human clinical/epidemiologic data: PMIDs 29052129, 28097530, 20485626, 16461228. Animal model data: PMID 39290403 (HBV‑transgenic mice). In‑vitro/molecular mechanistic data: PMIDs 30611768, 20413301 (HBx signaling), 32839523 (lack of hypoxia‑gene induction suggests inflammation‑mediated pathways).  \n\n*Conclusion*: Multiple lines of human, animal and cellular evidence delineate a mechanistic cascade from chronic HBV‑induced inflammation → fibrosis/cirrhosis → HCC, with additional direct viral oncogenic actions (HBx, integration, STAT3) that can act independently of fibrosis."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 2.602487802505493e-05,
+    "vector_index": 1.7226028740406036,
+    "kg_expansion": 9.3802809715271e-06,
+    "answer_traditional_rag": 32.6255267560482,
+    "total": 34.897535033524036
+  },
+  "token_usage": {
+    "total_tokens": 4788,
+    "output_tokens": 1195,
+    "input_tokens": 3593
+  },
+  "completed_at": "2026-08-13T05:53:03.039334+00:00"
+}

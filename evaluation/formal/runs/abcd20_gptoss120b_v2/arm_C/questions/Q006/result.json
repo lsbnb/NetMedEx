@@ -1,0 +1,198 @@
+{
+  "status": "complete",
+  "question_id": "Q006",
+  "domain": "cardiovascular",
+  "question": "What PubMed evidence supports statin effects on endothelial dysfunction?",
+  "question_type": "retrieval",
+  "pubmed_query": "statin AND endothelial dysfunction AND (eNOS OR nitric oxide OR flow-mediated dilation)",
+  "effective_pubmed_query": "statin AND endothelial dysfunction AND (eNOS OR nitric oxide OR flow-mediated dilation)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "10569303",
+    "14664903",
+    "15111011",
+    "15320839",
+    "15815580",
+    "15861315",
+    "17430168",
+    "18695354",
+    "21890489",
+    "22112351",
+    "24928320",
+    "28057795",
+    "35970408",
+    "38385489",
+    "39684569"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "routed_profile": "A_text_only",
+    "route_reason": "question_type=retrieval",
+    "question_type": "retrieval",
+    "graph_retrieval_query": "What PubMed evidence supports statin effects on endothelial dysfunction?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "38385489",
+        "score": 0.6283694694498091
+      },
+      {
+        "pmid": "15861315",
+        "score": 0.6054495750756469
+      },
+      {
+        "pmid": "15815580",
+        "score": 0.5907209382120614
+      },
+      {
+        "pmid": "17430168",
+        "score": 0.5675532396954148
+      },
+      {
+        "pmid": "35970408",
+        "score": 0.5512591823870605
+      },
+      {
+        "pmid": "28057795",
+        "score": 0.5455732682751196
+      },
+      {
+        "pmid": "24928320",
+        "score": 0.5389581892754258
+      },
+      {
+        "pmid": "22112351",
+        "score": 0.4952567898633927
+      },
+      {
+        "pmid": "15111011",
+        "score": 0.489571848274075
+      },
+      {
+        "pmid": "39684569",
+        "score": 0.4895005996939734
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "38385489",
+        "score": 0.6283694694498091
+      },
+      {
+        "pmid": "15861315",
+        "score": 0.6054495750756469
+      },
+      {
+        "pmid": "15815580",
+        "score": 0.5907209382120614
+      },
+      {
+        "pmid": "17430168",
+        "score": 0.5675532396954148
+      },
+      {
+        "pmid": "35970408",
+        "score": 0.5512591823870605
+      },
+      {
+        "pmid": "28057795",
+        "score": 0.5455732682751196
+      },
+      {
+        "pmid": "24928320",
+        "score": 0.5389581892754258
+      },
+      {
+        "pmid": "22112351",
+        "score": 0.4952567898633927
+      },
+      {
+        "pmid": "15111011",
+        "score": 0.489571848274075
+      },
+      {
+        "pmid": "39684569",
+        "score": 0.4895005996939734
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "**Direct human evidence (interventional)**  \n- A systematic review and dose‑response meta‑analysis of 35 randomized, placebo‑controlled trials (2 178 participants) showed that statin therapy increased flow‑mediated dilation (FMD) by 1.7 % (95 % CI 1.3‑2.2 %) – a clinically relevant improvement in endothelial function【PMID:38385489】 (human RCT).  \n- In a small cross‑over study of women with endometriosis (n = 8), 7 days of oral atorvastatin (10 mg) restored acetylcholine‑induced, nitric‑oxide‑dependent cutaneous microvascular dilation (AUC ↑ from 88 ± 97 to 295 ± 153; p ≈ 0.05)【PMID:35970408】 (human, short‑term trial).\n\n**Animal/​in‑vitro mechanistic evidence**  \n- Pre‑clinical stroke models demonstrated that statins up‑regulate endothelial nitric‑oxide synthase (eNOS), increase NO bioavailability, and improve cerebral blood flow, providing direct mechanistic support for endothelial protection【PMID:15815580】 (animal).  \n- Cell‑culture and rodent studies indicate that statins inhibit isoprenoid synthesis, prevent Rho/Rac prenylation, and thereby increase eNOS expression and reduce oxidative stress, linking the drugs to endothelial‑protective pathways【PMID:28057795】 (in‑vitro & animal).\n\n**Observational/association evidence**  \n- Retrospective clinical data suggest long‑term statin use is associated with lower stroke incidence and better post‑stroke outcomes, consistent with an endothelial‑benefit hypothesis, although causality is not proven【PMID:15815580】 (human observational).  \n\n**Testable hypotheses derived from reviews**  \n- Statins may improve endothelial function via “lipid‑independent” actions: (i) enhancing eNOS transcription/translation, (ii) stabilizing eNOS mRNA, (iii) reducing reactive oxygen species through NADPH‑oxidase inhibition, and (iv) modulating inflammatory signaling—all of which can be examined in controlled human studies【PMID:15861315】 (human/animal mechanistic hypothesis).  \n\n**Conclusion** – Multiple PubMed sources, ranging from randomized trials to animal mechanistic work, consistently support that statins improve endothelial dysfunction, principally by restoring NO‑mediated vasodilation."
+  },
+  "claim_verification": {
+    "mode": "deterministic_audit_only",
+    "path_cited_claim_count": 0,
+    "supported_claim_count": 0,
+    "unsupported_claim_count": 0,
+    "no_path_citations_detected": true,
+    "claims": []
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 7.999688386917114e-05,
+    "vector_index": 2.0787466317415237,
+    "kg_expansion": 8.314847946166992e-06,
+    "answer_netmedex_hybrid_rag": 24.339118368923664,
+    "total": 26.891125842928886
+  },
+  "token_usage": {
+    "total_tokens": 4451,
+    "input_tokens": 3594,
+    "output_tokens": 857
+  },
+  "completed_at": "2026-08-13T03:53:00.215396+00:00"
+}

@@ -1,0 +1,54 @@
+system,question_id,run_id,output_source,answer
+netmedex_hybrid_rag,BW003,formal-v1-gpt-4.1-F_adaptive,fixed_formal_system_run,"Direct Evidence
+
+- Intestinal epithelial cell-specific loss of CFTR in mice is sufficient to induce both intestinal dysbiosis and inflammation, supporting a direct connection between CFTR dysfunction and intestinal inflammation (animal model) [PMID: 37546931, PMID: 38073491].
+- CFTR dysfunction leads to mucus accumulation, disturbed motility, small bowel bacterial overgrowth, and inflammation with altered innate immune responses in the intestine (animal and human correlates) [PMID: 24548777, PMID: 23788646].
+- CFTR acts to stabilize β-catenin, and its dysfunction promotes NF-κB nuclear translocation, leading to NF-κB-mediated pro-inflammatory responses in the intestine (animal and cell model) [PMID: 27588407].
+
+Association
+
+- Gut dysbiosis is characteristic of CF and is associated with increased local and systemic inflammatory responses; dysbiosis is thus a likely intermediate between CFTR dysfunction and inflammation [PMID: 36600119, PMID: 38554847].
+- Increased intestinal permeability and a pathogenic microbiota created by CFTR loss are necessary for development of gut inflammation and related liver pathologies (animal) [PMID: 38554847].
+
+Testable Hypothesis
+
+- Modulation of gut microbiota or restoration of intestinal CFTR function could ameliorate both dysbiosis and intestinal inflammation in cystic fibrosis.
+
+Graph-derived candidate insights
+
+- GRAPH-CONFIRMED: cftr induces inflammation [PATH: daf58598d61d93bf | PMIDs: 37546931]. Source: cftr, first relation: induces, bridge: (none), second relation: (none), target: inflammation.
+- GRAPH-INCREMENTAL CANDIDATE: cftr induces dysbiosis; dysbiosis associated_with inflammation [PATH: 57416f2f7b9449cc | PMIDs: 37546931, 36600119]. Source: cftr, first relation: induces, bridge: dysbiosis, second relation: associated_with, target: inflammation.
+- GRAPH-INCREMENTAL CANDIDATE: cftr causes cystic fibrosis; cystic fibrosis leads_to inflammation [PATH: 9ed6292d75395474 | PMIDs: 36289287, 33201261]. Source: cftr, first relation: causes, bridge: cystic fibrosis, second relation: leads_to, target: inflammation.
+
+Summary of intermediates:
+The most strongly evidence-supported intermediate connecting CFTR dysfunction to intestinal inflammation is dysbiosis, with increased intestinal permeability and activation of specific inflammatory pathways (e.g., NF-κB) also implicated. These findings are based mainly on animal model and translational studies."
+traditional_rag,BW003,formal-v1-gpt-4.1-F_adaptive,fixed_formal_system_run,"Direct evidence (animal/in vitro studies):
+
+1. Dysbiosis of the intestinal microbiota is a direct consequence of CFTR dysfunction. Mouse models with intestinal epithelial-specific Cftr knockout (iCftr KO) exhibit significant alterations in gut microbiota composition, including increased abundance of Proteobacteria, Peptostreptococcaceae, Clostridia (e.g., C. innocuum, C. perfringens, C. difficile), mucolytic genus Akkermansia (PEG diet), and Ruminococcus gnavus (liquid diet), along with decreased alpha-diversity on some diets. These dysbiotic changes are associated with elevated fecal calprotectin, indicating intestinal inflammation [PMID: 37546931, PMID: 38073491].
+
+2. Defective CFTR disrupts the interaction with beta-catenin, leading to suppressed beta-catenin signaling and consequent activation of the NF-kappaB/COX-2/PGE2 inflammatory pathway. This molecular cascade, demonstrated in CF mouse intestine and human intestinal epithelial cell lines, results in increased NF-kappaB nuclear translocation and promotes intestinal inflammation [PMID: 27588407].
+
+3. Defective CFTR in the intestinal mucosa leads to increased intestinal permeability (""leaky gut"") and mucosal inflammation. This allows gut-derived stimuli (such as microbial products) to access circulation and trigger inflammatory responses in distant organs (e.g., liver). Restoring CFTR expression in the gut corrects these abnormalities, confirming that local CFTR dysfunction is a key intermediate [PMID: 38554847].
+
+Association evidence (primarily human observational):
+
+1. Chronic intestinal inflammation and gut dysbiosis are present in people with CF, even in the absence of overt gastrointestinal symptoms. There is an abnormal microbiota balance, notably increased Proteobacteria and decreased short-chain fatty acid producers, and persistent elevation of inflammatory markers such as calprotectin, S100A12, and lactoferrin [PMID: 24548777, PMID: 40824057, PMID: 35160099].
+
+2. There is a plausible bidirectional link between intestinal dysbiosis and inflammation in CF, with both likely amplifying each other [PMID: 35160099, PMID: 24548777].
+
+Testable hypotheses (supported but not yet fully proven):
+
+- The altered microbiota composition (dysbiosis) arising from CFTR dysfunction directly initiates or perpetuates intestinal inflammation through enhanced microbial translocation or altered metabolism (e.g., reduced short-chain fatty acids), which in turn further increases intestinal permeability and inflammatory responses [PMID: 38554847, PMID: 35160099].
+- Modulation of the gut microbiota or restoration of CFTR function may ameliorate both dysbiosis and inflammation, suggesting possible therapeutic interventions along this cascade [PMID: 38554847, PMID: 35160099].
+
+Summary table of evidence-supported intermediates bridging CFTR dysfunction and intestinal inflammation:
+
+| Intermediate                           | Evidence Type         | Source(s)                  |
+|-----------------------------------------|----------------------|----------------------------|
+| Dysbiosis (microbiota alterations)      | Direct (mouse, human) | [PMID: 37546931, 38073491, 35160099, 40824057] |
+| Intestinal barrier dysfunction (permeability) | Direct (mouse)      | [PMID: 38554847]           |
+| NF-kappaB/beta-catenin signaling cascade| Direct (mouse/in vitro) | [PMID: 27588407]        |
+| Elevated inflammatory markers (calprotectin, etc.) | Direct (mouse, human) | [PMID: 37546931, 24548777, 40824057] |
+| Mucus accumulation/altered environment  | Association/Direct (mouse) | [PMID: 24548777, 23788646] |
+
+In summary, key intermediates connecting CFTR dysfunction to intestinal inflammation include: (a) intestinal dysbiosis, (b) impaired intestinal barrier/permeability, (c) aberrant activation of pro-inflammatory signaling pathways (notably NF-kappaB via disrupted beta-catenin interaction), and (d) accumulation of mucus and altered mucus environment. These steps are predominantly supported by animal studies, with observations in human CF supporting relevance to disease."

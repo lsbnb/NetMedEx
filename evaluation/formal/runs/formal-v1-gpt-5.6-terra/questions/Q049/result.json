@@ -1,0 +1,139 @@
+{
+  "status": "complete",
+  "question_id": "Q049",
+  "domain": "systematic retrieval",
+  "question": "Which PMIDs directly study the relationship between TGF-beta signaling and cardiac fibrosis in humans?",
+  "pubmed_query": "TGF-beta signaling cardiac fibrosis human myocardium",
+  "language": "English",
+  "corpus_pmids": [
+    "23649149",
+    "27340270",
+    "29160304",
+    "30056242",
+    "32611237",
+    "32972203",
+    "33135058",
+    "34830222",
+    "35642214",
+    "35672400",
+    "35784531",
+    "37834293",
+    "38744811",
+    "39744939",
+    "40307543"
+  ],
+  "graph": {
+    "node_count": 46,
+    "edge_count": 52,
+    "path_count": 20,
+    "preferred_pmids": [
+      "23649149",
+      "29160304",
+      "30056242",
+      "35672400",
+      "37834293",
+      "39744939"
+    ]
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "23649149",
+        "score": 0.8621094787349409
+      },
+      {
+        "pmid": "37834293",
+        "score": 0.8527829940476239
+      },
+      {
+        "pmid": "30056242",
+        "score": 0.8198169175678194
+      },
+      {
+        "pmid": "29160304",
+        "score": 0.8077196274706577
+      },
+      {
+        "pmid": "39744939",
+        "score": 0.8042196806324995
+      },
+      {
+        "pmid": "35672400",
+        "score": 0.7926885420331662
+      },
+      {
+        "pmid": "33135058",
+        "score": 0.5610771633197442
+      },
+      {
+        "pmid": "40307543",
+        "score": 0.5504488378877683
+      },
+      {
+        "pmid": "32972203",
+        "score": 0.5407855242955656
+      },
+      {
+        "pmid": "34830222",
+        "score": 0.5317578012432392
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "23649149",
+        "score": 0.5747396524899606
+      },
+      {
+        "pmid": "37834293",
+        "score": 0.5685219960317492
+      },
+      {
+        "pmid": "33135058",
+        "score": 0.5610771633197442
+      },
+      {
+        "pmid": "40307543",
+        "score": 0.5504488378877683
+      },
+      {
+        "pmid": "30056242",
+        "score": 0.5465446117118796
+      },
+      {
+        "pmid": "32972203",
+        "score": 0.5407855242955656
+      },
+      {
+        "pmid": "29160304",
+        "score": 0.5384797516471052
+      },
+      {
+        "pmid": "39744939",
+        "score": 0.5361464537549997
+      },
+      {
+        "pmid": "34830222",
+        "score": 0.5317578012432392
+      },
+      {
+        "pmid": "35672400",
+        "score": 0.5284590280221108
+      }
+    ]
+  },
+  "answers": {
+    "netmedex_hybrid_rag": "## Direct evidence\n\n- **PMID: 39744939** — **Human in-vitro and human patient tissue evidence.** In human iPSC-derived cardiac fibroblasts, BAG3 loss increased sensitivity to TGF-beta signaling and induced a fibrogenic response. Single-nucleus RNA-seq from dilated-cardiomyopathy patients carrying pathogenic *BAG3* variants showed increased fibrotic gene expression in cardiac fibroblasts. However, the abstract does not state that TGF-beta-pathway activity itself was directly measured in the patient samples. [PMID: 39744939]\n\n- **PMID: 29160304** — **Human primary-fibroblast in-vitro evidence; animal in-vivo evidence.** Primary human fibroblasts exposed to TGF-beta1 upregulated IL-11, and IL-11 was required for the TGF-beta1 pro-fibrotic effect. The cardiac-fibrosis in-vivo experiments were performed in mice. Thus, this is direct mechanistic evidence in human fibroblasts, but not a direct human cardiac-tissue/patient fibrosis study. [PMID: 29160304]\n\n## Association / supporting but not direct human mechanistic studies\n\n- **PMID: 32972203** — Human myocardial-infarction and dilated-cardiomyopathy tissue showed a fibroblast population transcriptionally similar to the profibrotic CTHRC1-positive population defined in mice. Noncanonical TGF-beta signaling was identified as a regulator primarily through the mouse work; direct TGF-beta–fibrosis testing in the human samples is not stated. [PMID: 32972203]\n\n- **PMID: 35672400** — Includes human single-cardiomyocyte transcriptome/plasma-proteome analyses identifying IGFBP7 as a marker of advanced heart failure, but the Htra3–TGF-beta mechanism causing cardiac fibrosis was established in experimental models rather than directly in humans. [PMID: 35672400]\n\n- **PMID: 40307543** — Uses public human single-cell datasets in meta-analysis, but the TGF-beta/SRC inhibition experiments supporting anti-fibrotic effects were in engineered heart tissues and mice. The supplied context does not establish a direct human clinical or native-tissue mechanistic study. [PMID: 40307543]\n\n## Reviews, not direct original human studies\n\n- **PMID: 23649149**, **PMID: 30056242**, **PMID: 33135058**, and **PMID: 37834293** describe TGF-beta as an important/prototypical fibrogenic pathway in cardiac fibrosis, including clinical relevance, but are review articles rather than direct human studies. [PMID: 23649149] [PMID: 30056242] [PMID: 33135058] [PMID: 37834293]\n\n## Answer\n\nFrom the supplied records, the strongest PMIDs directly addressing the TGF-beta–cardiac fibrosis relationship with **human experimental material** are **PMID: 39744939** and **PMID: 29160304**. There is **no record in this context that unambiguously reports a direct TGF-beta signaling–cardiac fibrosis mechanistic study in human patients/native human cardiac tissue alone**.",
+    "traditional_rag": "## Direct human evidence\n\n- **PMID: 39744939** — Directly studies TGF-β signaling and cardiac-fibrotic responses in **human-derived systems**. BAG3-null human iPSC-derived cardiac fibroblasts showed increased sensitivity to TGF-β signaling and a fibrogenic response; the study also examined cardiac tissue from patients with dilated cardiomyopathy carrying pathogenic *BAG3* variants, in which cardiac fibroblasts had increased fibrotic-gene expression. [PMID: 39744939]  \n  - **Evidence type:** Human in-vitro/engineered cardiac tissue plus human patient-tissue transcriptomics.  \n  - **Interpretation:** Direct mechanistic evidence linking altered TGFBR2/TGF-β signaling in human cardiac fibroblasts to fibrosis-related phenotypes.\n\n## Human-associated, but not direct human mechanistic evidence of cardiac fibrosis\n\n- **PMID: 32972203** — Identified noncanonical TGF-β signaling as a regulator of profibrotic cardiac fibroblasts primarily in **mouse myocardial infarction** experiments. Similar fibroblast transcriptomes were found in swine and human MI/DCM heart tissue, but the TGF-β–fibrosis mechanism was not directly tested in the human samples. [PMID: 32972203]  \n  - **Evidence type:** Primarily animal mechanistic evidence; human tissue association.\n\n- **PMID: 35672400** — Describes an Htra3–TGF-β–IGFBP7 fibrosis pathway largely through experimental models. Its human component is integrative cardiomyocyte transcriptome/plasma-proteome analysis identifying IGFBP7 as a marker of advanced heart failure, rather than a direct test of TGF-β signaling causing cardiac fibrosis in humans. [PMID: 35672400]  \n  - **Evidence type:** Primarily experimental-model evidence; human biomarker association.\n\n- **PMID: 40307543** — Includes meta-analysis of public **human and mouse** single-cell datasets, but the interventional evidence for combined SRC and TGF-β inhibition suppressing fibrosis is from engineered heart tissues and a mouse heart-failure model. The abstract does not establish a direct human cardiac-fibrosis intervention/mechanism study. [PMID: 40307543]  \n  - **Evidence type:** Human dataset association plus experimental-model evidence.\n\n## Human fibroblast evidence, cardiac origin not established in the supplied abstract\n\n- **PMID: 29160304** — Reports that TGF-β1 induces IL-11 in primary **human fibroblasts** and that IL-11 is required for TGF-β1-driven profibrotic effects. However, the supplied abstract does not specify that these human fibroblasts were cardiac fibroblasts; cardiac fibrosis causality is demonstrated in mice. [PMID: 29160304]  \n  - **Evidence type:** Human in-vitro fibroblast mechanism, with animal cardiac-fibrosis evidence.  \n  - **Conclusion:** Cannot be classified from the supplied text as a direct study in human cardiac fibrosis.\n\n## Reviews only\n\nPMIDs **23649149**, **37834293**, **33135058**, and **30056242** are reviews discussing TGF-β as a mediator of cardiac fibrosis; they do not themselves directly test the relationship in humans. [PMID: 23649149] [PMID: 37834293] [PMID: 33135058] [PMID: 30056242]\n\n## Bottom line\n\nBased on the supplied abstracts, **PMID: 39744939** is the clear direct study of the TGF-β signaling–cardiac fibrosis relationship using human cardiac-fibroblast systems and human patient tissue. [PMID: 39744939]",
+    "general_llm": "I cannot provide a reliable list of exact PMIDs from memory alone without risking incorrect or fabricated identifiers. For this topic, “direct” human evidence should be distinguished carefully:\n\n**Studies that directly address the relationship**\n1. **Human myocardial tissue studies**  \n   Studies of biopsies, explanted failing hearts, or surgical myocardial samples that measure:\n   - TGF-β/TGFB1 expression or active TGF-β signaling;\n   - TGF-β receptors or downstream SMAD2/3 activation; and\n   - histologic or biochemical myocardial fibrosis/collagen deposition.\n\n2. **Primary human cardiac-fibroblast studies**  \n   Experiments using human cardiac fibroblasts in which TGF-β stimulation or pathway inhibition changes collagen synthesis, myofibroblast differentiation, extracellular-matrix genes, or contractility. These support mechanism, although they do not by themselves establish in-vivo clinical causation.\n\n3. **Human genetic-association studies**  \n   Studies relating TGFB1, TGFBR, or SMAD variants to myocardial fibrosis measured by biopsy or cardiac MRI. These are usually associative rather than proof of a causal signaling effect.\n\n**Studies that are not, by themselves, direct evidence**\n- Serum/plasma TGF-β measurements without myocardial fibrosis assessment.\n- Animal models or non-human cell studies.\n- Reviews, editorials, and mechanistic papers without human samples.\n- Clinical trials of broadly acting antifibrotic drugs unless cardiac TGF-β signaling and fibrosis were both directly measured.\n\nA focused PubMed query to identify the relevant PMIDs would be:\n\n```text\n(\n  \"Transforming Growth Factor beta\"[Mesh]\n  OR TGF-beta OR TGFB1 OR TGFB2 OR TGFB3\n  OR TGFBR1 OR TGFBR2 OR SMAD2 OR SMAD3\n)\nAND\n(\n  \"Myocardial Fibrosis\"[Mesh]\n  OR \"cardiac fibrosis\"\n  OR \"myocardial fibrosis\"\n  OR \"interstitial fibrosis\"\n  OR \"myocardial collagen\"\n)\nAND humans[MeSH Terms]\n```\n\nFor primary human tissue work, add:\n\n```text\nAND (biopsy OR myocardium OR myocardial OR explant OR \"cardiac fibroblast*\")\n```\n\nThe established overall conclusion from the human and translational literature is that increased myocardial TGF-β pathway activity is consistently associated with fibrotic remodeling in conditions such as heart failure, hypertrophic cardiomyopathy, pressure-overload disease, ischemic heart disease, and some valvular disorders. However, direct causal proof that selectively blocking TGF-β signaling reverses cardiac fibrosis in humans remains limited; much of the causal evidence comes from experimental models and human-cell studies rather than definitive human interventional trials."
+  },
+  "timings_seconds": {
+    "pubtator_fetch": 1.0601182281970978,
+    "semantic_graph": 87.57653693854809,
+    "vector_index": 1.823395013809204,
+    "answer_netmedex_hybrid_rag": 8.24964313954115,
+    "answer_traditional_rag": 8.992557302117348,
+    "answer_general_llm": 21.113638535141945,
+    "total": 130.85038347542286
+  },
+  "completed_at": "2026-07-27T19:06:23.139133+00:00"
+}

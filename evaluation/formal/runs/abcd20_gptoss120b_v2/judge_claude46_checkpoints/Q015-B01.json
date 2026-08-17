@@ -1,0 +1,63 @@
+{
+  "task": "answer",
+  "question_id": "Q015",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "cfacd1fed15e8f96c9885633447d93c1358503bc030341e80dc6133189492ec9",
+  "raw_response_sha256": "ecf529cd43f277a613fadfb9bddbd95fcb41f7cea49decec9b6d9c77b8cef612",
+  "usage": {
+    "input_tokens": 4417,
+    "output_tokens": 674,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 5091
+  },
+  "rated_at": "2026-08-13T04:40:42.966791+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q015-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Solid core pathways (ACE2→AGTR1→F3, IL6→F3, F12→KLKB1). PMID citations plausible but not all verifiable. Misses TMPRSS2, NRP1, PADI4 nodes."
+      },
+      {
+        "answer_id": "Q015-B",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Adds PADI4/NETosis node, good structure. Overlaps heavily with A. PMID citations plausible but unverified. Slightly better organized than A."
+      },
+      {
+        "answer_id": "Q015-C",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Adds TLR7→IL6→SERPINE1 and BDKRB2→PLAT paths. Testable hypotheses add value. PMID citations same as others, unverified. Good breadth."
+      },
+      {
+        "answer_id": "Q015-D",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 3,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Most comprehensive: adds TMPRSS2→PAR2→F3, NRP1→VEGFA→VWF, NLRP3→IL6, STAT1→CXCL10→THBD. Explicitly flags speculative links. Best mechanistic depth."
+      }
+    ],
+    "preferred_item_id": "Q015-D",
+    "pairwise_reason": "Q015-D provides the broadest, most mechanistically detailed set of 2-hop paths, introduces novel nodes (TMPRSS2/PAR2, NRP1/VWF, NLRP3, STAT1/THBD), and explicitly distinguishes supported from speculative links, offering the highest research value."
+  }
+}

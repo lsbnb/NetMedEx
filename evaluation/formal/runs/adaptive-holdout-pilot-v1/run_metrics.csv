@@ -1,0 +1,4 @@
+question_id,pubtator_fetch,semantic_graph,vector_index,answer_netmedex_hybrid_rag,answer_traditional_rag,answer_general_llm,total,node_count,edge_count,path_count,preferred_pmids,corpus_document_count,tokens_input_tokens,tokens_output_tokens,tokens_total_tokens
+Q014,0.0,1.745671033859253e-05,3.380173936486244,,,,3.857468396425247,0,0,0,[],6,,,
+Q022,0.0,10.757665753364563,0.9003347605466843,,,,14.636900037527084,14,18,20,['41154680'],1,1324,2159,3483
+Q032,0.0,45.48603282123804,1.1581342294812202,,,,50.98828872293234,33,78,4,"['37834157', '38579176', '41919890']",4,7957,10261,18218

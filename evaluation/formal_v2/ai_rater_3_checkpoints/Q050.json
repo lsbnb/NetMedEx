@@ -1,0 +1,100 @@
+{
+  "question_id": "Q050",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-30T10:06:01.058074+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q050-C001",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract directly links the gut microbiome (specifically SFB), the expansion of Th17 cells (which produce IL-17), and bone loss, providing a clear mechanistic relationship that addresses the prompt."
+    },
+    {
+      "candidate_id": "Q050-C002",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The study explicitly identifies a microbiome dysbiosis-driven decanoic acid/IL-17A axis that orchestrates osteoporosis (bone loss), directly addressing all three requested entities."
+    },
+    {
+      "candidate_id": "Q050-C003",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract describes how reversing gut microbiota dysbiosis with DCA reduces systemic inflammation, specifically mentioning IL-17, and mitigates inflammatory bone loss."
+    },
+    {
+      "candidate_id": "Q050-C004",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The article demonstrates that modulating the gut microbiome with a probiotic attenuates bone loss by altering the Treg-Th17 balance and reducing IL-17 levels, directly connecting the three concepts."
+    },
+    {
+      "candidate_id": "Q050-C005",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The study shows that depleting the intestinal microbiome rescues bone loss and reduces the expression of inflammatory cytokines, including IL-17, establishing a direct link between the microbiome, IL-17, and bone mass."
+    },
+    {
+      "candidate_id": "Q050-C006",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract explicitly states that estrogen deficiency causes a gut microbiome-dependent expansion of Th17 cells, leading to increased IL-17a levels that stimulate bone loss."
+    },
+    {
+      "candidate_id": "Q050-C007",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The study links specific gut microbiota (SFB) to the expansion of Th17 cells (the primary source of IL-17) and subsequent bone loss in a model of hyperparathyroidism."
+    },
+    {
+      "candidate_id": "Q050-C008",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The article shows that a probiotic (modulating the microbiome) inhibits bone loss by suppressing osteoclastogenic factors, explicitly including IL-17 and Th17 cells."
+    },
+    {
+      "candidate_id": "Q050-C009",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The study connects gut microbiome dysbiosis to primary osteoporosis (bone loss) but does not mention IL-17 or Th17 cells, providing only one segment of the requested multi-hop mechanism."
+    },
+    {
+      "candidate_id": "Q050-C010",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The abstract demonstrates that probiotic intervention changes gut microbiota composition, suppresses IL-17 production, and protects against bone loss, directly linking all three entities."
+    },
+    {
+      "candidate_id": "Q050-C011",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The study explicitly states that the treatment corrected gut microbiota dysbiosis, reduced IL-17 levels, and mitigated bone loss, directly addressing the requested relationship."
+    },
+    {
+      "candidate_id": "Q050-C012",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The article links IL-17 and Th17 cells to low bone mineral density (bone loss) but does not investigate or mention the gut microbiome or dysbiosis, providing adjacent evidence."
+    },
+    {
+      "candidate_id": "Q050-C013",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Supplementary multi-model cross-check.] The study establishes a causal role for IL-17 and Th17 cells in estrogen deficiency-induced bone loss but lacks any connection to the gut microbiome, serving as a useful single-hop component."
+    }
+  ],
+  "raw_response_sha256": "d5df6207bbe7e4e15610ee132f78f47b7d6a75ee56671e9a71c4efc75752effd"
+}

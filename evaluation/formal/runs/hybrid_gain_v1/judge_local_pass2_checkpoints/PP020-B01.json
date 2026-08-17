@@ -1,0 +1,91 @@
+{
+  "task": "answer",
+  "question_id": "PP020",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "93939f5691ee5d03d73b9bce29a0b7872173e74d0da7a157bdc370f3b8c973d6",
+  "raw_response_sha256": "2ba60088ec17f46071fbc0dfc796d9780c52bed1235058bbf8535aa6f34d62c8",
+  "usage": {
+    "input_tokens": 6314,
+    "output_tokens": 683,
+    "total_tokens": 6997
+  },
+  "rated_at": "2026-08-16T19:21:27.643643+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP020-A",
+        "correctness": 3,
+        "completeness": 2,
+        "relevance": 4,
+        "grounding": 3,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Citations present but missing detailed inflammation→osteoporosis evidence; truncated sentence reduces clarity."
+      },
+      {
+        "answer_id": "PP020-B",
+        "correctness": 3,
+        "completeness": 2,
+        "relevance": 4,
+        "grounding": 4,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Early hops well‑described; answer cuts off before osteoporosis evidence, limiting completeness."
+      },
+      {
+        "answer_id": "PP020-C",
+        "correctness": 3,
+        "completeness": 2,
+        "relevance": 4,
+        "grounding": 3,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Covers first hops; truncated and lacks any osteoporosis link."
+      },
+      {
+        "answer_id": "PP020-D",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Addresses all hops with human/animal data; osteoporosis link relies on epidemiology and obesity models."
+      },
+      {
+        "answer_id": "PP020-E",
+        "correctness": 3,
+        "completeness": 1,
+        "relevance": 3,
+        "grounding": 3,
+        "mechanistic_coherence": 2,
+        "research_value": 2,
+        "notes": "Only dysbiosis→periodontitis and periodontitis→inflammation; missing inflammation→osteoporosis and bone‑loss evidence."
+      },
+      {
+        "answer_id": "PP020-F",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 5,
+        "notes": "Comprehensive coverage of each hop, includes mechanistic and epidemiologic data, proposes testable hypothesis."
+      },
+      {
+        "answer_id": "PP020-G",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Clear stepwise evidence; explicitly notes missing direct proof for inflammation→osteoporosis; strong mechanistic framing."
+      }
+    ],
+    "preferred_item_id": "PP020-F",
+    "pairwise_reason": "PP020-F offers the most complete, well‑grounded mechanistic chain with evidence for each hop and a clear hypothesis, making it the most useful answer."
+  }
+}

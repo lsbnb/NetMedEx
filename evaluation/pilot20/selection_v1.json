@@ -1,0 +1,38 @@
+{
+  "benchmark_name": "netmedex_hybrid_rag_pilot20_v1",
+  "status": "frozen_pilot_selection",
+  "purpose": "Internal pilot comparing NetMedEx Hybrid RAG, Traditional RAG, and closed-book GPT-4.1 for biomedical literature mining.",
+  "answer_model": "gpt-4.1",
+  "independent_ai_proxy_reviewer": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-6",
+    "blinded": true,
+    "human_expert_review_claimed": false
+  },
+  "source_benchmark": "evaluation/formal/questions.csv",
+  "source_corpora": "evaluation/formal/runs/formal-v1-gpt-5.6-terra/questions",
+  "selection_rationale": "Mechanism- and discovery-enriched stratified pilot with direct retrieval, multilingual, cross-species, and negative-control coverage.",
+  "question_ids": [
+    "Q001",
+    "Q003",
+    "Q004",
+    "Q006",
+    "Q008",
+    "Q010",
+    "Q011",
+    "Q014",
+    "Q015",
+    "Q016",
+    "Q021",
+    "Q025",
+    "Q028",
+    "Q029",
+    "Q037",
+    "Q041",
+    "Q043",
+    "Q046",
+    "Q047",
+    "Q050"
+  ],
+  "reporting_label": "Blinded AI biomedical-expert proxy pilot; not human expert validation"
+}

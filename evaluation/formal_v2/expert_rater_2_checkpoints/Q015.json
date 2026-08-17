@@ -1,0 +1,85 @@
+{
+  "question_id": "Q015",
+  "model": "gpt-5.6-sol",
+  "rated_at": "2026-07-29T10:04:50.369651+00:00",
+  "ratings": [
+    {
+      "candidate_id": "Q015-C001",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Network-informed analysis directly seeks host-gene/pathway links between SARS-CoV-2 and thrombosis, identifying NET formation, endothelial injury, and platelet activation as plausible intermediates."
+    },
+    {
+      "candidate_id": "Q015-C002",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Patient, ex vivo, and infection-model experiments directly connect SARS-CoV-2-associated platelet-monocyte interactions to monocyte tissue factor expression and coagulation/inflammatory signaling; implicated host factors include F3, SELP-related signaling, and ITGAM/Mac-1."
+    },
+    {
+      "candidate_id": "Q015-C003",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Directly demonstrates that IL6 and IL8 increase monocyte F3/tissue-factor mRNA, protein, surface expression, and procoagulant activity, supporting one mechanistic segment, but it is not a SARS-CoV-2 study."
+    },
+    {
+      "candidate_id": "Q015-C004",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Review-level COVID-19 context describing host pathways connecting infection to coagulopathy, including tissue factor, platelet activation, NETosis, cytokines, complement, and loss of anticoagulant mechanisms."
+    },
+    {
+      "candidate_id": "Q015-C005",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Provides review-level support for endothelial injury and complement activation as intermediates between SARS-CoV-2 infection and clotting/systemic microangiopathy, but does not experimentally resolve a specific two-hop gene path."
+    },
+    {
+      "candidate_id": "Q015-C006",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Clinical cohort links NET-associated citrullinated histone H3 and von Willebrand factor biomarkers to thrombotic events in COVID-19, supporting NET/VWF-related host pathways but primarily as predictive associations."
+    },
+    {
+      "candidate_id": "Q015-C007",
+      "relevance": 2,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Mechanistically tests SARS-CoV-2 protein effects on endothelial complement susceptibility and identifies ADAMTS9, SYAP1, and HIGD1A as regulators of CD59, providing explicit host-gene intermediates relevant to endothelial injury and thrombotic microangiopathy."
+    },
+    {
+      "candidate_id": "Q015-C008",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Systematic review specifically evaluates F3/tissue factor as a host mediator of COVID-19 coagulopathy and discusses upstream cytokines, PRR pathways, complement, extracellular vesicles, and thrombin signaling."
+    },
+    {
+      "candidate_id": "Q015-C009",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Review-level evidence supports complement activation and endothelial dysfunction as linked intermediates leading from SARS-CoV-2 infection to a procoagulant state."
+    },
+    {
+      "candidate_id": "Q015-C010",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Proposes specific host paths involving ACE2, inflammatory cytokines or viral-sensing TLRs, and F3/tissue factor–FVIIa coagulation activation, but the abstract presents these largely as mechanistic interpretation rather than direct testing."
+    },
+    {
+      "candidate_id": "Q015-C011",
+      "relevance": 1,
+      "confidence": 3,
+      "exclusion_reason": "",
+      "reviewer_notes": "Mechanistic review outlines several plausible host paths from SARS-CoV-2 to coagulopathy, including ACE2–angiotensin II signaling, F12/kallikrein-kinin activation, NETs, complement, thrombin generation, and impaired fibrinolysis."
+    }
+  ],
+  "raw_response_sha256": "7cfb9b8e23fddb5d3ff04e0ec690a61589f01dd8ca211ad3436f4be2d01c6375"
+}

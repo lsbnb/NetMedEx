@@ -1,0 +1,198 @@
+{
+  "status": "complete",
+  "question_id": "PP003",
+  "domain": "neurodegeneration",
+  "question": "What evidence supports the claim that amyloid-beta related_to mitochondrial toxicity, and what are the important study-context limitations?",
+  "question_type": "mechanism",
+  "pubmed_query": "amyloid beta AND oxidative stress AND mitochondrial dysfunction",
+  "effective_pubmed_query": "amyloid beta AND oxidative stress AND mitochondrial dysfunction",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "22697066",
+    "27766447",
+    "27809706",
+    "32967303",
+    "33476985",
+    "35269827",
+    "35522844",
+    "35660451",
+    "37227619",
+    "37597424",
+    "37956598",
+    "40023293",
+    "40864415",
+    "40902587",
+    "40931065"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports the claim that amyloid-beta related_to mitochondrial toxicity, and what are the important study-context limitations?",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "contrastive_relation_coverage_v2",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k"
+      ],
+      "bridge_visibility_is_diagnostic_not_exclusionary": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "integration_decision": {
+      "method": "three_stage_incremental_utility_router_v1",
+      "mode": "traditional_fallback",
+      "reason": "no_claim_safe_path",
+      "claim_safe_path_count": 0,
+      "incremental_path_count": 0,
+      "confirmatory_path_count": 0,
+      "citation_validation_pmids": [],
+      "policy": "three_stage"
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "disabled",
+      "reason": "integration_mode=traditional_fallback",
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "22697066",
+        "score": 0.6085394501285545
+      },
+      {
+        "pmid": "35522844",
+        "score": 0.6019543944957456
+      },
+      {
+        "pmid": "27766447",
+        "score": 0.566146711739603
+      },
+      {
+        "pmid": "40023293",
+        "score": 0.5602891518336001
+      },
+      {
+        "pmid": "40864415",
+        "score": 0.5406613720969151
+      },
+      {
+        "pmid": "27809706",
+        "score": 0.5379686779730235
+      },
+      {
+        "pmid": "33476985",
+        "score": 0.5359119468749663
+      },
+      {
+        "pmid": "37597424",
+        "score": 0.5172413623006965
+      },
+      {
+        "pmid": "32967303",
+        "score": 0.5171747462171082
+      },
+      {
+        "pmid": "37956598",
+        "score": 0.5149355790951062
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "22697066",
+        "score": 0.6085394501285545
+      },
+      {
+        "pmid": "35522844",
+        "score": 0.6019543944957456
+      },
+      {
+        "pmid": "27766447",
+        "score": 0.566146711739603
+      },
+      {
+        "pmid": "40023293",
+        "score": 0.5602891518336001
+      },
+      {
+        "pmid": "40864415",
+        "score": 0.5406613720969151
+      },
+      {
+        "pmid": "27809706",
+        "score": 0.5379686779730235
+      },
+      {
+        "pmid": "33476985",
+        "score": 0.5359119468749663
+      },
+      {
+        "pmid": "37597424",
+        "score": 0.5172413623006965
+      },
+      {
+        "pmid": "32967303",
+        "score": 0.5171747462171082
+      },
+      {
+        "pmid": "37956598",
+        "score": 0.5149355790951062
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Direct evidence of amyloid‑β (Aβ)–mediated mitochondrial toxicity**  \n- Aβ can bind mitochondrial membranes and proteins, causing fragmentation of the organelle, impairing axonal transport, and triggering excess reactive‑oxygen‑species (ROS) production【PMID:40864415】.  \n- In 3× Tg‑AD mice and primary hippocampal neurons, Aβ exposure produced oxidative stress, loss of mitochondrial membrane potential and reduced ATP; these deficits were rescued by luteolin, confirming that Aβ itself perturbs mitochondrial function in an animal model and in‑vitro system【PMID:37597424】 (animal + in‑vitro).  \n- Reviews note that Aβ increases mitochondrial membrane permeability, disrupts Ca²⁺ homeostasis and alters oxidative phosphorylation, all of which elevate ROS【PMID:22697066】 (mechanistic data aggregated from pre‑clinical studies).  \n\n**Associative evidence linking Aβ burden to mitochondrial dysfunction**  \n- Post‑mortem AD brain studies repeatedly show compromised oxidative‑phosphorylation enzymes and structural mitochondrial defects that co‑occur with high Aβ plaque load【PMID:40023293】【PMID:40864415】 (human tissue association).  \n- PET and biochemical analyses reveal that oxidative stress markers and mitochondrial DNA abnormalities are elevated in AD patients, correlating with cognitive decline and Aβ accumulation【PMID:35522844】 (human association).  \n\n**Testable hypotheses derived from current literature**  \n- *Mitochondrial Cascade Hypothesis*: baseline mitochondrial health determines the rate of Aβ‑driven neurodegeneration, predicting that enhancing mitochondrial resilience will slow cognitive decline【PMID:35522844】.  \n- *Calcium‑Mediated Toxicity*: Aβ‑induced mitochondrial Ca²⁺ overload opens the permeability transition pore, leading to neuronal death; pharmacologic modulation of the mitochondrial Ca²⁺ uniporter could mitigate toxicity【PMID:32967303】.  \n\n**Key study‑context limitations**  \n- The majority of mechanistic data arise from animal transgenic models (e.g., 3× Tg‑AD mice) or cultured neurons, which may not recapitulate the chronic, heterogeneous Aβ exposure in human brains【PMID:37597424】.  \n- Many citations are review articles that synthesize disparate pre‑clinical findings without presenting new primary data, limiting the ability to assess experimental rigor or reproducibility【PMID:22697066】【PMID:27766447】.  \n- Human evidence is largely correlative (post‑mortem or imaging) and cannot definitively prove causality between Aβ deposition and mitochondrial impairment【PMID:40023293】【PMID:35522844】.  \n- Dose and species differences (e.g., supraphysiologic Aβ concentrations in vitro) raise concerns about translational relevance.  \n\n**Conclusion**  \nA substantial body of pre‑clinical and associative human data supports a link between Aβ and mitochondrial toxicity, yet causal proof in humans remains limited by reliance on animal models, in‑vitro systems, and correlative observations."
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 3.512948751449585e-05,
+    "vector_index": 1.7575248703360558,
+    "kg_expansion": 7.487833499908447e-06,
+    "answer_traditional_rag": 30.40400379151106,
+    "total": 32.655529633164406
+  },
+  "token_usage": {
+    "total_tokens": 4441,
+    "input_tokens": 3326,
+    "output_tokens": 1115
+  },
+  "completed_at": "2026-08-16T17:59:14.793245+00:00"
+}

@@ -1,0 +1,246 @@
+{
+  "status": "complete",
+  "question_id": "PP016",
+  "domain": "rare disease",
+  "question": "What evidence supports a mechanistic path from cftr to inflammation through dysbiosis? Distinguish evidence for each hop from overall inference.",
+  "question_type": "mechanism",
+  "pubmed_query": "CFTR AND (intestine OR intestinal) AND inflammation",
+  "effective_pubmed_query": "CFTR AND (intestine OR intestinal) AND inflammation",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "23142604",
+    "23788646",
+    "24548777",
+    "24685676",
+    "26923293",
+    "26976279",
+    "27473379",
+    "27588407",
+    "27703398",
+    "28215711",
+    "29933921",
+    "30546102",
+    "31636470",
+    "31679154",
+    "32326161",
+    "33201261",
+    "34339302",
+    "34884634",
+    "35160099",
+    "35331400",
+    "35523321",
+    "35743652",
+    "36117114",
+    "36289287",
+    "36600119",
+    "36967909",
+    "37003609",
+    "37546931",
+    "38043755",
+    "38073491",
+    "38179971",
+    "38233247",
+    "38554847",
+    "40047092",
+    "40247380",
+    "40379512",
+    "40824057",
+    "41347923",
+    "41498431"
+  ],
+  "graph": {
+    "node_count": 0,
+    "edge_count": 0,
+    "cache_hit": false,
+    "cache_key": "",
+    "path_count": 0,
+    "pre_gate_candidate_count": 0,
+    "pre_gate_candidates": [],
+    "preferred_pmids": [],
+    "paths": []
+  },
+  "evidence_exposure": {
+    "profile": "A_text_only",
+    "label": "A. Text-only RAG",
+    "use_node_rag": false,
+    "max_hops": 0,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "node_ids": [],
+    "exposed_pmids": [],
+    "exposed_paths": [],
+    "exposed_edges": [],
+    "graph_retrieval_query": "What evidence supports a mechanistic path from cftr to inflammation through dysbiosis? Distinguish evidence for each hop from overall inference.",
+    "claim_confidence_threshold": 0.8,
+    "incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [
+        "dysbiosis"
+      ],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "pre_gate_incremental_value": {
+      "method": "query_aligned_incremental_mechanism_value_v3",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 0,
+      "not_claim_safe_count": 0,
+      "requirements": [
+        "tier_a_claim_safe",
+        "bounded_two_to_four_hop",
+        "support_outside_text_top_k",
+        "query_endpoint_and_requested_bridge_alignment"
+      ],
+      "requested_bridges": [
+        "dysbiosis"
+      ],
+      "bridge_visibility_compares_text_context_not_question_text": true,
+      "utility_formula": "0.55*path_relevance + 0.45*incremental_mechanism_value"
+    },
+    "integration_decision": {
+      "method": "three_stage_incremental_utility_router_v1",
+      "mode": "traditional_fallback",
+      "reason": "no_claim_safe_path",
+      "claim_safe_path_count": 0,
+      "incremental_path_count": 0,
+      "confirmatory_path_count": 0,
+      "citation_validation_pmids": [],
+      "policy": "three_stage"
+    },
+    "kg_expansion": {
+      "enabled": false,
+      "candidate_path_count": 0,
+      "queries": [],
+      "added_pmids": [],
+      "added_document_count": 0,
+      "merge": {
+        "method": "disabled",
+        "accepted_added_pmids": []
+      }
+    },
+    "reranking": {
+      "method": "disabled",
+      "reason": "integration_mode=traditional_fallback",
+      "boosted_pmids": {}
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "36289287",
+        "score": 0.563714812965818
+      },
+      {
+        "pmid": "24548777",
+        "score": 0.5621057173325782
+      },
+      {
+        "pmid": "36600119",
+        "score": 0.5475427747395207
+      },
+      {
+        "pmid": "38554847",
+        "score": 0.5428355718932244
+      },
+      {
+        "pmid": "35160099",
+        "score": 0.5366646953708156
+      },
+      {
+        "pmid": "40824057",
+        "score": 0.5269386496090286
+      },
+      {
+        "pmid": "37546931",
+        "score": 0.5253108787767682
+      },
+      {
+        "pmid": "38073491",
+        "score": 0.5232141520043379
+      },
+      {
+        "pmid": "34339302",
+        "score": 0.5199081636523517
+      },
+      {
+        "pmid": "30546102",
+        "score": 0.5164803345032928
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "36289287",
+        "score": 0.563714812965818
+      },
+      {
+        "pmid": "24548777",
+        "score": 0.5621057173325782
+      },
+      {
+        "pmid": "36600119",
+        "score": 0.5475427747395207
+      },
+      {
+        "pmid": "38554847",
+        "score": 0.5428355718932244
+      },
+      {
+        "pmid": "35160099",
+        "score": 0.5366646953708156
+      },
+      {
+        "pmid": "40824057",
+        "score": 0.5269386496090286
+      },
+      {
+        "pmid": "37546931",
+        "score": 0.5253108787767682
+      },
+      {
+        "pmid": "38073491",
+        "score": 0.5232141520043379
+      },
+      {
+        "pmid": "34339302",
+        "score": 0.5199081636523517
+      },
+      {
+        "pmid": "30546102",
+        "score": 0.5164803345032928
+      }
+    ]
+  },
+  "answers": {
+    "traditional_rag": "**Evidence linking CFTR loss → dysbiosis → intestinal inflammation**\n\n**1. CFTR loss drives gut dysbiosis (direct animal evidence).**  \n- Whole‑body and epithelial‑specific Cftr knockout mice develop marked shifts in microbial composition, with enrichment of Proteobacteria, Enterobacteriaceae and Clostridia and loss of diversity (PMID 36289287 – mouse; PMID 37546931/38073491 – epithelial‑specific KO).  \n- The immune‑cell–restricted Cftr deletion also alters the small‑intestinal microbiota, showing that loss of CFTR in non‑epithelial cells contributes to dysbiosis (PMID 36289287 – mouse).  \n- Human systematic reviews confirm that people with cystic fibrosis harbor reduced gut‑microbial diversity and a pro‑inflammatory taxonomic profile (PMID 36600119 – human/animal mixture).  \n\n**2. Dysbiosis promotes intestinal inflammation (animal causality).**  \n- iCftr‑KO mice with dysbiotic communities display elevated fecal calprotectin, a marker of mucosal inflammation; the degree of dysbiosis (e.g., Proteobacteria blooms) correlates with calprotectin levels (PMID 37546931/38073491 – mouse).  \n- Whole‑body Cftr‑KO mice show increased intestinal permeability and peri‑portal liver inflammation; treatment with non‑absorbable antibiotics normalises permeability and markedly reduces inflammatory cell infiltration, indicating that the dysbiotic microbiota is necessary for the inflammatory phenotype (PMID 38554847 – mouse).  \n- Faecal microbiota transfer from Cftr‑KO donors into germ‑free wild‑type mice fails to reproduce dysbiosis or inflammation unless the recipient also lacks intestinal CFTR, underscoring that dysbiosis alone is insufficient without the epithelial defect (PMID 38554847 – mouse).  \n\n**3. Human associations linking dysbiosis, CFTR function and inflammation (correlative).**  \n- Ivacaftor‑mediated restoration of CFTR activity in CF patients reduces stool calprotectin and simultaneously shifts the microbiota toward increased Akkermansia and decreased Enterobacteriaceae; the microbial changes correlate with the inflammatory improvement (PMID 30546102 – human).  \n- Cross‑sectional studies report that CF‑related dysbiosis is enriched for taxa known to elicit pro‑inflammatory responses (e.g., Proteobacteria) while anti‑inflammatory taxa are depleted, linking community composition to the chronic low‑grade gut inflammation noted in CF (PMID 36600119 – human).  \n\n**4. Testable hypothesis derived from the chain.**  \n- Restoring CFTR expression selectively in intestinal epithelium (e.g., via gut‑targeted gene therapy or organoid transplantation) will normalize the microbiota and abolish calprotectin elevation, as predicted from the mouse “CFTR‑KO‑GC” rescue model (PMID 38554847).  \n\n**Conclusion:** Multiple mouse studies provide direct mechanistic proof that loss of CFTR induces dysbiosis, which in turn drives intestinal inflammation, while human data show concordant associations and therapeutic reversal with CFTR modulators."
+  },
+  "answer_finish_reasons": {
+    "traditional_rag": "stop"
+  },
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 5.9232115745544434e-05,
+    "vector_index": 3.4872646555304527,
+    "kg_expansion": 1.6927719116210938e-05,
+    "answer_traditional_rag": 38.40383031219244,
+    "total": 42.44274963438511
+  },
+  "token_usage": {
+    "output_tokens": 1420,
+    "input_tokens": 4104,
+    "total_tokens": 5524
+  },
+  "completed_at": "2026-08-16T20:30:25.689177+00:00"
+}

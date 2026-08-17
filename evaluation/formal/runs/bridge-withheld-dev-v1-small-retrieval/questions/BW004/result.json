@@ -1,0 +1,3913 @@
+{
+  "status": "complete",
+  "question_id": "BW004",
+  "domain": "rare disease",
+  "question": "Which evidence-supported intermediates connect SMN deficiency to mitochondrial dysfunction?",
+  "question_type": "mechanism",
+  "pubmed_query": "SMN1 spinal muscular atrophy mitochondria oxidative stress motor neuron",
+  "effective_pubmed_query": "SMN1 spinal muscular atrophy mitochondria oxidative stress motor neuron",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "19437551",
+    "33353564",
+    "36142791",
+    "39264856"
+  ],
+  "graph": {
+    "node_count": 22,
+    "edge_count": 32,
+    "path_count": 9,
+    "pre_gate_candidate_count": 28,
+    "pre_gate_candidates": [
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "5fec60d9e6c65bd9a41bfb9b71784b9419c0f780"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "6606_Gene"
+        ],
+        "names": [
+          "smn",
+          "smn1"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "SMN1"
+          ]
+        ],
+        "relations": [
+          "causes"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1)."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "39264856",
+            "selected_quote": "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1).",
+            "selected_confidence": 1.0,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.8,
+        "base_score": 0.8,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 1,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "f436fa3535e44976"
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "06178b68ddabfb01128dbcd1b39fb9dad728d988"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "MESH:C000590926_Chemical"
+        ],
+        "names": [
+          "smn",
+          "nusinersen"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "nusinersen"
+          ]
+        ],
+        "relations": [
+          "treats"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "This includes two SMN2 splicing therapies - Risdiplam and Nusinersen."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "treats",
+            "selected_pmid": "39264856",
+            "selected_quote": "This includes two SMN2 splicing therapies - Risdiplam and Nusinersen.",
+            "selected_confidence": 1.0,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.8,
+        "base_score": 0.8,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 2,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "a538f418f0e76a0a"
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "318d1680ea77c4a673f61f04cb7e541a10647123"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "MESH:C000629884_Chemical"
+        ],
+        "names": [
+          "smn",
+          "risdiplam"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Risdiplam"
+          ]
+        ],
+        "relations": [
+          "treats"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "This includes two SMN2 splicing therapies - Risdiplam and Nusinersen."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "treats",
+            "selected_pmid": "39264856",
+            "selected_quote": "This includes two SMN2 splicing therapies - Risdiplam and Nusinersen.",
+            "selected_confidence": 1.0,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.8,
+        "base_score": 0.8,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 3,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "65ea3cad367fc533"
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "3384bad7ed73123c796f3f85e840271cefaca08c"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "MESH:D005355_Disease"
+        ],
+        "names": [
+          "smn",
+          "fibrosis"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Fibrosis"
+          ]
+        ],
+        "relations": [
+          "correlates_with"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "we observed a consistent loss of oxidative phosphorylation machinery of the mitochondria, a decrease in mitochondrial DNA copy number, and a correlation between signals of cellular stress, denervation and increased fibrosis."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "correlates_with",
+            "selected_pmid": "39264856",
+            "selected_quote": "we observed a consistent loss of oxidative phosphorylation machinery of the mitochondria, a decrease in mitochondrial DNA copy number, and a correlation between signals of cellular stress, denervation and increased fibrosis.",
+            "selected_confidence": 0.9,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.752,
+        "base_score": 0.752,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 4,
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "788642e4f3815aea",
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_two_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": []
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "2bf100942d2a0365fd842d96bbdd52eb01c3b662"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "MESH:D009134_Disease"
+        ],
+        "names": [
+          "smn",
+          "muscular atrophy spinal"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Muscular Atrophy Spinal"
+          ]
+        ],
+        "relations": [
+          "related_to"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1)."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "related_to",
+            "selected_pmid": "39264856",
+            "selected_quote": "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1).",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.752,
+        "base_score": 0.752,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 5,
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "4a8719b6edb1730c",
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_two_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": []
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "f5fcc3e01a4222fd93a170ff2327fd419edbdf58"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "MESH:D018908_Disease"
+        ],
+        "names": [
+          "smn",
+          "muscle weakness"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Muscle Weakness"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "SMA is characterized by neuromuscular symptoms and muscle weakness."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "39264856",
+            "selected_quote": "SMA is characterized by neuromuscular symptoms and muscle weakness.",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.752,
+        "base_score": 0.752,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 6,
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "a736896f9d3e2453",
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_two_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": []
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "37d66095ab7d6f017ab8137080595dfdf98f1252"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "MESH:D020879_Disease"
+        ],
+        "names": [
+          "smn",
+          "neuromuscular manifestations"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Neuromuscular Manifestations"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "SMA is characterized by neuromuscular symptoms and muscle weakness."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "39264856",
+            "selected_quote": "SMA is characterized by neuromuscular symptoms and muscle weakness.",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.752,
+        "base_score": 0.752,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 7,
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "b75c8dd599a75c3b",
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_two_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": []
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "25620ad2e98fc33407e8912bbefac5d315a23c7a"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "MESH:D005221_Disease"
+        ],
+        "names": [
+          "smn",
+          "fatigue"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Fatigue"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "One main challenge for Type II SMA patients treated with these drugs is ongoing muscle fatigue, limited mobility, and other skeletal problems."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "39264856",
+            "selected_quote": "One main challenge for Type II SMA patients treated with these drugs is ongoing muscle fatigue, limited mobility, and other skeletal problems.",
+            "selected_confidence": 0.95,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.731,
+        "base_score": 0.731,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 8,
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "a488af25c6ad0cde",
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_two_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": []
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "5fec60d9e6c65bd9a41bfb9b71784b9419c0f780",
+          "2bf100942d2a0365fd842d96bbdd52eb01c3b662"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "6606_Gene",
+          "MESH:D009134_Disease"
+        ],
+        "names": [
+          "smn",
+          "smn1",
+          "muscular atrophy spinal"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "SMN1"
+          ],
+          [
+            "Muscular Atrophy Spinal"
+          ]
+        ],
+        "relations": [
+          "causes",
+          "causes"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ],
+          [
+            "36142791"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1)."
+          ],
+          [
+            "Spinal muscular atrophy (SMA) is a devastating neuromuscular disorder caused by recessive mutations in the SMN1 gene"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "39264856",
+            "selected_quote": "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1).",
+            "selected_confidence": 1.0,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          },
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "36142791",
+            "selected_quote": "Spinal muscular atrophy (SMA) is a devastating neuromuscular disorder caused by recessive mutations in the SMN1 gene",
+            "selected_confidence": 1.0,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.72,
+        "base_score": 0.64,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 9,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "78ab93b2d4518503"
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "06178b68ddabfb01128dbcd1b39fb9dad728d988",
+          "f56a972db9ed7f4ce1d36a0637803b1abd208312"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "MESH:C000590926_Chemical",
+          "6607_Gene"
+        ],
+        "names": [
+          "smn",
+          "nusinersen",
+          "smn2"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "nusinersen"
+          ],
+          [
+            "SMN2"
+          ]
+        ],
+        "relations": [
+          "treats",
+          "modifies"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ],
+          [
+            "39264856"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "This includes two SMN2 splicing therapies - Risdiplam and Nusinersen."
+          ],
+          [
+            "This includes two SMN2 splicing therapies - Risdiplam and Nusinersen."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "treats",
+            "selected_pmid": "39264856",
+            "selected_quote": "This includes two SMN2 splicing therapies - Risdiplam and Nusinersen.",
+            "selected_confidence": 1.0,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          },
+          {
+            "selected_relation": "modifies",
+            "selected_pmid": "39264856",
+            "selected_quote": "This includes two SMN2 splicing therapies - Risdiplam and Nusinersen.",
+            "selected_confidence": 1.0,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.717,
+        "base_score": 0.637,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 10,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "c2e272aaac95d854"
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "318d1680ea77c4a673f61f04cb7e541a10647123",
+          "f56a972db9ed7f4ce1d36a0637803b1abd208312"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "MESH:C000629884_Chemical",
+          "6607_Gene"
+        ],
+        "names": [
+          "smn",
+          "risdiplam",
+          "smn2"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Risdiplam"
+          ],
+          [
+            "SMN2"
+          ]
+        ],
+        "relations": [
+          "treats",
+          "modifies"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ],
+          [
+            "39264856"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "This includes two SMN2 splicing therapies - Risdiplam and Nusinersen."
+          ],
+          [
+            "This includes two SMN2 splicing therapies - Risdiplam and Nusinersen."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "treats",
+            "selected_pmid": "39264856",
+            "selected_quote": "This includes two SMN2 splicing therapies - Risdiplam and Nusinersen.",
+            "selected_confidence": 1.0,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          },
+          {
+            "selected_relation": "modifies",
+            "selected_pmid": "39264856",
+            "selected_quote": "This includes two SMN2 splicing therapies - Risdiplam and Nusinersen.",
+            "selected_confidence": 1.0,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.717,
+        "base_score": 0.637,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 11,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "34b703537f0e5968"
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "5fec60d9e6c65bd9a41bfb9b71784b9419c0f780",
+          "91adf0d58c3105f749fa15c8bcfb449dc1e53903"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "6606_Gene",
+          "MESH:D009468_Disease"
+        ],
+        "names": [
+          "smn",
+          "smn1",
+          "neuromuscular diseases"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "SMN1"
+          ],
+          [
+            "Neuromuscular Diseases"
+          ]
+        ],
+        "relations": [
+          "causes",
+          "causes"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ],
+          [
+            "36142791"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1)."
+          ],
+          [
+            "Spinal muscular atrophy (SMA) is a devastating neuromuscular disorder caused by recessive mutations in the SMN1 gene"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "39264856",
+            "selected_quote": "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1).",
+            "selected_confidence": 1.0,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          },
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "36142791",
+            "selected_quote": "Spinal muscular atrophy (SMA) is a devastating neuromuscular disorder caused by recessive mutations in the SMN1 gene",
+            "selected_confidence": 0.95,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.711,
+        "base_score": 0.631,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 12,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "0585b8d5a552e650"
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "d4647748489370f0308aea196d251e8638dd2667"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "MESH:D002658_Disease"
+        ],
+        "names": [
+          "smn",
+          "developmental disabilities"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Developmental Disabilities"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1)."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "39264856",
+            "selected_quote": "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1).",
+            "selected_confidence": 0.9,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.709,
+        "base_score": 0.709,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 13,
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "cb822cc2e3447999",
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_two_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": []
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "22099dbecf4b405869cf110a6324b51bbac38e8a"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "MESH:D012600_Disease"
+        ],
+        "names": [
+          "smn",
+          "scoliosis"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Scoliosis"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Therefore, we collected paravertebral muscle from eight Type II patients undergoing spinal surgery for scoliosis and seven controls."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "39264856",
+            "selected_quote": "Therefore, we collected paravertebral muscle from eight Type II patients undergoing spinal surgery for scoliosis and seven controls.",
+            "selected_confidence": 0.9,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.709,
+        "base_score": 0.709,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 14,
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "441ccb97be2ad830",
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_two_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": []
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "d6a30f974730e1ce5b695abb8f61019f75dcfc1b"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "MESH:D028361_Disease"
+        ],
+        "names": [
+          "smn",
+          "mitochondrial diseases"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Mitochondrial Diseases"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "we observed a consistent loss of oxidative phosphorylation machinery of the mitochondria, a decrease in mitochondrial DNA copy number"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "39264856",
+            "selected_quote": "we observed a consistent loss of oxidative phosphorylation machinery of the mitochondria, a decrease in mitochondrial DNA copy number",
+            "selected_confidence": 0.9,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.709,
+        "base_score": 0.709,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 15,
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "06acb09776237c26",
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_two_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": []
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "5fec60d9e6c65bd9a41bfb9b71784b9419c0f780",
+          "afa3a1d7865630ad0fac60a999def0e844f4e428"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "6606_Gene",
+          "MESH:D019289_Chemical"
+        ],
+        "names": [
+          "smn",
+          "smn1",
+          "pyruvic acid"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "SMN1"
+          ],
+          [
+            "Pyruvic Acid"
+          ]
+        ],
+        "relations": [
+          "causes",
+          "increases"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ],
+          [
+            "33353564"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1)."
+          ],
+          [
+            "Counteracting these cellular impairments with pyruvate ... increases ... SMN protein levels in SMA motor neurons"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "39264856",
+            "selected_quote": "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1).",
+            "selected_confidence": 1.0,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          },
+          {
+            "selected_relation": "increases",
+            "selected_pmid": "33353564",
+            "selected_quote": "Counteracting these cellular impairments with pyruvate ... increases ... SMN protein levels in SMA motor neurons",
+            "selected_confidence": 0.9,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.707,
+        "base_score": 0.627,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 16,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "direction_contradicted_hop_2",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "aa77749fd9f26472"
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "2bf100942d2a0365fd842d96bbdd52eb01c3b662",
+          "5fec60d9e6c65bd9a41bfb9b71784b9419c0f780"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "MESH:D009134_Disease",
+          "6606_Gene"
+        ],
+        "names": [
+          "smn",
+          "muscular atrophy spinal",
+          "smn1"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Muscular Atrophy Spinal"
+          ],
+          [
+            "SMN1"
+          ]
+        ],
+        "relations": [
+          "related_to",
+          "causes"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ],
+          [
+            "36142791"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1)."
+          ],
+          [
+            "Spinal muscular atrophy (SMA) is a devastating neuromuscular disorder caused by recessive mutations in the SMN1 gene"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "related_to",
+            "selected_pmid": "39264856",
+            "selected_quote": "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1).",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "36142791",
+            "selected_quote": "Spinal muscular atrophy (SMA) is a devastating neuromuscular disorder caused by recessive mutations in the SMN1 gene",
+            "selected_confidence": 1.0,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.682,
+        "base_score": 0.602,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 17,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_2",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "3e57619babc63c6f"
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "78612880b2e8127f0affe7231183590a1e41fc07"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "MESH:D045745_Disease"
+        ],
+        "names": [
+          "smn",
+          "scleroderma limited"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Scleroderma Limited"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "One main challenge for Type II SMA patients treated with these drugs is ongoing muscle fatigue, limited mobility, and other skeletal problems."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "39264856",
+            "selected_quote": "One main challenge for Type II SMA patients treated with these drugs is ongoing muscle fatigue, limited mobility, and other skeletal problems.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.666,
+        "base_score": 0.666,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 18,
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "hop_count": 1,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "b0ccf8f935331c2b",
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_two_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": []
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "2bf100942d2a0365fd842d96bbdd52eb01c3b662",
+          "a2a9ca8ce47f3e221631f4e3efc741285b06d49a"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "MESH:D009134_Disease",
+          "MESH:D000255_Chemical"
+        ],
+        "names": [
+          "smn",
+          "muscular atrophy spinal",
+          "adenosine triphosphate"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Muscular Atrophy Spinal"
+          ],
+          [
+            "Adenosine Triphosphate"
+          ]
+        ],
+        "relations": [
+          "related_to",
+          "leads_to"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ],
+          [
+            "19437551"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1)."
+          ],
+          [
+            "We propose that energy paucity and increased mitochondrial free radical production lead to accumulated cell damage and eventual cell death in Smn-depleted neural cells"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "related_to",
+            "selected_pmid": "39264856",
+            "selected_quote": "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1).",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "leads_to",
+            "selected_pmid": "19437551",
+            "selected_quote": "We propose that energy paucity and increased mitochondrial free radical production lead to accumulated cell damage and eventual cell death in Smn-depleted neural cells",
+            "selected_confidence": 0.8,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.632,
+        "base_score": 0.552,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 19,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_2",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "239c31c7ec792d28"
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "2bf100942d2a0365fd842d96bbdd52eb01c3b662",
+          "1f0441395a786cfbe6e8697cb89d973ce64f0575"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "MESH:D009134_Disease",
+          "MESH:D005609_Chemical"
+        ],
+        "names": [
+          "smn",
+          "muscular atrophy spinal",
+          "free radicals"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Muscular Atrophy Spinal"
+          ],
+          [
+            "Free Radicals"
+          ]
+        ],
+        "relations": [
+          "related_to",
+          "leads_to"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ],
+          [
+            "19437551"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1)."
+          ],
+          [
+            "We propose that energy paucity and increased mitochondrial free radical production lead to accumulated cell damage and eventual cell death in Smn-depleted neural cells"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "related_to",
+            "selected_pmid": "39264856",
+            "selected_quote": "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1).",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "leads_to",
+            "selected_pmid": "19437551",
+            "selected_quote": "We propose that energy paucity and increased mitochondrial free radical production lead to accumulated cell damage and eventual cell death in Smn-depleted neural cells",
+            "selected_confidence": 0.8,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          }
+        ],
+        "score": 0.632,
+        "base_score": 0.552,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 20,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_2",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "path_signature": "47335a3a4d7d2932"
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "5fec60d9e6c65bd9a41bfb9b71784b9419c0f780",
+          "d6a30f974730e1ce5b695abb8f61019f75dcfc1b"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "6606_Gene",
+          "MESH:D028361_Disease"
+        ],
+        "names": [
+          "smn",
+          "smn1",
+          "mitochondrial diseases"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "SMN1"
+          ],
+          [
+            "Mitochondrial Diseases"
+          ]
+        ],
+        "relations": [
+          "causes",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ],
+          [
+            "36142791"
+          ]
+        ],
+        "edge_is_directional": [
+          true,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1)."
+          ],
+          [
+            "we discuss the effects of SMN loss on mitochondrial functions in the neuronal and muscular systems that are the most affected in patients with spinal muscular atrophy"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "causes",
+            "selected_pmid": "39264856",
+            "selected_quote": "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1).",
+            "selected_confidence": 1.0,
+            "directional": true,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "directional_relation"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "36142791",
+            "selected_quote": "we discuss the effects of SMN loss on mitochondrial functions in the neuronal and muscular systems that are the most affected in patients with spinal muscular atrophy",
+            "selected_confidence": 0.85,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.628,
+        "base_score": 0.548,
+        "anchor_bonus": 0.08,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": true,
+          "path_spans_multiple_anchor_types": true
+        },
+        "candidate_rank": 21,
+        "gate_tier": "C",
+        "gate_reasons": [
+          "direction_contradicted_hop_1",
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "plausible_bridge"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": false,
+        "hop_count": 2,
+        "path_signature": "780fbc906b8a7048"
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "2bf100942d2a0365fd842d96bbdd52eb01c3b662",
+          "d6a30f974730e1ce5b695abb8f61019f75dcfc1b"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "MESH:D009134_Disease",
+          "MESH:D028361_Disease"
+        ],
+        "names": [
+          "smn",
+          "muscular atrophy spinal",
+          "mitochondrial diseases"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Muscular Atrophy Spinal"
+          ],
+          [
+            "Mitochondrial Diseases"
+          ]
+        ],
+        "relations": [
+          "related_to",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ],
+          [
+            "19437551"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1)."
+          ],
+          [
+            "Mitochondrial dysfunction may therefore be important in SMA pathology and may represent a new therapeutic target"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "related_to",
+            "selected_pmid": "39264856",
+            "selected_quote": "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1).",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "19437551",
+            "selected_quote": "Mitochondrial dysfunction may therefore be important in SMA pathology and may represent a new therapeutic target",
+            "selected_confidence": 0.9,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.602,
+        "base_score": 0.602,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 22,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "c3a4effef4fb1313"
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "2bf100942d2a0365fd842d96bbdd52eb01c3b662",
+          "2d8398d8bc1995859651b05604907286c7b9e49e"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "MESH:D009134_Disease",
+          "20595_Gene"
+        ],
+        "names": [
+          "smn",
+          "muscular atrophy spinal",
+          "smn1"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Muscular Atrophy Spinal"
+          ],
+          [
+            "Smn1"
+          ]
+        ],
+        "relations": [
+          "related_to",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ],
+          [
+            "19437551"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1)."
+          ],
+          [
+            "Mutations of the survival motor neuron (SMN) gene in spinal muscular atrophy (SMA) lead to anterior horn cell death"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "related_to",
+            "selected_pmid": "39264856",
+            "selected_quote": "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1).",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "19437551",
+            "selected_quote": "Mutations of the survival motor neuron (SMN) gene in spinal muscular atrophy (SMA) lead to anterior horn cell death",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.593,
+        "base_score": 0.593,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 23,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "c3d1a3d08404ff36"
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "2bf100942d2a0365fd842d96bbdd52eb01c3b662",
+          "b78cb66311070b8bf44e9c9a10cf6b32408c5ba8"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "MESH:D009134_Disease",
+          "MESH:C537475_Disease"
+        ],
+        "names": [
+          "smn",
+          "muscular atrophy spinal",
+          "mitochondrial complex i deficiency"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Muscular Atrophy Spinal"
+          ],
+          [
+            "Mitochondrial complex I deficiency"
+          ]
+        ],
+        "relations": [
+          "related_to",
+          "contributes_to"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ],
+          [
+            "33353564"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1)."
+          ],
+          [
+            "SMA motor neurons show disturbed energy homeostasis due to dysfunction of mitochondrial complex I."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "related_to",
+            "selected_pmid": "39264856",
+            "selected_quote": "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1).",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "contributes_to",
+            "selected_pmid": "33353564",
+            "selected_quote": "SMA motor neurons show disturbed energy homeostasis due to dysfunction of mitochondrial complex I.",
+            "selected_confidence": 0.85,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.585,
+        "base_score": 0.585,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 24,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "ee413adf1251b1f6"
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "d6a30f974730e1ce5b695abb8f61019f75dcfc1b",
+          "2bf100942d2a0365fd842d96bbdd52eb01c3b662"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "MESH:D028361_Disease",
+          "MESH:D009134_Disease"
+        ],
+        "names": [
+          "smn",
+          "mitochondrial diseases",
+          "muscular atrophy spinal"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Mitochondrial Diseases"
+          ],
+          [
+            "Muscular Atrophy Spinal"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ],
+          [
+            "19437551"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "we observed a consistent loss of oxidative phosphorylation machinery of the mitochondria, a decrease in mitochondrial DNA copy number"
+          ],
+          [
+            "Mitochondrial dysfunction may therefore be important in SMA pathology and may represent a new therapeutic target"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "39264856",
+            "selected_quote": "we observed a consistent loss of oxidative phosphorylation machinery of the mitochondria, a decrease in mitochondrial DNA copy number",
+            "selected_confidence": 0.9,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "19437551",
+            "selected_quote": "Mitochondrial dysfunction may therefore be important in SMA pathology and may represent a new therapeutic target",
+            "selected_confidence": 0.9,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.567,
+        "base_score": 0.567,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 25,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "7deb61b7fb40951a"
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "2bf100942d2a0365fd842d96bbdd52eb01c3b662",
+          "1b3442c731ee9468d1e82d8849185f4cc5f8dcf8"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "MESH:D009134_Disease",
+          "MESH:D017382_Chemical"
+        ],
+        "names": [
+          "smn",
+          "muscular atrophy spinal",
+          "reactive oxygen species"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Muscular Atrophy Spinal"
+          ],
+          [
+            "Reactive Oxygen Species"
+          ]
+        ],
+        "relations": [
+          "related_to",
+          "impairs"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ],
+          [
+            "33353564"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1)."
+          ],
+          [
+            "higher ROS production that causes an increase of protein carbonylation and impaired protein synthesis in SMA motor neurons"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "related_to",
+            "selected_pmid": "39264856",
+            "selected_quote": "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1).",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "impairs",
+            "selected_pmid": "33353564",
+            "selected_quote": "higher ROS production that causes an increase of protein carbonylation and impaired protein synthesis in SMA motor neurons",
+            "selected_confidence": 0.9,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.559,
+        "base_score": 0.559,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 26,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "038085aa299c63a8"
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "d6a30f974730e1ce5b695abb8f61019f75dcfc1b",
+          "5fec60d9e6c65bd9a41bfb9b71784b9419c0f780"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "MESH:D028361_Disease",
+          "6606_Gene"
+        ],
+        "names": [
+          "smn",
+          "mitochondrial diseases",
+          "smn1"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Mitochondrial Diseases"
+          ],
+          [
+            "SMN1"
+          ]
+        ],
+        "relations": [
+          "associated_with",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ],
+          [
+            "36142791"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "we observed a consistent loss of oxidative phosphorylation machinery of the mitochondria, a decrease in mitochondrial DNA copy number"
+          ],
+          [
+            "we discuss the effects of SMN loss on mitochondrial functions in the neuronal and muscular systems that are the most affected in patients with spinal muscular atrophy"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "39264856",
+            "selected_quote": "we observed a consistent loss of oxidative phosphorylation machinery of the mitochondria, a decrease in mitochondrial DNA copy number",
+            "selected_confidence": 0.9,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "36142791",
+            "selected_quote": "we discuss the effects of SMN loss on mitochondrial functions in the neuronal and muscular systems that are the most affected in patients with spinal muscular atrophy",
+            "selected_confidence": 0.85,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.548,
+        "base_score": 0.548,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 27,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "9cfc6258eab088d1"
+      },
+      {
+        "path": [
+          "6fde66d21682a57547097fafe4b52ae369764725",
+          "2bf100942d2a0365fd842d96bbdd52eb01c3b662",
+          "91adf0d58c3105f749fa15c8bcfb449dc1e53903"
+        ],
+        "node_ids": [
+          "smn_disease",
+          "MESH:D009134_Disease",
+          "MESH:D009468_Disease"
+        ],
+        "names": [
+          "smn",
+          "muscular atrophy spinal",
+          "neuromuscular diseases"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Muscular Atrophy Spinal"
+          ],
+          [
+            "Neuromuscular Diseases"
+          ]
+        ],
+        "relations": [
+          "related_to",
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ],
+          [
+            "36142791"
+          ]
+        ],
+        "edge_is_directional": [
+          false,
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1)."
+          ],
+          [
+            "Spinal muscular atrophy (SMA) is a devastating neuromuscular disorder"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true,
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "related_to",
+            "selected_pmid": "39264856",
+            "selected_quote": "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1).",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          },
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "36142791",
+            "selected_quote": "Spinal muscular atrophy (SMA) is a devastating neuromuscular disorder",
+            "selected_confidence": 0.9,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "score": 0.525,
+        "base_score": 0.525,
+        "anchor_bonus": 0.0,
+        "anchor_features": {
+          "source_anchor_ids": [
+            "smn_disease"
+          ],
+          "target_anchor_ids": [],
+          "mechanism_anchor_ids": [],
+          "context_anchor_ids": [
+            "smn_disease"
+          ],
+          "mechanism_requested": true,
+          "start_matches_query_focus": true,
+          "end_matches_query_focus": false,
+          "bridge_matches_mechanism_context": false,
+          "path_spans_multiple_anchor_types": false
+        },
+        "candidate_rank": 28,
+        "gate_tier": "B",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence",
+          "weak_bridge_alignment"
+        ],
+        "claim_safe": false,
+        "retrieval_safe": true,
+        "hop_count": 2,
+        "path_signature": "325caf5fea84325a"
+      }
+    ],
+    "preferred_pmids": [
+      "39264856"
+    ],
+    "paths": [
+      {
+        "path_id": "BW004-P01",
+        "path_signature": "788642e4f3815aea",
+        "path_text": "smn --[correlates_with] fibrosis",
+        "node_ids": [
+          "smn_disease",
+          "MESH:D005355_Disease"
+        ],
+        "names": [
+          "smn",
+          "fibrosis"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Fibrosis"
+          ]
+        ],
+        "relations": [
+          "correlates_with"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "we observed a consistent loss of oxidative phosphorylation machinery of the mitochondria, a decrease in mitochondrial DNA copy number, and a correlation between signals of cellular stress, denervation and increased fibrosis."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "correlates_with",
+            "selected_pmid": "39264856",
+            "selected_quote": "we observed a consistent loss of oxidative phosphorylation machinery of the mitochondria, a decrease in mitochondrial DNA copy number, and a correlation between signals of cellular stress, denervation and increased fibrosis.",
+            "selected_confidence": 0.9,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 4,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_two_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.752,
+        "hop_count": 1
+      },
+      {
+        "path_id": "BW004-P02",
+        "path_signature": "4a8719b6edb1730c",
+        "path_text": "smn --[related_to] muscular atrophy spinal",
+        "node_ids": [
+          "smn_disease",
+          "MESH:D009134_Disease"
+        ],
+        "names": [
+          "smn",
+          "muscular atrophy spinal"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Muscular Atrophy Spinal"
+          ]
+        ],
+        "relations": [
+          "related_to"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1)."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "related_to",
+            "selected_pmid": "39264856",
+            "selected_quote": "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1).",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 5,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_two_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.752,
+        "hop_count": 1
+      },
+      {
+        "path_id": "BW004-P03",
+        "path_signature": "a736896f9d3e2453",
+        "path_text": "smn --[associated_with] muscle weakness",
+        "node_ids": [
+          "smn_disease",
+          "MESH:D018908_Disease"
+        ],
+        "names": [
+          "smn",
+          "muscle weakness"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Muscle Weakness"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "SMA is characterized by neuromuscular symptoms and muscle weakness."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "39264856",
+            "selected_quote": "SMA is characterized by neuromuscular symptoms and muscle weakness.",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 6,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_two_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.752,
+        "hop_count": 1
+      },
+      {
+        "path_id": "BW004-P04",
+        "path_signature": "b75c8dd599a75c3b",
+        "path_text": "smn --[associated_with] neuromuscular manifestations",
+        "node_ids": [
+          "smn_disease",
+          "MESH:D020879_Disease"
+        ],
+        "names": [
+          "smn",
+          "neuromuscular manifestations"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Neuromuscular Manifestations"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "SMA is characterized by neuromuscular symptoms and muscle weakness."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "39264856",
+            "selected_quote": "SMA is characterized by neuromuscular symptoms and muscle weakness.",
+            "selected_confidence": 1.0,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 7,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_two_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.752,
+        "hop_count": 1
+      },
+      {
+        "path_id": "BW004-P05",
+        "path_signature": "a488af25c6ad0cde",
+        "path_text": "smn --[associated_with] fatigue",
+        "node_ids": [
+          "smn_disease",
+          "MESH:D005221_Disease"
+        ],
+        "names": [
+          "smn",
+          "fatigue"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Fatigue"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "One main challenge for Type II SMA patients treated with these drugs is ongoing muscle fatigue, limited mobility, and other skeletal problems."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "39264856",
+            "selected_quote": "One main challenge for Type II SMA patients treated with these drugs is ongoing muscle fatigue, limited mobility, and other skeletal problems.",
+            "selected_confidence": 0.95,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 8,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_two_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.731,
+        "hop_count": 1
+      },
+      {
+        "path_id": "BW004-P06",
+        "path_signature": "cb822cc2e3447999",
+        "path_text": "smn --[associated_with] developmental disabilities",
+        "node_ids": [
+          "smn_disease",
+          "MESH:D002658_Disease"
+        ],
+        "names": [
+          "smn",
+          "developmental disabilities"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Developmental Disabilities"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1)."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "39264856",
+            "selected_quote": "Spinal muscular atrophy (SMA) is a recessive, developmental disorder caused by the genetic loss or mutation of the gene SMN1 (Survival of Motor Neuron 1).",
+            "selected_confidence": 0.9,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 13,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_two_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.709,
+        "hop_count": 1
+      },
+      {
+        "path_id": "BW004-P07",
+        "path_signature": "441ccb97be2ad830",
+        "path_text": "smn --[associated_with] scoliosis",
+        "node_ids": [
+          "smn_disease",
+          "MESH:D012600_Disease"
+        ],
+        "names": [
+          "smn",
+          "scoliosis"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Scoliosis"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Therefore, we collected paravertebral muscle from eight Type II patients undergoing spinal surgery for scoliosis and seven controls."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "39264856",
+            "selected_quote": "Therefore, we collected paravertebral muscle from eight Type II patients undergoing spinal surgery for scoliosis and seven controls.",
+            "selected_confidence": 0.9,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 14,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_two_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.709,
+        "hop_count": 1
+      },
+      {
+        "path_id": "BW004-P08",
+        "path_signature": "06acb09776237c26",
+        "path_text": "smn --[associated_with] mitochondrial diseases",
+        "node_ids": [
+          "smn_disease",
+          "MESH:D028361_Disease"
+        ],
+        "names": [
+          "smn",
+          "mitochondrial diseases"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Mitochondrial Diseases"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "we observed a consistent loss of oxidative phosphorylation machinery of the mitochondria, a decrease in mitochondrial DNA copy number"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "39264856",
+            "selected_quote": "we observed a consistent loss of oxidative phosphorylation machinery of the mitochondria, a decrease in mitochondrial DNA copy number",
+            "selected_confidence": 0.9,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 15,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_two_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.709,
+        "hop_count": 1
+      },
+      {
+        "path_id": "BW004-P09",
+        "path_signature": "b0ccf8f935331c2b",
+        "path_text": "smn --[associated_with] scleroderma limited",
+        "node_ids": [
+          "smn_disease",
+          "MESH:D045745_Disease"
+        ],
+        "names": [
+          "smn",
+          "scleroderma limited"
+        ],
+        "node_aliases": [
+          [
+            "smn"
+          ],
+          [
+            "Scleroderma Limited"
+          ]
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "39264856"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "One main challenge for Type II SMA patients treated with these drugs is ongoing muscle fatigue, limited mobility, and other skeletal problems."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "edge_supports": [
+          {
+            "selected_relation": "associated_with",
+            "selected_pmid": "39264856",
+            "selected_quote": "One main challenge for Type II SMA patients treated with these drugs is ongoing muscle fatigue, limited mobility, and other skeletal problems.",
+            "selected_confidence": 0.8,
+            "directional": false,
+            "support_tier": "A",
+            "support_reasons": [
+              "quote_present",
+              "confidence_present",
+              "confidence_ge_0.8",
+              "symmetric_relation"
+            ]
+          }
+        ],
+        "gate_tier": "A",
+        "gate_reasons": [
+          "query_endpoint_alignment",
+          "complete_hop_evidence"
+        ],
+        "claim_safe": true,
+        "retrieval_safe": true,
+        "candidate_rank": 18,
+        "rescue_triggered": false,
+        "rescue_added": false,
+        "rescue_outcome": "not_needed",
+        "diversity_added": false,
+        "incremental_value_class": "graph_confirmed",
+        "incremental_value_reasons": [
+          "tier_a_claim_safe",
+          "not_two_hop",
+          "all_support_in_text_top_k",
+          "bridge_absent_from_text"
+        ],
+        "supporting_pmids_outside_text_top_k": [],
+        "score": 0.666,
+        "hop_count": 1
+      }
+    ]
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": true,
+    "max_hops": 2,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "gate_evidence_paths": true,
+    "gate_tier_counts": {
+      "A": 9,
+      "B": 0,
+      "C": 11
+    },
+    "rescue_triggered": false,
+    "rescue_added_paths": 0,
+    "rescue_outcomes": [
+      "not_needed"
+    ],
+    "pre_gate_candidate_count": 28,
+    "node_ids": [
+      "smn_disease"
+    ],
+    "exposed_pmids": [
+      "39264856"
+    ],
+    "exposed_paths": [
+      [
+        "smn",
+        "fibrosis"
+      ],
+      [
+        "smn",
+        "muscular atrophy spinal"
+      ],
+      [
+        "smn",
+        "muscle weakness"
+      ],
+      [
+        "smn",
+        "neuromuscular manifestations"
+      ],
+      [
+        "smn",
+        "fatigue"
+      ],
+      [
+        "smn",
+        "developmental disabilities"
+      ],
+      [
+        "smn",
+        "scoliosis"
+      ],
+      [
+        "smn",
+        "mitochondrial diseases"
+      ],
+      [
+        "smn",
+        "scleroderma limited"
+      ]
+    ],
+    "exposed_edges": [
+      "smn --[correlates_with] fibrosis",
+      "smn --[related_to] muscular atrophy spinal",
+      "smn --[associated_with] muscle weakness",
+      "smn --[associated_with] neuromuscular manifestations",
+      "smn --[associated_with] fatigue",
+      "smn --[associated_with] developmental disabilities",
+      "smn --[associated_with] scoliosis",
+      "smn --[associated_with] mitochondrial diseases",
+      "smn --[associated_with] scleroderma limited"
+    ],
+    "exposure_signature": "a54bc4e8680a8325",
+    "routed_profile": "G_evidence_gated_two_hop",
+    "route_reason": "question_type=mechanism: evidence-gated multi-hop task",
+    "question_type": "mechanism",
+    "incremental_value": {
+      "method": "contrastive_bridge_coverage_v1",
+      "graph_incremental_candidate_count": 0,
+      "graph_confirmed_count": 9,
+      "requirements": [
+        "tier_a_claim_safe",
+        "two_hop",
+        "support_outside_text_top_k",
+        "bridge_absent_from_question_and_text_context"
+      ]
+    },
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {
+        "39264856": {
+          "text_score": 0.517309,
+          "graph_score": 0.752,
+          "reranked_score": 0.599451
+        }
+      }
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "39264856",
+        "score": 0.5994507777108817
+      },
+      {
+        "pmid": "36142791",
+        "score": 0.5970015797546585
+      },
+      {
+        "pmid": "33353564",
+        "score": 0.592129665021346
+      },
+      {
+        "pmid": "19437551",
+        "score": 0.5177730717830641
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "36142791",
+        "score": 0.5970015797546585
+      },
+      {
+        "pmid": "33353564",
+        "score": 0.592129665021346
+      },
+      {
+        "pmid": "19437551",
+        "score": 0.5177730717830641
+      },
+      {
+        "pmid": "39264856",
+        "score": 0.5173088887859718
+      }
+    ]
+  },
+  "answers": {},
+  "claim_verification": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 9.055801346898079,
+    "vector_index": 3.0254891365766525,
+    "total": 16.014809370040894
+  },
+  "token_usage": {
+    "input_tokens": 4856,
+    "total_tokens": 8124,
+    "output_tokens": 3268
+  },
+  "completed_at": "2026-08-09T10:53:40.438746+00:00"
+}

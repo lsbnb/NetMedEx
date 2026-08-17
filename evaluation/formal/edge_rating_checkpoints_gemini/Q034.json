@@ -1,0 +1,129 @@
+{
+  "question_id": "Q034",
+  "model": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "rated_at": "2026-07-31T19:31:56.740090+00:00",
+  "ratings": [
+    {
+      "edge_id": "Q034-E01",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The supporting titles explicitly describe diabetic retinopathy as an inflammatory disease, supporting the association."
+    },
+    {
+      "edge_id": "Q034-E02",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Vision disorders are not mentioned in any of the supporting titles."
+    },
+    {
+      "edge_id": "Q034-E03",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Diabetic retinopathy is inherently a retinal disease, which is supported by the terminology in the titles."
+    },
+    {
+      "edge_id": "Q034-E04",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles explicitly mention the pathological role of VEGF in diabetic retinopathy."
+    },
+    {
+      "edge_id": "Q034-E05",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] While diabetic retinopathy implies a relationship with diabetes mellitus, diabetic retinopathy does not cause diabetes; the causal direction is reversed."
+    },
+    {
+      "edge_id": "Q034-E06",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Macular edema is not mentioned in the supporting titles."
+    },
+    {
+      "edge_id": "Q034-E07",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Bevacizumab is not explicitly mentioned in the supporting titles, only a generic 'anti-VEGF agent'."
+    },
+    {
+      "edge_id": "Q034-E08",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Blindness is not mentioned in the supporting titles."
+    },
+    {
+      "edge_id": "Q034-E09",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Neither diabetic retinopathy nor streptozocin are mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q034-E10",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Diabetic retinopathy is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q034-E11",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title mentions si-Cx43 (which targets the GJA1 gene) for the treatment of diabetic retinopathy."
+    },
+    {
+      "edge_id": "Q034-E12",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] REN (renin) is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q034-E13",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The title explicitly describes diabetic retinopathy as a vascular disease."
+    },
+    {
+      "edge_id": "Q034-E14",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Diabetic retinopathy is not mentioned in the supporting title."
+    },
+    {
+      "edge_id": "Q034-E15",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Inflammation is not mentioned in the supporting titles."
+    },
+    {
+      "edge_id": "Q034-E16",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles explicitly mention VEGF in the context of diabetic macular edema."
+    },
+    {
+      "edge_id": "Q034-E17",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] Inflammation is not mentioned in the supporting titles."
+    },
+    {
+      "edge_id": "Q034-E18",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles mention macular edema and inflammatory disease in separate contexts but do not establish a causal relationship between inflammation and macular edema."
+    },
+    {
+      "edge_id": "Q034-E19",
+      "biologically_meaningful": 1,
+      "relation_type_correct": 1,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles explicitly mention VEGF in the context of diabetic macular edema."
+    },
+    {
+      "edge_id": "Q034-E20",
+      "biologically_meaningful": 0,
+      "relation_type_correct": 0,
+      "notes": "[AI-GENERATED RATING -- Gemini 3.1 Pro. Blinded graph-edge quality pass, not a human expert review.] The titles do not establish a causal relationship between macular edema and inflammation."
+    }
+  ],
+  "raw_response_sha256": "9b63ccb4a80359e17d7970ac9901eb9ccf8b9cdfdc10b732ee6fafaf5a6f97b8"
+}

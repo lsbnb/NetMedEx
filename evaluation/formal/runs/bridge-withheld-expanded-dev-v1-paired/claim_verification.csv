@@ -1,0 +1,5 @@
+question_id,claim_id,path_id,verdict,reasons
+BW003,HC-01,0e540ca1773fb489,unsupported,hop_2_target_missing;hop_2_relation_mismatch;hop_2_quote_relation_mismatch
+BW003,HC-02,4b4f28e7b4bcde53,supported,
+BW003,HC-03,902011beb3361d1c,unsupported,hop_2_target_missing;hop_2_quote_relation_mismatch
+BW003,HC-04,daf58598d61d93bf,unsupported,hop_1_direction_mismatch;hop_1_relation_mismatch

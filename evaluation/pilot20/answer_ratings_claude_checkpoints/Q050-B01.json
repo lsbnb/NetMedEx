@@ -1,0 +1,53 @@
+{
+  "task": "answer",
+  "question_id": "Q050",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "d5c41c3108a3d3be4e2614f6bd3d6af505592af33a36bc1fa21464c409ff5ca9",
+  "raw_response_sha256": "df9ec242b18921a7189718bfa71eeef56cd11998e17d5fc640ba1f2e47dda83e",
+  "usage": {
+    "input_tokens": 2643,
+    "output_tokens": 460,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 3103
+  },
+  "rated_at": "2026-08-12T19:24:20.879817+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q050-A",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 5,
+        "notes": "Well-structured with multiple PMIDs, clear hypothesis, absence statement, and summary table. PMIDs unverifiable but plausible; animal-only caveat noted appropriately."
+      },
+      {
+        "answer_id": "Q050-B",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 2,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Hypothesis is coherent and testable but lacks citations, specific mechanistic details (e.g., metabolites), and experimental specificity. General but accurate."
+      },
+      {
+        "answer_id": "Q050-C",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Most mechanistically detailed: decanoic acid–Th17–IL-17A axis clearly articulated, multiple models cited, human evidence gap acknowledged, testable design specified."
+      }
+    ],
+    "preferred_item_id": "Q050-C",
+    "pairwise_reason": "Q050-C provides the most mechanistically coherent and complete hypothesis, explicitly detailing the decanoic acid–Th17–IL-17A–bone loss pathway across multiple animal models with citations, a clear experimental design, and appropriate caveats about human evidence."
+  }
+}

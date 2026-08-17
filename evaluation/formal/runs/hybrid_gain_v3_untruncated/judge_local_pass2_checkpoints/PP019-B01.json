@@ -1,0 +1,91 @@
+{
+  "task": "answer",
+  "question_id": "PP019",
+  "batch": 1,
+  "provider": "local",
+  "model": "gpt-oss:120b",
+  "input_sha256": "91f27631e55b696ab51f1524daa22fe20f774757240b70083f67fff725e35065",
+  "raw_response_sha256": "454106ef260dac1411bef29c82d0a0fa4a45895014783aefdfbafcd7b436aa3a",
+  "usage": {
+    "input_tokens": 7508,
+    "output_tokens": 652,
+    "total_tokens": 8160
+  },
+  "rated_at": "2026-08-16T21:09:15.448929+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "PP019-A",
+        "correctness": 5,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Comprehensive coverage of all hops with human/animal data and clear mechanistic links."
+      },
+      {
+        "answer_id": "PP019-B",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Strong synthesis but lacks direct gut dysbiosis‑osteoporosis mechanistic data."
+      },
+      {
+        "answer_id": "PP019-C",
+        "correctness": 3,
+        "completeness": 3,
+        "relevance": 4,
+        "grounding": 3,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Contains contradictory claim and limited mechanistic detail for systemic bone loss."
+      },
+      {
+        "answer_id": "PP019-D",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Focuses on gut axis; solid human and animal evidence with hypothesis."
+      },
+      {
+        "answer_id": "PP019-E",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Clear steps and evidence, similar to A but slightly less detail."
+      },
+      {
+        "answer_id": "PP019-F",
+        "correctness": 4,
+        "completeness": 3,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 3,
+        "research_value": 3,
+        "notes": "Emphasizes animal studies; human mechanistic evidence is limited."
+      },
+      {
+        "answer_id": "PP019-G",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Balanced human/animal data; includes probiotic reversal supporting the chain."
+      }
+    ],
+    "preferred_item_id": "PP019-A",
+    "pairwise_reason": "PP019-A offers the most complete, mechanistically coherent, and well‑grounded evidence for each hop, distinguishing human and animal data and proposing a testable hypothesis."
+  }
+}

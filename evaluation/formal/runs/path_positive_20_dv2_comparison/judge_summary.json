@@ -1,0 +1,61 @@
+{
+  "task": "answer",
+  "judges": [
+    "gpt41",
+    "claude46"
+  ],
+  "rated_rows": 160,
+  "unique_items": 80,
+  "reliability": {
+    "correctness": {
+      "n_multi_rated_items": 80,
+      "rater_count": 2,
+      "fleiss_kappa": null,
+      "krippendorff_alpha": -0.0312
+    },
+    "completeness": {
+      "n_multi_rated_items": 80,
+      "rater_count": 2,
+      "fleiss_kappa": null,
+      "krippendorff_alpha": 0.5953
+    },
+    "relevance": {
+      "n_multi_rated_items": 80,
+      "rater_count": 2,
+      "fleiss_kappa": null,
+      "krippendorff_alpha": 0.1999
+    },
+    "grounding": {
+      "n_multi_rated_items": 80,
+      "rater_count": 2,
+      "fleiss_kappa": null,
+      "krippendorff_alpha": -0.1772
+    },
+    "mechanistic_coherence": {
+      "n_multi_rated_items": 80,
+      "rater_count": 2,
+      "fleiss_kappa": null,
+      "krippendorff_alpha": 0.5482
+    },
+    "research_value": {
+      "n_multi_rated_items": 80,
+      "rater_count": 2,
+      "fleiss_kappa": null,
+      "krippendorff_alpha": 0.482
+    }
+  },
+  "pairwise_preferences": {
+    "raw_judge_votes": {
+      "structured_gated_path_answer": 23,
+      "traditional_text_rag": 8,
+      "tie": 2,
+      "text_rag_kg_reranking": 7
+    },
+    "question_level_consensus": {
+      "structured_gated_path_answer": 8,
+      "traditional_text_rag": 3,
+      "tie": 7,
+      "text_rag_kg_reranking": 2
+    }
+  }
+}

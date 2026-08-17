@@ -1,0 +1,46 @@
+{
+  "name": "netmedex-controlled-bridge-bw010-distractors-v1",
+  "questions": {
+    "BW010": {
+      "source_patterns": [
+        "\\bgut\\s+microbiome\\s+dysbiosis\\b",
+        "\\bintestinal\\s+dysbiosis\\b",
+        "\\bgut\\s+dysbiosis\\b",
+        "\\bmicrobial\\s+dysbiosis\\b",
+        "\\bmicrobiome\\s+dysbiosis\\b"
+      ],
+      "target_patterns": [
+        "\\bbone\\s+loss\\b",
+        "\\bosteoporosis\\b",
+        "\\bbone\\s+mineral\\s+density\\b",
+        "\\bBMD\\b",
+        "\\bosteoclasts?\\b"
+      ],
+      "target_side_forbidden_source_patterns": [
+        "\\bgut\\s+microbiome\\s+dysbiosis\\b",
+        "\\bgut\\s+dysbiosis\\b",
+        "\\bintestinal\\s+dysbiosis\\b",
+        "\\bmicrobiome\\s+dysbiosis\\b"
+      ],
+      "max_candidates_per_query": 30,
+      "max_articles_per_side": 3,
+      "max_distractors_per_side": 10,
+      "source_distractor_query": "(gut dysbiosis[Title/Abstract] OR intestinal dysbiosis[Title/Abstract] OR microbiome dysbiosis[Title/Abstract])",
+      "target_distractor_query": "(bone loss[Title/Abstract] OR osteoporosis[Title/Abstract] OR osteoclast[Title/Abstract])",
+      "mediators": [
+        {
+          "name": "serotonin",
+          "patterns": [
+            "\\bserotonin\\b",
+            "\\b5.hydroxytryptamine\\b",
+            "\\b5.HT\\b",
+            "\\bTPH1\\b"
+          ],
+          "source_query": "gut dysbiosis[Title/Abstract] AND (serotonin[Title/Abstract] OR 5-hydroxytryptamine[Title/Abstract] OR TPH1[Title/Abstract])",
+          "target_query": "(serotonin[Title/Abstract] OR 5-hydroxytryptamine[Title/Abstract] OR gut-derived serotonin[Title/Abstract]) AND bone loss[Title/Abstract]",
+          "rationale": "AI-proposed and independently adjudicated cross-document gut-bone mediator."
+        }
+      ]
+    }
+  }
+}

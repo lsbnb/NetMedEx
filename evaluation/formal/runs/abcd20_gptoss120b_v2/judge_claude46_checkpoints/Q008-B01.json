@@ -1,0 +1,63 @@
+{
+  "task": "answer",
+  "question_id": "Q008",
+  "batch": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "input_sha256": "62267800e321f093a8ecc768f4908f1ef971c377e3508b324b8a6b354312f061",
+  "raw_response_sha256": "942ee4092632c747d8ffcfe6cf2ca5fae98f1f750cc01d19944294769924d350",
+  "usage": {
+    "input_tokens": 3858,
+    "output_tokens": 578,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "total_tokens": 4436
+  },
+  "rated_at": "2026-08-13T04:39:56.974206+00:00",
+  "result": {
+    "ratings": [
+      {
+        "answer_id": "Q008-A",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Well-cited with PMIDs, covers key mechanisms. ER-stress/gliadin link is interesting but somewhat tangential. Evidence levels clearly labeled. Minor: bile-acid section is speculative."
+      },
+      {
+        "answer_id": "Q008-B",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 5,
+        "research_value": 5,
+        "notes": "Strong mechanistic coherence with explicit hypotheses and evidence tiers. Gut-liver axis inclusion adds value. Testable hypotheses section is particularly useful for research direction."
+      },
+      {
+        "answer_id": "Q008-C",
+        "correctness": 4,
+        "completeness": 4,
+        "relevance": 5,
+        "grounding": 4,
+        "mechanistic_coherence": 4,
+        "research_value": 4,
+        "notes": "Solid coverage with graph-derived confirmations adding transparency. Mucus/biofilm mechanism included. Graph path notation is novel but may confuse readers unfamiliar with the system."
+      },
+      {
+        "answer_id": "Q008-D",
+        "correctness": 4,
+        "completeness": 5,
+        "relevance": 5,
+        "grounding": 2,
+        "mechanistic_coherence": 4,
+        "research_value": 3,
+        "notes": "Most comprehensive coverage including bile acids, autophagy, ER stress. However, no PMIDs cited, reducing grounding score significantly. Claims about tight-junction proteins and NF-κB interaction lack citation support."
+      }
+    ],
+    "preferred_item_id": "Q008-B",
+    "pairwise_reason": "Q008-B best balances citation-grounded evidence with explicit mechanistic hypotheses and clear evidence-tier labeling, making it most useful for researchers while maintaining scientific rigor."
+  }
+}

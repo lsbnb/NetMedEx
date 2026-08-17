@@ -1,0 +1,1043 @@
+{
+  "status": "complete",
+  "question_id": "Q007",
+  "domain": "immunology",
+  "question": "Which immune cell types are associated with IL-17 in autoimmune disease networks?",
+  "question_type": "association",
+  "pubmed_query": "IL-17 AND autoimmune disease AND (Th17 OR gamma-delta T cells OR innate lymphoid cells)",
+  "effective_pubmed_query": "IL-17 AND autoimmune disease AND (Th17 OR gamma-delta T cells OR innate lymphoid cells)",
+  "query_attempts": [
+    "[reused frozen corpus]"
+  ],
+  "language": "English",
+  "corpus_pmids": [
+    "25130295",
+    "25145755",
+    "25467639",
+    "27576555",
+    "27757507",
+    "30502718",
+    "30891627",
+    "31295952",
+    "31866067",
+    "34635393",
+    "34875227",
+    "35872102",
+    "37579542",
+    "37670700",
+    "39875232"
+  ],
+  "graph": {
+    "node_count": 70,
+    "edge_count": 158,
+    "path_count": 20,
+    "preferred_pmids": [
+      "27576555",
+      "30891627",
+      "31295952",
+      "31866067",
+      "34635393",
+      "34875227",
+      "35872102",
+      "37579542",
+      "37670700",
+      "39875232"
+    ],
+    "paths": [
+      {
+        "path_id": "Q007-P01",
+        "path_signature": "e8c8b73c23575b5c",
+        "path_text": "il17a --[associated_with] autoimmune diseases",
+        "node_ids": [
+          "3605_Gene",
+          "MESH:D001327_Disease"
+        ],
+        "names": [
+          "il17a",
+          "autoimmune diseases"
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "27576555",
+            "30891627",
+            "34875227"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "IL-17-producing T helper (Th17) cells have been implicated in the pathogenesis of many inflammatory and autoimmune diseases",
+            "recent studies have implicated their roles in the development of extra-intestinal autoimmune diseases including multiple sclerosis"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 1.059,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q007-P02",
+        "path_signature": "74e48be6ac996a81",
+        "path_text": "il17a --[associated_with] inflammation",
+        "node_ids": [
+          "3605_Gene",
+          "MESH:D007249_Disease"
+        ],
+        "names": [
+          "il17a",
+          "inflammation"
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "27576555",
+            "30891627",
+            "34635393"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "IL-17-producing T helper (Th17) cells have been implicated in the pathogenesis of many inflammatory and autoimmune diseases"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 1.059,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q007-P03",
+        "path_signature": "9fc33db922540d67",
+        "path_text": "il17a --[associated_with] arthritis rheumatoid",
+        "node_ids": [
+          "3605_Gene",
+          "MESH:D001172_Disease"
+        ],
+        "names": [
+          "il17a",
+          "arthritis rheumatoid"
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "31295952",
+            "34635393",
+            "37670700"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Th17 cells, their key cytokine IL-17, and IL-23 seem to play pivotal roles.",
+            "for the development of putative therapeutic strategies to target IL-17-driven diseases such as ... rheumatoid arthritis",
+            "IL-17 cytokines, particularly IL-17A, have been implicated in the development of various inflammatory and autoimmune disorders, including multiple sclerosis, Hashimoto's thyroiditis, systemic lupus erythematosus, pyoderma gangrenosum, autoimmune hepatic disorders, rheumatoid arthritis, psoriasis, psoriatic arthritis, ankylosing spondylitis, osteoarthritis, and graft-versus-host disease."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.958,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q007-P04",
+        "path_signature": "8777b1b520f5bfeb",
+        "path_text": "il17a --[associated_with] psoriasis",
+        "node_ids": [
+          "3605_Gene",
+          "MESH:D011565_Disease"
+        ],
+        "names": [
+          "il17a",
+          "psoriasis"
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "31295952",
+            "34635393",
+            "37670700"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Th17 cells, their key cytokine IL-17, and IL-23 seem to play pivotal roles.",
+            "for the development of putative therapeutic strategies to target IL-17-driven diseases such as ... psoriasis",
+            "IL-17 cytokines, particularly IL-17A, have been implicated in the development of various inflammatory and autoimmune disorders, including multiple sclerosis, Hashimoto's thyroiditis, systemic lupus erythematosus, pyoderma gangrenosum, autoimmune hepatic disorders, rheumatoid arthritis, psoriasis, psoriatic arthritis, ankylosing spondylitis, osteoarthritis, and graft-versus-host disease."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.958,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q007-P05",
+        "path_signature": "7e3c98e329642ace",
+        "path_text": "il17a --[associated_with] lupus erythematosus systemic",
+        "node_ids": [
+          "3605_Gene",
+          "MESH:D008180_Disease"
+        ],
+        "names": [
+          "il17a",
+          "lupus erythematosus systemic"
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "34635393",
+            "35872102",
+            "37670700"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "for the development of putative therapeutic strategies to target IL-17-driven diseases such as ... systemic lupus erythematosus",
+            "SLE CD4+ T cells are known to ... produce excessive IL-17",
+            "IL-17 cytokines, particularly IL-17A, have been implicated in the development of various inflammatory and autoimmune disorders, including multiple sclerosis, Hashimoto's thyroiditis, systemic lupus erythematosus, pyoderma gangrenosum, autoimmune hepatic disorders, rheumatoid arthritis, psoriasis, psoriatic arthritis, ankylosing spondylitis, osteoarthritis, and graft-versus-host disease."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.875,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q007-P06",
+        "path_signature": "f502115245fbe217",
+        "path_text": "il17a ->[blocks] ixekizumab",
+        "node_ids": [
+          "3605_Gene",
+          "MESH:C549079_Chemical"
+        ],
+        "names": [
+          "il17a",
+          "ixekizumab"
+        ],
+        "relations": [
+          "blocks"
+        ],
+        "edge_pmids": [
+          [
+            "37579542",
+            "39875232"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Monoclonal antibodies (mAbs) targeting IL-17A (e.g., ixekizumab and secukinumab)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.843,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q007-P07",
+        "path_signature": "a672ac610608a33a",
+        "path_text": "il17a ->[blocks] secukinumab",
+        "node_ids": [
+          "3605_Gene",
+          "MESH:C555450_Chemical"
+        ],
+        "names": [
+          "il17a",
+          "secukinumab"
+        ],
+        "relations": [
+          "blocks"
+        ],
+        "edge_pmids": [
+          [
+            "37579542",
+            "39875232"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Monoclonal antibodies (mAbs) targeting IL-17A (e.g., ixekizumab and secukinumab)"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.843,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q007-P08",
+        "path_signature": "758cb574cfabe800",
+        "path_text": "il17a --[associated_with] il23a",
+        "node_ids": [
+          "3605_Gene",
+          "51561_Gene"
+        ],
+        "names": [
+          "il17a",
+          "il23a"
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "31295952",
+            "39875232"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Th17 cells, their key cytokine IL-17, and IL-23 seem to play pivotal roles."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.834,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q007-P09",
+        "path_signature": "b0ef466dd17f1c99",
+        "path_text": "il17a --[associated_with] neoplasms",
+        "node_ids": [
+          "3605_Gene",
+          "MESH:D009369_Disease"
+        ],
+        "names": [
+          "il17a",
+          "neoplasms"
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "37579542",
+            "39875232"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "excessive elevation of IL-17A is associated with the development of autoimmune diseases and cancer",
+            "IL-17 is also involved in various cancers, including breast, colon, cervical, prostate, and skin cancer"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.782,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q007-P10",
+        "path_signature": "99244729e436b6b8",
+        "path_text": "il17a --[associated_with] multiple sclerosis",
+        "node_ids": [
+          "3605_Gene",
+          "MESH:D009103_Disease"
+        ],
+        "names": [
+          "il17a",
+          "multiple sclerosis"
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "34635393",
+            "37670700"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "for the development of putative therapeutic strategies to target IL-17-driven diseases such as multiple sclerosis",
+            "IL-17 cytokines, particularly IL-17A, have been implicated in the development of various inflammatory and autoimmune disorders, including multiple sclerosis, Hashimoto's thyroiditis, systemic lupus erythematosus, pyoderma gangrenosum, autoimmune hepatic disorders, rheumatoid arthritis, psoriasis, psoriatic arthritis, ankylosing spondylitis, osteoarthritis, and graft-versus-host disease."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.778,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q007-P11",
+        "path_signature": "e5a39d66ce5f61df",
+        "path_text": "il17a ->[suppresses] bimekizumab",
+        "node_ids": [
+          "3605_Gene",
+          "MESH:C000625981_Chemical"
+        ],
+        "names": [
+          "il17a",
+          "bimekizumab"
+        ],
+        "relations": [
+          "suppresses"
+        ],
+        "edge_pmids": [
+          [
+            "39875232"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Four FDA-approved drugs ... bimekizumab ... suppress the IL-17 pathway"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.771,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q007-P12",
+        "path_signature": "8bc6df7bf2be3131",
+        "path_text": "il17a ->[suppresses] brodalumab",
+        "node_ids": [
+          "3605_Gene",
+          "MESH:C571216_Chemical"
+        ],
+        "names": [
+          "il17a",
+          "brodalumab"
+        ],
+        "relations": [
+          "suppresses"
+        ],
+        "edge_pmids": [
+          [
+            "39875232"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Four FDA-approved drugs ... brodalumab ... suppress the IL-17 pathway"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.771,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q007-P13",
+        "path_signature": "4da78677d1e5dfba",
+        "path_text": "il17a ->[regulates] rorgammat",
+        "node_ids": [
+          "3605_Gene",
+          "rorgammat_gene"
+        ],
+        "names": [
+          "il17a",
+          "rorgammat"
+        ],
+        "relations": [
+          "regulates"
+        ],
+        "edge_pmids": [
+          [
+            "34635393"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "RORgammat, the master transcription factor for cytokine interleukin (IL)-17"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.771,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q007-P14",
+        "path_signature": "e60ed9d6fbfd9270",
+        "path_text": "il17f ->[induces] inflammation",
+        "node_ids": [
+          "112744_Gene",
+          "MESH:D007249_Disease"
+        ],
+        "names": [
+          "il17f",
+          "inflammation"
+        ],
+        "relations": [
+          "induces"
+        ],
+        "edge_pmids": [
+          [
+            "37670700"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "The IL-17 (interleukin 17) family consists of six structurally related pro-inflammatory cytokines, namely IL-17A to IL-17F. These cytokines have garnered significant scientific interest due to their pivotal role in the pathogenesis of various diseases. ... IL-17 cytokines play a critical role in host defense mechanisms by inducing cytokines and chemokines, recruiting neutrophils, modifying T-cell differentiation, and stimulating the production of antimicrobial proteins. Maintaining an appropriate balance of IL-17 is vital for overall health. However, dysregulated production of IL-17A and other members can lead to the pathogenesis of numerous inflammatory and autoimmune diseases."
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.767,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q007-P15",
+        "path_signature": "90e36098138336c4",
+        "path_text": "il17f ->[regulates] saa1",
+        "node_ids": [
+          "257630_Gene",
+          "20208_Gene"
+        ],
+        "names": [
+          "il17f",
+          "saa1"
+        ],
+        "relations": [
+          "regulates"
+        ],
+        "edge_pmids": [
+          [
+            "31866067"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "their cytokine production is regulated by serum amyloid A proteins (SAA1 and SAA2) secreted by adjacent intestinal epithelial cells"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.767,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q007-P16",
+        "path_signature": "fb8114fd41dbefb9",
+        "path_text": "il17f ->[regulates] saa2",
+        "node_ids": [
+          "257630_Gene",
+          "20209_Gene"
+        ],
+        "names": [
+          "il17f",
+          "saa2"
+        ],
+        "relations": [
+          "regulates"
+        ],
+        "edge_pmids": [
+          [
+            "31866067"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "their cytokine production is regulated by serum amyloid A proteins (SAA1 and SAA2) secreted by adjacent intestinal epithelial cells"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.767,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q007-P17",
+        "path_signature": "513ac1694809048e",
+        "path_text": "il17a ->[regulates] saa1",
+        "node_ids": [
+          "16171_Gene",
+          "20208_Gene"
+        ],
+        "names": [
+          "il17a",
+          "saa1"
+        ],
+        "relations": [
+          "regulates"
+        ],
+        "edge_pmids": [
+          [
+            "31866067"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "their cytokine production is regulated by serum amyloid A proteins (SAA1 and SAA2) secreted by adjacent intestinal epithelial cells"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.766,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q007-P18",
+        "path_signature": "0ff15ad62c079664",
+        "path_text": "il17a ->[regulates] saa2",
+        "node_ids": [
+          "16171_Gene",
+          "20209_Gene"
+        ],
+        "names": [
+          "il17a",
+          "saa2"
+        ],
+        "relations": [
+          "regulates"
+        ],
+        "edge_pmids": [
+          [
+            "31866067"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "their cytokine production is regulated by serum amyloid A proteins (SAA1 and SAA2) secreted by adjacent intestinal epithelial cells"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.766,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q007-P19",
+        "path_signature": "fb54a20feca1c5a0",
+        "path_text": "il17a ->[expresses] cd4",
+        "node_ids": [
+          "3605_Gene",
+          "920_Gene"
+        ],
+        "names": [
+          "il17a",
+          "cd4"
+        ],
+        "relations": [
+          "expresses"
+        ],
+        "edge_pmids": [
+          [
+            "27576555"
+          ]
+        ],
+        "edge_is_directional": [
+          true
+        ],
+        "edge_evidence_quotes": [
+          [
+            "IL-17-expressing RORgammat+CD4+ T cell population as a distinct subset of helper T cells"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.766,
+        "hop_count": 1
+      },
+      {
+        "path_id": "Q007-P20",
+        "path_signature": "324b58b8925df468",
+        "path_text": "il17a --[associated_with] inflammatory bowel diseases",
+        "node_ids": [
+          "3605_Gene",
+          "MESH:D015212_Disease"
+        ],
+        "names": [
+          "il17a",
+          "inflammatory bowel diseases"
+        ],
+        "relations": [
+          "associated_with"
+        ],
+        "edge_pmids": [
+          [
+            "31295952",
+            "34635393"
+          ]
+        ],
+        "edge_is_directional": [
+          false
+        ],
+        "edge_evidence_quotes": [
+          [
+            "Th17 cells, their key cytokine IL-17, and IL-23 seem to play pivotal roles.",
+            "for the development of putative therapeutic strategies to target IL-17-driven diseases such as ... inflammatory bowel disease"
+          ]
+        ],
+        "edge_evidence_complete": [
+          true
+        ],
+        "score": 0.748,
+        "hop_count": 1
+      }
+    ]
+  },
+  "evidence_exposure": {
+    "profile": "F_adaptive",
+    "label": "F. Adaptive routed Hybrid RAG",
+    "use_node_rag": true,
+    "max_hops": 1,
+    "gate_directional_paths": false,
+    "gate_multi_document_paths": false,
+    "gate_evidence_paths": false,
+    "node_ids": [
+      "3605_Gene",
+      "257630_Gene",
+      "112744_Gene",
+      "16171_Gene"
+    ],
+    "exposed_pmids": [
+      "27576555",
+      "30891627",
+      "31295952",
+      "31866067",
+      "34635393",
+      "34875227",
+      "35872102",
+      "37579542",
+      "37670700",
+      "39875232"
+    ],
+    "exposed_paths": [
+      [
+        "il17a",
+        "autoimmune diseases"
+      ],
+      [
+        "il17a",
+        "inflammation"
+      ],
+      [
+        "il17a",
+        "arthritis rheumatoid"
+      ],
+      [
+        "il17a",
+        "psoriasis"
+      ],
+      [
+        "il17a",
+        "lupus erythematosus systemic"
+      ],
+      [
+        "il17a",
+        "ixekizumab"
+      ],
+      [
+        "il17a",
+        "secukinumab"
+      ],
+      [
+        "il17a",
+        "il23a"
+      ],
+      [
+        "il17a",
+        "neoplasms"
+      ],
+      [
+        "il17a",
+        "multiple sclerosis"
+      ],
+      [
+        "il17a",
+        "bimekizumab"
+      ],
+      [
+        "il17a",
+        "brodalumab"
+      ],
+      [
+        "il17a",
+        "rorgammat"
+      ],
+      [
+        "il17f",
+        "inflammation"
+      ],
+      [
+        "il17f",
+        "saa1"
+      ],
+      [
+        "il17f",
+        "saa2"
+      ],
+      [
+        "il17a",
+        "saa1"
+      ],
+      [
+        "il17a",
+        "saa2"
+      ],
+      [
+        "il17a",
+        "cd4"
+      ],
+      [
+        "il17a",
+        "inflammatory bowel diseases"
+      ]
+    ],
+    "exposed_edges": [
+      "il17a --[associated_with] autoimmune diseases",
+      "il17a --[associated_with] inflammation",
+      "il17a --[associated_with] arthritis rheumatoid",
+      "il17a --[associated_with] psoriasis",
+      "il17a --[associated_with] lupus erythematosus systemic",
+      "il17a ->[blocks] ixekizumab",
+      "il17a ->[blocks] secukinumab",
+      "il17a --[associated_with] il23a",
+      "il17a --[associated_with] neoplasms",
+      "il17a --[associated_with] multiple sclerosis",
+      "il17a ->[suppresses] bimekizumab",
+      "il17a ->[suppresses] brodalumab",
+      "il17a ->[regulates] rorgammat",
+      "il17f ->[induces] inflammation",
+      "il17f ->[regulates] saa1",
+      "il17f ->[regulates] saa2",
+      "il17a ->[regulates] saa1",
+      "il17a ->[regulates] saa2",
+      "il17a ->[expresses] cd4",
+      "il17a --[associated_with] inflammatory bowel diseases"
+    ],
+    "exposure_signature": "2a0a2f31a88b3ca3",
+    "routed_profile": "C_one_hop",
+    "route_reason": "question_type=association: graph association task",
+    "question_type": "association",
+    "frozen_exposure_source": "evaluation/formal/runs/adaptive-replay-small-gpt41/questions/Q007/result.json",
+    "reranking": {
+      "method": "evidence_margin_blend_v1",
+      "min_graph_margin": 0.15,
+      "graph_blend": 0.35,
+      "boosted_pmids": {
+        "37670700": {
+          "text_score": 0.648956,
+          "graph_score": 0.958,
+          "reranked_score": 0.757122
+        },
+        "39875232": {
+          "text_score": 0.648261,
+          "graph_score": 0.843,
+          "reranked_score": 0.716419
+        },
+        "27576555": {
+          "text_score": 0.644737,
+          "graph_score": 1.0,
+          "reranked_score": 0.769079
+        },
+        "37579542": {
+          "text_score": 0.623866,
+          "graph_score": 0.843,
+          "reranked_score": 0.700563
+        },
+        "31295952": {
+          "text_score": 0.60475,
+          "graph_score": 0.958,
+          "reranked_score": 0.728388
+        },
+        "30891627": {
+          "text_score": 0.591335,
+          "graph_score": 1.0,
+          "reranked_score": 0.734368
+        },
+        "34875227": {
+          "text_score": 0.575783,
+          "graph_score": 1.0,
+          "reranked_score": 0.724259
+        },
+        "34635393": {
+          "text_score": 0.562233,
+          "graph_score": 1.0,
+          "reranked_score": 0.715451
+        },
+        "31866067": {
+          "text_score": 0.53008,
+          "graph_score": 0.767,
+          "reranked_score": 0.613002
+        },
+        "35872102": {
+          "text_score": 0.523642,
+          "graph_score": 0.875,
+          "reranked_score": 0.646617
+        }
+      }
+    }
+  },
+  "rankings": {
+    "netmedex_hybrid_rag": [
+      {
+        "pmid": "27576555",
+        "score": 0.7690790988861452
+      },
+      {
+        "pmid": "37670700",
+        "score": 0.7571217072584482
+      },
+      {
+        "pmid": "30891627",
+        "score": 0.7343676714119473
+      },
+      {
+        "pmid": "31295952",
+        "score": 0.7283876889969016
+      },
+      {
+        "pmid": "34875227",
+        "score": 0.7242590717802639
+      },
+      {
+        "pmid": "39875232",
+        "score": 0.7164193961022254
+      },
+      {
+        "pmid": "34635393",
+        "score": 0.7154512538763798
+      },
+      {
+        "pmid": "37579542",
+        "score": 0.7005630064584952
+      },
+      {
+        "pmid": "35872102",
+        "score": 0.6466170806577556
+      },
+      {
+        "pmid": "25145755",
+        "score": 0.6154939066814366
+      }
+    ],
+    "traditional_rag": [
+      {
+        "pmid": "37670700",
+        "score": 0.6489564727053049
+      },
+      {
+        "pmid": "39875232",
+        "score": 0.648260609388039
+      },
+      {
+        "pmid": "27576555",
+        "score": 0.6447370752094542
+      },
+      {
+        "pmid": "37579542",
+        "score": 0.6238661637823004
+      },
+      {
+        "pmid": "25145755",
+        "score": 0.6154939066814366
+      },
+      {
+        "pmid": "30502718",
+        "score": 0.609906015627309
+      },
+      {
+        "pmid": "31295952",
+        "score": 0.6047502907644642
+      },
+      {
+        "pmid": "30891627",
+        "score": 0.5913348790953035
+      },
+      {
+        "pmid": "34875227",
+        "score": 0.5757831873542522
+      },
+      {
+        "pmid": "34635393",
+        "score": 0.5622326982713536
+      }
+    ]
+  },
+  "answers": {},
+  "timings_seconds": {
+    "pubtator_fetch": 0.0,
+    "semantic_graph": 3.8079917430877686e-05,
+    "vector_index": 1.4986459985375404,
+    "total": 2.0018097311258316
+  },
+  "token_usage": {},
+  "completed_at": "2026-08-03T18:10:36.059681+00:00"
+}

@@ -1,0 +1,23 @@
+system,question_id,run_id,output_source,answer
+netmedex_hybrid_rag,Q001,formal-v1-gpt-4.1-F_adaptive,fixed_formal_system_run,"Direct Evidence
+
+- Icariin promotes osteoblast differentiation through upregulation of miR-153, which in turn targets and increases the expression of Runt-related transcription factor 2 (Runx2), a key osteogenic marker. This effect was demonstrated in the MC3T3-E1 osteoblast cell line, with icariin reversing the inhibitory effects of miR-153 inhibitors and working synergistically with miR-153 mimics to enhance Runx2 expression and osteoblast differentiation [PMID: 29904399] (in vitro, mouse cells).
+- Icariin upregulates miR-21-5p in MC3T3-E1 cells, counteracting titanium particle-induced inhibition of osteogenic differentiation and mineralization. Knockdown of miR-21-5p abolished the pro-osteogenic effects of icariin, indicating mediation via miR-21-5p [PMID: 29500883] (in vitro, mouse cells).
+- In human bone mesenchymal stem cells, icariin influences osteogenesis through miR-23a-mediated modulation of Wnt/beta-catenin signaling. Icariin activates Wnt/beta-catenin signaling and enhances osteogenesis, an effect attenuated by miR-23a upregulation, while miR-23a inhibition mimics icariin’s effects [PMID: 33743412] (in vitro, human cells).
+- Icariin reduces the expression of miR-34c, which is upregulated during lipopolysaccharide (LPS)-induced bone loss. Lowering miR-34c restores Runx2 and other osteogenic gene expression, highlighting another potential miRNA-mediated pathway by which icariin supports osteogenesis [PMID: 27492554] (in vitro, mouse cells).
+- Icariin upregulates miR-335-5p in bone marrow stem cells from osteoporotic patients and rats, with miR-335-5p targeting PTEN and thereby promoting osteogenic differentiation; this is supported by both in vivo and in vitro experiments [PMID: 35292240, 32911026] (in vivo rat and in vitro, human/rat cells).
+
+Association
+
+- Icariin-treated osteoclast-derived exosomes (ICA-OC-Exo) promote osteoblast differentiation by increasing miR-331-3p, which targets FGF23 and DKK1 to enhance osteogenesis. This suggests an indirect miRNA-mediated communication mechanism involving osteoclast-osteoblast crosstalk [PMID: 39588260] (in vitro and in vivo, rat).
+
+Testable Hypothesis
+
+- Modulation of specific miRNAs (e.g., miR-21-5p, miR-23a, miR-335-5p, miR-153, miR-34c) may collectively mediate the pro-osteogenic effect of icariin, and combined targeting could potentiate bone regeneration.
+
+Graph-derived candidate insights
+
+- Icariin upregulates miR-153, promoting osteoblast differentiation through increased Runx2 expression (PATH 9d123cb2776a2b25; direct evidence: [PMID: 29904399]).
+- Icariin upregulates miR-21-5p, counteracting inhibition of osteogenic differentiation and mineralization (PATH c6b93ebbc4c518d2; direct evidence: [PMID: 29500883]).
+- Icariin regulates miR-335, contributing to effects on bone microvascular endothelial cells and protecting against steroid-induced osteonecrosis (PATH f5414ab8bd6ffab8; direct evidence: [PMID: 32911026]).
+- Icariin regulates miR-23a, activating Wnt/beta-catenin signaling and promoting osteogenic differentiation (PATH d980b84d3369fc1e; direct evidence: [PMID: 33743412])."
