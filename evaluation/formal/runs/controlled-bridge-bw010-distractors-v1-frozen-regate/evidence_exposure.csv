@@ -1,2 +1,0 @@
-system,arm,question_id,run_id,label,question_type,routed_profile,route_reason,use_node_rag,max_hops,gate_directional_paths,gate_multi_document_paths,gate_evidence_paths,node_ids,exposed_pmids,exposed_edges,exposed_paths,exposure_signature
-netmedex_hybrid_rag,F_adaptive,BW010,formal-v1-gpt-4.1-F_adaptive,F. Adaptive routed Hybrid RAG,mechanism,H_evidence_gated_four_hop,question_type=mechanism: bounded evidence-gated multi-hop task,True,4,False,True,True,MESH:D064806_Disease,,,,cdeec80ea79808c4

@@ -1,5 +1,0 @@
-system,arm,question_id,run_id,path_rank,path_id,path_signature,source,bridge,target,relation_1,relation_2,direction_1,direction_2,pmids,score,hop_count,path_text
-netmedex_hybrid_rag,F_adaptive,BW003,formal-v1-gpt-4.1-F_adaptive,1,BW003-P01,daf58598d61d93bf,cftr,,inflammation,induces,,forward,undirected,37546931,0.8700,1,cftr ->[induces] inflammation
-netmedex_hybrid_rag,F_adaptive,BW003,formal-v1-gpt-4.1-F_adaptive,2,BW003-P02,902011beb3361d1c,cftr,cystic fibrosis,inflammation,causes,leads_to,forward,forward,31251978;32029445,0.8140,2,cftr ->[causes] cystic fibrosis | cystic fibrosis ->[leads_to] inflammation
-netmedex_hybrid_rag,F_adaptive,BW003,formal-v1-gpt-4.1-F_adaptive,3,BW003-P03,4b4f28e7b4bcde53,cftr,dysbiosis,inflammation,causes,results_in,forward,forward,26973296;31961914,0.7520,2,cftr ->[causes] dysbiosis | dysbiosis ->[results_in] inflammation
-netmedex_hybrid_rag,F_adaptive,BW003,formal-v1-gpt-4.1-F_adaptive,4,BW003-P04,0e540ca1773fb489,cftr,nfkb1,inflammation,regulates,leads_to,forward,forward,27588407,0.6450,2,cftr ->[regulates] nfkb1 | nfkb1 ->[leads_to] inflammation

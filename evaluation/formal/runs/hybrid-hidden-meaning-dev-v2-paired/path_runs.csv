@@ -1,4 +1,0 @@
-system,arm,question_id,run_id,path_rank,path_id,path_signature,source,bridge,target,relation_1,relation_2,direction_1,direction_2,pmids,score,hop_count,path_text
-netmedex_hybrid_rag,F_adaptive,Q008,formal-v1-gpt-4.1-F_adaptive,1,Q008-P01,994a71980a24b76f,cftr,,inflammation,causes,,forward,undirected,37546931,0.9640,1,cftr ->[causes] inflammation
-netmedex_hybrid_rag,F_adaptive,Q011,formal-v1-gpt-4.1-F_adaptive,1,Q011-P01,8ffca311e8d8a3fa,metformin,,mtor,inhibits,,forward,undirected,31205529,1.0240,1,metformin ->[inhibits] mtor
-netmedex_hybrid_rag,F_adaptive,Q011,formal-v1-gpt-4.1-F_adaptive,2,Q011-P02,3540839339afb6d9,metformin,,mtor,inhibits,,forward,undirected,30445633,0.7940,1,metformin ->[inhibits] mtor

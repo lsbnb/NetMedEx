@@ -1,4 +1,0 @@
-system,arm,question_id,run_id,path_rank,path_id,path_signature,source,bridge,target,relation_1,relation_2,direction_1,direction_2,pmids,score,hop_count,path_text
-netmedex_hybrid_rag,F_adaptive,BW003,formal-v1-gpt-4.1-F_adaptive,1,BW003-P01,daf58598d61d93bf,cftr,,inflammation,induces,,forward,undirected,37546931,0.7990,1,cftr ->[induces] inflammation
-netmedex_hybrid_rag,F_adaptive,BW003,formal-v1-gpt-4.1-F_adaptive,2,BW003-P02,9ed6292d75395474,cftr,cystic fibrosis,inflammation,causes,leads_to,forward,forward,33201261;36289287,0.7070,2,cftr ->[causes] cystic fibrosis | cystic fibrosis ->[leads_to] inflammation
-netmedex_hybrid_rag,F_adaptive,BW003,formal-v1-gpt-4.1-F_adaptive,3,BW003-P03,57416f2f7b9449cc,cftr,dysbiosis,inflammation,induces,associated_with,forward,undirected,36600119;37546931,0.6890,2,cftr ->[induces] dysbiosis | dysbiosis --[associated_with] inflammation

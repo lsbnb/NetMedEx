@@ -1,4 +1,0 @@
-system,arm,question_id,run_id,path_rank,path_id,path_signature,source,bridge,target,relation_1,relation_2,direction_1,direction_2,pmids,score,hop_count,path_text
-netmedex_hybrid_rag,C_one_hop,Q001,formal-v1-gpt-5.6-terra-C_one_hop,1,Q001-P01,90b8236c9fc91254,icariin,,osteogenic differentiation,promotes,,forward,undirected,38045146,1.0230,1,icariin ->[promotes] osteogenic differentiation
-netmedex_hybrid_rag,C_one_hop,Q004,formal-v1-gpt-5.6-terra-C_one_hop,1,Q004-P01,9be16d05d8551831,curcumin,,apoptosis,induces,,forward,undirected,38031951,0.9470,1,curcumin ->[induces] apoptosis
-netmedex_hybrid_rag,C_one_hop,Q004,formal-v1-gpt-5.6-terra-C_one_hop,2,Q004-P02,fea053e1764bd30e,curcumin,,apoptosis,targets,,forward,undirected,37776274,0.8330,1,curcumin ->[targets] apoptosis
