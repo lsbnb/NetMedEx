@@ -131,12 +131,18 @@ class PubTatorGraphBuilder:
         self.num_articles = 0
         self.graph = nx.Graph()
         self._updated = False
+        self._is_built = False
         self.progress_callback = progress_callback
         self.fetch_citations = fetch_citations
 
         # Initialize semantic extractor if using semantic edge method
         self.semantic_extractor = None
         if edge_method == "semantic":
+            if SemanticRelationshipExtractor is None:
+                raise ImportError(
+                    "SemanticRelationshipExtractor is not available. "
+                    "Please ensure that all required dependencies are installed."
+                )
             if llm_client is None:
                 raise ValueError("LLM client is required for semantic edge method")
             self.semantic_extractor = SemanticRelationshipExtractor(
@@ -262,6 +268,12 @@ class PubTatorGraphBuilder:
         Returns:
             Dictionary of nodes created/updated from this article
         """
+        if self._is_built:
+            logger.warning(
+                "Adding articles to an already built graph may cause edge weight inconsistency; resetting built state."
+            )
+            self._is_built = False
+
         self.num_articles += 1
         self._updated = True
 
@@ -336,6 +348,17 @@ class PubTatorGraphBuilder:
                 For keep top [max_edges] edges sorted descendingly by edge weights. Defaults to 0.
         """
 
+        if self.num_articles == 0:
+            logger.warning("PubTatorGraphBuilder.build called with 0 articles; returning empty graph.")
+            return self.graph
+
+        if self._is_built and not self._updated:
+            logger.warning(
+                "PubTatorGraphBuilder.build called again on an already built graph without new articles; "
+                "returning existing graph to avoid redundant and destructive edge pruning."
+            )
+            return self.graph
+
         self._build_nodes(pmid_weights)
         self._build_edges(pmid_weights, weighting_method)
 
@@ -354,6 +377,7 @@ class PubTatorGraphBuilder:
 
         self._log_graph_info()
         self._updated = False
+        self._is_built = True
 
         return self.graph
 

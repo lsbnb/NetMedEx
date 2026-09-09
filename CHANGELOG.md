@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2026-09-09
+
+### Added
+
+- **FastAPI Bridge SessionStore Memory Management & TTL**:
+  - Added LRU session eviction with configurable capacity limit (`NETMEDEX_MAX_SESSIONS`, default 50).
+  - Added automatic TTL expiration (`NETMEDEX_SESSION_TTL`, default 7200s / 2 hours) to reclaim memory from idle sessions containing NetworkX graphs and NodeRAG vector indices.
+  - Hardened Pydantic model type annotations and timezone handling for Python 3.9+ runtime compatibility.
+- **Chat Context Window Safety & Dynamic Budgeting**:
+  - Added provider-aware context truncation in `_build_messages` (12,000 characters for local models, 45,000 characters for cloud models) to protect smaller LLMs from context window overflows.
+  - Added graceful error translation for LLM context-length exceeded exceptions, guiding users to adjust `top_k` or narrow focus nodes instead of raising raw API crashes.
+
+### Fixed & Hardened
+
+- **GraphBuilder Lifecycle State Protection**:
+  - Added `_is_built` state tracking in `PubTatorGraphBuilder` to prevent destructive redundant edge pruning if `build()` is called repeatedly without new articles.
+  - Added defensive warnings when articles are appended to an already-built graph.
+  - Added safe early exit for 0-article graph builds.
+- **Semantic Relationship Extractor Dependency Guard**:
+  - Added explicit `ImportError` check when `SemanticRelationshipExtractor` is `None` under `edge_method="semantic"`, providing clear installation guidance instead of raw `TypeError: 'NoneType' object is not callable`.
+- **NPMI Floating-Point Precision Boundary**:
+  - Hardened joint probability equality checking in `normalized_pointwise_mutual_information` with `math.isclose` and $10^{-9}$ numerical tolerance, preventing floating-point precision deviations from bypassing the boundary branch.
+
 ## [1.4.0] - 2026-08-18
 
 ### Added

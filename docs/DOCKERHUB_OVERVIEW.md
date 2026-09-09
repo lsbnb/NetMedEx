@@ -1,4 +1,4 @@
-# NetMedEx v1.4.0: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.5.0: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
@@ -19,7 +19,13 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.4.0
+## 🆕 What's New in v1.5.0
+
+- **FastAPI Bridge Memory Reclamation & TTL**: Added automated LRU session eviction and time-based expiration (default 2 hours) to `_SessionStore`, preventing memory accumulation during programmatic API and batch search runs.
+- **GraphBuilder Lifecycle State Protection**: Locked graph builder mutation states (`_is_built`) to prevent destructive re-pruning on duplicate `build()` calls and guard against weight corruption from post-build additions.
+- **Dependency & Environment Hardening**: Added explicit dependency verification for optional semantic extractors, graceful context-length exceeded error translation in Chat, and $10^{-9}$ floating-point tolerance in NPMI calculations.
+
+### Previous: v1.4.0
 
 - **Relation-Direction Verification (optional 2nd LLM)**: New opt-in toggle in Advanced Settings runs a second verification pass over directional semantic edges (e.g. *inhibits*, *upregulates*), checking each against its supporting evidence quote and downgrading unconfirmed directions to a neutral *associated_with* instead of dropping them. Choose a verifier provider independent from your main LLM for the best odds of catching an extraction error.
 - **Numeric-Artifact Node Filter**: Defensively rejects graph nodes whose display name is purely numeric (an occasional PubTator3 upstream annotation artifact).

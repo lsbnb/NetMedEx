@@ -1067,10 +1067,29 @@ Each question MUST:
 
         except Exception as e:
             logger.error(f"Error generating chat response: {e}")
+            err_str = str(e).lower()
+            if any(
+                tok in err_str
+                for tok in (
+                    "context_length_exceeded",
+                    "maximum context length",
+                    "string too large",
+                    "too many tokens",
+                    "context window",
+                    "prompt is too long",
+                )
+            ):
+                user_msg_text = (
+                    "⚠️ Context length exceeded: The assembled text and graph context is too large for the selected model. "
+                    "Please reduce 'Number of Documents (top_k)' in settings or select a smaller set of focus nodes."
+                )
+            else:
+                user_msg_text = "Sorry, I encountered an error processing your request."
+
             return {
                 "success": False,
                 "error": str(e),
-                "message": "Sorry, I encountered an error processing your request.",
+                "message": user_msg_text,
             }
 
     def _build_messages(
@@ -1134,6 +1153,24 @@ Each question MUST:
             )
             messages.append({"role": msg.role, "content": content})
             last_added_content = msg.content
+
+        # Context budget enforcement to prevent exceeding model context windows.
+        # Local models commonly have smaller context windows (e.g. 4k-8k tokens ~ 12k-24k chars).
+        max_context_chars = 12000 if is_local else 45000
+
+        # Truncate graph_context and text_context if their combination exceeds budget
+        if graph_context and len(graph_context) > max_context_chars // 2:
+            graph_context = (
+                graph_context[: max_context_chars // 2]
+                + "\n[... Graph context truncated to fit context budget ...]"
+            )
+
+        remaining_budget = max(2000, max_context_chars - len(graph_context))
+        if text_context and len(text_context) > remaining_budget:
+            text_context = (
+                text_context[:remaining_budget]
+                + "\n[... Abstract context truncated to fit context budget ...]"
+            )
 
         # Add current message with structure-reinforced context
         context_str = (

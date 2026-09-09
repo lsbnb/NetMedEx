@@ -20,7 +20,7 @@ def normalized_pointwise_mutual_information(
 
     if n_xy == 0:
         npmi = -1
-    elif (n_xy / N) == 1:
+    elif (n_xy / N) >= 1.0 - 1e-9 or math.isclose(n_xy, N, rel_tol=1e-9):
         npmi = 1
     else:
         # Additional safety check to ensure we don't compute log of 0
@@ -30,8 +30,10 @@ def normalized_pointwise_mutual_information(
 
         if p_x <= 0 or p_y <= 0 or p_xy <= 0:
             return below_threshold_default
-
-        npmi = -1 + (math.log2(p_x) + math.log2(p_y)) / math.log2(p_xy)
+        if p_xy >= 1.0 - 1e-9 or math.isclose(p_xy, 1.0, rel_tol=1e-9):
+            npmi = 1
+        else:
+            npmi = -1 + (math.log2(p_x) + math.log2(p_y)) / math.log2(p_xy)
 
     # non-normalized
     # pmi = math.log2(p_x) + math.log2(p_y) - math.log2(p_xy)

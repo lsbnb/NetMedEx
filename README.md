@@ -1,4 +1,4 @@
-# NetMedEx v1.4.0
+# NetMedEx v1.5.0
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -25,6 +25,12 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 
 <details>
 <summary><h2>🆕 Recent Updates</h2></summary>
+
+### v1.5.0 — 2026-09-09
+
+- **FastAPI Bridge Memory Reclamation & TTL**: Added automated LRU eviction and time-based expiration (default 2 hours) to `_SessionStore`, preventing unbounded RAM consumption during high-throughput or programmatic API runs.
+- **GraphBuilder Lifecycle State Protection**: Locked graph builder mutation states (`_is_built`) to prevent destructive re-pruning on duplicate `build()` calls and guard against weight corruption from post-build additions.
+- **Dependency & Environment Hardening**: Added explicit dependency verification for optional semantic extractors, graceful context-length exceeded error translation in Chat, and $10^{-9}$ floating-point tolerance in NPMI calculations.
 
 ### v1.4.0 — 2026-07-31
 
