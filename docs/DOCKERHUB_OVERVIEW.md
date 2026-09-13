@@ -81,6 +81,12 @@ Launch the interactive dashboard on `localhost:8050`:
    - *(Optional)* Set Container name to `NetMedEx`.
 4. Click **Run**, then open **[http://localhost:8050](http://localhost:8050)** in your browser.
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/lsbnb/NetMedEx/main/docs/img/netmedex_docker_desktop.png" width="500" alt="Docker Desktop Container Setup">
+  <br>
+  <i>Configuring Host port (8050) in Docker Desktop Optional Settings.</i>
+</p>
+
 ### Method B: Terminal Command Line
 
 ```bash
