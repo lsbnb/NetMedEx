@@ -1,12 +1,21 @@
-## Web Application (via Docker)
+If you have <a href="https://www.docker.com/" target="_blank">Docker</a> installed on your machine, you can run NetMedEx using either **Docker Desktop (GUI)** or the **Command Line**.
 
-If you have <a href="https://www.docker.com/" target="_blank">Docker</a> installed on your machine, you can run the following command to launch the web application using Docker, then open `localhost:8050` in your browser:
+### Method 1: Docker Desktop (GUI Graphical Interface)
+
+1. Search for **`lsbnb/netmedex`** in the top search bar of Docker Desktop and click **Pull**.
+2. Go to the **Images** tab, locate `lsbnb/netmedex:latest`, and click **Run**.
+3. Expand **Optional settings**:
+   - Set **Host port** to **`8050`** (maps host port 8050 to container port `8050/tcp`).
+   - *(Optional)* Set Container name to `NetMedEx`.
+4. Click **Run**, then open **[http://localhost:8050](http://localhost:8050)** in your browser.
+
+### Method 2: Command Line (CLI)
 
 ```bash
 docker run -p 8050:8050 --rm lsbnb/netmedex
 ```
 
-> **Windows users**: Docker is the recommended and most reliable way to run NetMedEx on Windows. See [Windows Installation Notes](#windows-installation-notes) for details.
+> **Windows users**: Docker Desktop is the recommended and most reliable way to run NetMedEx on Windows. See [Windows Installation Notes](#windows-installation-notes) for details.
 
 ## Installation
 

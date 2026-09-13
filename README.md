@@ -152,6 +152,17 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 
 The easiest way to start. No Python installation required.
 
+### Method A: Docker Desktop (Graphical User Interface)
+
+1. Search for **`lsbnb/netmedex`** in the top search bar of Docker Desktop and click **Pull**.
+2. Navigate to the **Images** tab, locate `lsbnb/netmedex:latest`, and click **Run**.
+3. Expand **Optional settings**:
+   - **Host port**: Enter **`8050`** (maps host port 8050 to container port `8050/tcp`).
+   - **Container name**: *(Optional)* Enter `NetMedEx`.
+4. Click **Run**.
+
+### Method B: Terminal Command Line
+
 ```bash
 docker run -d -p 8050:8050 --rm lsbnb/netmedex
 ```
