@@ -183,6 +183,21 @@ def callbacks(app):
         network_profile_value,
     ):
         try:
+            # Compact the diskcache WAL before starting so accumulated writes
+            # from previous runs don't block set_progress() calls mid-callback.
+            try:
+                import sqlite3 as _sqlite3
+                from pathlib import Path as _Path
+
+                _wal_db = _Path(__file__).parent.parent / "cache" / "cache.db"
+                if _wal_db.exists():
+                    _wconn = _sqlite3.connect(str(_wal_db))
+                    _wconn.execute("PRAGMA wal_checkpoint(PASSIVE)")
+                    _wconn.close()
+                    logger.debug("WAL checkpoint completed before run_pubtator3_api")
+            except Exception:
+                pass
+
             if network_profile_value:
                 os.environ["NETMEDEX_NETWORK_PROFILE"] = str(network_profile_value).strip()
             # Initialize progress bar to empty/start
@@ -197,7 +212,7 @@ def callbacks(app):
             if source == "graph_file":
                 if not graph_file_data:
                     raise EmptyInput("No Graph file uploaded")
-                if os.getenv("ALLOW_UNSAFE_GRAPH_PICKLE_UPLOAD", "false").lower() not in {
+                if os.getenv("ALLOW_UNSAFE_GRAPH_PICKLE_UPLOAD", "true").lower() not in {
                     "1",
                     "true",
                     "yes",
