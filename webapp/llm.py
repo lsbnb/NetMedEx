@@ -658,7 +658,7 @@ class LLMClient:
             "A query with too many AND conditions returns zero results. Prefer a focused query over an exhaustive one. "
             "OR EXPANSION RULE: When adding a secondary concept, use OR to include common synonyms rather than a single exact phrase. "
             'For example, instead of AND "inflammatory regulation", write AND ("inflammation" OR "anti-inflammatory" OR "immune response"). '
-            'PHRASE QUOTING AVOIDANCE RULE: Do NOT wrap multi-word biological processes, functions, or mechanisms (e.g. "osteoblast differentiation", "cell division", "gene regulation") in quotes, as this over-constrains PubTator3 query matching and results in zero matches. Instead, simplify them to the core entity noun (e.g. "osteoblast") or connect the words with AND (e.g. osteoblast AND differentiation) or expand with OR (e.g. ("osteoblast" OR "osteogenesis")). '
+            'PHRASE QUOTING AVOIDANCE RULE: Do NOT wrap multi-word biological processes, functions, or mechanisms (e.g. "osteoblast differentiation", "cell division", "gene regulation") in quotes, as this over-constrains PubTator3 query matching and results in zero matches. Never include preposition or connective words like "via", "through", "by", "with", "against", "and" inside quoted search phrases (e.g., NEVER write "osteogenesis via mir21"; write ("osteogenesis" AND "mir21") or ("osteoblast" AND "miR-21")). Instead, simplify them to the core entity nouns connected by AND or expanded with OR. '
             "RARE ENTITY RULE: If the query contains a highly specific entity (e.g., a rare microorganism species, uncommon gene), "
             "that entity name alone is often sufficient — adding secondary AND constraints may discard most relevant papers. "
             "In that case, return just the specific entity name without any AND conditions. "
@@ -670,6 +670,7 @@ class LLMClient:
             "'Lung cancer genes' -> '\"Lung Neoplasms\" AND @GENE' "
             "'胃癌與幽門螺旋桿菌的關係' -> '\"Stomach Neoplasms\" AND \"Helicobacter pylori\"' "
             '\'淫羊藿苷 (Icariin) 如何調控成骨細胞分化？\' -> \'"Icariin" AND ("osteoblast" OR "osteogenesis")\' '
+            '\'How Icariin can regulate osteogenesis via mir21 and Pten\' -> \'"Icariin" AND "osteogenesis" AND "mir21" AND "Pten"\' '
             '\'How does Icariin regulate osteoblast differentiation?\' -> \'"Icariin" AND ("osteoblast" OR "osteogenesis")\' '
             '\'大腸直腸癌相關的菌相及其調控基因、miRNA\' -> \'"Colorectal Neoplasms" AND ("microbiota" OR "gut microbiome") AND (@GENE OR "miRNA" OR "microRNA")\' '
             '\'Anaerostipes hadrus inflammatory regulation\' -> \'"Anaerostipes hadrus" AND ("inflammation" OR "butyrate" OR "gut microbiota")\' '
