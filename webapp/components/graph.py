@@ -6,7 +6,7 @@ import dash_cytoscape as cyto
 from dash import dcc, html
 
 from webapp.components.graph_info import graph_info
-from webapp.utils import CYTO_STYLESHEET, visibility
+from webapp.utils import CYTO_STYLESHEET, cy_container_visibility
 
 graph = html.Div(
     [
@@ -87,13 +87,14 @@ graph = html.Div(
                 dcc.Store(id="memory-cy-params", data=[]),
                 dcc.Store(id="memory-graph-layout"),
                 dcc.Store(id="memory-fcose-node-repulsion"),
+                dcc.Store(id="memory-confidence-threshold", data=0.0),
                 dcc.Store(id="session-language", data="English"),
                 dcc.Store(id="twohop-highlight-paths", data=[]),
                 dcc.Store(id="sidebar-collapsed-store", storage_type="local", data=False),
             ],
             id="cy-graph-container",
             className="d-flex flex-column flex-grow-1 position-relative",
-            style=visibility.hidden,
+            style=cy_container_visibility.hidden,
         ),
     ],
     id="graph-panel",

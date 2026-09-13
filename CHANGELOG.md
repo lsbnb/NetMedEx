@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.1] - 2026-09-13
+
+### Added & Improved
+
+- **Type-Constrained Biomedical Acronym & MeSH Standardisation**:
+  - Integrated `BIOMEDICAL_ACRONYM_MAP` and MeSH CUI lookup into `normalize_knowledge_graph` to expand common medical acronyms (e.g. `RA` in Disease -> `rheumatoid arthritis`, `RA` in Chemical -> `retinoic acid`).
+  - Protected Gene, Mutation, and SNP node types from acronym modification to preserve genetic symbol specificity.
+
+### Fixed & Hardened
+
+- **Cytoscape Canvas Height Stability**:
+  - Implemented `cy_container_visibility` to enforce container height (`800px`), preventing inline style overrides from collapsing the Cytoscape graph canvas to `0px` during layout transitions.
+- **Diskcache WAL Checkpoint Safeguard**:
+  - Added SQLite WAL checkpoint (`PRAGMA wal_checkpoint(PASSIVE)`) prior to graph restoration callbacks, preventing SQLite WAL accumulation from blocking progress updates.
+- **LLM Error Log Sanitisation**:
+  - Applied error message sanitisation before logging LLM exceptions to prevent API key exposure in log outputs.
+- **UI Progress Animation**:
+  - Enhanced upload and graph restoration progress bars with staged pacing delays for smooth visual progress bar rendering.
+
 ## [1.5.0] - 2026-09-09
 
 ### Added

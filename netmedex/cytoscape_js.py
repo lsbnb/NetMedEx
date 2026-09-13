@@ -178,6 +178,7 @@ def create_cytoscape_node(node, size=25, degree=0):
             "color": node_attr["color"],
             "label_color": node_attr["label_color"],
             "label": node_attr["name"],
+            "aliases": list(node_attr.get("aliases", [])),
             "shape": convert_shape(node_attr["shape"]),
             "pmids": list(node_attr["pmids"]),
             "num_articles": node_attr["num_articles"],
@@ -187,13 +188,34 @@ def create_cytoscape_node(node, size=25, degree=0):
             "node_size": size,
             "degree": degree,
         },
-        "position": {
-            "x": round(node_attr["pos"][0], 3) if "pos" in node_attr else 0,
-            "y": round(node_attr["pos"][1], 3) if "pos" in node_attr else 0,
-        },
     }
 
-    if COMMUNITY_NODE_PATTERN.search(str(node_id)):
+    # Compound (parent/community) nodes in Cytoscape.js MUST NOT have an explicit position property;
+    # Cytoscape.js dynamically bounds parent nodes based on the layout of their member nodes.
+    if not is_community_node:
+        pos = node_attr.get("pos")
+        if (
+            pos is not None
+            and isinstance(pos, (list, tuple))
+            and len(pos) >= 2
+            and not (pos[0] == 0 and pos[1] == 0)
+        ):
+            node_info["position"] = {
+                "x": round(pos[0], 3),
+                "y": round(pos[1], 3),
+            }
+        else:
+            import hashlib
+            import math
+
+            h = int(hashlib.md5(str(node_id).encode()).hexdigest(), 16)
+            angle = (h % 360) * (math.pi / 180.0)
+            radius = 250 + (h % 250)
+            node_info["position"] = {
+                "x": round(radius * math.cos(angle), 3),
+                "y": round(radius * math.sin(angle), 3),
+            }
+    else:
         node_info["classes"] = "top-center"
 
     return node_info

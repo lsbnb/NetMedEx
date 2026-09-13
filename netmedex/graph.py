@@ -507,6 +507,25 @@ class PubTatorGraphBuilder:
         graph.remove_edges_from(to_remove)
 
     @staticmethod
+    def _remove_edges_by_confidence(graph: nx.Graph, min_confidence: float):
+        """Remove semantic edges whose maximum confidence score is below min_confidence."""
+        if min_confidence <= 0.0:
+            return
+        to_remove = []
+        for u, v, edge_attrs in graph.edges(data=True):
+            confidences = edge_attrs.get("confidences")
+            if confidences and isinstance(confidences, dict):
+                max_conf = 0.0
+                for pmid_map in confidences.values():
+                    if isinstance(pmid_map, dict):
+                        for c_val in pmid_map.values():
+                            if isinstance(c_val, (int, float)) and c_val > max_conf:
+                                max_conf = c_val
+                if max_conf < min_confidence:
+                    to_remove.append((u, v))
+        graph.remove_edges_from(to_remove)
+
+    @staticmethod
     def _remove_edges_by_rank(graph: nx.Graph, max_edges: int):
         if max_edges <= 0:
             return
@@ -533,16 +552,20 @@ class PubTatorGraphBuilder:
 
     @staticmethod
     def _set_network_layout(graph: nx.Graph):
-        if graph.number_of_edges() > 1000:
-            pos = nx.circular_layout(graph, scale=300)
+        n_nodes = graph.number_of_nodes()
+        has_communities = graph.graph.get("num_communities", 0) > 0
+        scale = 1500 if (has_communities or n_nodes > 100) else 800
+        k = 1.5 if (has_communities or n_nodes > 100) else 0.8
+        if graph.number_of_edges() > 1500:
+            pos = nx.circular_layout(graph, scale=scale)
         else:
             try:
                 pos = nx.spring_layout(
-                    graph, weight="edge_weight", scale=300, k=0.25, iterations=15
+                    graph, weight="edge_weight", scale=scale, k=k, iterations=50
                 )
             except Exception as exc:
                 logger.warning("spring_layout failed (%s), falling back to circular_layout", exc)
-                pos = nx.circular_layout(graph, scale=300)
+                pos = nx.circular_layout(graph, scale=scale)
         nx.set_node_attributes(graph, pos, "pos")
 
     @staticmethod
@@ -744,10 +767,16 @@ class PubTatorGraphBuilder:
                 logger.warning(f"Skipping invalid node {node_id}: missing type")
                 continue
 
+            from netmedex.normalization import standardize_node_name
+
+            std_name, orig_acronym = standardize_node_name(data.name, data.type, data.mesh)
+
             if self.graph.has_node(node_id):
                 self.graph.nodes[node_id]["pmids"].add(data.pmid)
                 aliases = self.graph.nodes[node_id].setdefault("aliases", set())
                 aliases.update(data.aliases or {data.name})
+                if orig_acronym and orig_acronym.lower() not in {a.lower() for a in aliases}:
+                    aliases.add(orig_acronym)
             else:
                 node_data = GraphNode(
                     _id=generate_stable_id(f"node_{node_id}"),
@@ -756,7 +785,7 @@ class PubTatorGraphBuilder:
                     shape=NODE_SHAPE_MAP.get(data.type, "ELLIPSE"),
                     type=data.type,
                     mesh=data.mesh,
-                    name=data.name,
+                    name=std_name,
                     pmids={data.pmid},
                     num_articles=None,
                     weighted_num_articles=None,
@@ -765,7 +794,10 @@ class PubTatorGraphBuilder:
                     pos=None,
                 )
                 self.graph.add_node(node_id, **asdict(node_data))
-                self.graph.nodes[node_id]["aliases"] = set(data.aliases or {data.name})
+                node_aliases = set(data.aliases or {data.name})
+                if orig_acronym and orig_acronym.lower() not in {a.lower() for a in node_aliases}:
+                    node_aliases.add(orig_acronym)
+                self.graph.nodes[node_id]["aliases"] = node_aliases
 
     def _add_study_species_context(
         self, article: PubTatorArticle, nodes: Mapping[str, PubTatorNode]

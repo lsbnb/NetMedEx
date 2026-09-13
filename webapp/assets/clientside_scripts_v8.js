@@ -638,7 +638,8 @@ window.dash_clientside.clientside = {
         const data = node.data || {};
         const nodeId = data.id;
         if (!nodeId || hideNodeIds.has(nodeId)) continue;
-        if (candidates.some((q) => matchLabelCandidate(data.label || "", q) || matchLabelCandidate(data.standardized_id || "", q))) {
+        const aliasesStr = Array.isArray(data.aliases) ? data.aliases.join(" ") : (data.aliases || "");
+        if (candidates.some((q) => matchLabelCandidate(data.label || "", q) || matchLabelCandidate(data.standardized_id || "", q) || matchLabelCandidate(aliasesStr, q))) {
           anchorNodeIds.add(nodeId);
         }
       }
@@ -1198,6 +1199,19 @@ document.addEventListener("click", function (e) {
       const isRunning = submitBtn && submitBtn.disabled;
       const isHidden = container.style.visibility !== 'visible';
       emptyState.style.display = (isHidden && !isRunning) ? 'flex' : 'none';
+
+      if (!isHidden) {
+        setTimeout(function() {
+          window.dispatchEvent(new Event('resize'));
+          const cyEl = document.getElementById('cy');
+          if (cyEl && cyEl._cyto) {
+            try {
+              cyEl._cyto.resize();
+              cyEl._cyto.fit(undefined, 60);
+            } catch (e) {}
+          }
+        }, 150);
+      }
     }
 
     update();

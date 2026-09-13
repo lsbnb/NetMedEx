@@ -22,6 +22,7 @@ def rebuild_graph(
     with_layout: bool = False,
     community: bool = False,
     weighting_method: Literal["freq", "npmi"] = "freq",
+    confidence_threshold: float = 0.0,
 ):
     # Scale cutoff if using NPMI (UI uses 0-1, backend uses 0-20)
     if weighting_method == "npmi":
@@ -39,6 +40,10 @@ def rebuild_graph(
 
     # Recalculate edge weights and widths based on current method
     PubTatorGraphBuilder.recalculate_edge_weights(graph, weighting_method)
+
+    # Filter semantic edges by confidence threshold if specified
+    if confidence_threshold > 0.0:
+        PubTatorGraphBuilder._remove_edges_by_confidence(graph, confidence_threshold)
 
     # NEW: Safety-cap for interactive rendering to prevent browser crashes
     # 1. Edge Pruning

@@ -408,25 +408,25 @@ progress = html.Div(
                         html.H5("Progress", className="mb-3"),
                         # Progress bar with percentage display
                         dbc.Progress(
-                            [
-                                dbc.Progress(
-                                    value=0,
-                                    id="progress",
-                                    bar=True,
-                                    animated=True,
-                                    striped=True,
-                                    style={"minHeight": "25px"},
-                                )
-                            ],
-                            className="mb-3",
+                            id="progress",
+                            value=0,
+                            max=100,
+                            animated=True,
+                            striped=True,
+                            label="0%",
                             style={"height": "25px"},
+                            className="mb-3",
                         ),
                         # Status message with icon
                         html.Div(
                             [
-                                html.Span("", id="progress-status", className="text-muted"),
+                                html.I(
+                                    className="bi bi-arrow-repeat spin me-2 text-primary",
+                                    style={"fontSize": "1.1rem"},
+                                ),
+                                html.Span("", id="progress-status", className="text-dark small fw-semibold"),
                             ],
-                            className="d-flex align-items-center",
+                            className="d-flex align-items-center mt-2",
                         ),
                     ]
                 )

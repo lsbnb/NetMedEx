@@ -51,15 +51,88 @@ h4 {
     color: var(--SIDEBAR-TEXT);
 }
 
+@keyframes progress-bar-stripes {
+    0% {
+        background-position-x: 1rem;
+    }
+    100% {
+        background-position-x: 0;
+    }
+}
+
+@keyframes progress-pulse {
+    0% {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(1.25);
+    }
+    100% {
+        filter: brightness(1);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spin {
+    animation: spin 1.2s linear infinite;
+    display: inline-block;
+}
+
+.progress-bar-striped {
+    background-image: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.3) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0.3) 75%,
+        transparent 75%,
+        transparent
+    ) !important;
+    background-size: 1rem 1rem !important;
+}
+
+.progress-bar-animated {
+    animation: progress-bar-stripes 0.8s linear infinite !important;
+}
+
 .sidebar .progress-bar {
-    background-color: var(--SIDEBAR-BTN);
+    background-color: var(--SIDEBAR-BTN) !important;
+    background-image: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.3) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0.3) 75%,
+        transparent 75%,
+        transparent
+    ) !important;
+    background-size: 1rem 1rem !important;
+    animation: progress-bar-stripes 0.8s linear infinite, progress-pulse 2s ease-in-out infinite !important;
     color: white !important;
     font-weight: bold;
+    font-size: 0.85rem;
+    line-height: 25px;
+    min-width: 2.5rem;
+    transition: width 0.4s ease-in-out !important;
 }
 
 .sidebar .progress {
-    border: 1px solid var(--GRAY-TEXT);
-    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: #e9ecef !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    height: 25px !important;
 }
 
 .main-div {
@@ -458,17 +531,51 @@ a:hover {
     }
 }
 
-/* Fix for dropdown option text overlap */
+/* Fix for dropdown option text overlap & text visibility in sidebar */
 .Select-option,
-.VirtualizedSelectOption {
+.VirtualizedSelectOption,
+[class*="-option"] {
     height: auto !important;
     white-space: normal !important;
     line-height: 1.4 !important;
     padding: 8px 10px !important;
+    color: #1f0737 !important;
+    background-color: #ffffff;
 }
 
-.Select-menu-outer {
+[class*="-option"]:hover,
+[class*="-option"][class*="-is-focused"] {
+    background-color: #0d6efd !important;
+    color: #ffffff !important;
+}
+
+.Select-menu-outer,
+[class*="-menu"] {
     z-index: 2002 !important;
+    background-color: #ffffff !important;
+    color: #1f0737 !important;
+    border: 1px solid #d1d5db !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.Select-control,
+.Select-value,
+.Select-value-label,
+.Select-input,
+.Select-placeholder,
+[class*="-control"],
+[class*="-singleValue"],
+[class*="-placeholder"],
+[class*="-ValueContainer"],
+[class*="-Input"] {
+    color: #1f0737 !important;
+    background-color: #ffffff !important;
+}
+
+[class*="-singleValue"],
+.Select-value-label {
+    color: #1f0737 !important;
+    font-weight: 600 !important;
 }
 
 /* ChatGPT-like Chat Surface */

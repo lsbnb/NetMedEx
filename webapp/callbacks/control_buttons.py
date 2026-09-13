@@ -1,6 +1,6 @@
 from dash import Input, Output
 
-from webapp.utils import visibility
+from webapp.utils import cy_container_visibility
 
 
 def callbacks(app):
@@ -23,4 +23,4 @@ def callbacks(app):
         # Reset inputs, progress bar, and clear the graph
         # And force return to search tab
         print("DEBUG: reset_inputs returning active_tab='search'")
-        return "", None, None, "query", 0, "", "", [], visibility.hidden, 0, "search"
+        return "", None, None, "query", 0, "", "", [], cy_container_visibility.hidden, 0, "search"

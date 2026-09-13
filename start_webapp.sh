@@ -27,6 +27,7 @@ if [[ "${HOST:-}" =~ [a-zA-Z] || -z "${HOST:-}" ]]; then
   export HOST="0.0.0.0"
 fi
 export PORT="${PORT:-8050}"
+export ALLOW_UNSAFE_GRAPH_PICKLE_UPLOAD="${ALLOW_UNSAFE_GRAPH_PICKLE_UPLOAD:-true}"
 
 # Locate python3: prefer project .venv → conda netmedex env → activated env → PATH
 CONDA_NETMEDEX_PYTHON="${HOME}/miniconda3/envs/netmedex/bin/python"

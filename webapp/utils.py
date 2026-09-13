@@ -118,6 +118,20 @@ def resolve_session_savepath(session_data, *, create: bool = False) -> dict[str,
 
 
 visibility = SimpleNamespace(visible={"visibility": "visible"}, hidden={"visibility": "hidden"})
+
+# cy-graph-container's style is written by several backend callbacks *and* by a
+# clientside callback (webapp/callbacks/graph_update.py) that reacts to the
+# submit button's disabled state. Dash replaces the whole inline style object on
+# each write, so a writer that omits "height" clears whatever height another
+# writer just set. If that happens right as the Cytoscape "cy" component's
+# elements are populated, the container can momentarily have no height, which
+# crashes dash-cytoscape's internal relocate/fit logic and leaves the graph
+# panel blank. Every backend writer must use these exact dicts so no write can
+# clobber the other's height.
+cy_container_visibility = SimpleNamespace(
+    visible={"visibility": "visible", "height": "800px"},
+    hidden={"visibility": "hidden", "height": "400px"},
+)
 display = SimpleNamespace(
     block={"display": "block"},
     none={"display": "none"},

@@ -31,49 +31,60 @@ def build_pmid_citation_dict(graph_obj):
 def get_layout_config(layout_name, node_repulsion=45000, node_count=0):
     """
     Get optimized layout configuration based on layout name.
-    Targeting better visualization for compound/community graphs.
+    Targeting better visualization for compound/community graphs and viewport fitting.
     """
     if layout_name == "fcose":
-        if node_count > 700:
+        # Adaptive parameters: prevent browser freeze on dense graphs
+        if node_count > 500:
             logger.info(
                 "Large graph (%s nodes): using preset layout to avoid expensive client-side fCoSE",
                 node_count,
             )
-            return {"name": "preset", "fit": True, "padding": 50}
-
-        # Adaptive parameters: scale up separation and iterations for denser graphs
-        if node_count > 200:
-            separation = 150
-            iterations = 1500
-            quality = "default"
-        elif node_count > 100:
+            return {"name": "preset", "fit": True, "padding": 60}
+        elif node_count > 250:
             separation = 120
-            iterations = 1000
+            iterations = 300
+            # "fast" is not a valid cytoscape-fcose quality value (only
+            # "draft"/"default"/"proof" are). It silently fell through to the
+            # same code path as "proof", which calls an internal
+            # relocateComponent() step that crashes on graphs with small
+            # disconnected components (Object.keys on an undefined
+            # componentResult) — confirmed by reproducing the exact browser
+            # stack trace in a headless cytoscape+cytoscape-fcose run.
             quality = "default"
+            include_labels = False
+        elif node_count > 100:
+            separation = 90
+            iterations = 400
+            quality = "default"
+            include_labels = True
         else:
             separation = 75
-            iterations = 800
+            iterations = 500
             quality = "default"
+            include_labels = True
 
         return {
             "name": "fcose",
             "quality": quality,
-            "randomize": True,
+            "randomize": False,  # Use pre-calculated backend positions to prevent heavy browser CPU freeze
             "animate": False,
             "fit": True,
-            "padding": 50,
+            "padding": 60,
             "nodeSeparation": separation,
-            "nodeRepulsion": node_repulsion,
-            "idealEdgeLength": 80,
+            "nodeRepulsion": max(node_repulsion, 5000) if node_repulsion else 45000,
+            "idealEdgeLength": 120,
             "edgeElasticity": 0.45,
-            "nestingFactor": 0.1,
+            "nestingFactor": 0.8,
+            "gravity": 0.1,
+            "gravityRange": 3.0,
             "numIter": iterations,
             "tile": True,
-            "tilingPaddingVertical": 20,
-            "tilingPaddingHorizontal": 20,
+            "tilingPaddingVertical": 60,
+            "tilingPaddingHorizontal": 60,
             "uniformNodeDimensions": False,
             "sampleSize": 25,
-            "nodeDimensionsIncludeLabels": True,
+            "nodeDimensionsIncludeLabels": include_labels,
         }
     if layout_name == "cose":
         return {
@@ -82,7 +93,7 @@ def get_layout_config(layout_name, node_repulsion=45000, node_count=0):
             "nodeOverlap": 4,
             "refresh": 20,
             "fit": True,
-            "padding": 50,
+            "padding": 60,
             "randomize": False,
             "componentSpacing": 60,
             "nodeRepulsion": node_repulsion if node_repulsion else 10000,
@@ -94,7 +105,72 @@ def get_layout_config(layout_name, node_repulsion=45000, node_count=0):
             "coolingFactor": 0.95,
             "minTemp": 1.0,
         }
-    return {"name": layout_name}
+    if layout_name == "circle":
+        spacing = (
+            0.4 if node_count > 300 else (0.6 if node_count > 150 else (0.8 if node_count > 60 else 1.0))
+        )
+        return {
+            "name": "circle",
+            "fit": True,
+            "padding": 60,
+            "avoidOverlap": True,
+            "spacingFactor": spacing,
+            "animate": False,
+            "nodeDimensionsIncludeLabels": True,
+        }
+    if layout_name == "concentric":
+        spacing = 0.5 if node_count > 200 else 0.8
+        return {
+            "name": "concentric",
+            "fit": True,
+            "padding": 60,
+            "avoidOverlap": True,
+            "minNodeSpacing": 30,
+            "spacingFactor": spacing,
+            "animate": False,
+            "nodeDimensionsIncludeLabels": True,
+        }
+    if layout_name == "breadthfirst":
+        spacing = 0.6 if node_count > 200 else 1.0
+        return {
+            "name": "breadthfirst",
+            "fit": True,
+            "padding": 60,
+            "directed": False,
+            "avoidOverlap": True,
+            "spacingFactor": spacing,
+            "animate": False,
+            "nodeDimensionsIncludeLabels": True,
+        }
+    if layout_name == "grid":
+        return {
+            "name": "grid",
+            "fit": True,
+            "padding": 60,
+            "avoidOverlap": True,
+            "animate": False,
+            "nodeDimensionsIncludeLabels": True,
+        }
+    if layout_name == "random":
+        return {
+            "name": "random",
+            "fit": True,
+            "padding": 60,
+            "animate": False,
+        }
+    if layout_name == "preset":
+        return {
+            "name": "preset",
+            "fit": True,
+            "padding": 60,
+            "animate": False,
+        }
+    return {
+        "name": layout_name,
+        "fit": True,
+        "padding": 60,
+        "animate": False,
+    }
 
 
 def callbacks(app):
@@ -166,7 +242,17 @@ def callbacks(app):
                 // Return empty style to effectively hide the graph while keeping it technically mounted
                 return {"visibility": "hidden", "height": "400px"};
             }
-            // Once the search is done, the button is re-enabled. Unhide the graph.
+            // Once the search is done, the button is re-enabled. Unhide the graph and resize Cytoscape canvas.
+            setTimeout(function() {
+                window.dispatchEvent(new Event('resize'));
+                var cyEl = document.getElementById('cy');
+                if (cyEl && cyEl._cyto) {
+                    try {
+                        cyEl._cyto.resize();
+                        cyEl._cyto.fit(undefined, 60);
+                    } catch (e) {}
+                }
+            }, 200);
             return {"visibility": "visible", "height": "800px"};
         }
         """,
@@ -184,6 +270,7 @@ def callbacks(app):
         Output("memory-cy-params", "data"),
         Output("memory-graph-layout", "data"),
         Output("memory-fcose-node-repulsion", "data"),
+        Output("memory-confidence-threshold", "data"),
         Output("pmid-citation-dict", "data", allow_duplicate=True),
         Output("pmid-title-dict", "data", allow_duplicate=True),
         Input("is-new-graph", "data"),
@@ -192,11 +279,13 @@ def callbacks(app):
         Input("graph-cut-weight", "value"),
         Input("cy-params", "value"),
         Input("fcose-node-repulsion", "value"),
+        Input("confidence-threshold", "value"),
         State("memory-node-degree", "data"),
         State("memory-graph-cut-weight", "data"),
         State("memory-cy-params", "data"),
         State("memory-graph-layout", "data"),
         State("memory-fcose-node-repulsion", "data"),
+        State("memory-confidence-threshold", "data"),
         State("cy-graph-container", "style"),
         State("current-session-path", "data"),
         State("weighting-method", "value"),
@@ -209,11 +298,13 @@ def callbacks(app):
         new_cut_weight,
         cy_params,
         node_repulsion,
+        new_confidence_threshold,
         old_node_degree,
         old_cut_weight,
         old_cy_params,
         old_layout,
         old_repulsion,
+        old_confidence_threshold,
         container_style,
         session_data,
         weighting_method,
@@ -230,6 +321,10 @@ def callbacks(app):
             new_node_degree = old_node_degree if old_node_degree is not None else 1
         if new_cut_weight is None:
             new_cut_weight = old_cut_weight if old_cut_weight is not None else [0, 20]
+        if new_confidence_threshold is None:
+            new_confidence_threshold = (
+                old_confidence_threshold if old_confidence_threshold is not None else 0.0
+            )
 
         try:
             savepath = resolve_session_savepath(session_data)
@@ -243,6 +338,7 @@ def callbacks(app):
                 cy_params,
                 graph_layout,
                 node_repulsion,
+                new_confidence_threshold,
                 no_update,
                 no_update,
             )
@@ -279,6 +375,7 @@ def callbacks(app):
                 no_update,
                 no_update,
                 no_update,
+                no_update,
             )
 
         if rebuild_needed or layout_changed:
@@ -298,6 +395,7 @@ def callbacks(app):
                         cy_params,
                         graph_layout,
                         node_repulsion,
+                        new_confidence_threshold,
                         no_update,
                         no_update,
                     )
@@ -310,6 +408,7 @@ def callbacks(app):
                     graph_path=graph_path,
                     community=show_community,
                     weighting_method=weighting_method,
+                    confidence_threshold=new_confidence_threshold or 0.0,
                 )
                 t_rebuild = time.time()
 
@@ -348,6 +447,7 @@ def callbacks(app):
                     cy_params,
                     graph_layout,
                     node_repulsion,
+                    new_confidence_threshold,
                     pmid_citation_dict,
                     pmid_title_dict,
                 )
@@ -365,6 +465,7 @@ def callbacks(app):
                     cy_params,
                     graph_layout,
                     node_repulsion,
+                    new_confidence_threshold,
                     no_update,
                     no_update,
                 )
@@ -378,6 +479,7 @@ def callbacks(app):
             cy_params,
             graph_layout,
             node_repulsion,
+            new_confidence_threshold,
             no_update,
             no_update,
         )

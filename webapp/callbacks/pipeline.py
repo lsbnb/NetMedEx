@@ -3,6 +3,7 @@ from __future__ import annotations
 import logging
 import os
 import threading
+import time
 from queue import Queue
 
 import dash_bootstrap_components as dbc
@@ -30,11 +31,11 @@ from webapp.upload_limits import (
     decode_upload_text,
 )
 from webapp.utils import (
+    cy_container_visibility,
     display,
     generate_session_id,
     get_data_savepath,
     make_session_token,
-    visibility,
 )
 
 logger = logging.getLogger(__name__)
@@ -212,7 +213,7 @@ def callbacks(app):
             if source == "graph_file":
                 if not graph_file_data:
                     raise EmptyInput("No Graph file uploaded")
-                if os.getenv("ALLOW_UNSAFE_GRAPH_PICKLE_UPLOAD", "true").lower() not in {
+                if os.getenv("ALLOW_UNSAFE_GRAPH_PICKLE_UPLOAD", "false").lower() not in {
                     "1",
                     "true",
                     "yes",
@@ -222,12 +223,20 @@ def callbacks(app):
                         "Set ALLOW_UNSAFE_GRAPH_PICKLE_UPLOAD=true only for trusted files."
                     )
 
+                # Decoding/validating/saving a session graph is a sub-second
+                # operation, too fast for the progress bar's poll interval to
+                # visibly animate through each step. A tiny pacing delay after
+                # each real step gives the UI time to render and transition
+                # smoothly instead of jumping straight from 0% to done.
+                set_progress((1, 4, "25%", "Decoding uploaded file..."))
                 _, graph_bytes = decode_upload_bytes(
                     graph_file_data,
                     max_bytes=MAX_GRAPH_UPLOAD_BYTES,
                     label="Graph pickle",
                 )
+                time.sleep(0.15)
 
+                set_progress((2, 4, "50%", "Validating and loading graph..."))
                 # Load and validate before writing to the trusted session path.
                 G = safe_load_graph_pickle(graph_bytes)
 
@@ -243,9 +252,12 @@ def callbacks(app):
                             f"Invalid Graph file: missing required metadata '{k}'. "
                             "Please upload a file exported from NetMedEx Graph Panel."
                         )
+                time.sleep(0.15)
 
+                set_progress((3, 4, "75%", "Saving session..."))
                 with open(savepath["graph"], "wb") as f:
                     f.write(graph_bytes)
+                time.sleep(0.15)
 
                 num_articles = len(G.graph.get("pmid_title", {}))
                 num_nodes = G.number_of_nodes()
@@ -255,13 +267,13 @@ def callbacks(app):
                     for pmid, meta in G.graph.get("pmid_metadata", {}).items()
                     if isinstance(meta, dict)
                 }
-                set_progress((1, 1, "1/1", "Graph restored from file!"))
+                set_progress((4, 4, "100%", "Graph restored from file!"))
                 logger.info(
                     f"Graph file loaded: {num_articles} articles, "
                     f"{num_nodes} nodes, {num_edges} edges"
                 )
                 return (
-                    visibility.visible,
+                    cy_container_visibility.visible,
                     weight,
                     True,
                     G.graph["pmid_title"],
@@ -970,7 +982,7 @@ def callbacks(app):
                 if isinstance(meta, dict)
             }
             return (
-                visibility.visible,
+                cy_container_visibility.visible,
                 weight,
                 True,
                 G.graph["pmid_title"],

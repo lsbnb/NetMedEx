@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import logging
 from collections import defaultdict
 
@@ -13,6 +15,183 @@ _PROTECTED_TYPES = {"Gene", "ProteinMutation", "DNAMutation", "SNP"}
 
 # Threshold for protected types. Near-identity required (~1-2 character difference threshold).
 _GENE_THRESHOLD = 0.995
+
+# Type-constrained biomedical acronym map to expand short abbreviations into full descriptive names.
+# Strictly type-gated to prevent misattribution ("張冠李戴"), e.g., 'ra' in Disease -> 'rheumatoid arthritis',
+# but 'ra' in Chemical -> 'retinoic acid', while Gene/variant nodes are NEVER altered.
+BIOMEDICAL_ACRONYM_MAP: dict[str, dict[str, str]] = {
+    "Disease": {
+        "ra": "rheumatoid arthritis",
+        "oa": "osteoarthritis",
+        "sle": "systemic lupus erythematosus",
+        "t2dm": "type 2 diabetes mellitus",
+        "t1dm": "type 1 diabetes mellitus",
+        "dm": "diabetes mellitus",
+        "cad": "coronary artery disease",
+        "chd": "coronary heart disease",
+        "ckd": "chronic kidney disease",
+        "als": "amyotrophic lateral sclerosis",
+        "pd": "parkinson's disease",
+        "ad": "alzheimer's disease",
+        "ibd": "inflammatory bowel disease",
+        "uc": "ulcerative colitis",
+        "cd": "crohn's disease",
+        "copd": "chronic obstructive pulmonary disease",
+        "ipf": "idiopathic pulmonary fibrosis",
+        "nafld": "nonalcoholic fatty liver disease",
+        "nash": "nonalcoholic steatohepatitis",
+        "hcv": "hepatitis c virus infection",
+        "hbv": "hepatitis b virus infection",
+        "hiv": "human immunodeficiency virus infection",
+        "ms": "multiple sclerosis",
+        "ra/oa": "rheumatoid arthritis / osteoarthritis",
+        "nsclc": "non-small cell lung cancer",
+        "sclc": "small cell lung cancer",
+        "hnscc": "head and neck squamous cell carcinoma",
+        "rcc": "renal cell carcinoma",
+        "hcc": "hepatocellular carcinoma",
+        "gbm": "glioblastoma multiforme",
+        "amd": "age-related macular degeneration",
+        "ards": "acute respiratory distress syndrome",
+        "dcm": "dilated cardiomyopathy",
+        "hcm": "hypertrophic cardiomyopathy",
+        "scd": "sickle cell disease",
+        "mi": "myocardial infarction",
+    },
+    "Chemical": {
+        "ra": "retinoic acid",
+        "dha": "docosahexaenoic acid",
+        "epa": "eicosapentaenoic acid",
+        "naa": "n-acetylaspartate",
+        "ros": "reactive oxygen species",
+        "rns": "reactive nitrogen species",
+        "lps": "lipopolysaccharide",
+        "5-fu": "fluorouracil",
+        "mtx": "methotrexate",
+        "ctx": "cyclophosphamide",
+        "hcq": "hydroxychloroquine",
+        "ssz": "sulfasalazine",
+    },
+    "BiologicalProcess": {
+        "emt": "epithelial-mesenchymal transition",
+        "met": "mesenchymal-epithelial transition",
+    },
+    "Phenotype": {
+        "bp": "blood pressure",
+        "bmi": "body mass index",
+        "hr": "heart rate",
+    },
+}
+
+# High-precision MeSH CUI to preferred canonical descriptor map.
+# Used to replace raw surface text mentions with official ontology descriptor names when CUI is present.
+MESH_CUI_TO_PREFERRED_NAME: dict[str, str] = {
+    "D001172": "rheumatoid arthritis",
+    "D010003": "osteoarthritis",
+    "D003924": "type 2 diabetes mellitus",
+    "D003922": "type 1 diabetes mellitus",
+    "D003920": "diabetes mellitus",
+    "D008180": "systemic lupus erythematosus",
+    "D003324": "coronary artery disease",
+    "D003327": "coronary disease",
+    "D051436": "chronic kidney disease",
+    "D000544": "alzheimer's disease",
+    "D010300": "parkinson's disease",
+    "D000690": "amyotrophic lateral sclerosis",
+    "D015212": "inflammatory bowel disease",
+    "D003424": "crohn's disease",
+    "D003093": "ulcerative colitis",
+    "D029424": "chronic obstructive pulmonary disease",
+    "D011561": "pulmonary fibrosis",
+    "D065626": "non-alcoholic fatty liver disease",
+    "D016896": "brain neoplasms",
+    "D002289": "non-small-cell lung carcinoma",
+    "D018288": "small cell lung carcinoma",
+    "D002294": "squamous cell carcinoma",
+    "D006526": "hepatitis c",
+    "D006509": "hepatitis b",
+    "D015658": "hiv infections",
+    "D020521": "stroke",
+    "D006333": "heart failure",
+    "D009203": "myocardial infarction",
+    "D008545": "melanoma",
+}
+
+
+def standardize_node_name(
+    name: str, node_type: str, mesh_cui: str | None = None
+) -> tuple[str, str | None]:
+    """
+    Standardizes a node's display name using MeSH CUI lookup and entity-type-gated acronym expansion.
+
+    Args:
+        name: Current node display name (e.g. 'ra')
+        node_type: Node semantic type (e.g. 'Disease', 'Gene', 'Chemical')
+        mesh_cui: Optional MeSH ID (e.g. 'D001172')
+
+    Returns:
+        tuple[str, str | None]: (standardized_name, original_acronym_if_expanded)
+
+    Safety Rules ("張冠李戴" Protection):
+        1. Protected types ('Gene', 'ProteinMutation', 'DNAMutation', 'SNP') are NEVER modified
+           by acronym expansion to preserve genetic symbol specificity.
+        2. MeSH CUI preferred name lookup takes precedence when CUI is matched.
+        3. Acronym expansion is strictly gated by node_type.
+    """
+    if not name or not isinstance(name, str):
+        return name, None
+
+    # Rule 1: Never expand acronyms for protected genetic/variant node types
+    if node_type in _PROTECTED_TYPES:
+        return name, None
+
+    clean_name = name.strip()
+    norm_name = clean_name.lower()
+
+    # Rule 2: CUI-based preferred name replacement
+    if mesh_cui and str(mesh_cui).strip():
+        cui_key = str(mesh_cui).strip()
+        if cui_key in MESH_CUI_TO_PREFERRED_NAME:
+            preferred = MESH_CUI_TO_PREFERRED_NAME[cui_key]
+            if norm_name != preferred:
+                return preferred, clean_name
+
+    # Rule 3: Type-gated acronym expansion
+    if node_type in BIOMEDICAL_ACRONYM_MAP:
+        acronym_dict = BIOMEDICAL_ACRONYM_MAP[node_type]
+        if norm_name in acronym_dict:
+            expanded = acronym_dict[norm_name]
+            return expanded, clean_name
+
+    return clean_name, None
+
+
+def apply_node_acronym_and_mesh_standardization(G: nx.Graph) -> int:
+    """
+    Iterates through graph nodes and applies MeSH preferred name replacement
+    and type-gated acronym expansion. Updates node names in-place and adds original
+    abbreviations to the node's 'aliases' set for searchability.
+    """
+    modified_count = 0
+    for node_id, data in G.nodes(data=True):
+        current_name = data.get("name", "")
+        node_type = data.get("type", "")
+        mesh_cui = data.get("mesh", None)
+
+        new_name, orig_acronym = standardize_node_name(current_name, node_type, mesh_cui)
+        if new_name and new_name != current_name:
+            data["name"] = new_name
+            aliases = data.setdefault("aliases", set())
+            if isinstance(aliases, set):
+                aliases.add(current_name)
+            elif isinstance(aliases, list):
+                data["aliases"] = set(aliases) | {current_name}
+            else:
+                data["aliases"] = {current_name}
+            if orig_acronym:
+                data["aliases"].add(orig_acronym)
+            modified_count += 1
+    return modified_count
 
 
 def normalize_knowledge_graph(
@@ -38,6 +217,11 @@ def normalize_knowledge_graph(
     """
     if G.number_of_nodes() == 0:
         return G
+
+    # Pre-pass: Expand acronyms and replace MeSH preferred names
+    expanded_count = apply_node_acronym_and_mesh_standardization(G)
+    if expanded_count > 0:
+        logger.info(f"Standardized and expanded {expanded_count} acronym/MeSH node names.")
 
     # 1. Extract node names for embedding and initial case-pass
     logger.info("Preparing metadata for normalization...")

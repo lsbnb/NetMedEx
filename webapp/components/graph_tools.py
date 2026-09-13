@@ -24,7 +24,8 @@ graph_layout = html.Div(
                 {"label": "Breadthfirst", "value": "breadthfirst"},
             ],
             value="fcose",
-            style={"width": "200px"},
+            style={"width": "100%", "color": "#1f0737"},
+            className="text-dark",
         ),
         # Node Repulsion slider (visible only when fcose is selected)
         html.Div(
