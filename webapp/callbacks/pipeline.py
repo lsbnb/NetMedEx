@@ -197,7 +197,7 @@ def callbacks(app):
             if source == "graph_file":
                 if not graph_file_data:
                     raise EmptyInput("No Graph file uploaded")
-                if os.getenv("ALLOW_UNSAFE_GRAPH_PICKLE_UPLOAD", "true").lower() not in {
+                if os.getenv("ALLOW_UNSAFE_GRAPH_PICKLE_UPLOAD", "false").lower() not in {
                     "1",
                     "true",
                     "yes",
