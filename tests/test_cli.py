@@ -499,3 +499,35 @@ def test_chat_cli_one_shot_uses_hybrid_rag_session(monkeypatch: pytest.MonkeyPat
     captured = capsys.readouterr()
     assert "Answer with [PMID:123]" in captured.out
     assert "Sources: 123" in captured.out
+
+
+def test_get_network_profile_params(monkeypatch: pytest.MonkeyPatch):
+    from netmedex.utils import get_network_profile_params
+
+    # Standard profile (default)
+    monkeypatch.delenv("NETMEDEX_NETWORK_PROFILE", raising=False)
+    monkeypatch.delenv("NETMEDEX_TIMEOUT_MULTIPLIER", raising=False)
+    std = get_network_profile_params()
+    assert std["profile"] == "standard"
+    assert std["multiplier"] == 1.0
+    assert std["max_retries"] == 4
+    assert std["llm_timeout"] == 180.0
+    assert std["article_timeout"] == 600
+
+    # Slow profile
+    monkeypatch.setenv("NETMEDEX_NETWORK_PROFILE", "slow")
+    slow = get_network_profile_params()
+    assert slow["profile"] == "slow"
+    assert slow["multiplier"] == 2.0
+    assert slow["max_retries"] == 6
+    assert slow["llm_timeout"] == 360.0
+    assert slow["article_timeout"] == 1200
+
+    # Extreme profile
+    monkeypatch.setenv("NETMEDEX_NETWORK_PROFILE", "extreme")
+    ext = get_network_profile_params()
+    assert ext["profile"] == "extreme"
+    assert ext["multiplier"] == 3.0
+    assert ext["max_retries"] == 8
+    assert ext["llm_timeout"] == 540.0
+    assert ext["article_timeout"] == 1800

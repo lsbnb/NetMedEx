@@ -20,7 +20,9 @@ MAX_AT_ONCE = 3
 async def fetch_citation_count(session: aiohttp.ClientSession, pmid: str) -> int:
     """Fetch citation count for a single PMID from OpenCitations."""
     url = f"{OPENCITATIONS_BASE_URL}/citation-count/pmid:{pmid}"
-    citation_timeout = float(os.getenv("NETMEDEX_CITATION_TIMEOUT", "30.0"))
+    from netmedex.utils import get_network_profile_params
+    net_params = get_network_profile_params()
+    citation_timeout = float(os.getenv("NETMEDEX_CITATION_TIMEOUT", str(net_params["citation_timeout"])))
     try:
         async with session.get(url, timeout=citation_timeout) as response:
             if response.status == 200:

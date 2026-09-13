@@ -65,10 +65,17 @@ config_logger(is_debug=False)
 
 
 def _pubtator_timeout() -> aiohttp.ClientTimeout:
+    from netmedex.utils import get_network_profile_params
+
+    net_params = get_network_profile_params()
+    total_t = _timeout_value("NETMEDEX_PUBTATOR_TIMEOUT_TOTAL", net_params["pubtator_total_timeout"])
+    connect_t = _timeout_value("NETMEDEX_PUBTATOR_TIMEOUT_CONNECT", net_params["pubtator_connect_timeout"])
+    read_t = _timeout_value("NETMEDEX_PUBTATOR_TIMEOUT_SOCK_READ", net_params["pubtator_read_timeout"])
+
     return aiohttp.ClientTimeout(
-        total=PUBTATOR_TIMEOUT_TOTAL,
-        connect=PUBTATOR_TIMEOUT_CONNECT,
-        sock_read=PUBTATOR_TIMEOUT_SOCK_READ,
+        total=total_t,
+        connect=connect_t,
+        sock_read=read_t,
     )
 
 

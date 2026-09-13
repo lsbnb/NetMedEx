@@ -23,6 +23,7 @@ from netmedex.relation_types import (
     SYMMETRIC_RELATIONS,
     normalize_relation_type,
 )
+from netmedex.utils import get_network_profile_params
 
 logger = logging.getLogger(__name__)
 
@@ -229,8 +230,9 @@ class SemanticRelationshipExtractor:
                 for i, article in enumerate(articles)
             }
 
-            # Per-article hard timeout: configurable via NETMEDEX_ARTICLE_TIMEOUT (default 600s = 10 min)
-            ARTICLE_TIMEOUT = int(os.getenv("NETMEDEX_ARTICLE_TIMEOUT", "600"))
+            # Per-article hard timeout: dynamically calculated via get_network_profile_params() or NETMEDEX_ARTICLE_TIMEOUT
+            net_params = get_network_profile_params()
+            ARTICLE_TIMEOUT = int(os.getenv("NETMEDEX_ARTICLE_TIMEOUT", str(net_params["article_timeout"])))
 
             for future in concurrent.futures.as_completed(future_to_article):
                 article = future_to_article[future]
@@ -829,9 +831,10 @@ Title: {title}
             "You analyze scientific abstracts and identify relationships between entities. "
             "Always respond with valid JSON."
         )
-        # Per-call LLM timeout: configurable via NETMEDEX_LLM_TIMEOUT (default 180s = 3 min)
-        LLM_TIMEOUT = float(os.getenv("NETMEDEX_LLM_TIMEOUT", "180.0"))
-        max_retries = 4
+        # Per-call LLM timeout & retries: dynamically resolved via get_network_profile_params()
+        net_params = get_network_profile_params()
+        LLM_TIMEOUT = float(os.getenv("NETMEDEX_LLM_TIMEOUT", str(net_params["llm_timeout"])))
+        max_retries = int(net_params["max_retries"])
         for attempt in range(max_retries):
             try:
                 logger.info(

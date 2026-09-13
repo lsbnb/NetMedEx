@@ -134,7 +134,31 @@ relation_verification_toggle = html.Div(
                 ),
             ],
             id="relation-verifier-provider-container",
-            style=display.none,
+    ],
+    className="param",
+)
+
+network_profile = html.Div(
+    [
+        generate_param_title(
+            "Network Resilience Profile",
+            (
+                "Adjust timeout ceilings & retry resilience based on your network connection:\n\n"
+                "⚡ Standard Network (1.0x): Fast & responsive for normal network environments\n"
+                "🐢 Slow / Unstable Network (2.0x): Extended timeouts & up to 6 retries for poor connections\n"
+                "🐌 High Latency / Local LLM (3.0x): Maximum timeouts (LLM 300s, Article 900s) for heavy local models or weak connections"
+            ),
+        ),
+        dcc.Dropdown(
+            id="network-profile-selector",
+            options=[
+                {"label": "⚡ Standard Network (1.0x)", "value": "standard"},
+                {"label": "🐢 Slow / Unstable Network (2.0x)", "value": "slow"},
+                {"label": "🐌 High Latency / Local LLM (3.0x)", "value": "extreme"},
+            ],
+            value="standard",
+            clearable=False,
+            className="mt-1 mb-2",
         ),
     ],
     className="param",
@@ -889,6 +913,7 @@ advanced_settings = html.Div(
                 max_edges,
                 normalization_toggle,
                 relation_verification_toggle,
+                network_profile,
             ],
             id="advanced-settings-collapse",
             className="settings-collapse",

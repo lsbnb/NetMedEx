@@ -91,3 +91,47 @@ def calculate_citation_weight(
     # Log scaling to keep weights in a reasonable range (mostly 1.0 to 3.0)
     weight = math.log10(normalized_score + 1.1) + 1.0
     return round(weight, 3)
+
+
+def get_network_profile_params() -> dict[str, Any]:
+    """
+    Resolve network profile parameters dynamically.
+    Environment Variable: NETMEDEX_NETWORK_PROFILE
+    Profiles:
+      - 'standard' (default): Multiplier 1.0x (normal network speed, fast & responsive)
+      - 'slow': Multiplier 2.0x (unstable network / local LLM, increased retries)
+      - 'extreme': Multiplier 3.0x (high latency / severe packet loss, maximum retries)
+    Or explicit override via NETMEDEX_TIMEOUT_MULTIPLIER.
+    """
+    import os
+
+    profile = os.getenv("NETMEDEX_NETWORK_PROFILE", "standard").strip().lower()
+    profile_multipliers = {
+        "standard": 1.0,
+        "fast": 1.0,
+        "slow": 2.0,
+        "extreme": 3.0,
+    }
+    multiplier = profile_multipliers.get(profile, 1.0)
+
+    # Custom multiplier override if specified
+    custom_multiplier = os.getenv("NETMEDEX_TIMEOUT_MULTIPLIER")
+    if custom_multiplier:
+        try:
+            multiplier = max(0.5, float(custom_multiplier))
+        except ValueError:
+            pass
+
+    max_retries = 4 if multiplier <= 1.0 else (6 if multiplier <= 2.0 else 8)
+
+    return {
+        "profile": profile,
+        "multiplier": multiplier,
+        "max_retries": max_retries,
+        "pubtator_total_timeout": 180.0 * multiplier,
+        "pubtator_connect_timeout": 30.0 * multiplier,
+        "pubtator_read_timeout": 120.0 * multiplier,
+        "llm_timeout": 180.0 * multiplier,
+        "article_timeout": int(600 * multiplier),
+        "citation_timeout": 30.0 * multiplier,
+    }

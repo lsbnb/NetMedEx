@@ -119,6 +119,7 @@ def callbacks(app):
             State("normalization-toggle", "value"),
             State("relation-verification-toggle", "value"),
             State("relation-verifier-provider", "value"),
+            State("network-profile-selector", "value"),
         ],
         running=[
             (Output("submit-button", "disabled"), True, False),
@@ -179,8 +180,11 @@ def callbacks(app):
         normalization_toggle,
         relation_verification_toggle,
         relation_verifier_provider,
+        network_profile_value,
     ):
         try:
+            if network_profile_value:
+                os.environ["NETMEDEX_NETWORK_PROFILE"] = str(network_profile_value).strip()
             # Initialize progress bar to empty/start
             set_progress((0, 100, "0%", "Initializing..."))
             # ----------------------------------------------------------------
