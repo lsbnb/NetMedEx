@@ -134,6 +134,7 @@ relation_verification_toggle = html.Div(
                 ),
             ],
             id="relation-verifier-provider-container",
+        ),
     ],
     className="param",
 )
