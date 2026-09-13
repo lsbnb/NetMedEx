@@ -72,6 +72,17 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 Launch the interactive dashboard on `localhost:8050`:
 
+### Method A: Docker Desktop (GUI)
+
+1. Search for **`lsbnb/netmedex`** in the top search bar of Docker Desktop and click **Pull**.
+2. Go to the **Images** tab, locate `lsbnb/netmedex:latest`, and click **Run**.
+3. Expand **Optional settings**:
+   - Set **Host port** to **`8050`** (maps host port 8050 to container port `8050/tcp`).
+   - *(Optional)* Set Container name to `NetMedEx`.
+4. Click **Run**, then open **[http://localhost:8050](http://localhost:8050)** in your browser.
+
+### Method B: Terminal Command Line
+
 ```bash
 docker run -p 8050:8050 --rm lsbnb/netmedex
 ```
