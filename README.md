@@ -161,6 +161,12 @@ The easiest way to start. No Python installation required.
    - **Container name**: *(Optional)* Enter `NetMedEx`.
 4. Click **Run**.
 
+<p align="center">
+  <img src="./docs/img/netmedex_docker_desktop.png" width="500" alt="Docker Desktop Container Setup">
+  <br>
+  <i>Configuring Host port (8050) in Docker Desktop Optional Settings.</i>
+</p>
+
 ### Method B: Terminal Command Line
 
 ```bash
