@@ -18,6 +18,7 @@ from webapp.llm import (
     OPENROUTER_BASE_URL,
     llm_client,
     normalize_model_for_provider,
+    sanitize_error_message as _sanitize_error_message,
 )
 
 logger = logging.getLogger(__name__)
@@ -40,22 +41,6 @@ def _normalize_local_base_url(base_url: str | None) -> str:
     if raw.endswith("/v1"):
         return raw
     return f"{raw}/v1"
-
-
-def _sanitize_error_message(message: str) -> str:
-    if not message:
-        return "Unknown error"
-    # Prevent accidental key leakage from URLs like ...?key=XXXX
-    if "key=" in message:
-        parts = message.split("key=", 1)
-        if len(parts) == 2:
-            tail = parts[1]
-            for sep in ("&", " ", "\n"):
-                if sep in tail:
-                    tail = tail.split(sep, 1)[1]
-                    return f"{parts[0]}key=***{sep}{tail}"
-            return f"{parts[0]}key=***"
-    return message
 
 
 def _default_settings() -> dict:
@@ -234,7 +219,7 @@ def callbacks(app):
                 settings["anthropic_custom_model"],
             )
         except Exception as e:
-            logger.error(f"Error loading LLM configuration: {e}")
+            logger.error(f"Error loading LLM configuration: {_sanitize_error_message(str(e))}")
             return (dash.no_update,) * 22
 
     @app.callback(
@@ -618,8 +603,8 @@ def callbacks(app):
                 _sanitize_error_message(msg),
             )
         except Exception as e:
-            logger.error(f"LLM verification error: {e}")
             msg = _sanitize_error_message(str(e))
+            logger.error(f"LLM verification error: {msg}")
             return (
                 f"❌ Error: {msg}",
                 "status-indicator status-offline",
@@ -886,7 +871,7 @@ def callbacks(app):
                 "❌ Could not fetch models. Try URL like http://<host>:11434 or .../v1",
             )
         except Exception as e:
-            logger.error(f"Error fetching local models: {e}")
+            logger.error(f"Error fetching local models: {_sanitize_error_message(str(e))}")
             return no_update, "❌ Error: Could not connect"
 
     @app.callback(
@@ -917,7 +902,7 @@ def callbacks(app):
                 new_value = "openai/gpt-4o-mini" if "openai/gpt-4o-mini" in models else models[0]
             return new_options, f"✅ Found {len(models)} models", new_value
         except Exception as e:
-            logger.error(f"Error fetching OpenRouter models: {e}")
+            logger.error(f"Error fetching OpenRouter models: {_sanitize_error_message(str(e))}")
             return no_update, f"❌ Fetch failed: {_sanitize_error_message(str(e))}", no_update
 
     @app.callback(
@@ -960,7 +945,7 @@ def callbacks(app):
             )
             return options, f"✅ Found {len(options)} models", new_value
         except Exception as e:
-            logger.error(f"Error fetching NVIDIA NIM models: {e}")
+            logger.error(f"Error fetching NVIDIA NIM models: {_sanitize_error_message(str(e))}")
             return no_update, f"❌ {_sanitize_error_message(str(e))}", no_update
 
     def _build_openai_model_options(api_key, current_options, current_value, auto=False):
@@ -1033,7 +1018,7 @@ def callbacks(app):
         try:
             return _build_openai_model_options(api_key, current_options, current_value, auto=False)
         except Exception as e:
-            logger.error(f"Error fetching OpenAI models: {e}")
+            logger.error(f"Error fetching OpenAI models: {_sanitize_error_message(str(e))}")
             return no_update, f"❌ Fetch failed: {_sanitize_error_message(str(e))}", no_update
 
     @app.callback(
@@ -1061,7 +1046,7 @@ def callbacks(app):
         try:
             return _build_openai_model_options(api_key, current_options, current_value, auto=True)
         except Exception as e:
-            logger.error(f"Error auto-fetching OpenAI models: {e}")
+            logger.error(f"Error auto-fetching OpenAI models: {_sanitize_error_message(str(e))}")
             return no_update, f"❌ Auto-sync failed: {_sanitize_error_message(str(e))}", no_update
 
     @app.callback(
@@ -1083,7 +1068,7 @@ def callbacks(app):
         try:
             return _build_google_model_options(api_key, current_value, auto=False)
         except Exception as e:
-            logger.error(f"Error fetching Gemini models: {e}")
+            logger.error(f"Error fetching Gemini models: {_sanitize_error_message(str(e))}")
             return no_update, f"❌ Fetch failed: {_sanitize_error_message(str(e))}", no_update
 
     @app.callback(
@@ -1112,7 +1097,7 @@ def callbacks(app):
         try:
             return _build_google_model_options(api_key, current_value, auto=True)
         except Exception as e:
-            logger.error(f"Error auto-fetching Gemini models: {e}")
+            logger.error(f"Error auto-fetching Gemini models: {_sanitize_error_message(str(e))}")
             return no_update, f"❌ Auto-sync failed: {_sanitize_error_message(str(e))}", no_update
 
     @app.callback(
@@ -1360,7 +1345,7 @@ def callbacks(app):
 
             return f"✅ LLM settings saved to {env_path.name} ({provider})"
         except Exception as e:
-            logger.error(f"Failed to save LLM configuration: {e}")
+            logger.error(f"Failed to save LLM configuration: {_sanitize_error_message(str(e))}")
             return f"❌ Failed to save settings: {str(e)}"
 
     @app.callback(
@@ -1389,7 +1374,7 @@ def callbacks(app):
                 current_value = models[0] if models else dash.no_update
             return new_options, f"✅ Found {len(models)} models", current_value
         except Exception as e:
-            logger.error(f"Error fetching Groq models: {e}")
+            logger.error(f"Error fetching Groq models: {_sanitize_error_message(str(e))}")
             return dash.no_update, "❌ Error: Could not connect", dash.no_update
 
     @app.callback(
@@ -1418,5 +1403,5 @@ def callbacks(app):
             new_value = current_value if any(m == current_value for m in models) else models[0]
             return new_options, f"✅ Found {len(models)} models", new_value
         except Exception as e:
-            logger.error(f"Error fetching Anthropic models: {e}")
+            logger.error(f"Error fetching Anthropic models: {_sanitize_error_message(str(e))}")
             return dash.no_update, f"❌ Error: {_sanitize_error_message(str(e))}", dash.no_update

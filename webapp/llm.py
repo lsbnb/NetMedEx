@@ -15,6 +15,23 @@ except ImportError:
 
 logger = logging.getLogger(__name__)
 
+
+def sanitize_error_message(message: str) -> str:
+    if not message:
+        return "Unknown error"
+    # Prevent accidental key leakage from URLs like ...?key=XXXX
+    if "key=" in message:
+        parts = message.split("key=", 1)
+        if len(parts) == 2:
+            tail = parts[1]
+            for sep in ("&", " ", "\n"):
+                if sep in tail:
+                    tail = tail.split(sep, 1)[1]
+                    return f"{parts[0]}key=***{sep}{tail}"
+            return f"{parts[0]}key=***"
+    return message
+
+
 OPENAI_BASE_URL = "https://api.openai.com/v1"
 GEMINI_OPENAI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
@@ -389,7 +406,7 @@ class LLMClient:
                     )
                 return True, "Connection successful"
             except Exception as e:
-                logger.error(f"Anthropic connection test failed: {e}")
+                logger.error(f"Anthropic connection test failed: {sanitize_error_message(str(e))}")
                 return False, str(e)
         if not self.client:
             return False, "Client not initialized"
@@ -417,7 +434,7 @@ class LLMClient:
 
             return True, "Connection successful"
         except Exception as e:
-            logger.error(f"Connection test failed: {e}")
+            logger.error(f"Connection test failed: {sanitize_error_message(str(e))}")
             return False, str(e)
 
     def update_api_key(self, api_key):
@@ -631,7 +648,7 @@ class LLMClient:
             )
             return translated
         except Exception as e:
-            logger.error(f"LLM Error during query translation to English: {e}")
+            logger.error(f"LLM Error during query translation to English: {sanitize_error_message(str(e))}")
             return text
 
     def translate_query_to_boolean(self, natural_query: str) -> str:
@@ -892,7 +909,7 @@ class LLMClient:
 
             return boolean_query
         except Exception as e:
-            logger.error(f"LLM Error during query translation: {e}")
+            logger.error(f"LLM Error during query translation: {sanitize_error_message(str(e))}")
             return natural_query
 
     def summarize_abstracts(self, abstracts: list[str], prompt_instruction: str = None) -> str:
@@ -933,7 +950,7 @@ class LLMClient:
                 max_tokens=800,
             )
         except Exception as e:
-            logger.error(f"LLM Error during summarization: {e}")
+            logger.error(f"LLM Error during summarization: {sanitize_error_message(str(e))}")
             return f"Error during analysis: {str(e)}"
 
     def get_openai_models(self, api_key: str) -> list[str]:
@@ -1004,7 +1021,7 @@ class LLMClient:
             return sorted_models
 
         except Exception as e:
-            logger.error(f"Error fetching OpenAI models: {e}")
+            logger.error(f"Error fetching OpenAI models: {sanitize_error_message(str(e))}")
             raise e
 
     def get_gemini_models(self, api_key: str) -> list[str]:
@@ -1061,7 +1078,7 @@ class LLMClient:
             logger.error(f"Error fetching Gemini models: HTTP {status_code}")
             raise ValueError(f"Gemini models API error (HTTP {status_code}).") from e
         except Exception as e:
-            logger.error(f"Error fetching Gemini models: {e}")
+            logger.error(f"Error fetching Gemini models: {sanitize_error_message(str(e))}")
             raise e
 
     def get_groq_models(self, api_key: str) -> list[str]:
@@ -1077,7 +1094,7 @@ class LLMClient:
                 return [m.get("id") for m in data if m.get("id")]
             return []
         except Exception as e:
-            logger.error(f"Failed to fetch Groq models: {e}")
+            logger.error(f"Failed to fetch Groq models: {sanitize_error_message(str(e))}")
             return []
 
     def get_anthropic_models(self, api_key: str) -> list[str]:
@@ -1092,7 +1109,7 @@ class LLMClient:
             model_ids = [m.id for m in models.data]
             return model_ids if model_ids else list(ANTHROPIC_MODELS)
         except Exception as e:
-            logger.error(f"Failed to fetch Anthropic models: {e}")
+            logger.error(f"Failed to fetch Anthropic models: {sanitize_error_message(str(e))}")
             return list(ANTHROPIC_MODELS)
 
     def get_openrouter_models(self, api_key: str) -> list[str]:
@@ -1146,7 +1163,7 @@ class LLMClient:
             return sorted_models
 
         except Exception as e:
-            logger.error(f"Error fetching OpenRouter models: {e}")
+            logger.error(f"Error fetching OpenRouter models: {sanitize_error_message(str(e))}")
             raise e
 
 
