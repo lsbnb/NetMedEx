@@ -762,7 +762,8 @@ class LLMClient:
                 "a", "an", "the", "and", "or", "not", "is", "are", "was", "were", "be", "been", "being",
                 "have", "has", "had", "do", "does", "did", "can", "could", "should", "would", "will", "shall",
                 "may", "might", "must", "what", "whats", "what's", "how", "why", "where", "when", "which", "who", "whom",
-                "between", "among", "with", "for", "about", "relationship", "relationships", "relate", "related",
+                "between", "among", "with", "without", "via", "versus", "vs", "against", "across", "for", "about",
+                "relationship", "relationships", "relate", "related", "relating",
                 "of", "in", "on", "at", "by", "from", "to", "into", "through", "during", "before", "after",
                 "above", "below", "up", "down", "out", "off", "over", "under", "again", "further", "then", "once",
                 "here", "there", "all", "any", "both", "each", "few", "more", "most", "other", "some", "such",
@@ -774,7 +775,12 @@ class LLMClient:
                 "control", "controls", "controlling", "modulate", "modulates", "modulating", "modulation",
                 "inhibit", "inhibits", "inhibiting", "inhibition", "activate", "activates", "activating", "activation",
                 "promote", "promotes", "promoting", "promotion", "induce", "induces", "inducing", "induction",
-                "treat", "treats", "treating", "treatment", "treatments", "prevent", "prevents", "preventing", "prevention"
+                "treat", "treats", "treating", "treatment", "treatments", "prevent", "prevents", "preventing", "prevention",
+                "upon", "within", "along", "using", "unto", "per", "also", "well", "as", "way", "ways",
+                "pathway", "pathways", "link", "links", "linking", "linked", "network", "networks",
+                "interact", "interacts", "interacting", "interaction", "interactions", "target", "targets", "targeting",
+                "cause", "causes", "causing", "affect", "affects", "affecting", "drive", "drives", "driving",
+                "result", "results", "resulting", "response", "responses"
             }
 
             terms: list[str] = []
@@ -804,14 +810,24 @@ class LLMClient:
                 phrase = phrase.strip()
                 if not phrase or len(phrase) < 2:
                     continue
-                candidate = f'"{phrase}"'
-                if candidate not in terms:
-                    terms.append(candidate)
-                if len(terms) >= 3:
+
+                phrase_words = phrase.split()
+                if len(phrase_words) >= 3:
+                    sub_terms = [w for w in phrase_words if len(w) >= 2 and w.lower() not in stopwords]
+                    for st in sub_terms:
+                        candidate = f'"{st}"'
+                        if candidate not in terms:
+                            terms.append(candidate)
+                else:
+                    candidate = f'"{phrase}"'
+                    if candidate not in terms:
+                        terms.append(candidate)
+
+                if len(terms) >= 4:
                     break
 
             if terms:
-                return " AND ".join(terms[:3])
+                return " AND ".join(terms[:4])
 
             # 3. Fallback: if the original query already contains boolean operators or entity tags, trust it
             upper_q = q.upper()
