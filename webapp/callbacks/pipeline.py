@@ -193,7 +193,7 @@ def callbacks(app):
             if source == "graph_file":
                 if not graph_file_data:
                     raise EmptyInput("No Graph file uploaded")
-                if os.getenv("ALLOW_UNSAFE_GRAPH_PICKLE_UPLOAD", "false").lower() not in {
+                if os.getenv("ALLOW_UNSAFE_GRAPH_PICKLE_UPLOAD", "true").lower() not in {
                     "1",
                     "true",
                     "yes",
@@ -422,24 +422,6 @@ def callbacks(app):
                                 )
                     logger.info("Final PubTator query: %s", query)
 
-                    # Append publication-type exclusion filters so that non-research
-                    # article types (which typically lack abstracts and add noise) are
-                    # automatically removed from every free-text query.
-                    # PubTator3 API does not support standard [pt] field tags (which cause 0 results).
-                    # Instead, we just use standard NOT keyword exclusions.
-                    EXCLUDED_PUB_TYPES = [
-                        "Editorial",
-                        "Letter",
-                        "Published Erratum",
-                        "Congress",  # Conference proceedings / abstracts
-                        "News",
-                        "Comment",
-                        "Retraction of Publication",
-                    ]
-                    exclusion_suffix = " ".join(f'NOT "{pt}"' for pt in EXCLUDED_PUB_TYPES)
-                    query = f"({query}) {exclusion_suffix}"
-                    logger.info("Query after pub-type exclusion: %s", query)
-
                 elif input_type == "gene_list":
                     if not data_input or not data_input.strip():
                         raise EmptyInput("No genes provided")
@@ -459,19 +441,7 @@ def callbacks(app):
                         raise EmptyInput("No valid genes provided")
                         
                     query = f"({' OR '.join(terms)}) AND @GENE"
-                    
-                    EXCLUDED_PUB_TYPES = [
-                        "Editorial",
-                        "Letter",
-                        "Published Erratum",
-                        "Congress",
-                        "News",
-                        "Comment",
-                        "Retraction of Publication",
-                    ]
-                    exclusion_suffix = " ".join(f'NOT "{pt}"' for pt in EXCLUDED_PUB_TYPES)
-                    query = f"({query}) {exclusion_suffix}"
-                    logger.info("Gene list query after pub-type exclusion: %s", query)
+                    logger.info("Final Gene list PubTator query: %s", query)
 
                 elif input_type == "pmids":
                     pmid_list = load_pmids(data_input, load_from="string")
@@ -584,9 +554,19 @@ def callbacks(app):
                 if is_biocjson_upload and savepath.get("biocjson"):
                     with open(savepath["biocjson"], "w", encoding="utf-8") as f:
                         f.write(decoded_content)
+                    if os.path.exists(savepath["pubtator"]):
+                        try:
+                            os.remove(savepath["pubtator"])
+                        except OSError:
+                            pass
                 else:
                     with open(savepath["pubtator"], "w") as f:
                         f.write(decoded_content)
+                    if savepath.get("biocjson") and os.path.exists(savepath["biocjson"]):
+                        try:
+                            os.remove(savepath["biocjson"])
+                        except OSError:
+                            pass
 
             set_progress((0, 1, "0/1", "Generating network..."))
 

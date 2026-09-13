@@ -10,12 +10,12 @@ from netmedex.graph_rag import GraphRetriever
 from netmedex.node_rag import GraphNode, NodeRAG
 from netmedex.pubtator import PubTatorAPI
 from netmedex.rag import AbstractDocument, AbstractRAG
-from webapp.llm import LLMClient
+from webapp.llm import LLMClient, get_provider_api_key
 
 
 @dataclass
 class BridgeConfig:
-    provider: str = "openai"  # openai | google | local
+    provider: str = "openai"  # openai | google | local | anthropic | groq | nvidia | openrouter
     api_key: str | None = None
     model: str | None = None
     base_url: str | None = None
@@ -76,7 +76,7 @@ class NetMedExChatBridge:
         graph = graph_builder.build(
             pmid_weights=None,
             weighting_method="freq",
-            edge_weight_cutoff=2,
+            edge_weight_cutoff=0,
             community=False,
             max_edges=0,
         )
@@ -172,19 +172,14 @@ class NetMedExChatBridge:
     def _init_llm_client(config: BridgeConfig) -> LLMClient:
         llm_client = LLMClient()
         provider = config.provider
-        if provider not in {"openai", "google", "local"}:
+        # Must match SessionConfigModel.provider's allowed pattern in fastapi_bridge.py.
+        if provider not in {"openai", "google", "local", "anthropic", "groq", "nvidia", "openrouter"}:
             raise ValueError(f"Unsupported provider: {provider}")
 
-        api_key = config.api_key
-        base_url = config.base_url
-
-        if provider == "openai":
-            api_key = api_key or os.getenv("OPENAI_API_KEY")
-        elif provider == "google":
-            api_key = api_key or os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
-        else:
-            api_key = api_key or os.getenv("LOCAL_LLM_API_KEY") or "local-dummy-key"
-            base_url = base_url or os.getenv("LOCAL_LLM_BASE_URL") or "http://localhost:11434/v1"
+        api_key = get_provider_api_key(provider, config.api_key)
+        base_url = config.base_url or (
+            os.getenv("LOCAL_LLM_BASE_URL") if provider == "local" else None
+        )
 
         if not api_key:
             raise ValueError(f"Missing API key for provider '{provider}'.")

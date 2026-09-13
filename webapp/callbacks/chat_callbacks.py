@@ -918,14 +918,12 @@ def callbacks(app):
                         selection_pmids.update(str(p) for p in np_)
 
                 documents = _abstract_documents_from_graph(G, pmid_filter=selection_pmids)
-                context_label = "Selected Sub-network"
                 logger.info(
                     f"auto_initialize_chat: using selection ({len(selection_pmids)} PMIDs, "
                     f"{len(documents)} documents)"
                 )
             else:
                 documents = _abstract_documents_from_graph(G, limit=50)
-                context_label = "Full Dataset"
                 logger.info(
                     f"auto_initialize_chat: no selection — using full graph ({len(documents)} documents)"
                 )

@@ -1088,10 +1088,10 @@ def test_relaxed_parser_recovers_from_malformed_json_like_output():
     assert rels[0]["relation_type"] == "associated_with"
 
 
-def test_google_effective_threshold_is_capped_for_gemini():
+def test_google_effective_threshold_returns_configured_threshold():
     llm_client = SimpleNamespace(provider="google", model="gemini-pro-latest", client=None)
     extractor = SemanticRelationshipExtractor(llm_client, confidence_threshold=0.5)
-    assert extractor._effective_confidence_threshold(0.5) == 0.25
+    assert extractor._effective_confidence_threshold(0.5) == 0.5
 
 
 def test_confidence_percent_is_normalized_and_kept_in_semantic_edge():

@@ -176,7 +176,6 @@ def verify_claim_to_path(
     relations = [str(relation) for relation in path.get("relations", [])]
     pmid_groups = path.get("edge_pmids", [])
     quote_groups = path.get("edge_evidence_quotes", [])
-    normalized_claim = _normalized_text(claim_text)
     cited_pmids = _extract_pmids(claim_text)
 
     for index in range(max(0, len(names) - 1)):

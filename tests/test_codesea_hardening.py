@@ -1,11 +1,11 @@
-import math
 import time
 from unittest.mock import MagicMock, patch
 
 import pytest
+from fastapi.testclient import TestClient
 
 from netmedex.chat import ChatSession
-from netmedex.fastapi_bridge import _SessionStore
+from netmedex.fastapi_bridge import _SessionStore, create_app
 from netmedex.graph import PubTatorGraphBuilder
 from netmedex.npmi import normalized_pointwise_mutual_information
 from netmedex.pubtator_data import PubTatorAnnotation, PubTatorArticle
@@ -176,3 +176,48 @@ def test_chat_context_budget_truncation():
     assert "[... Abstract context truncated to fit context budget ...]" in user_msg_content
     # Overall user message should be kept well under local context budget
     assert len(user_msg_content) < 20000
+
+
+def test_fastapi_bridge_no_key_configured_allows_all_requests(monkeypatch):
+    """With NETMEDEX_API_KEY unset (today's default), /sessions must stay unauthenticated --
+    this is the local-single-user case and must see zero behavior change."""
+    monkeypatch.delenv("NETMEDEX_API_KEY", raising=False)
+    client = TestClient(create_app())
+    resp = client.get("/sessions")
+    assert resp.status_code == 200
+
+
+def test_fastapi_bridge_rejects_missing_or_wrong_key(monkeypatch):
+    """With NETMEDEX_API_KEY set, protected routes must 401 without it or with the wrong value."""
+    monkeypatch.setenv("NETMEDEX_API_KEY", "s3cr3t")
+    client = TestClient(create_app())
+
+    resp_no_key = client.get("/sessions")
+    assert resp_no_key.status_code == 401
+
+    resp_wrong_key = client.get("/sessions", headers={"X-API-Key": "wrong"})
+    assert resp_wrong_key.status_code == 401
+
+    resp_wrong_bearer = client.get("/sessions", headers={"Authorization": "Bearer wrong"})
+    assert resp_wrong_bearer.status_code == 401
+
+
+def test_fastapi_bridge_accepts_correct_key_via_header_or_bearer(monkeypatch):
+    """The correct key must be accepted via either X-API-Key or an Authorization bearer token."""
+    monkeypatch.setenv("NETMEDEX_API_KEY", "s3cr3t")
+    client = TestClient(create_app())
+
+    resp_header = client.get("/sessions", headers={"X-API-Key": "s3cr3t"})
+    assert resp_header.status_code == 200
+
+    resp_bearer = client.get("/sessions", headers={"Authorization": "Bearer s3cr3t"})
+    assert resp_bearer.status_code == 200
+
+
+def test_fastapi_bridge_health_never_requires_a_key(monkeypatch):
+    """/health must stay reachable with no key even when NETMEDEX_API_KEY is set, so uptime
+    probes/orchestrators don't need a credential just to check liveness."""
+    monkeypatch.setenv("NETMEDEX_API_KEY", "s3cr3t")
+    client = TestClient(create_app())
+    resp = client.get("/health")
+    assert resp.status_code == 200

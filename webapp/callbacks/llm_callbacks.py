@@ -984,9 +984,7 @@ def callbacks(app):
             "gpt-3.5-turbo": "GPT-3.5 Turbo (Legacy)",
         }
         new_options = [{"label": friendly_names.get(m, m), "value": m} for m in models]
-        has_custom = any(opt.get("value") == "custom" for opt in (current_options or []))
-        if has_custom or True:
-            new_options.append({"label": "Custom Model...", "value": "custom"})
+        new_options.append({"label": "Custom Model...", "value": "custom"})
 
         new_value = current_value
         if current_value not in models and current_value != "custom":

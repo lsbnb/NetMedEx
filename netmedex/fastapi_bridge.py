@@ -2,19 +2,51 @@ from __future__ import annotations
 
 import logging
 import os
+import secrets
 import threading
 import time
 import uuid
 from datetime import datetime, timezone
 from typing import Any, Optional
 
-from fastapi import FastAPI, HTTPException
+from fastapi import Depends, FastAPI, Header, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 from netmedex.chat_bridge import BridgeConfig, NetMedExChatBridge
 
 logger = logging.getLogger(__name__)
+
+
+def _configured_api_key() -> str | None:
+    """The bridge-wide API key, if the operator has opted into requiring one.
+
+    Unset (the default) preserves today's zero-friction behavior for a single user running
+    this on their own machine. Set NETMEDEX_API_KEY to require it on every /sessions* route --
+    intended for intranet or cloud deployments where other hosts can reach this port.
+    """
+    key = os.getenv("NETMEDEX_API_KEY", "").strip()
+    return key or None
+
+
+async def require_api_key(
+    authorization: Optional[str] = Header(default=None),
+    x_api_key: Optional[str] = Header(default=None, alias="X-API-Key"),
+) -> None:
+    """FastAPI dependency: no-op unless NETMEDEX_API_KEY is set, in which case every request
+    must present that key via ``X-API-Key`` or ``Authorization: Bearer <key>``."""
+    configured = _configured_api_key()
+    if configured is None:
+        return
+    supplied = x_api_key
+    if not supplied and authorization and authorization.lower().startswith("bearer "):
+        supplied = authorization[len("bearer "):].strip()
+    if not supplied or not secrets.compare_digest(supplied, configured):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Missing or invalid API key. Set the X-API-Key header (or Authorization: "
+            "Bearer <key>) to the value of the server's NETMEDEX_API_KEY.",
+        )
 
 
 class SessionConfigModel(BaseModel):
@@ -153,12 +185,12 @@ def create_app() -> FastAPI:
     def health() -> dict[str, str]:
         return {"status": "ok"}
 
-    @app.get("/sessions")
+    @app.get("/sessions", dependencies=[Depends(require_api_key)])
     def list_sessions() -> dict[str, Any]:
         meta = store.list_meta()
         return {"count": len(meta), "sessions": meta}
 
-    @app.post("/sessions")
+    @app.post("/sessions", dependencies=[Depends(require_api_key)])
     def create_session(request: CreateSessionRequest) -> dict[str, Any]:
         if not request.query and not request.genes:
             raise HTTPException(status_code=400, detail="Provide either query or genes.")
@@ -189,7 +221,7 @@ def create_app() -> FastAPI:
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Failed to create session: {e}")
 
-    @app.post("/sessions/{session_id}/ask")
+    @app.post("/sessions/{session_id}/ask", dependencies=[Depends(require_api_key)])
     def ask(session_id: str, request: AskRequest) -> dict[str, Any]:
         try:
             bridge = store.get(session_id)
@@ -201,7 +233,7 @@ def create_app() -> FastAPI:
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Chat failed: {e}")
 
-    @app.delete("/sessions/{session_id}")
+    @app.delete("/sessions/{session_id}", dependencies=[Depends(require_api_key)])
     def delete_session(session_id: str) -> dict[str, Any]:
         if not store.delete(session_id):
             raise HTTPException(status_code=404, detail="Session not found")

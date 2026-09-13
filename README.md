@@ -638,10 +638,27 @@ python examples/netmedex_fastapi_server.py
 
 Endpoints:
 
-- `GET /health`: service health check.
+- `GET /health`: service health check. Never requires an API key.
+- `GET /sessions`: list active session metadata.
 - `POST /sessions`: build Search -> Network -> Chat context and create a chat session.
 - `POST /sessions/{session_id}/ask`: send a question in that session.
 - `DELETE /sessions/{session_id}`: release session state.
+
+By default the bridge binds to `0.0.0.0:8000` with no authentication -- fine for a single user
+running it on their own machine, but anything else on the same network can also reach it. Set
+these environment variables before launching to match your deployment:
+
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| `NETMEDEX_API_HOST` | `0.0.0.0` | Set to `127.0.0.1` to restrict the bridge to the local machine only. |
+| `NETMEDEX_API_PORT` | `8000` | Port to listen on. |
+| `NETMEDEX_API_KEY` | unset (no auth) | When set, every route except `/health` requires this value via the `X-API-Key` header or `Authorization: Bearer <key>`. |
+| `NETMEDEX_CORS_ORIGINS` | `http://localhost:8050,http://127.0.0.1:8050` | Comma-separated list of browser origins allowed to call the bridge. |
+| `NETMEDEX_CORS_ALLOW_CREDENTIALS` | `false` | Whether cookies/credentials are allowed cross-origin. |
+
+For an intranet deployment, set `NETMEDEX_API_KEY` and share it with whoever needs API access.
+For a cloud/internet-facing deployment, set `NETMEDEX_API_KEY` **and** put a reverse proxy
+(nginx, Caddy, Traefik) in front for TLS -- this application does not terminate HTTPS itself.
 
 Create a session from genes:
 

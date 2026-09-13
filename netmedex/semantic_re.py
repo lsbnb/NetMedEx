@@ -131,15 +131,7 @@ class SemanticRelationshipExtractor:
                         self.last_run_stats[key] = value
 
     def _effective_confidence_threshold(self, threshold: float) -> float:
-        """Lower threshold for Gemini, OpenAI and Local LLMs to account for conservative scoring."""
-        provider = self._get_provider()
-
-        if provider in ("google", "local", "openai"):
-            res = min(threshold, 0.25)
-            logger.info(
-                f"DIAGNOSTIC: Applying CONSERVATIVE threshold for {provider}: {threshold} -> {res}"
-            )
-            return res
+        """Return the confidence threshold directly without hardcoded capping."""
         return threshold
 
     @staticmethod
@@ -237,10 +229,8 @@ class SemanticRelationshipExtractor:
                 for i, article in enumerate(articles)
             }
 
-            # Per-article hard timeout: 2× LLM_TIMEOUT (first pass) + 2× coverage pass + retry waits
-            # 90s × 2 passes × (1 call + 1 retry) + 15+30s backoff ≈ 420s is the absolute worst case.
-            # Using 300s (5 min) is a practical ceiling; timed-out articles are skipped with a warning.
-            ARTICLE_TIMEOUT = 300
+            # Per-article hard timeout: configurable via NETMEDEX_ARTICLE_TIMEOUT (default 600s = 10 min)
+            ARTICLE_TIMEOUT = int(os.getenv("NETMEDEX_ARTICLE_TIMEOUT", "600"))
 
             for future in concurrent.futures.as_completed(future_to_article):
                 article = future_to_article[future]
@@ -326,8 +316,8 @@ class SemanticRelationshipExtractor:
             # Use a large max_tokens by default for all providers to prevent truncation
             call_kwargs = {"max_tokens": 3000}
 
-            # Enable JSON mode for all providers that support it (including OpenRouter and local)
-            if provider in ("google", "openai", "openrouter", "local"):
+            # Enable JSON mode for cloud providers that support it (OpenAI, Gemini, OpenRouter)
+            if provider in ("google", "openai", "openrouter"):
                 call_kwargs["response_format"] = {"type": "json_object"}
 
             response = self._call_llm(
@@ -563,7 +553,7 @@ with exactly one entry per edge index above."""
 
         provider = self._get_provider(self.verifier_llm_client)
         response_format = (
-            {"type": "json_object"} if provider in ("google", "openai", "openrouter", "local") else None
+            {"type": "json_object"} if provider in ("google", "openai", "openrouter") else None
         )
 
         try:
@@ -839,9 +829,8 @@ Title: {title}
             "You analyze scientific abstracts and identify relationships between entities. "
             "Always respond with valid JSON."
         )
-        # Semantic-RE responses are compact JSON; 90s is sufficient for all providers.
-        # Using a shorter timeout improves perceived responsiveness on slow networks.
-        LLM_TIMEOUT = 90.0
+        # Per-call LLM timeout: configurable via NETMEDEX_LLM_TIMEOUT (default 180s = 3 min)
+        LLM_TIMEOUT = float(os.getenv("NETMEDEX_LLM_TIMEOUT", "180.0"))
         max_retries = 4
         for attempt in range(max_retries):
             try:

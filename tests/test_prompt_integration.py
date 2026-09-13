@@ -52,5 +52,24 @@ def test_prompt_structure():
     print("Prompt structure test passed!")
 
 
+def test_smart_fallback_boolean_query_phrase_extraction():
+    from webapp.llm import LLMClient
+
+    client = LLMClient()
+    client.client = object()
+    # Simulate LLM returning empty or invalid string, forcing _fallback_boolean_query
+    client.chat_completion_text = lambda *args, **kwargs: ""
+
+    query1 = "What's the relationship between health chatbot and mental health?"
+    res1 = client.translate_query_to_boolean(query1)
+    assert res1 == '"health chatbot" AND "mental health"'
+
+    query2 = "How does Icariin regulate osteoblast differentiation?“"
+    res2 = client.translate_query_to_boolean(query2)
+    assert res2 == '"Icariin" AND "osteoblast differentiation"'
+    assert "“" not in res2
+
+
 if __name__ == "__main__":
     test_prompt_structure()
+    test_smart_fallback_boolean_query_phrase_extraction()

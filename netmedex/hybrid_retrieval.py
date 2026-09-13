@@ -12,6 +12,8 @@ from typing import Any, Iterable
 
 import networkx as nx
 
+from netmedex.graph import safe_load_graph_pickle
+
 
 GRAPH_QUESTION_TYPES = {
     "mechanism",
@@ -200,8 +202,9 @@ class PersistentGraphCache:
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         if manifest.get("key") != key:
             return None
-        with graph_path.open("rb") as handle:
-            graph = pickle.load(handle)
+        # Restricted unpickler: this is our own sha256-named cache, but a raw pickle.load
+        # would still execute arbitrary code for anyone who can write into the cache dir.
+        graph = safe_load_graph_pickle(graph_path.read_bytes())
         if not isinstance(graph, nx.Graph):
             raise TypeError(f"Cached object is not a NetworkX graph: {type(graph)!r}")
         return graph

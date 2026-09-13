@@ -682,6 +682,14 @@ class LLMClient:
             import re
 
             boolean_query = text or ""
+            # Normalize smart/curly quotes to standard ASCII quotes
+            boolean_query = (
+                boolean_query.replace("“", '"')
+                .replace("”", '"')
+                .replace("‘", "'")
+                .replace("’", "'")
+            )
+
             code_match = re.search(r"```(?:[a-zA-Z]*)?\s*([\s\S]*?)\s*```", boolean_query)
             if code_match:
                 boolean_query = code_match.group(1).strip()
@@ -747,6 +755,28 @@ class LLMClient:
 
             import re
 
+            # Normalize smart quotes first
+            q = q.replace("“", '"').replace("”", '"').replace("‘", "'").replace("’", "'")
+
+            stopwords = {
+                "a", "an", "the", "and", "or", "not", "is", "are", "was", "were", "be", "been", "being",
+                "have", "has", "had", "do", "does", "did", "can", "could", "should", "would", "will", "shall",
+                "may", "might", "must", "what", "whats", "what's", "how", "why", "where", "when", "which", "who", "whom",
+                "between", "among", "with", "for", "about", "relationship", "relationships", "relate", "related",
+                "of", "in", "on", "at", "by", "from", "to", "into", "through", "during", "before", "after",
+                "above", "below", "up", "down", "out", "off", "over", "under", "again", "further", "then", "once",
+                "here", "there", "all", "any", "both", "each", "few", "more", "most", "other", "some", "such",
+                "no", "nor", "only", "own", "same", "so", "than", "too", "very", "s", "t", "just", "don", "should",
+                "now", "genes", "gene", "protein", "proteins", "disease", "diseases", "effect", "effects",
+                "role", "roles", "impact", "impacts", "mechanism", "mechanisms", "association", "associations",
+                "analysis", "study", "studies", "finding", "findings", "evaluate", "evaluating", "investigate",
+                "investigating", "determine", "determining", "regulate", "regulates", "regulating", "regulation",
+                "control", "controls", "controlling", "modulate", "modulates", "modulating", "modulation",
+                "inhibit", "inhibits", "inhibiting", "inhibition", "activate", "activates", "activating", "activation",
+                "promote", "promotes", "promoting", "promotion", "induce", "induces", "inducing", "induction",
+                "treat", "treats", "treating", "treatment", "treatments", "prevent", "prevents", "preventing", "prevention"
+            }
+
             terms: list[str] = []
 
             # 1. Look for known entities of interest
@@ -755,35 +785,33 @@ class LLMClient:
             if re.search(r"\bosteoporosis\b", q, re.IGNORECASE):
                 terms.append('"Osteoporosis"')
 
-            # Add more specific entity search if needed
-            if len(terms) < 2:
-                # Basic scientific term extraction (3+ chars, skipping common words)
-                keywords = re.findall(r"[A-Za-z][A-Za-z0-9\-]{2,}", q)
-                for kw in keywords:
-                    up = kw.lower()
-                    if up in {
-                        "the",
-                        "and",
-                        "among",
-                        "with",
-                        "for",
-                        "about",
-                        "relationship",
-                        "of",
-                        "genes",
-                        "related",
-                        "to",
-                    }:
-                        continue
-                    candidate = f'"{kw}"'
-                    if candidate not in terms:
-                        terms.append(candidate)
-                    if len(terms) >= 2:
-                        break
+            # 2. Contiguous multi-word phrase extraction
+            words = re.findall(r"[A-Za-z0-9\-]+", q)
+            phrases: list[str] = []
+            current_group: list[str] = []
 
-            # 2. If we found solid terms, use them
-            if terms and len(terms) >= 2:
-                return " AND ".join(terms[:2])
+            for w in words:
+                if w.lower() in stopwords:
+                    if current_group:
+                        phrases.append(" ".join(current_group))
+                        current_group = []
+                else:
+                    current_group.append(w)
+            if current_group:
+                phrases.append(" ".join(current_group))
+
+            for phrase in phrases:
+                phrase = phrase.strip()
+                if not phrase or len(phrase) < 2:
+                    continue
+                candidate = f'"{phrase}"'
+                if candidate not in terms:
+                    terms.append(candidate)
+                if len(terms) >= 3:
+                    break
+
+            if terms:
+                return " AND ".join(terms[:3])
 
             # 3. Fallback: if the original query already contains boolean operators or entity tags, trust it
             upper_q = q.upper()
@@ -796,13 +824,7 @@ class LLMClient:
             ):
                 return q
 
-            if terms:
-                return " AND ".join(terms[:2])
-            # Do not return the original query if it contains no ASCII text —
-            # non-English text sent directly to PubTator3 returns no results.
-            import re as _re
-
-            if not _re.search(r"[A-Za-z]", natural_query):
+            if not re.search(r"[A-Za-z]", natural_query):
                 return ""
             return natural_query
 

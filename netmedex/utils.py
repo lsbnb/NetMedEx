@@ -13,7 +13,9 @@ def generate_uuid():
 def generate_stable_id(input_str: str):
     import hashlib
 
-    return hashlib.sha1(input_str.encode("utf-8")).hexdigest()
+    # Used only to derive a stable non-cryptographic ID for graph nodes/edges, not for any
+    # security purpose -- usedforsecurity=False silences the (correct) bandit false positive.
+    return hashlib.sha1(input_str.encode("utf-8"), usedforsecurity=False).hexdigest()
 
 
 def config_logger(is_debug: bool, filename: str | None = None):
