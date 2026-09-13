@@ -1,4 +1,4 @@
-# NetMedEx v1.5.0: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.5.1: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
@@ -19,7 +19,14 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.5.0
+## 🆕 What's New in v1.5.1
+
+- **Type-Constrained Biomedical Acronym & MeSH Standardisation**: Integrated `BIOMEDICAL_ACRONYM_MAP` and MeSH CUI lookup into `normalize_knowledge_graph` to expand common medical acronyms (e.g., `RA` in Disease ➔ `rheumatoid arthritis`, `RA` in Chemical ➔ `retinoic acid`) while protecting Gene, Mutation, and SNP nodes.
+- **Cytoscape Canvas Height Stability**: Implemented `cy_container_visibility` to enforce container height (`800px`), preventing inline style overrides from collapsing the Cytoscape graph canvas to `0px` during layout transitions.
+- **Diskcache WAL Checkpoint Safeguard**: Added SQLite WAL checkpoint (`PRAGMA wal_checkpoint(PASSIVE)`) prior to graph restoration callbacks, preventing SQLite WAL accumulation from blocking progress updates.
+- **LLM Error Log Sanitisation & UI Animations**: Applied error message sanitisation before logging LLM exceptions to prevent API key exposure in log outputs, and enhanced progress bars with staged pacing delays.
+
+### Previous: v1.5.0
 
 - **FastAPI Bridge Memory Reclamation & TTL**: Added automated LRU session eviction and time-based expiration (default 2 hours) to `_SessionStore`, preventing memory accumulation during programmatic API and batch search runs.
 - **GraphBuilder Lifecycle State Protection**: Locked graph builder mutation states (`_is_built`) to prevent destructive re-pruning on duplicate `build()` calls and guard against weight corruption from post-build additions.

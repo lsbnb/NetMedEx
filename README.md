@@ -1,4 +1,4 @@
-# NetMedEx v1.5.0
+# NetMedEx v1.5.1
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -25,6 +25,13 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 
 <details>
 <summary><h2>🆕 Recent Updates</h2></summary>
+
+### v1.5.1 — 2026-09-13
+
+- **Type-Constrained Biomedical Acronym & MeSH Standardisation**: Integrated `BIOMEDICAL_ACRONYM_MAP` and MeSH CUI lookup into `normalize_knowledge_graph` to expand common medical acronyms (e.g., `RA` in Disease ➔ `rheumatoid arthritis`, `RA` in Chemical ➔ `retinoic acid`) while protecting Gene, Mutation, and SNP nodes.
+- **Cytoscape Canvas Height Stability**: Implemented `cy_container_visibility` to enforce container height (`800px`), preventing inline style overrides from collapsing the Cytoscape graph canvas to `0px` during layout transitions.
+- **Diskcache WAL Checkpoint Safeguard**: Added SQLite WAL checkpoint (`PRAGMA wal_checkpoint(PASSIVE)`) prior to graph restoration callbacks, preventing SQLite WAL accumulation from blocking progress updates.
+- **LLM Error Log Sanitisation & UI Animations**: Applied error message sanitisation before logging LLM exceptions to prevent API key exposure in log outputs, and enhanced progress bars with staged pacing delays.
 
 ### v1.5.0 — 2026-09-09
 
