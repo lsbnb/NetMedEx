@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.11] - 2026-09-17
+
+### Fixed & Hardened
+
+- **Active LLM Banner Ignored Unsubmitted Model Changes**: `show_active_llm_banner` (`llm_callbacks.py`) only compared the selected *provider* against `llm_client.provider` to decide whether to show the "🟡 pending" state; it never looked at the model dropdowns. Changing the model (e.g. `openai-model-selector`, or its paired `openai-custom-model-input`) without clicking Submit/Verify Connection left the banner claiming the *previous* model was still active, with no visual cue that anything was unsaved. Added `_selected_model_for_provider` (resolves each provider's "custom" dropdown sentinel to its paired free-text field, mirroring `initialize_llm_client_from_settings`) and wired all six providers' model/custom-model inputs (plus Local Ollama's `llm-model-input`) into the callback so a model change is detected exactly like a provider change already was.
+
 ## [1.5.10] - 2026-09-17
 
 ### Added

@@ -1,4 +1,4 @@
-# NetMedEx v1.5.10
+# NetMedEx v1.5.11
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -25,6 +25,10 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 
 <details>
 <summary><h2>🆕 Recent Updates</h2></summary>
+
+### v1.5.11 — 2026-09-17
+
+- **Fixed: Active LLM Banner Didn't Reflect an Unsaved Model Change**: The "🟢 Active: Provider / Model" banner at the top of Advanced Settings only checked whether the selected *provider* differed from the one actually loaded, not the *model*. Picking a different model in the dropdown (without clicking Submit or Verify Connection) still showed the old model as "Active" with no indication anything had changed. The banner now also detects a model mismatch and switches to the same "🟡 ... selected — click Submit or Verify Connection to activate" pending state used for provider changes.
 
 ### v1.5.10 — 2026-09-17
 

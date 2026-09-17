@@ -695,6 +695,59 @@ def callbacks(app):
             "No LLM client loaded",
         )
 
+    def _selected_model_for_provider(
+        provider,
+        openai_model,
+        openai_custom_model,
+        google_model,
+        openrouter_model,
+        openrouter_custom_model,
+        nvidia_model,
+        groq_model,
+        groq_custom_model,
+        anthropic_model,
+        anthropic_custom_model,
+        llm_model,
+    ):
+        """What model the UI currently has selected for `provider` -- resolving the
+        "custom" dropdown sentinel to its paired free-text field, same as
+        `initialize_llm_client_from_settings` does at Submit time. Used only to
+        detect drift between the UI and the active client for the banner below;
+        it does not itself configure anything.
+        """
+        provider = (provider or "openai").strip().lower()
+        if provider == "openai":
+            return (
+                openai_custom_model.strip()
+                if openai_model == "custom" and openai_custom_model
+                else openai_model
+            )
+        if provider == "google":
+            return google_model
+        if provider == "openrouter":
+            return (
+                openrouter_custom_model.strip()
+                if openrouter_model == "custom" and openrouter_custom_model
+                else openrouter_model
+            )
+        if provider == "nvidia":
+            return nvidia_model
+        if provider == "groq":
+            return (
+                groq_custom_model.strip()
+                if groq_model == "custom" and groq_custom_model
+                else groq_model
+            )
+        if provider == "anthropic":
+            return (
+                anthropic_custom_model.strip()
+                if anthropic_model == "custom" and anthropic_custom_model
+                else anthropic_model
+            )
+        if provider == "local":
+            return llm_model
+        return None
+
     @app.callback(
         Output("active-llm-banner", "children"),
         [
@@ -702,10 +755,37 @@ def callbacks(app):
             Input("llm-config-status", "children"),
             Input("llm-save-status", "children"),
             Input("llm-provider-selector", "value"),
+            Input("openai-model-selector", "value"),
+            Input("openai-custom-model-input", "value"),
+            Input("google-model-selector", "value"),
+            Input("openrouter-model-selector", "value"),
+            Input("openrouter-custom-model-input", "value"),
+            Input("nvidia-model-selector", "value"),
+            Input("groq-model-selector", "value"),
+            Input("groq-custom-model-input", "value"),
+            Input("anthropic-model-selector", "value"),
+            Input("anthropic-custom-model-input", "value"),
+            Input("llm-model-input", "value"),
         ],
         prevent_initial_call=False,
     )
-    def show_active_llm_banner(_store, verify_status, _save_status, selected_provider):
+    def show_active_llm_banner(
+        _store,
+        verify_status,
+        _save_status,
+        selected_provider,
+        openai_model,
+        openai_custom_model,
+        google_model,
+        openrouter_model,
+        openrouter_custom_model,
+        nvidia_model,
+        groq_model,
+        groq_custom_model,
+        anthropic_model,
+        anthropic_custom_model,
+        llm_model,
+    ):
         is_active = llm_client.client or llm_client.anthropic_client
         active_provider = llm_client.provider if is_active else None
 
@@ -713,8 +793,32 @@ def callbacks(app):
             is_ui_verified = isinstance(verify_status, str) and verify_status.startswith("✅")
             source_text = "Verified via UI" if is_ui_verified else "Loaded from server environment"
 
-            # Selected provider differs from active → show pending warning
-            if selected_provider and selected_provider != active_provider:
+            provider_differs = bool(selected_provider) and selected_provider != active_provider
+            selected_model = _selected_model_for_provider(
+                selected_provider,
+                openai_model,
+                openai_custom_model,
+                google_model,
+                openrouter_model,
+                openrouter_custom_model,
+                nvidia_model,
+                groq_model,
+                groq_custom_model,
+                anthropic_model,
+                anthropic_custom_model,
+                llm_model,
+            )
+            model_differs = (
+                not provider_differs
+                and selected_model
+                and selected_model != "custom"
+                and selected_model != llm_client.model
+            )
+
+            # Selected provider or model differs from what's actually active → pending warning.
+            # Without this, changing the model dropdown left the banner claiming the OLD
+            # model was still active until the user clicked Submit/Verify Connection.
+            if provider_differs or model_differs:
                 provider_label = {
                     "google": "Google Gemini",
                     "openai": "OpenAI",
@@ -723,17 +827,21 @@ def callbacks(app):
                     "groq": "Groq",
                     "anthropic": "Anthropic Claude",
                     "local": "Local Ollama",
-                }.get(selected_provider, selected_provider.title())
+                }.get(selected_provider, (selected_provider or "").title())
+                pending_text = (
+                    f"{provider_label} selected — click Submit or Verify Connection to activate"
+                    if provider_differs
+                    else (
+                        f"{selected_model} selected — click Submit or Verify Connection to activate"
+                    )
+                )
                 return dbc.Alert(
                     [
                         html.Span("🟡 ", style={"fontSize": "0.9rem"}),
                         html.Strong("Active: "),
                         html.Span(f"{active_provider.title()} / {llm_client.model}"),
                         html.Br(),
-                        html.Small(
-                            f"{provider_label} selected — click Submit or Verify Connection to activate",
-                            className="text-muted",
-                        ),
+                        html.Small(pending_text, className="text-muted"),
                     ],
                     color="warning",
                     className="py-2 px-3 mb-0",
