@@ -223,11 +223,18 @@ class PubTatorGraphBuilder:
             elif provider == "openai":
                 max_workers = 7
             elif provider == "local":
-                # Large on-prem models commonly expose one generation slot. Sending
-                # four concurrent semantic-extraction prompts causes queue timeouts
-                # and lowers completed-article coverage. Operators with a batched
-                # vLLM/SGLang endpoint can override this via NETMEDEX_SEMANTIC_WORKERS.
-                max_workers = 1
+                # Large on-prem models commonly expose only one real generation slot,
+                # so this stays conservative rather than assuming genuine parallelism.
+                # Live-measured on a single-GPU Ollama endpoint (gpt-oss:120b, 8
+                # articles): workers=1 took 734.8s; workers=2 took 599.0s (0/8 timeouts)
+                # -- a modest ~19% speedup, not the ~2x a truly parallel backend would
+                # give, consistent with requests mostly queuing for the same compute
+                # rather than running concurrently. Still a net win with no observed
+                # downside, so 2 is a safe default; going higher just lengthens that
+                # queue without more real parallelism on typical single-GPU setups.
+                # Operators with a batched vLLM/SGLang endpoint (genuine concurrent
+                # capacity) can raise this further via NETMEDEX_SEMANTIC_WORKERS.
+                max_workers = 2
             else:
                 max_workers = 5
             configured_workers = os.getenv("NETMEDEX_SEMANTIC_WORKERS")

@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.13] - 2026-09-18
+
+### Fixed & Hardened
+
+- **"Same as Main Provider" Fetch Ignored .env-Configured Keys**: `_resolve_effective_provider_key_url` (`llm_callbacks.py`), used by both the Chat Model Override and Verifier Provider "Refresh available models" buttons, only reused whichever key was typed into the matching provider's Advanced Settings form field (`main_keys`). Anyone relying on a server-side `.env` credential (e.g. `OPENAI_API_KEY`) without ever typing it into the browser got an empty key and a "No models found" error, even though that exact provider works fine at Submit time. Now falls back to `get_provider_api_key(effective_provider, None)` -- the same per-provider env var resolution Submit-time initialization already uses -- and, for `local`, to `LOCAL_LLM_BASE_URL` when no base URL was entered either. This resolution is intentionally independent of `llm_client`'s currently-loaded provider, since it must work correctly even before the user has ever clicked Submit/Verify Connection. Moved to module level (out of the `callbacks(app)` closure) so it's directly unit-testable; added 3 regression tests (`tests/test_model_selection.py`) covering the env-var fallback, explicit-override precedence, and Local Ollama's base-URL fallback.
+
+## [1.5.12] - 2026-09-18
+
+### Changed
+
+- **Local-Model Semantic Analysis Default Concurrency: 1 → 2**: `PubTatorGraphBuilder.add_collection` (`graph.py`) hardcoded `max_workers=1` for `provider == "local"`, reasoning that on-prem models commonly expose only one real generation slot. Live-measured on a single-GPU Ollama endpoint (`gpt-oss:120b`, 8 articles) to validate before changing the default: `workers=1` took 734.8s; `workers=2` took 599.0s with 0/8 timeouts -- a real ~19% speedup, well short of the ~2x a genuinely parallel backend would give, confirming most requests were still queuing for the same compute rather than running concurrently. Still a net win with no observed downside, so the default moves to 2; going higher would mostly lengthen that queue without more real parallelism on typical single-GPU setups. `NETMEDEX_SEMANTIC_WORKERS` remains available to raise further for operators with genuine concurrent capacity (batched vLLM/SGLang, multi-GPU).
+
 ## [1.5.11] - 2026-09-17
 
 ### Fixed & Hardened

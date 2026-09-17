@@ -1,4 +1,4 @@
-# NetMedEx v1.5.11: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.5.13: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
@@ -19,7 +19,15 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.5.11
+## 🆕 What's New in v1.5.13
+
+- **Fixed "Same as Main Provider" Model Fetch for .env-Configured Keys**: Refreshing available models for Chat Model Override / Verifier Provider now correctly finds your key even if it's set via a server environment variable rather than typed into the browser.
+
+### Previous: v1.5.12
+
+- **Faster Local-Model Network Building**: Raised the default concurrency for local (Ollama) semantic analysis from 1 to 2 -- a live-measured ~19% speedup with no downside on typical single-GPU setups.
+
+### Previous: v1.5.11
 
 - **Active LLM Banner Now Catches Unsaved Model Changes Too**: Previously only a provider change triggered the "🟡 pending — click Submit" warning; picking a different model without submitting looked identical to it already being active. Fixed.
 

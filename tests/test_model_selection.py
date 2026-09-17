@@ -122,6 +122,79 @@ def test_callback_signatures():
     print("✅ Callback signatures test passed!")
 
 
+def test_resolve_effective_provider_key_url_falls_back_to_env_var(monkeypatch):
+    """Regression test: "Same as main provider" used to only look at the raw
+    Advanced Settings form field for that provider's key, which is empty for
+    anyone relying on a server-side .env credential (e.g. OPENAI_API_KEY) they
+    never typed into the browser -- "Refresh available models" then reported
+    "No models found" even though that exact provider works fine at Submit time.
+    """
+    from webapp.callbacks.llm_callbacks import _resolve_effective_provider_key_url
+
+    monkeypatch.setenv("OPENAI_API_KEY", "sk-from-env-1234567890")
+    empty_main_keys = {
+        "openai": None,
+        "google": None,
+        "openrouter": None,
+        "nvidia": None,
+        "groq": None,
+        "anthropic": None,
+    }
+
+    provider, key, url = _resolve_effective_provider_key_url(
+        override_provider="openai",
+        override_api_key=None,
+        override_base_url=None,
+        main_provider="openai",
+        main_keys=empty_main_keys,
+        main_base_url=None,
+    )
+
+    assert provider == "openai"
+    assert key == "sk-from-env-1234567890"
+    assert url is None
+
+
+def test_resolve_effective_provider_key_url_prefers_explicit_override(monkeypatch):
+    """A genuinely different provider must use its own typed key, never silently
+    fall back to the main provider's key/env var."""
+    from webapp.callbacks.llm_callbacks import _resolve_effective_provider_key_url
+
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-ant-from-env")
+
+    provider, key, url = _resolve_effective_provider_key_url(
+        override_provider="anthropic",
+        override_api_key="sk-ant-typed-by-user",
+        override_base_url=None,
+        main_provider="openai",
+        main_keys={"openai": "sk-openai-typed"},
+        main_base_url=None,
+    )
+
+    assert provider == "anthropic"
+    assert key == "sk-ant-typed-by-user"
+
+
+def test_resolve_effective_provider_key_url_local_falls_back_to_env_base_url(monkeypatch):
+    """Local Ollama's base URL should fall back to LOCAL_LLM_BASE_URL the same way
+    the API key falls back to the matching env var for other providers."""
+    from webapp.callbacks.llm_callbacks import _resolve_effective_provider_key_url
+
+    monkeypatch.setenv("LOCAL_LLM_BASE_URL", "http://192.168.1.50:11434/v1")
+
+    provider, key, url = _resolve_effective_provider_key_url(
+        override_provider="local",
+        override_api_key=None,
+        override_base_url=None,
+        main_provider="local",
+        main_keys={},
+        main_base_url=None,
+    )
+
+    assert provider == "local"
+    assert url == "http://192.168.1.50:11434/v1"
+
+
 if __name__ == "__main__":
     print("\n" + "=" * 60)
     print("Model Selection Implementation - Component Tests")

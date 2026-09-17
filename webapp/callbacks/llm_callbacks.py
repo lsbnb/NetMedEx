@@ -16,6 +16,7 @@ from webapp.llm import (
     NVIDIA_NIM_BASE_URL,
     OPENAI_BASE_URL,
     OPENROUTER_BASE_URL,
+    get_provider_api_key,
     llm_client,
     normalize_model_for_provider,
     sanitize_error_message as _sanitize_error_message,
@@ -159,6 +160,51 @@ def _merge_store_settings(store_data: dict | None) -> dict:
     secret_keys = {"openai_api_key", "google_api_key", "openrouter_api_key"}
     merged.update({k: v for k, v in store_data.items() if v is not None and k not in secret_keys})
     return merged
+
+
+def _resolve_effective_provider_key_url(
+    override_provider,
+    override_api_key,
+    override_base_url,
+    main_provider,
+    main_keys: dict,
+    main_base_url,
+):
+    """"Same as main provider" resolution shared by the Chat Model Override and
+    Verifier Provider fetch buttons: an explicitly different provider must use
+    its own key/URL fields; otherwise reuse whichever main-provider key applies,
+    so the user isn't forced to retype a key they already entered above.
+
+    `main_keys`/`main_base_url` come from the raw Advanced Settings form fields,
+    which are empty for anyone running on a server-side .env key they never typed
+    into the browser -- e.g. `OPENAI_API_KEY` set in the environment rather than
+    pasted into the OpenAI API Key input. Falls back to `get_provider_api_key`,
+    the same per-provider env var resolution Submit-time initialization already
+    uses, so "Same as main provider" works regardless of *how* that provider's
+    credential is configured. This intentionally does not depend on what
+    `llm_client` currently has loaded -- it must resolve correctly even before
+    the user has ever clicked Submit/Verify Connection.
+
+    Module-level (not nested in `callbacks(app)`) so it's directly unit-testable.
+    """
+    main_provider = (main_provider or "openai").strip().lower()
+    override_provider = (override_provider or "").strip().lower()
+    is_different = bool(override_provider) and override_provider != main_provider
+    effective_provider = override_provider or main_provider
+
+    if is_different:
+        effective_key = override_api_key
+        effective_url = override_base_url
+    else:
+        effective_key = override_api_key or main_keys.get(effective_provider)
+        effective_url = override_base_url or main_base_url
+
+    if not effective_key:
+        effective_key = get_provider_api_key(effective_provider, None)
+    if not effective_url and effective_provider == "local":
+        effective_url = os.getenv("LOCAL_LLM_BASE_URL")
+
+    return effective_provider, effective_key, effective_url
 
 
 def callbacks(app):
@@ -1073,31 +1119,6 @@ def callbacks(app):
         if selected_model == "custom":
             return {"display": "block", "marginTop": "10px"}
         return {"display": "none"}
-
-    def _resolve_effective_provider_key_url(
-        override_provider,
-        override_api_key,
-        override_base_url,
-        main_provider,
-        main_keys: dict,
-        main_base_url,
-    ):
-        """"Same as main provider" resolution shared by the Chat Model Override and
-        Verifier Provider fetch buttons: an explicitly different provider must use
-        its own key/URL fields; otherwise reuse whichever main-provider key applies,
-        so the user isn't forced to retype a key they already entered above.
-        """
-        main_provider = (main_provider or "openai").strip().lower()
-        override_provider = (override_provider or "").strip().lower()
-        is_different = bool(override_provider) and override_provider != main_provider
-        effective_provider = override_provider or main_provider
-        if is_different:
-            return effective_provider, override_api_key, override_base_url
-        return (
-            effective_provider,
-            override_api_key or main_keys.get(effective_provider),
-            override_base_url or main_base_url,
-        )
 
     def _fetch_models_for_provider(provider, api_key, base_url):
         """Return (models, error_message). Exactly one is populated."""

@@ -1,4 +1,4 @@
-# NetMedEx v1.5.11
+# NetMedEx v1.5.13
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -25,6 +25,14 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 
 <details>
 <summary><h2>🆕 Recent Updates</h2></summary>
+
+### v1.5.13 — 2026-09-18
+
+- **Fixed: "Same as Main Provider" Failed to Find Models for .env-Configured Keys**: The "Refresh available models" button in Chat Model Override / Verifier Provider only reused whichever key was typed into the matching provider's field in the Advanced Settings form -- if you never typed a key there because you rely on a server-side `.env` variable (e.g. `OPENAI_API_KEY`) instead, "Same as main provider" silently had no key to use and reported "No models found." It now falls back to the same per-provider environment variable resolution Submit-time initialization already uses, so it works regardless of how that provider's credential is configured.
+
+### v1.5.12 — 2026-09-18
+
+- **Local-Model Semantic Analysis: Default Concurrency Raised from 1 to 2**: Live-measured on a single-GPU Ollama endpoint (gpt-oss:120b, 8 articles): `workers=1` took 734.8s, `workers=2` took 599.0s with 0 timeouts -- a real but modest ~19% speedup (not ~2x, since most single-GPU local setups don't have genuine parallel generation capacity). A safe, no-downside default bump; `NETMEDEX_SEMANTIC_WORKERS` remains available for operators with a batched vLLM/SGLang backend who have real concurrent capacity to spend.
 
 ### v1.5.11 — 2026-09-17
 
