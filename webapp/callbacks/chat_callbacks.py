@@ -124,6 +124,52 @@ def _initialize_llm_from_callback_state(
     )
 
 
+def _resolve_chat_llm_client(
+    default_client,
+    *,
+    override_enabled,
+    override_provider=None,
+    override_api_key=None,
+    override_model=None,
+    override_base_url=None,
+):
+    """Return the LLM client Chat generation should use for this turn.
+
+    `default_client` is the shared global `llm_client` singleton also used for
+    graph-building extraction -- returning it unchanged (the default) preserves
+    today's behavior exactly. When the "Chat Model Override" toggle is enabled,
+    build a brand-new, independent `LLMClient()` instead of reusing/reinitializing
+    the shared singleton, so the override doesn't clobber the build-time client's
+    configuration for other in-flight uses of it.
+    """
+    if "enabled" not in (override_enabled or []):
+        return default_client
+
+    from webapp.llm import LLMClient, initialize_llm_client_from_settings
+
+    chat_client = LLMClient()
+    initialize_llm_client_from_settings(
+        chat_client,
+        provider=override_provider,
+        openai_api_key=override_api_key,
+        openai_model=override_model,
+        google_api_key=override_api_key,
+        google_model=override_model,
+        local_base_url=override_base_url,
+        local_model=override_model,
+        openrouter_api_key=override_api_key,
+        openrouter_model=override_model,
+        nvidia_api_key=override_api_key,
+        nvidia_nim_base_url=override_base_url,
+        nvidia_model=override_model,
+        groq_api_key=override_api_key,
+        groq_model=override_model,
+        anthropic_api_key=override_api_key,
+        anthropic_model=override_model,
+    )
+    return chat_client
+
+
 def _rebuild_chat_session_from_graph(savepath, llm_client, topic: str | None = None):
     import pathlib as _pathlib
 
@@ -524,6 +570,11 @@ def callbacks(app):
             State("anthropic-api-key-input", "value"),
             State("anthropic-model-selector", "value"),
             State("anthropic-custom-model-input", "value"),
+            State("chat-model-override-toggle", "value"),
+            State("chat-override-provider", "value"),
+            State("chat-override-api-key", "value"),
+            State("chat-override-model", "value"),
+            State("chat-override-base-url", "value"),
             State("chat-messages", "children"),
         ],
         prevent_initial_call=True,
@@ -557,6 +608,11 @@ def callbacks(app):
         anthropic_api_key,
         anthropic_model,
         anthropic_custom_model,
+        chat_override_toggle,
+        chat_override_provider,
+        chat_override_api_key,
+        chat_override_model,
+        chat_override_base_url,
         current_messages,
     ):
         """
@@ -656,7 +712,12 @@ def callbacks(app):
                             selection_pmids.update(str(p) for p in np_)
                     documents = _abstract_documents_from_graph(G, pmid_filter=selection_pmids)
                 else:
-                    documents = _abstract_documents_from_graph(G, limit=50)
+                    # No sub-network selected: index every abstract in the built network,
+                    # not just the top 50 by citation weight -- Chat's RAG retrieval already
+                    # re-ranks per question (see ChatSession.send_message), so artificially
+                    # shrinking the candidate pool here just makes later abstracts permanently
+                    # unreachable for the rest of the conversation regardless of what's asked.
+                    documents = _abstract_documents_from_graph(G)
 
                 if not documents:
                     raise ValueError("No abstracts available for summary")
@@ -684,6 +745,14 @@ def callbacks(app):
                     anthropic_model=anthropic_model,
                     anthropic_custom_model=anthropic_custom_model,
                 )
+                chat_llm_client = _resolve_chat_llm_client(
+                    llm_client,
+                    override_enabled=chat_override_toggle,
+                    override_provider=chat_override_provider,
+                    override_api_key=chat_override_api_key,
+                    override_model=chat_override_model,
+                    override_base_url=chat_override_base_url,
+                )
 
                 if not has_history_in_memory:
                     rag_system = AbstractRAG(llm_client)
@@ -692,7 +761,7 @@ def callbacks(app):
 
                     session = ChatSession(
                         rag_system,
-                        llm_client,
+                        chat_llm_client,
                         graph_retriever=graph_retriever_auto,
                         topic=effective_query
                         if effective_query
@@ -838,6 +907,14 @@ def callbacks(app):
             anthropic_model=anthropic_model,
             anthropic_custom_model=anthropic_custom_model,
         )
+        chat_llm_client = _resolve_chat_llm_client(
+            llm_client,
+            override_enabled=chat_override_toggle,
+            override_provider=chat_override_provider,
+            override_api_key=chat_override_api_key,
+            override_model=chat_override_model,
+            override_base_url=chat_override_base_url,
+        )
 
         if not llm_client.client and not llm_client.anthropic_client:
             return (
@@ -923,7 +1000,9 @@ def callbacks(app):
                     f"{len(documents)} documents)"
                 )
             else:
-                documents = _abstract_documents_from_graph(G, limit=50)
+                # No sub-network selected: index every abstract in the built network (see
+                # rationale in the other auto_initialize_chat branch above).
+                documents = _abstract_documents_from_graph(G)
                 logger.info(
                     f"auto_initialize_chat: no selection — using full graph ({len(documents)} documents)"
                 )
@@ -945,7 +1024,7 @@ def callbacks(app):
 
             session = ChatSession(
                 rag_system,
-                llm_client,
+                chat_llm_client,
                 graph_retriever=graph_retriever_auto,
                 topic=effective_query if effective_query else "biomedical research overview",
             )
@@ -1087,6 +1166,11 @@ def callbacks(app):
             State("anthropic-api-key-input", "value"),
             State("anthropic-model-selector", "value"),
             State("anthropic-custom-model-input", "value"),
+            State("chat-model-override-toggle", "value"),
+            State("chat-override-provider", "value"),
+            State("chat-override-api-key", "value"),
+            State("chat-override-model", "value"),
+            State("chat-override-base-url", "value"),
         ],
         running=[
             (
@@ -1136,6 +1220,11 @@ def callbacks(app):
         anthropic_api_key,
         anthropic_model,
         anthropic_custom_model,
+        chat_override_toggle,
+        chat_override_provider,
+        chat_override_api_key,
+        chat_override_model,
+        chat_override_base_url,
     ):
         logger.info("initialize_chat (MANUAL) triggered")
         global _sessions
@@ -1212,6 +1301,14 @@ def callbacks(app):
                 anthropic_api_key=anthropic_api_key,
                 anthropic_model=anthropic_model,
                 anthropic_custom_model=anthropic_custom_model,
+            )
+            chat_llm_client = _resolve_chat_llm_client(
+                llm_client,
+                override_enabled=chat_override_toggle,
+                override_provider=chat_override_provider,
+                override_api_key=chat_override_api_key,
+                override_model=chat_override_model,
+                override_base_url=chat_override_base_url,
             )
 
             if not llm_client.client and not llm_client.anthropic_client:
@@ -1611,7 +1708,7 @@ def callbacks(app):
             # Initialize chat session with Hybrid RAG
             session = ChatSession(
                 rag_system,
-                llm_client,
+                chat_llm_client,
                 graph_retriever=graph_retriever,
                 topic=search_query if search_query else "biomedical research",
             )
@@ -1810,6 +1907,11 @@ def callbacks(app):
             State("anthropic-api-key-input", "value"),
             State("anthropic-model-selector", "value"),
             State("anthropic-custom-model-input", "value"),
+            State("chat-model-override-toggle", "value"),
+            State("chat-override-provider", "value"),
+            State("chat-override-api-key", "value"),
+            State("chat-override-model", "value"),
+            State("chat-override-base-url", "value"),
         ],
         prevent_initial_call=True,
     )
@@ -1845,6 +1947,11 @@ def callbacks(app):
         anthropic_api_key,
         anthropic_model,
         anthropic_custom_model,
+        chat_override_toggle,
+        chat_override_provider,
+        chat_override_api_key,
+        chat_override_model,
+        chat_override_base_url,
     ):
         """
         Process user message and get AI response.
@@ -1910,9 +2017,17 @@ def callbacks(app):
                             "Provider: %s",
                             llm_client.provider,
                         )
+                    chat_llm_client = _resolve_chat_llm_client(
+                        llm_client,
+                        override_enabled=chat_override_toggle,
+                        override_provider=chat_override_provider,
+                        override_api_key=chat_override_api_key,
+                        override_model=chat_override_model,
+                        override_base_url=chat_override_base_url,
+                    )
                     _rebuild_chat_session_from_graph(
                         savepath,
-                        llm_client,
+                        chat_llm_client,
                         topic=search_query,
                     )
             except Exception as e:

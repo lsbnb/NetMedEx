@@ -1,4 +1,4 @@
-# NetMedEx v1.5.3
+# NetMedEx v1.5.7
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -25,6 +25,22 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 
 <details>
 <summary><h2>🆕 Recent Updates</h2></summary>
+
+### v1.5.7 — 2026-09-17
+
+- **Chat No Longer Silently Caps the RAG Corpus at 50 Abstracts**: When Chat auto-initializes without a manually-selected sub-network, it indexed only the top 50 abstracts (by citation weight) into Hybrid RAG, regardless of how many articles the network was actually built from (e.g. 200). Every question for the rest of that conversation could only ever retrieve from those 50 -- the rest were permanently unreachable, not just under-prioritized. Retrieval itself already re-runs a fresh vector search per question (`ChatSession.send_message` uses the current message's own text, not the first question's), so this was purely an indexing-time cap, not a "stuck on the first question" issue. Removed -- Chat now indexes every abstract in the built network, matching `_rebuild_chat_session_from_graph`'s existing (uncapped) behavior.
+
+### v1.5.6 — 2026-09-17
+
+- **Chat Model Override in the Web UI**: Advanced Settings gains a "Chat Model Override (optional)" section — a checkbox toggle plus provider/API key/model/base-URL fields. Left off (the default), Chat generation continues to reuse the same model/settings used to build the network, exactly as before. Enable it to answer questions with a different, usually stronger model while keeping network construction on your regular (e.g. cheaper or local) provider. Brings the FastAPI bridge's v1.5.5 `chat_provider`/`chat_model` split to the main web app.
+
+### v1.5.5 — 2026-09-17
+
+- **Separate Model for Graph Building vs. Chat Generation**: `BridgeConfig`/`SessionConfigModel` (FastAPI bridge and `chat_bridge.py`) now accept optional `chat_provider`/`chat_api_key`/`chat_model`/`chat_base_url` fields. Left unset, Chat generation reuses the same model used for graph-building semantic edge extraction (unchanged default behavior). Set them to use a different, more capable model only for the less-frequent, synthesis-heavy Chat step, while keeping the per-article extraction step on a cheaper model — live-tested extraction-quality comparisons showed this split is safe: once the v1.5.4 evidence-field bug was fixed, a cheap extraction model (`gpt-4o-mini`) scored within ~4-8 percentage points of pricier models on claim-safety pass rate, while Chat-time synthesis depth is where model tier actually matters most.
+
+### v1.5.4 — 2026-09-17
+
+- **Semantic Extraction: Missing Evidence Field Fixed**: `_build_compact_retry_prompt` in `semantic_re.py` — the fallback prompt used when the first extraction pass returns no parsable relations — omitted the `evidence` field from its output schema entirely, so any relation recovered only through this path could never carry a supporting quote, guaranteeing it would fail `graph_rag.py`'s claim-safety gate regardless of extraction accuracy. Found live: `gpt-5.6` models triggered this fallback far more often than `gpt-4o-mini` in the same test (more first-pass refusals/malformed responses), so their extracted relations disproportionately lacked evidence. `evidence` is now required and explicitly emphasized in all three extraction prompts (initial, coverage, compact-retry). Verified live: the same `gpt-5.6-luna` session that previously skipped Layer 3 entirely ("insufficient evidence") now produces a full, correctly-cited 3-step causal chain.
 
 ### v1.5.3 — 2026-09-17
 

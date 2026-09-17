@@ -27,6 +27,17 @@ class BridgeConfig:
     top_k: int = 5
     max_history: int = 10
     session_language: str = "English"
+    # Optional separate model for Chat generation (Layer 1-5 synthesis), distinct
+    # from the model above used for graph-building semantic edge extraction.
+    # Extraction is called once per article and is a narrower task (classify the
+    # relation between two given entities in one abstract); Chat synthesis is
+    # called once per question and must read/reason across many abstracts at
+    # once -- the two steps don't need the same model. Leave these unset to reuse
+    # the graph-building client for Chat too (today's behavior, unchanged).
+    chat_provider: str | None = None
+    chat_api_key: str | None = None
+    chat_model: str | None = None
+    chat_base_url: str | None = None
 
 
 class NetMedExChatBridge:
@@ -35,6 +46,7 @@ class NetMedExChatBridge:
     def __init__(self, config: BridgeConfig):
         self.config = config
         self.llm_client = self._init_llm_client(config)
+        self.chat_llm_client = self._init_chat_llm_client(config, self.llm_client)
         self.session: ChatSession | None = None
         self.graph = None
         self.last_query: str | None = None
@@ -121,7 +133,7 @@ class NetMedExChatBridge:
         graph_retriever = GraphRetriever(graph, node_rag=node_rag)
         self.session = ChatSession(
             rag_system,
-            self.llm_client,
+            self.chat_llm_client,
             graph_retriever=graph_retriever,
             max_history=self.config.max_history,
             topic=self.last_query if self.last_query else "biomedical research",
@@ -191,3 +203,30 @@ class NetMedExChatBridge:
             provider=provider,
         )
         return llm_client
+
+    @staticmethod
+    def _init_chat_llm_client(config: BridgeConfig, build_llm_client: LLMClient) -> LLMClient:
+        """Return the LLM client Chat generation should use.
+
+        Reuses the graph-building client unless the caller explicitly configured
+        a distinct chat_provider/chat_api_key/chat_model/chat_base_url -- so
+        existing callers that never set these see no behavior change.
+        """
+        wants_override = any(
+            [
+                config.chat_provider,
+                config.chat_api_key,
+                config.chat_model,
+                config.chat_base_url,
+            ]
+        )
+        if not wants_override:
+            return build_llm_client
+
+        chat_config = BridgeConfig(
+            provider=config.chat_provider or config.provider,
+            api_key=config.chat_api_key,
+            model=config.chat_model,
+            base_url=config.chat_base_url,
+        )
+        return NetMedExChatBridge._init_llm_client(chat_config)

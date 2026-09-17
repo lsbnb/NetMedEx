@@ -31,3 +31,13 @@ def callbacks(app):
         if "enabled" in (verification_toggle or []):
             return display.block
         return display.none
+
+    @app.callback(
+        Output("chat-override-fields-container", "style"),
+        Input("chat-model-override-toggle", "value"),
+    )
+    def toggle_chat_override_fields(override_toggle):
+        """Show the Chat Model override fields only when that toggle is enabled"""
+        if "enabled" in (override_toggle or []):
+            return display.block
+        return display.none

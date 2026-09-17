@@ -139,6 +139,80 @@ relation_verification_toggle = html.Div(
     className="param",
 )
 
+chat_model_override = html.Div(
+    [
+        generate_param_title(
+            "Chat Model Override (optional)",
+            (
+                "By default, Chat answers are generated with the same model used to build "
+                "the network (semantic edge extraction). Enable this to use a different, "
+                "usually stronger model just for Chat -- extraction is a narrow per-article "
+                "task where a cheap model does nearly as well, while Chat must read and "
+                "reason across many abstracts at once, where model strength matters most. "
+                "Uses the API key you enter here, not your main provider's key."
+            ),
+        ),
+        dbc.Checklist(
+            options=[
+                {
+                    "label": "💬 Use a different model for Chat",
+                    "value": "enabled",
+                },
+            ],
+            id="chat-model-override-toggle",
+            value=[],
+            switch=True,
+            inline=True,
+            className="mt-1 mb-2",
+        ),
+        html.Div(
+            [
+                generate_param_title(
+                    "Chat Provider",
+                    "LLM provider for Chat generation only.",
+                ),
+                dcc.Dropdown(
+                    id="chat-override-provider",
+                    options=[
+                        {"label": "OpenAI", "value": "openai"},
+                        {"label": "Google Gemini", "value": "google"},
+                        {"label": "OpenRouter", "value": "openrouter"},
+                        {"label": "NVIDIA NIM", "value": "nvidia"},
+                        {"label": "Groq", "value": "groq"},
+                        {"label": "Anthropic Claude", "value": "anthropic"},
+                        {"label": "Local Ollama", "value": "local"},
+                    ],
+                    value="openai",
+                    clearable=False,
+                    className="mb-2",
+                ),
+                dbc.Input(
+                    id="chat-override-api-key",
+                    type="password",
+                    placeholder="API key for the Chat provider above",
+                    debounce=True,
+                    className="mb-2",
+                ),
+                dbc.Input(
+                    id="chat-override-model",
+                    type="text",
+                    placeholder="Model name, e.g. gpt-4o or gpt-5.6-sol",
+                    debounce=True,
+                    className="mb-2",
+                ),
+                dbc.Input(
+                    id="chat-override-base-url",
+                    type="text",
+                    placeholder="Base URL (only needed for Local Ollama or a custom endpoint)",
+                    debounce=True,
+                ),
+            ],
+            id="chat-override-fields-container",
+        ),
+    ],
+    className="param",
+)
+
 network_profile = html.Div(
     [
         generate_param_title(
@@ -914,6 +988,7 @@ advanced_settings = html.Div(
                 max_edges,
                 normalization_toggle,
                 relation_verification_toggle,
+                chat_model_override,
                 network_profile,
             ],
             id="advanced-settings-collapse",

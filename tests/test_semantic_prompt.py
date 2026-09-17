@@ -1120,6 +1120,25 @@ def test_openai_prompt_keeps_existing_structure():
     assert "Do NOT perform NER" in prompt
 
 
+def test_compact_retry_prompt_requires_evidence_field():
+    """Regression test: _build_compact_retry_prompt used to omit "evidence" from its
+    output schema entirely, so any relation recovered only via this fallback path
+    (e.g. after the model refused or malformed the first-pass response) could never
+    carry a supporting quote -- guaranteeing it would fail graph_rag.py's claim-safety
+    gate for reasons unrelated to the relation's actual accuracy. Found live: gpt-5.6
+    models hit this fallback far more often than gpt-4o-mini in the same test run."""
+    llm_client = SimpleNamespace(provider="openai", client=None)
+    extractor = SemanticRelationshipExtractor(llm_client)
+    prompt = extractor._build_compact_retry_prompt(
+        title="Example title",
+        abstract="Example abstract text about retinal diseases and lutein.",
+        entity_list=_sample_entities(),
+    )
+
+    assert '"evidence"' in prompt
+    assert "REQUIRED" in prompt
+
+
 def test_relaxed_parser_recovers_from_malformed_json_like_output():
     llm_client = SimpleNamespace(provider="google", client=None)
     extractor = SemanticRelationshipExtractor(llm_client)

@@ -62,6 +62,15 @@ class SessionConfigModel(BaseModel):
     top_k: int = 5
     max_history: int = 10
     session_language: str = "English"
+    # Optional separate model for Chat generation, distinct from the model above
+    # used for graph-building semantic edge extraction. Leave unset to reuse the
+    # graph-building client for Chat too (today's behavior, unchanged).
+    chat_provider: Optional[str] = Field(
+        default=None, pattern="^(openai|google|local|anthropic|groq|nvidia|openrouter)$"
+    )
+    chat_api_key: Optional[str] = None
+    chat_model: Optional[str] = None
+    chat_base_url: Optional[str] = None
 
 
 class CreateSessionRequest(BaseModel):

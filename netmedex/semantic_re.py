@@ -664,7 +664,7 @@ with exactly one entry per edge index above."""
 -   - **Passive Voice Rule**: When the text uses passive voice ("gene X is downregulated in disease Y", "protein Z was found decreased in condition W"), this does NOT establish who is the active effector. Use `associated_with` or `correlates_with` for such observations. Only use directional relation types (downregulates, inhibits, activates, etc.) for ACTIVE VOICE statements where one entity directly acts on another (e.g., "miRNA-155 directly targets SOST", "TNF-α activates NF-κB signaling").
 -   - The relationship type (must be one of: {allowed_relations})
 -   - Confidence score (0-1): How confident are you this relationship is explicitly stated? **Do not reuse the sample value; personalize it for each edge.**
--   - Supporting evidence: The specific sentence or phrase supporting this relationship
+-   - Supporting evidence: **REQUIRED for every relation** -- the specific sentence or phrase supporting this relationship. Never omit this field or leave it empty; a relation without it cannot be used downstream.
 
 4. Return ONLY a JSON array with this exact structure:
 [
@@ -701,6 +701,13 @@ with exactly one entry per edge index above."""
         """
         Compact retry prompt for Gemini/OpenAI when the first pass yields no parsable relations.
         Keeps output schema minimal for higher JSON stability and recall.
+
+        `evidence` is still required (not dropped) here: this prompt used to omit it
+        entirely, which meant any relation recovered only through this fallback path
+        could never have a supporting quote -- guaranteeing it would fail the
+        claim-safety gate in graph_rag.py regardless of extraction quality. A model
+        that leans on this fallback more (e.g. after a refused/malformed first pass)
+        was structurally penalized for reasons unrelated to its actual accuracy.
         """
         entity_descriptions = "\n".join(
             [f"- {ent['id']}: {ent['name']} (Type: {ent['type']})" for ent in entity_list]
@@ -726,12 +733,14 @@ Rules:
      "entity2_id": "...", // Target/effectee for directional relations
      "relation_type": "...",
      "confidence": 0.0 to 1.0,
+     "evidence": "exact quote from abstract -- REQUIRED, do not omit",
      "study_type": "Human/Animal/Cell-line"
    }}
 5. relation_type must be one of: {allowed_relations}
 6. Keep only explicit or strongly implied relations from the abstract.
 7. If none, return [].
 8. Passive Voice Rule: "X is downregulated/inhibited in Y" → use `associated_with`, NOT `downregulates`. Only use directional types for active voice: "A inhibits B", "A activates B".
+9. Every relation MUST include a non-empty "evidence" field quoting the exact supporting sentence/phrase. Do not return a relation without one.
 """
 
     def _build_coverage_prompt(
@@ -761,6 +770,7 @@ Task:
 - Extract as many explicit or strongly implied relations as supported by the abstract.
 - **CRITICAL**: Prioritize recall. Do not overlook subtle but explicit connections.
 - **Passive Voice Rule**: "X is downregulated/inhibited in Y" → use `associated_with`, NOT `downregulates`. Only use directional types for active voice ("A inhibits B", "A activates B").
+- **`evidence` is REQUIRED for every relation** -- never omit it or return an empty string; a relation without it cannot be used downstream.
 
 Output format:
 [

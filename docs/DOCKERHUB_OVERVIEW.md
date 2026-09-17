@@ -1,4 +1,4 @@
-# NetMedEx v1.5.3: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.5.7: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
@@ -19,7 +19,23 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.5.3
+## 🆕 What's New in v1.5.7
+
+- **Chat Now Sees Your Whole Network, Not Just the Top 50 Abstracts**: Removed a silent cap that indexed only the top 50 (by citation weight) of your built network's abstracts into Chat's RAG when no sub-network was manually selected — the rest were unreachable for the entire conversation. Chat now indexes everything you built.
+
+### Previous: v1.5.6
+
+- **Chat Model Override, Now in the Web UI Too**: Advanced Settings gains an optional "Chat Model Override" — build your network with your regular provider, then answer questions with a different, stronger model. Off by default; existing behavior is unchanged.
+
+### Previous: v1.5.5
+
+- **Split Model for Graph Building vs. Chat**: The FastAPI bridge now accepts an optional separate model for Chat generation (`chat_provider`/`chat_model`/etc.), distinct from the model used to build the network. Build cheaply per-article, then get flagship-quality answers per question — without changing anything if you don't set these.
+
+### Previous: v1.5.4
+
+- **Fixed a Silent Extraction Gap Affecting Newer/Reasoning Models**: A fallback prompt used when semantic extraction's first pass comes back empty was missing its "evidence" field, so relations recovered through it could never be cited as claim-safe. Models that trigger this fallback more often (found with `gpt-5.6`) were unfairly penalized. Live-verified fix: a session that previously abandoned causal-mechanism reasoning entirely now produces a complete, correctly-cited answer for the same question.
+
+### Previous: v1.5.3
 
 - **Better Layer 3 Evidence Recovery**: High-confidence directional edges were being discarded purely because the query happened to anchor on the "wrong" end of the edge. Single-hop edges are now correctly kept and stated in their true direction.
 - **Provider-Switch Model Bug Fixed**: Switching LLM providers without explicitly specifying a model no longer risks sending the previous provider's model name to the new one.

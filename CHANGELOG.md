@@ -5,6 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.7] - 2026-09-17
+
+### Fixed & Hardened
+
+- **Removed Silent 50-Abstract Cap on Chat's RAG Corpus**: `auto_initialize_chat` (`chat_callbacks.py`, both branches without a manually-selected sub-network) called `_abstract_documents_from_graph(G, limit=50)`, indexing only the top 50 abstracts by citation weight into `AbstractRAG` regardless of how many articles the network was built from. Every subsequent question in that conversation could only ever retrieve from those 50 -- undocumented, uncontrollable, and easy to mistake for retrieval being "stuck" on whatever was most relevant when the session started. Verified `ChatSession.send_message` already re-runs `self.rag.get_context(search_query, ...)` fresh per turn using that turn's own message text (not the first question's) against `self.rag.documents` -- so the fix is purely removing the indexing-time cap (`_abstract_documents_from_graph(G)`, no `limit`), matching `_rebuild_chat_session_from_graph`'s existing uncapped behavior, not a change to retrieval logic itself.
+
+## [1.5.6] - 2026-09-17
+
+### Added
+
+- **Chat Model Override in the Web UI**: `webapp/components/advanced_settings.py` gains a "Chat Model Override (optional)" section (`chat-model-override-toggle` + `chat-override-provider`/`chat-override-api-key`/`chat-override-model`/`chat-override-base-url`), shown/hidden via a new `toggle_chat_override_fields` callback in `semantic_callbacks.py`. `chat_callbacks.py` gains `_resolve_chat_llm_client()`, which returns the shared build-time `llm_client` singleton unchanged when the toggle is off (identical behavior to before), or constructs a brand-new independent `LLMClient()` from the override fields when on -- avoiding re-mutating the shared singleton, which would otherwise clobber its build-time configuration. Wired into all three call sites that construct a `ChatSession` (`auto_initialize_chat`'s two branches, `initialize_chat`, `send_message`/`_rebuild_chat_session_from_graph`), each gaining 5 new `State()` entries. This is a deliberately compact design (plain provider dropdown + 3 text inputs, not a full per-provider UI block mirroring the main LLM config's model-fetching dropdowns) to avoid roughly doubling the already-large `run_pubtator3_api`/chat callbacks' State counts. Verified: `collect_callbacks()` registers all 72 callbacks without conflict and all 6 new component IDs resolve in the rendered layout. Brings the FastAPI bridge's v1.5.5 model-split capability to the main web app.
+
+## [1.5.5] - 2026-09-17
+
+### Added
+
+- **Separate LLM Client for Graph Building vs. Chat Generation**: `BridgeConfig` (`chat_bridge.py`) and `SessionConfigModel` (`fastapi_bridge.py`) gain optional `chat_provider`/`chat_api_key`/`chat_model`/`chat_base_url` fields. `NetMedExChatBridge` now builds a second `chat_llm_client` via `_init_chat_llm_client`, used only by `ChatSession` for Layer 1-5 generation; `PubTatorGraphBuilder`'s semantic edge extraction keeps using the original `llm_client`. Left unset (the default), `chat_llm_client is llm_client` -- identical behavior to before this change. Rationale: extraction is called once per article on a narrow task (classify the relation between two given entities in one abstract); Chat synthesis is called once per question and must read/reason across many abstracts at once. A live-tested comparison (imatinib/BCR-ABL, same 8 PMIDs) found these have different cost/quality tradeoffs -- after the v1.5.4 evidence-field fix, `gpt-4o-mini`'s extraction claim-safety pass rate (68.4%) was within single digits of pricier models (`gpt-4o` 72.7%, `gpt-5.6-luna` 76.2%), while Chat-time causal-mechanism depth is where model tier differences are large. This lets a session build cheaply per-article and still get flagship-quality answers per question.
+
+## [1.5.4] - 2026-09-17
+
+### Fixed & Hardened
+
+- **Semantic Extraction: Missing `evidence` Field in Compact-Retry Fallback**: `_build_compact_retry_prompt` (`semantic_re.py`) -- used when the first extraction pass returns zero parsable relations -- omitted `evidence` from its output schema entirely. Any relation recovered only via this fallback therefore could never carry a supporting quote, which unconditionally fails `_select_edge_support`'s claim-safety gate (`graph_rag.py`) regardless of the relation's actual correctness. Live-tested comparison of `gpt-4o-mini` vs. `gpt-5.6-luna`/`gpt-5.6-sol` as the extraction model (same 8 PMIDs, same query) initially suggested `gpt-5.6` had far worse extraction quality (0-16% of directional edges reaching Tier A vs. 81-83% for `gpt-4o-mini`); tracing the raw LLM responses showed `gpt-5.6` simply triggers this evidence-less fallback path more often (more first-pass refusals/format complaints), not that its underlying extraction is worse. `evidence` is now a required field (with explicit "REQUIRED, do not omit" wording) in all three extraction prompts (initial, coverage, and compact-retry). Verified live: the same `gpt-5.6-luna` session that previously abandoned Layer 3 entirely ("insufficient evidence to form a causal mechanism hypothesis") now produces a complete, correctly-cited 3-step causal chain for the same question.
+
 ## [1.5.3] - 2026-09-17
 
 ### Fixed & Hardened
