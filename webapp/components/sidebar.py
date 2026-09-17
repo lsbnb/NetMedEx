@@ -621,6 +621,7 @@ graph_settings_panel = html.Div(
                     id="cy-params",
                     value=[],
                 ),
+                html.Div(id="community-toggle-status", className="small text-muted mt-1"),
             ],
             className="param",
         ),
@@ -781,7 +782,7 @@ header_row = html.Div(
         sidebar_toggle,
         html.Div(
             [
-                html.Small("v1.5.13", className="text-muted", style={"fontSize": "0.7rem"}),
+                html.Small("v1.5.15", className="text-muted", style={"fontSize": "0.7rem"}),
                 advanced_settings,
             ],
             className="d-flex flex-column align-items-center ms-auto",

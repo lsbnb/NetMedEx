@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.15] - 2026-09-18
+
+### Changed
+
+- **Chat Model Override / Verifier Provider Model Dropdowns Now Default to the Main Model**: With "Same as main provider" selected (Verifier Provider's default, since relation-direction verification is on by default), the Model dropdown showed a bare "Custom..." placeholder until the user manually clicked Refresh -- even though the underlying resolution (`_resolve_chat_llm_client` in `chat_callbacks.py`, and the verifier branch of `pipeline.py`) already silently reuses the main LLM Configuration's model in this case. Purely a UI-clarity gap, not a functional bug. Added `sync_chat_override_model_default` / `sync_relation_verifier_model_default` (`llm_callbacks.py`), triggered only by that section's own Provider dropdown (`Input`) with all main-provider model/custom-model fields as `State` -- so background edits elsewhere, or a model the user deliberately picked while staying on the same provider, are never clobbered; it only re-mirrors main when the user actually (re)selects "Same as main provider".
+
+## [1.5.14] - 2026-09-18
+
+### Added
+
+- **"Show Communities" Silent No-Op Now Surfaced to the User**: `_set_network_communities` (`netmedex/graph.py`) has always silently returned without modifying the graph when Louvain finds at most one community for the current network -- no error, no visual change, making the toggle look broken with zero indication of why (reported live: "on/off both produce no visible change", confirmed the community-detection mechanism itself works correctly on a representative query, 4 communities / 57 of 61 nodes grouped -- so this is specifically the ≤1-community case). Added `show_community_toggle_feedback` (`webapp/callbacks/graph_update.py`) plus a `community-toggle-status` status line under the toggle (`webapp/components/sidebar.py`). Deliberately a separate, observation-only callback (`Input("cy", "elements")` + `State("cy-params", "value")`, both already-existing) rather than a new `Output` on `update_graph` itself -- that callback already has 11 Outputs and 6 return paths and is the highest-blast-radius callback in the app (drives every graph render), so this can only ever affect the new status line, never graph rendering.
+
+### Fixed & Hardened
+
+- **Duplicate `CYTO_STYLESHEET` Definition Silently Discarded Edge Styling**: `webapp/utils.py` defined `CYTO_STYLESHEET` twice (found while investigating the community-toggle report); Python keeps only the last assignment, so the second (incomplete) copy was the one actually imported by `webapp/components/graph.py`, missing three rules present only in the abandoned first copy: green (`#28a745`) edge coloring for activating/inducing/etc. relations, red (`#dc3545`) coloring for inhibiting/suppressing/etc. relations, and dashed-line styling for `edge_type='node'` edges. Dead code since a March 2026 refactor (`dc2503f5`). Merged into a single definition retaining all rules.
+
 ## [1.5.13] - 2026-09-18
 
 ### Fixed & Hardened

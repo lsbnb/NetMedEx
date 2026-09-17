@@ -1,4 +1,4 @@
-# NetMedEx v1.5.13: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.5.15: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
@@ -19,7 +19,16 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.5.13
+## 🆕 What's New in v1.5.15
+
+- **Model Dropdowns Now Mirror Your Main LLM by Default**: Chat Model Override and Verifier Provider now show your main LLM's actual model instead of a bare "Custom..." placeholder when left at "Same as main provider" -- no more clicking Refresh just to see what will actually be used.
+
+### Previous: v1.5.14
+
+- **"Show Communities" Toggle Explains Itself**: When your current network only has one detectable community, the toggle now tells you instead of silently doing nothing.
+- **Restored Missing Edge Colors**: Fixed a duplicate stylesheet definition that had been silently discarding green/red edge coloring (activating vs. inhibiting relations) and dashed node-type edges since a past refactor.
+
+### Previous: v1.5.13
 
 - **Fixed "Same as Main Provider" Model Fetch for .env-Configured Keys**: Refreshing available models for Chat Model Override / Verifier Provider now correctly finds your key even if it's set via a server environment variable rather than typed into the browser.
 

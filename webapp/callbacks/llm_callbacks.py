@@ -1310,6 +1310,94 @@ def callbacks(app):
         new_value = current_value if current_value in models else models[0]
         return options, f"✅ Found {len(models)} models", new_value
 
+    def _default_main_model_options(main_provider, override_provider, *model_fields):
+        """Shared body for the two "default to main provider's model" sync
+        callbacks below. Returns None to mean "leave the dropdown alone".
+        """
+        override_provider = (override_provider or "").strip().lower()
+        main_provider_n = (main_provider or "openai").strip().lower()
+        if override_provider and override_provider != main_provider_n:
+            # A genuinely different provider is selected -- nothing to mirror.
+            return None
+        main_model = _selected_model_for_provider(main_provider, *model_fields)
+        if not main_model:
+            return None
+        return [
+            {"label": main_model, "value": main_model},
+            {"label": "Custom...", "value": "custom"},
+        ], main_model
+
+    @app.callback(
+        Output("chat-override-model", "options", allow_duplicate=True),
+        Output("chat-override-model", "value", allow_duplicate=True),
+        Input("chat-override-provider", "value"),
+        [
+            State("llm-provider-selector", "value"),
+            State("openai-model-selector", "value"),
+            State("openai-custom-model-input", "value"),
+            State("google-model-selector", "value"),
+            State("openrouter-model-selector", "value"),
+            State("openrouter-custom-model-input", "value"),
+            State("nvidia-model-selector", "value"),
+            State("groq-model-selector", "value"),
+            State("groq-custom-model-input", "value"),
+            State("anthropic-model-selector", "value"),
+            State("anthropic-custom-model-input", "value"),
+            State("llm-model-input", "value"),
+        ],
+        prevent_initial_call="initial_duplicate",
+    )
+    def sync_chat_override_model_default(override_provider, main_provider, *model_fields):
+        """When "Chat Provider" is left at "Same as main provider" (its default),
+        show the main LLM Configuration's currently selected model instead of a
+        bare "Custom..." placeholder that gives no indication of what will
+        actually be used -- `_resolve_chat_llm_client` already reuses the main
+        model in this case; this just makes that visible.
+
+        Only reacts to the *provider* dropdown, not to every keystroke in the
+        main config or in this dropdown itself, so it can never clobber a model
+        the user deliberately picked/typed here while staying on the same
+        provider (e.g. same provider, cheaper build model vs. stronger chat
+        model) -- it only resets to "mirror main" when the user actually
+        (re)selects "Same as main provider".
+        """
+        result = _default_main_model_options(main_provider, override_provider, *model_fields)
+        if result is None:
+            raise dash.exceptions.PreventUpdate
+        options, value = result
+        return options, value
+
+    @app.callback(
+        Output("relation-verifier-model", "options", allow_duplicate=True),
+        Output("relation-verifier-model", "value", allow_duplicate=True),
+        Input("relation-verifier-provider", "value"),
+        [
+            State("llm-provider-selector", "value"),
+            State("openai-model-selector", "value"),
+            State("openai-custom-model-input", "value"),
+            State("google-model-selector", "value"),
+            State("openrouter-model-selector", "value"),
+            State("openrouter-custom-model-input", "value"),
+            State("nvidia-model-selector", "value"),
+            State("groq-model-selector", "value"),
+            State("groq-custom-model-input", "value"),
+            State("anthropic-model-selector", "value"),
+            State("anthropic-custom-model-input", "value"),
+            State("llm-model-input", "value"),
+        ],
+        prevent_initial_call="initial_duplicate",
+    )
+    def sync_relation_verifier_model_default(override_provider, main_provider, *model_fields):
+        """Same behavior as sync_chat_override_model_default, for Verifier Provider
+        -- notably relevant since relation-verification is enabled by default, so
+        this is the first thing a new user sees rather than an opt-in section.
+        """
+        result = _default_main_model_options(main_provider, override_provider, *model_fields)
+        if result is None:
+            raise dash.exceptions.PreventUpdate
+        options, value = result
+        return options, value
+
     def _build_openai_model_options(api_key, current_options, current_value, auto=False):
         api_key = api_key or os.getenv("OPENAI_API_KEY", "").strip()
         if not api_key:

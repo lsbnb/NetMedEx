@@ -484,6 +484,33 @@ def callbacks(app):
             no_update,
         )
 
+    @app.callback(
+        Output("community-toggle-status", "children"),
+        Input("cy", "elements"),
+        State("cy-params", "value"),
+        prevent_initial_call=True,
+    )
+    def show_community_toggle_feedback(elements, cy_params):
+        """Purely observational feedback for the "Show Communities" toggle.
+
+        `_set_network_communities` (netmedex/graph.py) silently does nothing when
+        Louvain finds at most one community for the current network -- no error,
+        no visual change, so the toggle looks broken with no indication of why.
+        Deliberately does not touch `update_graph`'s own Outputs (the app's most
+        complex, highest-blast-radius callback) -- it only re-inspects the
+        elements `update_graph` already produced, so it can never affect graph
+        rendering itself, only this small status line.
+        """
+        if "community" not in (cy_params or []):
+            return ""
+        has_community_grouping = any(
+            isinstance(el, dict) and el.get("data", {}).get("parent")
+            for el in (elements or [])
+        )
+        if has_community_grouping:
+            return ""
+        return "ℹ️ Only one community detected in this network — nothing to group."
+
     clientside_callback(
         ClientsideFunction(namespace="clientside", function_name="show_edge_info"),
         Output("edge-info-container", "style"),

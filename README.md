@@ -1,4 +1,4 @@
-# NetMedEx v1.5.13
+# NetMedEx v1.5.15
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -25,6 +25,15 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 
 <details>
 <summary><h2>🆕 Recent Updates</h2></summary>
+
+### v1.5.15 — 2026-09-18
+
+- **Chat Model Override / Verifier Provider Now Default to the Main Model**: With "Same as main provider" selected (Verifier Provider's default state), the Model dropdown showed a bare "Custom..." placeholder until you manually clicked Refresh — even though the underlying resolution already silently reused the main LLM Configuration's model in that case. It now shows that model up front. Only reacts to the section's own Provider dropdown, so a model you deliberately pick while staying on the same provider is never overwritten by background changes elsewhere.
+
+### v1.5.14 — 2026-09-18
+
+- **"Show Communities" Toggle Now Explains When There's Nothing to Show**: Community detection (Louvain) silently did nothing when it found at most one community for the current network — no error, no visual change, so the toggle looked broken with zero indication of why. A small status line now appears under the toggle in that case ("Only one community detected in this network — nothing to group"), added as a fully separate, observation-only callback that cannot affect graph rendering itself.
+- **Fixed: Duplicate `CYTO_STYLESHEET` Definition Silently Discarded Edge Styling**: `webapp/utils.py` defined `CYTO_STYLESHEET` twice; Python kept only the second, which was missing the green/red edge coloring for activating vs. inhibiting relations and the dashed-line styling for node-type edges — dead code since a March 2026 refactor. Merged back into a single definition with all rules restored.
 
 ### v1.5.13 — 2026-09-18
 
