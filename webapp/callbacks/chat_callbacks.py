@@ -1991,6 +1991,27 @@ def callbacks(app):
                 if twohop_paths and savepath:
                     _sessions[savepath["graph"]]["twohop_paths"] = twohop_paths
 
+                # Proactive nudge: this turn had no directional edges to reason over
+                # and the network wasn't already built with Semantic Analysis, so
+                # Layer 3 (Causal Biomedical Mechanism) had nothing to work with.
+                # Surfaced here -- inline with the answer -- instead of relying on
+                # the user to notice Layer 3's own in-text skip message. Skipped for
+                # Compact Mode answers (any language's "[Direct Answer]" label) --
+                # those deliberately skip Layer 3 regardless of edge method, so the
+                # nudge would be a false alarm there.
+                is_compact_mode_answer = any(
+                    label in clean_content
+                    for label in ("[Direct Answer]", "[直接回答]", "[직접 답변]")
+                )
+                if response.get("suggest_semantic_edge_method") and not is_compact_mode_answer:
+                    clean_content += (
+                        "\n\n---\n"
+                        "💡 *This network was built without directional (causal) edges, so "
+                        "Layer 3 above is limited to association-level inference. Rebuild the "
+                        "network with **Semantic Analysis (LLM)** as the Edge Construction Method "
+                        "to enable graph-grounded causal-mechanism reasoning.*"
+                    )
+
                 ai_msg = create_message_component(
                     "assistant",
                     clean_content,

@@ -1,4 +1,4 @@
-# NetMedEx v1.5.1: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.5.2: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
@@ -19,7 +19,15 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.5.1
+## 🆕 What's New in v1.5.2
+
+- **Cross-Literature Conflict Detection**: When two PMIDs report opposite regulatory direction for the same edge (e.g. one says "inhibits", another "activates"), Chat's Layer 3 now surfaces both sides as an explicit, unresolved **Literature Conflict** instead of silently picking one.
+- **Sharper Layer 3 Causal-Mechanism Reasoning**: Raised the local-model (Ollama) chat token budget so Layer 3's evidence table, Weakest Link, Testable Prediction, and Suggested Validation fields are no longer truncated mid-response.
+- **In-Chat Rebuild Nudge**: When a turn has no directional edges to reason over and the network wasn't already built with Semantic Analysis, Chat now suggests rebuilding with that edge method directly in its reply.
+- **Faster Failure When No LLM Is Configured**: Selecting Semantic Analysis without a configured LLM key now fails immediately instead of after the full literature search completes.
+- **Semantic Analysis Is Now the Default Edge Method**: New networks are built with `Semantic Analysis (LLM)` by default instead of `Co-occurrence`, so Layer 3's causal-mechanism reasoning has directional evidence to work with out of the box. `Co-occurrence` is still available (and the right pick before an API key is configured) — its symmetric-only edges leave Layer 3 with nothing to reason over.
+
+### Previous: v1.5.1
 
 - **Type-Constrained Biomedical Acronym & MeSH Standardisation**: Integrated `BIOMEDICAL_ACRONYM_MAP` and MeSH CUI lookup into `normalize_knowledge_graph` to expand common medical acronyms (e.g., `RA` in Disease ➔ `rheumatoid arthritis`, `RA` in Chemical ➔ `retinoic acid`) while protecting Gene, Mutation, and SNP nodes.
 - **Cytoscape Canvas Height Stability**: Implemented `cy_container_visibility` to enforce container height (`800px`), preventing inline style overrides from collapsing the Cytoscape graph canvas to `0px` during layout transitions.

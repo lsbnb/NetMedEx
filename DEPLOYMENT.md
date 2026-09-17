@@ -10,13 +10,13 @@ NetMedEx is container-ready and can be easily deployed using Docker.
 Run the following command in the project root directory:
 
 ```bash
-docker build -t netmedex:v1.5.1 .
+docker build -t netmedex:v1.5.2 .
 ```
 
 2.  **Tag for Docker Hub or Registry (Optional)**
 
 ```bash
-docker tag netmedex:v1.5.1 [USERNAME]/netmedex:v1.5.1
+docker tag netmedex:v1.5.2 [USERNAME]/netmedex:v1.5.2
 ```
 
 3.  **Run with Local LLM (Ollama)**
@@ -34,7 +34,7 @@ docker run -d \
   -p 8050:8050 \
   --name netmedex-app \
   -v $(pwd)/.env:/app/.env \
-  netmedex:v1.5.1
+  netmedex:v1.5.2
 ```
 
 > [!IMPORTANT]

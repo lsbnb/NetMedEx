@@ -299,19 +299,25 @@ network_params = html.Div(
                         generate_param_title(
                             "Edge Construction Method",
                             (
-                                "Co-occurrence: Fast edge creation based on entity co-mentions (high recall)\n"
-                                "Semantic Analysis: LLM-based relationship extraction (balanced precision/recall, requires API) ⚡\n"
+                                "Semantic Analysis (default): LLM-based relationship extraction (balanced "
+                                "precision/recall) ⚡ — required for Chat's Layer 3 (Causal Biomedical Mechanism) "
+                                "to produce graph-grounded causal reasoning. Adds ~2-3s per article; progress "
+                                "is reported live during network construction. Requires an LLM API key.\n"
+                                "Co-occurrence: Fast, free edge creation based on entity co-mentions (high recall), "
+                                "with no API key needed — use this if you haven't configured an LLM yet. Produces "
+                                "only symmetric/undirected edges, so Layer 3 will mostly skip or fall back to a "
+                                "low-confidence text-only summary.\n"
                                 "BioREx Relations Only: Use only expert-curated relationships (high precision, low coverage)"
                             ),
                         ),
                         dcc.Dropdown(
                             id="edge-method",
                             options=[
-                                {"label": "Co-occurrence (Fast)", "value": "co-occurrence"},
                                 {"label": "Semantic Analysis (LLM) ⚡", "value": "semantic"},
+                                {"label": "Co-occurrence (Fast)", "value": "co-occurrence"},
                                 {"label": "BioREx Relations Only", "value": "relation"},
                             ],
-                            value="co-occurrence",
+                            value="semantic",
                             style={"width": "250px"},
                         ),
                     ],
@@ -775,7 +781,7 @@ header_row = html.Div(
         sidebar_toggle,
         html.Div(
             [
-                html.Small("v1.5.1", className="text-muted", style={"fontSize": "0.7rem"}),
+                html.Small("v1.5.2", className="text-muted", style={"fontSize": "0.7rem"}),
                 advanced_settings,
             ],
             className="d-flex flex-column align-items-center ms-auto",

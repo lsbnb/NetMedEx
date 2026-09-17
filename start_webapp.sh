@@ -63,11 +63,14 @@ else
     exit 1
 fi
 
+export WORKERS="${WORKERS:-2}"
+export THREADS="${THREADS:-4}"
+
 # Start the webapp using Gunicorn
 "$GUNICORN" \
     --bind "${HOST}:${PORT}" \
-    --workers 1 \
-    --threads 4 \
+    --workers "${WORKERS}" \
+    --threads "${THREADS}" \
     --timeout 300 \
     --keep-alive 5 \
     --access-logfile - \

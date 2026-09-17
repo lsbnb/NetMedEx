@@ -145,6 +145,55 @@ class TestRAGChat(unittest.TestCase):
         self.assertEqual(session.full_history[0].content, "請列出所有 miRNA")
         self.assertIn("miR-1", session.full_history[1].content)
 
+    def test_suggest_semantic_edge_method_when_cooccurrence_graph_lacks_directional_edges(self):
+        from netmedex.graph_rag import GraphRetriever
+
+        graph = nx.Graph()
+        graph.add_node("A", name="GeneA", type="Gene", pmids={"1"})
+        graph.add_node("B", name="GeneB", type="Gene", pmids={"1"})
+        graph.add_edge("A", "B", edge_weight=1.0)
+        graph.graph["edge_method"] = "co-occurrence"
+
+        session = ChatSession(
+            self.rag, self.llm_client, graph_retriever=GraphRetriever(graph)
+        )
+
+        mock_response = MagicMock()
+        mock_response.choices = [MagicMock()]
+        mock_response.choices[0].message.content = "GeneA and GeneB are co-mentioned."
+        self.llm_client.client.chat.completions.create.return_value = mock_response
+
+        result = session.send_message("How does GeneA affect GeneB?", focus_nodes=["A", "B"])
+
+        self.assertTrue(result["success"])
+        self.assertTrue(result["suggest_semantic_edge_method"])
+
+    def test_no_suggestion_when_graph_already_built_with_semantic_edge_method(self):
+        """Even with no directional edges *this specific turn*, switching edge method
+        again would not help if the graph was already built with edge_method=semantic --
+        the nudge must not fire in that case."""
+        from netmedex.graph_rag import GraphRetriever
+
+        graph = nx.Graph()
+        graph.add_node("A", name="GeneA", type="Gene", pmids={"1"})
+        graph.add_node("B", name="GeneB", type="Gene", pmids={"1"})
+        graph.add_edge("A", "B", edge_weight=1.0)
+        graph.graph["edge_method"] = "semantic"
+
+        session = ChatSession(
+            self.rag, self.llm_client, graph_retriever=GraphRetriever(graph)
+        )
+
+        mock_response = MagicMock()
+        mock_response.choices = [MagicMock()]
+        mock_response.choices[0].message.content = "GeneA and GeneB are co-mentioned."
+        self.llm_client.client.chat.completions.create.return_value = mock_response
+
+        result = session.send_message("How does GeneA affect GeneB?", focus_nodes=["A", "B"])
+
+        self.assertTrue(result["success"])
+        self.assertFalse(result["suggest_semantic_edge_method"])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -158,6 +158,45 @@ def is_directional_relation(relation_type: str) -> bool:
     return normalized in DIRECTIONAL_RELATIONS
 
 
+# Sign of each directional relation, used to detect when two PMIDs report
+# opposite regulatory direction for the same edge (e.g. one paper says
+# "inhibits", another says "activates"). Relations with a genuinely
+# context-dependent sign (e.g. "regulates", "modifies", "targets") are left
+# unmapped so they never falsely trigger a conflict.
+RELATION_POLARITY = {
+    "inhibits": "-",
+    "decreases": "-",
+    "downregulates": "-",
+    "suppresses": "-",
+    "represses": "-",
+    "blocks": "-",
+    "prevents": "-",
+    "activates": "+",
+    "increases": "+",
+    "upregulates": "+",
+    "induces": "+",
+    "promotes": "+",
+    "stimulates": "+",
+    "enhances": "+",
+}
+
+
+def relation_polarity(relation_type: str) -> str | None:
+    """
+    Return "+"/"-" for relations with an unambiguous regulatory sign, else None.
+
+    Examples:
+        >>> relation_polarity("inhibits")
+        '-'
+        >>> relation_polarity("activates")
+        '+'
+        >>> relation_polarity("regulates") is None
+        True
+    """
+    normalized = normalize_relation_type(relation_type)
+    return RELATION_POLARITY.get(normalized)
+
+
 def is_symmetric_relation(relation_type: str) -> bool:
     """
     Check if a relation type is symmetric (bidirectional).

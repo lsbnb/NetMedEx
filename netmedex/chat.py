@@ -233,6 +233,7 @@ For each mechanistically plausible causal hypothesis:
 
 ### Hypothesis X: {Entity A} may regulate {Entity C} via {Pathway/Mechanism}
 - **Causal Path**: `{Entity A}` —[{relation_1} / {polarity_1}]→ `{Node B}` —[{relation_2} / {polarity_2}]→ `{Entity C}`
+- **Literature Conflict** (only if a hop's edge carries a `{CONFLICT: ...}` marker in the Knowledge Graph Structure): State both sides plainly, e.g. "PMID:X reports activation (+) while PMID:Y reports inhibition (-) for the same edge — direction is unresolved." Do NOT silently pick one side or omit the conflicting PMID.
 
 **Causal Chain Evidence Assessment Table:**
 
@@ -253,6 +254,7 @@ Rules for this layer:
 - This is a "mechanistically plausible hypothesis", NOT proven causation.
 - If polarity is unknown, write "unknown" — do not guess.
 - If direction is ambiguous, move the path to Layer 2 instead.
+- **Conflicting evidence**: A `{CONFLICT: PMID:X relation_1(+) vs PMID:Y relation_2(-)}` marker means two PMIDs report opposite regulatory direction for that exact edge. Report it via **Literature Conflict** (above) rather than treating one side as ground truth, and cap that hop's row in the Evidence Assessment Table at Evidence Confidence "Low" regardless of either PMID's individual confidence.
 - Do NOT claim proven causation unless the CONTEXT contains explicit intervention evidence.
 - **Mode A**: Every node, intermediate node, edge, and relation MUST be fetched directly from the 'Knowledge Graph Structure'. Do NOT invent or assume any nodes or connections not in the graph.
 - **Mode B (Text-Only)**: Every entity, relation, and polarity claim MUST be sourced from an explicit sentence in a PubMed abstract in the CONTEXT. Cite the PMID at the edge level. Cap all Causal Confidence scores at ≤ 0.40.
@@ -812,6 +814,11 @@ Each question MUST:
             graph_context = ""
             twohop_paths = []
             preferred_pmids = set()
+            # Drives the "switch to Semantic Analysis" nudge in the webapp (see
+            # chat_callbacks.py): only worth suggesting when this turn actually had
+            # no directional edges to reason over AND the graph wasn't already built
+            # with edge_method="semantic" (in which case switching again won't help).
+            suggest_semantic_edge_method = False
             if self.graph_retriever and not is_meta:
                 logger.info("Retrieving graph context...")
                 relevant_nodes = (
@@ -834,6 +841,12 @@ Each question MUST:
                         for edge_pmid_list in path_info.get("edge_pmids", []):
                             if edge_pmid_list:
                                 preferred_pmids.update(str(p) for p in edge_pmid_list)
+
+                    current_edge_method = self.graph_retriever.graph.graph.get("edge_method")
+                    no_directional_edges = "[DIRECTIONAL MECHANISTIC EDGES: YES]" not in graph_context
+                    suggest_semantic_edge_method = (
+                        no_directional_edges and current_edge_method != "semantic"
+                    )
                 else:
                     logger.info("No relevant nodes found in graph query")
             elif is_meta:
@@ -944,8 +957,13 @@ Each question MUST:
                 # consume thinking tokens against max_tokens so use the ceiling.
                 chat_max_tokens = 8192
             elif _provider == "local":
-                # Local models: cap tokens to speed up generation
-                chat_max_tokens = 2500
+                # Local models: v1.5.1 capped this flat at 2500 to speed up generation,
+                # but that budget routinely truncated Layer 3's evidence table before
+                # its Weakest Link / Testable Prediction / Suggested Validation fields,
+                # making Layer 3 read like a duplicate of Layer 2. Bootstrap keeps the
+                # tighter budget (first response, throughput-constrained); regular
+                # turns get room for a complete 5-layer answer.
+                chat_max_tokens = 2500 if is_internal else 4000
             elif _provider == "groq":
                 # Groq (cloud): allow richer 5-layer output
                 chat_max_tokens = 5000 if is_internal else 8000
@@ -1063,6 +1081,7 @@ Each question MUST:
                 "user_msg": user_msg,
                 "assistant_msg": assistant_msg,
                 "twohop_paths": twohop_paths,
+                "suggest_semantic_edge_method": suggest_semantic_edge_method,
             }
 
         except Exception as e:

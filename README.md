@@ -1,4 +1,4 @@
-# NetMedEx v1.5.1
+# NetMedEx v1.5.2
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -25,6 +25,15 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 
 <details>
 <summary><h2>🆕 Recent Updates</h2></summary>
+
+### v1.5.2 — 2026-09-15
+
+- **Layer 3 Diagnostic Logging**: `GraphRetriever` now logs whether each chat turn actually has a directional (mechanistic) edge to reason over, so a thin/duplicate-feeling Layer 3 can be attributed to its real cause (usually a `co-occurrence`-only graph) instead of guesswork.
+- **In-Chat "Switch to Semantic Analysis" Nudge**: When a turn has no directional edges to reason over and the network wasn't already built with Semantic Analysis, Chat now appends an inline suggestion to rebuild with that edge method — instead of relying on the user to notice Layer 3's own in-text skip message.
+- **Faster Failure When No LLM Is Configured**: Selecting Semantic Analysis without a configured LLM key used to fail only *after* the full PubTator literature search completed. The check now runs immediately, before the search starts.
+- **Cross-Literature Conflict Detection**: When two PMIDs report opposite regulatory direction for the same edge (e.g. one says "inhibits", another "activates"), the graph context now carries an explicit `{CONFLICT: ...}` marker and Layer 3 must report both sides as an unresolved **Literature Conflict** instead of silently picking one.
+- **Local-Provider Chat Token Budget**: Raised the local-model (Ollama) chat completion budget from a flat 2500 tokens to 4000 for regular turns — the old cap frequently truncated Layer 3's evidence table before its Weakest Link / Testable Prediction / Suggested Validation fields, making it read like a rehash of Layer 2.
+- **Edge Construction Method Default Changed to Semantic Analysis**: The Edge Construction Method dropdown now defaults to `Semantic Analysis (LLM)` instead of `Co-occurrence`, so Chat's Layer 3 (Causal Biomedical Mechanism) has directional evidence to reason over out of the box. This was previously left as `Co-occurrence` to avoid surprising users with the extra per-article LLM latency, but that's already surfaced via a live per-article progress bar (with an upfront "~2-3 seconds per article" estimate) during network construction, so the tradeoff is visible rather than a silent wait. `Co-occurrence` remains available and is still the right choice before an LLM API key is configured (semantic analysis fails fast with a clear "configure your API key" message if selected without one).
 
 ### v1.5.1 — 2026-09-13
 

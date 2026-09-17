@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.2] - 2026-09-15
+
+### Added
+
+- **Cross-Literature Conflict Detection for Layer 3**:
+  - `relation_polarity()` in `relation_types.py` maps directional relations to a regulatory sign (`+`/`-`).
+  - `GraphRetriever._detect_polarity_conflict` (in `graph_rag.py`) flags edges where two PMIDs report opposite direction for the same edge (e.g. `inhibits` vs `activates`); `_format_path` surfaces this as a `{CONFLICT: PMID:X relation(+) vs PMID:Y relation(-)}` marker instead of silently keeping only the higher-confidence side.
+  - Layer 3's prompt (`chat.py`) now requires a **Literature Conflict** callout whenever this marker is present, and caps that hop's Evidence Confidence at "Low".
+- **Layer 3 Diagnostic Logging**: `get_subgraph_context_with_paths` logs directional-edge availability (claim-safe path count vs. total candidates) per turn, to distinguish "no directional edges available" (mostly `edge_method=co-occurrence`) from other causes of a thin Layer 3.
+- **In-Chat "Switch to Semantic Analysis" Nudge**: `ChatSession.send_message` now returns `suggest_semantic_edge_method`, true only when a turn actually had no directional edges to reason over *and* the network wasn't already built with `edge_method="semantic"` (so switching again wouldn't help). The webapp appends an inline suggestion to the assistant's reply when this fires, skipped for Compact Mode answers in any supported language. Requires `PubTatorGraphBuilder` to stamp `graph.graph["edge_method"]` at build time (previously undiscoverable after the fact).
+
+### Fixed & Hardened
+
+- **Local-Provider Chat Token Budget**: `local` provider chat completions were flat-capped at 2500 max_tokens, which routinely truncated Layer 3's evidence table before its Weakest Link / Testable Prediction / Suggested Validation fields. Raised to 4000 for regular (non-bootstrap) turns.
+- **Edge Construction Method Default Changed to `semantic`**: The `edge-method` dropdown default moved from `co-occurrence` to `semantic` so Chat's Layer 3 has directional evidence to reason over by default. `co-occurrence` produces only symmetric edges, causing Layer 3 to mostly skip or fall back to a low-confidence text-only summary. The per-article LLM latency this adds is already surfaced via a live progress bar with an upfront time estimate during network construction (`pipeline.py`), so the cost/latency tradeoff is visible rather than a silent wait. `co-occurrence` remains available and is the right choice before an LLM API key is configured.
+- **Early LLM-Configuration Check**: `run_pubtator3_api` (the main "Search & Build Network" callback in `pipeline.py`) previously checked for a configured LLM key only right before graph construction — *after* the full PubTator literature search had already run to completion. Moved this check to immediately after LLM client initialization, before the PubTator fetch, so selecting Semantic Analysis without a configured key fails immediately instead of after wasting the entire search. The graph-file restore path (uploading a `.pkl`) is unaffected — it already returns before this point.
+
 ## [1.5.1] - 2026-09-13
 
 ### Added & Improved

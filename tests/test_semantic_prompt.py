@@ -64,6 +64,7 @@ def test_graph_rag_selects_aligned_canonical_edge_support():
                 "directional_relation",
                 "quote_relation_aligned",
         ],
+        "conflicting_evidence": [],
     }
 
 

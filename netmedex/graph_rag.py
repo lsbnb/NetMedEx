@@ -10,7 +10,7 @@ import networkx as nx
 from netmedex.claim_verifier import relation_supported_by_text
 from netmedex.community import CommunityDetector, GraphCommunity
 from netmedex.graph_schema import graph_schema_status
-from netmedex.relation_types import is_directional_relation
+from netmedex.relation_types import is_directional_relation, relation_polarity
 from netmedex.utils import generate_stable_id
 
 logger = logging.getLogger(__name__)
@@ -264,6 +264,16 @@ class GraphRetriever:
                 for path in structured_paths
             )
             dir_flag = "YES" if has_directional_edges else "NO"
+            # Root-cause visibility for Layer 3 quality: logs whether this turn even
+            # has a directional edge to reason over, so degenerate/Layer-2-like Layer 3
+            # output can be attributed to "no directional edges available" (usually an
+            # edge_method=co-occurrence graph) vs. other causes (e.g. token truncation).
+            logger.info(
+                "Layer 3 directional-edge availability: %s (claim-safe paths=%d/%d candidates)",
+                dir_flag,
+                sum(1 for path in structured_paths if path["claim_safe"]),
+                len(structured_paths),
+            )
             rescue_flag = "YES" if rescue_triggered else "NO"
             context_lines.append("[DIRECTIONAL MECHANISTIC EDGES: NO]")
             context_lines.append(
@@ -1404,6 +1414,12 @@ class GraphRetriever:
             evidence = self._format_edge_evidence(edge_data)
             if evidence:
                 description += f' {{EVIDENCE: "{evidence}"}}'
+            if support["conflicting_evidence"]:
+                conflict_str = " vs ".join(
+                    f"PMID:{c['pmid']} {c['relation']}({c['polarity']})"
+                    for c in support["conflicting_evidence"]
+                )
+                description += f" {{CONFLICT: {conflict_str}}}"
             descriptions.append(description)
 
         return " | ".join(descriptions)
@@ -1419,7 +1435,50 @@ class GraphRetriever:
             "directional": False,
             "support_tier": "C",
             "support_reasons": ["no_relation_support"],
+            "conflicting_evidence": [],
         }
+
+    @staticmethod
+    def _detect_polarity_conflict(candidates: list[dict]) -> list[dict]:
+        """Find PMIDs that report opposite regulatory direction for the same edge.
+
+        ``_select_edge_support`` collapses every (PMID, relation) candidate down to
+        one "winner" for the prompt, which previously made contradictory literature
+        (e.g. one paper says A inhibits B, another says A activates B) invisible to
+        the LLM -- it only ever saw the winning side. Surfacing the conflict here
+        lets Layer 3 report it explicitly instead of silently picking one side.
+        """
+        polarity_by_pmid: dict[str, str] = {}
+        for candidate in candidates:
+            polarity = relation_polarity(candidate["selected_relation"])
+            if polarity is None:
+                continue
+            pmid = candidate["selected_pmid"]
+            if pmid is None:
+                continue
+            # A PMID may support multiple relations for the same edge; keep the
+            # first unambiguous polarity seen for it rather than overwriting.
+            polarity_by_pmid.setdefault(pmid, polarity)
+
+        distinct_polarities = set(polarity_by_pmid.values())
+        if len(distinct_polarities) < 2:
+            return []
+
+        conflicts = []
+        for candidate in candidates:
+            pmid = candidate["selected_pmid"]
+            polarity = polarity_by_pmid.get(pmid)
+            if polarity is None:
+                continue
+            conflicts.append(
+                {
+                    "pmid": pmid,
+                    "relation": candidate["selected_relation"],
+                    "polarity": polarity,
+                }
+            )
+        # Deterministic order: sorted by PMID so output doesn't depend on dict/set iteration order.
+        return sorted(conflicts, key=lambda item: (item["pmid"], item["relation"]))
 
     @staticmethod
     def _iter_edge_support_candidates(edge_data: dict) -> list[dict]:
@@ -1550,6 +1609,7 @@ class GraphRetriever:
             else "B"
         )
         selected["support_reasons"] = reasons
+        selected["conflicting_evidence"] = cls._detect_polarity_conflict(candidates)
         return selected
 
     @classmethod

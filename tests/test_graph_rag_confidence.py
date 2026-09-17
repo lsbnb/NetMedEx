@@ -102,3 +102,56 @@ def test_production_graph_context_includes_pmid_linked_evidence_quote():
     assert "Knowledge Graph Structure:" in final_prompt
     assert "PMID:12345; relation=activates" in final_prompt
     assert "quote=A directly activates B after treatment." in final_prompt
+
+
+def test_opposing_polarity_pmids_surface_as_conflict_not_silently_resolved():
+    """Two PMIDs reporting opposite direction for the same edge must both reach the
+    LLM as a {CONFLICT: ...} marker -- previously _select_edge_support silently kept
+    only the higher-confidence side, making the contradiction invisible to Layer 3."""
+    graph = nx.Graph()
+    for node_id in ("A", "B"):
+        _add_gene(graph, node_id)
+    graph.add_edge(
+        "A",
+        "B",
+        edge_weight=1.0,
+        relations={"111": {"activates"}, "222": {"inhibits"}},
+        evidences={
+            "111": {"activates": "A activates B in cell line experiments."},
+            "222": {"inhibits": "A inhibits B in a separate cohort."},
+        },
+        confidences={"111": {"activates": 0.9}, "222": {"inhibits": 0.85}},
+    )
+
+    context, _paths = GraphRetriever(graph).get_subgraph_context_with_paths(
+        ["A"], query="A and B", max_hops=1
+    )
+
+    assert "{CONFLICT:" in context
+    assert "PMID:111 activates(+)" in context
+    assert "PMID:222 inhibits(-)" in context
+
+
+def test_agreeing_pmids_do_not_trigger_a_false_conflict():
+    """Two PMIDs that agree on direction (or only one PMID) must never produce a
+    {CONFLICT: ...} marker -- it should only fire on genuine opposite polarity."""
+    graph = nx.Graph()
+    for node_id in ("A", "B"):
+        _add_gene(graph, node_id)
+    graph.add_edge(
+        "A",
+        "B",
+        edge_weight=1.0,
+        relations={"111": {"activates"}, "222": {"activates"}},
+        evidences={
+            "111": {"activates": "A activates B in cell line experiments."},
+            "222": {"activates": "A activates B in a separate cohort."},
+        },
+        confidences={"111": {"activates": 0.9}, "222": {"activates": 0.6}},
+    )
+
+    context, _paths = GraphRetriever(graph).get_subgraph_context_with_paths(
+        ["A"], query="A and B", max_hops=1
+    )
+
+    assert "{CONFLICT:" not in context

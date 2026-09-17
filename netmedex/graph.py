@@ -930,6 +930,10 @@ class PubTatorGraphBuilder:
         self.graph.graph["pmid_metadata"] = {}  # NEW: Store full bibliography metadata
         self.graph.graph["graph_schema_version"] = CURRENT_GRAPH_SCHEMA_VERSION
         self.graph.graph["ner_schema_version"] = CURRENT_NER_SCHEMA_VERSION
+        # Lets downstream Chat code (see ChatSession.send_message) tell whether
+        # switching to Semantic Analysis would actually help a given session,
+        # instead of suggesting it unconditionally whenever Layer 3 comes up thin.
+        self.graph.graph["edge_method"] = self.edge_method
 
     def calculate_citation_weights(self) -> dict[str, float]:
         """Calculate time-normalized citation weights for articles.

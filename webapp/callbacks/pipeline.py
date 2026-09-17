@@ -317,6 +317,44 @@ def callbacks(app):
                 f"LLM Client initialized in background process: provider={llm_provider}, model={llm_client.model}"
             )
 
+            # Check LLM configuration for semantic analysis *before* the PubTator
+            # fetch below (which can take tens of seconds) instead of after --
+            # this used to run right before graph construction, so a missing key
+            # was only discovered once the whole literature search had already
+            # completed and been thrown away.
+            if edge_method == "semantic":
+                if not llm_client.client and not llm_client.anthropic_client:
+                    set_progress(
+                        (
+                            1,
+                            1,
+                            "",
+                            "Error: Semantic analysis requires LLM configuration. Please set your API key in Advanced Settings.",
+                        )
+                    )
+                    return (
+                        no_update,
+                        weight,
+                        False,
+                        no_update,
+                        no_update,
+                        no_update,
+                        {"articles": 0, "nodes": 0, "edges": 0},
+                        no_update,  # session-language
+                        no_update,  # tab
+                        html.Div(
+                            dbc.Alert(
+                                "Error: Semantic analysis requires LLM configuration. Please set your API key in Advanced Settings.",
+                                color="danger",
+                                dismissable=True,
+                            ),
+                            className="mt-3",
+                        ),
+                        no_update,
+                        no_update,
+                        no_update,  # twohop-highlight-paths
+                    )
+
             _exception_msg = None
             _exception_type = None
 
@@ -600,42 +638,6 @@ def callbacks(app):
                             pass
 
             set_progress((0, 1, "0/1", "Generating network..."))
-
-            # Initialize LLM client if using semantic edge method
-            llm_for_graph = None
-            # Check LLM configuration for semantic analysis
-            if edge_method == "semantic":
-                if not llm_client.client and not llm_client.anthropic_client:
-                    set_progress(
-                        (
-                            1,
-                            1,
-                            "",
-                            "Error: Semantic analysis requires LLM configuration. Please set your API key in Advanced Settings.",
-                        )
-                    )
-                    return (
-                        no_update,
-                        weight,
-                        False,
-                        no_update,
-                        no_update,
-                        no_update,
-                        {"articles": 0, "nodes": 0, "edges": 0},
-                        no_update,  # session-language
-                        no_update,  # tab
-                        html.Div(
-                            dbc.Alert(
-                                "Error: Semantic analysis requires LLM configuration. Please set your API key in Advanced Settings.",
-                                color="danger",
-                                dismissable=True,
-                            ),
-                            className="mt-3",
-                        ),
-                        no_update,
-                        no_update,
-                        no_update,  # twohop-highlight-paths
-                    )
 
             # Semantic Analysis: Parse collection first to get article count
             llm_for_graph = llm_client if edge_method == "semantic" else None

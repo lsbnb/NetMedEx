@@ -127,6 +127,14 @@ def test_graph_builder_lifecycle_protection():
     assert builder._updated is True
 
 
+def test_graph_builder_records_edge_method_on_graph_metadata():
+    """Chat's send_message needs graph.graph['edge_method'] to decide whether
+    suggesting a rebuild with Semantic Analysis would actually help (see
+    suggest_semantic_edge_method in chat.py) -- so the builder must stamp it."""
+    builder = PubTatorGraphBuilder(node_type="all", edge_method="co-occurrence")
+    assert builder.graph.graph["edge_method"] == "co-occurrence"
+
+
 def test_npmi_floating_boundary():
     """Test NPMI calculation precision at extreme boundary conditions."""
     # Complete co-occurrence: n_xy == N

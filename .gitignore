@@ -214,6 +214,32 @@ translate.log
 # Slides / decks
 *.pptx
 
+# Media & Videos
+*.mp4
+*.mov
+*.webm
+*.avi
+NetMedEx_Demo_Video*
+
+# Manuals, Presentations & Briefings
+*.pdf
+*.docx
+NetMedEx_*使用手冊*
+PedCNS_Atlas_*
+SYSTEM_OVERVIEW.md
+manual_github_assets/
+images/
+build_manual_*.py
+build_github_*.py
+create_*.py
+
+# Manuscript & video generation helper scripts
+scripts/append_*_to_manuscript.py
+scripts/render_demo_video*.py
+scripts/update_demo_video*.py
+scripts/update_figure4_species_safe.py
+scripts/update_manuscript_v1.4_applications.py
+
 # Temporary / Scratch
 webapp-temp/
 cache/
@@ -228,3 +254,4 @@ data/pediatric_10k/pubtator.json
 *.pkl
 *.csv
 *.jsonl
+
