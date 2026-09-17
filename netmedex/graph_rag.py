@@ -123,6 +123,20 @@ class GraphRetriever:
             if name in query_lower or self._normalize_anchor_text(name) in normalized_query:
                 matched_nodes.add(self.name_to_id[name])
 
+        # 1.5 Category Expansion for miRNA/microRNA
+        from netmedex.utils import is_mirna_node
+
+        mirna_triggers = {"mirna", "microrna", "mirnas", "micrornas", "微小rna", "微rna", "小分子rna"}
+        compact_q = normalized_query.replace(" ", "")
+        if any(tr in query_lower or tr in compact_q for tr in mirna_triggers):
+            for node_id, node_data in self.graph.nodes(data=True):
+                if is_mirna_node(
+                    node_data.get("name"),
+                    aliases=node_data.get("aliases"),
+                    node_type=node_data.get("type"),
+                ):
+                    matched_nodes.add(node_id)
+
         # 2. Semantic Vector Matching (if available)
         if self.node_rag:
             logger.info("Performing semantic node search...")
@@ -775,11 +789,20 @@ class GraphRetriever:
 
         # Generic miRNA wording denotes a mechanism family rather than one
         # literal node name. Expand it deterministically to miR-number nodes.
-        if "mirna" in compact_query or "microrna" in compact_query:
+        from netmedex.utils import is_mirna_node
+
+        if (
+            "mirna" in compact_query
+            or "microrna" in compact_query
+            or "微小rna" in normalized_query
+            or "微rna" in normalized_query
+        ):
             for node_id, node_data in self.graph.nodes(data=True):
-                node_name = self._normalize_anchor_text(node_data.get("name", node_id))
-                compact_name = node_name.replace(" ", "")
-                if re.match(r"^(?:mir|microrna)\d", compact_name):
+                if is_mirna_node(
+                    node_data.get("name"),
+                    aliases=node_data.get("aliases"),
+                    node_type=node_data.get("type"),
+                ):
                     mechanism_ids.add(node_id)
 
         endpoint_groups = []

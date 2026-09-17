@@ -522,14 +522,10 @@ Each question MUST:
         )
 
     @staticmethod
-    def _is_mirna_name(name: str) -> bool:
-        normalized = name.strip().lower()
-        return (
-            normalized.startswith("mir")
-            or normalized.startswith("miR".lower())
-            or normalized.startswith("microRNA".lower())
-            or normalized.startswith("let-")
-        )
+    def _is_mirna_name(name: str, aliases=None, node_type: str | None = None) -> bool:
+        from netmedex.utils import is_mirna_node
+
+        return is_mirna_node(name, aliases=aliases, node_type=node_type)
 
     @staticmethod
     def _strip_generic_subtype_prefix(text: str) -> str:
@@ -599,14 +595,19 @@ Each question MUST:
             "show all",
             "what are",
             "which are",
+            "find all",
             "有哪些",
             "列出",
             "清單",
             "全部",
+            "列表",
+            "找出",
+            "顯示",
+            "包含哪些",
         ]
         if not any(term in query for term in listing_terms):
             return None
-        if "mirna" in query or "microRNA".lower() in query or "miRNA".lower() in query:
+        if any(w in query for w in ["mirna", "microrna", "微小rna", "微rna", "小分子rna"]):
             return "mirna"
         if "mrna" in query:
             return "mrna"
@@ -623,12 +624,19 @@ Each question MUST:
         for _, data in graph.nodes(data=True):
             name = str(data.get("name", "")).strip()
             node_type = str(data.get("type", "")).strip()
+            aliases = data.get("aliases")
             pmids = sorted(str(p) for p in data.get("pmids", []))
-            if node_type != "Gene" or not name:
+            if not name:
                 continue
-            if entity_kind == "mirna" and self._is_mirna_name(name):
+            if entity_kind == "mirna" and self._is_mirna_name(
+                name, aliases=aliases, node_type=node_type
+            ):
                 matches.append((name, pmids))
-            elif entity_kind == "mrna" and not self._is_mirna_name(name):
+            elif (
+                entity_kind == "mrna"
+                and node_type == "Gene"
+                and not self._is_mirna_name(name, aliases=aliases, node_type=node_type)
+            ):
                 matches.append((name, pmids))
 
         # Deduplicate by entity name while preserving PMID coverage.

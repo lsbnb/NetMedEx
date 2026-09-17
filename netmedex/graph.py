@@ -50,7 +50,7 @@ except ImportError:
     # Semantic RE may not be available if dependencies are missing
     SemanticRelationshipExtractor = None
 from netmedex.citation_fetcher import fetch_citation_counts
-from netmedex.utils import generate_stable_id
+from netmedex.utils import MIRNA_QUERY_TRIGGERS, generate_stable_id, is_mirna_node
 
 MIN_EDGE_WIDTH = 1.0
 MAX_EDGE_WIDTH = 20
@@ -533,17 +533,71 @@ class PubTatorGraphBuilder:
         graph.remove_edges_from(to_remove)
 
     @staticmethod
-    def _remove_edges_by_rank(graph: nx.Graph, max_edges: int):
+    def find_query_anchor_nodes(graph: nx.Graph, query: str | None) -> set:
+        """Identify nodes that correspond to a term in the original build query.
+
+        Matches are either literal (the node's name appears in the query text)
+        or category-based (a generic mention like "microRNA" expands to every
+        miR-*/let-7* node, mirroring the same expansion GraphRetriever performs
+        for RAG retrieval). Used only to exempt query-relevant nodes/edges from
+        the *automatic* interactive-rendering safety caps below -- never from
+        the user-adjustable weight-cutoff or node-degree filters, which must
+        stay fully user-controlled.
+        """
+        if not query:
+            return set()
+        query_lower = str(query).lower()
+        mirna_query = any(trigger in query_lower for trigger in MIRNA_QUERY_TRIGGERS)
+
+        anchors = set()
+        for node_id, data in graph.nodes(data=True):
+            name = data.get("name")
+            name_lower = str(name).lower() if name else ""
+            # Require a minimum length so short/generic names (e.g. "cell")
+            # don't spuriously match most queries and defeat the safety cap.
+            if len(name_lower) >= 3 and name_lower in query_lower:
+                anchors.add(node_id)
+            elif mirna_query and is_mirna_node(
+                name, aliases=data.get("aliases"), node_type=data.get("type")
+            ):
+                anchors.add(node_id)
+        return anchors
+
+    @staticmethod
+    def _remove_edges_by_rank(
+        graph: nx.Graph, max_edges: int, protected_nodes: set | None = None
+    ):
         if max_edges <= 0:
             return
 
         if graph.number_of_edges() > max_edges:
+            protected_nodes = protected_nodes or set()
+
+            def is_anchor_edge(edge):
+                u, v, _ = edge
+                return u in protected_nodes or v in protected_nodes
+
+            # Anchor-protected edges get first claim on the edge budget (still
+            # ranked among themselves by weight), then remaining budget is
+            # filled by global weight rank as before. The kept-edge count
+            # never exceeds max_edges, so the browser-safety guarantee this
+            # cap exists for always holds.
             edges = sorted(
                 # u, v, data
                 graph.edges(data=True),
-                key=lambda x: x[2]["edge_weight"],
-                reverse=True,
+                key=lambda x: (not is_anchor_edge(x), -x[2]["edge_weight"]),
             )
+
+            if protected_nodes:
+                num_anchor_edges = sum(1 for edge in edges if is_anchor_edge(edge))
+                if num_anchor_edges > max_edges:
+                    logger.warning(
+                        "Anchor-protected edges (%d) exceed the interactive edge "
+                        "budget (%d); lowest-weight anchor edges will still be pruned.",
+                        num_anchor_edges,
+                        max_edges,
+                    )
+
             for edge in edges[max_edges:]:
                 graph.remove_edge(edge[0], edge[1])
 

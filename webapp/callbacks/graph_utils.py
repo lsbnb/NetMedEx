@@ -45,6 +45,14 @@ def rebuild_graph(
     if confidence_threshold > 0.0:
         PubTatorGraphBuilder._remove_edges_by_confidence(graph, confidence_threshold)
 
+    # Anchor Protection: exempt nodes/edges matching the original build query
+    # (e.g. a category term like "microRNA" expands to every miR-* node) from
+    # the automatic safety caps below, so a low-frequency query-relevant
+    # entity (e.g. miR-124 with edge weight 1) isn't silently dropped just
+    # because it's globally low-ranked. Does NOT affect the user-adjustable
+    # weight cutoff / node-degree filters further down.
+    anchor_nodes = PubTatorGraphBuilder.find_query_anchor_nodes(graph, graph.graph.get("query"))
+
     # NEW: Safety-cap for interactive rendering to prevent browser crashes
     # 1. Edge Pruning
     initial_edge_count = graph.number_of_edges()
@@ -59,7 +67,9 @@ def rebuild_graph(
         print(
             f"DEBUG: Pruning large graph: {initial_edge_count} edges -> {effective_max_edges} edges limit"
         )
-        PubTatorGraphBuilder._remove_edges_by_rank(graph, effective_max_edges)
+        PubTatorGraphBuilder._remove_edges_by_rank(
+            graph, effective_max_edges, protected_nodes=anchor_nodes
+        )
         graph.graph["is_pruned"] = True
 
     # 2. Apply cuts and rank filters (standard behavior)
@@ -70,9 +80,15 @@ def rebuild_graph(
     # 3. Node Pruning (if still too big after edge filter)
     MAX_INTERACTIVE_NODES = 1500
     if graph.number_of_nodes() > MAX_INTERACTIVE_NODES:
-        # Keep nodes with highest degrees
+        # Keep nodes with highest degrees, giving anchor-protected nodes first
+        # claim on the node budget (ranked among themselves by degree too).
         nodes_by_degree = sorted(graph.degree(), key=lambda x: x[1], reverse=True)
-        to_keep = {n[0] for n in nodes_by_degree[:MAX_INTERACTIVE_NODES]}
+        protected_present = [n for n, _ in nodes_by_degree if n in anchor_nodes]
+        other_nodes = [n for n, _ in nodes_by_degree if n not in anchor_nodes]
+        to_keep = set(protected_present[:MAX_INTERACTIVE_NODES])
+        remaining_budget = MAX_INTERACTIVE_NODES - len(to_keep)
+        if remaining_budget > 0:
+            to_keep.update(other_nodes[:remaining_budget])
         to_remove = [n for n in graph.nodes if n not in to_keep]
         graph.remove_nodes_from(to_remove)
 

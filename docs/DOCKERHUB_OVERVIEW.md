@@ -1,4 +1,4 @@
-# NetMedEx v1.5.15: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.5.16: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
@@ -19,7 +19,11 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.5.15
+## 🆕 What's New in v1.5.16
+
+- **Low-Frequency Query Entities No Longer Vanish from the Graph**: A specific miRNA (or any other entity you searched for) mentioned in only 1-2 articles could get silently dropped from a large network, crowded out by dominant nodes appearing in dozens of articles. The graph's automatic rendering safety caps now give query-relevant nodes/edges first claim on the display budget, so they survive even at low frequency.
+
+### Previous: v1.5.15
 
 - **Model Dropdowns Now Mirror Your Main LLM by Default**: Chat Model Override and Verifier Provider now show your main LLM's actual model instead of a bare "Custom..." placeholder when left at "Same as main provider" -- no more clicking Refresh just to see what will actually be used.
 

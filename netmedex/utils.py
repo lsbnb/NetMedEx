@@ -136,3 +136,34 @@ def get_network_profile_params() -> dict[str, Any]:
         "article_timeout": int(600 * multiplier),
         "citation_timeout": 30.0 * multiplier,
     }
+
+
+MIRNA_QUERY_TRIGGERS = {"mirna", "microrna", "mirnas", "micrornas", "微小rna", "微rna", "小分子rna"}
+
+
+def is_mirna_node(name: str | None, aliases=None, node_type: str | None = None) -> bool:
+    """Check if a node name, alias set, or type represents a microRNA (miRNA) entity."""
+    if node_type in ("miRNA", "microRNA", "RNA"):
+        return True
+    all_strings = [str(name or "")]
+    if aliases:
+        if isinstance(aliases, (set, list)):
+            all_strings.extend(str(a) for a in aliases if a)
+        elif isinstance(aliases, str):
+            all_strings.append(aliases)
+
+    import re
+
+    for s in all_strings:
+        norm = s.strip().lower()
+        if not norm:
+            continue
+        clean = re.sub(r"^(?:hsa|mmu|rno|ptr|ggo|pon|mcc)-", "", norm)
+        if clean.startswith(("mir", "microrna", "let-", "mirna")):
+            return True
+        if re.search(r"\b(?:mir|microrna|let)-\d", norm):
+            return True
+        if re.search(r"\bmir\d", clean):
+            return True
+    return False
+

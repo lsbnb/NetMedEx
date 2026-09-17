@@ -1,4 +1,4 @@
-# NetMedEx v1.5.15
+# NetMedEx v1.5.16
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -25,6 +25,10 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 
 <details>
 <summary><h2>🆕 Recent Updates</h2></summary>
+
+### v1.5.16 — 2026-09-18
+
+- **Fixed: Low-Frequency Query Entities Silently Pruned from the Visualized Graph**: Reported live — a query mentioning "microRNA" built a network where a dominant chemical/disease pair (co-occurring in all 50 retrieved articles) crowded out `miR-124`, which co-occurred in only 1-2 articles and had edge weight 1. Root cause: the automatic rendering safety caps (`MAX_INTERACTIVE_EDGES = 3000`, `MAX_INTERACTIVE_NODES = 1500`, both exist purely to keep the browser responsive on large networks) ranked purely by global edge weight/degree with no notion of relevance to the original search query, so a rare-but-searched-for entity like miR-124 was cut, and the resulting degree-0 node then disappeared entirely. Query-relevant nodes/edges (matched by name, or by category for generic terms like "microRNA" expanding to every miR-*/let-7* node) now get first claim on both caps' budgets, with the remainder still filled by global rank as before — the total rendered edges/nodes never exceeds the existing caps, so the original browser-safety guarantee is unchanged. Does not affect the user-adjustable weight-cutoff / node-degree sliders, which still work exactly as before.
 
 ### v1.5.15 — 2026-09-18
 
