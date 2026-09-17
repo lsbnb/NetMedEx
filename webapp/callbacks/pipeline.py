@@ -856,7 +856,9 @@ def callbacks(app):
                 else:
                     collection = PubTatorIO.parse(savepath["pubtator"])
 
-            graph_builder.add_collection(collection)
+            graph_builder.add_collection(
+                collection, query=data_input if input_type == "query" else None
+            )
 
             # Show citation summary if we fetched citation data
             if fetch_citations and graph_builder._citation_summary:

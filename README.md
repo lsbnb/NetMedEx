@@ -1,4 +1,4 @@
-# NetMedEx v1.5.16
+# NetMedEx v1.5.17
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -25,6 +25,11 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 
 <details>
 <summary><h2>🆕 Recent Updates</h2></summary>
+
+### v1.5.17 — 2026-09-18
+
+- **Fixed: Query Entities Missing Entirely When Built with Semantic Analysis (LLM)**: Reported live — a query mentioning "microRNA" produced a graph with zero miRNA nodes, even though PubTator3 correctly tagged 12 distinct miRNAs across the retrieved articles. Root cause, confirmed by rebuilding the exact query end-to-end: "Semantic Analysis (LLM)" (the default edge method) has the LLM extract only a handful of the relationships it judges most meaningful per article rather than an edge for every mentioned entity — any entity the LLM doesn't pick ends up with zero edges and is stripped as an isolated node during the build itself, before the graph is even saved (a different, earlier failure point than the v1.5.16 rendering-cap fix below, which only helps entities that already have an edge). Query-relevant entities left isolated by semantic extraction now get a fallback "co-mentioned" edge to another query-relevant entity from the same article, rendered with a distinct dashed style so it's never confused with a real LLM-extracted claim. Verified live: all 9 previously-isolated miRNA nodes in the reproduction gained a fallback edge and now survive.
+- **Anchor Protection Generalized to SNPs / Genomic Variants**: The same query-relevance matching used above now also recognizes generic terms like "SNP" or "polymorphism" and expands them to every `rs`-prefixed variant node, and matches on node aliases too.
 
 ### v1.5.16 — 2026-09-18
 

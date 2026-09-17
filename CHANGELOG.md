@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.17] - 2026-09-18
+
+### Fixed & Hardened
+
+- **Query-Relevant Entities Missing Entirely When Built with Semantic Analysis (LLM)**: Reported live: "Resveratrol how does it regulate Neuroinflammation via microRNA to protect against Alzheimer's Disease" produced a graph with **zero** miRNA nodes, even though PubTator3's own annotations correctly tagged 12 distinct miRNAs (mir-155, mir-214, mir-134, etc.) across the retrieved articles. Root cause, confirmed by rebuilding this exact query end-to-end: "Semantic Analysis (LLM)" (the app's default edge method) has the LLM extract only a handful of the relationships it judges most meaningful per article (measured: 12 and 2 relationships from 24 and 28 mentioned entities, respectively) rather than an edge for every mentioned entity. Any entity the LLM doesn't pick -- miRNAs here, but this affects any entity type -- ends up with zero edges and is stripped as an isolated node **during the build itself** (`PubTatorGraphBuilder.build`), before the graph is even saved; this is a different failure mode from the v1.5.16 rendering-cap fix, which only helps entities that already have a (low-weight) edge. Added `PubTatorGraphBuilder._add_anchor_cooccurrence_fallback_edges` (`netmedex/graph.py`): after semantic edges are added, any query-anchor entity (via the existing `find_query_anchor_nodes`) still at degree 0 gets a plain co-mention edge to another anchor entity that shares a source article with it, so it survives the isolated-node cleanup. These fallback edges are tagged `type="node"` (the existing dashed/undirected style) specifically so they render as "co-mentioned" rather than being confused with a real LLM-extracted directional claim. `add_collection` gained an optional `query` parameter (threaded through from `webapp/callbacks/pipeline.py`) to make the original search query available at build time. Verified live: re-running the exact reproduction with the fix applied, all 9 previously-isolated miRNA nodes gained a fallback edge (degree 0 -> 1) and the 2 nodes the LLM did connect were untouched.
+- **Anchor Protection Generalized to SNPs / Genomic Variants**: `find_query_anchor_nodes` now also expands generic query terms ("SNP", "polymorphism", "變異位點", etc.) to every `rs`-prefixed variant/mutation-type node (`is_snp_node`, `netmedex/utils.py`), and matches on node aliases in addition to the primary name -- mirroring the existing miRNA category expansion for the same class of dilution problem.
+
 ## [1.5.16] - 2026-09-18
 
 ### Fixed & Hardened

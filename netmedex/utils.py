@@ -139,6 +139,40 @@ def get_network_profile_params() -> dict[str, Any]:
 
 
 MIRNA_QUERY_TRIGGERS = {"mirna", "microrna", "mirnas", "micrornas", "微小rna", "微rna", "小分子rna"}
+SNP_QUERY_TRIGGERS = {
+    "snp",
+    "snps",
+    "snv",
+    "snvs",
+    "polymorphism",
+    "polymorphisms",
+    "single nucleotide polymorphism",
+    "單核苷酸多態性",
+    "變異位點",
+    "基因突變",
+    "突變位點",
+}
+
+
+def is_snp_node(name: str | None, aliases=None, node_type: str | None = None) -> bool:
+    """Check if a node represents a Single Nucleotide Polymorphism (SNP) or genomic mutation."""
+    if node_type in ("SNP", "DNAMutation", "ProteinMutation"):
+        return True
+    all_strings = [str(name or "")]
+    if aliases:
+        if isinstance(aliases, (set, list)):
+            all_strings.extend(str(a) for a in aliases if a)
+        elif isinstance(aliases, str):
+            all_strings.append(aliases)
+
+    for s in all_strings:
+        norm = s.strip().lower()
+        if not norm:
+            continue
+        if norm.startswith("rs") and len(norm) > 2 and norm[2:].isdigit():
+            return True
+    return False
+
 
 
 def is_mirna_node(name: str | None, aliases=None, node_type: str | None = None) -> bool:

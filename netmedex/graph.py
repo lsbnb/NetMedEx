@@ -50,7 +50,13 @@ except ImportError:
     # Semantic RE may not be available if dependencies are missing
     SemanticRelationshipExtractor = None
 from netmedex.citation_fetcher import fetch_citation_counts
-from netmedex.utils import MIRNA_QUERY_TRIGGERS, generate_stable_id, is_mirna_node
+from netmedex.utils import (
+    MIRNA_QUERY_TRIGGERS,
+    SNP_QUERY_TRIGGERS,
+    generate_stable_id,
+    is_mirna_node,
+    is_snp_node,
+)
 
 MIN_EDGE_WIDTH = 1.0
 MAX_EDGE_WIDTH = 20
@@ -162,6 +168,7 @@ class PubTatorGraphBuilder:
     def add_collection(
         self,
         collection: PubTatorCollection,
+        query: str | None = None,
     ):
         use_mesh_vocabulary = HEADERS["use_mesh_vocabulary"] in collection.headers
 
@@ -252,6 +259,14 @@ class PubTatorGraphBuilder:
             # Convert and add all edges
             pubtator_edges = self.semantic_extractor.convert_to_pubtator_edges(semantic_edges)
             self._add_edges(pubtator_edges)
+
+            # Semantic extraction only surfaces a handful of LLM-judged
+            # relationships per article (e.g. 2-12 out of 20-30 mentioned
+            # entities) -- most mentioned entities, including ones the user
+            # explicitly searched for, end up with zero edges and are later
+            # stripped as isolated nodes. Give query-relevant entities a
+            # fallback co-mention edge so they still appear.
+            self._add_anchor_cooccurrence_fallback_edges(query)
 
         else:
             # Standard sequential processing
@@ -536,9 +551,9 @@ class PubTatorGraphBuilder:
     def find_query_anchor_nodes(graph: nx.Graph, query: str | None) -> set:
         """Identify nodes that correspond to a term in the original build query.
 
-        Matches are either literal (the node's name appears in the query text)
-        or category-based (a generic mention like "microRNA" expands to every
-        miR-*/let-7* node, mirroring the same expansion GraphRetriever performs
+        Matches are either literal/alias-based (the node's name or alias appears in the query text)
+        or category-based (a generic mention like "microRNA" or "SNP" expands to every
+        matching entity node, mirroring the expansion GraphRetriever performs
         for RAG retrieval). Used only to exempt query-relevant nodes/edges from
         the *automatic* interactive-rendering safety caps below -- never from
         the user-adjustable weight-cutoff or node-degree filters, which must
@@ -548,20 +563,84 @@ class PubTatorGraphBuilder:
             return set()
         query_lower = str(query).lower()
         mirna_query = any(trigger in query_lower for trigger in MIRNA_QUERY_TRIGGERS)
+        snp_query = any(trigger in query_lower for trigger in SNP_QUERY_TRIGGERS)
 
         anchors = set()
         for node_id, data in graph.nodes(data=True):
             name = data.get("name")
-            name_lower = str(name).lower() if name else ""
-            # Require a minimum length so short/generic names (e.g. "cell")
-            # don't spuriously match most queries and defeat the safety cap.
-            if len(name_lower) >= 3 and name_lower in query_lower:
+            aliases = data.get("aliases")
+            node_type = data.get("type")
+
+            names_to_check = []
+            if name:
+                names_to_check.append(str(name).lower())
+            if aliases:
+                if isinstance(aliases, (set, list)):
+                    names_to_check.extend(str(a).lower() for a in aliases if a)
+                elif isinstance(aliases, str):
+                    names_to_check.append(aliases.lower())
+
+            # 1. Literal / Alias match with query
+            if any(len(n) >= 3 and n in query_lower for n in names_to_check):
                 anchors.add(node_id)
-            elif mirna_query and is_mirna_node(
-                name, aliases=data.get("aliases"), node_type=data.get("type")
-            ):
+            # 2. Category match for microRNA
+            elif mirna_query and is_mirna_node(name, aliases=aliases, node_type=node_type):
+                anchors.add(node_id)
+            # 3. Category match for SNP / genomic mutations
+            elif snp_query and is_snp_node(name, aliases=aliases, node_type=node_type):
                 anchors.add(node_id)
         return anchors
+
+    def _add_anchor_cooccurrence_fallback_edges(self, query: str | None):
+        """Give query-relevant entities left isolated by semantic extraction a
+        fallback co-mention edge, so they still appear in the built graph.
+
+        Semantic-analysis edge extraction has the LLM surface only the
+        relationships it judges most meaningful per article (commonly a
+        handful out of 20-30 mentioned entities) rather than connecting every
+        mentioned entity. An entity the user explicitly searched for (e.g. a
+        specific miRNA) can therefore end up with zero edges and be silently
+        stripped as an isolated node -- unrelated to, and not fixable by, the
+        render-time safety-cap exemption `find_query_anchor_nodes` was
+        originally added for, since these nodes never had an edge to begin
+        with.
+
+        For each isolated anchor node, add a plain co-mention edge to another
+        anchor node that shares a source article with it (mirroring
+        `_create_complete_graph_edges`'s co-occurrence edges). Tagged
+        `type="node"` so it renders with the existing dashed/undirected style
+        and is never confused with a real LLM-extracted semantic claim.
+        """
+        anchors = self.find_query_anchor_nodes(self.graph, query)
+        if len(anchors) < 2:
+            return
+
+        isolated_anchors = [n for n in anchors if self.graph.degree(n) == 0]
+        if not isolated_anchors:
+            return
+        connectable_anchors = [n for n in anchors if n not in isolated_anchors]
+        if not connectable_anchors:
+            return
+
+        new_edges: list[PubTatorEdge] = []
+        for node_id in isolated_anchors:
+            node_pmids = set(self.graph.nodes[node_id].get("pmids") or [])
+            if not node_pmids:
+                continue
+            for other_id in connectable_anchors:
+                other_pmids = set(self.graph.nodes[other_id].get("pmids") or [])
+                for pmid in node_pmids & other_pmids:
+                    n1, n2 = sorted((node_id, other_id))
+                    new_edges.append(PubTatorEdge(n1, n2, pmid, "co-mention"))
+
+        if not new_edges:
+            return
+
+        added_pairs = {tuple(sorted((e.node1_id, e.node2_id))) for e in new_edges}
+        self._add_edges(new_edges)
+        for u, v in added_pairs:
+            if self.graph.has_edge(u, v):
+                self.graph.edges[u, v]["type"] = "node"
 
     @staticmethod
     def _remove_edges_by_rank(
