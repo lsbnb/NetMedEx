@@ -9,10 +9,11 @@ def callbacks(app):
         Output("max-articles", "tooltip"),
         Input("advanced-settings-btn", "n_clicks"),
         Input("close-advanced-settings-btn", "n_clicks"),
+        Input("close-advanced-settings-btn-bottom", "n_clicks"),
         State("advanced-settings-collapse", "style"),
         prevent_initial_call=True,
     )
-    def open_advanced_options(n_toggle, n_close, style):
+    def open_advanced_options(n_toggle, n_close, n_close_bottom, style):
         ctx = dash.callback_context
         if not ctx.triggered:
             return dash.no_update, dash.no_update, dash.no_update
@@ -24,7 +25,7 @@ def callbacks(app):
             style = {"display": "none"}
         current_display = style.get("display", "none")
 
-        if button_id == "close-advanced-settings-btn":
+        if button_id in ("close-advanced-settings-btn", "close-advanced-settings-btn-bottom"):
             new_display = "none"
             tooltip_visible = False
         else:

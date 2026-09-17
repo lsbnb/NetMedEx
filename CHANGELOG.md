@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.10] - 2026-09-17
+
+### Added
+
+- **Bottom Close Button for Advanced Settings**: The panel previously had only one close button, at the top (`close-advanced-settings-btn`). After the recent additions (Chat Model Override, expanded Verifier Provider), the panel is long enough that closing it required scrolling back up. Added `close-advanced-settings-btn-bottom` at the end of the settings list, wired into the existing `open_advanced_options` callback (`webapp/callbacks/advanced_settings.py`) alongside the original close button -- either one closes the panel.
+
 ## [1.5.9] - 2026-09-17
 
 ### Added

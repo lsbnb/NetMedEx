@@ -1108,6 +1108,13 @@ advanced_settings = html.Div(
                 relation_verification_toggle,
                 chat_model_override,
                 network_profile,
+                dbc.Button(
+                    "Close",
+                    id="close-advanced-settings-btn-bottom",
+                    color="secondary",
+                    outline=True,
+                    className="w-100 mt-3",
+                ),
             ],
             id="advanced-settings-collapse",
             className="settings-collapse",

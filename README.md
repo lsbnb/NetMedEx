@@ -1,4 +1,4 @@
-# NetMedEx v1.5.9
+# NetMedEx v1.5.10
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -25,6 +25,10 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 
 <details>
 <summary><h2>🆕 Recent Updates</h2></summary>
+
+### v1.5.10 — 2026-09-17
+
+- **Close Button at the Bottom of Advanced Settings**: The panel has grown a lot recently (Chat Model Override, expanded Verifier Provider) and only had a close button at the top. Added a second "Close" button at the bottom so you don't have to scroll back up after configuring settings further down the panel.
 
 ### v1.5.9 — 2026-09-17
 
