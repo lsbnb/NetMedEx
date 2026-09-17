@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.18] - 2026-09-18
+
+### Fixed & Hardened
+
+- **Entity-Listing Chat Answers Overclaimed Completeness**: `_build_entity_listing_response` (`netmedex/chat.py`), used for questions like "list all miRNAs linked to X," compiles its answer purely from surviving graph nodes and told the user this was "a complete list" regardless of how the graph was built. With `edge_method` `semantic` or `relation` (see v1.5.17), an entity mentioned in the abstracts but never assigned an extracted relationship is removed as an isolated node during the build itself, so the claim was often inaccurate. The response now checks `graph.graph["edge_method"]` and, for `semantic`/`relation` graphs, replaces the completeness claim with a caveat that entities without an extracted relationship may be missing from the list; `co-occurrence` graphs (which connect every mentioned entity pair, so no such gap exists) keep the original wording.
+- **Hardened Sub-Network PMID Selection Against Malformed Elements**: The Cytoscape-selection-to-PMID-filter logic in `webapp/callbacks/chat_callbacks.py` (used when a user manually selects a sub-network before chatting) now guards every edge/node dict access with `isinstance` checks and tolerates `None`/non-list `pmids` values, instead of assuming every selected element is always a well-formed dict.
+
 ## [1.5.17] - 2026-09-18
 
 ### Fixed & Hardened

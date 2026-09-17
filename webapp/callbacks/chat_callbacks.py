@@ -536,22 +536,22 @@ def callbacks(app):
         # This matches the RAG indexing logic which indexes documents from both sources
         pmids = set()
         if selected_edges:
-            for edge in selected_edges:
-                if "pmids" in edge:
-                    edge_pmids = edge["pmids"]
-                    if isinstance(edge_pmids, list):
-                        pmids.update(edge_pmids)
-                    elif isinstance(edge_pmids, str):
+            for edge in selected_edges or []:
+                if isinstance(edge, dict) and "pmids" in edge:
+                    edge_pmids = edge.get("pmids")
+                    if isinstance(edge_pmids, (list, set, tuple)):
+                        pmids.update(str(p) for p in edge_pmids if p)
+                    elif isinstance(edge_pmids, str) and edge_pmids:
                         pmids.add(edge_pmids)
 
         # Also include PMIDs from selected nodes (union, not fallback)
         if real_selected_nodes:
-            for node in real_selected_nodes:
-                if "pmids" in node:
-                    node_pmids = node["pmids"]
-                    if isinstance(node_pmids, list):
-                        pmids.update(node_pmids)
-                    elif isinstance(node_pmids, str):
+            for node in real_selected_nodes or []:
+                if isinstance(node, dict) and "pmids" in node:
+                    node_pmids = node.get("pmids")
+                    if isinstance(node_pmids, (list, set, tuple)):
+                        pmids.update(str(p) for p in node_pmids if p)
+                    elif isinstance(node_pmids, str) and node_pmids:
                         pmids.add(node_pmids)
 
         article_count = len(pmids)
@@ -736,17 +736,19 @@ def callbacks(app):
                 if has_selection:
                     selection_pmids = set()
                     for edge in selected_edges or []:
-                        ep = edge.get("pmids", [])
-                        if isinstance(ep, str):
-                            selection_pmids.add(ep)
-                        else:
-                            selection_pmids.update(str(p) for p in ep)
-                    for node in real_selected_nodes:
-                        np_ = node.get("pmids", [])
-                        if isinstance(np_, str):
-                            selection_pmids.add(np_)
-                        else:
-                            selection_pmids.update(str(p) for p in np_)
+                        if isinstance(edge, dict):
+                            ep = edge.get("pmids")
+                            if isinstance(ep, str) and ep:
+                                selection_pmids.add(ep)
+                            elif isinstance(ep, (list, set, tuple)):
+                                selection_pmids.update(str(p) for p in ep if p)
+                    for node in real_selected_nodes or []:
+                        if isinstance(node, dict):
+                            np_ = node.get("pmids")
+                            if isinstance(np_, str) and np_:
+                                selection_pmids.add(np_)
+                            elif isinstance(np_, (list, set, tuple)):
+                                selection_pmids.update(str(p) for p in np_ if p)
                     documents = _abstract_documents_from_graph(G, pmid_filter=selection_pmids)
                 else:
                     # No sub-network selected: index every abstract in the built network,
@@ -1023,17 +1025,19 @@ def callbacks(app):
                 # Use only the PMIDs from the selected sub-network.
                 selection_pmids: set[str] = set()
                 for edge in selected_edges or []:
-                    ep = edge.get("pmids", [])
-                    if isinstance(ep, str):
-                        selection_pmids.add(ep)
-                    else:
-                        selection_pmids.update(str(p) for p in ep)
-                for node in real_selected_nodes:
-                    np_ = node.get("pmids", [])
-                    if isinstance(np_, str):
-                        selection_pmids.add(np_)
-                    else:
-                        selection_pmids.update(str(p) for p in np_)
+                    if isinstance(edge, dict):
+                        ep = edge.get("pmids")
+                        if isinstance(ep, str) and ep:
+                            selection_pmids.add(ep)
+                        elif isinstance(ep, (list, set, tuple)):
+                            selection_pmids.update(str(p) for p in ep if p)
+                for node in real_selected_nodes or []:
+                    if isinstance(node, dict):
+                        np_ = node.get("pmids")
+                        if isinstance(np_, str) and np_:
+                            selection_pmids.add(np_)
+                        elif isinstance(np_, (list, set, tuple)):
+                            selection_pmids.update(str(p) for p in np_ if p)
 
                 documents = _abstract_documents_from_graph(G, pmid_filter=selection_pmids)
                 logger.info(

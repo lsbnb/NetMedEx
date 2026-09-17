@@ -651,12 +651,32 @@ Each question MUST:
         # Determine if we should use CJK headers based on either message or session language
         use_cjk = self._looks_like_cjk(user_message) or self._looks_like_cjk(session_language)
 
+        # This list is compiled purely from surviving graph nodes. With
+        # edge_method in {"semantic", "relation"}, extraction only creates
+        # edges for the handful of relationships it judges most meaningful
+        # per article, so entities that never got an edge are removed as
+        # isolated nodes during the build itself (see
+        # PubTatorGraphBuilder._add_anchor_cooccurrence_fallback_edges) --
+        # meaning this list can under-report entities that are still
+        # mentioned in the underlying abstracts. Co-occurrence graphs
+        # connect every mentioned entity pair, so no such gap exists there.
+        edge_method = graph.graph.get("edge_method")
+        possibly_incomplete = edge_method in ("semantic", "relation")
+
         if use_cjk:
             title = "證據分析"
             hypo = "假說與推論"
             follow = "建議問題："
             intro = f"在目前選取的網路中，共找到 {len(sorted_entities)} 個{entity_kind}相關實體："
-            no_hypo = "這是根據目前圖譜節點直接整理出的完整清單，無需額外推論。"
+            if possibly_incomplete:
+                no_hypo = (
+                    "這是根據目前圖譜節點直接整理出的清單，無需額外推論；"
+                    "但本次建圖使用的是 Semantic Analysis / Relation-Only 建邊方式，"
+                    "只有被抽取出明確關係的實體才會保留在圖中，因此摘要中提到、"
+                    "但未被抽取出關係的同類實體可能不會出現在這份清單裡。"
+                )
+            else:
+                no_hypo = "這是根據目前圖譜節點直接整理出的完整清單，無需額外推論。"
             follow_lines = [
                 "這些實體分別出現在哪些 PMID？",
                 "哪些實體之間具有 semantic edges？",
@@ -667,7 +687,16 @@ Each question MUST:
             hypo = "Hypotheses / Speculative Inference"
             follow = "Suggested Questions:"
             intro = f"I found {len(sorted_entities)} {entity_kind}-related entities in the current selected network:"
-            no_hypo = "This list is directly compiled from the current graph nodes, so no additional inference was needed."
+            if possibly_incomplete:
+                no_hypo = (
+                    "This list is directly compiled from the current graph nodes, so no "
+                    "additional inference was needed; however, this network was built with "
+                    "Semantic Analysis / Relation-Only edges, which only keep entities that "
+                    "were extracted into an explicit relationship. Entities mentioned in the "
+                    "abstracts but never assigned a relationship may be missing from this list."
+                )
+            else:
+                no_hypo = "This list is directly compiled from the current graph nodes, so no additional inference was needed."
             follow_lines = [
                 "Which PMIDs mention each entity?",
                 "Which of these entities are connected by semantic edges?",

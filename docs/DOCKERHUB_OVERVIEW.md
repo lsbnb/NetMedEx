@@ -1,4 +1,4 @@
-# NetMedEx v1.5.17: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.5.18: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
@@ -19,7 +19,11 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.5.17
+## 🆕 What's New in v1.5.18
+
+- **Entity-Listing Chat Answers No Longer Overclaim Completeness**: Asking Chat to "list all miRNAs linked to X" used to always say the result was "a complete list." For networks built with Semantic Analysis or Relation-Only edges, entities that were never assigned an extracted relationship are removed as isolated nodes, so the list could genuinely be incomplete — Chat now says so in that case, while co-occurrence-built networks (which have no such gap) keep the original wording.
+
+### Previous: v1.5.17
 
 - **Query Entities No Longer Missing When Built with Semantic Analysis**: A specific miRNA (or other entity you searched for) could be entirely absent from a network built with Semantic Analysis (LLM), because that mode only extracts a handful of "headline" relationships per article rather than an edge for every mentioned entity. Query-relevant entities left without any edge now get a fallback co-mention link so they still appear, shown with a distinct dashed style.
 

@@ -1,4 +1,4 @@
-# NetMedEx v1.5.17
+# NetMedEx v1.5.18
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -25,6 +25,10 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 
 <details>
 <summary><h2>🆕 Recent Updates</h2></summary>
+
+### v1.5.18 — 2026-09-18
+
+- **Fixed: Entity-Listing Chat Answers Overclaimed Completeness**: Asking Chat "list all miRNAs linked to X" always claimed the result was "a complete list," compiled purely from surviving graph nodes. For networks built with Semantic Analysis or Relation-Only edges, an entity mentioned in the abstracts but never assigned an extracted relationship is removed as an isolated node during the build (see v1.5.17), so that claim was often inaccurate. The response now checks how the network was built and adds a caveat for Semantic Analysis / Relation-Only graphs; co-occurrence-built graphs (which connect every mentioned entity pair, so no such gap exists) keep the original wording.
 
 ### v1.5.17 — 2026-09-18
 
