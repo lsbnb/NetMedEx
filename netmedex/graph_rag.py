@@ -991,15 +991,23 @@ class GraphRetriever:
                 "retrieval_safe": False,
             }
 
-        direction_contradicted = False
+        # A single direct edge (len(path) == 2) traversed "backwards" relative to
+        # its recorded source/target is still a perfectly valid, correctly-citable
+        # fact -- _format_path now renders it in its true direction regardless of
+        # traversal order, so there is nothing wrong to discard. Chaining through
+        # 3+ nodes is different: composing "A causes B causes C" into one claim
+        # only makes sense if each hop's direction actually flows the way the
+        # chain is presented, so a reversed hop there still invalidates the chain.
+        multi_hop_direction_contradicted = False
         for index, support in enumerate(edge_supports):
             if not support["directional"]:
                 continue
             edge_data = self.graph.edges[path[index], path[index + 1]]
             source_id = edge_data.get("source_id")
             if source_id is not None and str(source_id) != str(path[index]):
-                direction_contradicted = True
                 reasons.append(f"direction_contradicted_hop_{index + 1}")
+                if len(path) > 2:
+                    multi_hop_direction_contradicted = True
 
         source_anchors = anchor_features.get("source_anchor_ids", [])
         target_anchors = anchor_features.get("target_anchor_ids", [])
@@ -1085,7 +1093,7 @@ class GraphRetriever:
         elif len(path) == 3:
             reasons.append("plausible_bridge" if bridge_plausible else "weak_bridge_alignment")
 
-        if direction_contradicted:
+        if multi_hop_direction_contradicted:
             tier = "C"
         elif every_hop_complete and endpoint_aligned and bridge_plausible:
             tier = "A"
@@ -1405,6 +1413,15 @@ class GraphRetriever:
             support = self._select_edge_support(
                 edge_data, self.claim_confidence_threshold
             )
+            # A directional edge's true source/target is fixed at graph-build time
+            # (edge_data["source_id"]) independent of which end the traversal
+            # started from. Printing strictly in traversal order would otherwise
+            # state some hops backwards (e.g. "BCR-ABL activates imatinib") purely
+            # because the query anchored on the target node -- state it in its
+            # recorded direction instead.
+            source_id = edge_data.get("source_id")
+            if support["directional"] and source_id is not None and str(source_id) != str(u):
+                u_name, v_name = v_name, u_name
             directionality = "[DIRECTIONAL]" if support["directional"] else "[SYMMETRIC]"
             pmid = (
                 f" [PMID:{support['selected_pmid']}]" if support["selected_pmid"] else ""

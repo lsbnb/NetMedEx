@@ -1,4 +1,4 @@
-# NetMedEx v1.5.2: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.5.3: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
@@ -19,7 +19,13 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.5.2
+## 🆕 What's New in v1.5.3
+
+- **Better Layer 3 Evidence Recovery**: High-confidence directional edges were being discarded purely because the query happened to anchor on the "wrong" end of the edge. Single-hop edges are now correctly kept and stated in their true direction.
+- **Provider-Switch Model Bug Fixed**: Switching LLM providers without explicitly specifying a model no longer risks sending the previous provider's model name to the new one.
+- **Realistic Local-Model Time Estimates**: The semantic-analysis progress message now gives a much wider, honest time estimate for large local models.
+
+### Previous: v1.5.2
 
 - **Cross-Literature Conflict Detection**: When two PMIDs report opposite regulatory direction for the same edge (e.g. one says "inhibits", another "activates"), Chat's Layer 3 now surfaces both sides as an explicit, unresolved **Literature Conflict** instead of silently picking one.
 - **Sharper Layer 3 Causal-Mechanism Reasoning**: Raised the local-model (Ollama) chat token budget so Layer 3's evidence table, Weakest Link, Testable Prediction, and Suggested Validation fields are no longer truncated mid-response.

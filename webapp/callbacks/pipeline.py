@@ -721,12 +721,23 @@ def callbacks(app):
                             )
                         )
 
+                # "2-3 seconds per article" was calibrated against small/cloud
+                # models. A large local model (e.g. a 120B Ollama model) has been
+                # measured taking ~90s/article on modest hardware -- 30-40x that --
+                # so give local users a much wider, honest estimate instead of one
+                # that will look badly wrong the moment the run passes 30 seconds.
+                time_estimate = (
+                    "this can take from under a minute to 10+ minutes for a large "
+                    "local model, depending on your hardware"
+                    if llm_provider == "local"
+                    else "this may take 2-3 seconds per article"
+                )
                 set_progress(
                     (
                         0,
                         total_articles,
                         f"0/{total_articles}",
-                        f"Starting semantic analysis for {total_articles} articles (this may take 2-3 seconds per article)...",
+                        f"Starting semantic analysis for {total_articles} articles ({time_estimate})...",
                     )
                 )
             else:

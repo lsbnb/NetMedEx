@@ -555,7 +555,12 @@ def test_graph_rag_gate_keeps_incomplete_path_for_retrieval_only():
     assert "[DIRECTIONAL MECHANISTIC EDGES: NO]" in context
 
 
-def test_graph_rag_gate_discards_contradicted_direction():
+def test_graph_rag_single_hop_reversed_traversal_is_claim_safe_and_correctly_oriented():
+    """A direct (2-node) edge traversed "backwards" relative to its recorded
+    source/target is still a correct, citable fact -- only the *presentation*
+    was backwards, not the evidence. It must stay claim-safe and _format_path
+    must state it in its true direction ("B activates A"), not the traversal
+    order ("A activates B", which the evidence never said)."""
     graph = nx.Graph()
     graph.add_node("a", name="A", type="gene")
     graph.add_node("b", name="B", type="gene")
@@ -573,10 +578,51 @@ def test_graph_rag_gate_discards_contradicted_direction():
         ["a"], query="Does A activate B?", max_hops=1
     )
 
-    assert paths[0]["gate_tier"] == "C"
-    assert paths[0]["retrieval_safe"] is False
+    assert paths[0]["gate_tier"] == "A"
+    assert paths[0]["claim_safe"] is True
+    assert paths[0]["retrieval_safe"] is True
+    # Still noted for transparency, but no longer disqualifying for a single hop.
     assert "direction_contradicted_hop_1" in paths[0]["gate_reasons"]
-    assert "[GATE TIER" not in context
+    assert "B --[activates" in context
+    assert "A --[activates" not in context
+
+
+def test_graph_rag_multi_hop_gate_still_discards_contradicted_direction():
+    """Unlike a single direct edge, composing a 3-node causal chain through a
+    hop whose direction is reversed would misrepresent the mechanism (the
+    chain's narrative only makes sense if each hop actually flows the way it's
+    presented) -- multi-hop paths must still be discarded in this case."""
+    graph = nx.Graph()
+    graph.add_node("a", name="A", type="gene")
+    graph.add_node("b", name="B", type="gene")
+    graph.add_node("c", name="C", type="gene")
+    graph.add_edge(
+        "a",
+        "b",
+        edge_weight=1.0,
+        source_id="b",
+        relations={"1": {"activates"}},
+        evidences={"1": {"activates": "B activates A."}},
+        confidences={"1": {"activates": 0.9}},
+    )
+    graph.add_edge(
+        "b",
+        "c",
+        edge_weight=1.0,
+        source_id="b",
+        relations={"2": {"inhibits"}},
+        evidences={"2": {"inhibits": "B inhibits C."}},
+        confidences={"2": {"inhibits": 0.9}},
+    )
+
+    context, paths = GraphRetriever(graph).get_subgraph_context_with_paths(
+        ["a"], query="Does A regulate C via B?", max_hops=2
+    )
+
+    chain = next(p for p in paths if p["node_ids"] == ["a", "b", "c"])
+    assert chain["gate_tier"] == "C"
+    assert chain["retrieval_safe"] is False
+    assert "direction_contradicted_hop_1" in chain["gate_reasons"]
 
 
 def test_graph_rag_gate_downgrades_two_hop_path_with_weak_bridge_alignment():

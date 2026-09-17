@@ -1,4 +1,4 @@
-# NetMedEx v1.5.2
+# NetMedEx v1.5.3
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -26,7 +26,11 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 <details>
 <summary><h2>🆕 Recent Updates</h2></summary>
 
-### v1.5.2 — 2026-09-15
+### v1.5.3 — 2026-09-17
+
+- **Single-Hop Directional Edges No Longer Wrongly Discarded**: Found via a live local-vs-cloud Layer 3 comparison — a direct edge traversed "backwards" relative to its recorded source/target (e.g. the query anchored on the target node) was being discarded outright, even with high-confidence, quote-aligned evidence. `GraphRetriever._format_path` now states such edges in their true recorded direction instead of the traversal order, and the gate no longer disqualifies a single hop for this reason (multi-hop chains still require direction-consistent hops, since composing "A causes B causes C" only makes sense if each hop actually flows that way).
+- **LLM-Configuration Fix: Provider Switch No Longer Leaves a Stale Model Name**: `LLMClient.initialize_client()` reset the API base URL when switching providers but not the model — so a client that auto-initialized as `local` (e.g. `LOCAL_LLM_MODEL=gpt-oss:120b`) and was then asked to use `openai` without an explicit model kept sending the Ollama model tag to OpenAI's API, 404ing every request. Found live via the FastAPI bridge. Model now resets to the new provider's default under the same conditions as the base URL.
+- **Local-Model Time Estimate**: The "this may take 2-3 seconds per article" message during semantic network construction was calibrated for small/cloud models; a 120B local model measured ~90s/article in testing. The estimate now widens automatically for the `local` provider.
 
 - **Layer 3 Diagnostic Logging**: `GraphRetriever` now logs whether each chat turn actually has a directional (mechanistic) edge to reason over, so a thin/duplicate-feeling Layer 3 can be attributed to its real cause (usually a `co-occurrence`-only graph) instead of guesswork.
 - **In-Chat "Switch to Semantic Analysis" Nudge**: When a turn has no directional edges to reason over and the network wasn't already built with Semantic Analysis, Chat now appends an inline suggestion to rebuild with that edge method — instead of relying on the user to notice Layer 3's own in-text skip message.

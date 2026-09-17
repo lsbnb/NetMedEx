@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.3] - 2026-09-17
+
+### Fixed & Hardened
+
+- **Single-Hop Directional Edges No Longer Wrongly Discarded**: `_classify_path_gate` in `graph_rag.py` forced `gate_tier="C"` (fully discarded, not even retrieval-safe) whenever a directional edge's recorded `source_id` didn't match the traversal order of the requested path -- including a plain 2-node edge where the query simply anchored on the target end. Live-tested comparison (imatinib/BCR-ABL) showed this discarding a high-confidence (`support_tier="A"`, confidence 0.85, quote-aligned) `targets` edge purely because of anchor direction, forcing Layer 3 into its text-only fallback despite the graph having exactly the evidence it needed. Now only a *multi-hop* chain (3+ nodes) is discarded for a reversed hop, since composing "A causes B causes C" requires each hop to actually flow that way; a single direct edge is still fully valid evidence regardless of which end the traversal started from. `GraphRetriever._format_path` now renders every directional edge in its true recorded direction (swapping the printed node order when needed) rather than blindly following traversal order, so the LLM is never shown a reversed claim (e.g. "BCR-ABL activates imatinib") that the underlying evidence never supported.
+- **LLM Provider Switch No Longer Leaves a Stale Model Name**: `LLMClient.initialize_client()` already reset `base_url` to the new provider's default when `provider` changed and no explicit `base_url` was given, but did not do the same for `model`. A client auto-initialized as `local` (`LOCAL_LLM_MODEL=gpt-oss:120b`) that was then switched to `provider="openai"` without an explicit `model` kept the Ollama model tag and sent it to OpenAI's API, 404ing (`model gpt-oss:120b does not exist`) on every call. Found live via the FastAPI bridge while comparing local vs. cloud providers. `initialize_client()` now resets `model` to the new provider's env-configured or hardcoded default under the same "provider changed and no explicit value given" condition already used for `base_url`.
+- **Local-Model Semantic-Analysis Time Estimate**: The "this may take 2-3 seconds per article" progress message (`pipeline.py`) was calibrated against small/cloud models; a 120B local Ollama model measured ~90s/article (~12 minutes for 8 articles) in testing -- 30-40x that estimate. The message now widens automatically to a range ("under a minute to 10+ minutes... depending on your hardware") when `llm_provider == "local"`.
+
 ## [1.5.2] - 2026-09-15
 
 ### Added

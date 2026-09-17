@@ -326,6 +326,24 @@ class LLMClient:
                     "anthropic": ANTHROPIC_BASE_URL,
                 }
                 self.base_url = provider_defaults.get(self.provider, self.base_url)
+            # Switching providers without an explicit model must not leave a
+            # stale model name from the previous provider (e.g. a local Ollama
+            # tag) attached to the new one -- that silently sends garbage model
+            # IDs to the new provider's API instead of failing at config time.
+            if model is None and self.provider != previous_provider:
+                model_env_defaults = {
+                    "openai": ("OPENAI_MODEL", "gpt-4o-mini"),
+                    "google": ("GOOGLE_MODEL", "gemini-1.5-pro"),
+                    "openrouter": ("OPENROUTER_MODEL", "openai/gpt-4o-mini"),
+                    "local": ("LOCAL_LLM_MODEL", "gpt-4o-mini"),
+                    "nvidia": ("NVIDIA_NIM_MODEL", "gpt-4o-mini"),
+                    "groq": ("GROQ_MODEL", "gpt-4o-mini"),
+                    "anthropic": ("ANTHROPIC_MODEL", "claude-sonnet-4-6"),
+                }
+                env_key, fallback = model_env_defaults.get(
+                    self.provider, ("OPENAI_MODEL", "gpt-4o-mini")
+                )
+                self.model = os.getenv(env_key, fallback)
         if self.provider == "google" and gemini_api_disabled():
             raise RuntimeError(
                 "Google/Gemini API is temporarily disabled by DISABLE_GEMINI_API. "
