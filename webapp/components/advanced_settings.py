@@ -193,11 +193,39 @@ chat_model_override = html.Div(
                     debounce=True,
                     className="mb-2",
                 ),
-                dbc.Input(
+                dcc.Dropdown(
                     id="chat-override-model",
-                    type="text",
-                    placeholder="Model name, e.g. gpt-4o or gpt-5.6-sol",
-                    debounce=True,
+                    options=[{"label": "Custom...", "value": "custom"}],
+                    value="custom",
+                    clearable=False,
+                    className="mb-1",
+                ),
+                html.Div(
+                    [
+                        dbc.Button(
+                            "🔄 Refresh available models",
+                            id="refresh-chat-override-models-btn",
+                            color="secondary",
+                            size="sm",
+                            outline=True,
+                        ),
+                        html.Span(
+                            id="chat-override-model-fetch-status",
+                            className="small text-muted ms-2",
+                        ),
+                    ],
+                    className="mb-2",
+                ),
+                html.Div(
+                    [
+                        dbc.Input(
+                            id="chat-override-custom-model",
+                            type="text",
+                            placeholder="Model name, e.g. gpt-4o or gpt-5.6-sol",
+                            debounce=True,
+                        ),
+                    ],
+                    id="chat-override-custom-model-div",
                     className="mb-2",
                 ),
                 dbc.Input(

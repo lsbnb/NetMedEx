@@ -1,4 +1,4 @@
-# NetMedEx v1.5.7: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.5.8: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
@@ -19,7 +19,11 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.5.7
+## 🆕 What's New in v1.5.8
+
+- **Chat Model Override Dropdown**: The Chat Model Override field now fetches and lists real available models from your chosen provider via a "🔄 Refresh available models" button, instead of requiring you to type an exact model name.
+
+### Previous: v1.5.7
 
 - **Chat Now Sees Your Whole Network, Not Just the Top 50 Abstracts**: Removed a silent cap that indexed only the top 50 (by citation weight) of your built network's abstracts into Chat's RAG when no sub-network was manually selected — the rest were unreachable for the entire conversation. Chat now indexes everything you built.
 

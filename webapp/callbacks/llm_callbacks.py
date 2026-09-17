@@ -948,6 +948,99 @@ def callbacks(app):
             logger.error(f"Error fetching NVIDIA NIM models: {_sanitize_error_message(str(e))}")
             return no_update, f"❌ {_sanitize_error_message(str(e))}", no_update
 
+    @app.callback(
+        Output("chat-override-custom-model-div", "style"),
+        Input("chat-override-model", "value"),
+    )
+    def toggle_chat_override_custom_model_input(selected_model):
+        if selected_model == "custom":
+            return {"display": "block", "marginTop": "10px"}
+        return {"display": "none"}
+
+    @app.callback(
+        [
+            Output("chat-override-model", "options"),
+            Output("chat-override-model-fetch-status", "children"),
+            Output("chat-override-model", "value"),
+        ],
+        Input("refresh-chat-override-models-btn", "n_clicks"),
+        [
+            State("chat-override-provider", "value"),
+            State("chat-override-api-key", "value"),
+            State("chat-override-base-url", "value"),
+            State("chat-override-model", "value"),
+        ],
+        prevent_initial_call=True,
+    )
+    def fetch_chat_override_models(n_clicks, provider, api_key, base_url, current_value):
+        """One shared fetch button for the Chat Model Override dropdown, dispatching
+        to whichever provider is currently selected -- mirrors the per-provider
+        fetch_*_models callbacks above, but kept as a single callback since the
+        override section intentionally uses one shared dropdown, not a per-provider
+        UI block (see the compact-vs-full-UI tradeoff noted when this section was added).
+        """
+        if not n_clicks:
+            raise dash.exceptions.PreventUpdate
+        provider = (provider or "openai").strip().lower()
+
+        try:
+            if provider == "openai":
+                models = llm_client.get_openai_models(api_key or "")
+            elif provider == "google":
+                models = llm_client.get_gemini_models(api_key or "")
+            elif provider == "groq":
+                models = llm_client.get_groq_models(api_key or "")
+            elif provider == "anthropic":
+                models = llm_client.get_anthropic_models(api_key or "")
+            elif provider == "openrouter":
+                models = llm_client.get_openrouter_models(api_key or "")
+            elif provider == "nvidia":
+                if not api_key:
+                    return no_update, "⚠️ Enter an API key first", no_update
+                nim_url = (base_url or NVIDIA_NIM_BASE_URL).rstrip("/")
+                resp = requests.get(
+                    f"{nim_url}/models",
+                    headers={"Authorization": f"Bearer {api_key}"},
+                    timeout=10,
+                )
+                resp.raise_for_status()
+                models = [m["id"] for m in resp.json().get("data", []) if m.get("id")]
+            elif provider == "local":
+                base = (base_url or "").strip().rstrip("/")
+                if not base:
+                    return no_update, "⚠️ Enter Local base URL first", no_update
+                models = []
+                for url in (f"{base}/models", f"{base}/v1/models", f"{base}/api/tags"):
+                    try:
+                        resp = requests.get(url, timeout=5)
+                    except Exception:
+                        continue
+                    if resp.status_code != 200:
+                        continue
+                    payload = resp.json() if resp.content else {}
+                    if url.endswith("/api/tags"):
+                        models = [m.get("name") for m in payload.get("models", []) if m.get("name")]
+                    else:
+                        models = [m.get("id") for m in payload.get("data", []) if m.get("id")]
+                    if models:
+                        break
+            else:
+                return no_update, f"❌ Unknown provider: {provider}", no_update
+        except Exception as e:
+            logger.error(
+                f"Error fetching chat-override models for {provider}: "
+                f"{_sanitize_error_message(str(e))}"
+            )
+            return no_update, f"❌ {_sanitize_error_message(str(e))}", no_update
+
+        if not models:
+            return no_update, "❌ No models found. Check the API key/URL above.", no_update
+
+        options = [{"label": m, "value": m} for m in models]
+        options.append({"label": "Custom...", "value": "custom"})
+        new_value = current_value if current_value in models else models[0]
+        return options, f"✅ Found {len(models)} models", new_value
+
     def _build_openai_model_options(api_key, current_options, current_value, auto=False):
         api_key = api_key or os.getenv("OPENAI_API_KEY", "").strip()
         if not api_key:

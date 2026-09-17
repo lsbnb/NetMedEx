@@ -1,4 +1,4 @@
-# NetMedEx v1.5.7
+# NetMedEx v1.5.8
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -25,6 +25,10 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 
 <details>
 <summary><h2>🆕 Recent Updates</h2></summary>
+
+### v1.5.8 — 2026-09-17
+
+- **Chat Model Override Now Fetches Real Available Models**: The "Chat Model Override" model field was a plain text box. It's now a dropdown with a "🔄 Refresh available models" button that queries the selected provider's actual API (reusing the same `get_openai_models`/`get_gemini_models`/`get_groq_models`/`get_anthropic_models`/`get_openrouter_models` methods, and the NVIDIA/Local Ollama HTTP calls, that the main LLM config already uses) and lists real model IDs to pick from. A "Custom..." option is still available for typing an arbitrary model name.
 
 ### v1.5.7 — 2026-09-17
 

@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.8] - 2026-09-17
+
+### Added
+
+- **Chat Model Override: Fetch Real Available Models**: `chat-override-model` (Advanced Settings) changed from a plain `dbc.Input` text box to a `dcc.Dropdown` populated by a new shared `fetch_chat_override_models` callback (`llm_callbacks.py`), triggered by a new "🔄 Refresh available models" button. Dispatches to the currently-selected `chat-override-provider` and reuses the exact model-listing methods the main LLM config already relies on (`LLMClient.get_openai_models`/`get_gemini_models`/`get_groq_models`/`get_anthropic_models`/`get_openrouter_models`, plus inlined NVIDIA NIM and Local Ollama HTTP calls matching `fetch_nvidia_models`/`fetch_local_models`). A "Custom..." option (backed by a new `chat-override-custom-model` text input, shown/hidden by `toggle_chat_override_custom_model_input`) still allows typing an arbitrary model name. `_resolve_chat_llm_client` (`chat_callbacks.py`) now resolves the "custom" sentinel to the typed value itself, rather than relying on `initialize_llm_client_from_settings`'s per-provider `*_custom_model` kwargs (google/nvidia/local don't support that indirection, and this dropdown is shared across all providers).
+
 ## [1.5.7] - 2026-09-17
 
 ### Fixed & Hardened

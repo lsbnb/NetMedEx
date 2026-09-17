@@ -131,6 +131,7 @@ def _resolve_chat_llm_client(
     override_provider=None,
     override_api_key=None,
     override_model=None,
+    override_custom_model=None,
     override_base_url=None,
 ):
     """Return the LLM client Chat generation should use for this turn.
@@ -141,31 +142,44 @@ def _resolve_chat_llm_client(
     build a brand-new, independent `LLMClient()` instead of reusing/reinitializing
     the shared singleton, so the override doesn't clobber the build-time client's
     configuration for other in-flight uses of it.
+
+    `override_model` is the fetched-models dropdown's value; when it's the
+    sentinel "custom" (either because the user typed a model the fetch didn't
+    return, or because the provider was never fetched at all), `override_custom_model`
+    is used instead. Resolved here rather than left to
+    `initialize_llm_client_from_settings`'s per-provider `*_custom_model` kwargs,
+    since not every provider branch there supports that indirection (google/nvidia/
+    local don't) -- this dropdown is shared across all providers, so it must behave
+    the same way for all of them.
     """
     if "enabled" not in (override_enabled or []):
         return default_client
 
     from webapp.llm import LLMClient, initialize_llm_client_from_settings
 
+    resolved_model = (
+        override_custom_model if override_model == "custom" else override_model
+    )
+
     chat_client = LLMClient()
     initialize_llm_client_from_settings(
         chat_client,
         provider=override_provider,
         openai_api_key=override_api_key,
-        openai_model=override_model,
+        openai_model=resolved_model,
         google_api_key=override_api_key,
-        google_model=override_model,
+        google_model=resolved_model,
         local_base_url=override_base_url,
-        local_model=override_model,
+        local_model=resolved_model,
         openrouter_api_key=override_api_key,
-        openrouter_model=override_model,
+        openrouter_model=resolved_model,
         nvidia_api_key=override_api_key,
         nvidia_nim_base_url=override_base_url,
-        nvidia_model=override_model,
+        nvidia_model=resolved_model,
         groq_api_key=override_api_key,
-        groq_model=override_model,
+        groq_model=resolved_model,
         anthropic_api_key=override_api_key,
-        anthropic_model=override_model,
+        anthropic_model=resolved_model,
     )
     return chat_client
 
@@ -574,6 +588,7 @@ def callbacks(app):
             State("chat-override-provider", "value"),
             State("chat-override-api-key", "value"),
             State("chat-override-model", "value"),
+            State("chat-override-custom-model", "value"),
             State("chat-override-base-url", "value"),
             State("chat-messages", "children"),
         ],
@@ -612,6 +627,7 @@ def callbacks(app):
         chat_override_provider,
         chat_override_api_key,
         chat_override_model,
+        chat_override_custom_model,
         chat_override_base_url,
         current_messages,
     ):
@@ -751,6 +767,7 @@ def callbacks(app):
                     override_provider=chat_override_provider,
                     override_api_key=chat_override_api_key,
                     override_model=chat_override_model,
+                    override_custom_model=chat_override_custom_model,
                     override_base_url=chat_override_base_url,
                 )
 
@@ -913,6 +930,7 @@ def callbacks(app):
             override_provider=chat_override_provider,
             override_api_key=chat_override_api_key,
             override_model=chat_override_model,
+            override_custom_model=chat_override_custom_model,
             override_base_url=chat_override_base_url,
         )
 
@@ -1170,6 +1188,7 @@ def callbacks(app):
             State("chat-override-provider", "value"),
             State("chat-override-api-key", "value"),
             State("chat-override-model", "value"),
+            State("chat-override-custom-model", "value"),
             State("chat-override-base-url", "value"),
         ],
         running=[
@@ -1224,6 +1243,7 @@ def callbacks(app):
         chat_override_provider,
         chat_override_api_key,
         chat_override_model,
+        chat_override_custom_model,
         chat_override_base_url,
     ):
         logger.info("initialize_chat (MANUAL) triggered")
@@ -1308,6 +1328,7 @@ def callbacks(app):
                 override_provider=chat_override_provider,
                 override_api_key=chat_override_api_key,
                 override_model=chat_override_model,
+                override_custom_model=chat_override_custom_model,
                 override_base_url=chat_override_base_url,
             )
 
@@ -1911,6 +1932,7 @@ def callbacks(app):
             State("chat-override-provider", "value"),
             State("chat-override-api-key", "value"),
             State("chat-override-model", "value"),
+            State("chat-override-custom-model", "value"),
             State("chat-override-base-url", "value"),
         ],
         prevent_initial_call=True,
@@ -1951,6 +1973,7 @@ def callbacks(app):
         chat_override_provider,
         chat_override_api_key,
         chat_override_model,
+        chat_override_custom_model,
         chat_override_base_url,
     ):
         """
@@ -2023,6 +2046,7 @@ def callbacks(app):
                         override_provider=chat_override_provider,
                         override_api_key=chat_override_api_key,
                         override_model=chat_override_model,
+                        override_custom_model=chat_override_custom_model,
                         override_base_url=chat_override_base_url,
                     )
                     _rebuild_chat_session_from_graph(
