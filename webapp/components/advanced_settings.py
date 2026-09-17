@@ -91,7 +91,8 @@ relation_verification_toggle = html.Div(
                 "🔎 Pick a verifier provider different from your main LLM provider when possible: "
                 "verifying a candidate edge is an easier task than the original extraction, so an "
                 "independent second model is more likely to catch an error than the same model "
-                "re-asked. Uses whichever API key you already configured for that provider.\n\n"
+                "re-asked. Leave the provider as 'Same as main provider' to just pick a different "
+                "model with your existing key, or choose a different provider to also enter its key.\n\n"
                 "⚠️ Only edges with a directional relation type are re-checked (one extra LLM call "
                 "per article with at least one such edge), so this adds graph-build time and cost. "
                 "Symmetric relations (associated_with, etc.) are never re-checked."
@@ -105,7 +106,7 @@ relation_verification_toggle = html.Div(
                 },
             ],
             id="relation-verification-toggle",
-            value=[],
+            value=["enabled"],
             switch=True,
             inline=True,
             className="mt-1 mb-2",
@@ -131,6 +132,74 @@ relation_verification_toggle = html.Div(
                     ],
                     value="",
                     clearable=False,
+                    className="mb-2",
+                ),
+                dcc.Dropdown(
+                    id="relation-verifier-model",
+                    options=[{"label": "Custom...", "value": "custom"}],
+                    value="custom",
+                    clearable=False,
+                    className="mb-1",
+                ),
+                html.Div(
+                    [
+                        dbc.Button(
+                            "🔄 Refresh available models",
+                            id="refresh-relation-verifier-models-btn",
+                            color="secondary",
+                            size="sm",
+                            outline=True,
+                        ),
+                        html.Span(
+                            id="relation-verifier-model-fetch-status",
+                            className="small text-muted ms-2",
+                        ),
+                    ],
+                    className="mb-2",
+                ),
+                html.Div(
+                    [
+                        dbc.Input(
+                            id="relation-verifier-custom-model",
+                            type="text",
+                            placeholder="Model name (leave blank to use the provider's default)",
+                            debounce=True,
+                        ),
+                    ],
+                    id="relation-verifier-custom-model-div",
+                    className="mb-2",
+                ),
+                html.Div(
+                    [
+                        generate_param_title(
+                            "Verifier API Key",
+                            "Only needed when the verifier provider above differs from your "
+                            "main provider.",
+                        ),
+                        dbc.Input(
+                            id="relation-verifier-api-key",
+                            type="password",
+                            placeholder="API key for the verifier provider above",
+                            debounce=True,
+                        ),
+                    ],
+                    id="relation-verifier-api-key-row",
+                    className="mb-2",
+                ),
+                html.Div(
+                    [
+                        generate_param_title(
+                            "Verifier Base URL",
+                            "Only needed for Local Ollama or a custom endpoint.",
+                        ),
+                        dbc.Input(
+                            id="relation-verifier-base-url",
+                            type="text",
+                            placeholder="Base URL (only needed for Local Ollama or a custom endpoint)",
+                            debounce=True,
+                        ),
+                    ],
+                    id="relation-verifier-base-url-row",
                 ),
             ],
             id="relation-verifier-provider-container",
@@ -149,7 +218,8 @@ chat_model_override = html.Div(
                 "usually stronger model just for Chat -- extraction is a narrow per-article "
                 "task where a cheap model does nearly as well, while Chat must read and "
                 "reason across many abstracts at once, where model strength matters most. "
-                "Uses the API key you enter here, not your main provider's key."
+                "Leave the provider as 'Same as main provider' to just pick a different model "
+                "with your existing key, or choose a different provider to also enter its key."
             ),
         ),
         dbc.Checklist(
@@ -174,6 +244,7 @@ chat_model_override = html.Div(
                 dcc.Dropdown(
                     id="chat-override-provider",
                     options=[
+                        {"label": "Same as main provider", "value": ""},
                         {"label": "OpenAI", "value": "openai"},
                         {"label": "Google Gemini", "value": "google"},
                         {"label": "OpenRouter", "value": "openrouter"},
@@ -182,15 +253,8 @@ chat_model_override = html.Div(
                         {"label": "Anthropic Claude", "value": "anthropic"},
                         {"label": "Local Ollama", "value": "local"},
                     ],
-                    value="openai",
+                    value="",
                     clearable=False,
-                    className="mb-2",
-                ),
-                dbc.Input(
-                    id="chat-override-api-key",
-                    type="password",
-                    placeholder="API key for the Chat provider above",
-                    debounce=True,
                     className="mb-2",
                 ),
                 dcc.Dropdown(
@@ -228,11 +292,37 @@ chat_model_override = html.Div(
                     id="chat-override-custom-model-div",
                     className="mb-2",
                 ),
-                dbc.Input(
-                    id="chat-override-base-url",
-                    type="text",
-                    placeholder="Base URL (only needed for Local Ollama or a custom endpoint)",
-                    debounce=True,
+                html.Div(
+                    [
+                        generate_param_title(
+                            "Chat API Key",
+                            "Only needed when the Chat provider above differs from your "
+                            "main provider.",
+                        ),
+                        dbc.Input(
+                            id="chat-override-api-key",
+                            type="password",
+                            placeholder="API key for the Chat provider above",
+                            debounce=True,
+                        ),
+                    ],
+                    id="chat-override-api-key-row",
+                    className="mb-2",
+                ),
+                html.Div(
+                    [
+                        generate_param_title(
+                            "Chat Base URL",
+                            "Only needed for Local Ollama or a custom endpoint.",
+                        ),
+                        dbc.Input(
+                            id="chat-override-base-url",
+                            type="text",
+                            placeholder="Base URL (only needed for Local Ollama or a custom endpoint)",
+                            debounce=True,
+                        ),
+                    ],
+                    id="chat-override-base-url-row",
                 ),
             ],
             id="chat-override-fields-container",

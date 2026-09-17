@@ -41,3 +41,43 @@ def callbacks(app):
         if "enabled" in (override_toggle or []):
             return display.block
         return display.none
+
+    def _progressive_disclosure_styles(selected_provider, main_provider):
+        """Shared visibility logic for the "Chat Model Override" and "Verifier
+        Provider" sections: only ask for a separate API key when the user has
+        actually picked a provider different from their main one (an empty
+        selection means "same as main provider"); only ask for a Base URL when
+        the effective provider is Local Ollama.
+        """
+        selected = (selected_provider or "").strip().lower()
+        main = (main_provider or "openai").strip().lower()
+        effective = selected or main
+        api_key_style = display.block if selected and selected != main else display.none
+        base_url_style = display.block if effective == "local" else display.none
+        return api_key_style, base_url_style
+
+    @app.callback(
+        [
+            Output("chat-override-api-key-row", "style"),
+            Output("chat-override-base-url-row", "style"),
+        ],
+        [
+            Input("chat-override-provider", "value"),
+            Input("llm-provider-selector", "value"),
+        ],
+    )
+    def toggle_chat_override_extra_fields(override_provider, main_provider):
+        return _progressive_disclosure_styles(override_provider, main_provider)
+
+    @app.callback(
+        [
+            Output("relation-verifier-api-key-row", "style"),
+            Output("relation-verifier-base-url-row", "style"),
+        ],
+        [
+            Input("relation-verifier-provider", "value"),
+            Input("llm-provider-selector", "value"),
+        ],
+    )
+    def toggle_relation_verifier_extra_fields(verifier_provider, main_provider):
+        return _progressive_disclosure_styles(verifier_provider, main_provider)

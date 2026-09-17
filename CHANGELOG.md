@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.9] - 2026-09-17
+
+### Added
+
+- **Unified "Same as Main Provider" Pattern for Verifier Provider and Chat Model Override**: Both sections now share one lightweight design: a provider dropdown (default "Same as main provider") + a model dropdown (fetched via a shared "🔄 Refresh available models" button, with a "Custom..." fallback text input). An API key field is only revealed when the selected provider genuinely differs from the main provider; a Base URL field is only revealed for Local Ollama. New shared helpers in `llm_callbacks.py` (`_resolve_effective_provider_key_url`, `_fetch_models_for_provider`) back both sections' fetch buttons (`fetch_chat_override_models`, new `fetch_relation_verifier_models`), and new progressive-disclosure toggle callbacks in `semantic_callbacks.py` (`toggle_chat_override_extra_fields`, `toggle_relation_verifier_extra_fields`) show/hide the API key and Base URL rows by comparing the section's provider dropdown against the main `llm-provider-selector`.
+
+### Fixed & Hardened
+
+- **Verifier Provider Silently Depended on Server-Side Environment Variables**: `pipeline.py`'s relation-verification logic called `initialize_llm_client_from_settings(candidate_verifier, provider=verifier_provider)` with no API key at all -- for a provider different from the main one, this only worked if that provider's key happened to already be set as a server-side `.env` variable, not whatever the user typed into the browser UI. Choosing a different verifier provider without that env var silently fell back to the main client, logged only server-side. Verifier Provider now has its own dedicated API key/model/base-URL fields (reusing the main client's already-resolved credentials when left at "Same as main provider", exactly like the Chat Model Override).
+
 ## [1.5.8] - 2026-09-17
 
 ### Added

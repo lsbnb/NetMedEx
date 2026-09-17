@@ -1,4 +1,4 @@
-# NetMedEx v1.5.8: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.5.9: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
@@ -19,7 +19,11 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.5.8
+## 🆕 What's New in v1.5.9
+
+- **Simpler, More Reliable Provider Overrides**: Verifier Provider and Chat Model Override now share one lightweight design — pick a model with one click, and only enter a new API key if you actually chose a different provider. Also fixes Verifier Provider silently failing when a different provider's key wasn't already set as a server environment variable.
+
+### Previous: v1.5.8
 
 - **Chat Model Override Dropdown**: The Chat Model Override field now fetches and lists real available models from your chosen provider via a "🔄 Refresh available models" button, instead of requiring you to type an exact model name.
 

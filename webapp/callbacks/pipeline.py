@@ -120,6 +120,10 @@ def callbacks(app):
             State("normalization-toggle", "value"),
             State("relation-verification-toggle", "value"),
             State("relation-verifier-provider", "value"),
+            State("relation-verifier-api-key", "value"),
+            State("relation-verifier-model", "value"),
+            State("relation-verifier-custom-model", "value"),
+            State("relation-verifier-base-url", "value"),
             State("network-profile-selector", "value"),
         ],
         running=[
@@ -181,6 +185,10 @@ def callbacks(app):
         normalization_toggle,
         relation_verification_toggle,
         relation_verifier_provider,
+        relation_verifier_api_key,
+        relation_verifier_model,
+        relation_verifier_custom_model,
+        relation_verifier_base_url,
         network_profile_value,
     ):
         try:
@@ -649,19 +657,59 @@ def callbacks(app):
             verifier_llm_for_graph = None
             if verify_relations and edge_method == "semantic":
                 verifier_provider = (relation_verifier_provider or "").strip().lower()
-                if not verifier_provider or verifier_provider == (llm_provider or "openai").strip().lower():
-                    # No distinct provider requested -- reuse the already-initialized main client.
-                    verifier_llm_for_graph = llm_for_graph
+                normalized_main_provider = (llm_provider or "openai").strip().lower()
+                if not verifier_provider or verifier_provider == normalized_main_provider:
+                    # No distinct provider requested -- reuse the already-initialized main
+                    # client (optionally with a different model; same credentials either way).
+                    resolved_verifier_model = (
+                        relation_verifier_custom_model
+                        if relation_verifier_model == "custom"
+                        else relation_verifier_model
+                    )
+                    if resolved_verifier_model and resolved_verifier_model != llm_for_graph.model:
+                        candidate_verifier = LLMClient()
+                        candidate_verifier.initialize_client(
+                            provider=normalized_main_provider,
+                            api_key=llm_for_graph.api_key,
+                            base_url=llm_for_graph.base_url,
+                            model=resolved_verifier_model,
+                        )
+                        verifier_llm_for_graph = candidate_verifier
+                    else:
+                        verifier_llm_for_graph = llm_for_graph
                 else:
+                    resolved_verifier_model = (
+                        relation_verifier_custom_model
+                        if relation_verifier_model == "custom"
+                        else relation_verifier_model
+                    )
                     candidate_verifier = LLMClient()
-                    initialize_llm_client_from_settings(candidate_verifier, provider=verifier_provider)
+                    initialize_llm_client_from_settings(
+                        candidate_verifier,
+                        provider=verifier_provider,
+                        openai_api_key=relation_verifier_api_key,
+                        openai_model=resolved_verifier_model,
+                        google_api_key=relation_verifier_api_key,
+                        google_model=resolved_verifier_model,
+                        local_base_url=relation_verifier_base_url,
+                        local_model=resolved_verifier_model,
+                        openrouter_api_key=relation_verifier_api_key,
+                        openrouter_model=resolved_verifier_model,
+                        nvidia_api_key=relation_verifier_api_key,
+                        nvidia_nim_base_url=relation_verifier_base_url,
+                        nvidia_model=resolved_verifier_model,
+                        groq_api_key=relation_verifier_api_key,
+                        groq_model=resolved_verifier_model,
+                        anthropic_api_key=relation_verifier_api_key,
+                        anthropic_model=resolved_verifier_model,
+                    )
                     if candidate_verifier.client or candidate_verifier.anthropic_client:
                         verifier_llm_for_graph = candidate_verifier
                     else:
                         logger.warning(
                             f"Relation verification requested provider '{verifier_provider}' but "
-                            "no API key is configured for it in the environment -- falling back "
-                            "to the main LLM client as the verifier."
+                            "no API key was entered for it in the Verifier Provider section -- "
+                            "falling back to the main LLM client as the verifier."
                         )
                         verifier_llm_for_graph = llm_for_graph
 

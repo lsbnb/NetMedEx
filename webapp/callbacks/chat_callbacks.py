@@ -128,6 +128,7 @@ def _resolve_chat_llm_client(
     default_client,
     *,
     override_enabled,
+    main_provider=None,
     override_provider=None,
     override_api_key=None,
     override_model=None,
@@ -142,6 +143,11 @@ def _resolve_chat_llm_client(
     build a brand-new, independent `LLMClient()` instead of reusing/reinitializing
     the shared singleton, so the override doesn't clobber the build-time client's
     configuration for other in-flight uses of it.
+
+    `override_provider` empty (its "Same as main provider" option) or equal to
+    `main_provider` means only the model differs -- reuse `default_client`'s
+    already-resolved api_key/base_url instead of requiring the user to retype a
+    key they already entered in the main LLM config above.
 
     `override_model` is the fetched-models dropdown's value; when it's the
     sentinel "custom" (either because the user typed a model the fetch didn't
@@ -160,11 +166,26 @@ def _resolve_chat_llm_client(
     resolved_model = (
         override_custom_model if override_model == "custom" else override_model
     )
+    normalized_main = (main_provider or "openai").strip().lower()
+    normalized_override = (override_provider or "").strip().lower()
+    is_same_provider = not normalized_override or normalized_override == normalized_main
 
     chat_client = LLMClient()
+    if is_same_provider and not override_api_key:
+        # Reuse the build client's already-resolved credentials; only the model
+        # (and possibly nothing else) differs, so there's nothing new to enter.
+        chat_client.initialize_client(
+            provider=normalized_main,
+            api_key=default_client.api_key,
+            base_url=default_client.base_url,
+            model=resolved_model or default_client.model,
+        )
+        return chat_client
+
+    effective_provider = normalized_override or normalized_main
     initialize_llm_client_from_settings(
         chat_client,
-        provider=override_provider,
+        provider=effective_provider,
         openai_api_key=override_api_key,
         openai_model=resolved_model,
         google_api_key=override_api_key,
@@ -764,6 +785,7 @@ def callbacks(app):
                 chat_llm_client = _resolve_chat_llm_client(
                     llm_client,
                     override_enabled=chat_override_toggle,
+                    main_provider=llm_provider,
                     override_provider=chat_override_provider,
                     override_api_key=chat_override_api_key,
                     override_model=chat_override_model,
@@ -927,6 +949,7 @@ def callbacks(app):
         chat_llm_client = _resolve_chat_llm_client(
             llm_client,
             override_enabled=chat_override_toggle,
+            main_provider=llm_provider,
             override_provider=chat_override_provider,
             override_api_key=chat_override_api_key,
             override_model=chat_override_model,
@@ -1325,6 +1348,7 @@ def callbacks(app):
             chat_llm_client = _resolve_chat_llm_client(
                 llm_client,
                 override_enabled=chat_override_toggle,
+                main_provider=llm_provider,
                 override_provider=chat_override_provider,
                 override_api_key=chat_override_api_key,
                 override_model=chat_override_model,
@@ -2043,6 +2067,7 @@ def callbacks(app):
                     chat_llm_client = _resolve_chat_llm_client(
                         llm_client,
                         override_enabled=chat_override_toggle,
+                        main_provider=llm_provider,
                         override_provider=chat_override_provider,
                         override_api_key=chat_override_api_key,
                         override_model=chat_override_model,

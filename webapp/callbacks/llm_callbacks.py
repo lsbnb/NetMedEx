@@ -958,45 +958,56 @@ def callbacks(app):
         return {"display": "none"}
 
     @app.callback(
-        [
-            Output("chat-override-model", "options"),
-            Output("chat-override-model-fetch-status", "children"),
-            Output("chat-override-model", "value"),
-        ],
-        Input("refresh-chat-override-models-btn", "n_clicks"),
-        [
-            State("chat-override-provider", "value"),
-            State("chat-override-api-key", "value"),
-            State("chat-override-base-url", "value"),
-            State("chat-override-model", "value"),
-        ],
-        prevent_initial_call=True,
+        Output("relation-verifier-custom-model-div", "style"),
+        Input("relation-verifier-model", "value"),
     )
-    def fetch_chat_override_models(n_clicks, provider, api_key, base_url, current_value):
-        """One shared fetch button for the Chat Model Override dropdown, dispatching
-        to whichever provider is currently selected -- mirrors the per-provider
-        fetch_*_models callbacks above, but kept as a single callback since the
-        override section intentionally uses one shared dropdown, not a per-provider
-        UI block (see the compact-vs-full-UI tradeoff noted when this section was added).
-        """
-        if not n_clicks:
-            raise dash.exceptions.PreventUpdate
-        provider = (provider or "openai").strip().lower()
+    def toggle_relation_verifier_custom_model_input(selected_model):
+        if selected_model == "custom":
+            return {"display": "block", "marginTop": "10px"}
+        return {"display": "none"}
 
+    def _resolve_effective_provider_key_url(
+        override_provider,
+        override_api_key,
+        override_base_url,
+        main_provider,
+        main_keys: dict,
+        main_base_url,
+    ):
+        """"Same as main provider" resolution shared by the Chat Model Override and
+        Verifier Provider fetch buttons: an explicitly different provider must use
+        its own key/URL fields; otherwise reuse whichever main-provider key applies,
+        so the user isn't forced to retype a key they already entered above.
+        """
+        main_provider = (main_provider or "openai").strip().lower()
+        override_provider = (override_provider or "").strip().lower()
+        is_different = bool(override_provider) and override_provider != main_provider
+        effective_provider = override_provider or main_provider
+        if is_different:
+            return effective_provider, override_api_key, override_base_url
+        return (
+            effective_provider,
+            override_api_key or main_keys.get(effective_provider),
+            override_base_url or main_base_url,
+        )
+
+    def _fetch_models_for_provider(provider, api_key, base_url):
+        """Return (models, error_message). Exactly one is populated."""
+        provider = (provider or "openai").strip().lower()
         try:
             if provider == "openai":
-                models = llm_client.get_openai_models(api_key or "")
-            elif provider == "google":
-                models = llm_client.get_gemini_models(api_key or "")
-            elif provider == "groq":
-                models = llm_client.get_groq_models(api_key or "")
-            elif provider == "anthropic":
-                models = llm_client.get_anthropic_models(api_key or "")
-            elif provider == "openrouter":
-                models = llm_client.get_openrouter_models(api_key or "")
-            elif provider == "nvidia":
+                return llm_client.get_openai_models(api_key or ""), None
+            if provider == "google":
+                return llm_client.get_gemini_models(api_key or ""), None
+            if provider == "groq":
+                return llm_client.get_groq_models(api_key or ""), None
+            if provider == "anthropic":
+                return llm_client.get_anthropic_models(api_key or ""), None
+            if provider == "openrouter":
+                return llm_client.get_openrouter_models(api_key or ""), None
+            if provider == "nvidia":
                 if not api_key:
-                    return no_update, "⚠️ Enter an API key first", no_update
+                    return None, "⚠️ Enter an API key first"
                 nim_url = (base_url or NVIDIA_NIM_BASE_URL).rstrip("/")
                 resp = requests.get(
                     f"{nim_url}/models",
@@ -1004,12 +1015,11 @@ def callbacks(app):
                     timeout=10,
                 )
                 resp.raise_for_status()
-                models = [m["id"] for m in resp.json().get("data", []) if m.get("id")]
-            elif provider == "local":
+                return [m["id"] for m in resp.json().get("data", []) if m.get("id")], None
+            if provider == "local":
                 base = (base_url or "").strip().rstrip("/")
                 if not base:
-                    return no_update, "⚠️ Enter Local base URL first", no_update
-                models = []
+                    return None, "⚠️ Enter Local base URL first"
                 for url in (f"{base}/models", f"{base}/v1/models", f"{base}/api/tags"):
                     try:
                         resp = requests.get(url, timeout=5)
@@ -1023,16 +1033,146 @@ def callbacks(app):
                     else:
                         models = [m.get("id") for m in payload.get("data", []) if m.get("id")]
                     if models:
-                        break
-            else:
-                return no_update, f"❌ Unknown provider: {provider}", no_update
+                        return models, None
+                return [], None
+            return None, f"❌ Unknown provider: {provider}"
         except Exception as e:
             logger.error(
-                f"Error fetching chat-override models for {provider}: "
-                f"{_sanitize_error_message(str(e))}"
+                f"Error fetching models for {provider}: {_sanitize_error_message(str(e))}"
             )
-            return no_update, f"❌ {_sanitize_error_message(str(e))}", no_update
+            return None, f"❌ {_sanitize_error_message(str(e))}"
 
+    _MAIN_PROVIDER_FIELDS_STATES = [
+        State("llm-provider-selector", "value"),
+        State("openai-api-key-input", "value"),
+        State("google-api-key-input", "value"),
+        State("openrouter-api-key-input", "value"),
+        State("nvidia-api-key-input", "value"),
+        State("groq-api-key-input", "value"),
+        State("anthropic-api-key-input", "value"),
+        State("llm-base-url-input", "value"),
+    ]
+
+    def _main_provider_keys(openai_key, google_key, openrouter_key, nvidia_key, groq_key, anthropic_key):
+        return {
+            "openai": openai_key,
+            "google": google_key,
+            "openrouter": openrouter_key,
+            "nvidia": nvidia_key,
+            "groq": groq_key,
+            "anthropic": anthropic_key,
+        }
+
+    @app.callback(
+        [
+            Output("chat-override-model", "options"),
+            Output("chat-override-model-fetch-status", "children"),
+            Output("chat-override-model", "value"),
+        ],
+        Input("refresh-chat-override-models-btn", "n_clicks"),
+        [
+            State("chat-override-provider", "value"),
+            State("chat-override-api-key", "value"),
+            State("chat-override-base-url", "value"),
+            State("chat-override-model", "value"),
+            *_MAIN_PROVIDER_FIELDS_STATES,
+        ],
+        prevent_initial_call=True,
+    )
+    def fetch_chat_override_models(
+        n_clicks,
+        provider,
+        api_key,
+        base_url,
+        current_value,
+        main_provider,
+        openai_key,
+        google_key,
+        openrouter_key,
+        nvidia_key,
+        groq_key,
+        anthropic_key,
+        main_base_url,
+    ):
+        """One shared fetch button for the Chat Model Override dropdown, dispatching
+        to whichever provider is currently selected (or the main provider, reusing
+        its key, when left at "Same as main provider") -- mirrors the per-provider
+        fetch_*_models callbacks above, but kept as a single callback since the
+        override section intentionally uses one shared dropdown, not a per-provider
+        UI block (see the compact-vs-full-UI tradeoff noted when this section was added).
+        """
+        if not n_clicks:
+            raise dash.exceptions.PreventUpdate
+
+        effective_provider, effective_key, effective_url = _resolve_effective_provider_key_url(
+            provider,
+            api_key,
+            base_url,
+            main_provider,
+            _main_provider_keys(
+                openai_key, google_key, openrouter_key, nvidia_key, groq_key, anthropic_key
+            ),
+            main_base_url,
+        )
+        models, error = _fetch_models_for_provider(effective_provider, effective_key, effective_url)
+        if error:
+            return no_update, error, no_update
+        if not models:
+            return no_update, "❌ No models found. Check the API key/URL above.", no_update
+
+        options = [{"label": m, "value": m} for m in models]
+        options.append({"label": "Custom...", "value": "custom"})
+        new_value = current_value if current_value in models else models[0]
+        return options, f"✅ Found {len(models)} models", new_value
+
+    @app.callback(
+        [
+            Output("relation-verifier-model", "options"),
+            Output("relation-verifier-model-fetch-status", "children"),
+            Output("relation-verifier-model", "value"),
+        ],
+        Input("refresh-relation-verifier-models-btn", "n_clicks"),
+        [
+            State("relation-verifier-provider", "value"),
+            State("relation-verifier-api-key", "value"),
+            State("relation-verifier-base-url", "value"),
+            State("relation-verifier-model", "value"),
+            *_MAIN_PROVIDER_FIELDS_STATES,
+        ],
+        prevent_initial_call=True,
+    )
+    def fetch_relation_verifier_models(
+        n_clicks,
+        provider,
+        api_key,
+        base_url,
+        current_value,
+        main_provider,
+        openai_key,
+        google_key,
+        openrouter_key,
+        nvidia_key,
+        groq_key,
+        anthropic_key,
+        main_base_url,
+    ):
+        """Same pattern as fetch_chat_override_models, for the Verifier Provider dropdown."""
+        if not n_clicks:
+            raise dash.exceptions.PreventUpdate
+
+        effective_provider, effective_key, effective_url = _resolve_effective_provider_key_url(
+            provider,
+            api_key,
+            base_url,
+            main_provider,
+            _main_provider_keys(
+                openai_key, google_key, openrouter_key, nvidia_key, groq_key, anthropic_key
+            ),
+            main_base_url,
+        )
+        models, error = _fetch_models_for_provider(effective_provider, effective_key, effective_url)
+        if error:
+            return no_update, error, no_update
         if not models:
             return no_update, "❌ No models found. Check the API key/URL above.", no_update
 

@@ -1,4 +1,4 @@
-# NetMedEx v1.5.8
+# NetMedEx v1.5.9
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -25,6 +25,10 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 
 <details>
 <summary><h2>🆕 Recent Updates</h2></summary>
+
+### v1.5.9 — 2026-09-17
+
+- **Simplified & Fixed: Verifier Provider and Chat Model Override**: Both sections now share the same lightweight pattern — a provider dropdown defaulting to "Same as main provider" plus a model dropdown (with a "🔄 Refresh available models" button and a "Custom..." fallback). An API key field only appears when you actually pick a provider different from your main one; a Base URL field only appears for Local Ollama. Also fixes a real gap in the Verifier Provider: it previously only worked if a different provider's key happened to already be set as a server-side environment variable, silently falling back to the main provider otherwise with no on-screen indication. Both sections now correctly reuse your already-entered main-provider key when left at "Same as main provider", and accept a dedicated key when you pick a genuinely different provider.
 
 ### v1.5.8 — 2026-09-17
 
