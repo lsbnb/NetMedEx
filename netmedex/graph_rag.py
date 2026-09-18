@@ -123,14 +123,22 @@ class GraphRetriever:
             if name in query_lower or self._normalize_anchor_text(name) in normalized_query:
                 matched_nodes.add(self.name_to_id[name])
 
-        # 1.5 Category Expansion for miRNA/microRNA
-        from netmedex.utils import is_mirna_node
+        # 1.5 Category Expansion for miRNA/microRNA and lncRNA
+        from netmedex.utils import LNCRNA_QUERY_TRIGGERS, is_lncrna_node, is_mirna_node
 
         mirna_triggers = {"mirna", "microrna", "mirnas", "micrornas", "微小rna", "微rna", "小分子rna"}
         compact_q = normalized_query.replace(" ", "")
         if any(tr in query_lower or tr in compact_q for tr in mirna_triggers):
             for node_id, node_data in self.graph.nodes(data=True):
                 if is_mirna_node(
+                    node_data.get("name"),
+                    aliases=node_data.get("aliases"),
+                    node_type=node_data.get("type"),
+                ):
+                    matched_nodes.add(node_id)
+        if any(tr in query_lower or tr in compact_q for tr in LNCRNA_QUERY_TRIGGERS):
+            for node_id, node_data in self.graph.nodes(data=True):
+                if is_lncrna_node(
                     node_data.get("name"),
                     aliases=node_data.get("aliases"),
                     node_type=node_data.get("type"),
@@ -326,7 +334,10 @@ class GraphRetriever:
 
     @staticmethod
     def _select_gated_candidate_paths(
-        candidate_paths: list[dict], strict_limit: int = 20, diversity_limit: int = 3
+        candidate_paths: list[dict],
+        strict_limit: int = 20,
+        diversity_limit: int = 3,
+        mechanism_diversity_limit: int = 2,
     ) -> tuple[list[dict], bool, str]:
         """Select strict/rescued paths and add bounded, claim-safe bridge diversity."""
         strict_paths = list(candidate_paths[:strict_limit])
@@ -389,6 +400,74 @@ class GraphRetriever:
                 existing_bridges.add(bridge_id)
                 if len(diversity_ids) >= diversity_limit:
                     break
+
+        # A query naming a generic category ("microRNA", "SNP") only resolves to
+        # specific graph entities (e.g. a particular miR-*) through category
+        # expansion (see _extract_query_anchors' mechanism_ids), not by literal
+        # name -- so a concrete, single-hop fact about one of them (e.g. "miR-155
+        # promotes neuroinflammation") ranks below the many generic hub-to-hub
+        # edges that DO match the query literally, and can land just outside
+        # strict_limit even after anchor scoring already favors it. Checks
+        # retrieval_safe (tiers A and B), not claim_safe alone: a specific
+        # miRNA's evidence quote often doesn't verbatim-align with the extracted
+        # relation label closely enough for tier A, landing it at tier B
+        # ("RETRIEVAL-ONLY") -- exactly the epistemic status Layer 2's
+        # association/speculative-inference rules are designed for, and still
+        # far more useful there than being invisible entirely. Rescue a small,
+        # bounded number of such facts the same way bridge diversity above
+        # rescues distinct mechanism bridges, so the concrete entity the user
+        # actually asked about isn't silently dropped in favor of generic
+        # evidence the model already has several copies of.
+        if not rescue_triggered and mechanism_diversity_limit > 0:
+            mechanism_hits_seen = {
+                node_id
+                for path in selected
+                if path.get("retrieval_safe")
+                for node_id in path.get("node_ids", [])
+                if node_id in path.get("anchor_features", {}).get("mechanism_anchor_ids", [])
+            }
+            mechanism_diversity_count = 0
+            for candidate in candidate_paths[strict_limit:]:
+                if id(candidate) in diversity_ids or not candidate.get("retrieval_safe"):
+                    continue
+                node_ids = candidate.get("node_ids", [])
+                mechanism_anchor_ids = candidate.get("anchor_features", {}).get(
+                    "mechanism_anchor_ids", []
+                )
+                new_mechanism_hits = {
+                    node_id
+                    for node_id in node_ids
+                    if node_id in mechanism_anchor_ids and node_id not in mechanism_hits_seen
+                }
+                if not new_mechanism_hits:
+                    continue
+                replacement_index = next(
+                    (
+                        index
+                        for index in range(len(selected) - 1, -1, -1)
+                        if selected[index].get("gate_tier") == "C"
+                    ),
+                    None,
+                )
+                if replacement_index is None:
+                    replacement_index = next(
+                        (
+                            index
+                            for index in range(len(selected) - 1, -1, -1)
+                            if selected[index].get("gate_tier") == "B"
+                        ),
+                        None,
+                    )
+                if replacement_index is None:
+                    break
+                selected[replacement_index] = candidate
+                diversity_ids.add(id(candidate))
+                mechanism_hits_seen.update(new_mechanism_hits)
+                mechanism_diversity_count += 1
+                if mechanism_diversity_count >= mechanism_diversity_limit:
+                    break
+
+        if diversity_ids:
             selected.sort(key=lambda path: int(path.get("candidate_rank", 0) or 0))
 
         for path in selected:
@@ -787,9 +866,9 @@ class GraphRetriever:
             if re.search(r"(?:\bin|\bwithin|\bamong)\s*$", prefix):
                 contextual_ids.add(node_id)
 
-        # Generic miRNA wording denotes a mechanism family rather than one
-        # literal node name. Expand it deterministically to miR-number nodes.
-        from netmedex.utils import is_mirna_node
+        # Generic miRNA/lncRNA wording denotes a mechanism family rather than
+        # one literal node name. Expand it deterministically to matching nodes.
+        from netmedex.utils import LNCRNA_QUERY_TRIGGERS, is_lncrna_node, is_mirna_node
 
         if (
             "mirna" in compact_query
@@ -799,6 +878,17 @@ class GraphRetriever:
         ):
             for node_id, node_data in self.graph.nodes(data=True):
                 if is_mirna_node(
+                    node_data.get("name"),
+                    aliases=node_data.get("aliases"),
+                    node_type=node_data.get("type"),
+                ):
+                    mechanism_ids.add(node_id)
+        if any(
+            trigger in compact_query or trigger in normalized_query
+            for trigger in LNCRNA_QUERY_TRIGGERS
+        ):
+            for node_id, node_data in self.graph.nodes(data=True):
+                if is_lncrna_node(
                     node_data.get("name"),
                     aliases=node_data.get("aliases"),
                     node_type=node_data.get("type"),
@@ -944,6 +1034,29 @@ class GraphRetriever:
         """Return a bounded query-anchor bonus and auditable path features."""
         start_matches = bool(path and path[0] in anchors["source_ids"])
         end_matches = bool(path and path[-1] in anchors["target_ids"])
+
+        # A query naming 3+ entities (e.g. "how does A regulate C via B") often
+        # has a middle entity that never becomes the strict source/target above
+        # -- either because it's a category-expanded generic mention ("a
+        # specific miRNA" for a query that only says "microRNA"), or because it
+        # simply isn't the first/last exact match in a 3+-entity question (e.g.
+        # "neuroinflammation" sitting between "resveratrol" and "Alzheimer's
+        # disease"). Without this, such an entity's edges get neither the
+        # anchor-bonus score boost nor endpoint-alignment credit anywhere in the
+        # pipeline, so they're systematically outranked by generic hub-to-hub
+        # edges before ever reaching the gate below -- even when, as with a
+        # specific miRNA, they're exactly what the question is asking about.
+        # Excludes whatever's already counted as the known source/target (a
+        # trivial match there -- e.g. every path's own start node -- would
+        # defeat the discrimination this bonus exists to provide), and never
+        # applies to an explicit "connect A to B" bridge query, where an
+        # unresolved named endpoint must stay a hard miss.
+        if not anchors.get("explicit_endpoint_query"):
+            novel_context_ids = anchors["context_ids"] - anchors["source_ids"] - anchors["target_ids"]
+            if novel_context_ids:
+                start_matches = start_matches or bool(path and path[0] in novel_context_ids)
+                end_matches = end_matches or bool(path and path[-1] in novel_context_ids)
+
         bridge_matches = False
         if len(path) >= 3:
             bridges = path[1:-1]
@@ -1049,11 +1162,36 @@ class GraphRetriever:
             endpoint_aligned = start_matches and end_matches
         elif source_anchors:
             endpoint_aligned = start_matches
-        elif context_anchors:
-            endpoint_aligned = any(str(node_id) in context_anchors for node_id in path)
         else:
             endpoint_aligned = False
-            reasons.append("query_alignment_unknown")
+            if not context_anchors:
+                reasons.append("query_alignment_unknown")
+
+        # A query naming 3+ entities (e.g. "how does A regulate C via B") often
+        # has a middle entity -- here, a specific miRNA matched only through
+        # generic-term category expansion ("microRNA") rather than by literal
+        # name -- that never becomes the strict source/target under the
+        # two-entity role split above, even though it's exactly what the
+        # question is about. This branch used to be reachable only when the
+        # query had NO source/target anchor at all (nearly never, for a real
+        # question), silently discarding such paths as tier "C" instead of the
+        # "retrieval-only" tier B they deserve. Rescue via a *novel* context
+        # anchor -- one that isn't already the known source/target -- whenever
+        # the stricter check above failed. Excluding the already-known
+        # source/target anchors matters: without it, every path sharing the
+        # query's literal start node (i.e. nearly all of them) would trivially
+        # "match" via that already-accounted-for anchor, silently defeating the
+        # discrimination endpoint_aligned exists to provide. Never applied to an
+        # explicit "connect A to B" bridge query, where an unresolved named
+        # endpoint must stay a hard discard rather than being papered over.
+        if not endpoint_aligned and not anchor_features.get("explicit_endpoint_query"):
+            novel_context_anchors = (
+                context_anchors - set(map(str, source_anchors)) - set(map(str, target_anchors))
+            )
+            if novel_context_anchors:
+                endpoint_aligned = any(
+                    str(node_id) in novel_context_anchors for node_id in path
+                )
 
         reasons.append(
             "query_endpoint_alignment" if endpoint_aligned else "poor_endpoint_alignment"

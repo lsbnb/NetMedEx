@@ -1,4 +1,4 @@
-# NetMedEx v1.5.18
+# NetMedEx v1.5.21
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -26,7 +26,15 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 <details>
 <summary><h2>🆕 Recent Updates</h2></summary>
 
-### v1.5.18 — 2026-09-18
+### v1.5.21 — 2026-09-18
+
+- **Query Translation No Longer Drops Other Named Biological Families**: The AI Search query translator's "keep miRNA/lncRNA explicit" rule only covered non-coding RNAs — a query mentioning a different narrow, well-known family (interleukin/cytokine, chemokine, circRNA, Toll-like receptor, matrix metalloproteinase, monoclonal antibody, kinase inhibitor, statin) risked having that term silently dropped by the same "keep only 2-3 specific entities" simplification rule that (correctly) drops truly generic words like "signaling" or "pathway" — losing the term before the PubMed search even runs, a layer earlier than the miRNA/lncRNA graph-retrieval issues fixed in v1.5.19/20. Generalized the rule to cover these families explicitly. Live-verified: "via an interleukin", "via a chemokine", and "via circRNA" all now survive translation as explicit OR-expanded search terms.
+
+- **Same Category-Matching Fix Extended to lncRNA**: The v1.5.19 fix (category-matched query entities getting neither score nor gate credit unless literally named) applied equally to long non-coding RNAs — "lncRNA" has no reliable naming convention the way "microRNA" does (`MALAT1`, `GAS5`, `H19` look like ordinary gene symbols), so it needed its own detection: a curated list of well-known lncRNAs plus the `LINC*`/`SNHG*` prefixes and `-AS<n>` antisense suffix, wired into the same `find_relevant_nodes`/`_extract_query_anchors`/`find_query_anchor_nodes` category-expansion points already used for miRNA/SNP. Live-verified on a different real topic (curcumin/apoptosis/breast cancer): Chat's answer now names two specific lncRNAs (`LINC00691`, `H19`) with real PMID citations instead of omitting them.
+
+### v1.5.19 — 2026-09-18
+
+- **Category-Matched Query Entities (e.g. a Specific miRNA) No Longer Silently Dropped from Chat's Answer**: Live-reproduced: "Resveratrol ... via microRNA ... Neuroinflammation ... Alzheimer's Disease" built a graph with real, evidenced miRNA edges, yet Chat's answer never mentioned any specific miRNA. Root cause: a query naming a generic category ("microRNA") only resolves to a specific node (e.g. `miR-155`) through category expansion, not literal name match, so that node's edges got neither the query-anchor score boost nor endpoint-alignment gate credit anywhere in path retrieval — leaving them systematically outranked by the many edges of literally-query-matching hub entities (Resveratrol, Alzheimer's disease) with far more corroborating literature. Fixed across the three places this mattered: `_score_path_anchors` and `_classify_path_gate` (`graph_rag.py`) now credit a "novel" category-expanded match the same way a literal one is credited, and `_select_gated_candidate_paths` gained a small, bounded rescue for a category-matched entity's fact that still ranks just outside the top-20 cut. Verified live end-to-end: Chat's answer now cites `miR-155 —[promotes]→ neuroinflammation` (PMID:35008513) directly in Layer 1 and builds a concrete, correctly-hedged Layer 3 hypothesis naming it specifically.
 
 - **Fixed: Entity-Listing Chat Answers Overclaimed Completeness**: Asking Chat "list all miRNAs linked to X" always claimed the result was "a complete list," compiled purely from surviving graph nodes. For networks built with Semantic Analysis or Relation-Only edges, an entity mentioned in the abstracts but never assigned an extracted relationship is removed as an isolated node during the build (see v1.5.17), so that claim was often inaccurate. The response now checks how the network was built and adds a caveat for Semantic Analysis / Relation-Only graphs; co-occurrence-built graphs (which connect every mentioned entity pair, so no such gap exists) keep the original wording.
 

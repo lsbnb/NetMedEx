@@ -201,3 +201,81 @@ def is_mirna_node(name: str | None, aliases=None, node_type: str | None = None) 
             return True
     return False
 
+
+LNCRNA_QUERY_TRIGGERS = {
+    "lncrna",
+    "lncrnas",
+    "long non-coding rna",
+    "long noncoding rna",
+    "long non coding rna",
+    "非編碼rna",
+    "長鏈非編碼rna",
+    "長非編碼rna",
+}
+
+# lncRNA names have no single reliable naming convention the way miRNA does
+# (MALAT1, GAS5, H19, PVT1 look identical to ordinary protein-coding gene
+# symbols), so this list of well-known named lncRNAs supplements the handful
+# of somewhat reliable naming patterns below (LINC*/SNHG* prefixes, -AS<n>
+# antisense suffix). Necessarily incomplete -- an obscure lncRNA matching
+# neither the list nor a pattern will not be recognized.
+_KNOWN_LNCRNA_NAMES = {
+    "malat1",
+    "neat1",
+    "hotair",
+    "xist",
+    "h19",
+    "meg3",
+    "gas5",
+    "tug1",
+    "pvt1",
+    "miat",
+    "uca1",
+    "kcnq1ot1",
+    "dancr",
+    "ccat1",
+    "ccat2",
+    "anril",
+    "cdkn2b-as1",
+    "hottip",
+    "dleu2",
+    "ftx",
+    "norad",
+    "linc-ror",
+    "airn",
+    "tsix",
+}
+
+
+def is_lncrna_node(name: str | None, aliases=None, node_type: str | None = None) -> bool:
+    """Check if a node name, alias set, or type represents a long non-coding RNA (lncRNA).
+
+    PubTator3 tags lncRNAs with the same generic "Gene" type as protein-coding
+    genes, so this relies mainly on name matching: a curated list of well-known
+    lncRNAs (see _KNOWN_LNCRNA_NAMES) plus the LINC*/SNHG* prefixes and the
+    -AS<n> antisense-RNA suffix, which are reasonably specific to this RNA
+    family. Necessarily incomplete for names outside these patterns.
+    """
+    if node_type in ("lncRNA", "ncRNA"):
+        return True
+    all_strings = [str(name or "")]
+    if aliases:
+        if isinstance(aliases, (set, list)):
+            all_strings.extend(str(a) for a in aliases if a)
+        elif isinstance(aliases, str):
+            all_strings.append(aliases)
+
+    import re
+
+    for s in all_strings:
+        norm = s.strip().lower()
+        if not norm:
+            continue
+        if norm in _KNOWN_LNCRNA_NAMES:
+            return True
+        if norm.startswith(("linc", "snhg")):
+            return True
+        if re.search(r"-as\d+$", norm):
+            return True
+    return False
+

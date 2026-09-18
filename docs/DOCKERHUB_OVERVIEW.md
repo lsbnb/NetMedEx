@@ -1,4 +1,4 @@
-# NetMedEx v1.5.18: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.5.21: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
@@ -19,7 +19,19 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.5.18
+## 🆕 What's New in v1.5.21
+
+- **Query Translation Protects More Named Biological Families**: Beyond miRNA/lncRNA, AI Search now also keeps interleukin/cytokine, chemokine, circRNA, and similar narrow biological families from being silently dropped as "generic" during query simplification.
+
+### Previous: v1.5.20
+
+- **lncRNA Entities Get the Same Fix as miRNA**: The v1.5.19 category-matching fix now also covers long non-coding RNAs (LINC*, SNHG*, -AS antisense genes, plus well-known named lncRNAs like MALAT1/H19/HOTAIR). Live-verified: Chat's answer now names specific lncRNAs with real citations instead of omitting them.
+
+### Previous: v1.5.19
+
+- **Specific miRNAs (and Other Category-Matched Entities) No Longer Silently Dropped from Chat's Answer**: A query naming a generic category ("microRNA") only resolves to a specific graph entity through category expansion, not literal name match -- so that entity's real, evidenced edges were getting outranked by generic hub-to-hub edges before ever reaching the answer, even when the graph itself had exactly the evidence needed. Live-verified: Chat's answer now cites the specific miRNA directly instead of a vague, unsupported guess.
+
+### Previous: v1.5.18
 
 - **Entity-Listing Chat Answers No Longer Overclaim Completeness**: Asking Chat to "list all miRNAs linked to X" used to always say the result was "a complete list." For networks built with Semantic Analysis or Relation-Only edges, entities that were never assigned an extracted relationship are removed as isolated nodes, so the list could genuinely be incomplete — Chat now says so in that case, while co-occurrence-built networks (which have no such gap) keep the original wording.
 

@@ -51,9 +51,11 @@ except ImportError:
     SemanticRelationshipExtractor = None
 from netmedex.citation_fetcher import fetch_citation_counts
 from netmedex.utils import (
+    LNCRNA_QUERY_TRIGGERS,
     MIRNA_QUERY_TRIGGERS,
     SNP_QUERY_TRIGGERS,
     generate_stable_id,
+    is_lncrna_node,
     is_mirna_node,
     is_snp_node,
 )
@@ -564,6 +566,7 @@ class PubTatorGraphBuilder:
         query_lower = str(query).lower()
         mirna_query = any(trigger in query_lower for trigger in MIRNA_QUERY_TRIGGERS)
         snp_query = any(trigger in query_lower for trigger in SNP_QUERY_TRIGGERS)
+        lncrna_query = any(trigger in query_lower for trigger in LNCRNA_QUERY_TRIGGERS)
 
         anchors = set()
         for node_id, data in graph.nodes(data=True):
@@ -588,6 +591,9 @@ class PubTatorGraphBuilder:
                 anchors.add(node_id)
             # 3. Category match for SNP / genomic mutations
             elif snp_query and is_snp_node(name, aliases=aliases, node_type=node_type):
+                anchors.add(node_id)
+            # 4. Category match for lncRNA / long non-coding RNA
+            elif lncrna_query and is_lncrna_node(name, aliases=aliases, node_type=node_type):
                 anchors.add(node_id)
         return anchors
 

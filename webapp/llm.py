@@ -697,9 +697,19 @@ class LLMClient:
             "RARE ENTITY RULE: If the query contains a highly specific entity (e.g., a rare microorganism species, uncommon gene), "
             "that entity name alone is often sufficient — adding secondary AND constraints may discard most relevant papers. "
             "In that case, return just the specific entity name without any AND conditions. "
-            "MIRNA / NON-CODING RNA RULE: When the query mentions miRNA, microRNA, lncRNA, or other non-coding RNAs, "
-            "always include them explicitly as text terms alongside @GENE. "
-            'Do NOT replace miRNA/microRNA with just @GENE alone — use (@GENE OR "miRNA" OR "microRNA"). '
+            "NAMED BIOLOGICAL FAMILY RULE: The QUERY SIMPLICITY RULE above is for truly generic "
+            "mechanism words ('signaling', 'pathway', 'regulation') — it must NOT be used to drop a "
+            "named biological family the query explicitly mentions, even when that family is itself "
+            "a generic-sounding category rather than one specific instance. This covers: "
+            "non-coding RNAs (miRNA, microRNA, lncRNA, circRNA, piRNA, siRNA), "
+            "cytokine/interleukin/chemokine families (interleukin, IL, chemokine, cytokine), "
+            "and other narrow, well-known biological families (Toll-like receptor/TLR, matrix "
+            "metalloproteinase/MMP, monoclonal antibody, kinase inhibitor, statin). "
+            "Always include the family as an explicit text term OR-combined with @GENE — "
+            'e.g. (@GENE OR "miRNA" OR "microRNA"), (@GENE OR "interleukin" OR "IL"), '
+            '(@GENE OR "chemokine"). Do NOT replace the family term with just @GENE alone: a query '
+            "mentioning it is specifically asking about that family, and dropping it silently answers "
+            "a different, broader question. "
             "Examples: "
             "'骨質疏鬆的基因' -> '\"Osteoporosis\" AND @GENE' "
             "'Lung cancer genes' -> '\"Lung Neoplasms\" AND @GENE' "
@@ -708,6 +718,8 @@ class LLMClient:
             '\'How Icariin can regulate osteogenesis via mir21 and Pten\' -> \'"Icariin" AND "osteogenesis" AND "mir21" AND "Pten"\' '
             '\'How does Icariin regulate osteoblast differentiation?\' -> \'"Icariin" AND ("osteoblast" OR "osteogenesis")\' '
             '\'大腸直腸癌相關的菌相及其調控基因、miRNA\' -> \'"Colorectal Neoplasms" AND ("microbiota" OR "gut microbiome") AND (@GENE OR "miRNA" OR "microRNA")\' '
+            '\'How does resveratrol regulate neuroinflammation via an interleukin?\' -> \'"Resveratrol" AND "neuroinflammation" AND (@GENE OR "interleukin" OR "IL")\' '
+            '\'Curcumin regulates apoptosis via lncRNA in breast cancer\' -> \'"Curcumin" AND "apoptosis" AND ("breast cancer" OR "breast neoplasms") AND (@GENE OR "lncRNA")\' '
             '\'Anaerostipes hadrus inflammatory regulation\' -> \'"Anaerostipes hadrus" AND ("inflammation" OR "butyrate" OR "gut microbiota")\' '
             "'pathway linking Anaerostipes hadrus to inflammation' -> '\"Anaerostipes hadrus\"' "
             "'covid 19 treatment with aspirin' -> '\"COVID-19\" AND \"Aspirin\"' "

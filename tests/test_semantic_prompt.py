@@ -1461,3 +1461,132 @@ def test_answer_claim_verifier_ignores_natural_language_path_label():
     )
     assert result["path_cited_claim_count"] == 0
     assert result["unsupported_claim_count"] == 0
+
+
+def test_category_expanded_entity_not_silently_dropped_by_generic_hub_edges():
+    """Live-reproduced report: "Resveratrol ... via microRNA ... Neuroinflammation
+    ... Alzheimer's Disease" produced a Chat answer with zero mention of any
+    specific miRNA, even though the built graph had a real, evidenced edge for
+    one. Root cause: a query naming 3+ entities only resolves a generic middle
+    term ("microRNA") to a specific node (e.g. miR-155) via category expansion,
+    not literal name match -- so that node's edges got neither anchor-bonus
+    scoring credit nor endpoint-alignment gate credit, and were systematically
+    outranked by the many edges of literally-query-matching hub entities
+    (Resveratrol, Alzheimer's disease) with far more corroborating literature.
+    This reproduces that dilution with synthetic noise edges and asserts the
+    category-matched entity's edge still reaches the final context."""
+    graph = nx.Graph()
+    graph.add_node("resveratrol", name="Resveratrol", type="chemical")
+    graph.add_node("neuroinflammation", name="Neuroinflammation", type="disease")
+    graph.add_node("mir155", name="miR-155", type="Gene")
+    graph.add_edge(
+        "resveratrol",
+        "neuroinflammation",
+        edge_weight=1.0,
+        relations={"1": {"ameliorates"}},
+        evidences={"1": {"ameliorates": "Resveratrol ameliorates neuroinflammation."}},
+        confidences={"1": {"ameliorates": 0.9}},
+    )
+    # A real evidence quote that supports the relation but doesn't verbatim-name
+    # the target -- exactly the "quote_relation_mismatch" (tier B, not A) pattern
+    # found live for miR-155's actual PMID:35008513 evidence.
+    graph.add_edge(
+        "mir155",
+        "neuroinflammation",
+        edge_weight=1.0,
+        relations={"2": {"promotes"}},
+        evidences={"2": {"promotes": "MiR-155 is a pro-inflammatory mediator of the CNS."}},
+        confidences={"2": {"promotes": 0.9}},
+    )
+    # Dominant, literally-query-matching noise so miR-155's single edge ranks
+    # well outside the strict top-20 by raw score alone.
+    for index in range(30):
+        node_id = f"noise-{index}"
+        graph.add_node(node_id, name=f"Noise {index}", type="gene")
+        graph.add_edge(
+            "resveratrol",
+            node_id,
+            edge_weight=1.0,
+            relations={f"n{index}": {"associated_with"}},
+            evidences={f"n{index}": {"associated_with": "Resveratrol is associated with noise."}},
+            confidences={f"n{index}": {"associated_with": 0.95}},
+        )
+
+    retriever = GraphRetriever(graph)
+    context, paths = retriever.get_subgraph_context_with_paths(
+        ["resveratrol", "mir155"],
+        query="How does Resveratrol regulate Neuroinflammation via microRNA?",
+        max_hops=1,
+    )
+
+    mir_path = next((p for p in paths if "mir155" in p["node_ids"]), None)
+    assert mir_path is not None, "miR-155's edge was dropped entirely from the final context"
+    assert mir_path["retrieval_safe"] is True
+    assert "mir-155" in context.lower() or "mir155" in context.lower()
+
+
+def test_is_lncrna_node_recognizes_known_names_and_naming_patterns():
+    from netmedex.utils import is_lncrna_node
+
+    # Curated well-known names (no reliable naming convention distinguishes
+    # these from ordinary gene symbols, e.g. GAS5, H19).
+    assert is_lncrna_node("MALAT1") is True
+    assert is_lncrna_node("gas5") is True
+    # LINC*/SNHG* prefixes and -AS<n> antisense suffix.
+    assert is_lncrna_node("LINC00473") is True
+    assert is_lncrna_node("SNHG1") is True
+    assert is_lncrna_node("FGD5-AS1") is True
+    # Ordinary protein-coding genes must not be misclassified.
+    assert is_lncrna_node("TP53") is False
+    assert is_lncrna_node("SIRT1") is False
+
+
+def test_lncrna_category_entity_not_silently_dropped_by_generic_hub_edges():
+    """Sibling case to the miR-155 reproduction above, for lncRNA: a query
+    naming the generic category ("lncRNA") only resolves to a specific node
+    (e.g. MALAT1) through category expansion, not literal name match, so
+    without is_lncrna_node wired into the same anchor-scoring/gating/diversity
+    path as miRNA, this entity's real edge would be diluted the same way."""
+    graph = nx.Graph()
+    graph.add_node("resveratrol", name="Resveratrol", type="chemical")
+    graph.add_node("neuroinflammation", name="Neuroinflammation", type="disease")
+    graph.add_node("malat1", name="MALAT1", type="Gene")
+    graph.add_edge(
+        "resveratrol",
+        "neuroinflammation",
+        edge_weight=1.0,
+        relations={"1": {"ameliorates"}},
+        evidences={"1": {"ameliorates": "Resveratrol ameliorates neuroinflammation."}},
+        confidences={"1": {"ameliorates": 0.9}},
+    )
+    graph.add_edge(
+        "malat1",
+        "neuroinflammation",
+        edge_weight=1.0,
+        relations={"2": {"promotes"}},
+        evidences={"2": {"promotes": "MALAT1 is a key regulator of neuroinflammatory signaling."}},
+        confidences={"2": {"promotes": 0.9}},
+    )
+    for index in range(30):
+        node_id = f"noise-{index}"
+        graph.add_node(node_id, name=f"Noise {index}", type="gene")
+        graph.add_edge(
+            "resveratrol",
+            node_id,
+            edge_weight=1.0,
+            relations={f"n{index}": {"associated_with"}},
+            evidences={f"n{index}": {"associated_with": "Resveratrol is associated with noise."}},
+            confidences={f"n{index}": {"associated_with": 0.95}},
+        )
+
+    retriever = GraphRetriever(graph)
+    context, paths = retriever.get_subgraph_context_with_paths(
+        ["resveratrol", "malat1"],
+        query="How does Resveratrol regulate Neuroinflammation via lncRNA?",
+        max_hops=1,
+    )
+
+    lncrna_path = next((p for p in paths if "malat1" in p["node_ids"]), None)
+    assert lncrna_path is not None, "MALAT1's edge was dropped entirely from the final context"
+    assert lncrna_path["retrieval_safe"] is True
+    assert "malat1" in context.lower()
