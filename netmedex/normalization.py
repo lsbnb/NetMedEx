@@ -452,8 +452,12 @@ def normalize_knowledge_graph(
         if not new_G.has_node(target):
             new_G.add_node(target, **data)
         else:
-            if "pmids" in data:
-                new_G.nodes[target]["pmids"].update(data["pmids"])
+            if data.get("pmids"):
+                t_pmids = new_G.nodes[target].get("pmids")
+                if t_pmids is None:
+                    t_pmids = set()
+                    new_G.nodes[target]["pmids"] = t_pmids
+                t_pmids.update(data["pmids"])
 
     if progress_callback:
         progress_callback(4, 5, "Updating edge references...", None)
@@ -466,11 +470,20 @@ def normalize_knowledge_graph(
             continue  # Skip self-loops created by merging
 
         if new_G.has_edge(u_new, v_new):
-            new_G.edges[u_new, v_new]["relations"].update(data.get("relations", {}))
-            if "confidences" in data:
-                if "confidences" not in new_G.edges[u_new, v_new]:
-                    new_G.edges[u_new, v_new]["confidences"] = {}
-                new_G.edges[u_new, v_new]["confidences"].update(data["confidences"])
+            edge_entry = new_G.edges[u_new, v_new]
+            rel = edge_entry.get("relations")
+            if rel is None:
+                rel = {}
+                edge_entry["relations"] = rel
+            if data.get("relations"):
+                rel.update(data["relations"])
+
+            if data.get("confidences"):
+                conf = edge_entry.get("confidences")
+                if conf is None:
+                    conf = {}
+                    edge_entry["confidences"] = conf
+                conf.update(data["confidences"])
         else:
             new_G.add_edge(u_new, v_new, **data)
 

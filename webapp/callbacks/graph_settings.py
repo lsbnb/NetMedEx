@@ -38,21 +38,21 @@ def callbacks(app):
         total_edges = 0
         total_article_pmids = set()
 
-        for ele in elements:
-            data = ele.get("data", {})
+        for ele in elements or []:
+            data = ele.get("data", {}) if isinstance(ele, dict) else {}
             if "source" in data and "target" in data:
                 total_edges += 1
-                edge_pmids = data.get("pmids", [])
-                if isinstance(edge_pmids, list):
-                    total_article_pmids.update(edge_pmids)
-                elif isinstance(edge_pmids, str):
+                edge_pmids = data.get("pmids")
+                if isinstance(edge_pmids, (list, set, tuple)):
+                    total_article_pmids.update(str(p) for p in edge_pmids if p)
+                elif isinstance(edge_pmids, str) and edge_pmids:
                     total_article_pmids.add(edge_pmids)
             else:
                 total_nodes += 1
-                node_pmids = data.get("pmids", [])
-                if isinstance(node_pmids, list):
-                    total_article_pmids.update(node_pmids)
-                elif isinstance(node_pmids, str):
+                node_pmids = data.get("pmids")
+                if isinstance(node_pmids, (list, set, tuple)):
+                    total_article_pmids.update(str(p) for p in node_pmids if p)
+                elif isinstance(node_pmids, str) and node_pmids:
                     total_article_pmids.add(node_pmids)
 
         total_articles = len(total_article_pmids)
@@ -80,17 +80,19 @@ def callbacks(app):
             # Count selected articles (unique PMIDs from selected nodes + edges)
             pmids = set()
             for node in selected_nodes or []:
-                node_pmids = node.get("pmids", [])
-                if isinstance(node_pmids, list):
-                    pmids.update(node_pmids)
-                elif isinstance(node_pmids, str):
-                    pmids.add(node_pmids)
+                if isinstance(node, dict):
+                    node_pmids = node.get("pmids")
+                    if isinstance(node_pmids, (list, set, tuple)):
+                        pmids.update(str(p) for p in node_pmids if p)
+                    elif isinstance(node_pmids, str) and node_pmids:
+                        pmids.add(node_pmids)
             for edge in selected_edges or []:
-                edge_pmids = edge.get("pmids", [])
-                if isinstance(edge_pmids, list):
-                    pmids.update(edge_pmids)
-                elif isinstance(edge_pmids, str):
-                    pmids.add(edge_pmids)
+                if isinstance(edge, dict):
+                    edge_pmids = edge.get("pmids")
+                    if isinstance(edge_pmids, (list, set, tuple)):
+                        pmids.update(str(p) for p in edge_pmids if p)
+                    elif isinstance(edge_pmids, str) and edge_pmids:
+                        pmids.add(edge_pmids)
 
             n_selected_articles = len(pmids)
             if n_selected_articles > 0:

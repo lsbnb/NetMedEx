@@ -773,7 +773,8 @@ class PubTatorGraphBuilder:
                 to_remove.append((u, v))
                 community_edge = tuple(sorted([c_0, c_1]))
                 inter_edge_weight[community_edge] += attrs["edge_weight"]
-                inter_edge_pmids[community_edge].update(attrs["relations"])
+                if attrs.get("relations"):
+                    inter_edge_pmids[community_edge].update(attrs["relations"])
             else:
                 intra_count += 1
 
