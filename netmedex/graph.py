@@ -58,6 +58,7 @@ from netmedex.utils import (
     is_lncrna_node,
     is_mirna_node,
     is_snp_node,
+    mentions_category_generically,
 )
 
 MIN_EDGE_WIDTH = 1.0
@@ -564,9 +565,11 @@ class PubTatorGraphBuilder:
         if not query:
             return set()
         query_lower = str(query).lower()
-        mirna_query = any(trigger in query_lower for trigger in MIRNA_QUERY_TRIGGERS)
-        snp_query = any(trigger in query_lower for trigger in SNP_QUERY_TRIGGERS)
-        lncrna_query = any(trigger in query_lower for trigger in LNCRNA_QUERY_TRIGGERS)
+        # Only a generic family mention expands to the whole category; "miRNA-155"
+        # names one entity and is handled by literal/alias matching below.
+        mirna_query = mentions_category_generically(query_lower, MIRNA_QUERY_TRIGGERS)
+        snp_query = mentions_category_generically(query_lower, SNP_QUERY_TRIGGERS)
+        lncrna_query = mentions_category_generically(query_lower, LNCRNA_QUERY_TRIGGERS)
 
         anchors = set()
         for node_id, data in graph.nodes(data=True):

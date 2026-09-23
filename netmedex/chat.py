@@ -13,6 +13,10 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Any
 
+import networkx as nx
+
+from netmedex.graph_rag import GraphRetriever
+
 logger = logging.getLogger(__name__)
 
 
@@ -56,6 +60,22 @@ class ChatSession:
     _MEMORY_BUFFER_MAX_CHARS = 1800
     # Characters kept per aged-out pair when compressing into memory buffer.
     _MEMORY_ENTRY_MAX_CHARS = 250
+
+    # v1.6 strict-PMID-grounding follow-up flow (see _answer_with_pmid_grounding):
+    # a two-tier "core evidence circle, then index-wide fallback" retrieval policy
+    # for follow-up questions. Token the LLM must return verbatim (and only that)
+    # when the tier-1 (previous-reply-PMIDs-only) context can't answer the question.
+    _PMID_GROUNDING_SENTINEL = "__NEED_WIDER_SEARCH__"
+    # Deterministic disclosure appended (by code, not trusted to the LLM) whenever
+    # tier 2 cites a PMID that wasn't already part of the previous reply.
+    _PMID_GROUNDING_DISCLOSURE_TEMPLATE = (
+        "前次回覆之文獻與圖譜節點未記載此資訊，"
+        "本題答案由已建立索引之 PubMed 文獻庫中新增檢索的 PMID: {pmids} 補充提供。"
+    )
+    # Returned verbatim, bypassing the LLM entirely, when even the full index has
+    # nothing -- mirrors _build_entity_listing_response's bypass-for-determinism
+    # pattern so this exact wording can never be paraphrased away.
+    _PMID_GROUNDING_REFUSAL = "根據目前已建立索引之 PubMed 文獻與圖譜，無法回答此追問。"
 
     def __init__(
         self,
@@ -597,6 +617,8 @@ Each question MUST:
             "which are",
             "find all",
             "有哪些",
+            "哪些",
+            "哪一些",
             "列出",
             "清單",
             "全部",
@@ -605,7 +627,13 @@ Each question MUST:
             "顯示",
             "包含哪些",
         ]
-        if not any(term in query for term in listing_terms):
+        # "which are" alone misses the common phrasing "which miRNAs are
+        # related to X", where the entity noun sits between the two words
+        # (e.g. a query pre-translated from "哪一些miRNA與X有關").
+        is_listing_query = any(term in query for term in listing_terms) or bool(
+            re.search(r"\bwhich\b.*\bare\b", query)
+        )
+        if not is_listing_query:
             return None
         if any(w in query for w in ["mirna", "microrna", "微小rna", "微rna", "小分子rna"]):
             return "mirna"
@@ -754,6 +782,384 @@ Each question MUST:
             "context_count": len(sorted_entities),
         }
 
+    def _call_llm_for_chat_completion(
+        self, messages: list[dict], is_internal: bool, context_count: int = 0
+    ) -> str:
+        """Invoke the underlying LLM for a chat turn and return cleaned response text.
+
+        Shared by the normal single-tier flow and the strict-PMID-grounding tiers
+        (see `_answer_with_pmid_grounding`) so token budgets, timeouts, and the
+        SDK fallback chain stay identical regardless of which retrieval path
+        produced `messages`.
+        """
+        logger.info(
+            f"Sending chat request with {context_count} context documents to "
+            f"{getattr(self.llm, 'provider', 'unknown')} LLM"
+        )
+        start_time = datetime.now()
+        # Bootstrap summaries use a generous budget so all 5 layers fit;
+        # the initial analysis quality matters more than marginal speed gains.
+        # Token budgets are tuned per provider to balance response completeness
+        # against cost. High-capacity/low-cost providers get a larger budget.
+        _provider = getattr(self.llm, "provider", "unknown")
+        if _provider == "anthropic":
+            # Claude standard max output is 8192; extended-thinking models
+            # consume thinking tokens against max_tokens so use the ceiling.
+            chat_max_tokens = 8192
+        elif _provider == "local":
+            # Local models: v1.5.1 capped this flat at 2500 to speed up generation,
+            # but that budget routinely truncated Layer 3's evidence table before
+            # its Weakest Link / Testable Prediction / Suggested Validation fields,
+            # making Layer 3 read like a duplicate of Layer 2. Bootstrap keeps the
+            # tighter budget (first response, throughput-constrained); regular
+            # turns get room for a complete 5-layer answer.
+            chat_max_tokens = 2500 if is_internal else 4000
+        elif _provider == "groq":
+            # Groq (cloud): allow richer 5-layer output
+            chat_max_tokens = 5000 if is_internal else 8000
+        elif _provider in ("openai",) and "mini" in getattr(self.llm, "model", ""):
+            # GPT-4o-mini: very cheap, can afford a larger budget.
+            chat_max_tokens = 5000 if is_internal else 8000
+        else:
+            # Default (OpenAI gpt-4o, Gemini, OpenRouter, NVIDIA NIM):
+            # 6000 covers all 5 layers comfortably without excessive cost.
+            chat_max_tokens = 4000 if is_internal else 6000
+        chat_timeout = 180.0 if is_internal else 300.0
+        # Extended-thinking models take longer; allow more time for Anthropic.
+        if _provider == "anthropic":
+            chat_timeout = 300.0 if is_internal else 600.0
+        assistant_content = None
+        if hasattr(self.llm, "chat_completion_text"):
+            try:
+                assistant_content = self.llm.chat_completion_text(
+                    messages=messages,
+                    temperature=0,
+                    max_tokens=chat_max_tokens,
+                    timeout=chat_timeout,
+                )
+                duration = (datetime.now() - start_time).total_seconds()
+                logger.info(f"LLM Response received in {duration:.2f}s")
+                if assistant_content is not None and not isinstance(assistant_content, str):
+                    logger.warning(
+                        "chat_completion_text returned non-string content; falling back to SDK call"
+                    )
+                    assistant_content = None
+            except Exception as e:
+                err = str(e).lower()
+                is_transient = any(
+                    token in err
+                    for token in (
+                        "timed out",
+                        "timeout",
+                        "connection",
+                        "rate limit",
+                        "429",
+                    )
+                )
+                # Avoid a second long wait on flaky providers during bootstrap.
+                if is_internal or is_transient:
+                    raise
+                logger.warning(f"chat_completion_text failed, falling back to SDK call: {e}")
+
+        if assistant_content is None and getattr(self.llm, "client", None) is not None:
+            # Fallback: direct OpenAI SDK call if helper is unavailable or failed
+            response = self.llm.client.chat.completions.create(
+                model=self.llm.model,
+                messages=messages,
+                temperature=0,
+                max_tokens=chat_max_tokens,
+            )
+            assistant_content = response.choices[0].message.content
+        elif assistant_content is None and getattr(self.llm, "anthropic_client", None) is not None:
+            # Fallback: direct Anthropic SDK call
+            assistant_content = self.llm._anthropic_chat_completion(
+                messages=messages,
+                temperature=0,
+                max_tokens=chat_max_tokens,
+            )
+
+        if assistant_content is None:
+            assistant_content = ""
+        assistant_content = assistant_content.strip()
+
+        # Intermediary Reasoning Chain Filter: strip internal <thinking_english> block.
+        assistant_content = re.sub(
+            r"<thinking_english>.*?</thinking_english>",
+            "",
+            assistant_content,
+            flags=re.IGNORECASE | re.DOTALL,
+        ).strip()
+
+        # Guardrail: remove generic subtype prefix noise (common with some models).
+        assistant_content = self._strip_generic_subtype_prefix(assistant_content)
+        return assistant_content
+
+    def _finalize_chat_turn(
+        self,
+        user_msg: ChatMessage,
+        assistant_content: str,
+        pmids_used: list[str],
+        twohop_paths: list[dict],
+        suggest_semantic_edge_method: bool,
+        final_sources: list[str] | None = None,
+        translation_degraded: bool = False,
+    ) -> dict[str, Any]:
+        """Parse citations, persist history, and build the standard `send_message`
+        return dict. Shared by the normal single-tier flow and both strict-PMID-
+        grounding tiers so citation handling and history bookkeeping never
+        diverge between them.
+        """
+        if final_sources is None:
+            cited_pmids = set(
+                re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", assistant_content)
+            ) | set(re.findall(r"\[(\d{7,10})\]", assistant_content))
+            final_sources = [p for p in pmids_used if p in cited_pmids]
+
+        history_content = self._compress_for_history(assistant_content)
+        assistant_msg = ChatMessage(
+            role="assistant",
+            content=history_content,
+            sources=final_sources,
+            full_content=assistant_content,
+        )
+        self.history.append(assistant_msg)
+        self.full_history.append(assistant_msg)
+        self._trim_history()
+
+        return {
+            "success": True,
+            "message": assistant_content,
+            "sources": final_sources,
+            "pmids_used": pmids_used,
+            "context_count": len(pmids_used),
+            "user_msg": user_msg,
+            "assistant_msg": assistant_msg,
+            "twohop_paths": twohop_paths,
+            "suggest_semantic_edge_method": suggest_semantic_edge_method,
+            "translation_degraded": translation_degraded,
+        }
+
+    def _last_cited_pmids(self) -> set[str]:
+        """PMIDs cited in the most recent assistant reply, or empty if there is none."""
+        for msg in reversed(self.history):
+            if msg.role == "assistant":
+                return set(msg.sources or [])
+        return set()
+
+    # Edge attributes keyed by PMID at the top level (relation type(s), evidence
+    # quote, confidence, and mechanism-event data per citing article). An edge
+    # co-cited by both a restricted and a non-restricted PMID must have these
+    # trimmed, not just pass an any-match gate -- otherwise the non-restricted
+    # PMID's own relation/evidence/confidence would still ride along inside the
+    # "restricted" edge and could end up selected and cited by
+    # _select_edge_support, silently defeating the grounding guarantee.
+    _PMID_KEYED_EDGE_FIELDS = ("relations", "confidences", "evidences", "mechanism_events")
+
+    @classmethod
+    def _build_pmid_restricted_subgraph(cls, graph: nx.Graph, pmid_set: set[str]) -> nx.Graph:
+        """Induced subgraph containing only edges (and the nodes they touch) whose
+        recorded PMIDs intersect `pmid_set`, with each kept edge's own PMID-keyed
+        fields trimmed down to that intersection.
+
+        This is a strict attribute filter, not a neighbor expansion: a node
+        reachable from a kept node only through an edge tied to a *different*
+        PMID is never pulled in, matching the "嚴禁順著關係跳躍至屬性不符的相鄰
+        節點" (never hop onto an attribute-mismatched neighbor) requirement of
+        the v1.6 core-evidence-circle design.
+        """
+        restricted = nx.Graph()
+        restricted.graph.update(graph.graph)
+        for u, v, data in graph.edges(data=True):
+            edge_pmids = {str(p) for p in (data.get("relations") or {})}
+            if not edge_pmids:
+                edge_pmids = {str(p) for p in (data.get("pmids") or [])}
+            if not (edge_pmids & pmid_set):
+                continue
+            trimmed_data = dict(data)
+            for field in cls._PMID_KEYED_EDGE_FIELDS:
+                field_value = data.get(field)
+                if isinstance(field_value, dict):
+                    trimmed_data[field] = {
+                        pmid: value for pmid, value in field_value.items() if str(pmid) in pmid_set
+                    }
+            if u not in restricted:
+                restricted.add_node(u, **graph.nodes[u])
+            if v not in restricted:
+                restricted.add_node(v, **graph.nodes[v])
+            restricted.add_edge(u, v, **trimmed_data)
+        return restricted
+
+    def _answer_with_pmid_grounding(
+        self,
+        user_message: str,
+        user_msg: ChatMessage,
+        search_query: str,
+        session_language: str,
+        top_k: int,
+        translation_degraded: bool = False,
+    ) -> dict[str, Any] | None:
+        """Two-tier "Hybrid Knowledge Hierarchy" retrieval for follow-up questions.
+
+        Tier 1 (core evidence circle): answer using ONLY the text chunks and
+        graph subgraph tied to the PMIDs cited in the previous reply. Tier 2
+        (index-wide circle): only entered when tier 1's context is empty, or the
+        LLM itself signals tier 1 is insufficient -- expands to the full indexed
+        corpus/graph (the normal, unrestricted retrieval) and appends a
+        code-generated (not LLM-trusted) disclosure naming any newly-cited PMID.
+        If tier 2 also has nothing, returns the fixed refusal string directly,
+        bypassing the LLM so the wording can never be paraphrased away.
+
+        Returns None when there is no previous reply to ground on (e.g. this is
+        the first substantive question), signaling the caller to fall through to
+        the normal single-tier flow.
+        """
+        previous_pmids = self._last_cited_pmids()
+        if not previous_pmids:
+            return None
+
+        # --- Tier 1: core evidence circle ------------------------------------
+        tier1_docs = [
+            self.rag.documents[pmid] for pmid in previous_pmids if pmid in self.rag.documents
+        ]
+        tier1_text_context = "\n---\n\n".join(
+            f"PMID: {doc.pmid}\nTitle: {doc.title}\nAbstract: {doc.abstract}"
+            for doc in sorted(tier1_docs, key=lambda d: d.pmid)
+        )
+
+        tier1_graph_context = ""
+        tier1_paths: list[dict] = []
+        if self.graph_retriever:
+            restricted_graph = self._build_pmid_restricted_subgraph(
+                self.graph_retriever.graph, previous_pmids
+            )
+            if restricted_graph.number_of_nodes() > 0:
+                restricted_retriever = GraphRetriever(
+                    restricted_graph, node_rag=self.graph_retriever.node_rag
+                )
+                tier1_graph_context, tier1_paths = (
+                    restricted_retriever.get_subgraph_context_with_paths(
+                        list(restricted_graph.nodes()), query=search_query
+                    )
+                )
+
+        tier1_has_content = bool(tier1_text_context.strip()) or bool(
+            tier1_graph_context.strip()
+        )
+        tier1_answer = None
+        if tier1_has_content:
+            grounding_directive = (
+                "[STRICT GROUNDING MODE - TIER 1 / CORE EVIDENCE CIRCLE] Answer using "
+                "ONLY the context below, which is restricted to the PMIDs already cited "
+                "in your previous reply to this user. Do not use any other biomedical "
+                "knowledge, even if you know it. If -- and only if -- this restricted "
+                f"context is genuinely insufficient to answer the question, respond with "
+                f"EXACTLY this token and nothing else: {self._PMID_GROUNDING_SENTINEL}"
+            )
+            messages = self._build_messages(
+                user_message,
+                tier1_text_context,
+                tier1_graph_context,
+                session_language,
+                grounding_directive,
+            )
+            tier1_answer = self._call_llm_for_chat_completion(
+                messages, is_internal=False, context_count=len(tier1_docs)
+            )
+
+        tier1_failed = (not tier1_has_content) or (
+            tier1_answer is not None and self._PMID_GROUNDING_SENTINEL in tier1_answer
+        )
+
+        if not tier1_failed:
+            return self._finalize_chat_turn(
+                user_msg=user_msg,
+                assistant_content=tier1_answer,
+                pmids_used=[doc.pmid for doc in tier1_docs],
+                twohop_paths=tier1_paths,
+                suggest_semantic_edge_method=False,
+                translation_degraded=translation_degraded,
+            )
+
+        # --- Tier 2: index-wide circle (fallback) ----------------------------
+        # Reuses exactly the normal, unrestricted retrieval so answer quality
+        # here matches ordinary Chat behavior once the PMID restriction lifts.
+        relevant_nodes = (
+            self.graph_retriever.find_relevant_nodes(search_query)
+            if self.graph_retriever
+            else []
+        )
+        tier2_graph_context = ""
+        tier2_paths: list[dict] = []
+        if relevant_nodes:
+            tier2_graph_context, tier2_paths = self.graph_retriever.get_subgraph_context_with_paths(
+                relevant_nodes, query=search_query
+            )
+        preferred_pmids: set[str] = set()
+        for path_info in tier2_paths:
+            if not path_info.get("retrieval_safe", True):
+                continue
+            for edge_pmid_list in path_info.get("edge_pmids", []):
+                if edge_pmid_list:
+                    preferred_pmids.update(str(p) for p in edge_pmid_list)
+
+        tier2_text_context, tier2_pmids_used = self.rag.get_context(
+            search_query, top_k=top_k, preferred_pmids=preferred_pmids
+        )
+
+        # get_context returns a non-empty sentinel string ("No relevant abstracts
+        # found.") even with zero results, so text-side "has content" must check
+        # pmids_used rather than the text length.
+        tier2_has_content = bool(tier2_pmids_used) or bool(tier2_graph_context.strip())
+        if not tier2_has_content:
+            return self._finalize_chat_turn(
+                user_msg=user_msg,
+                assistant_content=self._PMID_GROUNDING_REFUSAL,
+                pmids_used=[],
+                twohop_paths=[],
+                suggest_semantic_edge_method=False,
+                final_sources=[],
+                translation_degraded=translation_degraded,
+            )
+
+        disclosure_directive = (
+            "[STRICT GROUNDING MODE - TIER 2 / INDEX-WIDE CIRCLE] The context below was "
+            "retrieved from the full indexed PubMed corpus because the PMIDs cited in "
+            "your previous reply could not answer this question. Answer normally using "
+            "this context. Do NOT write your own disclosure sentence about this being a "
+            "wider search -- the calling system appends that automatically."
+        )
+        messages = self._build_messages(
+            user_message,
+            tier2_text_context,
+            tier2_graph_context,
+            session_language,
+            disclosure_directive,
+        )
+        tier2_answer = self._call_llm_for_chat_completion(
+            messages, is_internal=False, context_count=len(tier2_pmids_used)
+        )
+
+        cited_pmids = set(re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", tier2_answer)) | set(
+            re.findall(r"\[(\d{7,10})\]", tier2_answer)
+        )
+        new_pmids = sorted(cited_pmids - previous_pmids)
+        if new_pmids:
+            disclosure = self._PMID_GROUNDING_DISCLOSURE_TEMPLATE.format(
+                pmids=", ".join(new_pmids)
+            )
+            tier2_answer = f"{tier2_answer}\n\n---\n\n{disclosure}"
+
+        final_sources = [p for p in tier2_pmids_used if p in cited_pmids]
+        return self._finalize_chat_turn(
+            user_msg=user_msg,
+            assistant_content=tier2_answer,
+            pmids_used=tier2_pmids_used,
+            twohop_paths=tier2_paths,
+            suggest_semantic_edge_method=False,
+            final_sources=final_sources,
+            translation_degraded=translation_degraded,
+        )
+
     def send_message(
         self,
         user_message: str,
@@ -761,6 +1167,7 @@ Each question MUST:
         session_language: str = "English",
         skip_translation: bool = False,
         focus_nodes: list[str] | None = None,
+        strict_pmid_grounding: bool = False,
     ) -> dict[str, Any]:
         """
         Process user message and generate AI response.
@@ -772,6 +1179,15 @@ Each question MUST:
             skip_translation: Whether to skip LLM translation for query optimization
             focus_nodes: Optional list of node IDs to root the 2-hop graph traversal.
                          If provided, bypasses NLP-based relevance matching.
+            strict_pmid_grounding: If True, route follow-up questions (any turn
+                         after a reply with citations already exists) through the
+                         two-tier "core evidence circle, then index-wide fallback"
+                         policy in `_answer_with_pmid_grounding` instead of the
+                         normal single-tier retrieval. No effect on the first
+                         substantive question of a session (nothing to ground on
+                         yet), on meta-instructions, on internal bootstrap calls,
+                         or when `focus_nodes` is explicitly given (that is
+                         already a different, deliberate scoping choice).
 
         Returns:
             Dictionary with response and metadata
@@ -818,14 +1234,33 @@ Each question MUST:
                 and (session_language != "English" or self._looks_like_cjk(user_message))
             )
 
+            # True when translation was needed but the query actually sent to
+            # retrieval is still untranslated -- either because this LLM client has
+            # no translate_to_english, or because the call ran but hit "unavailable"
+            # / "error" (see LLMClient.translate_to_english). Left False for the
+            # deliberate no-op case where translation ran and the text genuinely was
+            # already English. Measured impact of this degradation: retrieval
+            # nDCG@10 dropped from 0.393 to 0.230 on CJK queries when it fires (see
+            # evaluation notes), so it is surfaced to the user rather than only logged.
+            translation_degraded = False
+
             if needs_translation:
                 logger.info(
                     f"Translating query to English for optimal retrieval (Language: {session_language}, CJK: {self._looks_like_cjk(user_message)})"
                 )
                 if hasattr(self.llm, "translate_to_english"):
                     search_query = self.llm.translate_to_english(user_message)
-                    logger.info(f"Translated query: '{search_query}'")
+                    if getattr(self.llm, "last_translation_status", "ok") != "ok":
+                        translation_degraded = True
+                        logger.warning(
+                            f"translate_to_english degraded to the untranslated query "
+                            f"(status: {getattr(self.llm, 'last_translation_status', 'unknown')}); "
+                            f"retrieval will run on the original-language text"
+                        )
+                    else:
+                        logger.info(f"Translated query: '{search_query}'")
                 else:
+                    translation_degraded = True
                     logger.warning(
                         "LLM client does not support translate_to_english; using original query"
                     )
@@ -841,16 +1276,50 @@ Each question MUST:
                     )
                     if hasattr(self.llm, "translate_to_english"):
                         search_query = self.llm.translate_to_english(search_query)
-                        logger.info(f"Translated internal query: '{search_query}'")
+                        if getattr(self.llm, "last_translation_status", "ok") != "ok":
+                            translation_degraded = True
+                            logger.warning(
+                                f"translate_to_english degraded to the untranslated topic query "
+                                f"(status: {getattr(self.llm, 'last_translation_status', 'unknown')})"
+                            )
+                        else:
+                            logger.info(f"Translated internal query: '{search_query}'")
                     else:
+                        translation_degraded = True
                         logger.warning(
                             "LLM client does not support translate_to_english; using original query"
                         )
 
+            if strict_pmid_grounding and not is_meta and not is_internal and focus_nodes is None:
+                grounded_result = self._answer_with_pmid_grounding(
+                    user_message,
+                    user_msg,
+                    search_query,
+                    session_language,
+                    top_k,
+                    translation_degraded=translation_degraded,
+                )
+                if grounded_result is not None:
+                    logger.info("Chat response generated via strict PMID grounding")
+                    return grounded_result
+                # else: no previous reply to ground on (first substantive question
+                # of the session) -- fall through to the normal flow below.
+
             # 1. Retrieve Graph Context (Structure) first to identify preferred PMIDs
             graph_context = ""
             twohop_paths = []
-            preferred_pmids = set()
+            # Continuity boost, not a scope restriction: the previous reply's cited
+            # PMIDs start this turn's preferred set (extended below with PMIDs from
+            # THIS turn's own 2-hop graph paths), so a follow-up question can
+            # resurface and build on them again. Retrieval still runs over the full
+            # index either way -- AbstractRAG.search() only ever multiplies a
+            # preferred PMID's score by 1.5x among candidates the dense/sparse arms
+            # already returned; it never force-includes one they didn't surface, so
+            # a previous PMID that has become irrelevant to the new question simply
+            # gets no boost. Hard-restricting retrieval to only previously-cited
+            # PMIDs is a separate, opt-in mode (_answer_with_pmid_grounding's Tier 1,
+            # gated by strict_pmid_grounding) with its own disclosure/refusal rules.
+            preferred_pmids = self._last_cited_pmids()
             # Drives the "switch to Semantic Analysis" nudge in the webapp (see
             # chat_callbacks.py): only worth suggesting when this turn actually had
             # no directional edges to reason over AND the graph wasn't already built
@@ -979,147 +1448,20 @@ Each question MUST:
                 use_full_content=is_meta,
             )
 
-            # Call LLM - use unified helper so Gemini uses its HTTP path
-            logger.info(
-                f"Sending chat request with {len(pmids_used)} context documents to {getattr(self.llm, 'provider', 'unknown')} LLM"
+            assistant_content = self._call_llm_for_chat_completion(
+                messages, is_internal, context_count=len(pmids_used)
             )
-            start_time = datetime.now()
-            # Bootstrap summaries use a generous budget so all 5 layers fit;
-            # the initial analysis quality matters more than marginal speed gains.
-            # Token budgets are tuned per provider to balance response completeness
-            # against cost. High-capacity/low-cost providers get a larger budget.
-            _provider = getattr(self.llm, "provider", "unknown")
-            if _provider == "anthropic":
-                # Claude standard max output is 8192; extended-thinking models
-                # consume thinking tokens against max_tokens so use the ceiling.
-                chat_max_tokens = 8192
-            elif _provider == "local":
-                # Local models: v1.5.1 capped this flat at 2500 to speed up generation,
-                # but that budget routinely truncated Layer 3's evidence table before
-                # its Weakest Link / Testable Prediction / Suggested Validation fields,
-                # making Layer 3 read like a duplicate of Layer 2. Bootstrap keeps the
-                # tighter budget (first response, throughput-constrained); regular
-                # turns get room for a complete 5-layer answer.
-                chat_max_tokens = 2500 if is_internal else 4000
-            elif _provider == "groq":
-                # Groq (cloud): allow richer 5-layer output
-                chat_max_tokens = 5000 if is_internal else 8000
-            elif _provider in ("openai",) and "mini" in getattr(self.llm, "model", ""):
-                # GPT-4o-mini: very cheap, can afford a larger budget.
-                chat_max_tokens = 5000 if is_internal else 8000
-            else:
-                # Default (OpenAI gpt-4o, Gemini, OpenRouter, NVIDIA NIM):
-                # 6000 covers all 5 layers comfortably without excessive cost.
-                chat_max_tokens = 4000 if is_internal else 6000
-            chat_timeout = 180.0 if is_internal else 300.0
-            # Extended-thinking models take longer; allow more time for Anthropic.
-            if _provider == "anthropic":
-                chat_timeout = 300.0 if is_internal else 600.0
-            assistant_content = None
-            if hasattr(self.llm, "chat_completion_text"):
-                try:
-                    assistant_content = self.llm.chat_completion_text(
-                        messages=messages,
-                        temperature=0,
-                        max_tokens=chat_max_tokens,
-                        timeout=chat_timeout,
-                    )
-                    duration = (datetime.now() - start_time).total_seconds()
-                    logger.info(f"LLM Response received in {duration:.2f}s")
-                    if assistant_content is not None and not isinstance(assistant_content, str):
-                        logger.warning(
-                            "chat_completion_text returned non-string content; falling back to SDK call"
-                        )
-                        assistant_content = None
-                except Exception as e:
-                    err = str(e).lower()
-                    is_transient = any(
-                        token in err
-                        for token in (
-                            "timed out",
-                            "timeout",
-                            "connection",
-                            "rate limit",
-                            "429",
-                        )
-                    )
-                    # Avoid a second long wait on flaky providers during bootstrap.
-                    if is_internal or is_transient:
-                        raise
-                    logger.warning(f"chat_completion_text failed, falling back to SDK call: {e}")
-
-            if assistant_content is None and getattr(self.llm, "client", None) is not None:
-                # Fallback: direct OpenAI SDK call if helper is unavailable or failed
-                response = self.llm.client.chat.completions.create(
-                    model=self.llm.model,
-                    messages=messages,
-                    temperature=0,
-                    max_tokens=chat_max_tokens,
-                )
-                assistant_content = response.choices[0].message.content
-            elif (
-                assistant_content is None
-                and getattr(self.llm, "anthropic_client", None) is not None
-            ):
-                # Fallback: direct Anthropic SDK call
-                assistant_content = self.llm._anthropic_chat_completion(
-                    messages=messages,
-                    temperature=0,
-                    max_tokens=chat_max_tokens,
-                )
-
-            if assistant_content is None:
-                assistant_content = ""
-            assistant_content = assistant_content.strip()
-
-            # 6. Intermediary Reasoning Chain Filter
-            # Strip internal <thinking_english> block before returning to user
-            assistant_content = re.sub(
-                r"<thinking_english>.*?</thinking_english>",
-                "",
-                assistant_content,
-                flags=re.IGNORECASE | re.DOTALL,
-            ).strip()
-
-            # Guardrail: remove generic subtype prefix noise (common with some models).
-            assistant_content = self._strip_generic_subtype_prefix(assistant_content)
-
-            # Parse citations from response to filter sources.
-            # Catch all formats the LLM uses:
-            #   PMID:123456 / PMID: 123456 / PMID 123456
-            #   [PMID:123456] / [123456] (bare 7-10 digit number in brackets)
-            cited_pmids = set(re.findall(r"(?i)PMID[:\s]\s*(\d{7,10})", assistant_content)) | set(
-                re.findall(r"\[(\d{7,10})\]", assistant_content)
-            )
-
-            # Filter pmids_used to only include those actually cited
-            final_sources = [p for p in pmids_used if p in cited_pmids]
-
-            history_content = self._compress_for_history(assistant_content)
-
-            assistant_msg = ChatMessage(
-                role="assistant",
-                content=history_content,
-                sources=final_sources,
-                full_content=assistant_content,
-            )
-            self.history.append(assistant_msg)
-            self.full_history.append(assistant_msg)
-            self._trim_history()
 
             logger.info("Chat response generated successfully")
 
-            return {
-                "success": True,
-                "message": assistant_content,
-                "sources": final_sources,
-                "pmids_used": pmids_used,
-                "context_count": len(pmids_used),
-                "user_msg": user_msg,
-                "assistant_msg": assistant_msg,
-                "twohop_paths": twohop_paths,
-                "suggest_semantic_edge_method": suggest_semantic_edge_method,
-            }
+            return self._finalize_chat_turn(
+                user_msg=user_msg,
+                assistant_content=assistant_content,
+                pmids_used=pmids_used,
+                twohop_paths=twohop_paths,
+                suggest_semantic_edge_method=suggest_semantic_edge_method,
+                translation_degraded=translation_degraded,
+            )
 
         except Exception as e:
             logger.error(f"Error generating chat response: {e}")

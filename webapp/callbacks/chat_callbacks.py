@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import logging
 import re
+import threading
 
 import dash
 from dash import ALL, Input, Output, State, dcc, html, no_update
@@ -13,6 +14,18 @@ logger = logging.getLogger(__name__)
 
 # Local stores for chat state (keyed by graph path)
 _sessions: dict[str, dict] = {}
+
+# Guards _rebuild_chat_session_from_graph so two near-simultaneous requests for a
+# session missing from _sessions (e.g. the main chat panel and the expanded modal
+# both firing right after a server restart wiped it) never construct a fresh
+# AbstractRAG/ChromaDB EphemeralClient concurrently -- observed live to corrupt
+# both attempts ('RustBindingsAPI' object has no attribute 'bindings', then
+# 'ephemeral', within the same second) rather than merely being redundant work.
+# One process-wide lock rather than one per graph path: rebuilds are rare (only
+# right after a restart) and briefly serializing two *different* sessions'
+# rebuilds is a non-issue, whereas a per-path lock registry would itself need
+# its own guard against concurrent creation.
+_session_rebuild_lock = threading.Lock()
 
 COMMUNITY_NODE_PATTERN = re.compile(r"^c\d+$")
 
@@ -1962,6 +1975,7 @@ def callbacks(app):
             State("chat-override-model", "value"),
             State("chat-override-custom-model", "value"),
             State("chat-override-base-url", "value"),
+            State("strict-pmid-grounding-toggle", "value"),
         ],
         prevent_initial_call=True,
     )
@@ -2003,6 +2017,7 @@ def callbacks(app):
         chat_override_model,
         chat_override_custom_model,
         chat_override_base_url,
+        strict_pmid_grounding_toggle,
     ):
         """
         Process user message and get AI response.
@@ -2035,56 +2050,61 @@ def callbacks(app):
             savepath = None
 
         if savepath and savepath["graph"] not in _sessions:
-            try:
-                import os
+            with _session_rebuild_lock:
+                # Re-check inside the lock: another thread may have already
+                # rebuilt this exact session while we were waiting -- reuse its
+                # result instead of racing a second, concurrent rebuild.
+                if savepath["graph"] not in _sessions:
+                    try:
+                        import os
 
-                if os.path.exists(savepath["graph"]):
-                    llm_client = _initialize_llm_from_callback_state(
-                        llm_provider=llm_provider,
-                        openai_api_key=openai_api_key,
-                        openai_model=openai_model,
-                        openai_custom_model=openai_custom_model,
-                        google_api_key=google_api_key,
-                        google_model=google_model,
-                        google_safety_setting=google_safety_setting,
-                        llm_base_url=llm_base_url,
-                        llm_model=llm_model,
-                        openrouter_api_key=openrouter_api_key,
-                        openrouter_model=openrouter_model,
-                        openrouter_custom_model=openrouter_custom_model,
-                        nvidia_api_key=nvidia_api_key,
-                        nvidia_nim_base_url=nvidia_nim_base_url,
-                        nvidia_model=nvidia_model,
-                        groq_api_key=groq_api_key,
-                        groq_model=groq_model,
-                        groq_custom_model=groq_custom_model,
-                        anthropic_api_key=anthropic_api_key,
-                        anthropic_model=anthropic_model,
-                        anthropic_custom_model=anthropic_custom_model,
-                    )
-                    if not llm_client.client and not llm_client.anthropic_client:
-                        logger.warning(
-                            "Rebuilding chat session from graph, but LLM client is not fully initialized. "
-                            "Provider: %s",
-                            llm_client.provider,
-                        )
-                    chat_llm_client = _resolve_chat_llm_client(
-                        llm_client,
-                        override_enabled=chat_override_toggle,
-                        main_provider=llm_provider,
-                        override_provider=chat_override_provider,
-                        override_api_key=chat_override_api_key,
-                        override_model=chat_override_model,
-                        override_custom_model=chat_override_custom_model,
-                        override_base_url=chat_override_base_url,
-                    )
-                    _rebuild_chat_session_from_graph(
-                        savepath,
-                        chat_llm_client,
-                        topic=search_query,
-                    )
-            except Exception as e:
-                logger.error(f"Failed to rebuild chat session from graph: {e}")
+                        if os.path.exists(savepath["graph"]):
+                            llm_client = _initialize_llm_from_callback_state(
+                                llm_provider=llm_provider,
+                                openai_api_key=openai_api_key,
+                                openai_model=openai_model,
+                                openai_custom_model=openai_custom_model,
+                                google_api_key=google_api_key,
+                                google_model=google_model,
+                                google_safety_setting=google_safety_setting,
+                                llm_base_url=llm_base_url,
+                                llm_model=llm_model,
+                                openrouter_api_key=openrouter_api_key,
+                                openrouter_model=openrouter_model,
+                                openrouter_custom_model=openrouter_custom_model,
+                                nvidia_api_key=nvidia_api_key,
+                                nvidia_nim_base_url=nvidia_nim_base_url,
+                                nvidia_model=nvidia_model,
+                                groq_api_key=groq_api_key,
+                                groq_model=groq_model,
+                                groq_custom_model=groq_custom_model,
+                                anthropic_api_key=anthropic_api_key,
+                                anthropic_model=anthropic_model,
+                                anthropic_custom_model=anthropic_custom_model,
+                            )
+                            if not llm_client.client and not llm_client.anthropic_client:
+                                logger.warning(
+                                    "Rebuilding chat session from graph, but LLM client is not fully initialized. "
+                                    "Provider: %s",
+                                    llm_client.provider,
+                                )
+                            chat_llm_client = _resolve_chat_llm_client(
+                                llm_client,
+                                override_enabled=chat_override_toggle,
+                                main_provider=llm_provider,
+                                override_provider=chat_override_provider,
+                                override_api_key=chat_override_api_key,
+                                override_model=chat_override_model,
+                                override_custom_model=chat_override_custom_model,
+                                override_base_url=chat_override_base_url,
+                            )
+                            _rebuild_chat_session_from_graph(
+                                savepath,
+                                chat_llm_client,
+                                topic=search_query,
+                            )
+                    except Exception as e:
+                        logger.error(f"Failed to rebuild chat session from graph: {e}")
 
         if not savepath or savepath["graph"] not in _sessions:
             from webapp.components.chat import create_message_component
@@ -2126,6 +2146,7 @@ def callbacks(app):
                 user_input,
                 session_language=effective_language,
                 focus_nodes=None,
+                strict_pmid_grounding="enabled" in (strict_pmid_grounding_toggle or []),
             )
 
             if response["success"]:
@@ -2178,6 +2199,22 @@ def callbacks(app):
                         "Layer 3 above is limited to association-level inference. Rebuild the "
                         "network with **Semantic Analysis (LLM)** as the Edge Construction Method "
                         "to enable graph-grounded causal-mechanism reasoning.*"
+                    )
+
+                # Retrieval quietly ran on the untranslated query (query translation
+                # was needed but the LLM call was unavailable or failed -- see
+                # chat.py's English Intermediary). Without this, the answer looks
+                # identical to a normal retrieval that just happened to score lower;
+                # measured impact is nDCG@10 dropping by roughly half. Not folded
+                # into the same "not is_compact_mode_answer" guard above: this is a
+                # retrieval-quality warning independent of which answer layers ran.
+                if response.get("translation_degraded"):
+                    clean_content += (
+                        "\n\n---\n"
+                        "⚠️ *Your question could not be translated to English before "
+                        "retrieval (translation service unavailable or failed), so search "
+                        "ran on the original-language text. Results may be less complete "
+                        "than usual -- retry the question if this persists.*"
                     )
 
                 ai_msg = create_message_component(

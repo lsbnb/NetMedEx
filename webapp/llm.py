@@ -247,6 +247,11 @@ class LLMClient:
         self.last_completion_usage: dict[str, int] = {}
         self.last_completion_finish_reason = ""
         self.completion_usage_totals: dict[str, int] = {}
+        # Set by translate_to_english(): "ok" (LLM call completed, whether or not
+        # it changed the text), "unavailable" (no client configured), or "error"
+        # (the call raised). Lets callers distinguish "already English" from a
+        # silent fallback to the untranslated original -- see translate_to_english.
+        self.last_translation_status = "ok"
 
         # Provider-specific env resolution (with legacy fallbacks).
         if self.provider == "google":
@@ -640,8 +645,23 @@ class LLMClient:
         """
         Translates text to English unconditionally.
         Keeps original formatting / text if already in English or translation fails.
+
+        Sets `self.last_translation_status` so callers can tell a real no-op
+        ("ok", the LLM call ran and the text was already English) apart from a
+        silent fallback to the untranslated original ("unavailable" / "error").
+        Without this, a translation outage is indistinguishable from "nothing to
+        translate" -- retrieval quietly runs on the untranslated query, which
+        measurably degrades retrieval quality for non-English sessions (see
+        chat.py's English Intermediary, which is the only caller that currently
+        checks this).
         """
         if not self.client and not self.anthropic_client:
+            self.last_translation_status = "unavailable"
+            logger.warning(
+                "translate_to_english called with no LLM client configured; "
+                "returning the original text unmodified. If this text is not "
+                "already English, retrieval will run on the untranslated query."
+            )
             return text
 
         system_prompt = (
@@ -664,8 +684,10 @@ class LLMClient:
                 temperature=0.0,
                 max_tokens=200,
             )
+            self.last_translation_status = "ok"
             return translated
         except Exception as e:
+            self.last_translation_status = "error"
             logger.error(f"LLM Error during query translation to English: {sanitize_error_message(str(e))}")
             return text
 

@@ -1590,3 +1590,74 @@ def test_lncrna_category_entity_not_silently_dropped_by_generic_hub_edges():
     assert lncrna_path is not None, "MALAT1's edge was dropped entirely from the final context"
     assert lncrna_path["retrieval_safe"] is True
     assert "malat1" in context.lower()
+
+
+def test_mentions_category_generically_separates_family_from_named_entity():
+    from netmedex.utils import MIRNA_QUERY_TRIGGERS, mentions_category_generically
+
+    # Generic family mentions -> category expansion is appropriate.
+    assert mentions_category_generically("How do microRNAs regulate inflammation?", MIRNA_QUERY_TRIGGERS)
+    assert mentions_category_generically("哪一些miRNA與HCV引發的肝癌有關", MIRNA_QUERY_TRIGGERS)
+    # A family question that merely names an example is still a family question.
+    assert mentions_category_generically("How do microRNAs like miR-155 work?", MIRNA_QUERY_TRIGGERS)
+    # One specific entity -> must NOT expand to the whole family.
+    assert not mentions_category_generically("What does miRNA-155 do?", MIRNA_QUERY_TRIGGERS)
+    assert not mentions_category_generically("role of microRNA-155", MIRNA_QUERY_TRIGGERS)
+    assert not mentions_category_generically("microRNA 155 function", MIRNA_QUERY_TRIGGERS)
+
+
+def test_node_index_resolves_entity_by_alias_not_just_display_name():
+    """A node's display name is whichever surface form the source text used
+    ("miRNA-155"), while the standard form a user types ("miR-155") is often only
+    an alias. Measured before this fix: such a question retrieved the entity in
+    neither track."""
+    graph = nx.Graph()
+    graph.add_node(
+        "406947_Gene",
+        name="mirna-155",
+        type="Gene",
+        aliases={"mir-155", "microrna-155", "mirna-155"},
+    )
+    graph.add_node("hcc", name="liver cancer", type="disease")
+    graph.add_edge("406947_Gene", "hcc", relations={"1": {"promotes"}})
+
+    retriever = GraphRetriever(graph)
+
+    assert "mir-155" in retriever.name_to_id
+    assert retriever.name_to_id["mir-155"] == "406947_Gene"
+    assert "406947_Gene" in retriever.find_relevant_nodes("role of miR-155 in liver cancer")
+
+
+def test_node_index_alias_never_overrides_another_nodes_primary_name():
+    graph = nx.Graph()
+    graph.add_node("real", name="tp53", type="Gene")
+    # A different node carrying "tp53" only as an alias must not hijack that key.
+    graph.add_node("other", name="mdm2", type="Gene", aliases={"tp53", "hdm2"})
+    graph.add_edge("real", "other", relations={"1": {"associated_with"}})
+
+    retriever = GraphRetriever(graph)
+
+    assert retriever.name_to_id["tp53"] == "real"
+    assert retriever.name_to_id["hdm2"] == "other"
+
+
+def test_named_mirna_question_does_not_expand_to_the_whole_family():
+    """"miRNA-155" names one entity; expanding it to every miR-* node buried it
+    among ~120 siblings in the live HCV corpus. A genuinely generic question must
+    still expand."""
+    graph = nx.Graph()
+    graph.add_node("m155", name="mirna-155", type="Gene", aliases={"mir-155"})
+    for i in (21, 122, 214, 375):
+        graph.add_node(f"m{i}", name=f"mir-{i}", type="Gene")
+        graph.add_edge("m155", f"m{i}", relations={"1": {"associated_with"}})
+
+    retriever = GraphRetriever(graph)
+
+    specific = retriever.find_relevant_nodes("What does miRNA-155 do in liver cancer?")
+    assert "m155" in specific
+    assert not ({"m21", "m122", "m214", "m375"} & set(specific)), (
+        "a named miRNA must not trigger whole-family expansion"
+    )
+
+    generic = retriever.find_relevant_nodes("Which microRNAs are linked to liver cancer?")
+    assert {"m155", "m21", "m122", "m214", "m375"} <= set(generic)

@@ -17,7 +17,7 @@ max_articles = html.Div(
             10,
             3000,
             10,
-            value=30,
+            value=50,
             marks=None,
             id="max-articles",
             tooltip={"placement": "bottom", "always_visible": False},
@@ -326,6 +326,39 @@ chat_model_override = html.Div(
                 ),
             ],
             id="chat-override-fields-container",
+        ),
+    ],
+    className="param",
+)
+
+strict_pmid_grounding = html.Div(
+    [
+        generate_param_title(
+            "Strict Citation Grounding for Follow-ups (optional)",
+            (
+                "By default, every Chat turn -- including follow-ups -- searches the full "
+                "indexed literature and graph fresh. Enable this to make follow-up questions "
+                "(any turn after the first) try to answer using ONLY the PMIDs your previous "
+                "reply already cited first; only if that's genuinely insufficient does it widen "
+                "to the full index, in which case the answer explicitly names any newly-cited "
+                "PMID. This trades some follow-up flexibility for tighter, more auditable "
+                "citation consistency across a multi-turn conversation, and costs up to one "
+                "extra LLM call on turns that need the wider search. Has no effect on the "
+                "first question of a session (there's nothing yet to ground on)."
+            ),
+        ),
+        dbc.Checklist(
+            options=[
+                {
+                    "label": "🔒 Ground follow-ups in previously-cited PMIDs first",
+                    "value": "enabled",
+                },
+            ],
+            id="strict-pmid-grounding-toggle",
+            value=[],
+            switch=True,
+            inline=True,
+            className="mt-1 mb-2",
         ),
     ],
     className="param",
@@ -1107,6 +1140,7 @@ advanced_settings = html.Div(
                 normalization_toggle,
                 relation_verification_toggle,
                 chat_model_override,
+                strict_pmid_grounding,
                 network_profile,
                 dbc.Button(
                     "Close",

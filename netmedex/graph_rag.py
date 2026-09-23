@@ -88,8 +88,14 @@ class GraphRetriever:
         self._build_node_index()
         self.community_detector: CommunityDetector = CommunityDetector(self.graph)
 
+    # Aliases shorter than this are not indexed: node-name matching is plain
+    # substring containment, so a 1-2 character alias ("AD", "AR") would match
+    # inside unrelated ordinary words. Mirrors the same floor already used by
+    # PubTatorGraphBuilder.find_query_anchor_nodes.
+    _MIN_ALIAS_INDEX_LENGTH = 3
+
     def _build_node_index(self):
-        """Build a case-insensitive index of node names to IDs."""
+        """Build a case-insensitive index of node names (and aliases) to IDs."""
         self.name_to_id = {}
         for node_id, data in self.graph.nodes(data=True):
             # Index the primary ID
@@ -98,6 +104,25 @@ class GraphRetriever:
             # Index the 'name' attribute if it exists
             if "name" in data and data["name"]:
                 self.name_to_id[str(data["name"]).lower()] = node_id
+
+        # Second pass for aliases, so a primary name always wins a key collision.
+        # A node's display name is whichever surface form the source text happened
+        # to use ("miRNA-155"), while the standard form a user actually types
+        # ("miR-155") often exists only as an alias -- indexing names alone made
+        # such an entity unfindable, even though _extract_query_anchors below was
+        # already alias-aware. Measured before this: a "miR-155" question retrieved
+        # 0 of the 4 abstracts that discuss it.
+        for node_id, data in self.graph.nodes(data=True):
+            raw_aliases = data.get("aliases") or set()
+            if isinstance(raw_aliases, str):
+                raw_aliases = {raw_aliases}
+            for alias in raw_aliases:
+                if not alias:
+                    continue
+                key = str(alias).lower()
+                if len(key) < self._MIN_ALIAS_INDEX_LENGTH or key in self.name_to_id:
+                    continue
+                self.name_to_id[key] = node_id
 
     def find_relevant_nodes(self, query: str) -> list[str]:
         """
@@ -123,12 +148,19 @@ class GraphRetriever:
             if name in query_lower or self._normalize_anchor_text(name) in normalized_query:
                 matched_nodes.add(self.name_to_id[name])
 
-        # 1.5 Category Expansion for miRNA/microRNA and lncRNA
-        from netmedex.utils import LNCRNA_QUERY_TRIGGERS, is_lncrna_node, is_mirna_node
+        # 1.5 Category Expansion for miRNA/microRNA and lncRNA.
+        # Only for a *generic* family mention: "miRNA-155" names one entity and must
+        # not expand to every miR-* node in the graph (see
+        # mentions_category_generically), which would bury it among ~120 siblings.
+        from netmedex.utils import (
+            LNCRNA_QUERY_TRIGGERS,
+            MIRNA_QUERY_TRIGGERS,
+            is_lncrna_node,
+            is_mirna_node,
+            mentions_category_generically,
+        )
 
-        mirna_triggers = {"mirna", "microrna", "mirnas", "micrornas", "微小rna", "微rna", "小分子rna"}
-        compact_q = normalized_query.replace(" ", "")
-        if any(tr in query_lower or tr in compact_q for tr in mirna_triggers):
+        if mentions_category_generically(query, MIRNA_QUERY_TRIGGERS):
             for node_id, node_data in self.graph.nodes(data=True):
                 if is_mirna_node(
                     node_data.get("name"),
@@ -136,7 +168,7 @@ class GraphRetriever:
                     node_type=node_data.get("type"),
                 ):
                     matched_nodes.add(node_id)
-        if any(tr in query_lower or tr in compact_q for tr in LNCRNA_QUERY_TRIGGERS):
+        if mentions_category_generically(query, LNCRNA_QUERY_TRIGGERS):
             for node_id, node_data in self.graph.nodes(data=True):
                 if is_lncrna_node(
                     node_data.get("name"),
@@ -867,15 +899,18 @@ class GraphRetriever:
                 contextual_ids.add(node_id)
 
         # Generic miRNA/lncRNA wording denotes a mechanism family rather than
-        # one literal node name. Expand it deterministically to matching nodes.
-        from netmedex.utils import LNCRNA_QUERY_TRIGGERS, is_lncrna_node, is_mirna_node
+        # one literal node name. Expand it deterministically to matching nodes --
+        # but only for a genuinely generic mention, never for "miRNA-155", which
+        # names one entity (see mentions_category_generically).
+        from netmedex.utils import (
+            LNCRNA_QUERY_TRIGGERS,
+            MIRNA_QUERY_TRIGGERS,
+            is_lncrna_node,
+            is_mirna_node,
+            mentions_category_generically,
+        )
 
-        if (
-            "mirna" in compact_query
-            or "microrna" in compact_query
-            or "微小rna" in normalized_query
-            or "微rna" in normalized_query
-        ):
+        if mentions_category_generically(query, MIRNA_QUERY_TRIGGERS):
             for node_id, node_data in self.graph.nodes(data=True):
                 if is_mirna_node(
                     node_data.get("name"),
@@ -883,10 +918,7 @@ class GraphRetriever:
                     node_type=node_data.get("type"),
                 ):
                     mechanism_ids.add(node_id)
-        if any(
-            trigger in compact_query or trigger in normalized_query
-            for trigger in LNCRNA_QUERY_TRIGGERS
-        ):
+        if mentions_category_generically(query, LNCRNA_QUERY_TRIGGERS):
             for node_id, node_data in self.graph.nodes(data=True):
                 if is_lncrna_node(
                     node_data.get("name"),

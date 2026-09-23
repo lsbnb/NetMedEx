@@ -71,6 +71,9 @@ class SessionConfigModel(BaseModel):
     chat_api_key: Optional[str] = None
     chat_model: Optional[str] = None
     chat_base_url: Optional[str] = None
+    # v1.6: route follow-up questions through the two-tier "core evidence
+    # circle, then index-wide fallback" retrieval policy. See BridgeConfig.
+    strict_pmid_grounding: bool = False
 
 
 class CreateSessionRequest(BaseModel):

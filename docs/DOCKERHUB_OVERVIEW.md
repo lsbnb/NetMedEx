@@ -1,4 +1,4 @@
-# NetMedEx v1.5.21: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.7.3: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
@@ -19,7 +19,34 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.5.21
+## 🆕 What's New in v1.7.3
+
+- **Follow-ups Better Remember What You Were Just Discussing**: A follow-up question already re-searches the full index fresh each time — it now also gives a ranking boost to the papers your previous reply cited, so a still-relevant one can resurface instead of relying only on the model's memory of the conversation text.
+- **Better Article-Fetch Defaults**: "Max Articles" and "Sort" defaulted to 30 articles / Recency, which could cap a broad search to only the 30 newest matches — sometimes missing the specific mechanism a question asked about entirely. Now defaults to 50 articles / Relevance.
+
+### Previous: v1.7.2
+
+- **More Reliable Recovery After a Server Restart**: If the server restarted while a chat was open, reopening it could sometimes fail with "Session expired" even though the underlying data was fine — two near-simultaneous requests to rebuild the same session could corrupt each other. Only one rebuild runs at a time now.
+
+### Previous: v1.7.1
+
+- **Silent Translation Failures Are Now Visible**: Asking a question in Chinese, Japanese, or Korean translates it to English before retrieval runs. If that translation step failed, search used to quietly fall back to the original-language text with no visible sign anything was wrong — measured impact: retrieval quality roughly halves when this happens. The answer now carries a caveat when it does.
+
+### Previous: v1.7.0
+
+- **Hybrid Sparse + Dense Retrieval**: Asking about one specific symbol (`miR-155`, `EGFR C797S`) used to fail — the embedding knows a text is "about microRNAs" but not *which* one. Chat now fuses BM25 exact-term matching with vector search, and recognises entity name variants (`miR-155` / `miRNA-155` / `microRNA-155`). Measured on a real 200-abstract corpus: precision@8 rose from 0.19 to 0.84, recall@8 from 0.11 to 0.64.
+- **Named Entities Resolve by Alias**: A node's display name is whichever form the source paper used, so the standard form you type often existed only as an alias and matched nothing. Aliases are now indexed.
+- **A Named miRNA Is No Longer Read as the Whole Family**: Asking about "miRNA-155" returned every miRNA in the network (~120 of them); it now returns the one you asked about, while genuinely generic questions still expand as before.
+
+### Previous: v1.6.0
+
+- **Strict Citation Grounding for Follow-ups (optional)**: A new toggle makes follow-up questions try to answer using only the PMIDs your previous reply already cited first, only widening to the full index when that's genuinely insufficient — and explicitly discloses any newly-cited PMID when it does. Off by default.
+
+### Previous: v1.5.22
+
+- **"Which Entities Are Related to X" Now Triggers the Full List**: A natural phrasing like "which miRNAs are related to X" (or its Chinese equivalent) previously fell through to the normal reasoning path instead of the deterministic full-list response, surfacing only a handful of entities instead of every one in the graph.
+
+### Previous: v1.5.21
 
 - **Query Translation Protects More Named Biological Families**: Beyond miRNA/lncRNA, AI Search now also keeps interleukin/cytokine, chemokine, circRNA, and similar narrow biological families from being silently dropped as "generic" during query simplification.
 

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import logging
 import os
+import re
 import sys
 from datetime import datetime
 from uuid import uuid4
@@ -152,6 +153,29 @@ SNP_QUERY_TRIGGERS = {
     "基因突變",
     "突變位點",
 }
+
+
+def mentions_category_generically(text: str | None, triggers: set[str]) -> bool:
+    """True when `text` names a category as a category, not as part of one specific
+    entity's identifier.
+
+    "How do microRNAs regulate X?" asks about the family, so expanding it to every
+    miR-* node in the graph is right. "What does miRNA-155 do?" names one specific
+    entity that merely happens to contain the trigger word as a substring -- a plain
+    `"mirna" in text` check misreads it as a family question and buries the single
+    entity the user asked about among every other member of the family (measured:
+    ~120 nodes returned for a one-entity question). Firing only when the trigger is
+    NOT immediately followed by an identifying number keeps both readings correct.
+    """
+    if not text:
+        return False
+    lowered = str(text).lower()
+    compact = lowered.replace(" ", "")
+    for trigger in triggers:
+        pattern = re.escape(trigger) + r"(?![-\s]*\d)"
+        if re.search(pattern, lowered) or re.search(pattern, compact):
+            return True
+    return False
 
 
 def is_snp_node(name: str | None, aliases=None, node_type: str | None = None) -> bool:

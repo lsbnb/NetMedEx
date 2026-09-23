@@ -207,7 +207,7 @@ api_params = html.Div(
                                 {"label": "Recency", "value": "date"},
                                 {"label": "Relevance", "value": "score"},
                             ],
-                            value="date",
+                            value="score",
                             inline=True,
                         ),
                     ],
@@ -782,7 +782,7 @@ header_row = html.Div(
         sidebar_toggle,
         html.Div(
             [
-                html.Small("v1.5.21", className="text-muted", style={"fontSize": "0.7rem"}),
+                html.Small("v1.7.3", className="text-muted", style={"fontSize": "0.7rem"}),
                 advanced_settings,
             ],
             className="d-flex flex-column align-items-center ms-auto",

@@ -38,6 +38,11 @@ class BridgeConfig:
     chat_api_key: str | None = None
     chat_model: str | None = None
     chat_base_url: str | None = None
+    # v1.6: route follow-up questions (any turn after the first) through the
+    # two-tier "core evidence circle, then index-wide fallback" retrieval
+    # policy instead of the normal single-tier flow. See
+    # ChatSession._answer_with_pmid_grounding for the full design.
+    strict_pmid_grounding: bool = False
 
 
 class NetMedExChatBridge:
@@ -155,6 +160,7 @@ class NetMedExChatBridge:
             question,
             top_k=self.config.top_k,
             session_language=self.config.session_language,
+            strict_pmid_grounding=self.config.strict_pmid_grounding,
         )
 
     @staticmethod
