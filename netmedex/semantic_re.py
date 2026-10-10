@@ -972,8 +972,12 @@ Title: {title}
 
             # Handle potential object wrapping (e.g., {"relationships": [...]})
             if isinstance(data, dict):
-                # Search for any list value within the object
-                for val in data.values():
+                # Prefer the "relations" key the first-pass prompt asks for, then
+                # fall back to any list value (other wrappers, e.g. {"result": [...]})
+                values = list(data.values())
+                if isinstance(data.get("relations"), list):
+                    values.insert(0, data["relations"])
+                for val in values:
                     if isinstance(val, list):
                         relationships = val
                         break

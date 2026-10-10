@@ -1148,6 +1148,9 @@ def test_first_pass_prompt_asks_for_json_mode_compatible_object():
     )
     assert len(extractor._parse_llm_response(response, "1")) == 2
     assert extractor._parse_llm_response('{"relations": []}', "1") == []
+    # "relations" wins even when another list-valued key precedes it
+    mixed = json.dumps({"notes": ["x"], "relations": json.loads(response)["relations"]})
+    assert len(extractor._parse_llm_response(mixed, "1")) == 2
 
 
 def test_compact_retry_prompt_requires_evidence_field():
