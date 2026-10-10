@@ -632,6 +632,13 @@ with exactly one entry per edge index above."""
         """
         Construct a detailed prompt for LLM relationship extraction.
 
+        The output is a {"relations": [...]} object, not a bare array: OpenAI/Gemini/
+        OpenRouter calls use response_format=json_object, which forbids a top-level
+        array. Asking for an array under JSON mode made gpt-4o and gpt-5.6-terra
+        return a single relation object for ~95% of articles (measured on 199
+        articles), so nearly every article fell through to the coverage pass --
+        losing this prompt's directionality/study-type rules and paying for two calls.
+
         The prompt instructs the LLM to:
         1. Analyze the abstract for entity relationships
         2. Return structured JSON with relationships
@@ -666,17 +673,19 @@ with exactly one entry per edge index above."""
 -   - Confidence score (0-1): How confident are you this relationship is explicitly stated? **Do not reuse the sample value; personalize it for each edge.**
 -   - Supporting evidence: **REQUIRED for every relation** -- the specific sentence or phrase supporting this relationship. Never omit this field or leave it empty; a relation without it cannot be used downstream.
 
-4. Return ONLY a JSON array with this exact structure:
-[
-  {{
-    "entity1_id": "...",
-    "entity2_id": "...",
-    "relation_type": "...",
-    "confidence": 0.41,
-    "evidence": "exact quote from abstract",
-    "study_type": "Human"
-  }}
-]
+4. Return ONLY a JSON object whose "relations" key holds every supported relation, with this exact structure:
+{{
+  "relations": [
+    {{
+      "entity1_id": "...",
+      "entity2_id": "...",
+      "relation_type": "...",
+      "confidence": 0.41,
+      "evidence": "exact quote from abstract",
+      "study_type": "Human"
+    }}
+  ]
+}}
 
 **Study Type Categories**:
 - `Human`: Clinical data, patient samples, or human population studies.
@@ -688,7 +697,7 @@ with exactly one entry per edge index above."""
 - Use only the canonical relation_type values listed above.
 - Only include relationships explicitly mentioned in the abstract
 - Do not infer relationships from general knowledge
-- If no clear relationships exist, return an empty array: []
+- If no clear relationships exist, return: {{"relations": []}}
 - Ensure evidence text does not contain double-quote characters
 - Return ONLY valid JSON, no additional text or markdown
 """

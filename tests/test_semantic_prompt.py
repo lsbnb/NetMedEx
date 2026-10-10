@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from types import SimpleNamespace
 
 import networkx as nx
@@ -1102,7 +1103,7 @@ def test_google_prompt_uses_same_chatgpt_style_structure_as_openai():
 
     assert "**Task**" in prompt
     assert "**Instructions**" in prompt
-    assert "Return ONLY a JSON array" in prompt
+    assert '"relations": [' in prompt
     assert "Do NOT perform NER" in prompt
 
 
@@ -1116,8 +1117,37 @@ def test_openai_prompt_keeps_existing_structure():
     )
 
     assert "**Task**" in prompt
-    assert "Return ONLY a JSON array" in prompt
+    assert '"relations": [' in prompt
     assert "Do NOT perform NER" in prompt
+
+
+def test_first_pass_prompt_asks_for_json_mode_compatible_object():
+    """Regression test: the first-pass prompt used to demand a bare JSON array while
+    OpenAI calls set response_format=json_object (which forbids a top-level array).
+    gpt-4o and gpt-5.6-terra resolved the conflict by returning ONE relation object
+    for ~95% of articles, so almost every article fell through to the coverage pass."""
+    llm_client = SimpleNamespace(provider="openai", client=None)
+    extractor = SemanticRelationshipExtractor(llm_client)
+    prompt = extractor._build_llm_prompt(
+        title="Example title",
+        abstract="Example abstract text about retinal diseases and lutein.",
+        entity_list=_sample_entities(),
+    )
+    assert "JSON array" not in prompt
+    assert '"relations": [' in prompt
+
+    response = json.dumps(
+        {
+            "relations": [
+                {"entity1_id": "A", "entity2_id": "B", "relation_type": "inhibits",
+                 "confidence": 0.9, "evidence": "A inhibits B"},
+                {"entity1_id": "B", "entity2_id": "C", "relation_type": "associated_with",
+                 "confidence": 0.7, "evidence": "B is linked to C"},
+            ]
+        }
+    )
+    assert len(extractor._parse_llm_response(response, "1")) == 2
+    assert extractor._parse_llm_response('{"relations": []}', "1") == []
 
 
 def test_compact_retry_prompt_requires_evidence_field():
