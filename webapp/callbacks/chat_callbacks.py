@@ -8,6 +8,7 @@ import dash
 from dash import ALL, Input, Output, State, dcc, html, no_update
 
 from webapp.callbacks.pipeline import detect_query_language
+from webapp.chat_backend import build_project_session
 from webapp.utils import SessionPathError, resolve_session_savepath
 
 logger = logging.getLogger(__name__)
@@ -227,19 +228,24 @@ def _rebuild_chat_session_from_graph(savepath, llm_client, topic: str | None = N
     from netmedex.rag import AbstractRAG
 
     G = load_graph(savepath["graph"])
-    documents = _abstract_documents_from_graph(G)
-    if not documents:
-        raise ValueError("No abstracts available in graph file")
+    project = build_project_session(G, llm_client, topic)
+    if project:
+        session, rag_system = project
+        documents = rag_system.documents
+    else:
+        documents = _abstract_documents_from_graph(G)
+        if not documents:
+            raise ValueError("No abstracts available in graph file")
 
-    rag_system = AbstractRAG(llm_client)
-    rag_system.index_abstracts(documents)
-    graph_retriever = GraphRetriever(G, node_rag=None)
-    session = ChatSession(
-        rag_system,
-        llm_client,
-        graph_retriever=graph_retriever,
-        topic=topic or "biomedical research",
-    )
+        rag_system = AbstractRAG(llm_client)
+        rag_system.index_abstracts(documents)
+        graph_retriever = GraphRetriever(G, node_rag=None)
+        session = ChatSession(
+            rag_system,
+            llm_client,
+            graph_retriever=graph_retriever,
+            topic=topic or "biomedical research",
+        )
 
     # Try to load chat history from disk
     history_file = _pathlib.Path(savepath["graph"]).parent / "chat_history.json"
@@ -809,18 +815,24 @@ def callbacks(app):
                 )
 
                 if not has_history_in_memory:
-                    rag_system = AbstractRAG(llm_client)
-                    rag_system.index_abstracts(documents)
-                    graph_retriever_auto = GraphRetriever(G, node_rag=None)
-
-                    session = ChatSession(
-                        rag_system,
-                        chat_llm_client,
-                        graph_retriever=graph_retriever_auto,
-                        topic=effective_query
-                        if effective_query
-                        else "biomedical research overview",
+                    project = build_project_session(
+                        G, chat_llm_client, effective_query or "biomedical research overview"
                     )
+                    if project:
+                        session, rag_system = project
+                    else:
+                        rag_system = AbstractRAG(llm_client)
+                        rag_system.index_abstracts(documents)
+                        graph_retriever_auto = GraphRetriever(G, node_rag=None)
+
+                        session = ChatSession(
+                            rag_system,
+                            chat_llm_client,
+                            graph_retriever=graph_retriever_auto,
+                            topic=effective_query
+                            if effective_query
+                            else "biomedical research overview",
+                        )
                     session.load_from_file(str(history_file))
                     _sessions[session_key] = {"session": session, "rag": rag_system}
                 else:
@@ -1069,23 +1081,29 @@ def callbacks(app):
                 raise ValueError("No abstracts available for summary")
 
             # Initialize RAG and Chat
-            rag_system = AbstractRAG(llm_client)
-            rag_system.index_abstracts(documents)
-
-            # Add lightweight GraphRetriever (no NodeRAG — no expensive indexing required).
-            # Substring matching alone is sufficient to resolve entity names from the query,
-            # and it enables Layer 3 (Causal Mechanism) to populate when the graph has
-            # directional edges (inhibits, activates, ameliorates, etc.).
-            from netmedex.graph_rag import GraphRetriever
-
-            graph_retriever_auto = GraphRetriever(G, node_rag=None)
-
-            session = ChatSession(
-                rag_system,
-                chat_llm_client,
-                graph_retriever=graph_retriever_auto,
-                topic=effective_query if effective_query else "biomedical research overview",
+            project = build_project_session(
+                G, chat_llm_client, effective_query or "biomedical research overview"
             )
+            if project:
+                session, rag_system = project
+            else:
+                rag_system = AbstractRAG(llm_client)
+                rag_system.index_abstracts(documents)
+
+                # Add lightweight GraphRetriever (no NodeRAG — no expensive indexing required).
+                # Substring matching alone is sufficient to resolve entity names from the query,
+                # and it enables Layer 3 (Causal Mechanism) to populate when the graph has
+                # directional edges (inhibits, activates, ameliorates, etc.).
+                from netmedex.graph_rag import GraphRetriever
+
+                graph_retriever_auto = GraphRetriever(G, node_rag=None)
+
+                session = ChatSession(
+                    rag_system,
+                    chat_llm_client,
+                    graph_retriever=graph_retriever_auto,
+                    topic=effective_query if effective_query else "biomedical research overview",
+                )
 
             # Store session
             session_id = savepath["graph"]
@@ -1620,53 +1638,8 @@ def callbacks(app):
 
             set_progress((12, f"📄 Preparing {len(documents)} abstracts..."))
 
-            # Initialize RAG system
-            import re as _re
-
-            def _rag_progress(msg):
-                m = _re.search(r"batch (\d+)/(\d+)", msg)
-                if m:
-                    bi, bt = int(m.group(1)), int(m.group(2))
-                    v = 15 + int((bi / bt) * 25)
-                    set_progress((min(v, 40), f"📄 {msg}"))
-                elif "✅" in msg:
-                    set_progress((40, msg))
-                else:
-                    set_progress((18, f"📄 {msg}"))
-
-            rag_system = AbstractRAG(llm_client)
-            rag_system.index_abstracts(documents, progress_callback=_rag_progress)
-            t_rag = time.time()
-            logger.info(f"Abstracts indexed in {t_rag - t_load:.2f}s")
-
-            set_progress((42, "🧬 Initializing node index..."))
-
-            # Initialize Node RAG System with Persistent Cache (New in v1.1.0)
-            from netmedex.node_rag import GraphNode, NodeRAG
-
-            # Determine persistent directory based on graph path
-            # Example: data/graph.pickle -> data/graph.pickle_chroma
-            persist_dir = f"{savepath['graph']}_chroma"
-
-            # Close the existing NodeRAG for this graph BEFORE opening a new
-            # PersistentClient on the same directory.  If the old handle is still
-            # open, SQLite WAL-mode will block the new connection indefinitely.
-            _session_id_for_close = savepath["graph"]
-            if _session_id_for_close in _sessions:
-                _old_session = _sessions[_session_id_for_close]
-                _old_gr = getattr(
-                    getattr(_old_session.get("session"), "graph_retriever", None),
-                    "node_rag",
-                    None,
-                )
-                if _old_gr is not None:
-                    _old_gr.close()
-                    logger.info("Closed old NodeRAG before re-opening persistent store.")
-
-            node_rag = NodeRAG(llm_client, persist_directory=persist_dir)
-
-            # Check if NodeRAG is already indexed for this graph
-            # Build label→raw_node_id lookup from the pickled graph.
+            # Selected nodes as raw graph ids (the session's focus, whichever
+            # backend builds the session). Build label→raw_node_id lookup from the pickled graph.
             # Cytoscape element source/target use stable UUIDs, which differ from
             # the raw NetworkX node IDs used inside the graph — match by name instead.
             label_to_raw_id = {
@@ -1698,82 +1671,136 @@ def callbacks(app):
                         if name_key in label_to_raw_id:
                             core_node_ids.add(label_to_raw_id[name_key])
 
-            def _node_progress(msg):
-                if "✅" in msg or "cache" in msg.lower():
-                    set_progress((65, msg))
-                else:
-                    set_progress((55, f"🧬 {msg}"))
+            project = build_project_session(
+                G, chat_llm_client, search_query if search_query else "biomedical research"
+            )
+            if project is None:
+                # Initialize RAG system
+                import re as _re
 
-            if not node_rag.is_indexed():
-                total_nodes = len(G.nodes)
-                # Optimization for large graphs: only index selected nodes + nodes in selected edges
-                if total_nodes > 1000:
-                    logger.info(
-                        f"Large graph detected ({total_nodes} nodes). Indexing selection only for instant initialization."
+                def _rag_progress(msg):
+                    m = _re.search(r"batch (\d+)/(\d+)", msg)
+                    if m:
+                        bi, bt = int(m.group(1)), int(m.group(2))
+                        v = 15 + int((bi / bt) * 25)
+                        set_progress((min(v, 40), f"📄 {msg}"))
+                    elif "✅" in msg:
+                        set_progress((40, msg))
+                    else:
+                        set_progress((18, f"📄 {msg}"))
+
+                rag_system = AbstractRAG(llm_client)
+                rag_system.index_abstracts(documents, progress_callback=_rag_progress)
+                t_rag = time.time()
+                logger.info(f"Abstracts indexed in {t_rag - t_load:.2f}s")
+
+                set_progress((42, "🧬 Initializing node index..."))
+
+                # Initialize Node RAG System with Persistent Cache (New in v1.1.0)
+                from netmedex.node_rag import GraphNode, NodeRAG
+
+                # Determine persistent directory based on graph path
+                # Example: data/graph.pickle -> data/graph.pickle_chroma
+                persist_dir = f"{savepath['graph']}_chroma"
+
+                # Close the existing NodeRAG for this graph BEFORE opening a new
+                # PersistentClient on the same directory.  If the old handle is still
+                # open, SQLite WAL-mode will block the new connection indefinitely.
+                _session_id_for_close = savepath["graph"]
+                if _session_id_for_close in _sessions:
+                    _old_session = _sessions[_session_id_for_close]
+                    _old_gr = getattr(
+                        getattr(_old_session.get("session"), "graph_retriever", None),
+                        "node_rag",
+                        None,
                     )
-                    graph_nodes = []
-                    for node_id in core_node_ids:
-                        if node_id in G.nodes:
-                            data = G.nodes[node_id]
+                    if _old_gr is not None:
+                        _old_gr.close()
+                        logger.info("Closed old NodeRAG before re-opening persistent store.")
+
+                node_rag = NodeRAG(llm_client, persist_directory=persist_dir)
+
+                def _node_progress(msg):
+                    if "✅" in msg or "cache" in msg.lower():
+                        set_progress((65, msg))
+                    else:
+                        set_progress((55, f"🧬 {msg}"))
+
+                if not node_rag.is_indexed():
+                    total_nodes = len(G.nodes)
+                    # Optimization for large graphs: only index selected nodes + nodes in selected edges
+                    if total_nodes > 1000:
+                        logger.info(
+                            f"Large graph detected ({total_nodes} nodes). Indexing selection only for instant initialization."
+                        )
+                        graph_nodes = []
+                        for node_id in core_node_ids:
+                            if node_id in G.nodes:
+                                data = G.nodes[node_id]
+                                name = data.get("name", str(node_id))
+                                node_type = data.get("type", "Entity")
+                                graph_nodes.append(
+                                    GraphNode(
+                                        node_id=str(node_id), name=name, type=node_type, metadata=data
+                                    )
+                                )
+
+                        if graph_nodes:
+                            set_progress((48, f"🧬 Indexing {len(graph_nodes)} nodes..."))
+                            node_rag.index_nodes(graph_nodes, progress_callback=_node_progress)
+                            logger.info(
+                                f"Partial indexing complete: {len(graph_nodes)}/ {total_nodes} nodes indexed."
+                            )
+                        _node_index_count = len(graph_nodes)
+                        _node_index_mode = "partial"
+                    else:
+                        logger.info(
+                            f"Small graph detected ({total_nodes} nodes). Building full node list..."
+                        )
+                        graph_nodes = []
+                        for node_id, data in G.nodes(data=True):
                             name = data.get("name", str(node_id))
                             node_type = data.get("type", "Entity")
-                            graph_nodes.append(
-                                GraphNode(
-                                    node_id=str(node_id), name=name, type=node_type, metadata=data
-                                )
+                            graph_node = GraphNode(
+                                node_id=str(node_id), name=name, type=node_type, metadata=data
                             )
+                            graph_nodes.append(graph_node)
 
-                    if graph_nodes:
                         set_progress((48, f"🧬 Indexing {len(graph_nodes)} nodes..."))
                         node_rag.index_nodes(graph_nodes, progress_callback=_node_progress)
-                        logger.info(
-                            f"Partial indexing complete: {len(graph_nodes)}/ {total_nodes} nodes indexed."
-                        )
-                    _node_index_count = len(graph_nodes)
-                    _node_index_mode = "partial"
+                        logger.info(f"Full indexing complete: {len(graph_nodes)} nodes indexed.")
+                        _node_index_count = len(graph_nodes)
+                        _node_index_mode = "full"
                 else:
-                    logger.info(
-                        f"Small graph detected ({total_nodes} nodes). Building full node list..."
+                    logger.info("NodeRAG already indexed. Skipping re-scan.")
+                    _node_index_count = (
+                        node_rag.count() if hasattr(node_rag, "count") else len(G.nodes)
                     )
-                    graph_nodes = []
-                    for node_id, data in G.nodes(data=True):
-                        name = data.get("name", str(node_id))
-                        node_type = data.get("type", "Entity")
-                        graph_node = GraphNode(
-                            node_id=str(node_id), name=name, type=node_type, metadata=data
-                        )
-                        graph_nodes.append(graph_node)
+                    _node_index_mode = "cached"
 
-                    set_progress((48, f"🧬 Indexing {len(graph_nodes)} nodes..."))
-                    node_rag.index_nodes(graph_nodes, progress_callback=_node_progress)
-                    logger.info(f"Full indexing complete: {len(graph_nodes)} nodes indexed.")
-                    _node_index_count = len(graph_nodes)
-                    _node_index_mode = "full"
-            else:
-                logger.info("NodeRAG already indexed. Skipping re-scan.")
-                _node_index_count = (
-                    node_rag.count() if hasattr(node_rag, "count") else len(G.nodes)
+                t_node = time.time()
+                logger.info(f"Node indexing check in {t_node - t_rag:.2f}s")
+
+                set_progress((68, "🌐 Building graph retriever..."))
+
+                # Initialize Graph Retriever with NodeRAG
+                from netmedex.graph_rag import GraphRetriever
+
+                graph_retriever = GraphRetriever(G, node_rag=node_rag)
+                logger.info("GraphRetriever initialized with full graph")
+
+                # Initialize chat session with Hybrid RAG
+                session = ChatSession(
+                    rag_system,
+                    chat_llm_client,
+                    graph_retriever=graph_retriever,
+                    topic=search_query if search_query else "biomedical research",
                 )
-                _node_index_mode = "cached"
-
-            t_node = time.time()
-            logger.info(f"Node indexing check in {t_node - t_rag:.2f}s")
-
-            set_progress((68, "🌐 Building graph retriever..."))
-
-            # Initialize Graph Retriever with NodeRAG
-            from netmedex.graph_rag import GraphRetriever
-
-            graph_retriever = GraphRetriever(G, node_rag=node_rag)
-            logger.info("GraphRetriever initialized with full graph")
-
-            # Initialize chat session with Hybrid RAG
-            session = ChatSession(
-                rag_system,
-                chat_llm_client,
-                graph_retriever=graph_retriever,
-                topic=search_query if search_query else "biomedical research",
-            )
+            else:
+                session, rag_system = project
+                t_rag = t_node = time.time()
+                _node_index_count = G.number_of_nodes()
+                _node_index_mode = "project backend"
 
             set_progress((74, "✨ Generating AI summary..."))
 

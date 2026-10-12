@@ -50,6 +50,9 @@ DIRECTIONAL_RELATIONS = {
     "expresses",
     "transcribes",
     "translates",
+    # Transport relationships: a vesicle/carrier and its cargo
+    # (e.g. "MSC-derived exosomes deliver miR-17 to Kupffer cells")
+    "carries",
 }
 
 # Symmetric relationships (bidirectional or non-directional)
@@ -66,6 +69,19 @@ SYMMETRIC_RELATIONS = {
 
 # Map common variations to canonical forms
 RELATION_NORMALIZATIONS = {
+    "carry": "carries",
+    "carrying": "carries",
+    "contain": "carries",
+    "contains": "carries",
+    "deliver": "carries",
+    "delivers": "carries",
+    "delivery": "carries",
+    "transfer": "carries",
+    "transfers": "carries",
+    "transport": "carries",
+    "transports": "carries",
+    "shuttle": "carries",
+    "shuttles": "carries",
     "inhibit": "inhibits",
     "inhibition": "inhibits",
     "inhibitor": "inhibits",
