@@ -99,3 +99,56 @@ edge_weight_cutoff = html.Div(
     id="edge-weight-cutoff-wrapper",
     className="param",
 )
+
+
+# Grow the view by linking any entity in the full graph to the graph's core
+# (anchor) nodes through its best few-hop paths -- see callbacks/node_connect.py.
+core_connect = html.Div(
+    [
+        generate_param_title(
+            "Connect to Core Nodes",
+            "Search one or more entities in the full knowledge graph and add their\n"
+            "best paths to the core nodes shown at start, within the hop limit.\n"
+            "Paths prefer fewer hops and edges supported by more papers, and avoid\n"
+            "detours through generic hubs (e.g. patient, inflammation).",
+        ),
+        dcc.Dropdown(
+            id="connect-node-select",
+            options=[],
+            placeholder="Type entities, e.g. miR-21, NLRP3, IL-6",
+            multi=True,
+            searchable=True,
+            clearable=True,
+        ),
+        html.Div(
+            [
+                html.Span("Max hops", className="small me-2"),
+                dcc.Dropdown(
+                    id="connect-max-hops",
+                    options=[{"label": str(n), "value": n} for n in (1, 2, 3, 4)],
+                    value=3,
+                    clearable=False,
+                    style={"width": "70px"},
+                ),
+                html.Button(
+                    "Add & connect",
+                    id="connect-node-btn",
+                    className="btn btn-primary btn-sm ms-auto",
+                ),
+                html.Button(
+                    "Undo",
+                    id="connect-undo-btn",
+                    className="btn btn-outline-secondary btn-sm ms-2",
+                    title="Remove the nodes added by the last Connect or Expand",
+                ),
+            ],
+            className="d-flex align-items-center mt-2",
+        ),
+        html.Div(
+            id="connect-node-status",
+            className="small text-muted mt-1",
+            style={"whiteSpace": "pre-line"},
+        ),
+    ],
+    className="param",
+)

@@ -1,10 +1,52 @@
 from __future__ import annotations
 
+import os
+import threading
+from collections import OrderedDict
 from typing import Literal
 
 import networkx as nx
 
 from netmedex.graph import PubTatorGraphBuilder, load_graph
+
+_GRAPH_CACHE: OrderedDict[tuple, nx.Graph] = OrderedDict()
+_GRAPH_CACHE_LOCK = threading.Lock()
+_GRAPH_CACHE_SIZE = 2
+
+
+def load_graph_cached(graph_path: str) -> nx.Graph:
+    """Read-only shared copy of a session graph, keyed by path + mtime + size.
+
+    Large prebuilt knowledge graphs (e.g. a 36k-article graph is ~200 MB and
+    takes ~9 s to unpickle) are otherwise re-read on every slider change and
+    every node expansion. Callers that mutate must work on ``.copy()``.
+    """
+    real = os.path.realpath(graph_path)
+    st = os.stat(real)
+    key = (real, st.st_mtime_ns, st.st_size)
+    with _GRAPH_CACHE_LOCK:
+        if key in _GRAPH_CACHE:
+            _GRAPH_CACHE.move_to_end(key)
+            return _GRAPH_CACHE[key]
+    graph = load_graph(real)
+    with _GRAPH_CACHE_LOCK:
+        _GRAPH_CACHE[key] = graph
+        while len(_GRAPH_CACHE) > _GRAPH_CACHE_SIZE:
+            _GRAPH_CACHE.popitem(last=False)
+    return graph
+
+
+def get_anchor_nodes(graph: nx.Graph) -> set:
+    """Nodes exempt from the interactive-rendering safety caps.
+
+    A graph may declare them explicitly in ``graph.graph["anchor_nodes"]`` (a
+    merged multi-query knowledge graph has no single build query to match);
+    otherwise they are matched against the build query as before.
+    """
+    declared = graph.graph.get("anchor_nodes")
+    if declared:
+        return {n for n in declared if n in graph}
+    return PubTatorGraphBuilder.find_query_anchor_nodes(graph, graph.graph.get("query"))
 
 
 def filter_node(G: nx.Graph, node_degree_threshold: int):
@@ -31,7 +73,9 @@ def rebuild_graph(
         elif isinstance(cut_weight, (int, float)):
             cut_weight = cut_weight * 20
 
-    graph = load_graph(graph_path) if G is None else G
+    # Shallow copy: rebuild only reassigns attribute keys and removes
+    # nodes/edges, so the cached original stays intact.
+    graph = load_graph_cached(graph_path).copy() if G is None else G
 
     # Normalize all node names to lowercase for consistency across builds and pk versions
     for _, data in graph.nodes(data=True):
@@ -51,7 +95,21 @@ def rebuild_graph(
     # entity (e.g. miR-124 with edge weight 1) isn't silently dropped just
     # because it's globally low-ranked. Does NOT affect the user-adjustable
     # weight cutoff / node-degree filters further down.
-    anchor_nodes = PubTatorGraphBuilder.find_query_anchor_nodes(graph, graph.graph.get("query"))
+    anchor_nodes = get_anchor_nodes(graph)
+
+    # A large knowledge graph can open on its core entities only
+    # (graph.graph["initial_view"] == "anchors"): users then grow the view by
+    # connecting entities to them or expanding neighbors. Anchors are kept even
+    # when no edge links them to another anchor.
+    if graph.graph.get("initial_view") == "anchors" and anchor_nodes:
+        graph = graph.subgraph(anchor_nodes).copy()
+        graph.graph["num_communities"] = 0
+        for node in graph.nodes:
+            graph.nodes[node]["parent"] = None
+        if with_layout:
+            PubTatorGraphBuilder._set_network_layout(graph)
+        PubTatorGraphBuilder.normalize_graph_ids(graph)
+        return graph
 
     # NEW: Safety-cap for interactive rendering to prevent browser crashes
     # 1. Edge Pruning

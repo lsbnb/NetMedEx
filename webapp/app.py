@@ -25,14 +25,19 @@ if sys.platform != "win32":
     except Exception:
         pass
 
+import os
 from pathlib import Path
 
 from dotenv import load_dotenv
 
 load_dotenv(Path(__file__).parent.parent / ".env", override=True)
+# An instance serving a different project (see NETMEDEX_PRELOAD_GRAPH) can layer
+# its own settings -- provider, model, port -- over the shared .env, which the
+# override=True load above would otherwise force back onto it.
+if _instance_env := os.getenv("NETMEDEX_ENV_FILE"):
+    load_dotenv(_instance_env, override=True)
 
 import logging
-import os
 
 import dash_bootstrap_components as dbc
 import dash_cytoscape as cyto
@@ -83,9 +88,14 @@ from webapp.components.graph import graph
 from webapp.components.sidebar import sidebar
 
 current_session_path = dcc.Store(id="current-session-path", storage_type="session")
+# True when NETMEDEX_PRELOAD_GRAPH names a server-side graph to open on page load
+# (see webapp/callbacks/preload.py).
+preload_graph_trigger = dcc.Store(
+    id="preload-graph-trigger", data=bool(os.getenv("NETMEDEX_PRELOAD_GRAPH"))
+)
 
 content = html.Div(
-    [current_session_path, sidebar, graph],
+    [current_session_path, preload_graph_trigger, sidebar, graph],
     className="d-flex flex-row position-relative h-100",
 )
 

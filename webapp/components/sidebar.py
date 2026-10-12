@@ -6,6 +6,7 @@ from dash import dcc, html
 from webapp.components.advanced_settings import advanced_settings
 from webapp.components.chat import chat_panel
 from webapp.components.graph_tools import (
+    core_connect,
     edge_weight_cutoff,
     graph_layout,
     minimal_degree,
@@ -658,6 +659,7 @@ graph_settings_panel = html.Div(
             ],
             className="param",
         ),
+        core_connect,
         html.Div(
             [
                 dbc.Button(
