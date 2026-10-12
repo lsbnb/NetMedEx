@@ -1,4 +1,4 @@
-# NetMedEx v1.8.0
+# NetMedEx v1.8.1
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -25,6 +25,10 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 
 <details>
 <summary><h2>🆕 Recent Updates</h2></summary>
+
+### v1.8.1 — 2026-10-12
+
+- **Clicking a Suggested Question No Longer Reloads the Page**: when the model numbered its suggested questions in the answer's language ("問題一：…") they stayed in the answer as bracketed text that rendered as a broken link, and clicking it reloaded the page back to the Search panel. They now become proper suggestion buttons, and any other bracketed text in an answer displays as plain text.
 
 ### v1.8.0 — 2026-10-12
 

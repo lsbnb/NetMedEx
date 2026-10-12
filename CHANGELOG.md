@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.1] - 2026-10-12
+
+### Fixed & Hardened
+
+- **Clicking a Suggested Question Reloaded the Page**: the system prompt asks for suggested questions as `[Q1: ...]`, but models sometimes number them in the answer's language (`[問題一：...]`). `parse_suggestions` did not recognise that, so the question stayed in the answer body as a bracketed line -- and Dash's Markdown renders a bare `[text]` as a shortcut reference link with no target, so clicking it reloaded the page and dropped the user back on the Search panel.
+  - `parse_suggestions` maps localized markers (問題一/问题2/質問3/질문1, full-width colons and digits) to `Qn:` before parsing, so they become suggestion buttons (`webapp/callbacks/chat_callbacks.py`).
+  - Chat message rendering escapes every bracket pair that is not part of a real link (`escape_bare_brackets`, `webapp/components/chat.py`), outside fenced code so Mermaid `A[label]` syntax is untouched -- generalising the existing escape that only covered `[Human ...]`/`[Animal ...]` study-type labels.
+  - Regression tests in `tests/test_chat_suggestions.py`.
+
 ## [1.8.0] - 2026-10-12
 
 ### Added

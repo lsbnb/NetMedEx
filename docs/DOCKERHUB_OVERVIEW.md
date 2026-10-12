@@ -1,4 +1,4 @@
-# NetMedEx v1.8.0: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.8.1: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
@@ -19,7 +19,11 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.8.0
+## 🆕 What's New in v1.8.1
+
+- **Suggested Questions Work Reliably**: Clicking a suggested question could reload the page and drop you back on the Search panel when the model wrote the question in a numbered, non-English format. It now fills the chat box as intended.
+
+### Previous: v1.8.0
 
 - **Explore Large Knowledge Graphs**: Open a graph built from tens of thousands of articles directly from the server, start from its core entities, and grow the view step by step — connect any entity you search to the core entities through its best few-hop paths, or expand a node's strongest neighbours (with Undo).
 - **More Reliable Chat**: Fixed "Graph session data not found" when starting a chat, and a crash on graphs with more than ~5,400 nodes.
