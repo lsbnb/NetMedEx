@@ -28,7 +28,15 @@ DATA_FILENAME = {
     "edge_info": "output.csv",
     "ris": "citations.ris",
 }
-_SESSION_SECRET = os.getenv("NETMEDEX_SESSION_SECRET") or secrets.token_hex(32)
+_SESSION_SECRET = os.getenv("NETMEDEX_SESSION_SECRET")
+if not _SESSION_SECRET:
+    # Background callbacks run in *spawned* processes (see app.py), which
+    # re-import this module: a per-process random secret meant a token signed
+    # in one process failed verification in another ("Graph session data not
+    # found" when a chat started from a graph opened by the main process).
+    # Exporting it lets every spawned worker inherit the same secret.
+    _SESSION_SECRET = secrets.token_hex(32)
+    os.environ["NETMEDEX_SESSION_SECRET"] = _SESSION_SECRET
 
 
 class SessionPathError(ValueError):

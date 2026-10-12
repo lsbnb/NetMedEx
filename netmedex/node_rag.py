@@ -11,6 +11,8 @@ import logging
 from dataclasses import dataclass
 from typing import Any
 
+from netmedex.rag import _build_token_batches
+
 logger = logging.getLogger(__name__)
 
 
@@ -150,10 +152,13 @@ class NodeRAG:
             if progress_callback:
                 progress_callback(f"Indexing {len(nodes)} graph nodes...")
 
-            try:
-                self.collection.add(documents=documents_text, metadatas=metadatas, ids=ids)
-            except Exception as e:
-                raise e
+            # Batched like AbstractRAG: ChromaDB rejects a single add() of more
+            # than 5,461 records, which a graph built from tens of thousands of
+            # articles easily exceeds (a 36k-article graph has ~30k nodes).
+            for batch_texts, batch_metas, batch_ids in _build_token_batches(
+                documents_text, metadatas, ids
+            ):
+                self.collection.add(documents=batch_texts, metadatas=batch_metas, ids=batch_ids)
 
             self._initialized = True
             logger.info(f"Indexed {len(nodes)} nodes successfully")
