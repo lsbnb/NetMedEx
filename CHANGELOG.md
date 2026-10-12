@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.0] - 2026-10-12
+
+### Added
+
+- **Large Prebuilt Knowledge Graphs in the Web UI**: NetMedEx's web view and chat are sized for graphs built from a few thousand articles; a project graph built from tens of thousands (tested on 36,227 articles / 30k nodes / 190k edges) needs a different entry point. All of the following are opt-in and leave ordinary searches unchanged:
+  - `NETMEDEX_PRELOAD_GRAPH=/path/graph.pickle` opens a server-side graph on page load (`webapp/callbacks/preload.py`); each browser session's graph file is a symlink to it, so nothing is uploaded or copied (a 200 MB pickle exceeds the upload limit anyway).
+  - `NETMEDEX_ENV_FILE` layers a project's own settings (provider, model, port) over the shared `.env`, which `app.py` loads with `override=True` and would otherwise force back onto every instance.
+  - A graph can declare its core entities (`graph.graph["anchor_nodes"]`) instead of having them matched from a build query, and open on those alone (`graph.graph["initial_view"] = "anchors"`).
+  - **Connect to Core Nodes** (Graph panel, `webapp/callbacks/node_connect.py`): search one or more entities anywhere in the full graph and add their best path to each core node within a hop limit. Paths prefer fewer hops and better-supported edges, penalise detours through generic hubs, and never route through Species nodes; per-core-node path trees are precomputed once in the background, so connecting is a lookup.
+  - **Expand neighbors / Undo** (Node Info, `webapp/callbacks/node_expand.py`): add a node's strongest neighbours from the full graph -- ranked by supporting papers, filterable by type and by >=2-paper support -- page through further batches, and undo the last addition.
+  - `load_graph_cached`: one shared read-only copy per graph file (keyed by path, mtime and size); a 200 MB graph took ~9 s to unpickle on every slider change.
+- **Project Chat Backend Hook**: `NETMEDEX_CHAT_BACKEND=module:function` lets a project build chat sessions itself (e.g. over persistent indexes) at all four places the web chat creates or rebuilds one (`webapp/chat_backend.py`). Unset, every path is unchanged.
+- **`carries` Relation Type**: a directional relation for a vesicle or carrier and its cargo ("MSC-derived exosomes deliver miR-17"), with normalisations (contains, delivers, transfers, shuttles ...) and claim-verifier cues (cargo, loaded, exosomal ...). Previously such relations could only be stored as an unrecognised type or flattened to `associated_with`.
+
+### Fixed & Hardened
+
+- **Session Tokens Failed Across Background Processes**: without `NETMEDEX_SESSION_SECRET`, each process generated its own random signing secret, and background callbacks run in *spawned* processes that re-import `webapp/utils.py` -- so a token signed in one process failed verification in another ("Graph session data not found"). The generated secret is now exported to the environment, which spawned workers inherit. Regression test `tests/test_session_secret.py` fails without the fix.
+- **Node Index Crashed Above 5,461 Nodes**: `NodeRAG.index_nodes` added every node in one ChromaDB `add()`, which ChromaDB rejects above 5,461 records, so `netmedex chat -g` crashed on any graph larger than that. Now batched like `AbstractRAG`.
+- **First-Pass Semantic Extraction Returned One Relation Per Article on OpenAI Models**: the prompt asked for a bare JSON array while OpenAI/Gemini/OpenRouter calls set `response_format=json_object`, which forbids one; gpt-4o and gpt-5.6-terra resolved the conflict by returning a single relation object for ~95% of articles, so nearly every article fell through to the coverage pass. The prompt now asks for `{"relations": [...]}` (and the parser prefers that key). On 199 articles: recovery passes 198 -> 23, relations/article 7.1 -> 13.0, cost -37%; claude-sonnet-4-6 72 -> 139 relations on 8 articles.
+
 ## [1.7.3] - 2026-09-22
 
 ### Fixed & Hardened

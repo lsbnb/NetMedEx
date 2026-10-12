@@ -1,4 +1,4 @@
-# NetMedEx v1.7.3: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.8.0: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
@@ -19,7 +19,13 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.7.3
+## 🆕 What's New in v1.8.0
+
+- **Explore Large Knowledge Graphs**: Open a graph built from tens of thousands of articles directly from the server, start from its core entities, and grow the view step by step — connect any entity you search to the core entities through its best few-hop paths, or expand a node's strongest neighbours (with Undo).
+- **More Reliable Chat**: Fixed "Graph session data not found" when starting a chat, and a crash on graphs with more than ~5,400 nodes.
+- **Richer Relation Extraction on OpenAI Models**: The first extraction pass now returns all relations per article instead of just one (about 13 per article instead of 7, at lower cost).
+
+### Previous: v1.7.3
 
 - **Follow-ups Better Remember What You Were Just Discussing**: A follow-up question already re-searches the full index fresh each time — it now also gives a ranking boost to the papers your previous reply cited, so a still-relevant one can resurface instead of relying only on the model's memory of the conversation text.
 - **Better Article-Fetch Defaults**: "Max Articles" and "Sort" defaulted to 30 articles / Recency, which could cap a broad search to only the 30 newest matches — sometimes missing the specific mechanism a question asked about entirely. Now defaults to 50 articles / Relevance.

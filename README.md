@@ -1,4 +1,4 @@
-# NetMedEx v1.7.3
+# NetMedEx v1.8.0
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -25,6 +25,12 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 
 <details>
 <summary><h2>🆕 Recent Updates</h2></summary>
+
+### v1.8.0 — 2026-10-12
+
+- **Explore Large Prebuilt Knowledge Graphs**: Serve a project graph built from tens of thousands of articles straight from the server (`NETMEDEX_PRELOAD_GRAPH`), open on its core entities only, then grow the view: **Connect to Core Nodes** adds the best few-hop paths from any entity you search to those core entities, and **Expand neighbors** adds a node's strongest neighbours from the full graph (with Undo). A project can also supply its own chat backend (`NETMEDEX_CHAT_BACKEND`) and settings file (`NETMEDEX_ENV_FILE`).
+- **Fixes**: chat could fail with "Graph session data not found" when a session was created in one server process and used in another; chat crashed on graphs with more than ~5,400 nodes; and on OpenAI models the first semantic-extraction pass returned only one relation for ~95% of articles (now ~13 per article on gpt-5.6-terra, at lower cost).
+- **New `carries` relation** for vesicle/carrier cargo ("exosomes deliver miR-17").
 
 ### v1.7.3 — 2026-09-22
 
