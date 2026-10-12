@@ -7,10 +7,27 @@ This module contains UI components for the chat panel, including
 message display, input box, and source citations.
 """
 
+import re
+
 import dash_bootstrap_components as dbc
 from dash import dcc, html
 
 from webapp.utils import display
+
+
+# "[some text]" with no "(url)" is a Markdown shortcut reference link: Dash's
+# Markdown renders it as a link with no target, and clicking it reloads the page
+# (the app falls back to the Search panel). Seen with a suggested question the
+# model wrote as "[問題一：...]". Escape every bracket pair that is not part of a
+# real link; fenced code (Mermaid "A[label]" syntax) is left untouched.
+_BARE_BRACKETS = re.compile(r"(?<![\\\]])\[([^\[\]\n]+)\](?![(\[:])")
+
+
+def escape_bare_brackets(text: str) -> str:
+    parts = text.split("```")
+    for i in range(0, len(parts), 2):  # even parts are outside code fences
+        parts[i] = _BARE_BRACKETS.sub(r"\\[\1\\]", parts[i])
+    return "```".join(parts)
 
 
 def create_message_component(
@@ -87,6 +104,7 @@ def create_message_component(
     content = "\n".join(new_lines)
 
     linked_content = re.sub(pmid_pattern, replace_pmid, content)
+    linked_content = escape_bare_brackets(linked_content)
 
     markdown_component = dcc.Markdown(
         linked_content,

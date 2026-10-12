@@ -356,9 +356,22 @@ def rename_suggested_question_ids(node, suffix="-modal"):
 # prompt instructs the LLM to emit.  Previous broad keyword matching (e.g.
 # "追問", "建議問題" as substrings) would falsely enter the suggestion section
 # inside 2-hop inference text, swallowing that content.
+# The model sometimes numbers suggestions in the answer's language instead of
+# the [Q1:] markers the prompt asks for ("[問題一：...]", "问题2：", "質問3:"),
+# which left them in the answer text as bracketed lines. Map them to Qn first.
+_LOCALIZED_QUESTION_MARKER = re.compile(
+    r"(?:問題|问题|質問|질문)\s*([一二三四五12345１２３４５])\s*[:：.．]"
+)
+_MARKER_NUMBER = {"一": "1", "二": "2", "三": "3", "四": "4", "五": "5",
+                  "１": "1", "２": "2", "３": "3", "４": "4", "５": "5"}
+
+
 def parse_suggestions(content):
     if not content:
         return [], ""
+    content = _LOCALIZED_QUESTION_MARKER.sub(
+        lambda m: f"Q{_MARKER_NUMBER.get(m.group(1), m.group(1))}:", content
+    )
 
     def _default_questions(text: str) -> list[str]:
         has_cjk = any("\u4e00" <= c <= "\u9fff" for c in text)
