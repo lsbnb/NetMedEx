@@ -585,6 +585,14 @@ class LLMClient:
         if response_format:
             kwargs["response_format"] = response_format
 
+        # GPT-5-family models reason before answering and the reasoning tokens
+        # count against the same output limit. NETMEDEX_REASONING_EFFORT (none /
+        # minimal / low / medium / high) sets the effort for every call -- chat,
+        # semantic extraction, translation; unset keeps the provider default.
+        reasoning_effort = os.getenv("NETMEDEX_REASONING_EFFORT", "").strip().lower()
+        if reasoning_effort and is_gpt5_model and self.provider == "openai":
+            kwargs["reasoning_effort"] = reasoning_effort
+
         response = self.client.chat.completions.create(**kwargs)
         usage = getattr(response, "usage", None)
         self._record_completion_usage({

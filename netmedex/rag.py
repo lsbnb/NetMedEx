@@ -242,13 +242,22 @@ class AbstractRAG:
             logger.error("ChromaDB not installed. Please install: pip install chromadb")
             raise
 
-    def index_abstracts(self, abstracts: list[AbstractDocument], progress_callback=None) -> int:
+    def index_abstracts(
+        self,
+        abstracts: list[AbstractDocument],
+        progress_callback=None,
+        reuse_persisted: bool = False,
+    ) -> int:
         """
         Index abstracts into the vector database.
 
         Args:
             abstracts: List of AbstractDocument objects to index
             progress_callback: Optional callback(message) for progress updates
+            reuse_persisted: With a persist_directory, name the collection after the
+                indexed PMIDs and reload it when it is already complete instead of
+                re-embedding (an interrupted build is discarded and redone). Lets a
+                chat session be restored after a server restart without re-indexing.
 
         Returns:
             Number of documents indexed
@@ -256,6 +265,10 @@ class AbstractRAG:
         if not abstracts:
             logger.warning("No abstracts to index")
             return 0
+        if reuse_persisted and self.persist_directory:
+            reused = self._reuse_persisted_index(abstracts)
+            if reused is not None:
+                return reused
 
         logger.info(f"Indexing {len(abstracts)} abstracts into vector store...")
         try:
@@ -355,6 +368,34 @@ class AbstractRAG:
         except Exception as e:
             logger.error(f"Error indexing abstracts: {e}", exc_info=True)
             raise
+
+    def _reuse_persisted_index(self, abstracts: list[AbstractDocument]) -> int | None:
+        """Load a complete persisted collection for exactly these PMIDs, or return
+        None after discarding a partial one (the caller then indexes normally)."""
+        import hashlib
+
+        digest = hashlib.sha256("\0".join(sorted(d.pmid for d in abstracts)).encode())
+        self.collection_name = f"abstracts_{digest.hexdigest()[:16]}"
+        try:
+            existing = self.client.get_collection(self.collection_name)
+        except Exception:  # noqa: BLE001 -- chromadb raises different types per version
+            return None
+        if existing.count() != len(abstracts):
+            logger.warning("Discarding incomplete persisted index %s", self.collection_name)
+            self.client.delete_collection(self.collection_name)
+            return None
+        self.collection = existing
+        texts = []
+        for doc in abstracts:
+            self.documents[doc.pmid] = doc
+            texts.append(f"{doc.title}\n\n{doc.abstract}")
+        if self.use_bm25:
+            self._bm25_pmids = [doc.pmid for doc in abstracts]
+            self._bm25 = _BM25Index([_tokenize_biomedical(text) for text in texts])
+        self._initialized = True
+        logger.info("Reusing persisted abstract index %s (%d docs)", self.collection_name,
+                    len(abstracts))
+        return len(abstracts)
 
     def search(
         self, query: str, top_k: int = 5, preferred_pmids: set[str] | None = None

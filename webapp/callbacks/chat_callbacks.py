@@ -237,8 +237,13 @@ def _rebuild_chat_session_from_graph(savepath, llm_client, topic: str | None = N
         if not documents:
             raise ValueError("No abstracts available in graph file")
 
-        rag_system = AbstractRAG(llm_client)
-        rag_system.index_abstracts(documents)
+        # Persisted next to the session's graph: a session restored after a
+        # server restart reloads its index instead of re-embedding every abstract.
+        rag_system = AbstractRAG(
+            llm_client,
+            persist_directory=str(_pathlib.Path(savepath["graph"]).parent / "rag_index"),
+        )
+        rag_system.index_abstracts(documents, reuse_persisted=True)
         graph_retriever = GraphRetriever(G, node_rag=None)
         session = ChatSession(
             rag_system,

@@ -16,6 +16,16 @@ from netmedex.utils import generate_stable_id
 logger = logging.getLogger(__name__)
 
 
+def _contains_word(text: str, phrase: str) -> bool:
+    """`phrase` occurs in `text` as a whole word, optionally pluralised.
+
+    Names are usually singular ("exosome") while questions are often plural
+    ("exosomes"), so an "s"/"es" suffix still counts as the same word.
+    """
+    pattern = rf"(?<![a-z0-9]){re.escape(phrase)}(?:e?s)?(?![a-z0-9])"
+    return re.search(pattern, text) is not None
+
+
 class GraphRetriever:
     """
     Retrieves structured context from the knowledge graph for Hybrid RAG.
@@ -101,9 +111,13 @@ class GraphRetriever:
             # Index the primary ID
             self.name_to_id[str(node_id).lower()] = node_id
 
-            # Index the 'name' attribute if it exists
+            # Index the 'name' attribute if it exists. Same length floor as
+            # aliases: NER noise leaves nodes named "a", "e" or "an", which as
+            # substrings matched nearly every question and anchored spurious nodes.
             if "name" in data and data["name"]:
-                self.name_to_id[str(data["name"]).lower()] = node_id
+                key = str(data["name"]).lower()
+                if len(key) >= self._MIN_ALIAS_INDEX_LENGTH:
+                    self.name_to_id[key] = node_id
 
         # Second pass for aliases, so a primary name always wins a key collision.
         # A node's display name is whichever surface form the source text happened
@@ -142,10 +156,15 @@ class GraphRetriever:
         normalized_query = self._normalize_anchor_text(query)
         matched_nodes = set()
 
-        # 1. Exact/Substring Matching
+        # 1. Exact matching on whole words: a plain substring test let a short name
+        # match inside an unrelated word ("ast" in "contrast", "alt" in "salt").
         sorted_names: list[str] = sorted(self.name_to_id.keys(), key=len, reverse=True)
         for name in sorted_names:
-            if name in query_lower or self._normalize_anchor_text(name) in normalized_query:
+            if (name in query_lower and _contains_word(query_lower, name)) or (
+                (normalized := self._normalize_anchor_text(name))
+                and normalized in normalized_query
+                and _contains_word(normalized_query, normalized)
+            ):
                 matched_nodes.add(self.name_to_id[name])
 
         # 1.5 Category Expansion for miRNA/microRNA and lncRNA.

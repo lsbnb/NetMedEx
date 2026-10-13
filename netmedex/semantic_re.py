@@ -28,6 +28,14 @@ from netmedex.utils import get_network_profile_params
 
 logger = logging.getLogger(__name__)
 
+# System message of every extraction call; shared with the Batch API path
+# (netmedex/batch_llm.py) so batched and live requests are identical.
+SEMANTIC_SYSTEM_PROMPT = (
+    "You are an expert in biomedical relationship extraction. "
+    "You analyze scientific abstracts and identify relationships between entities. "
+    "Always respond with valid JSON."
+)
+
 
 @dataclass
 class SemanticEdge:
@@ -846,11 +854,7 @@ Title: {title}
             if provider not in ("google", "anthropic"):
                 raise ValueError("LLM client not initialized")
 
-        system_instruction = (
-            "You are an expert in biomedical relationship extraction. "
-            "You analyze scientific abstracts and identify relationships between entities. "
-            "Always respond with valid JSON."
-        )
+        system_instruction = SEMANTIC_SYSTEM_PROMPT
         # Per-call LLM timeout & retries: dynamically resolved via get_network_profile_params()
         net_params = get_network_profile_params()
         LLM_TIMEOUT = float(os.getenv("NETMEDEX_LLM_TIMEOUT", str(net_params["llm_timeout"])))

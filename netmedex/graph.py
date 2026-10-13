@@ -133,8 +133,12 @@ class PubTatorGraphBuilder:
         fetch_citations: bool = False,
         verify_relations: bool = False,
         verifier_llm_client=None,
+        merge_duplicates: bool = False,
     ) -> None:
         self.node_type = node_type
+        # Merge nodes naming one concept under several ids (species orthologs,
+        # GO/KEGG/HPO/MeSH duplicates) -- see netmedex/node_merge.py. Off by default.
+        self.merge_duplicates = merge_duplicates
         self.edge_method = edge_method
         self._mesh_only = node_type in ("mesh", "relation")
         self.num_articles = 0
@@ -385,6 +389,13 @@ class PubTatorGraphBuilder:
             return self.graph
 
         self._build_nodes(pmid_weights)
+        if self.merge_duplicates:
+            from netmedex.node_merge import merge_duplicate_nodes
+
+            stats = merge_duplicate_nodes(self.graph)
+            self.graph.graph["merge_duplicates"] = stats
+            logger.info(f"Merged duplicate nodes: {stats}")
+            self._build_nodes(pmid_weights)  # article counts of the merged nodes
         self._build_edges(pmid_weights, weighting_method)
 
         self._remove_edges_by_weight(self.graph, edge_weight_cutoff)
@@ -434,6 +445,13 @@ class PubTatorGraphBuilder:
         self.normalize_graph_ids(self.graph)
 
         for node_id, data in self.graph.nodes(data=True):
+            # Display name: the form used by the most articles (ties: longer, then
+            # alphabetical). It used to be whichever article happened to be added
+            # first, e.g. sorafenib shown as "sora". The other forms stay aliases.
+            votes = data.pop("name_votes", None)
+            if votes:
+                data["name"] = max(votes.items(), key=lambda kv: (kv[1], len(kv[0]), kv[0]))[0]
+
             # Defensive check: ensure 'pmids' exists
             if "pmids" not in data:
                 logger.warning(
@@ -486,6 +504,7 @@ class PubTatorGraphBuilder:
         graph: nx.Graph, weighting_method: Literal["freq", "npmi"] = "freq"
     ):
         """Recalculate edge weights and widths based on selected method"""
+        graph.graph["weighting_method"] = weighting_method
         # Calculate scaled weights
         if weighting_method == "npmi":
             edge_weights = nx.get_edge_attributes(graph, "npmi")
@@ -524,8 +543,19 @@ class PubTatorGraphBuilder:
             min_cut = edge_weight_cutoff
             max_cut = float("inf")
 
+        # Under "freq" the cutoff means supporting papers. edge_width is rescaled so
+        # the strongest edge is MAX_EDGE_WIDTH wide, which made the same cutoff mean
+        # ~10% of the top edge's paper count on a large corpus (default 2 kept 163 of
+        # 192k edges on 36k articles); for graphs whose strongest edge has <= 20
+        # papers nothing is rescaled, so their behaviour is unchanged. An upper
+        # bound at the slider's maximum means "no upper bound".
+        by_papers = graph.graph.get("weighting_method", "freq") == "freq"
+        if max_cut >= MAX_EDGE_WIDTH:
+            max_cut = float("inf")
         for u, v, edge_attrs in graph.edges(data=True):
             width = edge_attrs.get("edge_width", 1.0)
+            if by_papers:
+                width = edge_attrs.get("weighted_num_relations", width)
             # Filter: Check if outside the range [min_cut, max_cut]
             if width < min_cut or width > max_cut:
                 to_remove.append((u, v))
@@ -923,6 +953,9 @@ class PubTatorGraphBuilder:
 
             if self.graph.has_node(node_id):
                 self.graph.nodes[node_id]["pmids"].add(data.pmid)
+                self.graph.nodes[node_id].setdefault("name_votes", {})
+                votes = self.graph.nodes[node_id]["name_votes"]
+                votes[std_name] = votes.get(std_name, 0) + 1
                 aliases = self.graph.nodes[node_id].setdefault("aliases", set())
                 aliases.update(data.aliases or {data.name})
                 if orig_acronym and orig_acronym.lower() not in {a.lower() for a in aliases}:
@@ -944,6 +977,7 @@ class PubTatorGraphBuilder:
                     pos=None,
                 )
                 self.graph.add_node(node_id, **asdict(node_data))
+                self.graph.nodes[node_id]["name_votes"] = {std_name: 1}
                 node_aliases = set(data.aliases or {data.name})
                 if orig_acronym and orig_acronym.lower() not in {a.lower() for a in node_aliases}:
                     node_aliases.add(orig_acronym)

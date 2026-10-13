@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- **Corpus-Scale Graph Building from the CLI** (all opt-in; defaults unchanged):
+  - `netmedex network --entity_dict FILE`: a TSV of concepts PubTator3 does not annotate (`id<TAB>type<TAB>name<TAB>synonym|synonym...`), e.g. extracellular vesicles or mesenchymal stem cells. Matches become ordinary annotations before the graph is built, so node creation and semantic extraction treat them like any PubTator entity; lower-case synonyms match in any case, ones with an upper-case letter are abbreviations matched exactly, and PubTator's own annotations win overlaps (`netmedex/custom_entities.py`).
+  - `--merge_duplicates`: merge nodes that name one concept under several ids -- species orthologs (human/mouse/rat genes), the same term in GO/KEGG/HPO/MeSH, ad-hoc duplicates of a standard node, and genes that are each other's aliases; gene vs chemical stays apart and miR-223 never merges with miR-22-3p (`netmedex/node_merge.py`).
+  - `--batch_dir DIR [--batch_wait]`: semantic extraction through the OpenAI Batch API at half price. The normal pipeline runs with only the LLM call replaced (answered prompts replayed, others queued); rerun the command until the graph is saved, or let `--batch_wait` poll (`netmedex/batch_llm.py`).
+  - `netmedex chat --index_dir DIR`: persist the abstract vector index; a later chat on the same abstracts reloads it instead of re-embedding (~35 min for 36k abstracts on CPU).
+- `NETMEDEX_REASONING_EFFORT` (none / minimal / low / medium / high) sets `reasoning_effort` on GPT-5-family OpenAI calls -- chat, extraction, translation and Batch requests; unset keeps the provider default.
+
+### Fixed & Hardened
+
+- **Node display names** are the mention used by the most articles (ties: longer, then alphabetical) instead of whichever article came first -- sorafenib was shown as "sora". Other forms stay aliases.
+- **Edge cutoff counts supporting papers** under `freq` weighting. It was applied to the display width, rescaled so the strongest edge is the maximum width, so on a large corpus the default cutoff of 2 kept only edges with ~10% of the top edge's papers (163 of 192k edges on 36k articles). Graphs whose strongest edge has <= 20 papers are unaffected.
+- **Graph retrieval matches whole words**: plain substring matching let short names match inside unrelated words ("ast" in "contrast") and NER-noise nodes named "a"/"e"/"an" anchored nearly every question. Primary names now need >= 3 characters like aliases; plurals still match.
+- **Deterministic entity selection**: ties between same-name nodes of different types followed the per-process string-hash order, so an article's extraction prompt could change between runs (breaking Batch answer replay).
+- **Web chat sessions restored after a restart** reload a persisted abstract index from the session directory instead of re-embedding every abstract.
+
 ## [1.8.1] - 2026-10-12
 
 ### Fixed & Hardened

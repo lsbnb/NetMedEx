@@ -405,6 +405,7 @@ def test_network_cli_semantic_uses_provider_aware_client(monkeypatch: pytest.Mon
             edge_method="semantic",
             llm_client=fake_llm_client,
             semantic_threshold=0.5,
+            merge_duplicates=False,
         )
         mock_builder.add_collection.assert_called_once_with(fake_collection)
         mock_builder.build.assert_called_once()

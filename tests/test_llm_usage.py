@@ -71,3 +71,34 @@ def test_openai_compatible_completion_records_token_usage():
         "output_tokens": 6,
         "total_tokens": 30,
     }
+
+
+def test_reasoning_effort_env_applies_to_gpt5_only(monkeypatch):
+    """NETMEDEX_REASONING_EFFORT reaches GPT-5-family calls; unset, nothing changes."""
+    from types import SimpleNamespace
+
+    from webapp.llm import LLMClient
+
+    sent = []
+
+    class FakeCompletions:
+        def create(self, **kwargs):
+            sent.append(kwargs)
+            msg = SimpleNamespace(content="ok")
+            return SimpleNamespace(choices=[SimpleNamespace(message=msg, finish_reason="stop")],
+                                   usage=None)
+
+    def client_for(model):
+        c = LLMClient()
+        c.provider, c.model, c.api_key = "openai", model, "test-key"
+        c.client = SimpleNamespace(chat=SimpleNamespace(completions=FakeCompletions()))
+        return c
+
+    monkeypatch.delenv("NETMEDEX_REASONING_EFFORT", raising=False)
+    client_for("gpt-5.6-terra").chat_completion_text([{"role": "user", "content": "q"}])
+    assert "reasoning_effort" not in sent[-1]
+    monkeypatch.setenv("NETMEDEX_REASONING_EFFORT", "low")
+    client_for("gpt-5.6-terra").chat_completion_text([{"role": "user", "content": "q"}])
+    assert sent[-1]["reasoning_effort"] == "low"
+    client_for("gpt-4o").chat_completion_text([{"role": "user", "content": "q"}])
+    assert "reasoning_effort" not in sent[-1]

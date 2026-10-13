@@ -101,7 +101,12 @@ class NonMeshNodeCollection(NodeCollection):
             if len(node_id_set) > 1:
                 # Remove nodes with the same name but annotated as different types
                 # Choose the node with the most occurrences
-                canonical_id = max(node_id_set, key=lambda x: self.node_id_occurrences[x])
+                # Ties broken by node id: max() over a set otherwise follows the
+                # per-process string-hash order, so the same article could keep a
+                # different node (and get a different extraction prompt) per run.
+                canonical_id = max(
+                    node_id_set, key=lambda x: (self.node_id_occurrences[x], x)
+                )
                 for node_id in node_id_set:
                     if node_id != canonical_id:
                         nodes.pop(node_id)

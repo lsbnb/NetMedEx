@@ -213,6 +213,13 @@ def network_entry(args):
     # Parse input PubTator file
     collection = PubTatorIO.parse(pubtator_filepath)
 
+    if args.entity_dict:
+        from netmedex.custom_entities import annotate_article, load_entity_dict
+
+        entities = load_entity_dict(args.entity_dict)
+        added = sum(annotate_article(article, entities) for article in collection.articles)
+        logger.info(f"Entity dictionary: {len(entities)} concepts, {added} annotations added")
+
     # Graph
     llm_client = None
     if args.edge_method == "semantic":
@@ -223,23 +230,64 @@ def network_entry(args):
             logger.error("Please install: pip install openai python-dotenv requests")
             sys.exit(1)
 
-    graph_builder = PubTatorGraphBuilder(
-        node_type=args.node_type,
-        edge_method=args.edge_method,
-        llm_client=llm_client,
-        semantic_threshold=args.semantic_threshold,
-    )
-    graph_builder.add_collection(collection)
-    G = graph_builder.build(
-        pmid_weights=args.pmid_weight,
-        weighting_method=args.weighting_method,
-        edge_weight_cutoff=args.cut_weight,
-        community=args.community,
-        max_edges=args.max_edges,
-    )
+    def build_graph():
+        graph_builder = PubTatorGraphBuilder(
+            node_type=args.node_type,
+            edge_method=args.edge_method,
+            llm_client=llm_client,
+            semantic_threshold=args.semantic_threshold,
+            merge_duplicates=args.merge_duplicates,
+        )
+        graph_builder.add_collection(collection)
+        return graph_builder.build(
+            pmid_weights=args.pmid_weight,
+            weighting_method=args.weighting_method,
+            edge_weight_cutoff=args.cut_weight,
+            community=args.community,
+            max_edges=args.max_edges,
+        )
+
+    if args.batch_dir:
+        G = _build_with_batch_api(args, llm_client, build_graph)
+        if G is None:
+            return  # requests submitted / still running; run the same command later
+    else:
+        G = build_graph()
 
     # Save graph
     save_graph(G, savepath, output_filetype=args.format)
+
+
+def _build_with_batch_api(args, llm_client, build_graph):
+    """Semantic extraction through the OpenAI Batch API (see netmedex/batch_llm.py).
+    Returns the graph once every prompt is answered, else None."""
+    from openai import OpenAI
+
+    from netmedex.batch_llm import BatchRun
+
+    if args.edge_method != "semantic" or getattr(llm_client, "provider", "") != "openai":
+        logger.error("--batch_dir needs --edge_method semantic with the openai provider")
+        sys.exit(1)
+    run = BatchRun(args.batch_dir, llm_client.model,
+                   OpenAI(api_key=llm_client.api_key, base_url=llm_client.base_url))
+    while True:
+        run.collect(wait=args.batch_wait)
+        run.pending.clear()
+        run.replayed = 0
+        with run.patched_extractor():
+            G = build_graph()
+        if not run.pending:
+            if run.in_flight():
+                logger.info("Batches are still running; run the same command again later.")
+                return None
+            logger.info(f"Batch build complete ({run.replayed} answers replayed)")
+            return G
+        submitted = run.submit()
+        logger.info(f"{len(run.pending)} prompts unanswered; {submitted} submitted to the Batch API")
+        if not args.batch_wait:
+            logger.info("Run the same command again once the batches finish (usually within "
+                        "hours, at most 24 h), or add --batch_wait to wait here.")
+            return None
 
 
 def webapp_entry(args):
@@ -357,8 +405,8 @@ def chat_entry(args):
             )
         )
 
-    rag_system = AbstractRAG(llm_client)
-    indexed_count = rag_system.index_abstracts(documents)
+    rag_system = AbstractRAG(llm_client, persist_directory=args.index_dir)
+    indexed_count = rag_system.index_abstracts(documents, reuse_persisted=bool(args.index_dir))
 
     node_rag = None
     try:
@@ -623,6 +671,31 @@ def get_network_parser():
         help="Minimum confidence score for semantic edges, range 0-1 (default: 0.5). "
         "Only used when --edge_method=semantic",
     )
+    parser.add_argument(
+        "--merge_duplicates",
+        action="store_true",
+        help="Merge nodes naming one concept under several ids: species orthologs (human/"
+        "mouse/rat genes), the same term in GO/KEGG/HPO/MeSH, and a gene under two names",
+    )
+    parser.add_argument(
+        "--entity_dict",
+        default=None,
+        help="TSV of extra concepts PubTator does not annotate (id, type, name, "
+        "synonym|synonym...); matches become ordinary annotations before the graph "
+        "is built -- see netmedex/custom_entities.py",
+    )
+    parser.add_argument(
+        "--batch_dir",
+        default=None,
+        help="Semantic extraction through the OpenAI Batch API (half price, completes within "
+        "24 h): requests and answers are kept in this directory; rerun the same command to "
+        "continue until the graph is saved",
+    )
+    parser.add_argument(
+        "--batch_wait",
+        action="store_true",
+        help="With --batch_dir: wait for the batches in this run instead of exiting",
+    )
     _add_llm_parser_args(parser, help_context="semantic edge extraction")
 
     return parser
@@ -708,6 +781,12 @@ def get_chat_parser():
         help="Print debug information.",
     )
     _add_llm_parser_args(parser, help_context="chat")
+    parser.add_argument(
+        "--index_dir",
+        default=None,
+        help="Directory to persist the abstract vector index in; a later chat on the same "
+        "abstracts reloads it instead of re-embedding (useful for large graphs)",
+    )
     return parser
 
 
