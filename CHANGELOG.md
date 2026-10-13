@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.10.0] - 2026-10-14
 
 ### Added
 
@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **Non-coding RNAs** (`netmedex/mirna_ner.py`): GNormPlus indexes protein-coding genes, so mature strands (`miR-133a-5p`), newly reported miRNAs, circRNAs (`circHIPK3`, `circ_0001234`) and ad-hoc lncRNAs were dropped -- and a `-5p` suffix was sometimes tagged as Chromosome 5 instead. Mentions are normalised to miRBase-style names and typed `Gene`.
   - **Primary cells, immune subsets and vesicles** (`netmedex/cell_type_ner.py`): PubTator's `CellLine` covers cultured lines only, leaving mesenchymal stem cells, tumour-associated macrophages, regulatory T cells, cancer-associated fibroblasts and exosomes/EVs unannotated. Grounded in Cell Ontology ids, with case-aware matching so abbreviations (TAM, Treg, CAF, EV) do not match ordinary words.
   - **Organelles and subcellular components** (`netmedex/organelle_ner.py`): GO's cellular_component branch (mitochondrion, endoplasmic reticulum, lysosome ...), which neither PubTator nor `phenotype_ner.py` covered. New entity type `CellularComponent`, with its own colour, shape and legend entry.
+
+### Fixed & Hardened
+
+- **circRNA / lncRNA mentions that were not transcripts**: the circRNA pattern made its separator optional, so ordinary words parsed as "circ" + suffix -- on a 36k-article corpus "circulating", "circular" and "circulation" were among the most frequent circRNAs found. And "circRNA-" / "lncRNA-" followed by any word matched, turning phrases about the RNA class into entities: "circRNA-miRNA-mRNA" (a ceRNA network), "lncRNA-mediated", "circRNA-based". An identifier must now start with an upper-case letter or digit, or contain a digit (`circHIPK3`, `circ_0001234`, `lncRNA-HOTAIR`, `lnc-MALAT1`); bare class mentions (`circRNAs`) are skipped.
 
 ## [1.9.0] - 2026-10-13
 

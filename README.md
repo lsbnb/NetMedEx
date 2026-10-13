@@ -1,4 +1,4 @@
-# NetMedEx v1.9.0
+# NetMedEx v1.10.0
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -25,6 +25,11 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 
 <details>
 <summary><h2>🆕 Recent Updates</h2></summary>
+
+### v1.10.0 — 2026-10-14
+
+- **Entities PubTator3 Misses Are Now Recognised**: graphs now include non-coding RNAs (mature miRNA strands such as `miR-146a-5p`, circRNAs, lncRNAs), primary and immune cell types (macrophages and their M1/M2 states, regulatory T cells, tumour-associated macrophages, hepatic stellate cells, mesenchymal stem cells, exosomes/EVs ...) and organelles (mitochondria, endoplasmic reticulum, lysosomes). PubTator3 annotates none of these, so papers about them used to have no node to attach their findings to.
+- **Fix**: words such as "circulating" and phrases such as "circRNA-miRNA-mRNA" are no longer mistaken for circRNAs.
 
 ### v1.9.0 — 2026-10-13
 
