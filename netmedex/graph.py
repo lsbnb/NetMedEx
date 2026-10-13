@@ -22,14 +22,16 @@ from netmedex.graph_data import (
     GraphEdge,
     GraphNode,
 )
-from netmedex.headers import HEADERS
 from netmedex.graph_schema import (
     CURRENT_GRAPH_SCHEMA_VERSION,
     CURRENT_NER_SCHEMA_VERSION,
     graph_schema_status,
 )
+from netmedex.headers import HEADERS
 from netmedex.mechanism_event import build_mechanism_event
 from netmedex.npmi import normalized_pointwise_mutual_information
+from netmedex.pathway_ner import find_pathway_annotations
+from netmedex.phenotype_ner import find_phenotype_annotations
 from netmedex.pubtator_data import (
     PubTatorArticle,
     PubTatorCollection,
@@ -41,8 +43,6 @@ from netmedex.pubtator_graph_data import (
     PubTatorNode,
     PubTatorNodeCollection,
 )
-from netmedex.phenotype_ner import find_phenotype_annotations
-from netmedex.pathway_ner import find_pathway_annotations
 
 try:
     from netmedex.semantic_re import SemanticRelationshipExtractor

@@ -24,7 +24,7 @@ def _init_cli_llm_client(args, usage_context: str):
     supported_providers = {"openai", "google", "local", "openrouter", "nvidia", "groq"}
     if provider not in supported_providers:
         logger.error(f"Unsupported LLM provider: {provider}")
-        logger.error(f"Supported providers: {', '.join(sorted(list(supported_providers)))}")
+        logger.error(f"Supported providers: {', '.join(sorted(supported_providers))}")
         sys.exit(1)
 
     base_url = args.llm_base_url
@@ -315,7 +315,7 @@ def _collect_pmid_edges(G):
         if isinstance(fallback_pmids, str):
             fallback_pmids = [fallback_pmids]
 
-        all_pmids = set(str(p) for p in relation_pmids) | set(str(p) for p in fallback_pmids)
+        all_pmids = {str(p) for p in relation_pmids} | {str(p) for p in fallback_pmids}
         for pmid in all_pmids:
             pmid_edges.setdefault(pmid, []).append(
                 {
