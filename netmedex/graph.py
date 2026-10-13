@@ -15,6 +15,7 @@ from typing import Literal
 
 import networkx as nx
 
+from netmedex.cell_type_ner import find_cell_type_annotations
 from netmedex.graph_data import (
     NODE_COLOR_MAP,
     NODE_SHAPE_MAP,
@@ -29,7 +30,9 @@ from netmedex.graph_schema import (
 )
 from netmedex.headers import HEADERS
 from netmedex.mechanism_event import build_mechanism_event
+from netmedex.mirna_ner import find_mirna_annotations
 from netmedex.npmi import normalized_pointwise_mutual_information
+from netmedex.organelle_ner import find_organelle_annotations
 from netmedex.pathway_ner import find_pathway_annotations
 from netmedex.phenotype_ner import find_phenotype_annotations
 from netmedex.pubtator_data import (
@@ -322,6 +325,27 @@ class PubTatorGraphBuilder:
         # see netmedex/pathway_ner.py.
         for annotation in find_pathway_annotations(article.pmid, article.title, article.abstract):
             node_collection.add_node(annotation)
+
+        # MicroRNAs, circRNAs, and non-coding RNAs (e.g. miR-133a-5p) -- see netmedex/mirna_ner.py.
+        for annotation in find_mirna_annotations(
+            article.pmid, article.title, article.abstract, article.annotations
+        ):
+            node_collection.add_node(annotation)
+            article.annotations.append(annotation)
+
+        # Primary cells, immune cell subsets, stem cells, and extracellular vesicles -- see netmedex/cell_type_ner.py.
+        for annotation in find_cell_type_annotations(
+            article.pmid, article.title, article.abstract, article.annotations
+        ):
+            node_collection.add_node(annotation)
+            article.annotations.append(annotation)
+
+        # Cellular organelles and subcellular components (mitochondria, ER, lysosomes) -- see netmedex/organelle_ner.py.
+        for annotation in find_organelle_annotations(
+            article.pmid, article.title, article.abstract, article.annotations
+        ):
+            node_collection.add_node(annotation)
+            article.annotations.append(annotation)
 
         edges = []
 

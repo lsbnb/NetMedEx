@@ -39,6 +39,7 @@ EXPANDABLE_NODE_TYPES = [
     "BiologicalProcess",
     "Phenotype",
     "CellLine",
+    "CellularComponent",
     "Species",
     "ProteinMutation",
     "DNAMutation",

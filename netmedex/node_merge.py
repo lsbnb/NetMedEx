@@ -30,7 +30,7 @@ from collections import defaultdict
 
 import networkx as nx
 
-CONCEPT_TYPES = {"Disease", "Phenotype", "BiologicalProcess", "Pathway"}
+CONCEPT_TYPES = {"Disease", "Phenotype", "BiologicalProcess", "Pathway", "CellularComponent"}
 _PER_PMID_FIELDS = ("relations", "confidences", "evidences", "mechanism_events")
 _MIRNA_NUMBER = re.compile(r"(?:mir|microrna|mirna)[-\s]?(\d+[a-z]?)")
 

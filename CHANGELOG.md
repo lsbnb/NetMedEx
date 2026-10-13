@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- **Three NER passes for entity classes PubTator3 does not cover**, run automatically while a graph is built:
+  - **Non-coding RNAs** (`netmedex/mirna_ner.py`): GNormPlus indexes protein-coding genes, so mature strands (`miR-133a-5p`), newly reported miRNAs, circRNAs (`circHIPK3`, `circ_0001234`) and ad-hoc lncRNAs were dropped -- and a `-5p` suffix was sometimes tagged as Chromosome 5 instead. Mentions are normalised to miRBase-style names and typed `Gene`.
+  - **Primary cells, immune subsets and vesicles** (`netmedex/cell_type_ner.py`): PubTator's `CellLine` covers cultured lines only, leaving mesenchymal stem cells, tumour-associated macrophages, regulatory T cells, cancer-associated fibroblasts and exosomes/EVs unannotated. Grounded in Cell Ontology ids, with case-aware matching so abbreviations (TAM, Treg, CAF, EV) do not match ordinary words.
+  - **Organelles and subcellular components** (`netmedex/organelle_ner.py`): GO's cellular_component branch (mitochondrion, endoplasmic reticulum, lysosome ...), which neither PubTator nor `phenotype_ner.py` covered. New entity type `CellularComponent`, with its own colour, shape and legend entry.
+
 ## [1.9.0] - 2026-10-13
 
 ### Added

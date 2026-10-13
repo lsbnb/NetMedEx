@@ -33,6 +33,7 @@ ANNOTATION_TYPES = {
     "BiologicalProcess",  # GO biological_process matches, see netmedex/phenotype_ner.py
     "Phenotype",  # HPO phenotype matches, see netmedex/phenotype_ner.py
     "Pathway",  # KEGG/Reactome named-pathway matches, see netmedex/pathway_ner.py
+    "CellularComponent",  # GO cellular_component matches, see netmedex/organelle_ner.py
 }
 
 logger = logging.getLogger(__name__)

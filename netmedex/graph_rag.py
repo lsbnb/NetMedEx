@@ -35,7 +35,7 @@ class GraphRetriever:
     # "pathway" was previously listed here but nothing ever produces a node of that type -- removed.
     VALID_NODE_TYPES = {
         "gene", "disease", "chemical", "variant", "cellline",
-        "biologicalprocess", "phenotype", "pathway",
+        "biologicalprocess", "phenotype", "pathway", "cellularcomponent",
     }
     IGNORED_NODE_TYPES = {"species", "entity", "geographic area", "organism"}
 

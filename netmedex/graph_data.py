@@ -15,6 +15,7 @@ NODE_COLOR_MAP = {
     "BiologicalProcess": "#E6AB02",
     "Phenotype": "#B15928",
     "Pathway": "#1B9E77",
+    "CellularComponent": "#80B1D3",
 }
 NODE_SHAPE_MAP = {
     "Chemical": "ELLIPSE",
@@ -28,6 +29,7 @@ NODE_SHAPE_MAP = {
     "BiologicalProcess": "ROUNDRECTANGLE",
     "Phenotype": "ROUNDRECTANGLE",
     "Pathway": "PENTAGON",
+    "CellularComponent": "HEXAGON",
 }
 
 
