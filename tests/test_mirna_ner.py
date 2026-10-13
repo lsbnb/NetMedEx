@@ -96,3 +96,20 @@ def test_circrna_pattern_still_matches_real_identifiers():
 def test_bare_class_mentions_are_not_entities():
     found = find_mirna_annotations("1", "circRNAs and circRNA biogenesis in cancer", "", [])
     assert [a.name for a in found] == []
+
+
+def test_class_level_phrases_are_not_transcripts():
+    """Regression: "circRNA-" / "lncRNA-" followed by any word matched, so
+    network and method phrases became entities -- "circRNA-miRNA-mRNA" alone
+    carried 82 relations on a 36k-article corpus."""
+    text = ("A circRNA-miRNA-mRNA network and a lncRNA-miRNA axis were built; "
+            "circRNA-based and lncRNA-mediated regulation, circRNA-protein binding "
+            "and lncRNA-autophagy links were discussed.")
+    assert find_mirna_annotations("1", text, "", []) == []
+
+
+def test_real_noncoding_transcripts_still_match():
+    text = "lncRNA-HOTAIR, lnc-MALAT1, lncRNA-ATB, circRNA-ABC1 and circ_0001234 were measured."
+    names = {a.identifier_name for a in find_mirna_annotations("1", text, "", [])}
+    assert {"circRNA-ABC1", "circ_0001234"} <= names
+    assert len(names) == 5
