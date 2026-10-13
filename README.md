@@ -1,4 +1,4 @@
-# NetMedEx v1.8.1
+# NetMedEx v1.9.0
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -25,6 +25,13 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 
 <details>
 <summary><h2>🆕 Recent Updates</h2></summary>
+
+### v1.9.0 — 2026-10-13
+
+- **Build Knowledge Graphs from Tens of Thousands of Articles**: new `netmedex network` options, all opt-in — `--entity_dict` adds concepts PubTator3 does not annotate (e.g. extracellular vesicles, mesenchymal stem cells) so they become real nodes and get related to everything else; `--merge_duplicates` folds one concept's several identifiers (human/mouse/rat genes, the same term in GO/KEGG/HPO/MeSH) into a single node; `--batch_dir` runs semantic extraction through the OpenAI Batch API at half price.
+- **Chat Starts in Seconds on Large Graphs**: `netmedex chat --index_dir` keeps the abstract index on disk instead of re-embedding every abstract (~35 minutes for 36k abstracts), and web chat sessions restored after a server restart reuse theirs.
+- **Better Names and Filters**: a node is now labelled with the mention most of its articles use (sorafenib was shown as "sora"), the edge-weight cutoff counts supporting papers rather than relative display width, and graph retrieval matches whole words so short names no longer match inside unrelated ones.
+- **`NETMEDEX_REASONING_EFFORT`** sets the reasoning effort for GPT-5-family OpenAI calls.
 
 ### v1.8.1 — 2026-10-12
 
