@@ -784,7 +784,7 @@ header_row = html.Div(
         sidebar_toggle,
         html.Div(
             [
-                html.Small("v1.10.0", className="text-muted", style={"fontSize": "0.7rem"}),
+                html.Small("v1.10.1", className="text-muted", style={"fontSize": "0.7rem"}),
                 advanced_settings,
             ],
             className="d-flex flex-column align-items-center ms-auto",

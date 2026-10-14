@@ -1,4 +1,4 @@
-# NetMedEx v1.10.0
+# NetMedEx v1.10.1
 
 [![Python package](https://img.shields.io/pypi/v/netmedex)](https://pypi.org/project/netmedex/)
 [![GitHub](https://img.shields.io/badge/GitHub-latest-blue)](https://github.com/lsbnb/NetMedEx)
@@ -25,6 +25,11 @@ NetMedEx follows a three-step discovery workflow — each step corresponds to a 
 
 <details>
 <summary><h2>🆕 Recent Updates</h2></summary>
+
+### v1.10.1 — 2026-10-14
+
+- **No More Empty Chat Replies on GPT-5 Models**: GPT-5 and o-series models spend part of the reply budget on reasoning; a complex question could use it all and return a blank answer. These models now get a larger budget, and a reply that still comes back empty is retried once with more room.
+- **Steadier Topic Summaries on Large Graphs**: the community summaries added to chat context can now be made finer (`CommunityDetector(resolution=...)`), so unrelated topics in a multi-topic graph are not merged into one cluster.
 
 ### v1.10.0 — 2026-10-14
 

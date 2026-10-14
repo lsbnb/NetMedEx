@@ -1,4 +1,4 @@
-# NetMedEx v1.10.0: AI-Powered Biomedical Knowledge Discovery 🧬✨
+# NetMedEx v1.10.1: AI-Powered Biomedical Knowledge Discovery 🧬✨
 
 NetMedEx is an AI-driven platform that transforms biomedical abstracts from **PubTator3** into interactive, actionable knowledge graphs. It bridges the gap between structured networks and unstructured text using a **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** engine powered by graph traversal and semantic vector search.
 
@@ -19,7 +19,12 @@ While other tools simply list entities, NetMedEx **interprets the links**. It pr
 
 ---
 
-## 🆕 What's New in v1.10.0
+## 🆕 What's New in v1.10.1
+
+- **No More Empty Chat Replies on GPT-5 Models**: complex questions no longer use up the reply budget on reasoning and return a blank answer.
+- **Steadier Topic Summaries on Large Graphs**: finer topic clusters can be used so unrelated topics are not merged.
+
+### Previous: v1.10.0
 
 - **Recognises What PubTator3 Misses**: Non-coding RNAs (mature miRNA strands, circRNAs, lncRNAs), primary and immune cell types (macrophage states, regulatory T cells, stem cells, exosomes) and organelles (mitochondria, ER, lysosomes) now become graph nodes, so findings about them are no longer lost.
 - **Cleaner RNA Recognition**: ordinary words like "circulating" and phrases like "circRNA-miRNA-mRNA" are no longer mistaken for circRNAs.

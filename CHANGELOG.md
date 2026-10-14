@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.10.1] - 2026-10-14
+
+### Fixed & Hardened
+
+- **Empty chat replies on GPT-5 / o-series models** (`netmedex/chat.py`): their reasoning tokens count against the reply's output limit, and OpenAI models other than "mini" got 6,000. A complex five-layer answer used 5,200-5,400 of it, so when the reasoning ran a little longer the call ended at `finish_reason=length` with no answer text and the user saw a blank reply (2 of 21 runs on one test question). These models now get 16,000 (12,000 for the bootstrap summary) -- only generated tokens are billed -- and an empty reply that stopped on the limit is retried once with twice the room.
+
+### Added
+
+- `CommunityDetector(resolution=...)` (`netmedex/community.py`): the Louvain resolution for the macro-level community summaries in chat context; default 1.0, unchanged. On a large multi-topic graph the default forms communities of thousands of nodes whose membership shifts between graph revisions -- one revision merged hepatocellular carcinoma and sorafenib into an acute-liver-failure cluster, and that framing cut a sorafenib-resistance answer's citations from 8-9 to 5. A higher resolution (e.g. 2.0) keeps topics apart.
+
 ## [1.10.0] - 2026-10-14
 
 ### Added
