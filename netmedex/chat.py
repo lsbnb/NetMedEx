@@ -20,6 +20,13 @@ from netmedex.graph_rag import GraphRetriever
 logger = logging.getLogger(__name__)
 
 
+def _is_reasoning_model(model: str) -> bool:
+    """GPT-5 family and o-series models, whose reasoning tokens share the
+    output limit (same families webapp.llm sends max_completion_tokens for)."""
+    m = str(model or "").lower()
+    return m.startswith("gpt-5") or bool(re.match(r"o[134](?:\b|-)", m))
+
+
 @dataclass
 class ChatMessage:
     """Represents a single chat message"""
@@ -817,6 +824,13 @@ Each question MUST:
         elif _provider == "groq":
             # Groq (cloud): allow richer 5-layer output
             chat_max_tokens = 5000 if is_internal else 8000
+        elif _provider == "openai" and _is_reasoning_model(getattr(self.llm, "model", "")):
+            # GPT-5 / o-series reason before answering, and the reasoning tokens
+            # count against this same limit. A complex 5-layer answer used
+            # 5,200-5,400 of the old 6,000: when the reasoning ran a little
+            # longer it hit the limit with no answer text, and the user got an
+            # empty reply. Only tokens actually generated are billed.
+            chat_max_tokens = 12000 if is_internal else 16000
         elif _provider in ("openai",) and "mini" in getattr(self.llm, "model", ""):
             # GPT-4o-mini: very cheap, can afford a larger budget.
             chat_max_tokens = 5000 if is_internal else 8000
@@ -837,6 +851,24 @@ Each question MUST:
                     max_tokens=chat_max_tokens,
                     timeout=chat_timeout,
                 )
+                if assistant_content == "" and (
+                    getattr(self.llm, "last_completion_finish_reason", "") == "length"
+                ):
+                    # The limit was spent before any answer text (reasoning
+                    # models): retry once with twice the room rather than
+                    # returning an empty reply.
+                    logger.warning(
+                        "Chat reply empty at max_tokens=%d (finish_reason=length); "
+                        "retrying with %d",
+                        chat_max_tokens,
+                        chat_max_tokens * 2,
+                    )
+                    assistant_content = self.llm.chat_completion_text(
+                        messages=messages,
+                        temperature=0,
+                        max_tokens=chat_max_tokens * 2,
+                        timeout=chat_timeout,
+                    )
                 duration = (datetime.now() - start_time).total_seconds()
                 logger.info(f"LLM Response received in {duration:.2f}s")
                 if assistant_content is not None and not isinstance(assistant_content, str):

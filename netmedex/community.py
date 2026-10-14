@@ -43,9 +43,12 @@ class CommunityDetector:
     Detects, analyzes, and manages topological communities for Macro-Level GraphRAG.
     """
 
-    def __init__(self, graph: nx.Graph, seed: int = 42):
+    def __init__(self, graph: nx.Graph, seed: int = 42, resolution: float = 1.0):
         self.graph = graph
         self.seed = seed
+        # Louvain resolution: >1 favours smaller communities. Large multi-topic
+        # graphs need it so unrelated topics are not merged into one giant cluster.
+        self.resolution = resolution
         self.communities: list[GraphCommunity] = []
         self._node_to_community_map: dict[str, int] = {}
 
@@ -76,7 +79,7 @@ class CommunityDetector:
         # Detect communities using Louvain modularity optimization
         try:
             raw_communities = nx.community.louvain_communities(
-                subgraph, weight="edge_weight", seed=self.seed
+                subgraph, weight="edge_weight", seed=self.seed, resolution=self.resolution
             )
         except Exception as e:
             logger.warning("Louvain community detection failed, falling back to connected components: %s", e)
